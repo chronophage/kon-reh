@@ -1,0 +1,120 @@
+<svg viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .sqL{ fill:#F4F1EC; }
+      .sqD{ fill:#7C746A; }
+      .grid{ stroke:#B8B1A4; stroke-width:8; fill:none; }
+      .cf{ fill:rgba(94,176,255,.12); }
+      .glyph{ fill:none; stroke:#2C2A29; stroke-width:10; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect width="2048" height="2048" fill="#FFFFFF"/>
+
+  <!-- diamond board group -->
+  <g transform="translate(1024,1024) rotate(45) translate(-1024,-1024)">
+
+    <!-- squares (64) -->
+    <g id="squares">
+      <!-- draw an 8x8; each cell 192x192 with 16 px gap margin -->
+      <!-- Using simple loops is not possible in raw SVG; here we hand-lay in stripes: -->
+      <!-- Row 0..7 -->
+      <!-- Use light/dark alternating by (r+c)%2 -->
+      <!-- We’ll draw a big checker pattern by two rects per row for brevity -->
+      <!-- Light base -->
+      <rect x="128" y="128" width="1792" height="1792" fill="#F4F1EC"/>
+      <!-- Overlay dark cells via grid of rects -->
+      <g fill="#7C746A">
+        <!-- Generate dark cells (odd parity) -->
+        <!-- Row 0: c1,c3,c5,c7 -->
+        <rect x="352" y="128" width="192" height="192"/>
+        <rect x="736" y="128" width="192" height="192"/>
+        <rect x="1120" y="128" width="192" height="192"/>
+        <rect x="1504" y="128" width="192" height="192"/>
+        <!-- Row 1: c0,c2,c4,c6 -->
+        <rect x="128" y="320" width="192" height="192"/>
+        <rect x="512" y="320" width="192" height="192"/>
+        <rect x="896" y="320" width="192" height="192"/>
+        <rect x="1280" y="320" width="192" height="192"/>
+        <!-- Row 2 -->
+        <rect x="352" y="512" width="192" height="192"/>
+        <rect x="736" y="512" width="192" height="192"/>
+        <rect x="1120" y="512" width="192" height="192"/>
+        <rect x="1504" y="512" width="192" height="192"/>
+        <!-- Row 3 -->
+        <rect x="128" y="704" width="192" height="192"/>
+        <rect x="512" y="704" width="192" height="192"/>
+        <rect x="896" y="704" width="192" height="192"/>
+        <rect x="1280" y="704" width="192" height="192"/>
+        <!-- Row 4 -->
+        <rect x="352" y="896" width="192" height="192"/>
+        <rect x="736" y="896" width="192" height="192"/>
+        <rect x="1120" y="896" width="192" height="192"/>
+        <rect x="1504" y="896" width="192" height="192"/>
+        <!-- Row 5 -->
+        <rect x="128" y="1088" width="192" height="192"/>
+        <rect x="512" y="1088" width="192" height="192"/>
+        <rect x="896" y="1088" width="192" height="192"/>
+        <rect x="1280" y="1088" width="192" height="192"/>
+        <!-- Row 6 -->
+        <rect x="352" y="1280" width="192" height="192"/>
+        <rect x="736" y="1280" width="192" height="192"/>
+        <rect x="1120" y="1280" width="192" height="192"/>
+        <rect x="1504" y="1280" width="192" height="192"/>
+        <!-- Row 7 -->
+        <rect x="128" y="1472" width="192" height="192"/>
+        <rect x="512" y="1472" width="192" height="192"/>
+        <rect x="896" y="1472" width="192" height="192"/>
+        <rect x="1280" y="1472" width="192" height="192"/>
+      </g>
+
+      <!-- central four: 2x2 at center (rows 3-4, cols 3-4) -->
+      <g class="cf">
+        <rect x="896" y="896" width="192" height="192"/>
+        <rect x="1088" y="896" width="192" height="192"/>
+        <rect x="896" y="1088" width="192" height="192"/>
+        <rect x="1088" y="1088" width="192" height="192"/>
+      </g>
+
+      <!-- grid lines -->
+      <g class="grid">
+        <!-- verticals -->
+        <path d="M128 128 v1792"/>
+        <path d="M320 128 v1792"/>
+        <path d="M512 128 v1792"/>
+        <path d="M704 128 v1792"/>
+        <path d="M896 128 v1792"/>
+        <path d="M1088 128 v1792"/>
+        <path d="M1280 128 v1792"/>
+        <path d="M1472 128 v1792"/>
+        <path d="M1664 128 v1792"/>
+        <path d="M1856 128 v1792"/>
+        <!-- horizontals -->
+        <path d="M128 128 h1792"/>
+        <path d="M128 320 h1792"/>
+        <path d="M128 512 h1792"/>
+        <path d="M128 704 h1792"/>
+        <path d="M128 896 h1792"/>
+        <path d="M128 1088 h1792"/>
+        <path d="M128 1280 h1792"/>
+        <path d="M128 1472 h1792"/>
+        <path d="M128 1664 h1792"/>
+        <path d="M128 1856 h1792"/>
+      </g>
+
+      <!-- sanctum rings (corner squares of diamond before rotation) -->
+      <!-- In rotated frame, these are the “left/right” apexes visually -->
+      <g class="glyph">
+        <rect x="128" y="1024" width="192" height="192" />
+        <rect x="1728" y="832" width="192" height="192" />
+      </g>
+
+      <!-- home apex glyphs (top/bottom in rotated frame) -->
+      <g class="glyph">
+        <circle cx="224" cy="224" r="36"/>
+        <circle cx="1824" cy="1824" r="36"/>
+      </g>
+    </g>
+  </g>
+</svg>
