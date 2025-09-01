@@ -11,6 +11,13 @@ PDFNAME=""
 GIT_ROOT="$(git rev-parse --show-toplevel)"
 FILE_PATH=$(pwd)
 
+if [[ "$FILE_PATH:" == *"rules"* ]]; then
+  BRANCH="rules"
+elif [[ "$FILE_PATH:" == *"concordance"* ]]; then 
+  BRANCH="concordance"
+else
+  BRANCH="./"
+fi
 # --- Parse flags ---
 while getopts ":dcbxif:q:n:" opt; do
   case $opt in
@@ -144,8 +151,15 @@ if [[ "$PDFNAME" -ne "$FINAL_PDF" ]]; then
    mv "./$FINAL_PDF" "./$PDFNAME"
 fi
 
-git add "./$PDFNAME"
-open "./$PDFNAME"
+if [[ "$BRANCH" -ne "." ]]; then
+   echo "Moving $PDFNAME to $GIT_ROOT/$BRANCH/PDFs"
+   mv "./$FINAL_PDF" "$GIT_ROOT/$BRANCH/PDFs/$PDFNAME"
+   git add "$GIT_ROOT/$BRANCH/PDFs/$PDFNAME"
+   open "$GIT_ROOT/$BRANCH/PDFs/$PDFNAME"
+else
+   git add "./$PDFNAME"
+   open "./$PDFNAME"
+fi
 
 if [[ "$CLEAN" == true ]]; then
   echo "Cleaning auxiliary files..."
