@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60mm" height="300mm" viewBox="0 0 60 300">
+
+    <defs>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#d9c27a"/>
+        <stop offset="100%" stop-color="#b4943f"/>
+      </linearGradient>
+
+      <filter id="vellum" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="noise"/>
+        <feColorMatrix type="matrix" values="
+          1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 0.25 0" in="noise" result="grain"/>
+        <feBlend in="SourceGraphic" in2="grain" mode="multiply"/>
+      </filter>
+
+      <filter id="inkSpread">
+        <feGaussianBlur stdDeviation="0.15"/>
+        <feComponentTransfer>
+          <feFuncA type="gamma" amplitude="0.9" exponent="0.9" offset="0"/>
+        </feComponentTransfer>
+      </filter>
+
+      <pattern id="hatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="4" stroke="#1b1a18" stroke-width="0.25" opacity="0.12"/>
+      </pattern>
+    </defs>
+    
+    <rect x="0" y="0" width="60" height="300" rx="4" ry="4" fill="#efe7d6"/>
+    <rect x="1.2" y="1.2" width="57.6" height="297.6" rx="3" ry="3"
+          fill="#e3d5bd" opacity="0.25" filter="url(#vellum)"/>
+    <rect x="6" y="8" width="48" height="10" fill="url(#goldGrad)" rx="2" ry="2"/>
+<rect x="6" y="282" width="48" height="10" fill="url(#goldGrad)" rx="2" ry="2"/>
+<g transform="translate(30.0,150.0) rotate(-90)"><text text-anchor="middle" font-size="14" fill="#1b1a18" letter-spacing="2" filter="url(#inkSpread)">KON’REH</text></g></svg>

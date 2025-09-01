@@ -1,0 +1,90 @@
+<Defaults>
+  <Text fontSize="18" color="#eeeeee" />
+  <Button colors="#3a3a3a|#5c5c5c|#2b2b2b|#777777" fontSize="16" textColor="#ffffff" />
+  <Panel />
+</Defaults>
+
+<Panel id="root" width="100%" height="100%" raycastTarget="false">
+  <!-- Top bar -->
+  <Panel rectAlignment="UpperCenter" width="90%" height="120" offsetXY="0 -10">
+    <HorizontalLayout spacing="12" childAlignment="MiddleCenter" />
+    <Panel width="260" height="110" color="#222a">
+      <VerticalLayout spacing="6" childAlignment="UpperLeft" />
+      <Text id="activeSide" />
+      <Text id="turnMoves" />
+      <Text id="doubleInfo" />
+      <HorizontalLayout spacing="6" />
+      <Button id="btn_end" onClick="btn_endMove" text="End Move / Turn" />
+      <Button onClick="btn_passTurn" text="Pass Turn" />
+      <Button onClick="btn_spawnSetupBags" text="Spawn Setup Bags" />
+    </Panel>
+
+    <Panel width="320" height="110" color="#222a">
+      <VerticalLayout spacing="6" childAlignment="UpperLeft" />
+      <Text id="lbl_cap" />
+      <HorizontalLayout spacing="6" />
+      <Button onClick="btn_capMinus" text="− Green" />
+      <Button onClick="btn_capPlus" text="+ Green" />
+      <Button id="btn_toggle_buyback" onClick="btn_toggleBuyback" />
+    </Panel>
+
+    <Panel width="200" height="110" color="#222a">
+      <VerticalLayout spacing="6" childAlignment="UpperLeft" />
+      <Button onClick="btn_resetAll" text="Reset Helper (keep variant)" />
+    </Panel>
+  </Panel>
+
+  <!-- Side A panel -->
+  <Panel rectAlignment="LowerLeft" width="360" height="50%" offsetXY="15 15" color="#111a">
+    <VerticalLayout spacing="8" childAlignment="UpperLeft" />
+    <Text text="Side A — Blue State" fontSize="20" />
+    <Text id="lbl_A_hop" />
+    <Text id="lbl_A_disp" />
+    <Text id="lbl_A_rooted" />
+    <Text id="lbl_A_cross" />
+    <Text id="lbl_A_reforge" />
+    <Text id="lbl_A_mob" />
+    <Text id="lbl_A_sanban" />
+    <Text id="lbl_A_buyback" />
+    <HorizontalLayout spacing="6" />
+    <Button onClick="btn_useHop" text="Use Hop" />
+    <Button onClick="btn_useDisp" text="Use Displacement" />
+    <Button onClick="btn_resetSpecialsThisLife" text="Refresh (same life)" />
+
+    <HorizontalLayout spacing="6" />
+    <Button onClick="btn_markLeftHome" text="Mark first departure from Home" />
+    <Button onClick="btn_seed" text="Seed (Root Blue; +1 Green)" />
+
+    <HorizontalLayout spacing="6" />
+    <Button onClick="btn_crossStayed" text="End Turn in Central Four (+stay)" />
+    <Button onClick="btn_crossExit" text="Exit Central Four (start 2-turn exclusion)" />
+
+    <HorizontalLayout spacing="6" />
+    <Button onClick="btn_captureBlue" text="We captured their Blue (start their Reforge)" />
+    <Text text="Reforge placement (when you plant):" />
+    <HorizontalLayout spacing="6" />
+    <Button onClick="btn_reforgeHome" text="Home" />
+    <Button onClick="btn_reforgeSanctumL" text="Sanctum L (ban Seed here)" />
+    <Button onClick="btn_reforgeSanctumR" text="Sanctum R (ban Seed here)" />
+    <Button onClick="btn_reforgeOppApex" text="Opposing Apex (pay 1 Green)" />
+
+    <HorizontalLayout spacing="6" />
+    <Button onClick="btn_buyback" text="Crown Buyback (sac 1 Green; lose turn)" />
+  </Panel>
+
+  <!-- Side B panel -->
+  <Panel rectAlignment="LowerRight" width="360" height="50%" offsetXY="-15 15" color="#111a">
+    <VerticalLayout spacing="8" childAlignment="UpperLeft" />
+    <Text text="Side B — Blue State" fontSize="20" />
+    <Text id="lbl_B_hop" />
+    <Text id="lbl_B_disp" />
+    <Text id="lbl_B_rooted" />
+    <Text id="lbl_B_cross" />
+    <Text id="lbl_B_reforge" />
+    <Text id="lbl_B_mob" />
+    <Text id="lbl_B_sanban" />
+    <Text id="lbl_B_buyback" />
+    <!-- Buttons operate for active side; mirror labels show B's status when B is active -->
+    <Text text="(Buttons act on the ACTIVE side)" fontSize="16" color="#cccccc" />
+  </Panel>
+</Panel>

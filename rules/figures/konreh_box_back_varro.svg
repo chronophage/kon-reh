@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300mm" height="300mm" viewBox="0 0 300 300">
+
+    <defs>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#d9c27a"/>
+        <stop offset="100%" stop-color="#b4943f"/>
+      </linearGradient>
+
+      <filter id="vellum" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="noise"/>
+        <feColorMatrix type="matrix" values="
+          1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 0.25 0" in="noise" result="grain"/>
+        <feBlend in="SourceGraphic" in2="grain" mode="multiply"/>
+      </filter>
+
+      <filter id="inkSpread">
+        <feGaussianBlur stdDeviation="0.15"/>
+        <feComponentTransfer>
+          <feFuncA type="gamma" amplitude="0.9" exponent="0.9" offset="0"/>
+        </feComponentTransfer>
+      </filter>
+
+      <pattern id="hatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="4" stroke="#1b1a18" stroke-width="0.25" opacity="0.12"/>
+      </pattern>
+    </defs>
+    
+    <rect x="0" y="0" width="300" height="300" rx="6" ry="6" fill="#efe7d6"/>
+    <rect x="1.2" y="1.2" width="297.6" height="297.6" rx="5" ry="5"
+          fill="#e3d5bd" opacity="0.25" filter="url(#vellum)"/>
+    
+    <rect x="8" y="8" width="284" height="284" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+    <g fill="url(#goldGrad)" opacity="0.9">
+      <circle cx="18" cy="18" r="3"/><circle cx="282" cy="18" r="3"/>
+      <circle cx="18" cy="282" r="3"/><circle cx="282" cy="282" r="3"/>
+    </g>
+    <!-- Simple vine filigree along left -->
+    <path d="M 14 24 q 6 12 0 24 q -6 12 0 24 q 6 12 0 24 q -6 12 0 24 q 6 12 0 24"
+          fill="none" stroke="#2e4f2c" stroke-width="1" opacity="0.3"/>
+    
+    <g text-anchor="middle" font-family="serif">
+      <text x="150.0" y="26" font-size="18" fill="#1b1a18" filter="url(#inkSpread)">From the Vellum of the Legate</text>
+      <rect x="114.0" y="30" width="72" height="1.1" fill="url(#goldGrad)"/>
+    </g>
+    <text x="20" y="48" font-size="8.8" fill="#1b1a18" opacity="0.95" font-style="italic">Copied from the field log of Legate Varro, preserved on vellum and glossed by Ecktorian clerks:</text><text x="20" y="59" font-size="8.8" fill="#1b1a18" opacity="0.95" font-style="italic">On a lozenge of eighty-four points the wardens count exits, not victims. Green takes root where banners fall; the calendar is the fifth player and Reforge is its fuse. Hold the Sanctums, watch the Central Four, and breathe—for those who forget to breathe lose by inches before they lose by capture.</text><text x="20" y="76" font-size="10" fill="#1b1a18" style="font-variant: small-caps;">Features</text><text x="26" y="88" font-size="8.5" fill="#1b1a18">• 2 players · 20–45 minutes · Ages 12+</text><text x="26" y="97" font-size="8.5" fill="#1b1a18">• Diamond-board lanes & timing traps—play by exits, not checkmates</text><text x="26" y="106" font-size="8.5" fill="#1b1a18">• Seed from the Sanctums; leverage the Central Four’s tension</text><text x="26" y="115" font-size="8.5" fill="#1b1a18">• Reforge countdown: plant your banner within five turns</text><text x="20" y="130" font-size="10" fill="#1b1a18" style="font-variant: small-caps;">In the Box</text><text x="26" y="142" font-size="8.5" fill="#1b1a18">• 24 Stones minimum: per player (6 Red, 2 Orange, 1 Green, 1 Blue) ×2, plus 4 extra Greens</text><text x="26" y="151" font-size="8.5" fill="#1b1a18">• Common extras often included (spares of Reds/Oranges/Greens)</text><text x="26" y="160" font-size="8.5" fill="#1b1a18">• Counters: Green Cap beads · Reforge tracker · Turn/calendar marker</text><text x="26" y="169" font-size="8.5" fill="#1b1a18">• 1 Double‑sided Diamond Board (8×8 / 6×6 teaching)</text><text x="26" y="178" font-size="8.5" fill="#1b1a18">• Rules & Lore Compendium · One‑Page Player Aid</text><text x="290" y="290" text-anchor="end" font-size="6.2" fill="#1b1a18" opacity="0.8">© 2025 Nicholas A. Gasper — All Rights Reserved</text></svg>

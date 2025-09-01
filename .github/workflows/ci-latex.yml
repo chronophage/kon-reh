@@ -1,0 +1,23 @@
+name: CI (LaTeX)
+on: [push, pull_request]
+jobs:
+  build-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dante-ev/latex-action@v2
+        with:
+          working_directory: rules
+          root_file: rulebook.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error
+      - uses: dante-ev/latex-action@v2
+        with:
+          working_directory: concordance
+          root_file: the_concordance.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PDFs
+          path: |
+            rules/*.pdf
+            concordance/*.pdf
