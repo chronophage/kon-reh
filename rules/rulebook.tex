@@ -639,7 +639,19 @@ On the turn you occupy the enemy Home Apex:
   \item \textbf{Blue refresh:} A reforged Blue returns with \textbf{both capture specials unused} (fresh life).
 \end{enumerate}
 
+% Requires \usepackage{tcolorbox}
+\begin{tcolorbox}[title={Default Time \& Start-Balance Rule},label={box:default_time_rule}]
+\textbf{Core default.} In all ranked/tournament play, Kon’rēh uses a \emph{10+5} Fischer time control
+(10 minutes base with +5 seconds added after each move) and the \emph{P2 double-move} start-balance.
+This default applies unless an event specifies different settings or both players agree otherwise.
+Casual or learning games may disregard it.
 
+\textbf{Rationale.} A 10+5 increment preserves endgame quality without devolving into flagging,
+and P2 double-move is the standard balance for bases $>4$ minutes. For bases $\leq 4$ minutes,
+organizers may optionally use the \emph{pie rule} for balance.
+
+\textbf{See also.} Details and alternatives in \S\ref{subsec:time_defaults} and Table~\ref{tab:time_controls}.
+\end{tcolorbox}
 
 \section{Quick Reference}
 \label{sec:quickreference}
@@ -768,6 +780,9 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
 \vspace{-0.4\baselineskip}
 
 % ==== ONE-PAGE LAYOUT: Board + ZoC + Movement ====
+% ==============================
+% PAGE 1: Board overview + ZoC + lane directions
+% ==============================
 \begin{figure}[H] % force here to keep with section header
 \centering
 \captionsetup{aboveskip=0.5ex,belowskip=0.4ex}
@@ -791,7 +806,7 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   % Grid outlines back on top
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Diamond board (8×8) with the \emph{Central Four} (blue), Home apex squares (green), and side-apex \emph{Sanctums} (red).}
+\caption{Diamond board \((8\times 8)\) showing the \emph{Central Four} (blue), Home apex squares (green), and side-apex \emph{Sanctums} (red).}
 \end{subfigure}
 
 \vspace{0.4em}
@@ -806,7 +821,7 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   \def\cx{5}\def\cy{5}
   \pgfmathtruncatemacro{\yP}{\BoardN-\cy}
   \node[piece] (P) at ({\cx-0.5},{\yP+0.5}) {};
-  % Cardinal ZoC (HL/HR/OL/OR)
+  % ZoC (adjacent diagonal squares along O/H lanes)
   \foreach \dx/\dy/\lab in {-1/0/\LabelW, 1/0/\LabelE, 0/-1/\LabelN, 0/1/\LabelS}{%
     \pgfmathtruncatemacro{\nx}{\cx+\dx}%
     \pgfmathtruncatemacro{\ny}{\cy+\dy}%
@@ -819,7 +834,7 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   }
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Zone of Control: the four \emph{cardinal} neighbors (HL/HR/OL/OR).}
+\caption{Zone of Control (ZoC): the four adjacent diagonal squares—one step along OL, OR, HL, HR.}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.47\linewidth}
 \centering
@@ -830,12 +845,12 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   \def\cx{5}\def\cy{5}
   \pgfmathtruncatemacro{\yQ}{\BoardN-\cy}
   \node[piece] (Q) at ({\cx-0.5},{\yQ+0.5}) {};
-  % Cardinal movement lanes (no ZoC shading)
-  \draw[moveArrow] (Q) -- ({\BoardN-0.5},{\yQ+0.5}); % east
-  \draw[moveArrow] (Q) -- ({0.5},{\yQ+0.5});         % west
-  \draw[moveArrow] (Q) -- ({\cx-0.5},{0.5});         % south
-  \draw[moveArrow] (Q) -- ({\cx-0.5},{\BoardN-0.5}); % north
-  % One-step target markers for steppers
+  % Lane directions (no mid-move turns)
+  \draw[moveArrow] (Q) -- ({\BoardN-0.5},{\yQ+0.5}); % H-right (HR)
+  \draw[moveArrow] (Q) -- ({0.5},{\yQ+0.5});         % H-left  (HL)
+  \draw[moveArrow] (Q) -- ({\cx-0.5},{0.5});         % O-low   (OL)
+  \draw[moveArrow] (Q) -- ({\cx-0.5},{\BoardN-0.5}); % O-high  (OR)
+  % One-step targets for steppers
   \foreach \dx/\dy in {-1/0,1/0,0/-1,0/1}{%
     \pgfmathtruncatemacro{\tx}{\cx+\dx}%
     \pgfmathtruncatemacro{\ty}{\cy+\dy}%
@@ -847,11 +862,12 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   }
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Movement lanes are \emph{cardinal} on the diamond board (HL/HR/OL/OR).}
+\caption{Legal moves run along a single O/H lane (HL, HR, OL, OR) with no mid-move turns.}
 \end{subfigure}
 
-\caption{Board overview with \emph{Central Four}, cardinal ZoC, and cardinal movement lanes.}
+\caption{Board overview: Central Four, ZoC along OL/OR/HL/HR, and O/H lane directions (HL/HR/OL/OR).}
 \end{figure}
+
 % ==============================
 % PAGE 2: Lane legend + notation
 % ==============================
@@ -881,7 +897,7 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   \node[scale=0.75, fill=white, inner sep=1pt] at (\BoardN-0.3,{\yy+0.5}) {H-lane};
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Every square lies at the intersection of two through-lanes: one O-lane and one H-lane.}
+\caption{Each square lies on exactly two through-lanes: one \emph{O}-lane (Onward) and one \emph{H}-lane (Homeward).}
 \end{subfigure}\hfill
 % ---- (B) Notation key: (o,h) coordinates on lanes ----
 \begin{subfigure}[t]{0.48\linewidth}
@@ -902,11 +918,10 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   \node[scale=0.8, fill=white, inner sep=1pt] at ($(C)+(0.0,-1.9)$) {Coordinates: $(o,h)$ on O/H lanes};
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Notation: index squares by their O- and H-lane coordinates \((o,h)\).
-\(o\) increases along the Onward lane (toward the opposing apex); \(h\) increases along the orthogonal Homeward lane.}
+\caption{Notation: index squares by \((o,h)\) with \(o\) increasing toward the \emph{Opposing} apex along O and \(h\) increasing toward the \emph{Home} apex along H.}
 \end{subfigure}
 
-\caption{Lane legend and notation. O/H are the two canonical through-lanes used for movement and control.}
+\caption{Lane legend and coordinate notation for O/H, the two canonical through-lanes used for movement and control.}
 \end{figure}
 
 % ==============================
@@ -933,7 +948,7 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   \draw[moveArrow] (S) -- ({\fx-1-0.5},{\fyphys+0.5});
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Friendly piece on the lane: the run stops one square before.}
+\caption{Friendly piece on the same lane: a runner must stop one square before (no jumping).}
 \end{subfigure}\hfill
 % ---- (B) Enemy block: capture on contact ----
 \begin{subfigure}[t]{0.48\linewidth}
@@ -953,100 +968,10 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
   \draw[moveArrow] (S) -- (E);
   \RedrawGridLines
 \end{tikzpicture}}
-\caption{Opposing piece on the lane: the run terminates on that square (capture).}
+\caption{Opposing piece on the lane: the runner captures by ending on that square (replacement capture).}
 \end{subfigure}
 
-\caption{Lane runners interacting with pieces ahead: friendly blocks vs. opposing captures.}
-\end{figure}
-
-% ==============================
-% PAGE 4: Edge & corner behavior
-% ==============================
-\begin{figure}[p]
-\centering
-
-% ---- (A) Edge example: lanes truncated ----
-\begin{subfigure}[t]{0.48\linewidth}
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[rotate=45]
-  \DrawGrid
-  % place piece near the left edge on Cross rank
-  \def\cx{2}\def\cy{4}
-  \pgfmathtruncatemacro{\yy}{\BoardN-\cy}
-  \node[piece] (E) at ({\cx-0.5},{\yy+0.5}) {};
-  % available runs along O/H lanes from edge position
-  \draw[moveArrow] (E) -- ({\BoardN-0.5},{\yy+0.5}); % across
-  \draw[moveArrow] (E) -- ({\cx-0.5},{0.5});         % downward
-  \draw[moveArrow] (E) -- ({\cx-0.5},{\BoardN-0.5}); % upward
-  \RedrawGridLines
-\end{tikzpicture}}
-\caption{On an edge, one side of a lane is already gone; runs only extend where squares exist.}
-\end{subfigure}\hfill
-% ---- (B) Corner example: lanes minimal ----
-\begin{subfigure}[t]{0.48\linewidth}
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[rotate=45]
-  \DrawGrid
-  % corner piece (use a side-apex to demonstrate)
-  \def\cx{1}\def\cy{1}
-  \pgfmathtruncatemacro{\yy}{\BoardN-\cy}
-  \node[piece] (C) at ({\cx-0.5},{\yy+0.5}) {};
-  % only two runs are possible from a corner
-  \draw[moveArrow] (C) -- ({\BoardN-0.5},{\yy+0.5}); % across
-  \draw[moveArrow] (C) -- ({\cx-0.5},{\BoardN-0.5}); % upward
-  \RedrawGridLines
-\end{tikzpicture}}
-\caption{In a corner, lanes reduce to the two that remain.}
-\end{subfigure}
-
-\caption{Reduced options at the edge and corner.}
-\end{figure}
-
-% ==============================
-% PAGE 5: Sanctum interaction (enter & bank)
-% ==============================
-\begin{figure}[p]
-\centering
-
-% ---- (A) Entering a side-apex Sanctum ----
-\begin{subfigure}[t]{0.48\linewidth}
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[rotate=45]
-  \DrawGrid
-  % highlight sanctums (optional)
-  \ShadeSquares{sanctumA}{8/8}
-  \ShadeSquares{sanctumB}{1/1}
-  \RedrawGridLines
-  % approach from adjacent H-lane square toward the left sanctum (1/1)
-  \def\sx{2}\def\sy{1}
-  \pgfmathtruncatemacro{\yy}{\BoardN-\sy}
-  \node[piece] (S) at ({\sx-0.5},{\yy+0.5}) {};
-  \draw[moveArrow] (S) -- ({1-0.5},{\yy+0.5});
-\end{tikzpicture}}
-\caption{Entering a side-apex Sanctum along a lane.}
-\end{subfigure}\hfill
-% ---- (B) Banking a reserve on Sanctum ----
-\begin{subfigure}[t]{0.48\linewidth}
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[rotate=45]
-  \DrawGrid
-  % show piece resting on sanctum and a small "pip"
-  \def\cx{1}\def\cy{1}
-  \pgfmathtruncatemacro{\yy}{\BoardN-\cy}
-  \ShadeSquares{sanctumB}{1/1}
-  \RedrawGridLines
-  \node[piece] (P) at ({\cx-0.5},{\yy+0.5}) {};
-  % tiny parity pip near the piece
-  \fill ( {(\cx-0.5)+0.28} , {(\yy+0.5)+0.28} ) circle (1.2pt);
-\end{tikzpicture}}
-\caption{Waiting on a Sanctum may bank a reserve, by table rule.}
-\end{subfigure}
-
-\caption{Sanctums at the side apex squares: entering and holding.}
+\caption{Lane-runner interactions on O/H: friendly blocks (stop one before) versus opposing captures (end on contact).}
 \end{figure}
 
 
@@ -2045,6 +1970,32 @@ must announce Buyback status (ON/OFF) before play.
   \item \textbf{No-progress vs. forced lines.} Directors may decline a 50–turn draw if a forced win exists on the board and the claimant demonstrably avoided progress; otherwise, draw by rule.
 \end{itemize}
 
+\subsection{Default Time Controls and Start-Balance}
+\label{subsec:time_defaults}
+
+\noindent\textbf{Core rule.} Unless players mutually agree otherwise (or an event specifies different settings), ranked/tournament Kon’rēh uses a \emph{10+5} Fischer time control (10 minutes base with +5 seconds increment per move) and the \emph{P2 double-move} start-balance. Casual or learning games may disregard this default.
+
+\begin{table}[h!]
+\centering
+\caption{Recommended time controls and start-balance}
+\label{tab:time_controls}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l c c l}
+\hline
+\textbf{Play context} & \textbf{Time control} & \textbf{Start-balance} & \textbf{Notes} \\
+\hline
+Core default (ranked/tournament) & \textbf{10+5} & \textbf{P2 double-move} & Official default unless agreed otherwise. \\
+Rapid (alt) & 8+5 or 10+0 & P2 double-move & Slightly faster or no-increment option. \\
+Blitz & 5+3 & P2 double-move & Preserves quality at faster pace. \\
+Lightning & 3+0 or 2+1 & Pie rule\textsuperscript{$\ast$} (or P2) & For bases $\leq 4$ minutes, pie rule often balances better. \\
+Casual / Learning & Any & Flexible & Players may adapt freely for teaching/experiments. \\
+\hline
+\end{tabular}
+
+\vspace{4pt}
+\footnotesize $\ast$\,\textit{Pie rule:} after the first setup/move, the second player may swap sides.
+\end{table}
+
 \clearpage
 \section{The Five-Breath Weave}
 \label{sec:five-breath-weave}
@@ -2151,17 +2102,17 @@ Zero: zugzwang risk—trade or break symmetry. \\
 
 \item \textbf{A:} Orange \Hm[L]{2} to clamp a Central Four exit. \think{Lower XS; start the squeeze.}
 
-\item \textbf{B:} Blue \Hm[R]{4} to exit, then \textbf{Hop-capture} (land beyond on empty). \SC{H}\; \CC{out} \think{Exclusion starts.}
+\item \textbf{B:} Blue \Hm[R]{2} to the clamp, then \textbf{Hop-capture} over A’s Orange (land beyond on empty). \SC{H}\; \CC{out}\; \CapC{0–1} \think{Exclusion begins as CF is vacated.}
 
-\item \textbf{A:} Blue \Hm[R]{4} to a Sanctum (first departure; \emph{no Seed}). \think{Mobilized; SSI still low for her.}
+\item \textbf{A:} Blue \Hm[R]{4} to a Sanctum (no Seed). \think{Mobilized; holds both specials.}
 
-\item \textbf{B:} Blue to right Sanctum $\to$ \textbf{Seed} to left Sanctum. \RoC\; \CapC{0--1}
+\item \textbf{B:} Blue to right Sanctum $\to$ \textbf{Seed} to left Sanctum. \RoC\; \think{Rooted for one ply.}
 
-\item \textbf{A:} Declines capture; Orange \Hm[L]{2} to \emph{cover} the opposite Sanctum lane (pressures future Seed). \think{Don’t cash now—close futures.}
+\item \textbf{A:} Declines recapture; Orange \Hm[L]{2} to \emph{cover} the opposite Sanctum lane. \think{Don’t cash now—close futures.}
 
-\item \textbf{B:} (Blue rooted) Red \On[L]{2} (center lattice). \think{Hold while \RoC{} burns.}
+\item \textbf{B:} (Blue rooted) \emph{Green} \On[R]{3} to a center junction (lane post). \think{Hold while \RoC{} burns.}
 
-\item \textbf{A:} Screen: Red \On[L]{2} vs.\ Green lanes. \CapC{0--1}
+\item \textbf{A:} Screen: Red \On[L]{2} vs.\ Green lanes.
 
 \item \textbf{B:} Blue un-rooted; drifts \Hm[R]{3} toward center (threat both Sanctums).
 
@@ -2169,45 +2120,50 @@ Zero: zugzwang risk—trade or break symmetry. \\
 
 \item \textbf{B:} Blue \Hm[R]{4} toward a Sanctum (future Seed), avoiding a bind.
 
-\item \textbf{A:} Blue \Hm[L]{2} back onto same Sanctum $\to$ \textbf{Seed} to opposite. \RoC\; \CapC{1–1}
+\item \textbf{A:} Blue \Hm[L]{2} back onto same Sanctum $\to$ \textbf{Seed} to opposite. \RoC\; \think{Rooted now; futures preserved.}
 
 \item \textbf{B:} Tempo jab: Orange \On[R]{3} to reopen a file.
 
-\item \textbf{A:} \textbf{Hop-capture} with Blue to pick off B’s advanced Green (adjacent jump to empty). \SC{H}\; \CapC{2–0}
+\item \textbf{A:} \textbf{Hop-capture} with Blue to pick off B’s advanced Green (adjacent jump to empty). [S:H]\; [G:1–0]\; \CapC{1–1}
 
 \item \textbf{B:} Red \On[L]{2} to print a fresh lane.
 
-\item \textbf{A:} Not a Blue special—\textbf{Orange captures} B’s forward Red (save Displacement).
+\item \textbf{A:} Not a Blue special—\textbf{Orange captures} B’s forward Red (save Displacement). \CapC{2–1}
 
-\item \textbf{B:} \textbf{Displacement} with Blue to remove A’s file plug (adjacent step). \SC{D}
+\item \textbf{B:} Blue \Hm[R]{1} to contact; holds \textbf{both} specials. \think{Probe the center exchange.}
 
-\item \textbf{A:} Re-offers poison: Blue slides to a central “poison square,” adjacent to B’s Blue. \think{\CapC{2–0}; H used; D kept.}
+\item \textbf{A:} Blue slides onto the central “poison” square, adjacent to B’s Blue; A has H used, D kept. \think{Invite the trade on our terms.}
 
-\item \textbf{B:} Takes the bait: \textbf{captures A’s Blue} by displacement. \textbf{RC 1/5 starts for B.}
+\item \textbf{B:} \textbf{Displacement-captures} A’s adjacent Blue. [S:D]\; \textbf{RC 1/5 starts for A}. \think{Now race the banner.}
 
-\item \textbf{A:} Killbox: Red \On[L]{2} to ZoC lane~A’s penultimate (interdict end-square).
+% --- The Reforge race (Five-Breath focus) ---
 
-\item \textbf{B (RC 1/5):} Orange \On[R]{3} (lane A sprint).
+\item \textbf{A (RC 1/5):} Red \On[L]{2} to \emph{killbox} B’s stopper line (interdict penultimate). \think{Clear lanes to Opposing.}
 
-\item \textbf{A:} Green \Hm[R]{3} to fork lanes (blocks re-route).
+\item \textbf{B:} Orange \On[R]{3} (fresh stopper). \think{Deny the sprint squares.}
 
-\item \textbf{B (RC 2/5):} Second Orange \On[R]{3} (lane B sprint).
+\item \textbf{A (RC 2/5):} \emph{Green} \On[R]{3} to fork lanes (force the re-route).
 
-\item \textbf{A:} Red \On[L]{2} to stopper lane~B’s penultimate.
+\item \textbf{B:} Red \Hm[L]{2} to meet the fork; burns a ply inside ZoC. \think{Time over territory.}
 
-\item \textbf{B (RC 3/5):} Re-route; burns a ply inside ZoC.
+\item \textbf{A (RC 3/5):} Orange \Hm[R]{3} (lane A sprint), slipping past the fork contact.
 
-\item \textbf{A:} Tighten ZoC with an Orange post; hold \CapC{2–0}. \think{No Seeds left; no runners spare.}
+\item \textbf{B:} Orange \Hm[R]{2} to plug; still two steps short of a full block. \think{Angles are thin.}
 
-\item \textbf{B (RC 4/5):} Last angle—still two steps short into a ZoC end.
+\item \textbf{A (RC 4/5):} Red \On[L]{2} trades out the plug (capture), re-opening the file. \CapC{3–1}
 
-\item \textbf{A:} Trade a Red to remove the furthest sprinter.
+\item \textbf{B:} Last angle—burns a tempo but end-square remains in ZoC. \think{Cannot seal the apex.}
 
-\item \textbf{B (RC 5/5):} Fails to plant; countdown expires. \textbf{Game to A (Ykrul).}
+\item \textbf{A (RC 5/5):} \textbf{Plant banner} on Opposing Home Apex $\Rightarrow$ \textbf{Reforge succeeds}; RC clears for A. \think{Blue returns to supply; D still available.}
+
+\item \textbf{B:} Blue pauses short of center to avoid A’s \textbf{Displacement} trap. \think{Respect A’s unused special.}
+
+\item \textbf{A:} (Illustrative finish) Step the reforged Blue in via Sanctum; \textbf{Displacement} picks off B’s exposed Blue next ply $\Rightarrow$ \textbf{RC 1/5 for B}. \,[S:D] \; \think{Five-Breaths flip: CF control, RoC tick, Specials parity, CapC lead, RC pressure.}
+% (Stop here in print: the weave is demonstrated cleanly.)
 
 \end{enumerate}
 \end{multicols}
-
+x
 \paragraph{Why the Weave Works.}
 A never “cashes” early value. Instead, A (i) denies future Seeds, (ii) engineers \CapC{} superiority, (iii) spends \SC{} only to prune runners, and (iv) offers a \emph{poison Blue-capture} that converts immediately into a lost \RC{} race. B’s tempo raids are excellent, but once \CapC{} reaches \texttt{2--0} and the penultimate banner squares are ZoC end-squares, every path is a step short.
 

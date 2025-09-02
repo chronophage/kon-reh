@@ -36,6 +36,7 @@ done
 shift $((OPTIND - 1))
 
 # --- Fallback for positional file argument ---
+#
 if [[ -n "$TEXFILE" && $# -gt 0 ]]; then
   echo "Error: Specify the .tex file only once — either with -f <file.tex> or as the only argument."
   exit 1
@@ -60,6 +61,11 @@ fi
 echo "$TEXFILE"
 if [[ "$TEXFILE" != *.tex ]]; then
     echo "❌ Error: $TEXFILE does not appear to be a .tex file. Please specify a valid .tex source."
+    exit 1
+fi
+
+if [ ! -f "$TEXFILE" ]; then
+    echo "❌ Error: Specified file: $TEXFILE cannot be found."
     exit 1
 fi
 
@@ -146,16 +152,16 @@ if [[ -n "$QUALITY" ]]; then
   echo "📦 Compressed version: ${BASENAME}_resized.pdf"
 fi
 
-if [[ "$PDFNAME" -ne "$FINAL_PDF" ]]; then
+if [[ "$PDFNAME" !=  "$FINAL_PDF" ]]; then
    echo "Renaming $PDFNAME"
    mv "./$FINAL_PDF" "./$PDFNAME"
 fi
 
-if [[ "$BRANCH" -ne "." ]]; then
-   echo "Moving $PDFNAME to $GIT_ROOT/$BRANCH/PDFs"
-   mv "./$FINAL_PDF" "$GIT_ROOT/$BRANCH/PDFs/$PDFNAME"
-   git add "$GIT_ROOT/$BRANCH/PDFs/$PDFNAME"
-   open "$GIT_ROOT/$BRANCH/PDFs/$PDFNAME"
+if [[ "$BRANCH" != "./" ]]; then
+   echo "Moving $PDFNAME to $GIT_ROOT/$BRANCH/build"
+   mv "./$FINAL_PDF" "$GIT_ROOT/$BRANCH/build/$PDFNAME"
+   git add "$GIT_ROOT/$BRANCH/build/$PDFNAME"
+   open "$GIT_ROOT/$BRANCH/build/$PDFNAME"
 else
    git add "./$PDFNAME"
    open "./$PDFNAME"
