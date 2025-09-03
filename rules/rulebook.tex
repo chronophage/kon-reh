@@ -207,6 +207,10 @@
   \end{coachbox}%
 }
 
+\newcolumntype{C}[1]{>{\raggedright\arraybackslash\hsize=#1\hsize}X} % weighted X
+\newcolumntype{S}{>{\raggedright\arraybackslash}p{0.14\linewidth}}    % School (fixed)
+\newcolumntype{P}{>{\raggedright\arraybackslash}p{0.16\linewidth}}    % Pitfall (fixed)
+
 % Convenience macro for rows
 \newcommand{\CNRow}[2]{\item[#1] #2}
 
@@ -252,6 +256,29 @@
   \if\relax\detokenize{#4}\relax\else\ #4\fi
 }
 \makeatother
+
+\newcolumntype{W}[1]{>{\hsize=#1\hsize\RaggedRight\arraybackslash}X}
+
+\newcommand{\tagCF}[1]{\texttt{[CF: #1/3]}}
+\newcommand{\tagRC}[1]{\texttt{[RC #1/5]}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Helper for simple framed cards (no new packages):
+\newcommand{\schoolcard}[2]{%
+  \fcolorbox{black!20}{black!2}{\parbox[t]{#1}{#2}}%
+}
+
+\newcommand{\cardrow}[2]{%
+  \noindent
+  \begin{minipage}[t]{0.49\linewidth}
+    #1
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.49\linewidth}
+    #2
+  \end{minipage}\par\medskip
+}
 
 \begin{document}\color{ink}
 
@@ -1271,9 +1298,6 @@ A “same position” requires equality of \emph{all} state that affects legal m
 \paragraph{Illegal position remedy.}
 If an illegal move is discovered, rewind to the last legal position and require a legal move instead. For the specific “fourth consecutive end–in–Cross” violation and suggested penalties, see §\ref{sec:tourneyoptions}.
 
-%========================
-% APPENDIX: SCHOOLS, VARIANTS & PLAY STYLES
-%========================
 \clearpage
 
 \section{Schools, Variants \& Play Styles}\label{sec:variants}
@@ -1613,7 +1637,118 @@ The match is often decided before the first stone moves: style into counter-styl
   \CNRow{Free Blue test}{If a “\textbf{free Blue}” appears, can you plant under ZoC in $\le 4$? If no, it’s poison.}
 \end{coachnotes}
 
+\clearpage
 
+% ======= Core Schools Primer: "Choose Your First Plan" =======
+% Requires: \usepackage{tabularx,booktabs,enumitem,xcolor}
+\section{Choose Your First Plan}
+Pick a plan that fits your instincts. These are playstyles, not rules.
+
+
+% In preamble (optional but nice):
+
+% --- Legend (keep what you like) ---
+\noindent\textbf{Legend:}
+\code{[CF: in a/3]} = Blue’s turns in Cross (max 3); 
+\code{[RC n/5]} = Reforge counter; 
+XS = exit certifications; 
+SSI = Seed Safety Interval; 
+\textbf{S:H} = Hop; \textbf{S:D} = Displacement.
+
+% --- Cards grid (two per row) ---
+\cardrow{%
+  \schoolcard{\linewidth}{
+    \textbf{Vhasian} \quad \emph{Showmanship; tempo trades}
+
+    \textbf{First plan}
+    \begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item Touch Cross to \emph{signal} a duel—enter with exits.
+      \item Twin Apex Seed on the opposite Sanctum; start a quiet Green lane.
+      \item Reserve one special for the finishing tactic.
+    \end{enumerate}
+
+    \textbf{Keys}
+    \begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item CF: Presence = bait; never enter without XS $\ge 1$.
+      \item Seed: Early–mid; SSI $\ge 1$.
+      \item Specials: Spend one; avoid Stagger traps.
+    \end{itemize}
+
+    \textbf{Pitfall} Overcommitting to Cross; spending both specials early.
+  }%
+}{%
+  \schoolcard{\linewidth}{
+    \textbf{Ykrul} \quad \emph{Timers; denial; pragmatic trades}
+
+    \textbf{First plan}
+    \begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item Track \code{[CF: in a/3]} and enforce the 2-turn exclusion.
+      \item Clamp a Sanctum lane; delay a safe Seed.
+      \item Trade toward a failed Reforge (\code{[RC n/5]} trending down).
+    \end{enumerate}
+
+    \textbf{Keys}
+    \begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item CF: Enter only with XS $\ge 1$.
+      \item Seed: Screen first; respect the Green cap.
+      \item Specials: Low spend; win on the Reforge clock.
+    \end{itemize}
+
+    \textbf{Pitfall} Chasing captures over banner math.
+  }%
+}
+
+\cardrow{%
+  \schoolcard{\linewidth}{
+    \textbf{Thepyrgosi} \quad \emph{Clean geometry; safe equity}
+
+    \textbf{First plan}
+    \begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item Post Reds; certify exits (XS).
+      \item Seed only when Rooted is fully screened.
+      \item Use Hop as a theorem step, not a brawl.
+    \end{enumerate}
+
+    \textbf{Keys}
+    \begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item CF: Proof of exits $>$ presence.
+      \item Seed: Respect Mobilization; opposite Sanctum clear.
+      \item Specials: One per life unless forced.
+    \end{itemize}
+
+    \textbf{Pitfall} Pretty lines that lose tempo; Cross camping.
+  }%
+}{%
+  \schoolcard{\linewidth}{
+    \textbf{Viterran} \quad \emph{Iron-choke logistics; weld and starve}
+
+    \textbf{First plan}
+    \begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item Post Reds to gate exits; threaten a two-ply \emph{Lane Weld} (Red cut + Orange fork).
+      \item Touch Cross only when XS $\ge 1$; force them to burn \code{[CF: in a/3]} on defense.
+      \item Convert the clamp into banner math—trade toward a failed Reforge (\code{[RC n/5]} trending down).
+    \end{enumerate}
+
+    \textbf{Keys}
+    \begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+      \item CF: Deny re-entry routes; make their Cross turns unprofitable.
+      \item Seed: Screen first; prefer Seeds that deepen the choke (respect Green cap and Mobilization).
+      \item Specials: Save \textbf{S:D} to finish the weld; keep \textbf{S:H} for parity escapes.
+    \end{itemize}
+
+    \textbf{Pitfall} Building pretty walls that reopen exits; ignoring the Reforge clock; early Seeds without cover.
+  }%
+}
+
+\medskip
+\noindent\textbf{Quick tells.}
+\begin{itemize}[leftmargin=*,itemsep=0.25em]
+  \item \textbf{Vhasian:} Screens follow your Blue; a quiet file advances behind pressure.
+  \item \textbf{Ykrul:} You’re ahead on \code{[CF]} timing or \code{[RC n/5]}; their banner route is clogged.
+  \item \textbf{Thepyrgosi:} Exits certified (XS $\ge 1$); specials unspent at decision points.
+  \item \textbf{Viterran:} Two exits gated; live \emph{Lane Weld} threat; \code{[RC n/5]} dropping while their \code{[CF]} entries lose tempo.
+\end{itemize}
+% ===============================================================
 
 \clearpage
 \appendix

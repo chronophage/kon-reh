@@ -10,6 +10,7 @@ QUALITY=""
 PDFNAME=""
 GIT_ROOT="$(git rev-parse --show-toplevel)"
 FILE_PATH=$(pwd)
+BRANCH=""
 
 if [[ "$FILE_PATH:" == *"rules"* ]]; then
   BRANCH="rules"
@@ -159,7 +160,7 @@ fi
 
 if [[ "$BRANCH" != "./" ]]; then
    echo "Moving $PDFNAME to $GIT_ROOT/$BRANCH/build"
-   mv "./$FINAL_PDF" "$GIT_ROOT/$BRANCH/build/$PDFNAME"
+   mv "./$PDFNAME" "$GIT_ROOT/$BRANCH/build/$PDFNAME"
    git add "$GIT_ROOT/$BRANCH/build/$PDFNAME"
    open "$GIT_ROOT/$BRANCH/build/$PDFNAME"
 else
