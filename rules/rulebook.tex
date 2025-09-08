@@ -27,6 +27,14 @@
 \usepackage{float}
 \usepackage{placeins}
 
+\usepackage{microtype}
+\usepackage{enumitem}
+
+\newcommand{\Tstar}{T^\ast}
+\newcommand{\D}{D}
+\newcommand{\kappav}{\kappa_v}
+\newcommand{\dT}{\Delta \Tstar}
+
 % --- Color palette ---
 \definecolor{royal}{RGB}{12,64,145}
 \definecolor{sanctum}{RGB}{0,120,80}
@@ -1072,6 +1080,56 @@ Attacker’s Blue regains Central Four eligibility; defender alternates between 
 After suffering a Cross capture, defender gets \emph{two turns} to seal exits (Red cut + Orange fork). Repeat until the defender consistently denies all certified exits.
 
 \bigskip
+\begin{center}
+  {\LARGE Capture vs.\ Place: Quick EV Guide for \textit{Kon'reh}}\\[4pt]
+  \small\emph{Keys:}
+  $\dT$ gain = how many turns faster your plant becomes (higher = better for you);\;
+  $\kappav$ swing = min vertex-cut change (you / opp);\;
+  Cap swing = who gets the next safe Seed window.
+  \end{center}
+  
+  \renewcommand{\arraystretch}{1.25}
+  \setlength{\tabcolsep}{6pt}
+  \small
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X
+  >{\raggedleft\arraybackslash}p{1.7cm}
+  >{\raggedleft\arraybackslash}p{1.8cm}
+  >{\raggedright\arraybackslash}p{3.0cm}
+  >{\raggedright\arraybackslash}p{1.7cm}
+  >{\raggedright\arraybackslash}X}
+  \toprule
+  \textbf{Scenario (OTB cue)} & \textbf{$\dT$ gain — Capture} & \textbf{$\dT$ gain — Place} & \textbf{$\kappav$ swing (you / opp)} & \textbf{Cap swing} & \textbf{Pick \& why}\\
+  \midrule
+  Enemy sits on the \textbf{true gate} (every route crosses that square) & \textbf{+2} & +1 & you: \textbf{$1 \!\to\! 2$} \; or \; opp: $2 \!\to\! \textbf{1}$ (if you occupy) & 0 & \textbf{Capture.} Surgical; flips redundancy immediately.\\
+  \addlinespace
+  \textbf{Empty divergence door} (two best routes split here) & +1 & \textbf{+2} & opp: \textbf{$2 \!\to\! 1$} (if you occupy) & 0 & \textbf{Place.} Owning the door taxes both routes at once.\\
+  \addlinespace
+  \textbf{Corridor piece} (not on shared prefixes) & 0 & +1 & none & 0 & \textbf{Place.} Corridor kills are decorative; door pricing beats it.\\
+  \addlinespace
+  \textbf{Unsafe Seed} (their SSI $< 1$) & \textbf{+2} (often $\Rightarrow$ RC) & +1 & opp: $2 \!\to\! \textbf{1}$ post-hit & +You & \textbf{Capture.} Punish now; you also open cap on your terms.\\
+  \addlinespace
+  \textbf{Blue in reach, no timed plant path} & $\boldsymbol{-\infty}$ (you start a race you can't win) & +1 & none & +Them (often) & \textbf{Place.} Don't grab Blue without $\Tstar \le \D$.\\
+  \addlinespace
+  Board at \textbf{cap}; \textbf{you seed first} next & +1 (kill a Green) & \textbf{+1--2} (price door, then Seed) & minor / opp: $2 \!\to\! 1$ after pricing & \textbf{+You} & \textbf{Place$\to$Seed.} Reopen cap \emph{and} convert it.\\
+  \addlinespace
+  They \textbf{sprinkled tolls} (taxes on different cuts) & +1 (if a taxed piece is killable) & \textbf{+2} & opp: $2 \!\to\! 1$ (focused door) & 0 & \textbf{Place.} Align pressure on one min-cut; submodularity win.\\
+  \addlinespace
+  \textbf{Bad center touch} (big $-\Delta d_{\text{avg}}$, risky $-\Delta d_{\min}$) & +1 (if capture hits near exit) & \textbf{+2} & opp: $2 \!\to\! 1$ (door snap) & 0 & \textbf{Place.} Convert their exposure into a door clamp.\\
+  \addlinespace
+  \textbf{You have last special;} their $\kappav = 1$ & \textbf{+2} (through the gate) & +1 & opp: already \textbf{1} (you cash it) & 0 & \textbf{Capture.} Cash special parity at the gate.\\
+  \addlinespace
+  They built a \textbf{pretty ring} (parity/dual-cut leak) & +1 (on a ring stone) & \textbf{+2} (breach the dual cut) & you: $1 \!\to\! \textbf{2}$ (escape) & 0 & \textbf{Place.} One breach invalidates the wall investment.\\
+  \bottomrule
+  \end{tabularx}
+  
+  \vspace{0.75\baselineskip}
+  \noindent\textbf{20-second micro-checks before you act}
+  \begin{enumerate}[leftmargin=1.5em,itemsep=2pt,topsep=2pt]
+    \item \textbf{Gate test:} Can you name \emph{the} square every route crosses? If yes, \textbf{capture} it; if empty, \textbf{place} on it.
+    \item \textbf{Deadline test:} After this move, will your best plant time $\Tstar$ be $\le \D$ (for you) or their $\Tstar > \D$? If no, don't start a race.
+    \item \textbf{Cap test:} If a capture opens cap, \emph{who} seeds first safely? If not you, prefer placement.
+    \item \textbf{Redundancy test:} If your move doesn't push $\kappav$ (you: $1\!\to\!2$ or opp: $2\!\to\!1$), it must at least add $+1$ to $\dT$—else it's cosmetic.
+  \end{enumerate}
 
 \subsection*{Quick Table — When to Seed}
 \begin{center}

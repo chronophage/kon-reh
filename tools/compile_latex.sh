@@ -16,6 +16,8 @@ if [[ "$FILE_PATH:" == *"rules"* ]]; then
   BRANCH="rules"
 elif [[ "$FILE_PATH:" == *"concordance"* ]]; then 
   BRANCH="concordance"
+elif [[ "$FILE_PATH:" == *"ninth"* ]]; then 
+  BRANCH="ninth_rim"
 else
   BRANCH="./"
 fi
