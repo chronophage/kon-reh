@@ -21,12 +21,40 @@
 \usepackage{tabularx}
 \usepackage{tikz}              % load TikZ first...
 \usetikzlibrary{arrows.meta,calc,positioning}  % ...then libraries
-
+\usepackage[colorlinks]{hyperref}   % load before cleveref
+\usepackage[nameinlink,capitalize]{cleveref}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
 \usepackage{subcaption}
 \usepackage{needspace}
 \usepackage{float}
 \usepackage{placeins}
+% Core math & theorem setup (in preamble)
+\usepackage{amsmath,amssymb,amsthm}
 
+\numberwithin{equation}{section} % optional
+
+\theoremstyle{plain} % italic body, bold heading
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition} % upright body
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{remark} % upright, small heading
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+
+% Optional: a black square QED
+\renewcommand{\qedsymbol}{$\blacksquare$}
 % --- Color palette ---
 \definecolor{royal}{RGB}{12,64,145}
 \definecolor{sanctum}{RGB}{0,120,80}
@@ -265,11 +293,21 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash\hspace{0pt}}X}
 
 
-% Optional scale arg with default 1.2
-% --- KON'REH Crest (TikZ) ----------------------------------------
-% Usage: \KonrehCrest[1.0]   % optional scale (default 1.0)
-% Place on title page or anywhere as a vector icon.
+\definecolor{muted}{HTML}{555555}
 
+% A compact, reusable table and row macro:
+\newenvironment{RosettaTable}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+  \noindent\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}%
+  \toprule
+  \textbf{Term (lore-facing)} & \textbf{At the table (exact meaning / mechanic)} \\
+  \midrule
+}{%
+  \bottomrule
+  \end{tabularx}
+}
+\newcommand{\rosrow}[2]{\textbf{#1} & #2 \\[0.40em]}
 
 \begin{document}\color{ink}
 
@@ -320,7 +358,7 @@
 
   \vspace{8pt}
   {\footnotesize
-    Concordance Edition \textbullet\ \today
+    University ordance Edition \textbullet\ \today
     % \quad|\quad Draft v0.9
   }\par
 
@@ -388,7 +426,7 @@ PLACEHOLDER \\
 
 The road down to \textit{Thepyrgos} is a long, slanting breath across wet country. I came by the river stages first, then by a cart whose canvas remembered every rain it had ever known. Fields wear the color of old copper; the ditches keep their small, stubborn mirrors; along the last rise the wind busied itself with barley while the bells spoke over one another, each to its own hour. It is a city that greets you with \emph{sound} before it shows its face.
 
-At our gate my father pressed his travel copy of the \emph{Concordance} into my hands and said only, “Our \emph{fourth legacy} is yours now.” He smiled—as at a family joke we both knew and would not explain. We parted on that smile. It has stood between me and poor courage ever since, which is to say it has helped.
+At our gate my father pressed his travel copy of the \emph{Concordance} into my hands and said only, “Our \emph{fourth legacy} is yours now.” He smiled—as at a family tradition since the Imperial era days when our name was Valvano. We parted on that smile. It has stood between me and poor courage ever since, which is to say it has helped.
 
 \medskip
 The University keeps two faces. By day: polished and well–kept—the bright stalls with their brass lamps and measured shadows, the refectory with steam and bread, courts paved as smooth as thought. And then the other: glimpsed when a porter’s key turns or a lamp gutters—low vaults, patient stairwells, rooms that have learned to keep their breath, shelves that seem to turn themselves if you leave and come back too quickly. Not menacing, industrious; but the stone here keeps \emph{accounts}.
@@ -1549,10 +1587,10 @@ Hint codes appear as \textsc{[H1] [H2] [H3] [R]} with page references.
 
 \medskip
 \noindent\textbf{Solo \& group use.}
-\begin{itemize}\setlength\itemsep{0.3em}
+\begin{itemize}\setlength{\itemsep}{0.3em}
   \item \emph{Solo dossier.} Work puzzles between scenarios; check \textsc{[H1]} only after a timed attempt (10–15 minutes), then proceed rung by rung as needed.
-  \item \emph{Table assist.} Use only the \em
- 
+  \item \emph{Table assist.} Use only the \emph{table-facing rules line} for each Rite (bold header + one-line mechanic); ignore the dossier prose while clocks run. Announce toggles pre-game and use minimal aids (beads/ward markers).
+\end{itemize}
  
 \subsection{Puzzle 1 — The Candle Ledger (Primer in Quinary)}
 \label{pz:candle-ledger}
@@ -2448,6 +2486,8 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \hfill — \textit{from a House of Wells catechism, unattributed}
 \end{quote}
 
+
+
 \section*{Epilogue — A Dhaharan Leaf: On Honoring the Ninth}
 \label{epilogue:dhahara-ninth}
 \phantomsection
@@ -2472,38 +2512,32 @@ The ring of salt is not a wall; it is a way to notice the edge. The unlit flame 
 When light returns, we unmake what we made. We scatter a pinch of salt to the four roads. We lift the unlit lantern and let the day choose it. We do not declare that we have learned; we look again, and something that would not come forward before stands a little nearer, like a page held at a kinder angle.
 
 If there is a ninth, it is not a captain and not a judge. It abides. It is the rest between measures, the seat left empty so the room can breathe. Honor it, and let play teach the rest.
+\end{quote}
 
 \medskip
 \noindent\textit{Translator’s note.} The Dhaharan term rendered “the remaining” admits readings as “what abides” and “what stays available.” The folio hints (without disputation) that the “Messenger” left its place to lie \emph{flat as play}. The leaf commands nothing; it suggests a practice. The board appears as craft, not dogma.
 
-\subsection*{The Ashen Call}
-\label{epilogue:ashen-call}
-\phantomsection
+\section*{Epilogue — A Letter from Alayse}
+\addcontentsline{toc}{section}{Epilogue — A Letter from Alayse}
 
-\noindent\textit{Provenance: late coda in a cool, deliberate hand; marginal ticks match Aqyl’s corrections elsewhere. A faint initial “V” appears in the gutter and is cleanly struck.}
-
-\medskip
-\begin{quote}\small
-My father stood a hand’s breadth from the door and named the grain. One may smell lanterns through oak; it is not the same as light. We are taught posture—catalogs, tidy sums, the ceremony of ink—and sometimes mistake it for proof.
-
-Truth does not knock. It arrives like weather. When it comes unbidden, it is not a courtesy; it is a pressure. Ink is often not ready.
-
-The ash falls. That is its entire argument.
-
-Learn from the Cartwright as one measures a tool: weigh the edge, not the flourish. Keep the rim \emph{clean}. Price the crossing \emph{before} you step. Leave one thing unclosed so the room may answer. These are housekeeping, not worship.
-
-Who joins such work? Not a password, nor a crest. Names help with shelves; breath helps with pages. There are ledgers that remember, and ledgers that do not. The narrower kind is useful for estates; the wider kind is the one that matters. Do not be sentimental about the word \emph{son}.
-
-\emph{Mark what it took to answer:} a kept silence, a measured circle, a priced step, one fewer name.
-
-If the student is apt, he will eclipse the master. That is not tragedy; it is measure. The room admits only one signature to the sill at a time.
-
-We must play—only one of us can be \textit{Aqyl, son of Aqyl}.
-\end{quote}
+\noindent\textbf{From:} Alayse Fenwood, House Fenwood \\
+\textbf{To:} Elyas Everblood \\
+\textbf{Seal:} common wax
 
 \medskip
-\begin{flushright}
-\textit{— Aqyl, son of Aqyl}\hfill\textit{\small (the struck “V” is rewritten as an \,A\,)}
-\end{flushright}
+\noindent Elyas,
+
+I grow most concerned for Markus of late. I know he loves me and our daughter, yet his soft smile so seldom reaches his eyes. I jest that his years in Thepyrgos scorched his skin and his gaze. I know the truth of it; his Ecktorian blood is truer than his brothers’ and he darkens with age. He laughs and calls me a silly thing\ldots{} and yet.
+
+And yet I find him often in the yard, staring. Our Ykrul champion says he prays to the eight winds, but Markus always faces south, even when the breeze comes down from the north. Perhaps he misses the warm kiss of the southern air. Sometimes he will stand until the eighth bell and only then come in, as if keeping a small appointment with the hush. Perhaps it is only that he worries after Lerris---still enrolled at the University these twelve, nearly thirteen, years. The stacks keep what they keep.
+
+It troubles me---but he is my love; nought shall change that.
+
+Alahana is well. She grows taller day by day and oft asks after her ``Summer Uncle.''
+
+Be well on your travels, little brother. I think of you often.
+
+\medskip
+\noindent Alayse, 889~AR
 
 \end{document}

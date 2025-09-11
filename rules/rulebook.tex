@@ -288,6 +288,22 @@
   \end{minipage}\par\medskip
 }
 
+\definecolor{muted}{HTML}{555555}
+
+% A compact, reusable table and row macro:
+\newenvironment{RosettaTable}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+  \noindent\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}%
+  \toprule
+  \textbf{Term (lore-facing)} & \textbf{At the table (exact meaning / mechanic)} \\
+  \midrule
+}{%
+  \bottomrule
+  \end{tabularx}
+}
+\newcommand{\rosrow}[2]{\textbf{#1} & #2 \\[0.40em]}
+
 \begin{document}\color{ink}
 
 %==============================
@@ -413,6 +429,39 @@ Reforge: 5 of \emph{your} turns to plant and return Blue.
 \label{sec:objective}
 
 You win by \textbf{capturing the opponent’s Blue} and then \textbf{preventing its return} during their Reforge countdown (Section \ref{sec:reforge}); or if the opponent \textbf{concedes}. There are no other automatic wins.
+
+% ================== Core Book — Rosetta (drop into body) =====================
+\section*{Lore$\to$Mechanics Rosetta — Core Terms}
+\addcontentsline{toc}{section}{Lore→Mechanics Rosetta — Core Terms}
+
+\noindent\textit{\color{muted}Use this as a bridge from fiction to play. Tournament core is unchanged.
+Optional content defaults \textsc{off} unless agreed before clocks start.}
+
+\begin{RosettaTable}{Board \& Pieces}
+  \rosrow{Blue (``Arbiter'')}{Your royal piece. It has exactly \textbf{two} one-per-life specials (see below). If Blue is captured, the \emph{Reforge} race begins.}
+  \rosrow{Special — Displacement}{One-shot special that repositions Blue according to the core rules’ constraints. Consumes Blue’s action for the turn.}
+  \rosrow{Special — Hop}{One-shot special that lets Blue hop according to the core rules’ constraints. Consumes Blue’s action for the turn.}
+  \rosrow{Rooted (Stagger)}{After Blue’s \emph{second} special, Blue becomes \textbf{Rooted} until the start of your next turn (cannot move during that interval).}
+  \rosrow{Greens}{Neutral pieces you create via \emph{Seed}. Subject to a global \textbf{cap} and a mobilization \textbf{delay} (can’t act the turn they appear).}
+  \rosrow{Sanctum}{Your two special squares (home anchors). They gate \emph{Seeding} and are eligible Reforge entry points (see “Reforge”).}
+  \rosrow{Apex / Opposing Apex}{The far end entry lane. Choosing \emph{Opposing Apex} at Reforge costs a Green (OAR).}
+\end{RosettaTable}
+
+\begin{RosettaTable}{Core Rhythms (``Five Clocks'')}
+  \rosrow{Center Stay}{Blue may end at most \textbf{three} of \emph{your} turns in the Central Four.}
+  \rosrow{Center Exile}{After that, Blue must stay out of the Central Four for \textbf{two} turns.}
+  \rosrow{Blue Specials}{Exactly two per life (Displacement, Hop). The second special \emph{Roots} Blue until your next turn.}
+  \rosrow{Seed Cadence}{\emph{Twin Apex Seed}: create a Green at a Sanctum, respecting the global cap and the mobilization delay.}
+  \rosrow{Reforge Race}{If Blue is captured, start a \textbf{five-turn} track. Re-enter at: \emph{Opposing Apex} (pay 1 Green), \emph{either Sanctum} (re-entry bans Seeding \emph{at that Sanctum} until specified by the core rule), or \emph{Home} (free).}
+\end{RosettaTable}
+
+\begin{RosettaTable}{State, Timing, Tournament Defaults}
+  \rosrow{Same Position / Repetition}{Two states are the same only if piece locations \emph{and} all relevant timers/flags (center stay/exile counts, Rooted, Seed delays, etc.) match, with the same side to move.}
+  \rosrow{Illegal Move Remedy}{Apply the rulebook’s correction for illegal moves (director guidance), then resume from the corrected position.}
+  \rosrow{Opening Balance}{Tournament default allows the \textbf{P2 double-move} opener (if specified in your front-matter).}
+  \rosrow{Time Control}{Default \textbf{10+5} (ten minutes plus five-second increment), unless a different control is announced.}
+  \rosrow{No-Progress Clause}{Optional director tool to adjudicate blockade stalemates; \emph{off} by default in casual play.}
+\end{RosettaTable}
 
 \section{Components \& Setup}
 \label{sec:setup}
@@ -1362,6 +1411,34 @@ If an illegal move is discovered, rewind to the last legal position and require 
 \begin{quote}\small\itshape
 “A game is a road; every people paves their mile.” — Aqyl of Thepyrgos
 \end{quote}
+
+% --- Quick Choose-Your-School (Core Only) — updated with Ykrul & Vhasian ---
+% Needs: \usepackage{tabularx,booktabs,xcolor}
+% Optional: \definecolor{muted}{HTML}{555555}
+
+\subsection*{Choose Your School}
+\noindent\textit{\color{muted}Use this as a style on-ramp. These are \emph{doctrines}, not rules; the tournament core never changes.}
+
+\vspace{0.5em}
+\noindent\begin{tabularx}{\linewidth}{@{}p{0.19\linewidth}p{0.34\linewidth}X@{}}
+\toprule
+\textbf{School} & \textbf{You’ll like this if…} & \textbf{First plan (3–5 turns)} \\
+\midrule
+Viterran (Canray) & You enjoy \emph{control}—building fences and slow squeezes. & Weld a corridor at home, refuse Central Four early, then Seed midgame when their exits (XS) are low. If Blue falls, Reforge \emph{Home} to reset the structure. \\
+Aeler (K’thra) & You think in ledgers and price every step. & Set sideways “toll posts” with Orange to make bad routes expensive. Seed only when SSI\,$\uparrow$ and cap pressure pays interest; favor \emph{Home} for stability. \\
+Vilikari (Kanry) & You love tempo theft and misdirection. & Throw an off-beat Orange probe, touch Central Four only with XS$\ge 1$, bank one Blue special, then pivot to a Seed window you created two beats earlier. \\
+Thepyrgosi (Orator’s) & You savor parity binds and zugzwang. & Mirror to freeze parity; use Central Four to force inevitabilities (not trades). Delay Seeding until every reply cedes tempo; prefer \emph{Home} on Reforge. \\
+Ubral (Highland) & You prefer edge weather and hidden routes. & Sell porous edges, feint retreats, then appear “four-exact” from fog. Ignore Central Four unless it opens an edge gate; Seed off an edge pivot; Reforge \emph{Home}. \\
+Silkstrand (Bravo) & You like flourish into harvest (tactics that look flashy but cash out). & Telegraph a hop, sidestep to Sanctum, then Seed off the pulled screens; keep one special banked. Reforge \emph{Sanctum} to keep pressure. \\
+Lethai (“Single-Stroke”) & You want inevitability, not attrition. & Deny Seeds, manage the cap, build twin backward bridges. Treat Central Four as a timer, not a brawl. Capture Blue only when the five clocks already bust their Reforge. \\
+\textbf{Ykrul} (Steppe) & You thrive on \emph{timers, denial, pragmatic trades}. & Track \textbf{[CF in a/3]} strictly, enforce the 2-turn exile, clamp a Sanctum lane, delay a \emph{safe} Seed, and trade toward a failed Reforge on their side. \\
+\textbf{Vhasian} (Imperial) & You like showmanship and clean tempo trades. & Touch Cross to call the duel (only with exits), Seed to the \emph{opposite} Sanctum to start a quiet lane, and reserve one Blue special for the finishing tactic; avoid Stagger traps. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.35em}
+\noindent\textit{\color{muted}For table maxims that pair well with any school, see the \emph{Black Banner Table (Articles \& Primer)}.}
+% --- End Quick Choose-Your-School (Core Only) --------------------------------
 
 \subsection*{How to Use This Section}
 All schools below play the \emph{same rules}. Differences are doctrine, priorities, naming, and table etiquette. Treat these as study notes for the current meta (Central Four timer, two-turn re-entry exclusion, second-player double-move, SSI/XS/CCA), not extra rules.
