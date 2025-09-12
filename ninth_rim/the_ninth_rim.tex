@@ -2085,7 +2085,7 @@ Variant house–hands exist but resolve to the same five classes. Use the legend
 “Read what you can; hide what you must. The page keeps the order either way.”\\
 \hfill — \textit{Lexicus}, note to self
 \end{quote}
-
+\clearpage
 \appendix
 
 % Replace/extend Appendix A’s table with iconography
@@ -2188,7 +2188,7 @@ Dashed rim arc & Optional “cracked” arc for \emph{The Ninth}.\\
 \end{tabular}
 
 \clearpage
-\section{ Quinary Code \textrightarrow{} Letter Table (Sealed)}
+\section{Quinary Code \textrightarrow{} Letter Table (Sealed)}
 \label{app:quinary-table}
 \phantomsection
 
@@ -2213,89 +2213,114 @@ This page intentionally sealed. Contains worked solutions for Puzzles \S\ref{pz:
 \label{geometry:aelinnel-core}
 \phantomsection
 
-\noindent\textit{Author: Lubick of the Lower Gauge (gnome). Affiliation: none (I like tea, not oaths). Style: fast. Accuracy: faster.\footnote{If a lemma displeases you, put it under a cup and see if the steam moves it. If it moves, keep it.}}
+%% ----- Recovered Document: Catalog Request Slip -----
+\subsection*{Catalog Request Slip (Form 7)}
+
+\small
+\noindent\textsc{Valvano Bequest — Reading Room} \hfill \textsc{Form 7: Request}\\[-2pt]
+\hrule height 0.4pt
+\medskip
+\begin{tabular}{@{}p{0.28\linewidth}p{0.68\linewidth}@{}}
+\textbf{Call No.:} & C--Gray 17\,/\,LG--Lubick \\
+\textbf{Title:} & On the Practical Geometry of Ford Crossing \\
+\textbf{Author:} & Lubick of the Lower Gauge \\
+\textbf{Notes:} & bright rooms; copy allowed \\
+\textbf{Circulation:} & related vigil folios \textit{422 pulls}; this tract \textit{9} \\
+\end{tabular}
 
 \medskip
-\noindent\textbf{Thesis (plain).} The core game is a finite, impartial, perfect–information contest on a planar grid–graph with two piece classes—\textbf{Blue} (mobile, anchorable) and \textbf{Green} (shaping, evasive)—interacting through lanes, corners, and a 2\(\times\)2 \emph{Cross}. All meta patterns reduce to three quantities: \emph{cut thickness}, \emph{tempo parity}, and \emph{conversion efficiency}.
+\noindent\footnotesize\itshape
+(pencil at foot) Vigil folios: 422 pulls. Lubick: 9. Numbers, not sighs. —\,S.H.
+\normalsize
+
+\medskip
+\noindent\textit{Author: Lubick of the Lower Gauge---Aelinnel stock (Vhasian, gnomish). Affiliation: none---``I like tea, not oaths.'' Style: fast. Accuracy: faster.\footnote{If a lemma displeases you, put it under a cup and see if the steam moves it. If it moves, keep it.}}
+
+\medskip
+\noindent\textbf{Thesis (plain).} The core game is a finite, impartial, perfect-information contest on a planar grid-graph with two piece classes---\textbf{Blue} (mobile, anchorable) and \textbf{Green} (shaping, evasive)---interacting through lanes, corners, and a \(2\times 2\) \emph{Cross}. All meta patterns reduce to three quantities: \emph{cut thickness}, \emph{tempo parity}, and \emph{conversion efficiency}.
 
 \subsubsection{0. Model \& Notation (no incense, just math)}
-Let \(G=(V,E)\) be the board graph (orthogonal adjacency). Corners and near–corners are \emph{sancta} (cf. taxonomy \S\ref{geometry:ford-vs-sanctum}). The \emph{Cross} is the central \(2\times2\) block \(C\subset V\). A \emph{lane} is a simple path \(P\subseteq V\) from a player’s near region to any exit scoring condition (details suppressed; the math survives). 
+Let \(\mathcal{G}=(V,E)\) be the board graph (orthogonal adjacency). Corners and near-corners are \emph{sancta} (cf. taxonomy \S\ref{geometry:ford-vs-sanctum}). The \emph{Cross} is the central \(2\times 2\) block \(C\subset V\). A \emph{lane} is a simple path \(P\subseteq V\) from a player's near region to any exit scoring condition (details suppressed; the math survives).
 
-Positions are tuples \(\mathsf{s}=(B,G,\sigma)\) with Blue set \(B\subseteq V\), Green set \(G\subseteq V\), and status \(\sigma\) (whose bits include which Blues are \emph{Rooted}, specials availability, etc.). A move is a function \(f:\mathsf{s}\mapsto \mathsf{s}'\) respecting core legality. A \emph{plan} is a ply sequence \(p=(f_1,\dots,f_k)\).
+Positions are tuples \(\mathsf{s}=(B,\mathsf{G},\sigma)\) with Blue set \(B\subseteq V\), Green set \(\mathsf{G}\subseteq V\), and status \(\sigma\) (whose bits include which Blues are \emph{Rooted}, specials availability, etc.). A move is a function \(f:\mathsf{s}\mapsto \mathsf{s}'\) respecting core legality. A \emph{plan} is a ply sequence \(p=(f_1,\dots,f_k)\).
 
 \paragraph{Influence fields.} Define a discrete potential for each color:
 \[
-\Phi_{\text{Blue}}(v)= \alpha\cdot \text{mobility}(v) + \beta\cdot \text{lane\_proximity}(v) - \gamma\cdot \text{fragility}(v),
+\Phi_{\mathrm{Blue}}(v)= \alpha\,\mathrm{mobility}(v) + \beta\,\mathrm{laneProx}(v) - \gamma\,\mathrm{fragility}(v),
+\qquad
+\Phi_{\mathrm{Green}}(v)= \hat{\alpha}\,\mathrm{escape}(v) + \hat{\beta}\,\mathrm{bend}(v).
 \]
-\[
-\Phi_{\text{Green}}(v)= \hat{\alpha}\cdot \text{escape\_routes}(v) + \hat{\beta}\cdot \text{bend\_leverage}(v).
-\]
-Calibrate \((\alpha,\beta,\gamma)\) by post–game audits (see drills below).
+Calibrate \((\alpha,\beta,\gamma)\) by post-game audits (see drills below).
 
 \subsubsection{1. Cuts, Thickness, \& Escapes}
 \label{ael-core:cuts}
-A \emph{vertex cut} \(S\subset V\) separates your build from its exit. Its \emph{thickness} is \(|S|\), but \emph{practical thickness} is 
+A \emph{vertex cut} \(S\subset V\) separates your build from its exit. Its \emph{thickness} is \(|S|\), but \emph{practical thickness} is
 \[
-\Theta(S)= |S| + \sum_{v\in S}\mathbf{1}_{\text{re-enterable in }\le 2\text{ plies}}.
+\Theta(S)= |S| + \sum_{v\in S}\mathbf{1}_{\text{re-enterable in }\leq 2\text{ plies}}.
 \]
+
 \begin{lemma}[Corner insurance]
-Any cut that includes a true corner (sanctum) has \(\Theta\) at least one higher for your opponent if you hold a nearby pivot two steps deep. (Corners resist single–ply dissolves.)
+Any cut that includes a true corner (\emph{sanctum}) has \(\Theta\) at least one higher for your opponent if you hold a nearby pivot two steps deep. (Corners resist single-ply dissolves.)
 \end{lemma}
 
 \noindent\textbf{Meta cue.} Strong openings thicken \emph{one} cut and threaten to migrate the fight to a second; weak openings thin \emph{two} cuts and threaten neither.
 
 \subsubsection{2. Tempo \& Parity (Octaves, not dogma)}
 \label{ael-core:parity}
-Many local races complete in \(8\) plies under orthodox shapes. Call this an \emph{octave loop}. The 9th ply is a \emph{naming ply}: whoever owns it chooses to cash, refuse, or transpose.
+Many local races complete in \(8\) plies under orthodox shapes. Call this an \emph{octave loop}. The \(9^\text{th}\) ply is a \emph{naming ply}: whoever owns it chooses to cash, refuse, or transpose.
 
 \begin{proposition}[Octave advantage]
-If a line resolves in exactly \(8\) plies and you moved first in that locale, then unless the opponent altered graph structure (special, root), you can force the naming ply to be \emph{yours}. 
+If a line resolves in exactly \(8\) plies and you moved first in that locale, then unless the opponent altered graph structure (special, root), you can force the naming ply to be \emph{yours}.
 \end{proposition}
 
-\noindent\textbf{Practical rule.} Track local parity per lane: write \(\oplus\) if you own the naming ply, \(\ominus\) if they do. Shift fights to regions where you show \(\oplus\), stall where you show \(\ominus\).
+\noindent\textbf{Practical rule.} Track local parity per lane: write \(\oplus\) if you own the naming ply, \(\ominus\) if they do. Shift fights to regions where you show \(\oplus\); stall where you show \(\ominus\).
 
 \subsubsection{3. Rooting as Constraint Programming}
 \label{ael-core:root}
-A Blue marked \emph{Rooted} pins a local constraint. Let \(R\subseteq B\) be rooted Blues. Define \(\mathsf{free\_capacity} = \sum_{b\in B\setminus R}\text{deg}(b)\). 
+A Blue marked \emph{Rooted} pins a local constraint. Let \(R\subseteq B\) be rooted Blues. Define
+\[
+\mathsf{free\_capacity} \;=\; \sum_{b\in B\setminus R}\deg_{\mathcal{G}}(b).
+\]
 
 \begin{lemma}[Anchor tax]
-Rooting an enemy Blue reduces their \(\mathsf{free\_capacity}\) by at least its local branching factor minus 1. If the rooted Blue sits in \(C\), the tax is larger by the number of forking lanes through \(C\).
+Rooting an enemy Blue reduces their \(\mathsf{free\_capacity}\) by at least its local branching factor minus \(1\). If the rooted Blue sits in \(C\), the tax is larger by the number of forking lanes through \(C\).
 \end{lemma}
 
-\noindent\textbf{Meta cue.} Rooting is strongest where lane density (alternative exits) is high; weakest where you already thinned cuts (you’re taxing a starved graph).
+\noindent\textbf{Meta cue.} Rooting is strongest where lane density (alternative exits) is high; weakest where you already thinned cuts (you are taxing a starved graph).
 
 \subsubsection{4. Specials as Local Rewrites}
 \label{ael-core:specials}
-Treat each special as a bounded rewrite on \(G\) or \(\sigma\). Good doctrine: \emph{Spend specials to break symmetry or to lock an \(\oplus\) locale into payoff.} Bad doctrine: \emph{Spend to look clever on \(\ominus\).} 
+Treat each special as a bounded rewrite on \(\mathcal{G}\) or \(\sigma\). Good doctrine: \emph{Spend specials to break symmetry or to lock an \(\oplus\) locale into payoff.} Bad doctrine: \emph{Spend to look clever on \(\ominus\).}
 
-\begin{theorem}[Symmetry break maxim]
-If a special increases \(\Theta(S)\) in one region while preserving it elsewhere, the unique best use is in the region where you already hold \(\oplus\). (Cash the lead, don’t rent it.)
+\begin{theorem}[Symmetry-break maxim]
+If a special increases \(\Theta(S)\) in one region while preserving it elsewhere, the unique best use is in the region where you already hold \(\oplus\). (Cash the lead, do not rent it.)
 \end{theorem}
 
 \subsubsection{5. Evaluation Function (you may write this on your cuff)}
-Let 
+Let
 \[
-\mathcal{E} = w_1 \cdot \text{Material} + w_2 \cdot \text{Mobility} + w_3 \cdot \text{CutThickness} + w_4 \cdot \text{ParitySum} + w_5 \cdot \text{Conversion},
+\mathcal{E} \;=\; w_1 \cdot \mathrm{Material} + w_2 \cdot \mathrm{Mobility} + w_3 \cdot \mathrm{CutThickness} + w_4 \cdot \mathrm{ParitySum} + w_5 \cdot \mathrm{Conversion},
 \]
 where
 \[
-\text{ParitySum}=\sum_{\text{locales }L} \begin{cases}+1 & \oplus(L)\\ -1 & \ominus(L)\end{cases}, \quad
-\text{Conversion}=\sum_{\text{threats }T}\Pr[\text{T}\to\text{score in }\le 3].
+\mathrm{ParitySum}=\sum_{\text{locales }L} \begin{cases}+1 & \oplus(L)\\ -1 & \ominus(L)\end{cases},
+\qquad
+\mathrm{Conversion}=\sum_{\text{threats }T}\Pr[T\to\text{score in }\leq 3].
 \]
-Normalize \(w_i\) by post–hoc regression on your own games (yes, really). If your \(\mathcal{E}\) says “+1” but your cuts say “hollow,” believe the cuts.
+Normalize \(w_i\) by post-hoc regression on your own games (yes, really). If your \(\mathcal{E}\) says ``\(+1\)'' but your cuts say ``hollow,'' believe the cuts.
 
 \subsubsection{6. Openings \& Meta Lines (current, sane)}
 \begin{description}\setlength\itemsep{0.35em}
-  \item[\textit{Cage \& Pivot.}] Thicken one rim cut, plant a midboard pivot that threatens both flanks on ply 6–8. Good into fast–lane rushers.
-  \item[\textit{Mirror–Then–Shiver.}] Mirror for four plies, then break symmetry toward your \(\oplus\) locale. Punishes over–mirrors.
-  \item[\textit{Ladder–to–Ladder.}] Build a rim ladder that stops one short of clinch; transpose the clinch to the far side when they commit. (Yes, that “one short” is deliberate—see \S\ref{ael-core:parity}.)
+  \item[\textit{Cage \& Pivot.}] Thicken one rim cut; plant a midboard pivot that threatens both flanks on plies 6--8. Good into fast-lane rushers.
+  \item[\textit{Mirror--Then--Shiver.}] Mirror for four plies, then break symmetry toward your \(\oplus\) locale. Punishes over-mirrors.
+  \item[\textit{Ladder--to--Ladder.}] Build a rim ladder that stops one short of clinch; transpose the clinch to the far side when they commit. (Yes, that ``one short'' is deliberate---see \S\ref{ael-core:parity}.)
 \end{description}
 
 \subsubsection{7. Endgame Principles (no candles required)}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textbf{Two–cut theorem (practical).} In stable ends, whoever can thicken two disjoint cuts by +1 wins more than half of tight games, ceteris paribus.
-  \item \textbf{Zugzwang test.} If every legal move in your locale reduces \(\Theta\) by at least 1, abandon the locale; build a fresh \(\oplus\) elsewhere.
-  \item \textbf{Corner banking.} Bank tempo by keeping a near–corner unsealed until your cross–threat matures; cash late to avoid giving them a naming ply.
+  \item \textbf{Two-cut theorem (practical).} In stable ends, whoever can thicken two disjoint cuts by \(+1\) wins more than half of tight games, \emph{ceteris paribus}.
+  \item \textbf{Zugzwang test.} If every legal move in your locale reduces \(\Theta\) by at least \(1\), abandon the locale; build a fresh \(\oplus\) elsewhere.
+  \item \textbf{Corner banking.} Bank tempo by keeping a near-corner unsealed until your cross-threat matures; cash late to avoid giving them a naming ply.
 \end{itemize}
 
 \subsubsection{8. Cross Pressure (without taboos)}
@@ -2303,25 +2328,25 @@ Normalize \(w_i\) by post–hoc regression on your own games (yes, really). If y
 Holding the \emph{Cross} is good only if it shortens \emph{your} lanes or lengthens \emph{theirs}. Otherwise, it is a tax upon your own \(\mathsf{free\_capacity}\).
 
 \begin{lemma}[Center discipline]
-If occupying \(C\) does not change any shortest–path length by \(\ge 1\) in your favor, vacate within two plies or pivot to a fork. (Write this on your wrist.)
+If occupying \(C\) does not change any shortest-path length by \(\geq 1\) in your favor, vacate within two plies or pivot to a fork. (Write this on your wrist.)
 \end{lemma}
 
-\subsubsection{9. A Note on “Remaining” (observational, not doctrinal)}
+\subsubsection{9. A Note on ``Remaining'' (observational, not doctrinal)}
 \label{ael-core:remaining}
-Some players leave one step unspent in profitable lines and seem to win more. I observe this \emph{kept step} correlates with owning the naming ply in octave loops (\S\ref{ael-core:parity}). See also cross–tradition notes on nine (\S\ref{geometry:nine}). I am not in anyone’s circle; I simply counted.
+Some players leave one step unspent in profitable lines and seem to win more. I observe this \emph{kept step} correlates with owning the naming ply in octave loops (\S\ref{ael-core:parity}). See also cross-tradition notes on nine (\S\ref{geometry:nine}). I am not in anyone's circle; I simply counted.
 
 \subsubsection{10. Tiny Theorems (carry in pocket)}
 \begin{enumerate}\setlength\itemsep{0.25em}
-  \item \textbf{Fork Value.} A pivot that threatens two exits with disjoint first steps is worth \(\ge +1\) \(\mathcal{E}\) even before conversion.
-  \item \textbf{False Thick.} A cut that is thick only by pieces already overworked is thin in practice: subtract 1 from \(\Theta\).
-  \item \textbf{Late Lane Law.} If a lane is equal on ply 4 and still equal on ply 6, the player with more \(\oplus\) locales elsewhere will own its naming ply by inertia. Shift now or donate later.
+  \item \textbf{Fork Value.} A pivot that threatens two exits with disjoint first steps is worth \(\geq +1\) in \(\mathcal{E}\) even before conversion.
+  \item \textbf{False Thick.} A cut that is thick only by pieces already overworked is thin in practice: subtract \(1\) from \(\Theta\).
+  \item \textbf{Late Lane Law.} If a lane is equal on ply \(4\) and still equal on ply \(6\), the player with more \(\oplus\) locales elsewhere will own its naming ply by inertia. Shift now or donate later.
 \end{enumerate}
 
 \subsubsection{11. Drills (do these; your future self will applaud)}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textbf{Cut Audit.} Pause at plies 4, 8, 12; draw your two thickest cuts and mark their \(\Theta\). If neither improves in two checkpoints, your plan is a poem—not a plan.
+  \item \textbf{Cut Audit.} Pause at plies \(4, 8, 12\); draw your two thickest cuts and mark their \(\Theta\). If neither improves in two checkpoints, your plan is a poem---not a plan.
   \item \textbf{Parity Log.} Keep a side card of locales with \(\oplus/\ominus\). Aim to maintain \(+\!2\) net by midgame.
-  \item \textbf{Root Value Sprints.} Play ten positions where you can root now or improve a cut; record which yields higher conversion in \(\le 3\) plies.
+  \item \textbf{Root Value Sprints.} Play ten positions where you can root now or improve a cut; record which yields higher conversion in \(\leq 3\) plies.
 \end{itemize}
 
 \medskip
@@ -2487,7 +2512,7 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \end{quote}
 
 
-
+\clearpage
 \section*{Epilogue — A Dhaharan Leaf: On Honoring the Ninth}
 \label{epilogue:dhahara-ninth}
 \phantomsection
