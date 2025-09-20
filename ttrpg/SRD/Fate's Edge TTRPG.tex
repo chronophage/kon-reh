@@ -1,0 +1,1354 @@
+\documentclass[12pt]{book}
+
+% --- Packages ---
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+
+% --- Formatting ---
+\titleformat{\chapter}{\Huge\bfseries}{\thechapter}{1em}{}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% --- Title Page ---
+\title{\Huge Fate's Edge \\[6pt] \Large A World of Consequences}
+\author{System Reference Document (SRD)}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ======================================================
+\part{Core Principles}
+% ======================================================
+
+\chapter{Identity of Fate's Edge}
+
+\section{A World of Consequences}
+\textit{Fate’s Edge} is a narrative-first tabletop roleplaying system where every action carries weight, every choice has consequence, and every spell risks backlash. Dice are not simply a measure of success or failure—they are instruments of fate, weaving opportunity with risk.  
+
+In this world, victory is rarely clean, and defeat is rarely final. Every roll pushes the story forward, not just by resolving what happens, but by revealing what it costs.  
+
+\section{Design Goals}
+The design philosophy of \textit{Fate’s Edge} rests on three core goals:  
+
+\begin{description}[leftmargin=2cm, style=nextline]
+  \item[Narrative Primacy] Mechanics exist to serve the story. Rules reward creativity and descriptive play, ensuring that characters are defined as much by their choices as by their numbers.  
+  \item[Risk as Drama] Every roll carries the potential for triumph and the shadow of complication. Tension, not certainty, drives the narrative.  
+  \item[Meaningful Growth] Advancement is more than improving statistics. Players invest experience not only in personal ability but also in influence, legacies, and the world around them.  
+\end{description}
+
+\section{The Central Question}
+At its heart, \textit{Fate’s Edge} asks:  
+
+\begin{quote}
+\centering
+What are you willing to risk, and what are you willing to pay, to reshape the world around you?
+\end{quote}
+
+This question is both philosophical and mechanical. Players gamble with fate every time they act, and the consequences—good or ill—become the foundation of their legend.  
+
+\section{Tone of Play}
+\textit{Fate’s Edge} is designed to produce stories that feel:  
+\begin{itemize}
+  \item \textbf{Cinematic}, with pacing tied to narrative beats rather than strict measures of time.  
+  \item \textbf{Consequential}, where even small choices ripple outward in meaningful ways.  
+  \item \textbf{Collaborative}, empowering both GM and players to co-create the unfolding drama.  
+\end{itemize}
+
+\section{Identity in Brief}
+\begin{quote}
+\textit{Fate’s Edge} is a world balanced on a knife:  
+every decision sharpens or dulls the blade,  
+every risk cuts both ways.  
+\end{quote}
+
+\chapter{Key Concepts}
+
+\section{Narrative Time}
+Time in \textit{Fate’s Edge} is measured by story weight, not by clocks. Actions are framed in four narrative scales:
+\begin{itemize}
+  \item \textbf{A Moment} — A heartbeat, a glance, a single strike or word.
+  \item \textbf{Some Time} — A few minutes, enough for a skirmish, a careful lockpick, or a short negotiation.
+  \item \textbf{Significant Time} — Hours, long enough to travel between locations, work a ritual, or endure a siege.
+  \item \textbf{Days} — Large-scale endeavors: marches across a countryside, training a cadre, or recovering from wounds.
+\end{itemize}
+This framing gives players and the GM a shared sense of pacing and tension. The focus is always on narrative rhythm, not stopwatch precision.  
+
+\section{Complication Points}
+Whenever a player rolls dice, each result of \texttt{1} generates a \textbf{Complication Point}. These are not mere penalties—they are narrative fuel. The GM spends them to introduce twists: broken weapons, misplaced trust, sudden weather, collateral damage.  
+
+Complications ensure that even a success carries texture. A hero may win the duel but lose the crowd’s favor; a spell may ignite, but it leaves behind smoke and whispers.  
+
+\section{Affinity}
+Races and cultures in \textit{Fate’s Edge} do not define characters through numbers alone. Instead, each provides an \textbf{Affinity}: a narrative edge or metaphysical bond. Affinities make certain Arts, skills, or actions more reliable, weaving identity into mechanics.  
+\begin{quote}
+Wood Elves find quiet in nature; Dwarves in stone; Humans in adaptability. Each Affinity is a way the world itself leans in your favor.
+\end{quote}
+
+\section{Prestige Abilities}
+Prestige Abilities are high-level talents unlocked by mastering cultural arts or philosophies. They are narrative milestones as much as mechanical ones. A High Elf Echo-Walker, a Dwarven Spirit Shield, or a Human Bannerlord does not simply roll better—they reshape the story around them.  
+
+\section{On-Screen vs. Off-Screen}
+\textit{Fate’s Edge} distinguishes between resources you see at the table and those that shape the world in the background:
+\begin{itemize}
+  \item \textbf{On-Screen Resources} are companions, hirelings, or allies who stand beside you in danger. They add dice pools and flavor, but they can falter, be taken, or die.  
+  \item \textbf{Off-Screen Resources} are taverns, estates, titles, or networks of informants. They never swing a blade in combat, but they shape the story between sessions, turning XP into narrative leverage.  
+\end{itemize}
+The choice between the two defines whether a character invests in independence, leadership, or legacy.  
+
+\section{Why These Concepts Matter}
+Together, these concepts shift the game away from strict measures of efficiency toward dramatic consequence. Time is elastic, outcomes ripple, and choices reach far beyond the battlefield. This keeps the table focused not only on \emph{what happens}, but also on \emph{why it matters}.
+
+% ======================================================
+\part{Core Mechanic}
+% ======================================================
+\chapter{The Art of Consequence}
+
+At the heart of \textit{Fate’s Edge} lies a single design principle:  
+\textbf{every action carries consequence}. Dice do not merely determine success or failure; they shape the unfolding narrative by introducing new problems, twists, or opportunities. The system thrives on tension between intent and outcome, where even the best successes may carry unexpected costs.
+
+\section{Procedure}
+
+All significant actions follow a three-step process:
+
+\begin{enumerate}
+  \item \textbf{Approach} — The player describes both \emph{what} their character wants and \emph{how} they attempt it. This defines the primary Skill and clarifies the fiction.  
+  \item \textbf{Execution} — Build a dice pool equal to \emph{Attribute + Skill} and roll that many d10s. Each die of 6 or higher counts as a success. Each \texttt{1} rolled generates a \emph{Complication Point}.  
+  \item \textbf{Outcome} — The GM interprets total successes against the difficulty of the task. Complication Points are then spent to weave narrative setbacks, collateral costs, or escalating danger.  
+\end{enumerate}
+
+\section{The Description Ladder}
+
+The quality of the player’s description affects the resilience of their roll against complication.  
+More detail means more control over how the dice fall:
+
+\begin{description}[leftmargin=2cm]
+  \item[Basic Action] Roll the pool as-is. All \texttt{1}s remain as Complication Points.  
+  \item[Detailed Action] A clear, descriptive flourish allows the player to re-roll one die showing \texttt{1}.  
+  \item[Intricate Action] A richly described, multi-sensory action allows the player to re-roll \emph{all} dice showing \texttt{1}, and add one positive narrative flourish to the scene if they succeed.  
+\end{description}
+
+\section{Complication Points}
+
+Complication Points (CP) are the engine of drama. They are not simple penalties, but narrative levers.  
+The GM spends CP to introduce setbacks appropriate to the context, such as:
+
+\begin{itemize}
+  \item Escalation — drawing more enemies, raising the stakes.  
+  \item Exhaustion — draining time, resources, or positioning.  
+  \item Exposure — revealing hidden actions, alerting foes.  
+  \item Collateral — harm or danger spilling over onto allies, innocents, or surroundings.  
+\end{itemize}
+
+\section{Design Intent}
+
+This mechanic ensures that every roll changes the story. Success without risk is rare, and even failure opens new narrative avenues. The dice shape the texture of events, but the story itself remains in the hands of the players and GM, always circling back to choice and consequence.
+
+\chapter{Advancement \& XP}
+
+In \textit{Fate’s Edge}, characters do not advance through levels. 
+Instead, growth flows from \textbf{Experience Points (XP)} --- the universal currency of progression. 
+XP may be spent to hone the self, acquire worldly assets, or unlock cultural prestige. 
+This design ensures that every moment of advancement is the result of a meaningful choice.
+
+\section{Awarding XP}
+
+The GM distributes XP at the end of each session or arc. 
+Choose a pacing mode appropriate to the campaign:
+
+\begin{description}[leftmargin=2cm]
+  \item[Gritty:] 4--6 XP per session (slow burn; each purchase is weighty).  
+  \item[Standard:] 6--10 XP per session (default pace).  
+  \item[Heroic:] 10--14 XP per session (fast growth; shorter arcs).  
+\end{description}
+
+\subsection*{Session Awards}
+\begin{itemize}
+  \item Table Attendance: +2 XP  
+  \item Major Objective Reached: +2--4 XP  
+  \item Discovery or Lore Unlocked: +1--2 XP  
+  \item Hard Choice Embraced: +1--2 XP  
+  \item Complication Spotlight (leaning into drawn Complications): +1--3 XP  
+  \item Bond/Flag Driven Play: +1--2 XP  
+  \item GM Curveball Award: +0--3 XP for standout creativity  
+\end{itemize}
+
+\subsection*{Milestones}
+At the conclusion of a major story arc, grant:
+\begin{itemize}
+  \item +8--12 XP to all players  
+  \item +2 XP bonus to one player for a signature moment of the arc  
+\end{itemize}
+
+\subsection*{Complication Dividend}
+If a player accepts a high Complication card as drawn, without mitigation:
+\begin{itemize}
+  \item Face Card: +1 XP  
+  \item Ace: +2 XP  
+\end{itemize}
+
+\section{Spending XP}
+
+\begin{description}[leftmargin=2cm]
+  \item[Attributes:] Cost = new rating $\times$ 3.  
+  Downtime = new rating in days.  
+  \item[Skills:] Cost = new level $\times$ 2.  
+  Downtime = new level in days.  
+  \item[On-Screen Followers:] Cost = Cap$^2$.  
+  Downtime = 1--3 days to recruit and brief.  
+  \item[Off-Screen Assets:] Minor (4 XP, 1 day), Standard (8 XP, 1 week), Major (12 XP, 1 month).  
+\end{description}
+
+\subsection*{Rush Rule}
+A player may skip downtime, but the GM creates a \textbf{Haste clock} of four segments.  
+If the clock fills, the new ability or asset carries flaws or narrative complications.
+
+\section{Tiers of Reputation}
+
+Though there are no levels, XP spent creates soft ``tiers'' that shape world response:
+
+\begin{description}[leftmargin=2cm]
+  \item[Tier I -- Rookie (0--40 XP):] Local reputation; prestige locked.  
+  \item[Tier II -- Seasoned (41--90):] Regional notice; prestige abilities may be unlocked.  
+  \item[Tier III -- Veteran (91--150):] National influence; second follower slot suggested.  
+  \item[Tier IV -- Paragon (151--220):] Movers and shakers; rivals emerge to challenge.  
+  \item[Tier V -- Mythic (221+):] Legendary status; kingdoms and cults respond.  
+\end{description}
+
+\section{Archetypes in Play}
+
+\subsection*{The Solo}
+Invests XP primarily in self.  
+\emph{Strengths:} always ready, iconic spotlight.  
+\emph{Risks:} narrow toolkit; may lag in social or resource scenes.  
+
+\subsection*{The Mixed Player}
+Balances XP between self and assets.  
+\emph{Strengths:} adaptable, bridges party gaps.  
+\emph{Risks:} upkeep spread thin.  
+
+\subsection*{The Mastermind}
+Builds networks, followers, and assets.  
+\emph{Strengths:} broad reach, drives strategies.  
+\emph{Risks:} Complication fallout; vulnerable allies.  
+
+\section{Training \& Mentorship}
+
+\begin{itemize}
+  \item Training from a PC or NPC with Skill $\geq 3$ or Attribute $\geq$ new rating halves downtime.  
+  \item A vivid training montage may convert 1 day of downtime into on-screen play (twice per arc).  
+  \item Research or crafting may be handled as Significant Time with a simple project clock.  
+\end{itemize}
+
+\section{Optional Systems}
+
+\subsection*{Patronage Track}
+Spending 8+ XP on civic, guild, or temple projects grants a \emph{Patron tag}.  
+Once per arc, a Patron may erase a resource-related Complication (Diamonds suit).
+
+\subsection*{Respec \& Drift}
+\begin{itemize}
+  \item Light respec: Once per arc, redistribute up to 6 XP worth of Skills.  
+  \item Major pivot: With narrative justification, reclaim one Talent or Prestige at 50\% refund.  
+\end{itemize}
+
+\section{End-of-Session Checklist}
+
+\begin{enumerate}
+  \item Did we reach a Major Objective? (+2--4 XP)  
+  \item Who embraced Complications? (+1--3 XP)  
+  \item Did Bonds or Flags drive scenes? (+1--2 XP)  
+  \item Any discoveries or lore revealed? (+1--2 XP)  
+  \item Attendance and GM Curveball awarded? (+2 +0--3 XP)  
+  \item Any XP spending declared? Note downtime or begin Haste clocks.  
+\end{enumerate}
+
+% ======================================================
+\part{Character Framework}
+% ======================================================
+\chapter{Attributes \& Skills}
+
+Characters in \textit{Fate’s Edge} are defined not by long columns of modifiers, but by the interplay of four \textbf{core attributes} and a lean, narrative-focused \textbf{skill list}. Together they shape dice pools, guide player expression, and reinforce the philosophy that \emph{who you are} matters as much as \emph{what you do}.
+
+\section{Attributes}
+Attributes represent broad aspects of a character’s being. They are archetypal, not granular, and apply across many situations.  
+
+\begin{description}[leftmargin=2cm]
+  \item[Body] Strength, endurance, and physical action. Lifting a gate, wrestling an ogre, or running across rooftops all call on Body.  
+  \item[Wits] Perception, cleverness, and reaction speed. Spotting an ambush, solving a puzzle, or drawing first in a duel depend on Wits.  
+  \item[Spirit] Willpower, intuition, and resilience. Resisting fear, sensing lies, or pressing on through pain come from Spirit.  
+  \item[Presence] Charm, command, and social force. Inspiring allies, bending wills, or commanding a hall all rely on Presence.  
+\end{description}
+
+Each Attribute is rated from 1–5 for most mortals. Exceptional beings (angels, demons, dragons) may reach higher.  
+
+\section{Skills}
+Skills are focused expressions of talent. They sharpen attributes into action and give players narrative handles for describing their characters. Each Skill is tied loosely to one or more attributes, but creative players may justify alternative pairings if the narrative fits.
+
+\subsection*{Skill List}
+\begin{multicols}{2}
+\begin{itemize}
+  \item Athletics — climbing, running, swimming.
+  \item Brawl — fists, grappling, improvised fighting.
+  \item Melee — blades, axes, polearms.
+  \item Ranged — bows, crossbows, thrown arms.
+  \item Stealth — hiding, shadowing, evading.
+  \item Survival — tracking, foraging, navigation.
+  \item Craft — smithing, alchemy, tinkering.
+  \item Lore — history, cultures, languages.
+  \item Arcana — magical theory, rituals, spellwork.
+  \item Insight — intuition, empathy, lie detection.
+  \item Diplomacy — negotiation, mediation, etiquette.
+  \item Deception — disguise, misdirection, bluffing.
+  \item Command — leadership, intimidation, rallying.
+  \item Performance — music, oratory, storytelling.
+\end{itemize}
+\end{multicols}
+
+\subsection*{Skill Ratings}
+\begin{itemize}
+  \item \textbf{0: Untrained} — You rely on raw attribute alone.  
+  \item \textbf{1: Familiar} — Basic competence, a journeyman’s touch.  
+  \item \textbf{2: Skilled} — Trained and reliable in most circumstances.  
+  \item \textbf{3: Expert} — Professional mastery or long experience.  
+  \item \textbf{4: Master} — Renowned, your work or ability is widely recognized.  
+  \item \textbf{5: Legendary} — Almost supernatural; few mortals reach this level.  
+\end{itemize}
+
+\section{Attributes and Skills in Play}
+When players attempt a significant action, they combine the relevant \textbf{Attribute + Skill} to determine their dice pool. Attributes set the foundation of capability, while Skills give the roll texture and identity.
+\begin{quote}
+\textbf{Body + Melee} is raw steel and sinew.\\
+\textbf{Wits + Melee} is anticipation and precision.\\
+\textbf{Presence + Melee} is flourish, feint, and intimidation.
+\end{quote}
+The same Skill, seen through different Attributes, tells a different story.
+
+\chapter{XP as Currency}
+In \textit{Fate’s Edge}, Experience Points (XP) are not a tally of victories. They are the \textbf{universal resource of progression}—a currency spent to shape your character, your influence, and your place in the world. Growth always comes from choice: hone the self, strengthen bonds, or weave deeper ties into the setting.
+
+\section{The Three Paths of XP}
+Players may allocate XP across three broad categories. Each represents a different philosophy of growth.
+
+\subsection{Enhance Self}
+XP buys personal mastery.
+\begin{description}[leftmargin=2cm]
+  \item[Attributes] Raising an Attribute costs XP equal to \emph{(new rating $\times$ 3)}.\\
+  \emph{Example:} Body 2 $\rightarrow$ 3 costs $3\times 3=9$ XP.
+  \item[Skills] Raising a Skill costs XP equal to \emph{(new level $\times$ 2)}.\\
+  \emph{Example:} Stealth 1 $\rightarrow$ 2 costs $2\times 2=4$ XP.
+\end{description}
+
+\subsection{Acquire Assets}
+XP can be invested into property, holdings, networks, and followers—worldly influence rather than personal prowess.
+
+\paragraph{Off-Screen Resources.}
+Purchased with XP, these assets provide leverage \emph{between sessions}: a tavern, a title, a mercantile charter, a safehouse network. They solve problems off-screen but cannot intervene in an adventure scene.
+
+\paragraph{On-Screen Followers (Assistance).}
+Allies who act \emph{in the scene} and lend their specialty.
+\begin{itemize}
+  \item \textbf{Cost:} A follower with Specialty Cap $C$ costs \emph{$C^2$ XP} (one-time).
+  \item \textbf{Specialty:} Define one narrow lane (e.g., \emph{Bodyguard in melee}, \emph{Scout on overland navigation}, \emph{Archivist for ancient scripts}). The follower only assists in that lane.
+  \item \textbf{Assist Dice:} When applicable, the follower adds \emph{help dice} equal to $\min(C,\ \text{your relevant Skill})$, \emph{capped at +3 dice}.
+  \item \textbf{Slot Limit:} Only \emph{one} follower may assist a given action.
+  \item \textbf{Upkeep:} Each Downtime, pay Coin equal to $C$ \emph{or} spend a Scene tending the relationship. Miss two upkeeps: the follower becomes \emph{Unreliable} until mended.
+  \item \textbf{Risk:} If the GM spends \emph{2+ Complication Points} on an action you take with assistance, they may endanger, injure, or separate the follower instead of you if fictionally appropriate.
+\end{itemize}
+
+\begin{designnote}
+\textbf{Why $C^2$ and a +3 cap?} A Cap~5 helper used to be the best XP deal in the game. Squaring the cost and capping assist dice keeps followers powerful but \emph{not} more efficient than raising your own Skills. Followers become scene-shaping \emph{tools} with obligations and risks, rather than a cheap dice battery.
+\end{designnote}
+
+\subsection{Learn Talents}
+Talents are unique abilities that expand what a character can do. They are purchased with XP and often serve as stepping stones toward Prestige Abilities. They may be:
+
+\begin{itemize}
+  \item \textbf{General Talents} — broadly available to any character.  
+  \begin{itemize}
+    \item \emph{Battle Instincts} (Cost: 6 XP): Once per scene, re-roll a failed defense roll.  
+    \item \emph{Silver Tongue} (Cost: 4 XP): Gain +1 die when persuading or deceiving through speech.  
+    \item \emph{Iron Stomach} (Cost: 3 XP): Immune to mundane poisons and spoiled food; halve Complications from toxic sources.  
+  \end{itemize}
+
+  \item \textbf{Racial or Cultural Talents} — tied to Affinities and philosophies, reflecting the arts of a people.  
+  \begin{itemize}
+    \item \emph{Stone-Sense} (Dwarves, Cost: 5 XP): Detect flaws in stone or earth; gain +1 die on Engineering or Craft rolls underground.  
+    \item \emph{Backlash Soothing} (Wood Elves, Cost: 6 XP): Once per session, reduce a magical Backlash Complication by 2 points when in natural terrain.  
+    \item \emph{Blood Memory} (Ykrul, Cost: 5 XP): After a battle, meditate to gain one temporary Skill die reflecting a foe’s tactics for the next scene.  
+  \end{itemize}
+
+  \item \textbf{Prestige Abilities} — narrative-capstone powers available only at high investment. These are the pinnacles of a culture’s arts.  
+  \begin{itemize}
+    \item \emph{Echo-Walker} (High Elf, Cost: 20 XP; Req: Wits 5, Arcana 4): Step briefly into Aerisahl; once per arc, turn any Complication into a boon.  
+    \item \emph{Warglord} (Ykrul, Cost: 18 XP; Req: Body 5, Leadership 3): Rally scattered warbands into a single host; once per campaign, may unify tribes under one banner.  
+    \item \emph{Spirit-Shield} (Dwarves, Cost: 15 XP; Req: Spirit 4, Resolve 3): Once per session, erase up to 3 Complications from an ally’s roll, taking 1 Backlash yourself.  
+  \end{itemize}
+\end{itemize}
+
+\section{Economy of Choice}
+Because XP is the sole currency, every expenditure forces tension:  
+
+\begin{itemize}
+  \item Invest in yourself to become unmatched in one arena.  
+  \item Invest in the world to gain influence and resources.  
+  \item Invest in talents to expand into new, unique possibilities.  
+\end{itemize}
+
+There is no “wrong” choice — only the question: \emph{Will you be remembered for what you mastered, what you owned, or what you became?}
+
+\chapter{Archetypes \& Prestige Abilities}
+
+Archetypes represent broad playstyles, while Prestige Abilities are the capstone talents tied to culture, philosophy, or exceptional mastery.  
+This section offers examples across the tiers of advancement to demonstrate how XP investment and narrative identity converge.
+
+\section{Archetype Examples}
+
+\subsection*{The Blade-Seeker (Solo Archetype)}
+\begin{description}[leftmargin=2cm]
+  \item[Theme:] The lone duelist whose personal mastery becomes legend.  
+  \item[XP Focus:] Attributes (Body, Wits) and direct combat skills.  
+  \item[Play Impact:] Thrives in spotlight scenes; less reliable for logistics or diplomacy.  
+  \item[Prestige Gateways:] Duelist’s Insight, Echo-Killer.  
+\end{description}
+
+\subsection*{The Bond-Keeper (Mixed Archetype)}
+\begin{description}[leftmargin=2cm]
+  \item[Theme:] A hero who balances self-growth with allies, networks, or family.  
+  \item[XP Focus:] Skills and Off-Screen Assets, with some Attributes raised.  
+  \item[Play Impact:] Strongest when weaving personal hooks into group play.  
+  \item[Prestige Gateways:] Hearth-Banner, Oath-Bound Captain.  
+\end{description}
+
+\subsection*{The Spider (Mastermind Archetype)}
+\begin{description}[leftmargin=2cm]
+  \item[Theme:] The strategist who commands webs of allies, followers, and secrets.  
+  \item[XP Focus:] On-Screen Followers, Off-Screen Assets, Presence.  
+  \item[Play Impact:] Shapes campaigns through schemes, but risks backlash if resources collapse.  
+  \item[Prestige Gateways:] Shadow Broker, Master of Coin.  
+\end{description}
+
+\section{Prestige Ability Examples by Tier}
+
+\subsection*{Tier II (41--90 XP)}
+\begin{description}[leftmargin=2cm]
+  \item[Duelist’s Insight]  
+  \emph{Req: Body 3, Melee 3.}  
+  Once per duel, re-roll all failed dice if you describe a flourish tied to your rival’s weakness.  
+
+  \item[Hearth-Banner]  
+  \emph{Req: Presence 2, Leadership 2, Off-Screen Asset (Homestead).}  
+  Allies defending your home or banner gain +1 die to all rolls within its borders.  
+\end{description}
+
+\subsection*{Tier III (91--150 XP)}
+\begin{description}[leftmargin=2cm]
+  \item[Oath-Bound Captain]  
+  \emph{Req: Presence 3, Leadership 3, one On-Screen Follower.}  
+  When leading a unit, you may convert one Complication per roll into a rallying boon: grant +1 die to all allies on their next action.  
+
+  \item[Echo-Killer]  
+  \emph{Req: Wits 4, Arcana 3, Affinity (Elven).}  
+  Once per scene, negate an incoming magical effect by paying its Complication cost yourself.  
+\end{description}
+
+\subsection*{Tier IV (151--220 XP)}
+\begin{description}[leftmargin=2cm]
+  \item[Shadow Broker]  
+  \emph{Req: Presence 4, Subterfuge 3, Off-Screen Asset (Network).}  
+  Once per arc, declare that you ``already had an agent there.''  
+  Spend 6 XP to permanently expand your Network’s reach into that region.  
+
+  \item[Spirit-Shield]  
+  \emph{Req: Spirit 4, Resolve 3.}  
+  Once per session, you may erase up to 3 Complication Points from an ally’s roll, at the cost of taking 1 Backlash Complication yourself.  
+\end{description}
+
+\subsection*{Tier V (221+ XP)}
+\begin{description}[leftmargin=2cm]
+  \item[Master of Coin]  
+  \emph{Req: Presence 5, Commerce 4, three Off-Screen Assets.}  
+  You may treat wealth as narrative leverage: once per session, erase a Diamonds-suit Complication by spending from your fortune.  
+
+  \item[Echo-Walker]  
+  \emph{Req: Wits 5, Arcana 4, Affinity (High Elf).}  
+  Once per arc, step briefly into the demi-plane of Aerisahl, gaining one automatic success on a roll \emph{and} reshaping one drawn Complication into a boon.  
+\end{description}
+
+\section{Talent Progression by Tier}
+
+Talents are organized into tiers of investment. Early Talents broaden a character’s toolkit, Mid-Tier Talents deepen specialization, and Prestige Abilities represent cultural pinnacles and narrative milestones.  
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{3cm}|p{2cm}|p{3cm}|p{6cm}|}
+\hline
+\textbf{Name} & \textbf{Cost (XP)} & \textbf{Requirements} & \textbf{Effect} \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Early Talents (3–5 XP)}} \\
+\hline
+Battle Instincts & 4 & None & Once per scene, re-roll a failed defense roll. \\
+Silver Tongue & 3 & Presence 2+ & Gain +1 die on Persuasion/Deception rolls. \\
+Stone-Sense & 5 & Dwarf only & Detect flaws in stone/earth; +1 die on underground Craft/Engineering rolls. \\
+Iron Stomach & 3 & Body 2+ & Resist mundane poisons; halve Complications from toxins or spoiled food. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Mid-Tier Talents (6–10 XP)}} \\
+\hline
+Backlash Soothing & 6 & Wood Elf only, Spirit 2+ & Once per session, reduce a magical Backlash by 2 points in natural terrain. \\
+Blood Memory & 7 & Ykrul only, Body 3+ & After a battle, gain one temporary Skill die reflecting a foe’s tactics in the next scene. \\
+Commanding Presence & 8 & Presence 3+ & Followers gain +1 to morale rolls; allies re-roll one failed die when obeying your orders. \\
+Familiar Bond & 9 & Spirit 3+ & Gain a magical familiar (Cap 3). Counts as an On-Screen follower. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Prestige Abilities (12+ XP)}} \\
+\hline
+Echo-Walker & 20 & High Elf only; Wits 5, Arcana 4 & Step briefly into Aerisahl. Once per arc, transform a Complication into a boon. \\
+Warglord & 18 & Ykrul only; Body 5, Leadership 3 & Rally scattered warbands; once per campaign, unify tribes under one banner. \\
+Spirit-Shield & 15 & Dwarf only; Spirit 4, Resolve 3 & Once per session, erase up to 3 Complications from an ally’s roll; take 1 Backlash yourself. \\
+Shadowbinder & 16 & Tulkani or Dark Elf; Wits 4, Stealth 3 & Manipulate shadow as substance; once per session, negate visibility or tracking entirely. \\
+\hline
+\end{tabular}
+\caption{Talent progression tiers with examples.}
+\end{table}
+\section{Cultural Talent Examples}
+
+Each culture offers its own path of growth. Early Talents establish identity, Mid-Tier Talents deepen specialization, and Prestige Abilities embody cultural myths and pinnacles of mastery.
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{3cm}|p{2cm}|p{3cm}|p{6cm}|}
+\hline
+\textbf{Name} & \textbf{Cost (XP)} & \textbf{Requirements} & \textbf{Effect} \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Humans}} \\
+\hline
+Versatile & 3 & None & Once per session, swap one Skill die for another you lack. \\
+Guild Ties & 7 & Presence 2+, Membership & Call in favors from a guild or order once per session. \\
+Banner-Bearer & 15 & Presence 4+, Leadership 3 & Inspire an allied unit: once per battle, erase 2 Complications for the group. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Dwarves (Aeler)}} \\
+\hline
+Stone-Sense & 5 & Dwarf only & Detect flaws in stone; +1 die to underground Craft/Engineering rolls. \\
+Spirit Shield & 8 & Spirit 3+ & Commune with ancestors; once per session, block 1 Complication for an ally. \\
+Forge-Patriarch & 18 & Body 4+, Craft 4 & Found a forge-citadel; gain loyal smiths and engineers who count as On-Screen specialists (Cap 5). \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Wood Elves}} \\
+\hline
+Backlash Soothing & 5 & Wood Elf only & Once per session, cancel 1 Backlash die in natural terrain. \\
+Ranger’s Step & 9 & Wits 3+, Stealth 2 & Move unseen in forests; treat terrain penalties as one step lower. \\
+Wild Speaker & 18 & Spirit 5+, Nature 4 & Speak to beasts and trees; once per session, command local wildlife as allies. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{High Elves}} \\
+\hline
+Lorekeeper & 4 & High Elf only & Recall obscure history or magic without rolling once per session. \\
+Weave Anchor & 8 & Wits 3+, Arcana 3 & Reduce magical Backlash by 1 when casting Intricate spells. \\
+Echo-Walker & 20 & High Elf only; Wits 5, Arcana 4 & Step briefly into Aerisahl; once per arc, turn a Complication into a boon. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Ykrul}} \\
+\hline
+Blood Frenzy & 4 & Body 2+ & When reduced to half health, gain +1 die on melee rolls. \\
+Blood Memory & 7 & Body 3+ & After battle, gain 1 temporary Skill die reflecting a foe’s tactics in the next scene. \\
+Warglord & 18 & Body 5, Leadership 3 & Rally scattered warbands; once per campaign, unify tribes under one banner. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Tulkani}} \\
+\hline
+Wanderer’s Luck & 3 & Tulkani only & Once per session, re-roll a failed travel or fortune roll. \\
+Shadowbinder’s Touch & 8 & Wits 3+, Stealth 2 & Manipulate shadow as substance; gain +1 die in concealment rolls. \\
+Shadowbinder & 16 & Wits 4+, Stealth 3 & Command shadows fully; once per session, negate visibility or tracking entirely. \\
+\hline
+\multicolumn{4}{|c|}{\textbf{Other Folk}} \\
+\hline
+Halfling Hearthbond & 4 & Halfling only & Once per session, restore an ally’s Spirit die pool by sharing food or song. \\
+Gnomish Numeromancy & 7 & Gnome only, Wits 3+ & Once per session, apply “mathematical foresight” to re-roll up to 2 dice in a planning scene. \\
+Dwarves’ Ally (Human) & 6 & Any, History 2 & Gain safe passage and trade credit in Dwarven protectorates. \\
+\hline
+\end{tabular}
+\caption{Example Talents by culture and tier.}
+\end{table}
+
+\chapter{Table Contract \& Player Presence}
+
+\section{The Unbreakable Contract}
+\textbf{Every player-character must have on-screen agency during play.}
+\begin{itemize}
+  \item \textbf{Agency:} Each player must have meaningful choices to make for their character every session.
+  \item \textbf{Presence:} The character appears in scenes and participates directly. Off-screen assets never replace the character’s involvement.
+\end{itemize}
+\noindent
+\textit{Design intent:} Investment in holdings, titles, and networks is powerful, but it augments a character who acts on-screen. “Pure patrons” who never leave their estate are not valid PCs.
+
+\section{The Hands-On Patron}
+\textbf{Archetype intent:} A PC who invests heavily in Off-Screen Assets but \emph{leads from the front}: traveling, negotiating, and facing danger personally.
+
+\subsection{Mechanical Requirements}
+\begin{description}[leftmargin=2cm]
+  \item[Face Requirement] You cannot purchase an Off-Screen Asset unless you meet a relevant threshold:
+    \begin{itemize}
+      \item \textbf{Noble Title (Standard):} \textit{Presence 3+} or \textit{Command 2+}
+      \item \textbf{Spy Network (Major):} \textit{Wits 3+} or \textit{Subterfuge 2+}
+      \item \textbf{Mercantile Charter (Major):} \textit{Presence 3+} or \textit{Diplomacy 2+}
+      \item \textbf{Stonehold (Minor):} \textit{Spirit 3+} or \textit{Craft 2+}
+    \end{itemize}
+  \item[No Empty Chair] A character sheet must include on-screen capabilities (Attributes, Skills, or Followers) sufficient to act in scenes. Assets are tools, not a proxy PC.
+\end{description}
+
+\subsection{Example Patron Build (31 XP)}
+\begin{itemize}
+  \item \textbf{Presence 3} (9 XP), \textbf{Command 2} (6 XP total)
+  \item \textbf{Off-Screen:} Noble Title (Standard) (8 XP), Safehouse (Minor) (4 XP)
+  \item \textbf{On-Screen Follower:} Bodyguard (Cap 2) (4 XP)
+\end{itemize}
+\noindent
+Result: 5-die social/command pools, portable authority, and a modest on-screen retinue—always present, never abstracted away.
+
+\section{Off-Screen Assets vs. On-Screen Followers}
+\begin{description}[leftmargin=2cm]
+  \item[Off-Screen Assets] Holdings resolved between sessions (keeps, charters, titles, spy webs). They \textbf{create opportunities} and \textbf{solve background problems} but do not intervene mid-scene.
+  \item[On-Screen Followers] Stat-light allies with a \textit{Skill Cap} who add dice in their specialty when present. They are \textbf{narrative liabilities} and \textbf{can be threatened, swayed, or lost}.
+\end{description}
+
+\section{Death, Replacement \& Downtime}
+When a PC is slain or removed from play, choose one:
+
+\subsection{Promote a Follower}
+\begin{itemize}
+  \item The player takes control of a loyal follower already established on-screen.
+  \item Grant a lump sum equal to \textbf{50\% of the deceased PC's total XP}.
+  \item Transfer a \textit{reasonable} share of assets explicitly tied to that follower (retainers, a stipend, or a minor charter).
+\end{itemize}
+
+\subsection{Heir or Partner Steps In}
+\begin{itemize}
+  \item Introduce an heir, sibling, apprentice, or business partner foreshadowed by the fiction.
+  \item Start with \textbf{20–30 XP} plus a \textit{fraction} of Off-Screen Assets that make sense (with GM sign-off).
+\end{itemize}
+
+\subsection{New Character}
+\begin{itemize}
+  \item Create a fresh PC by standard rules.
+  \item GM integrates them swiftly: tie to an existing Asset, contract, or faction introduced by the party.
+\end{itemize}
+
+\subsection{Temporary Absences (Captured, Lost, Waylaid)}
+\begin{itemize}
+  \item Use a \textbf{Peril Clock}: each session absent ticks it forward; when full, a hard consequence lands (ransom due, injury, asset seized).
+  \item Offer targeted rescue/escape scenes to restore agency quickly.
+\end{itemize}
+
+\section{GM Guidance: Keeping the Contract}
+\begin{itemize}
+  \item Frame scenes where \textbf{every} PC has a lever: talk, scout, strike, scheme, or safeguard.
+  \item When Assets would solve a problem off-screen, \textbf{surface a new on-screen complication}: a guild veto, a rival’s counter-claim, a courier intercepted.
+  \item Spotlight balance: rotate beats between Solo specialists, Mixed players, and Masterminds; ensure no one dictates outcomes without table consent.
+\end{itemize}
+
+\section{Designer Note}
+This contract is the spine of play. XP economies and Assets broaden stories; they must never replace the character’s presence at the table. If a build trends toward absenteeism, redirect with the Face Requirement, on-screen costs, and scene framing that demands the player’s direct choices.
+
+% ======================================================
+\part{Magic \& The Arts}
+% ======================================================
+
+\chapter{Philosophy of Magic}
+
+Magic in \textit{Fate’s Edge} is not a tool of convenience but a dangerous negotiation with the fabric of reality.  
+It is powerful, flexible, and transformative — yet every attempt to shape it carries risk. The dice never merely ask \emph{“does it work?”} but always whisper \emph{“what is the cost?”}
+
+\section{The Nature of Magic}
+\begin{itemize}
+  \item \textbf{Volatile by Design:} Magic is not fully understood, even by its most adept practitioners. Every working pushes against boundaries that resist being bent.  
+  \item \textbf{Risk Embodied:} Each spell generates Complication Points. These points do not vanish; they manifest as \emph{Backlash}, unpredictable consequences that ripple outward.  
+  \item \textbf{Narrative Weight:} Casting is always a story moment. Even a “successful” spell alters the scene in ways the caster did not intend.  
+  \item \textbf{Thematic Consequence:} Backlash is not arbitrary; it aligns with the opposing or uncontrolled element of the Art invoked (flame flares out of control, shadows linger too long, storms roll beyond command).  
+\end{itemize}
+
+\section{The Caster’s Burden}
+Magicians are defined not by what they can do, but by what they are willing to risk.  
+A cautious spellcaster describes carefully, invests in detailed actions, and may survive long. A reckless one courts power at great personal and narrative cost. Both choices shape the story.
+
+\chapter{Casting Loop}
+
+All spellcasting follows a structured sequence called the \emph{Casting Loop}.  
+It unfolds across two phases of play: gathering strength, then weaving it into form.
+
+\begin{enumerate}
+  \item \textbf{Channel} — The caster focuses, rolling \textbf{Wits + Arcana} to gather \emph{Potential}.  
+  Each success becomes fuel for shaping the spell. Each \texttt{1} adds Complication Points immediately.  
+  \item \textbf{Weave} — On the following turn, the caster rolls \textbf{Wits + (Art)} to shape Potential into a defined effect.  
+  The Description Ladder applies: Basic/Detailed/Intricate descriptions reduce or redirect Complication Points.  
+  \item \textbf{Backlash} — Complication Points spent by the GM manifest as uncontrolled consequences.  
+  These are thematic to the Art and scale with the number of points spent: minor nuisances at low levels, dangerous disasters at high levels.  
+\end{enumerate}
+
+\section{Example of Backlash}
+\begin{description}[leftmargin=2cm]
+  \item[Fire] Flames leap to unattended surfaces, smoke blinds allies, or the heat weakens structures.  
+  \item[Shadow] Illusions persist too long, unseen things whisper truths best left hidden, morale crumbles.  
+  \item[Storm] Winds scatter allies’ plans, lightning arcs toward unintended targets, storms linger beyond the caster’s will.  
+\end{description}
+
+\section{Design Intent}
+The Casting Loop keeps magic tense and thematic: no spell is “free.”  
+Every magical act alters not just the world, but the flow of narrative itself.
+
+
+% ======================================================
+\part{GM Toolkit}
+% ======================================================
+\chapter{Logistics as Drama}
+
+\section{Core Principle: The Fiction Is the Ledger}
+In \textit{Fate’s Edge}, arrows, rations, and waterskins are tracked only in the
+fiction. Mechanics engage only when those resources become \textbf{scarce}.
+The focus is always narrative tension, not bookkeeping.
+
+\section{The Supply Clock}
+A shared condition for the entire party, the Supply Clock represents food,
+water, and basic gear.
+
+\begin{description}[leftmargin=2cm]
+  \item[Full Supply (0 filled)] The party is well-equipped. No penalties.
+  \item[Low Supply (2 filled)] Minor narrative complications: bland food,
+    damaged arrows, thinning waterskins.
+  \item[Dangerously Low (3 filled)] Each character gains \textbf{Fatigue}.
+  \item[Out of Supply (4 filled)] Severe penalties; starvation, dehydration,
+    failing gear.
+\end{description}
+
+\subsection*{Filling the Clock}
+\begin{itemize}
+  \item Harsh travel or lost pack animals (GM fiat).
+  \item GM spends \textbf{2+ Complication Points}.
+  \item The party chooses to travel light for advantage.
+\end{itemize}
+
+\subsection*{Emptying the Clock}
+\begin{itemize}
+  \item Reaching civilization resets to \textbf{Full}.
+  \item Foraging/hunting: group Survival check clears 1 segment.
+  \item Downtime in safety removes 1 segment.
+\end{itemize}
+
+\section{Fatigue}
+Fatigue represents exhaustion, hunger, and strain.
+
+\begin{description}[leftmargin=2cm]
+  \item[Effect:] On their next roll, a character must reroll one success.
+  \item[Stacking:] Each level adds another forced reroll.
+  \item[Recovery:] A night’s rest with adequate supply removes 1 Fatigue.
+    Fatigue cannot be removed while the party is \textbf{Dangerously Low}.
+\end{description}
+
+\section{Gear Damage}
+Gear does not have hit points. It suffers only when drama demands it.
+
+\subsection*{Compromised Items}
+\begin{itemize}
+  \item Introduced via Complication Points or narrative consequence.
+  \item A \textbf{Compromised} item gives \(-1\) die on relevant rolls.
+\end{itemize}
+
+\subsection*{Breaking Point}
+If a Compromised item suffers another setback, it breaks entirely.
+
+\subsection*{Repair}
+\begin{description}[leftmargin=2cm]
+  \item[Field Repair:] Temporary; Craft or Survival check removes penalty for
+    one scene.
+  \item[Proper Repair:] Permanent; requires tools, materials, and downtime.
+\end{description}
+
+\section{XP and Logistics Assets}
+Upkeep between adventures is assumed trivial unless the party is destitute.
+XP investments make logistics part of the character’s story.
+
+\begin{description}[leftmargin=2cm]
+  \item[4 XP: Signature Weapon] A named heirloom or crafted masterpiece.
+    If lost or damaged, recovery becomes a personal story hook.
+  \item[8 XP: Superior Workshop] Off-screen asset. Enables permanent repairs,
+    masterwork crafting, and party-wide gear quality during downtime.
+\end{description}
+
+\section{Example in Play}
+\begin{quote}
+Three days into a desert crossing, the GM fills two Supply segments. The party
+is now at \textbf{Low Supply}.  
+A player scouts for water, rolling two \texttt{1}s. The GM spends those
+Complications to fill another segment—\textbf{Dangerously Low}. Everyone gains
+\textbf{Fatigue}.  
+Later, in combat, the fatigued archer rerolls one success. The arrow flies wide,
+the lack of water written into the dice themselves.
+\end{quote}
+
+\chapter{Philosophy of Magic}
+
+Magic in \textit{Fate’s Edge} is not a tool of convenience but a dangerous negotiation with the fabric of reality.  
+It is powerful, flexible, and transformative — yet every attempt to shape it carries risk. The dice never merely ask \emph{“does it work?”} but always whisper \emph{“what is the cost?”}
+
+\section{The Nature of Magic}
+\begin{itemize}
+  \item \textbf{Volatile by Design:} Magic is not fully understood, even by its most adept practitioners. Every working pushes against boundaries that resist being bent.  
+  \item \textbf{Risk Embodied:} Each spell generates Complication Points. These points do not vanish; they manifest as \emph{Backlash}, unpredictable consequences that ripple outward.  
+  \item \textbf{Narrative Weight:} Casting is always a story moment. Even a “successful” spell alters the scene in ways the caster did not intend.  
+  \item \textbf{Thematic Consequence:} Backlash is not arbitrary; it aligns with the opposing or uncontrolled element of the Art invoked (flame flares out of control, shadows linger too long, storms roll beyond command).  
+\end{itemize}
+
+\section{The Caster’s Burden}
+Magicians are defined not by what they can do, but by what they are willing to risk.  
+A cautious spellcaster describes carefully, invests in detailed actions, and may survive long. A reckless one courts power at great personal and narrative cost. Both choices shape the story.
+
+\chapter{Casting Loop}
+
+All spellcasting follows a structured sequence called the \emph{Casting Loop}.  
+It unfolds across two phases of play: gathering strength, then weaving it into form.
+
+\begin{enumerate}
+  \item \textbf{Channel} — The caster focuses, rolling \textbf{Wits + Arcana} to gather \emph{Potential}.  
+  Each success becomes fuel for shaping the spell. Each \texttt{1} adds Complication Points immediately.  
+  \item \textbf{Weave} — On the following turn, the caster rolls \textbf{Wits + (Art)} to shape Potential into a defined effect.  
+  The Description Ladder applies: Basic/Detailed/Intricate descriptions reduce or redirect Complication Points.  
+  \item \textbf{Backlash} — Complication Points spent by the GM manifest as uncontrolled consequences.  
+  These are thematic to the Art and scale with the number of points spent: minor nuisances at low levels, dangerous disasters at high levels.  
+\end{enumerate}
+
+\section{Backlash Severity Table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|p{10cm}|}
+\hline
+\textbf{CP Total} & \textbf{Guidance for Backlash Severity} \\
+\hline
+1 & Minor nuisance: cosmetic damage, a brief distraction, harmless magical echo. \\
+\hline
+2--3 & Noticeable setback: ally inconvenienced, unintended target struck, short-term vulnerability created. \\
+\hline
+4--5 & Serious complication: uncontrolled spreading effect, structural harm, dangerous foe empowered or alerted. \\
+\hline
+6--7 & Major consequence: battlefield-shaping hazard, lasting injury, environment altered in hostile ways. \\
+\hline
+8+ & Catastrophic backlash: spell escapes caster’s intent entirely, permanent scars on landscape or soul, new long-term threat unleashed. \\
+\hline
+\end{tabular}
+\caption{Backlash guidance by Complication Points (CP).}
+\end{table}
+
+\section{Design Intent}
+The Casting Loop keeps magic tense and thematic: no spell is “free.”  
+Every magical act alters not just the world, but the flow of narrative itself.
+
+\chapter{Deck of Consequences}
+
+The Deck of Consequences is a shared tool that externalizes risk and narrative fallout. 
+Whenever a check generates Complication Points, the GM may draw from the deck instead of (or in addition to) improvising outcomes. 
+This provides consistent tone and escalating tension.
+
+\section{Structure of the Deck}
+\begin{itemize}
+  \item \textbf{Suits = Domains of Complications}
+    \begin{description}
+      \item[\ding{171} Cups] Emotional, social, or relational fallout.
+      \item[\ding{171} Swords] Harm, danger, or escalation of conflict.
+      \item[\ding{171} Pentacles] Resource strain, economic or material cost.
+      \item[\ding{171} Wands] Magical, spiritual, or cosmic disturbances.
+    \end{description}
+  \item \textbf{Ranks = Severity of Complications}  
+  Higher ranks indicate more enduring or severe consequences:
+  \begin{description}
+    \item[Ace–3] Minor inconvenience or flavor complication.
+    \item[4–6] Moderate setback with some narrative teeth.
+    \item[7–9] Significant consequence altering the course of action.
+    \item[10–King] Major fallout, introducing new problems or lasting scars.
+  \end{description}
+\end{itemize}
+
+\section{Using the Deck}
+\begin{enumerate}
+  \item Player rolls; each \texttt{1} generates a Complication Point.
+  \item GM may draw a card for each Complication Point.
+  \item The suit frames the type of complication; the rank determines severity.
+  \item GM interprets and narrates based on context.
+\end{enumerate}
+
+\section{Guidance for Mundane Skills}
+Not every task should rely on freeform GM invention. The following table offers examples to keep complications consistent across play.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{2cm}|p{3cm}|p{7cm}|}
+\hline
+\textbf{Skill} & \textbf{Complication Domain} & \textbf{Examples by Severity} \\
+\hline
+Athletics & Swords (harm) &  
+Ace–3: Twisted ankle;  
+4–6: Lose grip, drop equipment;  
+7–9: Injury forces pause or retreat;  
+10–King: Serious wound, out of action. \\
+\hline
+Stealth & Cups (social) or Swords (harm) &  
+Ace–3: A creak alerts suspicion;  
+4–6: Minor evidence left behind;  
+7–9: Spotted and pursued;  
+10–King: Ambushed or captured. \\
+\hline
+Crafting & Pentacles (resources) &  
+Ace–3: Wasted materials;  
+4–6: Minor flaw, item unreliable;  
+7–9: Precious resource ruined;  
+10–King: Catastrophic failure or danger from collapse/explosion. \\
+\hline
+Persuasion & Cups (emotional/social) &  
+Ace–3: Offended someone mildly;  
+4–6: Reputation takes a small hit;  
+7–9: Relationship strained;  
+10–King: Alliance broken, enmity gained. \\
+\hline
+Scholarship & Wands (cosmic) or Pentacles (resources) &  
+Ace–3: Misremember detail;  
+4–6: Hours wasted chasing false lead;  
+7–9: Dangerous knowledge misapplied;  
+10–King: Catastrophic misunderstanding with lasting fallout. \\
+\hline
+\end{tabular}
+\caption{Mundane Skills and Example Complications}
+\end{table}
+
+\chapter{Player Archetypes at the Table}
+
+Not every group plays the same way. These archetypes describe \emph{how} players spend XP and seek spotlight. They are styles, not classes; most characters drift between them across a campaign.
+
+\section{Assumptions for Examples}
+Unless noted, examples assume a 30~XP starting budget.
+\begin{description}[leftmargin=2cm]
+  \item[Costs:] Attributes = (new rating $\times$ 3), Skills = (new level $\times$ 2), Followers = $C^2$ (Cap $C$), Assist bonus = $\min(C,\text{your Skill})$ up to +3 dice.
+  \item[Off-Screen Assets:] Minor 4~XP (single town, narrow help), Standard 8~XP (regional reach), Major 12~XP (multi-region, political teeth). Assets act between sessions; no direct scene dice.
+\end{description}
+
+\section{The Solo}
+\begin{description}[leftmargin=2cm]
+  \item[Definition:] Invests XP primarily in \textbf{Attributes and Skills}. Minimal followers, minimal holdings. All power is \emph{on the sheet}.
+  \item[Typical XP Spread:] 70--90\% Self; 0--10\% On-screen help; 0--20\% Off-screen.
+\end{description}
+
+\subsection*{Solo: Example Build (30 XP)}
+\begin{itemize}
+  \item Raise \textbf{Body} 2$\rightarrow$3: $3\times 3=9$ XP
+  \item Raise \textbf{Wits} 2$\rightarrow$3: $9$ XP \hfill (\emph{18 XP total})
+  \item Skill \textbf{Melee} 0$\rightarrow$3: $2+4+6=12$ XP
+  \item \emph{Remaining:} 0 XP
+\end{itemize}
+\textbf{Result:} Melee pool 6 (Body 3 + Melee 3) \emph{or} a finesse line at 6 (Wits 3 + Melee 3). With Intricate descriptions, the Solo mitigates Backlash/Complications by rerolling 1s and leans on personal reliability.
+
+\paragraph{Strengths} Consistent scene impact; fewer moving parts; resilient to follower loss.  
+\paragraph{Risks} Limited fiction reach between sessions; can stall when problems want logistics or networks.  
+\paragraph{GM Guidance} Feed high-ceiling tests (tight DCs, layered stakes). Reward description—let Intricate actions sing. Give \emph{hard} softlocks (locks, codes, customs) that force the Solo to collaborate or creatively frame scenes.
+
+\section{The Mixed Player}
+\begin{description}[leftmargin=2cm]
+  \item[Definition:] Splits XP between self-growth and \textbf{one or two} meaningful assets (either a small follower or a reliable holding).
+  \item[Typical XP Spread:] 50--65\% Self; 15--25\% On-screen help; 15--25\% Off-screen.
+\end{description}
+
+\subsection*{Mixed: Example Build (30 XP)}
+\begin{itemize}
+  \item Raise \textbf{Presence} 2$\rightarrow$3: $9$ XP
+  \item Skill \textbf{Sway} 0$\rightarrow$3: $2+4+6=12$ XP \hfill (\emph{21 XP total})
+  \item \textbf{Follower} (Cap~3 \emph{Archivist}): $3^2=9$ XP
+\end{itemize}
+\textbf{Result:} Social pool 6 (Presence 3 + Sway 3). In scenes involving ancient texts, the Archivist grants up to +3 help dice (capped) if the PC's own Lore/Research is at least 3; otherwise, the help is limited by the PC's skill.
+
+\paragraph{Strengths} Versatile: credible in scenes, \emph{and} has a lever for special problems.  
+\paragraph{Risks} Juggling upkeep (Coin or scenes). The helper can be targeted when the GM spends 2+ Complication Points.  
+\paragraph{GM Guidance} Present multi-key problems: one key favors the PC's sheet, one calls the follower/asset. Let off-screen assets set up on-screen advantages (credibility, entry, rumors) but never free wins.
+
+\section{The Mastermind}
+\begin{description}[leftmargin=2cm]
+  \item[Definition:] Prioritizes \textbf{followers, cadres, pets/familiars} and \textbf{off-screen networks}. Their sheet is the hub of a larger apparatus.
+  \item[Typical XP Spread:] 25--40\% Self; 35--55\% On-screen help; 20--40\% Off-screen.
+\end{description}
+
+\subsection*{Mastermind: Example Build (30 XP)}
+\begin{itemize}
+  \item Attribute \textbf{Wits} 2$\rightarrow$3: $9$ XP
+  \item Skill \textbf{Tactics} 0$\rightarrow$2: $2+4=6$ XP \hfill (\emph{15 XP total})
+  \item \textbf{Follower} (Cap~4 \emph{Scout/Ranger}): $4^2=16$ XP
+  \item \textbf{Off-Screen Asset} (Minor Safehouse Ring): 4 XP
+\end{itemize}
+\emph{Over by 5 XP—trim by dropping Tactics to 1 (2 XP) and downgrading the asset to a single Safehouse contact (2 XP), or start with 35 XP if your chargen allows it.}
+\textbf{Result:} In any navigation/stealth approach, the Scout provides up to +3 dice (capped by the PC’s relevant skill). The Safehouse ring solves travel/logistics in downtime and seeds rumors.
+
+\paragraph{Strengths} Scene control through assistance; strategic reach between sessions; strong heist/social planning play.  
+\paragraph{Risks} Dependency on assist lanes; followers can be endangered on 2+ Complication Point spends; upkeep pressure.  
+\paragraph{GM Guidance} Make lanes matter. Spotlight costs: only \emph{one} assistant per action, +3 cap. Use consequence targeting fairly; endangering a follower should escalate stakes, not punish creativity.
+
+\section{Comparative Guidance at a Glance}
+
+\begin{center}
+\begin{tabular}{p{3.2cm} p{3.2cm} p{3.2cm} p{3.2cm}}
+\toprule
+ & \textbf{Solo} & \textbf{Mixed} & \textbf{Mastermind} \\
+\midrule
+XP Focus & Attributes/Skills & Split & Followers + Assets \\
+Core Dice & Highest personal pools & Good pools + situational +3 & Moderate pools + frequent +3 \\
+Off-Screen & Light & Some leverage & Strong leverage \\
+Fragility & Low (self-reliant) & Medium (one helper) & Higher (helper risk, upkeep) \\
+GM Dials & Hard DCs, layered stakes & Multi-key scenes & Lanes, logistics, comp-targeting \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Balancing the Spotlight}
+\begin{itemize}
+  \item \textbf{Solos} earn spotlight through Intricate action—reward rich description with rerolls and fictional position.
+  \item \textbf{Mixed} characters should unlock doors others can’t, via their one specialty follower or asset.
+  \item \textbf{Masterminds} shine in plans coming together; ensure each step needs a different PC so orchestration lifts everyone.
+\end{itemize}
+
+\section{Advancement Notes}
+\begin{itemize}
+  \item \textbf{Followers Scale Fast:} $C^2$ costs keep high-Cap help rare. A Cap~5 bodyguard is 25 XP—roughly the same as taking a Skill from 0 to 4 \emph{and} nudging an Attribute.
+  \item \textbf{+3 Assist Cap:} Maintains parity—raising your Skill above 3 still matters; help doesn’t eclipse mastery.
+  \item \textbf{Off-Screen Assets} don’t add dice; they \emph{change the fiction}. Use them to set position (entry, cover, rumors, writs) so they feel worth the XP without stealing scenes.
+\end{itemize}
+% ======================================================
+\appendix
+% ======================================================
+
+\chapter{Sample Characters}
+
+This chapter presents three ready-to-play exemplars of the archetypes defined earlier. Each is system-legal using the costs defined in this book (Attributes: new$\times$3; Skills: new$\times$2; Followers: $C^2$; Assist cap +3; Off-screen assets by tier). Use them as pregens, benchmarks, or templates.
+
+\section{The Solo — Sable Kestrel, Road-Worn Duelist}
+
+\subsection*{Concept}
+A blade for hire who trusts steel, footwork, and a cool read of the room more than favors or retainers.
+
+\subsection*{Build Summary (30 XP)}
+\begin{itemize}
+  \item \textbf{Attributes}: Body 3 (9 XP), Wits 3 (9 XP), Spirit 2, Presence 2 \hfill \emph{18 XP}
+  \item \textbf{Skills}: Melee 3 (2+4+6 = 12 XP), Observation 1 (2 XP) \hfill \emph{14 XP}
+  \item \textbf{Total:} 32 XP $\rightarrow$ drop Observation 1 (2 XP) or start at 32 XP tables. \textbf{Baseline 30 XP}: Body 3, Wits 3, Melee 3.
+\end{itemize}
+
+\subsection*{Dice Pools (Common)}
+\begin{itemize}
+  \item \textbf{Body + Melee}: 6 (brutal, direct)
+  \item \textbf{Wits + Melee}: 6 (feints, tempo control)
+  \item \textbf{Wits + Observation}: 3 (if taken)
+\end{itemize}
+
+\subsection*{Signature Move}
+\textbf{Intricate Riposte:} Declare a narrow objective (\emph{``disarm without blood''}), describe footwork and angle; roll Wits+Melee (6d10). On 1s, Intricate rerolls minimize Complications; on a clean success, add a flourish (\emph{opponent’s blade clatters to your boot}).
+
+\subsection*{Complication Hooks (GM)}
+\begin{itemize}
+  \item \emph{Overreach:} Fatigue clock; armor strap loosens; duel attracts unwanted gambler attention.
+  \item \emph{Collateral:} Stray blow nicks a banner; a house guard demands reparations.
+\end{itemize}
+
+\subsection*{Advancement Path}
+\begin{itemize}
+  \item Short term: Melee 3$\rightarrow$4 (8 XP); Observation 0$\rightarrow$2 (6 XP).
+  \item Long term: Presence 2$\rightarrow$3 (9 XP) to open a credible social line.
+\end{itemize}
+
+\bigskip
+\hrule
+\bigskip
+
+\section{The Mixed — Bryn of the Ledger, Field Archivist}
+
+\subsection*{Concept}
+A scholar-adventurer who solves problems with keen recall and a single trusted specialist.
+
+\subsection*{Build Summary (30 XP)}
+\begin{itemize}
+  \item \textbf{Attributes}: Presence 3 (9 XP), Wits 3 (9 XP), Body 2, Spirit 2 \hfill \emph{18 XP}
+  \item \textbf{Skills}: Sway 3 (2+4+6 = 12 XP) \hfill \emph{12 XP}
+  \item \textbf{Follower}: Cap 3 \emph{Archivist} (Lore/Research specialist) (9 XP)
+  \item \textbf{Adjust}: To stay at 30 XP, delay Wits 3 until first advance \emph{or} start at 33 XP tables. \textbf{Baseline 30 XP}: Presence 3, Sway 3, Follower Cap 3.
+\end{itemize}
+
+\subsection*{Dice \& Assist}
+\begin{itemize}
+  \item \textbf{Presence + Sway}: 6 (negotiations, permissions, de-escalation)
+  \item \textbf{Archivist Assist}: Up to +3 dice on \emph{Lore/Research/Occult} actions, capped by Bryn’s own relevant Skill (encourages training to 3).
+\end{itemize}
+
+\subsection*{Signature Move}
+\textbf{Stamped and Countersigned:} Start a parley with a citation (\emph{charter, doctrine, ledger mark}); roll Presence+Sway (6d10). If Complications, the GM may introduce red tape (\emph{a missing counter-seal}); spend a minute with the Archivist to produce the cross-reference and earn a \emph{position} advantage on the next roll.
+
+\subsection*{Complication Hooks (GM)}
+\begin{itemize}
+  \item \emph{Academic Rivalry:} A jealous clerk disputes your citation.
+  \item \emph{Paper Trail:} Your documents help you now but later implicate an ally.
+\end{itemize}
+
+\subsection*{Advancement Path}
+\begin{itemize}
+  \item Short term: Wits 2$\rightarrow$3 (9 XP); Research 0$\rightarrow$3 (12 XP).
+  \item Long term: Off-screen Asset (Minor Scriptorium Cell, 4 XP) to seed rumors and requisitions.
+\end{itemize}
+
+\bigskip
+\hrule
+\bigskip
+
+\section{The Mastermind — Ash Thorne, Quiet Conductor}
+
+\subsection*{Concept}
+A calm planner whose small crew and safehouses convert problems into steps.
+
+\subsection*{Build Summary (30–34 XP)}
+\begin{itemize}
+  \item \textbf{Attributes}: Wits 3 (9 XP), Presence 3 (9 XP), Body 2, Spirit 2 \hfill \emph{18 XP}
+  \item \textbf{Skills}: Tactics 2 (2+4 = 6 XP), Skullduggery 1 (2 XP) \hfill \emph{8 XP}
+  \item \textbf{Follower}: Cap 4 \emph{Scout/Ranger} (16 XP)
+  \item \textbf{Off-Screen Asset}: Minor Safehouse (4 XP)
+  \item \textbf{Trim Options}: Drop Skullduggery 1 and the Safehouse to hit 30 XP; or accept 34 XP at generous tables.
+\end{itemize}
+
+\subsection*{Dice \& Assist}
+\begin{itemize}
+  \item \textbf{Wits + Tactics}: 5 (planning, route selection, timing)
+  \item \textbf{Scout Assist}: Up to +3 dice on movement/stealth/survival lanes, capped by Ash’s Skill.
+\end{itemize}
+
+\subsection*{Signature Move}
+\textbf{Three Doors Ahead:} Ash frames the approach with two decoys and one true lane (Tactics roll). On success, pick one benefit: \emph{split heat between decoys}, \emph{advance a clock two ticks}, or \emph{bank +1 forward} for the next ally action. On 2+ Complication Points, the GM may \emph{target the Scout} or compromise a decoy.
+
+\subsection*{Complication Hooks (GM)}
+\begin{itemize}
+  \item \emph{Crew Liability:} The Scout’s old feud surfaces.
+  \item \emph{Burned Safehouse:} A rival pays a porter to misdirect deliveries.
+\end{itemize}
+
+\subsection*{Advancement Path}
+\begin{itemize}
+  \item Short term: Skullduggery 1$\rightarrow$3 (6+8 = 14 XP) to self-cap assists at +3.
+  \item Long term: Follower Cap 5 bodyguard (25 XP) \emph{or} Standard Safehouse Ring (8 XP) for regional reach.
+\end{itemize}
+
+\bigskip
+\hrule
+\bigskip
+
+\section{At-the-Table Play Examples}
+
+\subsection*{Heist Entry (Intricate Actions)}
+\textbf{Solo} cases the guard’s stance (Wits+Melee as feint-reading): success, banks a disarm detail for later.  
+\textbf{Mixed} flashes a merchant writ (Presence+Sway), Archivist supplies a ledger note: +2 dice assist.  
+\textbf{Mastermind} runs the decoy wagon (Wits+Tactics): success splits heat; one Complication Point: a junior guard memorizes faces.
+
+\subsection*{Duel in the Courtyard}
+\textbf{Solo} declares \emph{``first blood, no scars''}, wins on clean 6+, rerolls 1s via Intricate.  
+\textbf{Mixed} keeps the crowd aligned: reduces fallout with Sway; on Complication, a heckler changes the mood.  
+\textbf{Mastermind} positions allies: next turn the Scout provides climbing lines (+3 capped assist) for a swift exit.
+
+\subsection*{Debrief \& Downtime}
+\textbf{Solo} buys Skill 3$\rightarrow$4 to keep personal ceiling high.  
+\textbf{Mixed} trains Research 0$\rightarrow$2 and deepens the Archivist’s narrative ties.  
+\textbf{Mastermind} invests XP into a Standard Safehouse Ring to convert future \emph{position} into on-screen advantage.
+
+\bigskip
+\hrule
+\bigskip
+
+\section{Conversion Notes \& Reskinning}
+These statlines are intentionally lean. To reskin:
+\begin{itemize}
+  \item Swap \textbf{Melee} for \textbf{Marksmanship} on the Solo to make a sniper.
+  \item Change the \textbf{Archivist} to a \textbf{Quartermaster} (assist lanes: Logistics, Forgery, Procurement).
+  \item Rebuild the \textbf{Scout} as a \textbf{Whisper-Familiar} for casters; same Cap rules, different fiction.
+\end{itemize}
+
+\chapter{Quick Reference Sheets}
+
+These condensed sheets summarize the core procedures, costs, and tables for use at the table.  
+They are designed for GMs and players to keep the flow of play without flipping through chapters.
+
+\section*{Core Mechanic: The Art of Consequence}
+\begin{enumerate}
+  \item \textbf{Approach:} Player states intent and method (Attribute + Skill).
+  \item \textbf{Execution:} Roll dice pool of d10s. Each 6+ is a success; each 1 is a Complication Point.
+  \item \textbf{Outcome:}  
+  \begin{description}[leftmargin=2cm]
+    \item[Basic] Roll as-is; tally Complications.  
+    \item[Detailed] Re-roll one \texttt{1}.  
+    \item[Intricate] Re-roll all \texttt{1}s; add one positive flourish if successful.  
+  \end{description}
+\end{enumerate}
+
+\section*{Attributes \& Skills}
+\begin{description}[leftmargin=2cm]
+  \item[Body] Strength, endurance, physical force.  
+  \item[Wits] Perception, cleverness, reflexes.  
+  \item[Spirit] Willpower, intuition, resilience.  
+  \item[Presence] Charm, command, social force.  
+\end{description}
+
+\textbf{Skill Ratings (0–5)}  
+\begin{description}[leftmargin=2cm]
+  \item[0] Untrained — rely on raw Attribute.  
+  \item[1] Familiar — basic competence.  
+  \item[2] Skilled — reliable training.  
+  \item[3] Expert — professional mastery.  
+  \item[4] Master — renowned in your field.  
+  \item[5] Legendary — near-mythic talent.  
+\end{description}
+
+\section*{XP Costs}
+\begin{description}[leftmargin=2cm]
+  \item[Attributes] New rating × 3.  
+  \item[Skills] New level × 2.  
+  \item[Followers (On-Screen)] Cap$^2$ XP (e.g., Cap 3 = 9 XP).  
+  \item[Off-Screen Assets] Tiered cost (Minor 4 XP, Standard 8 XP, Major 12 XP).  
+\end{description}
+
+\section*{Deck of Consequences}
+Draw from the deck (or roll a d52 equivalence) when Complication Points are spent.  
+Suits = type of complication. Rank = severity.
+
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Suit} & \textbf{Complication Domain} \\
+\hline
+Hearts & Emotional / Social fallout (fear, anger, betrayal) \\
+\hline
+Diamonds & Resource / Wealth loss (gear breaks, expenses rise) \\
+\hline
+Clubs & Physical harm / Obstacles (injuries, blockades, fatigue) \\
+\hline
+Spades & Mystical / Narrative twists (omens, curses, chance) \\
+\hline
+\end{tabular}
+
+\medskip
+\noindent
+\textbf{Ranks (1–10, J–K–A):}  
+\begin{itemize}
+  \item 2–5: Minor setback, scene continues smoothly.  
+  \item 6–9: Moderate complication; new obstacle or clock starts.  
+  \item 10–King: Severe twist; alters stakes of the scene.  
+  \item Ace: Catastrophic turn; reshapes narrative or mission goal.  
+\end{itemize}
+
+\section*{Magic Casting Loop}
+\begin{enumerate}
+  \item \textbf{Channel:} Wits + Arcana roll to gather Potential.  
+  \item \textbf{Weave:} Wits + Art roll to shape spell.  
+  \item \textbf{Backlash:} Complication Points spent through Deck of Consequences, themed to the opposing element.  
+\end{enumerate}
+
+\section*{Player Archetypes}
+\begin{itemize}
+  \item \textbf{Solo:} Invests in Attributes + Skills. Strong spotlight.  
+  \item \textbf{Mixed:} Balances self with one follower or off-screen assets.  
+  \item \textbf{Mastermind:} Multiple followers + networks, but more narrative liabilities.  
+\end{itemize}
+
+\section*{Narrative Time}
+\begin{description}[leftmargin=2cm]
+  \item[A Moment] A heartbeat; single action.  
+  \item[Some Time] A few minutes; quick exchanges.  
+  \item[Significant Time] An hour or more; downtime actions.  
+  \item[Days] Extended travel or projects.  
+\end{description}
+
+\section*{GM Guidance at a Glance}
+\begin{itemize}
+  \item Spend Complication Points to \textbf{add story problems}, not punish.  
+  \item Always tie consequences back to \textbf{thematic domains} (Hearts, Diamonds, Clubs, Spades).  
+  \item Encourage Intricate actions: reward description with rerolls and narrative control.  
+  \item Let Off-Screen assets resolve downtime problems but keep adventures on the table.  
+\end{itemize}
+
+\chapter{GM Toolkit: Gear, Kits, and Artifacts}
+
+This chapter provides guidance and ready-to-use gear for \textit{Fate’s Edge}.  
+Unlike the player-facing primer, this section is designed for GMs.  
+It contains condensed tables of common kits, weapons, armor, rare items, and magical artifacts.  
+It also offers rules of thumb for creating new gear without tracking individual numbers.
+
+\section{Design Philosophy}
+\begin{itemize}
+  \item \textbf{Narrative, not accounting.} Gear matters when it changes the story, not as a spreadsheet.
+  \item \textbf{Complications drive gear drama.} Items break, spoil, or splinter when the dice say so.
+  \item \textbf{XP defines weight.} Items that are always-on or arc-defining should cost XP.  
+  Flavorful, narrow, or once-per-session items may be free at creation or as treasure.
+\end{itemize}
+
+\section{Standard Kits}
+Characters begin with one free kit. Upgraded versions may cost XP, but mundane versions are assumed to be coin-purchased or handwaved.
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Kit} & \textbf{Narrative Effect} \\
+\hline
+Traveler’s Pack & Baseline supplies. Without it, a PC suffers Fatigue one step sooner than the party. \\
+Scout’s Rig & +1 die to a Survival/Stealth roll per session. Loses bonus if Supply is Dangerously Low. \\
+Scholar’s Satchel & +1 die to a Lore/Arcana roll per session. Requires light. \\
+Burglar’s Tools & +1 die to Skulduggery/Stealth vs. mundane locks or traps. May become Compromised. \\
+Healer’s Bag & Once per session: Spirit+Craft roll to remove 1 Fatigue from an ally or stabilize the dying. \\
+\end{tabularx}
+
+\section{Weapons and Armor}
+Coin buys mundane versions. XP upgrades represent cultural edges or masterwork reliability.
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Item} & \textbf{Narrative Effect} \\
+\hline
+Ykrul Recurve Bow & Powerful composite bow. If Compromised, requires rare materials to repair. \\
+Viterran Longspear & Once per scene: +1 die against a charging mounted foe. \\
+Duelist’s Rapier & On Intricate attack, reroll one failed die. Bends (Compromised) on failed roll with Complications. \\
+Knight’s Heater Shield & May forgo attack to give ally +2 dice to next defense. Compromise is a story event. \\
+Aeler-forged Hauberk & Counts as armor. When gaining Fatigue, roll a die; on 6+, avoid it. \\
+\end{tabularx}
+
+\section{Rare Gear (Story Rewards)}
+These are not purchased; they are discovered, inherited, or earned.  
+A GM may attach XP “Attunement” costs if players want to keep and rely on them.
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Item} & \textbf{Narrative Effect} \\
+\hline
+Rothari War-Kit & Once per session: cancel 1 Complication from a stealth/ambush roll. \\
+Whisper-thin Elven Cloak & Stealth in natural terrain: reroll one \texttt{1}. At Full Supply, reroll all \texttt{1}s. \\
+Lence Dueling Gauntlet & +2 dice to Presence when issuing challenges or demanding satisfaction. \\
+Oshiiran Abacus & On trip-planning, add +1 free Supply segment if Lore roll succeeds. \\
+Sihai Warrior-Monk Gi & If unarmored, may use Wits instead of Body for defense rolls. \\
+\end{tabularx}
+
+\section{Artifacts and Relics}
+Artifacts reshape arcs. Always introduce them with strong narrative hooks.
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Artifact} & \textbf{Narrative Effect} \\
+\hline
+Sundered King’s Coin & Payment always creates ripples. GM draws 2 Consequence cards, applies one. \\
+Echo-Wrought Blade & May strike spirits. On hit, can inflict Fatigue instead of damage. \\
+Khemesh-Scale Cloak & Wearer breathes underwater for Significant Time; failed Spirit roll causes Fatigue. \\
+Unkwa Ward-Post & Wards camp from natural Supply loss. Failed Spirit roll attracts hungry things. \\
+Silent Bell & Once per arc, erase all Complication Points from a roll. Debt returns later as larger problem. \\
+\end{tabularx}
+
+\section{Creating New Gear}
+GMs should keep new items simple and narrative-facing. Use these guidelines:
+\begin{itemize}
+  \item \textbf{+1 die once per session} — Minor, 0–2 XP if made permanent.  
+  \item \textbf{Cancel 1 Complication} — Mid-tier, 3–4 XP.  
+  \item \textbf{Always-on swap or defense} — Major, 6+ XP.  
+  \item \textbf{Arc-shaping artifact} — 8–10 XP. Found, not bought.  
+\end{itemize}
+
+Tie items to culture, history, or gods of the setting to deepen immersion.  
+A dwarven hammer is not “just” a hammer — it is a relic of a guild feud or an heirloom lost in a kingdom’s fall.
+
+\end{document}
