@@ -60,79 +60,124 @@ class MainWindow:
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill="both", expand=True, padx=10, pady=10)
         
-        # Create all tabs
-        self.create_all_tabs()
+        # Create category tabs
+        self.create_category_tabs()
         
-    def create_all_tabs(self):
-        # Core Resource Trackers
-        supply_frame = ttk.Frame(self.notebook)
-        self.notebook.add(supply_frame, text="Supply Clock")
+    def create_category_tabs(self):
+        # Resources Category
+        resources_frame = ttk.Frame(self.notebook)
+        self.notebook.add(resources_frame, text="Resources")
+        self.create_resources_tabs(resources_frame)
+        
+        # Combat Category
+        combat_frame = ttk.Frame(self.notebook)
+        self.notebook.add(combat_frame, text="Combat")
+        self.create_combat_tabs(combat_frame)
+        
+        # Campaign Category
+        campaign_frame = ttk.Frame(self.notebook)
+        self.notebook.add(campaign_frame, text="Campaign")
+        self.create_campaign_tabs(campaign_frame)
+        
+        # Tools Category
+        tools_frame = ttk.Frame(self.notebook)
+        self.notebook.add(tools_frame, text="Tools")
+        self.create_tools_tabs(tools_frame)
+        
+    def create_resources_tabs(self, parent):
+        resources_notebook = ttk.Notebook(parent)
+        resources_notebook.pack(fill="both", expand=True)
+        
+        # Supply Clock
+        supply_frame = ttk.Frame(resources_notebook)
+        resources_notebook.add(supply_frame, text="Supply")
         self.supply_clock = SupplyClockTab(supply_frame)
         
-        fatigue_frame = ttk.Frame(self.notebook)
-        self.notebook.add(fatigue_frame, text="Fatigue")
+        # Fatigue
+        fatigue_frame = ttk.Frame(resources_notebook)
+        resources_notebook.add(fatigue_frame, text="Fatigue")
         self.fatigue_tracker = FatigueTrackerTab(fatigue_frame)
         
-        boon_frame = ttk.Frame(self.notebook)
-        self.notebook.add(boon_frame, text="Boons")
+        # Boons
+        boon_frame = ttk.Frame(resources_notebook)
+        resources_notebook.add(boon_frame, text="Boons")
         self.boon_tracker = BoonTrackerTab(boon_frame)
         
-        xp_frame = ttk.Frame(self.notebook)
-        self.notebook.add(xp_frame, text="XP Tracker")
+        # XP Tracker
+        xp_frame = ttk.Frame(resources_notebook)
+        resources_notebook.add(xp_frame, text="XP")
         self.xp_tracker = XPTrackerTab(xp_frame)
         
-        # Combat & Scene Management
-        combat_frame = ttk.Frame(self.notebook)
-        self.notebook.add(combat_frame, text="Combat Tracker")
-        self.combat_tracker = CombatTrackerTab(combat_frame)
-        
-        scene_frame = ttk.Frame(self.notebook)
-        self.notebook.add(scene_frame, text="Scene Builder")
-        self.scene_builder = SceneBuilderTab(scene_frame)
-        
-        # Consequence Management
-        cp_frame = ttk.Frame(self.notebook)
-        self.notebook.add(cp_frame, text="CP Tracker")
-        self.cp_tracker = CPSpendTab(cp_frame)
-        
-        consequence_frame = ttk.Frame(self.notebook)
-        self.notebook.add(consequence_frame, text="Consequences")
-        self.consequence_tracker = ConsequenceTab(consequence_frame)
-        
-        # Campaign Management
-        campaign_frame = ttk.Frame(self.notebook)
-        self.notebook.add(campaign_frame, text="Campaign Clocks")
-        self.campaign_clock = CampaignClockTab(campaign_frame)
-        
-        evidence_frame = ttk.Frame(self.notebook)
-        self.notebook.add(evidence_frame, text="Evidence")
-        self.evidence_tracker = EvidenceTrackerTab(evidence_frame)
-        
-        # Resource Management
-        follower_frame = ttk.Frame(self.notebook)
-        self.notebook.add(follower_frame, text="Followers & Assets")
+        # Followers & Assets
+        follower_frame = ttk.Frame(resources_notebook)
+        resources_notebook.add(follower_frame, text="Followers/Assets")
         self.follower_tracker = FollowerTrackerTab(follower_frame)
         
-        # Utility Tools
-        dice_frame = ttk.Frame(self.notebook)
-        self.notebook.add(dice_frame, text="Dice Roller")
+    def create_combat_tabs(self, parent):
+        combat_notebook = ttk.Notebook(parent)
+        combat_notebook.pack(fill="both", expand=True)
+        
+        # Combat Tracker
+        combat_frame = ttk.Frame(combat_notebook)
+        combat_notebook.add(combat_frame, text="Combat")
+        self.combat_tracker = CombatTrackerTab(combat_frame)
+        
+        # CP Tracker
+        cp_frame = ttk.Frame(combat_notebook)
+        combat_notebook.add(cp_frame, text="CP")
+        self.cp_tracker = CPSpendTab(cp_frame)
+        
+        # Consequences
+        consequence_frame = ttk.Frame(combat_notebook)
+        combat_notebook.add(consequence_frame, text="Consequences")
+        self.consequence_tracker = ConsequenceTab(consequence_frame)
+        
+        # Scene Builder
+        scene_frame = ttk.Frame(combat_notebook)
+        combat_notebook.add(scene_frame, text="Scenes")
+        self.scene_builder = SceneBuilderTab(scene_frame)
+        
+    def create_campaign_tabs(self, parent):
+        campaign_notebook = ttk.Notebook(parent)
+        campaign_notebook.pack(fill="both", expand=True)
+        
+        # Campaign Clocks
+        campaign_frame = ttk.Frame(campaign_notebook)
+        campaign_notebook.add(campaign_frame, text="Clocks")
+        self.campaign_clock = CampaignClockTab(campaign_frame)
+        
+        # Evidence
+        evidence_frame = ttk.Frame(campaign_notebook)
+        campaign_notebook.add(evidence_frame, text="Evidence")
+        self.evidence_tracker = EvidenceTrackerTab(evidence_frame)
+        
+    def create_tools_tabs(self, parent):
+        tools_notebook = ttk.Notebook(parent)
+        tools_notebook.pack(fill="both", expand=True)
+        
+        # Dice Roller
+        dice_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(dice_frame, text="Dice")
         self.dice_roller = DiceRollerTab(dice_frame)
         
-        npc_frame = ttk.Frame(self.notebook)
-        self.notebook.add(npc_frame, text="NPC Generator")
+        # NPC Generator
+        npc_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(npc_frame, text="NPCs")
         self.npc_generator = NPCTab(npc_frame)
         
-        clocks_frame = ttk.Frame(self.notebook)
-        self.notebook.add(clocks_frame, text="Custom Clocks")
+        # Custom Clocks
+        clocks_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(clocks_frame, text="Clocks")
         self.clocks_tracker = ClocksTab(clocks_frame)
         
-        adventure_frame = ttk.Frame(self.notebook)
-        self.notebook.add(adventure_frame, text="Adventure Tools")
+        # Adventure Tools
+        adventure_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(adventure_frame, text="Adventure")
         self.adventure_tools = AdventureTab(adventure_frame)
         
         # Settings
-        settings_frame = ttk.Frame(self.notebook)
-        self.notebook.add(settings_frame, text="Settings")
+        settings_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(settings_frame, text="Settings")
         self.settings = SettingsTab(settings_frame)
         
     def create_status_bar(self):
@@ -223,8 +268,3 @@ Navigation:
         
         ttk.Button(help_window, text="Close", command=help_window.destroy).pack(pady=10)
 
-# Make sure this is at the end of the file
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = MainWindow(root)
-    root.mainloop()
