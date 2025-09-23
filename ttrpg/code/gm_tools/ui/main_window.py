@@ -3,22 +3,22 @@ import tkinter as tk
 from tkinter import ttk
 
 # Import all your tab modules
-from ui.supply_clock_tab import SupplyClockTab
-from ui.fatigue_tracker_tab import FatigueTrackerTab
-from ui.boon_tracker_tab import BoonTrackerTab
-from ui.xp_tracker_tab import XPTrackerTab
-from ui.combat_tracker_tab import CombatTrackerTab
-from ui.scene_builder_tab import SceneBuilderTab
-from ui.cp_spend_tab import CPSpendTab
-from ui.consequence_tab import ConsequenceTab
-from ui.campaign_clock_tab import CampaignClockTab
-from ui.evidence_tracker_tab import EvidenceTrackerTab
-from ui.follower_tracker_tab import FollowerTrackerTab
-from ui.dice_roller_tab import DiceRollerTab
-from ui.npc_tab import NPCTab
-from ui.clocks_tab import ClocksTab
-from ui.adventure_tab import AdventureTab
-from ui.settings_tab import SettingsTab
+from gm_tools.ui.supply_clock_tab import SupplyClockTab
+from gm_tools.ui.fatigue_tracker_tab import FatigueTrackerTab
+from gm_tools.ui.boon_tracker_tab import BoonTrackerTab
+from gm_tools.ui.xp_tracker_tab import XPTrackerTab
+from gm_tools.ui.combat_tracker_tab import CombatTrackerTab
+from gm_tools.ui.scene_builder_tab import SceneBuilderTab
+from gm_tools.ui.cp_spend_tab import CPSpendTab
+from gm_tools.ui.consequence_tab import ConsequenceTab
+from gm_tools.ui.campaign_clock_tab import CampaignClockTab
+from gm_tools.ui.evidence_tracker_tab import EvidenceTrackerTab
+from gm_tools.ui.follower_tracker_tab import FollowerTrackerTab
+from gm_tools.ui.dice_roller_tab import DiceRollerTab
+from gm_tools.ui.npc_tab import NPCTab
+from gm_tools.ui.clocks_tab import ClocksTab
+from gm_tools.ui.adventure_tab import AdventureTab
+from gm_tools.ui.settings_tab import SettingsTab
 
 class MainWindow:
     def __init__(self, root):

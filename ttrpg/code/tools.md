@@ -154,4 +154,70 @@ ui/notes_tab.py
 ui/player_dashboard_tab.py  # Overview for all player resources
 
 
+.
+├── data
+│   ├── __init__.py
+│   ├── database.py
+│   ├── fate_edge_clocks.sql
+│   └── fate_edge_data_clean.sql
+├── gm_tools
+│   ├── __init__.py
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── ui
+│   │   ├── __init__.py
+│   │   ├── main_window.py
+│   │   ├── supply_clock_tab.py
+│   │   ├── fatigue_tracker_tab.py
+│   │   ├── boon_tracker_tab.py
+│   │   ├── xp_tracker_tab.py
+│   │   ├── combat_tracker_tab.py
+│   │   ├── scene_builder_tab.py
+│   │   ├── cp_spend_tab.py
+│   │   ├── consequence_tab.py
+│   │   ├── campaign_clock_tab.py
+│   │   ├── evidence_tracker_tab.py
+│   │   ├── follower_tracker_tab.py
+│   │   ├── dice_roller_tab.py
+│   │   ├── npc_tab.py
+│   │   ├── clocks_tab.py
+│   │   ├── adventure_tab.py
+│   │   └── settings_tab.py
+│   └── utils
+│       ├── __init__.py
+│       ├── card_utils.py
+│       ├── clock_utils.py
+│       └── styles.py
+├── player_tools
+│   ├── __init__.py
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── ui
+│   │   ├── __init__.py
+│   │   ├── main_window.py
+│   │   ├── character_sheet_tab.py
+│   │   ├── skill_tracker_tab.py
+│   │   ├── asset_tracker_tab.py
+│   │   ├── condition_tracker_tab.py
+│   │   ├── xp_planner_tab.py
+│   │   ├── dice_roller_tab.py
+│   │   ├── boon_tracker_tab.py
+│   │   ├── fatigue_tracker_tab.py
+│   │   ├── supply_tracker_tab.py
+│   │   ├── follower_tracker_tab.py
+│   │   ├── talent_tracker_tab.py
+│   │   ├── ritual_tracker_tab.py
+│   │   └── settings_tab.py
+│   └── utils
+│       ├── __init__.py
+│       ├── character_utils.py
+│       └── validation_utils.py
+└── shared
+    ├── __init__.py
+    ├── models
+    │   ├── __init__.py
+    │   ├── character.py
+    │   ├── asset.py
+    │   └── clock.py
+    └── constants.py
 
