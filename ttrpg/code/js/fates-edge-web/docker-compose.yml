@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: fates-edge-db
+    environment:
+      POSTGRES_USER: fateuser
+      POSTGRES_PASSWORD: fatepass
+      POSTGRES_DB: fatesedge
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fates-edge-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://fateuser:fatepass@postgres:5432/fatesedge
+      - JWT_SECRET=your-super-secret-jwt-key-change-this
+      - NODE_ENV=development
+      - FRONTEND_URL=http://localhost:3000
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+
