@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useChatStore } from '../../store/chatStore';
 import { useMacroStore } from '../../store/macroStore';
-import { useCharacterStore } from '../../store/characterStore'; // Add this import
+import { useCharacterStore } from '../../store/characterStore';
 import socketService from '../../services/socket.service';
 import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
 
@@ -14,6 +14,7 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
   const typingTimeoutRef = useRef(null);
   const textareaRef = useRef(null);
   const { setTyping } = useChatStore();
+  const { executeMacro } = useMacroStore();
   const { characters } = useCharacterStore();
 
   // Handle typing indicators
@@ -48,6 +49,16 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
     if (!message.trim()) return;
 
     try {
+      // Check if this is a macro command
+      if (message.trim().startsWith('/')) {
+        // Execute macro via API
+        await executeMacro(campaignId, message.trim().substring(1), selectedCharacter || null);
+        setMessage('');
+        setShowMacroSuggestions(false);
+        return;
+      }
+
+      // Send regular message via SocketIO
       const messageData = {
         campaignId,
         content: message.trim(),
@@ -58,7 +69,6 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
         messageData.characterId = selectedCharacter;
       }
 
-      // Send message via SocketIO
       socketService.sendMessage(messageData);
       
       setMessage('');
@@ -84,7 +94,7 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
   };
 
   const insertMacro = (command) => {
-    const newMessage = message + command + ' ';
+    const newMessage = '/' + command + ' ';
     setMessage(newMessage);
     setShowMacroSuggestions(false);
     textareaRef.current?.focus();
@@ -92,7 +102,7 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
 
   // Filter macros that match current input
   const filteredMacros = macros.filter(macro => 
-    macro.command.toLowerCase().includes(message.toLowerCase())
+    macro.command.toLowerCase().includes(message.toLowerCase().substring(1))
   );
 
   return (
@@ -126,7 +136,7 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
               onClick={() => insertMacro(macro.command)}
               className="block w-full text-left px-2 py-1 text-sm text-gray-300 hover:bg-gray-600 rounded"
             >
-              <span className="font-mono text-purple-400">{macro.command}</span> - {macro.description || macro.name}
+              <span className="font-mono text-purple-400">/{macro.command}</span> - {macro.description || macro.name}
             </button>
           ))}
         </div>
@@ -139,7 +149,7 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={`Message #${currentChannel}...`}
+            placeholder={`Message #${currentChannel}... (Type / for macros)`}
             className="input-field w-full resize-none"
             rows="1"
             style={{ minHeight: '40px', maxHeight: '120px' }}
@@ -163,7 +173,7 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
       <div className="flex items-center mt-2 text-xs text-gray-500">
         <span>Press Enter to send, Shift+Enter for new line</span>
         <span className="mx-2">•</span>
-        <span>Type ! for macros</span>
+        <span>Type / for macros</span>
       </div>
     </form>
   );

@@ -235,6 +235,46 @@ io.on('connection', (socket) => {
       }
     }
   });
+// backend/server.js (add to existing Socket.IO handlers)
+// Execute macro
+socket.on('execute_macro', async (data) => {
+  try {
+    const { campaignId, macroCommand, characterId } = data;
+    
+    // Validate input
+    if (!campaignId || !macroCommand) {
+      return socket.emit('error', { message: 'Missing required fields' });
+    }
+    
+    // Get macro service
+    const macroService = require('./services/macro.service');
+    
+    // Execute the macro
+    const executionResult = await macroService.executeMacro(
+      { macroCommand, characterId },
+      socket.userId,
+      campaignId,
+      io
+    );
+    
+    const macroResult = {
+      macroCommand,
+      characterId,
+      userId: socket.userId,
+      timestamp: new Date(),
+      result: executionResult,
+      username: 'User_' + socket.userId.substring(0, 8) // Placeholder
+    };
+    
+    // Emit macro execution to campaign
+    io.to(`campaign_${campaignId}`).emit('macro_executed', macroResult);
+    
+  } catch (error) {
+    console.error('Socket macro error:', error);
+    socket.emit('error', { message: 'Error executing macro' });
+  }
+});
+
 });
 
 // Error handling middleware
