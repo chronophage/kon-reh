@@ -1,50 +1,104 @@
+
+/* frontend/src/index.css (updated) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #1a202c;
-  color: #f7fafc;
+:root {
+  /* Default Fate's Edge theme */
+  --fate-primary: #8B5CF6;
+  --fate-secondary: #7C3AED;
+  --fate-accent: #A78BFA;
+  --fate-background: #111827;
+  --fate-darker: #0F172A;
+  --fate-dark: #1E293B;
+  --fate-text: #F1F5F9;
+  --fate-text-secondary: #94A3B8;
 }
 
-/* Custom scrollbar */
+@layer base {
+  body {
+    @apply bg-[--fate-background] text-[--fate-text];
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom utility classes using CSS variables */
+  .bg-fate-background {
+    background-color: var(--fate-background);
+  }
+
+  .bg-fate-darker {
+    background-color: var(--fate-darker);
+  }
+
+  .bg-fate-dark {
+    background-color: var(--fate-dark);
+  }
+
+  .text-fate-text {
+    color: var(--fate-text);
+  }
+
+  .text-fate-text-secondary {
+    color: var(--fate-text-secondary);
+  }
+
+  .btn-primary {
+    @apply bg-[--fate-primary] hover:bg-[--fate-secondary] text-white font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[--fate-accent] focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-[--fate-dark] hover:bg-[--fate-darker] text-[--fate-text] border border-[--fate-dark] hover:border-[--fate-accent] font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[--fate-accent] focus:ring-opacity-50;
+  }
+
+  .input-field {
+    @apply bg-[--fate-dark] border border-[--fate-dark] text-[--fate-text] rounded-lg focus:outline-none focus:ring-2 focus:ring-[--fate-accent] focus:border-[--fate-accent] px-3 py-2 transition-colors;
+  }
+
+  .btn-accent {
+    @apply bg-[--fate-accent] hover:bg-[--fate-primary] text-[--fate-darker] font-medium py-2 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[--fate-accent] focus:ring-opacity-50;
+  }
+}
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #2d3748;
+  background: var(--fate-darker);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a5568;
+  background: var(--fate-dark);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #718096;
+  background: var(--fate-accent);
 }
 
-/* Form inputs */
-.input-field {
-  @apply w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent;
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.btn-primary {
-  @apply px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
 }
 
-.btn-secondary {
-  @apply px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900;
-}
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
 
-.btn-danger {
-  @apply px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  .btn-primary, .btn-secondary {
+    @apply py-2 px-3 text-sm;
+  }
 }
 

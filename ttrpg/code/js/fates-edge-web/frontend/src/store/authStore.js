@@ -1,3 +1,4 @@
+// frontend/src/store/authStore.js (updated)
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import api from '../services/api';
@@ -27,6 +28,28 @@ const useAuthStore = create(
           return { success: true };
         } catch (error) {
           const errorMessage = error.response?.data?.message || 'Login failed';
+          set({ error: errorMessage, isLoading: false });
+          return { success: false, error: errorMessage };
+        }
+      },
+
+      // Google OAuth login
+      googleLogin: async (idToken) => {
+        set({ isLoading: true, error: null });
+        try {
+          const response = await api.post('/auth/google', { idToken });
+          const { token, user } = response.data;
+          
+          set({
+            user,
+            token,
+            isAuthenticated: true,
+            isLoading: false
+          });
+          
+          return { success: true };
+        } catch (error) {
+          const errorMessage = error.response?.data?.message || 'Google login failed';
           set({ error: errorMessage, isLoading: false });
           return { success: false, error: errorMessage };
         }

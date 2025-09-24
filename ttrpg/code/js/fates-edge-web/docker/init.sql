@@ -257,3 +257,11 @@ CREATE TABLE IF NOT EXISTS macros (
 CREATE TABLE IF NOT EXISTS chat_messages (
     message
 
+-- Add googleid column to users table (run this in your init.sql or as a migration)
+ALTER TABLE users
+ADD COLUMN IF NOT EXISTS googleid VARCHAR(255) UNIQUE,
+ADD COLUMN IF NOT EXISTS avatar TEXT;
+
+-- Add index for better performance
+CREATE INDEX IF NOT EXISTS idx_users_googleid ON users(googleid);
+

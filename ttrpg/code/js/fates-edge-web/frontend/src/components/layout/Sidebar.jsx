@@ -1,4 +1,4 @@
-// frontend/src/components/layout/Sidebar.jsx
+// frontend/src/components/layout/Sidebar.jsx (updated)
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -7,7 +7,7 @@ import {
   UserCircleIcon, 
   DiceIcon, 
   CommandLineIcon,
-  BookOpenIcon
+  Cog6ToothIcon
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -16,6 +16,7 @@ const navigation = [
   { name: 'Characters', href: '/characters', icon: UserCircleIcon },
   { name: 'Dice Roller', href: '/roll', icon: DiceIcon },
   { name: 'Macros', href: '/macros', icon: CommandLineIcon },
+  { name: 'Settings', href: '/settings', icon: Cog6ToothIcon },
 ];
 
 const Sidebar = () => {
