@@ -14,6 +14,8 @@ from player_tools.ui.character_manager import CharacterManager
 from player_tools.ui.asset_manager_tab import AssetManagerTab
 from player_tools.ui.settings_tab import SettingsManager
 from player_tools.ui.skill_browser_tab import SkillBrowserTab
+from player_tools.ui.follower_manager_tab import FollowerManagerTab
+from player_tools.ui.character_builder_tab import CharacterBuilderTab
 
 class PlayerMainWindow:
     def __init__(self, root):
@@ -73,13 +75,27 @@ class PlayerMainWindow:
         self.character_manager = CharacterManager(self.character_manager_frame, self.character_data)
         self.character_manager.get_frame().pack(fill=tk.BOTH, expand=True)
         self.notebook.add(self.character_manager_frame, text="Characters")
-       
+      
+        # Character Builder
+        self.character_builder_frame = ttk.Frame(self.notebook)
+        self.character_builder_frame.pack(fill=tk.BOTH, expand=True)
+        self.character_builder = CharacterBuilderTab(self.character_builder_frame)
+        self.character_builder.get_frame().pack(fill=tk.BOTH, expand=True)
+        self.notebook.add(self.character_builder_frame, text="Character Builder")
+
         # Asset Tracker Tab
         self.asset_manager_frame = ttk.Frame(self.notebook)
         self.asset_manager_frame.pack(fill=tk.BOTH, expand=True)
         self.asset_manager = AssetManagerTab(self.asset_manager_frame)
         self.asset_manager.get_frame().pack(fill=tk.BOTH, expand=True)
         self.notebook.add(self.asset_manager_frame, text="Asset Manager")
+
+        # Follower Manager Tab
+        self.follower_manager_frame = ttk.Frame(self.notebook)
+        self.follower_manager_frame.pack(fill=tk.BOTH, expand=True)
+        self.follower_manager = FollowerManagerTab(self.follower_manager_frame)
+        self.follower_manager.get_frame().pack(fill=tk.BOTH, expand=True)
+        self.notebook.add(self.follower_manager_frame, text="Follower Manager")
 
         # Settings Tab
         self.settings_frame = ttk.Frame(self.notebook)
