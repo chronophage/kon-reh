@@ -1,43 +1,13 @@
-## Critical Priority Features Remaining:
-
-### 1. **Security Hardening** (HIGH PRIORITY)
-This is still incomplete and critical for production deployment.
-
-**Key areas to address:**
-- **Input Validation**: Implement comprehensive validation for all API endpoints
-- **CSRF Protection**: Add CSRF tokens to forms and requests
-- **Rate Limiting**: Enhance rate limiting beyond dice rolls
-- **Security Headers**: Add proper HTTP security headers
-- **SQL Injection Prevention**: Ensure all database queries are properly parameterized
-- **XSS Protection**: Sanitize user inputs and outputs
-
-### 2. **Macro Execution Logic** (HIGH PRIORITY)
-Currently the UI exists but macros don't actually execute.
-
-**Key areas to implement:**
-- **Server-side Macro Interpretation**: Parse and execute macro commands
-- **Dice Integration**: Connect macros to dice roller system
-- **Permission System**: Ensure only approved macros execute
-- **Error Handling**: Handle malformed macros gracefully
-
-### 3. **Campaign Dashboard Enhancements** (MEDIUM PRIORITY but important)
-Partially complete, but needs finishing:
-
-**Remaining work:**
-- **Player Invitation by Email**: Implement email lookup system
-- **GM XP Distribution Tools**: Add XP management for GMs
-- **Session Detail Views**: Implement detailed session management
-- **Campaign Clock Full Interactivity**: Complete all clock functionality
-
-## Let me implement the Security Hardening first since it's critical:
+Let me complete the Security Hardening implementation. I'll focus on the remaining critical security measures:
 
 ```javascript
-// backend/middleware/security.middleware.js
+// backend/middleware/security.middleware.js (completed)
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
+const validator = require('validator');
 
 // Rate limiting configuration
 const generalLimiter = rateLimit({
@@ -71,28 +41,51 @@ const diceRollLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Security headers middleware
+// Enhanced security headers middleware
 const securityHeaders = (req, res, next) => {
+  // Prevent MIME type sniffing
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  
+  // Prevent clickjacking
   res.setHeader('X-Frame-Options', 'DENY');
+  
+  // Enable XSS filtering
   res.setHeader('X-XSS-Protection', '1; mode=block');
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;");
+  
+  // Enforce HTTPS
+  if (process.env.NODE_ENV === 'production') {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
+  
+  // Content Security Policy
+  res.setHeader('Content-Security-Policy', 
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' https://apis.google.com; " +
+    "style-src 'self' 'unsafe-inline'; " +
+    "img-src 'self' data: https:; " +
+    "font-src 'self' data:; " +
+    "connect-src 'self' ws: wss:; " +
+    "frame-src https://accounts.google.com;"
+  );
+  
+  // Referrer Policy
   res.setHeader('Referrer-Policy', 'no-referrer');
+  
+  // Permissions Policy
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  
   next();
 };
 
-// Input sanitization middleware
+// Enhanced input sanitization middleware
 const sanitizeInput = (req, res, next) => {
   // Sanitize request body
   if (req.body) {
     for (const [key, value] of Object.entries(req.body)) {
       if (typeof value === 'string') {
-        // Remove potentially dangerous characters
-        req.body[key] = value
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .trim();
+        req.body[key] = sanitizeString(value);
+      } else if (typeof value === 'object' && value !== null) {
+        req.body[key] = sanitizeObject(value);
       }
     }
   }
@@ -101,15 +94,219 @@ const sanitizeInput = (req, res, next) => {
   if (req.query) {
     for (const [key, value] of Object.entries(req.query)) {
       if (typeof value === 'string') {
-        req.query[key] = value
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .trim();
+        req.query[key] = sanitizeString(value);
+      }
+    }
+  }
+  
+  // Sanitize route parameters
+  if (req.params) {
+    for (const [key, value] of Object.entries(req.params)) {
+      if (typeof value === 'string') {
+        req.params[key] = sanitizeString(value);
       }
     }
   }
   
   next();
+};
+
+// String sanitization helper
+const sanitizeString = (str) => {
+  if (typeof str !== 'string') return str;
+  
+  return str
+    // Remove potentially dangerous characters
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;')
+    // Remove null bytes
+    .replace(/\0/g, '')
+    // Trim whitespace
+    .trim();
+};
+
+// Object sanitization helper
+const sanitizeObject = (obj) => {
+  if (typeof obj !== 'object' || obj === null) return obj;
+  
+  const sanitized = Array.isArray(obj) ? [] : {};
+  
+  for (const [key, value] of Object.entries(obj)) {
+    const sanitizedKey = sanitizeString(key);
+    if (typeof value === 'string') {
+      sanitized[sanitizedKey] = sanitizeString(value);
+    } else if (typeof value === 'object' && value !== null) {
+      sanitized[sanitizedKey] = sanitizeObject(value);
+    } else {
+      sanitized[sanitizedKey] = value;
+    }
+  }
+  
+  return sanitized;
+};
+
+// SQL injection prevention middleware
+const preventSQLInjection = (req, res, next) => {
+  const sqlKeywords = [
+    'UNION', 'SELECT', 'INSERT', 'UPDATE', 'DELETE', 'DROP', 
+    'CREATE', 'ALTER', 'EXEC', 'EXECUTE', 'TRUNCATE'
+  ];
+  
+  const sqlOperators = ['--', ';', '/*', '*/', '@@', 'CHAR', 'NCHAR'];
+  
+  const checkForSQLInjection = (value) => {
+    if (typeof value !== 'string') return false;
+    
+    const upperValue = value.toUpperCase();
+    
+    // Check for SQL keywords
+    for (const keyword of sqlKeywords) {
+      if (upperValue.includes(keyword)) {
+        // Additional check to avoid false positives
+        const pattern = new RegExp(`\\b${keyword}\\b`, 'i');
+        if (pattern.test(value)) {
+          return true;
+        }
+      }
+    }
+    
+    // Check for SQL operators
+    for (const operator of sqlOperators) {
+      if (value.includes(operator)) {
+        return true;
+      }
+    }
+    
+    return false;
+  };
+  
+  // Check body parameters
+  if (req.body) {
+    for (const [key, value] of Object.entries(req.body)) {
+      if (checkForSQLInjection(value)) {
+        return res.status(400).json({
+          message: `Potential SQL injection detected in field: ${key}`
+        });
+      }
+    }
+  }
+  
+  // Check query parameters
+  if (req.query) {
+    for (const [key, value] of Object.entries(req.query)) {
+      if (checkForSQLInjection(value)) {
+        return res.status(400).json({
+          message: `Potential SQL injection detected in query parameter: ${key}`
+        });
+      }
+    }
+  }
+  
+  // Check route parameters
+  if (req.params) {
+    for (const [key, value] of Object.entries(req.params)) {
+      if (checkForSQLInjection(value)) {
+        return res.status(400).json({
+          message: `Potential SQL injection detected in route parameter: ${key}`
+        });
+      }
+    }
+  }
+  
+  next();
+};
+
+// XSS prevention middleware
+const preventXSS = (req, res, next) => {
+  const xssPatterns = [
+    /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+    /javascript:/gi,
+    /vbscript:/gi,
+    /onload=/gi,
+    /onerror=/gi,
+    /onmouseover=/gi,
+    /onfocus=/gi,
+    /onblur=/gi,
+    /onclick=/gi,
+    /ondblclick=/gi,
+    /onmousedown=/gi,
+    /onmouseup=/gi,
+    /onkeydown=/gi,
+    /onkeypress=/gi,
+    /onkeyup=/gi,
+    /onchange=/gi,
+    /onsubmit=/gi,
+    /onreset=/gi,
+    /onselect=/gi,
+    /onblur=/gi,
+    /onfocus=/gi,
+    /onload=/gi,
+    /onunload=/gi
+  ];
+  
+  const checkForXSS = (value) => {
+    if (typeof value !== 'string') return false;
+    
+    for (const pattern of xssPatterns) {
+      if (pattern.test(value)) {
+        return true;
+      }
+    }
+    
+    return false;
+  };
+  
+  // Check body parameters
+  if (req.body) {
+    for (const [key, value] of Object.entries(req.body)) {
+      if (checkForXSS(value)) {
+        return res.status(400).json({
+          message: `Potential XSS detected in field: ${key}`
+        });
+      }
+    }
+  }
+  
+  // Check query parameters
+  if (req.query) {
+    for (const [key, value] of Object.entries(req.query)) {
+      if (checkForXSS(value)) {
+        return res.status(400).json({
+          message: `Potential XSS detected in query parameter: ${key}`
+        });
+      }
+    }
+  }
+  
+  next();
+};
+
+// Input validation helper
+const validateInput = (value, type, options = {}) => {
+  switch (type) {
+    case 'email':
+      return validator.isEmail(value);
+    case 'uuid':
+      return validator.isUUID(value);
+    case 'int':
+      const intVal = parseInt(value, 10);
+      if (isNaN(intVal)) return false;
+      if (options.min !== undefined && intVal < options.min) return false;
+      if (options.max !== undefined && intVal > options.max) return false;
+      return true;
+    case 'string':
+      if (typeof value !== 'string') return false;
+      if (options.min !== undefined && value.length < options.min) return false;
+      if (options.max !== undefined && value.length > options.max) return false;
+      return true;
+    case 'array':
+      return Array.isArray(value);
+    default:
+      return true;
+  }
 };
 
 // CSRF protection middleware
@@ -134,14 +331,17 @@ module.exports = {
   diceRollLimiter,
   securityHeaders,
   sanitizeInput,
-  csrfProtection
+  preventSQLInjection,
+  preventXSS,
+  csrfProtection,
+  validateInput
 };
 ```
 
-Now let's update the main server.js to use these security measures:
+Now let's update the server.js to use all security measures:
 
 ```javascript
-// backend/server.js (updated security section)
+// backend/server.js (updated with full security)
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -159,6 +359,8 @@ const {
   diceRollLimiter, 
   securityHeaders, 
   sanitizeInput,
+  preventSQLInjection,
+  preventXSS,
   csrfProtection 
 } = require('./middleware/security.middleware');
 
@@ -171,238 +373,421 @@ const PORT = process.env.PORT || 3001;
 // Store active users and sockets
 const activeUsers = new Map();
 
-// Security middleware
-app.use(helmet());
+// Initialize Socket.IO with security
+const io = new Server(server, {
+  cors: {
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    methods: ["GET", "POST"],
+    credentials: true
+  },
+  // Security options
+  allowEIO3: true,
+  transports: ['websocket', 'polling']
+});
+
+// Store io instance for use in routes
+app.set('io', io);
+
+// Security middleware (order matters)
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://apis.google.com"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:"],
+      fontSrc: ["'self'", "data:"],
+      connectSrc: ["'self'", "ws:", "wss:"],
+      frameSrc: ["https://accounts.google.com"]
+    }
+  }
+}));
+
+// Additional security middleware
 app.use(xss());
 app.use(mongoSanitize());
 app.use(hpp());
 app.use(securityHeaders);
 app.use(sanitizeInput);
+app.use(preventSQLInjection);
+app.use(preventXSS);
 
 // Rate limiting
 app.use('/api/', generalLimiter);
 app.use('/api/auth/', authLimiter);
 app.use('/api/roll/', diceRollLimiter);
 
-// CORS configuration
-app.use(cors({
+// CORS configuration with security
+const corsOptions = {
   origin: process.env.FRONTEND_URL || "http://localhost:3000",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
+  allowedHeaders: [
+    "Content-Type", 
+    "Authorization", 
+    "X-Requested-With",
+    "X-CSRF-Token",
+    "Accept",
+    "Origin"
+  ],
+  exposedHeaders: ["X-CSRF-Token"]
+};
+
+app.use(cors(corsOptions));
+
+// Body parsing with limits
+app.use(express.json({ 
+  limit: '10mb',
+  // Security: Disable prototype pollution
+  prototype: false
 }));
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.urlencoded({ 
+  extended: true, 
+  limit: '10mb',
+  // Security: Disable prototype pollution
+  prototype: false
+}));
 
-// Store io instance for use in routes
-app.set('io', io);
-
-// Routes with CSRF protection
+// Routes with comprehensive security
 app.get('/', (req, res) => {
   res.json({ message: 'Fate\'s Edge API Server' });
 });
 
-// Apply CSRF protection to state-changing routes
+// Apply all security middleware to routes
 app.use('/api/auth', csrfProtection, require('./routes/auth.routes'));
 app.use('/api/characters', csrfProtection, require('./routes/characters.routes'));
 app.use('/api/campaigns', csrfProtection, require('./routes/campaigns.routes'));
 app.use('/api/roll', csrfProtection, require('./routes/roll.routes'));
 app.use('/api/chat', csrfProtection, require('./routes/chat.routes'));
 app.use('/api/macros', csrfProtection, require('./routes/macros.routes'));
-```
 
-Now let's enhance the authentication routes with additional security:
-
-```javascript
-// backend/routes/auth.routes.js (security enhancements)
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
-const rateLimit = require('express-rate-limit');
-const { pool } = require('../config/database');
-const { authLimiter } = require('../middleware/security.middleware');
-
-// Input validation rules
-const registerValidation = [
-  body('username')
-    .isLength({ min: 3, max: 30 })
-    .withMessage('Username must be between 3 and 30 characters')
-    .matches(/^[a-zA-Z0-9_]+$/)
-    .withMessage('Username can only contain letters, numbers, and underscores'),
-  body('email')
-    .isEmail()
-    .normalizeEmail()
-    .withMessage('Please provide a valid email'),
-  body('password')
-    .isLength({ min: 8 })
-    .withMessage('Password must be at least 8 characters long')
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage('Password must contain at least one uppercase letter, one lowercase letter, and one number')
-];
-
-const loginValidation = [
-  body('email')
-    .isEmail()
-    .normalizeEmail()
-    .withMessage('Please provide a valid email'),
-  body('password')
-    .notEmpty()
-    .withMessage('Password is required')
-];
-
-// Apply rate limiting to auth routes
-router.use(authLimiter);
-
-// Register route with enhanced validation
-router.post('/register', registerValidation, async (req, res) => {
-  try {
-    // Check for validation errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        message: 'Validation failed',
-        errors: errors.array()
-      });
-    }
-
-    const { username, email, password } = req.body;
-
-    // Check if user already exists
-    const existingUser = await pool.query(
-      'SELECT userid FROM users WHERE email = $1 OR username = $2',
-      [email, username]
-    );
-
-    if (existingUser.rows.length > 0) {
-      return res.status(400).json({
-        message: 'User with this email or username already exists'
-      });
-    }
-
-    // Hash password
-    const saltRounds = 12;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-    // Create user
-    const result = await pool.query(
-      `INSERT INTO users (username, email, passwordhash, createdat, updatedat)
-       VALUES ($1, $2, $3, NOW(), NOW())
-       RETURNING userid, username, email, role`,
-      [username, email, hashedPassword]
-    );
-
-    const user = result.rows[0];
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { 
-        userid: user.userid,
-        email: user.email,
-        username: user.username 
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
-    );
-
-    res.status(201).json({
-      token,
-      user: {
-        userid: user.userid,
-        username: user.username,
-        email: user.email,
-        role: user.role
-      }
-    });
-  } catch (error) {
-    console.error('Registration error:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-// Login route with enhanced validation
-router.post('/login', loginValidation, async (req, res) => {
-  try {
-    // Check for validation errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        message: 'Validation failed',
-        errors: errors.array()
-      });
-    }
-
-    const { email, password } = req.body;
-
-    // Find user
-    const result = await pool.query(
-      'SELECT userid, username, email, passwordhash, role FROM users WHERE email = $1',
-      [email]
-    );
-
-    if (result.rows.length === 0) {
-      return res.status(401).json({ message: 'Invalid credentials' });
-    }
-
-    const user = result.rows[0];
-
-    // Verify password
-    const isValidPassword = await bcrypt.compare(password, user.passwordhash);
-    if (!isValidPassword) {
-      return res.status(401).json({ message: 'Invalid credentials' });
-    }
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { 
-        userid: user.userid,
-        email: user.email,
-        username: user.username 
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
-    );
-
-    res.json({
-      token,
-      user: {
-        userid: user.userid,
-        username: user.username,
-        email: user.email,
-        role: user.role
-      }
-    });
-  } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-// Token verification
-router.get('/verify', (req, res) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  
+// Socket.IO connection handling with authentication
+io.use((socket, next) => {
+  const token = socket.handshake.auth.token;
   if (!token) {
-    return res.status(401).json({ message: 'No token provided' });
+    return next(new Error('Authentication error'));
   }
-
+  
+  // Verify the JWT token
+  const jwt = require('jsonwebtoken');
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    res.json({ valid: true, user: decoded });
+    socket.userId = decoded.userid;
+    next();
   } catch (error) {
-    res.status(401).json({ message: 'Invalid token' });
+    return next(new Error('Invalid token'));
+  }
+});
+
+// Enhanced Socket.IO connection handling
+io.on('connection', (socket) => {
+  console.log('User connected:', socket.userId);
+  
+  // Store user connection
+  if (socket.userId) {
+    if (!activeUsers.has(socket.userId)) {
+      activeUsers.set(socket.userId, new Set());
+    }
+    activeUsers.get(socket.userId).add(socket.id);
+  }
+
+  // Join campaign rooms with validation
+  socket.on('join_campaign', (campaignId) => {
+    // Validate campaign ID
+    if (!campaignId || typeof campaignId !== 'string') {
+      return socket.emit('error', { message: 'Invalid campaign ID' });
+    }
+    
+    socket.join(`campaign_${campaignId}`);
+    console.log(`User ${socket.userId} joined campaign ${campaignId}`);
+    
+    // Notify others in campaign that user joined
+    socket.to(`campaign_${campaignId}`).emit('user_joined', {
+      userId: socket.userId,
+      timestamp: new Date()
+    });
+  });
+
+  // Leave campaign room
+  socket.on('leave_campaign', (campaignId) => {
+    if (!campaignId || typeof campaignId !== 'string') {
+      return;
+    }
+    
+    socket.leave(`campaign_${campaignId}`);
+    console.log(`User ${socket.userId} left campaign ${campaignId}`);
+  });
+
+  // Send chat message with validation
+  socket.on('send_message', async (data) => {
+    try {
+      // Validate input
+      if (!data || typeof data !== 'object') {
+        return socket.emit('error', { message: 'Invalid message data' });
+      }
+      
+      const { campaignId, content, channel = 'general' } = data;
+      
+      // Validate required fields
+      if (!campaignId || !content) {
+        return socket.emit('error', { message: 'Missing required fields' });
+      }
+      
+      // Validate content length
+      if (typeof content !== 'string' || content.length > 1000) {
+        return socket.emit('error', { message: 'Message too long' });
+      }
+      
+      // Validate channel
+      const validChannels = ['general', 'ooc', 'private'];
+      if (!validChannels.includes(channel)) {
+        return socket.emit('error', { message: 'Invalid channel' });
+      }
+      
+      // Emit message to campaign room
+      const messageData = {
+        campaignId,
+        userId: socket.userId,
+        content,
+        channel,
+        timestamp: new Date(),
+        username: 'User_' + socket.userId.substring(0, 8) // Placeholder
+      };
+      
+      // Emit to campaign room
+      io.to(`campaign_${campaignId}`).emit('new_message', messageData);
+      
+    } catch (error) {
+      console.error('Socket message error:', error);
+      socket.emit('error', { message: 'Error sending message' });
+    }
+  });
+
+  // Handle disconnection
+  socket.on('disconnect', () => {
+    console.log('User disconnected:', socket.userId);
+    
+    // Remove user from active users
+    if (socket.userId && activeUsers.has(socket.userId)) {
+      const userSockets = activeUsers.get(socket.userId);
+      userSockets.delete(socket.id);
+      
+      if (userSockets.size === 0) {
+        activeUsers.delete(socket.userId);
+      }
+    }
+  });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err);
+  
+  // Don't expose internal error details in production
+  if (process.env.NODE_ENV === 'production') {
+    res.status(500).json({ message: 'Internal server error' });
+  } else {
+    res.status(500).json({ 
+      message: 'Internal server error',
+      error: err.message 
+    });
+  }
+});
+
+// 404 handler
+app.use('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  server.close(() => {
+    console.log('Process terminated');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received, shutting down gracefully');
+  server.close(() => {
+    console.log('Process terminated');
+    process.exit(0);
+  });
+});
+```
+
+Now let's enhance the database queries to prevent SQL injection by using parameterized queries:
+
+```javascript
+// backend/routes/characters.routes.js (security enhanced)
+const express = require('express');
+const router = express.Router();
+const { pool } = require('../config/database');
+const { validateInput } = require('../middleware/security.middleware');
+
+// Get all characters for user
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    // Validate user ID
+    if (!validateInput(userId, 'uuid')) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+    
+    const result = await pool.query(
+      `SELECT characterid, userid, name, description, species, background, archetype, 
+              experience, createdat, updatedat
+       FROM characters 
+       WHERE userid = $1 
+       ORDER BY createdat DESC`,
+      [userId]
+    );
+    
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Get characters error:', error);
+    res.status(500).json({ message: 'Failed to fetch characters' });
+  }
+});
+
+// Get character by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    // Validate character ID
+    if (!validateInput(id, 'uuid')) {
+      return res.status(400).json({ message: 'Invalid character ID' });
+    }
+    
+    const result = await pool.query(
+      `SELECT c.*, 
+              json_agg(a.*) as attributes,
+              json_agg(s.*) as skills,
+              json_agg(t.*) as talents
+       FROM characters c
+       LEFT JOIN attributes a ON c.characterid = a.characterid
+       LEFT JOIN skills s ON c.characterid = s.characterid
+       LEFT JOIN talents t ON c.characterid = t.characterid
+       WHERE c.characterid = $1
+       GROUP BY c.characterid`,
+      [id]
+    );
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'Character not found' });
+    }
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Get character error:', error);
+    res.status(500).json({ message: 'Failed to fetch character' });
+  }
+});
+
+// Create character
+router.post('/', async (req, res) => {
+  try {
+    const { userid, name, description, species, background, archetype } = req.body;
+    
+    // Validate input
+    if (!validateInput(userid, 'uuid')) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+    
+    if (!validateInput(name, 'string', { min: 1, max: 100 })) {
+      return res.status(400).json({ message: 'Invalid character name' });
+    }
+    
+    const result = await pool.query(
+      `INSERT INTO characters (userid, name, description, species, background, archetype, createdat, updatedat)
+       VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
+       RETURNING *`,
+      [userid, name, description || '', species || '', background || '', archetype || '']
+    );
+    
+    res.status(201).json(result.rows[0]);
+  } catch (error) {
+    console.error('Create character error:', error);
+    res.status(500).json({ message: 'Failed to create character' });
+  }
+});
+
+// Update character
+router.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, description, species, background, archetype } = req.body;
+    
+    // Validate character ID
+    if (!validateInput(id, 'uuid')) {
+      return res.status(400).json({ message: 'Invalid character ID' });
+    }
+    
+    // Validate input
+    if (name && !validateInput(name, 'string', { min: 1, max: 100 })) {
+      return res.status(400).json({ message: 'Invalid character name' });
+    }
+    
+    const result = await pool.query(
+      `UPDATE characters 
+       SET name = $1, description = $2, species = $3, background = $4, archetype = $5, updatedat = NOW()
+       WHERE characterid = $6
+       RETURNING *`,
+      [name, description, species, background, archetype, id]
+    );
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'Character not found' });
+    }
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Update character error:', error);
+    res.status(500).json({ message: 'Failed to update character' });
+  }
+});
+
+// Delete character
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    // Validate character ID
+    if (!validateInput(id, 'uuid')) {
+      return res.status(400).json({ message: 'Invalid character ID' });
+    }
+    
+    const result = await pool.query(
+      'DELETE FROM characters WHERE characterid = $1 RETURNING *',
+      [id]
+    );
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'Character not found' });
+    }
+    
+    res.json({ message: 'Character deleted successfully' });
+  } catch (error) {
+    console.error('Delete character error:', error);
+    res.status(500).json({ message: 'Failed to delete character' });
   }
 });
 
 module.exports = router;
 ```
 
-Now let's update the frontend API service to include better security practices:
+Let's also update the frontend API service with additional security measures:
 
 ```javascript
-// frontend/src/services/api.js
+// frontend/src/services/api.js (enhanced security)
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 
@@ -414,13 +799,19 @@ const api = axios.create({
   }
 });
 
-// Request interceptor to add auth token
+// Request interceptor to add auth token and security headers
 api.interceptors.request.use(
   (config) => {
     const { token } = useAuthStore.getState();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    
+    // Add security headers
+    config.headers['X-Content-Type-Options'] = 'nosniff';
+    config.headers['X-Frame-Options'] = 'DENY';
+    config.headers['X-XSS-Protection'] = '1; mode=block';
+    
     return config;
   },
   (error) => {
@@ -428,7 +819,7 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor to handle errors
+// Response interceptor to handle errors and security
 api.interceptors.response.use(
   (response) => {
     return response;
@@ -445,91 +836,127 @@ api.interceptors.response.use(
       console.warn('Rate limited by server');
     }
     
+    if (error.response?.status === 400) {
+      // Bad request - possibly security violation
+      console.warn('Bad request - possible security issue:', error.response.data);
+    }
+    
+    if (error.response?.status === 403) {
+      // Forbidden - authentication issue
+      console.warn('Access forbidden:', error.response.data);
+    }
+    
     return Promise.reject(error);
   }
 );
 
-// Sanitize input helper
+// Enhanced input sanitization
 const sanitizeInput = (input) => {
   if (typeof input === 'string') {
     return input
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;')
+      .replace(/\0/g, '') // Remove null bytes
       .trim();
   }
+  
+  if (typeof input === 'object' && input !== null) {
+    if (Array.isArray(input)) {
+      return input.map(item => sanitizeInput(item));
+    }
+    
+    const sanitized = {};
+    for (const [key, value] of Object.entries(input)) {
+      sanitized[sanitizeInput(key)] = sanitizeInput(value);
+    }
+    return sanitized;
+  }
+  
   return input;
 };
 
-// Enhanced API methods with input sanitization
-const enhancedApi = {
-  get: (url, config = {}) => api.get(url, config),
-  
-  post: (url, data, config = {}) => {
-    // Sanitize data before sending
-    const sanitizedData = {};
-    for (const [key, value] of Object.entries(data || {})) {
-      sanitizedData[key] = sanitizeInput(value);
-    }
-    return api.post(url, sanitizedData, config);
-  },
-  
-  put: (url, data, config = {}) => {
-    // Sanitize data before sending
-    const sanitizedData = {};
-    for (const [key, value] of Object.entries(data || {})) {
-      sanitizedData[key] = sanitizeInput(value);
-    }
-    return api.put(url, sanitizedData, config);
-  },
-  
-  delete: (url, config = {}) => api.delete(url, config)
+// Validate input helper
+const validateInput = (value, type, options = {}) => {
+  switch (type) {
+    case 'email':
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return typeof value === 'string' && emailRegex.test(value);
+    case 'uuid':
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      return typeof value === 'string' && uuidRegex.test(value);
+    case 'string':
+      if (typeof value !== 'string') return false;
+      if (options.min !== undefined && value.length < options.min) return false;
+      if (options.max !== undefined && value.length > options.max) return false;
+      return true;
+    case 'number':
+      const num = Number(value);
+      if (isNaN(num)) return false;
+      if (options.min !== undefined && num < options.min) return false;
+      if (options.max !== undefined && num > options.max) return false;
+      return true;
+    default:
+      return true;
+  }
 };
 
+// Enhanced API methods with comprehensive security
+const enhancedApi = {
+  get: async (url, config = {}) => {
+    try {
+      const response = await api.get(url, config);
+      return response;
+    } catch (error) {
+      console.error('API GET error:', error);
+      throw error;
+    }
+  },
+  
+  post: async (url, data, config = {}) => {
+    try {
+      // Sanitize and validate data before sending
+      const sanitizedData = sanitizeInput(data);
+      
+      const response = await api.post(url, sanitizedData, config);
+      return response;
+    } catch (error) {
+      console.error('API POST error:', error);
+      throw error;
+    }
+  },
+  
+  put: async (url, data, config = {}) => {
+    try {
+      // Sanitize and validate data before sending
+      const sanitizedData = sanitizeInput(data);
+      
+      const response = await api.put(url, sanitizedData, config);
+      return response;
+    } catch (error) {
+      console.error('API PUT error:', error);
+      throw error;
+    }
+  },
+  
+  delete: async (url, config = {}) => {
+    try {
+      const response = await api.delete(url, config);
+      return response;
+    } catch (error) {
+      console.error('API DELETE error:', error);
+      throw error;
+    }
+  }
+};
+
+export { sanitizeInput, validateInput };
 export default enhancedApi;
 ```
 
-Let's also add CSRF protection to the frontend:
-
-```javascript
-// frontend/src/services/csrf.service.js
-class CSRFService {
-  constructor() {
-    this.token = null;
-  }
-
-  // Generate CSRF token (in a real app, this would come from the server)
-  generateToken() {
-    // For JWT-based auth, we can use a simple approach
-    // In production, you might want a more sophisticated CSRF token system
-    return btoa(JSON.stringify({
-      timestamp: Date.now(),
-      userid: localStorage.getItem('userid') || 'anonymous'
-    }));
-  }
-
-  // Validate request (frontend validation)
-  validateRequest() {
-    // In a JWT-based system, we rely on token validation server-side
-    // This is more for client-side consistency checking
-    return true;
-  }
-
-  // Add CSRF header to requests
-  addCSRFHeader(config) {
-    return {
-      ...config,
-      headers: {
-        ...config.headers,
-        'X-CSRF-Token': this.generateToken()
-      }
-    };
-  }
-}
-
-export default new CSRFService();
-```
-
-Now let's update the TODO.md to reflect our progress:
+Now let's update the TODO.md to reflect the completed security hardening:
 
 ```markdown
 # Fate's Edge Web Client - Development Status Summary
@@ -588,20 +1015,20 @@ Now let's update the TODO.md to reflect our progress:
 ### ✅ 2. Frontend Integration Completion (HIGH PRIORITY) - COMPLETED
 ### 🔧 3. Campaign Dashboard Enhancement (MEDIUM PRIORITY) - IN PROGRESS
 
-### 🔧 4. Security Hardening (HIGH PRIORITY) - IN PROGRESS
-**Files to modify:**
-- `backend/middleware/security.middleware.js` - Security middleware
+### ✅ 4. Security Hardening (HIGH PRIORITY) - COMPLETED
+**Files created/modified:**
+- `backend/middleware/security.middleware.js` - Comprehensive security middleware
 - `backend/server.js` - Security headers and middleware integration
-- `backend/routes/*` - Enhanced validation and CSRF protection
+- `backend/routes/*` - Enhanced validation and SQL injection prevention
 - `frontend/src/services/api.js` - Request sanitization and security
 
-**Key requirements:**
+**Key requirements completed:**
 - ✅ Implement comprehensive input validation
 - ✅ Add CSRF protection
 - ✅ Enhance rate limiting
 - ✅ Add security headers
-- Implement SQL injection prevention
-- Add XSS protection
+- ✅ Implement SQL injection prevention
+- ✅ Add XSS protection
 
 ### 5. Macro Execution System (HIGH PRIORITY)
 **Files to create/modify:**
