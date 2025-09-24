@@ -1,3 +1,4 @@
+// frontend/src/store/chatStore.js (updated)
 import { create } from 'zustand';
 import api from '../services/api';
 
@@ -10,27 +11,28 @@ const useChatStore = create((set, get) => ({
   isConnected: false,
   typingUsers: new Map(),
 
-  // Join campaign chat
-  joinCampaign: async (campaignId) => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await api.get(`/chat/messages/${campaignId}`);
-      set({ 
-        messages: response.data,
-        isLoading: false 
-      });
-      return response.data;
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || 'Failed to join campaign chat';
-      set({ error: errorMessage, isLoading: false });
-      throw error;
-    }
+  // Initialize chat for campaign
+  initCampaignChat: (campaignId) => {
+    // Reset messages for new campaign
+    set({ 
+      messages: [],
+      currentChannel: 'general'
+    });
   },
 
-  // Send message
+  // Add message to store (called by socket listener)
+  addMessage: (message) => {
+    set(state => ({
+      messages: [...state.messages, message]
+    }));
+  },
+
+  // Send message through API (fallback) - but now we use SocketIO
   sendMessage: async (messageData) => {
     set({ error: null });
     try {
+      // In real-time mode, we send via SocketIO instead
+      // This is kept for backward compatibility or fallback
       const response = await api.post('/chat/messages', messageData);
       const newMessage = response.data;
       
@@ -44,31 +46,6 @@ const useChatStore = create((set, get) => ({
       set({ error: errorMessage });
       throw error;
     }
-  },
-
-  // Get channel messages
-  getChannelMessages: async (campaignId, channel) => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await api.get(`/chat/messages/${campaignId}/${channel}`);
-      set({ 
-        messages: response.data,
-        currentChannel: channel,
-        isLoading: false 
-      });
-      return response.data;
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || 'Failed to fetch messages';
-      set({ error: errorMessage, isLoading: false });
-      throw error;
-    }
-  },
-
-  // Add message to store
-  addMessage: (message) => {
-    set(state => ({
-      messages: [...state.messages, message]
-    }));
   },
 
   // Set typing status

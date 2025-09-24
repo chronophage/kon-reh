@@ -1,14 +1,16 @@
+// frontend/src/components/chat/ChatInterface.jsx (updated)
 import React, { useState, useEffect, useRef } from 'react';
 import { useChatStore } from '../../store/chatStore';
 import { useMacroStore } from '../../store/macroStore';
 import { useAuthStore } from '../../store/authStore';
+import socketService from '../../services/socket.service';
 import ChatHeader from './ChatHeader';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import MacroPanel from '../macros/MacroPanel';
 
 const ChatInterface = ({ campaignId, isGM }) => {
-  const { messages, currentChannel, channels, joinCampaign, error, clearError } = useChatStore();
+  const { messages, currentChannel, channels, initCampaignChat, error, clearError } = useChatStore();
   const { macros, getCampaignMacros } = useMacroStore();
   const { user } = useAuthStore();
   const [showMacros, setShowMacros] = useState(false);
@@ -17,7 +19,13 @@ const ChatInterface = ({ campaignId, isGM }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await joinCampaign(campaignId);
+        // Initialize chat store for campaign
+        initCampaignChat(campaignId);
+        
+        // Join campaign via SocketIO
+        socketService.joinCampaign(campaignId);
+        
+        // Fetch initial data
         await getCampaignMacros(campaignId);
       } catch (err) {
         console.error('Failed to initialize chat:', err);
@@ -27,7 +35,27 @@ const ChatInterface = ({ campaignId, isGM }) => {
     if (campaignId) {
       fetchData();
     }
-  }, [campaignId, joinCampaign, getCampaignMacros]);
+
+    // Set up socket listeners
+    const handleNewMessage = (message) => {
+      useChatStore.getState().addMessage(message);
+    };
+
+    const handleUserTyping = (data) => {
+      const { userId, isTyping } = data;
+      useChatStore.getState().setTyping(userId, isTyping);
+      useChatStore.getState().clearOldTyping();
+    };
+
+    socketService.onNewMessage(handleNewMessage);
+    socketService.onUserTyping(handleUserTyping);
+
+    // Clean up on unmount
+    return () => {
+      socketService.leaveCampaign(campaignId);
+      socketService.removeAllListeners();
+    };
+  }, [campaignId, initCampaignChat, getCampaignMacros]);
 
   useEffect(() => {
     // Scroll to bottom when new messages arrive

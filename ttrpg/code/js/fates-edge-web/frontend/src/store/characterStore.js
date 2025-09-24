@@ -1,5 +1,7 @@
+// frontend/src/store/characterStore.js (updated)
 import { create } from 'zustand';
 import api from '../services/api';
+import { useAuthStore } from './authStore';
 
 const useCharacterStore = create((set, get) => ({
   characters: [],
@@ -11,7 +13,10 @@ const useCharacterStore = create((set, get) => ({
   getUserCharacters: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await api.get(`/characters/${get().userId}`);
+      const { user } = useAuthStore.getState();
+      if (!user) throw new Error('User not authenticated');
+      
+      const response = await api.get(`/characters/user/${user.userid}`);
       set({ characters: response.data, isLoading: false });
       return response.data;
     } catch (error) {
@@ -25,7 +30,10 @@ const useCharacterStore = create((set, get) => ({
   createCharacter: async (characterData) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await api.post('/characters', characterData);
+      const { user } = useAuthStore.getState();
+      if (!user) throw new Error('User not authenticated');
+      
+      const response = await api.post('/characters', { ...characterData, userid: user.userid });
       const newCharacter = response.data;
       set(state => ({
         characters: [...state.characters, newCharacter],
@@ -64,7 +72,8 @@ const useCharacterStore = create((set, get) => ({
         characters: state.characters.map(char => 
           char.characterid === id ? updatedCharacter : char
         ),
-        currentCharacter: updatedCharacter,
+        currentCharacter: updatedCharacter.characterid === state.currentCharacter?.characterid 
+          ? updatedCharacter : state.currentCharacter,
         isLoading: false
       }));
       
@@ -104,7 +113,8 @@ const useCharacterStore = create((set, get) => ({
         characters: state.characters.map(char => 
           char.characterid === id ? updatedCharacter : char
         ),
-        currentCharacter: updatedCharacter,
+        currentCharacter: updatedCharacter.characterid === state.currentCharacter?.characterid 
+          ? updatedCharacter : state.currentCharacter,
         isLoading: false
       }));
       

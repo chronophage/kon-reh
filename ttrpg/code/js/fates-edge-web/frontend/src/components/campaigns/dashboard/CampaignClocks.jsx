@@ -1,82 +1,197 @@
+// frontend/src/components/campaigns/dashboard/CampaignClocks.jsx (enhanced)
 import React, { useState } from 'react';
-import { ClockIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { useCampaignStore } from '../../../store/campaignStore';
 
-const CampaignClocks = ({ campaign, isGM }) => {
-  const [clocks] = useState([
-    { id: 1, name: 'Mandate', progress: 3, total: 8, description: 'Political pressure builds' },
-    { id: 2, name: 'Crisis', progress: 5, total: 8, description: 'Emerging threat' },
-    { id: 3, name: 'Primary Goal', progress: 2, total: 6, description: 'Main storyline' }
-  ]);
+const CampaignClocks = ({ clocks, isGM }) => {
+  const { updateCampaign, currentCampaign } = useCampaignStore();
+  const [editingClock, setEditingClock] = useState(null);
+  const [editForm, setEditForm] = useState({ name: '', segments: 8, progress: 0 });
 
-  const ClockDisplay = ({ clock }) => {
-    const percentage = (clock.progress / clock.total) * 100;
-    const segments = Array.from({ length: clock.total }, (_, i) => i);
+  const handleTickClock = async (clockId) => {
+    if (!isGM || !currentCampaign) return;
+    
+    try {
+      const clock = clocks.find(c => c.clockid === clockId);
+      if (!clock) return;
+      
+      const newProgress = Math.min(clock.progress + 1, clock.segments);
+      const updatedClocks = clocks.map(c => 
+        c.clockid === clockId ? { ...c, progress: newProgress } : c
+      );
+      
+      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+    } catch (error) {
+      console.error('Failed to tick clock:', error);
+    }
+  };
+
+  const handleResetClock = async (clockId) => {
+    if (!isGM || !currentCampaign) return;
+    
+    try {
+      const updatedClocks = clocks.map(c => 
+        c.clockid === clockId ? { ...c, progress: 0 } : c
+      );
+      
+      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+    } catch (error) {
+      console.error('Failed to reset clock:', error);
+    }
+  };
+
+  const handleEditClock = (clock) => {
+    setEditingClock(clock.clockid);
+    setEditForm({
+      name: clock.name,
+      segments: clock.segments,
+      progress: clock.progress
+    });
+  };
+
+  const handleSaveEdit = async () => {
+    if (!isGM || !currentCampaign || !editingClock) return;
+    
+    try {
+      const updatedClocks = clocks.map(c => 
+        c.clockid === editingClock ? { ...c, ...editForm } : c
+      );
+      
+      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+      setEditingClock(null);
+    } catch (error) {
+      console.error('Failed to update clock:', error);
+    }
+  };
+
+  const handleDeleteClock = async (clockId) => {
+    if (!isGM || !currentCampaign) return;
+    
+    try {
+      const updatedClocks = clocks.filter(c => c.clockid !== clockId);
+      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+    } catch (error) {
+      console.error('Failed to delete clock:', error);
+    }
+  };
+
+  const handleAddClock = async () => {
+    if (!isGM || !currentCampaign) return;
+    
+    try {
+      const newClock = {
+        name: 'New Clock',
+        segments: 8,
+        progress: 0
+      };
+      
+      const updatedClocks = [...clocks, newClock];
+      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+    } catch (error) {
+      console.error('Failed to add clock:', error);
+    }
+  };
+
+  const renderClock = (clock) => {
+    if (editingClock === clock.clockid) {
+      return (
+        <div className="bg-fate-dark rounded-lg p-4">
+          <input
+            type="text"
+            value={editForm.name}
+            onChange={(e) => setEditForm({...editForm, name: e.target.value})}
+            className="input-field w-full mb-2"
+          />
+          <div className="flex items-center space-x-2 mb-2">
+            <label className="text-sm text-gray-300">Segments:</label>
+            <select
+              value={editForm.segments}
+              onChange={(e) => setEditForm({...editForm, segments: parseInt(e.target.value)})}
+              className="input-field"
+            >
+              {[4, 6, 8, 10, 12].map(num => (
+                <option key={num} value={num}>{num}</option>
+              ))}
+            </select>
+          </div>
+          <div className="flex items-center space-x-2 mb-3">
+            <label className="text-sm text-gray-300">Progress:</label>
+            <input
+              type="number"
+              min="0"
+              max={editForm.segments}
+              value={editForm.progress}
+              onChange={(e) => setEditForm({...editForm, progress: parseInt(e.target.value) || 0})}
+              className="input-field w-20"
+            />
+            <span className="text-sm text-gray-400">/ {editForm.segments}</span>
+          </div>
+          <div className="flex space-x-2">
+            <button
+              onClick={handleSaveEdit}
+              className="btn-primary text-sm px-3 py-1"
+            >
+              Save
+            </button>
+            <button
+              onClick={() => setEditingClock(null)}
+              className="btn-secondary text-sm px-3 py-1"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      );
+    }
 
     return (
-      <div className="bg-gray-700 rounded-lg p-4">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-lg font-medium text-white">{clock.name}</h3>
-          <span className="text-sm text-gray-400">{clock.progress}/{clock.total}</span>
-        </div>
-        <p className="text-sm text-gray-300 mb-3">{clock.description}</p>
-        
-        <div className="flex justify-center">
-          <div className="relative w-32 h-32">
-            <svg className="w-full h-full" viewBox="0 0 100 100">
-              {/* Background circle */}
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="#374151"
-                strokeWidth="8"
-              />
-              
-              {/* Progress segments */}
-              {segments.map((segment, index) => {
-                const angle = (360 / clock.total) * index - 90;
-                const isActive = index < clock.progress;
-                const strokeColor = isActive ? '#8b5cf6' : '#374151';
-                
-                return (
-                  <line
-                    key={segment}
-                    x1="50"
-                    y1="5"
-                    x2="50"
-                    y2="15"
-                    stroke={strokeColor}
-                    strokeWidth="2"
-                    transform={`rotate(${angle} 50 50)`}
-                  />
-                );
-              })}
-              
-              {/* Progress arc */}
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="#8b5cf6"
-                strokeWidth="8"
-                strokeDasharray={`${percentage * 2.83} 283`}
-                transform="rotate(-90 50 50)"
-              />
-            </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-xl font-bold text-white">{clock.progress}</span>
+      <div className="bg-fate-dark rounded-lg p-4">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="font-medium text-fate-accent">{clock.name}</h3>
+          {isGM && (
+            <div className="flex space-x-1">
+              <button
+                onClick={() => handleEditClock(clock)}
+                className="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDeleteClock(clock.clockid)}
+                className="text-xs bg-red-900 hover:bg-red-800 text-red-200 px-2 py-1 rounded"
+              >
+                Delete
+              </button>
             </div>
+          )}
+        </div>
+        
+        <div className="mb-3">
+          <div className="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Progress</span>
+            <span>{clock.progress}/{clock.segments}</span>
+          </div>
+          <div className="w-full bg-gray-700 rounded-full h-2">
+            <div 
+              className="bg-fate-accent h-2 rounded-full transition-all duration-300"
+              style={{ width: `${(clock.progress / clock.segments) * 100}%` }}
+            ></div>
           </div>
         </div>
         
         {isGM && (
-          <div className="mt-3 flex space-x-2">
-            <button className="flex-1 btn-secondary text-xs py-1">
-              + Tick
+          <div className="flex space-x-2">
+            <button
+              onClick={() => handleTickClock(clock.clockid)}
+              disabled={clock.progress >= clock.segments}
+              className="btn-primary text-sm px-3 py-1 disabled:opacity-50"
+            >
+              Tick
             </button>
-            <button className="flex-1 btn-danger text-xs py-1">
+            <button
+              onClick={() => handleResetClock(clock.clockid)}
+              disabled={clock.progress === 0}
+              className="btn-secondary text-sm px-3 py-1 disabled:opacity-50"
+            >
               Reset
             </button>
           </div>
@@ -86,45 +201,40 @@ const CampaignClocks = ({ campaign, isGM }) => {
   };
 
   return (
-    <div className="bg-gray-800 rounded-lg shadow">
-      <div className="px-4 py-5 sm:px-6 border-b border-gray-700">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-medium text-white">Campaign Clocks</h2>
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-lg font-bold text-fate-accent">Campaign Clocks</h3>
+        {isGM && (
+          <button
+            onClick={handleAddClock}
+            className="text-sm bg-fate-accent hover:bg-fate-primary text-fate-darker px-3 py-1 rounded-lg"
+          >
+            Add Clock
+          </button>
+        )}
+      </div>
+      
+      {clocks && clocks.length > 0 ? (
+        <div className="space-y-4">
+          {clocks.map((clock) => (
+            <div key={clock.clockid || `${clock.name}-${clock.segments}`}>
+              {renderClock(clock)}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="bg-fate-dark rounded-lg p-6 text-center">
+          <p className="text-gray-400 mb-3">No campaign clocks yet</p>
           {isGM && (
-            <button className="btn-secondary flex items-center text-sm">
-              <PlusIcon className="h-4 w-4 mr-1" />
-              Add Clock
+            <button
+              onClick={handleAddClock}
+              className="btn-primary"
+            >
+              Create Clock
             </button>
           )}
         </div>
-      </div>
-      <div className="p-6">
-        {clocks.length > 0 ? (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {clocks.map(clock => (
-              <ClockDisplay key={clock.id} clock={clock} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-8">
-            <ClockIcon className="mx-auto h-12 w-12 text-gray-400" />
-            <h3 className="mt-2 text-sm font-medium text-gray-200">No clocks</h3>
-            <p className="mt-1 text-sm text-gray-400">
-              {isGM 
-                ? 'Create your first campaign clock to track story progression.' 
-                : 'Your GM hasn\'t created any campaign clocks yet.'}
-            </p>
-            {isGM && (
-              <div className="mt-6">
-                <button className="btn-primary inline-flex items-center">
-                  <PlusIcon className="h-4 w-4 mr-1" />
-                  Add Clock
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 };

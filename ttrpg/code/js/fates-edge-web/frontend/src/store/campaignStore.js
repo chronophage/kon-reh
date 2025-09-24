@@ -1,5 +1,7 @@
+// frontend/src/store/campaignStore.js (updated)
 import { create } from 'zustand';
 import api from '../services/api';
+import { useAuthStore } from './authStore';
 
 const useCampaignStore = create((set, get) => ({
   campaigns: [],
@@ -11,11 +13,10 @@ const useCampaignStore = create((set, get) => ({
   getUserCampaigns: async () => {
     set({ isLoading: true, error: null });
     try {
-      // In a real app, you'd get the user ID from auth store
-      const userId = JSON.parse(localStorage.getItem('fate-edge-auth'))?.state?.user?.userid;
-      if (!userId) throw new Error('User not authenticated');
+      const { user } = useAuthStore.getState();
+      if (!user) throw new Error('User not authenticated');
       
-      const response = await api.get(`/campaigns/${userId}`);
+      const response = await api.get(`/campaigns/user/${user.userid}`);
       set({ campaigns: response.data, isLoading: false });
       return response.data;
     } catch (error) {
@@ -29,7 +30,10 @@ const useCampaignStore = create((set, get) => ({
   createCampaign: async (campaignData) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await api.post('/campaigns', campaignData);
+      const { user } = useAuthStore.getState();
+      if (!user) throw new Error('User not authenticated');
+      
+      const response = await api.post('/campaigns', { ...campaignData, gmuserid: user.userid });
       const newCampaign = response.data;
       set(state => ({
         campaigns: [...state.campaigns, newCampaign],
@@ -82,10 +86,10 @@ const useCampaignStore = create((set, get) => ({
   },
 
   // Invite player to campaign
-  invitePlayer: async (campaignId, userId) => {
+  invitePlayer: async (campaignId, email) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await api.post(`/campaigns/${campaignId}/invite`, { userId });
+      const response = await api.post(`/campaigns/${campaignId}/invite`, { email });
       const updatedCampaign = response.data.campaign;
       
       set(state => ({
@@ -139,13 +143,11 @@ const useCampaignStore = create((set, get) => ({
       // Update campaign with new session
       set(state => {
         const updatedCampaign = state.currentCampaign 
-          ? { ...state.currentCampaign } 
+          ? { 
+              ...state.currentCampaign,
+              sessions: [...(state.currentCampaign.sessions || []), newSession]
+            } 
           : state.campaigns.find(c => c.campaignid === campaignId);
-        
-        if (updatedCampaign) {
-          // Add session to campaign (you might want to fetch updated campaign from API)
-          // This is a simplified approach
-        }
         
         return {
           currentCampaign: updatedCampaign,

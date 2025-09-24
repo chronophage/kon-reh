@@ -1,7 +1,10 @@
+// frontend/src/components/chat/MessageInput.jsx (updated)
 import React, { useState, useRef, useEffect } from 'react';
 import { useChatStore } from '../../store/chatStore';
 import { useMacroStore } from '../../store/macroStore';
-import { PaperAirplaneIcon, AtSymbolIcon } from '@heroicons/react/24/outline';
+import { useCharacterStore } from '../../store/characterStore'; // Add this import
+import socketService from '../../services/socket.service';
+import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
 
 const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
   const [message, setMessage] = useState('');
@@ -10,17 +13,19 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
   const [selectedCharacter, setSelectedCharacter] = useState('');
   const typingTimeoutRef = useRef(null);
   const textareaRef = useRef(null);
-  const { sendMessage, setTyping } = useChatStore();
-  const { characters } = useCharacterStore(); // You'll need to import this
+  const { setTyping } = useChatStore();
+  const { characters } = useCharacterStore();
 
   // Handle typing indicators
   useEffect(() => {
     if (message.trim() && !isTyping) {
       setIsTyping(true);
       setTyping(user.userid, true);
+      socketService.sendTyping(campaignId, true);
     } else if (!message.trim() && isTyping) {
       setIsTyping(false);
       setTyping(user.userid, false);
+      socketService.sendTyping(campaignId, false);
     }
 
     // Clear typing status after delay
@@ -29,13 +34,14 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
       typingTimeoutRef.current = setTimeout(() => {
         setIsTyping(false);
         setTyping(user.userid, false);
+        socketService.sendTyping(campaignId, false);
       }, 1000);
     }
 
     return () => {
       clearTimeout(typingTimeoutRef.current);
     };
-  }, [message, isTyping, user.userid, setTyping]);
+  }, [message, isTyping, user.userid, setTyping, campaignId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +58,9 @@ const MessageInput = ({ campaignId, currentChannel, user, macros }) => {
         messageData.characterId = selectedCharacter;
       }
 
-      await sendMessage(messageData);
+      // Send message via SocketIO
+      socketService.sendMessage(messageData);
+      
       setMessage('');
       setShowMacroSuggestions(false);
       
