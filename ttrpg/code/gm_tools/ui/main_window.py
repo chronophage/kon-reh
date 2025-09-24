@@ -18,6 +18,7 @@ from gm_tools.ui.dice_roller_tab import DiceRollerTab
 from gm_tools.ui.npc_tab import NPCTab
 from gm_tools.ui.clocks_tab import ClocksTab
 from gm_tools.ui.adventure_tab import AdventureTab
+from ui.skill_manager_tab import SkillManagerTab
 from gm_tools.ui.settings_tab import SettingsTab
 
 class MainWindow:
@@ -174,7 +175,12 @@ class MainWindow:
         adventure_frame = ttk.Frame(tools_notebook)
         tools_notebook.add(adventure_frame, text="Adventure")
         self.adventure_tools = AdventureTab(adventure_frame)
-        
+       
+        #Skill Manager
+        skill_manager_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(skill_manager_frame, text="Skill Manager")
+        self.skill_manager = SkillManagerTab(skill_manager_frame)
+
         # Settings
         settings_frame = ttk.Frame(tools_notebook)
         tools_notebook.add(settings_frame, text="Settings")

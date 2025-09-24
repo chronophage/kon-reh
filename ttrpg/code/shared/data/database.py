@@ -14,7 +14,7 @@ class DatabaseManager:
         if db_path is None:
             # Default to fate_edge_decks.db in the same directory
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            self.db_path = os.path.join(current_dir, '..', 'fate_edge_decks.db')
+            self.db_path = os.path.join(current_dir, 'fate_edge_decks.db')
         else:
             self.db_path = db_path
             

@@ -4,10 +4,10 @@ import datetime
 
 class Database:
     def __init__(self):
-        self.db_path = "../data/fate_edge_decks.db"
+        self.db_path = "../shared/data/fate_edge_decks.db"
         self.sql_path = "data/fate_edge_data_clean.sql"
         self.clocks_sql_path = "data/fate_edge_clocks.sql"
-        self.log_path = "fate_edge_debug.log"
+        self.log_path = "../shared/data/fate_edge_debug.log"
         self.init_database()
         
     def log_debug(self, message):

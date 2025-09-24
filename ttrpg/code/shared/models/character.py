@@ -28,6 +28,15 @@ class SkillType(Enum):
     PERFORMANCE = "Performance"
     LORE = "Lore"
 
+class FollowerRole(Enum):
+    SCOUT = "Scout"
+    MIMIC = "Mimic"
+    DISTRACT = "Distract"
+    FETCH = "Fetch"
+    SENTRY = "Sentry"
+    BODYGUARD = "Bodyguard"
+    ARCHIVIST = "Archivist"
+
 @dataclass
 class Attribute:
     name: AttributeType
@@ -48,9 +57,34 @@ class Talent:
 @dataclass
 class Follower:
     name: str
-    specialty: str
+    role: FollowerRole
     cap: int  # 1-5 rating
     condition: str = "Maintained"  # Maintained, Neglected, Compromised
+    exposure: int = 0  # For tracking Exposure from Initiative actions
+    harm: int = 0  # For tracking Harm from Initiative actions
+    
+    def take_initiative_action(self, action_type: str) -> dict:
+        """Take a follower initiative action"""
+        cost_options = ["Exposure", "Harm"]
+        effects = {
+            "Scout & Signal": "Change ally's next action position to Controlled or grant +1 effect",
+            "Distract & Draw": "Reduce a kinetic rail (Hunt/Escape/Hazard) by -1 tick",
+            "Fetch & Carry": "Move small object; on recipient's next success, advance +1 tick on target clock"
+        }
+        
+        return {
+            "action": action_type,
+            "effect": effects.get(action_type, "Unknown effect"),
+            "cost_options": cost_options,
+            "pressure_options": ["GM spends 1 CP to escalate"]
+        }
+    
+    def apply_cost(self, cost_type: str):
+        """Apply cost to follower"""
+        if cost_type == "Exposure":
+            self.exposure += 1
+        elif cost_type == "Harm":
+            self.harm += 1
 
 @dataclass
 class Asset:
@@ -108,4 +142,15 @@ class Character:
             self.xp -= amount
             return True
         return False
+    
+    def add_follower(self, follower: Follower):
+        """Add a follower to the character"""
+        self.followers.append(follower)
+    
+    def get_follower_by_name(self, name: str) -> Optional[Follower]:
+        """Get a follower by name"""
+        for follower in self.followers:
+            if follower.name == name:
+                return follower
+        return None
 

@@ -10,6 +10,10 @@ class CharacterManager:
         self.character_data = character_data
         self.frame = ttk.Frame(parent)
         
+        # Use shared/data/characters directory
+        self.characters_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'shared', 'data', 'characters')
+        os.makedirs(self.characters_dir, exist_ok=True)
+        
         # Character Selection
         self.selection_frame = ttk.LabelFrame(self.frame, text="Character Selection", padding="10")
         self.selection_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S), padx=5, pady=5)
@@ -95,11 +99,7 @@ class CharacterManager:
         self.refresh_characters()
         
     def refresh_characters(self):
-        characters_dir = "characters"
-        if not os.path.exists(characters_dir):
-            os.makedirs(characters_dir)
-            
-        character_files = [f for f in os.listdir(characters_dir) if f.endswith(".json")]
+        character_files = [f for f in os.listdir(self.characters_dir) if f.endswith(".json")]
         character_names = [f[:-5] for f in character_files]  # Remove .json extension
         
         self.character_combo['values'] = character_names
@@ -113,7 +113,7 @@ class CharacterManager:
             
     def load_character_data(self, character_name):
         try:
-            with open(f"characters/{character_name}.json", "r") as f:
+            with open(os.path.join(self.characters_dir, f"{character_name}.json"), "r") as f:
                 data = json.load(f)
                 
             self.name_var.set(data.get("name", ""))
@@ -164,10 +164,7 @@ class CharacterManager:
         
         # Save to file
         try:
-            if not os.path.exists("characters"):
-                os.makedirs("characters")
-                
-            with open(f"characters/{character_name}.json", "w") as f:
+            with open(os.path.join(self.characters_dir, f"{character_name}.json"), "w") as f:
                 json.dump(data, f, indent=2)
                 
             messagebox.showinfo("Success", f"Character '{character_name}' saved successfully!")
@@ -178,7 +175,7 @@ class CharacterManager:
             
     def load_character(self):
         filename = filedialog.askopenfilename(
-            initialdir="characters",
+            initialdir=self.characters_dir,
             title="Select Character File",
             filetypes=(("JSON files", "*.json"), ("All files", "*.*"))
         )
@@ -219,7 +216,7 @@ class CharacterManager:
                                      f"Are you sure you want to delete '{character_name}'?")
         if confirm:
             try:
-                os.remove(f"characters/{character_name}.json")
+                os.remove(os.path.join(self.characters_dir, f"{character_name}.json"))
                 messagebox.showinfo("Success", f"Character '{character_name}' deleted successfully!")
                 self.refresh_characters()
                 self.new_character()  # Clear the form

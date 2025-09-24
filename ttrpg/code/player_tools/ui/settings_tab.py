@@ -3,11 +3,16 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import json
 import os
+import shutil
 
 class SettingsManager:
     def __init__(self, parent):
         self.parent = parent
         self.frame = ttk.Frame(parent)
+        
+        # Use shared/data/ directory
+        self.shared_data_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'shared', 'data')
+        os.makedirs(self.shared_data_dir, exist_ok=True)
         
         # Load existing settings
         self.settings = self.load_settings()
@@ -42,10 +47,10 @@ class SettingsManager:
         self.data_frame = ttk.LabelFrame(self.frame, text="Data Management", padding="10")
         self.data_frame.grid(row=2, column=0, sticky=(tk.W, tk.E), padx=5, pady=5)
         
-        self.backup_btn = ttk.Button(self.data_frame, text="Backup Characters", command=self.backup_characters)
+        self.backup_btn = ttk.Button(self.data_frame, text="Backup All Data", command=self.backup_all_data)
         self.backup_btn.grid(row=0, column=0, padx=(0, 5))
         
-        self.restore_btn = ttk.Button(self.data_frame, text="Restore Characters", command=self.restore_characters)
+        self.restore_btn = ttk.Button(self.data_frame, text="Restore Data", command=self.restore_data)
         self.restore_btn.grid(row=0, column=1, padx=(0, 5))
         
         # Save Button
@@ -53,9 +58,10 @@ class SettingsManager:
         self.save_btn.grid(row=3, column=0, pady=10)
         
     def load_settings(self):
+        settings_file = os.path.join(self.shared_data_dir, "settings.json")
         try:
-            if os.path.exists("settings.json"):
-                with open("settings.json", "r") as f:
+            if os.path.exists(settings_file):
+                with open(settings_file, "r") as f:
                     return json.load(f)
             else:
                 # Return default settings
@@ -79,8 +85,9 @@ class SettingsManager:
             "default_difficulty": int(self.default_difficulty_var.get())
         }
         
+        settings_file = os.path.join(self.shared_data_dir, "settings.json")
         try:
-            with open("settings.json", "w") as f:
+            with open(settings_file, "w") as f:
                 json.dump(self.settings, f, indent=2)
             messagebox.showinfo("Success", "Settings saved successfully!")
             
@@ -96,29 +103,20 @@ class SettingsManager:
         except Exception as e:
             messagebox.showwarning("Theme Error", f"Could not apply theme: {str(e)}")
             
-    def backup_characters(self):
+    def backup_all_data(self):
         try:
-            import shutil
-            if os.path.exists("characters"):
-                shutil.make_archive("characters_backup", "zip", "characters")
-                messagebox.showinfo("Success", "Characters backed up successfully!")
-            else:
-                messagebox.showwarning("No Data", "No character data to backup")
+            backup_file = os.path.join(self.shared_data_dir, "data_backup.zip")
+            shutil.make_archive(
+                os.path.join(self.shared_data_dir, "data_backup"), 
+                "zip", 
+                self.shared_data_dir
+            )
+            messagebox.showinfo("Success", f"All data backed up successfully to:\n{backup_file}")
         except Exception as e:
             messagebox.showerror("Error", f"Backup failed: {str(e)}")
             
-    def restore_characters(self):
-        try:
-            import shutil
-            if os.path.exists("characters_backup.zip"):
-                if os.path.exists("characters"):
-                    shutil.rmtree("characters")
-                shutil.unpack_archive("characters_backup.zip", "characters")
-                messagebox.showinfo("Success", "Characters restored successfully!")
-            else:
-                messagebox.showwarning("No Backup", "No backup file found")
-        except Exception as e:
-            messagebox.showerror("Error", f"Restore failed: {str(e)}")
+    def restore_data(self):
+        messagebox.showinfo("Info", "To restore data, simply extract your backup ZIP file to the shared/data/ directory")
             
     def get_frame(self):
         return self.frame

@@ -5,14 +5,15 @@ from tkinter import ttk
 class SkillTrackerTab:
     def __init__(self, parent):
         self.parent = parent
+        # If database access is needed:
+        # project_root = os.path.join(os.path.dirname(__file__), '..', '..')
+        # db_path = os.path.join(project_root, 'shared', 'data', 'skills.db')
+        # db_path = os.path.abspath(db_path)
+        # self.db = SkillDatabase(db_path)  # or pass db_path to SkillDatabase()
+        
         self.skills = {}  # {skill_name: {"attribute": attr, "level": level}}
-        self.create_ui()
-        
-    def create_ui(self):
-        # Title
-        title = ttk.Label(self.parent, text="Skill Tracker", font=("Arial", 24, "bold"))
-        title.pack(pady=20)
-        
+        self.create_ui()   
+
         # Add Skill Frame
         add_frame = ttk.LabelFrame(self.parent, text="Add Skill", padding="15")
         add_frame.pack(fill="x", padx=20, pady=10)

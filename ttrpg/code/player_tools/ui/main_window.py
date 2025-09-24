@@ -12,12 +12,13 @@ from player_tools.ui.xp_planner_tab import XPPlannerTab
 from player_tools.ui.dice_roller_tab import FateEdgeDiceRoller
 from player_tools.ui.character_manager import CharacterManager
 from player_tools.ui.settings_tab import SettingsManager
+from player_tools.ui.skill_browser_tab import SkillBrowserTab
 
 class PlayerMainWindow:
     def __init__(self, root):
         self.root = root
         self.root.title("Fate's Edge Player Tools")
-        self.root.geometry("900x700")
+        self.root.geometry("1000x700")
         
         # Initialize character data
         self.character_data = {}
@@ -57,6 +58,13 @@ class PlayerMainWindow:
         self.dice_roller = FateEdgeDiceRoller(self.dice_roller_frame)
         self.dice_roller.get_frame().pack(fill=tk.BOTH, expand=True)
         self.notebook.add(self.dice_roller_frame, text="Dice Roller")
+        
+        # Skill Browser Tab
+        self.skill_browser_frame = ttk.Frame(self.notebook)
+        self.skill_browser_frame.pack(fill=tk.BOTH, expand=True)
+        self.skill_browser = SkillBrowserTab(self.skill_browser_frame)
+        self.skill_browser.get_frame().pack(fill=tk.BOTH, expand=True)
+        self.notebook.add(self.skill_browser_frame, text="Skill Browser")
         
         # Character Manager Tab
         self.character_manager_frame = ttk.Frame(self.notebook)
