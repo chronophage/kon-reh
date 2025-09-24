@@ -11,6 +11,7 @@ from player_tools.ui.character_sheet_tab import CharacterSheetTab
 from player_tools.ui.xp_planner_tab import XPPlannerTab
 from player_tools.ui.dice_roller_tab import FateEdgeDiceRoller
 from player_tools.ui.character_manager import CharacterManager
+from player_tools.ui.asset_manager_tab import AssetManagerTab
 from player_tools.ui.settings_tab import SettingsManager
 from player_tools.ui.skill_browser_tab import SkillBrowserTab
 
@@ -72,7 +73,14 @@ class PlayerMainWindow:
         self.character_manager = CharacterManager(self.character_manager_frame, self.character_data)
         self.character_manager.get_frame().pack(fill=tk.BOTH, expand=True)
         self.notebook.add(self.character_manager_frame, text="Characters")
-        
+       
+        # Asset Tracker Tab
+        self.asset_manager_frame = ttk.Frame(self.notebook)
+        self.asset_manager_frame.pack(fill=tk.BOTH, expand=True)
+        self.asset_manager = AssetManagerTab(self.asset_manager_frame)
+        self.asset_manager.get_frame().pack(fill=tk.BOTH, expand=True)
+        self.notebook.add(self.asset_manager_frame, text="Asset Manager")
+
         # Settings Tab
         self.settings_frame = ttk.Frame(self.notebook)
         self.settings_frame.pack(fill=tk.BOTH, expand=True)

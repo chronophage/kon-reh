@@ -10,6 +10,7 @@ from gm_tools.ui.xp_tracker_tab import XPTrackerTab
 from gm_tools.ui.combat_tracker_tab import CombatTrackerTab
 from gm_tools.ui.scene_builder_tab import SceneBuilderTab
 from gm_tools.ui.cp_spend_tab import CPSpendTab
+from gm_tools.ui.cp_spend_menu_tab import CPSpendMenuTab
 from gm_tools.ui.consequence_tab import ConsequenceTab
 from gm_tools.ui.campaign_clock_tab import CampaignClockTab
 from gm_tools.ui.evidence_tracker_tab import EvidenceTrackerTab
@@ -127,7 +128,14 @@ class MainWindow:
         cp_frame = ttk.Frame(combat_notebook)
         combat_notebook.add(cp_frame, text="CP")
         self.cp_tracker = CPSpendTab(cp_frame)
-        
+       
+        # CP Spend Calc
+        self.cp_spend_frame = ttk.Frame(self.notebook)
+        self.cp_spend_frame.pack(fill=tk.BOTH, expand=True)
+        self.cp_spend_menu = CPSpendMenuTab(self.cp_spend_frame)
+        self.cp_spend_menu.get_frame().pack(fill=tk.BOTH, expand=True)
+        self.notebook.add(self.cp_spend_frame, text="CP Spend Menu")
+       
         # Consequences
         consequence_frame = ttk.Frame(combat_notebook)
         combat_notebook.add(consequence_frame, text="Consequences")
