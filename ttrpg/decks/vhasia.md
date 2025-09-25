@@ -3,7 +3,7 @@ Vhasia — “The Fractured Sun” 52-Card Generator
 Spades — Places (châteaux, cathedrals, forests, fairs, roads)
 	2.	Wayside shrine where pilgrims tack petitions to a scorched sun-disc.
 	3.	Vine-terraced clos above a millstream; watchmen nap in warm shade.
-	4.	Bastide market square, neat as a chessboard, gates shut at dusk.
+	4.	Bastide market square, neat as a canray board, gates shut at dusk.
 	5.	Royal Forest ride—antler posts mark the king’s old law.
 	6.	Pont-du-Tithe: toll-bridge flanked by chapels and crossbows.
 	7.	Great Fairground outside a chartered town; counting sheds ring like bells.
