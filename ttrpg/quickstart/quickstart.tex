@@ -1,0 +1,289 @@
+```latex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Fate's Edge Quickstart}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+
+\definecolor{fateblue}{RGB}{25, 118, 210}
+\definecolor{fategrey}{RGB}{158, 158, 158}
+
+\newtcolorbox{fatebox}[1][]{%
+    colback=fateblue!5!white,
+    colframe=fateblue!75!black,
+    fonttitle=\bfseries,
+    title=#1
+}
+
+\newtcolorbox{examplebox}[1][]{%
+    colback=gray!5!white,
+    colframe=gray!75!black,
+    fonttitle=\bfseries,
+    title=#1
+}
+
+\title{Fate's Edge Quickstart Guide}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{A World of Consequences}
+\end{center}
+
+\section{Welcome to Fate's Edge}
+
+Fate's Edge is a narrative-first tabletop RPG where every action carries weight, every choice has consequence, and every spell risks backlash. This quickstart guide will get you playing quickly with the core rules.
+
+\section{Core Resolution}
+
+\subsection{The Dice Pool}
+To attempt anything significant:
+\begin{enumerate}
+    \item Roll dice equal to \textbf{Attribute + Skill}
+    \item Each die that shows \textbf{6 or higher} = 1 Success
+    \item Each die that shows \textbf{1} = 1 Complication Point (CP)
+\end{enumerate}
+
+\subsection{Attributes (1-5)}
+\begin{itemize}
+    \item \textbf{Body}: Strength, endurance, physical action
+    \item \textbf{Wits}: Perception, cleverness, reaction speed  
+    \item \textbf{Spirit}: Willpower, intuition, resilience
+    \item \textbf{Presence}: Charm, command, social force
+\end{itemize}
+
+\subsection{Skills (0-5)}
+\begin{itemize}
+    \item \textbf{Melee}, \textbf{Ranged}, \textbf{Athletics}
+    \item \textbf{Diplomacy}, \textbf{Deception}, \textbf{Insight}
+    \item \textbf{Stealth}, \textbf{Survival}, \textbf{Command}
+    \item \textbf{Arcana}, \textbf{Lore}, \textbf{Craft}
+\end{itemize}
+
+\subsection{Difficulty Values}
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+\textbf{DV} & \textbf{Situation} \\
+\midrule
+1 & Routine: Clear intent, modest stakes \\
+2 & Pressured: Time pressure, mild resistance \\
+3 & Hard: Hostile conditions, active opposition \\
+4+ & Extreme: Multiple constraints, high precision \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Outcome Matrix}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Result} & \textbf{What Happens} \\
+\midrule
+Successes ≥ DV, 0 CP & \textbf{Clean Success}: Intent achieved crisply \\
+Successes ≥ DV, 1+ CP & \textbf{Success \& Cost}: Intent + GM spends CP \\
+0 < Successes < DV & \textbf{Partial}: Progress with fork \\
+Successes = 0 & \textbf{Miss}: No progress, GM spends CP or offers Devil's Bargain \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{fatebox}[Complication Points (CP)]
+CP are narrative fuel the GM spends to add twists:
+\begin{itemize}
+    \item \textbf{1 CP}: Noise, trace, +1 Supply segment
+    \item \textbf{2 CP}: Alarm, lose position, lesser foe
+    \item \textbf{3 CP}: Reinforcements, gear breaks, rail tick
+    \item \textbf{4+ CP}: Trap springs, authority arrives, scene shifts
+\end{itemize}
+\end{fatebox}
+
+\section{Description Ladder}
+
+How you describe your action affects the roll:
+
+\begin{itemize}
+    \item \textbf{Basic}: Roll as-is
+    \item \textbf{Detailed}: Re-roll one 1
+    \item \textbf{Intricate}: Re-roll all 1s + add one small positive flourish on success
+\end{itemize}
+
+\section{Character Creation}
+
+\subsection{Starting Points}
+\begin{itemize}
+    \item \textbf{30 XP} to spend
+    \item Start with Attributes 1-3 and Skills 0-2
+\end{itemize}
+
+\subsection{XP Costs}
+\begin{itemize}
+    \item \textbf{Attributes}: New rating × 3 XP
+    \item \textbf{Skills}: New level × 2 XP
+    \item \textbf{Followers}: Cap² XP (Cap 3 follower = 9 XP)
+    \item \textbf{Assets}: Minor (4 XP), Standard (8 XP), Major (12 XP)
+\end{itemize}
+
+\begin{examplebox}[Sample Starting Character]
+\textbf{Rin the Scout} (30 XP)
+\begin{itemize}
+    \item Body 2 (6 XP), Wits 3 (9 XP) = 15 XP
+    \item Athletics 2 (2+4=6 XP), Stealth 2 (2+4=6 XP) = 12 XP
+    \item Remaining: 3 XP (could add Survival 1 = 2 XP)
+\end{itemize}
+Pool: Body 2 + Athletics 2 = 4d10 for physical actions
+\end{examplebox}
+
+\section{Followers \& Assets}
+
+\subsection{Followers (On-Screen)}
+\begin{itemize}
+    \item Allies who assist in scenes
+    \item Cost: Cap² XP
+    \item Assist: Up to +Cap dice (max +3 total)
+    \item Example: Cap 3 Scout adds up to +3 dice to Survival rolls
+\end{itemize}
+
+\subsection{Assets (Off-Screen)}
+\begin{itemize}
+    \item Holdings that solve problems between sessions
+    \item Minor (4 XP): Safehouse, small shop
+    \item Standard (8 XP): Noble title, spy ring
+    \item Major (12 XP): City license, fortress lease
+\end{itemize}
+
+\section{Magic}
+
+Magic uses the \textbf{Casting Loop}:
+
+\begin{enumerate}
+    \item \textbf{Channel}: Roll Wits + Arcana to gather Potential (successes) + CP immediately
+    \item \textbf{Weave}: Roll Wits + Art to shape spell with Description benefits
+    \item \textbf{Backlash}: GM spends CP from steps 1+2 for thematic consequences
+\end{enumerate}
+
+\section{Boons}
+
+\begin{itemize}
+    \item Earned from embracing complications, partial successes
+    \item Spend to: Re-roll die, activate Asset (1 Boon), convert 2→1 XP
+    \item Max 5 Boons, overflow converts to XP (2→1, max 2/session)
+\end{itemize}
+
+\section{Travel Framework}
+
+Draw cards until all suits appear:
+\begin{itemize}
+    \item \textbf{♠ Spade}: Place/scene
+    \item \textbf{♡ Heart}: Actor/faction  
+    \item \textbf{♣ Club}: Pressure/complication
+    \item \textbf{♢ Diamond}: Reward/leverage (no roll needed)
+\end{itemize}
+
+Set travel clock by highest rank:
+\begin{itemize}
+    \item 2-5: 4 segments
+    \item 6-10: 6 segments
+    \item J/Q/K: 8 segments  
+    \item A: 10 segments
+\end{itemize}
+
+\section{Campaign Structure}
+
+\subsection{Campaign Clocks}
+\begin{itemize}
+    \item \textbf{Mandate (0-6)}: Table's legitimacy/buy-in
+    \item \textbf{Crisis (0-6)}: Opposition pressure
+\end{itemize}
+
+\subsection{Finale Trigger}
+\begin{itemize}
+    \item Player-called: Mandate≥6, Crisis≤3
+    \item Forced: Crisis≥6
+\end{itemize}
+
+\section{Playing the Game}
+
+\subsection{At the Table}
+\begin{enumerate}
+    \item Player describes action and approach
+    \item GM sets Difficulty Value (DV 1-4+)
+    \item Player builds dice pool (Attribute + Skill)
+    \item Player chooses description level
+    \item Roll dice, count successes and 1s (CP)
+    \item GM resolves outcome and spends CP
+\end{enumerate}
+
+\begin{examplebox}[Example Action]
+Kael wants to charm a guard (DV 2).
+\begin{itemize}
+    \item Presence 3 + Diplomacy 2 = 5d10
+    \item Detailed action: "I compliment his sword and mention I'm new in town"
+    \item Rolls: 7, 6, 4, 1, 1 = 2 successes, 2 CP
+    \item Success \& Cost: Guard lets them pass, but GM spends 1 CP for "he expects a favor later"
+\end{itemize}
+\end{examplebox}
+
+\subsection{Key Principles}
+\begin{itemize}
+    \item \textbf{Narrative Primacy}: Mechanics serve the story
+    \item \textbf{Risk as Drama}: Every roll has potential cost
+    \item \textbf{Meaningful Growth}: XP investment creates lasting change
+    \item \textbf{Consequence Weight}: Choices ripple outward
+\end{itemize}
+
+\section{GM Quick Reference}
+
+\begin{itemize}
+    \item Set DV before the roll based on situation
+    \item Count successes vs DV, count 1s as CP
+    \item Resolve outcome from matrix
+    \item Spend CP for complications (use the menu)
+    \item Draw from Deck of Consequences for CP (optional)
+    \item Award XP: 6-10 per session standard pace
+    \item Trigger finale when Mandate/Crisis thresholds met
+\end{itemize}
+
+\begin{fatebox}[CP Spend Menu]
+\textbf{1 CP}: Noise, trace, +1 Supply
+\textbf{2 CP}: Alarm, lose position, lesser foe
+\textbf{3 CP}: Reinforcements, gear breaks, rail tick  
+\textbf{4+ CP}: Trap, authority, scene shift
+\end{fatebox}
+
+\section{Getting Started}
+
+\begin{enumerate}
+    \item Each player creates a character with 30 XP
+    \item GM prepares a starting situation (use travel framework or Deck of Consequences)
+    \item Play through scenes, award XP
+    \item Characters grow through Enhance Self, Acquire Assets, Learn Talents
+    \item Let consequences drive the story forward
+\end{enumerate}
+
+\begin{center}
+\textbf{Remember: In Fate's Edge, nothing is free. Every victory has a price, and every choice shapes the world.}
+\end{center}
+
+\end{document}
+```

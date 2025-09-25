@@ -1,0 +1,140 @@
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+
+\documentclass[11pt,twoside,openany]{book}
+
+% ======================
+% Document Setup
+% ======================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{needspace}
+\usepackage{makeidx}
+\usepackage{imakeidx}
+
+% ======================
+% Index Setup
+% ======================
+\makeindex
+
+% ======================
+% Page Layout
+% ======================
+\geometry{
+  paper=a4paper,
+  inner=2.5cm,
+  outer=2.5cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+% ======================
+% Headers & Footers
+% ======================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ======================
+% Chapter/Section Styling
+% ======================
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries\centering}
+  {\chaptertitlename\ \thechapter}{1pc}
+  {\LARGE}
+
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% ======================
+% Hyperref Setup
+% ======================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+  pdftitle={Fate's Edge Player's Guide},
+  pdfauthor={Nicholas A. Gasper},
+  pdfsubject={TTRPG Player's Guide},
+  pdfkeywords={TTRPG, Fate's Edge, RPG, Player's Guide}
+}
+
+% ======================
+% Document Info
+% ======================
+\title{Fate's Edge Player's Guide}
+\author{Nicholas A. Gasper}
+\date{\today}
+
+% ======================
+% Begin Document
+% ======================
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+
+% ======================
+% Modular Chapter Inputs
+% ======================
+
+% Core Rules & Mechanics
+\input{chapters/chapter_01_intro}
+\input{chapters/chapter_02_core_mechanics}
+\input{chapters/chapter_03_advancement}
+\input{chapters/chapter_04_magic}
+\input{chapters/chapter_05_world_interaction}
+
+% Character Creation & Play
+\input{chapters/chapter_06_attributes_skills}
+\input{chapters/chapter_07_xp_paths}
+\input{chapters/chapter_08_talents}
+\input{chapters/chapter_09_assets_followers}
+\input{chapters/chapter_10_archetypes}
+
+% World & Lore
+\input{chapters/chapter_11_world_regions}
+\input{chapters/chapter_12_cultures}
+\input{chapters/chapter_13_gods_powers}
+\input{chapters/chapter_14_languages}
+\input{chapters/chapter_15_backgrounds}
+
+% Appendices
+\input{chapters/chapter_16_compendium_talents}
+\input{chapters/chapter_17_compendium_assets}
+\input{chapters/chapter_18_npc_companions}
+\input{chapters/chapter_19_deck_generators}
+\input{chapters/chapter_20_example_builds}
+\input{chapters/appendix_a_quickref}
+\input{chapters/appendix_b_index}
+
+\backmatter
+\printindex
+
+\end{document}
+
