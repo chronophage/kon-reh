@@ -1,4 +1,3 @@
-```latex
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
@@ -80,6 +79,13 @@ To attempt anything significant:
     \item \textbf{Arcana}, \textbf{Lore}, \textbf{Craft}
 \end{itemize}
 
+\subsection{Position States}
+\begin{itemize}
+    \item \textbf{Controlled}: Advantageous position, minor consequences
+    \item \textbf{Risky}: Even odds, moderate consequences
+    \item \textbf{Desperate}: Disadvantaged, severe consequences
+\end{itemize}
+
 \subsection{Difficulty Values}
 \begin{center}
 \begin{tabular}{cl}
@@ -128,6 +134,52 @@ How you describe your action affects the roll:
     \item \textbf{Intricate}: Re-roll all 1s + add one small positive flourish on success
 \end{itemize}
 
+\section{Integrated Combat System}
+
+\subsection{Combat Resolution Procedure}
+\begin{enumerate}
+    \item \textbf{Declare Action}: Player states intent and approach (Attribute + Skill)
+    \item \textbf{Set Position}: GM sets Controlled, Risky, or Desperate based on tactical situation
+    \item \textbf{Roll Dice}: Roll pool = Attribute + Skill
+    \item \textbf{Count Results}: 6+ = Success, 1 = Complication Point (CP)
+    \item \textbf{Apply Outcome}: Use standard Outcome Matrix
+    \item \textbf{Manage Consequences}: GM spends CP or draws from Consequences Deck
+\end{enumerate}
+
+\subsection{Combat Consequence Types}
+\begin{itemize}
+    \item \textbf{Hearts}: Morale, fear, command/control breakdown
+    \item \textbf{Spades}: Physical harm, positioning changes, weapon status
+    \item \textbf{Clubs}: Resource depletion, gear damage, fatigue
+    \item \textbf{Diamonds}: Environmental hazards, reinforcements, tactical setbacks
+\end{itemize}
+
+\subsection{Harm Integration}
+Harm tracks directly tie to CP economy:
+\begin{itemize}
+    \item \textbf{Minor (-)}: Generate 1 CP on next 2 rolls
+    \item \textbf{Moderate (=)}: Generate 1 CP on next roll, -1 die to relevant actions
+    \item \textbf{Severe (≈)}: Generate 2 CP on next roll, -2 dice to relevant actions  
+    \item \textbf{Critical (†)}: Generate 3 CP on next roll, out of action until treated
+\end{itemize}
+
+\subsection{Tactical Clocks}
+Persistent combat conditions tracked through clocks:
+\begin{itemize}
+    \item \textbf{Mob Overwhelm} (6): Enemy numbers become advantage
+    \item \textbf{Fatigue Spiral} (4): Exhaustion affects performance
+    \item \textbf{Morale Collapse} (6): Fear undermines effectiveness
+    \item \textbf{Environmental Collapse} (8): Terrain/fire/building failure
+\end{itemize}
+
+\subsection{Position Dynamics}
+Position can shift during combat based on CP spending:
+\begin{itemize}
+    \item \textbf{1 CP}: Shift position one step (GM choice)
+    \item \textbf{Player Spending}: 1 CP to improve position one step
+    \item \textbf{Narrative Triggers}: Flanking, reinforcement arrival, environmental changes
+\end{itemize}
+
 \section{Character Creation}
 
 \subsection{Starting Points}
@@ -140,7 +192,7 @@ How you describe your action affects the roll:
 \begin{itemize}
     \item \textbf{Attributes}: New rating × 3 XP
     \item \textbf{Skills}: New level × 2 XP
-    \item \textbf{Followers}: Cap² XP (Cap 3 follower = 9 XP)
+    \item \textbf{Followers}: Cap² XP
     \item \textbf{Assets}: Minor (4 XP), Standard (8 XP), Major (12 XP)
 \end{itemize}
 
@@ -181,6 +233,14 @@ Magic uses the \textbf{Casting Loop}:
     \item \textbf{Weave}: Roll Wits + Art to shape spell with Description benefits
     \item \textbf{Backlash}: GM spends CP from steps 1+2 for thematic consequences
 \end{enumerate}
+
+\subsection{Magic Combat Integration}
+Spellcasting in combat feeds the same consequence economy:
+\begin{itemize}
+    \item Channel/Weave Backlash CP applies to tactical situation
+    \item Spells can shift position, create tactical clocks, or generate combat consequences
+    \item Magic consequences cascade through existing combat systems
+\end{itemize}
 
 \section{Boons}
 
@@ -227,20 +287,21 @@ Set travel clock by highest rank:
 \subsection{At the Table}
 \begin{enumerate}
     \item Player describes action and approach
-    \item GM sets Difficulty Value (DV 1-4+)
+    \item GM sets Difficulty Value (DV 1-4+) and Position (Controlled/Risky/Desperate for combat)
     \item Player builds dice pool (Attribute + Skill)
     \item Player chooses description level
     \item Roll dice, count successes and 1s (CP)
     \item GM resolves outcome and spends CP
 \end{enumerate}
 
-\begin{examplebox}[Example Action]
-Kael wants to charm a guard (DV 2).
+\begin{examplebox}[Example Combat Action]
+Kael engages an enemy swordsman.
 \begin{itemize}
-    \item Presence 3 + Diplomacy 2 = 5d10
-    \item Detailed action: "I compliment his sword and mention I'm new in town"
-    \item Rolls: 7, 6, 4, 1, 1 = 2 successes, 2 CP
-    \item Success \& Cost: Guard lets them pass, but GM spends 1 CP for "he expects a favor later"
+    \item GM sets position: Risky (evenly matched)
+    \item Body 3 + Melee 3 = 6d10
+    \item Intricate action: "I feint high then strike at their exposed flank"
+    \item Rolls: 8, 7, 6, 4, 1, 1 = 3 successes, 2 CP
+    \item Success \& Cost: Hits opponent, but GM spends 1 CP for "you lose footing (-1 die next defense)"
 \end{itemize}
 \end{examplebox}
 
@@ -255,7 +316,7 @@ Kael wants to charm a guard (DV 2).
 \section{GM Quick Reference}
 
 \begin{itemize}
-    \item Set DV before the roll based on situation
+    \item Set DV and Position before the roll based on situation
     \item Count successes vs DV, count 1s as CP
     \item Resolve outcome from matrix
     \item Spend CP for complications (use the menu)
@@ -286,4 +347,3 @@ Kael wants to charm a guard (DV 2).
 \end{center}
 
 \end{document}
-```
