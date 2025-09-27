@@ -1,0 +1,430 @@
+```latex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Color definitions
+\definecolor{classblue}{RGB}{65, 105, 225}
+\definecolor{classred}{RGB}{178, 34, 34}
+\definecolor{classgreen}{RGB}{0, 100, 0}
+\definecolor{classpurple}{RGB}{128, 0, 128}
+\definecolor{classorange}{RGB}{255, 140, 0}
+\definecolor{classgray}{RGB}{105, 105, 105}
+\definecolor{classgold}{RGB}{218, 165, 32}
+
+% Box styles
+\tcbset{
+    classbox/.style={
+        enhanced,
+        colback=white,
+        colframe=#1,
+        arc=3pt,
+        fonttitle=\bfseries,
+        before skip=10pt,
+        after skip=10pt
+    }
+}
+
+\newtcolorbox{classguide}[2][]{%
+    classbox=#2,
+    title=#1
+}
+
+\newtcolorbox{tierbox}[2][]{%
+    enhanced,
+    colback=#2!5,
+    colframe=#2,
+    arc=2pt,
+    fonttitle=\bfseries,
+    title=#1,
+    before skip=5pt,
+    after skip=5pt
+}
+
+\newtcolorbox{tipbox}{%
+    enhanced,
+    colback=blue!5,
+    colframe=blue!50!black,
+    arc=2pt,
+    title=\faLightbulb\ \textbf{Pro Tip},
+    before skip=5pt,
+    after skip=5pt
+}
+
+\titleformat{\section}{\color{classgold}\Large\bfseries\filcenter}{}{0em}{}
+\titleformat{\subsection}{\color{classgray}\large\bfseries}{}{0em}{}
+
+\setlist{left=0pt}
+
+\title{\Huge\textbf{Fate's Edge Class Build Guides}\\
+\Large Step-by-Step Progression from Tier I to Tier IV}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\draw[classblue, line width=2pt] (0,0) -- (2,2) -- (4,0) -- (6,2) -- (8,0) -- (10,2) -- (12,0);
+\foreach \x/\name in {0/Tier I, 2/Tier II, 4/Tier III, 6/Tier IV, 8/Tier V} {
+    \draw[classblue, fill=white] (\x,0) circle (0.3cm);
+    \node[below, font=\small] at (\x,-0.5) {\name};
+}
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+% Fighter Build Guide
+\begin{classguide}[The Indomitable Warrior]{classred}
+\begin{multicols}{2}
+\includegraphics[width=\linewidth]{example-image-a}
+\columnbreak
+\textbf{Core Concept:} A master of martial combat who becomes a living legend through skill, determination, and tactical prowess.
+
+\textbf{Starting Stats:} Body 3, Wits 2
+\textbf{Key Skills:} Melee 2, Athletics 2, Tactics 1
+\textbf{Signature Talent:} Battle Instincts
+\end{multicols}
+
+\subsection*{\faStar\ Tier I: The Blade Initiate (0-40 XP)}
+\begin{tierbox}[Foundation Building]{red!70!black}
+\textbf{Attributes:} Body 3→4 (12 XP), Wits 2→3 (6 XP) = 18 XP
+\textbf{Skills:} Melee 2→3 (6 XP), Athletics 2→3 (6 XP) = 12 XP
+\textbf{Talents:} Battle Instincts (6 XP) = 6 XP
+\textbf{Remaining:} 6 XP (Invest in Tactics 1→2 = 2 XP, save 4 XP)
+\end{tierbox}
+
+\textbf{Play Style:} Frontline combat specialist. Use Body + Melee for direct attacks, Wits + Tactics for battlefield awareness.
+
+\begin{tipbox}
+Focus on Controlled positions in combat. Use terrain and flanking to maintain advantage.
+\end{tipbox}
+
+\subsection*{\faStar\faStar\ Tier II: The Veteran Champion (41-90 XP)}
+\begin{tierbox}[Combat Mastery]{red!60!black}
+\textbf{Attributes:} Spirit 1→3 (6 XP) = 6 XP
+\textbf{Skills:} Melee 3→4 (8 XP), Command 1→2 (2 XP) = 10 XP
+\textbf{Talents:} Exceptional Coordination (8 XP) = 8 XP
+\textbf{Assets:} Minor Weapon Cache (4 XP) = 4 XP
+\textbf{Followers:} Cap 2 Squire (4 XP) = 4 XP
+\textbf{Remaining:} 8 XP
+\end{tierbox}
+
+\textbf{New Options:} Lead actions with followers, use Exceptional Coordination for +4 assist dice.
+
+\begin{tipbox}
+Your squire can Scout Signal to give allies Controlled position or Distract Draw to reduce enemy rails.
+\end{tipbox}
+\end{classguide}
+
+\newpage
+
+% Wizard Build Guide
+\begin{classguide}[The Arcane Architect]{classblue}
+\begin{multicols}{2}
+\includegraphics[width=\linewidth]{example-image-b}
+\columnbreak
+\textbf{Core Concept:} A scholar of forbidden knowledge who wields reality-bending magic at great personal cost.
+
+\textbf{Starting Stats:} Wits 4, Spirit 2
+\textbf{Key Skills:} Arcana 2, Lore 2
+\textbf{Signature Talent:} Ritual Master
+\end{multicols}
+
+\subsection*{\faStar\ Tier I: The Spell Student (0-40 XP)}
+\begin{tierbox}[Arcane Foundation]{blue!70!black}
+\textbf{Attributes:} Wits 4 (12 XP), Spirit 2→3 (6 XP) = 18 XP
+\textbf{Skills:} Arcana 2→3 (6 XP), Lore 2→3 (6 XP) = 12 XP
+\textbf{Talents:} Ritual Master (12 XP) = 12 XP
+\textbf{Remaining:} 0 XP
+\end{tierbox}
+
+\textbf{Play Style:} Support caster focused on rituals and sustained effects. Use Wits + Arcana for Channel/Weave casting.
+
+\begin{tipbox}
+Start with low-risk spells like Stone-Sense or Cloak of Shadows. Save high-DV spells for desperate moments.
+\end{tipbox}
+
+\subsection*{\faStar\faStar\ Tier II: The Battle Mage (41-90 XP)}
+\begin{tierbox}[Combat Arcanist]{blue!60!black}
+\textbf{Attributes:} Body 1→2 (3 XP) = 3 XP
+\textbf{Skills:} Arcana 3→4 (8 XP) = 8 XP
+\textbf{Talents:} Backlash Resistant (8 XP) = 8 XP
+\textbf{Assets:} Minor Magical Laboratory (4 XP) = 4 XP
+\textbf{Followers:} Cap 2 Apprentice (4 XP) = 4 XP
+\textbf{Remaining:} 3 XP
+\end{tierbox}
+
+\textbf{New Options:} Reduced backlash risk, laboratory for safer experiments, apprentice assistance.
+
+\begin{tipbox}
+Use your apprentice for ritual assistance. The lab provides Mitigate Backlash 1 once per session.
+\end{tipbox}
+\end{classguide}
+
+\newpage
+
+% Rogue Build Guide
+\begin{classguide}[The Shadow Operative]{classgreen}
+\begin{multicols}{2}
+\includegraphics[width=\linewidth]{example-image-c}
+\columnbreak
+\textbf{Core Concept:} A master of stealth and subterfuge who operates in the spaces between law and chaos.
+
+\textbf{Starting Stats:} Wits 3, Presence 2
+\textbf{Key Skills:} Stealth 2, Skullduggery 2, Sway 1
+\textbf{Signature Talent:} Shadow Walker
+\end{multicols}
+
+\subsection*{\faStar\ Tier I: The Street Urchin (0-40 XP)}
+\begin{tierbox}[Subterfuge Foundation]{green!70!black}
+\textbf{Attributes:} Wits 3→4 (12 XP), Presence 2→3 (6 XP) = 18 XP
+\textbf{Skills:} Stealth 2→3 (6 XP), Skullduggery 2→3 (6 XP) = 12 XP
+\textbf{Talents:} Shadow Walker (10 XP) = 10 XP
+\textbf{Remaining:} 2 XP (Invest in Sway 1→2 = 2 XP)
+\end{tierbox}
+
+\textbf{Play Style:} Infiltration specialist. Use Wits + Stealth for sneaking, Presence + Sway for social manipulation.
+
+\begin{tipbox}
+Intricate descriptions are your best friend. Re-roll all 1s when describing shadow movements or misdirection.
+\end{tipbox}
+
+\subsection*{\faStar\faStar\ Tier II: The Guild Specialist (41-90 XP)}
+\begin{tierbox}[Professional Operative]{green!60!black}
+\textbf{Attributes:} Body 1→2 (3 XP) = 3 XP
+\textbf{Skills:} Skullduggery 3→4 (8 XP) = 8 XP
+\textbf{Talents:} Face in the Crowd (8 XP) = 8 XP
+\textbf{Assets:} Standard Spy Network (8 XP) = 8 XP
+\textbf{Remaining:} 3 XP
+\end{tierbox}
+
+\textbf{New Options:} Urban camouflage, spy network for information gathering, professional reputation.
+
+\begin{tipbox}
+Your spy network can deliver messages or provide Controlled position for settlement actions in cities.
+\end{tipbox}
+\end{classguide}
+
+\newpage
+
+% Cleric Build Guide
+\begin{classguide}[The Divine Champion]{classgold}
+\begin{multicols}{2}
+\includegraphics[width=\linewidth]{example-image}
+\columnbreak
+\textbf{Core Concept:} A servant of divine power who channels sacred energy to heal allies and smite undead.
+
+\textbf{Starting Stats:} Spirit 3, Presence 2
+\textbf{Key Skills:} Faith 2, Command 2
+\textbf{Signature Talent:} Everflame Keeper
+\end{multicols}
+
+\subsection*{\faStar\ Tier I: The Acolyte (0-40 XP)}
+\begin{tierbox}[Divine Foundation]{gold!50!black}
+\textbf{Attributes:} Spirit 3→4 (12 XP), Presence 2→3 (6 XP) = 18 XP
+\textbf{Skills:} Faith 2→3 (6 XP), Command 2→3 (6 XP) = 12 XP
+```latex
+\begin{classguide}[The Divine Champion]{classgold}
+\begin{multicols}{2}
+\includegraphics[width=\linewidth]{example-image}
+\columnbreak
+\textbf{Core Concept:} A servant of divine power who channels sacred energy to heal allies and smite undead.
+
+\textbf{Starting Stats:} Spirit 3, Presence 2
+\textbf{Key Skills:} Faith 2, Command 2
+\textbf{Signature Talent:} Everflame Keeper
+\end{multicols}
+
+\subsection*{\faStar\ Tier I: The Acolyte (0-40 XP)}
+\begin{tierbox}[Divine Foundation]{gold!50!black}
+\textbf{Attributes:} Spirit 3→4 (12 XP), Presence 2→3 (6 XP) = 18 XP
+\textbf{Skills:} Faith 2→3 (6 XP), Command 2→3 (6 XP) = 12 XP
+\textbf{Talents:} Everflame Keeper (16 XP) = 16 XP
+\textbf{Remaining:} 0 XP
+\end{tierbox}
+
+\textbf{Play Style:} Support and battlefield control. Use Spirit + Faith for divine spells, Presence + Command for leadership.
+
+\begin{tipbox}
+Everflame Keeper lets you sanctify areas and treat corruption hazards as Hazard 1 + Protected Turn.
+\end{tipbox}
+
+\subsection*{\faStar\faStar\ Tier II: The Temple Knight (41-90 XP)}
+\begin{tierbox}[Holy Warrior]{gold!60!black}
+\textbf{Attributes:} Body 1→2 (3 XP) = 3 XP
+\textbf{Skills:} Faith 3→4 (8 XP), Melee 1→2 (2 XP) = 10 XP
+\textbf{Talents:} Battle Chant (8 XP) = 8 XP
+\textbf{Assets:} Minor Shrine (4 XP) = 4 XP
+\textbf{Followers:} Cap 2 Acolyte (4 XP) = 4 XP
+\textbf{Remaining:} 1 XP
+\end{tierbox}
+
+\textbf{New Options:} Direct combat capability, Battle Chant for allies, shrine for healing, acolyte support.
+
+\begin{tipbox}
+Battle Chant makes allies ignore first Fatigue 1 from exertion in combat. Your acolyte can Fetch Carry sacred items.
+\end{tipbox}
+\end{classguide}
+
+\newpage
+
+% Ranger Build Guide
+\begin{classguide}[The Wild Warden]{classgreen!70!blue}
+\begin{multicols}{2}
+\includegraphics[width=\linewidth]{example-image}
+\columnbreak
+\textbf{Core Concept:} A guardian of nature who masters wilderness survival and fights to protect the balance.
+
+\textbf{Starting Stats:} Wits 3, Body 2
+\textbf{Key Skills:} Survival 2, Stealth 2, Lore 1
+\textbf{Signature Talent:} Beast-Tongue
+\end{multicols}
+
+\subsection*{\faStar\ Tier I: The Tracker (0-40 XP)}
+\begin{tierbox}[Wilderness Foundation]{green!60!blue!70!black}
+\textbf{Attributes:} Wits 3→4 (12 XP), Body 2→3 (6 XP) = 18 XP
+\textbf{Skills:} Survival 2→3 (6 XP), Stealth 2→3 (6 XP) = 12 XP
+\textbf{Talents:} Beast-Tongue (8 XP) = 8 XP
+\textbf{Assets:} Minor Lodge (4 XP) = 4 XP
+\textbf{Remaining:} 2 XP (Invest in Lore 1→2 = 2 XP)
+\end{tierbox}
+
+\textbf{Play Style:} Wilderness specialist. Use Wits + Survival for tracking, Body + Stealth for ambushes.
+
+\begin{tipbox}
+Beast-Tongue lets you treat local creatures as Cap 2 followers. Perfect for scouting and environmental interaction.
+\end{tipbox}
+
+\subsection*{\faStar\faStar\ Tier II: The Forest Guardian (41-90 XP)}
+\begin{tierbox}[Nature's Ally]{green!60!blue!60!black}
+\textbf{Attributes:} Spirit 1→2 (3 XP) = 3 XP
+\textbf{Skills:} Survival 3→4 (8 XP), Lore 2→3 (4 XP) = 12 XP
+\textbf{Talents:} Ranger's Step (9 XP) = 9 XP
+\textbf{Followers:} Cap 3 Wolf Companion (9 XP) = 9 XP
+\textbf{Remaining:} 1 XP
+\end{tierbox}
+
+\textbf{New Options:} Move unseen in forests, wolf companion for combat assistance, deeper nature knowledge.
+
+\begin{tipbox}
+Ranger's Step treats terrain penalties as one step lower. Your wolf companion can Scout Signal or Distract Draw.
+\end{tipbox}
+\end{classguide}
+
+\newpage
+
+% Tier Progression Summary
+\begin{classguide}[Tier Progression at a Glance]{classgray}
+\subsection*{\faChartLine\ XP Investment Patterns}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Tier} & \textbf{XP Range} & \textbf{Primary Focus} & \textbf{Key Milestones} & \textbf{New Options} \\
+\hline
+I (Rookie) & 0-40 XP & Attributes/Skills & Basic competence & Personal actions \\
+II (Seasoned) & 41-90 XP & Mixed growth & First assets/followers & Team support \\
+III (Veteran) & 91-150 XP & Assets/Networks & Major holdings & Strategic influence \\
+IV (Paragon) & 151-220 XP & Empire-shaping & Legendary abilities & World impact \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{\faRocket\ Accelerated Progression Tips}
+
+\begin{tierbox}[Fast Growth Strategies]{purple}
+\textbf{Session Awards Maximized:}
+\begin{itemize}
+    \item Hard Choice Embraced (+2 XP) - Take morally difficult paths
+    \item Complication Spotlight (+3 XP) - Lean into narrative risks
+    \item Bond/Flag Driven Play (+2 XP) - Follow character motivations
+\end{itemize}
+
+\textbf{Complication Dividends:}
+\begin{itemize}
+    \item Face Cards (+1 XP each) - Embrace dramatic setbacks
+    \item Aces (+2 XP each) - Turn catastrophic failures into growth
+\end{itemize}
+\end{tierbox}
+
+\subsection*{\faBalanceScale\ Balanced Development}
+
+\textbf{Recommended Split by Tier:}
+\begin{itemize}
+    \item \textbf{Tier I:} 70-90\% Self Enhancement, 10-30\% Early Assets
+    \item \textbf{Tier II:} 50-65\% Self, 20-35\% Assets, 15-25\% Talents
+    \item \textbf{Tier III:} 30-50\% Self, 30-50\% Assets, 20-40\% Talents
+    \item \textbf{Tier IV:} 20-40\% Self, 35-55\% Assets, 25-45\% Talents
+\end{itemize}
+
+\begin{tipbox}
+Don't neglect your core capabilities when building networks. A follower with no skills to assist is just expensive baggage.
+\end{tipbox}
+\end{classguide}
+
+\newpage
+
+% Quick Reference Cards
+\begin{classguide}[Quick Reference: Key Milestones]{classblue!80!white}
+\subsection*{\faMedal\ Prestige Ability Unlock Requirements}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Talent} & \textbf{Requirements} & \textbf{Tier Available} \\
+\hline
+Echo-Walker's Step & Wits 5, Arcana 4 & III+ \\
+Warglord & Body 5, Command 3 & III+ \\
+Spirit-Shield & Spirit 4, Insight 3 & III+ \\
+Forge-Patriarch & Body 4+, Craft 4 & III+ \\
+Resonant Architect & Any Attribute 5 & IV+ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{\faCastle\ Major Asset Requirements}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Asset} & \textbf{XP Cost} & \textbf{Typical Unlock} \\
+\hline
+City District License & 12 XP & Tier II \\
+Regional Monopoly & 12 XP & Tier II \\
+Fortress/Stronghold & 12 XP & Tier II \\
+University College & 12 XP & Tier II \\
+Grand Forge-Citadel & 20 XP & Tier IV \\
+Harbor Light Consortium & 20 XP & Tier IV \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{\faUsers\ Follower Investment Guide}
+
+\textbf{Cap Investment:} Cap² XP
+\begin{itemize}
+    \item Cap 2: 4 XP (Tier I accessibility)
+    \item Cap 3: 9 XP (Tier II standard)
+    \item Cap 4: 16 XP (Tier III investment)
+    \item Cap 5: 25 XP (Tier IV commitment)
+\end{itemize}
+
+\textbf{Follower Upkeep:} Coin equal to Cap per downtime, or spend Scene tending relationship.
+
+\begin{tipbox}
+A Cap 5 follower can solve one significant problem per downtime but generates 1 CP for crew.
+\end{tipbox}
+\end{classguide}
+
+\end{document}
