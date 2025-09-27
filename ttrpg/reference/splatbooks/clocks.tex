@@ -1,0 +1,385 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{changepage}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge}
+\lhead{Clocks Tutorial}
+\rfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\newcommand{\player}[1]{\textbf{#1:}}
+\newcommand{\gm}[1]{\textit{GM: #1}}
+\newcommand{\roll}[2]{\texttt{Roll: #1d10 = [#2]}}
+\newcommand{\success}[1]{\textbf{Successes: #1}}
+\newcommand{\cp}[1]{\textbf{CP: #1}}
+\newcommand{\outcome}[1]{\textbf{Outcome: #1}}
+\newcommand{\clocksegment}{\textbullet}
+
+\definecolor{clockcolor}{rgb}{0.2,0.4,0.8}
+
+\begin{document}
+
+\begin{center}
+{\LARGE Clock Management Tutorial}\\
+\vspace{0.5em}
+{\large A Fate's Edge Annotated Narrative with Clock Setup Guide}
+\end{center}
+
+\section*{Introduction to Clocks in Fate's Edge}
+
+\gm{Clocks are one of the most important tools in Fate's Edge. They represent ongoing conditions, threats, or progress toward objectives. Think of them as visual progress bars that help everyone track tension and stakes.}
+
+\subsection*{Types of Clocks}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Travel Clocks}: Track progress through journey legs (4-10 segments)
+\item \textbf{Tactical Clocks}: Represent ongoing combat conditions (Mob Overwhelm, Fatigue Spiral, etc.)
+\item \textbf{Campaign Clocks}: Track long-term pressure (Mandate 0-6, Crisis 0-6)
+\item \textbf{Scene Clocks}: Specific to current situations (Building Collapse, Pursuit, etc.)
+\end{itemize}
+
+\section*{Tutorial Session: Setting Up Clocks}
+
+\player{GM} Today we'll run a session focused on teaching clock management. Our party consists of Elena the Scholar (Wits 4, Lore 3), Marcus the Warrior (Body 4, Melee 3), and Sariel the Scout (Wits 3, Stealth 3). They're investigating disturbances at an ancient Aeler ruin.
+
+\subsection*{Step 1: Initial Scene Setup}
+
+\player{GM} First, I'll establish the scene using the Aeler generator. Drawing cards until I have all suits:
+
+\gm{Spade (8 - Gloam Cistern), Heart (6 - Key-Sister), Club (7 - Settling crack), Diamond (5 - Underway Pass)}
+
+\gm{Highest rank is 8, so we have an 8-segment travel clock. But for this tutorial, let's focus on the immediate scene clocks.}
+
+\subsection*{Step 2: Creating Scene Clocks}
+
+\player{GM} As you enter the Gloam Cistern, I'm establishing three key clocks:
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
+\textit{Represents the ancient structure's stability}
+\end{center}
+
+\begin{center}
+\textbf{Warden Search Clock} (6 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/6\\
+\textit{How long before the Key-Sister finds you}
+\end{center}
+
+\begin{center}
+\textbf{Forbidden Knowledge Clock} (4 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment} 0/4\\
+\textit{Progress in uncovering dangerous secrets}
+\end{center}
+
+\gm{I always announce clocks to players so they understand the stakes. These represent: the building might collapse, you're being hunted, and you're meddling with something dangerous.}
+
+\section*{Scene 1: The Investigation Begins}
+
+\player{Elena} I want to examine the ancient inscriptions on the walls to understand what happened here. Wits + Lore.
+
+\gm{Risky position, DV 2. The inscriptions are faded and in an old dialect.}
+
+\player{Elena} Rolling Wits 4 + Lore 3 = 7 dice. \roll{7}{9, 7, 6, 4, 3, 1, 1} \success{4} \cp{2}
+
+\outcome{Success \& Cost}
+
+\gm{You decipher enough to understand this was a prison for something the dwarves considered extremely dangerous. But \cp{1}: Your scrutiny of the walls causes some loose stonework to shift. \cp{2}: The sound attracts attention - you hear footsteps approaching.}
+
+\gm{I'll tick the Environmental Collapse clock by 1 (loose stonework) and the Warden Search clock by 1 (attracted attention).}
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 1/8
+\end{center}
+
+\begin{center}
+\textbf{Warden Search Clock} (6 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 1/6
+\end{center}
+
+\player{Sariel} I'll scout ahead to see what's making those footsteps. Wits + Stealth.
+
+\gm{Controlled position (you're choosing when to engage), DV 1.}
+
+\player{Sariel} Rolling Wits 3 + Stealth 3 = 6 dice. \roll{6}{8, 6, 5, 4, 2, 1} \success{3} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You slip into a shadowy alcove and see the Key-Sister approaching with a lantern, muttering prayers under her breath. She's definitely looking for intruders. \cp{1}: As you watch, more stone dust sifts down from the ceiling near your position.}
+
+\gm{Environmental Collapse clock ticks up by 1.}
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 2/8
+\end{center}
+
+\section*{Scene 2: Escalation}
+
+\player{Marcus} I say we confront the Key-Sister directly. Maybe we can explain ourselves. Body + Command.
+
+\gm{Risky position, DV 2. You're approaching someone who's clearly hostile to intruders.}
+
+\player{Marcus} Rolling Body 4 + Command 1 = 5 dice. \roll{5}{7, 6, 4, 3, 1} \success{3} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You step out confidently and call out to the dwarf. She spins, drawing a ritual dagger, and begins chanting in a language that makes your teeth ache. The air grows thick and oppressive. \cp{1}: Your bold approach has definitely marked you as hostile rather than lost travelers.}
+
+\gm{Warden Search clock jumps by 2 (now she knows exactly where you are and is actively hostile).}
+
+\begin{center}
+\textbf{Warden Search Clock} (6 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment} 3/6
+\end{center}
+
+\player{Elena} Seeing her ritual, I'll try to counter it with my knowledge of ancient Aelerian practices. Wits + Arcana.
+
+\gm{Desperate position, DV 3. You're trying to counter an active ritual you barely understand.}
+
+\player{Elena} Rolling Wits 4 + Arcana 1 = 5 dice. \roll{5}{9, 6, 3, 2, 1} \success{2} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You manage to disrupt her chant by shouting the traditional Aelerian counter-phrase. She stumbles back, surprised, but her ritual dagger begins to glow ominously. \cp{1}: The magical backlash leaves you momentarily dizzy.}
+
+\gm{But here's where Forbidden Knowledge comes in - you've engaged with the dangerous secrets, so I'll tick that clock by 2.}
+
+\begin{center}
+\textbf{Forbidden Knowledge Clock} (4 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment}\clocksegment\clocksegment} 2/4
+\end{center}
+
+\section*{Scene 3: Consequences and Resolution}
+
+\player{GM} Let's check our clock status:
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 2/8
+\end{center}
+
+\begin{center}
+\textbf{Warden Search Clock} (6 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment} 3/6
+\end{center}
+
+\begin{center}
+\textbf{Forbidden Knowledge Clock} (4 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment}\clocksegment\clocksegment} 2/4
+\end{center}
+
+\gm{None are filled yet, but they're all advancing. The tension is building.}
+
+\player{Sariel} I think we should retreat and find another way in. I'll scout for a safer route while the others create a distraction. Wits + Survival.
+
+\gm{Risky position, DV 2. You're trying to navigate unstable ancient stonework while being hunted.}
+
+\player{Sariel} Rolling Wits 3 + Survival 3 = 6 dice. \roll{6}{10, 7, 5, 4, 2, 1} \success{4} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You spot a partially collapsed side passage that might lead around to the back of the cistern. But \cp{1}: As you point it out, more stones shift ominously above you.}
+
+\gm{Environmental Collapse clock ticks up by 1.}
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 3/8
+\end{center}
+
+\player{Marcus} I'll create that distraction - charge the Key-Sister to give Sariel time. Body + Melee.
+
+\gm{Desperate position, DV 3. You're charging a ritualist in close quarters in an unstable structure.}
+
+\player{Marcus} Rolling Body 4 + Melee 3 = 7 dice. \roll{7}{8, 6, 5, 4, 3, 1, 1} \success{4} \cp{2}
+
+\outcome{Success \& Cost}
+
+\gm{You leap forward with a fierce yell, and the Key-Sister barely gets her glowing dagger up in time. Your blade clashes against hers with a shower of sparks. \cp{1}: The impact sends more debris raining down. \cp{2}: Your attack has fully committed you to this fight - there's no easy exit now.}
+
+\gm{Environmental Collapse jumps by 2, and Warden Search by 1 (she's now fully engaged with you).}
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment} 5/8
+\end{center}
+
+\begin{center}
+\textbf{Warden Search Clock} (6 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment} 4/6
+\end{center}
+
+\section*{Scene 4: Clock Resolution}
+
+\player{GM} We're getting close to clock resolution. Let's see what happens next:
+
+\player{Elena} The structure is coming down! I'll try to use my knowledge to stabilize the area with geomantic principles. Wits + Arcana.
+
+\gm{Pressured position, DV 3. You're trying complex magic while dodging falling masonry.}
+
+\player{Elena} Rolling Wits 4 + Arcana 1 = 5 dice. \roll{5}{7, 5, 4, 3, 1} \success{3} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You manage to channel some stabilizing energy into the walls, and several dangerous-looking cracks stop spreading. But \cp{1}: The magical effort exhausts you, and you feel drained.}
+
+\gm{I'll reduce the Environmental Collapse clock by 2 (your stabilization) but tick the Forbidden Knowledge clock by 1 (using advanced geomancy).}
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 3/8
+\end{center}
+
+\begin{center}
+\textbf{Forbidden Knowledge Clock} (4 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment}\clocksegment} 3/4
+\end{center}
+
+\player{Sariel} While they're distracted, I'll slip through that side passage I found. Wits + Stealth.
+
+\gm{Controlled position (the others are creating a perfect distraction), DV 1.}
+
+\player{Sariel} Rolling Wits 3 + Stealth 3 = 6 dice. \roll{6}{9, 7, 6, 4, 2, 1} \success{4} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You slip away unnoticed and find the side passage leads to a hidden chamber filled with ancient scrolls and artifacts. But \cp{1}: As you enter, you accidentally trigger an old alarm system - a low gong sounds in the distance.}
+
+\gm{The Warden Search clock jumps by 2! She now knows exactly where you've gone.}
+
+\begin{center}
+\textbf{Warden Search Clock} (6 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment}} 6/6 \textbf{FILLED!}
+\end{center}
+
+\section*{Clock Resolution: Warden Search Filled}
+
+\gm{The Warden Search clock is filled! This triggers a major consequence. The Key-Sister shouts in dwarven and you hear her running toward the hidden chamber. She's bringing reinforcements and her ritual dagger is now blazing with eldritch fire.}
+
+\player{Marcus} I'm right behind her - I'll pursue through the passage to back up Sariel. Body + Athletics.
+
+\gm{Risky position, DV 2. You're chasing someone through unknown passages while the structure groans around you.}
+
+\player{Marcus} Rolling Body 4 + Athletics 2 = 6 dice. \roll{6}{8, 6, 5, 4, 2, 1} \success{3} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You reach the hidden chamber just as the Key-Sister arrives, but she's not alone - two stone guardians have awakened and are blocking the entrance. \cp{1}: The chase has winded you slightly.}
+
+\gm{Environmental Collapse clock ticks up by 1 due to the magical awakening.}
+
+\begin{center}
+\textbf{Environmental Collapse Clock} (8 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment\clocksegment}\clocksegment\clocksegment\clocksegment\clocksegment} 4/8
+\end{center}
+
+\section*{Final Scene: Multiple Clock Management}
+
+\player{GM} Now we have multiple active threats. The Warden Search has reset but the situation is worse. The Forbidden Knowledge clock continues to tick as you're now in the heart of the ancient archive. The Environmental Collapse is advancing due to the awakened guardians.
+
+\player{Elena} I need to understand what these guardians are protecting. I'll examine the central artifact in the chamber. Wits + Lore.
+
+\gm{Pressured position, DV 3. You're researching while being hunted by stone constructs.}
+
+\player{Elena} Rolling Wits 4 + Lore 3 = 7 dice. \roll{7}{10, 8, 6, 4, 3, 1, 1} \success{4} \cp{2}
+
+\outcome{Success \& Cost}
+
+\gm{You recognize the artifact as a prison seal - the entire cistern was built to contain something that's been trying to escape for centuries. The guardians exist to keep it bound. \cp{1}: Your research reveals that breaking the seal would be catastrophic. \cp{2}: But the knowledge also shows you how to strengthen it - at great personal risk.}
+
+\gm{Forbidden Knowledge clock fills completely!}
+
+\begin{center}
+\textbf{Forbidden Knowledge Clock} (4 segments)\\
+\fbox{\textcolor{clockcolor}{\clocksegment\clocksegment\clocksegment\clocksegment}} 4/4 \textbf{FILLED!}
+\end{center}
+
+\section*{Clock Resolution: Forbidden Knowledge Filled}
+
+\gm{The Forbidden Knowledge clock fills! You now understand too much - the ancient entity is aware of your presence and is trying to influence you. You must make a choice: flee and leave the seal weakened, or risk everything to strengthen it.}
+
+\player{Sariel} I say we strengthen it. What's the worst that could happen? Wits + Sway.
+
+\gm{Desperate position, DV 3. You're trying to convince allies to take a massive risk while stone guardians approach.}
+
+\player{Sariel} Rolling Wits 3 + Sway 2 = 5 dice. \roll{5}{7, 5, 4, 2, 1} \success{2} \cp{1}
+
+\outcome{Success \& Cost}
+
+\gm{You manage to convince Elena that strengthening the seal is the right choice, but Marcus remains unconvinced. \cp{1}: The debate has cost you precious seconds - the guardians are almost upon you.}
+
+\section*{Tutorial Conclusion: Clock Management Lessons}
+
+\player{GM} Let's pause here to discuss what we've learned about clock management:
+
+\subsection*{Clock Creation Guidelines}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Announce Clearly}: Always tell players what each clock represents and how it advances.
+\item \textbf{Logical Triggers}: Clock advancement should follow from player actions and fictional events.
+\item \textbf{Visible Progression}: Use visual tracking so everyone can see tension building.
+\item \textbf{Meaningful Consequences}: When clocks fill, the consequences should change the story significantly.
+\end{enumerate}
+
+\subsection*{Clock Advancement Rules}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{1 CP}: Minor advancement (1 segment)
+\item \textbf{2-3 CP}: Moderate advancement (2 segments)  
+\item \textbf{4+ CP}: Major advancement (3+ segments) or fill smaller clocks
+\item \textbf{Multiple Clocks}: Distribute CP across relevant clocks rather than overfilling one
+\end{itemize}
+
+\subsection*{Clock Resolution Strategies}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Fill for Consequences}: When a clock fills, introduce a significant story turn.
+\item \textbf{Reset with Changes}: After resolution, reset clocks but change the situation.
+\item \textbf{Cascade Effects}: Filled clocks can trigger advancement in other clocks.
+\item \textbf{Player Agency}: Give players meaningful choices in how they deal with filling clocks.
+\end{enumerate}
+
+\subsection*{Common Clock Types and Uses}
+
+\begin{description}[leftmargin=*]
+\item[Environmental Clocks] (4-8 segments): Building collapse, weather, fire, flood
+\item[Social Clocks] (4-6 segments): Escalating tensions, public opinion, scandal  
+\item[Pursuit Clocks] (6 segments): Chase scenes, investigations, hunts
+\item[Preparation Clocks] (4-6 segments): Ritual casting, crafting, planning
+\item[Corruption Clocks] (4-6 segments): Moral decay, magical taint, addiction
+\end{description}
+
+\subsection*{GM Tips for Clock Management}
+
+\begin{itemize}[leftmargin=*]
+\item Start scenes with 1-2 clocks to establish tension
+\item Advance clocks through CP spends rather than arbitrary GM fiat
+\item Let players see the connection between their actions and clock advancement
+\item Use clocks to telegraph rising stakes and consequences
+\item Don't be afraid to let clocks fill - that's when interesting things happen
+\item Reset clocks when situations fundamentally change, rather than just emptying them
+\end{itemize}
+
+\gm{In our session, we saw how clocks create escalating tension: Environmental Collapse made the location dangerous, Warden Search brought active opposition, and Forbidden Knowledge raised the stakes of what the PCs were dealing with. When Forbidden Knowledge filled, it fundamentally changed the situation from a simple exploration to a moral dilemma with world-shaking implications.}
+
+\gm{The key is that clocks don't just track time - they track the accumulation of tension, stakes, and consequences. Every tick should feel earned and meaningful.}
+
+\end{document}

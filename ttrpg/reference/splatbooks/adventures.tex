@@ -1,0 +1,464 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{changepage}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge}
+\lhead{Adventure Module Template}
+\rfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\newcommand{\player}[1]{\textbf{#1:}}
+\newcommand{\gm}[1]{\textit{GM: #1}}
+\newcommand{\roll}[2]{\texttt{Roll: #1d10 = [#2]}}
+\newcommand{\success}[1]{\textbf{Successes: #1}}
+\newcommand{\cp}[1]{\textbf{CP: #1}}
+\newcommand{\outcome}[1]{\textbf{Outcome: #1}}
+\newcommand{\clocksegment}{\textbullet}
+
+\definecolor{clockcolor}{rgb}{0.2,0.4,0.8}
+\definecolor{modulebg}{rgb}{0.95,0.95,0.95}
+
+\begin{document}
+
+\begin{center}
+{\LARGE Fate's Edge Adventure Module Template}\\
+\vspace{0.5em}
+{\large Creating Cohesive Scenarios Using Deck Inspiration}
+\end{center}
+
+\section*{Adventure Module Structure Overview}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{Core Components of Every Module:}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Theme and Tone}: What feeling should this evoke?
+\item \textbf{Deck-Based Seed}: Using card draws to inspire cohesive elements
+\item \textbf{Narrative Hook}: Why do the PCs care?
+\item \textbf{Key NPCs}: Who populates this story?
+\item \textbf{Scene Clocks}: What ongoing pressures drive tension?
+\item \textbf{Resolution Paths}: How can PCs succeed (or fail) meaningfully?
+\item \textbf{Campaign Integration}: How does this fit into larger arcs?
+\end{enumerate}
+\end{mdframed}
+
+\section*{Template: "The Singing Wastes" - A Black Banners Adventure}
+
+\subsection*{1. Theme and Tone}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Theme}: War's aftermath, haunted battlefields, the cost of violence
+\item \textbf{Tone}: Melancholy, mysterious, with moments of terrible beauty
+\item \textbf{Genre Elements}: Military fantasy, supernatural mystery, post-conflict drama
+\item \textbf{Mood Words}: Haunting, desolate, echoing, frozen, restless
+\end{itemize}
+
+\subsection*{2. Deck-Based Seed Generation}
+
+\player{GM} Using the Black Banners generator to create our scenario:
+
+\gm{Drawing until all four suits appear:}
+
+\begin{description}[leftmargin=*]
+\item[Spade (Q - The Bone Fields)] A place where the Ykrul clans come to negotiate terms with the dead
+\item[Heart (J - The Black Colonel)] Legendary commander who hasn't been seen in the field for months  
+\item[Club (K - High Chief plays the companies against each other)] Winner takes nothing
+\item[Diamond (Q - Clan-Mother's war-braid)] Her warriors will fight beside you this battle
+\end{description}
+
+\gm{Highest rank is Q (Queen), so we have an 8-segment primary clock. The Ace rule applies: weapons that remember, ice that holds the dead, loyalty that needs no banner.}
+
+\subsection*{3. Narrative Hook}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{The Premise}: The PCs are hired by a Vilikari noble to investigate why the Bone Fields - a traditional neutral ground where war-bands come to negotiate with the dead - have become dangerous. Mercenary companies are disappearing, and the Black Colonel (a legendary figure thought dead) has been sighted leading ghostly troops.
+
+\textbf{PC Motivations}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Mercenary}: Former soldier seeking answers about missing comrades
+\item \textbf{Noble}: Family honor at stake, political implications
+\item \textbf{Scholar}: Ancient battlefields hold historical/magical significance
+\item \textbf{Outsider}: Curious about the strange customs of the borderlands
+\end{itemize}
+\end{mdframed}
+
+\subsection*{4. Key NPCs}
+
+\begin{description}[leftmargin=*]
+\item[The Black Colonel (Antagonist/Enigma)] Once a brilliant tactician, now a wraith bound to the battlefield. Not evil, but unable to stop fighting the war he never finished. Carries a banner that makes the dead fight. 
+\begin{itemize}
+\item \textbf{Motivation}: Finish the battle that cost him everything
+\item \textbf{Method}: Uses the Clan-Mother's war-braid to bind spirits to his cause
+\item \textbf{Weakness}: Cannot cross running water; obsessed with honor
+\end{itemize}
+
+\item[Clan-Mother Yara (Allies/Obstacle)] A Ykrul leader who initially hired the Black Colonel but now regrets it. She's pragmatic and honorable, but her war-braid has been corrupted.
+\begin{itemize}
+\item \textbf{Motivation}: Save her people from the Colonel's influence
+\item \textbf{Resources}: Knowledge of death-rites, loyal warriors
+\item \textbf{Complication}: Her own ancestors now fight against her
+\end{itemize}
+
+\item[Captain Thorne (Red Herring/Ally)] Leader of a missing Free Company. Found alive but changed - he speaks of beautiful music that called his men away.
+\begin{itemize}
+\item \textbf{Motivation}: Wants to return to his men, doesn't understand he's part of the haunting
+\item \textbf{Knowledge}: Saw the Black Colonel's banner, heard the singing
+\item \textbf{Role}: Guide to the deeper mystery, potential sacrifice
+\end{itemize}
+\end{description}
+
+\subsection*{5. Scene Clocks}
+
+\begin{center}
+\textbf{Singing Wastes Corruption Clock} (8 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
+\textit{How far has the haunting spread beyond the Bone Fields}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item 1-2 CP: Local spirits become restless
+\item 3-4 CP: Living begin hearing the songs
+\item 5-6 CP: Dead start appearing in nearby settlements
+\item 7-8 CP: River crossing becomes impassable, region quarantined
+\end{itemize}
+
+\begin{center}
+\textbf{Colonel's Army Clock} (6 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/6\\
+\textit{Strength of the ghostly force under the Black Colonel's command}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Each missing company: +1 segment
+\item Successful death-rite by the Colonel: +1 segment
+\item PCs fail to disrupt a haunting: +1 segment
+\item Clan-Mother's resistance weakens: +2 segments
+\end{itemize}
+
+\begin{center}
+\textbf{Clan-Mother's Resolve Clock} (4 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment} 0/4\\
+\textit{Her willingness to sacrifice to end the haunting}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Seeing ancestors among the enemy: +1 segment
+\item Pressure from Vilikari noble: +1 segment
+\item Personal losses accumulate: +1 segment
+\item PCs show weakness/mistakes: +1 segment
+\end{itemize}
+
+\subsection*{6. Adventure Flow}
+
+\subsubsection*{Act I: Arrival and Discovery (Sessions 1-2)}
+
+\textbf{Opening Scene}: The PCs arrive at the Bone Fields to find them unnaturally quiet. The traditional markers and burial mounds are intact, but no war-bands are present.
+
+\textbf{Key Scenes}:
+\begin{enumerate}[leftmargin=*]
+\item Investigation of abandoned campsites (Wits + Survival/Lore)
+\item First encounter with the haunting - ghostly music, cold spots
+\item Meeting Captain Thorne, who warns them away
+\item Discovery of the Black Colonel's banner in a makeshift shrine
+\end{enumerate}
+
+\textbf{Clock Advancement}: 
+\begin{itemize}[leftmargin=*]
+\item Singing Wastes Corruption: +2 (first haunting encounters)
+\item Colonel's Army: +1 (banner discovered)
+\end{itemize}
+
+\subsubsection*{Act II: Deepening Mystery (Sessions 3-4)}
+
+\textbf{Key Scenes}:
+\begin{enumerate}[leftmargin=*]
+\item Meeting Clan-Mother Yara at her temporary camp
+\item Learning about the war-braid and its corruption
+\item Investigation of the actual battlefield where the haunting originates
+\item Confrontation with ghostly soldiers (combat + social challenges)
+\item Discovery that the "music" is the Colonel's tactical commands
+\end{enumerate}
+
+\textbf{Clock Advancement}:
+\begin{itemize}[leftmargin=*]
+\item Singing Wastes Corruption: +2 (haunting spreads to nearby areas)
+\item Colonel's Army: +2 (more spirits bound)
+\item Clan-Mother's Resolve: +1 (sees ancestors among the enemy)
+\end{itemize}
+
+\subsubsection*{Act III: Climax and Resolution (Sessions 5-6)}
+
+\textbf{Key Scenes}:
+\begin{enumerate}[leftmargin=*]
+\item The final confrontation at the heart of the battlefield
+\item Choice: Destroy the war-braid (killing bound spirits) or perform a counter-rite
+\item Battle against the Colonel's ghostly army
+\item Resolution of the haunting and its consequences
+\end{enumerate}
+
+\textbf{Clock Resolution}:
+\begin{itemize}[leftmargin=*]
+\item If Singing Wastes Corruption fills: The haunting spreads to neighboring regions
+\item If Colonel's Army fills: The ghostly force becomes unstoppable without major sacrifice
+\item If Clan-Mother's Resolve fills: She performs the ultimate death-rite, becoming part of the haunting
+\end{itemize}
+
+\subsection*{7. Resolution Paths}
+
+\begin{description}[leftmargin=*]
+\item[Victory (High Cost)] PCs stop the haunting but at great personal/faction cost. The Black Colonel finds peace, but the region is scarred. Award 10-12 XP.
+\item[Compromise] Haunting contained but not ended. PCs must return someday. Award 8-10 XP.
+\item[Failure] Haunting spreads, more regions affected. PCs flee or are bound themselves. Award 6-8 XP but create ongoing campaign thread.
+\item[Noble Failure] PCs lose but save innocents or preserve honor. Award 8-10 XP with strong narrative hook.
+\end{description}
+
+\subsection*{8. Custom Mechanics}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{The Singing Mechanic}: When PCs are in the Bone Fields, they must make Wits + Lore rolls (DV 2) to resist the haunting songs. Each failure generates 1 CP that the GM can spend to create haunting effects or advance clocks.
+
+\textbf{War-Braid Bond}: PCs who gain the Clan-Mother's war-braid (Diamond benefit) gain +1 die to social rolls with Ykrul but attract ghostly attention (+1 CP on all rolls while in haunted areas).
+
+\textbf{Echoing Past}: Successful rolls in the ancient battlefield may grant fleeting visions of the original battle, providing useful information but generating 1 CP from temporal dissonance.
+\end{mdframed}
+
+\subsection*{9. Campaign Integration}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Tier I-II}: Introduction to border conflicts and supernatural threats
+\item \textbf{Tier III}: Can be revisited when the haunting returns stronger
+\item \textbf{Tier IV+}: The Black Colonel may return as a mythic-level threat
+\item \textbf{Faction Hooks}: 
+\begin{itemize}
+\item Ykrul clans now owe the PCs a favor
+\item Vilikari noble may offer ongoing employment
+\item Ecktorian scholars want reports on the phenomenon
+\item Free Companies seek missing comrades
+\end{itemize}
+\end{itemize}
+
+\section*{Module Creation Quick Reference}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{Step-by-Step Module Creation}:
+
+1. \textbf{Choose a Generator Deck}: Pick the region that fits your theme (Black Banners for war, Mistlands for mystery, Silkstrand for intrigue, etc.)
+
+2. \textbf{Draw Your Seed}: Draw until you have Spade (Place), Heart (Actor), Club (Complication), Diamond (Leverage/Resource)
+
+3. \textbf{Identify the Highest Rank}: This determines your primary clock size and sets the epicenter of your adventure
+
+4. \textbf{Apply Special Rules}: Check for Aces (ongoing omens), Face cards (powerful entities), and regional special mechanics
+
+5. \textbf{Extract Core Elements}:
+   \begin{itemize}
+   \item What makes this place unique?
+   \item Who is the key actor and what do they want?
+   \item What's the main complication driving tension?
+   \item What resource/leverage can help/hinder the PCs?
+   \end{itemize}
+
+6. \textbf{Build the Narrative Hook}: Connect the seed elements into a compelling reason for PCs to care
+
+7. \textbf{Create 2-3 Scene Clocks}: Primary conflict clock, NPC motivation clock, environmental/social pressure clock
+
+8. \textbf{Design Key NPCs}: 
+   \begin{itemize}
+   \item One antagonist/enigma (from the Heart)
+   \item One ally/obstacle (connected to the Club)
+   \item One red herring/information source (related to the Spade)
+   \end{itemize}
+
+9. \textbf{Plan 3-Act Structure}: Opening discovery, deepening mystery, climax/resolution
+
+10. \textbf{Add Custom Mechanics}: One unique rule that reinforces the theme
+
+11. \textbf{Define Resolution Paths}: Multiple meaningful endings based on PC choices
+
+12. \textbf{Create Campaign Hooks}: How this adventure connects to larger story arcs
+\end{mdframed}
+
+\subsection*{Pre-Rolled Adventure Modules}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{Template for Quick Setup}: Each pre-rolled module includes:
+
+\textbf{Header Box}:
+\begin{itemize}[leftmargin=*]
+\item Adventure Title and Theme
+\item Recommended Party Size and Tier
+\item Primary Deck Used
+\item Estimated Session Length
+\end{itemize}
+
+\textbf{Core Elements Section}:
+\begin{itemize}[leftmargin=*]
+\item The Hook (1-2 paragraphs)
+\item Key NPCs with motivations
+\item Scene clocks with clear advancement triggers
+\item Custom mechanics (if any)
+\end{itemize}
+
+\textbf{Scene Cards} (3-5 key encounters):
+\begin{itemize}[leftmargin=*]
+\item Scene Setup
+\item Potential Approaches (combat, social, stealth, etc.)
+\item Clock Advancement Opportunities
+\item Reward/Penalty Structure
+\end{itemize}
+
+\textbf{Resolution Matrix}:
+\begin{itemize}[leftmargin=*]
+\item Success Conditions
+\item Partial Success Outcomes
+\item Failure Consequences
+\item XP Awards for Different Approaches
+\end{itemize}
+
+\textbf{Campaign Integration Notes}:
+\begin{itemize}[leftmargin=*]
+\item How this fits into larger arcs
+\item Seeds for future adventures
+\item Faction relationship changes
+\end{itemize}
+\end{mdframed}
+
+\subsection*{Sample Pre-Rolled Module: "The Merchant's Gamble" (Silkstrand)}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{Header Box}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Title}: The Merchant's Gamble
+\item \textbf{Theme}: Economic intrigue, family honor, criminal underworld
+\item \textbf{Deck}: Silkstrand Generator
+\item \textbf{Party}: 3-4 PCs, Tier I-II
+\item \textbf{Sessions}: 2-3 sessions
+\end{itemize}
+
+\textbf{The Hook}: A prominent Silkstrand merchant family, the Theravels, has hired the PCs to investigate why their spice shipments keep disappearing. What should be a simple escort job becomes complicated when they discover the family's own heir is involved in the thefts.
+
+\textbf{Deck Seed}: 
+\begin{itemize}[leftmargin=*]
+\item Spade (7 - Spindle Tower with creaking windlass-lifts)
+\item Heart (9 - Spinner-matron of the wormhouses)
+\item Club (8 - Silk-fungus blight)
+\item Diamond (10 - Exchange corner)
+\end{itemize}
+
+\textbf{Primary Clock}: \textbf{Exchange Corner Panic Clock} (8 segments) - How long before the market manipulation ruins the Theravel family?
+
+\textbf{Key NPCs}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Matron Theravel}: Family matriarch, desperate to save her house's reputation
+\item \textbf{Young Theravel}: Reckless heir who's been selling to the Blighters gang
+\item \textbf{Spinner-Matron Vessa}: Controls the silk market, orchestrating the manipulation
+\end{itemize}
+
+\textbf{Scene Clocks}:
+\begin{itemize}[leftmargin=*]
+\item Exchange Corner Panic (8): Market destabilization
+\item Family Honor (6): Theravel reputation damage  
+\item Blighters Gang (6): Criminal organization response
+\end{itemize}
+
+\textbf{Resolution Paths}:
+\begin{itemize}[leftmargin=*]
+\item Expose the heir publicly (family ruined, 6-8 XP)
+\item Cover up for the family (market chaos continues, 4-6 XP)
+\item Blackmail the Spinner-Matron (wealthy but enemies made, 8-10 XP)
+\item Find legitimate solution (honorable but difficult, 10-12 XP)
+\end{itemize}
+\end{mdframed}
+
+\subsection*{Campaign Adventure Arc: "The Fractured Crown" (Vhasia)}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{Arc Overview}: A 6-8 session campaign using multiple Vhasia draws to create a succession crisis affecting the entire region.
+
+\textbf{Session Structure}:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Session 1-2}: "The Empty Throne" - Initial crisis, multiple claimants emerge
+\item \textbf{Session 3-4}: "The Noble's Gambit" - PCs choose sides, political intrigue deepens  
+\item \textbf{Session 5-6}: "The People's Voice" - Popular uprising, commoners get involved
+\item \textbf{Session 7}: "The Military Question" - Army loyalty becomes decisive factor
+\item \textbf{Session 8}: "The Coronation" - Final confrontation and resolution
+\end{enumerate}
+
+\textbf{Campaign Clocks}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Succession Crisis} (10 segments): How close is the kingdom to civil war?
+\item \textbf{Noble Conspiracy} (8 segments): How much have the nobles manipulated events?
+\item \textbf{Public Unrest} (8 segments): How angry are the common people?
+\item \textbf{PC Influence} (6 segments): How much power have the PCs accumulated?
+\end{itemize}
+
+\textbf{Major NPCs}:
+\begin{itemize}[leftmargin=*]
+\item The Lame King's Regents (various factions)
+\item Claimant nobles (3-4 main contenders)
+\item Popular leaders (merchant guild, labor unions)
+\item Military commanders (split loyalties)
+\end{itemize}
+
+\textbf{Custom Mechanics}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Faction Influence}: PCs can gain influence with different groups through successful rolls
+\item \textbf{Public Opinion}: Social rolls affect how the populace views the PCs and claimants
+\item \textbf{Military Support}: Certain actions can gain or lose army backing
+\end{itemize}
+
+\textbf{Resolution Options}:
+\begin{itemize}[leftmargin=*]
+\item Support the "legitimate" heir (honorable but politically complex)
+\item Back a reformer (risky but potentially transformative)
+\item Install a puppet ruler (powerful but creates enemies)
+\item Prevent any coronation (chaotic but maintains status quo)
+\end{itemize}
+\end{mdframed}
+
+\section*{GM Preparation Checklist}
+
+\begin{mdframed}[backgroundcolor=modulebg]
+\textbf{Before the Session}:
+\begin{itemize}[leftmargin=*]
+\item $\square$ Generate adventure seed using appropriate deck
+\item $\square$ Create scene clocks with clear advancement triggers
+\item $\square$ Prepare key NPCs with motivations and secrets
+\item $\square$ Identify potential PC approaches and responses
+\item $\square$ Prepare 2-3 Deck of Consequences draws for likely complications
+\item $\square$ Set up custom mechanics and explain them clearly
+\item $\square$ Plan resolution paths with meaningful differences
+\item $\square$ Create campaign integration hooks
+\end{itemize}
+
+\textbf{During Play}:
+\begin{itemize}[leftmargin=*]
+\item $\square$ Announce clocks clearly and update them visibly
+\item $\square$ Connect player actions to clock advancement logically
+\item $\square$ Offer meaningful choices that affect multiple outcomes
+\item $\square$ Let clocks fill when fictionally appropriate
+\item $\square$ Provide XP based on engagement and consequences
+\end{itemize}
+\end{mdframed}
+
+\end{document}
