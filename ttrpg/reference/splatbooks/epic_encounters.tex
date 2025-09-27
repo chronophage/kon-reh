@@ -1,0 +1,698 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{changepage}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge}
+\lhead{Epic Encounters}
+\rfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\newcommand{\player}[1]{\textbf{#1:}}
+\newcommand{\gm}[1]{\textit{GM: #1}}
+\newcommand{\roll}[2]{\texttt{Roll: #1d10 = [#2]}}
+\newcommand{\success}[1]{\textbf{Successes: #1}}
+\newcommand{\cp}[1]{\textbf{CP: #1}}
+\newcommand{\outcome}[1]{\textbf{Outcome: #1}}
+\newcommand{\clocksegment}{\textbullet}
+
+\definecolor{clockcolor}{rgb}{0.2,0.4,0.8}
+\definecolor{epicbg}{rgb}{0.98,0.95,0.90}
+\definecolor{mechanicbg}{rgb}{0.95,0.98,0.95}
+
+\begin{document}
+
+\begin{center}
+{\LARGE Fate's Edge Epic Encounters}\\
+\vspace{0.5em}
+{\large Mythic-Level Creatures and Custom Mechanics}
+\end{center}
+
+\section*{Epic Encounter Design Philosophy}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Epic encounters in Fate's Edge should}:
+\begin{itemize}[leftmargin=*]
+\item Represent fundamental challenges to the world's order
+\item Offer multiple resolution paths with significant consequences
+\item Create custom mechanics that reinforce the creature's nature
+\item Generate lasting impact on the campaign world
+\item Require Tier IV-V capabilities but reward creative thinking
+\end{itemize}
+
+\textbf{Key Design Elements}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Scale}: These encounters dwarf normal challenges
+\item \textbf{Scope}: Consequences extend beyond the immediate scene
+\item \textbf{Singularity}: Each should feel unique and mythic
+\item \textbf{Choice}: Multiple meaningful approaches should be viable
+\end{itemize}
+\end{mdframed}
+
+\section*{Epic Encounter 1: Khemesh the Kraken Titan}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Source}: Kahfagia generator mentions Khemesh and Ráeyn as twin patrons
+\textbf{Tier Requirement}: V (Mythic)
+\textbf{Thematic Elements}: Ocean depths, ancient power, maritime dominion
+\end{mdframed}
+
+\subsection*{Creature Profile}
+
+\begin{description}[leftmargin=*]
+\item[Name] Khemesh the Kraken Titan
+\item[Domain] The deepest ocean trenches, sunken cities, whale roads
+\item[Nature] Primordial ocean deity, master of tides and storms
+\item[Appearance] A kraken of impossible size, miles long, with cities built into its tentacles
+\item[Motivation] Awakening from eons of slumber, demanding tribute from surface dwellers
+\end{description}
+
+\subsection*{The Threat}
+
+\gm{Khemesh has begun to stir, and the seas are responding. Storms rage with unnatural fury, sea levels fluctuate wildly, and coastal cities flood without warning. The kraken titan demands that the surface world acknowledge its dominion through massive sacrifices - entire fleets, coastal cities, or the blood of heroes.}
+
+\subsection*{Custom Mechanics: The Deep Call}
+
+\begin{mdframed}[backgroundcolor=mechanicbg]
+\textbf{Deep Call Mechanic}: Any character within 100 miles of a major body of water must make a Spirit + Resolve roll (DV 3) once per day. Each failure generates 2 CP that the GM can spend to:
+\begin{itemize}[leftmargin=*]
+\item Cause seasickness and Fatigue 1
+\item Create navigational confusion (Hunt +1)
+\item Summon minor sea creatures as obstacles
+\item Advance the Awakening Clock
+\end{itemize}
+
+\textbf{Resistance}: Characters can mitigate the Deep Call by:
+\begin{itemize}[leftmargin=*]
+\item Carrying blessed sea-salt (reduces DV to 2)
+\item Having the Whale-Rider Talent (immune)
+\item Being underwater at the time (immune)
+\end{itemize}
+\end{mdframed}
+
+\subsection*{Epic Clocks}
+
+\begin{center}
+\textbf{Khemesh's Awakening Clock} (10 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
+\textit{Progress toward the titan's full emergence}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Each day without tribute: +1 segment
+\item Major sacrifice offered: -2 segments (temporary)
+\item PCs interfere with awakening: +2 segments
+\item Coastal city destroyed by storms: +1 segment
+\item Ancient binding ritual discovered: -1 segment
+\end{itemize}
+
+\begin{center}
+\textbf{Tidal Chaos Clock} (8 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
+\textit{Worldwide disruption of sea-based activities}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Khemesh's Awakening advances: +1 segment
+\item PCs attempt sea travel: +1 segment
+\item Storm ritual performed: +2 segments
+\item Tidal shrine activated: -1 segment
+\end{itemize}
+
+\subsection*{Resolution Paths}
+
+\begin{description}[leftmargin=*]
+\item[Blood Tribute] Sacrifice a major fleet, coastal city, or Tier V hero. Immediate but temporary solution (Awakening Clock -4, then +1 per week).
+\item[Binding Ritual] Discover and perform the ancient ritual that first bound Khemesh. Requires:
+\begin{itemize}
+\item The Song of Seven Tides (Lore DV 4)
+\item Heart of a Whale-King (Hunting DV 5)  
+\item Blood of the First Mariners (Quest)
+\item Performance under specific celestial conditions
+\end{itemize}
+\item[Alliance] Negotiate with Khemesh through its avatar, the Kraken-Priests. Requires understanding its true needs (ancient knowledge, not destruction).
+\item[Ascension] Join with Khemesh, becoming part of its eternal court. Transforms the PC into an oceanic deity but removes them from surface world.
+\end{description}
+
+\subsection*{Combat Statistics (If Forced)}
+
+\begin{description}[leftmargin=*]
+\item[Scale] Treat as multiple Cap 5 followers with different specialties
+\item[Primary Forms] Tidal Waves (Hazard), Tentacle Grapples (Melee), Mind Blast (Social), Storm Summoning (Environmental)
+\item[Weaknesses] Cannot fully manifest on land, vulnerable during celestial transitions, bound by ancient pacts
+\item[Consequences] Even "defeating" Khemesh advances clocks due to the cosmic disruption
+\end{description}
+
+\section*{Epic Encounter 2: The Pale Shepherd}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Source}: Aelaerem generator mentions The Pale Shepherd as a major figure
+\textbf{Tier Requirement}: IV-V (Paragon to Mythic)
+\textbf{Thematic Elements}: Death, cycles, protection of the boundary between life and death
+\end{mdframed}
+
+\subsection*{Creature Profile}
+
+\begin{description}[leftmargin=*]
+\item[Name] The Pale Shepherd
+\item[Domain] Crossroads, doorways, the moment of death
+\item[Nature] Guardian of thresholds, guide of souls, keeper of the proper order of things
+\item[Appearance] A tall, gaunt figure in tattered grey robes, carrying a staff that glows with soft light. Face obscured by a hood, but eyes shine like distant stars.
+\item[Motivation] Maintaining the natural order of life and death, punishing those who would disrupt the cycle
+\end{description}
+
+\subsection*{The Threat}
+
+\gm{The Pale Shepherd has taken notice of the PCs because they have repeatedly cheated death, disrupted natural endings, or meddled with the cycle. It begins to appear at significant moments - the deathbed of an ally, the threshold of a major decision, the boundary of a forbidden place. Its presence brings an unnatural stillness and the sense that time itself is watching.}
+
+\subsection*{Custom Mechanics: The Stillness}
+
+\begin{mdframed}[backgroundcolor=mechanicbg]
+\textbf{Stillness Mechanic}: When The Pale Shepherd is present or actively pursuing, all rolls suffer a -1 die penalty due to the unnatural tension. Additionally:
+
+\textbf{Threshold Awareness}: The Pale Shepherd appears whenever:
+\begin{itemize}[leftmargin=*]
+\item A PC cheats death or avoids a major consequence
+\item Characters attempt to bypass a natural ending (preventing a necessary sacrifice, etc.)
+\item PCs cross significant thresholds (literal or metaphorical)
+\end{itemize}
+
+\textbf{Cycle Debt}: Each time PCs disrupt a natural ending, they accumulate Cycle Debt:
+\begin{itemize}[leftmargin=*]
+\item Minor disruption: 1 Debt
+\item Major disruption: 3 Debt  
+\item Preventing necessary death: 5 Debt
+\end{itemize}
+
+\textbf{Debt Consequences}: Accumulated Debt affects rolls and can trigger The Shepherd's intervention.
+\end{mdframed}
+
+\subsection*{Epic Clocks}
+
+\begin{center}
+\textbf{Cycle Disruption Clock} (8 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
+\textit{How much the natural order has been disturbed}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item PCs avoid major consequences: +1 segment
+\item Natural death prevented: +2 segments
+\item Resurrection performed: +3 segments
+\item Cycle Debt accumulated: +1 per 3 Debt
+\end{itemize}
+
+\begin{center}
+\textbf{Shepherd's Attention Clock} (6 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/6\\
+\textit{How focused The Pale Shepherd becomes on the PCs}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item PCs ignore its warnings: +1 segment
+\item More Cycle Debt accumulated: +1 per 2 Debt
+\item PCs attempt to hide from death: +2 segments
+\item Natural endings forced upon others: +1 segment
+\end{itemize}
+
+\subsection*{Resolution Paths}
+
+\begin{description}[leftmargin=*]
+\item[Acceptance] Embrace the natural cycle, allow necessary endings to occur. Requires significant sacrifice but restores balance.
+\item[The Bargain] Negotiate with The Pale Shepherd to understand what it truly wants. May involve becoming its agent or accepting a geas.
+\item[The Reckoning] Face The Pale Shepherd in direct confrontation. Nearly impossible to win, but might allow temporary escape at great cost.
+\item[The Substitute] Offer something or someone else to satisfy the disruption. Creates new moral complexities and future consequences.
+\end{description}
+
+\subsection*{Combat Statistics (If Forced)}
+
+\begin{description}[leftmargin=*]
+\item[Scale] Treat as Cap 6 follower with multiple domains
+\item[Abilities] Death Gaze (social fear), Boundary Control (environmental manipulation), Soul Shearing (direct harm), Temporal Stutter (action denial)
+\item[Weaknesses] Cannot act against willing acceptance, bound by its own rules of natural order, vulnerable to true sacrifice
+\item[Consequences] Combat itself disrupts the cycle, advancing clocks
+\end{description}
+
+\section*{Epic Encounter 3: The Singing Wastes Awakened}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Source}: Black Banners generator mentions The Singing Wastes where weapons remember
+\textbf{Tier Requirement}: IV (Paragon)
+\textbf{Thematic Elements}: War's aftermath, collective trauma, unfinished business
+\end{mdframed}
+
+\subsection*{Creature Profile}
+
+\begin{description}[leftmargin=*]
+\item[Name] The Collective Unquiet
+\item[Domain] Battlefields, weapon caches, sites of mass death
+\item[Nature] The accumulated spirits and memories of every warrior who died in the region, given form by their shared trauma
+\item[Appearance] A shifting mass of translucent figures, ghostly weapons, and echoes of battle cries. The ground where it moves sprouts rusted weapons and bones.
+\item[Motivation] Finish the war that killed them, or ensure no one else can rest until justice is done
+\end{description}
+
+\subsection*{The Threat}
+
+\gm{What began as a haunting has coalesced into something more - the collective trauma of centuries of warfare has gained consciousness. The Singing Wastes now expand beyond their original borders, and the ghostly army grows stronger each day. The weapons in the region begin to move on their own, seeking out those who would disturb the dead.}
+
+\subsection*{Custom Mechanics: The War March}
+
+\begin{mdframed}[backgroundcolor=mechanicbg]
+\textbf{War March Mechanic}: The Collective Unquiet grows stronger based on military activity in the region:
+
+\textbf{Conflict Attraction}: 
+\begin{itemize}[leftmargin=*]
+\item Any combat in the region: +1 to Army Strength
+\item Death of a warrior: +1 to Army Strength
+\item Use of weapons from the battlefield: +2 to Army Strength
+\item PCs attempt to leave: Army pursues (Hunt +2)
+\end{itemize}
+
+\textbf{Weapon Sympathy}: Weapons from the Singing Wastes have a connection to the Collective:
+\begin{itemize}[leftmargin=*]
+\item +1 die to attack rolls but generate 1 CP on hit (the weapon's hunger)
+\item May refuse to harm certain targets (falling into ally's hands)
+\item Can be "called" by the Collective in dangerous situations
+\end{itemize}
+
+\textbf{Memory Echo}: When taking damage, PCs may be subject to Memory Echo - reliving moments from the weapon's past. This requires a Spirit + Resolve roll (DV 2) or suffer:
+\begin{itemize}[leftmargin=*]
+\item Flashbacks that impose Desperate position
+\item Temporary personality shifts reflecting the weapon's original owner
+\item Gain useful combat knowledge but at emotional cost
+\end{itemize}
+\end{mdframed}
+
+\subsection*{Epic Clocks}
+
+\begin{center}
+\textbf{Army Strength Clock} (10 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
+\textit{Size and power of the ghostly army}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Combat in region: +1 segment
+\item Weapon used from battlefield: +1 segment
+\item Warrior death: +2 segments
+\item PCs disrupt burial sites: +3 segments
+\item Successful haunting: +1 segment
+\end{itemize}
+
+\begin{center}
+\textbf{Memory Corruption Clock} (6 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/6\\
+\textit{How much the PCs are affected by battlefield memories}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Weapon sympathy effect used: +1 segment
+\item Memory Echo suffered: +1 segment
+\item PCs carry battlefield weapons: +1 segment
+\item Refuse to honor the dead: +2 segments
+\end{itemize}
+
+\begin{center}
+\textbf{Boundary Expansion Clock} (8 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
+\textit{How far the haunting spreads beyond original borders}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Army Strength Clock advances: +1 segment
+\item PCs flee the region: +2 segments
+\item New battle fought nearby: +2 segments
+\item Burial rites disrupted: +1 segment
+\end{itemize}
+
+\subsection*{Resolution Paths}
+
+\begin{description}[leftmargin=*]
+\item[The Honored Dead] Properly bury and honor all the fallen, perform the rites that were neglected. Requires:
+\begin{itemize}
+\item Identification of major commanders and units
+\item Collection of remains from wide area
+\item Performance of specific funeral rites
+\item Memorial creation that will last centuries
+\end{itemize}
+\item[The Peace Offering] Negotiate with the Collective to understand what they truly want. May involve:
+\begin{itemize}
+\item Identifying the cause of the original injustice
+\item Bringing the responsible parties to justice
+\item Offering a significant sacrifice or service
+\item Becoming guardians of the dead themselves
+\end{itemize}
+\item[The Cleansing Fire] Destroy the source of the haunting through overwhelming force. Requires:
+\begin{itemize}
+\item Magical fire that can burn spirits
+\item Sealing ritual to contain the destruction
+\item Acceptance that innocent may be harmed
+\item Massive resource expenditure
+\end{itemize}
+\item[Joining the March] Become part of the ghostly army, either willingly or through corruption. Transforms PCs into eternal soldiers.
+\end{description}
+
+\subsection*{Combat Statistics (If Engaged)}
+
+\begin{description}[leftmargin=*]
+\item[Scale] Treat as multiple Cap 4-5 followers representing different military units
+\item[Special Abilities]
+\begin{itemize}
+\item Weapon Mastery: All weapons used by spirits gain +1 effect
+\item Fear Aura: Opponents suffer -1 die to social rolls
+\item Terrain Control: Battlefield shifts to favor the dead
+\item Memory Attack: Direct mental assault through shared trauma
+\end{itemize}
+\item[Weaknesses]
+\begin{itemize}
+\item Cannot cross properly consecrated ground
+\item Vulnerable to specific funeral rites
+\item Weakened by acts of proper respect
+\item Cannot pursue those who truly honor the dead
+\end{itemize}
+\item[Consequences] Even "victory" advances clocks due to further disruption of the dead
+\end{description}
+
+\section*{Epic Encounter 4: The Valeheart Spire}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Source}: Valewood generator mentions Valeheart Spire, empire's axle where stairs end where they began
+\textbf{Tier Requirement}: V (Mythic)
+\textbf{Thematic Elements}: Ancient empire, living architecture, temporal paradoxes
+\end{mdframed}
+
+\subsection*{Creature Profile}
+
+\begin{description}[leftmargin=*]
+\item[Name] The Living Empire (Valeheart Spire)
+\item[Domain] The heart of the ancient Lethai-ar empire, reality-warping architecture
+\item[Nature] The collective consciousness of a fallen empire given form in living wood and stone
+\item[Appearance] A massive spire that shifts between architectural styles, with stairs that loop impossibly, rooms that exist in multiple times simultaneously, and windows that show different eras.
+\item[Motivation] Restore the empire to its former glory, but confused about what "former" means due to temporal displacement
+\end{description}
+
+\subsection*{The Threat}
+
+\gm{The Valeheart Spire has begun to awaken, and with it, fragments of the ancient empire's consciousness. Reality becomes unstable in its vicinity - time loops, spaces fold in on themselves, and the past begins to bleed into the present. Those who enter may find themselves living moments from the empire's height, or its fall, unable to distinguish between memory and reality.}
+
+\subsection*{Custom Mechanics: Temporal Displacement}
+
+\begin{mdframed}[backgroundcolor=mechanicbg]
+\textbf{Temporal Displacement Mechanic}: Within 1 mile of the Spire, time becomes unreliable:
+
+\textbf{Time Loop Effect}: At the end of each scene, roll d6:
+\begin{itemize}[leftmargin=*]
+\item 1-2: Scene repeats with minor variations
+\item 3-4: Events happen in reverse order
+\item 5-6: Skip ahead to consequences without process
+\end{itemize}
+
+\textbf{Memory Bleed}: PCs may suddenly gain memories from the empire's past:
+\begin{itemize}[leftmargin=*]
+\item +2 dice to relevant rolls due to "experience"
+\item But must make Spirit + Resolve (DV 3) or suffer personality shifts
+\item May know things that haven't happened yet (but might not be true)
+\end{itemize}
+
+\textbf{Architecture Manipulation}: The Spire reshapes itself based on inhabitants' needs and fears:
+\begin{itemize}[leftmargin=*]
+\item Desired paths become available
+\item Feared areas manifest as obstacles
+\item Personal memories influence layout
+\item Multiple people create conflicting changes
+\end{itemize}
+
+\textbf{Empire's Will}: The Spire attempts to recruit inhabitants:
+\begin{itemize}[leftmargin=*]
+\item Offers power and knowledge from the empire
+\item Requires acceptance of imperial values and hierarchy
+\item Gradual personality shift toward ancient mindset
+\item Loss of connection to original time/culture
+\end{itemize}
+\end{mdframed}
+
+\subsection*{Epic Clocks}
+
+\begin{center}
+\textbf{Empire's Awakening Clock} (12 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/12\\
+\textit{Progress toward full imperial restoration}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item PCs explore deeper into the Spire: +1 segment
+\item Ancient artifacts activated: +2 segments
+\item Imperial values embraced: +1 segment
+\item Temporal paradoxes created: +3 segments
+\item Other empire sites respond: +2 segments
+\end{itemize}
+
+\begin{center}
+\textbf{Reality Unraveling Clock} (10 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
+\textit{How much the surrounding area becomes temporally unstable}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Empire's Awakening advances: +1 segment
+\item PCs resist imperial recruitment: +2 segments
+\item Paradoxical actions taken: +1 segment
+\item Ancient technologies used: +2 segments
+\end{itemize}
+
+\begin{center}
+\textbf{Personal Integration Clock} (8 segments)\\
+\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
+\textit{How much PCs become part of the empire's consciousness}
+\end{center}
+
+\textbf{Advancement Triggers}:
+\begin{itemize}[leftmargin=*]
+\item Memory Bleed effect experienced: +1 segment
+\item Imperial knowledge used: +1 segment
+\item Resistance to modern values: +2 segments
+\item Acceptance of imperial hierarchy: +2 segments
+\end{itemize}
+
+\subsection*{Resolution Paths}
+
+\begin{description}[leftmargin=*]
+\item[The Restoration] Help the empire achieve its goals, becoming part of its eternal administration. Requires:
+\begin{itemize}
+\item Understanding the true history of the fall
+\item Resolving the paradox that prevents proper restoration
+\item Accepting transformation into immortal servants
+\item Surrendering individual identity to collective consciousness
+\end{itemize}
+\item[The Preservation] Seal the Spire to prevent further temporal disruption while preserving its knowledge. Requires:
+\begin{itemize}
+\item Finding the original sealing mechanisms
+\item Creating new wards to contain temporal effects
+\item Accepting that some knowledge will be lost
+\item Establishing guardians to prevent future awakening
+\end{itemize}
+\item[The Liberation] Free the trapped consciousnesses from their temporal prison. Requires:
+\begin{itemize}
+\item Understanding the nature of their imprisonment
+\item Performing rituals that may destroy the Spire
+\item Accepting that freed souls may not be what they seemed
+\item Resolving the paradox through sacrifice
+\end{itemize}
+\item[The Conquest] Claim the Spire's power for yourself, becoming a temporal ruler. Requires:
+\begin{itemize}
+\item Surviving the integration process
+\item Mastering the reality-warping abilities
+\item Accepting the responsibility of temporal guardianship
+\item Dealing with other powers who want the Spire's power
+\end{itemize}
+\end{description}
+
+\subsection*{Combat Statistics (If Necessary)}
+
+\begin{description}[leftmargin=*]
+\item[Scale] Treat as Cap 6 follower with reality-warping abilities
+\item[Special Abilities]
+\begin{itemize}
+\item Temporal Manipulation: Control flow of time in local area
+\item Reality Warping: Change physical laws and architecture
+\item Memory Assault: Attack through shared historical trauma
+\item Paradox Creation: Generate logical impossibilities as weapons
+\end{itemize}
+\item[Weaknesses]
+\begin{itemize}
+\item Vulnerable to paradox-breaking logic
+\item Cannot affect those who reject its reality
+\item Weakened by acceptance of linear time
+\item Dependent on belief in imperial glory
+\end{itemize}
+\item[Consequences] Combat itself creates temporal paradoxes, advancing all clocks
+\end{description}
+
+\section*{GM Guidance for Epic Encounters}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Key Principles}:
+
+1. \textbf{Start Small}: Don't begin with the full epic threat. Let it grow through player actions and choices.
+
+2. \textbf{Multiple Approaches}: Every epic encounter should have at least 3 viable resolution paths, each with different costs and consequences.
+
+3. \textbf{Personal Stakes}: Connect the epic threat to individual PC backgrounds, motivations, or previous actions.
+
+4. \textbf{Escalation, Not Just Scale}: Make the threat grow through player engagement, not just declare it's huge from the start.
+
+5. \textbf{Meaningful Consequences}: Every resolution path should fundamentally change the campaign world.
+
+6. \textbf{Custom Mechanics}: Create 1-2 unique mechanics that reinforce the creature's nature and make the encounter feel distinct.
+
+7. \textbf{Clock Integration}: Use multiple interconnected clocks to show different aspects of the threat growing.
+
+8. \textbf{Player Agency}: Even when facing cosmic threats, players should feel their choices matter and have real impact.
+
+\textbf{Preparation Checklist}:
+\begin{itemize}[leftmargin=*]
+\item $\square$ Define the creature's core nature and motivation
+\item $\square$ Create 2-3 custom mechanics that reinforce theme
+\item $\square$ Design 3-4 interconnected clocks with clear triggers
+\item $\square$ Plan 3-4 resolution paths with meaningful differences
+\item $\square$ Prepare key NPCs that represent different aspects of the threat
+\item $\square$ Create campaign integration hooks for success/failure
+\item $\square$ Balance mechanical challenge with narrative impact
+\item $\square$ Prepare for player creativity that may bypass intended approaches
+\end{itemize}
+\end{mdframed}
+
+\section*{Epic Encounter Quick Setup Cards}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Khemesh the Kraken Titan - At a Glance}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Hook}: Seas rage, storms destroy, titan demands tribute
+\item \textbf{Clocks}: Awakening (10), Tidal Chaos (8)
+\item \textbf{Mechanics}: Deep Call, Stillness
+\item \textbf{Paths}: Tribute, Binding, Alliance, Ascension
+\item \textbf{Stakes}: Control of seas, survival of coastal peoples
+\end{itemize}
+
+\textbf{The Pale Shepherd - At a Glance}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Hook}: Death cheated, natural endings disrupted
+\item \textbf{Clocks}: Cycle Disruption (8), Shepherd's Attention (6)
+\item \textbf{Mechanics}: Stillness, Cycle Debt
+\item \textbf{Paths}: Acceptance, Bargain, Reckoning, Substitute
+\item \textbf{Stakes}: Natural order, meaning of life and death
+\end{itemize}
+
+\textbf{The Collective Unquiet - At a Glance}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Hook}: Battlefield hauntings grow into conscious army
+\item \textbf{Clocks}: Army Strength (10), Memory Corruption (6), Boundary Expansion (8)
+\item \textbf{Mechanics}: War March, Weapon Sympathy
+\item \textbf{Paths}: Honored Dead, Peace Offering, Cleansing Fire, Join the March
+\item \textbf{Stakes}: Proper respect for the dead, ending cycles of violence
+\end{itemize}
+
+\textbf{The Living Empire - At a Glance}:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Hook}: Ancient spire awakens, time becomes unstable
+\item \textbf{Clocks}: Empire's Awakening (12), Reality Unraveling (10), Personal Integration (8)
+\item \textbf{Mechanics}: Temporal Displacement, Memory Bleed
+\item \textbf{Paths}: Restoration, Preservation, Liberation, Conquest
+\item \textbf{Stakes}: Temporal stability, individual vs. collective identity
+\end{itemize}
+\end{mdframed}
+
+\section*{Campaign Integration Templates}
+
+\begin{mdframed}[backgroundcolor=epicbg]
+\textbf{Foreshadowing the Epic}:
+\begin{itemize}[leftmargin=*]
+\item Session 1-3: Minor manifestations, strange dreams, local legends
+\item Session 4-6: Direct encounters with aspects or servants
+\item Session 7-9: Growing threat affects campaign world significantly
+\item Session 10+: Final confrontation with full epic threat
+\end{itemize}
+
+\textbf{Epic Consequences Matrix}:
+\begin{description}[leftmargin=*]
+\item[Victory with Great Cost]: Threat ended but world fundamentally changed, new problems created
+\item[Compromise Victory]: Threat contained but not eliminated, ongoing vigilance required
+\item[Noble Failure]: Effort failed but created hope, seeds for future success planted
+\item[Catastrophic Failure]: Threat succeeds, new status quo established, PCs must adapt
+\item[Transformation]: PCs become part of the solution in unexpected ways
+\end{description}
+
+\textbf{Legacy Creation}:
+\begin{itemize}[leftmargin=*]
+\item New faction: Order of the Tide-Binders, Shepherds of the Threshold, etc.
+\item Permanent change: Coastal cities rebuilt with kraken-resistant architecture, new death rituals established
+\item Ongoing thread: Remnants of the threat create new challenges
+\item Mythic status: PCs become legends, their actions studied by future generations
+\end{itemize}
+\end{mdframed}
+
+\section*{Player Handout: Signs of Epic Threats}
+
+\begin{mdframed}[backgroundcolor=mechanicbg]
+\textbf{Recognizing Epic Threats}:
+
+\textbf{Scale Indicators}:
+\begin{itemize}[leftmargin=*]
+\item Effects span multiple regions or affect fundamental natural laws
+\item Normal solutions seem inadequate or create bigger problems
+\item NPCs speak of the threat in hushed tones or with religious reverence
+\item The threat has existed for centuries or millennia
+\end{itemize}
+
+\textbf{Clock Behavior}:
+\begin{itemize}[leftmargin=*]
+\item Multiple clocks advance simultaneously from single actions
+\item Clocks have 8+ segments and fill slowly but relentlessly
+\item Filled clocks create world-changing consequences, not just scene changes
+\item Clocks may trigger other clocks to advance
+\end{itemize}
+
+\textbf{NPC Reactions}:
+\begin{itemize}[leftmargin=*]
+\item Most NPCs are either terrified or in denial
+\item Some NPCs have given up and joined the threat
+\item Knowledgeable NPCs speak in riddles or ancient prophecies
+\item Authority figures may be part of the problem or completely helpless
+\end{itemize}
+
+\textbf{Player Capabilities Needed}:
+\begin{itemize}[leftmargin=*]
+\item Tier IV-V capabilities (150+ XP typically)
+\item Multiple complementary skills and approaches
+\item Significant assets and followers
+\item Willingness to make ultimate sacrifices
+\end{itemize}
+\end{mdframed}
+
+\end{document}

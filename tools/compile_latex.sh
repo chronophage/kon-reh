@@ -20,9 +20,11 @@ elif [[ "$FILE_PATH:" == *"ninth"* ]]; then
   BRANCH="ninth_rim"
 elif [[ "$FILE_PATH:" == *"ttrpg"* ]]; then 
 	if [[ "$FILE_PATH:" == *"splat"* ]]; then 
-  	BRANCH="splatbooks"
-	else
-  	BRANCH="ttrpg"
+  		BRANCH="splatbooks"
+	elif [[ "$FILE_PATH:" == *"expansions"* ]]; then 
+  		BRANCH="expansions"
+	else 
+		BRANCH="ttrpg"
 	fi
 else
   BRANCH="./"
@@ -172,6 +174,11 @@ if [[ "$BRANCH" == "splatbooks" ]]; then
    mv "./$PDFNAME" "$GIT_ROOT/ttrpg/build/splatbooks/$PDFNAME"
    git add "$GIT_ROOT/ttrpg/build/splatbooks/$PDFNAME"
    open "$GIT_ROOT/ttrpg/build/splatbooks/$PDFNAME"
+elif [[ "$BRANCH" == "expansions" ]]; then
+   echo "Moving $PDFNAME to $GIT_ROOT/ttrpg/build/expansions"
+   mv "./$PDFNAME" "$GIT_ROOT/ttrpg/build/expansions/$PDFNAME"
+   git add "$GIT_ROOT/ttrpg/build/expansions/$PDFNAME"
+   open "$GIT_ROOT/ttrpg/build/expansions/$PDFNAME"
 elif [[ "$BRANCH" != "./" && "$BRANCH" != "splatbooks" ]]; then
    echo "Moving $PDFNAME to $GIT_ROOT/$BRANCH/build"
    mv "./$PDFNAME" "$GIT_ROOT/$BRANCH/build/$PDFNAME"
