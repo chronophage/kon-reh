@@ -1,0 +1,420 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{mdframed}
+\usepackage{changepage}
+\usepackage{calc}
+\usepackage{eso-pic}
+
+% Color definitions
+\definecolor{headercolor}{RGB}{30, 50, 100}
+\definecolor{accentcolor}{RGB}{70, 130, 180}
+\definecolor{lightaccent}{RGB}{173, 216, 230}
+\definecolor{background}{RGB}{248, 248, 255}
+\definecolor{skillbg}{RGB}{240, 248, 255}
+\definecolor{resourcebg}{RGB}{255, 250, 240}
+\definecolor{bondcolor}{RGB}{245, 245, 220}
+\definecolor{sectionbg}{RGB}{230, 240, 250}
+
+% Page setup
+\geometry{margin=0.5in}
+\pagestyle{empty}
+
+% Font and spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+
+% Custom commands
+\newcommand{\attributebox}[2]{%
+    \begin{tabular}{|>{\centering\arraybackslash}m{0.7cm}|>{\centering\arraybackslash}m{0.7cm}|}
+    \hline
+    \cellcolor{lightaccent} \textbf{\small #1} & \cellcolor{lightaccent} \textbf{\small #2} \\
+    \hline
+    \end{tabular}
+}
+
+\newcommand{\skillbox}[3]{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}m{3.2cm}|>{\centering\arraybackslash}m{0.6cm}|>{\centering\arraybackslash}m{0.6cm}|}
+    \hline
+    \cellcolor{skillbg} \textbf{\small #1} & \cellcolor{skillbg} #2 & \cellcolor{skillbg} #3 \\
+    \hline
+    \end{tabular}
+}
+
+\newcommand{\resourcebox}[3]{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}m{3.2cm}|>{\centering\arraybackslash}m{0.6cm}|>{\centering\arraybackslash}m{0.6cm}|}
+    \hline
+    \cellcolor{resourcebg} \textbf{\small #1} & \cellcolor{resourcebg} #2 & \cellcolor{resourcebg} #3 \\
+    \hline
+    \end{tabular}
+}
+
+\newcommand{\bondbox}[1]{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}m{4.4cm}|}
+    \hline
+    \cellcolor{bondcolor} \textbf{\small #1} \\
+    \hline
+    \end{tabular}
+}
+
+\newcommand{\boon}{\textcolor{orange}{\ding{72}}}
+\newcommand{\asset}{\textcolor{green!60!black}{$\blacksquare$}}
+
+% Header
+\newcommand{\sheetheader}[4]{
+    \begin{tikzpicture}[remember picture,overlay]
+        \fill[headercolor] (0,0) rectangle (\paperwidth,1.2cm);
+        \node[anchor=west] at (0.5cm,0.6cm) {\textcolor{white}{\textbf{\Huge #1}}};
+        \node[anchor=east] at (\paperwidth-0.5cm,0.8cm) {\textcolor{white}{\textbf{#2}}};
+        \node[anchor=east] at (\paperwidth-0.5cm,0.3cm) {\textcolor{white}{\textbf{XP: #3 \quad Tier: #4}}};
+    \end{tikzpicture}
+    \vspace{1.5cm}
+}
+
+\begin{document}
+
+% Header
+\sheetheader{Character Name}{Profession}{0/40}{Rookie}
+
+% Main content area with background
+\begin{mdframed}[backgroundcolor=background, linewidth=0pt]
+\vspace{0.2cm}
+
+% Attributes Section
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Attributes}
+\end{mdframed}
+
+\begin{center}
+\begin{tabular}{cccc}
+\attributebox{Body}{2} & 
+\attributebox{Wits}{2} & 
+\attributebox{Spirit}{2} & 
+\attributebox{Presence}{2} \\
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+% Skills Section
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Skills}
+\end{mdframed}
+
+\begin{center}
+\begin{tabular}{ccc}
+\skillbox{Melee}{1}{\hspace{0.5cm}} & 
+\skillbox{Athletics}{1}{\hspace{0.5cm}} & 
+\skillbox{Command}{1}{\hspace{0.5cm}} \\
+\skillbox{Stealth}{1}{\hspace{0.5cm}} & 
+\skillbox{Survival}{1}{\hspace{0.5cm}} & 
+\skillbox{Skullduggery}{1}{\hspace{0.5cm}} \\
+\skillbox{Arcana}{1}{\hspace{0.5cm}} & 
+\skillbox{Lore}{1}{\hspace{0.5cm}} & 
+\skillbox{Insight}{1}{\hspace{0.5cm}} \\
+\skillbox{Medicine}{1}{\hspace{0.5cm}} & 
+\skillbox{Diplomacy}{1}{\hspace{0.5cm}} & 
+\skillbox{Tactics}{1}{\hspace{0.5cm}} \\
+\skillbox{Craft}{1}{\hspace{0.5cm}} & 
+\skillbox{Performance}{1}{\hspace{0.5cm}} & 
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+% Talents Section
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Talents}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.2cm}
+\textbf{Talent Name:} Description of the talent and its effects...
+\vspace{0.2cm}
+
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.2cm}
+\textbf{Talent Name:} Description of the talent and its effects...
+\vspace{0.2cm}
+
+\rule{\textwidth-0.4cm}{0.4pt}
+\end{adjustwidth}
+
+\vspace{0.3cm}
+
+% Resources Section
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Resources}
+\end{mdframed}
+
+\begin{center}
+\resourcebox{Boons}{3}{\boon\boon\boon} \\
+\vspace{0.2cm}
+\resourcebox{Assets}{}{\asset\asset\asset} \\
+\end{center}
+
+\vspace{0.3cm}
+
+% Assets Detail
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.1cm}
+\textbf{Minor Asset:} Asset Name \\
+Description and effects...
+\vspace{0.1cm}
+
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.1cm}
+\textbf{Standard Asset:} Asset Name \\
+Description and effects...
+\vspace{0.1cm}
+
+\rule{\textwidth-0.4cm}{0.4pt}
+\end{adjustwidth}
+
+\vspace{0.3cm}
+
+% Bonds Section
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Bonds}
+\end{mdframed}
+
+\begin{center}
+\bondbox{With [Character Name]: "Bond description..."} \\
+\vspace{0.1cm}
+\bondbox{With [Character Name]: "Bond description..."} \\
+\vspace{0.1cm}
+\bondbox{With [Character Name]: "Bond description..."} \\
+\end{center}
+
+\vspace{0.3cm}
+
+% Background Section
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Background}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.1cm}
+\textbf{Origin:} Silkstrand / Acasia / Vhasia / Other... \\
+\textbf{Motivation:} What drives this character? \\
+\textbf{Quirk:} Notable personality trait or habit... \\
+\vspace{0.2cm}
+\textbf{Story Notes:} Important events, relationships, or goals...
+\vspace{1cm}
+\end{adjustwidth}
+
+\end{mdframed}
+
+% Footer with game info
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[headercolor] (0,-1) rectangle (\paperwidth,-0.5);
+    \node[anchor=west] at (0.5cm,-0.75cm) {\textcolor{white}{\textbf{Fate's Edge Character Sheet}}};
+    \node[anchor=east] at (\paperwidth-0.5cm,-0.75cm) {\textcolor{white}{\textbf{Page 1 of 2}}};
+\end{tikzpicture}
+
+\newpage
+
+% Second Page
+\sheetheader{Character Name}{Profession}{0/40}{Rookie}
+
+\begin{mdframed}[backgroundcolor=background, linewidth=0pt]
+\vspace{0.2cm}
+
+% Extended Background
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Extended Background}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.2cm}
+\textbf{The Final Straw:} What event in Silkstrand led to exile? \\
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.3cm}
+\textbf{Defining Moment:} When was your first bond formed? \\
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.3cm}
+\textbf{A Sliver of Hope:} Why does Millhaven matter to you? \\
+\rule{\textwidth-0.4cm}{0.4pt}
+
+\vspace{0.3cm}
+\textbf{Personal Goals:} What does this character want to achieve? \\
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\end{adjustwidth}
+
+\vspace{0.3cm}
+
+% Combat Reference
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Combat Reference}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.2cm}
+\textbf{Making Rolls:}
+\begin{itemize}[leftmargin=*]
+\item Choose Attribute + Skill combination
+\item Roll d10s equal to total rating
+\item Count 
+```latex
+\item Each 6+ = 1 Success
+\item Each 1 = 1 Complication Point (CP)
+\end{itemize}
+
+\textbf{Outcome Matrix:}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\cellcolor{lightaccent} \textbf{Result} & \cellcolor{lightaccent} \textbf{Success vs DV} & \cellcolor{lightaccent} \textbf{Effect} \\
+\hline
+Clean Success & S $\geq$ DV, 0 CP & Intent achieved crisply \\
+Success \& Cost & S $\geq$ DV, 1+ CP & Intent achieved, GM spends CP \\
+Partial & 0 $<$ S $<$ DV & Progress with fork \\
+Miss & S = 0 & No progress, GM spends CP \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Common Dice Pools:}
+\begin{itemize}[leftmargin=*]
+\item Negotiate: Presence + Diplomacy = \rule{2cm}{0.4pt} d10
+\item Fight: Body + Melee = \rule{2cm}{0.4pt} d10
+\item Sneak: Wits + Stealth = \rule{2cm}{0.4pt} d10
+\item Heal: Spirit + Medicine = \rule{2cm}{0.4pt} d10
+\item Research: Wits + Lore = \rule{2cm}{0.4pt} d10
+\end{itemize}
+\end{adjustwidth}
+
+\vspace{0.3cm}
+
+% Resource Management
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Resource Management}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.2cm}
+\textbf{Boons (Max 5):}
+\begin{itemize}[leftmargin=*]
+\item \boon Re-roll one die after seeing the pool
+\item \boon Activate an Off-Screen Asset
+\item \boon Convert 2 Boons → 1 XP (once per session)
+\end{itemize}
+
+\textbf{Assets:}
+\begin{itemize}[leftmargin=*]
+\item \asset Minor (4 XP): Safehouse, small shop
+\item \asset Standard (8 XP): Noble title, guild section
+\item \asset Major (12 XP): City license, fortress lease
+\item \asset Free effect once per session
+\item Spend 1 Boon to reshape current scene
+\end{itemize}
+
+\textbf{Spending Guide:}
+\begin{center}
+\begin{tabular}{|l|c|l|}
+\hline
+\cellcolor{lightaccent} \textbf{Resource} & \cellcolor{lightaccent} \textbf{Cost} & \cellcolor{lightaccent} \textbf{When to Use} \\
+\hline
+Re-roll die & 1 Boon & Critical success needed \\
+Activate Asset & 1 Boon & Advantage in scene \\
+Convert to XP & 2 Boons & Character improvement \\
+Minor Asset & 4 XP & Basic off-screen help \\
+Standard Asset & 8 XP & Significant influence \\
+Major Asset & 12 XP & Major world impact \\
+\hline
+\end{tabular}
+\end{center}
+\end{adjustwidth}
+
+\vspace{0.3cm}
+
+% Experience Tracking
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Experience Tracking}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.2cm}
+\textbf{Earning XP:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Attendance:} +2 XP (just showing up)
+\item \textbf{Objectives Reached:} +2-4 XP (completing major goals)
+\item \textbf{Discoveries:} +1-2 XP (learning new things)
+\item \textbf{Hard Choices:} +1-2 XP (making difficult moral decisions)
+\item \textbf{Complication Spotlight:} +1-3 XP (embracing narrative twists)
+\item \textbf{Bond/Flag Driven Play:} +1-2 XP (engaging personal storylines)
+\end{itemize}
+
+\textbf{Spending XP:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Enhance Self:} Attributes (New rating × 3 XP), Skills (New level × 2 XP)
+\item \textbf{Acquire Assets:} Minor: 4 XP, Standard: 8 XP, Major: 12 XP
+\item \textbf{Learn Talents:} Early: 3-5 XP, Mid-Tier: 6-10 XP, Prestige: 12+ XP
+\end{itemize}
+\end{adjustwidth}
+
+\vspace{0.3cm}
+
+% Quick Reference Notes
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Quick Reference Notes}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.2cm}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+
+% Campaign Clocks Reference
+\begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
+\textbf{\large Campaign Clocks}
+\end{mdframed}
+
+\begin{adjustwidth}{0.2cm}{0.2cm}
+\vspace{0.2cm}
+\textbf{Village Safety Clock:} \rule{3cm}{0.4pt}/6 segments \\
+\textbf{Rothari Threat Clock:} \rule{3cm}{0.4pt}/8 segments \\
+\textbf{Personal Clock:} \rule{3cm}{0.4pt}/6 segments \\
+\end{adjustwidth}
+
+\end{mdframed}
+
+% Footer
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[headercolor] (0,-1) rectangle (\paperwidth,-0.5);
+    \node[anchor=west] at (0.5cm,-0.75cm) {\textcolor{white}{\textbf{Fate's Edge Character Sheet}}};
+    \node[anchor=east] at (\paperwidth-0.5cm,-0.75cm) {\textcolor{white}{\textbf{Page 2 of 2}}};
+\end{tikzpicture}
+
+\end{document}
