@@ -1,0 +1,891 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{sectsty}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{needspace}
+\usepackage{parskip}
+\usepackage{pifont}
+
+\definecolor{shadecolor}{gray}{0.95}
+\definecolor{headercolor}{RGB}{30, 50, 100}
+\definecolor{accentcolor}{RGB}{70, 130, 180}
+\definecolor{tableheader}{RGB}{240, 240, 240}
+\definecolor{booncolor}{RGB}{255, 215, 0}
+\definecolor{assetcolor}{RGB}{34, 139, 34}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Fate's Edge: Blood and Silk}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\sectionfont{\color{headercolor}\normalfont\fontsize{14}{16}\selectfont}
+\subsectionfont{\color{accentcolor}\normalfont\fontsize{12}{14}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{11}{13}\selectfont}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\geometry{margin=1in}
+
+\newenvironment{characterbox}[1]{%
+  \begin{mdframed}[backgroundcolor=shadecolor, linewidth=1pt, linecolor=headercolor]%
+  \subsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newenvironment{mechanic}[1]{%
+  \begin{mdframed}[backgroundcolor=tableheader, linewidth=1pt, linecolor=accentcolor]%
+  \subsubsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newcommand{\boon}{\textcolor{booncolor}{\ding{72}}}
+\newcommand{\asset}{\textcolor{assetcolor}{$\blacksquare$}}
+\newcommand{\dice}[1]{\texttt{#1}}
+\newcommand{\checkmark}{\ding{51}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentcolor,
+    filecolor=magenta,      
+    urlcolor=accentcolor,
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Huge\bfseries\color{headercolor} Blood and Silk} 
+
+\vspace{0.5cm}
+
+{\Large\itshape A Starter Adventure for Fate's Edge}
+
+\vspace{1cm}
+
+{\large An Introduction to Exile, Redemption, and Second Chances}
+
+\vspace{2cm}
+
+{\Large\bfseries Adventure Type: Village Defense}
+
+\vspace{1cm}
+
+{\large Designed for 4 players, Rookie characters (0-40 XP)}
+
+\vspace{1cm}
+
+{\large Game Master's Guide Included}
+
+\vfill
+
+{\large 
+\textbf{Featuring Pre-generated Characters} \\
+\textbf{Simple Clock Management} \\
+\textbf{Asset Building Through Heroism} \\
+\textbf{Mutual Connections and Bonds}
+}
+
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+
+\subsection{Welcome to Acasia}
+
+Welcome to Fate's Edge, where every choice carries weight and every action has consequences. This starter adventure, "Blood and Silk," is designed to introduce new players to the core mechanics of the game while telling a story about redemption, community, and the power of second chances.
+
+In the broken marches of Acasia, where law is a suggestion and coin speaks louder than crowns, a group of exiles finds themselves in a small farming village called Millhaven. What starts as a simple misunderstanding quickly escalates into a fight for survival as the village faces threats from all sides.
+
+\subsection{Adventure Overview}
+
+\textbf{Adventure Hook:} The PCs are exiles from Silkstrand - a cosmopolitan port city where they made choices that cost them their place in society. Now they wander the broken roads of Acasia, trying to survive and perhaps find a place where they belong.
+
+\textbf{Setting:} Millhaven, a small farming village in the Acasian marches, threatened by bandits and political machinations.
+
+\textbf{Themes:} Redemption, community, second chances, and the power of belonging.
+
+\textbf{Tone:} Gritty but hopeful. Violence has consequences, but heroism can earn respect and a place to call home.
+
+\textbf{Recommended Character Tier:} Rookie (0-40 XP) - perfect for new players.
+
+\textbf{Estimated Play Time:} 2-3 sessions
+
+\section{The Story So Far}
+
+\subsection{The Exiles of Silkstrand}
+
+The PCs are not welcome in their former home of Silkstrand. Whether they were involved in a scandal, crossed the wrong person, or simply made choices that powerful people didn't like, they now find themselves on the outside looking in. With nothing but the clothes on their backs and a burning desire to prove themselves, they've taken to the roads of Acasia.
+
+\subsection{Millhaven: A Village in Peril}
+
+Millhaven is a small farming community that has managed to stay neutral in the endless conflicts of Acasia. The villagers are simple folk who want nothing more than to tend their fields and raise their families in peace. But peace is a luxury that's becoming increasingly expensive.
+
+The village is currently under threat from:
+\begin{itemize}
+\item \textbf{Bandits:} The Rothari Gang, a particularly vicious group that demands "protection money"
+\item \textbf{Political Pressure:} Local nobles who want the village to choose sides in their conflicts
+\item \textbf{Economic Hardship:} Poor harvests and bandit raids have left the village struggling
+\end{itemize}
+
+\section{Pre-Generated Characters}
+
+\subsection{Character Creation Philosophy}
+
+These pre-generated characters are designed to be immediately playable while showcasing different approaches to character building in Fate's Edge. Each character has:
+\begin{itemize}
+\item Core Attributes and Skills appropriate for a rookie character
+\item A Background Hook that connects them to the setting
+\item Two Mutual Bonds with other characters (showing the bound->boon connection)
+\item Starting Assets and Boons to demonstrate resource management
+\end{itemize}
+
+\begin{characterbox}{Kestra "The Scholar" - Arcanist}
+\textbf{Background:} Once a promising student at Silkstrand's Academy of Arts, Kestra was expelled after an experimental ritual went wrong, destroying part of the library. Now she seeks to prove that her knowledge can be used for good.
+
+\textbf{Attributes:} Wits 3, Spirit 2 \\
+\textbf{Skills:} Arcana 2, Lore 2, Insight 1 \\
+\textbf{Mutual Bonds:} 
+\begin{itemize}
+\item With Marcus: "We both made choices that cost us our place in Silkstrand"
+\item With Sariel: "She saved me from Rothari bandits once, I owe her"
+\end{itemize}
+
+\textbf{Starting Resources:}
+\begin{itemize}
+\item 3 Boons
+\item Minor Asset: Scholar's Satchel (contains books, reagents, and a small telescope)
+\item Talent: Lorekeeper (Once per session, recall obscure history without rolling)
+\end{itemize}
+\end{characterbox}
+
+\begin{characterbox}{Marcus "The Blade" - Warrior}
+\textbf{Background:} A former city guard who was discharged after he refused to look the other way while corrupt officials shook down merchants. Now he makes his living as a sellsword, but his heart still yearns for justice.
+
+\textbf{Attributes:} Body 3, Spirit 2 \\
+\textbf{Skills:} Melee 3, Athletics 2, Command 1 \\
+\textbf{Mutual Bonds:} 
+\begin{itemize}
+\item With Kestra: "We both made choices that cost us our place in Silkstrand"
+\item With Elena: "We fought side by side against Rothari raiders"
+\end{itemize}
+
+\textbf{Starting Resources:}
+\begin{itemize}
+\item 2 Boons
+\item Minor Asset: Trusted Blade (a well-maintained sword that never fails)
+\item Talent: Battle Instincts (Once per scene, re-roll a failed defense roll)
+\end{itemize}
+\end{characterbox}
+
+\begin{characterbox}{Sariel "The Shadow" - Scout}
+\textbf{Background:} A former member of Silkstrand's Thieves' Guild who grew tired of the constant violence and backstabbing. She left the guild but still uses her skills to survive on the road.
+
+\textbf{Attributes:} Wits 3, Body 2 \\
+\textbf{Skills:} Stealth 2, Survival 2, Skullduggery 1 \\
+\textbf{Mutual Bonds:} 
+\begin{itemize}
+\item With Kestra: "She saved me from Rothari bandits once, I owe her"
+\item With Elena: "We both know what it's like to be an outcast"
+\end{itemize}
+
+\textbf{Starting Resources:}
+\begin{itemize}
+\item 4 Boons
+\item Minor Asset: Shadow's Cloak (grants advantage on stealth rolls in dim light)
+\item Talent: Silver Tongue (Gain +1 die when persuading or deceiving through speech)
+\end{itemize}
+\end{characterbox}
+
+\begin{characterbox}{Elena "The Healer" - Apothecary}
+\textbf{Background:} A former apothecary who was accused of practicing forbidden arts after she tried to save a patient with experimental treatments. Now she travels the roads, helping those who have nowhere else to turn.
+
+\textbf{Attributes:} Spirit 3, Wits 2 \\
+\textbf{Skills:} Medicine 2, Survival 1, Insight 2 \\
+\textbf{Mutual Bonds:} 
+\begin{itemize}
+\item With Marcus: "We fought side by side against Rothari raiders"
+\item With Sariel: "We both know what it's like to be an outcast"
+\end{itemize}
+
+\textbf{Starting Resources:}
+\begin{itemize}
+\item 3 Boons
+\item Minor Asset: Healer's Kit (contains bandages, herbs, and basic medical supplies)
+\item Talent: Iron Stomach (Immune to mundane poisons and spoiled food)
+\end{itemize}
+\end{characterbox}
+
+\section{Session 1: Trouble in Millhaven}
+
+\subsection{Opening Scene: The Wrong Place at the Wrong Time}
+
+The PCs arrive in Millhaven just as the Rothari Gang is demanding "protection money" from the village elder. The gang is led by a cruel man named Garrick, who has a reputation for violence and intimidation.
+
+\textbf{Key NPCs:}
+\begin{itemize}
+\item \textbf{Elder Thorne:} The village elder, a wise but weary man who has tried to keep the peace
+\item \textbf{Garrick Rothari:} Leader of the Rothari Gang, cruel and calculating
+\item \textbf{Villagers:} Simple folk caught between bandits and survival
+\end{itemize}
+
+\textbf{The Scene:} The PCs witness Garrick threatening Elder Thorne and demanding an impossible amount of coin. When they intervene, a fight breaks out.
+
+\subsection{Key Encounters}
+
+\begin{enumerate}
+\item \textbf{Social Encounter:} Negotiating with Garrick (Presence + Diplomacy or Command, DV 3)
+\item \textbf{Combat Encounter:} Fighting Rothari bandits (Body + Melee or Wits + Skullduggery)
+\item \textbf{Investigation:} Learning about the village's troubles (Wits + Insight or Lore)
+\end{enumerate}
+
+\subsection{Campaign Clocks}
+
+This adventure uses simplified campaign clocks to track the overall progress of the story:
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Village Safety Clock} & \textbf{How close the village is to being overrun} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/6 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Rothari Threat Clock} & \textbf{How much the Rothari Gang is organizing against the village} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/8 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Clock Advancement}
+
+\textbf{Village Safety Clock:}
+\begin{itemize}
+\item PCs fail to protect villagers: +2 segments
+\item Rothari successfully intimidates villagers: +1 segment
+\item PCs successfully protect villagers: -1 segment (minimum 0)
+\end{itemize}
+
+\textbf{Rothari Threat Clock:}
+\begin{itemize}
+\item Direct confrontation with Rothari: +2 segments
+\item Rothari casualties: +1 segment
+\item PCs gain information about Rothari plans: -1 segment
+\item PCs successfully intimidate Rothari: -2 segments
+\end{itemize}
+
+\subsection{Session 1 Resolution}
+
+At the end of Session 1, the PCs should have:
+\begin{itemize}
+\item Fought the Rothari Gang
+\item Learned about the village's troubles
+\item Made enemies of the Rothari (Rothari Threat Clock advances)
+\item Either protected or endangered the village (Village Safety Clock changes accordingly)
+\end{itemize}
+
+\section{Session 2: The Village Fights Back}
+
+\subsection{Opening Scene: Consequences}
+
+Garrick Rothari doesn't take kindly to being challenged. He returns to Millhaven with more men and makes it clear that the PCs' interference will be paid for in blood.
+
+\textbf{New Threats:}
+\begin{itemize}
+\item \textbf{Reinforcements:} More Rothari bandits arrive
+\item \textbf{Retaliation:} Rothari begins targeting villagers who helped the PCs
+\item \textbf{Time Pressure:} Harvest season is approaching - if the village can't deal with the Rothari soon, they'll lose their crops
+\end{itemize}
+
+\subsection{Key Encounters}
+
+\begin{enumerate}
+\item \textbf{Defense Planning:} Helping the villagers organize (Presence + Command or Wits + Tactics)
+\item \textbf{Scouting Mission:} Learning about Rothari movements (Wits + Stealth or Survival)
+\item \textbf{Supply Run:} Getting supplies for the defense (Body + Athletics or Survival)
+\item \textbf{Ambush:} Fighting Rothari raiders (Combat encounter)
+\end{enumerate}
+
+\subsection{Asset Building}
+
+As the PCs help the village, they begin to earn the trust and respect of the villagers. This is represented by gaining Assets that reflect their growing connection to the community.
+
+\textbf{Possible Assets:}
+\begin{itemize}
+\item \textbf{Village Militia:} A group of armed villagers who will follow the PCs into battle
+\item \textbf{Elder's Trust:} The village elder's confidence, granting social advantages
+\item \textbf{Safe House:} A place in the village where the PCs can rest and recover
+\item \textbf{Local Knowledge:} Understanding of the area that grants advantages on Survival rolls
+\end{itemize}
+
+\textbf{Gaining Assets:} PCs can gain Assets by:
+\begin{itemize}
+\item Successfully completing important tasks for the village
+\item Making significant sacrifices for the community
+\item Building strong relationships with key NPCs
+\end{itemize}
+
+\subsection{Session 2 Resolution}
+
+At the end of Session 2, the PCs should have:
+\begin{itemize}
+\item Helped organize the village defense
+\item Gained at least one Asset representing their connection to the community
+\item Faced increased Rothari pressure (clocks advance)
+\item Made meaningful choices about how to protect the village
+\end{itemize}
+
+\section{Session 3: The Final Stand}
+
+\subsection{Opening Scene: The Rothari Return}
+
+Garrick Rothari has had enough. He gathers all his forces for one final assault on Millhaven, determined to make an example of the village and anyone who dares to oppose him.
+
+\textbf{The Final Threat:}
+\begin{itemize}
+\item \textbf{Overwhelming Numbers:} 20+ Rothari bandits
+\item \textbf{Siege Tactics:} Rothari attempt to cut off supplies and starve the village out
+\item \textbf{Personal Vendetta:} Garrick specifically targets the PCs
+\end{itemize}
+
+\subsection{Key Encounters}
+
+\begin{enumerate}
+\item \textbf{Final Preparations:} Last-minute preparations for battle (Various skills)
+\item \textbf{The Battle of Millhaven:} The climactic fight against the Rothari (Mass combat simplified)
+\item \textbf{Confronting Garrick:} The final showdown with the gang leader
+\item \textbf{Aftermath:} Dealing with the consequences of victory (Social encounter)
+\end{enumerate}
+
+\subsection{Simplified Mass Combat}
+
+For the final battle, use this simplified system:
+
+\textbf{Village Defense Clock (6 segments):}
+\begin{itemize}
+\item Represents how well the village holds out against the assault
+\item Advances when PCs fail rolls or make tactical errors
+\item Retreats when PCs succeed or make good choices
+\end{itemize}
+
+\textbf{Rothari Morale Clock (8 segments):}
+\begin{itemize}
+\item Represents how close the Rothari are to breaking and running
+\item Advances when PCs deal damage or intimidate enemies
+\item Retreats when Rothari succeed in their attacks
+\end{itemize}
+
+\textbf{Combat Resolution:}
+\begin{itemize}
+\item PCs make rolls to lead the defense (Presence + Command)
+\item PCs make rolls to fight individual enemies (Body + Melee)
+\item PCs make rolls to protect villagers (Various skills)
+\item Success advances Rothari Morale Clock, failure advances Village Defense Clock
+\end{itemize}
+
+\subsection{Session 3 Resolution}
+
+If the PCs successfully defend the village:
+\begin{itemize}
+\item Rothari Morale Clock fills - the gang breaks and flees
+\item Village Safety Clock resets to 0
+\item PCs gain permanent Assets reflecting their heroism
+\item PCs may be offered a permanent place in the village
+\end{itemize}
+
+If the village falls:
+\begin{itemize}
+\item PCs must flee and seek redemption elsewhere
+\item They gain experience from the attempt but must start over
+\item The adventure can continue with a new location and challenges
+\end{itemize}
+
+\section{Core Mechanics Quick Reference}
+
+\subsection{Making Rolls}
+
+In Fate's Edge, you resolve important actions by rolling dice:
+\begin{enumerate}
+\item \textbf{Determine the Approach:} Choose an Attribute + Skill combination
+\item \textbf{Set Difficulty:} GM sets Difficulty Value (DV) from 1-4+
+\item \textbf{Roll Dice:} Roll a number of d10s equal to Attribute + Skill
+\item \textbf{Count Results:}
+   \begin{itemize}
+   \item Each 6+ = 1 Success
+   \item Each 1 = 1 Complication Point (CP)
+   \end{itemize}
+\item \textbf{Apply Outcome:} Compare successes to DV
+\end{enumerate}
+
+\subsection{Outcome Matrix}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Result} & \textbf{Successes vs DV} & \textbf{Effect} \\
+\hline
+Clean Success & S $\geq$ DV, 0 CP & Intent achieved crisply \\
+Success \& Cost & S $\geq$ DV, 1+ CP & Intent achieved, GM spends CP \\
+Partial & 0 $<$ S $<$ DV & Progress with fork \\
+Miss & S = 0 & No progress, GM spends CP \\
+\hline
+\end{tabular}
+
+\subsection{Complication Points (CP)}
+
+CP are narrative fuel that the GM spends to add complications:
+\begin{itemize}
+\item \textbf{1 CP:} Minor pressure (noise, trace, +1 Supply segment)
+\item \textbf{2 CP:} Moderate setback (alarm, lose position, lesser foe)
+\item \textbf{3 CP:} Serious trouble (reinforcements, gear breaks, rail tick)
+\item \textbf{4+ CP:} Major turn (trap springs, authority arrives, scene shifts)
+\end{itemize}
+
+\section{Resource Management}
+
+\subsection{Boons}
+
+Boons are narrative tokens representing luck, resilience, or growth:
+\begin{itemize}
+\item \textbf{Earning Boons:} Through embracing complications, partial successes, or good roleplay
+\item \textbf{Using Boons:}
+   \begin{itemize}
+   \item Re-roll one die after seeing the pool
+   \item Activate an Off-Screen Asset (1 Boon)
+   \item Convert 2 Boons $\rightarrow$ 1 XP (once per session)
+   \end{itemize}
+\item \textbf{Limit:} Maximum 5 Boons at once
+\end{itemize}
+
+\subsection{Assets}
+
+Assets are off-screen resources that extend your influence:
+\begin{itemize}
+\item \textbf{Minor (4 XP):} Safehouse, small shop, petty title
+\item \textbf{Standard (8 XP):} Noble title, guild section, spy ring
+\item \textbf{Major (12 XP):} City license, regional network, fortress lease
+\item \textbf{Using Assets:}
+   \begin{itemize}
+   \item Free effect once per session
+   \item Spend 1 Boon to reshape current scene
+   \end{itemize}
+\end{itemize}
+
+\subsection{Assets in This Adventure}
+
+As you help Millhaven, you can gain these Assets:
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Asset} & \textbf{Cost} & \textbf{Effect} \\
+\hline
+Village Militia & Minor (4 XP) & Cap 3 follower - villagers who fight alongside you \\
+Elder's Trust & Minor (4 XP) & +1 die to social rolls in Millhaven \\
+Safe House & Minor (4 XP) & Secure place to rest and recover in village \\
+Local Knowledge & Minor (4 XP) & +1 die to Survival rolls in the area \\
+Village Charter & Standard (8 XP) & Legal protection and village resources \\
+\hline
+\end{tabular}
+
+\subsection{Spending Resources - Quick Guide}
+
+\textbf{When to Spend Boons:}
+\begin{itemize}
+\item \boon Re-roll dice when you really need to succeed
+\item \boon Activate Assets for crucial advantages
+\item \boon Convert to XP when you want to improve your character
+\end{itemize}
+
+\textbf{When to Use Assets:}
+\begin{itemize}
+\item \asset Get free help with problems between sessions
+\item \asset Gain advantage in specific locations
+\item \asset Solve logistical problems without rolling
+\end{itemize}
+
+\textbf{Resource Management Tips:}
+\begin{itemize}
+\item Don't hoard Boons - use them when they matter most
+\item Invest in Assets that match your character's strengths
+\item Remember that Assets require maintenance (roleplay attention)
+\end{itemize}
+
+\section{Character Advancement}
+
+\subsection{Earning XP}
+
+At the end of each session, players earn XP based on their actions:
+\begin{itemize}
+\item \textbf{Attendance:} +2 XP (just showing up)
+\item \textbf{Objectives Reached:} +2-4 XP (completing major goals)
+\item \textbf{Discoveries:} +1-2 XP (learning new things)
+\item \textbf{Hard Choices:} +1-2 XP (making difficult moral decisions)
+\item \textbf{Complication Spotlight:} +1-3 XP (embracing narrative twists)
+\item \textbf{Bond/Flag Driven Play:} +1-2 XP (engaging personal storylines)
+\end{itemize}
+
+\subsection{Spending XP}
+
+XP can be spent in three ways:
+\begin{enumerate}
+\item \textbf{Enhance Self:} Improve Attributes and Skills
+   \begin{itemize}
+   \item Attributes: New rating $\times$ 3 XP
+   \item Skills: New level $\times$ 2 XP
+   \end{itemize}
+\item \textbf{Acquire Assets:} Gain worldly influence
+   \begin{itemize}
+   \item Minor: 4 XP, Standard: 8 XP, Major: 12 XP
+   \end{itemize}
+\item \textbf{Learn Talents:} Unlock unique abilities
+   \begin{itemize}
+   \item Early Talents: 3-5 XP
+   \item Mid-Tier Talents: 6-10 XP
+   \item Prestige Abilities: 12+ XP
+   \end{itemize}
+\end{enumerate}
+
+\subsection{Sample Advancement Choices}
+
+\textbf{Kestra (The Scholar):}
+\begin{itemize}
+\item Raise Arcana from 2 to 3 (6 XP)
+\item Gain the Ritual Master Talent (12 XP)
+\item Acquire a Library Asset (8 XP)
+\end{itemize}
+
+\textbf{Marcus (The Blade):}
+\begin{itemize}
+\item Raise Melee from 3 to 4 (8 XP)
+\item Gain the Silver Tongue Talent (4 XP)
+\item Acquire a Trusted Mount Asset (4 XP)
+\end{itemize}
+
+\textbf{Sariel (The Shadow):}
+\begin{itemize}
+\item Raise Stealth from 2 to 3 (6 XP)
+\item Gain the Beast-Tongue Talent (8 XP)
+\item Acquire a Spy Network Asset (8 XP)
+\end{itemize}
+
+\textbf{Elena (The Healer):}
+\begin{itemize}
+\item Raise Medicine from 2 to 3 (6 XP)
+\item Gain the Healing Light Talent (8 XP)
+\item Acquire a Healing Sanctuary Asset (8 XP)
+\end{itemize}
+
+\section{GM Tips and Advice}
+
+\subsection{Running This Adventure}
+
+\textbf{Keep It Simple:}
+\begin{itemize}
+\item Use the pre-prepared NPCs and scenarios
+\item Don't overcomplicate the clock mechanics
+\item Focus on the story and character development
+\end{itemize}
+
+\textbf{Encourage Player Agency:}
+\begin{itemize}
+\item Let players make meaningful choices
+\item Show how their decisions affect the village
+\item Reward creative problem-solving
+\end{itemize}
+
+\textbf{Manage the Pacing:}
+\begin{itemize}
+\item Each session should have a clear goal
+\item Advance clocks based on player actions, not arbitrary timing
+\item Build to climactic moments gradually
+\end{itemize}
+
+\subsection{Using Complications}
+
+Complications should enhance the story, not punish players:
+\begin{itemize}
+\item \textbf{Good Complications:} Add tension, introduce new elements, create interesting choices
+\item \textbf{Bad Complications:} Are arbitrary, repetitive, or make players feel helpless
+\item \textbf{Best Practice:} Tie complications to the fiction and character choices
+\end{itemize}
+
+\subsection{Awarding Assets}
+
+Assets should feel earned, not given:
+\begin{itemize}
+\item Require meaningful sacrifice or effort
+\item Tie to specific actions or relationships
+\item Match the character's concept and the story's needs
+\end{itemize}
+
+\section{NPC Gallery}
+
+\subsection{Key NPCs}
+
+\begin{characterbox}{Elder Thorne - Village Leader}
+\textbf{Role:} The wise but weary leader of Millhaven \\
+\textbf{Motivation:} Protect his people at all costs \\
+\textbf{Personality:} Cautious, diplomatic, but capable of great courage when necessary \\
+\textbf{Relationship to PCs:} Initially suspicious, becomes grateful for their help \\
+\textbf{Key Scene:} The first meeting where he explains the village's troubles
+\end{characterbox}
+
+\begin{characterbox}{Garrick Rothari - Bandit Leader}
+\textbf{Role:} Cruel leader of the Rothari Gang \\
+\textbf{Motivation:} Power, control, and revenge \\
+\textbf{Personality:} Ruthless, cunning, with a personal code of honor \\
+\textbf{Relationship to PCs:} Immediate enemy who becomes obsessed with destroying them \\
+\textbf{Key Scene:} The confrontation where he threatens the village
+\end{characterbox}
+
+\begin{characterbox}{Mira the Baker - Village Representative}
+\textbf{Role:} Spokesperson for the villagers \\
+\textbf{Motivation:} Feed her family and keep the community together \\
+\textbf{Personality:} Practical, caring, with hidden strength \\
+\textbf{Relationship to PCs:} First villager to trust them, becomes a key ally \\
+\textbf{Key Scene:} The scene where she offers the PCs a place to stay
+\end{characterbox}
+
+\begin{characterbox}{Tom the Smith - Village Defender}
+\textbf{Role:} Local blacksmith who helps with defense \\
+\textbf{Motivation:} Protect his forge and the tools that feed his family \\
+\textbf{Personality:} Gruff exterior, kind heart, practical fighter \\
+\textbf{Relationship to PCs:} Respectful once they prove themselves \\
+\textbf{Key Scene:} Training the villagers to fight
+\end{characterbox}
+
+\section{Optional Complications}
+
+\subsection{Adding Depth}
+
+If your group wants more complexity, you can add these elements:
+
+\textbf{Political Intrigue:}
+\begin{itemize}
+\item A local noble is secretly supporting the Rothari
+\item The village must choose between different political factions
+\item PCs discover that their past in Silkstrand connects to the conflict
+\end{itemize}
+
+\textbf{Supernatural Elements:}
+\begin{itemize}
+\item The Rothari are using cursed weapons
+\item Ancient spirits are awakened by the violence
+\item One of the PCs has a mystical connection to the area
+\end{itemize}
+
+\textbf{Personal Stakes:}
+\begin{itemize}
+\item A PC's family member is in the village
+\item The Rothari leader knows one of the PCs personally
+\item Villagers remind PCs of people from their past
+\end{itemize}
+
+\subsection{Scaling the Challenge}
+
+\textbf{For Experienced Players:}
+\begin{itemize}
+\item Increase clock sizes by 2 segments each
+\item Add more Rothari bandits to encounters
+\item Introduce additional factions with competing interests
+\end{itemize}
+
+\textbf{For New Players:}
+\begin{itemize}
+\item Decrease clock sizes by 2 segments each
+\item Provide more obvious clues and hints
+\item Reduce the number of Rothari in combat encounters
+\end{itemize}
+
+\section{Resolution and Continuation}
+
+\subsection{Successful Defense}
+
+If the PCs successfully defend Millhaven:
+\begin{itemize}
+\item \textbf{Immediate Rewards:}
+   \begin{itemize}
+   \item Permanent Assets reflecting their heroism
+   \item 10-12 XP for each player
+   \item Respect and gratitude from the villagers
+   \end{itemize}
+\item \textbf{Long-term Benefits:}
+   \begin{itemize}
+   \item Millhaven becomes a safe base of operations
+   \item Villagers provide information and resources
+   \item Other communities seek their help
+   \end{itemize}
+\item \textbf{Story Hooks:}
+   \begin{itemize}
+   \item Other villages face similar threats
+   \item Rothari remnants seek revenge
+   \item Political forces take notice of the PCs
+   \end{itemize}
+\end{itemize}
+
+\subsection{Village Falls}
+
+If the PCs fail to save Millhaven:
+\begin{itemize}
+\item \textbf{Consequences:}
+   \begin{itemize}
+   \item 6-8 XP for each player (experience from the attempt)
+   \item Guilt and responsibility for the outcome
+   \item Displaced villagers become refugees
+   \end{itemize}
+\item \textbf{New Challenges:}
+   \begin{itemize}
+   \item Hunted by Rothari for making them look bad
+   \item Villagers blame the PCs for the tragedy
+   \item Need to find redemption elsewhere
+   \end{itemize}
+\item \textbf{Story Continuation:}
+   \begin{itemize}
+   \item Help refugees find new homes
+   \item Hunt down Rothari leadership
+   \item Prove themselves worthy of trust again
+   \end{itemize}
+\end{itemize}
+
+\section{Quick Reference Cards}
+
+\subsection{Character Sheet Summary}
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Character} & \textbf{Primary Attr/Skill} & \textbf{Key Talent} & \textbf{Starting Asset} \\
+\hline
+Kestra (Scholar) & Wits 3 + Arcana 2 & Lorekeeper & Scholar's Satchel \\
+Marcus (Blade) & Body 3 + Melee 3 & Battle Instincts & Trusted Blade \\
+Sariel (Shadow) & Wits 3 + Stealth 2 & Silver Tongue & Shadow's Cloak \\
+Elena (Healer) & Spirit 3 + Medicine 2 & Iron Stomach & Healer's Kit \\
+\hline
+\end{tabular}
+
+\subsection{Clock Management}
+
+\textbf{Village Safety Clock (6 segments):}
+\begin{itemize}
+\item \checkmark Protect villagers: -1 segment
+\item \checkmark Fail to protect: +2 segments
+\item \checkmark Intimidate Rothari: -1 segment
+\item When filled: Village falls to bandits
+\end{itemize}
+
+\textbf{Rothari Threat Clock (8 segments):}
+\begin{itemize}
+\item \checkmark Defeat Rothari: +1 segment
+\item \checkmark Gain information: -1 segment
+\item \checkmark Intimidate enemies: -2 segments
+\item When filled: Rothari retreat or seek reinforcements
+\end{itemize}
+
+\subsection{Resource Spending Guide}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Resource} & \textbf{Cost} & \textbf{When to Use} \\
+\hline
+Re-roll die & 1 Boon & When success is critical \\
+Activate Asset & 1 Boon & To gain advantage in scene \\
+Convert to XP & 2 Boons & When you want to improve \\
+Minor Asset & 4 XP & For basic off-screen help \\
+Standard Asset & 8 XP & For significant influence \\
+Major Asset & 12 XP & For major world impact \\
+\hline
+\end{tabular}
+
+\subsection{Sample Dice Pools}
+
+\textbf{Common Actions:}
+\begin{itemize}
+\item Negotiate with villagers: Presence 2 + Diplomacy 2 = 4d10
+\item Fight Rothari bandit: Body 3 + Melee 3 = 6d10
+\item Sneak past guards: Wits 3 + Stealth 2 = 5d10
+\item Heal wounded villager: Spirit 3 + Medicine 2 = 5d10
+\item Research ancient texts: Wits 3 + Lore 2 = 5d10
+\end{itemize}
+
+\subsection{Complication Guidelines}
+
+\textbf{When to Spend CP:}
+\begin{itemize}
+\item Add tension to successful rolls
+\item Escalate failed rolls into interesting failures
+\item Introduce new story elements
+\item Create meaningful choices for players
+\end{itemize}
+
+\textbf{Good CP Spends:}
+\begin{itemize}
+\item 1 CP: Add a minor obstacle or complication
+\item 2 CP: Introduce a new threat or NPC
+\item 3 CP: Change the tactical situation significantly
+\item 4+ CP: Alter the story direction entirely
+\end{itemize}
+
+\section{Conclusion}
+
+"Blood and Silk" is designed to be your first step into the world of Fate's Edge. It introduces the core mechanics through a straightforward story of redemption and community while giving players meaningful choices that affect the outcome.
+
+The adventure emphasizes:
+\begin{itemize}
+\item \textbf{Character Growth:} From exiles to heroes through player choices
+\item \textbf{Resource Management:} Boons, Assets, and XP as meaningful currencies
+\item \textbf{Narrative Consequences:} Every action affects the story's direction
+\item \textbf{Collaborative Storytelling:} Players and GM work together to create the tale
+\end{itemize}
+
+Remember that Fate's Edge is about the story, not just the dice rolls. Encourage players to describe their actions vividly, embrace the complications that arise, and let the world react to their choices in meaningful ways.
+
+Whether the PCs become beloved protectors of Millhaven or tragic figures who couldn't save the day, their story will be one worth telling. The dice will guide you, but it's your choices that write the legend.
+
+\begin{center}
+\textbf{What are you willing to risk to reshape the world around you?}
+\end{center}
+
+In Millhaven, that question might just have a simple answer: everything.
+
+\end{document}
