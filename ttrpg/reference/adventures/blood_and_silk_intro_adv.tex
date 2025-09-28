@@ -37,6 +37,7 @@
 \definecolor{tableheader}{RGB}{240, 240, 240}
 \definecolor{booncolor}{RGB}{255, 215, 0}
 \definecolor{assetcolor}{RGB}{34, 139, 34}
+\definecolor{encountercolor}{RGB}{173, 216, 230}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -62,6 +63,13 @@
 
 \newenvironment{mechanic}[1]{%
   \begin{mdframed}[backgroundcolor=tableheader, linewidth=1pt, linecolor=accentcolor]%
+  \subsubsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newenvironment{encounterbox}[1]{%
+  \begin{mdframed}[backgroundcolor=encountercolor!30, linewidth=1pt, linecolor=accentcolor]%
   \subsubsection*{#1}%
 }{%
   \end{mdframed}%
@@ -123,6 +131,18 @@
 \tableofcontents
 
 \newpage
+
+\section{Session 0: Personalizing Your Exile}
+
+Before beginning play, take time to establish the connections between your characters and their shared past in Silkstrand. Discuss these questions with the group:
+
+\begin{enumerate}
+\item \textbf{The Final Straw:} What was the specific event in Silkstrand that forced you all to leave \textit{together}?
+\item \textbf{Defining Moment:} Look at your Mutual Bonds. Briefly describe the scene where that bond was formed. Was it during the event that exiled you, or on the road afterward?
+\item \textbf{A Sliver of Hope:} Why is Millhaven different? What about this place makes you want to fight for it, instead of just moving on?
+\end{enumerate}
+
+\textbf{Example for Kestra and Marcus:} Their bond is "We both made choices that cost us our place." Perhaps Marcus refused an order to arrest Kestra during the library incident, sacrificing his career to help her escape.
 
 \section{Introduction}
 
@@ -268,11 +288,35 @@ The PCs arrive in Millhaven just as the Rothari Gang is demanding "protection mo
 
 \subsection{Key Encounters}
 
-\begin{enumerate}
-\item \textbf{Social Encounter:} Negotiating with Garrick (Presence + Diplomacy or Command, DV 3)
-\item \textbf{Combat Encounter:} Fighting Rothari bandits (Body + Melee or Wits + Skullduggery)
-\item \textbf{Investigation:} Learning about the village's troubles (Wits + Insight or Lore)
-\end{enumerate}
+\begin{encounterbox}{Social Encounter: Negotiating with Garrick}
+\begin{itemize}
+\item \textbf{Approach:} Presence + Diplomacy or Command
+\item \textbf{DV 3, Risky Position}
+\item \textbf{Success:} Garrick leaves temporarily, but vows revenge
+\item \textbf{Partial:} Garrick reduces his demand but takes a hostage
+\item \textbf{Failure:} Combat starts immediately with Garrick having initiative
+\end{itemize}
+\end{encounterbox}
+
+\begin{encounterbox}{Combat Encounter: Fighting Rothari Bandits}
+\begin{itemize}
+\item \textbf{Approach:} Body + Melee or Wits + Skullduggery
+\item \textbf{DV 2-3 depending on bandit type}
+\item \textbf{Success:} Bandit is defeated or routed
+\item \textbf{Partial:} Bandit is wounded but still dangerous
+\item \textbf{Failure:} PC takes damage or is outmaneuvered
+\end{itemize}
+\end{encounterbox}
+
+\begin{encounterbox}{Investigation: Learning About Village Troubles}
+\begin{itemize}
+\item \textbf{Approach:} Wits + Insight or Lore
+\item \textbf{DV 2, Standard Position}
+\item \textbf{Success:} Gain valuable information about Rothari tactics
+\item \textbf{Partial:} Learn something useful but incomplete
+\item \textbf{Failure:} Receive misleading information or waste time
+\end{itemize}
+\end{encounterbox}
 
 \subsection{Campaign Clocks}
 
@@ -305,7 +349,7 @@ Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\te
 \textbf{Village Safety Clock:}
 \begin{itemize}
 \item PCs fail to protect villagers: +2 segments
-\item Rothari successfully intimidates villagers: +1 segment
+\item Rothari successfully intimidate villagers: +1 segment
 \item PCs successfully protect villagers: -1 segment (minimum 0)
 \end{itemize}
 
@@ -329,29 +373,81 @@ At the end of Session 1, the PCs should have:
 
 \section{Session 2: The Village Fights Back}
 
-\subsection{Opening Scene: Consequences}
+\subsection{Opening Scene: The Strategic Crossroads}
 
-Garrick Rothari doesn't take kindly to being challenged. He returns to Millhaven with more men and makes it clear that the PCs' interference will be paid for in blood.
+Garrick's retaliation has made it clear the village cannot simply wait to be attacked. Elder Thorne and the PCs must decide on a primary strategy. Present the players with a clear choice that will define the rest of the adventure:
 
-\textbf{New Threats:}
+\textbf{Option A: Fortify and Hold}
+The village will focus on building defenses: palisades, traps, and a militia.
 \begin{itemize}
-\item \textbf{Reinforcements:} More Rothari bandits arrive
-\item \textbf{Retaliation:} Rothari begins targeting villagers who helped the PCs
-\item \textbf{Time Pressure:} Harvest season is approaching - if the village can't deal with the Rothari soon, they'll lose their crops
+\item \textbf{Primary Asset Gained:} \textit{Village Militia}
+\item \textbf{Primary Challenge:} Resource scarcity and maintaining morale during the siege.
+\item \textbf{Session 2 Focus:} Defense-oriented encounters (building traps, training militia, withstanding probing attacks).
+\end{itemize}
+
+\textbf{Option B: Strike First}
+The village's best chance is to take the fight to the Rothari, targeting their camp or a key lieutenant.
+\begin{itemize}
+\item \textbf{Primary Asset Gained:} \textit{Scouting Reports} (grants a bonus to the final battle)
+\item \textbf{Primary Challenge:} The danger of the expedition and leaving the village lightly defended.
+\item \textbf{Session 2 Focus:} Offensive-oriented encounters (scouting, ambushing supply lines, a raid on a bandit outpost).
+\end{itemize}
+
+\textbf{Mechanical Impact:}
+\begin{itemize}
+\item The chosen strategy sets the \textbf{primary tone and encounters} for Session 2.
+\item The \textit{other} strategy becomes a \textbf{secondary clock} that can still be advanced with good rolls, representing limited efforts on that front.
+\item This choice makes the players feel they are directing the narrative, not just reacting to it.
+\end{itemize}
+
+\subsection{Consequences of the Choice}
+
+\textbf{If Fortify and Hold:}
+\begin{itemize}
+\item PCs work with villagers to build palisades and traps
+\item Rothari make probing attacks to test defenses
+\item Elder Thorne provides tactical guidance
+\item Tom the Smith helps forge weapons for the militia
+\end{itemize}
+
+\textbf{If Strike First:}
+\begin{itemize}
+\item PCs lead a scouting mission into Rothari territory
+\item Opportunity to eliminate key Rothari lieutenants
+\item Risk of leaving village undefended during the operation
+\item Chance to gather intelligence for the final battle
 \end{itemize}
 
 \subsection{Key Encounters}
 
+\textbf{Fortify and Hold Path:}
 \begin{enumerate}
 \item \textbf{Defense Planning:} Helping the villagers organize (Presence + Command or Wits + Tactics)
+\item \textbf{Construction:} Building fortifications (Body + Athletics or Wits + Craft)
+\item \textbf{Training:} Preparing the militia (Presence + Command or Body + Melee)
+\item \textbf{Probing Attack:} Defending against Rothari scouts (Combat encounter)
+\end{enumerate}
+
+\textbf{Strike First Path:}
+\begin{enumerate}
 \item \textbf{Scouting Mission:} Learning about Rothari movements (Wits + Stealth or Survival)
-\item \textbf{Supply Run:} Getting supplies for the defense (Body + Athletics or Survival)
-\item \textbf{Ambush:} Fighting Rothari raiders (Combat encounter)
+\item \textbf{Ambush:} Attacking Rothari supply lines (Wits + Skullduggery or Body + Melee)
+\item \textbf{Raid:} Infiltrating a Rothari outpost (Wits + Stealth or Presence + Command)
+\item \textbf{Escape:} Returning to the village with intelligence (Body + Athletics or Wits + Survival)
 \end{enumerate}
 
 \subsection{Asset Building}
 
 As the PCs help the village, they begin to earn the trust and respect of the villagers. This is represented by gaining Assets that reflect their growing connection to the community.
+
+\textbf{Asset Award Triggers:}
+\begin{itemize}
+\item Successfully train 5+ villagers: Gain \textit{Village Militia} asset
+\item Build 3+ defensive structures: Gain \textit{Fortified Village} asset  
+\item Secure outside aid: Gain \textit{Allied Support} asset
+\item Complete a dangerous scouting mission: Gain \textit{Scouting Reports} asset
+\item Win over skeptical villagers: Gain \textit{Elder's Trust} asset
+\end{itemize}
 
 \textbf{Possible Assets:}
 \begin{itemize}
@@ -372,7 +468,7 @@ As the PCs help the village, they begin to earn the trust and respect of the vil
 
 At the end of Session 2, the PCs should have:
 \begin{itemize}
-\item Helped organize the village defense
+\item Helped organize the village defense or conducted a strike mission
 \item Gained at least one Asset representing their connection to the community
 \item Faced increased Rothari pressure (clocks advance)
 \item Made meaningful choices about how to protect the village
@@ -434,13 +530,6 @@ If the PCs successfully defend the village:
 \item Village Safety Clock resets to 0
 \item PCs gain permanent Assets reflecting their heroism
 \item PCs may be offered a permanent place in the village
-\end{itemize}
-
-If the village falls:
-\begin{itemize}
-\item PCs must flee and seek redemption elsewhere
-\item They gain experience from the attempt but must start over
-\item The adventure can continue with a new location and challenges
 \end{itemize}
 
 \section{Core Mechanics Quick Reference}
@@ -672,6 +761,28 @@ Assets should feel earned, not given:
 \textbf{Key Scene:} The first meeting where he explains the village's troubles
 \end{characterbox}
 
+\begin{mechanic}{Villain Motivations: Garrick Rothari}
+
+Choose one primary and one secondary motivation to give Garrick depth:
+
+\textbf{Primary Motivations:}
+\begin{itemize}
+\item \textbf{The Abandoned Soldier:} Garrick was once a decorated Acasian soldier, discharged without pension after losing an arm in service. He turned to banditry to survive and now targets villages under the protection of the nobles who betrayed him.
+\item \textbf{The Debt Slave:} Garrick is being coerced by a Silkstrand crime lord (perhaps connected to a PC's backstory) to extract a massive debt from Millhaven. His cruelty is born of desperation.
+\item \textbf{The Ideologue:} Garrick genuinely believes the strong should rule the weak. He sees his "protection" as a natural order and views the villagers' defiance as a violation of the rightful way of things.
+\end{itemize}
+
+\textbf{Secondary Traits:}
+\begin{itemize}
+\item \textbf{Code of Honor:} He never harms children and always keeps his word.
+\item \textbf{Sentimental:} He carries a tattered locket with a portrait of a lost loved one.
+\item \textbf{Intellectually Curious:} He has a surprising respect for learning and might spare Kestra if she impresses him with her knowledge.
+\end{itemize}
+
+\textbf{GM Application:} Weave the chosen motivation into the story. For example, if using "The Abandoned Soldier," the PCs might find an old Acasian military insignia on a bandit, leading to a revelation that reframes the conflict.
+
+\end{mechanic}
+
 \begin{characterbox}{Garrick Rothari - Bandit Leader}
 \textbf{Role:} Cruel leader of the Rothari Gang \\
 \textbf{Motivation:} Power, control, and revenge \\
@@ -702,12 +813,26 @@ Assets should feel earned, not given:
 
 If your group wants more complexity, you can add these elements:
 
-\textbf{Political Intrigue:}
+\begin{mechanic}{Political Intrigue: The Baron's Gambit}
+
+For a more complex game, introduce \textbf{Baroness Valerius}, a local noble whose lands border Millhaven's.
+
+\textbf{Her Motive:} She wants to annex Millhaven for its fertile land but cannot do so openly. She has been secretly undermining the village, including \textit{sabotaging their requests for aid} and \textit{encouraging the Rothari} (via intermediaries) to soften them up.
+
+\textbf{How it Unfolds:}
 \begin{itemize}
-\item A local noble is secretly supporting the Rothari
-\item The village must choose between different political factions
-\item PCs discover that their past in Silkstrand connects to the conflict
+\item \textbf{Clue:} In Session 1, a bandit carries a coin from the Baroness's mint.
+\item \textbf{Development:} In Session 2, a "helpful" envoy from the Baroness arrives, offering protection in exchange for swearing fealty—a blatant power grab.
+\item \textbf{Confrontation:} In Session 3, if the PCs are winning, the Baroness might send her own troops under the pretext of "restoring order," aiming to claim the victory and the village.
 \end{itemize}
+
+\textbf{New Mechanics:}
+\begin{itemize}
+\item \textbf{The Baroness's Scheme Clock (6):} Tracks her progress toward annexing the village. It advances if the PCs trust her envoy or are weakened by the Rothari.
+\item \textbf{New Asset:} \textit{Evidence of Conspiracy (Minor)}: If the PCs uncover proof of her dealings with the Rothari, they can use it to discredit her.
+\end{itemize}
+
+\end{mechanic}
 
 \textbf{Supernatural Elements:}
 \begin{itemize}
@@ -765,28 +890,30 @@ If the PCs successfully defend Millhaven:
    \end{itemize}
 \end{itemize}
 
-\subsection{Village Falls}
+\subsection{The Village Falls: A Road to Redemption}
 
-If the PCs fail to save Millhaven:
+If the Rothari Threat Clock fills or the Village Safety Clock reaches its end, Millhaven is overrun. But this is not the end—it's a turning point.
+
+\textbf{Immediate Aftermath:}
 \begin{itemize}
-\item \textbf{Consequences:}
-   \begin{itemize}
-   \item 6-8 XP for each player (experience from the attempt)
-   \item Guilt and responsibility for the outcome
-   \item Displaced villagers become refugees
-   \end{itemize}
-\item \textbf{New Challenges:}
-   \begin{itemize}
-   \item Hunted by Rothari for making them look bad
-   \item Villagers blame the PCs for the tragedy
-   \item Need to find redemption elsewhere
-   \end{itemize}
-\item \textbf{Story Continuation:}
-   \begin{itemize}
-   \item Help refugees find new homes
-   \item Hunt down Rothari leadership
-   \item Prove themselves worthy of trust again
-   \end{itemize}
+\item The PCs escape with a small group of survivors (including key NPCs like Mira the Baker and Tom the Smith).
+\item Each player gains a new \textbf{Bond of Shared Trauma} with another PC: "We failed together, and we will atone together."
+\item The \textbf{Refugee Caravan (Minor Asset)} is automatically gained, representing the survivors and their scant resources.
+\end{itemize}
+
+\textbf{The Redemption Arc - Choose Your Path:}
+The survivors look to the PCs for leadership. Present the group with a clear choice for their next goal:
+
+\begin{enumerate}
+\item \textbf{Seek Sanctuary in Vhasia:} A duchy in Vhasia to the east might offer protection, but gaining entry will require proving their worth and navigating strict bureaucracy. (Shifts the campaign to a political/intrigue theme).
+\item \textbf{Appeal to the Acasian "Nobility":} Confront the local rulers whose inaction allowed the Rothari to thrive. This is dangerous and could see the PCs framed as scapegoats. (Shifts the campaign to a social/judicial theme).
+\item \textbf{Become Guerrillas:} Stay in the region, harassing Rothari supply lines and freeing other villages from the shadows. The Rothari become a persistent \textbf{Hunt Clock} pursuing them. (Shifts the campaign to a military/insurgency theme).
+\end{enumerate}
+
+\textbf{New Campaign Clocks for the Arc:}
+\begin{itemize}
+\item \textbf{Refugee Morale (6):} Tracks the hope and cohesion of the survivors. Filling it grants a boon; emptying it causes desertions.
+\item \textbf{Rothari Hunt (8):} Tracks how close the main Rothari force is to finding the caravan.
 \end{itemize}
 
 \section{Quick Reference Cards}
