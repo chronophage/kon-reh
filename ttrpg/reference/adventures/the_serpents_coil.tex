@@ -1,0 +1,572 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{changepage}
+
+% Page setup
+\geometry{
+  a4paper,
+  left=25mm,
+  right=25mm,
+  top=25mm,
+  bottom=25mm
+}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Section formatting
+\sectionfont{\fontsize{14}{16}\bfseries}
+\subsectionfont{\fontsize{12}{14}\bfseries}
+\subsubsectionfont{\itshape}
+
+% Custom colors
+\definecolor{serpentgreen}{HTML}{228B22}
+\definecolor{cultred}{HTML}{8B0000}
+\definecolor{dungeongray}{HTML}{2F4F4F}
+
+% Custom environments
+\newenvironment{adventurebox}[1]{
+  \begin{mdframed}[
+    linewidth=2pt,
+    linecolor=serpentgreen,
+    backgroundcolor=gray!10,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt
+  ]
+  \textbf{#1}
+}{\end{mdframed}}
+
+\newenvironment{npcbox}[1]{
+  \begin{mdframed}[
+    linewidth=1pt,
+    linecolor=dungeongray,
+    backgroundcolor=white,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    innerrightmargin=5pt,
+    innerleftmargin=5pt
+  ]
+  \textbf{#1}
+}{\end{mdframed}}
+
+\newenvironment{serpentbox}{
+  \begin{mdframed}[
+    linewidth=1pt,
+    linecolor=cultred,
+    backgroundcolor=red!5,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    innerrightmargin=5pt,
+    innerleftmargin=5pt
+  ]
+}{\end{mdframed}}
+
+% Title page
+\title{
+  \textbf{\Huge The Serpent's Coil} \\
+  \Large A Hack \& Slash Adventure for Fate's Edge \\
+  \vspace{1cm}
+  \large Featuring Isoka Snake Cultists, Midh Ahkaz, and Cosmic Horror
+}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
+
+\tableofcontents
+\newpage
+
+\section{Adventure Overview}
+
+\subsection{Premise}
+
+In the frontier city of Midh Ahkaz, where war once raged and treaties now bind uneasy peace, a sinister infiltration has begun. The Isokai—a serpent-worshipping sect of wood elves who have transformed themselves into more serpentine beings—have infiltrated the city's highest levels. Their goal: to corrupt the ruling council and transform the city into a breeding ground for their ancient serpent god.
+
+A disgraced Black Banners captain, his massive Vilikari friend, and a young Ykrul rogue must penetrate the city's defenses to rescue a chieftain's child, but they will discover that all is not as it seems. The serpents slither in unexpected ways, and the true horror lies not in what they can see, but in what they cannot.
+
+\subsection{Themes}
+
+\begin{itemize}
+  \item Cosmic Horror: The ancient serpent entity predates human civilization
+  \item Infiltration and Paranoia: Enemies wear friendly faces
+  \item Moral Ambiguity: Survival may require compromising principles
+  \item Transformation: Physical and spiritual corruption
+\end{itemize}
+
+\subsection{Horror Elements}
+
+This adventure incorporates the Sanity System from the Horror Campaigns document:
+
+\begin{adventurebox}{Sanity Mechanics}
+Players must spend Boons to prevent the Dread Clock from advancing. Each time a character witnesses something horrific or experiences genuine terror, the GM may advance the Dread Clock. Players can spend 1 Boon to prevent 1 segment of Dread Clock advancement.
+\end{adventurebox}
+
+\begin{adventurebox}{Dread Clock}
+\textbf{Dread Clock (10 segments)} \\
+$\bullet\bullet\bullet\bullet\bullet\bullet\bullet\bullet\bullet\bullet$ 0/10 \\
+Psychological deterioration and mounting horror
+\end{adventurebox}
+
+\section{Key NPCs}
+
+\subsection{Captain Marcus "The Disgraced" Dravik}
+
+\begin{npcbox}{Captain Marcus Dravik - Black Banners}
+A former condotta captain whose unit was disbanded after a mission went catastrophically wrong. His reputation in tatters, he now takes on desperate jobs to survive. Dravik is haunted by the screams he heard in the Mistlands and drinks to forget—but the memories only grow stronger.
+
+\textbf{Attributes:} Body 4, Wits 3, Spirit 2, Presence 3 \\
+\textbf{Skills:} Melee 4, Command 3, Survival 2, Insight 2 \\
+\textbf{Background:} Former Black Banners Captain \\
+\textbf{Motivation:} Redemption through one last heroic act \\
+\textbf{Secret:} He witnessed something in the Mistlands that should not exist
+\end{npcbox}
+
+\subsection{Korvash the Iron-Blooded}
+
+\begin{npcbox}{Korvash the Iron-Blooded - Vilikari Warrior}
+A massive Vilikari warrior whose family was destroyed in the Ykrul Wars. He fights not for coin, but for the satisfaction of battle and the protection of the innocent. Korvash carries the ancestral war-axe of his house, a weapon that remembers every life it has taken.
+
+\textbf{Attributes:} Body 5, Wits 2, Spirit 4, Presence 2 \\
+\textbf{Skills:} Melee 5, Athletics 4, Endurance 3, Lore 1 \\
+\textbf{Background:} Vilikari Warrior \\
+\textbf{Motivation:} Honor and protection of the weak \\
+\textbf{Weakness:} Prone to berserker rage when allies are threatened
+\end{npcbox}
+
+\subsection{Szik the Swift}
+
+\begin{npcbox}{Szik the Swift - Ykrul Rogue}
+A young Ykrul who left the steppes seeking fortune in the cities. Quick-witted and quicker with a blade, Szik has survived by his wits and agility. He has a particular talent for picking locks and pockets, and an even greater talent for talking his way out of trouble.
+
+\textbf{Attributes:} Body 3, Wits 4, Spirit 2, Presence 3 \\
+\textbf{Skills:} Stealth 4, Skullduggery 3, Athletics 3, Deception 3 \\
+\textbf{Background:} Ykrul Outlander \\
+\textbf{Motivation:} Wealth and adventure \\
+\textbf{Quirk:} Speaks to his daggers as if they were old friends
+\end{npcbox}
+
+\section{The City of Midh Ahkaz}
+
+\subsection{Geography and History}
+
+Midh Ahkaz sits at the crossroads of three great powers: the Utaran successor states to the west, the Ykrul steppes to the north, and the mountain kingdoms to the east. Once a frontier camp during the Second Ykrul War, it grew into a proper city when the Treaty of Flintpike made it a neutral trading post.
+
+The city is built in three tiers:
+\begin{enumerate}
+  \item \textbf{The Low City:} Merchant quarters, workshops, and the docks
+  \item \textbf{The Middle City:} Administrative buildings, temples, and the homes of minor nobles
+  \item \textbf{The High City:} The Council Hall, the Governor's Palace, and the homes of the wealthy
+\end{enumerate}
+
+\subsection{Political Structure}
+
+The city is governed by a Council of Twelve, drawn from the merchant families, the military, and the clergy. Recently, three new council members have joined—each with mysterious backgrounds and unsettling mannerisms.
+
+\begin{adventurebox}{Travel Framework}
+When approaching Midh Ahkaz, draw cards using the regional generator:
+\begin{itemize}
+  \item Spade: The city gates (tall stone walls with iron reinforcements)
+  \item Heart: The Gate Captain (suspicious military officer)
+  \item Club: Curfew has been imposed due to "security concerns"
+  \item Diamond: Emergency passage papers (good for one entry)
+\end{itemize}
+Clock Size: 6 segments (standard journey complications)
+\end{adventurebox}
+
+\section{The Isokai Cult}
+
+\subsection{Origins and Beliefs}
+
+The Isokai are a variety of wood elves who worship Yig, the Father of Serpents. Centuries ago, they awoke in the lands "to the west", where they performed dark rituals that transformed them into serpent-like beings. Their bodies became scaled, their eyes took on a reptilian gleam, and they gained the ability to shed their skin and regenerate from grievous wounds.
+
+They believe that by corrupting major population centers, they can awaken their ancient god from its slumber beneath the earth.
+
+\subsection{Organization}
+
+The cult operates in cells of 3-7 members, each led by a Serpent Speaker who can commune directly with Yig. The hierarchy includes:
+\begin{itemize}
+  \item \textbf{The Coil Master:} The overall leader of the cult in Midh Ahkaz
+  \item \textbf{Serpent Speakers:} High priests who can channel the god's will
+  \item \textbf{Fang Bearers:} Warrior-priests who serve as the cult's muscle
+  \item \textbf{Scale Singers:} Infiltrators who maintain cover identities
+  \item \textbf{Egg Tenders:} Cultists who care for the serpent spawn
+\end{itemize}
+
+\section{The Adventure}
+
+\subsection{Opening Scene: The Job}
+
+The PCs are approached in a dim tavern in the Low City by an elderly Ykrul chieftain named Grok the Steadfast. His daughter, Yara, has been kidnapped by city guards under mysterious circumstances. He offers them a substantial reward to rescue her before she is "sacrificed to the new gods."
+
+\begin{npcbox}{Grok the Steadfast}
+An aging Ykrul chieftain whose people have trading rights with Midh Ahkaz. He is desperate and willing to pay well for his daughter's return.
+
+\textbf{Attributes:} Body 3, Wits 3, Spirit 4, Presence 3 \\
+\textbf{Skills:} Command 3, Survival 3, Insight 2, Diplomacy 2 \\
+\textbf{Motivation:} Rescue his daughter at any cost \\
+\textbf{Secret:} He suspects the city is under supernatural influence
+\end{npcbox}
+
+\subsection{Investigation Phase}
+
+Before the rescue, the PCs should have opportunities to investigate the city and gather information. Key locations include:
+
+\subsubsection{The Black Goat Tavern}
+
+A rough establishment in the Low City where mercenaries and soldiers gather. The bartender, an aging human woman named Mira, has noticed strange things happening in the city.
+
+\begin{npcbox}{Mira the Bartender}
+Sharp-eyed and sharp-tongued, Mira has ears everywhere and knows most of the city's secrets.
+
+\textbf{Attributes:} Body 2, Wits 4, Spirit 3, Presence 4 \\
+\textbf{Skills:} Insight 4, Deception 3, Diplomacy 3, Lore 2 \\
+\textbf{Information:} Guards have been acting strangely; several people have "disappeared" after being taken to the High City
+\end{npcbox}
+
+\subsubsection{The Temple of the Open Sky}
+
+A Ykrul shrine where travelers can seek guidance. The priest, an elderly shaman named Whisperwind, has been having disturbing visions.
+
+\begin{npcbox}{Whisperwind}
+A Ykrul shaman who has served the temple for thirty years. Recently, his visions have become increasingly disturbing.
+
+\textbf{Attributes:} Body 2, Wits 3, Spirit 5, Presence 3 \\
+\textbf{Skills:} Faith 4, Insight 4, Lore 3, Healing 2 \\
+\textbf{Vision:} He has seen serpents coiling around the city's heart, and heard whispers in an ancient tongue
+\end{npcbox}
+
+\subsection{The Rescue Mission}
+
+The PCs learn that Yara is being held in the Governor's Palace in the High City. Getting there will require navigating the city's defenses and avoiding the enhanced security measures.
+
+\subsubsection{Approach Options}
+
+\begin{enumerate}
+  \item \textbf{Direct Assault:} Storm the gates and fight their way through the guards
+  \item \textbf{Stealth Infiltration:} Use Szik's skills to sneak in through service passages
+  \item \textbf{Social Engineering:} Convince the guards they belong through deception
+\end{enumerate}
+
+\subsubsection{The Governor's Palace}
+
+The palace has been subtly altered. Hallways seem to stretch longer than they should, and the air carries a faint, sweet scent that makes people drowsy. The architecture incorporates serpentine motifs—coiling banisters, snake-headed spouts, and murals depicting serpents.
+
+\begin{adventurebox}{Environmental Horror}
+As the PCs explore the palace, they should notice:
+\begin{itemize}
+  \item Shadows that move independently of their owners
+  \item Whispers in an unknown language that seem to come from the walls
+  \item Rooms that are slightly larger on the inside than they appear from outside
+  \item A growing sense that they are being watched by something with many eyes
+\end{itemize}
+Each of these observations should advance the Dread Clock by 1 segment unless prevented by spending a Boon.
+\end{adventurebox}
+
+\subsection{The Revelation}
+
+When the PCs finally reach Yara, they discover that she is not a prisoner—she is a willing participant in the cult's plans. The "kidnapping" was actually her coming of age ritual, where she would be transformed into a full member of the Isokai.
+
+\begin{npcbox}{Yara Grokdaughter}
+A headstrong young Ykrul woman who has been convinced that joining the Isokai will give her power beyond her wildest dreams.
+
+\textbf{Attributes:} Body 2, Wits 3, Spirit 2, Presence 4 \\
+\textbf{Skills:} Deception 3, Diplomacy 3, Performance 2, Insight 1 \\
+\textbf{Condition:} Under the influence of serpent cult mind-affects \\
+\textbf{Motivation:} Power and transcendence \\
+\textbf{Weakness:} Vulnerable to appeals to her love for her father
+\end{npcbox}
+
+\subsection{The True Horror}
+
+The PCs then discover that Yara is just one of many young people who have been "initiated" into the cult. In the palace's basement, they find a vast chamber where hundreds of serpent spawn are being nurtured in pools of ichor. At the center of the chamber sits the Coil Master, beginning the ritual to awaken Yig.
+
+\begin{npcbox}{The Coil Master - Serpent Speaker Thaliss}
+A former high elf who was driven mad by forbidden knowledge and transformed into something between elf and serpent.
+
+\textbf{Attributes:} Body 3, Wits 5, Spirit 4, Presence 4 \\
+\textbf{Skills:} Arcana 5, Deception 4, Command 3, Insight 3 \\
+\textbf{Abilities:} Can cast Umbramancy and Geomancy spells, immune to mind-affecting effects, can regenerate from severe injuries \\
+\textbf{Motivation:} To serve Yig and bring about the transformation of the world \\
+\textbf{Weakness:} Vulnerable to bright light and holy magic
+\end{npcbox}
+
+\section{Combat Encounters}
+
+\subsection{Palace Guards}
+
+\begin{npcbox}{Palace Guard}
+Standard city guards who have been influenced by the cult's presence.
+
+\textbf{Attributes:} Body 3, Wits 2, Spirit 2, Presence 2 \\
+\textbf{Skills:} Melee 3, Athletics 2, Perception 2, Command 1 \\
+\textbf{Equipment:} Longsword, shield, chainmail \\
+\textbf{Special:} 25\% chance each round to be confused by serpent whispers (lose next action)
+\end{npcbox}
+
+\subsection{Fang Bearers}
+
+\begin{npcbox}{Fang Bearer}
+Elite cult warriors who have begun their transformation into serpent beings.
+
+\textbf{Attributes:} Body 4, Wits 3, Spirit 3, Presence 2 \\
+\textbf{Skills:} Melee 4, Athletics 3, Stealth 2, Survival 2 \\
+\textbf{Equipment:} Serpent-bladed spear, leather armor reinforced with scales \\
+\textbf{Special:} Can regenerate 1 Harm per scene, immune to fear effects, bite attack deals poison damage
+\end{npcbox}
+
+\subsection{Serpent Spawn}
+
+\begin{npcbox}{Serpent Spawn}
+Horrible creatures that are part snake, part human, still forming in the ichor pools.
+
+\textbf{Attributes:} Body 2, Wits 1, Spirit 1, Presence 1 \\
+\textbf{Skills:} Melee 2, Athletics 2 \\
+\textbf{Special:} Move through ichor pools without penalty, can climb walls, die if separated from ichor for more than 3 rounds
+\end{npcbox}
+
+\section{Magic and Supernatural Elements}
+
+\subsection{Serpent Magic}
+
+The Isokai have developed unique magical practices based on their communion with Yig:
+
+\begin{adventurebox}{Umbramancy - Serpent's Coil (DV 3)}
+Effect: The caster can transform a willing target into a serpent spawn over the course of 24 hours. The target gains serpent characteristics but loses their humanity. Requires constant immersion in ichor.
+
+Backlash:
+\begin{itemize}
+  \item 1-2 CP: Caster gains minor serpent features (fangs, scaled patches)
+  \item 3-4 CP: Caster becomes partially transformed (lose 1 Attribute permanently)
+  \item 5+ CP: Caster becomes a mindless serpent spawn under GM control
+\end{itemize}
+\end{adventurebox}
+
+\begin{adventurebox}{Geomancy - Earth's Embrace (DV 2)}
+Effect: The caster can sense and manipulate underground spaces, creating tunnels or detecting movement beneath the earth.
+
+Backlash:
+\begin{itemize}
+  \item 1-2 CP: Caster becomes temporarily deafened
+  \item 3-4 CP: Ground becomes unstable in a 10-foot radius
+  \item 5+ CP: Ancient entity beneath the city stirs and begins to awaken
+\end{itemize}
+\end{adventurebox}
+
+\section{Horror Elements and Sanity Threats}
+
+\subsection{Dread Clock Advancement Triggers}
+
+Throughout the adventure, the GM should advance the Dread Clock for the following events:
+
+\begin{itemize}
+  \item First encounter with a fully transformed Isokai cultist: +2 segments
+  \item Witnessing the ichor pools with serpent spawn: +3 segments
+  \item Hearing the whispers of Yig in the ancient tongue: +2 segments
+  \item Seeing a friend or ally begin transformation: +3 segments
+  \item Direct psychic contact with Yig: +4 segments
+  \item Realizing the scope of the cult's infiltration: +2 segments
+\end{itemize}
+
+\subsection{Psychological Effects by Dread Level}
+
+\textbf{0-2 Segments - Unease:} Characters feel on edge, -1 die to social rolls involving trust, minor sleep disturbances
+
+\textbf{3-4 Segments - Fear:} -1 die to all rolls when alone, startle easily, avoid dark spaces, nightmares
+
+\textbf{5-6 Segments - Terror:} -2 dice to rolls involving courage or rational thought, may flee from non-threatening situations
+
+\textbf{7-8 Segments - Madness:} -2 dice to most rolls, may act against own interests, hallucinations, unreliable perception
+
+\textbf{9-10 Segments - Broken:} Out of control, may become hostile to allies, permanent psychological damage, requires major intervention to recover
+
+\section{Resolution Paths}
+
+\subsection{The Sacrifice}
+
+The PCs discover that the only way to stop Yig's awakening is to sacrifice someone to seal the dimensional rift. This requires a willing volunteer to become a living anchor, preventing the god's full manifestation.
+
+\textbf{Reward:} 15-18 XP, but at great personal cost to the volunteer
+
+\subsection{The Escape}
+
+The PCs flee with evidence of the threat, warning other settlements. Yig remains contained for now, but the cult will continue to grow.
+
+\textbf{Reward:} 10-12 XP, but create ongoing campaign thread
+
+\subsection{The Corruption}
+
+The PCs allow or are forced to participate in the transformation ritual, gaining power from Yig but becoming his servants.
+
+\textbf{Reward:} 8-10 XP, but fundamentally change character nature
+
+\subsection{The Investigation}
+
+The PCs fully understand Yig's nature and find a way to banish him without sacrifice, requiring significant research and resources.
+
+\textbf{Reward:} 18-20 XP if successful, but very difficult
+
+\section{Bestiary}
+
+\subsection{Isokai Cultist}
+
+\begin{npcbox}{Isokai Cultist}
+Wood elves transformed by dark rituals into serpent-like beings.
+
+\textbf{Attributes:} Body 3, Wits 3, Spirit 3, Presence 2 \\
+\textbf{Skills:} Stealth 3, Melee 3, Survival 2, Arcana 2 \\
+\textbf{Special Abilities:}
+\begin{itemize}
+  \item Regeneration: Heal 1 Harm automatically per scene
+  \item Scaled Skin: +1 Armor against physical attacks
+  \item Serpent Senses: Can detect warmth signatures in 30 feet
+  \item Poison Bite: Deals 2 Harm and Fatigue 1 on successful grapple
+\end{itemize}
+\textbf{Weaknesses:} Vulnerable to cold iron, afraid of fire
+\end{npcbox}
+
+\subsection{Yig, the Father of Serpents}
+
+\begin{npcbox}{Yig, the Father of Serpents}
+Ancient entity from before human civilization, currently partially awakened.
+
+\textbf{Attributes:} Body 6, Wits 5, Spirit 6, Presence 4 \\
+\textbf{Skills:} Command 6, Arcana 6, Insight 5, Presence 4 \\
+\textbf{Special Abilities:}
+\begin{itemize}
+  \item Cosmic Horror: Presence causes automatic Dread Clock advancement
+  \item Reality Warp: Can alter local physics within 100 feet
+  \item Mind Control: Can dominate weak-willed individuals
+  \item Spawn Creation: Can create new serpent spawn from willing subjects
+  \item Immortality: Cannot be truly killed, only banished
+\end{itemize}
+\textbf{Manifestation:} Appears as a massive serpent with human-like features, speaks in whispers that bypass hearing
+\end{npcbox}
+
+\subsection{Serpent Spawn (Adult)}
+
+\begin{npcbox}{Serpent Spawn (Adult)}
+Fully formed creatures that were once human.
+
+\textbf{Attributes:} Body 4, Wits 2, Spirit 2, Presence 1 \\
+\textbf{Skills:} Melee 4, Athletics 3, Stealth 3 \\
+\textbf{Special Abilities:}
+\begin{itemize}
+  \item Constrict: Grapple automatically deals 1 Harm per round
+  \item Poison Immunity: Unaffected by toxins
+  \item Wall Crawl: Can move on walls and ceilings at full speed
+  \item Fear Aura: Enemies within 10 feet must make Spirit + Resolve (DV 3) or flee
+\end{itemize}
+\end{npcbox}
+
+\section{Treasure and Magic Items}
+
+\subsection{Cult Artifacts}
+
+\begin{npcbox}{Serpent's Fang}
+A dagger carved from a single piece of black stone that whispers promises of power.
+
+\textbf{Effect:} +1 die to Stealth and Intimidation rolls, deals +1 Harm to living targets
+
+\textbf{Curse:} User must make Spirit + Resolve (DV 3) each session or advance Dread Clock by 1
+\end{npcbox}
+
+\begin{npcbox}{Coil of Yig}
+A length of rope that moves like a snake and obeys the wielder's mental commands.
+
+\textbf{Effect:} Can be used to bind enemies, climb impossible surfaces, or constrict targets at range
+
+\textbf{Backlash:} 10\% chance per use to attempt to strangle the wielder
+\end{npcbox}
+
+\subsection{Protective Items}
+
+\begin{npcbox}{Wardstone of the Open Sky}
+A smooth river stone blessed by Ykrul shamans that protects against serpent magic.
+
+\textbf{Effect:} Provides +2 dice to resist mind-affecting effects and serpent-based magic
+
+\textbf{Limitation:} Only functions in open air, becomes inert underground
+\end{npcbox}
+
+\section{Campaign Hooks and Extensions}
+
+\subsection{Ongoing Threats}
+
+If the PCs don't completely destroy the cult, surviving members may regroup in other cities, creating a recurring threat throughout the campaign.
+
+\subsection{The Greater Conspiracy}
+
+The Isokai in Midh Ahkaz may be just one cell of a larger network. Investigating their connections could lead to adventures in other regions.
+
+\subsection{Personal Transformation}
+
+PCs who were exposed to the cult's influence may find they're not entirely free of its effects, creating personal horror storylines.
+
+\section{GM Tips and Advice}
+
+\subsection{Building Tension}
+
+\begin{itemize}
+  \item Use lighting and sound descriptions to create atmosphere
+  \item Let silences and pauses carry weight
+  \item Describe sensations and feelings, not just visual details
+  \item Make the familiar seem alien and threatening
+\end{itemize}
+
+\subsection{Managing Horror Elements}
+
+\begin{itemize}
+  \item Fear should be a narrative driver, not a punishment
+  \item Let players feel powerful even when afraid
+  \item Provide opportunities to confront and overcome fears
+  \item Balance terror with moments of triumph
+\end{itemize}
+
+\subsection{Narrative Techniques}
+
+\begin{itemize}
+  \item The unknown should be terrifying because of what it might be
+  \item Revelations should be both satisfying and horrifying
+  \item Partial knowledge can be more unsettling than complete ignorance
+  \item Let mystery be part of the horror
+\end{itemize}
+
+\section{Adventure Conclusion}
+
+The adventure should end with a climactic confrontation where the PCs must choose between several difficult options, each with significant consequences. The true horror lies not in the monsters they fight, but in the choices they must make and the price of survival in a world where the old gods are awakening.
+
+Whether they save the girl, sacrifice themselves, or become monsters to fight monsters, their actions should echo through the rest of the campaign, making this not just an adventure, but a defining moment in their characters' stories.
+
+\begin{adventurebox}{Final Note}
+Remember that in Fate's Edge, nothing is free. Every victory has a price, and every choice shapes the world. Let the serpents coil around your players' hearts as well as their minds, and may their legends be written in the shadows cast by ancient evils.
+\end{adventurebox}
+
+\end{document}
