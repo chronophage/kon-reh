@@ -27,6 +27,8 @@ elif [[ "$FILE_PATH:" == *"ttrpg"* ]]; then
   		BRANCH="adventures"
 	elif [[ "$FILE_PATH:" == *"resources"* ]]; then 
   		BRANCH="resources"
+	elif [[ "$FILE_PATH:" == *"worldbook"* ]]; then 
+  		BRANCH="worldbook"
 	else 
 		BRANCH="ttrpg"
 	fi
@@ -193,6 +195,11 @@ elif [[ "$BRANCH" == "adventures" ]]; then
    mv "./$PDFNAME" "$GIT_ROOT/ttrpg/build/adventures/$PDFNAME"
    git add "$GIT_ROOT/ttrpg/build/adventures/$PDFNAME"
    open "$GIT_ROOT/ttrpg/build/adventures/$PDFNAME"
+elif [[ "$BRANCH" == "worldbook" ]]; then
+   echo "Moving $PDFNAME to $GIT_ROOT/ttrpg/build/worldbook"
+   mv "./$PDFNAME" "$GIT_ROOT/ttrpg/build/worldbook/$PDFNAME"
+   git add "$GIT_ROOT/ttrpg/build/worldbook/$PDFNAME"
+   open "$GIT_ROOT/ttrpg/build/worldbook/$PDFNAME"
 elif [[ "$BRANCH" != "./" && "$BRANCH" != "splatbooks" ]]; then
    echo "Moving $PDFNAME to $GIT_ROOT/$BRANCH/build"
    mv "./$PDFNAME" "$GIT_ROOT/$BRANCH/build/$PDFNAME"
