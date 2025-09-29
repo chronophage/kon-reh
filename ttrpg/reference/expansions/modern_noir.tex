@@ -18,6 +18,7 @@
 \definecolor{smokegrey}{RGB}{105, 105, 105}
 \definecolor{goldaccent}{RGB}{218, 165, 32}
 \definecolor{streetlamp}{RGB}{255, 215, 0}
+\definecolor{vicepurple}{RGB}{128, 0, 128}
 
 % Box styles
 \tcbset{
@@ -36,42 +37,6 @@
 \newtcolorbox{noirsection}[2][]{%
     noirbox=#2,
     title=#1
-}
-
-\newtcolorbox{casebox}[2][]{%
-    enhanced,
-    colback=#2!5,
-    colframe=#2,
-    arc=0pt,
-    fonttitle=\bfseries,
-    title=#1,
-    before skip=5pt,
-    after skip=5pt,
-    boxrule=1pt
-}
-
-\newtcolorbox{suspectbox}[2][]{%
-    enhanced,
-    colback=#2!10,
-    colframe=#2,
-    arc=0pt,
-    fonttitle=\bfseries,
-    title=#1,
-    before skip=5pt,
-    after skip=5pt,
-    boxrule=1pt
-}
-
-\newtcolorbox{mechanicbox}[2][]{%
-    enhanced,
-    colback=#2!5,
-    colframe=#2,
-    arc=0pt,
-    fonttitle=\bfseries,
-    title=#1,
-    before skip=5pt,
-    after skip=5pt,
-    boxrule=1pt
 }
 
 \titleformat{\section}{\color{noirblack}\Large\bfseries\filcenter}{}{0em}{}
@@ -129,11 +94,11 @@
 
 \newpage
 
-\begin{noirsection}[Quick Case System]{rainblue}
+\section{Quick Case System}
+
 \subsection*{\faFolder\ Core Investigation Mechanics}
 
-\begin{casebox}[One-Shot Case Framework]{noirblack}
-\textbf{Designed for 2-3 hour sessions:}
+\textbf{One-Shot Case Framework (Designed for 2-3 hour sessions):}
 
 \textbf{Case Elements (Draw 3 cards from standard deck):}
 \begin{itemize}
@@ -157,9 +122,7 @@
     \item Identify the highest rank as your main Challenge Clock (2-5: 4 segments, 6-10: 6 segments, J/Q/K: 8 segments, A: 10 segments)
     \item Start with 2 Investigation Points
 \end{enumerate}
-\end{casebox}
 
-\begin{casebox}[Investigation Actions]{smokegrey}
 \textbf{Core investigative activities (use Fate's Edge core mechanic):}
 
 \textbf{Surveillance (Wits + Stealth, DV 2-4):}
@@ -198,110 +161,205 @@
 \end{itemize}
 
 \textbf{Investigation Points:} Spend 1 point to automatically succeed on any investigation action once per scene
-\end{casebox}
 
-\begin{casebox}[Evidence Rating System]{goldaccent}
-\textbf{Evidence quality determines case strength:}
-
-\textbf{A+ Evidence:} Unimpeachable - direct observation, clear documentation, multiple witnesses\\
-\textbf{A Evidence:} Strong - solid documentation, reliable witness, clear chain of custody\\
-\textbf{B Evidence:} Good - circumstantial but compelling, single reliable witness\\
-\textbf{C Evidence:} Fair - circumstantial, questionable witness reliability\\
-\textbf{D Evidence:} Weak - hearsay, speculation, compromised source\\
-\textbf{F Evidence:} Unreliable - contradicted, obtained illegally, severely compromised
+\textbf{Evidence Rating System:}
+\begin{itemize}
+    \item \textbf{A+ Evidence:} Unimpeachable - direct observation, clear documentation, multiple witnesses
+    \item \textbf{A Evidence:} Strong - solid documentation, reliable witness, clear chain of custody
+    \item \textbf{B Evidence:} Good - circumstantial but compelling, single reliable witness
+    \item \textbf{C Evidence:} Fair - circumstantial, questionable witness reliability
+    \item \textbf{D Evidence:} Weak - hearsay, speculation, compromised source
+    \item \textbf{F Evidence:} Unreliable - contradicted, obtained illegally, severely compromised
+\end{itemize}
 
 \textbf{Evidence Degradation:} Each day without follow-up reduces evidence quality by one grade
-\end{casebox}
-\end{noirsection}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Quick NPC System]{smokegrey}
+\section{Vice Clock System}
+
+\subsection*{\faHeartBroken\ Personal Demons}
+
+\textbf{Core Concept:}
+The Vice Clock represents your character's ongoing struggle with personal demons that threaten to undermine their professional life and moral compass. It's a mechanical representation of the noir protagonist's fatal flaw.
+
+\textbf{Vice Clock Structure:}
+\begin{itemize}
+    \item \textbf{4-Segment Clock:} Visual tracker that increments during play
+    \item \textbf{Increments:} +1 segment per scene (automatic unless prevented)
+    \item \textbf{Prevention:} Spend 1 Boon to stop increment in that scene
+    \item \textbf{Resolution:} Spend 2 Boons to clear 1 segment
+\end{itemize}
+
+\textbf{16-Card Vice Deck (Face Cards Only):}
+
+\textbf{Hearts (Emotional Vice) - Red:}
+\begin{itemize}
+    \item \textbf{Jack:} "She's Trouble" - Compulsive contact with toxic relationships
+    \item \textbf{Queen:} "Lover's Betrayal" - Romantic entanglements that compromise work
+    \item \textbf{King:} "Obsessive Pursuit" - Inability to let go of personal cases
+    \item \textbf{Ace:} "Love Conquers All" - Catastrophic sacrifice for unworthy causes
+\end{itemize}
+
+\textbf{Spades (Physical Vice) - Black:}
+\begin{itemize}
+    \item \textbf{Jack:} "Nightcap" - Drinking affects performance and sleep
+    \item \textbf{Queen:} "Hard Liquor" - Regular substance abuse impacts health
+    \item \textbf{King:} "Bottle Courage" - Need substances for dangerous situations
+    \item \textbf{Ace:} "Rock Bottom" - Overdose, withdrawal, or violent episodes
+\end{itemize}
+
+\textbf{Clubs (Professional Vice) - Black:}
+\begin{itemize}
+    \item \textbf{Jack:} "Bent Rules" - Cutting corners attracts official scrutiny
+    \item \textbf{Queen:} "Dirty Deals" - Taking bribes or compromising ethics
+    \item \textbf{King:} "Corrupt Core" - Systematic abuse of professional position
+    \item \textbf{Ace:} "Badge of Corruption" - Authority weaponized for personal gain
+\end{itemize}
+
+\textbf{Diamonds (Psychological Vice) - Red:}
+\begin{itemize}
+    \item \textbf{Jack:} "Paranoid Tendencies" - Seeing threats, alienating allies
+    \item \textbf{Queen:} "Trust Issues" - Inability to work effectively with others
+    \item \textbf{King:} "Complete Isolation" - No personal connections, vulnerable
+    \item \textbf{Ace:} "Psychotic Break" - Hallucinations, delusions, blackouts
+\end{itemize}
+
+\textbf{Vice Clock States:}
+
+\textbf{1 Segment - Temptation:}
+\begin{itemize}
+    \item Generate 1 additional CP when rolling for actions related to this vice
+    \item Minor roleplay reminders (character references the temptation)
+\end{itemize}
+
+\textbf{2 Segments - Habit:}
+\begin{itemize}
+    \item Generate 2 additional CP when rolling for vice-related actions
+    \item -1 die penalty to rolls when resisting the vice
+    \item Start scenes with 1 banked CP related to this vice
+\end{itemize}
+
+\textbf{3 Segments - Addiction:}
+\begin{itemize}
+    \item Generate 3 additional CP when rolling for vice-related actions
+    \item -2 dice penalty to rolls when resisting or when deprived
+    \item Must spend 1 Boon per session just to function normally
+    \item Start scenes with 2 banked CP related to this vice
+\end{itemize}
+
+\textbf{4 Segments - Crisis:}
+\begin{itemize}
+    \item Generate 4 additional CP when rolling for vice-related actions
+    \item -3 dice penalty to ALL rolls when deprived
+    \item Cannot spend Boons for other benefits until crisis resolved
+    \item Start scenes with 3 banked CP related to this vice
+\end{itemize}
+
+\textbf{Vice Clock Management:}
+
+\textbf{Prevention (Ongoing):}
+\begin{itemize}
+    \item \textbf{Cost:} 1 Boon per scene
+    \item \textbf{Effect:} Prevent Vice Clock from incrementing
+\end{itemize}
+
+\textbf{Mitigation (Active):}
+\begin{itemize}
+    \item \textbf{Cost:} 2 Boons
+    \item \textbf{Effect:} Clear 1 segment from Vice Clock
+\end{itemize}
+
+\textbf{Escalation (When Full):}
+\begin{enumerate}
+    \item Draw new Vice card (same or different suit)
+    \item Apply appropriate fallout based on card rank
+    \item Reset clock based on new card (Jack=1, Queen=2, King=3, Ace=4)
+\end{enumerate}
+
+\textbf{Character Creation Integration:}
+
+\textbf{Starting Vice Clock Values:}
+\begin{itemize}
+    \item \textbf{Jack Draw:} 1 segment
+    \item \textbf{Queen Draw:} 2 segments
+    \item \textbf{King Draw:} 3 segments  
+    \item \textbf{Ace Draw:} 4 segments (immediate crisis scene)
+\end{itemize}
+
+\textbf{Multiple Vice Management:}
+\begin{itemize}
+    \item Only one Vice Clock increments per scene (character's choice)
+    \item Other vices generate 1 CP each per scene regardless
+    \item Managing multiple vices requires proportionally more resources
+\end{itemize}
+\end{section}
+
+\newpage
+
+\section{Quick NPC System}
+
 \subsection*{\faUsers\ Important Characters}
 
-\begin{suspectbox}[The Femme Fatale]{bloodred}
-\textbf{Archetype:} Dangerous woman with hidden agenda\\
-\textbf{Motivation:} Personal gain, revenge, or protection of secrets\\
-\textbf{Methods:} Manipulation, seduction, information control\\
-\textbf{Weakness:} Overconfidence, emotional vulnerability, over-elaborate schemes\\
-\textbf{Red Flags:} 
+\textbf{The Femme Fatale:}
 \begin{itemize}
-    \item Knows more than she should about the case
-    \item Appears at crucial moments
-    \item Has unexplained wealth or connections
-    \item Changes story when pressed
+    \item \textbf{Archetype:} Dangerous woman with hidden agenda
+    \item \textbf{Motivation:} Personal gain, revenge, or protection of secrets
+    \item \textbf{Methods:} Manipulation, seduction, information control
+    \item \textbf{Weakness:} Overconfidence, emotional vulnerability, over-elaborate schemes
+    \item \textbf{Red Flags:} Knows more than she should about the case; Appears at crucial moments; Has unexplained wealth or connections; Changes story when pressed
+    \item \textbf{Potential Roles:} Client, witness, suspect, ally, or mastermind
 \end{itemize}
-\textbf{Potential Roles:} Client, witness, suspect, ally, or mastermind
-\end{suspectbox}
 
-\begin{suspectbox}[The Corrupt Cop]{noirblack}
-\textbf{Archetype:} Law enforcement officer on the take\\
-\textbf{Motivation:} Money, power, protection from own crimes\\
-\textbf{Methods:} Evidence tampering, witness intimidation, information brokering\\
-\textbf{Weakness:} Paranoia, need for control, predictable routines\\
-\textbf{Red Flags:}
+\textbf{The Corrupt Cop:}
 \begin{itemize}
-    \item Always "conveniently" arrives late to crime scenes
-    \item Has unexplained income or expensive tastes
-    \item Knows details that weren't in official reports
-    \item Pressures investigation in specific directions
+    \item \textbf{Archetype:} Law enforcement officer on the take
+    \item \textbf{Motivation:} Money, power, protection from own crimes
+    \item \textbf{Methods:} Evidence tampering, witness intimidation, information brokering
+    \item \textbf{Weakness:} Paranoia, need for control, predictable routines
+    \item \textbf{Red Flags:} Always "conveniently" arrives late to crime scenes; Has unexplained income or expensive tastes; Knows details that weren't in official reports; Pressures investigation in specific directions
+    \item \textbf{Potential Roles:} Investigator, suspect, obstruction, or reluctant informant
 \end{itemize}
-\textbf{Potential Roles:} Investigator, suspect, obstruction, or reluctant informant
-\end{suspectbox}
 
-\begin{suspectbox}[The Wealthy Businessman]{goldaccent}
-\textbf{Archetype:} Respectable figure with dark secrets\\
-\textbf{Motivation:} Protecting empire, eliminating threats, maintaining image\\
-\textbf{Methods:} Money, influence, legal intimidation, hired muscle\\
-\textbf{Weakness:} Public exposure, legal vulnerabilities, family concerns\\
-\textbf{Red Flags:}
+\textbf{The Wealthy Businessman:}
 \begin{itemize}
-    \item Everything seems legitimate on paper
-    \item Has connections in high places
-    \item Willing to spend large sums to "resolve" problems
-    \item Associates with unsavory characters discretely
+    \item \textbf{Archetype:} Respectable figure with dark secrets
+    \item \textbf{Motivation:} Protecting empire, eliminating threats, maintaining image
+    \item \textbf{Methods:} Money, influence, legal intimidation, hired muscle
+    \item \textbf{Weakness:} Public exposure, legal vulnerabilities, family concerns
+    \item \textbf{Red Flags:} Everything seems legitimate on paper; Has connections in high places; Willing to spend large sums to "resolve" problems; Associates with unsavory characters discretely
+    \item \textbf{Potential Roles:} Client, victim, suspect, employer, or case originator
 \end{itemize}
-\textbf{Potential Roles:} Client, victim, suspect, employer, or case originator
-\end{suspectbox}
 
-\begin{suspectbox}[The Broken Veteran]{smokegrey}
-\textbf{Archetype:} Former hero fallen on hard times\\
-\textbf{Motivation:} Survival, justice, redemption, or revenge\\
-\textbf{Methods:} Skills from past life, desperation, insider knowledge\\
-\textbf{Weakness:} Trauma, addiction, moral flexibility, isolation\\
-\textbf{Red Flags:}
+\textbf{The Broken Veteran:}
 \begin{itemize}
-    \item Has skills that don't match current circumstances
-    \item Knows too much about specific procedures or locations
-    \item Desperate for money but refuses certain jobs
-    \item Displays military or specialized training unconsciously
+    \item \textbf{Archetype:} Former hero fallen on hard times
+    \item \textbf{Motivation:} Survival, justice, redemption, or revenge
+    \item \textbf{Methods:} Skills from past life, desperation, insider knowledge
+    \item \textbf{Weakness:} Trauma, addiction, moral flexibility, isolation
+    \item \textbf{Red Flags:} Has skills that don't match current circumstances; Knows too much about specific procedures or locations; Desperate for money but refuses certain jobs; Displays military or specialized training unconsciously
+    \item \textbf{Potential Roles:} Informant, suspect, ally, victim, or tragic figure
 \end{itemize}
-\textbf{Potential Roles:} Informant, suspect, ally, victim, or tragic figure
-\end{suspectbox}
 
-\begin{suspectbox}[The Informed Citizen]{streetlamp}
-\textbf{Archetype:} Ordinary person with crucial knowledge\\
-\textbf{Motivation:} Fear, conscience, revenge, or protection of loved ones\\
-\textbf{Methods:} Observation, accidental discovery, personal connection\\
-\textbf{Weakness:} Fear of consequences, incomplete information, personal bias\\
-\textbf{Red Flags:}
+\textbf{The Informed Citizen:}
 \begin{itemize}
-    \item Sees investigation but won't approach directly
-    \item Has information that doesn't fit official narrative
-    \item Behaves nervously around certain topics or people
-    \item Knows details that suggest personal involvement
+    \item \textbf{Archetype:} Ordinary person with crucial knowledge
+    \item \textbf{Motivation:} Fear, conscience, revenge, or protection of loved ones
+    \item \textbf{Methods:} Observation, accidental discovery, personal connection
+    \item \textbf{Weakness:} Fear of consequences, incomplete information, personal bias
+    \item \textbf{Red Flags:} Sees investigation but won't approach directly; Has information that doesn't fit official narrative; Behaves nervously around certain topics or people; Knows details that suggest personal involvement
+    \item \textbf{Potential Roles:} Witness, reluctant informant, accidental victim, or key to breakthrough
 \end{itemize}
-\textbf{Potential Roles:} Witness, reluctant informant, accidental victim, or key to breakthrough
-\end{suspectbox}
-\end{noirsection}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Urban Environment Mechanics]{rainblue}
+\section{Urban Environment Mechanics}
+
 \subsection*{\faCity\ City as Character}
 
-\begin{mechanicbox}[District Atmosphere]{noirblack}
-\textbf{Each area of the city has its own mood and challenges:}
+\textbf{District Atmosphere:}
 
 \textbf{Downtown/Core Business District:}
 \begin{itemize}
@@ -342,10 +400,8 @@
     \item \textbf{Social Modifiers:} +2 to Intimidation, -2 to Diplomacy
     \item \textbf{Hazards:} Physical danger, limited escape, noise cover
 \end{itemize}
-\end{mechanicbox}
 
-\begin{mechanicbox}[Time and Weather Effects]{smokegrey}
-\textbf{Environmental factors that impact investigations:}
+\textbf{Time and Weather Effects:}
 
 \textbf{Time of Day:}
 \begin{itemize}
@@ -370,15 +426,14 @@
     \item Unexpected police presence
     \item Witness becomes unavailable
 \end{itemize}
-\end{mechanicbox}
-\end{noirsection}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Quick Combat System]{bloodred}
+\section{Quick Combat System}
+
 \subsection*{\faFistRaised\ Violence in the Shadows}
 
-\begin{mechanicbox}[Noir Combat]{noirblack}
 \textbf{Streamlined combat using Fate's Edge core mechanics:}
 
 \textbf{Position Modifiers:}
@@ -411,54 +466,57 @@
     \item Weapon malfunction (attacker suffers -1 die)
     \item Unexpected betrayal (ally becomes hostile)
 \end{itemize}
-\end{mechanicbox}
-\end{noirsection}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Sample Quick Cases]{neongreen}
+\section{Sample Quick Cases}
+
 \subsection*{\faLightbulb\ Ready-to-Run Scenarios}
 
-\begin{casebox}[The Missing Heirloom]{goldaccent}
-\textbf{Spade 7 (Crime):} A priceless family heirloom was stolen from a locked safe during a charity gala\\
-\textbf{Heart Q (Key Person):} The wealthy socialite whose family owns the item\\
-\textbf{Club 9 (Complication):} Multiple suspects had access, and the family has dark secrets they'd kill to protect\\
-\textbf{Diamond 6 (Reward):} Substantial finder's fee plus access to exclusive social circles\\
-\textbf{Clock:} 6 segments (media attention will ruin the family's reputation)\\
-\textbf{Quick Hook:} "Mrs. Blackwood's emerald necklace disappeared sometime between 9 and 11 PM. The safe was locked, the room was secured, but the necklace is gone. The family is desperate to recover it before tomorrow's society pages."
+\textbf{The Missing Heirloom:}
+\begin{itemize}
+    \item \textbf{Spade 7 (Crime):} A priceless family heirloom was stolen from a locked safe during a charity gala
+    \item \textbf{Heart Q (Key Person):} The wealthy socialite whose family owns the item
+    \item \textbf{Club 9 (Complication):} Multiple suspects had access, and the family has dark secrets they'd kill to protect
+    \item \textbf{Diamond 6 (Reward):} Substantial finder's fee plus access to exclusive social circles
+    \item \textbf{Clock:} 6 segments (media attention will ruin the family's reputation)
+    \item \textbf{Quick Hook:} "Mrs. Blackwood's emerald necklace disappeared sometime between 9 and 11 PM. The safe was locked, the room was secured, but the necklace is gone. The family is desperate to recover it before tomorrow's society pages."
+    \item \textbf{Investigation Points:} Interview the butler, examine the safe for tampering, review security footage
+    \item \textbf{Vice Clock Integration:} If investigating involves a romantic interest (Heart Q), players with Emotional Vice may face temptation. If family secrets involve corruption, Professional Vice players may be tempted.
+\end{itemize}
 
-\textbf{Investigation Points:} Interview the butler, examine the safe for tampering, review security footage
-\end{casebox}
+\textbf{The Blackmailer:}
+\begin{itemize}
+    \item \textbf{Spade J (Crime):} Someone is threatening to expose a city councilman's affair unless paid
+    \item \textbf{Heart 8 (Key Person):} The councilman's assistant who may know more than she's telling
+    \item \textbf{Club K (Complication):} The blackmailer has connections in the police department
+    \item \textbf{Diamond 10 (Reward):} The councilman will pay handsomely to end this quietly
+    \item \textbf{Clock:} 8 segments (exposure will end the councilman's career and marriage)
+    \item \textbf{Quick Hook:} "Councilman Harris has been receiving threatening letters demanding \$50,000. He's desperate but refuses to go to the police. Someone knows his secret and is willing to destroy him for money."
+    \item \textbf{Investigation Points:} Trace the letters' origin, interview the councilman's staff, check financial records
+    \item \textbf{Vice Clock Integration:} Players with Professional Vice may be tempted by the councilman's offer. Those with Emotional Vice may develop feelings for the assistant.
+\end{itemize}
 
-\begin{casebox}[The Blackmailer]{bloodred}
-\textbf{Spade J (Crime):} Someone is threatening to expose a city councilman's affair unless paid\\
-\textbf{Heart 8 (Key Person):} The councilman's assistant who may know more than she's telling\\
-\textbf{Club K (Complication):} The blackmailer has connections in the police department\\
-\textbf{Diamond 10 (Reward):} The councilman will pay handsomely to end this quietly\\
-\textbf{Clock:} 8 segments (exposure will end the councilman's career and marriage)\\
-\textbf{Quick Hook:} "Councilman Harris has been receiving threatening letters demanding $50,000. He's desperate but refuses to go to the police. Someone knows his secret and is willing to destroy him for money."
-
-\textbf{Investigation Points:} Trace the letters' origin, interview the councilman's staff, check financial records
-\end{casebox}
-
-\begin{casebox}[The Vanishing Witness]{smokegrey}
-\textbf{Spade A (Crime):} A key witness in a murder trial has disappeared the night before testimony\\
-\textbf{Heart 3 (Key Person):} The witness's roommate who claims to know nothing\\
-\textbf{Club 5 (Complication):} The witness owed money to dangerous people\\
-\textbf{Diamond 7 (Reward):} The DA's office will provide protection and a substantial reward\\
-\textbf{Clock:} 6 segments (the trial starts tomorrow and will collapse without the witness)\\
-\textbf{Quick Hook:} "Maria Santos was supposed to testify against the Torrino crime family tomorrow. She didn't show up for work this morning, and her apartment shows signs of a struggle. The prosecution's case will fall apart without her."
-
-\textbf{Investigation Points:} Search the apartment for clues, interview neighbors, check financial records
-\end{casebox}
-\end{noirsection}
+\textbf{The Vanishing Witness:}
+\begin{itemize}
+    \item \textbf{Spade A (Crime):} A key witness in a murder trial has disappeared the night before testimony
+    \item \textbf{Heart 3 (Key Person):} The witness's roommate who claims to know nothing
+    \item \textbf{Club 5 (Complication):} The witness owed money to dangerous people
+    \item \textbf{Diamond 7 (Reward):} The DA's office will provide protection and a substantial reward
+    \item \textbf{Clock:} 6 segments (the trial starts tomorrow and will collapse without the witness)
+    \item \textbf{Quick Hook:} "Maria Santos was supposed to testify against the Torrino crime family tomorrow. She didn't show up for work this morning, and her apartment shows signs of a struggle. The prosecution's case will fall apart without her."
+    \item \textbf{Investigation Points:} Search the apartment for clues, interview neighbors, check financial records
+    \item \textbf{Vice Clock Integration:} Players with Psychological Vice may become paranoid about the danger. Those with Physical Vice may turn to substances under pressure.
+\end{itemize}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Quick Session Framework]{streetlamp}
+\section{Quick Session Framework}
+
 \subsection*{\faClock\ 3-Hour Session Structure}
 
-\begin{mechanicbox}[Session Flow]{noirblack}
 \textbf{Designed for maximum noir impact in minimal time:}
 
 \textbf{Opening (30 minutes):}
@@ -466,6 +524,7 @@
     \item Quick character check-in (any updates to relationships/resources?)
     \item Case presentation (3-card draw, explain the hook)
     \item Initial investigation setup (2 Investigation Points, identify first lead)
+    \item Vice Clock status check (any increments this session?)
 \end{enumerate}
 
 \textbf{Middle (90 minutes):}
@@ -475,6 +534,7 @@
     \item 1 combat encounter if violence erupts
     \item Advance Pressure Clock based on complications (2-3 segments)
     \item Reveal 1-2 major clues or twists
+    \item Vice Clock increments and management opportunities
 \end{itemize}
 
 \textbf{Climax (45 minutes):}
@@ -482,6 +542,7 @@
     \item Confrontation with primary suspect/antagonist
     \item Resolution of central mystery
     \item Moral choice or consequence for the protagonist
+    \item Vice Clock crisis resolution if applicable
     \item Award XP based on Fate's Edge guidelines
 \end{itemize}
 
@@ -491,11 +552,10 @@
     \item Character reflection on choices made
     \item Tease next case or ongoing consequences
     \item Award 1-2 XP for session participation
+    \item Update Vice Clocks for next session
 \end{itemize}
-\end{mechanicbox}
 
-\begin{mechanicbox}[Quick XP Awards]{goldaccent}
-\textbf{Streamlined advancement for single-session cases:}
+\textbf{Quick XP Awards:}
 
 \textbf{Per Session:}
 \begin{itemize}
@@ -504,6 +564,7 @@
     \item \textbf{+1 XP:} Discovery or lore unlocked (key clue found)
     \item \textbf{+1-2 XP:} Hard choice embraced (moral decision made)
     \item \textbf{+1 XP:} Complication spotlight (character moment)
+    \item \textbf{+1-2 XP:} Vice management or confrontation
 \end{itemize}
 
 \textbf{Quick Advancement:}
@@ -518,11 +579,14 @@
     \item \textbf{Reputation:} Gain local notoriety (+1 to relevant social rolls in district)
     \item \textbf{Contacts:} Establish new information source (1 free Investigation Point per session)
     \item \textbf{Resources:} Acquire specialized equipment (one-time +1 to relevant rolls)
+    \item \textbf{Vice Management:} Learn coping strategies (reduce Vice Clock penalties)
 \end{itemize}
-\end{mechanicbox}
-\end{noirsection}
+\end{section}
 
-\begin{noirsection}[Character Options]{rainblue}
+\newpage
+
+\section{Character Options}
+
 \subsection*{\faUser\ Quick Character Creation}
 
 \textbf{Quick Build Options (20 XP budget):}
@@ -541,23 +605,17 @@
     \item \textbf{Iron Will:} Re-roll one 1 on Spirit-based rolls per session
     \item \textbf{Smooth Talker:} +1 die to Presence-based social rolls
     \item \textbf{Shadow:} +1 die to Stealth-based actions in urban environments
+    \item \textbf{Vice Resistant:} Reduce Vice Clock penalty by 1 (minimum 0)
+    \item \textbf{Addict's Focus:} When Vice Clock is at 3+ segments, gain +1 die to related rolls
 \end{itemize}
 
 \textbf{Starting Resources:}
 \begin{itemize}
     \item \textbf{Contacts:} 2 reliable sources of information
-    \item \textbf{Gear:} Choice of weapon, surveillance equipment, and $500 cash
+    \item \textbf{Gear:} Choice of weapon, surveillance equipment, and \$500 cash
     \item \textbf{Reputation:} Known in 1 urban district (Controlled position)
+    \item \textbf{Vice:} Draw 1 Vice card to determine starting flaw
 \end{itemize}
-\end{noirsection}
-
-Yes, absolutely! A generator deck and Rogue's Gallery would significantly enhance this expansion. Here's what I'd add:
-
-```latex
-\newpage
-
-\begin{noirsection}[Investigation Deck]{neongreen}
-\subsection*{\faCards\ Quick Case Generator}
 
 \textbf{52-Card Investigation Deck (Standard Poker Deck):}
 \begin{itemize}
@@ -568,80 +626,72 @@ Yes, absolutely! A generator deck and Rogue's Gallery would significantly enhanc
 \end{itemize}
 
 \textbf{Spades (Crime/Incident):}
-\begin{small}
-\begin{multicols}{2}
-2. Stolen briefcase with confidential files\\
-3. Hit-and-run accident with no witnesses\\
-4. Break-in at a high-end art gallery\\
-5. Corporate espionage discovered too late\\
-6. Disappearance during a business trip\\
-7. Blackmail attempt on a public figure\\
-8. Forgery scheme unraveling publicly\\
-9. Witness intimidation before trial\\
-10. Evidence tampering in a murder case\\
-J. Corporate embezzlement scheme\\
-Q. Political scandal about to break\\
-K. Murder covered as suicide\\
-A. Case is actually an elaborate setup
-\end{multicols}
-\end{small}
+\begin{itemize}
+    \item 2. Stolen briefcase with confidential files
+    \item 3. Hit-and-run accident with no witnesses
+    \item 4. Break-in at a high-end art gallery
+    \item 5. Corporate espionage discovered too late
+    \item 6. Disappearance during a business trip
+    \item 7. Blackmail attempt on a public figure
+    \item 8. Forgery scheme unraveling publicly
+    \item 9. Witness intimidation before trial
+    \item 10. Evidence tampering in a murder case
+    \item J. Corporate embezzlement scheme
+    \item Q. Political scandal about to break
+    \item K. Murder covered as suicide
+    \item A. Case is actually an elaborate setup
+\end{itemize}
 
 \textbf{Hearts (Person):}
-\begin{small}
-\begin{multicols}{2}
-2. Anxious secretary with hidden knowledge\\
-3. Wealthy socialite with a dark past\\
-4. Veteran security guard with PTSD\\
-5. Ambitious assistant with their own agenda\\
-6. Retired detective turned private consultant\\
-7. Tech genius with social anxiety\\
-8. Politician's spouse with secrets\\
-9. Former criminal trying to go straight\\
-10. Journalist investigating corruption\\
-J. Disgraced lawyer seeking redemption\\
-Q. Corrupt police captain\\
-K. Crime boss's estranged child\\
-A. The person you trust most is involved
-\end{multicols}
-\end{small}
+\begin{itemize}
+    \item 2. Anxious secretary with hidden knowledge
+    \item 3. Wealthy socialite with a dark past
+    \item 4. Veteran security guard with PTSD
+    \item 5. Ambitious assistant with their own agenda
+    \item 6. Retired detective turned private consultant
+    \item 7. Tech genius with social anxiety
+    \item 8. Politician's spouse with secrets
+    \item 9. Former criminal trying to go straight
+    \item 10. Journalist investigating corruption
+    \item J. Disgraced lawyer seeking redemption
+    \item Q. Corrupt police captain
+    \item K. Crime boss's estranged child
+    \item A. The person you trust most is involved
+\end{itemize}
 
 \textbf{Clubs (Complication):}
-\begin{small}
-\begin{multicols}{2}
-2. Time pressure - evidence disappears at midnight\\
-3. Multiple suspects all have solid alibis\\
-4. Key witness is afraid to talk\\
-5. Crime scene was compromised\\
-6. Someone is following your investigation\\
-7. Crucial evidence is in a restricted area\\
-8. Media attention making things difficult\\
-9. Police are obstructing your work\\
-10. You're being framed for a crime\\
-J. Someone is willing to kill to stop you\\
-Q. The case connects to your personal past\\
-K. Your client is lying to you\\
-A. Solving this case will destroy someone you care about
-\end{multicols}
-\end{small}
+\begin{itemize}
+    \item 2. Time pressure - evidence disappears at midnight
+    \item 3. Multiple suspects all have solid alibis
+    \item 4. Key witness is afraid to talk
+    \item 5. Crime scene was compromised
+    \item 6. Someone is following your investigation
+    \item 7. Crucial evidence is in a restricted area
+    \item 8. Media attention making things difficult
+    \item 9. Police are obstructing your work
+    \item 10. You're being framed for a crime
+    \item J. Someone is willing to kill to stop you
+    \item Q. The case connects to your personal past
+    \item K. Your client is lying to you
+    \item A. Solving this case will destroy someone you care about
+\end{itemize}
 
 \textbf{Diamonds (Reward/Resolution):}
-\begin{small}
-\begin{multicols}{2}
-2. Substantial cash payment\\
-3. Access to exclusive social circles\\
-4. Professional reputation boost\\
-5. Crucial evidence in another case\\
-6. Protection from a dangerous person\\
-7. Information that clears your name\\
-8. A favor from a powerful figure\\
-9. Resolution of a personal matter\\
-10. Exposure of a major conspiracy\\
-J. Choice of eliminating or recruiting a foe\\
-Q. Control over a valuable resource\\
-K. Complete vindication of your methods\\
-A. The truth, no matter the personal cost
-\end{multicols}
-\end{small}
+\begin{itemize}
+    \item 2. Substantial cash payment
+    \item 3. Access to exclusive social circles
+    \item 4. Professional reputation boost
+    \item 5. Crucial evidence in another case
+    \item 6. Protection from a dangerous person
+    \item 7. Information that clears your name
+    \item 8. A favor from a powerful figure
+    \item 9. Resolution of a personal matter
+    \item 10. Exposure of a major conspiracy
+    \item J. Choice of eliminating or recruiting a foe
+    \item Q. Control over a valuable resource
+    \item K. Complete vindication of your methods
+    \item A. The truth, no matter the personal cost
+\end{itemize}
 
 \textbf{Quick Setup Procedure:}
 \begin{enumerate}
@@ -649,65 +699,78 @@ A. The truth, no matter the personal cost
     \item Identify highest rank for Challenge Clock (2-5:4, 6-10:6, J/Q/K:8, A:10)
     \item Draw 1 Diamond for potential reward
     \item Start with 2 Investigation Points
+    \item Draw 1 Vice card to determine potential temptations
 \end{enumerate}
-\end{noirsection}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Rogue's Gallery]{bloodred}
+\section{Rogue's Gallery}
+
 \subsection*{\faSkull\ Recurring Antagonists}
 
-\begin{suspectbox}[The Fixer]{noirblack}
-\textbf{Type:} Information broker and problem solver\\
-\textbf{Methods:} Blackmail, intimidation, network of contacts\\
-\textbf{Motivation:} Power through control of information\\
-\textbf{Signature:} Always wears expensive suits, speaks in calm tones\\
-\textbf{Weakness:} Overconfidence, need for control, predictable routines\\
-\textbf{Complication:} Knows secrets about everyone, including the investigators\\
-\textbf{When to Use:} As employer, rival investigator, or final antagonist
-\end{suspectbox}
+\textbf{The Fixer:}
+\begin{itemize}
+    \item \textbf{Type:} Information broker and problem solver
+    \item \textbf{Methods:} Blackmail, intimidation, network of contacts
+    \item \textbf{Motivation:} Power through control of information
+    \item \textbf{Signature:} Always wears expensive suits, speaks in calm tones
+    \item \textbf{Weakness:} Overconfidence, need for control, predictable routines
+    \item \textbf{Complication:} Knows secrets about everyone, including the investigators
+    \item \textbf{When to Use:} As employer, rival investigator, or final antagonist
+    \item \textbf{Vice Connection:} The Fixer often exploits investigators' vices, offering "solutions" that make problems worse.
+\end{itemize}
 
-\begin{suspectbox}[The Fallen Hero]{smokegrey}
-\textbf{Type:} Former respected figure turned criminal\\
-\textbf{Methods:} Using old skills and connections for illicit purposes\\
-\textbf{Motivation:} Desperation, revenge, or protecting family\\
-\textbf{Signature:} High skill level, moral conflict, tragic backstory\\
-\textbf{Weakness:} Guilt, alcohol/drug dependency, emotional vulnerability\\
-\textbf{Complication:} Still has allies who refuse to believe the truth\\
-\textbf{When to Use:} As tragic antagonist, reluctant informant, or cautionary tale
-\end{suspectbox}
+\textbf{The Fallen Hero:}
+\begin{itemize}
+    \item \textbf{Type:} Former respected figure turned criminal
+    \item \textbf{Methods:} Using old skills and connections for illicit purposes
+    \item \textbf{Motivation:} Desperation, revenge, or protecting family
+    \item \textbf{Signature:} High skill level, moral conflict, tragic backstory
+    \item \textbf{Weakness:} Guilt, alcohol/drug dependency, emotional vulnerability
+    \item \textbf{Complication:} Still has allies who refuse to believe the truth
+    \item \textbf{When to Use:} As tragic antagonist, reluctant informant, or cautionary tale
+    \item \textbf{Vice Connection:} Represents what the investigators could become if they don't manage their vices.
+\end{itemize}
 
-\begin{suspectbox}[The Corporate Dragon]{goldaccent}
-\textbf{Type:} High-level executive with dark secrets\\
-\textbf{Methods:} Legal manipulation, hired muscle, financial pressure\\
-\textbf{Motivation:} Protecting empire, eliminating threats, personal gain\\
-\textbf{Signature:} Impeccable appearance, smooth talker, vast resources\\
-\textbf{Weakness:} Public exposure, legal vulnerabilities, family concerns\\
-\textbf{Complication:} Has connections in high places, can make problems disappear\\
-\textbf{When to Use:} As hidden mastermind, client with ulterior motives, or final boss
-\end{suspectbox}
+\textbf{The Corporate Dragon:}
+\begin{itemize}
+    \item \textbf{Type:} High-level executive with dark secrets
+    \item \textbf{Methods:} Legal manipulation, hired muscle, financial pressure
+    \item \textbf{Motivation:} Protecting empire, eliminating threats, personal gain
+    \item \textbf{Signature:} Impeccable appearance, smooth talker, vast resources
+    \item \textbf{Weakness:} Public exposure, legal vulnerabilities, family concerns
+    \item \textbf{Complication:} Has connections in high places, can make problems disappear
+    \item \textbf{When to Use:} As hidden mastermind, client with ulterior motives, or final boss
+    \item \textbf{Vice Connection:} Embodies the corruption that Professional Vice characters risk becoming.
+\end{itemize}
 
-\begin{suspectbox}[The Street Prophet]{neongreen}
-\textbf{Type:} Underground figure with uncanny insight\\
-\textbf{Methods:} Network of informants, pattern recognition, psychological manipulation\\
-\textbf{Motivation:} Chaotic desire to "help" people see truth\\
-\textbf{Signature:} Mysterious knowledge, cryptic warnings, appears when least expected\\
-\textbf{Weakness:} Mental instability, isolation, obsession with patterns\\
-\textbf{Complication:} Tells truth in ways that seem like lies, may be genuinely helpful\\
-\textbf{When to Use:} As mysterious informant, plot catalyst, or unreliable ally
-\end{suspectbox}
+\textbf{The Street Prophet:}
+\begin{itemize}
+    \item \textbf{Type:} Underground figure with uncanny insight
+    \item \textbf{Methods:} Network of informants, pattern recognition, psychological manipulation
+    \item \textbf{Motivation:} Chaotic desire to "help" people see truth
+    \item \textbf{Signature:} Mysterious knowledge, cryptic warnings, appears when least expected
+    \item \textbf{Weakness:} Mental instability, isolation, obsession with patterns
+    \item \textbf{Complication:} Tells truth in ways that seem like lies, may be genuinely helpful
+    \item \textbf{When to Use:} As mysterious informant, plot catalyst, or unreliable ally
+    \item \textbf{Vice Connection:} May recognize and comment on investigators' vices, offering cryptic advice.
+\end{itemize}
 
-\begin{suspectbox}[The Ghost]{streetlamp}
-\textbf{Type:} Professional who leaves no trace\\
-\textbf{Methods:} Perfect planning, multiple identities, technological expertise\\
-\textbf{Motivation:} Artistic perfection, ideological purity, or simple profit\\
-\textbf{Signature:} Crimes with no evidence, witnesses who saw nothing, perfect timing\\
-\textbf{Weakness:} Obsessive behavior, inability to work with others, pattern-based thinking\\
-\textbf{Complication:} May admire investigators enough to play games with them\\
-\textbf{When to Use:} As elusive serial criminal, master thief, or mysterious helper
-\end{suspectbox}
+\textbf{The Ghost:}
+\begin{itemize}
+    \item \textbf{Type:} Professional who leaves no trace
+    \item \textbf{Methods:} Perfect planning, multiple identities, technological expertise
+    \item \textbf{Motivation:} Artistic perfection, ideological purity, or simple profit
+    \item \textbf{Signature:} Crimes with no evidence, witnesses who saw nothing, perfect timing
+    \item \textbf{Weakness:} Obsessive behavior, inability to work with others, pattern-based thinking
+    \item \textbf{Complication:} May admire investigators enough to play games with them
+    \item \textbf{When to Use:} As elusive serial criminal, master thief, or mysterious helper
+    \item \textbf{Vice Connection:} May represent the ultimate expression of Psychological Vice - complete detachment.
+\end{itemize}
 
-\begin{mechanicbox}[Using the Rogue's Gallery]{rainblue}
+\textbf{Using the Rogue's Gallery:}
+
 \textbf{Quick Integration:}
 \begin{itemize}
     \item \textbf{As Antagonist:} Direct opposition to investigation goals
@@ -730,15 +793,16 @@ A. The truth, no matter the personal cost
     \item Major betrayals or assistance can shift 2 steps
     \item Relationships persist across cases with ongoing consequences
 \end{itemize}
-\end{mechanicbox}
-\end{noirsection}
+\end{section}
 
 \newpage
 
-\begin{noirsection}[Quick Reference]{noirblack}
+\section{Quick Reference}
+
 \subsection*{\faBookmark\ At-a-Glance Cards}
 
-\begin{mechanicbox}[Investigation Action Quick Reference]{smokegrey}
+\textbf{Investigation Action Quick Reference:}
+
 \textbf{Core Actions (Use Fate's Edge dice pool):}
 \begin{itemize}
     \item \textbf{Surveillance:} Wits + Stealth (DV 2-4)
@@ -756,24 +820,62 @@ A. The truth, no matter the personal cost
 \end{itemize}
 
 \textbf{Investigation Points:} Spend 1 to automatically succeed on any action (once per scene)
-\end{mechanicbox}
 
-\begin{mechanicbox}[District Modifiers Quick Reference]{rainblue}
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{District} & \textbf{Investigation} & \textbf{Social} & \textbf{Hazards} \\
-\hline
-Downtown & +1 Research, -1 Surveil & +1 Interview, -1 Infilt & Cameras, Security \\
-Waterfront & +1 Surveil, -1 Interview & +1 Intimidate, -2 Diplomacy & Criminals, Unsafe \\
-Residential & +1 Interview, -1 Infilt & +1 Rapport, +1 Research & Nosy Neighbors \\
-Entertainment & +1 Infilt, -1 Surveil & +1 Social Eng, -1 Direct & Crowds, Transient \\
-Industrial & +1 Scene Exam, -2 Interview & +2 Intimidate, -2 Diplomacy & Physical Danger \\
-\hline
-\end{tabular}
-\end{mechanicbox}
+\textbf{Vice Clock Quick Reference:}
 
-\begin{mechanicbox}[Quick Complications (1 CP each)]{bloodred}
-\begin{multicols}{2}
+\textbf{Vice Clock Management:}
+\begin{itemize}
+    \item \textbf{1 Boon:} Prevent Vice Clock from incrementing this scene
+    \item \textbf{2 Boons:} Clear 1 segment from Vice Clock
+    \item \textbf{4 Segments Full:} Draw new Vice card, apply fallout, reset clock
+\end{itemize}
+
+\textbf{Vice Clock Penalties:}
+\begin{itemize}
+    \item \textbf{1 Segment:} +1 CP on vice-related rolls
+    \item \textbf{2 Segments:} +2 CP, -1 die to resist vice
+    \item \textbf{3 Segments:} +3 CP, -2 dice, 1 Boon per session to function
+    \item \textbf{4 Segments:} +4 CP, -3 dice, no Boon spending until resolved
+\end{itemize}
+
+\textbf{District Modifiers Quick Reference:}
+
+\textbf{Downtown/Core Business District:}
+\begin{itemize}
+    \item Investigation: +1 Research, -1 Surveillance
+    \item Social: +1 Interview (professional), -1 Infiltration
+    \item Hazards: Security cameras, private security, high visibility
+\end{itemize}
+
+\textbf{Waterfront/Docks:}
+\begin{itemize}
+    \item Investigation: +1 Surveillance, -1 Interview
+    \item Social: +1 Intimidation, -2 Diplomacy
+    \item Hazards: Criminal presence, unsafe structures, limited lighting
+\end{itemize}
+
+\textbf{Residential/Suburbs:}
+\begin{itemize}
+    \item Investigation: +1 Interview, -1 Infiltration
+    \item Social: +1 Building Rapport, +1 Research (public records)
+    \item Hazards: Nosy neighbors, home security, limited escape routes
+\end{itemize}
+
+\textbf{Entertainment District:}
+\begin{itemize}
+    \item Investigation: +1 Infiltration, -1 Surveillance
+    \item Social: +1 Social Engineering, -1 Direct Confrontation
+    \item Hazards: Crowds, alcohol/drugs, transient population
+\end{itemize}
+
+\textbf{Industrial/Warehouse:}
+\begin{itemize}
+    \item Investigation: +1 Scene Examination, -2 Interview
+    \item Social: +2 Intimidation, -2 Diplomacy
+    \item Hazards: Physical danger, limited escape, noise cover
+\end{itemize}
+
+\textbf{Quick Complications (1 CP each):}
 \begin{itemize}
     \item Key witness disappears
     \item Evidence is contaminated
@@ -785,17 +887,18 @@ Industrial & +1 Scene Exam, -2 Interview & +2 Intimidate, -2 Diplomacy & Physica
     \item New suspect emerges
     \item Alibi checks out
     \item Technology fails
+    \item Vice temptation appears
+    \item Personal connection compromised
 \end{itemize}
-\end{multicols}
-\end{mechanicbox}
 
-\begin{mechanicbox}[Session Structure]{goldaccent}
-\textbf{Opening (30 min):} Character check-in, case presentation, initial setup\\
-\textbf{Middle (90 min):} 3-4 investigation scenes, 1-2 social encounters, 1 combat\\
-\textbf{Climax (45 min):} Confrontation, resolution, moral choice\\
-\textbf{Closing (15 min):} Aftermath, reflection, tease next case\\
-\textbf{Total:} 3 hours for complete noir experience
-\end{mechanicbox}
-\end{noirsection}
+\textbf{Session Structure:}
+\begin{itemize}
+    \item \textbf{Opening (30 min):} Character check-in, case presentation, initial setup, Vice status
+    \item \textbf{Middle (90 min):} Investigation scenes, social encounters, combat, Vice management
+    \item \textbf{Climax (45 min):} Confrontation, resolution, moral choice, Vice crisis if applicable
+    \item \textbf{Closing (15 min):} Aftermath, reflection, tease next case, Vice updates
+    \item \textbf{Total:} 3 hours for complete noir experience
+\end{itemize}
+\end{section}
 
 \end{document}
