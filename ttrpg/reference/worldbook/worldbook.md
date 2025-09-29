@@ -59,11 +59,11 @@ At its height, Utar held these provinces (west → east), plus outlying colonies
 #### Principal Cities (peak era)
 * Ecktoria (province)
   * Ecktoria (the capital; later quake-shattered)
-  * Canatha, Avennio, Histria
+  * Canatha, Avennio, Histria, Sabiro
 * Hyrogia
   * Thypergos (Thepyrgos), Sefina, Žunica
 * Acasia
-  * Sabiro (way-hub to Silkstrand interior)
+  * Silkstrand
 * Vhasia
   * Lence, Vhaston, Ballafield, Eastwell
 * Viterra
