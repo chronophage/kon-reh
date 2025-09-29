@@ -36,7 +36,7 @@
    - [High Elves (Lethai-thora "People of the Mind")](#high-elves--lethai-thora--people-of-the-mind--)
    - ["Dark Elves" (so-called)](#-dark-elves--so-called-)
    - [Gnomes (Aelinnel — "People of Sums")](#gnomes--aelinnel---people-of-sums-)
-   - [Halflings (Aelaeram — "People of the Hearth")](#halflings--aelaeram---people-of-the-hearth-)
+   - [Halflings (Aelaerem — "People of the Hearth")](#halflings--aelaeram---people-of-the-hearth-)
    - [Dwarves (Aeler — "People of Stone")](#dwarves--aeler---people-of-stone-)
    - [Other Races — "Peoples Beyond the Old Roads"](#other-races---peoples-beyond-the-old-roads-)
 
