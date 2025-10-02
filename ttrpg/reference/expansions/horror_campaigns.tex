@@ -1,99 +1,241 @@
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
+\usepackage{enumitem}
 \usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{multicol}
-\usepackage{booktabs}
+\usepackage{setspace}
 \usepackage{array}
-\usepackage{caption}
-\usepackage{changepage}
-\usepackage{listings}
-\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{fancybox}
 \usepackage{framed}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{changepage}
 \usepackage{mdframed}
+\usepackage{sectsty}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{needspace}
+\usepackage{parskip}
+\usepackage{fontawesome}
+
+\definecolor{shadecolor}{gray}{0.95}
+\definecolor{headercolor}{RGB}{30, 50, 100}
+\definecolor{accentcolor}{RGB}{70, 130, 180}
+\definecolor{tableheader}{RGB}{240, 240, 240}
+\definecolor{horrorred}{RGB}{178, 34, 34}
 
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Fate's Edge}
-\lhead{Horror Campaigns}
-\rfoot{\thepage}
+\rhead{\thepage}
+\lhead{Fate's Edge: Horror Campaigns Expansion}
+\renewcommand{\headrulewidth}{0.4pt}
 
-\titleformat{\section}{\large\bfseries}{}{0em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\sectionfont{\color{headercolor}\normalfont\fontsize{14}{16}\selectfont}
+\subsectionfont{\color{accentcolor}\normalfont\fontsize{12}{14}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{11}{13}\selectfont}
 
-\newcommand{\player}[1]{\textbf{#1:}}
-\newcommand{\gm}[1]{\textit{GM: #1}}
-\newcommand{\roll}[2]{\texttt{Roll: #1d10 = [#2]}}
-\newcommand{\success}[1]{\textbf{Successes: #1}}
-\newcommand{\cp}[1]{\textbf{CP: #1}}
-\newcommand{\outcome}[1]{\textbf{Outcome: #1}}
-\newcommand{\clocksegment}{\textbullet}
-\newcommand{\boon}{\textbf{B}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
 
-\definecolor{clockcolor}{rgb}{0.2,0.4,0.8}
-\definecolor{horrorbg}{rgb}{0.95,0.90,0.95}
-\definecolor{sanitybg}{rgb}{0.98,0.95,0.90}
+\geometry{margin=1in}
+
+\newenvironment{monsterentry}[1]{%
+  \begin{mdframed}[backgroundcolor=shadecolor, linewidth=0pt, leftmargin=0pt, rightmargin=0pt]%
+  \subsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newenvironment{mechanic}[1]{%
+  \begin{mdframed}[backgroundcolor=tableheader, linewidth=1pt, linecolor=accentcolor]%
+  \subsubsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newcommand{\dice}[1]{\texttt{#1}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentcolor,
+    filecolor=magenta,      
+    urlcolor=accentcolor,
+}
 
 \begin{document}
 
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Huge\bfseries\color{headercolor} Horror Campaigns Expansion} 
+
+\vspace{0.5cm}
+
+{\Large\itshape For Fate's Edge Tabletop RPG}
+
+\vspace{2cm}
+
+\vspace{2cm}
+
+{\Large\bfseries Cosmic and Psychological Terror Framework}
+
+\vspace{1cm}
+
+{\large Designed for Campaigns of Any Length}
+
+\vspace{1cm}
+
+{\large Complete with Clock Generator System}
+
+\vfill
+
+{\large 
+\textbf{Featuring Multi-Clock Tension Systems} \\
+\textbf{Boon-Based Sanity Management} \\
+\textbf{Breaking Point Mechanics} \\
+\textbf{Modular Horror Subgenre Templates}
+}
+
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Horror Campaigns Expansion Overview}
+
+\subsection{Core Concept}
+
+Horror in Fate's Edge should create vulnerability and mounting dread while maintaining player agency and meaningful action. The unknown is more terrifying than the known.
+
+\subsection{Key Innovations}
+
+\begin{itemize}
+\item Boon-based sanity management system
+\item Multi-layered campaign clocks for escalating tension
+\item Breaking point mechanics for critical psychological moments
+\item Atmospheric investigation tools engaging all five senses
+\item Modular subgenre templates for quick campaign setup
+\end{itemize}
+
+\subsection{Target Themes}
+
+\begin{itemize}
+\item Isolation and vulnerability
+\item Unknown threats beyond comprehension
+\item Psychological decay and mental deterioration
+\item Escalating tension throughout campaigns
+\item Moral ambiguity and difficult choices
+\item Cosmic insignificance and existential dread
+\end{itemize}
+
+\subsection{Mechanical Focus}
+
+\begin{itemize}
+\item Resource management through Boon economy
+\item Investigative procedures with sanity costs
+\item Environmental hazards and reality distortions
+\item Collective psychological effects
+\item Multi-clock tension building systems
+\end{itemize}
+
+\section{Core Mechanical Framework}
+
+\subsection{Dread Clock - Sanity as Resource Management}
+
+The signature system replaces traditional sanity points with a Boon-based approach where players must spend resources to prevent psychological deterioration.
+
+\begin{mechanic}{Purpose and Integration}
+This system connects to the existing Boon economy while adding horror-specific tension through the multi-clock system. Players choose when to spend Boons to prevent Dread advancement, creating meaningful decisions about risk versus stability.
+\end{mechanic}
+
+\textbf{Sample Uses:}
+\begin{enumerate}
+\item Witnessing a Mist Wraith causes +1 segment advancement - player spends 1 Boon to prevent it
+\item Learning cosmic truth about reality triggers +3 segments - player must spend 3 Boons or face severe psychological effects
+\item Entity observation advances Dread by 2 segments - party must collectively decide how to manage limited Boon resources
+\end{enumerate}
+
+\subsection{Resource Management - Boons as Sanity Currency}
+
+\textbf{Acquisition Methods:}
+\begin{itemize}
+\item Failing rolls (standard Boon economy)
+\item Bond-driven actions with intricate descriptions
+\item GM discretion for thematic play
+\item Session participation and milestone achievements
+\end{itemize}
+
+\textbf{Spending Options:}
+\begin{itemize}
+\item Preventing Dread Clock advancement
+\item Rerolling dice for critical actions
+\item Activating protective assets and items
+\item Converting to XP (max 2 per session)
+\end{itemize}
+
+\textbf{Narrative Weight:} Players must choose between immediate tactical advantages and long-term psychological stability.
+
+\subsection{Risk/Reward Balance}
+
+\textbf{Safe Choices:}
+\begin{itemize}
+\item Surface-level investigation with minimal horror exposure
+\item Conservative approach with reduced Boon economy (-1 die penalties)
+\item Avoiding direct confrontation with unknown threats
+\end{itemize}
+
+\textbf{Risky Choices:}
+\begin{itemize}
+\item Deep investigation with significant horror exposure
+\item Direct engagement with incomprehensible entities
+\item Pursuing forbidden knowledge at personal cost
+\item +1-3 Dread segments, potential breaking points
+\end{itemize}
+
+\textbf{Failure States:}
+\begin{itemize}
+\item Dread Clock fills completely
+\item Character becomes Broken - out of control, hostile to allies
+\item Permanent psychological damage requiring intervention
+\item Transformation into agent of horror
+\end{itemize}
+
+\section{Campaign Clock Framework}
+
+\subsection{Primary Clock: Dread Clock (10 segments)}
+
+Psychological deterioration and mounting horror affecting individual characters.
+
 \begin{center}
-{\LARGE Fate's Edge Horror Campaigns}\\
-\vspace{0.5em}
-{\large Sanity Mechanics and Fear-Based Clock Management}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Dread Clock} & \textbf{Psychological deterioration and mounting horror} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/10 \\
+\hline
+\end{tabular}
 \end{center}
 
-\section*{Horror Campaign Design Philosophy}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{Horror in Fate's Edge should}:
-\begin{itemize}[leftmargin=*]
-\item Create a sense of helplessness and mounting dread
-\item Make players feel their characters are out of their depth
-\item Use psychological tension as much as physical threat
-\item Reward careful investigation and preparation
-\item Punish reckless actions with lasting consequences
-\end{itemize}
-
-\textbf{Key Horror Elements}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Isolation}: Characters are cut off from help
-\item \textbf{Unknown Threats}: The enemy cannot be easily understood or fought
-\item \textbf{Psychological Decay}: Mental stability becomes as important as physical health
-\item \textbf{Escalating Tension}: Fear builds throughout the campaign
-\item \textbf{Moral Ambiguity}: Survival may require compromising principles
-\end{itemize}
-\end{mdframed}
-
-\section*{The Sanity System}
-
-\subsection*{Boon-Based Sanity Management}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Sanity as Resource Management}: Instead of traditional sanity points, players must spend Boons to prevent the \textbf{Dread Clock} from advancing. This creates a resource management challenge where players must choose between immediate tactical advantages and long-term psychological stability.
-
-\textbf{How It Works}:
-\begin{itemize}[leftmargin=*]
-\item Each time a character witnesses something horrific or experiences genuine terror, the GM may advance the Dread Clock
-\item Players can spend 1 Boon to prevent 1 segment of Dread Clock advancement
-\item If the Dread Clock advances, the character suffers escalating psychological effects
-\item Boons spent for sanity cannot be used for other purposes (rerolls, asset activation, XP conversion)
-\end{itemize}
-\end{mdframed}
-
-\subsection*{The Dread Clock}
-
-\begin{center}
-\textbf{Dread Clock} (10 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
-\textit{Psychological deterioration and mounting horror}
-\end{center}
-
-\textbf{Advancement Triggers} (GM spends Boons to prevent):
-\begin{itemize}[leftmargin=*]
+\textbf{Advancement Triggers:}
+\begin{itemize}
 \item Witnessing death or violence: +1 segment (prevent with 1 Boon)
 \item Encountering the unknown: +1 segment (prevent with 1 Boon)
 \item Personal failure leading to harm: +1 segment (prevent with 1 Boon)
@@ -102,397 +244,53 @@
 \item Companion/friend harmed or lost: +3 segments (prevent with 3 Boons)
 \end{itemize}
 
-\subsection*{Psychological Effects by Dread Level}
+\textbf{Consequences when filled:} Character becomes Broken - out of control, may become hostile to allies, permanent psychological damage, requires major intervention to recover.
 
-\begin{description}[leftmargin=*]
-\item[0-2 Segments - Unease] Characters feel on edge, -1 die to social rolls involving trust, minor sleep disturbances
-\item[3-4 Segments - Fear] -1 die to all rolls when alone, startle easily, avoid dark spaces, nightmares
-\item[5-6 Segments - Terror] -2 dice to rolls involving courage or rational thought, may flee from non-threatening situations
-\item[7-8 Segments - Madness] -2 dice to most rolls, may act against own interests, hallucinations, unreliable perception
-\item[9-10 Segments - Broken] Out of control, may become hostile to allies, permanent psychological damage, requires major intervention to recover
-\end{description}
+\subsection{Secondary Clocks}
 
-\section*{Sample Horror Campaign: "The Whispering Dark"}
+\subsubsection{Reality Fracture Clock (12 segments)}
 
-\subsection*{Campaign Hook}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{The Premise}: The PCs are investigators (scholars, agents, or simply curious individuals) who have been drawn to the remote mining town of Black Hollow in the Aelerian mountains. Miners have been disappearing, and those who return speak of whispers in the dark tunnels and shadows that move against the light. The local priest has fled, and the few remaining townspeople are on the verge of abandoning the settlement entirely.
-
-\textbf{Real Hook}: The disappearances are connected to an ancient entity that was imprisoned beneath the mountain centuries ago. As the mining operations have deepened, they've disturbed the seals that keep it bound. Now it's beginning to awaken, and its influence is spreading through the town like a psychic contagion.
-\end{mdframed}
-
-\subsection*{Campaign Clocks}
+How much fundamental laws of reality have been altered by cosmic influence.
 
 \begin{center}
-\textbf{Entity's Awakening Clock} (12 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/12\\
-\textit{Progress toward the ancient entity's full manifestation}
-\end{center}
-
-\textbf{Advancement Triggers}:
-\begin{itemize}[leftmargin=*]
-\item Mining operations continue: +1 segment per day
-\item Seals investigated but not properly secured: +2 segments
-\item PCs experience direct contact with entity: +3 segments
-\item Townspeople driven to madness: +1 segment per person
-\item Ancient rituals discovered but not understood: +2 segments
-\end{itemize}
-
-\begin{center}
-\textbf{Town Collapse Clock} (8 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/8\\
-\textit{How quickly the community breaks down under supernatural pressure}
-\end{center}
-
-\textbf{Advancement Triggers}:
-\begin{itemize}[leftmargin=*]
-\item Dread Clock advances: +1 segment
-\item Townspeople disappear or go mad: +1 segment each
-\item PCs fail to provide leadership: +1 segment
-\item Supernatural events witnessed by townsfolk: +2 segments
-\item Essential services fail (doctor, supplies, communication): +1 segment
-\end{itemize}
-
-\begin{center}
-\textbf{Dread Clock} (10 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
-\textit{Psychological deterioration of investigators}
-\end{center}
-
-\textbf{Advancement Triggers} (Players can spend Boons to prevent):
-\begin{itemize}[leftmargin=*]
-\item Discovering miners' fate: +1 segment (prevent with 1 Boon)
-\item Hearing whispers in the dark: +1 segment (prevent with 1 Boon)
-\item Seeing shadows move unnaturally: +1 segment (prevent with 1 Boon)
-\item Finding evidence of entity's influence: +2 segments (prevent with 2 Boons)
-\item Companion shows signs of corruption: +2 segments (prevent with 2 Boons)
-\item Direct psychic attack from entity: +3 segments (prevent with 3 Boons)
-\end{itemize}
-
-\subsection*{Key NPCs}
-
-\begin{description}[leftmargin=*]
-\item[Marshal Elena Vasquez] The town's last law enforcement officer. Pragmatic but increasingly desperate. Knows something is wrong but can't admit the truth even to herself. Will sacrifice herself to protect the PCs if it means their escape.
-\begin{itemize}
-\item \textbf{Motivation}: Protect the innocent, maintain order
-\item \textbf{Secret}: Found her deputy's remains with symbols carved into the bones
-\item \textbf{Fate}: Becomes increasingly erratic, may need to be stopped
-\end{itemize}
-
-\item[Dr. Samuel Crowell] The town physician, arrived three months ago. Intellectual and curious, but his medical training is useless against supernatural threats. Has been documenting the psychological symptoms but doesn't understand their cause.
-\begin{itemize}
-\item \textbf{Motivation}: Understand and cure the "epidemic"
-\item \textbf{Research}: Has compiled notes on psychological effects that could help PCs
-\item \textbf{Weakness}: Becomes obsessed, may be corrupted by forbidden knowledge
-\end{itemize}
-
-\item[The Entity (Ancient in the Dark)] A being of pure malice that was imprisoned beneath the mountain by dwarven geomancers centuries ago. Cannot fully manifest but can influence minds and corrupt matter. Speaks through whispers and appears in peripheral vision.
-\begin{itemize}
-\item \textbf{Motivation}: Freedom and expansion of influence
-\item \textbf{Method}: Corrupt individuals to do its bidding
-\item \textbf{Weakness}: Bound by ancient seals, vulnerable to dwarven warding techniques
-\end{itemize}
-\end{description}
-
-\begin{table}[htbp]
-\centering
-\caption{Optimal Horror DV Ranges by Character Tier}
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|m{4cm}|m{8cm}|}
 \hline
-\textbf{Tier} & \textbf{XP Range} & \textbf{Target Boons/Session} & \textbf{Optimal DV Range} \\
+\rowcolor{tableheader}
+\textbf{Reality Fracture Clock} & \textbf{Fundamental laws of reality becoming unreliable} \\
 \hline
-Rookie & 0-40 XP & 4-6 & DV 3-4 \\
-Seasoned & 41-90 XP & 6-8 & DV 3-5 \\
-Veteran & 91-150 XP & 8-12 & DV 4-5 \\
-Paragon & 151-220 XP & 10-15 & DV 4-6 \\
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/12 \\
 \hline
 \end{tabular}
-\end{table}
-
-\subsection*{Custom Horror Mechanics}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Whispering Mechanic}: When in dark or enclosed spaces, PCs must make Wits + Perception rolls (DV 4) to resist hearing the entity's whispers. Each failure:
-\begin{itemize}[leftmargin=*]
-\item Generates 1 CP that the GM can spend for psychological effects
-\item Advances Dread Clock by 1 segment (prevent with 1 Boon)
-\item May reveal useful but disturbing information
-\end{itemize}
-
-\textbf{Shadow Sight}: When PCs are at 5+ Dread segments, they begin to see things that aren't there or notice details others miss:
-\begin{itemize}[leftmargin=*]
-\item +1 die to Investigation rolls in familiar areas
-\item But also see disturbing visions that generate 1 CP
-\item May become unreliable narrators
-\end{itemize}
-
-\textbf{Corruption Spread}: PCs who reach 7+ Dread segments begin to show physical signs of the entity's influence:
-\begin{itemize}[leftmargin=*]
-\item Eyes that reflect unusual colors in darkness
-\item Speaking in whispers without realizing it
-\item Attraction to dark, enclosed spaces
-\item May be able to communicate with the entity
-\end{itemize}
-
-\textbf{Group Sanity}: The party's collective Dread affects their ability to work together:
-\begin{itemize}[leftmargin=*]
-\item Average Dread level determines group cohesion
-\item High average = paranoia, infighting, poor coordination
-\item Low average = effective teamwork, shared resilience
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Sample Sessions}
-
-\subsubsection*{Session 1: Arrival in Black Hollow}
-
-\textbf{Opening Scene}: The PCs arrive to find the town eerily quiet. Most businesses are shuttered, and the few people they encounter are jumpy and unhelpful. The mine entrance is guarded by Marshal Vasquez, who warns them to leave.
-
-\textbf{Key Encounters}:
-\begin{enumerate}[leftmargin=*]
-\item Investigation of abandoned miner's cabin (Wits + Investigation)
-\item Conversation with increasingly paranoid shopkeeper (Presence + Sway)
-\item First encounter with whispers in the dark (Wits + Perception, DV 4)
-\item Discovery of strange symbols carved near mine entrance
-\end{enumerate}
-
-\textbf{Dread Clock Advancement}: 
-\begin{itemize}[leftmargin=*]
-\item First whisper encounter: +1 segment (prevent with 1 Boon)
-\item Seeing abandoned, obviously terrified miner: +2 segments (prevent with 2 Boons)
-\item Discovering symbols that shouldn't exist: +1 segment (prevent with 1 Boon)
-\end{itemize}
-
-\textbf{Campaign Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Entity's Awakening: +1 (mining operations continue unchecked)
-\item Town Collapse: +1 (more townspeople decide to flee)
-\end{itemize}
-
-\subsubsection*{Session 2: Descent into Darkness}
-
-\textbf{Key Encounters}:
-\begin{enumerate}[leftmargin=*]
-\item Exploration of mine tunnels (Wits + Survival)
-\item Encounter with corrupted miner (combat + social)
-\item Discovery of ritual chamber deep underground (Wits + Lore)
-\item First direct contact with entity's influence (Spirit + Resolve, DV 6)
-\end{enumerate}
-
-\textbf{Dread Clock Advancement}: 
-\begin{itemize}[leftmargin=*]
-\item Seeing first corrupted miner: +2 segments (prevent with 2 Boons)
-\item Being touched by entity's influence: +3 segments (prevent with 3 Boons)
-\item Discovering extent of corruption: +2 segments (prevent with 2 Boons)
-\end{itemize}
-
-\textbf{Campaign Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Entity's Awakening: +2 (seals disturbed)
-\item Town Collapse: +1 (miners don't return)
-\end{itemize}
-
-\subsubsection*{Session 3: The Truth Revealed}
-
-\textbf{Key Encounters}:
-\begin{enumerate}[leftmargin=*]
-\item Research in Dr. Crowell's notes (Wits + Lore)
-\item Confrontation with Marshal Vasquez as she becomes erratic (Presence + Command)
-\item Discovery of dwarven warding techniques (Wits + Arcana)
-\item Choice: Attempt to reinforce seals or flee while there's still time
-\end{enumerate}
-
-\textbf{Dread Clock Advancement}: 
-\begin{itemize}[leftmargin=*]
-\item Learning the true nature of the entity: +3 segments (prevent with 3 Boons)
-\item Witnessing Marshal's breakdown: +2 segments (prevent with 2 Boons)
-\item Realizing the scope of the threat: +2 segments (prevent with 2 Boons)
-\end{itemize}
-
-\textbf{Campaign Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Entity's Awakening: +3 (major seal damaged)
-\item Town Collapse: +2 (Marshal's authority breaks down)
-\end{itemize}
-
-\subsection*{Resolution Paths}
-
-\begin{description}[leftmargin=*]
-\item[The Sacrifice] Permanently seal the entity using dwarven techniques, but it requires one PC to remain behind as a living anchor. Success means the entity is contained, but at great personal cost. Award 15-18 XP.
-\item[The Escape] Flee with evidence of the threat, warning other settlements. The entity remains but is contained for now. Award 10-12 XP, but create ongoing campaign thread. 
-\item[The Corruption] Allow the entity to partially manifest, gaining its power but becoming its servants. Transform PCs into agents of horror. Award 8-10 XP but fundamentally change character nature.
-\item[The Investigation] Fully understand the entity and find a way to banish it without sacrifice. Requires significant research and resources. Award 18-20 XP if successful, but very difficult.
-\end{description}
-
-\section*{Alternative Horror Mechanics}
-
-\subsection*{Fear Tokens System}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Fear Tokens}: Instead of spending Boons, players collect Fear Tokens when exposed to horror. These represent psychological trauma that can be spent for mechanical benefits but come with narrative costs.
-
-\textbf{Gaining Fear Tokens}:
-\begin{itemize}[leftmargin=*]
-\item Witnessing death or violence: 1 token
-\item Direct threat to sanity: 2 tokens
-\item Personal failure with consequences: 1 token
-\item Major revelation: 2 tokens
-\item Companion lost: 3 tokens
-\end{itemize}
-
-\textbf{Spending Fear Tokens}:
-\begin{itemize}[leftmargin=*]
-\item +1 die to rolls involving fear or intimidation: 1 token
-\item Reroll a failed roll when acting recklessly: 2 tokens
-\item Gain temporary immunity to a specific fear: 3 tokens
-\item But each token spent increases Dread Clock by 1 segment
-\end{itemize}
-
-\textbf{Fear Manifestations}: As tokens accumulate, characters develop phobias and compulsions:
-\begin{itemize}[leftmargin=*]
-\item 3+ tokens: -1 die in dark environments
-\item 5+ tokens: Must make Wits + Resolve (DV 4) to enter confined spaces
-\item 7+ tokens: Hallucinations that generate 1 CP per scene
-\item 10+ tokens: Permanent psychological scar (narrative consequence)
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Breaking Point Mechanics}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Breaking Points}: Specific triggers that force immediate Dread Clock advancement unless resisted.
-
-\textbf{Common Breaking Points}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Witnessing Corruption}: Seeing a friend or ally become corrupted advances Dread by 2
-\item \textbf{Personal Loss}: Losing something precious advances Dread by 3
-\item \textbf{Moral Compromise}: Acting against core beliefs advances Dread by 2
-\item \textbf{Hopelessness}: When all seems lost, advance Dread by 1 automatically
-\end{itemize}
-
-\textbf{Resistance}: Players can resist Breaking Points by:
-\begin{itemize}[leftmargin=*]
-\item Spending 2 Boons to prevent advancement
-\item Making Spirit + Resolve roll (DV 5) with narrative justification
-\item Having relevant Talents or Backgrounds that provide resistance
-\end{itemize}
-
-\textbf{Consequences of Breaking}: When a Breaking Point occurs:
-\begin{itemize}[leftmargin=*]
-\item Character gains a permanent personality shift
-\item May temporarily become unreliable or hostile
-\item Creates new complications for the party
-\item May unlock new information about the horror
-\end{itemize}
-\end{mdframed}
-
-\section*{Horror Campaign Templates}
-
-\subsection*{Template 1: "The Isolated Institution"}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{Setting}: Remote location (asylum, research station, monastery) cut off from outside help
-
-\textbf{Key Elements}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Sanity Decay (8), Institution Collapse (10), Horror Manifestation (12)
-\item \textbf{Breaking Points}: Discovery of experiments, witnessing staff corruption, personal isolation
-\item \textbf{Resolution}: Escape, contain the threat, or become part of the institution
-\item \textbf{Custom Mechanics}: Communication breakdown (rolls to contact outside world), supply depletion, group paranoia
-\end{itemize}
-
-\textbf{Sample Hooks}:
-\begin{itemize}[leftmargin=*]
-\item Investigating reports of unethical experiments at a remote research facility
-\item Visiting a family member at an isolated psychiatric hospital
-\item Seeking shelter during a storm at a monastery with a dark past
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Template 2: "The Haunted Location"}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{Setting}: Specific place with supernatural activity (house, battlefield, ancient ruin)
-
-\textbf{Key Elements}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Location Corruption (10), Resident Sanity (8), Supernatural Escalation (12)
-\item \textbf{Breaking Points}: Personal connection to location, witnessing ghostly death, being trapped
-\item \textbf{Resolution}: Banish the spirits, seal the location, or join the haunting
-
-\textbf{Key Elements}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Location Corruption (10), Resident Sanity (8), Supernatural Escalation (12)
-\item \textbf{Breaking Points}: Personal connection to location, witnessing ghostly death, being trapped
-\item \textbf{Resolution}: Banish the spirits, seal the location, or join the haunting
-\item \textbf{Custom Mechanics}: Location familiarity (affects investigation rolls), haunting intensity (environmental effects), ghostly communication (social rolls with spirits)
-\end{itemize}
-
-\textbf{Sample Hooks}:
-\begin{itemize}[leftmargin=*]
-\item Inheriting a house with a dark history and strange occurrences
-\item Investigating paranormal activity at a battlefield where ancestors died
-\item Archaeological expedition disturbed ancient burial grounds
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Template 3: "The Cosmic Horror"}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{Setting}: Reality-breaking threat that challenges understanding of the universe
-
-\textbf{Key Elements}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Reality Fracture (12), Collective Sanity (10), Existential Threat (15)
-\item \textbf{Breaking Points}: Comprehending the incomprehensible, witnessing reality warp, losing sense of self
-\item \textbf{Resolution}: Seal the breach, ascend to a higher reality, or become part of the cosmic order
-\item \textbf{Custom Mechanics}: Sanity loss affects perception of reality, time distortion, fundamental laws of physics become unreliable
-\end{itemize}
-
-\textbf{Sample Hooks}:
-\begin{itemize}[leftmargin=*]
-\item Ancient observatory detects impossible stellar alignments that shouldn't exist
-\item Scholar's research into forbidden mathematics opens door to alien geometry
-\item Remote research station experiences temporal anomalies and dimensional bleeds
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Cosmic Horror Campaign: "The Infinite Spiral"}
-
-\subsubsection*{Campaign Hook}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{The Premise}: The PCs are scholars, researchers, or investigators who have been drawn to the remote Aelerian Observatory at Khaz-Vurim, where astronomers have detected impossible stellar phenomena. Stars are moving in patterns that violate every known law of physics, and observers report seeing geometric shapes in the void that hurt to perceive directly.
-
-\textbf{Real Hook}: The stellar anomalies are caused by a rift in the fabric of reality itself, created by ancient Aeler experiments into dimensional mathematics. Something from beyond the normal dimensions is seeping through, and its alien geometry is slowly rewriting the fundamental laws of existence in this region of space.
-\end{mdframed}
-
-\subsection*{Campaign Clocks}
-
-\begin{center}
-\textbf{Reality Fracture Clock} (12 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/12\\
-\textit{How much the fundamental laws of reality have been altered}
 \end{center}
 
-\textbf{Advancement Triggers}:
-\begin{itemize}[leftmargin=*]
-\item Impossible stellar movements observed: +1 segment per day
+\textbf{Advancement Triggers:}
+\begin{itemize}
+\item Impossible phenomena observed: +1 segment per day
 \item Dimensional mathematics researched: +2 segments
 \item PCs directly perceive alien geometry: +3 segments
 \item Local reality becomes unstable: +2 segments per incident
-\item Ancient Aeler experiments disturbed: +3 segments
+\item Ancient experiments disturbed: +3 segments
 \end{itemize}
 
+\textbf{Consequences when filled:} Barriers between dimensions collapse completely; entity manifests fully in normal space.
+
+\subsubsection{Collective Sanity Clock (8 segments)}
+
+How much the party and observers are affected by cosmic horror.
+
 \begin{center}
-\textbf{Collective Sanity Clock} (10 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
-\textit{How much the observers and inhabitants are affected by cosmic horror}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Collective Sanity Clock} & \textbf{Group psychological effects and shared hallucinations} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/8 \\
+\hline
+\end{tabular}
 \end{center}
 
-\textbf{Advancement Triggers}:
-\begin{itemize}[leftmargin=*]
+\textbf{Advancement Triggers:}
+\begin{itemize}
 \item Reality Fracture Clock advances: +1 segment
 \item Direct observation of alien entities: +2 segments each
 \item Comprehension of higher-dimensional concepts: +2 segments
@@ -500,401 +298,658 @@ Paragon & 151-220 XP & 10-15 & DV 4-6 \\
 \item Temporal anomalies experienced: +1 segment per hour
 \end{itemize}
 
+\textbf{Consequences when filled:} Shared hallucinations become reality; party exists partially outside normal space.
+
+\subsubsection{Existential Threat Clock (15 segments)}
+
+How close cosmic entity is to full manifestation in our reality.
+
 \begin{center}
-\textbf{Existential Threat Clock} (15 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/15\\
-\textit{How close the cosmic entity is to fully manifesting in our reality}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Existential Threat Clock} & \textbf{Cosmic entity approaching full manifestation} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/15 \\
+\hline
+\end{tabular}
 \end{center}
 
-\textbf{Advancement Triggers}:
-\begin{itemize}[leftmargin=*]
+\textbf{Advancement Triggers:}
+\begin{itemize}
 \item Reality Fracture reaches 6 segments: +2 segments
-\item Collective Sanity reaches 8 segments: +3 segments
+\item Collective Sanity reaches 6 segments: +3 segments
 \item PCs attempt to communicate with alien intelligence: +3 segments
 \item Dimensional barriers weakened further: +2 segments
-\item Ancient Aeler safeguards fail: +4 segments
+\item Ancient safeguards fail: +4 segments
 \end{itemize}
 
-\begin{center}
-\textbf{Dread Clock} (10 segments)\\
-\fbox{\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment\clocksegment} 0/10\\
-\textit{Psychological deterioration of investigators}
-\end{center}
+\textbf{Consequences when filled:} Entity begins reshaping local reality according to alien logic.
 
-\textbf{Advancement Triggers} (Players can spend Boons to prevent):
-\begin{itemize}[leftmargin=*]
-\item Observing stellar impossibilities: +1 segment (prevent with 1 Boon)
-\item Perceiving alien geometry: +2 segments (prevent with 2 Boons)
-\item Experiencing temporal distortions: +1 segment (prevent with 1 Boon)
-\item Comprehending mathematical impossibilities: +3 segments (prevent with 3 Boons)
-\item Direct contact with cosmic entity: +3 segments (prevent with 3 Boons)
-\item Reality shifts around PCs: +2 segments (prevent with 2 Boons)
-\end{itemize}
+\subsection{Clock Interaction}
 
-\subsection*{Key NPCs}
+Reality Fracture drives other clocks; as it advances, Collective Sanity and Existential Threat accelerate. High Collective Sanity makes Reality Fracture advance faster as perception warps reality.
 
-\begin{description}[leftmargin=*]
-\item[Master Astronomer Thane Ironwright] The dwarven head of the observatory. Brilliant but increasingly paranoid as stellar phenomena defy explanation. Knows more about the Aeler experiments than he admits.
+\section{Character Integration System}
+
+\subsection{Thematic Character Options}
+
+\subsubsection{Investigator Archetypes}
+
+\textbf{Scholar/Researcher:}
 \begin{itemize}
-\item \textbf{Motivation}: Preserve the integrity of astronomical knowledge
-\item \textbf{Secret}: Discovered the Aeler connection but fears the consequences of revelation
-\item \textbf{Fate}: May become a conduit for cosmic influence or the key to sealing the rift
+\item Recognizes ancient symbols, understands cosmic principles (+1 Lore)
+\item Risks comprehension breaking points from forbidden knowledge
+\item Vulnerable to reality distortion when theories proven wrong
 \end{itemize}
 
-\item[Scholar Elena Vasquez] A human mathematician studying the impossible equations. Young and ambitious, but her research is driving her toward madness.
+\textbf{Veteran/Survivor:}
 \begin{itemize}
-\item \textbf{Motivation}: Solve the greatest mathematical mystery in history
-\item \textbf{Research}: Has calculated patterns that predict reality fractures
-\item \textbf{Weakness}: Becoming obsessed, may willingly open dimensional gates
+\item Resistant to fear (-1 Dread advancement from combat exposure)
+\item Vulnerable to reality distortions that break tactical understanding
+\item Experienced with supernatural threats but may be overconfident
 \end{itemize}
 
-\item[The Entity (Beyond the Void)] An alien intelligence from outside normal space-time. Cannot fully manifest but can influence reality through mathematical resonance. Speaks through impossible equations and appears as geometric impossibilities.
+\textbf{Psychic/Sensitive:}
 \begin{itemize}
-\item \textbf{Motivation}: Understand and reshape reality according to alien logic
-\item \textbf{Method}: Corrupt mathematical understanding to break dimensional barriers
-\item \textbf{Weakness}: Bound by logical consistency, vulnerable to paradox and contradiction
-\end{itemize}
-\end{description}
-
-\subsection*{Custom Horror Mechanics}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Geometric Perception}: When PCs observe alien geometry or impossible stellar patterns, they must make Wits + Lore rolls (DV 5) to avoid comprehension effects. Each failure:
-\begin{itemize}[leftmargin=*]
-\item Generates 2 CP that the GM can spend for reality distortions
-\item Advances Dread Clock by 2 segments (prevent with 2 Boons)
-\item May grant forbidden knowledge at great psychological cost
+\item Can perceive hidden truths (+1 Perception for supernatural detection)
+\item Suffers +1 Dread from all supernatural exposure
+\item May become overwhelmed by too much psychic input
 \end{itemize}
 
-\textbf{Temporal Distortion}: As reality fractures, time becomes unreliable:
-\begin{itemize}[leftmargin=*]
-\item +1 die to Investigation rolls for finding temporal anomalies
-\item But also experience time loops that generate 2 CP
-\item May become unstuck in time, unreliable narrators
+\textbf{Skeptic/Rationalist:}
+\begin{itemize}
+\item Immune to some psychological effects through rational disbelief
+\item Suffers severe penalties (-2 dice) when forced to accept impossibility
+\item May become dangerously obsessed with proving rational explanations
 \end{itemize}
 
-\textbf{Dimensional Bleed}: PCs who reach 7+ Dread segments begin to exist partially outside normal space:
-\begin{itemize}[leftmargin=*]
-\item Can perceive multiple dimensional layers simultaneously
-\item Speaking in mathematical equations without realizing it
-\item Attraction to impossible geometric patterns
-\item May be able to perceive the entity directly
+\subsection{Background Integration}
+
+\textbf{Traumatized Past:}
+\begin{itemize}
+\item Start with 1 segment on Dread Clock
+\item Gain +1 die to resist similar future exposures
+\item May have flashbacks triggered by related stimuli
 \end{itemize}
 
-\textbf{Collective Insanity}: The party's collective Dread affects their perception of reality:
-\begin{itemize}[leftmargin=*]
-\item Average Dread level determines reality stability
-\item High average = shared hallucinations, impossible events become real
-\item Low average = grounding effect, some resistance to cosmic influence
+\textbf{Occult Knowledge:}
+\begin{itemize}
+\item Access to forbidden lore (Wits + Lore, DV 3)
+\item Each use advances Dread by 1 and generates 1 CP
+\item May attract unwanted supernatural attention
 \end{itemize}
-\end{mdframed}
 
-\subsection*{Sample Sessions}
+\textbf{Military Training:}
+\begin{itemize}
+\item +1 die to combat supernatural threats
+\item -1 die to social interactions due to paranoia
+\item May resort to violence when other options fail
+\end{itemize}
 
-\subsubsection*{Session 1: Arrival at Khaz-Vurim}
+\textbf{Religious Faith:}
+\begin{itemize}
+\item Immunity to fear effects from traditional horror
+\item Vulnerable to anti-holy entities and corrupted faith
+\item May struggle with moral compromises required for survival
+\end{itemize}
 
-\textbf{Opening Scene}: The PCs arrive at the dwarven observatory to find the astronomers in a state of controlled panic. Stars are moving in impossible patterns, and some have simply vanished from the sky. The Master Astronomer is holding emergency sessions to discuss the phenomena.
+\subsection{Mechanical Hooks}
 
-\textbf{Key Encounters}:
-\begin{enumerate}[leftmargin=*]
-\item Investigation of observatory records (Wits + Investigation)
-\item Conversation with increasingly paranoid astronomers (Presence + Sway)
-\item First observation of stellar impossibilities through telescopes (Wits + Perception, DV 4)
-\item Discovery of ancient Aeler mathematical notations in vault records
+\subsubsection{Breaking Points}
+
+Specific triggers that force immediate Dread advancement unless resisted:
+\begin{itemize}
+\item \textbf{Witnessing Corruption:} Seeing friend/ally become corrupted (+2 Dread)
+\item \textbf{Personal Loss:} Losing something precious (+3 Dread)
+\item \textbf{Moral Compromise:} Acting against core beliefs (+2 Dread)
+\item \textbf{Incomprehensible Truth:} Understanding reality-breaking fact (+3 Dread)
+\end{itemize}
+
+\textbf{Resistance Options:}
+\begin{itemize}
+\item Spend 2 Boons to prevent advancement
+\item Spirit + Resolve roll (DV 5) with narrative justification
+\item Relevant Talents or Backgrounds provide resistance
+\end{itemize}
+
+\subsubsection{Corruption Track}
+
+Physical/mental changes that occur at high Dread levels:
+\begin{itemize}
+\item 7+ Dread: Speaking in equations, seeing geometric patterns
+\item 8+ Dread: Attraction to dark spaces, partial dimensional existence
+\item 9+ Dread: Unreliable narrator, shared hallucinations become real
+\item 10+ Dread: Broken - permanent transformation, hostile to allies
+\end{itemize}
+
+\subsubsection{Collective Insanity}
+
+Party average Dread affects everyone's perception of reality:
+\begin{itemize}
+\item Average 5+: Shared hallucinations, impossible events become real
+\item Average 7+: Geometric spaces shift based on group consensus
+\item Average 9+: Group paranoia and infighting, -2 dice to cooperation
+\end{itemize}
+
+\section{Quick Setup Protocol}
+
+\subsection{30-Minute Campaign Launch}
+
+\textbf{Character Preparation:}
+\begin{itemize}
+\item Use pre-generated Tier II characters or build using 30 XP with horror-themed backgrounds
+\item Ensure party has mix of investigative, combat, and social capabilities
+\item Assign relevant Talents for horror engagement (Lorekeeper, Backlash Soothing)
+\end{itemize}
+
+\textbf{Core Conflict Establishment:}
+\begin{enumerate}
+\item PCs encounter impossible phenomena that challenge reality/f sanity
+\item Threat appears to be beyond normal comprehension
+\item Stakes involve personal survival and broader existential implications
 \end{enumerate}
 
-\textbf{Dread Clock Advancement}: 
-\begin{itemize}[leftmargin=*]
-\item First observation of impossible stars: +1 segment (prevent with 1 Boon)
-\item Realizing astronomical laws are breaking down: +2 segments (prevent with 2 Boons)
-\item Discovering Aeler connection: +1 segment (prevent with 1 Boon)
+\textbf{Opening Scene Hook:}
+\begin{itemize}
+\item Familiar environment becomes alien
+\item Impossible constellations in night sky
+\item Architecture defying geometric principles
+\item Whispers in familiar voices of missing people
 \end{itemize}
 
-\textbf{Campaign Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Reality Fracture: +1 (stellar anomalies continue unchecked)
-\item Collective Sanity: +1 (more observers affected by phenomena)
+\textbf{Primary Campaign Clock:}
+\begin{itemize}
+\item Dread Clock (10 segments) as personal threat
+\item 2-3 supporting clocks based on horror subgenre
+\item Start all clocks at 1-2 segments for immediate tension
 \end{itemize}
 
-\subsubsection*{Session 2: The Mathematics of Madness}
-
-\textbf{Key Encounters}:
-\begin{enumerate}[leftmargin=*]
-\item Research in the Aeler vault archives (Wits + Lore)
-\item Working with Scholar Elena on impossible equations (Wits + Arcana)
-\item Encounter with temporal distortions in the observatory (Wits + Survival)
-\item First direct contact with alien geometric patterns (Spirit + Resolve, DV 6)
-\end{enumerate}
-
-\textbf{Dread Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Comprehending partial Aeler mathematics: +2 segments (prevent with 2 Boons)
-\item Experiencing first temporal loop: +2 segments (prevent with 2 Boons)
-\item Seeing geometric impossibilities directly: +3 segments (prevent with 3 Boons)
+\textbf{Key Mechanical Tutorial:}
+\begin{itemize}
+\item Introduce Dread Clock management through first horror encounter
+\item Demonstrate breaking point resistance with meaningful choice
+\item Show resource management between investigation and self-preservation
 \end{itemize}
 
-\textbf{Campaign Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Reality Fracture: +2 (mathematical understanding accelerates reality shifts)
-\item Collective Sanity: +2 (more researchers driven to obsession)
+\subsection{Scaling Options}
+
+\subsubsection{Short Form (1-2 sessions)}
+
+\begin{itemize}
+\item Single clock (Dread 8 segments) for focused threat
+\item Simplified breaking points with clear resistance options
+\item Limited corruption effects, mostly psychological
+\item Resolution focused on immediate survival/containment
 \end{itemize}
 
-\subsubsection*{Session 3: The Entity's Influence}
+\subsubsection{Standard Form (3-5 sessions)}
 
-\textbf{Key Encounters}:
-\begin{enumerate}[leftmargin=*]
-\item Confrontation with Master Astronomer as he becomes influenced (Presence + Command)
-\item Discovery of the true nature of Aeler experiments (Wits + Lore)
-\item Choice: Attempt to seal dimensional rift or embrace cosmic knowledge
-\item Final observation of the entity through mathematical resonance
-\end{enumerate}
-
-\textbf{Dread Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Learning the truth about Aeler experiments: +3 segments (prevent with 3 Boons)
-\item Witnessing Master Astronomer's transformation: +2 segments (prevent with 2 Boons)
-\item Realizing the scope of cosmic threat: +2 segments (prevent with 2 Boons)
+\begin{itemize}
+\item Full 4-clock system with complex interactions
+\item Multiple breaking point types and resistance methods
+\item Progressive corruption with permanent character changes
+\item Multiple resolution paths with different consequences
 \end{itemize}
 
-\textbf{Campaign Clock Advancement}:
-\begin{itemize}[leftmargin=*]
-\item Reality Fracture: +3 (major dimensional barrier weakened)
-\item Collective Sanity: +3 (observatory staff affected)
-\item Existential Threat: +2 (entity closer to manifestation)
+\subsubsection{Extended Form (6+ sessions)}
+
+\begin{itemize}
+\item Campaign-level consequences affecting world/region
+\item Permanent reality alterations from filled clocks
+\item Character retirement/retcon options for broken PCs
+\item Sequel hooks and ongoing cosmic threat elements
 \end{itemize}
 
-\subsection*{Resolution Paths}
+\section{Environmental and Narrative Mechanics}
 
-\begin{description}[leftmargin=*]
-\item[The Paradox Seal] Use contradictory mathematical principles to create a logical paradox that forces the entity back beyond dimensional barriers. Success seals the rift but leaves the PCs with fragmented understanding of reality. Award 15-18 XP.
-\item[The Sacrificial Equation] Permanently bind oneself to the dimensional rift as an anchor to keep it stable. The PC becomes a living mathematical constant, existing partially outside normal reality but preventing the entity's full manifestation. Award 18-20 XP but fundamentally change character nature.
-\item[The Embrace of Infinity] Accept the entity's influence and allow it to rewrite reality according to alien logic. The PCs become heralds of a new cosmic order, gaining vast power but losing their humanity and connection to normal existence. Award 8-10 XP but transform PCs into agents of cosmic horror.
-\item[The Fractal Escape] Use the entity's own geometric principles against it, creating a recursive pattern that traps it in an infinite loop of self-reference. Requires significant mathematical understanding and risks fractal contamination. Award 20-22 XP if successful, but very difficult.
-\end{description}
+\subsection{Setting-Driven Mechanics}
 
-\subsection*{Cosmic Horror Mechanics}
+\subsubsection{Reality Distortion Zones}
 
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Reality Distortion Points}: Instead of spending Boons, players can accumulate Reality Distortion Points when exposed to cosmic horror. These represent fundamental changes to their perception of reality that can be spent for mechanical benefits but come with narrative costs.
-
-\textbf{Gaining Reality Distortion Points}:
-\begin{itemize}[leftmargin=*]
-\item Witnessing stellar impossibilities: 1 point
-\item Direct contact with alien geometry: 2 points
-\item Comprehending higher-dimensional mathematics: 2 points
-\item Experiencing temporal distortions: 1 point
-\item Partial manifestation of cosmic entity: 3 points
+Areas where physics/geometric principles become unreliable:
+\begin{itemize}
+\item Modifiers: -1 Investigation, +1 CP generation
+\item Spatial navigation requires Wits + Survival (DV 3-4)
+\item May generate 2 CP for time loops or dimensional folds
 \end{itemize}
 
-\textbf{Spending Reality Distortion Points}:
-\begin{itemize}[leftmargin=*]
-\item +1 die to rolls involving mathematical or geometric understanding: 1 point
-\item Perceive hidden dimensional layers: 2 points
-\item Gain temporary immunity to reality distortions: 3 points
-\item But each point spent increases Dread Clock by 1 segment
+\textbf{Player Interaction:}
+\begin{itemize}
+\item Can attempt stabilization with Arcana rolls but at cost of advancing clocks
+\item Accepting impossibility grants DV 1 on next navigation roll
+\item Mathematical instruments may provide +1 die to related rolls
 \end{itemize}
 
-\textbf{Cosmic Manifestations}: As points accumulate, characters develop alien perceptions and abilities:
-\begin{itemize}[leftmargin=*]
-\item 3+ points: -1 die in normal three-dimensional environments
-\item 5+ points: Must make Wits + Resolve (DV 4) to interact with normal reality
-\item 7+ points: Can perceive multiple timeline branches, but generates 2 CP per scene
-\item 10+ points: Permanent reality distortion (narrative consequence)
-\end{itemize}
-\end{mdframed}
+\subsubsection{Temporal Anomalies}
 
-\subsection*{Cosmic Breaking Points}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Cosmic Breaking Points}: Specific triggers that force immediate Dread Clock advancement unless resisted through cosmic understanding.
-
-\textbf{Common Cosmic Breaking Points}:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Incomprehensible Truth}: Understanding a fact that fundamentally challenges reality advances Dread by 3
-\item \textbf{Dimensional Witness}: Seeing the entity directly advances Dread by 4
-\item \textbf{Mathematical Corruption}: Having one's core understanding of mathematics altered advances Dread by 3
-\item \textbf{Temporal Fracture}: Experiencing personal timeline disruption advances Dread by 2
+Time flows differently or loops in specific areas:
+\begin{itemize}
+\item +1 Investigation for pattern recognition
+\item Generates 2 CP for time loops and paradoxes
+\item May cause characters to become "unstuck" in time
 \end{itemize}
 
-\textbf{Resistance}: Players can resist Cosmic Breaking Points by:
-\begin{itemize}[leftmargin=*]
-\item Spending 3 Boons to prevent advancement
-\item Making Spirit + Lore roll (DV 6) with narrative justification involving mathematical or cosmic understanding
-\item Having relevant Talents or Backgrounds that provide resistance to reality distortion
+\textbf{Effects:}
+\begin{itemize}
+\item Unreliable narrators who remember multiple timeline branches
+\item Repeating conversations with slight variations
+\item Causality breaking down - effects preceding causes
 \end{itemize}
 
-\textbf{Consequences of Cosmic Breaking}: When a Cosmic Breaking Point occurs:
-\begin{itemize}[leftmargin=*]
-\item Character gains a permanent alien perception
-\item May temporarily become unreliable or exist partially outside normal time
-\item Creates new complications for the party through reality distortions
-\item May unlock forbidden cosmic knowledge
-\end{itemize}
-\end{mdframed}
+\subsection{Atmosphere Tools}
 
-\end{mdframed}
+\subsubsection{Sensory Engagement}
 
-\subsection*{The Investigation}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Whispering Investigation}: When investigating areas where whispers have been heard, PCs must make Wits + Investigation rolls (DV 4) to avoid being overwhelmed by the entity's influence. Each failure:
-\begin{itemize}[leftmargin=*]
-\item Generates 1 CP that can be spent for entity manifestations
-\item Advances Dread Clock by 1 segment (prevent with 1 Boon)
-\item May reveal crucial but disturbing clues
+\textbf{Sound:}
+\begin{itemize}
+\item Whispers that shouldn't be there
+\item Silence that presses against eardrums
+\item Geometric harmonies that hurt to hear
+\item Temporal echoes of future conversations
 \end{itemize}
 
-\textbf{Forbidden Knowledge}: Researching the entity through ancient tomes or speaking with knowledgeable NPCs carries risks:
-\begin{itemize}[leftmargin=*]
-\item Each research attempt requires Spirit + Lore (DV 5)
-\item Success grants valuable information but advances Dread Clock by 1
-\item Failure generates 2 CP and advances Dread Clock by 2
-\item Critical failure may result in direct entity contact
-\end{itemize}
-\end{mdframed}
-
-\section*{Horror Campaign Variations}
-
-\subsection*{Variant: The Isolated Institution}
-
-\begin{description}[leftmargin=*]
-\item[Setting]: Remote location (asylum, research station, monastery) cut off from outside help
-\item[Key Elements]:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Sanity Decay (8), Institution Collapse (10), Horror Manifestation (12)
-\item \textbf{Breaking Points}: Discovery of experiments, witnessing staff corruption, personal isolation
-\item \textbf{Resolution}: Escape, contain the threat, or become part of the institution
-\item \textbf{Custom Mechanics}: Communication breakdown (rolls to contact outside world), supply depletion, group paranoia
-\end{itemize}
-\end{description}
-
-\subsection*{Variant: The Haunted Location}
-
-\begin{description}[leftmargin=*]
-\item[Setting]: Specific place with supernatural activity (house, battlefield, ancient ruin)
-\item[Key Elements]:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Location Corruption (10), Resident Sanity (8), Supernatural Escalation (12)
-\item \textbf{Breaking Points}: Personal connection to location, witnessing ghostly death, being trapped
-\item \textbf{Resolution}: Banish the spirits, seal the location, or join the haunting
-\item \textbf{Custom Mechanics}: Location familiarity (affects investigation rolls), haunting intensity (environmental effects), ghostly communication (social rolls with spirits)
-\end{itemize}
-\end{description}
-
-\subsection*{Variant: The Cosmic Horror}
-
-\begin{description}[leftmargin=*]
-\item[Setting]: Reality-breaking threat that challenges understanding of the universe
-\item[Key Elements]:
-\begin{itemize}[leftmargin=*]
-\item \textbf{Campaign Clocks}: Reality Fracture (12), Collective Madness (10), Existential Threat (15)
-\item \textbf{Breaking Points}: Comprehending the incomprehensible, witnessing reality warp, losing sense of self
-\item \textbf{Resolution}: Seal the breach, ascend to a higher reality, or become part of the cosmic order
-\item \textbf{Custom Mechanics}: Sanity loss affects perception of reality, time distortion, fundamental laws of physics become unreliable
-\end{itemize}
-\end{description}
-
-\section*{GM Tips for Running Horror Campaigns}
-
-\subsection*{Atmosphere and Tension}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{Building Dread}:
-\begin{itemize}[leftmargin=*]
-\item Use lighting, sound, and physical environment to create unease
-\item Describe sensations and feelings, not just visual details
-\item Let silences and pauses carry weight
-\item Make the familiar seem alien and threatening
+\textbf{Sight:}
+\begin{itemize}
+\item Impossible shadows with their own movement
+\item Colors that shouldn't exist in natural spectrum
+\item Peripheral movement that vanishes when directly observed
+\item Geometric shapes existing in more than three dimensions
 \end{itemize}
 
-\textbf{Pacing the Horror}:
-\begin{itemize}[leftmargin=*]
-\item Start subtle and build gradually
-\item Vary the intensity - allow moments of false security
-\item Use foreshadowing and ominous signs
-\item Save the biggest revelations for climactic moments
+\textbf{Touch:}
+\begin{itemize}
+\item Surfaces that breathe and pulse rhythmically
+\item Temperatures that shift without environmental cause
+\item Textures that change under fingers when not observed
+\item Gravity flowing in impossible directions
 \end{itemize}
 
-\textbf{Player Agency}:
-\begin{itemize}[leftmargin=*]
-\item Give players meaningful choices, even when options seem limited
-\item Let their decisions have real consequences
-\item Provide multiple approaches to problems
-\item Respect their courage to face the horror head-on
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Managing Fear and Sanity}
-
-\begin{mdframed}[backgroundcolor=sanitybg]
-\textbf{Fear as a Resource}:
-\begin{itemize}[leftmargin=*]
-\item Fear should be a narrative driver, not a punishment
-\item Let players feel powerful even when afraid
-\item Provide opportunities to confront and overcome fears
-\item Balance terror with moments of triumph
+\textbf{Smell:}
+\begin{itemize}
+\item Scents of places that never existed
+\item Odors of concepts made physical (fear, time, mathematics)
+\item Aromas that trigger false memories of impossible events
+\item Fragrances that seem to move independently of air currents
 \end{itemize}
 
-\textbf{Sanity Management}:
-\begin{itemize}[leftmargin=*]
-\item Make sanity loss feel meaningful and personal
-\item Let it change how characters perceive and interact with the world
-\item Provide ways to recover or adapt to mental trauma
-\item Avoid making characters useless when sanity is low
-\end{itemize}
-\end{mdframed}
-
-\subsection*{Narrative Techniques}
-
-\begin{mdframed}[backgroundcolor=horrorbg]
-\textbf{Unreliable Information}:
-\begin{itemize}[leftmargin=*]
-\item Not all sources are trustworthy
-\item Clues may be misleading or incomplete
-\item NPCs might be lying, mistaken, or hiding crucial information
-\item Let players discover the truth through investigation and deduction
+\textbf{Taste:}
+\begin{itemize}
+\item Metallic fear on tongue during supernatural encounters
+\item The flavor of wrongness when reality distorts
+\item Aftertastes of cosmic truths that linger for hours
+\item Tastes that seem to exist in multiple dimensions simultaneously
 \end{itemize}
 
-\textbf{The Unknown vs. The Known}:
-\begin{itemize}[leftmargin=*]
-\item The unknown should be terrifying because of what it might be
-\item Revelations should be both satisfying and horrifying
-\item Partial knowledge can be more unsettling than complete ignorance
-\item Let mystery be part of the horror
+\subsection{Narrative Structure}
+
+\subsubsection{Scene Types}
+
+\textbf{Investigation:}
+\begin{itemize}
+\item Gathering clues while managing sanity/resource costs
+\item Wits + Investigation or Lore rolls with potential Dread advancement
+\item May generate CP for reality distortions or entity attention
 \end{itemize}
-\end{mdframed}
 
-\section*{Sample Horror Items and Relics}
+\textbf{Confrontation:}
+\begin{itemize}
+\item Direct engagement with horror elements
+\item Combat modified by psychological state (-1 die at 5+ Dread)
+\item Breaking point triggers for moral/psychological challenges
+\end{itemize}
 
-\subsection*{Cursed Artifacts}
+\textbf{Breaking Point:}
+\begin{itemize}
+\item Critical moments testing psychological limits
+\item Immediate Dread advancement unless resisted
+\item May result in permanent character changes or retirement
+\end{itemize}
 
-\begin{description}[leftmargin=*]
-\item[Whispering Blade] A dagger that hums with voices inaudible to most. Wielder gains +1 die to stealth and investigation rolls but must make Spirit + Resolve (DV 4) each session or advance Dread Clock by 1.
-\item[Mirror of the Forgotten] Shows glimpses of possible futures and past events. Provides valuable insights (Wits + Lore, DV 4) but each use advances Dread Clock by 1 and generates 1 CP.
-\item[Shroud of Whispers] A burial cloth that grants immunity to fear effects but causes the wearer to hear the entity's whispers constantly. Must make Wits + Perception (DV 5) or advance Dread Clock by 2 each day worn.
-\end{description}
+\textbf{Revelation:}
+\begin{itemize}
+\item Discovery of cosmic truths with severe consequences
+\item Comprehension breaking points risking +3 Dread advancement
+\item May unlock new investigative paths or resolution options
+\end{itemize}
 
-\subsection*{Protective Items}
+\subsubsection{Pacing Markers}
 
-\begin{description}[leftmargin=*]
-\item[Blessed Warding Stone] Provides +2 dice to resist supernatural influence and reduces Dread Clock advancement by 1 (minimum 1). Crumbles to dust if Dread Clock fills completely.
-\item[Sanctified Salt] Can be used to create protective circles or barriers. One use per session to prevent Dread Clock advancement or gain start Controlled vs. supernatural threats.
-\item[Prayer Book of the Steadfast] Once per session, allows reroll of failed Spirit + Resolve roll and prevents 1 segment of Dread Clock advancement.
-\end{description}
+\textbf{Sessions 1-2:}
+\begin{itemize}
+\item Local anomalies and minor reality distortions
+\item Introduction to threat without full comprehension
+\item Personal stakes established through connections to location/missing persons
+\end{itemize}
 
-\section*{Conclusion}
+\textbf{Sessions 3-4:}
+\begin{itemize}
+\item Pattern recognition revealing deeper conspiracy
+\item First direct contact with entities or incomprehensible concepts
+\item Comprehension breaking points as forbidden knowledge accessed
+\end{itemize}
 
-Horror in Fate's Edge is about creating a sense of vulnerability and mounting dread while still allowing players to feel their characters are capable of meaningful action. The sanity system provides mechanical weight to psychological horror, while the campaign clocks ensure that tension builds naturally throughout the story.
+\textbf{Sessions 5+:}
+\begin{itemize}
+\item Full revelation of cosmic threat and implications
+\item Existential stakes becoming clear to all characters
+\item Resolution with universal consequences and permanent changes
+\end{itemize}
 
-Remember that the best horror comes from what is left unsaid and unseen. Let the players' imaginations fill in the gaps, and trust in the power of implication over explicit description. The fear of what might be lurking in the shadows is often more effective than showing every monster in detail.
+\subsubsection{Resolution Formats}
 
-Most importantly, maintain communication with your players about comfort levels and boundaries. Horror can be deeply personal, and what one player finds thrilling, another might find genuinely distressing. A good horror game is one where everyone at the table is having fun and feeling appropriately challenged, not traumatized.
+\textbf{Success States:}
+\begin{itemize}
+\item \textbf{The Sacrifice:} Permanently contain entity through personal cost (15-18 XP)
+\item \textbf{The Investigation:} Fully understand and banish threat (18-20 XP)
+\item \textbf{The Containment:} Seal threat temporarily (12-15 XP)
+\end{itemize}
 
-The mechanics provided here are tools to enhance the horror experience, not replace good storytelling and atmosphere. Use them to support your narrative goals and create memorable, chilling experiences for your players.
+\textbf{Failure States:}
+\begin{itemize}
+\item \textbf{The Corruption:} Become agent of horror (8-10 XP, character transformation)
+\item \textbf{The Breaking:} Succumb to madness (0-5 XP, character retirement)
+\item \textbf{The Ignorance:} Flee without understanding (10-12 XP, ongoing campaign thread)
+\end{itemize}
 
-\section*{Cosmic Horror Generator}
+\textbf{Partial Success:}
+\begin{itemize}
+\item \textbf{The Bargain:} Negotiate with entity for limited influence (12-15 XP, ongoing responsibilities)
+\item \textbf{The Transformation:} Partial corruption with retained agency (15-17 XP, character change)
+\end{itemize}
 
-\begin{mdframed}[backgroundcolor=horrorbg]
+\textbf{Pyrrhic Victory:}
+\begin{itemize}
+\item \textbf{The Price:} Victory achieved but at devastating cost to world/self (18-20 XP, major consequences)
+\end{itemize}
+
+\section{GM Toolkit}
+
+\subsection{Session Preparation Checklist}
+
+\begin{itemize}
+\item \framebox{Prepare key horror draws for session} (impossible phenomena, entity manifestations, breaking point triggers)
+\item \framebox{Clock tracking sheets with trigger conditions clearly marked}
+\item \framebox{Key NPC motivations, secrets, and potential corruption states}
+\item \framebox{Environmental complication cards for reality distortions}
+\item \framebox{Breaking point scenarios and resistance options for each PC}
+\item \framebox{Index cards with sensory descriptions for atmosphere building}
+\item \framebox{CP spending options tied to current horror elements}
+\end{itemize}
+
+\subsection{Complication Generator}
+
+\subsubsection{Mild (1 CP)}
+\begin{itemize}
+\item Path shows reflection of alternate self
+\item Familiar voice whispers from darkness
+\item Waymark points wrong direction
+\item Unsettling geometric patterns in peripheral vision
+\item Temperature drop without environmental cause
+\end{itemize}
+
+\subsubsection{Moderate (2 CP)}
+\begin{itemize}
+\item Reality thins - see dreams of others
+\item Temporal loop shows funeral preparations
+\item Memory absorption begins during investigation
+\item Shadows move independently of light sources
+\item Mathematical equations appear spontaneously in environment
+\end{itemize}
+
+\subsubsection{Serious (3 CP)}
+\begin{itemize}
+\item Dimensional mathematics become comprehensible (advance Dread by 2)
+\item Entity's patterns appear in environment
+\item Trusted companion shows signs of possession
+\item Gravity flows in impossible directions
+\item Time begins moving backward in specific area
+\end{itemize}
+
+\subsubsection{Major (4+ CP)}
+\begin{itemize}
+\item Entity manifests partially through resonance
+\item Reality becomes unstable in area
+\item Previous choice comes back to haunt PCs
+\item Multiple timeline branches become visible simultaneously
+\item Fundamental law of physics ceases to be reliable
+\end{itemize}
+
+\subsection{Player Agency Reminders}
+
+\textbf{Handling Unexpected Approaches:}
+\begin{itemize}
+\item Embrace creativity but ensure horror elements still manifest
+\item Adapt entity responses to match player innovations
+\item Allow success but with horror-themed consequences
+\item Provide multiple valid paths to objectives
+\end{itemize}
+
+\textbf{When to Push Back:}
+\begin{itemize}
+\item Only when player choices would break core horror themes
+\item When actions would eliminate all tension or challenge
+\item When safety/pacing requires narrative redirection
+\item When mechanical balance needs preservation
+\end{itemize}
+
+\textbf{Maintaining Tension:}
+\begin{itemize}
+\item Use clock advancement and breaking points rather than adversarial GMing
+\item Provide meaningful choices with real consequences
+\item Balance hope and despair throughout campaign
+\item Let player decisions drive horror escalation
+\end{itemize}
+
+\section{Experience and Resolution Systems}
+
+\subsection{Experience Awards}
+
+\textbf{Participation:}
+\begin{itemize}
+\item +2 XP per session attendance
+\item +1 XP for meaningful horror engagement
+\item +1 XP for contributing to atmospheric tension
+\end{itemize}
+
+\textbf{Thematic Play:}
+\begin{itemize}
+\item +1-2 XP for meaningful horror engagement
+\item +1 XP for playing character's psychological flaws
+\item +2 XP for embracing breaking point consequences
+\end{itemize}
+
+\textbf{Risk Taking:}
+\begin{itemize}
+\item +1-3 XP for choosing dangerous investigative paths
+\item +2 XP for resisting breaking points at cost
+\item +1 XP for pursuing forbidden knowledge
+\end{itemize}
+
+\textbf{Breaking Point Resistance:}
+\begin{itemize}
+\item +2 XP for successfully resisting major psychological trauma
+\item +1 XP for partial resistance with consequences
+\item +3 XP for transforming breaking point into character growth
+\end{itemize}
+
+\textbf{Narrative Contribution:}
+\begin{itemize}
+\item +1-2 XP for creating memorable horror moments
+\item +1 XP for contributing to group survival
+\item +2 XP for defining campaign's central horror theme
+\end{itemize}
+
+\section{Modular Design Elements}
+
+\subsection{Plug-and-Play Components}
+
+\textbf{Dread Clock System:}
+\begin{itemize}
+\item Works independently in any horror scenario
+\item Scalable segment counts for different campaign lengths
+\item Compatible with existing Boon economy
+\end{itemize}
+
+\textbf{Breaking Point Mechanics:}
+\begin{itemize}
+\item Can enhance investigation or combat encounters
+\item Adaptable to different horror subgenres
+\item Integrates with character backgrounds and talents
+\end{itemize}
+
+\textbf{Reality Distortion Zones:}
+\begin{itemize}
+\item Can be added to any location
+\item Modular effects based on campaign tone
+\item Compatible with existing environmental hazards
+\end{itemize}
+
+\textbf{Collective Sanity Effects:}
+\begin{itemize}
+\item Work in any group-based horror campaign
+\item Scale with party size and composition
+\item Create shared consequences for individual actions
+\end{itemize}
+
+\subsection{Cross-Expansion Compatibility}
+
+\textbf{Noir Expansion:}
+\begin{itemize}
+\item Psychological breaking points enhance moral ambiguity
+\item Collective sanity effects mirror group paranoia
+\item Reality distortion zones complement urban atmosphere
+\end{itemize}
+
+\textbf{Cyberpunk Expansion:}
+\begin{itemize}
+\item Technological horror through reality distortion
+\item Corporate conspiracy elements in cosmic threats
+\item Character corruption parallels cybernetic augmentation
+\end{itemize}
+
+\textbf{Fantasy Expansion:}
+\begin{itemize}
+\item Cosmic entities as ancient gods/demons
+\item Magical research risks mirror forbidden knowledge
+\item Reality fracture effects enhance spell backlash
+\end{itemize}
+
+\subsection{Power Scaling}
+
+\textbf{Lower Tiers (Rookie/Seasoned):}
+\begin{itemize}
+\item Reduced CP generation from horror encounters
+\item Simpler reality distortions with clear navigation
+\item Fewer breaking point triggers and easier resistance
+\item More recovery options for Dread advancement
+\end{itemize}
+
+\textbf{Higher Tiers (Veteran/Paragon):}
+\begin{itemize}
+\item Increased cosmic comprehension risks (+3 Dread for understanding)
+\item More severe reality alterations affecting core mechanics
+\item Complex entity interactions requiring specialized knowledge
+\item Harsher consequences for filled clocks and broken characters
+\end{itemize}
+
+\textbf{New Players:}
+\begin{itemize}
+\item Streamlined clock system with fewer secondary clocks
+\item More recovery options and safety mechanisms
+\item Clearer breaking point resistance paths
+\item Reduced penalties for high Dread states
+\end{itemize}
+
+\textbf{Experienced Players:}
+\begin{itemize}
+\item Additional complications and harsher consequences
+\item Fewer safety mechanisms and more permanent effects
+\item Complex moral choices with no clear right answers
+\item Integration with existing campaign threads and consequences
+\end{itemize}
+
+\section{Quick Reference Appendix}
+
+\subsection{Mechanics Summary}
+
+\textbf{Dread Clock Psychological Effects:}
+\begin{itemize}
+\item \textbf{0-2 Segments - Unease:} -1 die to social rolls involving trust, minor sleep disturbances
+\item \textbf{3-4 Segments - Fear:} -1 die to all rolls when alone, startle easily, avoid dark spaces
+\item \textbf{5-6 Segments - Terror:} -2 dice to rolls involving courage or rational thought, may flee
+\item \textbf{7-8 Segments - Madness:} -2 dice to most rolls, may act against interests, hallucinations
+\item \textbf{9-10 Segments - Broken:} Out of control, may become hostile, permanent damage
+\end{itemize}
+
+\textbf{Reality Fracture Triggers:}
+\begin{itemize}
+\item Impossible phenomena: +1 segment per day
+\item Dimensional mathematics researched: +2 segments
+\item PCs perceive alien geometry: +3 segments
+\end{itemize}
+
+\textbf{Clock Management:}
+\begin{itemize}
+\item Death/violence: +1 Dread (1 Boon prevent)
+\item Unknown encounters: +1 Dread (1 Boon prevent)
+\item Personal failure: +1 Dread (1 Boon prevent)
+\item Sanity threat: +2 Dread (2 Boons prevent)
+\item Major revelation: +2 Dread (2 Boons prevent)
+\item Companion lost: +3 Dread (3 Boons prevent)
+\end{itemize}
+
+\subsection{Resource Spending}
+
+\textbf{Boon Expenditure:}
+\begin{itemize}
+\item \textbf{1 Boon:} Re-roll die, activate minor Asset, prevent 1 Dread segment
+\item \textbf{2 Boons:} Convert to 1 XP (max 2/session), prevent 2 Dread segments
+\item \textbf{3 Boons:} Prevent 3 Dread segments, activate major Asset
+\item \textbf{Special:} 2 Boons prevent breaking point advancement
+\end{itemize}
+
+\textbf{Breaking Point Resistance:}
+\begin{itemize}
+\item \textbf{2 Boons:} Prevent advancement entirely
+\item \textbf{Spirit + Resolve (DV 5):} With narrative justification
+\item \textbf{Talents/Backgrounds:} Provide resistance bonuses
+\item \textbf{Group Support:} Allies may assist resistance rolls
+\end{itemize}
+
+\subsection{Index Card Prep}
+
+\textbf{Reality Distortion Effects:}
+\begin{itemize}
+\item Geometric impossibilities with mechanical modifiers
+\item Temporal anomalies and their narrative effects
+\item Sensory descriptions for atmosphere building
+\item Navigation challenges and skill requirements
+\end{itemize}
+
+\textbf{Breaking Point Triggers:}
+\begin{itemize}
+\item Personal loss scenarios with Dread advancement
+\item Moral compromise situations and resistance options
+\item Comprehension challenges with cosmic implications
+\item Corruption progression and character transformation
+\end{itemize}
+
+\textbf{Clock Tracking:}
+\begin{itemize}
+\item Visual segment markers for each clock type
+\item Trigger condition reminders for quick reference
+\item Consequence summaries for filled clocks
+\item Integration notes with other campaign elements
+\end{itemize}
+
+You're absolutely right! The original Horror Campaigns expansion does include deck generators. Here's that section as a LaTeX snippet:
+
+\section{Horror Deck Generators}
+
+\subsection{Cosmic Horror Generator}
+
+\begin{mdframed}[backgroundcolor=shadecolor]
 \textbf{Theme}: Reality-breaking threats that challenge understanding of existence itself
 
 \textbf{Special Mechanics}:
@@ -906,7 +961,7 @@ The mechanics provided here are tools to enhance the horror experience, not repl
 \end{itemize}
 \end{mdframed}
 
-\subsection*{Spades — Places (impossible locations, reality-warped sites)}
+\subsubsection{Spades — Places (impossible locations, reality-warped sites)}
 \begin{itemize}[leftmargin=*]
 \item 2. Observatory with a telescope that shows stars that shouldn't exist
 \item 3. Library where books rewrite themselves when read
@@ -923,7 +978,7 @@ The mechanics provided here are tools to enhance the horror experience, not repl
 \item A. Location where a fundamental law of physics (time, gravity, causality) no longer applies
 \end{itemize}
 
-\subsection*{Hearts — Entities \& Factions (cosmic beings, affected people)}
+\subsubsection{Hearts — Entities \& Factions (cosmic beings, affected people)}
 \begin{itemize}[leftmargin=*]
 \item 2. Researcher who speaks only in mathematical equations
 \item 3. Astronomer who can see the approach of something from beyond
@@ -940,7 +995,7 @@ The mechanics provided here are tools to enhance the horror experience, not repl
 \item A. Intelligence that predates the current configuration of reality itself
 \end{itemize}
 
-\subsection*{Clubs — Threats \& Complications (reality distortions, existential dread)}
+\subsubsection{Clubs — Threats \& Complications (reality distortions, existential dread)}
 \begin{itemize}[leftmargin=*]
 \item 2. Stars moving in patterns that violate known astronomical laws
 \item 3. Mathematical proof that shows reality is fundamentally inconsistent
@@ -957,7 +1012,7 @@ The mechanics provided here are tools to enhance the horror experience, not repl
 \item A. A fundamental aspect of existence (time, space, identity) ceasing to be reliable
 \end{itemize}
 
-\subsection*{Diamonds — Revelations \& Resources (forbidden knowledge, cosmic tools)}
+\subsubsection{Diamonds — Revelations \& Resources (forbidden knowledge, cosmic tools)}
 \begin{itemize}[leftmargin=*]
 \item 2. Star charts showing constellations from impossible angles
 \item 3. Mathematical formula that describes the shape of space-time itself
@@ -985,7 +1040,7 @@ The mechanics provided here are tools to enhance the horror experience, not repl
 
 \subsection*{Using the Cosmic Horror Generator}
 
-\begin{mdframed}[backgroundcolor=horrorbg]
+\begin{mdframed}[backgroundcolor=shadecolor]
 \textbf{Standalone Campaign Use}:
 When using the Cosmic Horror generator on its own, focus on reality-breaking threats that challenge the fundamental nature of existence. The generator provides a complete framework for campaigns where the PCs face threats beyond normal comprehension.
 
@@ -1007,7 +1062,7 @@ When using the Cosmic Horror generator on its own, focus on reality-breaking thr
 \end{enumerate}
 \end{mdframed}
 
-\begin{mdframed}[backgroundcolor=sanitybg]
+\begin{mdframed}[backgroundcolor=tableheader]
 \textbf{Mixed Generator Use}:
 The Cosmic Horror generator excels at adding existential weight to other campaign types. Mix it with regional generators to create campaigns where local threats have cosmic implications.
 
@@ -1049,6 +1104,80 @@ The Cosmic Horror generator excels at adding existential weight to other campaig
 \item Use base generator's clock size, modified by cosmic elements
 \item Add 1-2 cosmic-themed supporting clocks to base campaign clocks
 \end{enumerate}
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=shadecolor]
+\textbf{Campaign Integration Tips}:
+
+\textbf{Gradual Revelation}:
+Start with local/normal threats, gradually revealing cosmic implications. Players are more invested when they discover their small problem is part of a universal threat.
+
+\textbf{Personal Stakes}:
+Even cosmic threats need personal connections. Tie the existential danger to characters' backgrounds, goals, or loved ones.
+
+\textbf{Escalation Patterns}:
+\begin{itemize}[leftmargin=*]
+\item Sessions 1-2: Local anomalies, minor reality distortions
+\item Sessions 3-4: Pattern recognition, first contact with cosmic entities
+\item Sessions 5-6: Full revelation, existential stakes become clear
+\item Final Session: Resolution with universal consequences
+\end{itemize}
+
+\textbf{Reality as Character}:
+Treat the laws of physics and fundamental reality as active elements that can shift, change, and react to player actions. When players solve problems, let reality itself respond.
+
+\textbf{Knowledge Management}:
+Forbidden knowledge should be both valuable and dangerous. Create systems where learning the truth advances both understanding and threat levels.
+\end{mdframed}
+
+\subsection*{Mixed Deck Campaign: "The Whispering Depths" (Mistlands + Cosmic Horror)}
+
+\begin{mdframed}[backgroundcolor=shadecolor]
+\textbf{Campaign Setup}:
+Mixing the Mistlands generator with Cosmic Horror creates a campaign where ancient entities sleeping beneath the fog have begun to awaken as reality barriers weaken.
+
+\textbf{Drawn Elements}:
+\begin{itemize}[leftmargin=*]
+\item Mistlands Spade (7 - Pall Watch-tower on piles above the mire)
+\item Cosmic Horror Heart (Q - Cosmic entity that communicates through stellar movements)
+\item Mistlands Club (9 - Bell-line failure on the levee; a wraith steps across like it owns the road)
+\item Cosmic Horror Diamond (8 - Instrument that can detect fluctuations in the fundamental constants)
+\end{itemize}
+
+\textbf{Clock Size}: 9 (Queen) = 8-segment primary clock
+
+\textbf{Campaign Hook}:
+The Pall Watch-tower, a key defensive position in the Mistlands, has begun experiencing temporal anomalies. Guards report that the bell-line failures don't follow normal patterns—instead, the bells ring in mathematical sequences that correspond to stellar movements visible only through the tower's ancient spyglass. Something from beyond normal space is using the weakened barriers between dimensions to influence the physical world, and the bell-code system that once kept the Mistlands safe is now serving as a communication channel for entities that predate human civilization.
+
+\textbf{Key NPCs}:
+\begin{itemize}[leftmargin=*]
+\item Bell-Warden Thorne: Paranoid keeper who first noticed the anomalous bell patterns
+\item Astronomer-Liaison Mara: Assigned to interpret the stellar correlations, slowly losing sanity
+\item The Deep Listener: Cosmic entity that exists partially in our dimension, communicating through bell harmonics
+\end{itemize}
+
+\textbf{Campaign Clocks}:
+\begin{itemize}[leftmargin=*]
+\item Bell-Line Corruption (8): How much the communication system has been compromised
+\item Reality Fracture (10): Local weakening of dimensional barriers
+\item Collective Sanity (8): Mental stability of the watch-tower garrison
+\end{itemize}
+
+\textbf{Resolution Paths}:
+\begin{itemize}[leftmargin=*]
+\item Seal the dimensional breach using the stellar-aligned bell-code in reverse
+\item Negotiate with the entity to establish a controlled communication channel
+\item Destroy the watch-tower to sever the connection, sacrificing the region's defense
+\item Allow the entity full access to our reality in exchange for protection from other cosmic threats
+\end{itemize}
+
+\textbf{Horror Elements}:
+\begin{itemize}[leftmargin=*]
+\item The bells ring in patterns that hurt to hear directly
+\item Guards begin aging rapidly during their watches
+\item Shadows cast by the tower show events from impossible futures
+\item The entity's influence causes time to loop in 8-hour cycles
+\end{itemize}
 \end{mdframed}
 
 \begin{mdframed}[backgroundcolor=horrorbg]
@@ -1124,5 +1253,334 @@ The Pall Watch-tower, a key defensive position in the Mistlands, has begun exper
 \item The entity's influence causes time to loop in 8-hour cycles
 \end{itemize}
 \end{mdframed}
+
+\section{Design Philosophy Requirements}
+
+\subsection{Must Include Elements}
+
+\textbf{Meaningful Player Choice:}
+\begin{itemize}
+\item Every major decision (investigation depth, risk level, resolution approach) has clear, lasting consequences affecting all campaign clocks
+\item Multiple valid approaches to horror threats (investigation, combat, social, flight)
+\item Character-specific breaking points that reflect individual backgrounds and flaws
+\item Resolution paths that reward different play styles and thematic choices
+\end{itemize}
+
+\textbf{Mechanical-Theme Integration:}
+\begin{itemize}
+\item Dread Clock and reality distortion mechanics directly serve horror themes of psychological deterioration and reality instability
+\item Breaking point system reinforces moral ambiguity and personal consequences
+\item Resource management creates tension between investigation and self-preservation
+\item Collective sanity effects mirror isolation and group psychology themes
+\end{itemize}
+
+\textbf{Gradual Complexity:}
+\begin{itemize}
+\item Introduce clock system and breaking points gradually across sessions
+\item Start with basic Dread management before adding secondary clocks
+\item Reveal complex reality distortion effects as campaign progresses
+\item Scale breaking point severity with character development
+\end{itemize}
+
+\textbf{Multiple Valid Approaches:}
+\begin{itemize}
+\item Investigation, combat, and social solutions all viable with different risk/reward profiles
+\item Different character archetypes can contribute meaningfully to horror resolution
+\item Multiple resolution paths that reward different campaign approaches
+\item Adaptive threat responses that engage various character capabilities
+\end{itemize}
+
+\textbf{Character Spotlights:}
+\begin{itemize}
+\item Each session provides opportunities for different character types
+\item Scholar characters excel with lore and forbidden knowledge
+\item Combat characters shine during entity confrontations
+\item Social characters navigate breaking point resistance and group dynamics
+\end{itemize}
+
+\textbf{Clear Continuation Hooks:}
+\begin{itemize}
+\item Win or lose, cosmic threat remains or creates sequel opportunities
+\item Partial clock fills create ongoing regional consequences
+\item Character corruption provides campaign-long character arcs
+\item Reality alterations persist beyond single campaign resolution
+\end{itemize}
+
+\subsection{Should Avoid Elements}
+
+\textbf{Railroading:}
+\begin{itemize}
+\item Player choices genuinely matter to outcomes
+\item Multiple resolution paths with different consequences
+\item Varied investigation approaches leading to different revelations
+\item Adaptive threat responses to player innovations
+\end{itemize}
+
+\textbf{Information Dumps:}
+\begin{itemize}
+\item Horror lore emerges through play rather than exposition
+\item Entity manifestations reveal threat nature gradually
+\item Breaking point revelations provide contextual understanding
+\item Reality distortions demonstrate cosmic principles experientially
+\end{itemize}
+
+\textbf{Mechanical Bloat:}
+\begin{itemize}
+\item New systems enhance rather than complicate core mechanics
+\item Dread as Boon management integrates with existing economy
+\item Breaking points use standard resolution procedures with thematic modifiers
+\item Clock interactions follow logical cause-and-effect relationships
+\end{itemize}
+
+\textbf{Unwinnable States:}
+\begin{itemize}
+\item Even failure leads to interesting continuation
+\item Partial corruption provides ongoing character development
+\item Escaped threat creates sequel campaign hooks
+\item Transformed reality offers new adventure possibilities
+\end{itemize}
+
+\textbf{Generic Elements:}
+\begin{itemize}
+\item Every location, NPC, and encounter serves horror theme
+\item Reality distortion reinforces existential threat concepts
+\item Psychological breaking points reflect core horror themes
+\item Entity manifestations embody incomprehensible cosmic forces
+\end{itemize}
+
+\subsection{Excellence Indicators}
+
+\textbf{Innovative but Accessible:}
+\begin{itemize}
+\item New mechanics (Dread as psychological resource management) feel natural to horror genre
+\item Integration with existing Boon economy maintains system familiarity
+\item Scalable complexity allows for gradual learning curve
+\item Clear mechanical procedures support narrative horror themes
+\end{itemize}
+
+\textbf{Thematic Consistency:}
+\begin{itemize}
+\item Every element reinforces core themes (isolation, unknown, psychological horror, cosmic insignificance)
+\item Clock names and effects directly relate to horror concepts
+\item Breaking point triggers reflect psychological and moral horror themes
+\item Resolution paths embody different horror story archetypes
+\end{itemize}
+
+\textbf{Scalable Design:}
+\begin{itemize}
+\item Works for different group sizes and experience levels
+\item Streamlined clocks for new players maintain core tension
+\item Extended campaign options for experienced groups
+\item Modular components work independently or together
+\end{itemize}
+
+\textbf{Prep-Efficient:}
+\begin{itemize}
+\item GM can run with minimal preparation after first read
+\item Checklist provided for session preparation
+\item Index cards suggested for quick reference during play
+\item Generator systems reduce prep time for new scenarios
+\end{itemize}
+
+\textbf{Session-Sized Beats:}
+\begin{itemize}
+\item Clear goals and climaxes for each session
+\item Investigation/navigation provides session foundation
+\item Deeper horror/truth revealed creates mid-campaign tension
+\item Final choice/consequences drive campaign resolution
+\end{itemize}
+
+\textbf{Player Agency Documentation:}
+\begin{itemize}
+\item Clear guidance on handling unexpected choices
+\item Embrace creativity while maintaining horror elements
+\item Provide multiple valid approaches to horror threats
+\item Maintain tension through consequences rather than adversarial GMing
+\end{itemize}
+
+\section{Horror Campaign Clocks Generator}
+
+\subsection{Core Concept}
+
+The Horror Campaign Clocks Generator creates thematically appropriate multi-clock systems for any horror scenario, providing escalating tension and meaningful consequences that drive narrative forward while maintaining mechanical coherence.
+
+\subsection{Generator Structure}
+
+\textbf{Primary Clock - Dread Clock (10 segments)}
+\begin{itemize}
+\item Always represents psychological deterioration and mounting horror
+\item Universal across all horror subgenres
+\item Personal consequences for each character
+\end{itemize}
+
+\textbf{Secondary Clocks (2-3 clocks, 8-15 segments)}
+\begin{itemize}
+\item Thematic clocks that reflect specific horror elements
+\item Drive broader consequences beyond individual characters
+\item Create multi-layered tension
+\end{itemize}
+
+\subsection{Horror Subgenre Clock Templates}
+
+\subsubsection{Cosmic Horror Clocks}
+\begin{enumerate}
+\item \textbf{Dread Clock} (10 segments) - Personal psychological deterioration
+\item \textbf{Reality Fracture Clock} (12 segments) - Fundamental laws of reality becoming unreliable
+\item \textbf{Collective Sanity Clock} (8 segments) - Group psychological effects and shared hallucinations
+\item \textbf{Existential Threat Clock} (15 segments) - Cosmic entity approaching full manifestation
+\end{enumerate}
+
+\subsubsection{Haunted Location Clocks}
+\begin{enumerate}
+\item \textbf{Dread Clock} (10 segments) - Personal psychological deterioration
+\item \textbf{Location Corruption Clock} (10 segments) - Physical space becoming more hostile/supernatural
+\item \textbf{Resident Sanity Clock} (8 segments) - Other inhabitants becoming affected
+\item \textbf{Supernatural Escalation Clock} (12 segments) - Ghostly activity intensifying
+\end{enumerate}
+
+\subsubsection{Isolated Institution Clocks}
+\begin{enumerate}
+\item \textbf{Dread Clock} (10 segments) - Personal psychological deterioration
+\item \textbf{Sanity Decay Clock} (8 segments) - Overall mental health of group deteriorating
+\item \textbf{Institution Collapse Clock} (10 segments) - Social/order breakdown of location
+\item \textbf{Horror Manifestation Clock} (12 segments) - Threat becoming more active/visible
+\end{enumerate}
+
+\subsubsection{Body Horror Clocks}
+\begin{enumerate}
+\item \textbf{Dread Clock} (10 segments) - Personal psychological deterioration
+\item \textbf{Physical Corruption Clock} (8 segments) - Character's body becoming affected
+\item \textbf{Social Isolation Clock} (6 segments) - Relationships breaking down due to transformation
+\item \textbf{Transformation Completion Clock} (10 segments) - Full metamorphosis approaching
+\end{enumerate}
+
+\subsection{Clock Advancement Trigger Generator}
+
+\subsubsection{Dread Clock Triggers (Personal Psychological Effects)}
+\begin{itemize}
+\item \textbf{Mild (1 segment):} Unsettling sounds/sights, minor paranoia, sleep disturbances
+\item \textbf{Moderate (2 segments):} Witnessing supernatural events, personal failure, disturbing revelations
+\item \textbf{Severe (3 segments):} Companion harmed/lost, direct entity contact, moral compromise
+\end{itemize}
+
+\subsubsection{Reality Fracture Triggers (Cosmic Horror)}
+\begin{itemize}
+\item \textbf{Mild (+1):} Impossible stellar movements, minor geometric anomalies, temporal glitches
+\item \textbf{Moderate (+2):} Dimensional mathematics researched, witness alien geometry, reality instability incidents
+\item \textbf{Severe (+3):} Ancient experiments disturbed, fundamental laws becoming unreliable, entity partially manifesting
+\end{itemize}
+
+\subsubsection{Location Corruption Triggers (Haunted/Supernatural)}
+\begin{itemize}
+\item \textbf{Mild (+1):} Temperature drops, unexplained sounds, objects moving
+\item \textbf{Moderate (+2):} Physical manifestations, apparitions becoming more aggressive, structural damage
+\item \textbf{Severe (+3):} Laws of physics breaking down, location becoming sentient, permanent alterations
+\end{itemize}
+
+\subsubsection{Institution Collapse Triggers (Isolated Settings)}
+\begin{itemize}
+\item \textbf{Mild (+1):} Communication failures, supply shortages, minor conflicts
+\item \textbf{Moderate (+2):} Authority figures becoming erratic, services failing, infighting
+\item \textbf{Severe (+3):} Complete breakdown of order, mass hysteria, leadership collapse
+\end{itemize}
+
+\subsection{Clock Consequence Generator}
+
+\subsubsection{When Dread Clock Fills (10 segments):}
+\begin{itemize}
+\item Character becomes Broken: Out of control, may become hostile, permanent psychological damage
+\item Party suffers -2 dice to all social rolls due to collective tension
+\item Reality begins to reflect character's mental state (shared hallucinations)
+\end{itemize}
+
+\subsubsection{When Reality Fracture Clock Fills (12 segments):}
+\begin{itemize}
+\item Barriers between dimensions collapse completely
+\item Entity manifests fully in normal space
+\item Local reality becomes permanently unreliable (ongoing 2 CP per scene)
+\end{itemize}
+
+\subsubsection{When Collective Sanity Clock Fills (8 segments):}
+\begin{itemize}
+\item Shared hallucinations become indistinguishable from reality
+\item Party begins to exist partially outside normal space
+\item Group paranoia leads to infighting (start all social rolls Desperate)
+\end{itemize}
+
+\subsubsection{When Existential Threat Clock Fills (15 segments):}
+\begin{itemize}
+\item Entity begins reshaping local reality according to alien logic
+\item PCs must make Spirit + Resolve (DV 6) or gain permanent corruption
+\item Campaign enters final phase - immediate resolution required
+\end{itemize}
+
+\subsection{Mixed Horror Generator System}
+
+\subsubsection{Procedure:}
+\begin{enumerate}
+\item \textbf{Select Base Horror Subgenre:} Choose primary horror theme
+\item \textbf{Draw Base Clocks:} Use template for that subgenre
+\item \textbf{Add Secondary Elements:} Draw 1-2 cards from different horror subgenres
+\item \textbf{Blend Consequences:} Merge thematic elements for unique threat
+\item \textbf{Adjust Clock Sizes:} Modify based on campaign scope and tier
+\end{enumerate}
+
+\subsubsection{Example Mix - "The Whispering Depths" (Mistlands + Cosmic Horror):}
+\begin{itemize}
+\item \textbf{Base:} Mistlands haunted location template
+\item \textbf{Add:} Cosmic Horror reality fracture elements
+\item \textbf{Result:} Ancient entities beneath the mist awakening as dimensional barriers weaken
+\item \textbf{Clocks:}
+  \begin{enumerate}
+  \item Dread Clock (10) - Personal psychological effects
+  \item Bell-Line Corruption (8) - Communication system compromised by cosmic influence
+  \item Reality Fracture (12) - Local dimensional barriers weakening
+  \item Collective Sanity (8) - Mental stability of watch-tower garrison
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Mixing Benefits:}
+\begin{itemize}
+\item Creates unique, layered threats that feel both local and universal
+\item Allows for gradual revelation of deeper cosmic implications
+\item Provides multiple resolution paths (local containment vs. cosmic sealing)
+\item Maintains personal stakes while expanding to existential consequences
+\end{itemize}
+
+\subsection{Quick Setup Cards}
+
+\subsubsection{Cosmic Horror Quick Setup:}
+\begin{itemize}
+\item \textbf{Hook:} Stars moving in impossible patterns, reality becoming unreliable
+\item \textbf{Clocks:} Dread (10), Reality Fracture (12), Collective Sanity (8), Existential Threat (15)
+\item \textbf{Key Elements:} Alien geometry, temporal distortions, incomprehensible entities
+\item \textbf{Resolution:} Seal dimensional rift, embrace cosmic knowledge, or become heralds of new order
+\end{itemize}
+
+\subsubsection{Haunted Location Quick Setup:}
+\begin{itemize}
+\item \textbf{Hook:} Familiar place becoming hostile, supernatural activity escalating
+\item \textbf{Clocks:} Dread (10), Location Corruption (10), Resident Sanity (8), Supernatural Escalation (12)
+\item \textbf{Key Elements:} Ghostly manifestations, location sentience, shared haunting effects
+\item \textbf{Resolution:} Banish spirits, seal location, or join the haunting
+\end{itemize}
+
+\subsubsection{Isolated Institution Quick Setup:}
+\begin{itemize}
+\item \textbf{Hook:} Remote location cut off, internal threat emerging
+\item \textbf{Clocks:} Dread (10), Sanity Decay (8), Institution Collapse (10), Horror Manifestation (12)
+\item \textbf{Key Elements:} Social breakdown, confined space tension, group psychology
+\item \textbf{Resolution:} Escape, contain threat, or become part of institution
+\end{itemize}
+
+\section{Conclusion}
+
+This Horror Campaigns expansion and clock generator system provides GMs with flexible, thematically coherent tools for running horror campaigns of any scope while maintaining the mechanical elegance and player agency that defines Fate's Edge. Whether running a single-session haunted house scenario or an extended cosmic horror campaign, these tools ensure that horror remains personal, consequential, and mechanically integrated with the core Fate's Edge experience.
+
+Remember that the best horror emerges from player investment in their characters and the world around them. Use these mechanical tools to support narrative tension and emotional investment, not replace them. The fear of what might be lurking in the shadows is often more effective than showing every monster in detail, and the psychological consequences of player choices should feel meaningful and lasting.
+
+\begin{center}
+\textbf{In the spaces between certainty and chaos, in the whispers of the unknown, and in the breaking points of human endurance, the truth waits patiently. Will you listen? Will you pay the price? Will you survive to tell the tale?}
+\end{center}
 
 \end{document}

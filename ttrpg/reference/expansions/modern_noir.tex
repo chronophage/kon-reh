@@ -1,102 +1,1157 @@
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{xcolor}
-\usepackage{tcolorbox}
-\usepackage{enumitem}
-\usepackage{fontawesome5}
-\usepackage{titlesec}
-\usepackage{multicol}
-\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
 \usepackage{fancyhdr}
-\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{sectsty}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{needspace}
+\usepackage{parskip}
+\usepackage{fontawesome}
 
-% Color definitions
-\definecolor{noirblack}{RGB}{25, 25, 25}
-\definecolor{rainblue}{RGB}{70, 130, 180}
-\definecolor{neongreen}{RGB}{50, 205, 50}
-\definecolor{bloodred}{RGB}{178, 34, 34}
-\definecolor{smokegrey}{RGB}{105, 105, 105}
-\definecolor{goldaccent}{RGB}{218, 165, 32}
-\definecolor{streetlamp}{RGB}{255, 215, 0}
-\definecolor{vicepurple}{RGB}{128, 0, 128}
+\definecolor{shadecolor}{gray}{0.95}
+\definecolor{headercolor}{RGB}{30, 50, 100}
+\definecolor{accentcolor}{RGB}{70, 130, 180}
+\definecolor{tableheader}{RGB}{240, 240, 240}
+\definecolor{noirblue}{RGB}{70, 130, 180}
 
-% Box styles
-\tcbset{
-    noirbox/.style={
-        enhanced,
-        colback=white,
-        colframe=#1,
-        arc=0pt,
-        fonttitle=\bfseries,
-        before skip=10pt,
-        after skip=10pt,
-        boxrule=1pt
-    }
-}
-
-\newtcolorbox{noirsection}[2][]{%
-    noirbox=#2,
-    title=#1
-}
-
-\titleformat{\section}{\color{noirblack}\Large\bfseries\filcenter}{}{0em}{}
-\titleformat{\subsection}{\color{smokegrey}\large\bfseries}{}{0em}{}
-
-\setlist{left=0pt}
-
-% Header and footer
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Modern Noir Campaign}
-\lhead{Neon Shadows}
-\rfoot{Page \thepage\ of \pageref{LastPage}}
-\lfoot{Fate's Edge Expansion}
+\rhead{\thepage}
+\lhead{Fate's Edge: Modern Noir Expansion}
+\renewcommand{\headrulewidth}{0.4pt}
 
-\title{\Huge\textbf{Neon Shadows}\\
-\Large A Modern Noir Expansion for Fate's Edge\\
-\large Optimized for Quick Sessions}
-\author{}
-\date{}
+\sectionfont{\color{headercolor}\normalfont\fontsize{14}{16}\selectfont}
+\subsectionfont{\color{accentcolor}\normalfont\fontsize{12}{14}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{11}{13}\selectfont}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\geometry{margin=1in}
+
+\newenvironment{monsterentry}[1]{%
+  \begin{mdframed}[backgroundcolor=shadecolor, linewidth=0pt, leftmargin=0pt, rightmargin=0pt]%
+  \subsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newenvironment{mechanic}[1]{%
+  \begin{mdframed}[backgroundcolor=tableheader, linewidth=1pt, linecolor=accentcolor]%
+  \subsubsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newcommand{\dice}[1]{\texttt{#1}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentcolor,
+    filecolor=magenta,      
+    urlcolor=accentcolor,
+}
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+\centering
+\vspace*{2cm}
 
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-\draw[noirblack, line width=3pt] (0,0) -- (2,2) -- (4,0) -- (6,2) -- (8,0) -- (10,2) -- (12,0);
-\draw[rainblue, line width=2pt] (1,1) -- (3,3) -- (5,1) -- (7,3) -- (9,1) -- (11,3);
-\foreach \x/\name in {0/Rain, 2/Streets, 4/Shadows, 6/Truth, 8/Lies, 10/Justice} {
-    \draw[noirblack, fill=white] (\x,0) circle (0.3cm);
-    \node[below, font=\small] at (\x,-0.5) {\name};
+{\Huge\bfseries\color{headercolor} Modern Noir Expansion} 
+
+\vspace{0.5cm}
+
+{\Large\itshape For Fate's Edge Tabletop RPG}
+
+\vspace{2cm}
+
+\vspace{2cm}
+
+{\Large\bfseries Urban Shadows and Moral Ambiguity Framework}
+
+\vspace{1cm}
+
+{\large Designed for Cases of Any Length}
+
+\vspace{1cm}
+
+{\large Complete with Investigation Generator System}
+
+\vfill
+
+{\large 
+\textbf{Featuring Vice Clock Character System} \\
+\textbf{52-Card Case Generation} \\
+\textbf{Investigation Point Economy} \\
+\textbf{Modular Urban Environment Mechanics}
 }
-\end{tikzpicture}
-\end{center}
 
-\begin{noirsection}[Campaign Overview]{noirblack}
-\subsection*{\faMap\ Campaign Hook}
-
-\textbf{The Premise:} You are a private investigator, detective, or troubled professional working the mean streets of a modern city where neon lights cast long shadows and everyone has something to hide. The cases are personal, the stakes are high, and the truth is rarely simple.
-
-\textbf{Real Hook:} In a city where corruption runs deep and justice is often just another commodity, you've chosen to walk the line between order and chaos. But every case you take pulls you deeper into a web of lies, and every truth you uncover makes you a target.
-
-\textbf{Thematic Elements:} Moral Ambiguity, Urban Decay, Personal Stakes, Information As Currency, Noir Atmosphere
-
-\textbf{Key Noir Elements:}
-\begin{itemize}
-    \item \textbf{Moral Ambiguity:} Right and wrong are not clearly defined
-    \item \textbf{Urban Isolation:} Characters are alone in a crowded city
-    \item \textbf{Information Control:} Knowledge is power, and everyone guards theirs carefully
-    \item \textbf{Personal Consequences:} Choices have lasting impact on character and story
-    \item \textbf{Atmospheric Tension:} Mood and setting drive the narrative as much as plot
-\end{itemize}
-\end{noirsection}
+\end{titlepage}
 
 \newpage
 
-\section{Quick Case System}
+\tableofcontents
 
-\subsection*{\faFolder\ Core Investigation Mechanics}
+\newpage
+
+\section{Modern Noir Expansion Overview}
+
+\subsection{Core Concept}
+
+Noir in Fate's Edge should create moral ambiguity and personal consequences while maintaining player agency through meaningful investigation and social choices. The city is both setting and character.
+
+\subsection{Key Innovations}
+
+\begin{itemize}
+\item Vice Clock system for character flaws
+\item 52-card case generator for quick setup
+\item Investigation point economy for resource management
+\item Evidence rating system for clue tracking
+\item District-based environmental modifiers
+\end{itemize}
+
+\subsection{Target Themes}
+
+\begin{itemize}
+\item Moral ambiguity and ethical compromises
+\item Urban isolation and personal stakes
+\item Information as currency and power
+\item Atmospheric tension and city as character
+\item Personal consequences and character growth
+\item Social dynamics and class conflict
+\end{itemize}
+
+\subsection{Mechanical Focus}
+
+\begin{itemize}
+\item Investigation procedures with resource costs
+\item Social manipulation and information gathering
+\item Character corruption through Vice system
+\item Environmental hazards and urban modifiers
+\item Evidence management and case building
+\end{itemize}
+
+\section{Core Mechanical Framework}
+
+\subsection{Vice Clock - Character Flaw Management}
+
+The signature system represents the noir protagonist's fatal flaw through a mechanical system that creates tension between character growth and self-destruction.
+
+\begin{mechanic}{Purpose and Integration}
+This system connects to the existing Boon economy while adding personal consequences that drive narrative forward. Players choose when to spend Boons to prevent Vice advancement, creating meaningful decisions about self-control versus indulgence.
+\end{mechanic}
+
+\textbf{Sample Uses:}
+\begin{enumerate}
+\item Emotional Vice temptation during key interview (+1 segment) - player spends 1 Boon to resist
+\item Physical Vice crisis state affects investigation rolls (-2 dice) - player must spend 2 Boons to clear 1 segment
+\item Professional Vice creates complications with authorities - party must collectively decide how to manage compromised colleague
+\end{enumerate}
+
+\subsection{Resource Management - Investigation Points and Evidence}
+
+\textbf{Acquisition Methods:}
+\begin{itemize}
+\item Case setup (2 base points per case)
+\item Successful investigation rolls (1 point per success)
+\item Diamond card rewards from case resolution
+\item XP conversion (2 Boons = 1 XP, max 2 per session)
+\end{itemize}
+
+\textbf{Spending Options:}
+\begin{itemize}
+\item Automatic success on investigation actions (1 point per use)
+\item Evidence preservation and enhancement
+\item Information brokerage with contacts
+\item Emergency rerolls in critical situations
+\end{itemize}
+
+\textbf{Narrative Weight:} Players must choose between immediate investigative advantages and long-term case building.
+
+\subsection{Risk/Reward Balance}
+
+\textbf{Safe Choices:}
+\begin{itemize}
+\item Surface-level investigation with minimal personal exposure
+\item Conservative approach with reduced Investigation Point economy (-1 die penalties)
+\item Avoiding direct confrontation with dangerous elements
+\end{itemize}
+
+\textbf{Risky Choices:}
+\begin{itemize}
+\item Deep investigation with significant personal cost
+\item Direct engagement with criminal elements
+\item Pursuing sensitive information at personal risk
+\item +1-2 Vice segments, evidence contamination risks
+\end{itemize}
+
+\textbf{Failure States:}
+\begin{itemize}
+\item Case collapse due to evidence loss or witness intimidation
+\item Personal reputation damage affecting future cases
+\item Legal consequences requiring character retirement
+\item Character transformation into antagonist
+\end{itemize}
+
+\section{Campaign Clock Framework}
+
+\subsection{Primary Clock: Case Clock (4-10 segments)}
+
+Progress toward case resolution and complications affecting investigation timeline.
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Case Clock} & \textbf{Progress toward case resolution and complications} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet 0/4 (for 2-5 cards) \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Advancement Triggers:}
+\begin{itemize}
+\item Time pressure elements (2-5 cards): +1 segment per day/scene
+\item Complication cards (6-10): +1 segment
+\item Major complications (J/Q/K): +2 segments
+\item Twists/Aces: +3 segments or immediate crisis
+\end{itemize}
+
+\textbf{Consequences when filled:} Case reaches critical point - resolution required, evidence destroyed, witness lost, or personal crisis.
+
+\subsection{Secondary Clocks}
+
+\subsubsection{Vice Clock (4 segments per vice)}
+
+Character personal flaw progression affecting performance and judgment.
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Vice Clock} & \textbf{Character personal flaw progression} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet 0/4 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Triggers:}
+\begin{itemize}
+\item Temptation situations: +1 segment per scene (automatic)
+\item Resisted advancement with 1 Boon
+\item Cleared with 2 Boons (1 segment reduction)
+\end{itemize}
+
+\textbf{Consequences:} Increasing penalties to rolls, CP generation, crisis states requiring immediate attention.
+
+\subsubsection{Pressure Clock (6-8 segments)}
+
+External forces complicating investigation through authority/criminal interference.
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Pressure Clock} & \textbf{External forces complicating investigation} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/6 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Triggers:}
+\begin{itemize}
+\item Authority interference: +1 segment
+\item Media attention: +1 segment
+\item Criminal retaliation: +2 segments
+\item Personal threats: +2 segments
+\end{itemize}
+
+\textbf{Consequences:} Reduced investigation options, increased danger, forced resolution paths.
+
+\subsubsection{Reputation Clock (8 segments)}
+
+Professional/social standing effects on future opportunities and contact cooperation.
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Reputation Clock} & \textbf{Professional/social standing effects} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/8 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Triggers:}
+\begin{itemize}
+\item Ethical compromises: +1 segment
+\item Successful cases: +1 segment
+\item Public exposure: +2 segments
+\item Scandals: +3 segments
+\end{itemize}
+
+\textbf{Consequences:} Future case difficulty, contact availability, authority cooperation levels.
+
+\subsection{Clock Interaction}
+
+Case Clock drives other clocks; as it advances, Pressure and Reputation clocks accelerate. High Vice segments make Case advancement faster due to compromised judgment.
+
+\section{Character Integration System}
+
+\subsection{Thematic Character Options}
+
+\subsubsection{Professional Archetypes}
+
+\textbf{Private Investigator:}
+\begin{itemize}
+\item +1 Investigation, +1 Subterfuge
+\item Access to information networks and contacts
+\item Vulnerable to authority interference and legal complications
+\end{itemize}
+
+\textbf{Rogue Cop:}
+\begin{itemize}
+\item +1 Command, +1 Intimidation
+\item Authority cooperation bonus but complications with criminal elements
+\item Vulnerable to internal affairs investigations
+\end{itemize}
+
+\textbf{Street Samurai:}
+\begin{itemize}
+\item +1 Melee/Brawl, +1 Stealth
+\item Combat training and discipline but -1 social rolls due to reputation
+\item Vulnerable to legal consequences and authority attention
+\end{itemize}
+
+\textbf{Socialite:}
+\begin{itemize}
+\item +1 Presence, +1 Insight
+\item Access to high society information and resources
+\item Vulnerable to blackmail and family scandals
+\end{itemize}
+
+\textbf{Hacker:}
+\begin{itemize}
+\item +1 Technology, +1 Investigation (digital)
+\item Access to digital information and surveillance systems
+\item Vulnerable to physical confrontations and legal consequences
+\end{itemize}
+
+\subsection{Background Integration}
+
+\textbf{Criminal Past:}
+\begin{itemize}
+\item Start with 1 Vice segment
+\item Gain +1 die to intimidation/social manipulation
+\item Vulnerable to law enforcement attention and blackmail
+\end{itemize}
+
+\textbf{Police Connections:}
+\begin{itemize}
+\item Authority cooperation bonus (+1 die)
+\item Creates complications with criminal elements
+\item Vulnerable to internal investigations and ethical conflicts
+\end{itemize}
+
+\textbf{Wealthy Family:}
+\begin{itemize}
+\item Resources and contacts (+1 Investigation Point base)
+\item Vulnerable to family scandals and expectations
+\item May attract unwanted attention from criminals
+\end{itemize}
+
+\textbf{Military Veteran:}
+\begin{itemize}
+\item Combat training and discipline (+1 Melee/Brawl)
+\item PTSD triggers and trust issues (Psychological Vice risk)
+\item May have valuable insider knowledge but legal restrictions
+\end{itemize}
+
+\subsection{Mechanical Hooks}
+
+\subsubsection{Vice Management}
+
+Each character starts with 1-4 Vice segments based on card draw:
+\begin{itemize}
+\item Jack Draw: 1 segment
+\item Queen Draw: 2 segments
+\item King Draw: 3 segments  
+\item Ace Draw: 4 segments (immediate crisis scene)
+\end{itemize}
+
+\subsubsection{Investigation Specialties}
+
+Characters can become experts in specific investigation types:
+\begin{itemize}
+\item Surveillance Specialist: +1 die to Stealth-based investigation
+\item Interrogation Expert: +1 die to Insight-based social rolls
+\item Evidence Analyst: +1 die to Perception-based scene examination
+\item Digital Investigator: +1 die to Technology-based research
+\item Street Network: +1 die to Subterfuge-based infiltration
+\end{itemize}
+
+\subsubsection{Reputation Modifiers}
+
+Professional standing affects case difficulty and contact availability:
+\begin{itemize}
+\item 0-2 segments: +1 die to investigation (respected professional)
+\item 3-5 segments: Standard investigation (mixed reputation)
+\item 6-8 segments: -1 die to investigation (questionable methods)
+\end{itemize}
+
+\subsubsection{Evidence Handling}
+
+Character skills affect evidence quality and preservation:
+\begin{itemize}
+\item Investigation 3+: Can improve evidence ratings by one grade
+\item Technology 3+: Digital evidence preservation bonus
+\item Perception 3+: Hidden evidence detection bonus
+\end{itemize}
+
+\section{Quick Setup Protocol}
+
+\subsection{30-Minute Campaign Launch}
+
+\textbf{Character Preparation:}
+\begin{itemize}
+\item Use pre-generated characters or build using 20-30 XP with noir-themed backgrounds
+\item Ensure party has mix of investigation, combat, and social capabilities
+\item Assign relevant Talents for noir engagement (Streetwise, Hardened, Smooth Talker)
+\end{itemize}
+
+\textbf{Core Conflict Establishment:}
+\begin{enumerate}
+\item Draw 3 cards (Spade=Crime, Heart=Person, Club=Complication) to establish case
+\item Identify highest rank for Case Clock size (2-5:4, 6-10:6, J/Q/K:8, A:10)
+\item Draw 1 Diamond for potential reward/motivation
+\end{enumerate}
+
+\textbf{Opening Scene Hook:}
+\begin{itemize}
+\item Immediate investigation opportunity with personal connection
+\item Time pressure element creating urgency
+\item Introduction to key NPC from Heart card
+\item First complication from Club card manifestation
+\end{itemize}
+
+\textbf{Primary Campaign Clock:}
+\begin{itemize}
+\item Case Clock based on highest card rank
+\item Each character draws Vice card for starting segments
+\item Start with 2 Investigation Points for immediate use
+\end{itemize}
+
+\textbf{Key Mechanical Tutorial:}
+\begin{itemize}
+\item Introduce Investigation Points through first investigation scene
+\item Demonstrate Vice Clock management through temptation scenario
+\item Show evidence rating system through clue discovery
+\item Establish district modifiers through environmental description
+\end{itemize}
+
+\subsection{Scaling Options}
+
+\subsubsection{One-Shot (1-2 sessions)}
+
+\begin{itemize}
+\item Single Case Clock with simplified complications
+\item 1-2 Vices per character for focused character development
+\item Simplified evidence system with basic A-F ratings
+\item Resolution focused on immediate case outcome
+\end{itemize}
+
+\subsubsection{Short Campaign (3-5 sessions)}
+
+\begin{itemize}
+\item Full Vice system with multiple potential vices
+\item Reputation/Pressure clocks creating ongoing consequences
+\item Evidence degradation system with daily tracking
+\item Interconnected cases with sequel hooks
+\end{itemize}
+
+\subsubsection{Extended Campaign (6+ sessions)}
+
+\begin{itemize}
+\item Multiple interconnected cases affecting city/region
+\item Character retirement/promotion options for broken PCs
+\item Permanent reputation effects influencing all future cases
+\item City-wide consequences from major case resolutions
+\end{itemize}
+
+\section{Environmental and Narrative Mechanics}
+
+\subsection{Setting-Driven Mechanics}
+
+\subsubsection{District Modifiers}
+
+Different city areas provide investigation bonuses/penalties:
+
+\textbf{Downtown/Core Business District:}
+\begin{itemize}
+\item Investigation: +1 Research, -1 Surveillance
+\item Social: +1 Interview (professional), -1 Infiltration
+\item Hazards: Security cameras, private security, high visibility
+\end{itemize}
+
+\textbf{Waterfront/Docks:}
+\begin{itemize}
+\item Investigation: +1 Surveillance, -1 Interview
+\item Social: +1 Intimidation, -2 Sway
+\item Hazards: Criminal presence, unsafe structures, limited lighting
+\end{itemize}
+
+\textbf{Residential/Suburbs:}
+\begin{itemize}
+\item Investigation: +1 Interview, -1 Infiltration
+\item Social: +1 Building Rapport, +1 Research (public records)
+\item Hazards: Nosy neighbors, home security, limited escape routes
+\end{itemize}
+
+\textbf{Entertainment District:}
+\begin{itemize}
+\item Investigation: +1 Infiltration, -1 Surveillance
+\item Social: +1 Social Engineering, -1 Direct Confrontation
+\item Hazards: Crowds, alcohol/drugs, transient population
+\end{itemize}
+
+\textbf{Industrial/Warehouse:}
+\begin{itemize}
+\item Investigation: +1 Scene Examination, -2 Interview
+\item Social: +2 Intimidation, -2 Sway
+\item Hazards: Physical danger, limited escape, noise cover
+\end{itemize}
+
+\subsubsection{Time and Weather Effects}
+
+\textbf{Time of Day:}
+\begin{itemize}
+\item \textbf{Daylight (6 AM - 6 PM):} +1 Scene Examination, -1 Surveillance
+\item \textbf{Twilight (6 AM/6 PM - 8 AM/8 PM):} Balanced conditions
+\item \textbf{Night (8 PM - 6 AM):} +1 Surveillance, -1 Interview
+\end{itemize}
+
+\textbf{Weather Conditions:}
+\begin{itemize}
+\item \textbf{Clear:} Standard conditions
+\item \textbf{Rain:} +1 Surveillance (fewer witnesses), -1 Scene Examination
+\item \textbf{Fog/Heavy Rain:} +2 Infiltration, -2 Interview
+\item \textbf{Snow:} +1 Tracking, -1 Chase Scenes
+\end{itemize}
+
+\subsection{Atmosphere Tools}
+
+\subsubsection{Urban Sensory Engagement}
+
+\textbf{Sound:}
+\begin{itemize}
+\item Traffic, sirens, whispered conversations
+\item Neon hum, footsteps in alleyways
+\item Jazz from clubs, arguments from apartments
+\item Surveillance equipment, construction noise
+\end{itemize}
+
+\textbf{Sight:}
+\begin{itemize}
+\item Neon reflections on wet pavement
+\item Shadow play between buildings
+\item Surveillance cameras on every corner
+\item Contrast between wealth and poverty districts
+\end{itemize}
+
+\textbf{Smell:}
+\begin{itemize}
+\item Coffee shops and diners
+\item Cigarettes and alcohol
+\item Rain on concrete and industrial chemicals
+\item Expensive perfumes vs. urban decay odors
+\end{itemize}
+
+\textbf{Touch:}
+\begin{itemize}
+\item Rough brick walls and fire escapes
+\item Polished lobby surfaces vs. grimy streets
+\item Cold metal of fire escapes and fences
+\item Expensive fabrics vs. worn clothing textures
+\end{itemize}
+
+\textbf{Taste:}
+\begin{itemize}
+\item Cheap diner coffee and pie
+\item Expensive restaurant food and wine
+\item Street vendor hot dogs and pretzels
+\item Cigarettes, alcohol, urban air quality
+\end{itemize}
+
+\subsection{Narrative Structure}
+
+\subsubsection{Scene Types}
+
+\textbf{Investigation:}
+\begin{itemize}
+\item Gathering clues, evidence collection, research
+\item Wits + Investigation or related skills with Investigation Point costs
+\item May generate CP for complications or Vice temptations
+\end{itemize}
+
+\textbf{Social Encounter:}
+\begin{itemize}
+\item Interviews, interrogations, negotiations
+\item Presence + Insight/Sway with position modifiers
+\item Vice Clock advancement opportunities for relevant characters
+\end{itemize}
+
+\textbf{Action Sequence:}
+\begin{itemize}
+\item Chases, combat, break-ins
+\item Standard Fate's Edge combat with urban environmental modifiers
+\item May trigger Pressure Clock advancement or Reputation changes
+\end{itemize}
+
+\textbf{Moral Choice:}
+\begin{itemize}
+\item Ethical dilemmas, compromise decisions, personal cost evaluations
+\item May trigger Vice Clock advancement or Reputation Clock changes
+\item Creates sequel hooks or character development opportunities
+\end{itemize}
+
+\subsubsection{Pacing Markers}
+
+\textbf{Sessions 1:}
+\begin{itemize}
+\item Case introduction with immediate hook
+\item Initial investigation establishing methods
+\item First complications and NPC introductions
+\item Vice temptation opportunities for character establishment
+\end{itemize}
+
+\textbf{Sessions 2-3:}
+\begin{itemize}
+\item Pattern recognition revealing deeper conspiracy
+\item Key revelations connecting case elements
+\item Major complications testing investigation progress
+\item Character development through Vice management
+\end{itemize}
+
+\textbf{Sessions 4+:}
+\begin{itemize}
+\item Climax with multiple resolution paths
+\item Consequences of previous choices becoming clear
+\item Character retirement/promotion opportunities
+\item Setup for sequel cases or campaign conclusion
+\end{itemize}
+
+\subsubsection{Resolution Formats}
+
+\textbf{Success States:}
+\begin{itemize}
+\item \textbf{The Professional:} Clean case resolution with minimal ethical compromise (12-15 XP)
+\item \textbf{The Reformed:} Case solved through moral growth and ethical choices (15-18 XP)
+\item \textbf{The Pragmatist:} Effective resolution through necessary compromises (10-13 XP)
+\end{itemize}
+
+\textbf{Failure States:}
+\begin{itemize}
+\item \textbf{The Fallen:} Case resolution through corruption and ethical abandonment (8-10 XP, character change)
+\item \textbf{The Broken:} Personal/case failure leading to character retirement (5-8 XP)
+\item \textbf{The Framed:} Success achieved but at cost of personal freedom/reputation (10-12 XP, ongoing complications)
+\end{itemize}
+
+\textbf{Partial Success:}
+\begin{itemize}
+\item \textbf{The Compromise:} Partial resolution with significant ongoing issues (12-15 XP)
+\item \textbf{The Sacrifice:} Success achieved through personal loss or ethical compromise (13-16 XP)
+\end{itemize}
+
+\textbf{Pyrrhic Victory:}
+\begin{itemize}
+\item \textbf{The Cost:} Complete success with devastating personal/professional consequences (15-18 XP, major changes)
+\end{itemize}
+
+\section{GM Toolkit}
+
+\subsection{Session Preparation Checklist}
+
+\begin{itemize}
+\item \framebox{Draw case cards and establish Case Clock}
+\item \framebox{Prepare key NPCs with motivations and secrets}
+\item \framebox{Plan 2-3 investigation scenes with different approach options}
+\item \framebox{Identify Vice temptation opportunities for each character}
+\item \framebox{Prepare environmental complications (1 CP each)}
+\item \framebox{Set up resolution paths with different consequences}
+\item \framebox{Prepare sensory descriptions for atmosphere building}
+\end{itemize}
+
+\subsection{Complication Generator}
+
+\subsubsection{Mild (1 CP)}
+\begin{itemize}
+\item Key witness disappears before interview
+\item Evidence contaminated or destroyed
+\item Surveillance detected by subject
+\item Unexpected phone call interrupts investigation
+\item Power outage in investigation area
+\end{itemize}
+
+\subsubsection{Moderate (2 CP)}
+\begin{itemize}
+\item Media attention escalates case profile
+\item Police obstruction or investigation begins
+\item Technology fails during critical moment
+\item Informant goes silent or changes story
+\item Traffic accident blocks access routes
+\end{itemize}
+
+\subsubsection{Serious (3 CP)}
+\begin{itemize}
+\item Crime scene compromised by unauthorized personnel
+\item New suspect emerges with solid alibi for original suspect
+\item Evidence chain of custody broken
+\item Personal connection to case compromised
+\item Authority figures demand case details
+\end{itemize}
+
+\subsubsection{Major (4+ CP)}
+\begin{itemize}
+\item Alibi checks out completely, eliminating primary suspect
+\item Personal relationship compromised through blackmail
+\item Authority investigation begins into investigator conduct
+\item Key evidence revealed to be planted or fabricated
+\item Innocent person implicated requiring case restart
+\end{itemize}
+
+\subsection{Player Agency Reminders}
+
+\textbf{Handling Unexpected Approaches:}
+\begin{itemize}
+\item Embrace creativity but maintain noir consequences
+\item Adapt investigation paths to player innovations
+\item Allow success but with appropriate complications
+\item Provide multiple valid paths to objectives
+\end{itemize}
+
+\textbf{When to Push Back:}
+\begin{itemize}
+\item Only when player choices would break core noir themes
+\item When actions would eliminate all tension or challenge
+\item When safety/pacing requires narrative redirection
+\item When mechanical balance needs preservation
+\end{itemize}
+
+\textbf{Maintaining Tension:}
+\begin{itemize}
+\item Use clock advancement and Vice temptations rather than adversarial GMing
+\item Provide meaningful choices with real consequences
+\item Balance hope and despair throughout campaign
+\item Let player decisions drive case complications
+\end{itemize}
+
+\section{Experience and Resolution Systems}
+
+\subsection{Experience Awards}
+
+\textbf{Participation:}
+\begin{itemize}
+\item +2 XP per session attendance
+\item +1 XP for meaningful noir engagement
+\item +1 XP for contributing to atmospheric tension
+\end{itemize}
+
+\textbf{Thematic Play:}
+\begin{itemize}
+\item +1-2 XP for meaningful noir engagement
+\item +1 XP for playing character's vices appropriately
+\item +2 XP for embracing moral ambiguity consequences
+\end{itemize}
+
+\textbf{Risk Taking:}
+\begin{itemize}
+\item +1-3 XP for choosing dangerous investigative paths
+\item +2 XP for resisting Vice temptations at cost
+\item +1 XP for pursuing sensitive information
+\end{itemize}
+
+\textbf{Vice Management:}
+\begin{itemize}
+\item +1-2 XP for successfully managing character flaws
+\item +1 XP for partial Vice resistance with consequences
+\item +3 XP for transforming Vice into character growth
+\end{itemize}
+
+\textbf{Narrative Contribution:}
+\begin{itemize}
+\item +1-2 XP for creating memorable noir moments
+\item +1 XP for contributing to group investigation success
+\item +2 XP for defining campaign's central noir theme
+\end{itemize}
+
+\section{Modular Design Elements}
+
+\subsection{Plug-and-Play Components}
+
+\textbf{Vice Clock System:}
+\begin{itemize}
+\item Works independently in any character-driven campaign
+\item Scalable segment counts for different campaign lengths
+\item Compatible with existing Boon economy
+\end{itemize}
+
+\textbf{Investigation Procedures:}
+\begin{itemize}
+\item Enhance any mystery/investigation scenario
+\item Modular action types with different skill requirements
+\item Integration with resource management systems
+\end{itemize}
+
+\textbf{Evidence Rating System:}
+\begin{itemize}
+\item Adds depth to clue management in any investigation
+\item Scalable complexity from simple A-F to detailed tracking
+\item Creates meaningful choices about evidence preservation
+\end{itemize}
+
+\textbf{District Modifiers:}
+\begin{itemize}
+\item Can enhance any urban setting
+\item Modular effects based on campaign tone
+\item Compatible with existing environmental hazards
+\end{itemize}
+
+\subsection{Cross-Expansion Compatibility}
+
+\textbf{Horror Expansion:}
+\begin{itemize}
+\item Psychological breaking points enhance moral ambiguity
+\item Investigation procedures complement horror clue gathering
+\item Urban atmosphere supports noir horror settings
+\end{itemize}
+
+\textbf{Cyberpunk Expansion:}
+\begin{itemize}
+\item Corporate conspiracy elements in case backgrounds
+\item Technology investigation skills enhance digital forensics
+\item Character corruption parallels cybernetic augmentation
+\end{itemize}
+
+\textbf{Fantasy Expansion:}
+\begin{itemize}
+\item Urban political intrigue mirrors noir social dynamics
+\item Investigation procedures work with magical clues
+\item Character vices enhance moral complexity in fantasy
+\end{itemize}
+
+\subsection{Power Scaling}
+
+\textbf{Lower Tiers (Rookie/Seasoned):}
+\begin{itemize}
+\item Reduced Vice penalties and simpler crisis states
+\item More Investigation Points for easier case progression
+\item Fewer environmental complications and modifiers
+\item More recovery options for clock advancement
+\end{itemize}
+
+\textbf{Higher Tiers (Veteran/Paragon):}
+\begin{itemize}
+\item Increased corruption risks and severe Vice consequences
+\item Complex moral choices with no clear right answers
+\item Harsher environmental modifiers and complications
+\item Permanent consequences for filled clocks and broken characters
+\end{itemize}
+
+\textbf{New Players:}
+\begin{itemize}
+\item Streamlined systems with fewer clocks
+\item Clearer resolution paths and guidance
+\item Reduced penalties for high Vice states
+\item More safety mechanisms and recovery options
+\end{itemize}
+
+\textbf{Experienced Players:}
+\begin{itemize}
+\item Additional complications and harsher consequences
+\item Fewer safety mechanisms and more permanent effects
+\item Integration with existing campaign threads and consequences
+\item Character retirement/promotion options for extreme states
+\end{itemize}
+
+\section{Quick Reference Appendix}
+
+\subsection{Investigation Actions}
+
+\textbf{Core Actions (Use Fate's Edge dice pool):}
+\begin{itemize}
+\item \textbf{Surveillance:} Wits + Stealth (DV 2-4)
+\item \textbf{Interview:} Presence + Insight (DV 1-3)
+\item \textbf{Research:} Wits + Investigation (DV 2-3)
+\item \textbf{Scene Exam:} Wits + Perception (DV 1-4)
+\item \textbf{Infiltration:} Wits + Subterfuge (DV 3-4)
+\end{itemize}
+
+\textbf{Position Effects:}
+\begin{itemize}
+\item \textbf{Controlled:} +1 effect or re-roll 1s
+\item \textbf{Risky:} Standard resolution
+\item \textbf{Desperate:} -1 effect or lose re-roll
+\end{itemize}
+
+\textbf{Investigation Points:} Spend 1 to automatically succeed on any action (once per scene)
+
+\subsection{Vice Clock Quick Reference}
+
+\textbf{Vice Clock Management:}
+\begin{itemize}
+\item \textbf{1 Boon:} Prevent Vice Clock from incrementing this scene
+\item \textbf{2 Boons:} Clear 1 segment from Vice Clock
+\item \textbf{4 Segments Full:} Draw new Vice card, apply fallout, reset clock
+\end{itemize}
+
+\textbf{Vice Clock Penalties:}
+\begin{itemize}
+\item \textbf{1 Segment:} +1 CP on vice-related rolls
+\item \textbf{2 Segments:} +2 CP, -1 die to resist vice
+\item \textbf{3 Segments:} +3 CP, -2 dice, 1 Boon per session to function
+\item \textbf{4 Segments:} +4 CP, -3 dice, no Boon spending until resolved
+\end{itemize}
+
+\subsection{District Modifiers Quick Reference}
+
+\textbf{Downtown/Core Business District:}
+\begin{itemize}
+\item Investigation: +1 Research, -1 Surveillance
+\item Social: +1 Interview (professional), -1 Infiltration
+\item Hazards: Security cameras, private security, high visibility
+\end{itemize}
+
+\textbf{Waterfront/Docks:}
+\begin{itemize}
+\item Investigation: +1 Surveillance, -1 Interview
+\item Social: +1 Intimidation, -2 Sway
+\item Hazards: Criminal presence, unsafe structures, limited lighting
+\end{itemize}
+
+\textbf{Residential/Suburbs:}
+\begin{itemize}
+\item Investigation: +1 Interview, -1 Infiltration
+\item Social: +1 Building Rapport, +1 Research (public records)
+\item Hazards: Nosy neighbors, home security, limited escape routes
+\end{itemize}
+
+\textbf{Quick Complications (1 CP each):}
+\begin{itemize}
+\item Key witness disappears
+\item Evidence is contaminated
+\item Media attention escalates
+\item Police obstruction
+\item Surveillance detected
+\item Informant goes silent
+\item Crime scene compromised
+\item New suspect emerges
+\item Alibi checks out
+\item Technology fails
+\item Vice temptation appears
+\item Personal connection compromised
+\end{itemize}
+
+\subsection{Case Clock Setup}
+
+\textbf{Card Rank to Clock Size:}
+\begin{itemize}
+\item \textbf{2-5:} 4 segments (simple case)
+\item \textbf{6-10:} 6 segments (moderate complexity)
+\item \textbf{J/Q/K:} 8 segments (complex case)
+\item \textbf{A:} 10 segments (twist case)
+\end{itemize}
+
+\textbf{Evidence Rating System:}
+\begin{itemize}
+\item \textbf{A+:} Unimpeachable - direct observation, clear documentation
+\item \textbf{A:} Strong - solid documentation, reliable witness
+\item \textbf{B:} Good - circumstantial but compelling
+\item \textbf{C:} Fair - circumstantial, questionable reliability
+\item \textbf{D:} Weak - hearsay, speculation
+\item \textbf{F:} Unreliable - contradicted, obtained illegally
+\end{itemize}
+
+\section{Design Philosophy Requirements}
+
+\subsection{Must Include Elements}
+
+\textbf{Meaningful Player Choice:}
+\begin{itemize}
+\item Every major decision (investigation approach, ethical choices, risk level) has clear, lasting consequences
+\item Multiple valid approaches to case obstacles (investigation, combat, social, flight)
+\item Character-specific Vice temptations that reflect individual backgrounds and flaws
+\item Resolution paths that reward different play styles and thematic choices
+\end{itemize}
+
+\textbf{Mechanical-Theme Integration:}
+\begin{itemize}
+\item Vice Clock system directly serves noir themes of moral ambiguity and self-destruction
+\item Investigation Point economy reinforces information-as-currency themes
+\item Evidence rating system mirrors the fragility of truth in noir
+\item District modifiers embody the city-as-character concept
+\end{itemize}
+
+\textbf{Gradual Complexity:}
+\begin{itemize}
+\item Introduce systems gradually across sessions (Investigation Points → Vice Clock → Evidence System)
+\item Start with basic case management before adding secondary clocks
+\item Reveal complex district effects as campaign progresses
+\item Scale Vice consequences with character development
+\end{itemize}
+
+\textbf{Multiple Valid Approaches:}
+\begin{itemize}
+\item Investigation, combat, and social solutions all viable with different risk/reward profiles
+\item Different character archetypes can contribute meaningfully to case resolution
+\item Multiple resolution paths that reward different campaign approaches
+\item Adaptive case responses to player innovations
+\end{itemize}
+
+\textbf{Character Spotlights:}
+\begin{itemize}
+\item Each session provides opportunities for different character types
+\item Investigation specialists excel with research and surveillance
+\item Social characters shine during interviews and negotiations
+\item Combat characters handle action sequences and intimidation
+\end{itemize}
+
+\textbf{Clear Continuation Hooks:}
+\begin{itemize}
+\item Win or lose, cases create sequel opportunities or ongoing consequences
+\item Partial clock fills create regional reputation effects
+\item Character Vice development provides campaign-long arcs
+\item Case resolutions affect future investigation difficulty
+\end{itemize}
+
+\subsection{Should Avoid Elements}
+
+\textbf{Railroading:}
+\begin{itemize}
+\item Player choices genuinely matter to case outcomes
+\item Multiple resolution paths with different consequences
+\item Varied investigation approaches leading to different revelations
+\item Adaptive case responses to player innovations
+\end{itemize}
+
+\textbf{Information Dumps:}
+\begin{itemize}
+\item Lore emerges through investigation and social interaction
+\item Case details revealed through player actions rather than exposition
+\item NPC motivations discovered through interviews and observation
+\item Evidence guides investigation rather than railroading
+\end{itemize}
+
+\textbf{Mechanical Bloat:}
+\begin{itemize}
+\item New systems enhance rather than complicate core mechanics
+\item Vice Clock integrates with existing Boon economy
+\item Investigation procedures use standard resolution with thematic modifiers
+\item Clock interactions follow logical cause-and-effect relationships
+\end{itemize}
+
+\textbf{Unwinnable States:}
+\begin{itemize}
+\item Even failure leads to interesting continuation
+\item Partial success provides ongoing character development
+\item Case collapse creates sequel campaign hooks
+\item Character transformation offers new adventure possibilities
+\end{itemize}
+
+\textbf{Generic Elements:}
+\begin{itemize}
+\item Every location, NPC, and encounter serves noir themes
+\item District modifiers reinforce urban atmosphere concepts
+\item Vice temptations reflect core noir character flaws
+\item Case complications embody moral ambiguity themes
+\end{itemize}
+
+\subsection{Excellence Indicators}
+
+\textbf{Innovative but Accessible:}
+\begin{itemize}
+\item New mechanics (Vice Clock, Investigation Points) feel natural to noir genre
+\item Integration with existing Boon economy maintains system familiarity
+\item Scalable complexity allows for gradual learning curve
+\item Clear mechanical procedures support narrative noir themes
+\end{itemize}
+
+\textbf{Thematic Consistency:}
+\begin{itemize}
+\item Every element reinforces core themes (moral ambiguity, urban isolation, information currency)
+\item Clock names and effects directly relate to noir concepts
+\item Vice temptations reflect psychological and moral noir themes
+\item Resolution paths embody different noir story archetypes
+\end{itemize}
+
+\textbf{Scalable Design:}
+\begin{itemize}
+\item Works for different group sizes and experience levels
+\item Streamlined clocks for new players maintain core tension
+\item Extended campaign options for experienced groups
+\item Modular components work independently or together
+\end{itemize}
+
+\textbf{Prep-Efficient:}
+\begin{itemize}
+\item GM can run with minimal preparation using card systems
+\item Checklist provided for session preparation
+\item Index cards suggested for quick reference during play
+\item Generator systems reduce prep time for new cases
+\end{itemize}
+
+\textbf{Session-Sized Beats:}
+\begin{itemize}
+\item Clear goals and climaxes for each session
+\item Investigation setup provides session foundation
+\item Key revelations create mid-campaign tension
+\item Case resolution drives session conclusion
+\end{itemize}
+
+\textbf{Player Agency Documentation:}
+\begin{itemize}
+\item Clear guidance on handling unexpected choices
+\item Embrace creativity while maintaining noir elements
+\item Provide multiple valid approaches to case obstacles
+\item Maintain tension through consequences rather than adversarial GMing
+\end{itemize}
+
+\section{Modern Noir Deck Generators}
+
+
+
+\section{Modern Noir Deck Generators}
+
+\subsection{Quick Case System}
+
+\textbf{Core Investigation Mechanics}
 
 \textbf{One-Shot Case Framework (Designed for 2-3 hour sessions):}
 
@@ -173,13 +1228,87 @@
 \end{itemize}
 
 \textbf{Evidence Degradation:} Each day without follow-up reduces evidence quality by one grade
-\end{section}
 
-\newpage
+\subsection{52-Card Investigation Deck}
 
-\section{Vice Clock System}
+\subsubsection{Spades (Crime/Incident)}
+\begin{itemize}
+    \item 2. Stolen briefcase with confidential files
+    \item 3. Hit-and-run accident with no witnesses
+    \item 4. Break-in at a high-end art gallery
+    \item 5. Corporate espionage discovered too late
+    \item 6. Disappearance during a business trip
+    \item 7. Blackmail attempt on a public figure
+    \item 8. Forgery scheme unraveling publicly
+    \item 9. Witness intimidation before trial
+    \item 10. Evidence tampering in a murder case
+    \item J. Corporate embezzlement scheme
+    \item Q. Political scandal about to break
+    \item K. Murder covered as suicide
+    \item A. Case is actually an elaborate setup
+\end{itemize}
 
-\subsection*{\faHeartBroken\ Personal Demons}
+\subsubsection{Hearts (Person)}
+\begin{itemize}
+    \item 2. Anxious secretary with hidden knowledge
+    \item 3. Wealthy socialite with a dark past
+    \item 4. Veteran security guard with PTSD
+    \item 5. Ambitious assistant with their own agenda
+    \item 6. Retired detective turned private consultant
+    \item 7. Tech genius with social anxiety
+    \item 8. Politician's spouse with secrets
+    \item 9. Former criminal trying to go straight
+    \item 10. Journalist investigating corruption
+    \item J. Disgraced lawyer seeking redemption
+    \item Q. Corrupt police captain
+    \item K. Crime boss's estranged child
+    \item A. The person you trust most is involved
+\end{itemize}
+
+\subsubsection{Clubs (Complication)}
+\begin{itemize}
+    \item 2. Time pressure - evidence disappears at midnight
+    \item 3. Multiple suspects all have solid alibis
+    \item 4. Key witness is afraid to talk
+    \item 5. Crime scene was compromised
+    \item 6. Someone is following your investigation
+    \item 7. Crucial evidence is in a restricted area
+    \item 8. Media attention making things difficult
+    \item 9. Police are obstructing your work
+    \item 10. You're being framed for a crime
+    \item J. Someone is willing to kill to stop you
+    \item Q. The case connects to your personal past
+    \item K. Your client is lying to you
+    \item A. Solving this case will destroy someone you care about
+\end{itemize}
+
+\subsubsection{Diamonds (Reward/Resolution)}
+\begin{itemize}
+    \item 2. Substantial cash payment
+    \item 3. Access to exclusive social circles
+    \item 4. Professional reputation boost
+    \item 5. Crucial evidence in another case
+    \item 6. Protection from a dangerous person
+    \item 7. Information that clears your name
+    \item 8. A favor from a powerful figure
+    \item 9. Resolution of a personal matter
+    \item 10. Exposure of a major conspiracy
+    \item J. Choice of eliminating or recruiting a foe
+    \item Q. Control over a valuable resource
+    \item K. Complete vindication of your methods
+    \item A. The truth, no matter the personal cost
+\end{itemize}
+
+\subsection{Quick Setup Procedure}
+\begin{enumerate}
+    \item Draw 3 cards (Spade, Heart, Club)
+    \item Identify highest rank for Challenge Clock (2-5:4, 6-10:6, J/Q/K:8, A:10)
+    \item Draw 1 Diamond for potential reward
+    \item Start with 2 Investigation Points
+    \item Draw 1 Vice card to determine potential temptations
+\end{enumerate}
+
+\subsection{Vice Clock System}
 
 \textbf{Core Concept:}
 The Vice Clock represents your character's ongoing struggle with personal demons that threaten to undermine their professional life and moral compass. It's a mechanical representation of the noir protagonist's fatal flaw.
@@ -192,9 +1321,9 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Resolution:} Spend 2 Boons to clear 1 segment
 \end{itemize}
 
-\textbf{16-Card Vice Deck (Face Cards Only):}
+\subsection{16-Card Vice Deck (Face Cards Only)}
 
-\textbf{Hearts (Emotional Vice) - Red:}
+\subsubsection{Hearts (Emotional Vice) - Red:}
 \begin{itemize}
     \item \textbf{Jack:} "She's Trouble" - Compulsive contact with toxic relationships
     \item \textbf{Queen:} "Lover's Betrayal" - Romantic entanglements that compromise work
@@ -202,7 +1331,7 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Ace:} "Love Conquers All" - Catastrophic sacrifice for unworthy causes
 \end{itemize}
 
-\textbf{Spades (Physical Vice) - Black:}
+\subsubsection{Spades (Physical Vice) - Black:}
 \begin{itemize}
     \item \textbf{Jack:} "Nightcap" - Drinking affects performance and sleep
     \item \textbf{Queen:} "Hard Liquor" - Regular substance abuse impacts health
@@ -210,7 +1339,7 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Ace:} "Rock Bottom" - Overdose, withdrawal, or violent episodes
 \end{itemize}
 
-\textbf{Clubs (Professional Vice) - Black:}
+\subsubsection{Clubs (Professional Vice) - Black:}
 \begin{itemize}
     \item \textbf{Jack:} "Bent Rules" - Cutting corners attracts official scrutiny
     \item \textbf{Queen:} "Dirty Deals" - Taking bribes or compromising ethics
@@ -218,7 +1347,7 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Ace:} "Badge of Corruption" - Authority weaponized for personal gain
 \end{itemize}
 
-\textbf{Diamonds (Psychological Vice) - Red:}
+\subsubsection{Diamonds (Psychological Vice) - Red:}
 \begin{itemize}
     \item \textbf{Jack:} "Paranoid Tendencies" - Seeing threats, alienating allies
     \item \textbf{Queen:} "Trust Issues" - Inability to work effectively with others
@@ -226,7 +1355,7 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Ace:} "Psychotic Break" - Hallucinations, delusions, blackouts
 \end{itemize}
 
-\textbf{Vice Clock States:}
+\subsection{Vice Clock States}
 
 \textbf{1 Segment - Temptation:}
 \begin{itemize}
@@ -257,7 +1386,7 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item Start scenes with 3 banked CP related to this vice
 \end{itemize}
 
-\textbf{Vice Clock Management:}
+\subsection{Vice Clock Management}
 
 \textbf{Prevention (Ongoing):}
 \begin{itemize}
@@ -278,7 +1407,7 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item Reset clock based on new card (Jack=1, Queen=2, King=3, Ace=4)
 \end{enumerate}
 
-\textbf{Character Creation Integration:}
+\subsection{Character Creation Integration}
 
 \textbf{Starting Vice Clock Values:}
 \begin{itemize}
@@ -294,13 +1423,8 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item Other vices generate 1 CP each per scene regardless
     \item Managing multiple vices requires proportionally more resources
 \end{itemize}
-\end{section}
 
-\newpage
-
-\section{Quick NPC System}
-
-\subsection*{\faUsers\ Important Characters}
+\subsection{Quick NPC System}
 
 \textbf{The Femme Fatale:}
 \begin{itemize}
@@ -351,128 +1475,8 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Red Flags:} Sees investigation but won't approach directly; Has information that doesn't fit official narrative; Behaves nervously around certain topics or people; Knows details that suggest personal involvement
     \item \textbf{Potential Roles:} Witness, reluctant informant, accidental victim, or key to breakthrough
 \end{itemize}
-\end{section}
 
-\newpage
-
-\section{Urban Environment Mechanics}
-
-\subsection*{\faCity\ City as Character}
-
-\textbf{District Atmosphere:}
-
-\textbf{Downtown/Core Business District:}
-\begin{itemize}
-    \item \textbf{Atmosphere:} Bright lights, busy streets, corporate power
-    \item \textbf{Investigation Modifiers:} +1 to Research, -1 to Surveillance
-    \item \textbf{Social Modifiers:} +1 to Interview (professional), -1 to Infiltration
-    \item \textbf{Hazards:} Security cameras, private security, high visibility
-\end{itemize}
-
-\textbf{Waterfront/Docks:}
-\begin{itemize}
-    \item \textbf{Atmosphere:} Industrial, dangerous, criminal activity
-    \item \textbf{Investigation Modifiers:} +1 to Surveillance, -1 to Interview
-    \item \textbf{Social Modifiers:} +1 to Intimidation, -2 to Sway
-    \item \textbf{Hazards:} Criminal presence, unsafe structures, limited lighting
-\end{itemize}
-
-\textbf{Residential/Suburbs:}
-\begin{itemize}
-    \item \textbf{Atmosphere:} Quiet, family-oriented, community watchful
-    \item \textbf{Investigation Modifiers:} +1 to Interview, -1 to Infiltration
-    \item \textbf{Social Modifiers:} +1 to Building Rapport, +1 to Research (public records)
-    \item \textbf{Hazards:} Nosy neighbors, home security, limited escape routes
-\end{itemize}
-
-\textbf{Entertainment District:}
-\begin{itemize}
-    \item \textbf{Atmosphere:} Neon, nightlife, temporary anonymity
-    \item \textbf{Investigation Modifiers:} +1 to Infiltration, -1 to Surveillance
-    \item \textbf{Social Modifiers:} +1 to Social Engineering, -1 to Direct Confrontation
-    \item \textbf{Hazards:} Crowds, alcohol/drugs, transient population
-\end{itemize}
-
-\textbf{Industrial/Warehouse:}
-\begin{itemize}
-    \item \textbf{Atmosphere:} Dangerous, isolated, heavy machinery
-    \item \textbf{Investigation Modifiers:} +1 to Scene Examination, -2 to Interview
-    \item \textbf{Social Modifiers:} +2 to Intimidation, -2 to Sway
-    \item \textbf{Hazards:} Physical danger, limited escape, noise cover
-\end{itemize}
-
-\textbf{Time and Weather Effects:}
-
-\textbf{Time of Day:}
-\begin{itemize}
-    \item \textbf{Daylight (6 AM - 6 PM):} +1 to Scene Examination, -1 to Surveillance
-    \item \textbf{Twilight (6 AM/6 PM - 8 AM/8 PM):} Balanced conditions
-    \item \textbf{Night (8 PM - 6 AM):} +1 to Surveillance, -1 to Interview
-\end{itemize}
-
-\textbf{Weather Conditions:}
-\begin{itemize}
-    \item \textbf{Clear:} Standard conditions
-    \item \textbf{Rain:} +1 to Surveillance (fewer witnesses), -1 to Scene Examination (evidence washed away)
-    \item \textbf{Fog/Heavy Rain:} +2 to Infiltration, -2 to Interview (people stay inside)
-    \item \textbf{Snow:} +1 to Tracking, -1 to Chase Scenes
-\end{itemize}
-
-\textbf{Quick Environmental Complications (1 CP each):}
-\begin{itemize}
-    \item Power outage in the area
-    \item Traffic accident blocks access routes
-    \item Sudden media attention on the case
-    \item Unexpected police presence
-    \item Witness becomes unavailable
-\end{itemize}
-\end{section}
-
-\newpage
-
-\section{Quick Combat System}
-
-\subsection*{\faFistRaised\ Violence in the Shadows}
-
-\textbf{Streamlined combat using Fate's Edge core mechanics:}
-
-\textbf{Position Modifiers:}
-\begin{itemize}
-    \item \textbf{Controlled:} Ambush, superior weapon, high ground (+1 effect)
-    \item \textbf{Risky:} Even match, standard conditions (standard resolution)
-    \item \textbf{Desperate:} Outnumbered, poor weapon, disadvantaged (-1 effect)
-\end{itemize}
-
-\textbf{Common Combat Actions:}
-\begin{itemize}
-    \item \textbf{Strike (Body + Melee/Brawl, DV 1-3):} Direct physical attack
-    \item \textbf{Shoot (Wits + Firearms, DV 2-4):} Ranged attack (distance/cover affects DV)
-    \item \textbf{Evade (Wits + Athletics, DV 2-3):} Avoid incoming attack
-    \item \textbf{Intimidate (Presence + Command, DV 2-3):} Psychological warfare
-\end{itemize}
-
-\textbf{Harm System (Simplified):}
-\begin{itemize}
-    \item \textbf{Minor (-):} Bruises, scrapes (1 CP on next 2 rolls)
-    \item \textbf{Moderate (=):} Cuts, sprains (1 CP next roll, -1 die)
-    \item \textbf{Severe ():} Broken bones, deep cuts (2 CP next roll, -2 dice)
-    \item \textbf{Critical (†):} Life-threatening (3 CP next roll, out of action)
-\end{itemize}
-
-\textbf{Quick Escalation:} Each 1 rolled in combat generates 1 CP that can be spent immediately by GM for:
-\begin{itemize}
-    \item Reinforcements arrive (+1 Pressure Clock segment)
-    \item Environment becomes hazardous (start Environmental Collapse clock)
-    \item Weapon malfunction (attacker suffers -1 die)
-    \item Unexpected betrayal (ally becomes hostile)
-\end{itemize}
-\end{section}
-
-\newpage
-
-\section{Sample Quick Cases}
-
-\subsection*{\faLightbulb\ Ready-to-Run Scenarios}
+\subsection{Sample Quick Cases}
 
 \textbf{The Missing Heirloom:}
 \begin{itemize}
@@ -509,396 +1513,14 @@ The Vice Clock represents your character's ongoing struggle with personal demons
     \item \textbf{Investigation Points:} Search the apartment for clues, interview neighbors, check financial records
     \item \textbf{Vice Clock Integration:} Players with Psychological Vice may become paranoid about the danger. Those with Physical Vice may turn to substances under pressure.
 \end{itemize}
-\end{section}
 
-\newpage
+This Modern Noir expansion provides GMs with flexible tools for running urban investigation campaigns while maintaining the mechanical elegance and player agency that defines Fate's Edge. Whether running a single-session case or an extended noir campaign, these tools ensure that moral ambiguity and personal consequences remain central to the experience.
 
-\section{Quick Session Framework}
+Remember that the best noir emerges from player investment in their characters' flaws and the urban environment around them. Use these mechanical tools to support narrative tension and character development, not replace them. The moral complexity of noir choices should feel meaningful and lasting.
 
-\subsection*{\faClock\ 3-Hour Session Structure}
-
-\textbf{Designed for maximum noir impact in minimal time:}
-
-\textbf{Opening (30 minutes):}
-\begin{enumerate}
-    \item Quick character check-in (any updates to relationships/resources?)
-    \item Case presentation (3-card draw, explain the hook)
-    \item Initial investigation setup (2 Investigation Points, identify first lead)
-    \item Vice Clock status check (any increments this session?)
-\end{enumerate}
-
-\textbf{Middle (90 minutes):}
-\begin{itemize}
-    \item 3-4 investigation scenes using core actions
-    \item 1-2 social encounters with key NPCs
-    \item 1 combat encounter if violence erupts
-    \item Advance Pressure Clock based on complications (2-3 segments)
-    \item Reveal 1-2 major clues or twists
-    \item Vice Clock increments and management opportunities
-\end{itemize}
-
-\textbf{Climax (45 minutes):}
-\begin{itemize}
-    \item Confrontation with primary suspect/antagonist
-    \item Resolution of central mystery
-    \item Moral choice or consequence for the protagonist
-    \item Vice Clock crisis resolution if applicable
-    \item Award XP based on Fate's Edge guidelines
-\end{itemize}
-
-\textbf{Closing (15 minutes):}
-\begin{itemize}
-    \item Brief aftermath scene
-    \item Character reflection on choices made
-    \item Tease next case or ongoing consequences
-    \item Award 1-2 XP for session participation
-    \item Update Vice Clocks for next session
-\end{itemize}
-
-\textbf{Quick XP Awards:}
-
-\textbf{Per Session:}
-\begin{itemize}
-    \item \textbf{+2 XP:} Table attendance
-    \item \textbf{+1-2 XP:} Major objective reached (case solved)
-    \item \textbf{+1 XP:} Discovery or lore unlocked (key clue found)
-    \item \textbf{+1-2 XP:} Hard choice embraced (moral decision made)
-    \item \textbf{+1 XP:} Complication spotlight (character moment)
-    \item \textbf{+1-2 XP:} Vice management or confrontation
-\end{itemize}
-
-\textbf{Quick Advancement:}
-\begin{itemize}
-    \item \textbf{Attributes:} New rating × 2 XP (reduced from standard)
-    \item \textbf{Skills:} New level × 1 XP (reduced from standard)
-    \item \textbf{Talents:} 3 XP each (reduced from standard)
-\end{itemize}
-
-\textbf{Special Noir Advancement:}
-\begin{itemize}
-    \item \textbf{Reputation:} Gain local notoriety (+1 to relevant social rolls in district)
-    \item \textbf{Contacts:} Establish new information source (1 free Investigation Point per session)
-    \item \textbf{Resources:} Acquire specialized equipment (one-time +1 to relevant rolls)
-    \item \textbf{Vice Management:} Learn coping strategies (reduce Vice Clock penalties)
-\end{itemize}
-\end{section}
-
-\newpage
-
-\section{Character Options}
-
-\subsection*{\faUser\ Quick Character Creation}
-
-\textbf{Quick Build Options (20 XP budget):}
-\begin{itemize}
-    \item \textbf{Private Eye:} Insight 3, Investigation 3, Firearms 2, Subterfuge 2
-    \item \textbf{Rogue Cop:} Athletics 3, Command 3, Firearms 2, Intimidation 2
-    \item \textbf{Street Samurai:} Melee 3, Athletics 3, Stealth 2, Technology 2
-    \item \textbf{Socialite:} Presence 3, Insight 3, Sway 2, Subterfuge 2
-    \item \textbf{Hacker:} Wits 3, Technology 3, Investigation 2, Stealth 2
-\end{itemize}
-
-\textbf{Noir Talents (3 XP each):}
-\begin{itemize}
-    \item \textbf{Hardened:} Immune to Intimidation attempts
-    \item \textbf{Streetwise:} +1 die to Investigation in urban environments
-    \item \textbf{Iron Will:} Re-roll one 1 on Spirit-based rolls per session
-    \item \textbf{Smooth Talker:} +1 die to Presence-based social rolls
-    \item \textbf{Shadow:} +1 die to Stealth-based actions in urban environments
-    \item \textbf{Vice Resistant:} Reduce Vice Clock penalty by 1 (minimum 0)
-    \item \textbf{Addict's Focus:} When Vice Clock is at 3+ segments, gain +1 die to related rolls
-\end{itemize}
-
-\textbf{Starting Resources:}
-\begin{itemize}
-    \item \textbf{Contacts:} 2 reliable sources of information
-    \item \textbf{Gear:} Choice of weapon, surveillance equipment, and \$500 cash
-    \item \textbf{Reputation:} Known in 1 urban district (Controlled position)
-    \item \textbf{Vice:} Draw 1 Vice card to determine starting flaw
-\end{itemize}
-
-\textbf{52-Card Investigation Deck (Standard Poker Deck):}
-\begin{itemize}
-    \item \textbf{Spades (Crime/Incident):} What happened
-    \item \textbf{Hearts (Person):} Who's involved
-    \item \textbf{Clubs (Complication):} What makes it difficult
-    \item \textbf{Diamonds (Reward/Resolution):} What's at stake
-\end{itemize}
-
-\textbf{Spades (Crime/Incident):}
-\begin{itemize}
-    \item 2. Stolen briefcase with confidential files
-    \item 3. Hit-and-run accident with no witnesses
-    \item 4. Break-in at a high-end art gallery
-    \item 5. Corporate espionage discovered too late
-    \item 6. Disappearance during a business trip
-    \item 7. Blackmail attempt on a public figure
-    \item 8. Forgery scheme unraveling publicly
-    \item 9. Witness intimidation before trial
-    \item 10. Evidence tampering in a murder case
-    \item J. Corporate embezzlement scheme
-    \item Q. Political scandal about to break
-    \item K. Murder covered as suicide
-    \item A. Case is actually an elaborate setup
-\end{itemize}
-
-\textbf{Hearts (Person):}
-\begin{itemize}
-    \item 2. Anxious secretary with hidden knowledge
-    \item 3. Wealthy socialite with a dark past
-    \item 4. Veteran security guard with PTSD
-    \item 5. Ambitious assistant with their own agenda
-    \item 6. Retired detective turned private consultant
-    \item 7. Tech genius with social anxiety
-    \item 8. Politician's spouse with secrets
-    \item 9. Former criminal trying to go straight
-    \item 10. Journalist investigating corruption
-    \item J. Disgraced lawyer seeking redemption
-    \item Q. Corrupt police captain
-    \item K. Crime boss's estranged child
-    \item A. The person you trust most is involved
-\end{itemize}
-
-\textbf{Clubs (Complication):}
-\begin{itemize}
-    \item 2. Time pressure - evidence disappears at midnight
-    \item 3. Multiple suspects all have solid alibis
-    \item 4. Key witness is afraid to talk
-    \item 5. Crime scene was compromised
-    \item 6. Someone is following your investigation
-    \item 7. Crucial evidence is in a restricted area
-    \item 8. Media attention making things difficult
-    \item 9. Police are obstructing your work
-    \item 10. You're being framed for a crime
-    \item J. Someone is willing to kill to stop you
-    \item Q. The case connects to your personal past
-    \item K. Your client is lying to you
-    \item A. Solving this case will destroy someone you care about
-\end{itemize}
-
-\textbf{Diamonds (Reward/Resolution):}
-\begin{itemize}
-    \item 2. Substantial cash payment
-    \item 3. Access to exclusive social circles
-    \item 4. Professional reputation boost
-    \item 5. Crucial evidence in another case
-    \item 6. Protection from a dangerous person
-    \item 7. Information that clears your name
-    \item 8. A favor from a powerful figure
-    \item 9. Resolution of a personal matter
-    \item 10. Exposure of a major conspiracy
-    \item J. Choice of eliminating or recruiting a foe
-    \item Q. Control over a valuable resource
-    \item K. Complete vindication of your methods
-    \item A. The truth, no matter the personal cost
-\end{itemize}
-
-\textbf{Quick Setup Procedure:}
-\begin{enumerate}
-    \item Draw 3 cards (Spade, Heart, Club)
-    \item Identify highest rank for Challenge Clock (2-5:4, 6-10:6, J/Q/K:8, A:10)
-    \item Draw 1 Diamond for potential reward
-    \item Start with 2 Investigation Points
-    \item Draw 1 Vice card to determine potential temptations
-\end{enumerate}
-\end{section}
-
-\newpage
-
-\section{Rogue's Gallery}
-
-\subsection*{\faSkull\ Recurring Antagonists}
-
-\textbf{The Fixer:}
-\begin{itemize}
-    \item \textbf{Type:} Information broker and problem solver
-    \item \textbf{Methods:} Blackmail, intimidation, network of contacts
-    \item \textbf{Motivation:} Power through control of information
-    \item \textbf{Signature:} Always wears expensive suits, speaks in calm tones
-    \item \textbf{Weakness:} Overconfidence, need for control, predictable routines
-    \item \textbf{Complication:} Knows secrets about everyone, including the investigators
-    \item \textbf{When to Use:} As employer, rival investigator, or final antagonist
-    \item \textbf{Vice Connection:} The Fixer often exploits investigators' vices, offering "solutions" that make problems worse.
-\end{itemize}
-
-\textbf{The Fallen Hero:}
-\begin{itemize}
-    \item \textbf{Type:} Former respected figure turned criminal
-    \item \textbf{Methods:} Using old skills and connections for illicit purposes
-    \item \textbf{Motivation:} Desperation, revenge, or protecting family
-    \item \textbf{Signature:} High skill level, moral conflict, tragic backstory
-    \item \textbf{Weakness:} Guilt, alcohol/drug dependency, emotional vulnerability
-    \item \textbf{Complication:} Still has allies who refuse to believe the truth
-    \item \textbf{When to Use:} As tragic antagonist, reluctant informant, or cautionary tale
-    \item \textbf{Vice Connection:} Represents what the investigators could become if they don't manage their vices.
-\end{itemize}
-
-\textbf{The Corporate Dragon:}
-\begin{itemize}
-    \item \textbf{Type:} High-level executive with dark secrets
-    \item \textbf{Methods:} Legal manipulation, hired muscle, financial pressure
-    \item \textbf{Motivation:} Protecting empire, eliminating threats, personal gain
-    \item \textbf{Signature:} Impeccable appearance, smooth talker, vast resources
-    \item \textbf{Weakness:} Public exposure, legal vulnerabilities, family concerns
-    \item \textbf{Complication:} Has connections in high places, can make problems disappear
-    \item \textbf{When to Use:} As hidden mastermind, client with ulterior motives, or final boss
-    \item \textbf{Vice Connection:} Embodies the corruption that Professional Vice characters risk becoming.
-\end{itemize}
-
-\textbf{The Street Prophet:}
-\begin{itemize}
-    \item \textbf{Type:} Underground figure with uncanny insight
-    \item \textbf{Methods:} Network of informants, pattern recognition, psychological manipulation
-    \item \textbf{Motivation:} Chaotic desire to "help" people see truth
-    \item \textbf{Signature:} Mysterious knowledge, cryptic warnings, appears when least expected
-    \item \textbf{Weakness:} Mental instability, isolation, obsession with patterns
-    \item \textbf{Complication:} Tells truth in ways that seem like lies, may be genuinely helpful
-    \item \textbf{When to Use:} As mysterious informant, plot catalyst, or unreliable ally
-    \item \textbf{Vice Connection:} May recognize and comment on investigators' vices, offering cryptic advice.
-\end{itemize}
-
-\textbf{The Ghost:}
-\begin{itemize}
-    \item \textbf{Type:} Professional who leaves no trace
-    \item \textbf{Methods:} Perfect planning, multiple identities, technological expertise
-    \item \textbf{Motivation:} Artistic perfection, ideological purity, or simple profit
-    \item \textbf{Signature:} Crimes with no evidence, witnesses who saw nothing, perfect timing
-    \item \textbf{Weakness:} Obsessive behavior, inability to work with others, pattern-based thinking
-    \item \textbf{Complication:} May admire investigators enough to play games with them
-    \item \textbf{When to Use:} As elusive serial criminal, master thief, or mysterious helper
-    \item \textbf{Vice Connection:} May represent the ultimate expression of Psychological Vice - complete detachment.
-\end{itemize}
-
-\textbf{Using the Rogue's Gallery:}
-
-\textbf{Quick Integration:}
-\begin{itemize}
-    \item \textbf{As Antagonist:} Direct opposition to investigation goals
-    \item \textbf{As Complication:} Creates obstacles without being the main villain
-    \item \textbf{As Wild Card:} May help or hinder depending on circumstances
-    \item \textbf{As Recurring Element:} Appears across multiple cases to build continuity
-\end{itemize}
-
-\textbf{Power Scaling:}
-\begin{itemize}
-    \item \textbf{Street Level:} Cap 2-3 followers, local influence
-    \item \textbf{Regional:} Cap 4 followers, city-wide connections
-    \item \textbf{Major:} Cap 5 followers, significant resources and protection
-\end{itemize}
-
-\textbf{Relationship Building:}
-\begin{itemize}
-    \item Start with Controlled (if helpful) or Desperate (if hostile) positions
-    \item Each interaction shifts relationship one step
-    \item Major betrayals or assistance can shift 2 steps
-    \item Relationships persist across cases with ongoing consequences
-\end{itemize}
-\end{section}
-
-\newpage
-
-\section{Quick Reference}
-
-\subsection*{\faBookmark\ At-a-Glance Cards}
-
-\textbf{Investigation Action Quick Reference:}
-
-\textbf{Core Actions (Use Fate's Edge dice pool):}
-\begin{itemize}
-    \item \textbf{Surveillance:} Wits + Stealth (DV 2-4)
-    \item \textbf{Interview:} Presence + Insight (DV 1-3)
-    \item \textbf{Research:} Wits + Investigation (DV 2-3)
-    \item \textbf{Scene Exam:} Wits + Perception (DV 1-4)
-    \item \textbf{Infiltration:} Wits + Subterfuge (DV 3-4)
-\end{itemize}
-
-\textbf{Position Effects:}
-\begin{itemize}
-    \item \textbf{Controlled:} +1 effect or re-roll 1s
-    \item \textbf{Risky:} Standard resolution
-    \item \textbf{Desperate:} -1 effect or lose re-roll
-\end{itemize}
-
-\textbf{Investigation Points:} Spend 1 to automatically succeed on any action (once per scene)
-
-\textbf{Vice Clock Quick Reference:}
-
-\textbf{Vice Clock Management:}
-\begin{itemize}
-    \item \textbf{1 Boon:} Prevent Vice Clock from incrementing this scene
-    \item \textbf{2 Boons:} Clear 1 segment from Vice Clock
-    \item \textbf{4 Segments Full:} Draw new Vice card, apply fallout, reset clock
-\end{itemize}
-
-\textbf{Vice Clock Penalties:}
-\begin{itemize}
-    \item \textbf{1 Segment:} +1 CP on vice-related rolls
-    \item \textbf{2 Segments:} +2 CP, -1 die to resist vice
-    \item \textbf{3 Segments:} +3 CP, -2 dice, 1 Boon per session to function
-    \item \textbf{4 Segments:} +4 CP, -3 dice, no Boon spending until resolved
-\end{itemize}
-
-\textbf{District Modifiers Quick Reference:}
-
-\textbf{Downtown/Core Business District:}
-\begin{itemize}
-    \item Investigation: +1 Research, -1 Surveillance
-    \item Social: +1 Interview (professional), -1 Infiltration
-    \item Hazards: Security cameras, private security, high visibility
-\end{itemize}
-
-\textbf{Waterfront/Docks:}
-\begin{itemize}
-    \item Investigation: +1 Surveillance, -1 Interview
-    \item Social: +1 Intimidation, -2 Sway
-    \item Hazards: Criminal presence, unsafe structures, limited lighting
-\end{itemize}
-
-\textbf{Residential/Suburbs:}
-\begin{itemize}
-    \item Investigation: +1 Interview, -1 Infiltration
-    \item Social: +1 Building Rapport, +1 Research (public records)
-    \item Hazards: Nosy neighbors, home security, limited escape routes
-\end{itemize}
-
-\textbf{Entertainment District:}
-\begin{itemize}
-    \item Investigation: +1 Infiltration, -1 Surveillance
-    \item Social: +1 Social Engineering, -1 Direct Confrontation
-    \item Hazards: Crowds, alcohol/drugs, transient population
-\end{itemize}
-
-\textbf{Industrial/Warehouse:}
-\begin{itemize}
-    \item Investigation: +1 Scene Examination, -2 Interview
-    \item Social: +2 Intimidation, -2 Sway
-    \item Hazards: Physical danger, limited escape, noise cover
-\end{itemize}
-
-\textbf{Quick Complications (1 CP each):}
-\begin{itemize}
-    \item Key witness disappears
-    \item Evidence is contaminated
-    \item Media attention escalates
-    \item Police obstruction
-    \item Surveillance detected
-    \item Informant goes silent
-    \item Crime scene compromised
-    \item New suspect emerges
-    \item Alibi checks out
-    \item Technology fails
-    \item Vice temptation appears
-    \item Personal connection compromised
-\end{itemize}
-
-\textbf{Session Structure:}
-\begin{itemize}
-    \item \textbf{Opening (30 min):} Character check-in, case presentation, initial setup, Vice status
-    \item \textbf{Middle (90 min):} Investigation scenes, social encounters, combat, Vice management
-    \item \textbf{Climax (45 min):} Confrontation, resolution, moral choice, Vice crisis if applicable
-    \item \textbf{Closing (15 min):} Aftermath, reflection, tease next case, Vice updates
-    \item \textbf{Total:} 3 hours for complete noir experience
-\end{itemize}
-\end{section}
+\begin{center}
+\textbf{In the shadows of the city, where neon lights cast long shadows and everyone has something to hide, the truth waits patiently. Will you find it? What will it cost you? Will you survive the consequences?}
+\end{center}
 
 \end{document}
+```

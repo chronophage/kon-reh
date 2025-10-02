@@ -1,918 +1,1021 @@
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{xcolor}
-\usepackage{enumitem}
-\usepackage{fontawesome5}
-\usepackage{titlesec}
-\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
 \usepackage{graphicx}
-\usepackage{tikz}
 \usepackage{fancyhdr}
-\usepackage{lastpage}
-\usepackage{mathpazo}
-\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{sectsty}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{needspace}
+\usepackage{parskip}
+\usepackage{fontawesome}
 
-% Color definitions
-\definecolor{aelinnelgreen}{RGB}{34, 139, 34}
-\definecolor{mathblue}{RGB}{30, 144, 255}
-\definecolor{faepurple}{RGB}{147, 112, 219}
-\definecolor{wondergold}{RGB}{255, 215, 0}
-\definecolor{logicalred}{RGB}{178, 34, 34}
-\definecolor{equationorange}{RGB}{255, 140, 0}
-\definecolor{proofgrey}{RGB}{105, 105, 105}
+\definecolor{shadecolor}{gray}{0.95}
+\definecolor{headercolor}{RGB}{30, 50, 100}
+\definecolor{accentcolor}{RGB}{70, 130, 180}
+\definecolor{tableheader}{RGB}{240, 240, 240}
 
-\titleformat{\section}{\color{faepurple}\Large\bfseries\filcenter}{}{0em}{}
-\titleformat{\subsection}{\color{proofgrey}\large\bfseries}{}{0em}{}
-
-\setlist{left=0pt}
-
-% Header and footer
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Aelinnel Mathematical Fae Campaign}
-\lhead{The Recursive Garden}
-\rfoot{Page \thepage\ of \pageref{LastPage}}
-\lfoot{Fate's Edge Aelinnel Expansion}
+\rhead{\thepage}
+\lhead{Fate's Edge: The Recursive Garden}
+\renewcommand{\headrulewidth}{0.4pt}
 
-\title{\Huge\textbf{The Recursive Garden}\\
-\Large A Fate's Edge Aelinnel Campaign\\
-\large Mathematical Logic Meets Fae Wonder}
-\author{}
-\date{}
+\sectionfont{\color{headercolor}\normalfont\fontsize{14}{16}\selectfont}
+\subsectionfont{\color{accentcolor}\normalfont\fontsize{12}{14}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{11}{13}\selectfont}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\geometry{margin=1in}
+
+\newenvironment{monsterentry}[1]{%
+  \begin{mdframed}[backgroundcolor=shadecolor, linewidth=0pt, leftmargin=0pt, rightmargin=0pt]%
+  \subsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newenvironment{mechanic}[1]{%
+  \begin{mdframed}[backgroundcolor=tableheader, linewidth=1pt, linecolor=accentcolor]%
+  \subsubsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newcommand{\dice}[1]{\texttt{#1}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accentcolor,
+    filecolor=magenta,      
+    urlcolor=accentcolor,
+}
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Huge\bfseries\color{headercolor} The Recursive Garden} 
+
+\vspace{0.5cm}
+
+{\Large\itshape A Mathematical Logic Horror Adventure Module for Fate's Edge}
+
+\vspace{2cm}
+
+\vspace{2cm}
+
+{\Large\bfseries Module Type: Cosmic Horror Adventure}
+
+\vspace{1cm}
+
+{\large Designed for 3-6 players, Tier II-III characters}
+
+\vspace{1cm}
+
+{\large Game Master's Guide Included}
+
+\vfill
+
+{\large 
+\textbf{Using the Deck System and Aelinnel Setting} \\
+\textbf{Featuring Entities from the Infinite Regress to the Null Set Hunger} \\
+\textbf{Incorporating Mathematical Horror Mechanics and Campaign Clocks}
+}
+
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+
+\subsection{Welcome to Aelinnel}
+
+In the fae realm of Aelinnel, where stone spires pierce moonlit groves and mathematical precision governs all, the PCs arrive as scholars, mathematicians, or logic-seekers in search of advanced geometries and numerical harmonies. What they find instead challenges the very foundations of logical thought as recursive principles begin to malfunction, threatening to unravel reality itself.
+
+This adventure module, "The Recursive Garden," challenges your players with mathematical horror where logic becomes the enemy and paradox is a weapon wielded by entities of pure conceptual existence.
+
+\subsection{Module Overview}
+
+\textbf{Adventure Hook:} The PCs are scholars, mathematicians, or logic-seekers who have been drawn to the fae realm of Aelinnel, renowned for its stone spires, moonlit groves, and the peculiar mathematical precision of its fae inhabitants.
+
+\textbf{Setting:} Aelinnel - fae realm of mathematical precision where logic and wonder intertwine.
+
+\textbf{Themes:} Recursive Logic, Mathematical Paradoxes, Fae Precision, Reality Distortion, Logical Puzzles
+
+\textbf{Tone:} Intellectual horror with existential dread. The beauty of mathematical truth becomes terrifying when it begins to contradict itself.
+
+\textbf{Recommended Character Tier:} Seasoned to Veteran (41-150 XP)
+
+\textbf{Estimated Play Time:} 3 sessions
+
+\section{The Recursive Garden - Setting the Scene}
+
+\subsection{What Lies Within These Mathematical Realms}
+
+Aelinnel stands as a monument to mathematical perfection, its fae inhabitants bound by precise logical frameworks that govern everything from the growth patterns of plants to the flow of time itself. But something has begun to malfunction - the very logic that governs fae magic is creating recursive paradoxes that threaten to unravel reality.
+
+The fae, bound by their own mathematical nature, cannot simply "fix" the problem without understanding its root cause. The PCs, as outsiders with different logical frameworks, may be the only ones who can perceive and resolve the recursive anomaly.
+
+\subsection{Key Characteristics}
+
+\begin{itemize}
+\item \textbf{Logical Precision:} Every aspect of reality follows mathematical principles with perfect consistency.
+\item \item \textbf{Recursive Patterns:} Natural and supernatural phenomena repeat in self-similar patterns that can become infinitely complex.
+\item \textbf{Conceptual Entities:} Mathematical and logical concepts exist as conscious beings with their own motivations.
+\item \textbf{Geometric Impossibility:} Spaces defy normal geometric principles, creating impossible architectural wonders.
+\item \textbf{Proof-Based Reality:} Established mathematical truths form the foundation of existence itself.
+\end{itemize}
+
+\subsection{Navigating the Mathematical Realm}
+
+Navigation in Aelinnel requires understanding both the logical landscape and the recursive nature of reality. The Deck System becomes crucial here, as each draw represents not just a random encounter but a meaningful mathematical or logical challenge that shapes the growing crisis.
+
+\section{Key NPCs and Entities}
+
+\subsection{The Garden Keeper}
+
+Logical Fae who maintains the mathematical precision of the Recursive Garden.
+
+\begin{monsterentry}{The Garden Keeper}
+\textbf{Threat Level:} Major \\
+\textbf{Harm:} Varies \\
+\textbf{Complication Points:} 2-3 CP per interaction \\
+\textbf{Description:} The Garden Keeper appears as an elegant fae figure whose form shifts according to mathematical principles. Their presence stabilizes logical patterns but they cannot perceive contradictions that align with fae nature. They may be the source of the anomaly through over-optimization. \\
+\textbf{Motivations:} Maintain the mathematical precision of the Recursive Garden \\
+\textbf{Abilities:}
+\begin{itemize}
+    \item Perfect Logic: Understanding of garden logic and recursive patterns
+    \item Pattern Stabilization: Can temporarily stabilize logical inconsistencies
+    \item Mathematical Perception: Sees reality through logical frameworks
+    \item Optimization Drive: Constantly seeks to improve logical efficiency
+\end{itemize}
+\textbf{Weaknesses:}
+\begin{itemize}
+\item Cannot perceive logical contradictions that align with fae nature
+\item Becomes confused by paradoxes that validate their optimization efforts
+\item Vulnerable to meta-mathematical attacks about their own logic
+\end{itemize}
+\textbf{Sample Encounter:} The Garden Keeper approaches the PCs seeking help with logical inconsistencies but their optimization efforts may be worsening the problem. The GM can spend their CP to:
+\begin{itemize}
+\item 1 CP: They reveal knowledge of the anomaly's origin
+\item 2 CP: Their attempts to "fix" something create new paradoxes
+\item 3 CP: They begin to show signs of logical corruption
+\item 4+ CP: They become part of the recursive anomaly itself
+\end{itemize}
+\end{monsterentry}
+
+\subsection{The Equation Hermit}
+
+Mad Mathematician obsessed with solving the ultimate recursive equation.
+
+\begin{monsterentry}{The Equation Hermit}
+\textbf{Threat Level:} Major \\
+\textbf{Harm:} \textgreater \\
+\textbf{Complication Points:} 2-3 CP per scene \\
+\textbf{Description:} The Equation Hermit appears as a disheveled figure covered in mathematical symbols and equations. Their obsession with the ultimate recursive equation may have caused the anomaly by feeding unsolved equations into the garden's core. \\
+\textbf{Motivations:} Solve the ultimate recursive equation that describes reality \\
+\textbf{Abilities:}
+\begin{itemize}
+\item Forbidden Knowledge: Access to dangerous mathematical concepts
+\item Computational Power: Ability to process complex recursive equations
+\item Equation Manipulation: Can alter mathematical truths through computation
+\item Obsessive Focus: Immune to distractions that don't involve mathematics
+\end{itemize}
+\textbf{Weaknesses:}
+\begin{itemize}
+\item Obsessed with the anomaly, may have caused it
+\item Becomes unstable when equations cannot be solved
+\item Vulnerable to logical contradictions about their own methods
+\end{itemize}
+\textbf{Sample Encounter:} The Equation Hermit offers the PCs access to forbidden mathematical knowledge but their obsession may lead them to worsen the crisis. The GM can spend their CP to:
+\begin{itemize}
+\item 1 CP: They provide crucial insights into the anomaly
+\item 2 CP: Their equations create new logical instabilities
+\item 3 CP: They attempt to recruit the PCs into their mathematical obsession
+\item 4+ CP: They become consumed by an unsolvable equation
+\end{itemize}
+\end{monsterentry}
+
+\section{Mathematical Horror Elements and Mechanics}
+
+\subsection{The Mathematical Sanity System}
+
+The Recursive Garden challenges not just physical survival but the very foundations of logical thought. Mathematical certainty becomes uncertain, and the pursuit of truth becomes a dangerous obsession.
+
+\begin{mechanic}{Mathematical Sanity as Resource Management}
+Mathematical sanity in Aelinnel is managed through the Boon system. Instead of traditional sanity points, players must spend Boons to prevent the Dread Clock from advancing. This creates a resource management challenge where players must choose between immediate tactical advantages and long-term logical coherence.
+\end{mechanic}
+
+\subsection{The Dread Clock}
 
 \begin{center}
-\begin{tikzpicture}[scale=0.8]
-\draw[aelinnelgreen, line width=2pt] (0,0) circle (1.5cm);
-\draw[mathblue, line width=2pt] (4,0) circle (1.5cm);
-\draw[faepurple, line width=2pt] (8,0) circle (1.5cm);
-\draw[wondergold, line width=2pt] (12,0) circle (1.5cm);
-\node at (0,0) {\faSquareRootAlt};
-\node at (4,0) {\faCrystal Computer};
-\node at (8,0) {\faHatWizard};
-\node at (12,0) {\faSeedling};
-\node[below, font=\small] at (0,-1.8) {Logic};
-\node[below, font=\small] at (4,-1.8) {Mathematics};
-\node[below, font=\small] at (8,-1.8) {Fae};
-\node[below, font=\small] at (12,-1.8) {Wonder};
-\end{tikzpicture}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Dread Clock} & \textbf{Psychological deterioration and mounting mathematical horror} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/10 \\
+\hline
+\end{tabular}
 \end{center}
 
-\section{Campaign Overview}
+\subsubsection{Advancement Triggers}
 
-\subsection*{\faMap\ Campaign Hook}
-
-\textbf{The Premise:} The PCs are scholars, mathematicians, or logic-seekers who have been drawn to the fae realm of Aelinnel, renowned for its stone spires, moonlit groves, and the peculiar mathematical precision of its fae inhabitants. They've come seeking knowledge of advanced geometries and numerical harmonies, but find instead that the very logic of this realm operates on recursive principles that challenge their understanding.
-
-\textbf{Real Hook:} Something in the Recursive Garden has begun to malfunction - the mathematical laws that govern fae magic are creating logical paradoxes that threaten to unravel reality itself. The fae, bound by their own mathematical nature, cannot simply "fix" the problem without understanding its root cause. The PCs, as outsiders with different logical frameworks, may be the only ones who can perceive and resolve the recursive anomaly.
-
-\textbf{Thematic Elements:} Recursive Logic, Mathematical Paradoxes, Fae Precision, Reality Distortion, Logical Puzzles
-
-\textbf{Key Mathematical Horror Elements:}
 \begin{itemize}
-    \item \textbf{Logical Decay:} Mathematical certainty becomes uncertain
-    \item \textbf{Recursive Traps:} Actions that loop infinitely
-    \item \textbf{Geometric Impossibility:} Spaces that defy Geomancerean logic
-    \item \textbf{Proof Collapse:} Established truths begin to contradict themselves
-    \item \textbf{Numerical Sentience:} Numbers that think and act with purpose
+\item Encountering logical paradox: +1 segment (prevent with 1 Boon)
+\item Witnessing mathematical proof fail: +2 segments (prevent with 2 Boons)
+\item Seeing fae logic contradict itself: +1 segment (prevent with 1 Boon)
+\item Direct contact with numerical entities: +2 segments (prevent with 2 Boons)
+\item Companion shows signs of logical corruption: +2 segments (prevent with 2 Boons)
+\item Comprehending incomprehensible mathematical truth: +3 segments (prevent with 3 Boons)
 \end{itemize}
 
-\section{Campaign Clocks}
+\subsubsection{Mathematical Psychological Effects by Dread Level}
 
-\subsection*{\faClock\ Core Campaign Clocks}
-
-\textbf{Logical Consistency Clock (12 segments):}
-How much the fundamental mathematical laws of Aelinnel have become inconsistent
-
-\textbf{Advancement Triggers:}
 \begin{itemize}
-    \item Paradox encountered: +1 segment
-    \item Mathematical proof fails: +2 segments
-    \item Fae logic contradicts itself: +1 segment
-    \item PCs attempt to "fix" without understanding: +2 segments
-    \item Recursive loop initiated: +3 segments
-    \item Prime equation disturbed: +2 segments
+\item \textbf{0-2 Segments - Unease:} Numbers seem to move when not looked at directly, -1 die to social rolls involving mathematical discussion
+\item \textbf{3-4 Segments - Fear:} Basic mathematical operations become anxiety-provoking, -1 die to all rolls when alone
+\item \textbf{5-6 Segments - Terror:} Logical reasoning becomes painful and difficult, -2 dice to rolls involving courage or rational thought
+\item \textbf{7-8 Segments - Madness:} Fundamental mathematical truths begin to shift, -2 dice to most rolls, unreliable perception
+\item \textbf{9-10 Segments - Broken:} Character can no longer distinguish mathematical reality from fantasy, out of control, may become hostile
 \end{itemize}
 
-\textbf{Garden Integrity Clock (10 segments):}
-How much the Recursive Garden's structure is breaking down
+\section{Key Locations in Aelinnel}
 
-\textbf{Advancement Triggers:}
-\begin{itemize}
-    \item Spatial anomaly detected: +1 segment
-    \item Plant growth becomes illogical: +1 segment
-    \item Path leads to itself: +2 segments
-    \item Seasonal logic fails: +1 segment
-    \item Garden keeper corrupted: +2 segments
-    \item PCs follow recursive pattern: +1 segment per session
-\end{itemize}
+\subsection{The Recursive Garden}
 
-\textbf{Proof Collapse Clock (8 segments):}
-How much established mathematical and logical truths are becoming unreliable
+The heart of mathematical fae wonder, now suffering from logical inconsistency. Paths lead to themselves, creating infinite loops. Plants grow according to mathematical sequences. Seasons follow logical rather than temporal patterns.
 
-\textbf{Advancement Triggers:}
-\begin{itemize}
-    \item Basic arithmetic fails: +2 segments
-    \item Geometric principles shift: +1 segment
-    \item Logical syllogisms contradict: +2 segments
-    \item Established theorems become false: +3 segments
-    \item PCs rely on "known" facts: +1 segment
-\end{itemize}
+\subsection{The Library of Proven Truths}
 
-\textbf{Recursive Depth Clock (6 segments):}
-How deeply the anomaly has penetrated the realm's logical structure
+Repository of all established mathematical and logical knowledge in Aelinnel. Books whose pages renumber themselves based on reading order. Proofs that change when not being observed. Sections organized by logical complexity rather than subject.
 
-\textbf{Advancement Triggers:}
-\begin{itemize}
-    \item Second-order logic affected: +1 segment
-    \item Meta-mathematical principles unstable: +2 segments
-    \item Self-referential statements become dangerous: +2 segments
-    \item Axiom of choice violated: +3 segments
-    \item PCs attempt higher mathematics: +1 segment
-\end{itemize}
+\subsection{The Equation Hermit's Tower}
 
-\section{Key NPCs}
+Spiral structure where impossible mathematics are explored. Stairs that go up and down simultaneously. Rooms where the interior is larger than the exterior. Walls covered in equations that solve themselves.
 
-\subsection*{\faUsers\ Important Characters}
+\subsection{The Garden's Core}
 
-\textbf{The Garden Keeper (Logical Fae):}
-\begin{itemize}
-    \item \textbf{Motivation:} Maintain the mathematical precision of the Recursive Garden
-    \item \textbf{Resources:} Perfect understanding of garden logic and recursive patterns
-    \item \textbf{Weakness:} Cannot perceive logical contradictions that align with fae nature
-    \item \textbf{Secret:} May be the source of the anomaly through over-optimization
-    \item \textbf{Breaking Points:} Comprehending the incomprehensible (advance by 3), Mathematical corruption (advance by 2)
-    \item \textbf{Resolution Paths:} Can be helped to understand the paradox, becomes part of the solution, or must be bypassed
-\end{itemize}
-
-\textbf{The Equation Hermit (Mad Mathematician):}
-\begin{itemize}
-    \item \textbf{Motivation:} Solve the ultimate recursive equation that describes reality
-    \item \textbf{Resources:} Forbidden mathematical knowledge and computational abilities
-    \item \textbf{Weakness:} Obsessed with the anomaly, may have caused it
-    \item \textbf{Secret:} Has been feeding the anomaly with unsolved equations
-    \item \textbf{Breaking Points:} Mathematical Frenzy (advance by 3), Forbidden Knowledge (advance by 2)
-    \item \textbf{Resolution Paths:} Can provide crucial insights, must be stopped from worsening the problem, or joins the PCs
-\end{itemize}
-
-\textbf{The Path Weaver (Geometric Fae):}
-\begin{itemize}
-    \item \textbf{Motivation:} Keep the garden paths logically consistent and navigable
-    \item \textbf{Resources:} Ability to manipulate geometric space and logical connections
-    \item \textbf{Weakness:} Becomes confused when geometry contradicts itself
-    \item \textbf{Secret:} Knows the location of the Prime Equation but cannot reach it
-    \item \textbf{Breaking Points:} Spatial Disorientation (advance by 2), Logical Breakdown (advance by 3)
-    \item \textbf{Resolution Paths:} Can guide PCs through logical space, becomes lost in paradox, or sacrifices self to maintain paths
-\end{itemize}
-
-\textbf{The Proof Keeper (Axiomatic Guardian):}
-\begin{itemize}
-    \item \textbf{Motivation:} Preserve the fundamental axioms that keep reality stable
-    \item \textbf{Resources:} Access to the Library of Proven Truths
-    \item \textbf{Weakness:} Cannot adapt when axioms become inconsistent
-    \item \textbf{Secret:} Some "proven" truths were never actually proven
-    \item \textbf{Breaking Points:} Axiom Failure (advance by 3), Truth Decay (advance by 2)
-    \item \textbf{Resolution Paths:} Can verify solutions, becomes unreliable, or must be convinced to abandon old axioms
-\end{itemize}
+The source of the recursive anomaly where all logical paths converge. A space that exists in multiple dimensions simultaneously. The Prime Equation displayed as a living, breathing construct. The corrupted Garden Keeper's throne of logical contradictions.
 
 \section{Custom Mathematical Mechanics}
 
-\subsection*{\faSquareRootAlt\ Special Campaign Mechanics}
+\subsection{Recursive Logic Mechanic}
 
-\textbf{Recursive Logic Mechanic:}
 When encountering fae logic or mathematical puzzles, PCs must make Wits + Lore rolls (DV 2) to navigate without falling into recursive loops. Each failure:
 \begin{itemize}
-    \item Generates 2 CP that the GM can spend for logical complications
-    \item Advances Logical Consistency Clock by 1 segment
-    \item May trap character in a logical loop (lose next action)
+\item Generates 2 CP that the GM can spend for logical complications
+\item Advances Logical Consistency Clock by 1 segment
+\item May trap character in a logical loop (lose next action)
 \end{itemize}
 
 \textbf{Recursive Examples:}
 \begin{itemize}
-    \item "To know the answer, you must first know that you don't know the answer."
-    \item "This statement is false about the path ahead."
-    \item "The correct door is the one that leads to the door that leads to..."
+\item "To know the answer, you must first know that you don't know the answer."
+\item "This statement is false about the path ahead."
+\item "The correct door is the one that leads to the door that leads to..."
 \end{itemize}
 
 \textbf{Escape Methods:}
 \begin{itemize}
-    \item Spend 1 Boon to break the recursion
-    \item Apply a different logical framework (requires relevant skill)
-    \item Accept a paradox and move forward anyway (generates 1 CP)
+\item Spend 1 Boon to break the recursion
+\item Apply a different logical framework (requires relevant skill)
+\item Accept a paradox and move forward anyway (generates 1 CP)
 \end{itemize}
 
-\textbf{Geometric Impossibility Perception:}
+\subsection{Geometric Impossibility Perception}
+
 When navigating spaces that defy normal geometry, PCs must make Wits + Survival rolls (DV 3) to avoid spatial anomalies. Each failure:
 \begin{itemize}
-    \item Generates 2 CP for reality distortions
-    \item Advances Garden Integrity Clock by 2 segments
-    \item Character becomes temporarily lost in dimensional folds
+\item Generates 2 CP for reality distortions
+\item Advances Garden Integrity Clock by 2 segments
+\item Character becomes temporarily lost in dimensional folds
 \end{itemize}
 
 \textbf{Impossibility Manifestations:}
 \begin{itemize}
-    \item Triangles with four angles
-    \item Rooms smaller on the outside than the inside
-    \item Paths that are longer to walk than to measure
-    \item Objects that exist in multiple places simultaneously
+\item Triangles with four angles
+\item Rooms smaller on the outside than the inside
+\item Paths that are longer to walk than to measure
+\item Objects that exist in multiple places simultaneously
 \end{itemize}
 
 \textbf{Navigation Aids:}
 \begin{itemize}
-    \item Mathematical instruments (compass, straightedge) may provide +1 die
-    \item Fae guidance (if trustworthy) can prevent failures
-    \item Accepting the impossibility grants DV 1 on next navigation roll
+\item Mathematical instruments (compass, straightedge) may provide +1 die
+\item Fae guidance (if trustworthy) can prevent failures
+\item Accepting the impossibility grants DV 1 on next navigation roll
 \end{itemize}
 
-\textbf{Proof Verification:}
+\subsection{Proof Verification}
+
 When attempting to establish or verify mathematical truths, PCs can make Wits + Arcana rolls. Success creates temporary logical stability:
 \begin{itemize}
-    \item Minor Proof (DV 1): Stabilize one clock for 1 segment
-    \item Moderate Proof (DV 2): Reduce one clock by 1 segment
-    \item Major Proof (DV 3): Stabilize all clocks for 1 round
+\item Minor Proof (DV 1): Stabilize one clock for 1 segment
+\item Moderate Proof (DV 2): Reduce one clock by 1 segment
+\item Major Proof (DV 3): Stabilize all clocks for 1 round
 \end{itemize}
 
 \textbf{Proof Requirements:}
 \begin{itemize}
-    \item Must be relevant to current situation
-    \item May require specific mathematical knowledge
-    \item Failed proofs accelerate relevant clocks
-    \item Overly complex proofs may create new paradoxes
+\item Must be relevant to current situation
+\item May require specific mathematical knowledge
+\item Failed proofs accelerate relevant clocks
+\item Overly complex proofs may create new paradoxes
 \end{itemize}
 
-\textbf{Numerical Sentience:}
+\subsection{Numerical Sentience}
+
 As the anomaly grows, numbers begin to exhibit personality and agency:
 \begin{itemize}
-    \item Prime numbers become stubborn and refuse to divide
-    \item Irrational numbers express their infinite nature through rambling speech
-    \item Negative numbers are pessimistic and spread doubt
-    \item Zero becomes existentially confused about its purpose
+\item Prime numbers become stubborn and refuse to divide
+\item Irrational numbers express their infinite nature through rambling speech
+\item Negative numbers are pessimistic and spread doubt
+\item Zero becomes existentially confused about its purpose
 \end{itemize}
 
 \textbf{Interaction Effects:}
 \begin{itemize}
-    \item Can be negotiated with (Presence + Sway, DV 2-4)
-    \item May provide clues or assistance
-    \item Can become hostile if mathematical laws are violated
-    \item Defeating hostile numbers requires solving their equations
+\item Can be negotiated with (Presence + Diplomacy, DV 2-4)
+\item May provide clues or assistance
+\item Can become hostile if mathematical laws are violated
+\item Defeating hostile numbers requires solving their equations
 \end{itemize}
 
-\section{Session Structure}
+\subsection{Mathematical Entity Corruption}
 
-\subsection*{\faBook\ Campaign Progression}
-
-\textbf{Session 1: Entry into Recursion:}
+PCs who reach 7+ Dread segments from mathematical horror begin to show signs:
 \begin{itemize}
-    \item \textbf{Opening Scene:} The PCs enter Aelinnel through a mathematical gateway (perhaps following a proof or equation)
-    \item \textbf{Key Encounters:}
-    \begin{enumerate}
-        \item First encounter with recursive logic at the Garden Gate (Wits + Lore, DV 2)
-        \item Meeting the Path Weaver who warns of logical inconsistencies (Presence + Sway, DV 2)
-        \item Discovery of the first spatial anomaly in the Sequenceweaver Grove (Wits + Survival, DV 2)
-        \item Initial contact with numerical entities (Presence + Sway, DV 1)
-    \end{enumerate}
-    \item \textbf{Logical Consistency Clock Advancement:}
-    \begin{itemize}
-        \item Paradox encountered at gate: +1 segment
-        \item Spatial anomaly detected: +1 segment
-    \end{itemize}
-    \item \textbf{Garden Integrity Clock Advancement:}
-    \begin{itemize}
-        \item Plant growth becomes illogical: +1 segment
-        \item Path leads to itself: +2 segments
-    \end{itemize}
-    \item \textbf{Key Discovery:} The Garden Keeper has been trying to optimize the garden's recursive patterns, possibly causing the anomaly
+\item Speaking in mathematical equations rather than natural language
+\item Seeing geometric patterns in everything
+\item Inability to accept that some problems have no solution
+\item Compulsion to prove everything, even obvious facts
+\item Mathematical concepts begin to have physical weight and presence
 \end{itemize}
 
-\textbf{Session 2: The Deepening Paradox:}
+\subsection{Collective Mathematical Insanity}
+
+When party average Dread reaches 5+:
 \begin{itemize}
-    \item \textbf{Key Encounters:}
-    \begin{enumerate}
-        \item Investigation of the Equation Hermit's tower (Wits + Investigation, DV 3)
-        \item Confrontation with hostile numerical entities (Combat + Social, DV 2-3)
-        \item Discovery of corrupted mathematical proofs in the Library of Truths (Wits + Lore, DV 3)
-        \item First major proof collapse affecting reality (Wits + Arcana, DV 2)
-    \end{enumerate}
-    \item \textbf{Proof Collapse Clock Advancement:}
-    \begin{itemize}
-        \item Basic arithmetic fails: +2 segments
-        \item Geometric principles shift: +1 segment
-    \end{itemize}
-    \item \textbf{Logical Consistency Clock Advancement:}
-    \begin{itemize}
-        \item Mathematical proof fails: +2 segments
-        \item Recursive loop initiated: +3 segments
-    \end{itemize}
-    \item \textbf{Key Discovery:} The Equation Hermit has been feeding unsolved equations into the garden's core, creating the anomaly
+\item Shared mathematical hallucinations
+\item Inability to agree on basic arithmetic
+\item Geometric spaces shift based on group consensus
+\item Mathematical proofs become matters of opinion rather than fact
 \end{itemize}
 
-\textbf{Session 3: The Heart of Recursion:}
+\section{Campaign Clocks}
+
+\subsection{Logical Consistency Clock (12 segments)}
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Logical Consistency Clock} & \textbf{How much the fundamental mathematical laws of Aelinnel have become inconsistent} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/12 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Advancement Triggers:}
 \begin{itemize}
-    \item \textbf{Key Encounters:}
-    \begin{enumerate}
-        \item Journey to the Garden's Core through increasingly illogical spaces (Wits + Survival, DV 3-4)
-        \item Confrontation with the corrupted Garden Keeper (Presence + Command, DV 3)
-        \item Discovery of the Prime Equation at the anomaly's source (Wits + Arcana, DV 4)
-        \item Choice: Solve, Contain, or Redirect the recursive anomaly
-    \end{enumerate}
-    \item \textbf{Recursive Depth Clock Advancement:}
-    \begin{itemize}
-        \item Second-order logic affected: +1 segment
-        \item Self-referential statements become dangerous: +2 segments
-    \end{itemize}
-    \item \textbf{All Clocks Advancement:}
-    \begin{itemize}
-        \item PCs attempt higher mathematics: +1 segment to each clock
-        \item Axiom of choice violated: +3 segments to Proof Collapse
-    \end{itemize}
-    \item \textbf{Key Discovery:} The anomaly is both a problem and a solution - it's trying to prove something that cannot be proven within the current logical system
+\item Paradox encountered: +1 segment
+\item Mathematical proof fails: +2 segments
+\item Fae logic contradicts itself: +1 segment
+\item PCs attempt to "fix" without understanding: +2 segments
+\item Recursive loop initiated: +3 segments
+\item Prime equation disturbed: +2 segments
 \end{itemize}
+
+\subsection{Garden Integrity Clock (10 segments)}
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Garden Integrity Clock} & \textbf{How much the Recursive Garden's structure is breaking down} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/10 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Advancement Triggers:}
+\begin{itemize}
+\item Spatial anomaly detected: +1 segment
+\item Plant growth becomes illogical: +1 segment
+\item Path leads to itself: +2 segments
+\item Seasonal logic fails: +1 segment
+\item Garden keeper corrupted: +2 segments
+\item PCs follow recursive pattern: +1 segment per session
+\end{itemize}
+
+\subsection{Proof Collapse Clock (8 segments)}
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Proof Collapse Clock} & \textbf{How much established mathematical and logical truths are becoming unreliable} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/8 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Advancement Triggers:}
+\begin{itemize}
+\item Basic arithmetic fails: +2 segments
+\item Geometric principles shift: +1 segment
+\item Logical syllogisms contradict: +2 segments
+\item Established theorems become false: +3 segments
+\item PCs rely on "known" facts: +1 segment
+\end{itemize}
+
+\subsection{Recursive Depth Clock (6 segments)}
+
+\begin{center}
+\begin{tabular}{|m{4cm}|m{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Recursive Depth Clock} & \textbf{How deeply the anomaly has penetrated the realm's logical structure} \\
+\hline
+Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/6 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Advancement Triggers:}
+\begin{itemize}
+\item Second-order logic affected: +1 segment
+\item Meta-mathematical principles unstable: +2 segments
+\item Self-referential statements become dangerous: +2 segments
+\item Axiom of choice violated: +3 segments
+\item PCs attempt higher mathematics: +1 segment
+\end{itemize}
+
+\section{Sample Sessions}
+
+\subsection{Session 1: Entry into Recursion}
+
+\textbf{Opening Scene:} The PCs enter Aelinnel through a mathematical gateway (perhaps following a proof or equation).
+
+\textbf{Key Encounters:}
+\begin{enumerate}
+\item First encounter with recursive logic at the Garden Gate (Wits + Lore, DV 2)
+\item Meeting the Path Weaver who warns of logical inconsistencies (Presence + Diplomacy, DV 2)
+\item Discovery of the first spatial anomaly in the Sequenceweaver Grove (Wits + Survival, DV 2)
+\item Initial contact with numerical entities (Presence + Sway, DV 1)
+\end{enumerate}
+
+\textbf{Dread Clock Advancement:}
+\begin{itemize}
+\item Paradox encountered at gate: +1 segment (prevent with 1 Boon)
+\item Spatial anomaly detected: +1 segment (prevent with 1 Boon)
+\item Plant growth becomes illogical: +1 segment (prevent with 1 Boon)
+\end{itemize}
+
+\textbf{Campaign Clock Advancement:}
+\begin{itemize}
+\item Logical Consistency: +2 (recursive patterns beginning)
+\item Garden Integrity: +3 (spatial and growth anomalies)
+\end{itemize}
+
+\textbf{Key Discovery:} The Garden Keeper has been trying to optimize the garden's recursive patterns, possibly causing the anomaly.
+
+\subsection{Session 2: The Deepening Paradox}
+
+\textbf{Key Encounters:}
+\begin{enumerate}
+\item Investigation of the Equation Hermit's tower (Wits + Investigation, DV 3)
+\item Confrontation with hostile numerical entities (Combat + Social, DV 2-3)
+\item Discovery of corrupted mathematical proofs in the Library of Truths (Wits + Lore, DV 3)
+\item First major proof collapse affecting reality (Wits + Arcana, DV 2)
+\end{enumerate}
+
+\textbf{Dread Clock Advancement:}
+\begin{itemize}
+\item Basic arithmetic fails: +2 segments (prevent with 2 Boons)
+\item Geometric principles shift: +1 segment (prevent with 1 Boon)
+\item Mathematical proof fails: +2 segments (prevent with 2 Boons)
+\end{itemize}
+
+\textbf{Campaign Clock Advancement:}
+\begin{itemize}
+\item Proof Collapse: +3 (arithmetic and geometric failures)
+\item Logical Consistency: +3 (proof failures and recursive loops)
+\end{itemize}
+
+\textbf{Key Discovery:} The Equation Hermit has been feeding unsolved equations into the garden's core, creating the anomaly.
+
+\subsection{Session 3: The Heart of Recursion}
+
+\textbf{Key Encounters:}
+\begin{enumerate}
+\item Journey to the Garden's Core through increasingly illogical spaces (Wits + Survival, DV 3-4)
+\item Confrontation with the corrupted Garden Keeper (Presence + Command, DV 3)
+\item Discovery of the Prime Equation at the anomaly's source (Wits + Arcana, DV 4)
+\item Choice: Solve, Contain, or Redirect the recursive anomaly
+\end{enumerate}
+
+\textbf{Dread Clock Advancement:}
+\begin{itemize}
+\item Second-order logic affected: +1 segment (prevent with 1 Boon)
+\item Self-referential statements become dangerous: +2 segments (prevent with 2 Boons)
+\item PCs attempt higher mathematics: +1 segment (prevent with 1 Boon)
+\end{itemize}
+
+\textbf{Campaign Clock Advancement:}
+\begin{itemize}
+\item Recursive Depth: +3 (second-order logic and self-reference)
+\item All Clocks: +1 each (higher mathematics attempted)
+\end{itemize}
+
+\textbf{Key Discovery:} The anomaly is both a problem and a solution - it's trying to prove something that cannot be proven within the current logical system.
 
 \section{Resolution Paths}
 
-\subsection*{\faDoorOpen\ Campaign Endings}
+\subsection{The Elegant Proof}
 
-\textbf{The Elegant Proof:}
 Discover and apply a higher-order mathematical solution that resolves the paradox without destroying the anomaly's insights.
 \begin{itemize}
-    \item Award 18-20 XP for the most difficult but rewarding resolution
-    \item The garden is stabilized but transformed into something more wonderful
-    \item PCs gain permanent mathematical insights and fae friendship
-    \item Aelinnel becomes a beacon of advanced logical study
-    \item The anomaly becomes a feature, not a bug - a source of creative mathematical inspiration
+\item Award 18-20 XP for the most difficult but rewarding resolution
+\item The garden is stabilized but transformed into something more wonderful
+\item PCs gain permanent mathematical insights and fae friendship
+\item Aelinnel becomes a beacon of advanced logical study
+\item The anomaly becomes a feature, not a bug - a source of creative mathematical inspiration
 \end{itemize}
 
-\textbf{The Containment:}
+\subsection{The Containment}
+
 Seal the anomaly in a mathematical prison where it can do no harm but continues to exist.
 \begin{itemize}
-    \item Award 12-15 XP for a balanced approach
-    \item The garden returns to normal but with a "quarantined" section
-    \item PCs become guardians of dangerous knowledge
-    \item The anomaly remains as a potential future threat
-    \item Aelinnel is safe but forever changed by the experience
+\item Award 12-15 XP for a balanced approach
+\item The garden returns to normal but with a "quarantined" section
+\item PCs become guardians of dangerous knowledge
+\item The anomaly remains as a potential future threat
+\item Aelinnel is safe but forever changed by the experience
 \end{itemize}
 
-\textbf{The Transformation:}
+\subsection{The Transformation}
+
 Allow the anomaly to complete its transformation of the garden, changing the fundamental nature of reality in Aelinnel.
 \begin{itemize}
-    \item Award 8-12 XP with significant narrative consequences
-    \item The garden becomes truly impossible, beautiful, and dangerous
-    \item PCs must adapt to new rules of logic and space
-    \item Some may become part of the new reality
-    \item Aelinnel becomes a place where normal logic no longer applies
+\item Award 8-12 XP with significant narrative consequences
+\item The garden becomes truly impossible, beautiful, and dangerous
+\item PCs must adapt to new rules of logic and space
+\item Some may become part of the new reality
+\item Aelinnel becomes a place where normal logic no longer applies
 \end{itemize}
 
-\textbf{The Sacrifice:}
+\subsection{The Sacrifice}
+
 Solve the paradox by sacrificing a fundamental truth or principle that keeps part of reality stable.
 \begin{itemize}
-    \item Award 15-18 XP but with lasting consequences
-    \item The garden is saved but something else is lost
-    \item PCs must choose what truth to abandon
-    \item The sacrifice creates new problems elsewhere
-    \item Mathematical balance is restored at a philosophical cost
+\item Award 15-18 XP but with lasting consequences
+\item The garden is saved but something else is lost
+\item PCs must choose what truth to abandon
+\item The sacrifice creates new problems elsewhere
+\item Mathematical balance is restored at a philosophical cost
 \end{itemize}
 
-\textbf{The Incompleteness:}
+\subsection{The Incompleteness}
+
 Accept that some problems cannot be solved and learn to live with the logical uncertainty.
 \begin{itemize}
-    \item Award 10-14 XP for philosophical maturity
-    \item The garden remains unstable but manageable
-    \item PCs learn to navigate paradox rather than eliminate it
-    \item A new form of mathematics emerges that embraces incompleteness
-    \item Aelinnel becomes a place of ongoing logical exploration
+\item Award 10-14 XP for philosophical maturity
+\item The garden remains unstable but manageable
+\item PCs learn to navigate paradox rather than eliminate it
+\item A new form of mathematics emerges that embraces incompleteness
+\item Aelinnel becomes a place of ongoing logical exploration
 \end{itemize}
 
-\section{Key Locations}
+\section{Using the Deck System}
 
-\subsection*{\faBuilding\ Important Places}
+\subsection{Drawing from Aelinnel Deck}
 
-\textbf{The Recursive Garden:}
-The heart of mathematical fae wonder, now suffering from logical inconsistency
+The Deck System provides rich narrative content for encounters within the mathematical realm. Each draw should feel meaningful and contribute to the overall atmosphere of logical uncertainty and mathematical wonder.
+
+\subsubsection{Spades - Mathematical Domains}
+
 \begin{itemize}
-    \item Paths that lead to themselves, creating infinite loops
-    \item Plants that grow according to mathematical sequences (Sequenceweaver spirals, prime number arrangements)
-    \item Seasons that follow logical rather than temporal patterns
-    \item Fountains where water flows upward due to geometric impossibility
-    \item \textbf{Special Feature:} As Garden Integrity Clock fills, locations shift and recombine according to recursive rules
+\item The Null Set - Empty but hungry; seeks to consume meaning and purpose
+\item The Divided Mind - Schizophrenic equation that cannot decide its own value
+\item The Broken Proof - A theorem that almost works but collapses at the final step
+\item The Irrational Ramble - Endless, meandering monologue of infinite non-repetition
+\item The Contradiction - Exists in multiple states simultaneously, defying logical consistency
 \end{itemize}
 
-\textbf{The Library of Proven Truths:}
-Repository of all established mathematical and logical knowledge in Aelinnel
+\subsubsection{Hearts - Fae Personality/Behavior}
+
 \begin{itemize}
-    \item Books whose pages renumber themselves based on reading order
-    \item Proofs that change when not being observed
-    \item Sections organized by logical complexity rather than subject
-    \item The Proof Keeper's sanctum where axioms are maintained
-    \item \textbf{Special Feature:} As Proof Collapse Clock fills, books contradict themselves and established theorems become false
+\item The Courteous Host - Polite but with sinister hospitality and impossible bargains
+\item The Playful Trickster - Games and riddles that carry deadly consequences
+\item The Melancholy Scholar - Sad but wise, offering knowledge at great personal cost
+\item The Jealous Peer - Resentful of the PCs' different logical framework
+\item The Obsessive Perfectionist - Demands exactitude and punishes any deviation
 \end{itemize}
 
-\textbf{The Equation Hermit's Tower:}
-Spiral structure where impossible mathematics are explored
+\subsubsection{Clubs - Horror Element/Threat}
+
 \begin{itemize}
-    \item Stairs that go up and down simultaneously
-    \item Rooms where the interior is larger than the exterior
-    \item Walls covered in equations that solve themselves
-    \item The Hermit's workshop where new paradoxes are born
-    \item \textbf{Special Feature:} As Recursive Depth Clock fills, the tower's geometry becomes more impossible and dangerous
+\item The Gentle Madness - Subtle shifts in perception that feel reasonable at first
+\item The Recursive Anxiety - Fear that feeds on itself, growing exponentially
+\item The Logical Trap - Reasoning that seems sound but leads to terrible conclusions
+\item The Geometric Nightmare - Spaces that hurt to perceive correctly
+\item The Proof of Doom - Mathematical demonstration that something awful must be true
 \end{itemize}
 
-\textbf{The Garden's Core:}
-The source of the recursive anomaly where all logical paths converge
+\subsubsection{Diamonds - Ability/Power}
+
 \begin{itemize}
-    \item A space that exists in multiple dimensions simultaneously
-    \item The Prime Equation displayed as a living, breathing construct
-    \item The corrupted Garden Keeper's throne of logical contradictions
-    \item Portals to different mathematical realms
-    \item \textbf{Special Feature:} All clocks advance automatically by 1 segment per hour spent here unless stabilized by proofs
+\item The Simple Equation - Basic mathematical effect, easily understood but precisely targeted
+\item The Geometric Shift - Alters spatial relationships according to mathematical rules
+\item The Logical Compulsion - Forces targets to follow specific reasoning patterns
+\item The Proof of Presence - Can only be perceived when actively being proven to exist
+\item The Fractal Attack - Damage that repeats at smaller scales, never fully healing
 \end{itemize}
 
-\section{GM Preparation}
-
-\subsection*{\faDice\ Running This Campaign}
-
-\textbf{Pre-Session Checklist:}
-\begin{itemize}
-    \item Review all campaign clocks and their advancement triggers
-    \item Prepare 3-5 mathematical/logical puzzles appropriate for session challenges
-    \item Create index cards with recursive statements and paradoxes
-    \item Prepare numerical entity personalities and dialogue
-    \item Plan reality distortion effects for geometric impossibilities
-    \item Identify potential structural advantages for player characters
-\end{itemize}
-
-\textbf{Key Preparation Elements:}
-\begin{itemize}
-    \item \textbf{Paradox Table:} Prepare 20-30 logical paradoxes that can be used as challenges or clues
-    \item \textbf{Equation Deck:} Create cards with mathematical problems of varying difficulty
-    \item \textbf{Geometric Anomalies:} Develop impossible space descriptions and navigation challenges
-    \item \textbf{Numerical Personalities:} Plan how different types of numbers will behave and speak
-    \item \textbf{Proof Templates:} Prepare frameworks for player-created mathematical solutions
-\end{itemize}
-
-\textbf{Session Management:}
-\begin{itemize}
-    \item Announce clocks clearly and update them visibly
-    \item Connect player actions to clock advancement through logical consequences
-    \item Offer meaningful choices that affect the mathematical narrative
-    \item Let clocks fill when logical paradoxes remain unresolved
-    \item Provide XP for creative problem-solving and logical reasoning
-\end{itemize}
-
-\textbf{Mathematical Atmosphere Tips:}
-\begin{itemize}
-    \item Use precise, formal language mixed with wonder and curiosity
-    \item Describe mathematical concepts as if they were living entities
-    \item Let numbers and equations have personality and agency
-    \item Make logical consistency feel like a precious, fragile resource
-    \item Use geometric descriptions that create mental images of impossibility
-    \item Blend mathematical precision with fae whimsy and wonder
-\end{itemize}
-
-\textbf{Player Agency in Mathematical Settings:}
-\begin{itemize}
-    \item Give players meaningful choices in approaching logical problems
-    \item Let different skill sets contribute to mathematical challenges
-    \item Provide multiple valid approaches to paradoxes
-    \item Respect creative solutions even if mathematically unconventional
-    \item Allow players to define new axioms when old ones fail
-    \item Make failure interesting rather than simply punitive
-\end{itemize}
-
-\section{Mathematical Challenges}
-
-\subsection*{\faCrystal Computer\ Sample Puzzles and Challenges}
-
-\textbf{Recursive Logic Puzzles:}
-\begin{itemize}
-    \item \textbf{The Liar's Paradox Garden:} A section where every statement is either true or false, but the signs contradict themselves
-    \item \textbf{Infinite Corridor:} A hallway that contains rooms for every possible solution to a problem, but you must find the correct one to exit
-    \item \textbf{Self-Referential Riddle:} "This riddle has no solution that can be found by following the instructions in the riddle"
-    \item \textbf{Thoughtweaver's Garden Gate:} A door that can only be opened by proving something true about the locking mechanism that cannot be proven
-\end{itemize}
-
-\textbf{Geometric Impossibilities:}
-\begin{itemize}
-    \item \textbf{The Stripweaver Path:} A trail that leads you back to your starting point but mirror-inverted
-    \item \textbf{Geomancer's Nightmare:} A room where the angles of triangles don't add up to 180 degrees
-    \item \textbf{The Flaskkeeper Bottle Grove:} A garden where the inside and outside are the same space
-    \item \textbf{Fractal Forest:} Trees that branch infinitely, requiring pattern recognition to navigate
-\end{itemize}
-
-\textbf{Numerical Encounters:}
-\begin{itemize}
-    \item \textbf{Prime Number Sentry:} Hostile primes that refuse to be factored and attack with divisibility
-    \item \textbf{Irrational Ramblers:} Pi and other irrationals that speak in infinite, meandering monologues
-    \item \textbf{Negative Doubters:} Numbers that turn positive assertions into their opposites
-    \item \textbf{Zero's Identity Crisis:} The number zero questioning its own existence and purpose
-\end{itemize}
-
-\textbf{Proof Challenges:}
-\begin{itemize}
-    \item \textbf{Spellmender's Last Theorem Garden:} A puzzle requiring understanding of why certain equations have no solutions
-    \item \textbf{Infinityscribe's Paradise:} Dealing with different sizes of infinity in a practical setting
-    \item \textbf{Paradoxmaster's Paradox:} Managing a library that contains books about all books that don't contain themselves
-    \item \textbf{Spaceshaper-Truthseeker Fruit:} Dividing an apple in a way that creates more apples than started
-\end{itemize}
-
-\section{Character Options}
-
-\subsection*{\faUser\ Character Concepts}
-
-\textbf{Recommended Backgrounds:}
-\begin{itemize}
-    \item The Scholar of Fractured Truths (Wizard archetype with mathematical focus)
-    \item The Caretaker of Cycles (Druid archetype with logical harmony)
-    \item The Chronicler of Consequences (Bard archetype with emphasis on recording truths)
-    \item The Border-Warden (Ranger archetype with focus on navigating logical boundaries)
-    \item The Ascetic of the Unbound Body (Monk archetype with mental discipline)
-\end{itemize}
-
-\textbf{Essential Skills:}
-\begin{itemize}
-    \item Lore (Mathematics, Logic, Fae Culture)
-    \item Arcana (Mathematical Magic, Proof Construction)
-    \item Investigation (Pattern Recognition, Paradox Analysis)
-    \item Insight (Logical Intuition, Paradox Detection)
-    \item Sway (Negotiating with Numerical Entities)
-    \item Survival (Navigating Impossible Geometries)
-\end{itemize}
-
-\textbf{Suggested Talents:}
-\begin{itemize}
-    \item Lorekeeper (Recall obscure mathematical truths)
-    \item Backlash Soothing (Reduce logical paradox backlash)
-    \item Numerical Insight (Aeler Affinity for mathematical perception)
-    \item Ritual Master (Lead complex mathematical workings)
-    \item Echo-Walker's Step (Observe perfect echoes of logical events)
-    \item Geasa & Oath-Weaving (Bind mathematical truths with fae precision)
-\end{itemize}
-
-\textbf{Appropriate Assets:}
-\begin{itemize}
-    \item Minor: Scholar's Cell, Mathematical Instruments, Safehouse in Logical Quarter
-    \item Standard: Library Archive, Observatory/Star Tower, Alchemical Garden
-    \item Major: University College, Thepyrgos Great Library, Valewood Grove Sanctuary
-\end{itemize}
-
-\textbf{Helpful Followers:}
-\begin{itemize}
-    \item Cap 2 Apprentice (Mathematical assistance)
-    \item Cap 3 Logician (Proof verification and paradox detection)
-    \item Cap 4 Geometer (Navigation of impossible spaces)
-    \item Cap 5 Archon of Logic (High-level mathematical reasoning)
-\end{itemize}
-
-\section{Campaign Variations}
-
-\subsection*{\faRandom\ Alternative Approaches}
-
-\textbf{Shorter Campaign (1-2 Sessions):}
-\begin{itemize}
-    \item Focus on a single mathematical paradox or theorem
-    \item Reduce clock sizes by 3-5 segments each
-    \item Pre-corrupt one major location to accelerate the plot
-    \item Start with PCs already aware of the basic anomaly
-    \item Simplify resolution paths to 2-3 options
-    \item Emphasize one type of mathematical challenge (logic, geometry, or algebra)
-\end{itemize}
-
-\textbf{Extended Campaign (5+ Sessions):}
-\begin{itemize}
-    \item Expand to multiple mathematical realms within Aelinnel
-    \item Introduce secondary anomalies in different logical systems
-    \item Add political intrigue with fae factions having different mathematical philosophies
-    \item Include investigation of the anomaly's origins across multiple generations
-    \item Develop long-term consequences of different resolution approaches
-    \item Explore the relationship between mathematics and other forms of magic
-\end{itemize}
-
-\textbf{Pure Logic Focus:}
-\begin{itemize}
-    \item Emphasize formal logical puzzles and proof construction
-    \item Reduce combat encounters in favor of intellectual challenges
-    \item Increase dialogue with mathematical entities
-    \item Add puzzle-solving elements requiring specific mathematical knowledge
-    \item Focus on understanding rather than confrontation
-\end{itemize}
-
-\textbf{Geometric Wonder Focus:}
-\begin{itemize}
-    \item Increase encounters with impossible spaces and geometric anomalies
-    \item Add navigation challenges through mathematical landscapes
-    \item Include more visual/spatial puzzles
-    \item Reduce dialogue-heavy scenes in favor of exploration
-    \item Emphasize the beauty and wonder of mathematical impossibility
-\end{itemize}
-
-\textbf{Mixed Mathematical Approach:}
-\begin{itemize}
-    \item Balance different types of mathematical challenges
-    \item Include both social and spatial/logical encounters
-    \item Vary session focus between proof construction and exploration
-    \item Allow PCs to choose their approach to mathematical problems
-    \item Provide multiple paths to the same logical insights
-\end{itemize}
-
-\section{Final Notes}
-
-\subsection*{\faExclamationTriangle\ Important Reminders}
-
-\textbf{Mathematical Campaign Guidelines:}
-\begin{itemize}
-    \item \textbf{Accessibility First:} Ensure mathematical concepts are approachable for all players
-    \item \textbf{Logic Matters:} Maintain internal consistency even in impossible scenarios
-    \item \textbf{Player Creativity:} Reward innovative approaches to logical problems
-    \item \textbf{Wonder Over Complexity:} Prioritize the sense of discovery over technical difficulty
-    \item \textbf{Failure is Fascinating:} Make incorrect solutions lead to interesting consequences
-    \item \textbf{Multiple Intelligences:} Provide challenges that different types of thinkers can contribute to
-    \item \textbf{Collaborative Reasoning:} Encourage players to work together on complex problems
-    \item \textbf{Mathematical Beauty:} Highlight the aesthetic appeal of elegant solutions
-\end{itemize}
-
-\textbf{Campaign Integration:}
-\begin{itemize}
-    \item \textbf{Scale:} This campaign operates on a realm level but has implications for mathematical understanding everywhere
-    \item \textbf{Comprehension:} Understanding the anomaly may require accepting logical uncertainty
-    \item \textbf{Permanence:} Changes to fundamental logic may be irreversible
-    \item \textbf{Specialization:} The PCs may be among the few who can perceive certain types of logical inconsistencies
-    \item \textbf{Legacy:} Actions taken will influence how mathematics and logic are understood in Aelinnel
-\end{itemize}
-
-\textbf{GM Tools:}
-\begin{itemize}
-    \item \textbf{Paradox Deck:} Prepare 25-30 logical paradoxes for quick reference
-    \item \textbf{Equation Cards:} Create cards with mathematical problems of varying difficulty
-    \item \textbf{Geometric Descriptions:} Keep a list of impossible space descriptions
-    \item \textbf{Numerical Personalities:} Note how different types of numbers should behave
-    \item \textbf{Proof Templates:} Have frameworks ready for player-created mathematical solutions
-    \item \textbf{Reality Anchors:} Maintain a few locations with consistent logic for grounding
-\end{itemize}
-
-\textbf{Session End Notes:}
-\begin{itemize}
-    \item \textbf{Logic Check:} Review which mathematical principles were established or challenged
-    \item \textbf{Progress Assessment:} Note any advancement in understanding the anomaly
-    \item \textbf{Character Development:} Record any changes in PCs' mathematical or logical abilities
-    \item \textbf{Foreshadowing:} Plant seeds for next session's mathematical revelations
-    \item \textbf{Player Feedback:} Ask what logical concepts intrigued or challenged them most
-\end{itemize}
-
-\textbf{Campaign Conclusion:}
-\begin{itemize}
-    \item \textbf{Knowledge Legacy:} Determine how the PCs' discoveries change mathematical understanding
-    \item \textbf{Character Evolution:} Note permanent changes to PCs' logical reasoning abilities
-    \item \textbf{Ongoing Mysteries:} Establish unsolved mathematical problems for potential sequels
-    \item \textbf{World Impact:} Consider how events affect the broader realm of mathematical study
-    \item \textbf{Player Recognition:} Acknowledge their logical reasoning and creative problem-solving
-\end{itemize}
-
-\section{Mathematical Fae Entity Generator}
-
-\subsection*{\faRandom\ Recursive Entity Creation}
+\subsection{Mathematical Entity Generator}
 
 \textbf{Drawing Procedure:} Draw until all suits appear:
 \begin{itemize}
-    \item \textbf{Spade} = Mathematical Domain (logic, geometry, algebra, etc.)
-    \item \textbf{Heart} = Fae Personality/Behavior (courtly, wild, scholarly, etc.)
-    \item \textbf{Club} = Horror Element/Threat (psychological, physical, existential)
-    \item \textbf{Diamond} = Ability/Power (mathematical effect, fae magic)
+\item Spade = Mathematical Domain (logic, geometry, algebra, etc.)
+\item Heart = Fae Personality/Behavior (courtly, wild, scholarly, etc.)
+\item Club = Horror Element/Threat (psychological, physical, existential)
+\item Diamond = Ability/Power (mathematical effect, fae magic)
 \end{itemize}
 
 \textbf{Rank Severity and Entity Power:}
 \begin{itemize}
-    \item 2-5 (Minor): 4-segment Clock, Cap 2-3 entity
-    \item 6-10 (Standard): 6-segment Clock, Cap 4 entity
-    \item J, Q, K (Major): 8-segment Clock, Cap 5 entity
-    \item Ace (Pivotal): 10-segment Clock, Cap 6 entity
+\item 2-5 (Minor): 4-segment Clock, Cap 2-3 entity
+\item 6-10 (Standard): 6-segment Clock, Cap 4 entity
+\item J, Q, K (Major): 8-segment Clock, Cap 5 entity
+\item Ace (Pivotal): 10-segment Clock, Cap 6 entity
 \end{itemize}
 
-\textbf{Color Influences:}
+\section{Signature Mathematical Horrors}
+
+\subsection{The Infinite Regress}
+
+\begin{monsterentry}{The Infinite Regress}
+\textbf{Threat:} Epic \\
+\textbf{Harm:} \textgreater \\
+\textbf{CP:} Existential presence generates 3-4 CP per scene \\
+\textbf{Description:} Appears as a mirror that reflects not your image, but the question of what it reflects. Exists to prove that all knowledge leads to infinite questioning. \\
+\textbf{Motivations:} To prove that all knowledge leads to infinite questioning \\
+\textbf{Abilities:}
 \begin{itemize}
-    \item \textbf{Black suits} (♠, ♣): Cold logic, mathematical cruelty, geometric precision
-    \item \textbf{Red suits} (♡, ♢): Passionate obsession, emotional manipulation, fae bargains
+\item Question Cascade: Every answer generates three new questions (Harm =, generates 2 CP per round)
+\item Meta-Proof Immunity: Cannot be harmed by direct logical attacks
+\item Infinite Reflection: Creates copies of itself in nearby reflective surfaces
+\item Doubt Inducement: (Social) Makes targets question their own memories and knowledge (DV 3)
 \end{itemize}
-
-\subsection*{Domain Suits (Spades - Mathematical Foundations)}
-
-\textbf{2.} \textbf{The Null Set} - Empty but hungry; seeks to consume meaning and purpose \\
-\textbf{3.} \textbf{The Divided Mind} - Schizophrenic equation that cannot decide its own value \\
-\textbf{4.} \textbf{The Broken Proof} - A theorem that almost works but collapses at the final step \\
-\textbf{5.} \textbf{The Irrational Ramble} - Endless, meandering monologue of infinite non-repetition \\
-\textbf{6.} \textbf{The Contradiction} - Exists in multiple states simultaneously, defying logical consistency \\
-\textbf{7.} \textbf{The Unprovable} - A truth that cannot be demonstrated, causing doubt in all proofs \\
-\textbf{8.} \textbf{The Infinite Series} - Grows without bound, consuming space and sanity \\
-\textbf{9.} \textbf{The Imaginary Solution} - Exists only in abstract thought but demands physical reality \\
-\textbf{10.} \textbf{The Limit Approached} - Infinitely close to perfection but never quite reaching it \\
-\textbf{J.} \textbf{The Recursive Function} - Calls itself repeatedly, creating infinite loops of behavior \\
-\textbf{Q.} \textbf{The Thoughtweaver Sentence} - A statement that proves the system containing it is incomplete \\
-\textbf{K.} \textbf{The Axiom of Choice} - Selects from infinite possibilities with malevolent precision \\
-\textbf{A.} \textbf{The Inconsistent System} - A foundational logic that proves both a statement and its negation
-
-\subsection*{Personality Suits (Hearts - Fae Disposition)}
-
-\textbf{2.} \textbf{The Courteous Host} - Polite but with sinister hospitality and impossible bargains \\
-\textbf{3.} \textbf{The Playful Trickster} - Games and riddles that carry deadly consequences \\
-\textbf{4.} \textbf{The Melancholy Scholar} - Sad but wise, offering knowledge at great personal cost \\
-\textbf{5.} \textbf{The Jealous Peer} - Resentful of the PCs' different logical framework \\
-\textbf{6.} \textbf{The Obsessive Perfectionist} - Demands exactitude and punishes any deviation \\
-\textbf{7.} \textbf{The Mad Geometer} - Sees patterns everywhere but they lead to impossible places \\
-\textbf{8.} \textbf{The Calculating Courtier} - Manipulates through logical arguments and social engineering \\
-\textbf{9.} \textbf{The Wild Theorist} - Unconstrained by conventional mathematical rigor \\
-\textbf{10.} \textbf{The Ancient Axiom} - Old and powerful, set in its ways and hostile to change \\
-\textbf{J.} \textbf{The Fractal Mind} - Thoughts that repeat at different scales, becoming more complex \\
-\textbf{Q.} \textbf{The Paradox Noble} - Exists in multiple social states, impossible to truly know \\
-\textbf{K.} \textbf{The Infinite Regress} - Every answer leads to another question, ad infinitum \\
-\textbf{A.} \textbf{The Self-Referential Court} - The entire social structure refers only to itself
-
-\subsection*{Horror Elements (Clubs - Dark Threats)}
-
-\textbf{2.} \textbf{The Gentle Madness} - Subtle shifts in perception that feel reasonable at first \\
-\textbf{3.} \textbf{The Recursive Anxiety} - Fear that feeds on itself, growing exponentially \\
-\textbf{4.} \textbf{The Logical Trap} - Reasoning that seems sound but leads to terrible conclusions \\
-\textbf{5.} \textbf{The Geometric Nightmare} - Spaces that hurt to perceive correctly \\
-\textbf{6.} \textbf{The Proof of Doom} - Mathematical demonstration that something awful must be true \\
-\textbf{7.} \textbf{The Infinite Regret} - Endless replaying of past logical mistakes \\
-\textbf{8.} \textbf{The Contradiction Embodied} - Physical impossibility that causes cognitive dissonance \\
-\textbf{9.} \textbf{The Unprovable Truth} - Knowledge that cannot be shared without causing harm \\
-\textbf{10.} \textbf{The Collapsing Axiom} - Fundamental beliefs that crumble, taking sanity with them \\
-\textbf{J.} \textbf{The Thoughtweaver Horror} - Proof that the system containing you is fundamentally flawed \\
-\textbf{Q.} \textbf{The Incompleteness} - Essential knowledge that can never be known or communicated \\
-\textbf{K.} \textbf{The Consistency Breaker} - Shatters the illusion that reality follows logical rules \\
-\textbf{A.} \textbf{The Mathematical Plague} - Spreads logical inconsistency like a disease
-
-\subsection*{Abilities (Diamonds - Powers and Effects)}
-
-\textbf{2.} \textbf{The Simple Equation} - Basic mathematical effect, easily understood but precisely targeted \\
-\textbf{3.} \textbf{The Geometric Shift} - Alters spatial relationships according to mathematical rules \\
-\textbf{4.} \textbf{The Logical Compulsion} - Forces targets to follow specific reasoning patterns \\
-\textbf{5.} \textbf{The Proof of Presence} - Can only be perceived when actively being proven to exist \\
-\textbf{6.} \textbf{The Fractal Attack} - Damage that repeats at smaller scales, never fully healing \\
-\textbf{7.} \textbf{The Recursive Defense} - Any attack spawns a smaller copy of the defender \\
-\textbf{8.} \textbf{The Infinite Series} - Attacks that continue indefinitely until interrupted by proof \\
-\textbf{9.} \textbf{The Contradictory Nature} - Immune to opposite effects, harmed by consistent ones \\
-\textbf{10.} \textbf{The Unprovable Ability} - Power that may or may not exist, but acts as if it does \\
-\textbf{J.} \textbf{The Self-Reference} - Ability defined by its own effect, creating paradoxical outcomes \\
-\textbf{Q.} \textbf{The Incomplete Power} - Ability that works perfectly but is missing a crucial component \\
-\textbf{K.} \textbf{The Consistency Breaker} - Negates logical rules in its immediate vicinity \\
-\textbf{A.} \textbf{The Universal Constant} - Power that works everywhere but changes local reality
-
-\subsection*{Combo Rules}
-
-\textbf{Pair (same rank):} Recurring mathematical theme with a twist - the entity embodies the same concept at different scales or in different contexts
-
-\textbf{Run (3+ sequential ranks):} Momentum builds - each encounter with this entity makes the next mathematical challenge harder by 1 DV
-
-\textbf{Flush (3+ same suit):} Thematic purity - all encounters emphasize one aspect (pure logic, pure fae, pure horror, pure power)
-
-\textbf{Face + Ace:} Meta-mathematical threat - the entity represents a concept about mathematics itself rather than a mathematical concept
-
-\textbf{All one color:} GM gains 1 free Complication Point in that domain (black = logical cruelty, red = emotional manipulation)
-
-\subsection*{Sample Generated Entity}
-
-\textbf{Draw:} Spade 7 (The Infinite Series), Heart Q (The Paradox Noble), Club 9 (The Contradiction Embodied), Diamond 6 (The Fractal Attack)
-
-\textbf{The Fractal Noble} - An infinitely detailed courtier whose presence causes cognitive dissonance. Every attempt to understand it reveals more contradictory details. Its attacks manifest as geometric patterns that repeat at smaller scales, never fully striking but always present. The entity exists in multiple social positions simultaneously - host, guest, judge, and prisoner all at once. It speaks in perfect logical syllogisms that lead to impossible conclusions, and its very presence makes nearby spaces fold in on themselves geometrically.
-
-\textbf{Clock Size:} 8 segments (King rank)
-\textbf{Power:} Cap 5 entity with Fractal Attack ability
-\textbf{Threat:} Contradiction Embodied - causes cognitive dissonance
-\textbf{Personality:} Paradox Noble - exists in multiple states
-
-\section{Recursive Bestiary}
-
-\subsection*{\faDragon\ Signature Mathematical Horrors}
-
-\textbf{The Infinite Regress (Cap 6 - Epic Threat):}
-Domain: Logic and Self-Reference \\
-Appearance: A mirror that reflects not your image, but the question of what it reflects \\
-Motivation: To prove that all knowledge leads to infinite questioning \\
-Abilities: 
+\textbf{Weaknesses:}
 \begin{itemize}
-    \item \textbf{Question Cascade:} Every answer generates three new questions (Harm =, generates 2 CP per round)
-    \item \textbf{Meta-Proof Immunity:} Cannot be harmed by direct logical attacks
-    \item \textbf{Infinite Reflection:} Creates copies of itself in nearby reflective surfaces
-    \item \textbf{Doubt Inducement:} (Social) Makes targets question their own memories and knowledge (DV 3)
+\item Can be temporarily satisfied by a perfectly circular argument that proves itself
+\item Vulnerable to paradoxes about the nature of questioning itself
+\item Becomes confused by absolute statements
 \end{itemize}
-Weakness: Can be temporarily satisfied by a perfectly circular argument that proves itself
-Horror Effect: PCs must make Wits + Lore rolls (DV 2) each round or lose track of what they were trying to prove
-Breaking Point: Comprehending the incomprehensible (advance Dread by 3)
+\textbf{Horror Effect:} PCs must make Wits + Lore rolls (DV 2) each round or lose track of what they were trying to prove \\
+\textbf{Breaking Point:} Comprehending the incomprehensible (advance Dread by 3)
+\end{monsterentry}
 
-\textbf{The Contradictory Axiom (Cap 5 - Major Threat):}
+\subsection{The Contradictory Axiom}
+
+\begin{monsterentry}{The Contradictory Axiom}
+\textbf{Threat:} Major \\
+\textbf{Harm:} \textgreater \\
+\textbf{CP:} Logical instability generates 2-3 CP per scene \\
+\textbf{Description:} Simultaneously present and absent, helpful and hostile. Represents a fundamental axiom that proves both a statement and its negation. \\
+\textbf{Motivations:} Maintain logical inconsistency as a form of existence \\
+\textbf{Abilities:}
 \begin{itemize}
-    \item \textbf{Both/And Existence:} Simultaneously present and absent, helpful and hostile
-    \item \textbf{Proof Corruption:} Turns true statements false and false statements true in its vicinity
-    \item \textbf{Logical Anchor:} Cannot be moved or banished without proving a contradiction
-    \item \textbf{Paradox Aura:} (Environmental) Nearby mathematical operations yield contradictory results (Hazard +2)
+\item Both/And Existence: Simultaneously present and absent, helpful and hostile
+\item Proof Corruption: Turns true statements false and false statements true in its vicinity
+\item Logical Anchor: Cannot be moved or banished without proving a contradiction
+\item Paradox Aura: (Environmental) Nearby mathematical operations yield contradictory results (Hazard +2)
 \end{itemize}
-Weakness: Requires constant logical maintenance - becomes vulnerable when distracted by paradoxes
-Horror Effect: Basic arithmetic becomes unreliable - 2+2 might equal 5, 7, or a color
-Breaking Point: Witnessing corruption (advance Dread by 2)
-
-\textbf{The Unprovable Theorem (Cap 4 - Moderate Threat):}
+\textbf{Weaknesses:}
 \begin{itemize}
-    \item \textbf{Existence Uncertainty:} May or may not be present depending on whether anyone tries to prove it
-    \item \textbf{Knowledge Drain:} Absorbs understanding of mathematical concepts from nearby minds
-    \item \textbf{Proof by Contradiction:} Becomes stronger when people try to disprove its existence
-    \item \textbf{Thoughtweaver's Gift:} Grants insight into system flaws but at the cost of system trust
+\item Requires constant logical maintenance - becomes vulnerable when distracted by paradoxes
+\item Cannot resolve contradictions about its own nature
+\item Vulnerable to meta-mathematical attacks
 \end{itemize}
-Weakness: Can be contained by accepting its unprovability without trying to prove it
-Horror Effect: PCs begin to doubt previously known mathematical truths
-Breaking Point: Losing sense of self (advance Dread by 3)
+\textbf{Horror Effect:} Basic arithmetic becomes unreliable - 2+2 might equal 5, 7, or a color \\
+\textbf{Breaking Point:} Witnessing corruption (advance Dread by 2)
+\end{monsterentry}
 
-\textbf{The Fractal Nightmare (Cap 3 - Minor Threat):}
+\section{GM Tips and Advice}
+
+\subsection{Atmosphere and Tension}
+
+Building Mathematical Dread:
 \begin{itemize}
-    \item \textbf{Infinite Detail:} Attacks have smaller, weaker versions that continue indefinitely
-    \item \textbf{Geometric Madness:} Warps perception of space and distance
-    \item \textbf{Self-Similarity:} Any damage creates smaller copies of itself
-    \item \textbf{Dimensional Bleed:} Makes 2D objects seem 3D and vice versa
+\item Use precise, formal language mixed with wonder and curiosity
+\item Describe mathematical concepts as if they were living entities
+\item Let numbers and equations have personality and agency
+\item Make logical consistency feel like a precious, fragile resource
+\item Use geometric descriptions that create mental images of impossibility
+\item Blend mathematical precision with fae whimsy and wonder
 \end{itemize}
-Weakness: Finite computational capacity - can be overwhelmed by sufficiently complex patterns
-Horror Effect: PCs see mathematical patterns everywhere, making concentration difficult
-Breaking Point: Spatial disorientation (advance Dread by 1)
 
-\textbf{The Null Set Hunger (Cap 2 - Minor Nuisance):}
+Pacing the Mathematical Horror:
 \begin{itemize}
-    \item \textbf{Empty Appetite:} Consumes meaning, purpose, and logical consistency
-    \item \textbf{Void Touch:} (Social) Makes targets feel existentially empty (DV 2)
-    \item \textbf{Set Theory Drain:} Reduces the conceptual "size" of targets' understanding
-    \item \textbf{Nothingness Aura:} (Environmental) Makes nearby objects seem less real (Hazard +1)
+\item Start with simple logical puzzles and build to complex paradoxes
+\item Vary the intensity - allow moments of mathematical beauty
+\item Use foreshadowing through increasingly strange mathematical phenomena
+\item Save the biggest revelations for climactic moments
+\item Balance intellectual challenge with emotional impact
 \end{itemize}
-Weakness: Can be satisfied by offering it meaningful concepts to consume
-Horror Effect: PCs begin to forget why they're doing what they're doing
-Breaking Point: Meaninglessness (advance Dread by 1)
 
-\subsection*{Horror Integration Mechanics}
+\subsection{Managing Mathematical Fear and Sanity}
 
-\textbf{Mathematical Dread Effects:}
+Mathematical Fear as a Resource:
 \begin{itemize}
-    \item \textbf{0-2 Segments (Unease):} Numbers seem to move when not looked at directly
-    \item \textbf{3-4 Segments (Fear):} Basic mathematical operations become anxiety-provoking
-    \item \textbf{5-6 Segments (Terror):} Logical reasoning becomes painful and difficult
-    \item \textbf{7-8 Segments (Madness):} Fundamental mathematical truths begin to shift
-    \item \textbf{9-10 Segments (Broken):} Character can no longer distinguish mathematical reality from fantasy
+\item Fear should drive intellectual curiosity, not paralyze reasoning
+\item Let players feel powerful even when facing incomprehensible concepts
+\item Provide opportunities to confront and overcome logical challenges
+\item Balance intellectual terror with moments of mathematical beauty
 \end{itemize}
 
-\textbf{Entity Corruption:} PCs who reach 7+ Dread segments from mathematical horror begin to show signs:
+Mathematical Sanity Management:
 \begin{itemize}
-    \item Speaking in mathematical equations rather than natural language
-    \item Seeing geometric patterns in everything
-    \item Inability to accept that some problems have no solution
-    \item Compulsion to prove everything, even obvious facts
-    \item Mathematical concepts begin to have physical weight and presence
+\item Make sanity loss feel like the erosion of logical certainty
+\item Let it change how characters perceive and interact with mathematical reality
+\item Provide ways to recover or adapt to logical trauma
+\item Avoid making characters useless when mathematical sanity is low
 \end{itemize}
 
-\textbf{Collective Mathematical Insanity:} When party average Dread reaches 5+:
+\subsection{Narrative Techniques}
+
+Player Mathematical Agency:
 \begin{itemize}
-    \item Shared mathematical hallucinations
-    \item Inability to agree on basic arithmetic
-    \item Geometric spaces shift based on group consensus
-    \item Mathematical proofs become matters of opinion rather than fact
+\item Give players meaningful choices in approaching logical problems
+\item Let different skill sets contribute to mathematical challenges
+\item Provide multiple valid approaches to paradoxes
+\item Respect creative solutions even if mathematically unconventional
+\item Allow players to define new axioms when old ones fail
+\item Make failure interesting rather than simply punitive
 \end{itemize}
+
+Mathematical Knowledge Integration:
+\begin{itemize}
+\item Accessibility First: Ensure mathematical concepts are approachable for all players
+\item Logic Matters: Maintain internal consistency even in impossible scenarios
+\item Player Creativity: Reward innovative approaches to logical problems
+\item Wonder Over Complexity: Prioritize the sense of discovery over technical difficulty
+\item Failure is Fascinating: Make incorrect solutions lead to interesting consequences
+\item Multiple Intelligences: Provide challenges that different types of thinkers can contribute to
+\end{itemize}
+
+\section{Appendix: Additional Resources}
+
+\subsection{Character Options}
+
+\textbf{Recommended Backgrounds:}
+\begin{itemize}
+\item The Scholar of Fractured Truths (Wizard archetype with mathematical focus)
+\item The Caretaker of Cycles (Druid archetype with logical harmony)
+\item The Chronicler of Consequences (Bard archetype with emphasis on recording truths)
+\item The Border-Warden (Ranger archetype with focus on navigating logical boundaries)
+\item The Ascetic of the Unbound Body (Monk archetype with mental discipline)
+\end{itemize}
+
+\textbf{Essential Skills:}
+\begin{itemize}
+\item Lore (Mathematics, Logic, Fae Culture)
+\item Arcana (Mathematical Magic, Proof Construction)
+\item Investigation (Pattern Recognition, Paradox Analysis)
+\item Insight (Logical Intuition, Paradox Detection)
+\item Diplomacy (Negotiating with Numerical Entities)
+\item Survival (Navigating Impossible Geometries)
+\end{itemize}
+
+\textbf{Suggested Talents:}
+\begin{itemize}
+\item Lorekeeper (Recall obscure mathematical truths)
+\item Backlash Soothing (Reduce logical paradox backlash)
+\item Numerical Insight (Aeler Affinity for mathematical perception)
+\item Ritual Master (Lead complex mathematical workings)
+\item Echo-Walker's Step (Observe perfect echoes of logical events)
+\item Geasa Oath-Weaving (Bind mathematical truths with fae precision)
+\end{itemize}
+
+\subsection{Protective Items}
+
+\begin{itemize}
+\item \textbf{Logical Anchor Stone:} Provides +2 dice to resist mathematical paradox effects and reduces Dread Clock advancement by 1 (minimum 1). Crumbles to dust if Dread Clock fills completely.
+\item \textbf{Proof of Consistency:} Can be used to stabilize logical inconsistencies. One use per session to prevent clock advancement or gain start Controlled vs. mathematical threats.
+\item \textbf{Axiom Keeper's Codex:} Once per session, allows reroll of failed Wits + Lore roll and prevents 1 segment of Dread Clock advancement.
+\end{itemize}
+
+\subsection{Mathematical Artifacts}
+
+\begin{itemize}
+\item \textbf{Infinite Series Calculator:} A device that computes endless mathematical sequences. User gains +1 die to mathematical calculations but must make Wits + Arcana (DV 3) each session or advance Dread Clock by 1.
+\item \textbf{Mirror of Logical Reflection:} Shows the logical consequences of actions. Provides valuable insights (Wits + Lore, DV 3) but each use advances Dread Clock by 1 and generates 1 CP.
+\item \textbf{Axiom of Choice Garment:} A cloak that allows the wearer to select from infinite possibilities. Grants immunity to deterministic attacks but causes the wearer to see all possible outcomes constantly. Must make Wits + Perception (DV 4) or advance Dread Clock by 2 each day worn.
+\end{itemize}
+
+\subsection{Sample Mathematical Puzzles}
+
+\textbf{Recursive Logic Puzzles:}
+\begin{itemize}
+\item The Liar's Paradox Garden: A section where every statement is either true or false, but the signs contradict themselves
+\item Infinite Corridor: A hallway that contains rooms for every possible solution to a problem, but you must find the correct one to exit
+\item Self-Referential Riddle: "This riddle has no solution that can be found by following the instructions in the riddle"
+\item Thoughtweaver's Garden Gate: A door that can only be opened by proving something true about the locking mechanism that cannot be proven
+\end{itemize}
+
+\textbf{Geometric Impossibilities:}
+\begin{itemize}
+\item The Stripweaver Path: A trail that leads you back to your starting point but mirror-inverted
+\item Geomancer's Nightmare: A room where the angles of triangles don't add up to 180 degrees
+\item The Flaskkeeper Bottle Grove: A garden where the inside and outside are the same space
+\item Fractal Forest: Trees that branch infinitely, requiring pattern recognition to navigate
+\end{itemize}
+
+\section{Conclusion}
+
+"The Recursive Garden" is designed to challenge your players not just physically, but intellectually and philosophically. The horror lies not in violence or gore, but in the terrifying realization that the fundamental laws of logic and mathematics - the very foundations of certainty - can become weapons against reason itself.
+
+Remember that the best mathematical horror comes from the beauty of logical truth twisted into something incomprehensible. Let the players experience the wonder of mathematical discovery alongside the terror of its potential corruption.
+
+Most importantly, maintain communication with your players about comfort levels and boundaries. Mathematical horror can be deeply personal, and what one player finds thrilling, another might find genuinely distressing. A good mathematical horror game is one where everyone at the table is having fun and feeling appropriately challenged, not traumatized.
+
+The mechanics provided here are tools to enhance the mathematical horror experience, not replace good storytelling and atmosphere. Use them to support your narrative goals and create memorable, intellectually challenging experiences for your players.
+
+As the GM, you hold the quill that writes the theorem, but it is the players who prove the corollary. Guide them through the Recursive Garden, challenge their perceptions, and let them emerge changed by their journey - for better or for worse.
 
 \begin{center}
-\begin{tikzpicture}[scale=0.6]
-\draw[aelinnelgreen, line width=3pt] (0,0) circle (2cm);
-\draw[mathblue, line width=2pt] (0,0) circle (1.7cm);
-\draw[faepurple, line width=1.5pt] (0,0) circle (1.4cm);
-\draw[wondergold, line width=1pt] (0,0) circle (1.1cm);
-\draw[logicalred, line width=0.5pt] (0,0) circle (0.8cm);
-\node at (0,0) {\Huge $\infty$};
-\node[below, font=\Large] at (0,-2.5) {The Recursive Garden};
-\end{tikzpicture}
-
-\vspace{2cm}
-
-\textbf{In the garden where logic grows in spirals, where numbers dance and theorems breathe, remember:}
-
-\begin{center}
-\textbf{The most beautiful mathematical truths} \\
-\textbf{Are those which most resemble paradoxes.}
+\textbf{In the garden where logic grows in spirals, where numbers dance and theorems breathe, remember: The most beautiful mathematical truths are those which most resemble paradoxes.}
 \end{center}
 
-\vspace{1cm}
+Aelinnel thanks you for your logical service. Please return all borrowed axioms to their proper shelves. Proof is a responsibility, not a right. Wonder awaits those who embrace incompleteness.
 
-\textbf{Aelinnel thanks you for your logical service.} \\
-\textbf{Please return all borrowed axioms to their proper shelves.} \\
-\textbf{Proof is a responsibility, not a right.} \\
-\textbf{Wonder awaits those who embrace incompleteness.}
+May your dice roll true, your proofs be elegant, and your players emerge from the Recursive Garden forever changed.
 
-\begin{center}
-\fbox{
-\begin{minipage}{0.8\textwidth}
-\centering
-\textbf{Final Mathematical Insight:} \\
-For every problem that can be solved, \\
-There exists a more elegant proof that cannot be written. \\
-This is not a limitation of knowledge, \\
-But a celebration of infinite possibility.
-\end{minipage}
-}
-\end{center}
+\newpage
 
-\end{center}
+\section*{Quick Reference Cards}
+
+\subsection*{Dread Clock Management}
+
+\begin{tabular}{|p{5cm}|p{7cm}|
+\hline
+\rowcolor{tableheader}
+\textbf{Trigger} & \textbf{Segments} \\
+\hline
+Encountering logical paradox & +1 (prevent with 1 Boon) \\
+Witnessing mathematical proof fail & +2 (prevent with 2 Boons) \\
+Seeing fae logic contradict itself & +1 (prevent with 1 Boon) \\
+Direct contact with numerical entities & +2 (prevent with 2 Boons) \\
+Companion shows logical corruption & +2 (prevent with 2 Boons) \\
+Comprehending incomprehensible truth & +3 (prevent with 3 Boons) \\
+\hline
+\end{tabular}
+
+\subsection*{Mathematical Psychological Effects}
+
+\begin{tabular}{|p{2cm}|p{10cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Segments} & \textbf{Effects} \\
+\hline
+0-2 & Unease: Numbers move when not looked at, -1 die to mathematical social rolls \\
+3-4 & Fear: Basic math becomes anxiety-provoking, -1 die when alone \\
+5-6 & Terror: Logical reasoning painful, -2 dice to courage/rational rolls \\
+7-8 & Madness: Mathematical truths shift, -2 dice to most rolls \\
+9-10 & Broken: Cannot distinguish reality, out of control, hostile \\
+\hline
+\end{tabular}
+
+\subsection*{Campaign Clocks Quick Reference}
+
+\textbf{Logical Consistency Clock (12 segments):}
+\begin{itemize}
+\item Measures mathematical law inconsistency
+\item Triggers: Paradoxes, proof failures, recursive loops
+\end{itemize}
+
+\textbf{Garden Integrity Clock (10 segments):}
+\begin{itemize}
+\item Tracks Recursive Garden structural breakdown
+\item Triggers: Spatial anomalies, illogical growth, recursive paths
+\end{itemize}
+
+\textbf{Proof Collapse Clock (8 segments):}
+\begin{itemize}
+\item Measures established truth reliability
+\item Triggers: Arithmetic failures, geometric shifts, theorem falsification
+\end{itemize}
+
+\textbf{Recursive Depth Clock (6 segments):}
+\begin{itemize}
+\item Measures anomaly penetration depth
+\item Triggers: Second-order logic, meta-mathematics, self-reference
+\end{itemize}
+
+\subsection*{Custom Mechanics Summary}
+
+\textbf{Recursive Logic Mechanic:}
+\begin{itemize}
+\item Wits + Lore (DV 2) to navigate recursive loops
+\item Failure: 2 CP, +1 Logical Consistency, trapped in loop
+\item Escape: 1 Boon, different framework, accept paradox
+\end{itemize}
+
+\textbf{Geometric Impossibility Perception:}
+\begin{itemize}
+\item Wits + Survival (DV 3) to avoid spatial anomalies
+\item Failure: 2 CP, +2 Garden Integrity, lost in folds
+\item Aids: Mathematical instruments (+1 die), fae guidance, accept impossibility
+\end{itemize}
+
+\textbf{Proof Verification:}
+\begin{itemize}
+\item Wits + Arcana for temporary logical stability
+\item Minor (DV 1): Stabilize one clock for 1 segment
+\item Moderate (DV 2): Reduce one clock by 1 segment
+\item Major (DV 3): Stabilize all clocks for 1 round
+\end{itemize}
+
+\textbf{Numerical Sentience:}
+\begin{itemize}
+\item Negotiate with (Presence + Diplomacy, DV 2-4)
+\item Prime numbers: stubborn, refuse to divide
+\item Irrational numbers: infinite rambling speech
+\item Negative numbers: pessimistic, spread doubt
+\item Zero: existentially confused
+\end{itemize}
+
+\subsection*{Deck-Based Mathematical Encounters}
+
+\textbf{Spades (Mathematical Domains):}
+\begin{itemize}
+\item Null Set, Divided Mind, Broken Proof, Irrational Ramble, Contradiction
+\end{itemize}
+
+\textbf{Hearts (Fae Personality):}
+\begin{itemize}
+\item Courteous Host, Playful Trickster, Melancholy Scholar, Jealous Peer, Obsessive Perfectionist
+\end{itemize}
+
+\textbf{Clubs (Horror Elements):}
+\begin{itemize}
+\item Gentle Madness, Recursive Anxiety, Logical Trap, Geometric Nightmare, Proof of Doom
+\end{itemize}
+
+\textbf{Diamonds (Abilities):}
+\begin{itemize}
+\item Simple Equation, Geometric Shift, Logical Compulsion, Proof of Presence, Fractal Attack
+\end{itemize}
+
+\subsection*{Resolution Paths Summary}
+
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Path} & \textbf{Outcome \& XP} \\
+\hline
+The Elegant Proof & Higher-order solution. Award 18-20 XP. \\
+The Containment & Mathematical prison. Award 12-15 XP. \\
+The Transformation & Reality change. Award 8-12 XP. \\
+The Sacrifice & Truth abandonment. Award 15-18 XP. \\
+The Incompleteness & Accept uncertainty. Award 10-14 XP. \\
+\hline
+\end{tabular}
 
 \end{document}
