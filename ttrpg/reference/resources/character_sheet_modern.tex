@@ -1,0 +1,233 @@
+
+\documentclass[10pt,letterpaper]{article}
+
+% ---- Safe, pdflatex-friendly packages ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{paracol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb} % for \square
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+% ---- Global layout tuning ----
+\setlength{\columnsep}{0.35in}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+
+% ---- Colors ----
+\definecolor{Accent}{RGB}{23,92,140}    % deep blue
+\definecolor{AccentLight}{RGB}{230,240,247}
+\definecolor{Frame}{RGB}{80,110,140}
+\definecolor{Soft}{RGB}{245,247,250}
+
+% ---- tcolorbox styles ----
+\tcbset{
+  sheetbox/.style={
+    enhanced,
+    colback=Soft,
+    colframe=Frame,
+    boxrule=0.5pt,
+    arc=2pt,
+    outer arc same,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    width=\columnwidth,
+  },
+  headerbox/.style={
+    enhanced,
+    colback=AccentLight,
+    colframe=Accent,
+    boxrule=0.8pt,
+    arc=2pt,
+    outer arc same,
+    left=6pt,right=6pt,top=6pt,bottom=6pt,
+    width=\textwidth,
+  },
+  title style/.style={font=\bfseries\color{Accent}},
+}
+
+% ---- Simple rating / track helpers (pdflatex-safe) ----
+\newcommand{\trackfive}{\normalsize$\circ\,\circ\,\circ\,\circ\,\circ$}
+\newcommand{\trackfour}{\normalsize$\square\,\square\,\square\,\square$}
+\newcommand{\tracksix}{\normalsize$\square\,\square\,\square\,\square\,\square\,\square$}
+\newcommand{\trackeight}{\normalsize$\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square$}
+\newcommand{\trackten}{\normalsize$\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square$}
+
+\newcommand{\field}[1]{\textbf{#1:}\,\rule{0.7\linewidth}{0.4pt}}
+\newcommand{\fieldshort}[1]{\textbf{#1:}\,\rule{0.45\linewidth}{0.4pt}}
+\newcommand{\tinyfield}[1]{\textbf{#1:}\,\rule{0.28\linewidth}{0.4pt}}
+
+% narrow column paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\begin{document}
+\pagestyle{empty}
+
+% ===== Header (full width) =====
+\begin{tcolorbox}[headerbox,title=\Large Fate's Edge — Character Sheet]
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.15\textwidth}X p{0.18\textwidth} p{0.16\textwidth}@{}}
+\textbf{Name} & \rule{0.96\linewidth}{0.6pt} & \textbf{Pronouns} & \rule{0.9\linewidth}{0.6pt} \\[6pt]
+\textbf{Concept} & \rule{0.96\linewidth}{0.6pt} & \textbf{Culture/Region} & \rule{0.9\linewidth}{0.6pt} \\[6pt]
+\textbf{Background} & \rule{0.96\linewidth}{0.6pt} & \textbf{Tier} & \rule{0.9\linewidth}{0.6pt} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\begin{paracol}{2}
+
+% ===== LEFT COLUMN =====
+
+% -- Attributes --
+\begin{tcolorbox}[sheetbox,title=\textbf{Attributes}]
+\small
+\begin{tabularx}{\columnwidth}{@{}l r@{}}
+\textbf{Body} & \trackfive \\
+\textbf{Wits} & \trackfive \\
+\textbf{Spirit} & \trackfive \\
+\textbf{Presence} & \trackfive \\
+\end{tabularx}
+\end{tcolorbox}
+
+% -- Skills (split in two minipages to avoid overflow) --
+\begin{tcolorbox}[sheetbox,title=\textbf{Skills}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.47\columnwidth} p{0.47\columnwidth}@{}}
+\begin{tabularx}{\linewidth}{@{}l r@{}}
+Arcana & \trackfive \\
+Combat & \trackfive \\
+Investigate & \trackfive \\
+Lore & \trackfive \\
+Move & \trackfive \\
+Notice & \trackfive \\
+\end{tabularx}
+&
+\begin{tabularx}{\linewidth}{@{}l r@{}}
+Physique & \trackfive \\
+Resolve & \trackfive \\
+Stealth & \trackfive \\
+Sway & \trackfive \\
+Survival & \trackfive \\
+Performance & \trackfive \\
+\end{tabularx}
+\\
+\end{tabularx}
+\end{tcolorbox}
+
+% -- Conditions & Resources --
+\begin{tcolorbox}[sheetbox,title=\textbf{Conditions \& Resources}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}l X@{}}
+\textbf{Fatigue (1–4)} & \trackfour \\
+\textbf{Stress (1–4)} & \trackfour \\
+\textbf{Harm (1–3)} & $\square\,\square\,\square$ \\
+\textbf{Boons (0–5)} & $\square\,\square\,\square\,\square\,\square$ \\
+\textbf{Supply (0–4)} & \trackfour \\
+\end{tabularx}
+
+\vspace{2pt}
+\textbf{Notes:} \rule{0.965\linewidth}{0.4pt}\\[-3pt]
+\rule{0.965\linewidth}{0.4pt}\\[-3pt]
+\rule{0.965\linewidth}{0.4pt}
+\end{tcolorbox}
+
+% -- Bonds & Flags --
+\begin{tcolorbox}[sheetbox,title=\textbf{Bonds \& Flags}]
+\footnotesize
+\rule{\columnwidth}{0.4pt}\\[-4pt]
+\rule{\columnwidth}{0.4pt}\\[-4pt]
+\rule{\columnwidth}{0.4pt}
+\end{tcolorbox}
+
+% -- Talents / Abilities --
+\begin{tcolorbox}[sheetbox,title=\textbf{Talents \& Abilities}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}X@{}}
+\rule{\linewidth}{0.4pt}\\[-4pt]
+\rule{\linewidth}{0.4pt}\\[-4pt]
+\rule{\linewidth}{0.4pt}\\[-4pt]
+\rule{\linewidth}{0.4pt}
+\end{tabularx}
+\end{tcolorbox}
+
+% -- Rites / Patron --
+\begin{tcolorbox}[sheetbox,title=\textbf{Rites, Patrons \& Obligation}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.26\columnwidth} p{0.48\columnwidth} p{0.2\columnwidth}@{}}
+\textbf{Rite} & \textbf{Effect / Tags} & \textbf{Cost/Obl.} \\ \midrule
+\rule{0pt}{10pt} & & \\
+& & \\
+& & \\
+\end{tabularx}
+
+\vspace{4pt}
+\begin{tabularx}{\columnwidth}{@{}p{0.24\columnwidth} X p{0.24\columnwidth}@{}}
+\textbf{Patron} & \rule{0.95\linewidth}{0.4pt} & \textbf{Obligation} \rule{0.7\linewidth}{0.4pt} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\switchcolumn
+
+% ===== RIGHT COLUMN =====
+
+% -- Inventory & Gear --
+\begin{tcolorbox}[sheetbox,title=\textbf{Inventory \& Gear}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}X p{0.22\columnwidth}@{}}
+\textbf{Item / Tag} & \textbf{Qty / Notes} \\ \midrule
+\rule{0pt}{10pt} & \\
+& \\
+& \\
+& \\
+& \\
+\end{tabularx}
+\end{tcolorbox}
+
+% -- Assets --
+\begin{tcolorbox}[sheetbox,title=\textbf{Assets}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.34\columnwidth} p{0.30\columnwidth} X@{}}
+\textbf{Name} & \textbf{Status} & \textbf{Notes} \\ \midrule
+\rule{0pt}{10pt} & \footnotesize Maint.\,$\square$ Negl.\,$\square$ Comp.\,$\square$ & \\
+& \footnotesize Maint.\,$\square$ Negl.\,$\square$ Comp.\,$\square$ & \\
+& \footnotesize Maint.\,$\square$ Negl.\,$\square$ Comp.\,$\square$ & \\
+\end{tabularx}
+\end{tcolorbox}
+
+% -- Followers --
+\begin{tcolorbox}[sheetbox,title=\textbf{Followers}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.30\columnwidth} p{0.10\columnwidth} p{0.26\columnwidth} p{0.12\columnwidth} p{0.12\columnwidth}@{}}
+\textbf{Name} & \textbf{Cap} & \textbf{Role} & \textbf{Harm} & \textbf{Exposure} \\ \midrule
+\rule{0pt}{10pt} & & & $\square\square\square$ & $\square\square\square\square$ \\
+& & & $\square\square\square$ & $\square\square\square\square$ \\
+& & & $\square\square\square$ & $\square\square\square\square$ \\
+\end{tabularx}
+\end{tcolorbox}
+
+% -- Advancement / Notes --
+\begin{tcolorbox}[sheetbox,title=\textbf{Advancement \& Notes}]
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.22\columnwidth} X p{0.22\columnwidth}@{}}
+\textbf{XP Bank} & \rule{0.92\linewidth}{0.4pt} & \textbf{Downtime Days} \rule{0.6\linewidth}{0.4pt} \\
+\end{tabularx}
+\vspace{2pt}
+
+\textbf{Milestones / Goals}\\[-6pt]
+\rule{\columnwidth}{0.4pt}\\[-4pt]
+\rule{\columnwidth}{0.4pt}\\[-4pt]
+\rule{\columnwidth}{0.4pt}\\[-4pt]
+\rule{\columnwidth}{0.4pt}
+\end{tcolorbox}
+
+\end{paracol}
+
+\end{document}

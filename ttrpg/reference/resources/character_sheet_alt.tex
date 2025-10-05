@@ -1,0 +1,333 @@
+\documentclass[10pt,letterpaper]{article}
+
+% ---- Safe, pdflatex-friendly packages ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{paracol}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amssymb} % for \square
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+% ---- Global layout tuning ----
+\setlength{\columnsep}{0.35in}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+
+% ---- Colors ----
+\definecolor{Accent}{RGB}{23,92,140}    % deep blue
+\definecolor{AccentLight}{RGB}{230,240,247}
+\definecolor{Frame}{RGB}{80,110,140}
+\definecolor{Soft}{RGB}{245,247,250}
+
+% ---- tcolorbox styles ----
+\tcbset{
+  sheetbox/.style={
+    enhanced,
+    colback=Soft,
+    colframe=Frame,
+    boxrule=0.5pt,
+    arc=2pt,
+    outer arc same,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    width=\columnwidth,
+  },
+  headerbox/.style={
+    enhanced,
+    colback=AccentLight,
+    colframe=Accent,
+    boxrule=0.8pt,
+    arc=2pt,
+    outer arc same,
+    left=6pt,right=6pt,top=6pt,bottom=6pt,
+    width=\textwidth,
+  },
+  title style/.style={font=\bfseries\color{Accent}},
+}
+
+% ---- Simple rating / track helpers (pdflatex-safe) ----
+\newcommand{\trackfive}{\normalsize$\circ\,\circ\,\circ\,\circ\,\circ$}
+\newcommand{\trackfour}{\normalsize$\square\,\square\,\square\,\square$}
+\newcommand{\tracksix}{\normalsize$\square\,\square\,\square\,\square\,\square\,\square$}
+\newcommand{\trackeight}{\normalsize$\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square$}
+\newcommand{\trackten}{\normalsize$\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square\,\square$}
+
+\newcommand{\field}[1]{\textbf{#1:}\,\rule{0.7\linewidth}{0.4pt}}
+\newcommand{\fieldshort}[1]{\textbf{#1:}\,\rule{0.45\linewidth}{0.4pt}}
+\newcommand{\tinyfield}[1]{\textbf{#1:}\,\rule{0.28\linewidth}{0.4pt}}
+
+% narrow column paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\chapter*{Fate's Edge Character Sheet}
+\addcontentsline{toc}{chapter}{Character Sheet}
+\thispagestyle{empty}
+
+% Corner ornaments (keep small so they sit inside margins)
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=north west, xshift=6mm, yshift=-6mm]
+    at (current page.north west) {\includegraphics[width=1.6cm]{corner_design_left}};
+  \node[anchor=north east, xshift=-6mm, yshift=-6mm]
+    at (current page.north east) {\includegraphics[width=1.6cm]{corner_design_right}};
+\end{tikzpicture}
+
+\begin{center}
+  {\Huge\fontfamily{ppl}\selectfont \textbf{Fate's Edge}}\\[3pt]
+  {\Large Character Record}
+\end{center}
+
+% Helpers for tidy tables/lines
+\newcommand{\cellline}{\rule{\linewidth}{0.4pt}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{Xr}{>{\raggedright\arraybackslash}X}
+
+% -----------------------------------------------
+% TOP: Identity / XP
+% -----------------------------------------------
+\begin{minipage}[t]{0.49\textwidth}
+\section*{Character Identity}
+\begin{tabularx}{\linewidth}{@{}L{0.30\linewidth} Xr@{}}
+\textbf{Name:}          & \cellline & \\
+\textbf{Concept:}       & \cellline & \\
+\textbf{Culture:}       & \cellline & \\
+\textbf{Patron/Deity:}  & \cellline & \\
+\textbf{Appearance:}    & \cellline & \\
+\end{tabularx}
+
+\vspace{0.6\baselineskip}
+
+\subsection*{Drives \& Motivations}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\cellline\\[0.8ex]
+\cellline\\[0.8ex]
+\cellline\\
+\end{tabularx}
+
+\subsection*{Bonds}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\cellline\\[0.8ex]
+\cellline\\[0.8ex]
+\cellline\\
+\end{tabularx}
+
+\subsection*{Complications}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\cellline\\[0.8ex]
+\cellline\\
+\end{tabularx}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\section*{Experience \& Advancement}
+\begin{tabularx}{\linewidth}{@{}C{0.28\linewidth}C{0.28\linewidth}C{0.34\linewidth}@{}}
+\bfseries Total XP & \bfseries Spent & \bfseries Available\\ \cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
+\cellline & \cellline & \cellline\\
+\end{tabularx}
+
+\vspace{0.6\baselineskip}
+
+\subsection*{Reputation Tier}
+\begin{tabularx}{\linewidth}{@{}*{5}{C{0.12\linewidth}}@{}}
+\toprule
+I & II & III & IV & V\\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Session Notes}
+\rule{\linewidth}{0.4pt}\par\vspace{1.2ex}
+\rule{\linewidth}{0.4pt}\par\vspace{1.2ex}
+\rule{\linewidth}{0.4pt}
+
+\subsection*{Long-Term Goals}
+\rule{\linewidth}{0.4pt}\par\vspace{1.2ex}
+\rule{\linewidth}{0.4pt}\par\vspace{1.2ex}
+\rule{\linewidth}{0.4pt}
+\end{minipage}
+
+\vspace{0.8\baselineskip}
+
+% -----------------------------------------------
+% CORE ATTRIBUTES
+% -----------------------------------------------
+\section*{Core Attributes}
+\begin{tabularx}{\textwidth}{@{}L{2.2cm} C{2cm} C{2cm} C{2.2cm} Xr@{}}
+\toprule
+ & \textbf{Rating} & \textbf{XP Cost} & \textbf{Downtime} & \textbf{Common Rolls}\\
+\midrule
+\textbf{Body}     & \cellline & & & + \cellline\\[0.4ex]
+\textbf{Wits}     & \cellline & & & + \cellline\\[0.4ex]
+\textbf{Spirit}   & \cellline & & & + \cellline\\[0.4ex]
+\textbf{Presence} & \cellline & & & + \cellline\\
+\bottomrule
+\end{tabularx}
+
+% -----------------------------------------------
+% SKILLS
+% -----------------------------------------------
+\section*{Skills (Cost: New Level × 2 XP)}
+\begin{tabularx}{\textwidth}{@{}L{3.0cm} C{1.6cm} C{1.8cm} C{2.0cm} Xr@{}}
+\toprule
+\textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Downtime} & \textbf{Common Pools}\\
+\midrule
+Arcana      & \cellline &&& \cellline\\
+Combat      & \cellline &&& \cellline\\
+Investigate & \cellline &&& \cellline\\
+Lore        & \cellline &&& \cellline\\
+Move        & \cellline &&& \cellline\\
+Notice      & \cellline &&& \cellline\\
+Physique    & \cellline &&& \cellline\\
+Resolve     & \cellline &&& \cellline\\
+Stealth     & \cellline &&& \cellline\\
+Sway        & \cellline &&& \cellline\\
+Survival    & \cellline &&& \cellline\\
+\textit{Other:} & \cellline &&& \cellline\\
+\bottomrule
+\end{tabularx}
+
+% -----------------------------------------------
+% RESOURCES / MAGIC (two blocks)
+% -----------------------------------------------
+\begin{minipage}[t]{0.49\textwidth}
+\section*{Resources \& Conditions}
+
+\subsection*{Boons}
+\begin{tabularx}{\linewidth}{@{}*{5}{C{0.12\linewidth}}@{}} \toprule
+$\square$ & $\square$ & $\square$ & $\square$ & $\square$\\ \bottomrule
+\end{tabularx}
+\textit{Max 5, trim to 2 at scene end}
+
+\subsection*{Conditions}
+\begin{tabularx}{\linewidth}{@{}L{0.47\linewidth} L{0.47\linewidth}@{}}
+\textbf{Fatigue:} & \textbf{Harm:}\\[-0.3ex]
+$\square$ None & $\square$ None\\
+$\square$ Light (reroll 1 success) & $\square$ Light (-1 die)\\
+$\square$ Moderate (reroll 2) & $\square$ Moderate (-2 dice)\\
+$\square$ Severe (reroll 3) & $\square$ Severe (incapacitated)\\
+$\square$ Critical (collapse) & $\square$ Critical (dying)\\
+\end{tabularx}
+
+\subsection*{Supply Status}
+\begin{tabularx}{\linewidth}{@{}*{4}{C{0.18\linewidth}}@{}} \toprule
+\textbf{Full} & \textbf{Low} & \textbf{Dangerous} & \textbf{Empty}\\ \midrule
+$\square$ & $\square$ & $\square$ & $\square$\\ \bottomrule
+\end{tabularx}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\section*{Magic \& Special Abilities}
+
+\subsection*{Magic Path}
+$\square$ Caster (Freeform)\quad
+$\square$ Rites User\quad
+$\square$ Invoker
+
+\subsection*{Talents}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\cellline\\[0.8ex]\cellline\\[0.8ex]\cellline\\[0.8ex]\cellline\\
+\end{tabularx}
+
+\subsection*{Spells/Rites Known}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+\cellline\\[0.8ex]\cellline\\[0.8ex]\cellline\\
+\end{tabularx}
+
+\subsection*{Obligation Clocks}
+\begin{tabularx}{\linewidth}{@{}L{0.47\linewidth} L{0.47\linewidth}@{}}
+\textbf{Patron 1:} & \textbf{Patron 2:}\\[-0.3ex]
+$\square\,\square\,\square\,\square\,\square\,\square$ &
+$\square\,\square\,\square\,\square\,\square\,\square$\\
+\end{tabularx}
+\end{minipage}
+
+% -----------------------------------------------
+% ASSETS / FOLLOWERS
+% -----------------------------------------------
+\section*{Assets \& Followers}
+
+\subsection*{Assets (Off-Screen Resources)}
+\begin{tabularx}{\textwidth}{@{}L{3.2cm} C{2.2cm} C{2.2cm} Xr@{}}
+\toprule
+\textbf{Asset} & \textbf{Type} & \textbf{Condition} & \textbf{Notes}\\
+\midrule
+ & Minor/Standard/Major & M / N / C & \cellline\\
+ & Minor/Standard/Major & M / N / C & \cellline\\
+ & Minor/Standard/Major & M / N / C & \cellline\\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Followers (On-Screen Allies)}
+\begin{tabularx}{\textwidth}{@{}L{3.0cm} C{1.2cm} C{2.2cm} C{2.6cm} C{1.6cm}@{}}
+\toprule
+\textbf{Name} & \textbf{Cap} & \textbf{Harm} & \textbf{Exposure} & \textbf{Status}\\
+\midrule
+ &  & $\square\,\square\,\square\,\square$ & $\square\,\square\,\square\,\square$ & M/N/C\\
+ &  & $\square\,\square\,\square\,\square$ & $\square\,\square\,\square\,\square$ & M/N/C\\
+ &  & $\square\,\square\,\square\,\square$ & $\square\,\square\,\square\,\square$ & M/N/C\\
+\bottomrule
+\end{tabularx}
+
+% -----------------------------------------------
+% QUICK REF / DICE
+% -----------------------------------------------
+\section*{Quick Reference}
+\begin{minipage}[t]{0.32\textwidth}
+\subsection*{Position}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Controlled:} Safe, advantage
+\item \textbf{Risky:} Standard stakes
+\item \textbf{Desperate:} High risk
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\subsection*{Effect}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Limited:} Minor impact
+\item \textbf{Standard:} Expected result
+\item \textbf{Great:} Significant impact
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\subsection*{Range Bands}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Close} / \textbf{Near}
+\item \textbf{Far} / \textbf{Absent}
+\end{itemize}
+\end{minipage}
+
+\section*{Dice Pool Calculator}
+\begin{tabularx}{\textwidth}{@{}C{3.0cm} C{0.6cm} C{3.0cm} C{0.8cm} Xr@{}}
+\toprule
+\textbf{Attribute} & + & \textbf{Skill} & = & \textbf{Pool}\\
+\midrule
+\cellline & + & \cellline & = & \cellline\\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Common Actions \& DVs}
+\begin{tabularx}{\textwidth}{@{}L{3.2cm} Xr@{}}
+\textbf{Routine (DV 2):} & \cellline\\[0.6ex]
+\textbf{Standard (DV 3):} & \cellline\\[0.6ex]
+\textbf{Difficult (DV 4):} & \cellline\\[0.6ex]
+\textbf{Extreme (DV 5+):} & \cellline\\
+\end{tabularx}
+
+% Footer flourish
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=south west, xshift=6mm, yshift=6mm]
+    at (current page.south west) {\includegraphics[width=1.6cm]{footer_design_left}};
+  \node[anchor=south east, xshift=-6mm, yshift=6mm]
+    at (current page.south east) {\includegraphics[width=1.6cm]{footer_design_right}};
+\end{tikzpicture}
+
+\begin{center}
+{\small \textit{Every action carries weight. Every choice has consequence.}}
+\end{center}
+\end{document}
