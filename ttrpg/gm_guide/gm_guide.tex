@@ -1,68 +1,75 @@
-\documentclass[11pt,twoside]{book}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{geometry}
-\geometry{a4paper, margin=1in}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
-\usepackage{tocloft}
-\usepackage{hyperref}
-\usepackage{setspace}
-\usepackage{lmodern}
-\usepackage{lipsum}
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
-\usepackage{enumitem}
-\usepackage{booktabs}
-\usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
-\setlist{itemsep=2pt,topsep=4pt}
+\documentclass[11pt]{book}
 
-% Index support
-\usepackage{makeidx}
+% Essential packages only 
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage{lmodern} 
+\usepackage{microtype} 
+\usepackage{geometry} 
+\geometry{margin=1in} 
+\usepackage{graphicx} 
+\usepackage{booktabs} 
+\usepackage{hyperref} 
+\usepackage{enumitem} 
+\usepackage{makeidx} 
 \makeindex
 
-% Suit shorthands, for cross-doc consistency
-\newcommand{\SuitSpade}{\textbf{Spade}} % place
-\newcommand{\SuitHeart}{\textbf{Heart}} % actor
-\newcommand{\SuitClub}{\textbf{Club}}   % pressure
-\newcommand{\SuitDiamond}{\textbf{Diamond}} % leverage
-\newcommand{\ClockSizes}{2--5$\Rightarrow$4 • 6--10$\Rightarrow$6 • J/Q/K$\Rightarrow$8 • A$\Rightarrow$10}
+% Basic styling packages 
+\usepackage{xcolor} 
+\usepackage{tcolorbox} 
+\tcbuselibrary{breakable}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[LO]{\leftmark}
-\fancyhead[RE]{\rightmark}
-\renewcommand{\headrulewidth}{0.4pt}
+% Simple color definitions 
+\definecolor{blue75}{RGB}{0,85,150} 
+\definecolor{blue5}{RGB}{235,245,255} 
+\definecolor{green75}{RGB}{0,100,0} 
+\definecolor{green5}{RGB}{235,255,235}
 
-\titleformat{\chapter}[hang]{\bfseries\Large}{\thechapter}{1em}{}
+% Single versatile tcolorbox style 
+\newtcolorbox{infobox}[1]{ colback=blue5!white, colframe=blue75!black, fonttitle=
+\bfseries, title=#1, breakable }
 
-\title{Fate's Edge GM Guide}
-\author{Game Master's Companion}
-\date{}
 
+\title{Fate's Edge: Game Master's Guide} 
+\author{Nicholas A. Gasper} 
+\date{\today}
 \begin{document}
 
+\frontmatter 
 \maketitle
+
+% Copyright page 
+\cleardoublepage 
+\thispagestyle{empty} 
+\begin{center} 
+\vspace*{2in} 
+\textbf{Fate's Edge: Game Master's Guide}
+
+\vspace{0.2in} Copyright 
+\copyright 
+Nicholas A. Gasper \\ 
+\vspace{0.2in} This work is licensed under the Creative Commons Attribution 4.0 International License.\\
+To view a copy of this license, visit:\url{http://creativecommons.org/licenses/by/4.0/} 
+\end{center} 
+\cleardoublepage
+
 \tableofcontents
-\newpage
 
-\include{chapters/chapter_01_intro.tex}
-\include{chapters/chapter_02_core_procedures.tex}
-\include{chapters/chapter_03_managing_resources.tex}
-\include{chapters/chapter_04_magic_and_backlash.tex}
-\include{chapters/chapter_05_campaign_design.tex}
-\include{chapters/chapter_06_advanced_gm_techniques.tex}
-\include{chapters/chapter_07_epic_tier.tex}
-\include{chapters/chapter_08_enhanced_gm.tex}
-\include{chapters/chapter_09_setting_lore.tex}
-\include{chapters/chapter_10_running_scenarios.tex}
-\include{chapters/chapter_11_appendix.tex}
+\mainmatter
 
-% Print the index
+\include{sections/01_intro.tex}
+\include{sections/02_core_procedures.tex}
+\include{sections/03_managing_resources.tex}
+\include{sections/04_magic.tex}
+\include{sections/05_campaign_design.tex}
+\include{sections/06_advanced_gm_tools.tex}
+\include{sections/07_enhanced_gm_play.tex}
+\include{sections/08_epic_tier.tex}
+\include{sections/09_lore.tex}
+\include{sections/10_running_scenarios.tex}
+\include{sections/11_appendix.tex}
+
+\backmatter 
 \printindex
 
-\end{document}
+\end{document} 

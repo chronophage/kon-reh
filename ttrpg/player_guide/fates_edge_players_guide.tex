@@ -1,141 +1,103 @@
-% !TeX program = lualatex
-% !TeX encoding = UTF-8
+\documentclass[12pt,oneside]{book}
 
-\documentclass[11pt,twoside,openany]{book}
-
-% ======================
-% Document Setup
-% ======================
+% -------- Encoding & Fonts --------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{geometry}
-\usepackage{titlesec}
-\usepackage{tocloft}
-\usepackage{fancyhdr}
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage{multicol}
-\usepackage{enumitem}
-\usepackage{xcolor}
-\usepackage{needspace}
-\usepackage{makeidx}
-\usepackage{imakeidx}
-\usepackage{tcolorbox}
+\usepackage{microtype}
 
-% ======================
-% Index Setup
-% ======================
+% -------- Page Geometry --------
+\usepackage{geometry}
+\geometry{margin=0.75in}
+
+% -------- Graphics & Tables --------
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% -------- Lists, Index --------
+\usepackage{enumitem}
+\usepackage{makeidx}
 \makeindex
 
-% ======================
-% Page Layout
-% ======================
-\geometry{
-  paper=a4paper,
-  inner=2.5cm,
-  outer=2.5cm,
-  top=2.5cm,
-  bottom=2.5cm
+% -------- Colors, TikZ, tcolorbox --------
+\usepackage{xcolor}
+\usepackage{tikz}           % required by tcolorbox
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+
+% -------- Multicolumn --------
+\usepackage{multicol}
+
+% -------- Hyperref (LOAD LAST) --------
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+% -------- Simple color definitions --------
+\definecolor{blue75}{RGB}{0,85,150}
+\definecolor{blue5}{RGB}{235,245,255}
+\definecolor{gray75}{RGB}{100,100,100}
+\definecolor{gray5}{RGB}{245,245,245}
+
+% -------- tcolorbox style --------
+\newtcolorbox{infobox}[1]{%
+  colback=gray5,
+  colframe=gray75,
+  fonttitle=\bfseries,
+  title=#1,
+  breakable,
 }
 
-% ======================
-% Headers & Footers
-% ======================
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% ======================
-% Chapter/Section Styling
-% ======================
-\titleformat{\chapter}[display]
-  {\normalfont\Large\bfseries\centering}
-  {\chaptertitlename\ \thechapter}{1pc}
-  {\LARGE}
-
-\titleformat{\section}
-  {\normalfont\large\bfseries}
-  {\thesection}{1em}{}
-
-\titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}
-  {\thesubsection}{1em}{}
-
-% ======================
-% Hyperref Setup
-% ======================
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  filecolor=magenta,
-  urlcolor=cyan,
-  pdftitle={Fate's Edge Player's Guide},
-  pdfauthor={Nicholas A. Gasper},
-  pdfsubject={TTRPG Player's Guide},
-  pdfkeywords={TTRPG, Fate's Edge, RPG, Player's Guide}
-}
-
-% ======================
-% Document Info
-% ======================
-\title{Fate's Edge Player's Guide}
+% -------- Meta --------
+\title{Fate's Edge: Player's Guide}
 \author{Nicholas A. Gasper}
 \date{\today}
 
-% ======================
-% Begin Document
-% ======================
 \begin{document}
 
 \frontmatter
 \maketitle
+
+% -------- Copyright page --------
+\cleardoublepage
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{2in}
+  \textbf{Fate's Edge: Player's Guide}\\[0.2in]
+  Copyright \\
+  \copyright\ Nicholas A. Gasper\\[0.2in]
+  This work is licensed under the Creative Commons Attribution 4.0 International License.\\
+  To view a copy of this license, visit:\\
+  \url{http://creativecommons.org/licenses/by/4.0/}
+\end{center}
+\cleardoublepage
+
 \tableofcontents
 
 \mainmatter
 
-% ======================
-% Modular Chapter Inputs
-% ======================
-
-% Core Rules & Mechanics
-\input{chapters/chapter_01_intro}
-\input{chapters/chapter_02_core_mechanics}
-\input{chapters/chapter_03_advancement}
-\input{chapters/chapter_04_magic}
-\input{chapters/chapter_05_world_interaction}
-
-% Character Creation & Play
-\input{chapters/chapter_06_attributes_skills}
-\input{chapters/chapter_07_xp_paths}
-\input{chapters/chapter_08_talents}
-\input{chapters/chapter_09_assets_followers}
-\input{chapters/chapter_10_archetypes}
-
-% World & Lore
-\input{chapters/chapter_11_world_regions}
-\input{chapters/chapter_12_cultures}
-\input{chapters/chapter_13_gods_powers}
-\input{chapters/chapter_14_languages}
-\input{chapters/chapter_15_backgrounds}
-
-% Appendices
-\input{chapters/chapter_16_compendium_talents}
-\input{chapters/chapter_17_compendium_assets}
-\input{chapters/chapter_18_npc_companions}
-\input{chapters/chapter_19_deck_generators}
-\input{chapters/chapter_20_example_builds}
-\input{chapters/chapter_21_enhanced_play}
-\input{chapters/appendix_a_quickref}
+% -------- Includes (no .tex extension) --------
+% Adjust names to match your actual files on disk.
+\include{sections/01_intro}
+\include{sections/02_core_mechanics}
+\include{sections/03_advancement}
+\include{sections/04_magic}
+\include{sections/05_attributes}
+\include{sections/06_xp_paths}
+\include{sections/07_talents}
+\include{sections/08_assets_follower}      % if your file is followers, rename here or on disk
+\include{sections/09_world_interaction}
+\include{sections/10_archetypes}
+\include{sections/11_world_and_cultures}
+\include{sections/12_divine_powers}        % was "devine"; fixed spelling for consistency
+\include{sections/13_backgrounds}
+\include{sections/13_followers}            % ensure this filename exists; otherwise rename
+\include{sections/14_assets}
+\include{sections/14_generators}
+\include{sections/15_example_builds}
+\include{sections/16_enhanced_play}
+\include{sections/appendix_quick_reference} % was "referene"; fixed
+\include{sections/witch_hunter}
 
 \backmatter
-\section*{Index}
 \printindex
 
 \end{document}
