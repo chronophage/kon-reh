@@ -1,110 +1,188 @@
+% --- Fate's Edge SRD — Section 3: Combat System ---
+% Include this file from your main .tex with: \input{03-combat.tex}
 
-% --- Fate's Edge SRD — Section 8: Combat Positioning, Ranges, Harm, and Tactical Clocks ---
-% Include this file from your main .tex with: \input{08-combat-positioning.tex}
+\section{Combat System}
 
-\section{Combat Positioning, Range Bands, Harm, and Tactical Clocks}
+\subsection{Core Philosophy}
+Combat in Fate's Edge is not a separate mini-game; it is simply conflict under sharper focus. 
+It uses the same dice pool system and SB economy as all other actions. 
+The rules emphasize narrative consequence, positional play, and risk management.
 
-\subsection{Range Bands}
-Keep distance simple. Use bands to answer: can you reach them, affect them, or see them right now?
-\begin{description}[leftmargin=1.5em, style=nextline]
-  \item[Close] Arm’s length, grapples, knives. You can touch, shove, or clinch.
-  \item[Near] Same room/street segment/skirmish space; a quick step or two away.
-  \item[Far] Same site/area but not in immediate reach; you need time, route, or a long implement.
-  \item[Absent] Off-screen / away; outside the current scene frame (requires a cut or travel to interact).
+\subsection{Structure of Combat}
+\begin{itemize}
+  \item \textbf{Rounds:} Each round represents a few seconds of action.
+  \item \textbf{Turns:} Each participant takes one significant action per round.
+  \item \textbf{Scenes:} A battle is one scene unless the fiction dictates otherwise.
+\end{itemize}
+
+\subsection{Taking Action}
+On your turn:
+\begin{enumerate}
+  \item \textbf{Set Position:} The GM decides if you are Controlled, Risky, or Desperate.
+  \item \textbf{Build Pool:} Attribute + Skill (+ gear, + assists, +1 from Imbuement if active).
+  \item \textbf{Roll:} Each 6+ is a success. Each 1 generates SB.
+  \item \textbf{Resolve:} Compare successes to DV; GM applies Position, Effect, and SB costs.
+\end{enumerate}
+
+\subsection{Position \& Effect}
+\begin{description}[leftmargin=1.5em]
+  \item[Controlled] You act from safety or advantage. Failure still leaves you options.
+  \item[Risky] Standard case. Failure has teeth, but not ruin.
+  \item[Desperate] High stakes. Failure is severe; success may bring extra XP (mark Desperate use).
 \end{description}
-For brevity’s sake, assume \textbf{Near} unless otherwise specified.
 
-\paragraph{Melee Flag}
-At any moment, the GM may mark two parties in \textbf{Melee} if they are in Near and directly engaged. This is a flag, not a separate band.
+\paragraph{Effect}
 \begin{itemize}
-  \item \textbf{Enter:} 1 Move to engage from Near (Risky if under fire).
-  \item \textbf{Leave:} 1 Move to break off; if threatened, test to \emph{Disengage} at Risky. On Partial/Miss, suffer a soft consequence and remain in Melee.
+  \item \textbf{Limited:} Scratch or slow progress.
+  \item \textbf{Standard:} Expected impact (downing a guard, disabling a lock).
+  \item \textbf{Great:} Overwhelming impact, bigger than expected.
 \end{itemize}
 
-\paragraph{Movement (beats, not meters)}
+% =========================
+% HEALTH, FATIGUE, & HARM
+% =========================
+\section{Health, Fatigue, \& Harm}
+\label{sec:health-fatigue-harm-rev}
+
+\subsection*{Tracks \& Caps}
 \begin{itemize}
-  \item 1 Move shifts one band: Close$\leftrightarrow$Near or Near$\leftrightarrow$Far.
-  \item \emph{Dash} (your action) shifts two bands: Close$\rightarrow$Far or Far$\rightarrow$Close in one go.
-  \item Terrain/obstacles may add +1 Move (crowds, rubble, locks) or demand a test first.
-  \item Break contact: Leaving Close cleanly can be a Disengage test; on success you step to Near without a complication.
-  \item Absent$\leftrightarrow$Far/Near: use a Travel clock [2--4] or a quick cut; under pressure, treat as Risky.
+  \item \textbf{Fatigue Track:} boxes equal to \textbf{Body}.
+  \item \textbf{Harm Levels:} Harm~1 (minor), Harm~2 (serious), Harm~3 (critical/incapacitated).
 \end{itemize}
 
-\paragraph{Targeting \& Tools}
+\subsection*{Fatigue $\rightarrow$ Harm Conversion}
+When Fatigue fills:
+\begin{enumerate}
+  \item Increase Harm by 1 level.
+  \item Clear all Fatigue.
+\end{enumerate}
+This can occur multiple times per scene.
+
+\subsection*{Taking Fatigue}
+Mark Fatigue for strain, exertion, travel, magic costs, or \S\ref{sec:obligation-overflow-rev} overflow.
+
+\subsection*{Recovering Fatigue}
 \begin{itemize}
-  \item \textbf{Melee/Touch:} Close only (or Near on long polearms at Limited Effect).
-  \item \textbf{Thrown/Short magic:} Near; at Far expect Limited Effect or +1 DV unless the source says otherwise.
-  \item \textbf{Firearms/Long bows/Line spells:} Near and Far if stated; at off-band, decrease Effect or increase DV by +1.
-  \item \textbf{Social:} Near by default; at Far you need voice, signal, or proxy; at Absent you need message, oath, or setup.
-  \item \textbf{No line of sight:} either raise DV by +1, drop Effect a step, or require [REVEAL]/[MARK] to proceed.
+  \item \textbf{Short Rest:} remove 2 Fatigue.
+  \item \textbf{Full Night:} remove all Fatigue.
+\end{itemize}
+Harm is not removed by Fatigue recovery.
+
+\subsection*{Mitigation}
+\begin{itemize}
+  \item \textbf{Soak/Ward:} Reduce Fatigue by 1–2 before marking if shielded.
+  \item \textbf{Convert:} Some effects turn Harm~1 into 2 Fatigue.
 \end{itemize}
 
-\paragraph{Perception, Stealth, Cover}
+\subsection{Damage \& Consequences}
 \begin{itemize}
-  \item \textbf{Notice:} Near is normal. Far is harder—raise DV by +1 or impose Limited Effect, especially in noise/cover.
-  \item \textbf{Hide:} Break line of sight or move to Far; at Absent you’re off the current frame unless someone tracks you.
-  \item \textbf{Cover:} Improves Position or reduces consequence severity; quality/angle sets the bump.
+  \item \textbf{Harm 1:} -1 die to related actions.
+  \item \textbf{Harm 2:} -1 die to most actions until treated.
+  \item \textbf{Harm 3:} Incapacitated or dying.
+\end{itemize}
+Harm may be resisted (roll Attribute vs DV~3; 1s generate SB).
+
+% =========================
+% WEAPONS & ARMOR
+% =========================
+\section{Weapons \& Armor}
+\label{sec:weapons-armor}
+
+\subsection*{Weapons}
+Purchased by weight class. Provides modifiers by range.
+\begin{itemize}
+  \item \textbf{Light (4 XP):} Melee +2 Close, +1 Near. Ranged +1 Near. Fast, no penalties.
+  \item \textbf{Medium (8 XP):} Melee +1 Close, +2 Near. Ranged +2 Near, +1 Far. Must \emph{Set} once per scene or roll -1 die first attack.
+  \item \textbf{Heavy (12 XP):} Melee -1 Close, +3 Near. Ranged +1 Near, +3 Far. Must \emph{Set} once per scene or roll -2 dice first attack.
 \end{itemize}
 
-\subsection{Position Dynamics (Hybrid)}
-\paragraph{Position (Controlled / Risky / Desperate)}
-Position sets consequence severity on a Partial/Miss; it does not change DV.
+\subsection*{Armor}
+Armor converts Harm into Fatigue.
 \begin{itemize}
-  \item \textbf{GM Spend (1 SB):} Shift Position one step worse for the current action or apply a brief environmental shove (smoke, crowd surge, slippery ledge) that justifies the shift.
-  \item \textbf{Player Spend (1 Boon):} Shift Position one step better for your current action or cancel a single 1-step GM shift just declared.
-  \item \textbf{Narrative Triggers (free):} Flanking, reinforcements, collapsing cover, superior leverage, or proof can move Position one step (GM call). Say why.
-\end{itemize}
-Limits: One Boon shift per action. Multiple forces can’t stack beyond one step each way—resolve in order declared.
-
-\subsection{Combat-Specific Consequence Types}
-Use suits as a shorthand for consequence domains:
-\begin{itemize}
-  \item \textbf{Hearts:} Morale, fear, command/control breakdown.
-  \item \textbf{Spades:} Physical harm, positioning changes, weapon status.
-  \item \textbf{Clubs:} Resource depletion, gear damage, fatigue.
-  \item \textbf{Diamonds:} Environmental hazards, reinforcements, magical/spiritual backlash.
+  \item \textbf{Light (4 XP):} Up to 1 Harm $\rightarrow$ 1 Fatigue.
+  \item \textbf{Medium (8 XP):} Up to 2 Harm $\rightarrow$ 1 Fatigue. -1 die physical skills.
+  \item \textbf{Heavy (12 XP):} Up to 3 Harm $\rightarrow$ 2 Fatigue. -2 dice physical skills, no sprint in rough terrain.
 \end{itemize}
 
-\subsection{Harm Integration}
-Harm tracks tie into the SB economy:
+\subsection*{Condition}
 \begin{itemize}
-  \item \textbf{Minor ($-$):} Generate 1 SB on your next \textbf{two} rolls.
-  \item \textbf{Moderate ($=$):} Generate 1 SB on your next roll; $-1$ die to relevant actions.
-  \item \textbf{Severe ($\ddagger$):} Generate 2 SB on your next roll; $-2$ dice to relevant actions.
-  \item \textbf{Critical ($\dagger$):} Generate 3 SB on your next roll; you are out of action until treated.
+  \item \textbf{Neglected:} Conversion reduced by 1 step; weapons roll -1 die.
+  \item \textbf{Compromised:} No conversion; weapons roll -1 die first attack each exchange.
 \end{itemize}
 
-\subsection{Tactical Clocks}
-Track persistent combat conditions with clocks:
+% =========================
+% RANGED COMBAT
+% =========================
+\section{Ranged Combat}
+\label{sec:ranged}
+
+\subsection*{Range Bands}
+\begin{description}[leftmargin=1.5em]
+  \item[Close:] Room-length, melee-adjacent.
+  \item[Near:] Street, courtyard, glade.
+  \item[Far:] Field, battlement, valley.
+\end{description}
+
+\subsection*{Firing Profiles}
+\begin{description}[leftmargin=1.5em]
+  \item[Fast:] (knives, slings, shortbows) — Move and Shoot. Reload is incidental. Risky at Close.
+  \item[Standard:] (longbows, crossbows) — Move or Shoot. Reload takes part of turn. Aim for +1 die or Effect.
+  \item[Slow:] (greatbows, arbalests, siege) — Requires Set/Brace. Reload full turn. Cannot Move and Shoot same round.
+\end{description}
+
+\subsection*{Options}
 \begin{itemize}
-  \item \textbf{Mob Overwhelm [6]:} Enemy numbers become advantage.
-  \item \textbf{Fatigue Spiral [4]:} Exhaustion affects performance.
-  \item \textbf{Morale Collapse [6]:} Fear undermines effectiveness.
-  \item \textbf{Environmental Collapse [8]:} Terrain/fire/building failure.
+  \item \textbf{Aim:} +1 die or Effect next shot (lost if disrupted).
+  \item \textbf{Volley:} Extra ammo = +1 die (max +2).
+  \item \textbf{Suppress:} Zone fire; foes act at -1 die/Limited Effect.
+  \item \textbf{Overwatch:} Hold, fire Risky shot when target crosses line.
 \end{itemize}
 
-\subsection{Magic in Combat (Quick Integration)}
+\subsection*{Cover \& Close}
 \begin{itemize}
-  \item \textbf{Casting:} Requires \emph{Caster’s Gift (2 XP)}. Channel and Weave are each 1 Player Turn; in a hurry, treat as Risky with tighter consequences.
-  \item \textbf{Rites:} 1 Action to Invoke; may \emph{Push It} for +1 Obligation to extend potency or duration.
-  \item \textbf{Invokers:} Rituals take Significant Time; \emph{Crack the Seal} converts to a 1-Action instant cast, sets Symbol to Compromised, and marks +2/+3 Obligation (GM may spend 1 SB on-theme).
-  \item \textbf{Imbuements (Patron’s Gift):} Requires 1 Action once/scene to activate; grants +1 Weapon (Melee) and +1 thematic Skill for the remainder of the scene. \emph{Push It} adds one scene and +1 Obligation.
+  \item Light cover: +1 DV or -1 die to attacker.
+  \item Heavy cover: +2 DV or -2 dice.
+  \item Obscured (fog, night): Position worsens by 1 step.
+  \item Shooting while Engaged: Risky (Fast) or Desperate (Standard/Slow).
 \end{itemize}
 
-\subsection{GM Quick Cues}
+\subsection*{Weapon Tags (defaults)}
 \begin{itemize}
-  \item Start at \textbf{Risky/Standard} in \textbf{Near}. Shift Position for rushes or retreats; shift Effect for reach/quality.
-  \item If distance is fuzzy, ask: ``Do you need a beat to get there?'' If yes, spend a Move; if no, you’re Near.
-  \item Call \textbf{Melee} when knives are actually in play—don’t track hexes.
-  \item Prefer one memorable complication over many petty penalties.
+  \item Light ranged = Fast.
+  \item Medium ranged = Standard.
+  \item Heavy ranged = Slow.
 \end{itemize}
 
-\subsection{Worked Micro-Examples}
-\paragraph{Rush the Marksman}
-\emph{You sprint from Far to Close in one go (Dash).} GM calls it Risky. You roll and get a Hit with 1 SB. You reach Melee; GM spends 1 SB to twist your footing (Position drops a step for your next action).
+% =========================
+% TEAMWORK & SB
+% =========================
+\subsection{Teamwork}
+\begin{itemize}
+  \item \textbf{Assist:} Spend 1 Stress or Boon for +1 die (max +3).
+  \item \textbf{Setup:} Roll to improve ally’s Position or Effect.
+  \item \textbf{Protect:} Take harm meant for another.
+\end{itemize}
 
-\paragraph{Veil and Strike}
-\emph{You activate Patron’s Gift (Action) and then attack.} Your Imbued weapon grants +1 and your thematic Skill applies. You hit, but roll a 1: GM banks SB and later spends it to have a ward flare that exposes your silhouette.
+\subsection{GM Guidance for SB}
+\begin{itemize}
+  \item \textbf{1 SB:} Reinforce cover, minor injury, new foe.
+  \item \textbf{2 SB:} Reinforcements, gear breaks, +1 die foe.
+  \item \textbf{3 SB:} Rite unleashed, terrain shifts, ally endangered.
+  \item \textbf{4+ SB:} Scene twist—fire spreads, floor collapses, omen manifests.
+\end{itemize}
 
-\paragraph{Crack the Seal Under Fire}
-\emph{You present the Symbol and Crack the Seal to drop a [WARD] ring.} Instant cast: Symbol $\rightarrow$ Compromised; mark +2 Obligation. You hit; an Outsider tries to cross and adds +DV to its Leash on a Hit per [WARD] rules.
+\subsection{Combat and Magic}
+\begin{itemize}
+  \item \textbf{Casting:} Weave (1 action), Cast (1 action). Requires Caster’s Gift.
+  \item \textbf{Rites:} Invoke in 1 action. Push = +1 Obligation.
+  \item \textbf{Invokers:} Rituals take time, or Crack the Seal (instant, costs Obligation).
+  \item \textbf{Imbuements:} 1 action once per scene; +1 to one Weapon + one Skill.
+\end{itemize}
+
+\subsection{Worked Example}
+\emph{Kael swings his Imbued blade at a cultist (DV 2). He rolls 5 dice: 9, 7, 5, 2, 1.}
+\begin{itemize}
+  \item Successes = 3 (hit), SB = 1.
+  \item GM: cultist falls.
+  \item GM spends 1 SB: ``Blood sprays across the sigil—energy flares, the summoning accelerates.''
+\end{itemize}
