@@ -1,0 +1,541 @@
+\chapter{Tracking Tools and Resources}
+\label{chap:tools-resources}
+
+%-----------------------------
+% Visual setup for trackers
+%-----------------------------
+\definecolor{FeAccent}{HTML}{3F6E8C}
+\definecolor{FeRow}{HTML}{F5F7FA}
+\newcommand{\seg}{\(\square\)}     % empty segment
+\newcommand{\segf}{\(\blacksquare\)} % filled segment (use sparingly)
+\newcommand{\segt}{\(\boxtimes\)}  % flagged/ticked segment (special states)
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+
+\section{Introduction to Game Management}
+\label{sec:tools-intro}
+\index{Tools!Introduction}
+
+Practical tools for implementing Fate's Edge gameplay mechanics without complex bookkeeping. These resources help GMs and players track important game elements while maintaining narrative flow and minimizing administrative overhead.
+
+\section{Character and Campaign Tracking}
+\label{sec:character-tracking}
+\index{Tools!Character Tracking}
+
+\subsection{Character Advancement Tracker}
+\label{subsec:advancement-tracker}
+\index{Tools!Advancement Tracker}
+
+Track character growth and XP expenditure over time:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l *{4}{>{\centering\arraybackslash}p{1.8cm}} >{\centering\arraybackslash}p{2.2cm} @{}}
+\toprule
+\textbf{Session} & \textbf{Player 1} & \textbf{Player 2} & \textbf{Player 3} & \textbf{Player 4} & \textbf{Total XP} \\
+\midrule
+Session 1 & 4 & 5 & 3 & 6 & 18 \\
+Session 2 & 6 & 7 & 5 & 6 & 24 \\
+Session 3 & 8 & 6 & 7 & 9 & 30 \\
+Session 4 & 5 & 8 & 6 & 7 & 26 \\
+Session 5 & 7 & 9 & 8 & 8 & 32 \\
+\midrule
+\textbf{Total} & 30 & 35 & 29 & 36 & 130 \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Usage Notes:}
+\begin{itemize}
+\item Record XP earned each session.
+\item Track cumulative totals for tier progression.
+\item Note major talent acquisitions and milestones.
+\item Update between sessions during downtime.
+\end{itemize}
+
+\subsection{Story Beat and Boon Tracker}
+\label{subsec:sb-boon-tracker}
+\index{Tools!Story Beat Tracker}
+\index{Tools!Boon Tracker}
+
+Track the flow of narrative currency during sessions:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l *{4}{>{\centering\arraybackslash}p{2.4cm}} @{}}
+\toprule
+\textbf{Player} & \textbf{SB Generated} & \textbf{SB Spent} & \textbf{Boons Earned} & \textbf{Boons Spent} \\
+\midrule
+Player 1 & 3 & 2 & 2 & 1 \\
+Player 2 & 5 & 3 & 3 & 2 \\
+Player 3 & 2 & 4 & 1 & 3 \\
+Player 4 & 4 & 3 & 2 & 1 \\
+\midrule
+\textbf{Session Total} & 14 & 12 & 8 & 7 \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Management Tips:}
+\begin{itemize}
+\item Reset SB totals at session start (base budget: \textbf{4 + character tier}).
+\item Trim Boons to 2 at scene endings.
+\item Track Boon conversion to XP (2 Boons $\rightarrow$ 1 XP, max 2 XP/session).
+\item Monitor SB spends to maintain appropriate challenge level.
+\end{itemize}
+
+\section{Combat and Conflict Tools}
+\label{sec:combat-tools}
+\index{Tools!Combat}
+
+\subsection{Tactical Clock Tracker}
+\label{subsec:clock-tracker}
+\index{Tools!Clock Tracker}
+
+Track persistent combat conditions and environmental hazards:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l >{\centering\arraybackslash}p{1.2cm} *{6}{>{\centering\arraybackslash}p{0.8cm}} Y @{}}
+\toprule
+\textbf{Clock Name} & \textbf{Size} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{Effect} \\
+\midrule
+Mob Overwhelm & 6 & \seg & \seg & \seg & \seg & \seg & \seg & $-1$ die per 2 segments \\
+Fatigue Spiral  & 4 & \seg & \seg & \seg & \seg & & & +1 Fatigue per segment \\
+Morale Collapse & 6 & \seg & \seg & \seg & \seg & \seg & \seg & $-1$ die to social actions \\
+Fire Hazard     & 6 & \seg & \seg & \seg & \seg & \seg & \seg & Harm 1 per segment \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Usage Guidelines:}
+\begin{itemize}
+\item Tick segments when triggered by narrative events.
+\item Filled clocks create significant scene changes.
+\item Multiple clocks can interact for complex situations.
+\item Reset appropriate clocks between major scenes.
+\end{itemize}
+
+\subsection{Harm and Condition Tracking}
+\label{subsec:harm-tracker}
+\index{Tools!Harm Tracker}
+
+Track character injuries and ongoing conditions:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l *{3}{>{\centering\arraybackslash}p{2.4cm}} Y @{}}
+\toprule
+\textbf{Character} & \textbf{Minor Harm} & \textbf{Moderate Harm} & \textbf{Severe Harm} & \textbf{Conditions} \\
+\midrule
+Player 1 & \seg & & & Fatigue 1 \\
+Player 2 & \seg & \seg & & Compromised Gear \\
+Player 3 & & & \seg & \\
+Player 4 & \seg & \seg & \seg & Fatigue 2 \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Recovery Tracking:}
+\begin{itemize}
+\item Minor harm clears with rest and basic care.
+\item Moderate harm requires medical treatment (DV 2).
+\item Severe harm needs extended care (DV 3).
+\item Critical harm requires major intervention (DV 4).
+\end{itemize}
+
+\section{Magic System Tools}
+\label{sec:magic-tools}
+\index{Tools!Magic}
+
+\subsection{Obligation and Backlash Tracker}
+\label{subsec:obligation-tracker}
+\index{Tools!Obligation Tracker}
+\index{Tools!Backlash Tracker}
+
+Track magical debts and consequences for spellcasters:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l *{6}{>{\centering\arraybackslash}p{0.8cm}} >{\centering\arraybackslash}p{1.8cm} Y @{}}
+\toprule
+\textbf{Patron/Element} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{Status} & \textbf{Backlash} \\
+\midrule
+Gate Patron  & \seg & \seg & \segt & \seg & \seg & \seg & Active   & 2 SB \\
+Ikasha Patron& \seg & \seg & \seg & \seg & \seg & \seg & Inactive & \\
+Fire Element & \seg & \segt & \seg & \seg & & & Active   & 1 SB \\
+Fate Element & \seg & \seg & \seg & \seg & \seg & \seg & Ready    & \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Management Rules:}
+\begin{itemize}
+\item Mark Obligation segments when using Rites.
+\item Clear 1--2 segments per downtime through service.
+\item Track Backlash SB for freeform casting.
+\item Note active/inactive patron status.
+\end{itemize}
+
+\subsection{Summoning Leash Tracker}
+\label{subsec:leash-tracker}
+\index{Tools!Summoning Tracker}
+
+Track summoned entities and their service limits:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l >{\centering\arraybackslash}p{1cm} >{\centering\arraybackslash}p{1.6cm} *{5}{>{\centering\arraybackslash}p{0.8cm}} @{}}
+\toprule
+\textbf{Spirit} & \textbf{Cap} & \textbf{Leash} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
+\midrule
+Lesser Spirit & 1 & 3 & \seg & \seg & \seg & & \\
+Greater Spirit & 3 & 5 & \seg & \seg & \seg & \seg & \seg \\
+Guardian & 2 & 4 & \seg & \seg & \seg & \seg & \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Leash Triggers:}
+\begin{itemize}
+\item Spirit takes harm.
+\item Command against nature.
+\item Split focus (another action while spirit acts).
+\item Rival contests control.
+\item Quick movement between range bands.
+\item Crossing wards.
+\end{itemize}
+
+\section{Travel and Exploration Tools}
+\label{sec:travel-tools}
+\index{Tools!Travel}
+
+\subsection{Supply and Fatigue Tracker}
+\label{subsec:supply-tracker}
+\index{Tools!Supply Tracker}
+\index{Tools!Fatigue Tracker}
+
+Track party resources and exhaustion during journeys:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l >{\centering\arraybackslash}p{1.6cm} *{3}{>{\centering\arraybackslash}p{1.8cm}} Y @{}}
+\toprule
+\textbf{Resource} & \textbf{Full} & \textbf{Low} & \textbf{Dangerous} & \textbf{Empty} & \textbf{Effects} \\
+\midrule
+Supply Clock & \segt & \seg & \seg & \seg & No penalties \\
+Food/Water & \seg & \seg & \seg & \seg & Fatigue at Dangerous \\
+Ammunition & \seg & \seg & \seg & \seg & Limited attacks \\
+Gear Condition & \seg & \seg & \seg & \seg & Penalties apply \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l *{4}{>{\centering\arraybackslash}p{2cm}} Y @{}}
+\toprule
+\textbf{Character} & \textbf{Fatigue 1} & \textbf{Fatigue 2} & \textbf{Fatigue 3} & \textbf{Fatigue 4} & \textbf{Effects} \\
+\midrule
+Player 1 & \seg & \seg & \seg & \seg & Re-roll success \\
+Player 2 & \segt & \seg & \seg & \seg & Re-roll one success \\
+Player 3 & \seg & \seg & \seg & \seg & Normal \\
+Player 4 & \seg & \segt & \seg & \seg & Re-roll each success \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Recovery Rules:}
+\begin{itemize}
+\item Night's rest removes 1 Fatigue (with adequate Supply).
+\item Cannot clear Fatigue if Supply is Dangerous or Empty.
+\item Extended downtime clears all Fatigue.
+\item Supply resets in civilization or through successful foraging.
+\end{itemize}
+
+\subsection{Travel Leg Progress Tracker}
+\label{subsec:travel-tracker}
+\index{Tools!Travel Progress}
+
+Track journey segments and complications:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l >{\centering\arraybackslash}p{1.6cm} *{6}{>{\centering\arraybackslash}p{0.8cm}} Y @{}}
+\toprule
+\textbf{Leg} & \textbf{Destination} & \textbf{Clock} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{Status} \\
+\midrule
+Leg 1 & Silkstrand & 6 & \seg & \seg & \seg & \seg & \seg & \seg & In Progress \\
+Leg 2 & Aeler Gate & 8 & \seg & \seg & \seg & \seg & \seg & \seg & Upcoming \\
+Leg 3 & Mistlands & 6 & \seg & \seg & \seg & \seg & \seg & \seg & Future \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{Complication Tracking:}
+\begin{itemize}
+\item Note drawn cards for each leg (Spade, Heart, Club, Diamond).
+\item Track SB generated during travel.
+\item Record environmental hazards and encounters.
+\item Mark completed legs and carryover effects.
+\end{itemize}
+
+\section{Quick Reference Charts}
+\label{sec:quick-reference}
+\index{Tools!Quick Reference}
+
+Essential information for smooth gameplay decisions.
+
+\subsection{Difficulty Value Reference}
+\label{subsec:dv-reference}
+\index{Tools!DV Reference}
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.2cm} l Y @{}}
+\toprule
+\textbf{DV} & \textbf{Difficulty} & \textbf{Typical Use Cases} \\
+\midrule
+2 & Routine   & Clear intent, modest stakes, controlled environment \\
+3 & Pressured & Time pressure, mild resistance, partial information \\
+4 & Hard      & Hostile conditions, active opposition, precise timing \\
+5+ & Extreme  & Multiple constraints, high precision, dramatic failure risk \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\subsection{Position and Effect Reference}
+\label{subsec:position-reference}
+\index{Tools!Position Reference}
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l Y @{}}
+\toprule
+\textbf{Position} & \textbf{Consequence Severity} & \textbf{Typical Situations} \\
+\midrule
+Controlled & Minor complications   & Advantageous position, surprise, preparation \\
+Risky      & Moderate consequences & Even odds, standard conflict situations \\
+Desperate  & Severe consequences   & Disadvantaged, outnumbered, wounded \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l Y @{}}
+\toprule
+\textbf{Effect} & \textbf{Impact Level} & \textbf{Examples} \\
+\midrule
+Limited  & Minor impact   & Scratch damage, slow progress, partial success \\
+Standard & Expected impact& Normal damage, expected progress, full success \\
+Great    & Major impact   & Significant damage, rapid progress, extra benefits \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\subsection{Story Beat Spend Menu}
+\label{subsec:sb-menu}
+\index{Tools!SB Menu}
+
+Quick reference for SB spending during gameplay:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm} l Y @{}}
+\toprule
+\textbf{SB Cost} & \textbf{Effect Scale} & \textbf{Examples} \\
+\midrule
+1 SB  & Minor pressure     & Noise, trace, +1 Supply segment, minor time loss \\
+2 SB  & Moderate setback   & Alarm raised, lose position/cover, lesser foe appears \\
+3 SB  & Serious trouble    & Reinforcements, key gear breaks, major complication \\
+4+ SB & Major turn         & Trap springs, authority arrives, scene shifts dramatically \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\subsection{Boon Usage Reference}
+\label{subsec:boon-reference}
+\index{Tools!Boon Reference}
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l Y @{}}
+\toprule
+\textbf{Boon Cost} & \textbf{Effect} & \textbf{Limitations} \\
+\midrule
+1 Boon & Re-roll one die           & Once per action \\
+1 Boon & Activate on-screen Asset  & Plausibility test required \\
+1 Boon & Improve Position by 1 step& One step maximum per action \\
+2 Boons& Convert to 1 XP           & Once per session; max 2 XP via conversion \\
+Var.   & Power Rites/Abilities     & As specified by talent or ability \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\section{Session Preparation Tools}
+\label{sec:session-tools}
+\index{Tools!Session Preparation}
+
+\subsection{Session Checklist}
+\label{subsec:session-checklist}
+\index{Tools!Session Checklist}
+
+Pre-session preparation guide for GMs:
+
+\begin{itemize}
+\item \textbf{Review Previous Session}
+  \begin{itemize}
+  \item Note unresolved complications and carried-over SB.
+  \item Check character conditions and ongoing effects.
+  \item Update faction status and relationship changes.
+  \end{itemize}
+
+\item \textbf{Prepare Current Session}
+  \begin{itemize}
+  \item Set SB budget based on character tiers (4 + tier).
+  \item Prepare key scenes and opposition.
+  \item Set initial Position/Effect defaults.
+  \item Have consequence ideas ready for common actions.
+  \end{itemize}
+
+\item \textbf{Post-Session Tasks}
+  \begin{itemize}
+  \item Award XP based on session accomplishments.
+  \item Update character advancement trackers.
+  \item Note ideas for future sessions based on player choices.
+  \item Reset SB and trim Boons for next session.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Adventure Structure Template}
+\label{subsec:adventure-template}
+\index{Tools!Adventure Template}
+
+Basic structure for session planning:
+
+\begin{description}
+\item[\textbf{Opening Scene}] Establish current situation and immediate goals.
+\item[\textbf{Development Scenes}] 2--3 challenges advancing main objective.
+\item[\textbf{Climax}] Major conflict or resolution point.
+\item[\textbf{Resolution}] Consequences and setup for next session.
+\item[\textbf{Downtime}] Character advancement and resource management.
+\end{description}
+
+\section{Digital Tool Recommendations}
+\label{sec:digital-tools}
+\index{Tools!Digital}
+
+\subsection{Virtual Tabletop Integration}
+\label{subsec:vtt-tools}
+\index{Tools!Virtual Tabletop}
+
+Recommended approaches for online play:
+
+\begin{itemize}
+\item \textbf{Character Sheets}: Use customizable sheets with built-in trackers.
+\item \textbf{Token Status}: Implement status markers for conditions/harm.
+\item \textbf{Clock Widgets}: Use progress bars or custom tokens for clocks.
+\item \textbf{Card Decks}: Digital card implementations for travel and consequences.
+\item \textbf{Shared Notes}: Collaborative documents for faction tracking.
+\end{itemize}
+
+\subsection{Mobile and App Tools}
+\label{subsec:mobile-tools}
+\index{Tools!Mobile}
+
+Useful applications for game management:
+
+\begin{itemize}
+\item \textbf{Note-Taking Apps}: For session notes and player records.
+\item \textbf{Spreadsheet Apps}: For character advancement tracking.
+\item \textbf{Map Tools}: For visual representation of travel and locations.
+\item \textbf{Randomizers}: For card draws and random element generation.
+\item \textbf{Communication Apps}: For between-session planning and discussion.
+\end{itemize}
+
+\section{Troubleshooting Common Issues}
+\label{sec:troubleshooting}
+\index{Tools!Troubleshooting}
+
+Solutions for typical gameplay challenges.
+
+\subsection{Resource Management Problems}
+\label{subsec:resource-troubleshooting}
+\index{Tools!Troubleshooting!Resources}
+
+\textbf{Issue: Players hoard Boons excessively}
+\begin{itemize}
+\item Create compelling spending opportunities each scene.
+\item Implement time-limited Boon benefits.
+\item Demonstrate value through GM spending examples.
+\item Remind players of Boon carryover limits (trim to 2 per scene).
+\end{itemize}
+
+\textbf{Issue: SB spending feels punitive}
+\begin{itemize}
+\item Focus on narrative complications rather than pure penalties.
+\item Use SB to create interesting challenges, not just setbacks.
+\item Balance positive and negative consequences.
+\item Involve players in consequence choices when appropriate.
+\end{itemize}
+
+\subsection{Tracking Overload Solutions}
+\label{subsec:tracking-troubleshooting}
+\index{Tools!Troubleshooting!Tracking}
+
+\textbf{Issue: Too many clocks and conditions}
+\begin{itemize}
+\item Focus on 2--3 most relevant trackers per session.
+\item Use simple tally marks instead of complex sheets for minor elements.
+\item Delegate tracking responsibilities to players when possible.
+\item Digital tools can automate some tracking tasks.
+\end{itemize}
+
+\textbf{Issue: Game flow interrupted by administration}
+\begin{itemize}
+\item Prepare trackers in advance.
+\item Use quick reference sheets to minimize lookups.
+\item Practice efficient tracking methods.
+\item Accept minor inaccuracies to maintain narrative momentum.
+\end{itemize}
+
+\subsection{Balance and Pacing Adjustments}
+\label{subsec:balance-troubleshooting}
+\index{Tools!Troubleshooting!Balance}
+
+\textbf{Issue: Combat runs too long or too short}
+\begin{itemize}
+\item Adjust opposition based on player capabilities.
+\item Use tactical clocks to create natural endpoints.
+\item Vary Position/Effect settings to control challenge level.
+\item Be prepared to narratively conclude resolved conflicts.
+\end{itemize}
+
+\textbf{Issue: Magic system feels too powerful or weak}
+\begin{itemize}
+\item Ensure proper Obligation and Backlash application.
+\item Balance freeform casting DVs appropriately.
+\item Remember Rites limitations and costs.
+\item Adjust based on character tier and specialization.
+\end{itemize}
+
+These tools and resources provide practical support for implementing Fate's Edge mechanics while maintaining the game's narrative focus and collaborative spirit. The key is finding the right balance between useful organization and excessive bookkeeping.
+
+\end{chapter}

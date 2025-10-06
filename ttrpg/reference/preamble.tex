@@ -1,86 +1,135 @@
-\usepackage[utf8]{inputenc}
+% ============================================================
+% Fate's Edge — Clean Preamble (pdflatex safe)
+% ============================================================
+
+% ---------- Encoding, fonts, micro-typography ----------
 \usepackage[T1]{fontenc}
-\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[final]{microtype}
+
+% ---------- Page geometry ----------
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% ---------- Math & symbols ----------
+\usepackage{amsmath,amssymb,mathtools}
+
+% ---------- Colors, graphics, layout ----------
+\usepackage[table]{xcolor}
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
+
+% ---------- Tables ----------
 \usepackage{booktabs}
-\usepackage{longtable}
+\usepackage{tabularx}
 \usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
 \usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
+\usepackage{multirow}
 \usepackage{makecell}
-\usepackage{xcolor}
+\usepackage{longtable}
+
+% ---------- Lists ----------
 \usepackage{enumitem}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
-\usepackage{titling}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
+
+% ---------- Hyperlinks & references ----------
 \usepackage{hyperref}
-\usepackage{bookmark}
-\usepackage{tocloft}
-\usepackage{makeidx}
-
-% Page layout
-\geometry{
-    paper=letterpaper,
-    inner=1in,
-    outer=1in,
-    top=1in,
-    bottom=1in
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[rgb]{0.10,0.25,0.55},
+  citecolor=[rgb]{0.10,0.45,0.25},
+  urlcolor=[rgb]{0.55,0.10,0.10},
+  pdfauthor={Fate's Edge},
+  pdftitle={Fate's Edge — Reference Guide},
+  pdfcreator={LaTeX}
 }
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
 
-% Index setup
+% ---------- Indexing ----------
+\usepackage{imakeidx}
 \makeindex
 
-% Header and footer
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
-\renewcommand{\headrulewidth}{0.4pt}
-
-% Title formatting
-\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter}{2pc}{}
-\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
-
-% Document info
-\title{Fate's Edge GM Reference Document}
-\author{Modular Reference Compilation}
-\date{\today}
-
-% Custom commands
-\newcommand{\dice}[1]{\texttt{d#1}}
-\newcommand{\skill}[1]{\textbf{#1}}
-\newcommand{\attribute}[1]{\textbf{#1}}
-\newcommand{\cp}[1]{\textbf{CP: #1}}
-\newcommand{\dv}[1]{\textbf{DV #1}}
-\newcommand{\xp}[1]{\textbf{#1 XP}}
-
-% Hyperlink setup
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdftitle={Fate's Edge GM Reference},
-    pdfauthor={Modular Reference Compilation}
+% Inline “print + index” helper
+\newcommand{\indexterm}[2][]{%
+  \textit{#2}%
+  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi
 }
 
-% Table column types
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% ---------- Table helpers & house style ----------
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\definecolor{FeRow}{HTML}{F5F7FA}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
 
-% Index header customization
-\renewcommand{\indexname}{Index}
-\renewcommand{\indexpreamble}{This index provides quick access to key concepts, locations, characters, and mechanics throughout the Fate's Edge GM Reference Document. Terms are organized alphabetically with page numbers for easy reference.}
+% ---------- Small conveniences ----------
+\newcommand{\textrarr}{\ensuremath{\rightarrow}}
+\newcommand{\textlarr}{\ensuremath{\leftarrow}}
+\newcommand{\textdarr}{\ensuremath{\downarrow}}
+\newcommand{\beat}{\ensuremath{\triangleright}\,}
+\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
+\newcommand{\Tag}[1]{\texttt{[#1]}}
 
+% ============================================================
+% Branding & Metadata (single source of truth)
+% ============================================================
+\usepackage{etoolbox} % for \ifdefempty, \ifdefstring
+
+% Brand palette (define once)
+\definecolor{fePrimary}{HTML}{0D1B2A}   % deep blue-black
+\definecolor{feAccent}{HTML}{6FFFE9}    % teal accent
+\definecolor{feInk}{HTML}{101418}       % near-black
+\definecolor{fePaper}{HTML}{F7F7F7}     % light paper
+
+% Metadata variables + setters
+\newcommand\feTitle{Fate's Edge}
+\newcommand\feSubtitle{Reference Guide}
+\newcommand\feTagline{}
+\newcommand\feVersion{}
+\newcommand\fePublisher{}
+\newcommand\feCoverArt{} % optional path
+
+\newcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
+\newcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
+\newcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
+\newcommand{\feSetVersion}[1]{\renewcommand\feVersion{#1}}
+\newcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
+\newcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
+
+% Text shadow helper (4 args: dx, dy, color, text)
+\newcommand{\textshadow}[4]{%
+  \begingroup
+    \rlap{\raisebox{#2}{\hspace*{#1}\textcolor{#3}{#4}}}#4%
+  \endgroup
+}
+% Light small-caps tracking
+\newcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
+
+% =========================
+% Basic Title Page
+% =========================
+\newcommand{\feTitlePage}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    
+    {\Huge\bfseries Fate's Edge \par}
+    \vspace{1cm}
+    {\LARGE Reference Guide \par}
+    \vspace{0.5cm}
+    {\large \itshape Narrative-First Roleplaying System \par}
+    
+    \vfill
+    
+    {\large Version 1.0 \par}
+    \vspace{0.2cm}
+    {\large \today \par}
+    \vspace{1cm}
+    {\large \textsc{Your Publishing Label or Name Here}\par}
+    
+  \end{titlepage}
+}
