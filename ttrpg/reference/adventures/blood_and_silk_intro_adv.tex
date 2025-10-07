@@ -1,6 +1,13 @@
 \documentclass[11pt]{article}
+
+% ---------- Encoding & fonts for pdfLaTeX ----------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[tt=false, type1=true]{libertine} % Linux Libertine for text (Type 1)
+\usepackage[scaled=0.95]{biolinum}          % Linux Biolinum for sans serif
+% (Optional) If you want a nicer monospace: \usepackage[varqu]{zi4}
+
+% ---------- Layout & utilities ----------
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -31,6 +38,7 @@
 \usepackage{parskip}
 \usepackage{pifont}
 
+% ---------- Colors ----------
 \definecolor{shadecolor}{gray}{0.95}
 \definecolor{headercolor}{RGB}{30, 50, 100}
 \definecolor{accentcolor}{RGB}{70, 130, 180}
@@ -41,21 +49,26 @@
 \definecolor{villagegreen}{RGB}{34, 139, 34}
 \definecolor{banditred}{RGB}{139, 0, 0}
 
+% ---------- Headers ----------
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
 \lhead{Fate's Edge: Blood and Silk}
 \renewcommand{\headrulewidth}{0.4pt}
 
+% ---------- Section styling ----------
 \sectionfont{\color{headercolor}\normalfont\fontsize{14}{16}\selectfont}
 \subsectionfont{\color{accentcolor}\normalfont\fontsize{12}{14}\selectfont}
 \subsubsectionfont{\normalfont\fontsize{11}{13}\selectfont}
 
+% ---------- Paragraph spacing ----------
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 
+% ---------- Geometry ----------
 \geometry{margin=1in}
 
+% ---------- Framed environments ----------
 \newenvironment{characterbox}[1]{%
   \begin{mdframed}[backgroundcolor=shadecolor, linewidth=1pt, linecolor=headercolor]%
   \subsection*{#1}%
@@ -77,15 +90,17 @@
   \end{mdframed}%
 }
 
+% ---------- Icons & helpers ----------
 \newcommand{\boon}{\textcolor{booncolor}{\ding{72}}}
 \newcommand{\asset}{\textcolor{assetcolor}{$\blacksquare$}}
 \newcommand{\dice}[1]{\texttt{#1}}
 \newcommand{\checkmark}{\ding{51}}
 
+% ---------- Hyperref ----------
 \hypersetup{
     colorlinks=true,
     linkcolor=accentcolor,
-    filecolor=magenta,      
+    filecolor=magenta,
     urlcolor=accentcolor,
 }
 
@@ -95,7 +110,7 @@
 \centering
 \vspace*{2cm}
 
-{\Huge\bfseries\color{headercolor} Blood and Silk} 
+{\Huge\bfseries\color{headercolor} Blood and Silk}
 
 \vspace{0.5cm}
 
@@ -327,7 +342,7 @@ These pre-generated characters are designed to be immediately playable while sho
 \textbf{Starting Resources:}
 \begin{itemize}
 \item 2 Boons
-\item Minor Asset: Wolf Companion (Cap 2 follower with tracking and combat abilities
+\item Minor Asset: Wolf Companion (Cap 2 follower with tracking and combat abilities)
 \item Talent: Beast-Tongue (Communicate with and influence animals)
 \end{itemize}
 \end{characterbox}
@@ -373,30 +388,36 @@ The village square is bustling with morning activity when the sound of hoofbeats
 \begin{encounterbox}{Social Encounter: Negotiating with Garrick}
 \begin{itemize}
 \item \textbf{Approach:} Presence + Sway or Command
-\item \textbf{DV 4, Risky Position}
-\item \textbf{Success:} Garrick leaves temporarily, but vows revenge
-\item \textbf{Partial:} Garrick reduces his demand but takes a hostage
-\item \textbf{Failure:} Combat starts immediately with Garrick having initiative
+\item \textbf{Position:} Risky
+\item \textbf{DV:} 4
+\item \textbf{Clean Success:} Garrick leaves temporarily, but vows revenge
+\item \textbf{Success \& Cost:} Garrick reduces his demand but takes a hostage (GM spends SB)
+\item \textbf{Partial:} Compromise reached with ongoing tension
+\item \textbf{Miss:} Combat starts immediately with Garrick having initiative
 \end{itemize}
 \end{encounterbox}
 
 \begin{encounterbox}{Combat Encounter: Fighting Ursillo Bandits}
 \begin{itemize}
 \item \textbf{Approach:} Body + Melee or Wits + Skullduggery
-\item \textbf{DV 3-4 depending on bandit type}
-\item \textbf{Success:} Bandit is defeated or routed
-\item \textbf{Partial:} Bandit is wounded but still dangerous
-\item \textbf{Failure:} PC takes damage or is outmaneuvered
+\item \textbf{Position:} Risky (Desperate if outnumbered)
+\item \textbf{DV:} 3-4 depending on bandit type
+\item \textbf{Clean Success:} Bandit is defeated or routed
+\item \textbf{Success \& Cost:} Bandit is wounded but still dangerous (GM spends SB)
+\item \textbf{Partial:} Temporary setback, bandit regroups
+\item \textbf{Miss:} PC takes damage or is outmaneuvered
 \end{itemize}
 \end{encounterbox}
 
 \begin{encounterbox}{Investigation: Learning About Village Troubles}
 \begin{itemize}
 \item \textbf{Approach:} Wits + Insight or Lore
-\item \textbf{DV 3, Standard Position}
-\item \textbf{Success:} Gain valuable information about Ursillo tactics
+\item \textbf{Position:} Standard
+\item \textbf{DV:} 3
+\item \textbf{Clean Success:} Gain valuable information about Ursillo tactics
+\item \textbf{Success \& Cost:} Learn something useful but with complications (GM spends SB)
 \item \textbf{Partial:} Learn something useful but incomplete
-\item \textbf{Failure:} Receive misleading information or waste time
+\item \textbf{Miss:} Receive misleading information or waste time
 \end{itemize}
 \end{encounterbox}
 
@@ -654,14 +675,14 @@ If the PCs successfully defend the village:
 In Fate's Edge, you resolve important actions by rolling dice:
 \begin{enumerate}
 \item \textbf{Determine the Approach:} Choose an Attribute + Skill combination
-\item \textbf{Set Difficulty:} GM sets Difficulty Value (DV) from 1-4+
+\item \textbf{Set Position:} GM sets Position (Controlled, Risky, Desperate)
 \item \textbf{Roll Dice:} Roll a number of d10s equal to Attribute + Skill
 \item \textbf{Count Results:}
    \begin{itemize}
    \item Each 6+ = 1 Success
    \item Each 1 = 1 Story Beat (SB)
    \end{itemize}
-\item \textbf{Apply Outcome:} Compare successes to DV
+\item \textbf{Apply Outcome:} Compare successes to DV (2-5+)
 \end{enumerate}
 
 \subsection{Outcome Matrix}
@@ -814,9 +835,9 @@ XP can be spent in three ways:
    \end{itemize}
 \item \textbf{Learn Talents:} Unlock unique abilities
    \begin{itemize}
-   \item Early Talents: 3-5 XP
-   \item Mid-Tier Talents: 6-10 XP
-   \item Prestige Abilities: 12+ XP (requires Seasoned tier)
+   \item Minor Talents: 2-4 XP
+   \item Major Talents: 5-8 XP
+   \item Prestige Abilities: 9+ XP (requires Seasoned tier)
    \end{itemize}
 \end{enumerate}
 
@@ -977,7 +998,7 @@ Assets should feel earned, not given:
 \textbf{Role:} Spokesperson for the villagers \\
 \textbf{Motivation:} Feed her family and keep the community together \\
 \textbf{Personality:} Practical, caring, with hidden strength \\
-\textbf{Relationship to PCs:} First villager to trust them, becomes a key
+\textbf{Relationship to PCs:} First villager to trust them, becomes a key ally \\
 \textbf{Key Scene:} The scene where she offers the PCs a place to stay \\
 \textbf{Stats:} Presence 2, Spirit 2, Sway 2, Survival 1
 \end{characterbox}
@@ -1238,7 +1259,6 @@ Whether the PCs become beloved protectors of Millhaven or tragic figures who cou
 
 In Millhaven, that question might just have a simple answer: everything.
 
-\begin{center}
 \begin{tikzpicture}[scale=0.8]
 \draw[villagegreen, line width=2pt] (0,0) rectangle (4,3);
 \draw[banditred, line width=2pt] (6,0) rectangle (10,3);
