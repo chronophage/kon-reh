@@ -1,73 +1,232 @@
-## High-Level TODO: Fate's Edge GM's Guide Update
+# Fate's Edge - GM Guide Revision Plan
 
-### 1. **Core Mechanic Integration**
-- [ ] Update Chapter 2 ("Running the Game") to reflect SRD's streamlined core mechanic
-- [ ] Incorporate the updated **Description Ladder** (Basic/Detailed/Intricate actions)
-- [ ] Align **Complication Point** spending guidelines with SRD §2.1.5
-- [ ] Integrate the **30-Second Adjudication Loop** from SRD §20.2
+Based on the comparison with the Reference Guide and Player's Guide, here's a comprehensive revision plan to update the GM Guide to align with the newer rules and content:
 
-### 2. **Time and Structure Alignment**
-- [ ] Update **Narrative Time Scales** in Chapter 2 to match SRD §2.2
-- [ ] Incorporate **Game Structure Definitions** (Scene/Player Turn/Round/Session/Campaign)
-- [ ] Align **Magic and Ritual Time** rules with SRD §2.2.3
+## Phase 1: Core Mechanics Alignment (Chapters 1-3)
 
-### 3. **Combat System Overhaul**
-- [ ] Rewrite Chapter 2.7 ("Integrated Combat Procedures") to match SRD §3 and §8
-- [ ] Incorporate **Range Bands** system (Close/Near/Far/Absent) from SRD §8.1
-- [ ] Update **Position & Effect** applications in combat (SRD §3.4, §8.2)
-- [ ] Integrate **Tactical Clocks** system from SRD §8.5
+### Chapter 1: Introduction
+- **Update core philosophy**:
+  - Replace d6 system with d10 system throughout
+  - Update success thresholds (6+ = success, 1 = SB)
+  - Revise core principles to match Reference Guide terminology
+  - Remove outdated "Dice Pool" description
+- **Update key concepts**:
+  - Replace "Setback Points" with "Story Beats"
+  - Update Position/Effect descriptions
+  - Revise Clock descriptions to match new system
+  - Remove "Deck of Consequences" from core philosophy (it's a tool, not core)
 
-### 4. **Magic System Updates**
-- [ ] Update Chapter 4 ("Magic and Backlash") to reflect SRD §5 three-path system
-- [ ] Clarify differences between **Casting**, **Rites**, and **Invoker** paths
-- [ ] Incorporate **Backlash/Obligation** systems from SRD §11
-- [ ] Add **Magic in Combat** quick reference (SRD §8.6)
+### Chapter 2: Running the Game
+- **Complete overhaul of core resolution**:
+  - Replace d6 mechanics with d10 system
+  - Update Difficulty Value ladder (DV 2-5+)
+  - Revise Outcome Matrix to match Reference Guide
+  - Add Description Ladder (Basic/Detailed/Intricate)
+- **Update Fail Forward system**:
+  - Revise Boon earning conditions
+  - Add Boon economy and limits
+  - Include conversion to XP (2 Boons → 1 XP, max 2 XP/session)
+  - Add Anti-Fishing measures
+- **Revise Story Beats**:
+  - Update SB spend menu to match Reference Guide
+  - Revise Deck of Consequences integration
+  - Add High-Tier SB Sinks
+- **Update combat procedures**:
+  - Align with new Position system
+  - Update combat consequence types
+  - Revise tactical clocks to match Reference Guide
 
-### 5. **Resource Management Alignment**
-- [ ] Update Chapter 3 to match SRD's **Supply Clock** and **Fatigue** systems
-- [ ] Align **Follower** and **Asset** rules with SRD §12-13 advancement costs
-- [ ] Incorporate **Boon Economy** limits from SRD §7.2.3
+### Chapter 3: Managing Resources
+- **Update resource systems**:
+  - Revise Supply Clock to match Reference Guide
+  - Update Fatigue system and effects
+  - Revise Follower system (Cap ratings, costs, risks)
+  - Update Asset system (tiers, conditions, usage)
+- **Revise Boon economy**:
+  - Update holding cap (5 Boons)
+  - Revise carryover limits (trim to 2)
+  - Update conversion rates and limits
+  - Add Boon usage options
+- **Update XP awards**:
+  - Revise session awards to match Reference Guide
+  - Update milestone awards
+  - Add complication dividends
 
-### 6. **Tags and Effects Library**
-- [ ] Create new chapter or appendix matching SRD §10 ("Tags & Effects Library")
-- [ ] Provide GM guidance on using **Tags** in adjudication
-- [ ] Include **Outsider-Specific Tags** ([WARD], [BANISH], [UNWARD])
+## Phase 2: Magic System Integration (Chapter 4)
 
-### 7. **Campaign Management Updates**
-- [ ] Update Chapter 5 to incorporate **Crown Spread** system from SRD §18
-- [ ] Align **Campaign Clocks** with SRD's Mandate/Crisis framework
-- [ ] Integrate **Deck of Consequences** usage from SRD §16
+### Chapter 4: Magic and Backlash
+- **Complete overhaul to match Reference Guide**:
+  - Eight Elements system
+  - Four Paths of Magic (Casting, Rites, Invokers, Summoners)
+  - Backlash mechanics and severity
+  - Obligation system for Rites
+  - Leash system for Summoners
+  - Casting loop (Channel → Weave → Backlash)
+  - Add Patrons and their Rites
+- **Remove old magic system**:
+  - Eliminate d6-based spellcasting
+  - Remove old ritual magic system
+  - Eliminate outdated elemental system
 
-### 8. **Character Creation Guidance**
-- [ ] Update Chapter 12 alignment with SRD §12 ("Character Creation")
-- [ ] Clarify **Starting Build Points** (30 XP baseline)
-- [ ] Provide guidance on **Early Talent Choices** for magic access
-- [ ] Incorporate **Session Zero Tips** from SRD §12.7
+## Phase 3: Campaign Management (Chapter 5)
 
-### 9. **Advanced GM Techniques**
-- [ ] Update Chapter 6 with **(SB) Management** guidelines from SRD §7.1.3
-- [ ] Incorporate **Tier-based Play** considerations from SRD §13.4
-- [ ] Add **High-Tier (SB) Sinks** guidance
+### Chapter 5: Campaigns, Clocks, and Consequences
+- **Update campaign systems**:
+  - Revise Mandate/Crisis clocks to match Reference Guide
+  - Update Crown Spread procedure
+  - Revise Finale procedure and conditions
+  - Add Twist Collision clause
+  - Update Legacy Conversion
+- **Update clock systems**:
+  - Revise clock types and purposes
+  - Update clock creation guidelines
+  - Revise clock advancement rules
+- **Update between-session procedures**:
+  - Revise GM preparation checklist
+  - Update XP award calculation
+  - Add complication debt management
 
-### 10. **Quick Reference Integration**
-- [ ] Create comprehensive appendix matching SRD §19 ("Tags & Outcomes Cheat Sheet")
-- [ ] Include **Range & Position Quick Reference** (SRD §14)
-- [ ] Add **Design Philosophy Guardrails** (SRD §20) as GM best practices
+## Phase 4: Advanced Techniques (Chapter 6)
 
-### 11. **Worked Examples Integration**
-- [ ] Scatter **Worked Micro-Examples** throughout relevant chapters (from SRD §2.3, §3.9, §4.8, etc.)
-- [ ] Ensure examples demonstrate the updated mechanics
+### Chapter 6: Advanced GM Techniques
+- **Update SB management**:
+  - Revise spending formula by tier
+  - Update hard limits and session budgets
+  - Add banked SB integration
+  - Revise thread management
+- **Update Deck of Consequences**:
+  - Revise two deck systems explanation
+  - Update when to draw guidelines
+  - Revise structure and interpretation
+- **Update travel procedures**:
+  - Align with Reference Guide travel system
+  - Update core travel procedure
+  - Revise faction dynamics
+- **Update custom content creation**:
+  - Revise talent design guidelines
+  - Update asset design framework
 
-### 12. **Cross-Reference Cleanup**
-- [ ] Update all internal references to match new SRD section numbering
-- [ ] Ensure terminology consistency between GM Guide and SRD
-- [ ] Verify all mechanical references point to correct SRD sections
+## Phase 5: Enhanced GM Play (Chapter 7)
 
-### Priority Order:
-1. Core Mechanic & Combat (Chapters 2-3)
-2. Magic System (Chapter 4)  
-3. Character Creation & Resources (Chapter 3, 12)
-4. Campaign Systems (Chapter 5)
-5. Advanced Techniques & References (Chapters 6, Appendices)
+### Chapter 7: Enhanced GM Play
+- **Update all enhanced mechanics**:
+  - Revise GM relationship management
+  - Update shared leverage pool
+  - Revise campaign tracking systems
+  - Update faction loyalty tracker
+  - Revise revelation economy
+  - Update escalation economy
+  - Revise collaborative mechanics
+  - Update momentum banking
+- **Update session management**:
+  - Revise pre-session setup
+  - Update during-session management
+  - Revise post-session wrap-up
+- **Update implementation timeline**:
+  - Revise quick start phase
+  - Update building skills phase
+  - Revise master level phase
 
-The GM's Guide should focus on **practical application** of the SRD rules, with emphasis on adjudication examples, pacing guidance, and troubleshooting common scenarios.
+## Phase 6: High-Tier Play (Chapter 8)
+
+### Chapter 8: Tier IV and V Play
+- **Update high-tier concepts**:
+  - Revise nature of high-tier play
+  - Update deck-based campaign management
+  - Revise holding and ally management
+  - Update high-stakes consequences
+- **Update epic campaign systems**:
+  - Revise act structure
+  - Update campaign seeds
+  - Revise mass combat and warfare
+  - Update mythic challenges
+- **Update player agency management**:
+  - Revise player-driven narratives
+  - Update world reactivity
+  - Revise rivals and counterpoints
+  - Update campaign legacy
+
+## Phase 7: Setting Lore Updates (Chapter 9)
+
+### Chapter 9: Setting Lore and Worldbuilding
+- **Update to match Reference Guide content**:
+  - Revise Amaranthine Sea region description
+  - Update major regions to match current lore
+  - Revise cultures and peoples to match Reference Guide
+  - Update magic and arcane systems
+  - Revise religion and power structures
+  - Update echoes of empire
+- **Add missing content from Reference Guide**:
+  - Include all major regions from Reference Guide
+  - Add updated cultural descriptions
+  - Include current magic system
+  - Add current religious systems
+
+## Phase 8: Practical Guide Updates (Chapter 10)
+
+### Chapter 10: Running the Game
+- **Complete revision of examples**:
+  - Revise all scenarios with new mechanics
+  - Update character actions and outcomes
+  - Revise heist scenario with new systems
+  - Update social fallout example
+  - Revise travel/chase sequences
+  - Update combat examples
+- **Update GM guidance**:
+  - Revise GM mantra to match new systems
+  - Update core procedures explanation
+
+## Phase 9: Appendix Updates (Chapter 11)
+
+### Chapter 11: Tools, Tables, and Optional Rules
+- **Complete overhaul of quick references**:
+  - Update Outcome Matrix
+  - Revise SB Spend Menu
+  - Update Position descriptions
+  - Revise Difficulty Ladder
+- **Update optional rules**:
+  - Revise grid-based combat
+  - Update detailed warfare rules
+- **Update sample content**:
+  - Revise sample NPCs
+  - Update Deck of Consequences interpretation
+  - Revise campaign clock examples
+  - Update travel clock sizes
+  - Revise follower/asset conditions
+  - Update Boon economy guide
+  - Revise mechanical constraints
+
+## Phase 10: Content Alignment and Consistency
+
+### Throughout all chapters:
+- **Update terminology**:
+  - "Setback Points" → "Story Beats"
+  - "Advancement Points" → "Boons"
+  - Update all dice mechanics to d10 system
+- **Add missing concepts**:
+  - On-Screen vs Off-Screen resources
+  - Prestige Abilities
+  - Affinity
+  - Bond-Driven Resource Generation
+  - Over-Stack rule
+  - Anti-Fishing measures
+- **Remove outdated content**:
+  - Eliminate d6-based mechanics
+  - Remove obsolete systems
+  - Eliminate conflicting terminology
+- **Ensure consistency**:
+  - Align all examples with new mechanics
+  - Ensure all tables match Reference Guide
+  - Verify all procedures are consistent
+
+## Implementation Priority:
+
+1. **Phase 1** (Core mechanics) - Highest priority
+2. **Phase 4** (Advanced techniques) - High priority
+3. **Phase 2** (Magic system) - High priority
+4. **Phase 5** (Enhanced play) - Medium priority
+5. **Phase 3** (Campaign management) - Medium priority
+6. **Phase 6** (High-tier play) - Medium priority
+7. **Phase 8** (Practical guide) - Low priority
+8. **Phase 7** (Setting lore) - Low priority
+9. **Phase 9-10** (Appendix/Alignment) - Low priority
