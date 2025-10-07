@@ -1,36 +1,251 @@
-### Core Concept Summary
+# Fate's Edge - Player's Guide Revision Plan
 
-**Fate's Edge** is a fantasy TTRPG where every action carries weight. It's built on principles of **Narrative Primacy, Risk as Drama, Meaningful Growth, and Consequence Weight**. The game uses a d10 dice pool system (Attribute + Skill) where rolling 1s generates **Complication Points (CP)** that the GM uses to introduce twists and tension. Characters advance by spending XP on one of three paths: enhancing themselves, acquiring assets, or learning unique talents. Magic is powerful but dangerous, following a structured "Casting Loop" that always risks backlash. The world is detailed, with rich cultures, factions, gods, and a unique "Deck of Consequences" system to generate dynamic story elements.
+Based on the review of the Player's Guide and Reference Guide, here's a comprehensive revision plan to update the Player's Guide to align with the newer rules and content in the Reference Guide:
 
-### Key Identified Inconsistencies & Areas for Revision
+## Phase 1: Core Mechanics Alignment (Chapters 1-3)
 
-1.  **Structural Repetition:** The most significant issue is that **Chapter 17: "Compendium of Assets" and Chapter 18: "Compendium of Assets" are identical.** This appears to be a copy-paste error in the document's layout.
+### Chapter 2: Core Mechanics
+- **Replace d6 system with d10 system**:
+  - Update all dice mechanics to use d10s
+  - Change success threshold from 4+ to 6+
+  - Change Story Beat generation from 1s to 1s on d10s
+- **Update Difficulty Value ladder**:
+  - Routine: DV 2
+  - Pressured: DV 3
+  - Hard: DV 4
+  - Extreme: DV 5+
+- **Revise Outcome Matrix**:
+  - Clean Success: S ≥ DV and C = 0
+  - Success & Cost: S ≥ DV and C > 0
+  - Partial: 0 < S < DV
+  - Miss: S = 0
+- **Add Description Ladder**:
+  - Basic Action (roll as-is)
+  - Detailed Action (re-roll one 1)
+  - Intricate Action (re-roll all 1s, add flourish on success)
+- **Replace "Advancement Points" with "Boons"**:
+  - Update earning conditions
+  - Add Boon economy and limits
+  - Include conversion to XP (2 Boons → 1 XP, max 2 XP/session)
+- **Update Harm system**:
+  - Remove 4-segment clock
+  - Implement Fatigue and Harm levels as in Reference Guide
+- **Add new mechanics**:
+  - Asset activation rules
+  - Over-Stack rule
+  - Anti-Fishing measures
 
-2.  **Conflicting Deck Systems:** The rules describe two distinct card-based tools but their explanations are interspersed and could cause confusion.
-    *   **Travel Decks:** Used for journeys. Suits mean: Spade=Place, Heart=Actor, Club=Pressure, Diamond=Leverage.
-    *   **Deck of Consequences:** Used for scene drama. Suits mean: Hearts=Social, Spades=Harm, Clubs=Material, Diamonds=Magical.
-    *   **The Confusion:** While Section 2.11 and 5.1 try to clarify the difference, a reader can easily mix them up. A clearer, side-by-side comparison in a dedicated section would be helpful.
+### Chapter 3: Character Advancement
+- **Revise XP earning**:
+  - Base attendance: +2 XP
+  - Major objectives: +2-4 XP
+  - Discoveries: +1-2 XP
+  - Hard choices: +1-2 XP
+  - Complication spotlight: +1-3 XP
+  - Bond-driven play: +1-2 XP
+  - GM curveball: +0-3 XP
+- **Update milestone awards**:
+  - Arc completion: +8-12 XP
+  - Signature moment: +2 XP
+- **Revise XP spending**:
+  - Attributes: new rating × 3 XP
+  - Skills: new level × 2 XP
+  - Followers: Cap² XP
+  - Assets: Minor (4 XP), Standard (8 XP), Major (12 XP)
+- **Add Rush Rule**:
+  - Skip downtime for advancement
+  - Create Haste clock
+- **Add Reputation Tiers**:
+  - Tier I (0-40 XP): Rookie
+  - Tier II (41-90 XP): Seasoned
+  - Tier III (91-150 XP): Veteran
+  - Tier IV (151-220 XP): Paragon
+  - Tier V (221+ XP): Mythic
 
-3.  **Unclear "Boon" Economy:** The rules for earning and spending Boons (a core player resource) have some ambiguous or conflicting points.
-    *   **Earning from "Partial" Success:** An optional rule suggests awarding a Boon on a "Partial" outcome if the GM spends 3+ CP. It's unclear if this is intended to be the standard or a true variant.
-    *   **Carryover Limit:** The rule states Boons are reduced to a maximum of 2 at the end of each "scene," but then defines a "multi-phase set piece" as an exception. The line between a "scene" and a "set piece" is narrative and may be too vague for consistent application.
-    *   **Anti-Fishing Dials:** These optional limits (like "Once/Scene (Failures)") are a good idea but feel like a patch for a potentially exploitable core mechanic. They might be streamlined into the main rules.
+## Phase 2: Magic System Integration (Chapter 4)
 
-4.  **Underdeveloped "Enhanced Player Play":** Chapter 22 introduces new concepts like a "Shared Leverage Pool" and "Session Investment Tracker" that don't appear in the core rules. It's presented as an "enhancement," but it's not clear if this is an optional module for advanced play or a replacement for earlier systems. The terminology ("Leverage" vs. "Boons" vs. "Diamonds") adds another layer of potential confusion.
+### Chapter 4: Magic and Special Abilities
+- **Complete overhaul to match Reference Guide**:
+  - Four Paths of Magic (Casting, Rites, Invokers, Summoners)
+  - Eight Elements system
+  - Backlash mechanics
+  - Obligation system for Rites
+  - Leash system for Summoners
+  - Casting loop (Channel → Weave → Backlash)
+  - Add Patrons and their Rites
+- **Remove old magic system**:
+  - Eliminate d6-based spellcasting
+  - Remove old ritual magic system
 
-5.  **Starting XP and Build Confusion:**
-    *   The introduction states players begin with **30 XP**.
-    *   However, all ten example character builds in Chapter 21 have total XP values ranging from **43 to 53 XP**.
-    *   Chapter 22.5 then mentions a "maximum starting build of 34 XP" through taking bonds and complications. This directly contradicts both the 30 XP baseline and the example builds.
+## Phase 3: Attributes and Skills Update (Chapter 5)
 
-6.  **Magic System Nuance:** The "Casting Loop" is a great concept, but some specifics could be tightened.
-    *   The "Weave" roll uses `Wits + (Art)`, but the list of "Common Magical Arts" is provided without explicit mechanics. The GM and player would need to collaboratively define what skill level a character has in each Art.
-    *   The "Backlash Severity Table" is very brief and narrative. While this fits the game's philosophy, some groups might desire more concrete examples of effects for each CP threshold.
+### Chapter 5: Attributes and Skills
+- **Update Attribute ratings**:
+  - 1-5 scale (was 1-5 but with different descriptions)
+- **Update Skill ratings**:
+  - 0-5 scale (was 0-5 but with different costs)
+- **Revise skill costs**:
+  - New level × 2 XP (was different progression)
+- **Update skill list**:
+  - Align with Reference Guide skills
+  - Add regional/cultural skills
+- **Add Affinity concept**:
+  - Narrative edge or metaphysical bond
+- **Add Prestige Abilities**:
+  - High-level talents unlocked by mastery
 
-### High-Level Recommendations for Revision
+## Phase 4: Character Building (Chapters 6, 7, 11, 15)
 
-*   **Consolidate and Reorganize:** Merge the duplicate assets chapter (17 & 18). Create a single, clear chapter for the card-based systems, explicitly separating Travel Decks from the Deck of Consequences.
-*   **Streamline the Boon Economy:** Integrate the best "anti-fishing" ideas into the core rules. Provide clearer, more consistent triggers for earning Boons and solidify the language around scene vs. session carryover.
-*   **Clarify Character Creation:** Choose a single, clear starting XP value (e.g., 30 XP) and ensure all examples and optional rules (bonds/complications for extra points) are balanced around it. The example builds should be recalculated to match the official starting point.
-*   **Integrate or Isolate Advanced Rules:** Decide if Chapter 22's "Enhanced Player Play" is core or optional. If it's core, its concepts (like Leverage) need to be woven into the foundational chapters. If it's optional, it should be clearly marked as such.
-*   **Flesh Out Magic:** Consider providing a small list of example spells for each Art to illustrate the power level and potential backlash effects, setting a benchmark for player-designed spells.
+### Chapter 6: Experience Paths and Character Building
+- **Revise starting builds**:
+  - Standard: 30 XP
+  - Enhanced: Up to 34 XP with Bonds/Complications
+- **Update advancement paths**:
+  - Solo (70-90% self)
+  - Mixed (50-65% self)
+  - Mastermind (25-40% self)
+- **Add player archetypes**:
+  - The Solo
+  - The Mixed Player
+  - The Mastermind
+
+### Chapter 7: Talents and Special Abilities
+- **Revise talent categories**:
+  - General Talents (2-8 XP)
+  - Cultural/Ancestral Talents (4-10 XP)
+  - High-Tier Prestige Abilities (6+ XP)
+- **Update talent examples**:
+  - Align with Reference Guide examples
+  - Add cultural talents for each race
+- **Add talent building strategies**:
+  - The Specialist
+  - The Generalist
+  - The Combo Builder
+
+### Chapter 11: Character Backgrounds
+- **Complete overhaul to match Reference Guide**:
+  - Access Tags
+  - Signature Contacts
+  - Background Boons
+  - Obligation Clocks
+  - Regional backgrounds
+  - World-linked backgrounds
+
+### Chapter 15: Example Character Builds
+- **Complete revision**:
+  - Rebuild all examples with new system
+  - Use 30 XP base with optional +4 XP
+  - Align with Reference Guide archetypes
+  - Include proper Attributes, Skills, and Talents
+
+## Phase 5: Assets and Followers (Chapters 8, 12, 13)
+
+### Chapter 8: Assets and Followers
+- **Revise to match Reference Guide**:
+  - On-Screen vs Off-Screen resources
+  - Follower assist rules (+3 dice cap)
+  - Follower risk mechanics
+  - Loyalty & Bonds system
+  - Upkeep requirements
+  - Condition tracks (Maintained/Neglected/Compromised)
+
+### Chapter 12: Followers
+- **Update to match Reference Guide system**:
+  - Capability ratings (1-5)
+  - Cost = Cap² XP
+  - Independent actions
+  - Exposure/Harm tracks
+  - Loyalty states (Wary/Steady/Devoted)
+
+### Chapter 13: Compendium of Assets
+- **Revise asset types**:
+  - Minor (4 XP)
+  - Standard (8 XP)
+  - Major (12 XP)
+  - Artifact (16+ XP)
+- **Update activation mechanics**:
+  - Free off-screen effect
+  - Boon activation for on-screen effects
+  - XP activation for extra uses
+- **Add condition states**:
+  - Maintained
+  - Neglected
+  - Compromised
+
+## Phase 6: World Interaction (Chapters 9, 14)
+
+### Chapter 9: World Interaction
+- **Update to match Reference Guide**:
+  - Travel system with deck generators
+  - Supply Clock
+  - Fatigue system
+  - Position states (Controlled/Risky/Desperate)
+  - Range bands (Close/Near/Far/Absent)
+  - Deck of Consequences integration
+
+### Chapter 14: Deck Generators
+- **Complete overhaul to match Reference Guide**:
+  - Regional deck generators
+  - Suit meanings
+  - Rank severity and clock sizes
+  - Draw procedures (Quick Hook, Full Seed, Act Builder)
+  - Combo rules (Pairs, Runs, Flushes, Face+Aces)
+  - Specialized generators
+
+## Phase 7: Enhanced Player Play (Chapter 16)
+
+### Chapter 16: Enhanced Player Play
+- **Update to match Reference Guide concepts**:
+  - Session Investment Tracker
+  - Cultural Immersion Bonus
+  - Collaborative Play mechanics
+  - Faction Awareness
+  - Momentum Banking
+  - Clock Manipulation
+  - Complication Bargaining
+  - Between Sessions Activities Log
+
+## Phase 8: Content Alignment
+
+### Throughout all chapters:
+- **Update terminology**:
+  - "Advancement Points" → "Boons"
+  - "Setback Points" → "Story Beats"
+  - "Harm Clock" → "Harm levels with Fatigue conversion"
+- **Add missing concepts**:
+  - On-Screen vs Off-Screen resources
+  - Prestige Abilities
+  - Affinity
+  - Bond-Driven Resource Generation
+  - Over-Stack rule
+  - Anti-Fishing measures
+- **Remove outdated content**:
+  - d6-based mechanics
+  - Old XP progression
+  - Obsolete character building methods
+
+## Phase 9: Examples and Quick References
+
+### Throughout:
+- **Update all examples**:
+  - Revise dice mechanics
+  - Update outcomes
+  - Align with new terminology
+- **Add Quick Reference sections**:
+  - Core mechanic quick reference
+  - Position/Effect reference
+  - Boon economy reference
+  - Travel procedure reference
+
+## Implementation Priority:
+
+1. **Phase 1** (Core mechanics) - Highest priority
+2. **Phase 4** (Character building) - High priority
+3. **Phase 2** (Magic system) - High priority
+4. **Phase 5** (Assets/Followers) - Medium priority
+5. **Phase 6** (World interaction) - Medium priority
+6. **Phase 3** (Attributes/Skills) - Medium priority
+7. **Phase 7** (Enhanced play) - Low priority
+8. **Phase 8-9** (Content alignment) - Low priority
+
+This revision plan ensures the Player's Guide aligns with the newer rules and content in the Reference Guide while maintaining a player-friendly structure and approach.

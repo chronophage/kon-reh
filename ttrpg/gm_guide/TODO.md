@@ -45,9 +45,9 @@
 - [ ] Incorporate **Session Zero Tips** from SRD §12.7
 
 ### 9. **Advanced GM Techniques**
-- [ ] Update Chapter 6 with **CP Management** guidelines from SRD §7.1.3
+- [ ] Update Chapter 6 with **(SB) Management** guidelines from SRD §7.1.3
 - [ ] Incorporate **Tier-based Play** considerations from SRD §13.4
-- [ ] Add **High-Tier CP Sinks** guidance
+- [ ] Add **High-Tier (SB) Sinks** guidance
 
 ### 10. **Quick Reference Integration**
 - [ ] Create comprehensive appendix matching SRD §19 ("Tags & Outcomes Cheat Sheet")

@@ -3,12 +3,12 @@ import tkinter as tk
 from tkinter import ttk
 from datetime import datetime
 
-class CPSpendTab:
+class (SB)SpendTab:
     def __init__(self, parent):
         self.parent = parent
         self.available_cp = 0
         self.banked_cp = 0
-        self.cp_log = []  # List of CP transactions
+        self.cp_log = []  # List of (SB) transactions
         self.create_ui()
         
     def create_ui(self):
@@ -16,30 +16,30 @@ class CPSpendTab:
         title = ttk.Label(self.parent, text="Complication Point Tracker", font=("Arial", 24, "bold"))
         title.pack(pady=20)
         
-        # CP Summary Frame
-        summary_frame = ttk.LabelFrame(self.parent, text="CP Summary", padding="15")
+        # (SB) Summary Frame
+        summary_frame = ttk.LabelFrame(self.parent, text="(SB) Summary", padding="15")
         summary_frame.pack(fill="x", padx=20, pady=10)
         
-        # Available CP
+        # Available (SB)
         avail_frame = ttk.Frame(summary_frame)
         avail_frame.pack(side="left", padx=20)
-        ttk.Label(avail_frame, text="Available CP:", font=("Arial", 12, "bold")).pack()
+        ttk.Label(avail_frame, text="Available (SB):", font=("Arial", 12, "bold")).pack()
         self.avail_label = ttk.Label(avail_frame, text=f"{self.available_cp}", 
                                    font=("Arial", 16, "bold"), foreground="red")
         self.avail_label.pack()
         
-        # Banked CP
+        # Banked (SB)
         bank_frame = ttk.Frame(summary_frame)
         bank_frame.pack(side="left", padx=20)
-        ttk.Label(bank_frame, text="Banked CP:", font=("Arial", 12, "bold")).pack()
+        ttk.Label(bank_frame, text="Banked (SB):", font=("Arial", 12, "bold")).pack()
         self.bank_label = ttk.Label(bank_frame, text=f"{self.banked_cp}", 
                                   font=("Arial", 16, "bold"), foreground="blue")
         self.bank_label.pack()
         
-        # Total CP
+        # Total (SB)
         total_frame = ttk.Frame(summary_frame)
         total_frame.pack(side="left", padx=20)
-        ttk.Label(total_frame, text="Total CP:", font=("Arial", 12, "bold")).pack()
+        ttk.Label(total_frame, text="Total (SB):", font=("Arial", 12, "bold")).pack()
         self.total_label = ttk.Label(total_frame, text=f"{self.available_cp + self.banked_cp}", 
                                    font=("Arial", 16, "bold"))
         self.total_label.pack()
@@ -47,18 +47,18 @@ class CPSpendTab:
         # Control Buttons
         control_frame = ttk.Frame(summary_frame)
         control_frame.pack(side="right")
-        ttk.Button(control_frame, text="Add CP", command=self.add_cp_dialog).pack(pady=2)
+        ttk.Button(control_frame, text="Add (SB)", command=self.add_cp_dialog).pack(pady=2)
         ttk.Button(control_frame, text="Reset All", command=self.reset_cp).pack(pady=2)
         
-        # CP Actions Frame
-        actions_frame = ttk.LabelFrame(self.parent, text="CP Actions", padding="15")
+        # (SB) Actions Frame
+        actions_frame = ttk.LabelFrame(self.parent, text="(SB) Actions", padding="15")
         actions_frame.pack(fill="x", padx=20, pady=10)
         
-        # Spend CP Section
-        spend_frame = ttk.LabelFrame(actions_frame, text="Spend CP", padding="10")
+        # Spend (SB) Section
+        spend_frame = ttk.LabelFrame(actions_frame, text="Spend (SB)", padding="10")
         spend_frame.pack(side="left", fill="y", padx=10)
         
-        ttk.Label(spend_frame, text="CP Amount:").pack()
+        ttk.Label(spend_frame, text="(SB) Amount:").pack()
         self.spend_amount = ttk.Spinbox(spend_frame, from_=1, to=10, width=5)
         self.spend_amount.pack(pady=5)
         self.spend_amount.set("1")
@@ -77,18 +77,18 @@ class CPSpendTab:
         self.custom_desc = ttk.Entry(spend_frame, width=20)
         self.custom_desc.pack(pady=5)
         
-        ttk.Button(spend_frame, text="Spend CP", command=self.spend_cp).pack(pady=10)
+        ttk.Button(spend_frame, text="Spend (SB)", command=self.spend_cp).pack(pady=10)
         
         # Bank/Unbank Section
         bank_frame = ttk.LabelFrame(actions_frame, text="Bank Management", padding="10")
         bank_frame.pack(side="left", fill="y", padx=10)
         
-        ttk.Button(bank_frame, text="Bank All CP", command=self.bank_all).pack(pady=5)
-        ttk.Button(bank_frame, text="Unbank 1 CP", command=self.unbank_cp).pack(pady=5)
-        ttk.Button(bank_frame, text="Spend Banked CP", command=self.spend_banked_dialog).pack(pady=5)
+        ttk.Button(bank_frame, text="Bank All (SB)", command=self.bank_all).pack(pady=5)
+        ttk.Button(bank_frame, text="Unbank 1 (SB)", command=self.unbank_cp).pack(pady=5)
+        ttk.Button(bank_frame, text="Spend Banked (SB)", command=self.spend_banked_dialog).pack(pady=5)
         
         # Quick Spend Buttons
-        quick_frame = ttk.LabelFrame(actions_frame, text="Quick Spend (1 CP each)", padding="10")
+        quick_frame = ttk.LabelFrame(actions_frame, text="Quick Spend (1 (SB) each)", padding="10")
         quick_frame.pack(side="left", fill="y", padx=10)
         
         quick_spends = [
@@ -101,8 +101,8 @@ class CPSpendTab:
         for label, command in quick_spends:
             ttk.Button(quick_frame, text=label, command=command).pack(pady=2)
         
-        # CP Log Frame
-        log_frame = ttk.LabelFrame(self.parent, text="CP Log", padding="10")
+        # (SB) Log Frame
+        log_frame = ttk.LabelFrame(self.parent, text="(SB) Log", padding="10")
         log_frame.pack(fill="both", expand=True, padx=20, pady=10)
         
         # Log Controls
@@ -117,44 +117,44 @@ class CPSpendTab:
         
         self.refresh_log_display()
         
-        # CP Info Frame
-        info_frame = ttk.LabelFrame(self.parent, text="CP Spend Menu", padding="10")
+        # (SB) Info Frame
+        info_frame = ttk.LabelFrame(self.parent, text="(SB) Spend Menu", padding="10")
         info_frame.pack(fill="x", padx=20, pady=10)
         
         info_text = """
-CP Spend Options (Default Costs):
-1 CP: Noise, trace, +1 Supply segment, tool Compromised, time passes, bystander notices
-2 CP: Alarmed attention, lose position/cover, add lesser foe, advance Threat clock, Fatigue 1
-3 CP: Reinforcements, Out of Supply, gear breaks, split party options, escalate faction clock
-4+ CP: Major turns - trap springs, rival claims prize, authority arrives, scene-defining twists
+(SB) Spend Options (Default Costs):
+1 (SB): Noise, trace, +1 Supply segment, tool Compromised, time passes, bystander notices
+2 (SB): Alarmed attention, lose position/cover, add lesser foe, advance Threat clock, Fatigue 1
+3 (SB): Reinforcements, Out of Supply, gear breaks, split party options, escalate faction clock
+4+ (SB): Major turns - trap springs, rival claims prize, authority arrives, scene-defining twists
 
-Combat CP:
-1 CP: Lose footing (next defense -1d)
-2 CP: Weapon Compromised
-3 CP: Pinned, disarmed, separated, battlefield shifts
+Combat (SB):
+1 (SB): Lose footing (next defense -1d)
+2 (SB): Weapon Compromised
+3 (SB): Pinned, disarmed, separated, battlefield shifts
 
-Stealth CP:
-1 CP: Footstep/squeak, shadow seen
-2 CP: Patrol path changes, lock resists
-3 CP: Partial alarm initiated
+Stealth (SB):
+1 (SB): Footstep/squeak, shadow seen
+2 (SB): Patrol path changes, lock resists
+3 (SB): Partial alarm initiated
 
-Social CP:
-1 CP: Rumor cost, faux pas (-1d with this character)
-2 CP: Concession required (gift, favor)
-3 CP: Rival interjects with leverage
+Social (SB):
+1 (SB): Rumor cost, faux pas (-1d with this character)
+2 (SB): Concession required (gift, favor)
+3 (SB): Rival interjects with leverage
 
-Travel CP:
-1 CP: Lose time, minor injury, weather turns
-2 CP: +1 Supply segment, mount lamed
-3 CP: Wrong valley, Fatigue 1 to all
+Travel (SB):
+1 (SB): Lose time, minor injury, weather turns
+2 (SB): +1 Supply segment, mount lamed
+3 (SB): Wrong valley, Fatigue 1 to all
 
-Arcana CP:
-1 CP: Backlash prickle, sensory bleed
-2 CP: Unintended side-effect
-3 CP: Residue anchors foe/hex
+Arcana (SB):
+1 (SB): Backlash prickle, sensory bleed
+2 (SB): Unintended side-effect
+3 (SB): Residue anchors foe/hex
         """.strip()
         
-        # Create scrollable text widget for CP info
+        # Create scrollable text widget for (SB) info
         info_text_frame = ttk.Frame(info_frame)
         info_text_frame.pack(fill="both", expand=True)
         
@@ -178,19 +178,19 @@ Arcana CP:
         
     def add_cp_dialog(self):
         dialog = tk.Toplevel(self.parent)
-        dialog.title("Add CP")
+        dialog.title("Add (SB)")
         dialog.geometry("300x150")
         dialog.transient(self.parent)
         dialog.grab_set()
         
-        ttk.Label(dialog, text="Add CP to:").pack(pady=10)
+        ttk.Label(dialog, text="Add (SB) to:").pack(pady=10)
         
         btn_frame = ttk.Frame(dialog)
         btn_frame.pack()
         
-        ttk.Button(btn_frame, text="Available CP", 
+        ttk.Button(btn_frame, text="Available (SB)", 
                   command=lambda: [self.add_cp("available"), dialog.destroy()]).pack(side="left", padx=5)
-        ttk.Button(btn_frame, text="Banked CP", 
+        ttk.Button(btn_frame, text="Banked (SB)", 
                   command=lambda: [self.add_cp("banked"), dialog.destroy()]).pack(side="left", padx=5)
         ttk.Button(btn_frame, text="Both", 
                   command=lambda: [self.add_cp("both"), dialog.destroy()]).pack(side="left", padx=5)
@@ -225,7 +225,7 @@ Arcana CP:
                 # Clear custom description
                 self.custom_desc.delete(0, tk.END)
             else:
-                # Not enough available CP, try to use banked
+                # Not enough available (SB), try to use banked
                 if amount <= (self.available_cp + self.banked_cp):
                     # Use available first
                     to_spend_avail = min(amount, self.available_cp)
@@ -255,25 +255,25 @@ Arcana CP:
             amount = self.available_cp
             self.banked_cp += amount
             self.available_cp = 0
-            self.log_transaction("Bank", amount, "Bank all available CP")
+            self.log_transaction("Bank", amount, "Bank all available (SB)")
             self.update_display()
             
     def unbank_cp(self):
         if self.banked_cp >= 1:
             self.banked_cp -= 1
             self.available_cp += 1
-            self.log_transaction("Unbank", 1, "Unbank 1 CP")
+            self.log_transaction("Unbank", 1, "Unbank 1 (SB)")
             self.update_display()
             
     def spend_banked_dialog(self):
         if self.banked_cp >= 1:
             dialog = tk.Toplevel(self.parent)
-            dialog.title("Spend Banked CP")
+            dialog.title("Spend Banked (SB)")
             dialog.geometry("250x120")
             dialog.transient(self.parent)
             dialog.grab_set()
             
-            ttk.Label(dialog, text=f"Banked CP: {self.banked_cp}").pack(pady=10)
+            ttk.Label(dialog, text=f"Banked (SB): {self.banked_cp}").pack(pady=10)
             
             amount_frame = ttk.Frame(dialog)
             amount_frame.pack()
@@ -290,7 +290,7 @@ Arcana CP:
                     amount = int(amount_spin.get())
                     if 1 <= amount <= self.banked_cp:
                         self.banked_cp -= amount
-                        self.log_transaction("Spend", amount, f"Spend banked CP")
+                        self.log_transaction("Spend", amount, f"Spend banked (SB)")
                         self.update_display()
                 except ValueError:
                     pass
@@ -330,7 +330,7 @@ Arcana CP:
             widget.destroy()
             
         if not self.cp_log:
-            ttk.Label(self.log_display_frame, text="No CP transactions logged").pack(pady=20)
+            ttk.Label(self.log_display_frame, text="No (SB) transactions logged").pack(pady=20)
             return
             
         # Create scrollable area

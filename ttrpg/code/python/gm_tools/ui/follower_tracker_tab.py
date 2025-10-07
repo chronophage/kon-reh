@@ -37,7 +37,7 @@ Follower & Asset Management:
 • Condition Track: Maintained → Neglected → Compromised
 • Upkeep: Required after heavy use or at end of arc
 • Maintenance Options: Downtime (Significant Time) or XP cost
-• Complications: GM can spend CP to Harm or Degrade followers/assets
+• Complications: GM can spend (SB) to Harm or Degrade followers/assets
 • Loyalty: Wary / Steady / Devoted (optional tracking)
 
 Follower Capabilities:

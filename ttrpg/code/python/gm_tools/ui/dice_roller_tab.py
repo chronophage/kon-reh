@@ -53,20 +53,20 @@ class DiceRollerTab:
         self.results_text.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
         
-        # Banked CP display
+        # Banked (SB) display
         cp_frame = ttk.Frame(self.parent)
         cp_frame.pack(pady=10)
         
-        ttk.Label(cp_frame, text="Banked CP:", font=("Arial", 14)).pack(side=tk.LEFT)
+        ttk.Label(cp_frame, text="Banked (SB):", font=("Arial", 14)).pack(side=tk.LEFT)
         self.cp_label = ttk.Label(cp_frame, text="0", font=("Arial", 14, "bold"))
         self.cp_label.pack(side=tk.LEFT, padx=10)
         
-        # CP buttons
+        # (SB) buttons
         cp_btn_frame = ttk.Frame(self.parent)
         cp_btn_frame.pack(pady=5)
         
-        ttk.Button(cp_btn_frame, text="Bank CP", command=self.bank_cp).pack(side=tk.LEFT, padx=5)
-        ttk.Button(cp_btn_frame, text="Clear Banked CP", command=self.clear_banked_cp).pack(side=tk.LEFT, padx=5)
+        ttk.Button(cp_btn_frame, text="Bank (SB)", command=self.bank_cp).pack(side=tk.LEFT, padx=5)
+        ttk.Button(cp_btn_frame, text="Clear Banked (SB)", command=self.clear_banked_cp).pack(side=tk.LEFT, padx=5)
         
     def roll_dice(self):
         try:
@@ -143,8 +143,8 @@ class DiceRollerTab:
         self.results_text.see("1.0")
         
     def bank_cp(self):
-        # For simplicity, we'll bank 1 CP when this button is pressed
-        # In a full implementation, you'd track actual CP from rolls
+        # For simplicity, we'll bank 1 (SB) when this button is pressed
+        # In a full implementation, you'd track actual (SB) from rolls
         self.banked_cp += 1
         self.cp_label.config(text=str(self.banked_cp))
         

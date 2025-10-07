@@ -218,15 +218,15 @@ class XPPlannerTab:
             if action == "Scout & Signal":
                 info_text += "Effect: Change ally's next action position to Controlled or grant +1 effect\n"
                 info_text += "Cost: Mark Exposure +1 or Harm 1\n"
-                info_text += "Pressure: GM may spend 1 CP to escalate"
+                info_text += "Pressure: GM may spend 1 (SB) to escalate"
             elif action == "Distract & Draw":
                 info_text += "Effect: Reduce a kinetic rail (Hunt/Escape/Hazard) by -1 tick\n"
                 info_text += "Cost: Mark Exposure +1 or Harm 1\n"
-                info_text += "Pressure: GM may spend 1 CP to escalate"
+                info_text += "Pressure: GM may spend 1 (SB) to escalate"
             elif action == "Fetch & Carry":
                 info_text += "Effect: Move small object; on recipient's next success, advance +1 tick on target clock\n"
                 info_text += "Cost: Mark Exposure +1 or Harm 1\n"
-                info_text += "Pressure: GM may spend 1 CP to escalate"
+                info_text += "Pressure: GM may spend 1 (SB) to escalate"
                 
             self.initiative_info.config(state=tk.NORMAL)
             self.initiative_info.delete(1.0, tk.END)

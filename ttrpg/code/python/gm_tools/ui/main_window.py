@@ -9,8 +9,8 @@ from gm_tools.ui.boon_tracker_tab import BoonTrackerTab
 from gm_tools.ui.xp_tracker_tab import XPTrackerTab
 from gm_tools.ui.combat_tracker_tab import CombatTrackerTab
 from gm_tools.ui.scene_builder_tab import SceneBuilderTab
-from gm_tools.ui.cp_spend_tab import CPSpendTab
-from gm_tools.ui.cp_spend_menu_tab import CPSpendMenuTab
+from gm_tools.ui.cp_spend_tab import (SB)SpendTab
+from gm_tools.ui.cp_spend_menu_tab import (SB)SpendMenuTab
 from gm_tools.ui.consequence_tab import ConsequenceTab
 from gm_tools.ui.campaign_clock_tab import CampaignClockTab
 from gm_tools.ui.evidence_tracker_tab import EvidenceTrackerTab
@@ -124,17 +124,17 @@ class MainWindow:
         combat_notebook.add(combat_frame, text="Combat")
         self.combat_tracker = CombatTrackerTab(combat_frame)
         
-        # CP Tracker
+        # (SB) Tracker
         cp_frame = ttk.Frame(combat_notebook)
-        combat_notebook.add(cp_frame, text="CP")
-        self.cp_tracker = CPSpendTab(cp_frame)
+        combat_notebook.add(cp_frame, text="(SB)")
+        self.cp_tracker = (SB)SpendTab(cp_frame)
        
-        # CP Spend Calc
+        # (SB) Spend Calc
         self.cp_spend_frame = ttk.Frame(self.notebook)
         self.cp_spend_frame.pack(fill=tk.BOTH, expand=True)
-        self.cp_spend_menu = CPSpendMenuTab(self.cp_spend_frame)
+        self.cp_spend_menu = (SB)SpendMenuTab(self.cp_spend_frame)
         self.cp_spend_menu.get_frame().pack(fill=tk.BOTH, expand=True)
-        self.notebook.add(self.cp_spend_frame, text="CP Spend Menu")
+        self.notebook.add(self.cp_spend_frame, text="(SB) Spend Menu")
        
         # Consequences
         consequence_frame = ttk.Frame(combat_notebook)
@@ -250,7 +250,7 @@ Core Tabs:
 Combat & Scenes:
 • Combat Tracker: Initiative, positioning, and combat management
 • Scene Builder: Prepare scenes with stakes and rails
-• CP Tracker: Manage complication points spending
+• (SB) Tracker: Manage complication points spending
 • Consequences: Handle deck draws and complications
 
 Campaign Management:

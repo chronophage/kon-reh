@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from shared.database.skill_db import SkillDatabase
 
-class CPSpendMenuTab:
+class (SB)SpendMenuTab:
     def __init__(self, parent):
         self.parent = parent
         self.frame = ttk.Frame(parent)
@@ -17,33 +17,33 @@ class CPSpendMenuTab:
         self.create_ui()
         
     def create_ui(self):
-        # CP Pool Display
-        pool_frame = ttk.LabelFrame(self.frame, text="Complication Points", padding="10")
+        # (SB) Pool Display
+        pool_frame = ttk.LabelFrame(self.frame, text="Story Beats", padding="10")
         pool_frame.pack(fill=tk.X, padx=10, pady=5)
         
-        # Current CP display
+        # Current (SB) display
         cp_display_frame = ttk.Frame(pool_frame)
         cp_display_frame.pack(fill=tk.X, pady=(0, 10))
         
-        ttk.Label(cp_display_frame, text="Available CP:", font=("Arial", 12, "bold")).pack(side=tk.LEFT)
+        ttk.Label(cp_display_frame, text="Available (SB):", font=("Arial", 12, "bold")).pack(side=tk.LEFT)
         self.cp_label = ttk.Label(cp_display_frame, text="0", font=("Arial", 12, "bold"), foreground="red")
         self.cp_label.pack(side=tk.LEFT, padx=(5, 20))
         
-        ttk.Label(cp_display_frame, text="Banked CP:", font=("Arial", 12, "bold")).pack(side=tk.LEFT)
+        ttk.Label(cp_display_frame, text="Banked (SB):", font=("Arial", 12, "bold")).pack(side=tk.LEFT)
         self.banked_label = ttk.Label(cp_display_frame, text="0", font=("Arial", 12, "bold"), foreground="orange")
         self.banked_label.pack(side=tk.LEFT, padx=(5, 0))
         
-        # CP Controls
+        # (SB) Controls
         control_frame = ttk.Frame(pool_frame)
         control_frame.pack(fill=tk.X, pady=(0, 10))
         
-        ttk.Label(control_frame, text="Add CP:").pack(side=tk.LEFT)
+        ttk.Label(control_frame, text="Add (SB):").pack(side=tk.LEFT)
         self.add_cp_var = tk.StringVar(value="1")
         cp_spinbox = ttk.Spinbox(control_frame, from_=1, to=10, textvariable=self.add_cp_var, width=5)
         cp_spinbox.pack(side=tk.LEFT, padx=(5, 10))
         
         ttk.Button(control_frame, text="Add to Pool", command=self.add_cp).pack(side=tk.LEFT, padx=(0, 10))
-        ttk.Button(control_frame, text="Bank All CP", command=self.bank_cp).pack(side=tk.LEFT, padx=(0, 10))
+        ttk.Button(control_frame, text="Bank All (SB)", command=self.bank_cp).pack(side=tk.LEFT, padx=(0, 10))
         ttk.Button(control_frame, text="Clear All", command=self.clear_cp).pack(side=tk.LEFT)
         
         # Spend Options by Suit
@@ -55,10 +55,10 @@ class CPSpendMenuTab:
         hearts_frame.pack(fill=tk.X, pady=(0, 10))
         
         self.create_spend_options(hearts_frame, [
-            ("1 CP", "Rumor cost or faux pas (future –1d with this character)"),
-            ("2 CP", "A concession is now required (gift, favor)"),
-            ("3 CP", "Someone interjects with leverage"),
-            ("4 CP", "Patron turns, audience turns, or oath invoked")
+            ("1 (SB)", "Rumor cost or faux pas (future –1d with this character)"),
+            ("2 (SB)", "A concession is now required (gift, favor)"),
+            ("3 (SB)", "Someone interjects with leverage"),
+            ("4 (SB)", "Patron turns, audience turns, or oath invoked")
         ], "hearts")
         
         # Swords - Harm/Danger
@@ -66,10 +66,10 @@ class CPSpendMenuTab:
         swords_frame.pack(fill=tk.X, pady=(0, 10))
         
         self.create_spend_options(swords_frame, [
-            ("1 CP", "Lose footing (next defense –1d)"),
-            ("2 CP", "Weapon or gear becomes Compromised"),
-            ("3 CP", "Pinned, disarmed, or separated"),
-            ("4+ CP", "Battlefield shifts (fireline, cave-in, cavalry arrives)")
+            ("1 (SB)", "Lose footing (next defense –1d)"),
+            ("2 (SB)", "Weapon or gear becomes Compromised"),
+            ("3 (SB)", "Pinned, disarmed, or separated"),
+            ("4+ (SB)", "Battlefield shifts (fireline, cave-in, cavalry arrives)")
         ], "swords")
         
         # Pentacles - Resources/Material
@@ -77,10 +77,10 @@ class CPSpendMenuTab:
         pentacles_frame.pack(fill=tk.X, pady=(0, 10))
         
         self.create_spend_options(pentacles_frame, [
-            ("1 CP", "Noise, tell, or trace left; +1 segment on Supply clock"),
-            ("2 CP", "Alarmed attention (not full alarm); lose position/cover"),
-            ("3 CP", "Reinforcements en route; Out of Supply"),
-            ("4+ CP", "Major turn: trap springs, rival claims prize first")
+            ("1 (SB)", "Noise, tell, or trace left; +1 segment on Supply clock"),
+            ("2 (SB)", "Alarmed attention (not full alarm); lose position/cover"),
+            ("3 (SB)", "Reinforcements en route; Out of Supply"),
+            ("4+ (SB)", "Major turn: trap springs, rival claims prize first")
         ], "pentacles")
         
         # Spades - Position/Surveillance
@@ -88,19 +88,19 @@ class CPSpendMenuTab:
         spades_frame.pack(fill=tk.X, pady=(0, 10))
         
         self.create_spend_options(spades_frame, [
-            ("1 CP", "Footstep/squeak; shadow seen"),
-            ("2 CP", "Patrol path changes; lock resists (extra test)"),
-            ("3 CP", "Partial alarm initiated"),
-            ("4+ CP", "Full alarm and lockdown protocol")
+            ("1 (SB)", "Footstep/squeak; shadow seen"),
+            ("2 (SB)", "Patrol path changes; lock resists (extra test)"),
+            ("3 (SB)", "Partial alarm initiated"),
+            ("4+ (SB)", "Full alarm and lockdown protocol")
         ], "spades")
         
         # Universal Options
-        universal_frame = ttk.LabelFrame(self.frame, text="Universal CP Options", padding="10")
+        universal_frame = ttk.LabelFrame(self.frame, text="Universal (SB) Options", padding="10")
         universal_frame.pack(fill=tk.X, padx=10, pady=5)
         
         self.create_spend_options(universal_frame, [
-            ("3 CP", "Key gear breaks now; split party's options"),
-            ("4+ CP", "Convert saved CP into scene-defining twist")
+            ("3 (SB)", "Key gear breaks now; split party's options"),
+            ("4+ (SB)", "Convert saved (SB) into scene-defining twist")
         ], "universal")
         
         # Spend History
@@ -141,7 +141,7 @@ class CPSpendMenuTab:
             self.cp_pool += amount
             self.update_display()
         except ValueError:
-            messagebox.showerror("Error", "Invalid CP amount")
+            messagebox.showerror("Error", "Invalid (SB) amount")
             
     def bank_cp(self):
         self.banked_cp += self.cp_pool
@@ -159,20 +159,20 @@ class CPSpendMenuTab:
         
         if self.cp_pool >= cost:
             self.cp_pool -= cost
-            self.add_to_history(f"Spent {cost} CP: {description} ({category.title()})")
+            self.add_to_history(f"Spent {cost} (SB): {description} ({category.title()})")
             self.update_display()
         else:
-            # Try to use banked CP
+            # Try to use banked (SB)
             total_available = self.cp_pool + self.banked_cp
             if total_available >= cost:
-                if messagebox.askyesno("Use Banked CP", f"Not enough available CP. Use {cost - self.cp_pool} banked CP?"):
+                if messagebox.askyesno("Use Banked (SB)", f"Not enough available (SB). Use {cost - self.cp_pool} banked (SB)?"):
                     needed_from_bank = cost - self.cp_pool
                     self.cp_pool = 0
                     self.banked_cp -= needed_from_bank
-                    self.add_to_history(f"Spent {cost} CP (including {needed_from_bank} banked): {description} ({category.title()})")
+                    self.add_to_history(f"Spent {cost} (SB) (including {needed_from_bank} banked): {description} ({category.title()})")
                     self.update_display()
             else:
-                messagebox.showwarning("Insufficient CP", f"Need {cost} CP but only have {total_available} available")
+                messagebox.showwarning("Insufficient (SB)", f"Need {cost} (SB) but only have {total_available} available")
                 
     def add_to_history(self, entry):
         import datetime

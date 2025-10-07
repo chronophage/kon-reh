@@ -115,10 +115,10 @@
 - [ ] [Environmental complication deck/index cards]
 
 **Complication Generator:**
-- **Mild (1 CP):** [2-3 examples specific to this adventure]
-- **Moderate (2 CP):** [2-3 examples]
-- **Serious (3 CP):** [2-3 examples]
-- **Major (4+ CP):** [2-3 examples]
+- **Mild (1 (SB)):** [2-3 examples specific to this adventure]
+- **Moderate (2 (SB)):** [2-3 examples]
+- **Serious (3 (SB)):** [2-3 examples]
+- **Major (4+ (SB)):** [2-3 examples]
 
 **Player Agency Reminders:**
 - [How to handle when players choose unexpected approaches]
@@ -166,7 +166,7 @@
 **Respect Modularity:** Ensure all new elements can integrate cleanly with core Fate's Edge and other modules
 
 **Mechanical Consequences Integration:**
-- **Clock-to-CP Conversion:** [How filled clocks generate Complication Points for ongoing campaigns]
+- **Clock-to-(SB) Conversion:** [How filled clocks generate Story Beats for ongoing campaigns]
 - **Backward Compatibility:** [How consequences translate to standard Outcome Matrix effects]
 - **Escalation Carryover:** [How unresolved tensions become future campaign threads]
 

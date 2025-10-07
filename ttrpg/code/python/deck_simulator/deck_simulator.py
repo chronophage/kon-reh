@@ -497,8 +497,8 @@ class DieRoller:
         }
     
     def draw_consequences(self, cp_count: int) -> List[Dict]:
-        """Draw consequences based on CP count"""
-        draw_count = min(cp_count, 3)  # Draw up to min(CP, 3)
+        """Draw consequences based on (SB) count"""
+        draw_count = min(cp_count, 3)  # Draw up to min((SB), 3)
         return self.consequences_deck.draw_cards(draw_count)
 
 class FateDeckGUI:
@@ -1010,11 +1010,11 @@ Based on the Fate's Edge RPG system.
         if result['outcome'] == "Clean Success":
             self.roll_results_text.insert(tk.END, "Intent achieved crisply with no complications.\n")
         elif result['outcome'] == "Success & Cost":
-            self.roll_results_text.insert(tk.END, "Intent achieved, but GM spends CP for consequences.\n")
+            self.roll_results_text.insert(tk.END, "Intent achieved, but GM spends (SB) for consequences.\n")
         elif result['outcome'] == "Partial":
             self.roll_results_text.insert(tk.END, "Progress with tactical fork - accept cost OR concede ground.\n")
         elif result['outcome'] == "Miss":
-            self.roll_results_text.insert(tk.END, "No progress; GM spends CP for consequences OR offers tactical bargain.\n")
+            self.roll_results_text.insert(tk.END, "No progress; GM spends (SB) for consequences OR offers tactical bargain.\n")
         
         self.die_status_var.set(f"Rolled {len(result['rolls'])} dice - {result['outcome']}")
     
@@ -1043,13 +1043,13 @@ Based on the Fate's Edge RPG system.
         self.die_status_var.set(f"Re-rolled {reroll_result['boons_used']} dice - {new_outcome}")
     
     def handle_complications(self, cp_count):
-        self.roll_results_text.insert(tk.END, f"\nCOMPLICATIONS DETECTED: {cp_count} CP\n")
+        self.roll_results_text.insert(tk.END, f"\nCOMPLICATIONS DETECTED: {cp_count} (SB)\n")
         self.roll_results_text.insert(tk.END, "=" * 40 + "\n")
         
         # Option 1: Direct spend
         self.roll_results_text.insert(tk.END, "Option 1: Direct Spend\n")
         self.roll_results_text.insert(tk.END, "-" * 20 + "\n")
-        self.roll_results_text.insert(tk.END, "GM can spend CP immediately for consequences.\n\n")
+        self.roll_results_text.insert(tk.END, "GM can spend (SB) immediately for consequences.\n\n")
         
         # Option 2: Deck draw
         self.roll_results_text.insert(tk.END, "Option 2: Deck Draw\n")

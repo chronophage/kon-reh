@@ -1933,7 +1933,7 @@ Magic in Fate's Edge is not a tool of convenience but a dangerous negotiation wi
 Magic is not fully understood, even by its most adept practitioners. Every working pushes against boundaries that resist being bent. This inherent instability means that magic is always a story moment, even when it succeeds.
 
 ### Risk Embodied
-Each spell generates Complication Points (CP). These points do not vanish; they manifest as Backlash—unpredictable consequences that ripple outward. The caster's burden is not just in channeling power, but in bearing the cost of that power.
+Each spell generates Story Beats ((SB)). These points do not vanish; they manifest as Backlash—unpredictable consequences that ripple outward. The caster's burden is not just in channeling power, but in bearing the cost of that power.
 
 ### Thematic Consequence
 Backlash is not arbitrary; it aligns with the opposing or uncontrolled element of the Art invoked. Flame flares out of control, shadows linger too long, storms roll beyond command. The metaphysical elements have their own will.

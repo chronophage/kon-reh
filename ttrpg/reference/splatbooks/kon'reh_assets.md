@@ -75,7 +75,7 @@ These are concrete resources tied to Kon'reh concepts, providing mechanical or n
 
 **1. Asset (Standard): The Cartwright's Paradox Box**
 *   **Cost:** 8 XP
-*   **Effect:** A small, enigmatic puzzle box or set of rules. Once per session, as an action, you can present a logical paradox, dilemma, or counterintuitive plan related to the current situation. If you can convincingly argue the paradox (Wits + Insight, DV 3), you and your allies gain a +1 die bonus to the next relevant roll or action as the opposition hesitates or is confused. If you fail, you generate 1 CP (representing the confusion causing a misstep).
+*   **Effect:** A small, enigmatic puzzle box or set of rules. Once per session, as an action, you can present a logical paradox, dilemma, or counterintuitive plan related to the current situation. If you can convincingly argue the paradox (Wits + Insight, DV 3), you and your allies gain a +1 die bonus to the next relevant roll or action as the opposition hesitates or is confused. If you fail, you generate 1 (SB) (representing the confusion causing a misstep).
 *   **Narrative Hook:** This Asset embodies the Cartwright's love of turning logic against itself.
 
 **2. Asset (Standard): Dhaharan Tithe Charter**
@@ -90,7 +90,7 @@ These are concrete resources tied to Kon'reh concepts, providing mechanical or n
 
 **4. Asset (Major): The Reforged Blade**
 *   **Cost:** 12 XP
-*   **Effect:** A weapon or tool that has been broken and remade, perhaps through a significant trial. This Asset grants you a specific, powerful capability (e.g., +2 effect on one specific type of action, like melee attacks or crafting). However, it comes with a "Reforged Curse." If you ever fail a roll while using this Asset, you generate 1 additional CP.
+*   **Effect:** A weapon or tool that has been broken and remade, perhaps through a significant trial. This Asset grants you a specific, powerful capability (e.g., +2 effect on one specific type of action, like melee attacks or crafting). However, it comes with a "Reforged Curse." If you ever fail a roll while using this Asset, you generate 1 additional (SB).
 *   **Narrative Hook:** Power gained through suffering, but the trauma of its forging remains.
 
 ---

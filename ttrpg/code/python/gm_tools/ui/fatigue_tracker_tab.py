@@ -42,7 +42,7 @@ Clearing Fatigue:
 • Cannot clear Fatigue if party Supply is Dangerously Low or Empty
 
 Sources of Fatigue:
-• CP spends by GM
+• (SB) spends by GM
 • Exhaustion from travel or exertion
 • Harsh conditions or lack of rest
 • Magical or supernatural effects

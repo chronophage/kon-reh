@@ -76,7 +76,7 @@ class Follower:
             "action": action_type,
             "effect": effects.get(action_type, "Unknown effect"),
             "cost_options": cost_options,
-            "pressure_options": ["GM spends 1 CP to escalate"]
+            "pressure_options": ["GM spends 1 (SB) to escalate"]
         }
     
     def apply_cost(self, cost_type: str):

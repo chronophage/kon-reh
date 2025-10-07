@@ -2,16 +2,16 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
 
 ## List of Tools to Create
 
-### 1. **CP Spend Menu UI/Tab**
+### 1. **(SB) Spend Menu UI/Tab**
 - Already identified - database schema provided
 - Category-based spending options (Universal, Combat, Stealth, etc.)
 
 ### 2. **Dice Roller with Complication Tracking**
 - Roll pools of d10s
 - Auto-count successes (6+)
-- Auto-count 1s as Complication Points
+- Auto-count 1s as Story Beats
 - Apply description ladder bonuses (re-roll 1s)
-- Track banked CP
+- Track banked (SB)
 
 ### 3. **Character Sheet Manager**
 - Track Attributes (Body, Wits, Spirit, Presence)
@@ -79,7 +79,7 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
 ### 13. **Ritual Calculator**
 - Multi-participant spell casting
 - Combined dice pools
-- Shared Complication Points
+- Shared Story Beats
 - Backlash severity scaling
 
 ### 14. **Gear/Kit Manager**
@@ -126,7 +126,7 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
 
 ## Implementation Priority
 
-1. **CP Spend Menu** (done)
+1. **(SB) Spend Menu** (done)
 2. **Dice Roller** (done)
 
 ui/follower_tracker_tab.py

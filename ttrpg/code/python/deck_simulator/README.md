@@ -17,7 +17,7 @@
    - Re-rolls each 1 at the cost of 1 Boon
    - Updates boon count automatically
    - Shows before/after comparison
-2. **Proper CP Handling**: New complications from re-rolled dice are properly tracked and consequences generated
+2. **Proper (SB) Handling**: New complications from re-rolled dice are properly tracked and consequences generated
 3. **Outcome Recalculation**: New outcome is calculated and displayed after re-roll
 
 ### **UI Improvements**:

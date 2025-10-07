@@ -110,7 +110,7 @@ Rail Tracking:
                     "initiative": initiative,
                     "position": self.position_var.get(),
                     "fatigue": 0,
-                    "cp": 0,  # Complication Points
+                    "cp": 0,  # Story Beats
                     "active": True
                 }
                 self.combatants.append(combatant)
@@ -150,12 +150,12 @@ Rail Tracking:
                                      foreground=self.get_position_color(combatant['position']))
             position_label.pack(side="left", padx=10)
             
-            # Fatigue and CP
+            # Fatigue and (SB)
             status_frame = ttk.Frame(combatant_frame)
             status_frame.pack(side="left", padx=10)
             
             ttk.Label(status_frame, text=f"Fatigue: {combatant['fatigue']}").pack(side="left")
-            ttk.Label(status_frame, text=f" | CP: {combatant['cp']}").pack(side="left", padx=(5,0))
+            ttk.Label(status_frame, text=f" | (SB): {combatant['cp']}").pack(side="left", padx=(5,0))
             
             # Controls
             btn_frame = ttk.Frame(combatant_frame)
@@ -173,11 +173,11 @@ Rail Tracking:
             ttk.Button(fatigue_frame, text="F+", width=3, command=lambda idx=i: self.add_fatigue(idx)).pack(side="left")
             ttk.Button(fatigue_frame, text="F-", width=3, command=lambda idx=i: self.reduce_fatigue(idx)).pack(side="left")
             
-            # CP controls
+            # (SB) controls
             cp_frame = ttk.Frame(btn_frame)
             cp_frame.pack(side="left", padx=5)
-            ttk.Button(cp_frame, text="CP+", width=4, command=lambda idx=i: self.add_cp(idx)).pack(side="left")
-            ttk.Button(cp_frame, text="CP-", width=4, command=lambda idx=i: self.reduce_cp(idx)).pack(side="left")
+            ttk.Button(cp_frame, text="(SB)+", width=4, command=lambda idx=i: self.add_cp(idx)).pack(side="left")
+            ttk.Button(cp_frame, text="(SB)-", width=4, command=lambda idx=i: self.reduce_cp(idx)).pack(side="left")
             
             # Remove button
             ttk.Button(btn_frame, text="Remove", command=lambda idx=i: self.remove_combatant(idx)).pack(side="left", padx=5)

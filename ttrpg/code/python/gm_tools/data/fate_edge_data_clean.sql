@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS cp_spend_menu (
     description TEXT NOT NULL
 );
 
--- Insert the CP spend options
+-- Insert the (SB) spend options
 INSERT OR IGNORE INTO cp_spend_menu (cp_cost, category, description) VALUES
 (1, 'Universal', 'Noise, tell, or trace left; +1 segment on the party Supply clock; a tool or item becomes Compromised; +1 round of time passes; a bystander notices something off.'),
 (1, 'Combat', 'Lose footing (next defense -1d).'),
@@ -225,7 +225,7 @@ INSERT OR IGNORE INTO cp_spend_menu (cp_cost, category, description) VALUES
 (3, 'Universal', 'Reinforcements en route; Out of Supply; key gear breaks now; split the party''s options (e.g., fire, flood, collapse); escalate a faction clock by 1.'),
 (3, 'Combat', 'Pinned, disarmed, or separated; battlefield shifts (fireline, cave-in, cavalry arrives).'),
 (3, 'Stealth', 'Partial alarm (search begins).'),
-(4, 'Universal', 'Major turn: trap springs, rival claims the prize first, authority arrives with mandate; convert saved CP into a scene-defining twist (one big thing, not many small).'),
+(4, 'Universal', 'Major turn: trap springs, rival claims the prize first, authority arrives with mandate; convert saved (SB) into a scene-defining twist (one big thing, not many small).'),
 (4, 'Social', 'Patron turns, audience turns; binding oath invoked.'),
 (4, 'Stealth', 'Full alarm and lockdown protocol.');
 

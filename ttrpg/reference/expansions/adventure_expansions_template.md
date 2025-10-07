@@ -98,10 +98,10 @@
 - [ ] [Resource management tracking sheets]
 
 **Complication Generator:**
-- **Mild (1 CP):** [2-3 examples specific to this expansion]
-- **Moderate (2 CP):** [2-3 examples]
-- **Serious (3 CP):** [2-3 examples]
-- **Major (4+ CP):** [2-3 examples]
+- **Mild (1 (SB)):** [2-3 examples specific to this expansion]
+- **Moderate (2 (SB)):** [2-3 examples]
+- **Serious (3 (SB)):** [2-3 examples]
+- **Major (4+ (SB)):** [2-3 examples]
 
 **Player Agency Reminders:**
 - [How to handle when players choose unexpected approaches]
