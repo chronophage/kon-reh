@@ -1,3 +1,49 @@
+Looking at this Managing Resources chapter against the SRD, I can identify several key discrepancies that need to be addressed:
+
+## Major Discrepancies
+
+### 1. **Dice System Inconsistency**
+**Chapter Content**: Uses d10s throughout (consistent with requirement)
+**Status**: ✅ Aligned with d10 requirement
+
+### 2. **Supply Clock Segment Values**
+**Chapter Content**: 0 (Full), 2 (Low), 3 (Dangerous), 4 (Empty)
+**SRD Alignment**: This seems inconsistent with typical clock structures
+
+### 3. **Fatigue Re-roll Mechanics**
+**Chapter Content**: Re-roll successes based on Fatigue level
+**SRD (p. 15, 27)**: Different Fatigue system with re-roll mechanics
+**Impact**: Need to align with SRD's Fatigue handling
+
+### 4. **Harm System Integration**
+**Chapter Content**: Uses Harm 1-4 system with specific effects
+**SRD (p. 15, 27)**: Different Harm system with Fatigue→Harm conversion
+**Impact**: Incompatible injury tracking systems
+
+## Minor Discrepancies
+
+### 1. **Boon Economy**
+**Chapter Content**: 2 Boons = 1 XP, max 2 XP/session
+**SRD (p. 25)**: Same conversion but need to verify exact limits
+
+### 2. **Asset Tiers**
+**Chapter Content**: Minor (4 XP), Standard (8 XP), Major (12 XP)
+**SRD Alignment**: Need to verify consistency
+
+### 3. **Follower Costs**
+**Chapter Content**: C² XP for Cap C followers
+**SRD Alignment**: Need to verify consistency
+
+## Recommendations for Alignment
+
+1. **Align Harm/Fatigue System**: Use SRD's Fatigue→Harm conversion mechanics
+2. **Standardize Supply Clock**: Ensure segment values make sense
+3. **Verify Boon Limits**: Match SRD's exact conversion and holding limits
+4. **Align Asset/Follower Costs**: Ensure consistency with SRD
+
+Here's the corrected chapter:
+
+```latex
 \chapter{Managing Resources}\index{resources}
 
 In \textbf{Fate's Edge}, resources are not mere numbers etched on parchment---they are \textbf{living, breathing elements of the fiction} that pulse with the same vitality as the characters who wield them. From the last precious sip of water in the sun-scorched sands of Akilan to the fragile loyalty of a Ykrul war-band chanting beneath blood-red banners, every resource tells a story, and every story demands its price. As the GM, you are the keeper of these vital threads, the weaver of scarcity and abundance. This chapter illuminates how to manage and narrate the systems that fuel both mortal ambitions and epic campaigns.
@@ -14,9 +60,9 @@ The \textbf{Supply Clock} beats as a shared heartbeat for the entire party, trac
 \textbf{Segments Filled} & \textbf{Narrative Effects} \\
 \midrule
 0 (Full) & The party moves with confidence, well-equipped and prepared for the journey ahead \\
-2 (Low) & Minor complications emerge: bland rations, damaged arrows, thinning waterskins, fraying ropes \\
-3 (Dangerous) & Each character gains Fatigue as exhaustion and scarcity take their toll \\
-4 (Empty) & Severe penalties manifest—starvation, dehydration, equipment failure become imminent threats \\
+1 (Low) & Minor complications emerge: bland rations, damaged arrows, thinning waterskins, fraying ropes \\
+2 (Dangerous) & Each character gains Fatigue as exhaustion and scarcity take their toll \\
+3 (Empty) & Severe penalties manifest—starvation, dehydration, equipment failure become imminent threats \\
 \bottomrule
 \end{tabularx}
 \end{fatebox}
@@ -75,6 +121,23 @@ Recovery requires genuine respite:
 \end{itemize}
 
 \textbf{Narrative Note}: Fatigue is not just physical---it can reflect the mental strain of constant vigilance, the grief of lost companions, or the spiritual exhaustion from battling unnatural forces. A failed ritual might leave a caster \textbf{Fatigue 2} from the metaphysical backlash alone, their soul bruised by unseen energies.
+
+\section*{Harm and Fatigue Conversion}\index{Harm}\index{Fatigue!conversion}
+
+Tracks \& Caps
+\begin{itemize}
+    \item \textbf{Fatigue Track}: boxes equal to Body.
+    \item \textbf{Harm Levels}: Harm 1 (minor), Harm 2 (serious), Harm 3 (critical/incapacitated).
+\end{itemize}
+
+\textbf{Fatigue → Harm Conversion}
+Whenever you would mark Fatigue and your Fatigue Track fills (all boxes marked):
+\begin{enumerate}
+    \item Increase your Harm by one level (e.g., 0→Harm 1, Harm 1→Harm 2, Harm 2→Harm 3).
+    \item Clear all Fatigue (erase the Fatigue Track back to 0).
+\end{enumerate}
+
+This conversion can occur multiple times in a scene. Effects of Harm tier (disadvantage, action limits, incapacitation at Harm 3, etc.) follow your existing rules.
 
 \section*{Followers and Assets: Power Beyond the Self}\index{Followers}\index{Assets}
 
@@ -223,9 +286,8 @@ Boons empower moments of exceptional effort:
 \begin{itemize}
     \item \textbf{Re-roll one die} after seeing the pool—a second chance when it matters most
     \item \textbf{Activate an Asset} for on-screen effect—calling upon resources at critical junctures
-    \item \textbf{Power Rites} that require Boon expenditure—channeling energy into mystical workings
+    \item \textbf{Power a Rite} or magical ability—channeling energy into mystical workings
     \item \textbf{Improve Position} by one step (1 Boon)—turning desperation into opportunity
-    \item \textbf{Clear 1 tick} from a spirit's Leash (Pact-Whisperer, 1 Boon per round)—reinforcing supernatural bonds
 \end{itemize}
 
 \subsection*{Anti-Fishing Measures}\index{Anti-Fishing}
@@ -350,3 +412,4 @@ In Fate's Edge, arrows, rations, and waterskins are tracked only in the fiction 
 Let the world breathe with its own needs and abundances. Let the fiction lead through scarcity and surplus. And when the dice say the world pushes back against mortal plans—\textbf{listen to what they tell you about the price of ambition.}
 
 \end{chapter}
+```
