@@ -11,7 +11,7 @@ All paths share the same dice engine and SB/Obligation economies, but their flav
 \subsection{Three Faces of Magic}
 \begin{description}[leftmargin=1.5em, style=nextline]
   \item[Caster (Freeform):] Requires \textbf{Talent: Caster’s Gift (2 XP)}. Grants access to Weave \& Cast using the Eight Elements. Flexible, creative, and risky (Backlash on 1s). 
-  \item[Rites User (Warlock):] Requires \textbf{Patron + Thiasos (Familiar) + Codex (4 XP)}. Grants access to a Patron’s Rites. Structured, powerful, but debt-driven through \textbf{Obligation}.
+  \item[Rites User (Runekeeper):] Requires \textbf{Patron + Thiasos (Familiar)}. Grants access to a Patron’s Rites. Structured, powerful, but debt-driven through \textbf{Obligation}.
   \item[Invoker (Symbol Path):] Requires one or more \textbf{Patron’s Symbols (4 XP each)}. Grants access to that Patron’s Rites via rituals. Safe but slow; can \emph{Crack the Seal} to cast instantly at steep Obligation cost.
 \end{description}
 
@@ -28,9 +28,9 @@ Casters describe the effect in terms of the Eight Elements (Earth, Fire, Air, Wa
 \paragraph{Limits}
 Casters can attempt any effect that can be described, but the larger the scope, the higher the DV. Improvisation is costly; reliable effects require repeated use and narrative justification.
 
-\subsection{Rites Users (Warlocks)}
+\subsection{Rites Users (Runekeepers)}
 \paragraph{Requirements}
-A Patron bond, a Thiasos (Familiar), and a Codex (4 XP) mark a character as a Warlock. 
+A Patron bond, a Thiasos (Familiar), and a Codex (4 XP) mark a character as a Runekeeper. 
 
 \paragraph{Invocation}
 \begin{itemize}
@@ -42,6 +42,23 @@ A Patron bond, a Thiasos (Familiar), and a Codex (4 XP) mark a character as a Wa
 \paragraph{Obligation Clock}
 Tracks the Patron’s claim. When full, the GM resolves the debt in-fiction. Obligation is reduced through service or downtime actions.
 
+\subsection{Rites Difficulty Value}
+\label{sec:rites-dv-expanded}
+\index{Rites!Difficulty Value}
+\index{DV}
+
+The Difficulty Value (DV) to cast a Rite is:
+
+\[
+\text{DV} = \max\!\big(\text{Obligation Cost} - \text{Spirit}, \, \text{Tier}\big)
+\]
+
+\begin{description}
+  \item[Obligation Cost:] The Rite’s listed cost in Obligation segments. This reflects the Patron’s toll for the magic.
+  \item[Spirit:] The caster’s Spirit attribute. Each point reduces the effective weight of the Obligation, representing inner resilience and willpower.
+  \item[Tier:] The Rite’s intrinsic difficulty based on scope or potency. DV can never fall below this floor.
+\end{description}
+
 \subsection{Invokers (Symbol Path)}
 \paragraph{Patron’s Symbol}
 \begin{itemize}
@@ -50,12 +67,13 @@ Tracks the Patron’s claim. When full, the GM resolves the debt in-fiction. Obl
   \item You may hold multiple Symbols, one per Patron.
 \end{itemize}
 
-\paragraph{Ritual Invocation}
+\paragraph{Rite Invocation via Symbol}
 \begin{itemize}
-  \item \textbf{Time:} Requires Significant Time (typically 10–30 minutes). 
-  \item \textbf{Obligation:} Completing a ritual always marks +1 Obligation. 
-  \item \textbf{No Push:} Invoker Rites cannot use Push It benefits. 
-  \item \textbf{Symbol Display:} The Symbol must be visible throughout the ritual.
+  \item \textbf{Time.} Invoking a Rite via Symbol takes \(\text{DV} + 1\) rounds.
+  \item \textbf{Obligation.} On completion, mark +1 Obligation (in addition to any listed Rite costs, if applicable).
+  \item \textbf{No Push.} Invoker Rites cannot use \emph{Push It} benefits.
+  \item \textbf{Symbol Display.} The Symbol must remain visible throughout the invocation.
+  \item \textbf{Materials.} Symbols replace any Thaisos and Codex requirements.
 \end{itemize}
 
 \paragraph{Crack the Seal (Instant Cast)}
@@ -67,7 +85,6 @@ A Compromised Symbol is inert until repaired. Use a downtime action and test (DV
 \paragraph{Invoker Path Limitations}
 \begin{itemize}
   \item Cannot Push. 
-  \item Environment must be suitable (ritual space, purity, etc.).
   \item Max simultaneous rituals = Spirit. Starting a new ritual ends the oldest or adds +1 Obligation to it. 
   \item Carrying 4+ Symbols causes interference: the first ritual each scene marks +1 extra Obligation.
 \end{itemize}
