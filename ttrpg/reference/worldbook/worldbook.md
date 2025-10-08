@@ -3,16 +3,16 @@
 ## Table of Contents
 
 1. [The Northern Shore of the Amaranthine Sea](#the-northern-shore-of-the-amaranthine-sea)
-   - [Utar (The Utaran Imperium & Successor Northlands)](#utar-the-utaran-imperium--successor-northlands)
-   - [Acasia (The Broken Province)](#acasia-the-broken-province)
-   - [Vhasia (Old Vhasia & The Bloodlands)](#vhasia-old-vhasia--the-bloodlands)
+   - [Utar (The Utaran Imperium & Successor Northlands)](#utar-the-utaran-imperium--successor-northlands) [Roman-esque Empire now in a Byzantine/Rump state]
+   - [Acasia (The Broken Province)](#acasia-the-broken-province) [Cursed land, first province to be conqured, fell 200 years ago (100 years after Utar fell]
+   - [Vhasia (Old Vhasia & The Bloodlands)](#vhasia-old-vhasia--the-bloodlands) [Politically fracture land inspired by Plantagenet era France (politics) and the Sun-King (vibe)]
    - [The Northern & Eastern City-States](#the-northern--eastern-city-states)
-   - [Thepyrgos](#thepyrgos)
-   - [Viterra — "The Last Kingdom"](#viterra--the-last-kingdom)
-   - [Ubral — "The Stone Between Spears"](#ubral--the-stone-between-spears)
-   - [Kahfagia — "The Empire of Wakes and Storm-Flags"](#kahfagia--the-empire-of-wakes-and-storm-flags)
-   - [Theona — "The Marsh Crown"](#theona--the-marsh-crown)
-   - [The Mistlands — "Fields Under a Moving Sky"](#the-mistlands--fields-under-a-moving-sky)
+   - [Thepyrgos](#thepyrgos) [Province and Capital City name; Land of Scholars and Magic school, Geece inspired]
+   - [Viterra — "The Last Kingdom"](#viterra--the-last-kingdom) [Tudor England on the continent, straddles the Dolmis (black sea) and Amaranthine]
+   - [Ubral — "The Stone Between Spears"](#ubral--the-stone-between-spears) [Scottish code, north of Viterra, foothills of the Aelerian mountains, on the Dolmis]
+   - [Kahfagia — "The Empire of Wakes and Storm-Flags"](#kahfagia--the-empire-of-wakes-and-storm-flags) [Western most land, Early age of exploration Spain if Hannibal's Gallic Carthage never fell]
+   - [Theona — "The Marsh Crown"](#theona--the-marsh-crown) [Three isle, Ireland Coded, ]
+   - [The Mistlands — "Fields Under a Moving Sky"](#the-mistlands--fields-under-a-moving-sky) [Aelerian "protectorate" Isolated from other human lands, cursed mist from the Direwood to the west]
 
 2. [The Southern Shore of the Amrathian Sea](#the-southern-shore-of-the-amrathian-sea)
    - [The Crimson Basin (Congo analogue)](#the-crimson-basin--congo-analogue-)
