@@ -1624,3 +1624,415 @@ on('ready', () => {
   }
 
 })();
+
+
+
+/* ============================
+ * Fate's Edge — Hotfix Overlay (2025-10-09)
+ * This section overrides/patches definitions safely.
+ * ============================ */
+(() => {
+  'use strict';
+
+  // Ensure state
+  state.fateEdge = state.fateEdge || {
+    campaignClocks: {},
+    activeTravels: {},
+    prestigeAbilities: {},
+    deckCache: {}
+  };
+
+  // Helper: get character name safely
+  const getCharName = (charId) => {
+    try {
+      const c = getObj && getObj('character', charId);
+      return c ? c.get('name') : `Character ${charId}`;
+    } catch (e) {
+      return `Character ${charId}`;
+    }
+  };
+
+  // Expose helper
+  if (typeof FateEdgeComplete !== 'undefined') {
+    FateEdgeComplete.getCharName = getCharName;
+  } else {
+    this.FateEdgeComplete = { getCharName };
+  }
+
+  // Fix: CoreMechanics.handleDescriptionLadder — 'Detailed' rerolls exactly one 1
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.CoreMechanics) {
+    const CM = FateEdgeComplete.CoreMechanics;
+    CM.handleDescriptionLadder = (descriptionType, baseRoll) => {
+      switch (descriptionType) {
+        case 'Basic':
+          return baseRoll;
+        case 'Detailed': {
+          let used = false;
+          return baseRoll.map(die => {
+            if (!used && die === 1) { used = true; return randomInteger(10); }
+            return die;
+          });
+        }
+        case 'Intricate':
+          return baseRoll.map(die => (die === 1 ? randomInteger(10) : die));
+        default:
+          return baseRoll;
+      }
+    };
+  }
+
+  // Fix: BondSystem.trackBondUsage template string
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.BondSystem) {
+    const BS = FateEdgeComplete.BondSystem;
+    BS.trackBondUsage = (characterId, bondName) => {
+      const bondAttr = `bond_${bondName.replace(/\s+/g, '_')}_used_this_session`;
+      const used = (getAttrByName && getAttrByName(characterId, bondAttr)) || 0;
+      return Number(used) === 0;
+    };
+  }
+
+  // Fix: DeckSystem definition & methods, wiring to TravelRegions
+  const regions = (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.TravelRegions)
+    ? FateEdgeComplete.TravelRegions
+    : (typeof TravelRegions !== 'undefined' ? TravelRegions : {});
+
+  const DeckSystemFixed = {
+    regions,
+    drawCard: (region, suit = null) => {
+      const regionData = DeckSystemFixed.regions[region];
+      if (!regionData) return null;
+
+      const chosenSuit = suit || _.sample(Object.keys(regionData.cards));
+      const cardOptions = regionData.cards[chosenSuit];
+      const cardName = _.sample(cardOptions);
+      const rank = _.sample(['2','3','4','5','6','7','8','9','10','J','Q','K','A']);
+
+      const clockSize = DeckSystemFixed.getClockSize(rank);
+
+      return {
+        region,
+        suit: chosenSuit,
+        rank,
+        cardName,
+        meaning: regionData.suits[chosenSuit],
+        clockSize,
+        isAce: rank === 'A',
+        isFace: ['J','Q','K'].includes(rank)
+      };
+    },
+    getClockSize: (rank) => {
+      const sizes = { '2':4, '3':4, '4':4, '5':4, '6':6, '7':6, '8':6, '9':6, '10':6, 'J':8, 'Q':8, 'K':8, 'A':10 };
+      return sizes[rank] || 6;
+    },
+    handleCombo: (cards) => {
+      const ranks = cards.map(c => c.rank);
+      const suits = cards.map(c => c.suit);
+      const rankCounts = _.countBy(ranks);
+      const hasPair = _.some(rankCounts, c => c >= 2);
+      const suitCounts = _.countBy(suits);
+      const hasFlush = _.some(suitCounts, c => c >= 3);
+      const order = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+      const sortedRanks = ranks.slice().sort((a,b)=> order.indexOf(a) - order.indexOf(b));
+      const hasRun = DeckSystemFixed.isConsecutive(sortedRanks);
+      return { pair: hasPair, flush: hasFlush, run: hasRun, faceAce: cards.some(c => c.isFace) && cards.some(c => c.rank === 'A') };
+    },
+    isConsecutive: (ranks) => {
+      const order = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+      const idx = ranks.map(r => order.indexOf(r)).sort((a,b)=>a-b);
+      for (let i=1;i<idx.length;i++){ if (idx[i]-idx[i-1] !== 1) return false; }
+      return idx.length >= 3;
+    }
+  };
+
+  if (typeof FateEdgeComplete !== 'undefined') {
+    FateEdgeComplete.DeckSystem = DeckSystemFixed;
+  } else {
+    this.FateEdgeComplete = Object.assign(this.FateEdgeComplete || {}, { DeckSystem: DeckSystemFixed });
+  }
+
+  // Fix: TravelSystem.createTravelClock uses DeckSystemFixed
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.TravelSystem) {
+    const TS = FateEdgeComplete.TravelSystem;
+    TS.createTravelClock = (destination, rank, partyId) => {
+      const clockSize = DeckSystemFixed.getClockSize(rank);
+      const travelId = `${partyId}_${destination}_${Date.now()}`;
+      state.fateEdge.activeTravels[travelId] = {
+        id: travelId, destination, size: clockSize, current: 0,
+        partyId, startDate: new Date().toISOString(),
+        complications: [], rewards: []
+      };
+      return state.fateEdge.activeTravels[travelId];
+    };
+  }
+
+  // Fix: Prestige 'campaign' once-per logic
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.PrestigeSystem) {
+    const PS = FateEdgeComplete.PrestigeSystem;
+    PS.checkUsageTiming = (ability, lastUsed) => {
+      const now = new Date();
+      const last = lastUsed ? new Date(lastUsed) : null;
+      if (!last) return true;
+      switch (ability.oncePer) {
+        case 'session': return last.toDateString() !== now.toDateString();
+        case 'arc': return true;
+        case 'campaign': return false;
+        default: return true;
+      }
+    };
+  }
+
+  // Complete RegionalFeatures.Aeler.handleAce if missing
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.RegionalFeatures && FateEdgeComplete.RegionalFeatures.Aeler) {
+    FateEdgeComplete.RegionalFeatures.Aeler.handleAce = (cardDraw) => {
+      if (cardDraw.rank === 'A') {
+        return { type:'route_manipulation', underground:true, special:'Aeler Ace Route Manipulation', effect:'Create/Reveal an underground shortcut; adjust route clocks by -1 (min 1)' };
+      }
+      return null;
+    };
+  }
+
+  // Ensure initialize runs
+  if (typeof on !== 'undefined' && typeof initialize === 'function') {
+    on('ready', initialize);
+  }
+})();
+
+
+
+/* ============================
+ * Fate's Edge — Feature Pack
+ * Commands: !sb, !boon, !obligation, !leash, !travel tick
+ * ============================ */
+(() => {
+  'use strict';
+  const SENDER = 'FateEdge';
+  state.fateEdge = state.fateEdge || {};
+  state.fateEdge.featurePack = state.fateEdge.featurePack || { sb:{}, boons:{}, obligation:{}, leash:{} };
+  const whisperGM = (m) => sendChat(SENDER, `/w gm ${m}`);
+  const nameOf = (id) => { try { const c=getObj('character', id); return c?c.get('name'):`Character ${id}`; } catch(e){ return `Character ${id}`; } };
+  const asNum = (x,d=0)=>{ const n=parseInt(x,10); return Number.isFinite(n)?n:d; };
+  const selChar = (msg, part)=>{
+    const selected = (msg.selected && msg.selected[0] && getObj('graphic', msg.selected[0]._id));
+    return (part && part!=='selected') ? part : (selected ? selected.get('represents') : null);
+  };
+
+  const cmdSB = (msg, parts) => {
+    const charId = selChar(msg, parts[1]);
+    if (!charId) return whisperGM('!sb needs a character id or select a token.');
+    const action=(parts[2]||'show').toLowerCase();
+    const amt=asNum(parts[3],1);
+    const reason = parts.slice(4).join(' ');
+    const b = state.fateEdge.featurePack.sb[charId] = state.fateEdge.featurePack.sb[charId] || { sb:0, log:[] };
+    if (action==='gain'){ b.sb+=amt; b.log.push({t:Date.now(),type:'gain',amt,reason}); }
+    else if (action==='spend'){ b.sb=Math.max(0,b.sb-amt); b.log.push({t:Date.now(),type:'spend',amt,reason}); }
+    else if (action==='set'){ b.sb=Math.max(0,amt); b.log.push({t:Date.now(),type:'set',amt,reason}); }
+    sendChat(SENDER, `/w gm ${nameOf(charId)} SB: ${b.sb}`);
+  };
+
+  const cmdBoon = (msg, parts) => {
+    const charId = selChar(msg, parts[1]);
+    if (!charId) return whisperGM('!boon needs a character id or select a token.');
+    const action=(parts[2]||'show').toLowerCase();
+    const amt=asNum(parts[3],1);
+    const cur = state.fateEdge.featurePack.boons[charId]||0;
+    if (action==='gain') state.fateEdge.featurePack.boons[charId]=cur+amt;
+    else if (action==='spend') state.fateEdge.featurePack.boons[charId]=Math.max(0,cur-amt);
+    else if (action==='set') state.fateEdge.featurePack.boons[charId]=Math.max(0,amt);
+    const total = state.fateEdge.featurePack.boons[charId]||0;
+    sendChat(SENDER, `/w gm ${nameOf(charId)} Boons: ${total}`);
+  };
+
+  const cmdObligation = (msg, parts) => {
+    const charId = selChar(msg, parts[1]);
+    if (!charId) return whisperGM('!obligation needs a character id or select a token.');
+    const element=(parts[2]||'general').toLowerCase();
+    const action=(parts[3]||'show').toLowerCase();
+    const amt=asNum(parts[4],1);
+    const o = state.fateEdge.featurePack.obligation[charId] = state.fateEdge.featurePack.obligation[charId] || { total:0, byElem:{}, log:[] };
+    const cur = o.byElem[element]||0;
+    if (action==='add'){ o.byElem[element]=cur+amt; o.total+=amt; o.log.push({t:Date.now(),type:'add',element,amt}); }
+    else if (action==='clear'){ o.total-=cur; o.byElem[element]=0; o.log.push({t:Date.now(),type:'clear',element}); }
+    else if (action==='set'){ o.total=o.total-cur+Math.max(0,amt); o.byElem[element]=Math.max(0,amt); o.log.push({t:Date.now(),type:'set',element,amt}); }
+    const val=o.byElem[element]||0;
+    sendChat(SENDER, `/w gm ${nameOf(charId)} Obligation[${element}]=${val} (Total ${o.total})`);
+  };
+
+  const cmdLeash = (msg, parts) => {
+    const charId = selChar(msg, parts[1]);
+    if (!charId) return whisperGM('!leash needs a character id or select a token.');
+    const action=(parts[2]||'status').toLowerCase();
+    const n=asNum(parts[3],1);
+    const L = state.fateEdge.featurePack.leash[charId] = state.fateEdge.featurePack.leash[charId] || { active:0, cap:1, exits:0 };
+    if (action==='setcap'){ L.cap=Math.max(0,n); }
+    else if (action==='use'){ L.active=Math.min(L.cap, L.active+Math.max(1,n)); }
+    else if (action==='exit'){ L.active=Math.max(0, L.active-Math.max(1,n)); L.exits+=Math.max(1,n); }
+    sendChat(SENDER, `/w gm ${nameOf(charId)} Summons: ${L.active}/${L.cap} active; exits=${L.exits}`);
+  };
+
+  const cmdTravel = (msg, parts) => {
+    if ((parts[1]||'').toLowerCase()!=='tick') return whisperGM('Usage: !travel tick <travelId> [segments]');
+    const id=parts[2]; const seg=asNum(parts[3],1);
+    const t = state.fateEdge.activeTravels && state.fateEdge.activeTravels[id];
+    if (!t) return whisperGM(`No travel found for id: ${id}`);
+    t.current=Math.min(t.size, (t.current||0)+seg);
+    sendChat(SENDER, `/w gm Travel[${id}] -> ${t.current}/${t.size}`);
+  };
+
+  on('chat:message', (msg) => {
+    if (msg.type!=='api') return;
+    const parts=(msg.content||'').trim().split(/\s+/);
+    const root=(parts[0]||'').toLowerCase();
+    try {
+      if (root==='!sb') return cmdSB(msg, parts);
+      if (root==='!boon') return cmdBoon(msg, parts);
+      if (root==='!obligation') return cmdObligation(msg, parts);
+      if (root==='!leash') return cmdLeash(msg, parts);
+      if (root==='!travel') return cmdTravel(msg, parts);
+    } catch(e){ whisperGM(`Feature Pack error: ${e && e.message ? e.message : e}`); }
+  });
+})();
+
+
+
+/* ============================
+ * Fate's Edge — Help/Config & Advanced Utilities (2025-10-09)
+ * ============================ */
+(() => {
+  'use strict';
+  const SENDER='FateEdge'; const whisperGM = (m)=>sendChat(SENDER, `/w gm ${m}`);
+  state.fateEdge = state.fateEdge || {};
+  const st = state.fateEdge;
+  st.__schema = st.__schema || 0;
+  st.config = Object.assign({ gmWhispers:true, travelTickAnnounce:true, sheetSync:false, sbAttr:'sb_total', boonAttr:'boons_total', cooldownMs:1000 }, st.config||{});
+  st.clocks = st.clocks || {};      // name -> { id,pageid,size,current,travelId? }
+  st._cooldown = st._cooldown || {}; // playerid -> ts
+
+  const migrate = () => {
+    if (st.__schema < 1) st.campaignClocks = st.campaignClocks || {};
+    if (st.__schema < 2) st.activeTravels = st.activeTravels || {};
+    if (st.__schema < 3) st.featurePack = st.featurePack || { sb:{}, boons:{}, obligation:{}, leash:{} };
+    st.__schema = 3;
+  };
+  on('ready', migrate);
+
+  const throttle = (playerid) => {
+    const now=Date.now(); const last=st._cooldown[playerid]||0;
+    if (now-last < st.config.cooldownMs) return false;
+    st._cooldown[playerid]=now; return true;
+  };
+
+  const html = (s)=>s.replace(/[<>&]/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+
+  // Sheet Sync hook
+  on('chat:message', (msg) => {
+    if (msg.type!=='api') return;
+    if (!throttle(msg.playerid)) return;
+    const parts=(msg.content||'').trim().split(/\s+/);
+    const root=(parts[0]||'').toLowerCase();
+    const selected = (msg.selected && msg.selected[0] && getObj('graphic', msg.selected[0]._id));
+    const charId = (parts[1] && parts[1] !== 'selected') ? parts[1] : (selected ? selected.get('represents') : null);
+    if (!st.config.sheetSync || !charId) return;
+    const setAttr = (name,val)=>{
+      try{
+        let a=findObjs({_type:'attribute',_characterid:charId,name})[0];
+        if(!a) a=createObj('attribute',{_characterid:charId,name,current:0});
+        a.set('current', val);
+      }catch(e){}
+    };
+    if (root==='!sb') {
+      const b=(st.featurePack && st.featurePack.sb && st.featurePack.sb[charId]) ? st.featurePack.sb[charId].sb : 0;
+      setAttr(st.config.sbAttr, b);
+    } else if (root==='!boon') {
+      const v=(st.featurePack && st.featurePack.boons) ? (st.featurePack.boons[charId]||0) : 0;
+      setAttr(st.config.boonAttr, v);
+    }
+  });
+
+  // Clock tokens
+  const CLOCK_RADIUS = (size)=> 35 + (size>=10?25:(size>=8?20:10));
+  const createClock = ({name,size=6,pageid=null,x=140,y=140,current=0,linkTravelId=null}) => {
+    const page = pageid || (Campaign() && Campaign().get('playerpageid'));
+    const token = createObj('graphic', {
+      _pageid: page, left:x, top:y, width:CLOCK_RADIUS(size)*2, height:CLOCK_RADIUS(size)*2, layer:'objects', name: `${name} (${current}/${size})`,
+      imgsrc:'https://s3.amazonaws.com/files.d20.io/images/18303508/7w5D8w3vY5z0L5xWzsQGGA/thumb.png?1438573430',
+      bar1_value: current, bar1_max: size, showplayers_bar1:true, showname:true
+    });
+    st.clocks[name]={id:token.id,pageid:page,size,current,travelId:linkTravelId||null}; return st.clocks[name];
+  };
+  const updClock=(name)=>{ const c=st.clocks[name]; if(!c) return false; const g=getObj('graphic',c.id); if(!g) return false; g.set('bar1_value',c.current); g.set('bar1_max',c.size); g.set('name',`${name} (${c.current}/${c.size})`); return true; };
+  const tickClock=(name,n=1)=>{ const c=st.clocks[name]; if(!c) return false; c.current=Math.min(c.size, Math.max(0,(c.current||0)+n)); return updClock(name); };
+  const setClock=(name,cur)=>{ const c=st.clocks[name]; if(!c) return false; c.current=Math.min(c.size, Math.max(0,cur)); return updClock(name); };
+  const linkClock=(name,travelId)=>{ const c=st.clocks[name]; if(!c) return false; c.travelId=travelId; return true; };
+  on('chat:message',(msg)=>{
+    if (msg.type!=='api') return;
+    const p=(msg.content||'').trim().split(/\s+/);
+    if (p[0].toLowerCase()==='!travel' && (p[1]||'').toLowerCase()==='tick'){
+      const id=p[2];
+      Object.keys(st.clocks).forEach(n=>{
+        const c=st.clocks[n];
+        if (c.travelId===id){
+          const t=st.activeTravels && st.activeTravels[id];
+          if (t){ c.size=t.size; c.current=t.current; updClock(n); }
+        }
+      });
+    }
+  });
+
+  // GM Menu
+  const button=(label,cmd)=>`[${label}](${cmd})`;
+  const menu = () => [
+    '<div style="font-family:sans-serif">',
+    '<h2>Fate\\'s Edge — GM Menu</h2>',
+    '<h3>Story Beats</h3>',
+    button('+1 SB (sel)','!sb selected gain 1 Quick'),' ',button('-1 SB (sel)','!sb selected spend 1 Quick'),' | ',button('Show SB','!sb selected show'),
+    '<h3>Boons</h3>',
+    button('+1 Boon','!boon selected gain 1'),' ',button('-1 Boon','!boon selected spend 1'),' | ',button('Show Boons','!boon selected show'),
+    '<h3>Obligation</h3>',
+    button('+1 Fate','!obligation selected fate add 1'),' ',button('Clear Fate','!obligation selected fate clear'),
+    '<h3>Clocks</h3>',
+    button('Create 6-seg','!clock create ?{Name|Clock} 6'),' ',button('Tick +1','!clock tick ?{Name|Clock} 1'),' ',button('Show','!clock show'),
+    '<h3>Travel</h3>',
+    button('Tick Travel','!travel tick ?{Travel Id} 1'),
+    '</div>'
+  ].join(' ');
+
+  const parseXY = (_playerid)=>({x:140,y:140}); // safe default
+
+  on('chat:message', (msg) => {
+    if (msg.type!=='api') return;
+    const p=(msg.content||'').trim().split(/\s+/);
+    const root=(p[0]||'').toLowerCase();
+    if (root==='!fe' && (p[1]||'')==='menu'){ return whisperGM(menu()); }
+    if (root==='!fe' && (p[1]||'')==='config'){
+      const which=(p[2]||'').toLowerCase();
+      if (which==='gm'){ st.config.gmWhispers=!st.config.gmWhispers; return whisperGM(`GM whispers: <b>${st.config.gmWhispers?'on':'off'}</b>`); }
+      if (which==='travel'){ st.config.travelTickAnnounce=!st.config.travelTickAnnounce; return whisperGM(`Travel announce: <b>${st.config.travelTickAnnounce?'on':'off'}</b>`); }
+      if (which==='sheetsync'){ st.config.sheetSync=!st.config.sheetSync; return whisperGM(`Sheet Sync: <b>${st.config.sheetSync?'on':'off'}</b> (sb=${st.config.sbAttr}, boon=${st.config.boonAttr})`); }
+      if (which==='attr'){
+        const target=(p[3]||'').toLowerCase(); const name=p.slice(4).join(' ').trim();
+        if (target==='sb'&&name){ st.config.sbAttr=name; return whisperGM(`SB attr = <code>${html(name)}</code>`); }
+        if (target==='boon'&&name){ st.config.boonAttr=name; return whisperGM(`Boon attr = <code>${html(name)}</code>`); }
+        return whisperGM('Usage: !fe config attr sb <attrName> | boon <attrName>');
+      }
+      if (which==='cooldown'){
+        const ms=parseInt(p[3]||'1000',10); if (Number.isFinite(ms)&&ms>=0){ st.config.cooldownMs=ms; return whisperGM(`Cooldown = ${ms} ms`); }
+        return whisperGM('Usage: !fe config cooldown <ms>');
+      }
+    }
+    if (root==='!clock'){
+      const sub=(p[1]||'').toLowerCase();
+      if (sub==='create'){
+        const name=p[2]||'Clock'; const size=Math.max(2, parseInt(p[3]||'6',10)); const {x,y}=parseXY(msg.playerid);
+        const c=createClock({name,size,x,y,current:0}); return whisperGM(`Created clock ${html(name)} (${c.current}/${c.size}).`);
+      }
+      if (sub==='tick'){ const name=p[2]; const n=parseInt(p[3]||'1',10); return whisperGM(tickClock(name,n)?`Ticked ${html(name)} by ${n}.`:`No clock named ${html(name)}.`); }
+      if (sub==='set'){ const name=p[2]; const cur=parseInt(p[3]||'0',10); return whisperGM(setClock(name,cur)?`Set ${html(name)} to ${cur}.`:`No clock named ${html(name)}.`); }
+      if (sub==='link'){ const name=p[2]; const id=p[3]; return whisperGM(linkClock(name,id)?`Linked ${html(name)} to travel ${html(id)}.`:`No clock named ${html(name)}.`); }
+      if (sub==='show'){
+        const lines=Object.keys(st.clocks).map(n=>{ const c=st.clocks[n]; return `• ${html(n)}: ${c.current}/${c.size}${c.travelId?` (travel ${html(c.travelId)})`:''}`; });
+        return whisperGM(lines.length?lines.join('<br>'):'No clocks yet.');
+      }
+      whisperGM('Usage: !clock create <name> <size> | tick <name> [N] | set <name> <cur> | link <name> <travelId> | show');
+    }
+  });
+})();
