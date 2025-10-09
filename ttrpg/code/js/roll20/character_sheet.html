@@ -1,0 +1,395 @@
+<div class="sheet-wrapper">
+    <div class="sheet-section sheet-header">
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <input type="text" name="attr_character_name" placeholder="Character Name"/>
+            </div>
+            <div class="sheet-col-3">
+                <input type="text" name="attr_archetype" placeholder="Archetype"/>
+            </div>
+            <div class="sheet-col-3">
+                <input type="number" name="attr_xp" value="0"/> XP
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Attributes -->
+    <div class="sheet-section">
+        <h3>Core Attributes</h3>
+        <div class="sheet-row">
+            <div class="sheet-col-3 sheet-attribute">
+                <label>Body</label>
+                <input type="number" name="attr_body" value="1" min="1" max="5"/>
+                <div class="sheet-fatigue-track">
+                    <span>Fatigue:</span>
+                    <fieldset class="repeating_fatigue">
+                        <input type="checkbox" name="attr_fatigue" value="1"/>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="sheet-col-3 sheet-attribute">
+                <label>Wits</label>
+                <input type="number" name="attr_wits" value="1" min="1" max="5"/>
+            </div>
+            <div class="sheet-col-3 sheet-attribute">
+                <label>Spirit</label>
+                <input type="number" name="attr_spirit" value="1" min="1" max="5"/>
+            </div>
+            <div class="sheet-col-3 sheet-attribute">
+                <label>Presence</label>
+                <input type="number" name="attr_presence" value="1" min="1" max="5"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="sheet-section">
+        <h3>Skills <span class="sheet-small">(0-8 practically)</span></h3>
+        <div class="sheet-row">
+            <div class="sheet-col-4">
+                <fieldset class="repeating_skills">
+                    <div class="sheet-skill-row">
+                        <input type="text" name="attr_skill_name" placeholder="Skill Name"/>
+                        <input type="number" name="attr_skill_value" value="0" min="0" max="10"/>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="sheet-col-4">
+                <fieldset class="repeating_skills_2">
+                    <div class="sheet-skill-row">
+                        <input type="text" name="attr_skill_name_2" placeholder="Skill Name"/>
+                        <input type="number" name="attr_skill_value_2" value="0" min="0" max="10"/>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="sheet-col-4">
+                <fieldset class="repeating_skills_3">
+                    <div class="sheet-skill-row">
+                        <input type="text" name="attr_skill_name_3" placeholder="Skill Name"/>
+                        <input type="number" name="attr_skill_value_3" value="0" min="0" max="10"/>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Resources -->
+    <div class="sheet-section sheet-resources">
+        <div class="sheet-row">
+            <!-- Boons -->
+            <div class="sheet-col-4">
+                <h4>Boons <span class="sheet-small">(Max 5)</span></h4>
+                <div class="sheet-boon-track">
+                    <fieldset class="repeating_boons">
+                        <input type="checkbox" name="attr_boon" value="1"/>
+                    </fieldset>
+                </div>
+                <div>
+                    <button type="action" name="act_convert_boons">Convert 2 Boons → 1 XP</button>
+                </div>
+            </div>
+
+            <!-- Story Beats -->
+            <div class="sheet-col-4">
+                <h4>Story Beats</h4>
+                <div class="sheet-sb-track">
+                    <fieldset class="repeating_storybeats">
+                        <input type="checkbox" name="attr_storybeat" value="1"/>
+                    </fieldset>
+                </div>
+                <div>
+                    Banked SB: <input type="number" name="attr_banked_sb" value="0"/>
+                </div>
+            </div>
+
+            <!-- Harm -->
+            <div class="sheet-col-4">
+                <h4>Harm</h4>
+                <div class="sheet-harm-levels">
+                    <label>Harm 1 (-1 die related)</label>
+                    <input type="checkbox" name="attr_harm_1" value="1"/>
+                    <label>Harm 2 (-1 die most)</label>
+                    <input type="checkbox" name="attr_harm_2" value="1"/>
+                    <label>Harm 3 (Incapacitated)</label>
+                    <input type="checkbox" name="attr_harm_3" value="1"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Magic System -->
+    <div class="sheet-section">
+        <h3>Magic System</h3>
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <label>Magic Path</label>
+                <select name="attr_magic_path">
+                    <option value="caster">Caster (Freeform)</option>
+                    <option value="runekeeper">Runekeeper (Rites)</option>
+                    <option value="invoker">Invoker (Symbols)</option>
+                    <option value="summoner">Summoner (Pacts)</option>
+                </select>
+                
+                <div class="sheet-patron-tracker" data-group="repeating_patrons">
+                    <h4>Patrons/Obligation</h4>
+                    <fieldset class="repeating_patrons">
+                        <input type="text" name="attr_patron_name" placeholder="Patron Name"/>
+                        <div>
+                            Obligation: <input type="number" name="attr_obligation_current" value="0"/> / 
+                            <input type="number" name="attr_obligation_capacity" value="@{spirit|max} + @{presence|max}"/>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="sheet-col-6">
+                <label>Arcana Skill</label>
+                <input type="number" name="attr_arcana" value="0" min="0" max="10"/>
+                
+                <div>
+                    <label>Backlash SB</label>
+                    <input type="number" name="attr_backlash_sb" value="0"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assets & Followers -->
+    <div class="sheet-section">
+        <h3>Assets & Followers</h3>
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <h4>Followers</h4>
+                <fieldset class="repeating_followers">
+                    <div class="sheet-asset-row">
+                        <input type="text" name="attr_follower_name" placeholder="Name"/>
+                        <label>Cap:</label>
+                        <input type="number" name="attr_follower_cap" value="1" min="1" max="5"/>
+                        <label>Upkeep:</label>
+                        <select name="attr_follower_upkeep">
+                            <option value="maintained">Maintained</option>
+                            <option value="wary">Wary</option>
+                            <option value="seized">Seized</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
+            
+            <div class="sheet-col-6">
+                <h4>Assets</h4>
+                <fieldset class="repeating_assets">
+                    <div class="sheet-asset-row">
+                        <input type="text" name="attr_asset_name" placeholder="Name"/>
+                        <label>Type:</label>
+                        <select name="attr_asset_type">
+                            <option value="minor">Minor</option>
+                            <option value="standard">Standard</option>
+                            <option value="major">Major</option>
+                        </select>
+                        <label>Status:</label>
+                        <select name="attr_asset_status">
+                            <option value="maintained">Maintained</option>
+                            <option value="neglected">Neglected</option>
+                            <option value="compromised">Compromised</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <!-- Travel & Supply -->
+    <div class="sheet-section">
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <h3>Supply Clock</h3>
+                <div class="sheet-supply-track">
+                    <fieldset class="repeating_supply">
+                        <input type="checkbox" name="attr_supply_segment" value="1"/>
+                    </fieldset>
+                </div>
+                <div>
+                    Status: 
+                    <select name="attr_supply_status">
+                        <option value="full">Full Supply</option>
+                        <option value="low">Low Supply</option>
+                        <option value="dangerous">Dangerously Low</option>
+                        <option value="empty">Out of Supply</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="sheet-col-6">
+                <h3>Bonds</h3>
+                <fieldset class="repeating_bonds">
+                    <div class="sheet-bond-row">
+                        <input type="text" name="attr_bond_name" placeholder="Character/Concept"/>
+                        <button type="action" name="act_bond_boon">Generate Boon</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="sheet-section sheet-actions">
+        <h3>Quick Actions</h3>
+        <div class="sheet-row">
+            <div class="sheet-col-3">
+                <button type="roll" name="roll_challenge" value="/me makes a challenge roll:
+                [[@{challenge_pool}d10]] successes
+                [[@{challenge_ones}]] Story Beats generated">
+                    Challenge Roll
+                </button>
+            </div>
+            <div class="sheet-col-3">
+                <button type="roll" name="roll_resist" value="/me resists with [[@{resist_attr}]]: 
+                [[@{resist_attr|max}d10]] successes">
+                    Resist
+                </button>
+            </div>
+            <div class="sheet-col-3">
+                <button type="action" name="act_clear_fatigue">Clear 2 Fatigue</button>
+            </div>
+            <div class="sheet-col-3">
+                <button type="action" name="act_spend_boon">Spend Boon (+1 Position)</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+And here's the accompanying CSS for styling:
+
+```css
+.sheet-wrapper {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f5f0;
+    color: #333;
+    padding: 10px;
+}
+
+.sheet-section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.sheet-section h3 {
+    margin-top: 0;
+    color: #5d4037;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.sheet-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+}
+
+.sheet-col-3, .sheet-col-4, .sheet-col-6, .sheet-col-12 {
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.sheet-col-3 { flex: 0 0 25%; }
+.sheet-col-4 { flex: 0 0 33.3333%; }
+.sheet-col-6 { flex: 0 0 50%; }
+.sheet-col-12 { flex: 0 0 100%; }
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 5px;
+    margin: 2px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    margin: 5px;
+    transform: scale(1.2);
+}
+
+.sheet-attribute {
+    text-align: center;
+}
+
+.sheet-attribute label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sheet-skill-row, .sheet-asset-row, .sheet-bond-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.sheet-skill-row input[type="text"], 
+.sheet-asset-row input[type="text"],
+.sheet-bond-row input[type="text"] {
+    flex: 1;
+}
+
+.sheet-skill-row input[type="number"],
+.sheet-asset-row input[type="number"] {
+    width: 60px;
+}
+
+.sheet-resources h4 {
+    margin: 0 0 10px 0;
+    color: #5d4037;
+}
+
+.sheet-boon-track, .sheet-sb-track, .sheet-supply-track {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.sheet-harm-levels {
+    display: flex;
+    flex-direction: column;
+}
+
+.sheet-harm-levels label {
+    margin: 5px 0;
+}
+
+.sheet-small {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.sheet-actions button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    background: #5d4037;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.sheet-actions button:hover {
+    background: #4e342e;
+}
+
+.sheet-patron-tracker {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+}
+
+@media (max-width: 768px) {
+    .sheet-col-3, .sheet-col-4, .sheet-col-6 {
+        flex: 0 0 100%;
+    }
+}
