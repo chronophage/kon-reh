@@ -1,6 +1,3 @@
-Here's the complete implementation for all Fate's Edge features. This is a comprehensive Roll20 API script:
-
-```javascript
 // Fate's Edge - Complete Implementation
 // Version 1.0 - All Features Integrated
 
@@ -1404,3 +1401,226 @@ const FateEdgeComplete = (() => {
 on('ready', () => {
     FateEdgeComplete.initialize();
 });
+
+
+
+/* ============================
+ * Fate's Edge — Hotfix Overlay
+ * Date: 2025-10-09
+ * Notes:
+ * - Repairs DeckSystem definition and region binding
+ * - Fixes BondSystem.trackBondUsage template string
+ * - Adjusts Detailed description reroll behavior
+ * - Adds getCharName helper used in sendChat messages
+ * - Corrects PrestigeSystem 'campaign' once-per logic
+ * - Completes RegionalFeatures.Aeler.handleAce
+ * These definitions override earlier ones where applicable.
+ * ============================ */
+
+(() => {
+  'use strict';
+
+  // Ensure state namespace exists
+  state.fateEdge = state.fateEdge || {
+    campaignClocks: {},
+    activeTravels: {},
+    prestigeAbilities: {},
+    deckCache: {}
+  };
+
+  // ---------- Helper: get character name safely ----------
+  const getCharName = (charId) => {
+    try {
+      const c = getObj && getObj('character', charId);
+      return c ? c.get('name') : `Character ${charId}`;
+    } catch (e) {
+      return `Character ${charId}`;
+    }
+  };
+
+  // ---------- Fix: CoreMechanics.handleDescriptionLadder (Detailed = reroll only one 1) ----------
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.CoreMechanics) {
+    const CM = FateEdgeComplete.CoreMechanics;
+    CM.handleDescriptionLadder = (descriptionType, baseRoll) => {
+      switch (descriptionType) {
+        case 'Basic':
+          return baseRoll;
+        case 'Detailed': {
+          // Re-roll exactly one die showing 1 (if any)
+          let used = false;
+          return baseRoll.map(die => {
+            if (!used && die === 1) {
+              used = true;
+              return randomInteger(10);
+            }
+            return die;
+          });
+        }
+        case 'Intricate':
+          // Re-roll all 1s
+          return baseRoll.map(die => (die === 1 ? randomInteger(10) : die));
+        default:
+          return baseRoll;
+      }
+    };
+  }
+
+  // ---------- Fix: BondSystem.trackBondUsage template string bug ----------
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.BondSystem) {
+    const BS = FateEdgeComplete.BondSystem;
+    BS.trackBondUsage = (characterId, bondName) => {
+      const bondAttr = `bond_${bondName.replace(/\\s+/g, '_')}_used_this_session`;
+      const used = (getAttrByName && getAttrByName(characterId, bondAttr)) || 0;
+      return Number(used) === 0;
+    };
+  }
+
+  // ---------- Complete / Define DeckSystem with regions ----------
+  // Use existing TravelRegions if present
+  const regions = (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.TravelRegions)
+    ? FateEdgeComplete.TravelRegions
+    : (typeof TravelRegions !== 'undefined' ? TravelRegions : {});
+
+  const DeckSystemFixed = {
+    regions,
+    drawCard: (region, suit = null) => {
+      const regionData = DeckSystemFixed.regions[region];
+      if (!regionData) return null;
+
+      const chosenSuit = suit || _.sample(Object.keys(regionData.cards));
+      const cardOptions = regionData.cards[chosenSuit];
+      const cardName = _.sample(cardOptions);
+      const rank = _.sample(['2','3','4','5','6','7','8','9','10','J','Q','K','A']);
+
+      const clockSize = DeckSystemFixed.getClockSize(rank);
+
+      return {
+        region,
+        suit: chosenSuit,
+        rank,
+        cardName,
+        meaning: regionData.suits[chosenSuit],
+        clockSize,
+        isAce: rank === 'A',
+        isFace: ['J','Q','K'].includes(rank)
+      };
+    },
+    getClockSize: (rank) => {
+      const sizes = {
+        '2':4, '3':4, '4':4, '5':4,
+        '6':6, '7':6, '8':6, '9':6, '10':6,
+        'J':8, 'Q':8, 'K':8,
+        'A':10
+      };
+      return sizes[rank] || 6;
+    },
+    handleCombo: (cards) => {
+      const ranks = cards.map(c => c.rank);
+      const suits = cards.map(c => c.suit);
+
+      const rankCounts = _.countBy(ranks);
+      const hasPair = _.some(rankCounts, count => count >= 2);
+
+      const suitCounts = _.countBy(suits);
+      const hasFlush = _.some(suitCounts, count => count >= 3);
+
+      const sortedRanks = ranks.slice().sort((a,b)=>{
+        const order = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+        return order.indexOf(a) - order.indexOf(b);
+      });
+      const hasRun = DeckSystemFixed.isConsecutive(sortedRanks);
+
+      return {
+        pair: hasPair,
+        flush: hasFlush,
+        run: hasRun,
+        faceAce: cards.some(c => c.isFace) && cards.some(c => c.rank === 'A')
+      };
+    },
+    isConsecutive: (ranks) => {
+      const rankOrder = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+      const indices = ranks.map(r => rankOrder.indexOf(r)).sort((a,b) => a-b);
+      for (let i = 1; i < indices.length; i++) {
+        if (indices[i] - indices[i-1] !== 1) return false;
+      }
+      return indices.length >= 3;
+    }
+  };
+
+  // Expose/attach
+  if (typeof FateEdgeComplete !== 'undefined') {
+    FateEdgeComplete.DeckSystem = DeckSystemFixed;
+    FateEdgeComplete.getCharName = getCharName;
+  } else {
+    // create minimal export if base module wasn't defined
+    this.FateEdgeComplete = { DeckSystem: DeckSystemFixed, getCharName };
+  }
+
+  // ---------- Fix: TravelSystem reference to DeckSystem ----------
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.TravelSystem) {
+    const TS = FateEdgeComplete.TravelSystem;
+    TS.createTravelClock = (destination, rank, partyId) => {
+      const clockSize = DeckSystemFixed.getClockSize(rank);
+      const travelId = `${partyId}_${destination}_${Date.now()}`;
+
+      state.fateEdge.activeTravels[travelId] = {
+        id: travelId,
+        destination,
+        size: clockSize,
+        current: 0,
+        partyId,
+        startDate: new Date().toISOString(),
+        complications: [],
+        rewards: []
+      };
+      return state.fateEdge.activeTravels[travelId];
+    };
+  }
+
+  // ---------- Fix: PrestigeSystem once-per 'campaign' ----------
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.PrestigeSystem) {
+    const PS = FateEdgeComplete.PrestigeSystem;
+    PS.checkUsageTiming = (ability, lastUsed) => {
+      const now = new Date();
+      const lastUsedDate = lastUsed ? new Date(lastUsed) : null;
+      if (!lastUsedDate) return true;
+
+      switch (ability.oncePer) {
+        case 'session':
+          return lastUsedDate.toDateString() !== now.toDateString();
+        case 'arc':
+          // TODO: refine when campaign arc tracking is implemented
+          return true;
+        case 'campaign':
+          // If it's ever been used, it's not usable again this campaign
+          return false;
+        default:
+          return true;
+      }
+    };
+  }
+
+  // ---------- Complete RegionalFeatures.Aeler.handleAce ----------
+  if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.RegionalFeatures) {
+    const RF = FateEdgeComplete.RegionalFeatures;
+    if (RF.Aeler) {
+      RF.Aeler.handleAce = (cardDraw) => {
+        if (cardDraw.rank === 'A') {
+          return {
+            type: 'routeManipulation',
+            underground: true,
+            specialAccess: 'Aeler Ace Route Manipulation',
+            effect: 'Create/Reveal an underground shortcut; adjust route clocks by -1 (min 1)'
+          };
+        }
+        return null;
+      };
+    }
+  }
+
+  // ---------- Ensure on('ready') boots system ----------
+  if (typeof on !== 'undefined' && typeof initialize === 'function') {
+    on('ready', initialize);
+  }
+
+})();
