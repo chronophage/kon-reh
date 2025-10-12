@@ -28,6 +28,9 @@ echo "Building Comprehensive Resource Guide"
 cd $git_root/ttrpg/reference
 ../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" > /dev/null 2>&1|| echo "Resource Guide did not build"
 
-echo "done"
+echo "Committing and pushing to git"
+git add --all
+git commit -a -m "PDF Build $(date)"
+git push
 cd $original_path
 exit
