@@ -1,3 +1,143 @@
+% ============================================================
+% Fate's Edge — Clean Preamble (pdflatex safe)
+% ============================================================
+
+\documentclass[11pt,letterpaper,twoside]{book}
+% ---------- Encoding, fonts, micro-typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[final]{microtype}
+
+% ---------- Page geometry ----------
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% ---------- Math & symbols ----------
+\usepackage{amsmath,amssymb,mathtools}
+
+% ---------- Colors, graphics, layout ----------
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
+
+% ---------- Tables ----------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{longtable}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
+
+% ---------- Hyperlinks & references ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[rgb]{0.10,0.25,0.55},
+  citecolor=[rgb]{0.10,0.45,0.25},
+  urlcolor=[rgb]{0.55,0.10,0.10},
+  pdfauthor={Fate's Edge},
+  pdftitle={Fate's Edge — Travel Guide and World Book},
+  pdfcreator={LaTeX}
+}
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+% ---------- Indexing ----------
+\usepackage{imakeidx}
+\makeindex
+
+% Inline “print + index” helper
+\newcommand{\indexterm}[2][]{%
+  \textit{#2}%
+  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi
+}
+
+% ---------- Table helpers & house style ----------
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\definecolor{FeRow}{HTML}{F5F7FA}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+
+% ---------- Small conveniences ----------
+\newcommand{\textrarr}{\ensuremath{\rightarrow}}
+\newcommand{\textlarr}{\ensuremath{\leftarrow}}
+\newcommand{\textdarr}{\ensuremath{\downarrow}}
+\newcommand{\beat}{\ensuremath{\triangleright}\,}
+\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
+\newcommand{\Tag}[1]{\texttt{[#1]}}
+
+% ============================================================
+% Branding & Metadata (single source of truth)
+% ============================================================
+\usepackage{etoolbox} % for \ifdefempty, \ifdefstring
+
+% Brand palette (define once)
+\definecolor{fePrimary}{HTML}{0D1B2A}   % deep blue-black
+\definecolor{feAccent}{HTML}{6FFFE9}    % teal accent
+\definecolor{feInk}{HTML}{101418}       % near-black
+\definecolor{fePaper}{HTML}{F7F7F7}     % light paper
+
+% Metadata variables + setters
+\newcommand\feTitle{Fate's Edge}
+\newcommand\feSubtitle{Comprehensive Resource Guide}
+\newcommand\feTagline{}
+\newcommand\feVersion{}
+\newcommand\fePublisher{}
+\newcommand\feCoverArt{} % optional path
+
+\newcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
+\newcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
+\newcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
+\newcommand{\feSetVersion}[1]{\renewcommand\feVersion and World Book{#1}}
+\newcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
+\newcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
+
+% Text shadow helper (4 args: dx, dy, color, text)
+\newcommand{\textshadow}[4]{%
+  \begingroup
+    \rlap{\raisebox{#2}{\hspace*{#1}\textcolor{#3}{#4}}}#4%
+  \endgroup
+}
+% Light small-caps tracking
+\newcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
+
+% =========================
+% Basic Title Page
+% =========================
+\newcommand{\feTitlePage}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    
+    {\Huge\bfseries Fate's Edge \par}
+    \vspace{1cm}
+    {\LARGE Comprehensive Resource Guide \par}
+    \vspace{0.5cm}
+    {\large \itshape Narrative-First Roleplaying System \par}
+    
+    \vfill
+    
+    {\large Version 1.0 \par}
+    \vspace{0.2cm}
+    {\large \today \par}
+    \vspace{1cm}
+    {\large \textsc{Nicholas A. Gasper}\par}
+    
+  \end{titlepage}
+}
+
+\begin{document}
+% booktabs, tabularx, xcolor, tcolorbox, enumitem, hyperref, amsmath
 \chapter{Travel Reference}
 
 \section{Core Travel Procedure}
@@ -401,26 +541,28 @@ Ykrul \SuitDiamond{} (Paiza tablet or Foedus seal).
 
 \section{Location Decks for Navigation}
 
-\input{generators/acasia.tex}
-\input{generators/aelaerem.tex}
-\input{generators/aeler.tex}
-\input{generators/aelinnel.tex}
-\input{generators/black_banner.tex}
-\input{generators/dungeons.tex}
-\input{generators/ecktoria.tex}
-\input{generators/kahfagia.tex}
-\input{generators/linns.tex}
-\input{generators/mistlands.tex}
-\input{generators/silkstrand.tex}
-\input{generators/theona.tex}
-\input{generators/thepyrgos.tex}
-\input{generators/ubral.tex}
-\input{generators/valewood.tex}
-\input{generators/vhasia.tex}
-\input{generators/vilikari.tex}
-\input{generators/visual_language.tex}
-\input{generators/viterra.tex}
-\input{generators/ways_between.tex}
-\input{generators/wilderness.tex}
-\input{generators/ykrul.tex}
-\input{generators/zakov.tex}
+\input{../generators/acasia.tex}
+\input{../generators/aelaerem.tex}
+\input{../generators/aeler.tex}
+\input{../generators/aelinnel.tex}
+\input{../generators/black_banner.tex}
+\input{../generators/dungeons.tex}
+\input{../generators/ecktoria.tex}
+\input{../generators/kahfagia.tex}
+\input{../generators/linns.tex}
+\input{../generators/mistlands.tex}
+\input{../generators/silkstrand.tex}
+\input{../generators/theona.tex}
+\input{../generators/thepyrgos.tex}
+\input{../generators/ubral.tex}
+\input{../generators/valewood.tex}
+\input{../generators/vhasia.tex}
+\input{../generators/vilikari.tex}
+\input{../generators/visual_language.tex}
+\input{../generators/viterra.tex}
+\input{../generators/ways_between.tex}
+\input{../generators/wilderness.tex}
+\input{../generators/ykrul.tex}
+\input{../generators/zakov.tex}
+
+\end{document}
