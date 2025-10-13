@@ -1,0 +1,179 @@
+% !TEX program = pdflatex
+% Fate’s Edge — Miniatures Guide (Kon'reh‑style Zone of Control)
+% No tables; square + hex compatible; SRD‑aligned hooks
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black}
+
+% Macros
+\newcommand{\Boon}{\textsc{Boon}}
+\newcommand{\Boons}{\textsc{Boons}}
+\newcommand{\DV}{\textsc{DV}}
+
+\setlist{noitemsep,topsep=3pt,itemsep=2pt,parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Fate’s Edge — Miniatures Guide}}\\[4pt]
+{\large Kon’reh‑inspired Zones of Control for Square and Hex Grids}
+\end{center}
+
+\section{Scope}
+This guide bolts a fast, positioning‑forward miniatures layer onto Fate’s Edge. It keeps SRD cadence (actions, \Boons{}, \DV{} tests) and works on both \textbf{square} and \textbf{hex} maps without tables.
+
+\section{Core Concepts}
+\begin{itemize}
+  \item \textbf{Square or Hex:} Declare the grid type at setup. Distances and arcs adapt automatically (see \S\ref{sec:adapters}).
+  \item \textbf{Base Sizes:} Small (1 cell), Medium (2×1 or 2 hexes long), Large (2×2 or 3‑hex footprint), Huge (custom). Large+ project wider control; see Reach below.
+  \item \textbf{Facing:} Miniatures have a facing. Rear and side arcs matter for flanking.
+  \item \textbf{Actions:} On your turn you may \textbf{Move} and \textbf{Act} (attack, test, assist, etc.). You may swap order.
+  \item \textbf{Checks:} When a rule calls for a test, roll per SRD using the most fitting approach/skill vs a listed \DV{}.
+\end{itemize}
+
+\section{Turn Structure}
+\begin{enumerate}
+  \item \textbf{Start:} Resolve start‑of‑turn effects.
+  \item \textbf{Move:} Up to your Speed; you must obey Zones of Control (\S\ref{sec:zoc}).
+  \item \textbf{Act:} Attack, interact, cast, rally, shove, guard, etc.
+  \item \textbf{End:} End effects; optional \Boon{} spends; reactions from enemies you engaged this turn.
+\end{enumerate}
+
+\section{Movement}
+\paragraph{Squares} Orthogonal steps cost 1. Use either \emph{Alternating Diagonals} (1,2,1,2,…) or \emph{Manhattan Only}. Default: \textbf{Alternating}. Diagonals cannot pass between two blocking corners.
+
+\paragraph{Hexes} Every adjacent hex costs 1. No diagonals exist.
+
+\paragraph{Difficult Terrain} Costs +1 per cell (stacks once). Impassable cannot be entered.
+
+\paragraph{Elevation} Moving up costs +1 per level; down is free but may cause tests if steep (\DV{} 3–5).
+
+\section{Zone of Control (ZOC)}\label{sec:zoc}
+Kon’reh principle: \textbf{you cannot move through another piece’s Zone of Control}. You may enter it but must \textbf{stop}.
+
+\subsection{What is ZOC?}
+\begin{itemize}
+  \item \textbf{Squares:} By default, a unit’s ZOC is the 4 orthogonally adjacent squares. Optional: Full ZOC includes diagonals (8). Choose at setup.
+  \item \textbf{Hexes:} A unit’s ZOC is \textbf{all 6 adjacent hexes}.
+  \item \textbf{Reach:} Weapons or traits may extend ZOC by +1 ring (Reach 2). Large/Huge creatures project ZOC from each edge cell of their footprint.
+  \item \textbf{Friendly Units:} Ignore friendly ZOC for movement; they still occupy space.
+\end{itemize}
+
+\subsection{ZOC Rules}
+\begin{itemize}
+  \item \textbf{Entering:} You may enter enemy ZOC, but \textbf{your movement immediately ends}. You are now \emph{engaged}.
+  \item \textbf{Passing Through:} \textbf{Prohibited.} You cannot move \emph{through} any enemy ZOC, even if you have movement remaining.
+  \item \textbf{Shifting Inside:} While engaged, you may shift to another cell still inside the \emph{same enemy’s} ZOC (to change facing/position) by spending your Action or passing a \DV{} 4 test.
+  \item \textbf{Leaving:} To leave enemy ZOC, take the \textbf{Disengage} action (\DV{} 4–6) or spend \textbf{1 \Boon} to \emph{Disengage automatically}. On a failed test you remain and end your movement.
+  \item \textbf{Multiple ZOCs:} If you are in more than one enemy ZOC, increase Disengage \DV{} by +1 per additional controller.
+\end{itemize}
+
+\subsection{ZOC Reactions}
+Enemies you leave may take a \textbf{Guarded Strike} if they have a ready melee option: make an immediate attack at \textbf{–1 die} (or apply SRD “worse position”). This does not trigger on Shifts that remain inside their ZOC.
+
+\section{Facing, Flanking, and Rear Arcs}
+\paragraph{Facing}
+Choose a primary facing when you finish moving.
+\begin{itemize}
+  \item \textbf{Squares (default 4‑facing):} Front arc = the 3 cells directly ahead (center + two forward diagonals if using Full ZOC); Sides = adjacent flanks; Rear = the opposite 3.
+  \item \textbf{Hexes (6‑facing):} Front arc = the 3 hexes in front (center line and two front‑adjacent); Sides = the two lateral hexes; Rear = the single back hex.
+\end{itemize}
+
+\paragraph{Flanking Bonuses}
+\begin{itemize}
+  \item If two allies threaten a target from opposite arcs (any combination that includes a Rear or two different Sides), attackers gain \textbf{+1 die}.
+  \item If you attack solely from the Rear arc, gain \textbf{+1 die and +1 effect}.
+  \item Creatures with \emph{All‑Around Sense} ignore rear penalties and deny flanking.
+\end{itemize}
+
+\section{Shoves, Pulls, and Placement}
+\begin{itemize}
+  \item \textbf{Shove/Pull 1:} On a hit with sufficient effect, move the target 1 cell. Cannot push through impassable or off the map. Shoving out of ZOC provokes \emph{from the destination controllers}, not the origin.
+  \item \textbf{Swap:} Spend your Action to trade places with a willing ally; both must pass simple \DV{} 3 coordination.
+  \item \textbf{Pin:} If you and an ally each project ZOC into the target’s cell from different arcs, target’s Disengage \DV{} +2.
+\end{itemize}
+
+\section{Ranged, Line of Sight, and Cover}
+\paragraph{Line of Sight (LoS)} Draw a straight line center‑to‑center. Corners/walls block. For hexes, corners are the hex edges.
+
+\paragraph{Cover}
+\begin{itemize}
+  \item \textbf{Light Cover:} –1 die to attackers or +1 \DV{} to defend.
+  \item \textbf{Heavy Cover:} –2 dice or +2 \DV{}; no Rear‑arc bonuses through heavy cover.
+  \item \textbf{Body Cover:} A Large ally grants Light Cover to you against ranged.
+\end{itemize}
+
+\section{Terrain and Elevation Examples}
+\begin{itemize}
+  \item Rubble: difficult; blocks Shove.
+  \item Foliage: light cover; difficult only when running.
+  \item Ledges: entering down‑slope requires a \DV{} 4 balance or fall prone.
+  \item Water: shallow = difficult; deep = impassable unless amphibious.
+\end{itemize}
+
+\section{Special Actions}
+\begin{itemize}
+  \item \textbf{Guard:} Ready to strike the first enemy that leaves your ZOC; your reaction is at normal dice.
+  \item \textbf{Dash:} Gain +2 movement this turn; you still cannot pass through enemy ZOC.
+  \item \textbf{Brace:} Until your next turn, Shoves/Pulls against you are at –1 die; your ZOC counts as Reach +1 for opportunity only.
+  \item \textbf{Tackle:} Attempt to knock down a target in your ZOC (contested test, \DV{} per foe). Prone targets cannot Disengage without first standing (costs Act or \Boon{}).
+\end{itemize}
+
+\section{SRD Integration: \Boons{} and \DV{}}
+\begin{itemize}
+  \item Spend \textbf{1 \Boon} to Disengage automatically \emph{or} ignore ZOC for \textbf{one step} this turn (you must end outside enemy ZOC).
+  \item Spend \textbf{1 \Boon} to change facing for free at the end of your move.
+  \item Spend \textbf{2 \Boons} to perform a \textbf{Heroic Rush}: move up to Speed, ignoring ZOC for the path, but you end \emph{engaged} with one enemy of your choice.
+  \item Suggested \DV{}s: Disengage 4; Shove/Pull 4; Tackle 4–6; Balance 3–5; Guarded Strike uses standard attack \DV{}.
+\end{itemize}
+
+\section{Adapters: Square vs Hex}\label{sec:adapters}
+\paragraph{Squares}
+\begin{itemize}
+  \item Default ZOC = 4 orthogonals (clean lanes). Use Full ZOC (8) for tighter control scenarios.
+  \item Diagonals: use Alternating cost to prevent diagonal speed exploits.
+  \item Facing: 4 directions; optional 8‑facing for granular cones.
+\end{itemize}
+\paragraph{Hexes}
+\begin{itemize}
+  \item ZOC = 6 adjacents; movement always 1 per hex.
+  \item Facing: 6 directions; front arc = 3 hexes; rear = 1 hex.
+\end{itemize}
+
+\section{Large and Multi‑Hex Footprints}
+\begin{itemize}
+  \item Occupy all cells of the base; you cannot squeeze through gaps smaller than your footprint.
+  \item Project ZOC from every edge cell; Rear arc is opposite your primary facing edge.
+  \item Shove/Pull against Large costs +1 effect threshold.
+\end{itemize}
+
+\section{Optional Modules}
+\subsection*{Control Lanes}
+On squares, paint 2‑wide lanes between objectives. Units with ZOC block lanes unless Disengaged; promotes shield‑wall play.
+
+\subsection*{Skirmish Fog}
+At long ranges, attackers without a spotter count targets as Light Cover.
+
+\subsection*{Command Auras}
+Leaders project a non‑stacking aura (2 cells) that lets allies ignore ZOC \emph{once per turn} when moving \emph{toward} an objective.
+
+\section{Quick Reference (One Page)}
+\begin{itemize}
+  \item Entering enemy ZOC ends movement. You cannot move through enemy ZOC.
+  \item Disengage: Action (\DV{} 4–6) or spend 1 \Boon{}.
+  \item Flank: +1 die; Rear: +1 die and +1 effect.
+  \item Squares: ZOC 4 (orth); Hexes: ZOC 6.
+  \item Difficult +1; Elevation up +1.
+  \item Guard to punish leaving; Brace to resist Shoves and extend ZOC.
+\end{itemize}
+
+\bigskip
+\noindent\textit{Design Intent:} Position should decide fights. ZOCs shape lanes, facing rewards planning, and \Boons{} let heroes break rules \emph{once}—exactly when the story demands it.
+
+\end{document}
