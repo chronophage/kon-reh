@@ -15,6 +15,8 @@
 \newcommand{\Boon}{\textsc{Boon}}
 \newcommand{\Boons}{\textsc{Boons}}
 \newcommand{\DV}{\textsc{DV}}
+\newcommand{\Tag}[1]{\texttt{[#1]}}
+\newcommand{\Tags}[1]{\texttt{[#1]}}
 
 \setlist{noitemsep,topsep=3pt,itemsep=2pt,parsep=0pt}
 
@@ -26,20 +28,21 @@
 \end{center}
 
 \section{Scope}
-This guide bolts a fast, positioning‑forward miniatures layer onto Fate’s Edge. It keeps SRD cadence (actions, \Boons{}, \DV{} tests) and works on both \textbf{square} and \textbf{hex} maps without tables.
+This guide bolts a fast, positioning‑forward miniatures layer onto Fate’s Edge. It keeps SRD cadence (actions, \Boons{}, \DV{} tests) and works on both \textbf{square} and \textbf{hex} maps without tables. Now includes full integration of magic via [TAGS], spell effects, and ritual positioning.
 
 \section{Core Concepts}
 \begin{itemize}
   \item \textbf{Square or Hex:} Declare the grid type at setup. Distances and arcs adapt automatically (see \S\ref{sec:adapters}).
   \item \textbf{Base Sizes:} Small (1 cell), Medium (2×1 or 2 hexes long), Large (2×2 or 3‑hex footprint), Huge (custom). Large+ project wider control; see Reach below.
   \item \textbf{Facing:} Miniatures have a facing. Rear and side arcs matter for flanking.
-  \item \textbf{Actions:} On your turn you may \textbf{Move} and \textbf{Act} (attack, test, assist, etc.). You may swap order.
+  \item \textbf{Actions:} On your turn you may \textbf{Move} and \textbf{Act} (attack, test, assist, cast, etc.). You may swap order.
   \item \textbf{Checks:} When a rule calls for a test, roll per SRD using the most fitting approach/skill vs a listed \DV{}.
+  \item \textbf{Magic:} Magic is expressed via [TAGS] (e.g., \Tag{WARD}, \Tag{BANISH}, \Tag{CONJURE}) and is deeply tied to positioning, range, and ZOC. See \S\ref{sec:magic}.
 \end{itemize}
 
 \section{Turn Structure}
 \begin{enumerate}
-  \item \textbf{Start:} Resolve start‑of‑turn effects.
+  \item \textbf{Start:} Resolve start‑of‑turn effects (ongoing tags, summon leash ticks, etc.).
   \item \textbf{Move:} Up to your Speed; you must obey Zones of Control (\S\ref{sec:zoc}).
   \item \textbf{Act:} Attack, interact, cast, rally, shove, guard, etc.
   \item \textbf{End:} End effects; optional \Boon{} spends; reactions from enemies you engaged this turn.
@@ -153,6 +156,43 @@ Choose a primary facing when you finish moving.
   \item Shove/Pull against Large costs +1 effect threshold.
 \end{itemize}
 
+\section{Magic and Tags}\label{sec:magic}
+Magic in Fate’s Edge is expressed via [TAGS]—effects that gate specific actions and costs. These tags are placed on Talents, Spells, and Rites. Below are key tags and their interaction with positioning and ZOC.
+
+\subsection{Common Magic Tags}
+\begin{itemize}
+  \item \Tag{WARD}: Blocks Outsiders or enemies. DV = Cap or Spirit. Test to cross. On hit, add +DV segments to Leash/Exit Tally.
+  \item \Tag{BANISH}: Drives Outsiders out. DV = Cap. On hit, add +DV segments to Leash/Exit Tally.
+  \item \Tag{CONJURE}: Creates a temporary object or hazard. Integrity = 2/4/6. Duration = Scene.
+  \item \Tag{MARK}: Tags a target for tracking or synergy. Allies gain +1 die once/scene vs. Marked target.
+  \item \Tag{VEIL}: Hides a person or object. DV by fiction. Resisted by \Tag{REVEAL}.
+  \item \Tag{REVEAL}: Exposes hidden or disguised targets. DV by fiction.
+  \item \Tag{PASSAGE}: Declares a route as safe or fast. Allies gain Position/Effect bump.
+  \item \Tag{TRANSPORT}: Relocates a target. DV by fiction. May require open ZOC or specific range.
+\end{itemize}
+
+\subsection{Magic and Positioning}
+\begin{itemize}
+  \item \textbf{Casting in Melee:} Casting a spell while engaged worsens Position by 1 unless the spell is \Tag{INSTANT} or you have a Talent.
+  \item \textbf{Line of Sight:} Spells requiring LoS must trace from caster to target. Blocked by walls or heavy cover.
+  \item \textbf{Range:} Spells use standard range bands (Close, Near, Far). Off-band casting may impose –1 die or –1 Effect.
+  \item \textbf{Backlash:} On a Partial or Miss, GM spends SB to trigger Element-colored backlash (e.g., Fire → singed; Fate → narrowing options).
+\end{itemize}
+
+\subsection{Rituals and Zones}
+\begin{itemize}
+  \item \textbf{Ritual Casting:} Requires a clear space and open display of Symbols. If interrupted or ZOC entered, the ritual fails or requires a test.
+  \item \textbf{Crack the Seal:} Instant cast at the cost of +2 Obligation. GM may spend 1 SB immediately for instability (e.g., burst of flame, backlash).
+  \item \textbf{Zone Effects:} Spells like \Tag{WARD} or \Tag{CONJURE} may occupy zones. Units moving through them may trigger tests or effects.
+\end{itemize}
+
+\subsection{Spell Examples in Play}
+\begin{itemize}
+  \item \Tag{WARD} on a doorway: Enemy must test DV = Spirit or Cap. On hit, they cross but gain +DV Leash ticks.
+  \item \Tag{TRANSPORT} to move an ally: Must be Near and not in ZOC. On success, target arrives safely; on Partial, off-balance.
+  \item \Tag{CONJURE} a wall: Blocks LoS and ZOC. Enemies cannot move through unless they test or destroy it.
+\end{itemize}
+
 \section{Optional Modules}
 \subsection*{Control Lanes}
 On squares, paint 2‑wide lanes between objectives. Units with ZOC block lanes unless Disengaged; promotes shield‑wall play.
@@ -171,9 +211,11 @@ Leaders project a non‑stacking aura (2 cells) that lets allies ignore ZOC \emp
   \item Squares: ZOC 4 (orth); Hexes: ZOC 6.
   \item Difficult +1; Elevation up +1.
   \item Guard to punish leaving; Brace to resist Shoves and extend ZOC.
+  \item Magic uses [TAGS] and interacts with ZOC, range, and Position.
 \end{itemize}
 
 \bigskip
-\noindent\textit{Design Intent:} Position should decide fights. ZOCs shape lanes, facing rewards planning, and \Boons{} let heroes break rules \emph{once}—exactly when the story demands it.
+\noindent\textit{Design Intent:} Position should decide fights. ZOCs shape lanes, facing rewards planning, and \Boons{} let heroes break rules \emph{once}—exactly when the story demands it. Now magic, too, is shaped by where you stand.
 
 \end{document}
+
