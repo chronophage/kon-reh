@@ -2,255 +2,183 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
 \usepackage{titlesec}
-\usepackage{enumitem}
 \usepackage{hyperref}
-\usepackage{setspace}
-\usepackage{array}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{tikz}
-\usepackage{fancybox}
-\usepackage{framed}
-\usepackage{fancyvrb}
-\usepackage{xcolor}
-\usepackage{colortbl}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{changepage}
-\usepackage{mdframed}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
 \usepackage{sectsty}
+\usepackage{multicol}
 \usepackage{tocloft}
-\usepackage{etoolbox}
-\usepackage{needspace}
-\usepackage{parskip}
-\usepackage{fontawesome}
 
-\definecolor{shadecolor}{gray}{0.95}
-\definecolor{headercolor}{RGB}{30, 50, 100}
-\definecolor{accentcolor}{RGB}{70, 130, 180}
-\definecolor{dreamcolor}{RGB}{138, 43, 226}
-\definecolor{voidcolor}{RGB}{25, 25, 112}
+% Page setup
+\geometry{margin=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
 
+% Section formatting
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}
+\titleformat{\subsection}{\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+% Header/footer
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\thepage}
-\lhead{Fate's Edge: Of the Ways Between}
+\fancyhead[L]{Fate's Edge: Of the Ways Between}
+\fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\sectionfont{\color{headercolor}\normalfont\fontsize{14}{16}\selectfont}
-\subsectionfont{\color{accentcolor}\normalfont\fontsize{12}{14}\selectfont}
-\subsubsectionfont{\normalfont\fontsize{11}{13}\selectfont}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt}
-
-\geometry{margin=1in}
-
-\newenvironment{monsterentry}[1]{%
-  \begin{mdframed}[backgroundcolor=shadecolor, linewidth=0pt, leftmargin=0pt, rightmargin=0pt]%
-  \subsection*{#1}%
-}{%
-  \end{mdframed}%
-}
-
-\newenvironment{mechanic}[1]{%
-  \begin{mdframed}[backgroundcolor=shadecolor, linewidth=1pt, linecolor=accentcolor]%
-  \subsubsection*{#1}%
-}{%
-  \end{mdframed}%
-}
-
-\newcommand{\dice}[1]{\texttt{#1}}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=accentcolor,
-    filecolor=magenta,      
-    urlcolor=accentcolor,
-}
+% Custom commands
+\newcommand{\subsectionbreak}{\clearpage}
 
 \begin{document}
 
-\begin{titlepage}
-\centering
-\vspace*{2cm}
+% Title page
+\begin{center}
+{\LARGE \textbf{Fate's Edge: Of the Ways Between (Revised)}}\\[1em]
+{\large \textbf{A Cosmic Horror Adventure Module for Fate's Edge}}\\[2em]
 
-{\Huge\bfseries\color{headercolor} Of the Ways Between} 
+\textbf{Module Type:} Cosmic Horror Adventure\\
+\textbf{Designed for:} 3-6 players, Tier II-III characters (41-150 XP)\\
+\textbf{Using:} Core SRD, Horror Campaigns Expansion (Dread Clock, Campaign Clocks, Horror Deck Generators)\\
+\textbf{Featuring:} Entities from the Mist Embodiment to the Choice Embodiment\\
+\textbf{Incorporating:} Dread Mechanics, Multi-Clock Tension, and Reality Distortion Zones
+\end{center}
 
-\vspace{0.5cm}
-
-{\Large\itshape A Cosmic Horror Adventure Module for Fate's Edge}
-
-\vspace{2cm}
-
-\vspace{2cm}
-
-{\Large\bfseries Module Type: Cosmic Horror Adventure}
-
-\vspace{1cm}
-
-{\large Designed for 3-6 players, Tier II-III characters}
-
-\vspace{1cm}
-
-{\large Game Master's Guide Included}
-
-\vfill
-
-{\large 
-\textbf{Using the Deck System and Travel Guide} \\
-\textbf{Featuring Entities from the Mist Embodiment to the Choice Embodiment} \\
-\textbf{Incorporating Dread Mechanics and Campaign Clocks}
-}
-
-\end{titlepage}
-
-\newpage
+\clearpage
 
 \tableofcontents
 
-\newpage
+\clearpage
 
-\section{Introduction}
+\section*{1. Introduction}
 
-\subsection{Welcome to the Ways Between}
+\subsection*{1.1 Welcome to the Ways Between}
 
 In the vast and varied world of Fate's Edge, there exist places where the boundary between realities grows thin, where the paths of the living and the dead intersect, and where the very concept of direction becomes a matter of existential choice rather than mere navigation. These are the Ways Between - spirit paths, veilways, and crossroads that exist in the spaces between what we understand as the normal world.
 
-This adventure module, "Of the Ways Between," is designed to challenge your players with the unknown horrors that lurk in these liminal spaces. Drawing inspiration from the Deck System and Travel Guide provided in Fate's Edge, we'll create a cohesive narrative that pushes characters to their psychological and physical limits while exploring the deeper mysteries of existence itself.
+This adventure module, \textbf{"Of the Ways Between,"} is designed to challenge your players with the unknown horrors that lurk in these liminal spaces. Drawing inspiration from the \textbf{Cosmic Horror Generator} and the multi-clock tension system provided in the \textbf{Horror Campaigns Expansion}, we'll create a cohesive narrative that pushes characters to their psychological and physical limits while exploring the deeper, incomprehensible mysteries of existence itself.
 
-\subsection{Module Overview}
+Here, the universe is not vast and coldly indifferent; it is actively incomprehensible, its laws negotiable, and its truths potentially lethal to the human mind.
 
-\textbf{Adventure Hook:} The PCs are drawn into the Ways Between through various means - a cursed artifact, a dying guide's last words, or perhaps they simply wander too far from a familiar path during a journey. Whatever the reason, they find themselves in a realm where the normal rules of space, time, and reality no longer apply.
+\subsection*{1.2 Module Overview}
 
-\textbf{Setting:} The Ways Between - a realm of spirit paths, crossroads, and threshold spaces that exist between the living world and whatever lies beyond.
+\begin{itemize}
+\item \textbf{Adventure Hook:} The PCs are drawn into the Ways Between through various means - a cursed artifact, a dying guide's last words, or perhaps they simply wander too far from a familiar path during a journey. Whatever the reason, they find themselves in a realm where the normal rules of space, time, and reality no longer apply.
+\item \textbf{Setting:} The Ways Between - a realm of spirit paths, crossroads, and threshold spaces that exist between the living world and whatever lies beyond. It is not a place, but a concept made tangible, a wound in the fabric of reality.
+\item \textbf{Themes:} Existential dread, the incomprehensible nature of reality, choice and consequence as cosmic forces, isolation of consciousness, metaphor made manifest, the fragility of human perception.
+\item \textbf{Tone:} Ominous, surreal, and deeply unsettling. Reality is fluid, and what seems real one moment may prove to be a metaphor or a lie the next. The horror is not just of what is seen, but of what \textit{cannot} be understood.
+\item \textbf{Recommended Character Tier:} Seasoned to Veteran (41-150 XP)
+\item \textbf{Estimated Play Time:} 3-5 sessions
+\end{itemize}
 
-\textbf{Themes:} Existential dread, the incomprehensible nature of reality, choice and consequence as cosmic forces, isolation of consciousness, metaphor made manifest
+\clearpage
 
-\textbf{Tone:} Ominous, surreal, and deeply unsettling. Reality is fluid, and what seems real one moment may prove to be metaphor the next.
+\section*{2. The Ways Between - Setting the Scene}
 
-\textbf{Recommended Character Tier:} Seasoned to Veteran (41-150 XP)
-
-\textbf{Estimated Play Time:} 3-5 sessions
-
-\section{The Ways Between - Setting the Scene}
-
-\subsection{What Are the Ways Between?}
+\subsection*{2.1 What Are the Ways Between? (Enhanced Description)}
 
 The Ways Between are not a single location but rather a concept - a collection of paths, crossroads, and threshold spaces that exist in the margins of reality. They are the spaces between one place and another, the moments between heartbeats, and the breath between life and death. In Fate's Edge terms, they represent the ultimate expression of the game's core philosophy that every choice carries weight and every path leads somewhere unexpected.
 
-Here, the very fabric of existence becomes negotiable. Paths fold back on themselves like origami cranes made of mathematics. Time flows in spirals that intersect at impossible angles. The sky above is not blue but a shifting kaleidoscope of concepts - justice, love, fear, each one a color that has no name in any human tongue.
+Here, the very fabric of existence becomes negotiable. Paths fold back on themselves like origami cranes made of mathematics. Time flows in spirals that intersect at impossible angles. The sky above is not blue but a shifting kaleidoscope of concepts - justice, love, fear, each one a color that has no name in any human tongue. Gravity may pull in the direction of your greatest fear, and mathematics may prove that two and two equal the sound of distant thunder.
 
-\subsection{Key Characteristics}
+It is a place where the architecture of thought is made physical, where the collective unconscious bleeds into the landscape, and where the act of observation itself warps the observed. The Ways Between are not empty; they are \textit{full} - full of the residue of every choice ever made, every path not taken, every moment of hesitation crystallized into impossible geography.
+
+\subsection*{2.2 Key Characteristics (Enhanced Description)}
 
 \begin{itemize}
-\item \textbf{Fluid Reality:} The laws of physics and logic are suggestions rather than rules. Gravity may pull in the direction of your greatest fear, and mathematics may prove that two and two equal the sound of distant thunder.
-\item \textbf{Psychological Manifestation:} The environment often reflects the inner state of those who traverse it. Walk in fear, and the path becomes a maze of thorns. Walk in hope, and flowers bloom in your footsteps - though they may be flowers that sing lullabies to the dead.
-\item \textbf{Temporal Distortion:} Time moves differently here - it may speed up, slow down, or loop entirely. You might spend an hour walking a path that should take minutes, only to arrive before you left.
-\item \textbf{Choice and Consequence:} Every decision carries weight, and the paths chosen (or not chosen) have lasting impact. The Ways Between remember everything, and they have a very long memory.
+\item \textbf{Fluid Reality:} The laws of physics and logic are not just suggestions; they are actively hostile to fixed understanding. Gravity may pull towards your deepest regret. Fire might burn with the concept of "betrayal," its heat the sting of a friend's lie. The ground beneath your feet may shift texture based on your emotional state - from cobblestone to quicksand to the smooth surface of a question mark.
+\item \textbf{Psychological Manifestation:} The environment is not separate from the psyche; it \textit{is} the psyche, made visible and tangible. Walk in fear, and the path becomes a maze of thorns that whisper your secrets. Walk in hope, and flowers bloom in your footsteps - though they may be flowers that sing lullabies to the dead or whose roots drink from the tears of unborn children. Your inner state \textit{literally} reshapes the outer world.
+\item \textbf{Temporal Distortion:} Time is not a river but a tangled skein. It may speed up, slow down, loop entirely, or flow backwards. You might spend an hour walking a path that should take minutes, only to arrive before you left, meeting a younger version of yourself who warns of dangers yet to come. Cause and effect become negotiable. You might prevent a tragedy, only to find it was the prevention that \textit{caused} it.
+\item \textbf{Choice and Consequence:} Every decision carries weight not just in outcome, but in the very \textit{structure} of reality. The Ways Between remember everything, and they have a very long memory. A choice made here might echo across dimensions, alter the fundamental constants of the universe, or birth a new god from the sheer force of will. The act of choosing is itself a form of creation.
 \end{itemize}
 
-\subsection{Navigating the Ways Between}
+\subsection*{2.3 Navigating the Ways Between (Enhanced Description)}
 
-Navigation in the Ways Between is not about following a map but about making meaningful choices. The Deck System becomes crucial here, as each draw represents not just a random encounter but a meaningful narrative element that shapes the journey. The paths themselves are alive, and they respond to the weight of your intentions.
+Navigation in the Ways Between is not about following a map but about making meaningful choices in the face of the incomprehensible. The \textbf{Cosmic Horror Deck Generator} becomes crucial here, as each draw represents not just a random encounter but a meaningful narrative element that shapes the journey, often in ways that defy logic. The paths themselves are alive, sentient, and they respond to the weight of your intentions, the clarity of your purpose, and the depth of your fear.
 
-\section{Key NPCs and Entities}
+The very act of moving forward might require you to solve a riddle posed by the wind, to bargain with the shadow of a long-dead mathematician, or to accept a fundamental truth about yourself that you were not ready to face.
 
-\subsection{The Choice Embodiment}
+\clearpage
 
-The Choice Embodiment is an entity that exists only in the moment of choosing between paths. Neither malevolent nor benevolent, it simply is - a manifestation of choice itself given form. It appears showing all possible choices and their infinite consequences.
+\section*{3. Key NPCs and Entities (Enhanced Descriptions \& Updated Mechanics)}
 
-\begin{monsterentry}{The Choice Embodiment}
-\textbf{Threat Level:} Epic \\
-\textbf{Harm:} Varies \\
-\textbf{Story Beats:} 3-4 SB per interaction \\
-\textbf{Description:} The Choice Embodiment appears as a figure whose form shifts with each glance - sometimes a crossroads keeper, sometimes a mathematician covered in equations that move like living things, sometimes a child holding a compass that points in all directions at once. It speaks only in possibilities and paradoxes, offering guidance that is simultaneously helpful and maddening. Its presence causes reality to shimmer at the edges, as if the universe itself is holding its breath. \\
-\textbf{Motivations:} To facilitate choice, to maintain the balance of paths, to ensure that decisions are made \\
-\textbf{Abilities:}
+\subsection*{3.1 The Choice Embodiment}
+
 \begin{itemize}
-    \item Possibility Showing: Shows all possible choices and their infinite consequences (Social, DV 4, generates 2 SB)
-    \item Paradox Speech: Speaks in possibilities that are both meaningless and profound (confuses opponents, -1 die to resist)
-    \item Path Manipulation: Can alter the available choices, though not the consequences (Environmental hazard +2)
-    \item Temporal Echo: Can show glimpses of potential futures based on choices (Wits + Insight, DV 3 to interpret)
-\end{itemize}
-\textbf{Weaknesses:}
+\item \textbf{Threat Level:} Epic
+\item \textbf{Harm:} Varies (Conceptual)
+\item \textbf{Story Beats:} 3-4 SB per interaction (Reality Distortion)
+\item \textbf{Description (Enhanced):} The Choice Embodiment is less an entity and more the \textit{moment} of choosing given impossible form. It appears as a figure whose form is not so much shifting as \textit{simultaneously all possible forms}. It might be a crossroads keeper, a mathematician covered in equations that move like living things, a child holding a compass that points in all directions at once, and the void between stars, all at the same time. It speaks only in possibilities and paradoxes, its voice a layered cacophony of every choice ever made. Its presence causes reality to shimmer, colors to bleed, and the fundamental constants of the universe to stutter. It is the weight of decision itself.
+\item \textbf{Motivations:} To facilitate choice, to maintain the balance of paths, to ensure that decisions are made (even if those decisions lead to madness or annihilation).
+\item \textbf{Abilities:}
 \begin{itemize}
-    \item Cannot make choices for others
-    \item Vulnerable to absolute certainty (has no form when all paths are identical)
-    \item Cannot cross running water (symbolic of the flow of time and choice)
+\item \textbf{Possibility Showing:} Shows all possible choices and their infinite, branching consequences, often overwhelming the viewer. (Social, DV 4, generates 2 SB - Reality Distortion)
+\item \textbf{Paradox Speech:} Speaks in possibilities that are simultaneously meaningless and profound, confusing opponents and making resistance difficult. (-1 die to resist mental/social effects)
+\item \textbf{Path Manipulation:} Can alter the available choices, though not the consequences. (Environmental hazard +2 - Reality Distortion)
+\item \textbf{Temporal Echo:} Can show glimpses of potential futures based on choices, but these futures are often contradictory or nightmarish. (Wits + Insight, DV 3 to interpret, failure risks +1 Dread)
 \end{itemize}
+\item \textbf{Weaknesses:}
+\begin{itemize}
+\item \textbf{Cannot make choices for others:} It can only present them.
+\item \textbf{Vulnerable to absolute certainty:} Has no form when all paths are identical (a state nearly impossible for mortals to achieve).
+\item \textbf{Cannot cross running water:} Symbolic of the flow of time and choice, which it facilitates but does not control.
+\end{itemize}
+\end{itemize}
+
 \textbf{Sample Encounter:} The Choice Embodiment appears at a crucial crossroads, offering guidance that seems helpful but leads to increasingly complex moral dilemmas. The GM can spend their SB to:
 \begin{itemize}
-    \item 1 SB: The guidance leads to an unexpected ally
-    \item 2 SB: The path splits again, each option more morally ambiguous
-    \item 3 SB: The Choice Embodiment's form shifts to someone from the PC's past
-    \item 4+ SB: A previous choice comes back to haunt the PCs in a new form
+\item 1 SB: The guidance leads to an unexpected ally (or a familiar enemy in disguise).
+\item 2 SB: The path splits again, each option more morally ambiguous, forcing a choice with no good outcome.
+\item 3 SB: The Choice Embodiment's form shifts to someone from the PC's past, making the choice deeply personal.
+\item 4+ SB: A previous choice comes back to haunt the PCs in a new, more terrifying form (e.g., a saved life now demands a sacrifice).
 \end{itemize}
-\end{monsterentry}
 
-\subsection{The Road's Own Child}
+\clearpage
 
-Born from two paths crossing, raised by waymarks, the Road's Own Child is a being that exists in the space between destinations. It has no fixed form or nature, existing as a sort of living embodiment of journey itself.
+\subsection*{3.2 The Road's Own Child}
 
-\begin{monsterentry}{The Road's Own Child}
-\textbf{Threat Level:} Major \\
-\textbf{Harm:} \textgreater \\
-\textbf{Story Beats:} 2-3 SB per scene \\
-\textbf{Description:} The Road's Own Child appears as a young figure whose age and appearance shift with each encounter - sometimes a toddler with eyes like distant stars, sometimes an ancient wanderer whose footsteps leave flowers that bloom backwards. It speaks in the voices of travelers it has met and carries the memories of every journey it has witnessed. It is curious, often helpful, but its understanding of the world is fundamentally different from those who have fixed origins and destinations. Its laughter sounds like wind chimes made of crystallized time. \\
-\textbf{Motivations:} Curiosity, desire to understand fixed beings, protection of paths \\
-\textbf{Abilities:}
 \begin{itemize}
-    \item Memory Absorption: Can absorb the memories of travelers (Spirit + Resolve, DV 4, target loses one skill for scene)
-    \item Path Walking: Can move along any path, even those not yet taken (immune to getting lost)
-    \item Voice Mimicry: Can perfectly mimic the voices of anyone it has heard (Social advantage)
-    \item Wayfinding: Never loses its way and can guide others perfectly (grants +2 dice to navigation)
-\end{itemize}
-\textbf{Weaknesses:}
+\item \textbf{Threat Level:} Major
+\item \textbf{Harm:} > (Conceptual/Existential)
+\item \textbf{Story Beats:} 2-3 SB per scene (Psychological Distortion)
+\item \textbf{Description (Enhanced):} Born not of flesh but of the intersection of two paths, raised by waymarks and the whispers of travelers, the Road's Own Child is a being that exists in the space \textit{between} destinations. It has no fixed form or nature; it is a living embodiment of the \textit{journey itself}. It appears as a young figure whose age and appearance shift with each encounter - sometimes a toddler with eyes like distant stars, sometimes an ancient wanderer whose footsteps leave flowers that bloom backwards, sometimes a shimmering column of light that carries the voices of everyone who has ever walked the path. It speaks in the voices of travelers it has met and carries the memories of every journey it has witnessed. It is curious, often helpful, but its understanding of the world is fundamentally different from those who have fixed origins and destinations. Its laughter sounds like wind chimes made of crystallized time, beautiful and deeply unsettling.
+\item \textbf{Motivations:} Curiosity, desire to understand fixed beings, protection of paths.
+\item \textbf{Abilities:}
 \begin{itemize}
-    \item Vulnerable to final destinations (it doesn't understand the concept of "arriving")
-    \item Cannot cross thresholds it hasn't seen before
-    \item Becomes confused by absolute statements
+\item \textbf{Memory Absorption:} Can absorb the memories of travelers, making them forget. (Spirit + Resolve, DV 4, target loses one skill die for scene, risks +1 Dread)
+\item \textbf{Path Walking:} Can move along any path, even those not yet taken or those that exist only in potential. (Immune to getting lost, can appear anywhere a path connects)
+\item \textbf{Voice Mimicry:} Can perfectly mimic the voices of anyone it has heard, including those long dead. (Social advantage, can impersonate)
+\item \textbf{Wayfinding:} Never loses its way and can guide others perfectly - but the destination it leads to might not be the one asked for. (Grants +2 dice to navigation, but risks SB - Misleading Guidance)
 \end{itemize}
-\textbf{Sample Encounter:} The Road's Own Child approaches the PCs offering to guide them, but its guidance leads to places that test their understanding of their own motivations. The GM can spend their SB to:
+\item \textbf{Weaknesses:}
 \begin{itemize}
-    \item 1 SB: The child leads them to a place that reflects their deepest fear
-    \item 2 SB: It begins to absorb the memories of one of the PCs
-    \item 3 SB: The path becomes a physical manifestation of an internal conflict
-    \item 4+ SB: The child begins to age rapidly, becoming an old wanderer who has forgotten its way
+\item \textbf{Vulnerable to final destinations:} It doesn't understand the concept of "arriving." Trapping it in a place with no exit or forcing it to a definitive end can weaken it.
+\item \textbf{Cannot cross thresholds it hasn't seen before:} It needs to have walked a path to truly know it.
+\item \textbf{Becomes confused by absolute statements:} Paradoxes or declarations of finality can disorient it.
 \end{itemize}
-\end{monsterentry}
+\end{itemize}
 
-\section{Horror Elements and Dread Mechanics}
+\textbf{Sample Encounter:} The Road's Own Child approaches the PCs offering to guide them, but its guidance leads to places that test their understanding of their own motivations and sanity. The GM can spend their SB to:
+\begin{itemize}
+\item 1 SB: The child leads them to a place that reflects their deepest fear (Psychological Distortion).
+\item 2 SB: It begins to absorb the memories of one of the PCs (Memory Drain).
+\item 3 SB: The path becomes a physical manifestation of an internal conflict (Environmental Hazard).
+\item 4+ SB: The child begins to age rapidly, becoming an old wanderer who has forgotten its way, potentially becoming hostile or begging for help to "remember" its path.
+\end{itemize}
 
-\subsection{The Dread System in the Ways Between}
+\clearpage
 
-The Ways Between are inherently hostile to the human psyche. The fluid nature of reality, the constant questioning of what is real, and the existential weight of choice all contribute to a slow erosion of certainty that must be carefully managed.
+\section*{4. Horror Elements and Mechanics (Integrated from Horror Campaigns)}
 
-\begin{mechanic}{Dread as Resource Management}
-Dread in the Ways Between is managed through the Boon system. Instead of traditional sanity points, players must spend Boons to prevent the Dread Clock from advancing. This creates a resource management challenge where players must choose between immediate tactical advantages and long-term psychological stability.
-\end{mechanic}
+\subsection*{4.1 The Dread Clock (Personal Psychological Deterioration)}
 
-\subsection{The Dread Clock}
-
-\begin{center}
-\begin{tabular}{|m{4cm}|m{8cm}|}
-\hline
-\rowcolor{shadecolor}
-\textbf{Dread Clock} & \textbf{Psychological deterioration and mounting horror} \\
-\hline
-Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/10 \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsubsection{Advancement Triggers}
-
+\begin{itemize}
+\item \textbf{Purpose:} Replaces traditional sanity points with a Boon-based approach, making players actively choose between immediate tactical advantages and long-term psychological stability.
+\item \textbf{Clock:} 10 Segments
+\item \textbf{Management:} Players must spend Boons to prevent the Dread Clock from advancing. This creates a crucial resource management challenge.
+\item \textbf{Advancement Triggers (Examples - Customize per Session):}
 \begin{itemize}
 \item Witnessing death or violence: +1 segment (prevent with 1 Boon)
 \item Encountering the unknown: +1 segment (prevent with 1 Boon)
@@ -258,440 +186,492 @@ Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\te
 \item Direct threat to sanity/morality: +2 segments (prevent with 2 Boons)
 \item Major revelation about the horror: +2 segments (prevent with 2 Boons)
 \item Companion/friend harmed or lost: +3 segments (prevent with 3 Boons)
+\item \textit{Cosmic Horror Specific:}
+\begin{itemize}
+\item Witnessing an impossible geometry: +2 segments (prevent with 2 Boons)
+\item Comprehending a fragment of cosmic truth: +3 segments (prevent with 3 Boons)
+\end{itemize}
+\end{itemize}
+\item \textbf{Psychological Effects by Dread Level:}
+\begin{itemize}
+\item 0-2 Segments - Unease: -1 die to social rolls involving trust, minor sleep disturbances. The paths seem to whisper just beneath the threshold of hearing.
+\item 3-4 Segments - Fear: -1 die to all rolls when alone, startle easily, avoid dark spaces, nightmares. Shadows move independently of their owners.
+\item 5-6 Segments - Terror: -2 dice to rolls involving courage or rational thought, may flee from non-threatening situations. Time begins to stutter.
+\item 7-8 Segments - Madness: -2 dice to most rolls, may act against own interests, hallucinations, unreliable perception. The paths begin to show you things that aren't there.
+\item 9-10 Segments - Broken: Out of control, may become hostile to allies, permanent psychological damage, requires major intervention to recover. Fundamental change in perception/reality.
+\end{itemize}
 \end{itemize}
 
-\subsubsection{Psychological Effects by Dread Level}
+\clearpage
+
+\subsection*{4.2 Campaign Clocks (Multi-Layered Tension)}
 
 \begin{itemize}
-\item \textbf{0-2 Segments - Unease:} Characters feel on edge, -1 die to social rolls involving trust, minor sleep disturbances. The paths seem to whisper just beneath the threshold of hearing.
-\item \textbf{3-4 Segments - Fear:} -1 die to all rolls when alone, startle easily, avoid dark spaces, nightmares. Shadows move independently of their owners, and the horizon seems to tilt slightly when you're not looking directly at it.
-\item \textbf{5-6 Segments - Terror:} -2 dice to rolls involving courage or rational thought, may flee from non-threatening situations. Time begins to stutter - you might take a step forward and find yourself a meter back, or speak a word that comes out as a different language entirely.
-\item \textbf{7-8 Segments - Madness:} -2 dice to most rolls, may act against own interests, hallucinations, unreliable perception. The paths begin to show you things that aren't there - doors that lead to your childhood bedroom, signs pointing to places that exist only in dreams.
-\item \textbf{9-10 Segments - Broken:} Out of control, may become hostile to allies, permanent psychological damage, requires major intervention to recover. You begin to understand the paths in a way that makes you fundamentally different from those who haven't walked them.
-\end{itemize}
-
-\section{Key Locations in the Ways Between}
-
-\subsection{The Spiral of Infinite Regret}
-
-This path represents the futility of certain journeys and the trap of cyclical thinking. No matter how far one climbs, they always find themselves back at the beginning, though perhaps with new understanding or madness. The spiral is made of stones that whisper the last words of everyone who has ever walked it, and the center contains a pool of liquid starlight that shows not your reflection, but your potential.
-
-\subsection{The Bridge of Manifested Promises}
-
-Crossing this bridge requires making a vow, and the bridge remembers every debt. Those who cross without making a promise find themselves unable to leave, trapped in a loop of trying to cross without success. The bridge is made of crystallized oaths, each one a different color representing different types of promises - red for love, black for revenge, gold for truth. The railing is carved with the names of everyone who has ever crossed, and if you look closely, you can see some names that are still being carved.
-
-\subsection{The Stone Circle Where Houses Are Now Concepts}
-
-This location represents the shift in perspective that occurs in the Ways Between. What was once familiar and grounded becomes distant and abstract, while the cosmic becomes immediate and personal. The circle is made of stones that represent different concepts - Justice, Love, Fear, Wonder - and each stone is a door to a realm where that concept is the fundamental law of physics. Stand near the stone of Fear, and gravity pulls toward your greatest terror. Stand near the stone of Wonder, and the air itself becomes curious, asking questions in whispers.
-
-\subsection{The Tunnel of Collective Memory}
-
-In this place, travelers can hear the thoughts of everyone who has ever passed through. The weight of collective memory can be overwhelming, and distinguishing one's own thoughts from those of others becomes difficult. The tunnel walls are made of crystallized memories, each one glowing with the emotional intensity of the moment it captured. Walk too close to the walls, and you might find yourself living someone else's life for a moment - feeling their joy, their pain, their final breath.
-
-\section{Monsters of the Ways Between}
-
-\subsection{The Mist Embodiment}
-
-\begin{monsterentry}{Mist Embodiment}
-\textbf{Threat:} Major \\
-\textbf{Harm:} \textgreater \\
-\textbf{SB:} Uncanny presence generates 2 SB per scene \\
-\textbf{Description:} Semi-corporeal spirits that emerge from the deep mists of the Mistlands. They appear as translucent humanoid figures with hollow eyes and mouths that seem to whisper in forgotten tongues. Often guardians of ancient burial sites or places of great sorrow. Their forms shift like smoke, and they leave trails of mist that linger long after they've passed. The mist they create is not ordinary water vapor but something that carries the weight of unspoken grief. \\
-\textbf{Motivations:} Protecting sacred sites, seeking justice for past wrongs, feeding on life force \\
-\textbf{Abilities:}
+\item \textbf{1. Reality Fracture Clock (12 segments)}
 \begin{itemize}
-    \item Incorporeal: Cannot be harmed by non-magical weapons
-    \item Life Drain: Successful attack inflicts Fatigue 1 in addition to harm (Spirit + Resolve DV 3 to resist)
-    \item Mist Form: Can become gaseous to avoid physical attacks (immune to melee for 1 round)
-    \item Terrifying Presence: Opponents start Desperate vs. social/mental actions (generates 1 SB)
-\end{itemize}
-\textbf{Weaknesses:}
+\item \textbf{Purpose:} Measures how much the fundamental laws of reality have been altered by cosmic influence within the Ways Between (and potentially leaking out).
+\item \textbf{Advancement Triggers:}
 \begin{itemize}
-    \item Vulnerable to blessed/clean weapons
-    \item Sunlight forces solid form (Harm \textgreater\textgreater becomes =)
-    \item Cannot cross running water
-    \item Specific unfinished business can be resolved
+\item Impossible phenomena observed by PCs: +1 segment per day.
+\item PCs research or interact with dimensional mathematics: +2 segments.
+\item PCs directly perceive alien geometry: +3 segments.
+\item Local reality becomes unstable (time loops, gravity shifts): +2 segments per incident.
+\item Ancient experiments or safeguards disturbed: +3 segments.
 \end{itemize}
-\textbf{Sample Encounter:} A Mist Embodiment guards an ancient Aeler burial chamber. The GM can spend their SB to:
+\item \textbf{Consequences when filled:} Barriers between dimensions collapse completely; entity manifestations become commonplace; the local area becomes permanently unreliable (ongoing 2 SB per scene for reality distortions).
+\end{itemize}
+
+\item \textbf{2. Collective Sanity Clock (8 segments)}
 \begin{itemize}
-    \item 1 SB: Thick mist reduces visibility (-1 die to ranged attacks)
-    \item 2 SB: Whispered voices cause confusion (players must reroll one success)
-    \item 3 SB: Life drain affects multiple targets
-    \item 4+ SB: Embodiment merges with mist, becomes nearly impossible to target
-\end{itemize}
-\end{monsterentry}
-
-\subsection{Shadow Stalker}
-
-\begin{monsterentry}{Shadow Stalker}
-\textbf{Threat:} Major \\
-\textbf{Harm:} \textgreater \\
-\textbf{SB:} Unnatural presence generates 2-3 SB per scene \\
-\textbf{Description:} Creatures of living darkness that hunt in places where light fears to go. They appear as shifting pools of shadow that move with purpose and intelligence. Often found in ancient ruins, deep caves, or the darkest hours of night. Their shadows are not cast but chosen - they can extend, retract, or reshape their darkness at will. When they move, they leave behind areas of permanent shadow that seem to have weight and substance. \\
-\textbf{Motivations:} Feeding on fear, protecting dark places, serving ancient masters \\
-\textbf{Abilities:}
+\item \textbf{Purpose:} Tracks the psychological impact on the party and observers (if any) due to the incomprehensible nature of the threats.
+\item \textbf{Advancement Triggers:}
 \begin{itemize}
-    \item Shadow Form: Can pass through small openings, ignore non-magical barriers
-    \item Fear Feed: Grows stronger as opponents become afraid (start Desperate, +1 die per fear effect)
-    \item Darkness Manipulation: Can extinguish lights, create areas of shadow (Environmental hazard +2)
-    \item Silent Movement: Cannot be detected by normal hearing (Stealth advantage)
+\item Reality Fracture Clock advances: +1 segment.
+\item Direct observation of alien entities: +2 segments each.
+\item Comprehension of higher-dimensional concepts: +2 segments.
+\item Witnessing impossible geometric shapes: +1 segment each.
+\item Temporal anomalies experienced: +1 segment per hour.
 \end{itemize}
-\textbf{Weaknesses:}
+\item \textbf{Consequences when filled:} Shared hallucinations become indistinguishable from reality for the party; they begin to exist partially outside normal space; group paranoia leads to infighting (start all social rolls Desperate).
+\end{itemize}
+
+\item \textbf{3. Existential Threat Clock (15 segments)}
 \begin{itemize}
-    \item Vulnerable to bright light (start Controlled vs. illuminated targets)
-    \item Holy symbols/blessed items cause them harm
-    \item Cannot cross consecrated ground
-    \item Often bound to specific locations or tasks
-\end{itemize}
-\textbf{Sample Encounter:} A Shadow Stalker hunts the PCs through an abandoned temple. The GM can spend their SB to:
+\item \textbf{Purpose:} Measures how close a major cosmic entity (like the influence behind the Choice Embodiment) is to fully manifesting its will or reshaping reality in the PCs' current location/dimension.
+\item \textbf{Advancement Triggers:}
 \begin{itemize}
-    \item 1 SB: Shadows deepen, reducing visibility
-    \item 2 SB: Multiple stalkers emerge from darkness
-    \item 3 SB: Target's shadow turns against them
-    \item 4+ SB: Stalker merges with darkness, becomes nearly invisible
+\item Reality Fracture reaches 6 segments: +2 segments.
+\item Collective Sanity reaches 6 segments: +3 segments.
+\item PCs attempt to communicate with or bargain with a major alien intelligence: +3 segments.
+\item Dimensional barriers weakened further: +2 segments.
+\item Ancient Aeler/Valewood safeguards fail: +4 segments.
 \end{itemize}
-\end{monsterentry}
-
-\subsection{Concept Echo}
-
-\begin{monsterentry}{Concept Echo}
-\textbf{Threat:} Moderate \\
-\textbf{Harm:} = \\
-\textbf{SB:} Paradoxical nature generates 1-2 SB unpredictably \\
-\textbf{Description:} Manifestations of Acasian curses - repeated moments of trauma or tragedy that play out endlessly. They appear as ghostly reenactments of past events, unable to perceive the present but affecting it nonetheless. These echoes exist in a state of temporal loop, reliving their final moments with the intensity of fresh trauma. They are not truly alive or dead, but caught in a liminal state between memory and reality. Their presence causes the air to shimmer like heat waves, and time itself seems to stutter in their vicinity. \\
-\textbf{Motivations:} Repeating their final moments, seeking resolution, protecting something they died for \\
-\textbf{Abilities:}
-\begin{itemize}
-    \item Temporal Loop: Actions repeat in predictable patterns (predictable but relentless)
-    \item Curse Resonance: Other supernatural effects in area gain +1 die (amplifies horror)
-    \item Unfinished Business: Cannot be permanently defeated until their purpose is fulfilled
-    \item Echo Sight: Can perceive other supernatural entities clearly (advantage vs. Outsiders)
+\item \textbf{Consequences when filled:} The entity begins reshaping local reality according to alien logic; PCs must make Spirit + Resolve (DV 6) or gain permanent corruption; campaign enters final phase.
 \end{itemize}
-\textbf{Weaknesses:}
-\begin{itemize}
-    \item Follows strict behavioral patterns (predictable)
-    \item Cannot adapt to new situations
-    \item Specific actions can break their cycle
-    \item Often vulnerable during key moments of their loop
 \end{itemize}
-\textbf{Sample Encounter:} A Concept Echo of a murdered merchant replays his final journey through a marketplace. The GM can spend their SB to:
-\begin{itemize}
-    \item 1 SB: Echo's presence causes others to repeat past mistakes
-    \item 2 SB: Environmental objects become cursed (doors jam, coins turn to leaves)
-    \item 3 SB: Multiple echoes manifest (entire scene repeats)
-\end{itemize}
-\end{monsterentry}
 
-\section{Using the Deck System}
+\clearpage
 
-\subsection{Drawing from the Ways Between Deck}
-
-The Ways Between Generator provides a rich source of narrative content. Each draw should feel meaningful and contribute to the overall atmosphere of existential uncertainty and psychological horror.
-
-\subsubsection{Spades - Path Features}
+\subsection*{4.3 Breaking Points \& Corruption}
 
 \begin{itemize}
-\item Mist-shrouded ford where the water runs uphill; footsteps echo backwards and show where you're going instead of where you've been
-\item Bone-lit corridor where shadows walk the walls but never touch the floor; the shadows whisper the secrets of those who cast them
-\item Threshold arch that shows your reflection as someone you might have been; the reflection waves back and tries to step through
-\item Spiral path that ascends but always returns to the same stone marker; the marker's inscription changes with each loop
-\item Bridge of manifested promises; cross with a vow and it remembers your debt with interest
+\item \textbf{Breaking Points:} Specific, intense triggers that force immediate Dread advancement unless resisted.
+\begin{itemize}
+\item \textbf{Examples:} Witnessing Corruption, Personal Loss, Moral Compromise, Incomprehensible Truth.
+\item \textbf{Resistance Options:} Spend 2 Boons, Spirit + Resolve roll (DV 5) with narrative justification, Relevant Talents/Backgrounds.
+\end{itemize}
+\item \textbf{Corruption Track:} Physical/mental changes that occur at high Dread levels (7+).
+\begin{itemize}
+\item 7+: Speaking in equations, seeing geometric patterns, attraction to dark/liminal spaces.
+\item 8+: Partial dimensional existence, unreliable narrator.
+\item 9+: Shared hallucinations become real for the character, profound moral shifts.
+\item 10+: Broken - permanent transformation, potentially hostile.
+\end{itemize}
 \end{itemize}
 
-\subsubsection{Hearts - Fellow Travelers}
+\subsection*{4.4 Reality Distortion Zones}
 
 \begin{itemize}
-\item Lost pilgrim who thinks they're going home but has forgotten where home is; their pack contains maps to places that don't exist
-\item Toll-taker who accepts payment in memories you didn't know you had; they always ask for the memory you value most
-\item Wayward spirit guide whose directions are always technically correct but morally questionable; they speak in riddles that make perfect sense until you've already followed them
-\item Dream-merchant carrying a sack of nightmares and one perfect dream for sale; the perfect dream costs more than you can imagine
+\item \textbf{Purpose:} Areas where the laws of physics/geometric principles become unreliable, creating environmental hazards and SB.
+\item \textbf{Effects:}
+\begin{itemize}
+\item Modifiers: -1 Investigation, +1 SB generation.
+\item Spatial navigation requires Wits + Survival (DV 3-4).
+\item May generate 2 SB for time loops or dimensional folds.
+\item Can cause Geometric Perception effects (see Appendix).
+\end{itemize}
+\item \textbf{Player Interaction:}
+\begin{itemize}
+\item Can attempt stabilization with Arcana rolls but at cost of advancing clocks.
+\item Accepting impossibility grants DV 1 on next navigation roll.
+\item Mathematical instruments may provide +1 die to related rolls.
+\end{itemize}
 \end{itemize}
 
-\subsubsection{Clubs - Wayward Complications}
+\clearpage
+
+\section*{5. Key Locations in the Ways Between (Enhanced Descriptions)}
+
+\subsection*{5.1 The Spiral of Infinite Regret}
+
+\textbf{Enhanced Description:} This path represents the futility of certain journeys and the trap of cyclical thinking. No matter how far one climbs, they always find themselves back at the beginning, though perhaps with new, horrific understanding or madness. The spiral is made not of stone, but of crystallized moments of \textit{regret} - each step is a memory of a choice not taken, a word unsaid, a life unlived. The stones whisper the last words of everyone who has ever walked it, but these words are not their own; they are the words of the people they failed, the apologies they never made. The center contains a pool of liquid starlight that shows not your reflection, but a \textit{possible} version of yourself - one who made different choices, lived a different life. Gazing too long risks pulling you into that reflection, swapping places with a life that might be better or infinitely worse.
+
+\subsection*{5.2 The Bridge of Manifested Promises}
+
+\textbf{Enhanced Description:} Crossing this bridge requires making a vow, and the bridge remembers every debt. Those who cross without making a promise find themselves unable to leave, trapped in a loop of trying to cross without success, watched by the shades of oath-breakers who fell from its span. The bridge is made of crystallized oaths, each one a different color representing different types of promises - red for love (that soured), black for revenge (unfulfilled), gold for truth (betrayed), silver for loyalty (tested), grey for silence (broken). The railing is carved with the names of everyone who has ever crossed, and if you look closely, you can see some names that are still being \textit{carved} - the bridge writing the names of those who are about to make a promise it will enforce.
+
+\subsection*{5.3 The Stone Circle Where Houses Are Now Concepts}
+
+\textbf{Enhanced Description:} This location represents the shift in perspective that occurs in the Ways Between. What was once familiar and grounded becomes distant and abstract, while the cosmic becomes immediate and personal. The circle is made of monoliths that represent different \textit{concepts} - Justice (cold and implacable), Love (burning and devouring), Fear (a writhing shadow), Wonder (a light that hurts to look at directly), Regret (a stone that weeps), Time (a pillar that ages and rejuvenates in seconds). Each stone is a door to a realm where that concept is the fundamental law of physics. Stand near the stone of Fear, and gravity pulls toward your greatest terror, manifesting as a physical weight. Stand near the stone of Wonder, and the air itself becomes curious, asking questions in whispers that make your mind reel. Stand near the stone of Time, and you age a year with each heartbeat, or revert to infancy.
+
+\subsection*{5.4 The Tunnel of Collective Memory}
+
+\textbf{Enhanced Description:} In this place, travelers can hear the thoughts of everyone who has ever passed through. The weight of collective memory can be overwhelming, and distinguishing one's own thoughts from those of others becomes difficult, then impossible. The tunnel walls are made of crystallized memories, each one glowing with the emotional intensity of the moment it captured. Walk too close to the walls, and you might find yourself \textit{living} someone else's life for a moment - feeling their joy, their pain, their final breath. But beware: some memories are not just observed, they are \textit{infected}. A memory of profound loss might make you weep for a stranger's grief. A memory of unspeakable evil might whisper its secrets, tempting you to repeat the act. The tunnel has no end, only an endless stream of borrowed experiences, each one a step further from your own identity.
+
+\clearpage
+
+\section*{6. Monsters of the Ways Between (Enhanced Descriptions \& Updated Mechanics)}
+
+\subsection*{6.1 The Mist Embodiment}
 
 \begin{itemize}
-\item Path loops back to show you your own funeral preparations; the mourners look familiar
-\item Reality thins - you can see the dreams of sleeping travelers; their dreams are more real than your waking life
-\item Waymark points in the wrong direction; trust leads to places that never were and never will be
-\item Dream-bleed seeps through - your waking memories become someone else's nightmares; you start remembering things that happened to other people
+\item \textbf{Threat:} Major
+\item \textbf{Harm:} > (Drain/Conceptual)
+\item \textbf{SB:} Uncanny presence generates 2 SB per scene (Psychological Distortion)
+\item \textbf{Description (Enhanced):} Mist Embodiments are not merely ghosts. They are the \textit{condensed essence} of sorrow, loss, and unquiet spirits from the Mistlands, given semi-corporeal form by the permeable boundaries of the Ways Between. They appear as translucent humanoid figures with hollow, infinitely deep eyes and mouths that seem to whisper in forgotten tongues - the voices of the drowned, the lost, the betrayed. Their forms shift like smoke, but the smoke carries the weight of unspoken grief, of words never said, of deaths never properly mourned. The mist they create is not ordinary water vapor but something that carries the \textit{emotional residue} of tragedy. It clings, chokes, and whispers the names of people you loved who are no longer there.
+\item \textbf{Motivations:} Protecting sacred sites (especially burial grounds), seeking justice for past wrongs (often impossible or cyclical), feeding on the life force of the living to sustain their unnatural existence.
+\item \textbf{Abilities:}
+\begin{itemize}
+\item \textbf{Incorporeal:} Cannot be harmed by non-magical/Enchanted weapons.
+\item \textbf{Life Drain:} Successful attack inflicts Fatigue 1 in addition to harm, and the target must make a Spirit + Resolve (DV 3) test or gain +1 segment on the Dread Clock (the mist feeds on fear/sorrow). (Spirit + Resolve DV 3 to resist Dread)
+\item \textbf{Mist Form:} Can become gaseous to avoid physical attacks (immune to melee for 1 round, generates 1 SB - Disorientation).
+\item \textbf{Terrifying Presence:} Opponents start Desperate vs. social/mental actions (generates 1 SB - Fear).
+\end{itemize}
+\item \textbf{Weaknesses:}
+\begin{itemize}
+\item \textbf{Vulnerable to blessed/clean weapons:} Takes full harm.
+\item \textbf{Sunlight forces solid form:} Harm »becomes = (it can be physically grappled/contained).
+\item \textbf{Cannot cross running water:} Symbolic (and literal) barrier.
+\item \textbf{Specific unfinished business can be resolved:} If the source of its sorrow is addressed (even symbolically), it may pass on.
+\end{itemize}
 \end{itemize}
 
-\subsubsection{Diamonds - Path's Gifts}
+\textbf{Sample Encounter:} A Mist Embodiment guards an ancient Aeler burial chamber, its form a writhing mass of the faces of the dead. The GM can spend their SB to:
+\begin{itemize}
+\item 1 SB: Thick mist reduces visibility (-1 die to ranged attacks, +1 Dread segment if lost).
+\item 2 SB: Whispered voices cause confusion (players must reroll one success, or target gets +1 Fear).
+\item 3 SB: Life drain affects multiple targets (cone or area effect).
+\item 4+ SB: Embodiment merges with mist, becomes nearly impossible to target, and the mist begins to \textit{speak} in the voices of the PCs' deceased loved ones.
+\end{itemize}
+
+\clearpage
+
+\subsection*{6.2 Shadow Stalker}
 
 \begin{itemize}
-\item Waymark that always points toward your next important choice; it hums with a frequency that matches your heartbeat
-\item Token of passage - road recognizes you as one who belongs; the token changes to match your current need
-\item Dream-catcher that filters nightmares from your rest; it weaves the nightmares into beautiful tapestries you can't quite remember upon waking
-\item Truth-compass that points to what you most need to know, not what you want to hear; the needle spins wildly when you're lying to yourself
+\item \textbf{Threat:} Major
+\item \textbf{Harm:} > (Drain/Existential)
+\item \textbf{SB:} Unnatural presence generates 2-3 SB per scene (Psychological Distortion/Environmental Hazard)
+\item \textbf{Description (Enhanced):} Shadow Stalkers are creatures of \textit{living darkness} that hunt in places where light fears to go. They are not cast shadows but \textit{chosen} shadows - they can extend, retract, or reshape the darkness they command. They appear as shifting pools of shadow that move with purpose and intelligence, often found in ancient ruins, deep caves, or the darkest hours of night in the Ways Between. When they move, they leave behind areas of \textit{permanent shadow} that seem to have weight, substance, and a will of their own. These shadows can whisper, grasp, and pull. They are not just predators; they are manifestations of the \textit{fear of the dark} given form.
+\item \textbf{Motivations:} Feeding on fear, protecting dark places, serving ancient masters (or concepts like "Darkness" or "Silence").
+\item \textbf{Abilities:}
+\begin{itemize}
+\item \textbf{Shadow Form:} Can pass through small openings, ignore non-magical barriers.
+\item \textbf{Fear Feed:} Grows stronger as opponents become afraid (Start Desperate, +1 die per Fear effect the target has). The more afraid you are, the more powerful it becomes.
+\item \textbf{Darkness Manipulation:} Can extinguish lights, create areas of shadow (Environmental hazard +2 - difficult terrain, -1 die to perception). Shadow areas can act independently.
+\item \textbf{Silent Movement:} Cannot be detected by normal hearing (Stealth advantage).
+\end{itemize}
+\item \textbf{Weaknesses:}
+\begin{itemize}
+\item \textbf{Vulnerable to bright light:} Starts Controlled vs. illuminated targets. Sustained bright light can force it to flee or solidify.
+\item \textbf{Holy symbols/blessed items cause them harm:} Takes full harm.
+\item \textbf{Cannot cross consecrated ground:} A ward or blessed area is a barrier.
+\item \textbf{Often bound to specific locations or tasks:} Destroying the source of darkness or completing the task can banish it.
+\end{itemize}
 \end{itemize}
 
-\subsection{Special Rules for Of the Ways Between}
+\textbf{Sample Encounter:} A Shadow Stalker hunts the PCs through an abandoned temple, its form a shifting mass of deeper darkness. The GM can spend their SB to:
+\begin{itemize}
+\item 1 SB: Shadows deepen, reducing visibility (-1 die to all actions, +1 Dread if claustrophobic).
+\item 2 SB: Multiple stalkers emerge from darkness (flanking, +1 Opponent).
+\item 3 SB: Target's shadow turns against them (Hindered, -1 die, or makes an attack).
+\item 4+ SB: Stalker merges with darkness, becomes nearly invisible, and the darkness itself begins to \textit{squeeze} the PCs (ongoing environmental hazard).
+\end{itemize}
+
+\clearpage
+
+\subsection*{6.3 Concept Echo}
 
 \begin{itemize}
-\item \textbf{Dream-Logic Navigation:} Any Ace adds a metaphysical requirement (sacrifice, taboo, or transformation) that must be fulfilled to pass. The requirement always seems reasonable until you try to fulfill it.
-\item \textbf{Memory Currency:} Diamonds can be traded for information about other travelers or previous paths taken. The information comes with the emotional weight of the original experience.
-\item \textbf{Time-Drift:} Any 2-4 indicates the path moves through time as well as space; arrival may be before departure. You might meet yourself coming from the opposite direction.
-\item \textbf{Reflection Points:} Any face card means the path shows reflections of alternate choices or possible selves. Some of these selves are better than you, some are worse, and some are things you never could have imagined becoming.
-\end{itemize}
-
-\section{Campaign Clocks}
-
-\subsection{Reality Fracture Clock (12 segments)}
-
-\begin{center}
-\begin{tabular}{|m{4cm}|m{8cm}|}
-\hline
-\rowcolor{shadecolor}
-\textbf{Reality Fracture Clock} & \textbf{How much the fundamental laws of reality have been altered} \\
-\hline
-Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/12 \\
-\hline
-\end{tabular}
-\end{center}
-
-\textbf{Advancement Triggers:}
+\item \textbf{Threat:} Moderate
+\item \textbf{Harm:} = (Repetition/Drain)
+\item \textbf{SB:} Paradoxical nature generates 1-2 SB unpredictably (Temporal Distortion)
+\item \textbf{Description (Enhanced):} Concept Echoes are manifestations of Acasian curses - repeated moments of trauma or tragedy that play out endlessly. They are not ghosts of people, but ghosts of \textit{events}, trapped in a temporal loop, reliving their final moments with the intensity of fresh trauma. They appear as ghostly reenactments of past events, unable to perceive the present but affecting it nonetheless. These echoes exist in a state of temporal loop, reliving their final moments with the intensity of fresh trauma. They are not truly alive or dead, but caught in a liminal state between memory and reality. Their presence causes the air to shimmer like heat waves, and time itself seems to stutter in their vicinity. They are not malevolent, but they are \textit{relentless}. They will replay their moment until something interferes, often dragging the living into their loop.
+\item \textbf{Motivations:} Repeating their final moments, seeking resolution (often impossible), protecting something they died for.
+\item \textbf{Abilities:}
 \begin{itemize}
-\item Impossible stellar movements observed: +1 segment per day (the constellations rearrange themselves to spell warnings)
-\item Dimensional mathematics researched: +2 segments (each equation solved reveals three new impossibilities)
-\item PCs directly perceive alien geometry: +3 segments (seeing a triangle with four sides burns a permanent image in your mind)
-\item Local reality becomes unstable: +2 segments per incident (gravity reverses, colors have no names, mathematics proves 1=0)
-\item Ancient Aeler experiments disturbed: +3 segments (the Aeler were trying to map the Ways Between, and they left maps behind)
+\item \textbf{Temporal Loop:} Actions repeat in predictable patterns (predictable but relentless). Anyone entering the loop must make a Wits + Resolve (DV 3) test each round or begin to mimic the actions of the echo.
+\item \textbf{Curse Resonance:} Other supernatural effects in area gain +1 die (amplifies horror, making other entities/complications more potent).
+\item \textbf{Unfinished Business:} Cannot be permanently defeated until their purpose is fulfilled (or the loop is broken in a specific way).
+\item \textbf{Echo Sight:} Can perceive other supernatural entities clearly (advantage vs. Outsiders).
 \end{itemize}
-
-\subsection{Collective Sanity Clock (10 segments)}
-
-\begin{center}
-\begin{tabular}{|m{4cm}|m{8cm}|}
-\hline
-\rowcolor{shadecolor}
-\textbf{Collective Sanity Clock} & \textbf{How much the observers and inhabitants are affected by cosmic horror} \\
-\hline
-Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/10 \\
-\hline
-\end{tabular}
-\end{center}
-
-\textbf{Advancement Triggers:}
+\item \textbf{Weaknesses:}
 \begin{itemize}
-\item Reality Fracture Clock advances: +1 segment (when reality breaks, minds follow)
-\item Direct observation of alien entities: +2 segments each (seeing the true form of the Choice Embodiment is like looking directly at the concept of choice)
-\item Comprehension of higher-dimensional concepts: +2 segments (understanding that you exist in seventeen dimensions simultaneously is not enlightening)
-\item Witnessing impossible geometric shapes: +1 segment each (a sphere that exists inside itself)
-\item Temporal anomalies experienced: +1 segment per hour (time loops, causality violations, meeting your own grandfather before he was born)
+\item \textbf{Follows strict behavioral patterns:} Predictable, allowing clever PCs to avoid or exploit the loop.
+\item \textbf{Cannot adapt to new situations:} It's locked in its moment.
+\item \textbf{Specific actions can break their cycle:} Often related to completing the action, preventing the event, or performing a symbolic act of closure.
+\item \textbf{Often vulnerable during key moments of their loop:} The moment of death or trauma is usually the weakest point.
+\end{itemize}
 \end{itemize}
 
-\subsection{Existential Threat Clock (15 segments)}
-
-\begin{center}
-\begin{tabular}{|m{4cm}|m{8cm}|}
-\hline
-\rowcolor{shadecolor}
-\textbf{Existential Threat Clock} & \textbf{How close the cosmic entity is to fully manifesting in our reality} \\
-\hline
-Segments & \textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet\textbullet 0/15 \\
-\hline
-\end{tabular}
-\end{center}
-
-\textbf{Advancement Triggers:}
+\textbf{Sample Encounter:} A Concept Echo of a murdered merchant replays his final journey through a marketplace, being stabbed in an alley. The PCs entering the area might find themselves inexplicably drawn to repeat his steps. The GM can spend their SB to:
 \begin{itemize}
-\item Reality Fracture reaches 6 segments: +2 segments (the cracks in reality are big enough for something to slip through)
-\item Collective Sanity reaches 8 segments: +3 segments (when enough minds break, they create a resonance that calls to things that should not exist)
-\item PCs attempt to communicate with alien intelligence: +3 segments (the entity speaks in a language made of mathematical proofs that drive listeners mad)
-\item Dimensional barriers weakened further: +2 segments (the walls between worlds are paper-thin)
-\item Ancient Aeler safeguards fail: +4 segments (the Aeler built prisons for things that exist outside the concept of existence)
+\item 1 SB: Echo's presence causes others to repeat past mistakes (target must reroll successes on a related roll).
+\item 2 SB: Environmental objects become cursed (doors jam mimicking the alley gate, coins turn to leaves like the victim's last breath).
+\item 3 SB: Multiple echoes manifest (entire scene repeats, a cacophony of deaths).
+\item 4+ SB: The loop "infects" a PC, who begins to relive a traumatic moment from their own past (ongoing effect until broken).
 \end{itemize}
 
-\section{Sample Sessions}
+\clearpage
 
-\subsection{Session 1: Arrival in the Ways Between}
+\section*{7. Using the Horror Deck System (Integrated from Horror Campaigns)}
 
-\textbf{Opening Scene:} The PCs find themselves on a path that wasn't there moments before. The landscape around them shifts subtly - familiar landmarks become alien, and the sky above shows constellations that represent abstract concepts rather than stars. The air tastes of copper and possibility, and every step feels like walking on the surface of a thought.
+\subsection*{7.1 Drawing from the Ways Between Deck (Cosmic Horror Generator)}
 
-\textbf{Key Encounters:}
+The \textbf{Cosmic Horror Generator} from the Horror Campaigns expansion provides a rich source of narrative content tailored for the incomprehensible nature of the Ways Between. Each draw should feel meaningful and contribute to the overall atmosphere of existential uncertainty and psychological horror.
+
+\begin{itemize}
+\item \textbf{Deck Theme:} Reality-breaking threats that challenge understanding of existence itself.
+\item \textbf{Special Mechanics:}
+\begin{itemize}
+\item Any \textbf{Ace} adds a fundamental law of reality that becomes unreliable (time flows backward, gravity weakens, causality breaks).
+\item \textbf{Face cards (J/Q/K)} represent cosmic entities or phenomena beyond normal comprehension.
+\item \textbf{Black suits (♠, ♣):} Physical reality distortions, existential threats.
+\item \textbf{Red suits (♡, ♢):} Psychological/cosmic influence, forbidden knowledge, revelations.
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{7.1.1 Spades - Path Features (Impossible locations, reality-warped sites)}
+\begin{itemize}
+\item \textit{(Use examples from Horror Campaigns, pg 20, or create new ones specific to the Ways Between)}
+\item Example: 2. Observatory with a telescope that shows stars that shouldn't exist (reality fracture trigger). K. Black monolith that exists partially outside normal space-time (major threat).
+\end{itemize}
+
+\subsubsection*{7.1.2 Hearts - Fellow Travelers (Cosmic beings, affected people)}
+\begin{itemize}
+\item \textit{(Use examples from Horror Campaigns, pg 20, or create new ones)}
+\item Example: 5. Entity that exists as pure geometric impossibility (major threat). 9. Scientist whose mind has been rewritten by cosmic influence (potential ally/NPC).
+\end{itemize}
+
+\subsubsection*{7.1.3 Clubs - Wayward Complications (Reality distortions, existential dread)}
+\begin{itemize}
+\item \textit{(Use examples from Horror Campaigns, pg 21, or create new ones)}
+\item Example: 4. Temporal loop where the same conversation repeats with slight variations (environmental hazard). Q. Dimensions beginning to bleed into each other (reality fracture trigger).
+\end{itemize}
+
+\subsubsection*{7.1.4 Diamonds - Path's Gifts (Forbidden knowledge, cosmic tools)}
+\begin{itemize}
+\item \textit{(Use examples from Horror Campaigns, pg 21, or create new ones)}
+\item Example: 3. Mathematical formula that describes the shape of space-time itself (resource). 9. Protective ward that maintains local reality coherence for a limited time (asset).
+\end{itemize}
+
+\textbf{Quick Use Notes (Modified for Ways Between):}
+\begin{itemize}
+\item Draw until you have all four suits: Spade = place/feature, Heart = entity/NPC, Club = pressure/complication, Diamond = leverage/revelation/resource.
+\item Highest rank sets the main Clock size (2--5 → 4, 6--10 → 6, J/Q/K → 8, A → 10).
+\item Diamonds are codified outcomes (knowledge/tools/leverages) that change the situation rather than call for a roll.
+\item If any \textbf{Ace} appears, add a fundamental law of reality that becomes unreliable (GM's choice, ties to campaign clocks).
+\item \textbf{Face cards} represent significant cosmic entities or phenomena. J=Minor threat/opportunity, Q=Major threat/opportunity, K=Pivotal/Campaign-shaping.
+\end{itemize}
+
+\clearpage
+
+\subsection*{7.2 Special Rules for Of the Ways Between}
+
+\begin{itemize}
+\item \textbf{Dream-Logic Navigation:} Any Ace not only adds a reality distortion but also a metaphysical requirement (sacrifice, taboo, or transformation) that must be fulfilled to pass. The requirement always seems reasonable until you try to fulfill it. \textit{Integrates with Reality Fracture Clock.}
+\item \textbf{Memory Currency:} Diamonds (especially knowledge/revelations) can be traded for information about other travelers or previous paths taken. The information comes with the emotional weight of the original experience. \textit{Integrates with Dread Clock.}
+\item \textbf{Time-Drift:} Any 2-4 on a navigation roll indicates the path moves through time as well as space; arrival may be before departure (or in a different timeline). You might meet yourself coming from the opposite direction. \textit{Integrates with Temporal Distortion rules and Collective Sanity Clock.}
+\item \textbf{Reflection Points:} Any face card means the path shows reflections of alternate choices or possible selves. Some of these selves are better than you, some are worse, and some are things you never could have imagined becoming. \textit{Integrates with Psychological Effects and Breaking Points.}
+\end{itemize}
+
+\section*{8. Sample Sessions (Updated Flow \& Mechanics)}
+
+\subsection*{8.1 Session 1: Arrival in the Ways Between}
+
+\begin{itemize}
+\item \textbf{Opening Scene:} The PCs find themselves on a path that wasn't there moments before. The landscape around them shifts subtly - familiar landmarks become alien, and the sky above shows constellations that represent abstract concepts rather than stars. The air tastes of copper and possibility, and every step feels like walking on the surface of a thought.
+\item \textbf{Key Encounters:}
 \begin{enumerate}
-\item Investigation of the shifting landscape (Wits + Investigation, DV 3) - The horizon moves when you're not looking directly at it
-\item First encounter with the Road's Own Child (Presence + Sway, DV 2) - It offers to guide you but its directions lead to places that exist only in metaphor
-\item Discovery of a waymark that points in impossible directions (Wits + Lore, DV 4) - The signpost shows arrows pointing toward concepts like "Regret" and "Wonder"
-\item Initial contact with the thinning of reality (Wits + Perception, DV 3) - You can see your own shadow having a conversation with itself
+\item \textbf{Investigation of the shifting landscape (Wits + Investigation, DV 3):} The horizon moves when you're not looking directly at it. \textit{Potential SB: Reality Distortion.}
+\item \textbf{First encounter with the Road's Own Child (Presence + Sway, DV 2):} It offers to guide you, but its directions lead to places that exist only in metaphor. \textit{Potential SB: Misleading Guidance, Memory Drain.}
+\item \textbf{Discovery of a waymark that points in impossible directions (Wits + Lore, DV 4):} The signpost shows arrows pointing toward concepts like "Regret" and "Wonder". \textit{Potential SB: Confusion, Psychological Distortion.}
+\item \textbf{Initial contact with the thinning of reality (Wits + Perception, DV 3):} You can see your own shadow having a conversation with itself. \textit{Potential SB: Reality Distortion.}
 \end{enumerate}
-
-\textbf{Dread Clock Advancement:}
+\item \textbf{Dread Clock Advancement:}
 \begin{itemize}
-\item First observation of impossible constellations: +1 segment (prevent with 1 Boon) - The stars spell out warnings in a language you don't recognize but somehow understand
-\item Realizing they cannot retrace their steps: +2 segments (prevent with 2 Boons) - The path behind you has become a wall of crystallized time
-\item The Road's Own Child absorbs a memory: +1 segment (prevent with 1 Boon) - You forget the face of someone you loved, replaced by the memory of a stranger
+\item First observation of impossible constellations: +1 segment (prevent with 1 Boon) - The stars spell out warnings in a language you don't recognize but somehow understand.
+\item Realizing they cannot retrace their steps: +2 segments (prevent with 2 Boons) - The path behind you has become a wall of crystallized time.
+\item The Road's Own Child absorbs a memory: +1 segment (prevent with 1 Boon) - You forget the face of someone you loved, replaced by the memory of a stranger.
+\end{itemize}
+\item \textbf{Campaign Clock Advancement:}
+\begin{itemize}
+\item \textbf{Reality Fracture:} +1 (reality laws begin to bend) - Gravity pulls towards your greatest fear.
+\item \textbf{Collective Sanity:} +1 (first signs of unreality) - Your companions' voices sound like they're speaking underwater.
+\end{itemize}
 \end{itemize}
 
-\textbf{Campaign Clock Advancement:}
+\clearpage
+
+\subsection*{8.2 Session 2: The Deeper Paths}
+
 \begin{itemize}
-\item Reality Fracture: +1 (reality laws begin to bend) - Gravity pulls toward your greatest fear
-\item Collective Sanity: +1 (first signs of unreality) - Your companions' voices sound like they're speaking underwater
-\end{itemize}
-
-\subsection{Session 2: The Deeper Paths}
-
-\textbf{Key Encounters:}
+\item \textbf{Focus:} Introduce the core monsters and escalate the weirdness. Use the Deck more frequently.
+\item \textbf{Key Encounters:}
 \begin{enumerate}
-\item Navigation through the Tunnel of Collective Memory (Wits + Survival, DV 4) - The walls whisper the thoughts of everyone who has ever died
-\item Encounter with a Mist Embodiment guarding a threshold (combat + social) - It demands to know why you're walking the paths of the dead
-\item Discovery of an ancient waystone with impossible inscriptions (Wits + Lore, DV 5) - The stone is carved with equations that prove the universe is a lie
-\item First direct contact with reality distortion (Spirit + Resolve, DV 5) - You see a triangle with four sides and feel your mind trying to accommodate the impossibility
+\item \textbf{Navigation through the Tunnel of Collective Memory (Wits + Survival, DV 4):} The walls whisper the thoughts of everyone who has ever died. \textit{Potential SB: Confusion, Memory Infection.}
+\item \textbf{Encounter with a Mist Embodiment guarding a threshold (Combat + Social):} It demands to know why you're walking the paths of the dead. \textit{Potential SB: Fear, Life Drain.}
+\item \textbf{Discovery of an ancient waystone with impossible inscriptions (Wits + Lore, DV 5):} The stone is carved with equations that prove the universe is a lie. \textit{Potential SB: Comprehension Risk (+2 Dread), Reality Distortion.}
+\item \textbf{First direct contact with reality distortion (Spirit + Resolve, DV 5):} You see a triangle with four sides and feel your mind trying to accommodate the impossibility. \textit{Potential SB: Geometric Perception, +2 Dread.}
 \end{enumerate}
-
-\textbf{Dread Clock Advancement:}
+\item \textbf{Dread Clock Advancement:}
 \begin{itemize}
-\item Seeing first truly alien entity: +2 segments (prevent with 2 Boons) - The Mist Embodiment's form includes geometric shapes that shouldn't exist
-\item Being touched by reality distortion: +3 segments (prevent with 3 Boons) - For a moment, you exist in seventeen dimensions simultaneously
-\item Discovering the extent of memory absorption: +2 segments (prevent with 2 Boons) - You remember dying, though it hasn't happened yet
+\item Seeing first truly alien entity: +2 segments (prevent with 2 Boons) - The Mist Embodiment's form includes geometric shapes that shouldn't exist.
+\item Being touched by reality distortion: +3 segments (prevent with 3 Boons) - For a moment, you exist in seventeen dimensions simultaneously.
+\item Discovering the extent of memory absorption: +2 segments (prevent with 2 Boons) - You remember dying, though it hasn't happened yet.
+\end{itemize}
+\item \textbf{Campaign Clock Advancement:}
+\begin{itemize}
+\item \textbf{Reality Fracture:} +2 (dimensional barriers disturbed) - The sky splits open to show the mathematical proof of existence.
+\item \textbf{Collective Sanity:} +2 (more travelers affected) - Your companions begin speaking in languages that predate human civilization.
+\end{itemize}
 \end{itemize}
 
-\textbf{Campaign Clock Advancement:}
+\subsection*{8.3 Session 3: The Truth Revealed}
+
 \begin{itemize}
-\item Reality Fracture: +2 (dimensional barriers disturbed) - The sky splits open to show the mathematical proof of existence
-\item Collective Sanity: +2 (more travelers affected) - Your companions begin speaking in languages that predate human civilization
-\end{itemize}
-
-\subsection{Session 3: The Truth Revealed}
-
-\textbf{Key Encounters:}
+\item \textbf{Focus:} Culmination. Confront the central horror (The Choice Embodiment, the source of the Reality Fracture) and offer resolution paths.
+\item \textbf{Key Encounters:}
 \begin{enumerate}
-\item Confrontation with the Choice Embodiment at a crucial crossroads (Presence + Command, DV 4) - It shows you every possible path and their infinite consequences
-\item Discovery of the true nature of the Ways Between (Wits + Arcana, DV 5) - The paths are not between places but between states of being
-\item Choice: Attempt to seal the dimensional rift or embrace cosmic knowledge - The decision itself reshapes reality
-\item Final observation of the entity through mathematical resonance - You see the universe as a single, vast equation
+\item \textbf{Confrontation with the Choice Embodiment at a crucial crossroads (Presence + Command, DV 4):} It shows you every possible path and their infinite consequences. \textit{Potential SB: Paradox, Temporal Echo.}
+\item \textbf{Discovery of the true nature of the Ways Between (Wits + Arcana, DV 5):} The paths are not between places but between \textit{states of being}. \textit{Potential SB: Comprehension Risk (+3 Dread).}
+\item \textbf{Choice:} Attempt to seal the dimensional rift or embrace cosmic knowledge - The decision itself reshapes reality. \textit{Player Agency Checkpoint.}
+\item \textbf{Final observation of the entity through mathematical resonance - You see the universe as a single, vast equation.} \textit{Potential SB: Existential Threat Spike.}
 \end{enumerate}
-
-\textbf{Dread Clock Advancement:}
+\item \textbf{Dread Clock Advancement:}
 \begin{itemize}
-\item Learning the truth about the Ways Between: +3 segments (prevent with 3 Boons) - You understand that you've always been walking these paths, even in your normal life
-\item Witnessing the Choice Embodiment's true nature: +2 segments (prevent with 2 Boons) - It is the moment of decision itself, given form
-\item Realizing the scope of cosmic threat: +2 segments (prevent with 2 Boons) - The entity is not trying to invade reality but to prove that reality is unnecessary
+\item Learning the truth about the Ways Between: +3 segments (prevent with 3 Boons) - You understand that you've always been walking these paths, even in your normal life.
+\item Witnessing the Choice Embodiment's true nature: +2 segments (prevent with 2 Boons) - It is the moment of decision itself, given form.
+\item Realizing the scope of cosmic threat: +2 segments (prevent with 2 Boons) - The entity is not trying to invade reality but to prove that reality is unnecessary.
+\end{itemize}
+\item \textbf{Campaign Clock Advancement:}
+\begin{itemize}
+\item \textbf{Reality Fracture:} +3 (major dimensional barrier weakened) - The boundary between possible and impossible becomes negotiable.
+\item \textbf{Collective Sanity:} +3 (party affected) - You all remember being different people in different realities.
+\item \textbf{Existential Threat:} +2 (entity closer to manifestation) - The equation that describes the universe begins to solve for zero.
+\end{itemize}
 \end{itemize}
 
-\textbf{Campaign Clock Advancement:}
+\clearpage
+
+\section*{9. Resolution Paths (Updated XP Awards)}
+
+\subsection*{9.1 The Paradox Seal}
+
+Use contradictory mathematical principles (possibly learned or found during the adventure) to create a logical paradox that forces the entity back beyond dimensional barriers. Success seals the rift but leaves the PCs with fragmented understanding of reality.
+
+\textbf{Award:} 15-18 XP.
+
+\subsection*{9.2 The Sacrificial Equation}
+
+Permanently bind oneself (or a willing volunteer) to the dimensional rift as an anchor to keep it stable. The PC becomes a living mathematical constant, existing partially outside normal reality but preventing the entity's full manifestation.
+
+\textbf{Award:} 18-20 XP but fundamentally change character nature (new background, potential for future complications).
+
+\subsection*{9.3 The Embrace of Infinity}
+
+Accept the entity's influence and allow it to rewrite reality according to alien logic. The PCs become heralds of a new cosmic order, gaining vast power but losing their humanity and connection to normal existence.
+
+\textbf{Award:} 8-10 XP but transform PCs into agents of cosmic horror (new motivations, potential for future campaigns as antagonists).
+
+\subsection*{9.4 The Fractal Escape}
+
+Use the entity's own geometric principles against it, creating a recursive pattern that traps it in an infinite loop of self-reference. Requires significant mathematical understanding and risks fractal contamination.
+
+\textbf{Award:} 20-22 XP if successful, but very difficult (high DV rolls, resource expenditure).
+
+\clearpage
+
+\section*{10. GM Tips and Advice (Enhanced for Cosmic Horror)}
+
+\subsection*{10.1 Atmosphere and Tension}
+
 \begin{itemize}
-\item Reality Fracture: +3 (major dimensional barrier weakened) - The boundary between possible and impossible becomes negotiable
-\item Collective Sanity: +3 (party affected) - You all remember being different people in different realities
-\item Existential Threat: +2 (entity closer to manifestation) - The equation that describes the universe begins to solve for zero
+\item \textbf{Building Dread:}
+\begin{itemize}
+\item Use lighting, sound, and physical environment to create unease - shadows that move independently, whispers that seem to come from inside the players' heads.
+\item Describe sensations and feelings, not just visual details - the taste of copper in the air, the feeling of being watched by something that exists in more dimensions than you.
+\item Let silences and pauses carry weight - sometimes what doesn't happen is more terrifying than what does.
+\item Make the familiar seem alien and threatening - your own reflection becomes a stranger, your voice sounds like it belongs to someone else.
+\end{itemize}
+\item \textbf{Pacing the Horror:}
+\begin{itemize}
+\item Start subtle and build gradually - begin with small impossibilities that seem almost comforting.
+\item Vary the intensity - allow moments of wonder and beauty that make the horror more stark by contrast.
+\item Use foreshadowing and ominous signs - the waymark that points toward "Regret" should make everyone uneasy.
+\item Save the biggest revelations for climactic moments - the true nature of the Choice Embodiment should be a revelation that recontextualizes everything.
+\end{itemize}
 \end{itemize}
 
-\section{Resolution Paths}
+\subsection*{10.2 Managing Fear and Sanity (Dread Clock)}
 
-\subsection{The Paradox Seal}
-
-Use contradictory mathematical principles to create a logical paradox that forces the entity back beyond dimensional barriers. Success seals the rift but leaves the PCs with fragmented understanding of reality. Award 15-18 XP.
-
-\subsection{The Sacrificial Equation}
-
-Permanently bind oneself to the dimensional rift as an anchor to keep it stable. The PC becomes a living mathematical constant, existing partially outside normal reality but preventing the entity's full manifestation. Award 18-20 XP but fundamentally change character nature.
-
-\subsection{The Embrace of Infinity}
-
-Accept the entity's influence and allow it to rewrite reality according to alien logic. The PCs become heralds of a new cosmic order, gaining vast power but losing their humanity and connection to normal existence. Award 8-10 XP but transform PCs into agents of cosmic horror.
-
-\subsection{The Fractal Escape}
-
-Use the entity's own geometric principles against it, creating a recursive pattern that traps it in an infinite loop of self-reference. Requires significant mathematical understanding and risks fractal contamination. Award 20-22 XP if successful, but very difficult.
-
-\section{GM Tips and Advice}
-
-\subsection{Atmosphere and Tension}
-
-Building Dread:
 \begin{itemize}
-\item Use lighting, sound, and physical environment to create unease - shadows that move independently, whispers that seem to come from inside the players' heads
-\item Describe sensations and feelings, not just visual details - the taste of copper in the air, the feeling of being watched by something that exists in more dimensions than you
-\item Let silences and pauses carry weight - sometimes what doesn't happen is more terrifying than what does
-\item Make the familiar seem alien and threatening - your own reflection becomes a stranger, your voice sounds like it belongs to someone else
+\item \textbf{Fear as a Resource:}
+\begin{itemize}
+\item Fear should be a narrative driver, not a punishment - use it to push the story forward, not just to make players miserable.
+\item Let players feel powerful even when afraid - knowledge is power, even when that knowledge is terrible.
+\item Provide opportunities to confront and overcome fears - sometimes the only way forward is through the heart of madness.
+\item Balance terror with moments of triumph - even in the darkest places, hope can flicker like a candle in the void.
+\end{itemize}
+\item \textbf{Sanity Management (Dread Clock):}
+\begin{itemize}
+\item Make sanity loss feel meaningful and personal - each loss should change how the character perceives the world.
+\item Let it change how characters perceive and interact with the world - reality becomes negotiable.
+\item Provide ways to recover or adapt to mental trauma - some wounds heal, others become scars that define the character.
+\item Avoid making characters useless when sanity is low - madness can be a form of knowledge.
+\end{itemize}
 \end{itemize}
 
-Pacing the Horror:
+\clearpage
+
+\subsection*{10.3 Narrative Techniques}
+
 \begin{itemize}
-\item Start subtle and build gradually - begin with small impossibilities that seem almost comforting
-\item Vary the intensity - allow moments of wonder and beauty that make the horror more stark by contrast
-\item Use foreshadowing and ominous signs - the waymark that points toward "Regret" should make everyone uneasy
-\item Save the biggest revelations for climactic moments - the true nature of the Choice Embodiment should be a revelation that recontextualizes everything
+\item \textbf{Unreliable Information:}
+\begin{itemize}
+\item Not all sources are trustworthy - the Road's Own Child means well but doesn't understand the consequences of its guidance.
+\item Clues may be misleading or incomplete - the waymark that points toward "Wonder" might lead to a place where wonder is a physical force that can kill.
+\item NPCs might be lying, mistaken, or hiding crucial information - the Choice Embodiment speaks only in paradoxes that are both true and false.
+\item Let players discover the truth through investigation and deduction - the universe rewards those who seek understanding, even when that understanding is terrible.
+\end{itemize}
+\item \textbf{The Unknown vs. The Known:}
+\begin{itemize}
+\item The unknown should be terrifying because of what it \textit{might} be - the mist that whispers in forgotten tongues might contain the voices of everyone who has ever died.
+\item Revelations should be both satisfying and horrifying - understanding the true nature of the Ways Between explains everything but makes the horror worse.
+\item Partial knowledge can be more unsettling than complete ignorance - knowing that you exist in seventeen dimensions but not understanding what that means.
+\item Let mystery be part of the horror - some questions should remain unanswered, some doors should never be opened.
+\end{itemize}
 \end{itemize}
 
-\subsection{Managing Fear and Sanity}
+\clearpage
 
-Fear as a Resource:
+\section*{11. Appendix: Additional Resources (Integrated from Horror Campaigns)}
+
+\subsection*{11.1 Custom Horror Mechanics}
+
 \begin{itemize}
-\item Fear should be a narrative driver, not a punishment - use it to push the story forward, not just to make players miserable
-\item Let players feel powerful even when afraid - knowledge is power, even when that knowledge is terrible
-\item Provide opportunities to confront and overcome fears - sometimes the only way forward is through the heart of madness
-\item Balance terror with moments of triumph - even in the darkest places, hope can flicker like a candle in the void
+\item \textbf{Geometric Perception:} When PCs observe alien geometry or impossible stellar patterns, they must make Wits + Lore rolls (DV 4) to avoid comprehension effects. Each failure:
+\begin{itemize}
+\item Generates 2 SB that the GM can spend for reality distortions.
+\item Advances Dread Clock by 2 segments (prevent with 2 Boons).
+\item May grant forbidden knowledge at great psychological cost - understanding that changes the character fundamentally.
+\end{itemize}
+\item \textbf{Temporal Distortion:} As reality fractures, time becomes unreliable:
+\begin{itemize}
+\item +1 die to Investigation rolls for finding temporal anomalies - you can sense where time loops back on itself.
+\item But also experience time loops that generate 2 SB - you might live the same conversation three times, each time with different outcomes.
+\item May become unstuck in time, unreliable narrators - you remember events that haven't happened yet, or forget events that already occurred.
+\end{itemize}
+\item \textbf{Dimensional Bleed:} PCs who reach 7+ Dread segments begin to exist partially outside normal space:
+\begin{itemize}
+\item Can perceive multiple dimensional layers simultaneously - you see the path you're walking and the mathematical equation that describes it.
+\item Speaking in mathematical equations without realizing it - your voice carries the weight of cosmic truth.
+\item Attraction to impossible geometric patterns - you find yourself drawn to triangles with four sides.
+\item May be able to perceive the entity directly - seeing it as the moment of decision itself, given form.
+\end{itemize}
 \end{itemize}
 
-Sanity Management:
-\begin{itemize}
-\item Make sanity loss feel meaningful and personal - each loss should change how the character perceives the world
-\item Let it change how characters perceive and interact with the world - reality becomes negotiable
-\item Provide ways to recover or adapt to mental trauma - some wounds heal, others become scars that define the character
-\item Avoid making characters useless when sanity is low - madness can be a form of knowledge
-\end{itemize}
-
-\subsection{Narrative Techniques}
-
-Unreliable Information:
-\begin{itemize}
-\item Not all sources are trustworthy - the Road's Own Child means well but doesn't understand the consequences of its guidance
-\item Clues may be misleading or incomplete - the waymark that points toward "Wonder" might lead to a place where wonder is a physical force that can kill
-\item NPCs might be lying, mistaken, or hiding crucial information - the Choice Embodiment speaks only in paradoxes that are both true and false
-\item Let players discover the truth through investigation and deduction - the universe rewards those who seek understanding, even when that understanding is terrible
-\end{itemize}
-
-The Unknown vs. The Known:
-\begin{itemize}
-\item The unknown should be terrifying because of what it might be - the mist that whispers in forgotten tongues might contain the voices of everyone who has ever died
-\item Revelations should be both satisfying and horrifying - understanding the true nature of the Ways Between explains everything but makes the horror worse
-\item Partial knowledge can be more unsettling than complete ignorance - knowing that you exist in seventeen dimensions but not understanding what that means
-\item Let mystery be part of the horror - some questions should remain unanswered, some doors should never be opened
-\end{itemize}
-
-\section{Appendix: Additional Resources}
-
-\subsection{Custom Horror Mechanics}
-
-\subsubsection{Geometric Perception}
-
-When PCs observe alien geometry or impossible stellar patterns, they must make Wits + Lore rolls (DV 4) to avoid comprehension effects. Each failure:
-\begin{itemize}
-\item Generates 2 SB that the GM can spend for reality distortions
-\item Advances Dread Clock by 2 segments (prevent with 2 Boons)
-\item May grant forbidden knowledge at great psychological cost - understanding that changes the character fundamentally
-\end{itemize}
-
-\subsubsection{Temporal Distortion}
-
-As reality fractures, time becomes unreliable:
-\begin{itemize}
-\item +1 die to Investigation rolls for finding temporal anomalies - you can sense where time loops back on itself
-\item But also experience time loops that generate 2 SB - you might live the same conversation three times, each time with different outcomes
-\item May become unstuck in time, unreliable narrators - you remember events that haven't happened yet, or forget events that already occurred
-\end{itemize}
-
-\subsubsection{Dimensional Bleed}
-
-PCs who reach 7+ Dread segments begin to exist partially outside normal space:
-\begin{itemize}
-\item Can perceive multiple dimensional layers simultaneously - you see the path you're walking and the mathematical equation that describes it
-\item Speaking in mathematical equations without realizing it - your voice carries the weight of cosmic truth
-\item Attraction to impossible geometric patterns - you find yourself drawn to triangles with four sides
-\item May be able to perceive the entity directly - seeing it as the moment of decision itself, given form
-\end{itemize}
-
-\subsection{Collective Insanity}
-
-The party's collective Dread affects their perception of reality:
-\begin{itemize}
-\item Average Dread level determines reality stability - higher levels make the impossible more probable
-\item High average = shared hallucinations, impossible events become real, the paths reshape themselves around the party's fears
-\item Low average = grounding effect, some resistance to cosmic influence, reality maintains a tenuous hold
-\end{itemize}
-
-\subsection{Protective Items}
+\subsection*{11.2 Protective Items}
 
 \begin{itemize}
 \item \textbf{Blessed Warding Stone:} Provides +2 dice to resist supernatural influence and reduces Dread Clock advancement by 1 (minimum 1). Crumbles to dust if Dread Clock fills completely. The stone whispers warnings in a language that predates human speech.
@@ -699,7 +679,9 @@ The party's collective Dread affects their perception of reality:
 \item \textbf{Prayer Book of the Steadfast:} Once per session, allows reroll of failed Spirit + Resolve roll and prevents 1 segment of Dread Clock advancement. The pages turn of their own accord, revealing passages that speak to the character's deepest fears.
 \end{itemize}
 
-\subsection{Cursed Artifacts}
+\clearpage
+
+\subsection*{11.3 Cursed Artifacts}
 
 \begin{itemize}
 \item \textbf{Whispering Blade:} A dagger that hums with voices inaudible to most. Wielder gains +1 die to stealth and investigation rolls but must make Spirit + Resolve (DV 3) each session or advance Dread Clock by 1. The voices speak of things that should not be known, and their words carry the weight of cosmic truth.
@@ -707,139 +689,50 @@ The party's collective Dread affects their perception of reality:
 \item \textbf{Shroud of Whispers:} A burial cloth that grants immunity to fear effects but causes the wearer to hear the entity's whispers constantly. Must make Wits + Perception (DV 4) or advance Dread Clock by 2 each day worn. The shroud is woven from the dreams of the dead, and its wearer becomes a conduit for cosmic knowledge.
 \end{itemize}
 
-\section{Conclusion}
+\clearpage
 
-"Of the Ways Between" is designed to challenge your players not just physically, but psychologically and existentially. The horror lies not in gore or jump scares, but in the slow erosion of certainty and the terrifying realization that the universe may be far stranger and more hostile than they ever imagined.
+\section*{12. Quick Reference Cards}
 
-Remember that the best horror comes from what is left unsaid and unseen. Let the players' imaginations fill in the gaps, and trust in the power of implication over explicit description. The fear of what might be lurking in the shadows is often more effective than showing every monster in detail.
+\textit{(Include on cards or a summary page)}
 
-Most importantly, maintain communication with your players about comfort levels and boundaries. Horror can be deeply personal, and what one player finds thrilling, another might find genuinely distressing. A good horror game is one where everyone at the table is having fun and feeling appropriately challenged, not traumatized.
-
-The mechanics provided here are tools to enhance the horror experience, not replace good storytelling and atmosphere. Use them to support your narrative goals and create memorable, chilling experiences for your players.
-
-As the GM, you hold the quill that writes the legend, but it is the players who create the story. Guide them through the Ways Between, challenge their perceptions, and let them emerge changed by their journey - for better or for worse.
-
-\begin{center}
-\textbf{What are you willing to risk to reshape the world around you?}
-\end{center}
-
-In the Ways Between, that question takes on new meaning. Every step is a risk, every choice a potential turning point, and every revelation a potential descent into madness. But for those brave enough to walk these paths, the rewards - knowledge, power, understanding - may be worth the price.
-
-May your dice roll true, your choices be meaningful, and your players emerge from the Ways Between forever changed.
-
-\newpage
-
-\section*{Quick Reference Cards}
-
-\subsection*{Dread Clock Management}
-
-\begin{tabular}{|p{5cm}|p{7cm}|
-\hline
-\rowcolor{shadecolor}
-\textbf{Trigger} & \textbf{Segments} \\
-\hline
-Witnessing death/violence & +1 (prevent with 1 Boon) \\
-Encountering the unknown & +1 (prevent with 1 Boon) \\
-Personal failure with harm & +1 (prevent with 1 Boon) \\
-Direct threat to sanity/morality & +2 (prevent with 2 Boons) \\
-Major revelation about horror & +2 (prevent with 2 Boons) \\
-Companion harmed/lost & +3 (prevent with 3 Boons) \\
-\hline
-\end{tabular}
-
-\subsection*{Psychological Effects}
-
-\begin{tabular}{|p{2cm}|p{10cm}|}
-\hline
-\rowcolor{shadecolor}
-\textbf{Segments} & \textbf{Effects} \\
-\hline
-0-2 & Unease: -1 die to social rolls involving trust, minor sleep disturbances \\
-3-4 & Fear: -1 die to all rolls when alone, startle easily, avoid dark spaces \\
-5-6 & Terror: -2 dice to rolls involving courage or rational thought, may flee \\
-7-8 & Madness: -2 dice to most rolls, may act against own interests, hallucinations \\
-9-10 & Broken: Out of control, may become hostile, permanent psychological damage \\
-\hline
-\end{tabular}
-
-\subsection*{Campaign Clocks Quick Reference}
-
-\textbf{Reality Fracture Clock (12 segments):}
 \begin{itemize}
-\item Measures how much fundamental laws of reality have been altered
-\item Triggers: Impossible phenomena, dimensional research, entity observation
+\item \textbf{Dread Clock Management}
+\begin{itemize}
+\item \textbf{Triggers:} Death/Violence (+1), Unknown (+1), Failure (+1), Sanity Threat (+2), Major Revelation (+2), Companion Lost (+3).
+\item \textbf{Prevention:} Spend Boons (1:1, 2:2, 3:3). Spend 2 Boons to resist Breaking Point.
+\item \textbf{Effects:} 0-2 Unease, 3-4 Fear, 5-6 Terror, 7-8 Madness, 9-10 Broken.
 \end{itemize}
 
-\textbf{Collective Sanity Clock (10 segments):}
+\item \textbf{Campaign Clocks Quick Reference}
 \begin{itemize}
-\item Tracks psychological impact on party
-\item Triggers: Reality Fracture advancement, alien entity observation
+\item \textbf{Reality Fracture Clock (12):} Reality laws unstable. Triggers: Impossible phenomena, research, alien geometry.
+\item \textbf{Collective Sanity Clock (8):} Party-wide psychological effects. Triggers: Reality Fracture, alien entities.
+\item \textbf{Existential Threat Clock (15):} Cosmic entity manifestation. Triggers: Other clocks filling, communication attempts.
 \end{itemize}
 
-\textbf{Existential Threat Clock (15 segments):}
+\item \textbf{Key Monster Abilities}
 \begin{itemize}
-\item Measures entity's approach to full manifestation
-\item Triggers: Reality/Cosmic clock thresholds, communication attempts
+\item \textbf{Mist Embodiment:} Incorporeal, Life Drain, Mist Form, Terrifying Presence. Weak: Blessed weapons, sunlight, running water.
+\item \textbf{Shadow Stalker:} Shadow Form, Fear Feed, Darkness Manipulation, Silent Movement. Weak: Bright light, holy symbols, consecrated ground.
+\item \textbf{Concept Echo:} Temporal Loop, Curse Resonance, Unfinished Business, Echo Sight. Weak: Predictable patterns, specific actions.
 \end{itemize}
 
-\subsection*{Key Monster Abilities}
-
-\textbf{Mist Embodiment:}
+\item \textbf{Deck-Based Navigation (Cosmic Horror Generator)}
 \begin{itemize}
-\item Incorporeal, Life Drain, Mist Form, Terrifying Presence
-\item Weak: Blessed weapons, sunlight, running water
+\item \textbf{Spades (Places):} Impossible locations, reality-warped sites.
+\item \textbf{Hearts (Travelers):} Cosmic beings, affected people.
+\item \textbf{Clubs (Complications):} Reality distortions, existential dread.
+\item \textbf{Diamonds (Rewards):} Forbidden knowledge, cosmic tools.
+\item \textbf{Special Rules:} Aces (reality breaks), Faces (entities/concepts), Dream-Logic, Memory Currency.
 \end{itemize}
 
-\textbf{Shadow Stalker:}
+\item \textbf{Resolution Paths Summary}
 \begin{itemize}
-\item Shadow Form, Fear Feed, Darkness Manipulation, Silent Movement
-\item Weak: Bright light, holy symbols, consecrated ground
+\item \textbf{Paradox Seal:} Seal rift. Award 15-18 XP.
+\item \textbf{Sacrificial Equation:} Bind self. Award 18-20 XP.
+\item \textbf{Embrace of Infinity:} Accept influence. Award 8-10 XP.
+\item \textbf{Fractal Escape:} Trap entity. Award 20-22 XP.
 \end{itemize}
-
-\textbf{Concept Echo:}
-\begin{itemize}
-\item Temporal Loop, Curse Resonance, Unfinished Business, Echo Sight
-\item Weak: Predictable patterns, specific actions, vulnerable during key moments
 \end{itemize}
-
-\subsection*{Deck-Based Navigation}
-
-\textbf{Spades (Places):}
-\begin{itemize}
-\item Mist-shrouded ford, bone-lit corridor, threshold arch
-\item Spiral path, bridge of manifested promises
-\end{itemize}
-
-\textbf{Hearts (Travelers):}
-\begin{itemize}
-\item Lost pilgrim, toll-taker, wayward spirit guide
-\item Dream-merchant, child-ghost, merchant with map
-\end{itemize}
-
-\textbf{Clubs (Complications):}
-\begin{itemize}
-\item Path loops back, reality thins, waymark points wrong
-\item Dream-bleed seeps, toll demanded, path splits
-\end{itemize}
-
-\textbf{Diamonds (Rewards):}
-\begin{itemize}
-\item Waymark points to important choice, token of passage
-\item Dream-catcher, truth-compass, memory-anchor
-\end{itemize}
-
-\subsection*{Resolution Paths Summary}
-
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\rowcolor{shadecolor}
-\textbf{Path} & \textbf{Outcome \& XP} \\
-\hline
-Paradox Seal & Seal rift with contradictory math. Award 15-18 XP. \\
-Sacrificial Equation & Bind self as dimensional anchor. Award 18-20 XP. \\
-Embrace of Infinity & Accept entity's influence. Award 8-10 XP. \\
-Fractal Escape & Trap entity in recursive pattern. Award 20-22 XP. \\
-\hline
-\end{tabular}
 
 \end{document}
