@@ -1,0 +1,104 @@
+name: Build Fate's Edge PDFs
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - "tools/**"
+      - "ttrpg/**"
+      - ".github/workflows/build-pdfs.yml"
+  pull_request:
+    paths:
+      - "tools/**"
+      - "ttrpg/**"
+      - ".github/workflows/build-pdfs.yml"
+  workflow_dispatch: {}
+  # If you push a tag like v1.2.3, we’ll also create a Release with the PDFs
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # fetch-depth 0 so $GITHUB_WORKSPACE is a full git repo if your scripts need it
+          fetch-depth: 0
+
+      # Option A: Quick & simple (large install). If your compile script needs a lot of LaTeX pkgs, use texlive-full.
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full latexmk make ghostscript poppler-utils
+
+      - name: Make compile script executable
+        run: |
+          chmod +x tools/compile_latex.sh
+
+      - name: Build SRD
+        run: |
+          set -e
+          echo "Building SRD"
+          cd ttrpg/srd
+          ../../tools/compile_latex.sh -f fates-edge-srd-main.tex -n "Fate's Edge - SRD.pdf" || echo "SRD did not build"
+
+      - name: Build Player's Guide
+        run: |
+          set -e
+          echo "Building Player's Guide"
+          cd ttrpg/player_guide
+          ../../tools/compile_latex.sh -f fates_edge_players_guide.tex -n "Fate's Edge - Player's Guide.pdf" || echo "Player's Guide did not build"
+
+      - name: Build GM Guide
+        run: |
+          set -e
+          echo "Building GM Guide"
+          cd ttrpg/gm_guide
+          ../../tools/compile_latex.sh -f gm_guide.tex -n "Fate's Edge - GM Guide.pdf" || echo "GM Guide did not build"
+
+      - name: Build Comprehensive Resource Guide
+        run: |
+          set -e
+          echo "Building Comprehensive Resource Guide"
+          cd ttrpg/reference
+          ../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" || echo "Resource Guide did not build"
+
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fates-edge-pdfs
+          path: |
+            ttrpg/build/Fate's Edge - SRD.pdf
+            ttrpg/build/Fate's Edge - Player's Guide.pdf
+            ttrpg/build/Fate's Edge - GM Guide.pdf
+            ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf
+          if-no-files-found: warn
+
+  release:
+    # Only run when building a tag like v1.2.3
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: fates-edge-pdfs
+          path: dist
+
+      - name: Create GitHub Release and attach PDFs
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
