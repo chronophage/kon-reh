@@ -7,12 +7,12 @@ on:
       - "v*"
     paths:
       - "tools/**"
-      - "ttrpg/**"
+      - "konreh/ttrpg/**"
       - ".github/workflows/build-pdfs.yml"
   pull_request:
     paths:
       - "tools/**"
-      - "ttrpg/**"
+      - "konreh/ttrpg/**"
       - ".github/workflows/build-pdfs.yml"
   workflow_dispatch: {}
 
@@ -24,10 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # fetch-depth 0 so $GITHUB_WORKSPACE is a full git repo if your scripts need it
           fetch-depth: 0
 
-      # Option A: Quick & simple (large install). If your compile script needs a lot of LaTeX pkgs, use texlive-full.
       - name: Install LaTeX toolchain
         run: |
           sudo apt-get update
@@ -41,87 +39,86 @@ jobs:
         run: |
           set -e
           echo "Building SRD"
-          cd ttrpg/srd
-          ../../tools/compile_latex.sh -f fates-edge-srd-main.tex -n "Fate's Edge - SRD.pdf" || echo "SRD did not build"
+          cd konreh/ttrpg/srd
+          ../../../tools/compile_latex.sh -f fates-edge-srd-main.tex -n "Fate's Edge - SRD.pdf" || echo "SRD did not build"
 
       - name: Build Player's Guide
         run: |
           set -e
           echo "Building Player's Guide"
-          cd ttrpg/player_guide
-          ../../tools/compile_latex.sh -f fates_edge_players_guide.tex -n "Fate's Edge - Player's Guide.pdf" || echo "Player's Guide did not build"
+          cd konreh/ttrpg/player_guide
+          ../../../tools/compile_latex.sh -f fates_edge_players_guide.tex -n "Fate's Edge - Player's Guide.pdf" || echo "Player's Guide did not build"
 
       - name: Build GM Guide
         run: |
           set -e
           echo "Building GM Guide"
-          cd ttrpg/gm_guide
-          ../../tools/compile_latex.sh -f gm_guide.tex -n "Fate's Edge - GM Guide.pdf" || echo "GM Guide did not build"
+          cd konreh/ttrpg/gm_guide
+          ../../../tools/compile_latex.sh -f gm_guide.tex -n "Fate's Edge - GM Guide.pdf" || echo "GM Guide did not build"
 
       - name: Build Comprehensive Resource Guide
         run: |
           set -e
           echo "Building Comprehensive Resource Guide"
-          cd ttrpg/reference
-          ../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" || echo "Resource Guide did not build"
+          cd konreh/ttrpg/reference
+          ../../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" || echo "Resource Guide did not build"
 
       - name: Build Adventures
         run: |
           set -e
-          cd ttrpg/build/adventures
+          cd konreh/ttrpg/build/adventures
           echo "Building Fate's Edge - Between the Knot and the Gate"
-          ../../tools/compile_latex.sh -f between-knot-and-gate.tex -n "Fate's Edge - Between the Knot and the Gate.pdf" || echo "Fate's Edge - Between the Knot and the Gate did not build"
+          ../../../tools/compile_latex.sh -f between-knot-and-gate.tex -n "Fate's Edge - Between the Knot and the Gate.pdf" || echo "Fate's Edge - Between the Knot and the Gate did not build"
           echo "Building Fate's Edge - Blood and Silk - Intro Adventure"
-          ../../tools/compile_latex.sh -f blood_and_silk_intro_adv.tex -n "Fate's Edge - Blood and Silk - Intro Adventure.pdf" || echo "Fate's Edge - Blood and Silk - Intro Adventure did not build"
+          ../../../tools/compile_latex.sh -f blood_and_silk_intro_adv.tex -n "Fate's Edge - Blood and Silk - Intro Adventure.pdf" || echo "Fate's Edge - Blood and Silk - Intro Adventure did not build"
           echo "Building Fate's Edge - Epic Adventures - Ashes of the Infernal Accord"
-          ../../tools/compile_latex.sh -f ashes_of_infernal_accord.tex -n "Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf" || echo "Fate's Edge - Epic Adventures - Ashes of the Infernal Accord did not build"
+          ../../../tools/compile_latex.sh -f ashes_of_infernal_accord.tex -n "Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf" || echo "Fate's Edge - Epic Adventures - Ashes of the Infernal Accord did not build"
           echo "Building Fate's Edge - Of Ways Between"
-          ../../tools/compile_latex.sh -f of_ways_between.tex -n "Fate's Edge - Of Ways Between.pdf" || echo "Fate's Edge - Of Ways Between did not build"
+          ../../../tools/compile_latex.sh -f of_ways_between.tex -n "Fate's Edge - Of Ways Between.pdf" || echo "Fate's Edge - Of Ways Between did not build"
           echo "Building Fate's Edge - The Recursive Garden"
-          ../../tools/compile_latex.sh -f recursive_garden.tex -n "Fate's Edge - The Recursive Garden.pdf" || echo "Fate's Edge - The Recursive Garden did not build"
+          ../../../tools/compile_latex.sh -f recursive_garden.tex -n "Fate's Edge - The Recursive Garden.pdf" || echo "Fate's Edge - The Recursive Garden did not build"
           echo "Building Fate's Edge - The Serpent's Coil"
-          ../../tools/compile_latex.sh -f the_serpents_coil.tex -n "Fate's Edge - The Serpent's Coil.pdf" || echo "Fate's Edge - The Serpent's Coil did not build"
+          ../../../tools/compile_latex.sh -f the_serpents_coil.tex -n "Fate's Edge - The Serpent's Coil.pdf" || echo "Fate's Edge - The Serpent's Coil did not build"
           echo "Building Fate's Edge - Whispers in the Stacks"
-          ../../tools/compile_latex.sh -f whispers_in_the_stacks.tex -n "Fate's Edge - Whispers in the Stacks.pdf" || echo "Fate's Edge - Whispers in the Stacks did not build"
+          ../../../tools/compile_latex.sh -f whispers_in_the_stacks.tex -n "Fate's Edge - Whispers in the Stacks.pdf" || echo "Fate's Edge - Whispers in the Stacks did not build"
           echo "Building Fate's Edge - Whispers in the Tunnels"
-          ../../tools/compile_latex.sh -f whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" || echo "Fate's Edge - Whispers in the Tunnels did not build"
+          ../../../tools/compile_latex.sh -f whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" || echo "Fate's Edge - Whispers in the Tunnels did not build"
 
       - name: Build Expansions
         run: |
           set -e
-          cd ttrpg/build/expansions
+          cd konreh/ttrpg/build/expansions
           echo "Building Fate's Edge - Horror Campaigns"
-          ../../tools/compile_latex.sh -f horror_campaigns.tex -n "Fate's Edge - Horror Campaigns.pdf" || echo "Fate's Edge - Horror Campaigns did not build"
+          ../../../tools/compile_latex.sh -f horror_campaigns.tex -n "Fate's Edge - Horror Campaigns.pdf" || echo "Fate's Edge - Horror Campaigns did not build"
           echo "Building Fate's Edge - Miniatures Guide"
-          ../../tools/compile_latex.sh -f miniatures_guide.tex -n "Fate's Edge - Miniatures Guide.pdf" || echo "Fate's Edge - Miniatures Guide did not build"
+          ../../../tools/compile_latex.sh -f miniatures_guide.tex -n "Fate's Edge - Miniatures Guide.pdf" || echo "Fate's Edge - Miniatures Guide did not build"
           echo "Building Fate's Edge - Modern Noir"
-          ../../tools/compile_latex.sh -f modern_noir.tex -n "Fate's Edge - Modern Noir.pdf" || echo "Fate's Edge - Modern Noir did not build"
+          ../../../tools/compile_latex.sh -f modern_noir.tex -n "Fate's Edge - Modern Noir.pdf" || echo "Fate's Edge - Modern Noir did not build"
 
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
         with:
           name: fates-edge-pdfs
           path: |
-            ttrpg/build/Fate's Edge - SRD.pdf
-            ttrpg/build/Fate's Edge - Player's Guide.pdf
-            ttrpg/build/Fate's Edge - GM Guide.pdf
-            ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf
-            ttrpg/build/adventures/Fate's Edge - Between the Knot and the Gate.pdf
-            ttrpg/build/adventures/Fate's Edge - Blood and Silk - Intro Adventure.pdf
-            ttrpg/build/adventures/Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf
-            ttrpg/build/adventures/Fate's Edge - Of Ways Between.pdf
-            ttrpg/build/adventures/Fate's Edge - The Recursive Garden.pdf
-            ttrpg/build/adventures/Fate's Edge - The Serpent's Coil.pdf
-            ttrpg/build/adventures/Fate's Edge - Whispers in the Stacks.pdf
-            ttrpg/build/adventures/Fate's Edge - Whispers in the Tunnels.pdf
-            ttrpg/build/expansions/Fate's Edge - Horror Campaigns.pdf
-            ttrpg/build/expansions/Fate's Edge - Miniatures Guide.pdf
-            ttrpg/build/expansions/Fate's Edge - Modern Noir.pdf
+            konreh/ttrpg/build/Fate's Edge - SRD.pdf
+            konreh/ttrpg/build/Fate's Edge - Player's Guide.pdf
+            konreh/ttrpg/build/Fate's Edge - GM Guide.pdf
+            konreh/ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - Between the Knot and the Gate.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - Blood and Silk - Intro Adventure.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - Of Ways Between.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - The Recursive Garden.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - The Serpent's Coil.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - Whispers in the Stacks.pdf
+            konreh/ttrpg/build/adventures/Fate's Edge - Whispers in the Tunnels.pdf
+            konreh/ttrpg/build/expansions/Fate's Edge - Horror Campaigns.pdf
+            konreh/ttrpg/build/expansions/Fate's Edge - Miniatures Guide.pdf
+            konreh/ttrpg/build/expansions/Fate's Edge - Modern Noir.pdf
 
           if-no-files-found: warn
 
   release:
-    # Only run when building a tag like v1.2.3
     if: startsWith(github.ref, 'refs/tags/')
     needs: [build]
     runs-on: ubuntu-latest
@@ -144,3 +141,4 @@ jobs:
             dist/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
