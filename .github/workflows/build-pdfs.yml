@@ -7,12 +7,12 @@ on:
       - "v*"
     paths:
       - "tools/**"
-      - "konreh/ttrpg/**"
+      - "ttrpg/**"
       - ".github/workflows/build-pdfs.yml"
   pull_request:
     paths:
       - "tools/**"
-      - "konreh/ttrpg/**"
+      - "ttrpg/**"
       - ".github/workflows/build-pdfs.yml"
   workflow_dispatch: {}
 
@@ -34,39 +34,40 @@ jobs:
       - name: Make compile script executable
         run: |
           chmod +x tools/compile_latex.sh
+          ls .
 
       - name: Build SRD
         run: |
           set -e
           echo "Building SRD"
-          cd konreh/ttrpg/srd
+          cd ttrpg/srd
           ../../../tools/compile_latex.sh -f fates-edge-srd-main.tex -n "Fate's Edge - SRD.pdf" || echo "SRD did not build"
 
       - name: Build Player's Guide
         run: |
           set -e
           echo "Building Player's Guide"
-          cd konreh/ttrpg/player_guide
+          cd ttrpg/player_guide
           ../../../tools/compile_latex.sh -f fates_edge_players_guide.tex -n "Fate's Edge - Player's Guide.pdf" || echo "Player's Guide did not build"
 
       - name: Build GM Guide
         run: |
           set -e
           echo "Building GM Guide"
-          cd konreh/ttrpg/gm_guide
+          cd ttrpg/gm_guide
           ../../../tools/compile_latex.sh -f gm_guide.tex -n "Fate's Edge - GM Guide.pdf" || echo "GM Guide did not build"
 
       - name: Build Comprehensive Resource Guide
         run: |
           set -e
           echo "Building Comprehensive Resource Guide"
-          cd konreh/ttrpg/reference
+          cd ttrpg/reference
           ../../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" || echo "Resource Guide did not build"
 
       - name: Build Adventures
         run: |
           set -e
-          cd konreh/ttrpg/build/adventures
+          cd ttrpg/build/adventures
           echo "Building Fate's Edge - Between the Knot and the Gate"
           ../../../tools/compile_latex.sh -f between-knot-and-gate.tex -n "Fate's Edge - Between the Knot and the Gate.pdf" || echo "Fate's Edge - Between the Knot and the Gate did not build"
           echo "Building Fate's Edge - Blood and Silk - Intro Adventure"
@@ -87,7 +88,7 @@ jobs:
       - name: Build Expansions
         run: |
           set -e
-          cd konreh/ttrpg/build/expansions
+          cd ttrpg/build/expansions
           echo "Building Fate's Edge - Horror Campaigns"
           ../../../tools/compile_latex.sh -f horror_campaigns.tex -n "Fate's Edge - Horror Campaigns.pdf" || echo "Fate's Edge - Horror Campaigns did not build"
           echo "Building Fate's Edge - Miniatures Guide"
@@ -100,21 +101,21 @@ jobs:
         with:
           name: fates-edge-pdfs
           path: |
-            konreh/ttrpg/build/Fate's Edge - SRD.pdf
-            konreh/ttrpg/build/Fate's Edge - Player's Guide.pdf
-            konreh/ttrpg/build/Fate's Edge - GM Guide.pdf
-            konreh/ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - Between the Knot and the Gate.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - Blood and Silk - Intro Adventure.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - Of Ways Between.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - The Recursive Garden.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - The Serpent's Coil.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - Whispers in the Stacks.pdf
-            konreh/ttrpg/build/adventures/Fate's Edge - Whispers in the Tunnels.pdf
-            konreh/ttrpg/build/expansions/Fate's Edge - Horror Campaigns.pdf
-            konreh/ttrpg/build/expansions/Fate's Edge - Miniatures Guide.pdf
-            konreh/ttrpg/build/expansions/Fate's Edge - Modern Noir.pdf
+            ttrpg/build/Fate's Edge - SRD.pdf
+            ttrpg/build/Fate's Edge - Player's Guide.pdf
+            ttrpg/build/Fate's Edge - GM Guide.pdf
+            ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf
+            ttrpg/build/adventures/Fate's Edge - Between the Knot and the Gate.pdf
+            ttrpg/build/adventures/Fate's Edge - Blood and Silk - Intro Adventure.pdf
+            ttrpg/build/adventures/Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf
+            ttrpg/build/adventures/Fate's Edge - Of Ways Between.pdf
+            ttrpg/build/adventures/Fate's Edge - The Recursive Garden.pdf
+            ttrpg/build/adventures/Fate's Edge - The Serpent's Coil.pdf
+            ttrpg/build/adventures/Fate's Edge - Whispers in the Stacks.pdf
+            ttrpg/build/adventures/Fate's Edge - Whispers in the Tunnels.pdf
+            ttrpg/build/expansions/Fate's Edge - Horror Campaigns.pdf
+            ttrpg/build/expansions/Fate's Edge - Miniatures Guide.pdf
+            ttrpg/build/expansions/Fate's Edge - Modern Noir.pdf
 
           if-no-files-found: warn
 
