@@ -16,25 +16,20 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write  # for releases using GITHUB_TOKEN
+  contents: write  # needed for releases with GITHUB_TOKEN
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CI: "true"  # makes your script skip git clean/open, etc.
+      CI: "true"   # makes your script skip git clean/open, etc.
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Debug repo tree (first 2 levels)
-        run: |
-          echo "Workspace: $GITHUB_WORKSPACE"
-          ls -la
-          find . -maxdepth 2 -type d -print | sort
+          submodules: false
 
       - name: Install LaTeX toolchain
         run: |
@@ -53,24 +48,57 @@ jobs:
       - name: Make compile script executable
         run: chmod +x tools/compile_latex.sh
 
-      - name: Define build helper
+      - name: Define case-insensitive build helper
         shell: bash
         run: |
           cat > /tmp/build_one.sh <<'EOF'
           #!/usr/bin/env bash
-          set -e
-          DIR="$1"; TEX="$2"; OUTNAME="$3"
-          if [[ -d "$DIR" && -f "$DIR/$TEX" ]]; then
-            echo "✅ Building: $DIR/$TEX → $OUTNAME"
-            ( cd "$DIR" && "$GITHUB_WORKSPACE/tools/compile_latex.sh" -x -f "$TEX" -n "$OUTNAME" ) || echo "⚠️ Build failed: $OUTNAME"
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE"
+          REQ_DIR="$1"      # e.g., ttrpg/srd
+          REQ_TEX="$2"      # e.g., fates-edge-srd-main.tex
+          OUTNAME="$3"      # e.g., Fate's Edge - SRD.pdf
+
+          # Resolve directory case-insensitively
+          if [[ -d "$REQ_DIR" ]]; then
+            DIR="$REQ_DIR"
           else
-            echo "⏭️  Skipping: missing $DIR or $DIR/$TEX"
+            BASE="$(basename "$REQ_DIR")"
+            PARENT="$(dirname "$REQ_DIR")"
+            [[ "$PARENT" == "." ]] && PARENT="."
+            MATCH_DIR="$(find "$PARENT" -maxdepth 1 -type d -iname "$BASE" | head -n1 || true)"
+            if [[ -n "$MATCH_DIR" ]]; then
+              DIR="$MATCH_DIR"
+            else
+              echo "⏭️  Skipping: missing directory $REQ_DIR (case-insensitive search for '$BASE' failed)"
+              exit 0
+            fi
           fi
+
+          # Resolve .tex filename case-insensitively inside DIR
+          if [[ -f "$DIR/$REQ_TEX" ]]; then
+            TEX="$REQ_TEX"
+          else
+            NAME="${REQ_TEX%.*}"
+            MATCH_TEX="$(find "$DIR" -maxdepth 1 -type f \( -iname "$REQ_TEX" -o -iname "$NAME.tex" \) | head -n1 || true)"
+            if [[ -n "$MATCH_TEX" ]]; then
+              TEX="$(basename "$MATCH_TEX")"
+            else
+              echo "⏭️  Skipping: missing $DIR/$REQ_TEX (case-insensitive search failed)"
+              exit 0
+            fi
+          fi
+
+          echo "✅ Building: $DIR/$TEX → $OUTNAME"
+          ( cd "$DIR" && "$ROOT/tools/compile_latex.sh" -x -f "$TEX" -n "$OUTNAME" ) || {
+            echo "⚠️  Build failed: $OUTNAME"
+            exit 0
+          }
           EOF
           chmod +x /tmp/build_one.sh
 
       # ===== Core Books =====
-      - name: Build SRD
+      - name: Build SRD (case-insensitive)
         run: /tmp/build_one.sh "ttrpg/srd" "fates-edge-srd-main.tex" "Fate's Edge - SRD.pdf"
 
       - name: Build Player's Guide
@@ -106,21 +134,21 @@ jobs:
         with:
           name: fates-edge-pdfs
           path: |
-            "ttrpg/build/Fate's Edge - SRD.pdf"
-            "ttrpg/build/Fate's Edge - Player's Guide.pdf"
-            "ttrpg/build/Fate's Edge - GM Guide.pdf"
-            "ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf"
-            "ttrpg/build/adventures/Fate's Edge - Between the Knot and the Gate.pdf"
-            "ttrpg/build/adventures/Fate's Edge - Blood and Silk - Intro Adventure.pdf"
-            "ttrpg/build/adventures/Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf"
-            "ttrpg/build/adventures/Fate's Edge - Of Ways Between.pdf"
-            "ttrpg/build/adventures/Fate's Edge - The Recursive Garden.pdf"
-            "ttrpg/build/adventures/Fate's Edge - The Serpent's Coil.pdf"
-            "ttrpg/build/adventures/Fate's Edge - Whispers in the Stacks.pdf"
-            "ttrpg/build/adventures/Fate's Edge - Whispers in the Tunnels.pdf"
-            "ttrpg/build/expansions/Fate's Edge - Horror Campaigns.pdf"
-            "ttrpg/build/expansions/Fate's Edge - Miniatures Guide.pdf"
-            "ttrpg/build/expansions/Fate's Edge - Modern Noir.pdf"
+            ttrpg/build/Fate's Edge - SRD.pdf
+            ttrpg/build/Fate's Edge - Player's Guide.pdf
+            ttrpg/build/Fate's Edge - GM Guide.pdf
+            ttrpg/build/Fate's Edge - Comprehensive Resource Guide.pdf
+            ttrpg/build/adventures/Fate's Edge - Between the Knot and the Gate.pdf
+            ttrpg/build/adventures/Fate's Edge - Blood and Silk - Intro Adventure.pdf
+            ttrpg/build/adventures/Fate's Edge - Epic Adventures - Ashes of the Infernal Accord.pdf
+            ttrpg/build/adventures/Fate's Edge - Of Ways Between.pdf
+            ttrpg/build/adventures/Fate's Edge - The Recursive Garden.pdf
+            ttrpg/build/adventures/Fate's Edge - The Serpent's Coil.pdf
+            ttrpg/build/adventures/Fate's Edge - Whispers in the Stacks.pdf
+            ttrpg/build/adventures/Fate's Edge - Whispers in the Tunnels.pdf
+            ttrpg/build/expansions/Fate's Edge - Horror Campaigns.pdf
+            ttrpg/build/expansions/Fate's Edge - Miniatures Guide.pdf
+            ttrpg/build/expansions/Fate's Edge - Modern Noir.pdf
           if-no-files-found: warn
 
   release:
