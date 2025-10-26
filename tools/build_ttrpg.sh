@@ -26,7 +26,12 @@ cd - > /dev/null 2>&1
 # Compile the Resource Guide
 echo "Building Comprehensive Resource Guide"
 cd $git_root/ttrpg/reference
-../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" > /dev/null 2>&1|| echo "Resource Guide did not build"
+../../tools/compile_latex.sh -f quickstart.tex -n "Fate's Edge - Comprehensive Resource Guide.pdf" > /dev/null 2>&1|| echo "Resource Guide did not build"
+
+# Compile the Quickstart Guide
+echo "Building Quickstart Guide"
+cd $git_root/ttrpg/quickstart
+../../tools/compile_latex.sh -f fates-edge-resource-guide.tex -n "Fate's Edge - Quickstart Guide.pdf" > /dev/null 2>&1|| echo "Quickstart Guide did not build"
 
 echo "Committing and pushing to git"
 git add --all
