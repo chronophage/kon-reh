@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # CI-safe LaTeX builder for local + GitHub/GitLab runners
 
-# set -euo pipefail   # keep commented: your script intentionally tolerates some errors
-
 DEBUG=false
 CLEAN=true
 INDEX=true
@@ -12,23 +10,23 @@ TEXFILE=""
 QUALITY=""
 PDFNAME=""
 GIT_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
-FILE_PATH=$(pwd)
+FILE_PATH="$(pwd)"
 BRANCH=""
 CI_MODE="${CI:-false}"   # set by GitHub/GitLab runners
 
-# ----- branch detection (unchanged) -----
-if [[ "$FILE_PATH:" == *"rules"* ]]; then
+# ----- branch detection -----
+if [[ "$FILE_PATH" == *"/rules"* ]]; then
   BRANCH="rules"
-elif [[ "$FILE_PATH:" == *"concordance"* ]]; then 
+elif [[ "$FILE_PATH" == *"/concordance"* ]]; then 
   BRANCH="concordance"
-elif [[ "$FILE_PATH:" == *"ninth"* ]]; then 
+elif [[ "$FILE_PATH" == *"/ninth"* ]]; then 
   BRANCH="ninth_rim"
-elif [[ "$FILE_PATH:" == *"ttrpg"* ]]; then 
-  if   [[ "$FILE_PATH:" == *"splat"* ]]; then BRANCH="splatbooks"
-  elif [[ "$FILE_PATH:" == *"expansions"* ]]; then BRANCH="expansions"
-  elif [[ "$FILE_PATH:" == *"adventures"* ]]; then BRANCH="adventures"
-  elif [[ "$FILE_PATH:" == *"resources"* ]]; then  BRANCH="resources"
-  elif [[ "$FILE_PATH:" == *"worldbook"* ]]; then  BRANCH="worldbook"
+elif [[ "$FILE_PATH" == *"/ttrpg"* ]]; then 
+  if   [[ "$FILE_PATH" == *"/splat"* ]]; then BRANCH="splatbooks"
+  elif [[ "$FILE_PATH" == *"/expansions"* ]]; then BRANCH="expansions"
+  elif [[ "$FILE_PATH" == *"/adventures"* ]]; then BRANCH="adventures"
+  elif [[ "$FILE_PATH" == *"/resources"* ]]; then  BRANCH="resources"
+  elif [[ "$FILE_PATH" == *"/worldbook"* ]]; then  BRANCH="worldbook"
   else BRANCH="ttrpg"
   fi
 else
@@ -73,7 +71,6 @@ if [[ "$TEXFILE" == *"." ]]; then
   TEXFILE="${TEXFILE%?}.tex"
 fi
 
-echo "$TEXFILE"
 if [[ "$TEXFILE" != *.tex ]]; then
   echo "❌ Error: $TEXFILE does not appear to be a .tex file."
   exit 1
@@ -106,14 +103,8 @@ if [[ "$CI_MODE" != "true" ]]; then
   git add --all .
 fi
 
-# Clean aux after bbl present (local only)
-if [[ -f "${BASENAME}.bbl" && "$INDEX" = true && "$CI_MODE" != "true" ]]; then
-  git clean -x -f . >/dev/null 2>&1
-fi
-
 # ----- compile -----
 echo "Initial compile of $TEXFILE using pdflatex..."
-echo "Step 1: pdflatex -interaction=nonstopmode $TEXFILE"
 pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
 
 if [ ! -f "$FINAL_PDF" ]; then
@@ -123,16 +114,12 @@ fi
 
 # ----- bibliography -----
 if [[ -f "${BASENAME}.bcf" && "$BIBLIOGRAPHY" = true ]]; then
-  # macOS PAR-biber cache cleanup (skip on Linux)
   if uname | grep -qi 'darwin'; then
     find /var/folders -name 'par-*' -type d -exec rm -rf {} + >/dev/null 2>&1 || true
   fi
-
   if biber --version 2>&1 | grep -q 'PAR'; then
-    echo "Detected PAR-packed Biber. Attempting PERL_UNICODE_DATA fix…"
     export PERL_UNICODE_DATA=$(perl -e 'use Config; print "$Config{installprivlib}/unicore\n"')
   fi
-
   echo "Running biber $BASENAME"
   biber "$BASENAME" >/dev/null 2>&1 || true
 fi
@@ -144,12 +131,10 @@ if [[ -f "${BASENAME}.idx" && "$INDEX" = true ]]; then
 fi
 
 # ----- two more latex passes -----
-echo "Now compiling ToC/Index/etc. with two more pdflatex runs…"
 pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
 pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
 echo "✅ Compilation complete: $FINAL_PDF"
 
-# ----- optional compression -----
 # ----- optional compression -----
 if [[ -n "$QUALITY" ]]; then
   if command -v gs >/dev/null 2>&1; then
@@ -160,10 +145,8 @@ if [[ -n "$QUALITY" ]]; then
        -dNOPAUSE -dQUIET -dBATCH \
        -sOutputFile="$COMPRESSED" "$FINAL_PDF"
     if [[ -f "$COMPRESSED" ]]; then
+      echo "📦 Using compressed PDF: $COMPRESSED"
       FINAL_PDF="$COMPRESSED"
-      # If a custom name was requested, prefer it over the compressed basename
-      PDFNAME="${PDFNAME:-$FINAL_PDF}"
-      echo "📦 Using compressed PDF: $FINAL_PDF"
     else
       echo "⚠️  Compression failed; using uncompressed PDF."
     fi
@@ -172,20 +155,13 @@ if [[ -n "$QUALITY" ]]; then
   fi
 fi
 
-# ----- rename if requested -----
-# If FINAL_PDF has changed (compression), honor -n; otherwise keep original name.
-if [[ "$PDFNAME" != "$(basename "$FINAL_PDF")" ]]; then
+# ----- finalize output name -----
+if [[ -n "$PDFNAME" && "$PDFNAME" != "$(basename "$FINAL_PDF")" ]]; then
   echo "Renaming $(basename "$FINAL_PDF") → $PDFNAME"
   mv -f "./$(basename "$FINAL_PDF")" "./$PDFNAME"
+  FINAL_PDF="$PDFNAME"
 else
-  # Ensure we have the file under $PDFNAME for the next stage
   PDFNAME="$(basename "$FINAL_PDF")"
-fi
-
-# ----- rename if requested -----
-if [[ "$PDFNAME" != "$FINAL_PDF" ]]; then
-  echo "Renaming $FINAL_PDF → $PDFNAME"
-  mv -f "./$FINAL_PDF" "./$PDFNAME"
 fi
 
 # ----- ensure build dirs exist -----
@@ -197,7 +173,6 @@ mkdir -p "$GIT_ROOT/ttrpg/build" \
          "$GIT_ROOT/ttrpg/build/worldbook"
 
 # ----- place output -----
-dest=""
 case "$BRANCH" in
   resources)  dest="$GIT_ROOT/ttrpg/build/resources/$PDFNAME" ;;
   splatbooks) dest="$GIT_ROOT/ttrpg/build/splatbooks/$PDFNAME" ;;
@@ -209,12 +184,7 @@ case "$BRANCH" in
   *)          dest="$GIT_ROOT/$BRANCH/build/$PDFNAME" ;;
 esac
 
-# Create branch-specific build dir if needed
 mkdir -p "$(dirname "$dest")"
-
-echo "Moving $PDFNAME → $dest"
-mv -f "./$PDFNAME" "$dest"
-
 echo "Moving $PDFNAME → $dest"
 mv -f "./$PDFNAME" "$dest"
 
@@ -238,7 +208,8 @@ fi
 # ----- clean aux files (not in CI) -----
 if [[ "$CLEAN" == true && "$CI_MODE" != "true" ]]; then
   echo "Cleaning auxiliary files..."
-  git clean -x -f >/dev/null 2>&1 || true
+  rm -f -- "${BASENAME}".{aux,log,lof,lot,toc,fls,fdb_latexmk,out,bcf,run.xml,blg,bbl,idx,ilg,ind,loa,nav,snm} \
+    >/dev/null 2>&1 || true
 fi
 
 exit 0
