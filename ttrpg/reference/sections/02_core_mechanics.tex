@@ -1,77 +1,110 @@
 \chapter{Core Mechanics}
 \label{chap:core-mechanics}
 
-\section{Core Mechanic: The Art of Consequence}
-\label{sec:core-mechanic}
-\index{Core Mechanic}
+\section{Adjudicating Rolls: The Core Resolution Cycle}\index{roll adjudication}
 
-All significant actions in \textbf{Fate's Edge} follow a three-step process that emphasizes narrative consequences and player agency.
+When a player rolls, they are not simply trying to \emph{beat a number}. They are engaging the world through risk, consequence, and discovery. This section walks through the full cycle.
+
+\subsection{Step-by-Step Roll Resolution}
 
 \begin{enumerate}
-\item \textbf{Approach} — The player states intent and method, defining the primary Skill and clarifying the fictional positioning. \index{Core Mechanic!Approach}
-\item \textbf{Execution} — Build a dice pool equal to \textbf{Attribute + Skill} and roll that many d10s. Each die showing \textbf{6+} counts as a success. Each \textbf{1} rolled generates \textbf{1 Story Beat (SB)} for the GM. \index{Core Mechanic!Execution}\index{Story Beat (SB)}
-\item \textbf{Outcome} — The GM compares total successes to the task's Difficulty Value (DV) and then spends SB to weave setbacks, collateral costs, or escalating danger. \index{Core Mechanic!Outcome}
+    \item \textbf{Declare Action \& Approach:} Player states intent, Attribute + Skill.
+    \item \textbf{Set Difficulty Value (DV):}\index{Difficulty Value (DV)} Based on narrative stakes, not just mechanics.
+    \item \textbf{Roll Pool of d10s.}
+    \item \textbf{Count:} \textbf{Successes (6+)} and \textbf{Story Beats (1s)}.\index{Story Beats}
+    \item \textbf{Check Against DV:} Apply the Outcome Matrix. Note: \textbf{each 10 counts as 2 successes}.
+    \item \textbf{Spend SB:} GM spends/banks Story Beats or draws from the Deck of Consequences.\index{Deck of Consequences}
 \end{enumerate}
 
-\section{The Description Ladder}
-\label{sec:description-ladder}
-\index{Description Ladder}
-
-Player description can blunt—but not erase—consequences:
-
-\begin{description}
-\item[\textbf{Basic Action}] Roll the pool as-is. All 1s generate SB. \index{Description Ladder!Basic}
-\item[\textbf{Detailed Action}] A clear, specific flourish allows the player to re-roll \emph{one} die showing 1. \index{Description Ladder!Detailed}
-\item[\textbf{Intricate Action}] A richly described, multi-sensory approach allows the player to re-roll \emph{all} dice showing 1, and on success they may add a positive flourish to the fiction. \index{Description Ladder!Intricate}
-\end{description}
-
-\noindent\textbf{Important:} Re-rolling 1s does \emph{not} remove SB already generated; new 1s add more SB. (See SRD Section 2.1.2 for detailed rules on re-rolling) \index{Story Beat (SB)!Re-rolling 1s}
-
-\section{Difficulty Ladder}
-\label{sec:difficulty-ladder}
-\index{Difficulty}
-
-\begin{table}[htbp]
-\centering
-\begin{tabular}{clp{8cm}}
+\begin{fatebox}[Difficulty Ladder]\index{Difficulty Ladder}
+\begin{tabularx}{\textwidth}{lX}
 \toprule
-\textbf{DV} & \textbf{Name} & \textbf{When to Use} \\
+\textbf{DV} & \textbf{Typical Case} \\
 \midrule
-2 & Routine & Clear intent, modest stakes, controlled environment \\
-3 & Pressured & Time pressure, mild resistance, partial information \\
-4 & Hard & Hostile conditions, active opposition, precise timing \\
-5+ & Extreme & Multiple constraints, high precision, dramatic failure potential \\
+2 & Routine: clear intent, modest stakes, controlled setting \\
+3 & Pressured: time limits, mild resistance, partial info \\
+4 & Hard: hostile conditions, active opposition, precision required \\
+5+ & Extreme: stacked constraints, dangerous failure, high drama \\
 \bottomrule
-\end{tabular}
-\caption{Difficulty Value (DV) Ladder}
-\label{tab:difficulty-ladder}
-\end{table}
+\end{tabularx}
+\end{fatebox}
 
-\section{Outcome Matrix}
-\label{sec:outcome-matrix}
-\index{Outcome Matrix}
+\textit{A DV should measure narrative weight as much as difficulty. Scaling a wall is routine. Scaling it while lantern-wardens pursue is pressured—or worse.}
 
-Let $S$ be successes ($\geq 6$) and $C$ be SB generated (number of 1s).
+\begin{fatebox}[Outcome Matrix]\index{Outcome Matrix}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Result} & \textbf{GM Guidance} \\
+\midrule
+$S \geq DV$, $C = 0$ & Clean Success: Grant intent, no added friction. \\
+$S \geq DV$, $C > 0$ & Success \& Cost: Intent achieved; GM spends SB for complications. \\
+$0 < S < DV$ & Partial: Progress \emph{proportional} to hits; intent advances but with gaps or risk. Player gains 1 Boon. \\
+$S = 0$ & Miss: No progress. GM escalates with SB/Clocks. Player gains 2 Boons. \\
+\bottomrule
+\end{tabularx}
+\end{fatebox}
 
-\begin{description}
-\item[\textbf{Clean Success}] ($S \geq DV$ and $C = 0$) — Deliver the intent crisply. If the action was \emph{Intricate}, offer a small positional or information edge. \index{Outcome Matrix!Clean Success}
-\item[\textbf{Success \& Cost}] ($S \geq DV$ and $C > 0$) — Grant the intent; the GM spends or banks SB to add friction (noise, time loss, resource wear, new observers). \index{Outcome Matrix!Success and Cost}
-\item[\textbf{Partial}] ($0 < S < DV$) — Progress with a complication: achieve the goal with added cost, or fail forward to a different advantage. \index{Outcome Matrix!Partial}
-\item[\textbf{Miss}] ($S = 0$) — No direct progress. The GM spends or banks SB to introduce immediate consequences. \index{Outcome Matrix!Miss}
-\end{description}
+\section{Fail Forward: Every Roll Matters}\index{Fail Forward}
 
-\subsection{Critical Success}
-Rolling a \textbf{10} on any die indicates a critical tier of success. Each 10 adds weight to the outcome:
+\textbf{Partials are the most common form of “success.”} They always move the fiction forward in proportion to the progress rolled.
 
+\begin{quote}
+\textit{One success on DV 4:} “The lock is stubborn. You think you can get it if you keep trying.”  
+\textit{Three successes on DV 4:} “The lock springs open with a loud clank—you’re sure the guards heard.” (Upgrade to Success \& Cost; add 2 SB).  
+\end{quote}
+
+\textbf{Misses} fuel escalation but always generate player resources: 2 Boons and a consequence.  
+
+A roll is \emph{meaningful} if:  
+\begin{enumerate}
+  \item The standard procedure is followed (intent + DV + roll).  
+  \item Stakes are stated up front (what changes on success, what bites on failure).  
+  \item Real consequences occur now (SB spent, condition applied, or thread advanced).  
+\end{enumerate}
+
+\subsection{Important Notes}
 \begin{itemize}
-  \item \textbf{One 10:} Strong success with a free boon, improved Position, or other narrative flourish.
-  \item \textbf{Two 10s:} Exceptional success; choose two benefits or a single powerful effect.
-  \item \textbf{Three 10s:} Legendary success; the action transcends mortal limits and resolves the conflict dramatically.
-  \item \textbf{Four+ 10s:} Mythic success; the GM and table agree the result reshapes the scene or story outright.
+  \item Rolling a \textbf{1} always creates SB for the GM. Rerolls do not erase SB.  
+  \item No Boons for rehearsal, trivial probes, or repeating an identical approach without changing fiction.  
+  \item Controlled tests with no bite give positioning/info, not Boons.  
+\end{itemize}
+
+\subsection{Anti-Fishing Measures}
+\begin{itemize}
+  \item \textbf{Cap:} At most 2 Boons from failures per character per scene (further misses still make SB).  
+  \item \textbf{Repetition Rule:} Same action + same stakes in the same scene can’t grant another Boon.  
+\end{itemize}
+
+\subsection{Example}
+Lockpicking under watch (\emph{Risky}, DV 3).  
+\textbf{Miss:} GM spends 2 SB to start \emph{Guards Incoming [6]}. Player earns 2 Boons.  
+\textbf{Partial (2 successes):} Door opens halfway; guard footsteps approach. Player earns 1 Boon.  
+
+\subsection{Boon Sharing}
+Players may gift 1 Boon per scene to an ally with narrative justification.  
+\begin{itemize}
+  \item \textbf{Bonded Allies:} Up to 2 Boons gifted per scene.  
+  \item \textbf{Assistance:} Shared Boons can enhance an ally’s roll.  
+  \item \textbf{Campaign Events:} Major milestones may generate party-wide Boons.  
+\end{itemize}
+
+\textbf{GM Note:} Encourage gifts with roleplay beats, but balance generosity with potential dependency or group tension.
+
+\subsection{Critical Success}\index{Critical Success}
+A die showing \textbf{10} is a \emph{Critical}.  
+\begin{itemize}
+  \item Each \textbf{10 counts as two successes} when checking against DV.  
+  \item Crits never bypass DV: if total successes (including Crits) < DV, the roll is still a Partial or Miss.  
+  \item A Crit on a successful roll grants an added flourish: free Boon, improved Position, or heightened effect.  
 \end{itemize}
 
 \noindent
-If no 10s are rolled, resolve the action normally by the highest die result.
+\textbf{Stacking Crits:}  
+\begin{itemize}
+  \item \textbf{Two 10s:} Exceptional success; pick two benefits or a powerful single effect.  
+  \item \textbf{Three 10s:} Legendary success; the action transcends mortal limits, resolving the conflict dramatically.  
+  \item \textbf{Four+ 10s:} Mythic success; reshape the scene or story with table agreement.  
+\end{itemize}
 
 \section{SB Spend Menu}
 \label{sec:sb-spend-menu}

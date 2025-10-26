@@ -5,21 +5,108 @@
 \section{Core Mechanic}
 
 \subsection{The Art of Consequence}
+\paragraph{Adjudicating Rolls: The Core Resolution Cycle}\index{roll adjudication}
 
-\subsubsection{Procedure}
-All significant actions follow a three-step process:
+When a player rolls, they are not simply trying to \emph{beat a number}. They are engaging the world through risk, consequence, and discovery. This section walks through the full cycle.
+
+\paragraph{Step-by-Step Roll Resolution}
+
 \begin{enumerate}
-  \item \textbf{Approach:} The player describes both what their character wants and how they attempt it.
-  \item \textbf{Execution:} Build a dice pool equal to \emph{Attribute + Skill} and roll that many d10s. Each die of \textbf{6+} counts as a success. Each \textbf{1} rolled generates a \textbf{Story Beat (SB)}.
-  \item \textbf{Outcome:} The GM interprets total successes against the difficulty (DV) of the task. Story Beats are then spent to weave narrative setbacks.
+    \item \textbf{Declare Action \& Approach:} Player states intent, Attribute + Skill.
+    \item \textbf{Set Difficulty Value (DV):}\index{Difficulty Value (DV)} Based on narrative stakes, not just mechanics.
+    \item \textbf{Establish Position:}\index{Position} GM sets whether the roll is \textbf{Dominant}, \textbf{Controlled}, or \textbf{Desperate}.
+    \item \textbf{Roll Pool of d10s.}
+    \item \textbf{Count:} \textbf{Successes (6+)} and \textbf{Story Beats (1s)}.\index{Story Beats} 
+    Each \textbf{10 counts as two successes} but does not auto-succeed if total $< DV$.
+    \item \textbf{Check Against DV:} Apply the Outcome Matrix.
+    \item \textbf{Spend SB:} GM spends/banks Story Beats or draws from the Deck of Consequences.\index{Deck of Consequences}
 \end{enumerate}
 
-\subsubsection{The Description Ladder}
+\begin{fatebox}[Position Effects]\index{Position}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Position} & \textbf{Effect} \\
+\midrule
+Dominant & May re-roll one \textbf{failure} (die $<6$). \\
+Controlled & Default state; no re-rolls. \\
+Desperate & Must re-roll one \textbf{success} (die $6+$), keeping the second result. \\
+\bottomrule
+\end{tabularx}
+\end{fatebox}
+
+\begin{fatebox}[Difficulty Ladder]\index{Difficulty Ladder}
+  \begin{tabularx}{\textwidth}{lX}
+  \toprule
+  \textbf{DV} & \textbf{Typical Case} \\
+  \midrule
+  2 & Routine: clear intent, modest stakes, stable setting \\
+  3 & Pressured: time limits, mild resistance, incomplete information \\
+  4 & Hard: hostile conditions, active opposition, precision required \\
+  5+ & Extreme: stacked constraints, dangerous failure, high drama \\
+  \bottomrule
+  \end{tabularx}
+  \end{fatebox}
+
+\textit{A DV should measure narrative weight as much as difficulty. Scaling a wall is routine. Scaling it while lantern-wardens pursue is pressured—or worse.}
+
+\begin{fatebox}[Outcome Matrix]\index{Outcome Matrix}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Result} & \textbf{GM Guidance} \\
+\midrule
+$S \geq DV$, $C = 0$ & Clean Success: Grant intent, no added friction. \\
+$S \geq DV$, $C > 0$ & Success \& Cost: Intent achieved; GM spends SB for complications. \\
+$0 < S < DV$ & Partial: Progress \emph{proportional} to hits; intent advances but with gaps or risk. Player gains 1 Boon. \\
+$S = 0$ & Miss: No progress. GM escalates with SB/Clocks. Player gains 2 Boons. \\
+\bottomrule
+\end{tabularx}
+\end{fatebox}
+
+\paragraph{Fail Forward: Every Roll Matters}\index{Fail Forward}
+
+\textbf{Partials are the most common form of “success.”} They always move the fiction forward in proportion to the progress rolled.
+
+\begin{quote}
+\textit{One success on DV 4:} “The lock is stubborn. You think you can get it if you keep trying.”  
+\textit{Three successes on DV 4:} “The lock springs open with a loud clank—you’re sure the guards heard.” (Upgrade to Success \& Cost; add 2 SB).  
+\end{quote}
+
+\textbf{Misses} fuel escalation but always generate player resources: 2 Boons and a consequence.  
+
+A roll is \emph{meaningful} if:  
+\begin{enumerate}
+  \item The standard procedure is followed (intent + DV + roll).  
+  \item Stakes are stated up front (what changes on success, what bites on failure).  
+  \item Real consequences occur now (SB spent, condition applied, or thread advanced).  
+\end{enumerate}
+
+\paragraph{Important Notes}
 \begin{itemize}
-  \item \textbf{Basic Action:} Roll the pool as-is. All 1s remain as Story Beats.
-  \item \textbf{Detailed Action:} A clear, descriptive flourish allows the player to re-roll one die showing 1.
-  \item \textbf{Intricate Action:} A richly described, multi-sensory action allows the player to re-roll \emph{all} dice showing 1, and add one positive narrative flourish to the scene if they succeed.
+  \item Rolling a 1 always creates SB for the GM. Rerolls do not erase SB.  
+  \item No Boons for rehearsal, trivial probes, or repeating an identical approach without changing fiction.  
+  \item Controlled tests with no bite give positioning/info, not Boons.  
 \end{itemize}
+
+\subsubsection{Anti-Fishing Measures}
+\begin{itemize}
+  \item \textbf{Cap:} At most 2 Boons from failures per character per scene (further misses still make SB).  
+  \item \textbf{Repetition Rule:} Same action + same stakes in the same scene can’t grant another Boon.  
+\end{itemize}
+
+\paragraph{Example}
+Lockpicking under watch (\emph{Risky}, DV 3).  
+\textbf{Miss:} GM spends 2 SB to start \emph{Guards Incoming [6]}. Player earns 2 Boons.  
+\textbf{Partial (2 successes):} Door opens halfway; guard footsteps approach. Player earns 1 Boon.  
+
+\subsubsection{Boon Sharing}
+Players may gift 1 Boon per scene to an ally with narrative justification.  
+\begin{itemize}
+  \item \textbf{Bonded Allies:} Up to 2 Boons gifted per scene.  
+  \item \textbf{Assistance:} Shared Boons can enhance an ally’s roll.  
+  \item \textbf{Campaign Events:} Major milestones may generate party-wide Boons.  
+\end{itemize}
+
+\textbf{GM Note:} Encourage gifts with roleplay beats, but balance generosity with potential dependency or group tension.
 
 \paragraph{Rule — Re-rolling 1s and SB}
 Re-rolling 1s does not remove the Story Beats already generated by those dice. If any re-rolled dice show 1 again, they generate additional SB as normal.\\
@@ -107,6 +194,46 @@ Desperate & You act under duress & Re-roll one \emph{success} \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\subsubsection{Fatigue and Harm}\index{Fatigue}\index{Harm}
+
+\paragraph{Fatigue.}
+Fatigue is capped by \textbf{Body}. It reflects cumulative strain from combat, travel, or channeling. Fatigue never reduces dice directly; it shifts \textbf{Position} to riskier states.
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l Y@{}}
+\toprule
+\textbf{Fatigue} & \textbf{Position Shift} & \textbf{Narrative Effect} \
+\midrule
+1 (Winded) & Controlled → Risky (once/scene) & Breathing heavy, off-balance. \
+2 (Strained) & Risky rolls create +1 SB on 1s & Mistakes creep in. \
+3 (Exhausted) & Risky → Desperate (once/scene) & Desperate exertion. \
+4 (Collapse) & DV 3 Body test or Severe Harm & Push past limits. \
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\paragraph{Harm and Casting.}
+Harm not only affects physical capacity, it disrupts magical focus:
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l Y@{}}
+\toprule
+\textbf{Harm} & \textbf{Casting Effect} & \textbf{Notes} \
+\midrule
+Minor & Channel DV +1 & Fatigue of concentration. \
+Moderate & Maintain channel DV 2 & Focus falters. \
+Severe & Channel breaks; freeform casting +1 SB & Magic slips dangerous. \
+Critical & Casting impossible & Patron bargain may intervene. \
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\textbf{GM Note:} Harm and Fatigue push characters toward harsher Positions; casters feel this as \emph{lost control}, warriors as \emph{physical collapse}. Both create escalating drama without trivializing recovery.
 
 \paragraph{SB Spend Menu (guidance)}
 \begin{itemize}
