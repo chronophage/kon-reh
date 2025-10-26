@@ -6,6 +6,7 @@
 DEBUG=false
 CLEAN=true
 INDEX=true
+OPENPDF=false
 BIBLIOGRAPHY=true
 TEXFILE=""
 QUALITY=""
@@ -35,12 +36,13 @@ else
 fi
 
 # ----- args -----
-while getopts ":dcbxif:q:n:" opt; do
+while getopts ":dcobxif:q:n:" opt; do
   case $opt in
     d) DEBUG=true ;;
     c) CLEAN=true ;;
     x) CLEAN=false ;;
     i) INDEX=false ;;
+    o) OPENPDF=true ;;
     b) BIBLIOGRAPHY=false ;;
     n) PDFNAME="$OPTARG";;
     f) TEXFILE="$OPTARG" ;;
@@ -148,13 +150,36 @@ pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
 echo "✅ Compilation complete: $FINAL_PDF"
 
 # ----- optional compression -----
+# ----- optional compression -----
 if [[ -n "$QUALITY" ]]; then
-  echo "Compressing PDF with quality: $QUALITY"
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
-     -dPDFSETTINGS="/$QUALITY" \
-     -dNOPAUSE -dQUIET -dBATCH \
-     -sOutputFile="${BASENAME}_resized.pdf" "$FINAL_PDF"
-  echo "📦 Compressed: ${BASENAME}_resized.pdf"
+  if command -v gs >/dev/null 2>&1; then
+    echo "Compressing PDF with quality: $QUALITY"
+    COMPRESSED="${BASENAME}_resized.pdf"
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+       -dPDFSETTINGS="/$QUALITY" \
+       -dNOPAUSE -dQUIET -dBATCH \
+       -sOutputFile="$COMPRESSED" "$FINAL_PDF"
+    if [[ -f "$COMPRESSED" ]]; then
+      FINAL_PDF="$COMPRESSED"
+      # If a custom name was requested, prefer it over the compressed basename
+      PDFNAME="${PDFNAME:-$FINAL_PDF}"
+      echo "📦 Using compressed PDF: $FINAL_PDF"
+    else
+      echo "⚠️  Compression failed; using uncompressed PDF."
+    fi
+  else
+    echo "⚠️  Ghostscript (gs) not found; skipping compression."
+  fi
+fi
+
+# ----- rename if requested -----
+# If FINAL_PDF has changed (compression), honor -n; otherwise keep original name.
+if [[ "$PDFNAME" != "$(basename "$FINAL_PDF")" ]]; then
+  echo "Renaming $(basename "$FINAL_PDF") → $PDFNAME"
+  mv -f "./$(basename "$FINAL_PDF")" "./$PDFNAME"
+else
+  # Ensure we have the file under $PDFNAME for the next stage
+  PDFNAME="$(basename "$FINAL_PDF")"
 fi
 
 # ----- rename if requested -----
@@ -190,10 +215,24 @@ mkdir -p "$(dirname "$dest")"
 echo "Moving $PDFNAME → $dest"
 mv -f "./$PDFNAME" "$dest"
 
+echo "Moving $PDFNAME → $dest"
+mv -f "./$PDFNAME" "$dest"
+
 # Git add + 'open' only outside CI
 if [[ "$CI_MODE" != "true" ]]; then
   git add "$dest"
-  if command -v open >/dev/null 2>&1; then open "$dest"; fi
+  if [[ "$OPENPDF" == true ]]; then
+    echo "Opening $dest ..."
+    if command -v open >/dev/null 2>&1; then
+      open "$dest"
+    elif command -v xdg-open >/dev/null 2>&1; then
+      xdg-open "$dest" >/dev/null 2>&1 &
+    elif command -v cygstart >/dev/null 2>&1; then
+      cygstart "$dest"
+    else
+      echo "⚠️  No known opener found (open/xdg-open/cygstart)."
+    fi
+  fi
 fi
 
 # ----- clean aux files (not in CI) -----
