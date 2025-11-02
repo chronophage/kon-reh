@@ -98,11 +98,208 @@ These are organized by theme and power level.
 *Requirements: Trap-Breaker's Cunning, Wits 4+*
 **Effect:** You don't just avoid security; you turn it to your advantage. You can spend 10 minutes to study a location's defensive patterns (guards, magical wards, patrol routes). After doing so, you may once per scene spend 2 Boons to declare that you have "pre-set" the environment. For the next exchange, all allies in the area gain **+1 Position** on all rolls, as alarms misfire, guards get lost, and wards flicker at the worst possible time for your enemies.
 
----
 
-### 💡 Design Notes for Creating New Talents
+# Additional Talents for Fate's Edge
 
-When you create more Talents, keep these *Fate's Edge* principles in mind:
+## Combat Talents
+
+### Backstab (Major Talent, 8 XP)
+**Requirements:** Stealth 2+, Melee 2+, Light weapon
+**Effect:** When you attack an Unaware or Engaged foe from Stealth, deal +1 Harm and ignore 1 point of their Armor.
+**Definitions:**
+- Unaware: The target is not aware of your presence or hostile intent
+- Engaged: The target is currently taking an Attack action against another character
+**Limit:** Once per scene. To use again, you must first re-enter Stealth (DV by narrative) and mark 1 Fatigue
+**On a Miss:** You are Exposed — drop to Desperate Position or mark 1 Harm
+
+### Shadow Dance (Synergy Talent, 10 XP)
+**Requirements:** Backstab, Stealth 3+, Mobility 2+
+**Effect:** After a successful Backstab, you may immediately test Stealth vs. DV (Tier)
+- On success: You re-enter Stealth and may either clear 1 Fatigue or improve Position +1
+- On failure: You remain Exposed and must mark 1 Fatigue
+**Limit:** May only chain once per scene
+
+### Deathblow (Capstone Talent, 12 XP)
+**Requirements:** Shadow Dance, Stealth 4+, Melee/Ranged 3+
+**Effect:** When you strike from Dominant Position or after re-entering Stealth via Shadow Dance, you may declare a Deathblow
+- On a hit: Deal triple Harm. If the attack incapacitates the target, you may immediately attempt a free Stealth test (DV by narrative) to vanish
+- On a miss: You are Exposed — drop to Desperate Position and mark 1 Harm
+**Limit:** Once per scene. You may mark 1 Fatigue to attempt a second time
+
+### Battle Instincts (6 XP)
+**Effect:** Once per scene, re-roll a failed defense roll
+
+### Silver Tongue (4 XP)
+**Effect:** Gain +1 die when persuading or deceiving through speech
+
+### Iron Stomach (6 XP)
+**Effect:** Immune to mundane poisons and spoiled food; halve complications from toxic sources
+
+### Exceptional Coordination (8 XP)
+**Effect:** One follower can provide +4 assist dice (exception to the +3 cap)
+
+## Magic Talents
+
+### Subtle Casting (Major Talent, 8 XP)
+**Requirements:** Lore 3+, Performance 2+ or Runekeeper with Codex
+**Effect:** Make a Performance + Lore roll to quietly cast a spell, invoke a Rite, or sing a Cantos against DV (Tier). If successful, the casting does not generate SB on the Channel or initial roll
+**Limitations:**
+- Cannot be used for Great or Extreme Tier effects
+- The Weave phase (if applicable) still generates normal SB
+- Obvious magical manifestations still occur
+
+### Backlash Soothing (Wood Elf, 5 XP)
+**Effect:** Once per session, cancel 1 Backlash die in natural terrain
+
+### Weave Anchor (High Elf, 8 XP)
+**Requirements:** Wits 3+, Arcana 3+
+**Effect:** Reduce magical Backlash by 1 when casting Intricate spells
+
+### Echo-Walker's Step (High Elf, 20 XP)
+**Requirements:** Wits 5, Arcana 4+
+**Effect:** Once per arc, observe a perfect echo of a past event at your location. GM immediately banks +2 SB; scenes touching that memory carry an omen. Grants DV −1 on one action that uses the revealed truth
+
+## Social & Influence Talents
+
+### Guild Ties (Human, 7 XP)
+**Requirements:** Presence 2+
+**Effect:** Call in favors from a guild or order once per session
+
+### Banner-Bearer (Human, 15 XP)
+**Requirements:** Presence 4+, Resolve 3+
+**Effect:** Inspire an allied unit; once per battle, erase 2 complications for the group
+
+### Ranger's Step (Wood Elf, 9 XP)
+**Requirements:** Wits 3+, Stealth 2+
+**Effect:** Move unseen in forests; treat terrain penalties as one step lower
+
+### Wild Speaker (Wood Elf, 18 XP)
+**Requirements:** Spirit 5+, Survival 3+
+**Effect:** Speak to beasts and trees; once per session, command local wildlife as allies
+
+### Lorekeeper (High Elf, 4 XP)
+**Effect:** Recall obscure history or magic without rolling once per session
+
+## Cultural & Ancestral Talents
+
+### Stone-Sense (Dwarf, 5 XP)
+**Requirements:** Dwarf only
+**Effect:** Detect flaws in stone; +1 die to underground Lore or Survival checks involving stonework
+
+### Spirit Shield (Dwarf, 8 XP)
+**Requirements:** Spirit 3+
+**Effect:** Commune with ancestors; once per session, block 1 complication for an ally
+
+### Forge-Patriarch (Dwarf, 18 XP)
+**Requirements:** Body 4+, Lore 3+
+**Effect:** Found a forge-citadel; gain loyal smiths and engineers (Cap 5 followers)
+
+### Blood Frenzy (Ykrul, 4 XP)
+**Effect:** When reduced to half health, gain +1 die on melee rolls
+
+### Blood Memory (Ykrul, 7 XP)
+**Requirements:** Body 3+
+**Effect:** After battle, gain 1 temporary Skill die reflecting a foe's tactics in the next scene
+
+### Warglord (Ykrul, 18 XP)
+**Requirements:** Body 5, Sway 3+
+**Effect:** Rally scattered warbands; once per campaign, unify tribes under one banner
+
+## Utility Talents
+
+### Borrowed Grace (Invoker Talent, Lesser Imbuement)
+**Use:** 1 Boon, 1 action
+**Effect:** +1 Melee or +1 Thematic (your table's thematic Skill)
+**Duration:** Single action/attack
+**Requirement:** Wield/display the Patron's Symbol
+**Obligation:** +1 Obligation to that Patron immediately
+**Limits:** Cannot be extended, stacked, or Pushed for duration
+
+### Focused Devotion (3-5 XP)
+**Effect:** Once per scene, spend 1 Boon to clear 1 segment of Obligation from a Patron. This cannot remove segments accrued during the same scene
+
+### Path-Logic Mastery (Valewood, 12 XP)
+**Requirements:** Wits 4+, Survival 3+
+**Effect:** Treat any forest path as if you have proper way-cord. Once per session, ignore one "Path Reversal" or "Sweet Wind" complication
+
+### Harbor Whisper (Kahfagia, 6 XP)
+**Requirements:** Presence 3+, Sway 2+
+**Effect:** Once per session, treat a failed harbor negotiation as a success with cost. Gain +1 die to all port-related social rolls
+
+### Salt-Blood (Mistlands, 7 XP)
+**Requirements:** Spirit 3+, Survival 2+
+**Effect:** Immune to ward-salt effects that would normally hinder movement. Once per session, treat a "Ward-Trap" complication as a minor inconvenience
+
+### Oath-Keeper's Resolve (Aeler, 9 XP)
+**Requirements:** Spirit 4+, Resolve 3+
+**Effect:** Once per session, treat a failed "Oath-Magnet" or "Spoken Geas" complication as a success with cost. Gain +1 die to all oath-related social rolls
+
+## Specialized Talents
+
+### Merchant's Eye (Viterra, 8 XP)
+**Requirements:** Wits 3+, Sway 3+
+**Effect:** +2 dice to appraise goods, favors, or leverage. Once per session, convert one resource into another at favorable exchange rates
+
+### Courtier's Grace (Vhasia, 10 XP)
+**Requirements:** Presence 4+, Sway 3+
+**Effect:** +1 die to all social rolls in courtly settings. Once per session, treat a failed court negotiation as a success with minor concession
+
+### Threshold Walker (Ubral, 11 XP)
+**Requirements:** Spirit 4+, Survival 3+
+**Effect:** Once per session, treat a "Feud Rekindled" or "Bridge Dropped" complication as a minor inconvenience. Gain +1 die to all hill-clan related social rolls
+
+### Storm-Rider (Linn, 9 XP)
+**Requirements:** Body 3+, Survival 4+
+**Effect:** +2 dice to all weather-related Survival checks. Once per session, treat a "Black Squall" or "White Squall" complication as navigable conditions
+
+### Curse-Reading (Acasia, 12 XP)
+**Requirements:** Spirit 4+, Lore 3+
+**Effect:** +2 dice to detect and analyze curses. Once per session, treat a "Curse Awakened" or "Curse Stirs" complication by identifying its specific trigger and weakness
+
+### Hearth-Blessed (Aelaerem, 6 XP)
+**Requirements:** Presence 3+, Lore 2+
+**Effect:** +1 die to all hospitality-related social rolls. Once per session, treat a "Neighborly Courtesies" complication as automatically resolved through proper observance
+
+## Prestige Talents
+
+### Warglord (Ykrul, 18 XP)
+**Effect:** Once per campaign, unify scattered warbands into a single host for a season. Start a Logistics clock and a Grudge clock; either one filling fractures the host
+
+### Spirit-Shield (Aeler, 15 XP)
+**Effect:** Once per session, erase up to 3 SB from an ally's current roll; you immediately mark Fatigue +1 and the GM banks +1 SB as backlash
+
+### Banner-Bearer (Human, 15 XP)
+**Effect:** Inspire an allied unit; once per battle, erase 2 complications for the group
+
+### Echo-Walker's Step (High Elf, 20 XP)
+**Effect:** Once per arc, observe a perfect echo of a past event at your location. GM immediately banks +2 SB; scenes touching that memory carry an omen. Grants DV −1 on one action that uses the revealed truth
+
+### Forge-Patriarch (Dwarf, 18 XP)
+**Effect:** Found a forge-citadel; gain loyal smiths and engineers (Cap 5 followers)
+
+### Wild Speaker (Wood Elf, 18 XP)
+**Effect:** Speak to beasts and trees; once per session, command local wildlife as allies
+
+## Talent Creation Guidelines
+
+### XP Cost Tiers
+- **Minor Talents (2-4 XP):** Small situational bonuses, limited uses
+- **Major Talents (5-8 XP):** Significant scene-impacting abilities
+- **Prestige Talents (9-15 XP):** Campaign-defining capabilities
+- **Epic Talents (16-20 XP):** Once-per-campaign reality-shaping effects
+
+### Balance Principles
+1. **Fiction-First:** Talents should enhance storytelling, not just mechanical optimization
+2. **Limited Uses:** Most talents should have session/scene limitations to prevent dominance
+3. **Meaningful Costs:** Talents should require meaningful prerequisites and/or have narrative costs
+4. **Thematic Consistency:** Talents should fit the character's background and the campaign's themes
+5. **Player Agency:** Talents should create interesting choices rather than automatic successes
+
+### Integration Tips
+- **Combine with Backgrounds:** Talents work best when they synergize with regional skills and cultural backgrounds
+- **Support Multiple Approaches:** Good talents offer different ways to solve problems
+- **Create Narrative Hooks:** Talents should generate story opportunities, not just mechanical advantages
+- **Scale with Investment:** Higher-cost talents should provide proportionally greater impact
 
 1.  **Cost = Impact + Flexibility:** A 2-4 XP Talent should provide a situational bonus or a new minor option. An 8+ XP Talent should be a scene-defining power.
 2.  **Interact with Core Systems:** The best Talents play with SB, Boons, Position, Effect, and Clocks. They should feel like part of the game's engine.
@@ -111,3 +308,4 @@ When you create more Talents, keep these *Fate's Edge* principles in mind:
 5.  **Avoid Pure Number Inflation:** Talents that just give +1d to everything are boring. Instead, give +2d in a specific, flavorful situation (like *Keen-Eyed Scout*).
 
 These new Talents provide more avenues for character specialization, from the mystical (*Word of Unmaking*) to the tactical (*Volley of a Thousand Arrows*) and the high-risk (*Dual Patronage*). They should give players more ways to engage with the game's core themes of risk, consequence, and supernatural bargains.
+
