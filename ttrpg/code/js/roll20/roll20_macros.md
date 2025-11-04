@@ -1,71 +1,73 @@
+# Fate's Edge Roll20 Macros
+
 ## Core Mechanics Macros
 
 ### 1. Basic Challenge Roll
 ```javascript
-!roll --template simple --{{name=Challenge Roll}} --{{description=@{selected|character_name} attempts @{selected|action_description}}} --{{roll=[[?{Dice Pool|4}d10]]}} --{{ones=[[floor(?{Dice Pool|4}/10) + (?{Dice Pool|4}%10>=1)]]}} --{{successes=[[floor(?{Dice Pool|4}/10)*6 + min(6, ?{Dice Pool|4}%10)]]}}
+!roll --template simple --{{name=Challenge Roll}} --{{description=@{selected|character_name} attempts @{selected|action_description}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{roll=[[?{Dice Pool|4}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 2. Attribute + Skill Roll
 ```javascript
-!roll --template simple --{{name=@{selected|skill_name} Check}} --{{description=@{selected|character_name} uses @{selected|skill_name}}} --{{pool=[[@{selected|attribute|max} + @{selected|skill_value}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[floor(@{pool}/10)*6 + min(6, @{pool}%10)]]}} --{{ones=[[floor(@{pool}/10) + (@{pool}%10>=1)]]}}
+!roll --template simple --{{name=@{selected|skill_name} Check}} --{{description=@{selected|character_name} uses @{selected|skill_name}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|attribute|max} + @{selected|skill_value}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 3. Spend Story Beat (SB)
 ```javascript
 !setattr --sel --custom_controlled --mod --sb|-1 --silent
-&{template:default} {{name=SB Spent}} {{effect=?{Effect|1 SB - Minor pressure|2 SB - Moderate setback|3 SB - Serious trouble|4+ SB - Major turn}}}
+&{template:default} {{name=SB Spent}} {{effect=?{Effect|1 SB - Minor pressure (noise, trace, +1 Supply)|2 SB - Moderate setback (alarm, lose position, lesser foe)|3 SB - Serious trouble (reinforcements, gear breaks)|4+ SB - Major turn (trap springs, authority arrives)}}}
 ```
 
 ### 4. Generate Boon
 ```javascript
 !setattr --sel --custom_controlled --mod --boon|+1 --silent
-&{template:default} {{name=Boon Gained}} {{reason=?{Reason|Miss on significant action|Creative solution|Bond-driven play}}}
+&{template:default} {{name=Boon Gained}} {{reason=?{Reason|Miss on significant action|Partial success|Creative solution|Bond-driven play}}}
 ```
 
 ### 5. Convert Boons to XP
 ```javascript
 !setattr --sel --custom_controlled --boon|-2 --xp|+1 --silent
-&{template:default} {{name=XP Conversion}} {{result=2 Boons converted to 1 XP}}
+&{template:default} {{name=XP Conversion}} {{result=2 Boons converted to 1 XP (max 2 XP/session)}}
 ```
 
 ## Combat Macros
 
 ### 6. Melee Attack
 ```javascript
-!roll --template simple --{{name=Melee Attack}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{pool=[[@{selected|body|max} + @{selected|combat}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[floor(@{pool}/10)*6 + min(6, @{pool}%10)]]}} --{{ones=[[floor(@{pool}/10) + (@{pool}%10>=1)]]}}
+!roll --template simple --{{name=Melee Attack}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|body|max} + @{selected|melee}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 7. Ranged Attack
 ```javascript
-!roll --template simple --{{name=Ranged Attack}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{tempo=?{Tempo|Fast|Standard|Slow}}} --{{pool=[[@{selected|wits|max} + @{selected|ranged}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[floor(@{pool}/10)*6 + min(6, @{pool}%10)]]}} --{{ones=[[floor(@{pool}/10) + (@{pool}%10>=1)]]}}
+!roll --template simple --{{name=Ranged Attack}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|wits|max} + @{selected|ranged}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 8. Defense Roll
 ```javascript
-!roll --template simple --{{name=Defense}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{pool=[[@{selected|body|max} + @{selected|combat}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[floor(@{pool}/10)*6 + min(6, @{pool}%10)]]}} --{{ones=[[floor(@{pool}/10) + (@{pool}%10>=1)]]}}
+!roll --template simple --{{name=Defense}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|body|max} + @{selected|athletics}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ## Magic System Macros
 
 ### 9. Freeform Casting - Channel
 ```javascript
-!roll --template simple --{{name=Channel Spell}} --{{art=?{Art|Element|Style}}} --{{pool=[[@{selected|wits|max} + @{selected|arcana}]]}} --{{roll=[[@{pool}d10]]}} --{{potential=[[count(roll, 6, 10)]]}} --{{sb=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Channel Spell}} --{{element=?{Element|Earth|Fire|Air|Water|Fate|Life|Luck|Death}}} --{{pool=[[@{selected|wits|max} + @{selected|arcana}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{backlash=[[ones > 0]]}}
 ```
 
 ### 10. Freeform Casting - Weave
 ```javascript
-!roll --template simple --{{name=Weave Spell}} --{{element=?{Element|Earth|Fire|Air|Water|Fate|Life|Luck|Death}}} --{{pool=[[@{selected|wits|max} + @{selected|arcana}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{sb=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Weave Spell}} --{{element=?{Element|Earth|Fire|Air|Water|Fate|Life|Luck|Death}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|wits|max} + @{selected|arcana}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{backlash=[[ones > 0]]}}
 ```
 
 ### 11. Invoke Rite
 ```javascript
-!roll --template simple --{{name=Invoke Rite}} --{{rite=?{Rite Name}}} --{{dv=?{Difficulty Value|2|3|4|5}}} --{{pool=[[@{selected|spirit|max} + @{selected|lore}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{obligation=+1}}
+!roll --template simple --{{name=Invoke Rite}} --{{rite=?{Rite Name}}} --{{dv=?{Difficulty Value|2|3|4|5}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|spirit|max} + @{selected|lore}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{obligation=+1}}
 ```
 
 ### 12. Summon Spirit
 ```javascript
 !setattr --sel --custom_controlled --fatigue|+1 --silent
-&{template:default} {{name=Summon Spirit}} {{spirit=?{Spirit Type}}} {{cap=?{Capacity|1|3|5}}} {{leash=[[?{Capacity} + 2]] segments}}
+&{template:default} {{name=Summon Spirit}} {{spirit=?{Spirit Type}}} {{cap=?{Capacity|1|3}}} {{leash=[[?{Capacity} + @{selected|command|max}]] segments}}
 ```
 
 ## Resource Management Macros
@@ -73,7 +75,7 @@
 ### 13. Mark Fatigue
 ```javascript
 !setattr --sel --custom_controlled --fatigue|+1 --silent
-&{template:default} {{name=Fatigue Marked}} {{reason=?{Reason|Exertion|Magic|Travel}}}
+&{template:default} {{name=Fatigue Marked}} {{reason=?{Reason|Exertion|Magic|Travel}}} {{position_shift=?{Position Shift|Controlled->Risky|Risky->Desperate|Desperate->Harm}}}
 ```
 
 ### 14. Clear Fatigue
@@ -98,7 +100,7 @@
 
 ### 17. Draw Travel Card
 ```javascript
-&{template:default} {{name=Travel Card Draw}} {{suit=?{Suit|Spade - Place|Heart - Actor|Club - Pressure|Diamond - Reward}}} {{rank=?{Rank|2|3|4|5|6|7|8|9|10|J|Q|K|A}}} {{clock=[[?{Rank|2|3|4|5} = 4, ?{Rank|6|7|8|9|10} = 6, ?{Rank|J|Q|K} = 8, ?{Rank|A} = 10]] segments}}
+&{template:default} {{name=Travel Card Draw}} {{region=?{Region|Acasia|Aeler|Valewood|Mistlands|Silkstrand}}} {{suit=?{Suit|Spade - Place|Heart - Actor|Club - Pressure|Diamond - Reward}}} {{rank=?{Rank|2|3|4|5|6|7|8|9|10|J|Q|K|A}}} {{clock=[[?{Rank|2|3|4|5} = 4, ?{Rank|6|7|8|9|10} = 6, ?{Rank|J|Q|K} = 8, ?{Rank|A} = 10]] segments}}
 ```
 
 ### 18. Draw Consequence Card
@@ -128,12 +130,12 @@
 
 ### 22. Sway Roll
 ```javascript
-!roll --template simple --{{name=Sway Attempt}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{pool=[[@{selected|presence|max} + @{selected|sway}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{sb=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Sway Attempt}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|presence|max} + @{selected|sway}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 23. Command Roll
 ```javascript
-!roll --template simple --{{name=Command}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{pool=[[@{selected|presence|max} + @{selected|command}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{sb=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Command}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|presence|max} + @{selected|command}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ## Quick Utility Macros
@@ -174,3 +176,4 @@
 ### 30. Quick Reference
 ```javascript
 &{template:default} {{name=Quick Reference}} {{dv=?{DV|2 - Routine|3 - Pressured|4 - Hard|5+ - Extreme}}} {{position=?{Position|Controlled - Minor consequences|Risky - Moderate consequences|Desperate - Severe consequences}}} {{effect=?{Effect|Limited - Minor impact|Standard - Expected impact|Great - Major impact}}}
+```
