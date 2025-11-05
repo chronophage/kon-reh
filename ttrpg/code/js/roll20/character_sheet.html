@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <!-- Core Attributes -->
+    <!-- Core Attributes (Updated to 1-5 range) -->
     <div class="sheet-section">
         <h3>Core Attributes</h3>
         <div class="sheet-row">
@@ -42,15 +42,15 @@
         </div>
     </div>
 
-    <!-- Skills Section -->
+    <!-- Skills Section (Updated to 0-5 range) -->
     <div class="sheet-section">
-        <h3>Skills <span class="sheet-small">(0-8 practically)</span></h3>
+        <h3>Skills <span class="sheet-small">(0-5)</span></h3>
         <div class="sheet-row">
             <div class="sheet-col-4">
                 <fieldset class="repeating_skills">
                     <div class="sheet-skill-row">
                         <input type="text" name="attr_skill_name" placeholder="Skill Name"/>
-                        <input type="number" name="attr_skill_value" value="0" min="0" max="10"/>
+                        <input type="number" name="attr_skill_value" value="0" min="0" max="5"/>
                     </div>
                 </fieldset>
             </div>
@@ -58,7 +58,7 @@
                 <fieldset class="repeating_skills_2">
                     <div class="sheet-skill-row">
                         <input type="text" name="attr_skill_name_2" placeholder="Skill Name"/>
-                        <input type="number" name="attr_skill_value_2" value="0" min="0" max="10"/>
+                        <input type="number" name="attr_skill_value_2" value="0" min="0" max="5"/>
                     </div>
                 </fieldset>
             </div>
@@ -66,19 +66,19 @@
                 <fieldset class="repeating_skills_3">
                     <div class="sheet-skill-row">
                         <input type="text" name="attr_skill_name_3" placeholder="Skill Name"/>
-                        <input type="number" name="attr_skill_value_3" value="0" min="0" max="10"/>
+                        <input type="number" name="attr_skill_value_3" value="0" min="0" max="5"/>
                     </div>
                 </fieldset>
             </div>
         </div>
     </div>
 
-    <!-- Core Resources -->
+    <!-- Core Resources (Updated with Position/Effect) -->
     <div class="sheet-section sheet-resources">
         <div class="sheet-row">
             <!-- Boons -->
             <div class="sheet-col-4">
-                <h4>Boons <span class="sheet-small">(Max 5)</span></h4>
+                <h4>Boons <span class="sheet-small">(Max 5, trim to 2 at scene end)</span></h4>
                 <div class="sheet-boon-track">
                     <fieldset class="repeating_boons">
                         <input type="checkbox" name="attr_boon" value="1"/>
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <!-- Magic System -->
+    <!-- Magic System (Updated with three paths) -->
     <div class="sheet-section">
         <h3>Magic System</h3>
         <div class="sheet-row">
@@ -144,7 +144,7 @@
             
             <div class="sheet-col-6">
                 <label>Arcana Skill</label>
-                <input type="number" name="attr_arcana" value="0" min="0" max="10"/>
+                <input type="number" name="attr_arcana" value="0" min="0" max="5"/>
                 
                 <div>
                     <label>Backlash SB</label>
@@ -257,139 +257,3 @@
         </div>
     </div>
 </div>
-```
-
-And here's the accompanying CSS for styling:
-
-```css
-.sheet-wrapper {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f5f0;
-    color: #333;
-    padding: 10px;
-}
-
-.sheet-section {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 10px;
-}
-
-.sheet-section h3 {
-    margin-top: 0;
-    color: #5d4037;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
-}
-
-.sheet-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -5px;
-}
-
-.sheet-col-3, .sheet-col-4, .sheet-col-6, .sheet-col-12 {
-    padding: 0 5px;
-    box-sizing: border-box;
-}
-
-.sheet-col-3 { flex: 0 0 25%; }
-.sheet-col-4 { flex: 0 0 33.3333%; }
-.sheet-col-6 { flex: 0 0 50%; }
-.sheet-col-12 { flex: 0 0 100%; }
-
-input[type="text"], input[type="number"], select {
-    width: 100%;
-    padding: 5px;
-    margin: 2px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-}
-
-input[type="checkbox"] {
-    margin: 5px;
-    transform: scale(1.2);
-}
-
-.sheet-attribute {
-    text-align: center;
-}
-
-.sheet-attribute label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.sheet-skill-row, .sheet-asset-row, .sheet-bond-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-    gap: 5px;
-}
-
-.sheet-skill-row input[type="text"], 
-.sheet-asset-row input[type="text"],
-.sheet-bond-row input[type="text"] {
-    flex: 1;
-}
-
-.sheet-skill-row input[type="number"],
-.sheet-asset-row input[type="number"] {
-    width: 60px;
-}
-
-.sheet-resources h4 {
-    margin: 0 0 10px 0;
-    color: #5d4037;
-}
-
-.sheet-boon-track, .sheet-sb-track, .sheet-supply-track {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-}
-
-.sheet-harm-levels {
-    display: flex;
-    flex-direction: column;
-}
-
-.sheet-harm-levels label {
-    margin: 5px 0;
-}
-
-.sheet-small {
-    font-size: 0.8em;
-    color: #666;
-}
-
-.sheet-actions button {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    background: #5d4037;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.sheet-actions button:hover {
-    background: #4e342e;
-}
-
-.sheet-patron-tracker {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed #eee;
-}
-
-@media (max-width: 768px) {
-    .sheet-col-3, .sheet-col-4, .sheet-col-6 {
-        flex: 0 0 100%;
-    }
-}
