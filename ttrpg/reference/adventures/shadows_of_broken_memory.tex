@@ -11,7 +11,7 @@
 \usepackage{enumitem}
 \usepackage{multicol}
 \usepackage{tikz}
-\usepackage{mdframed}
+\usepackage[framemethod=TikZ]{mdframed}
 \usepackage{sectsty}
 \usepackage{needspace}
 \usepackage{changepage}
@@ -47,40 +47,30 @@
 {\normalfont\sffamily\bfseries\Huge}
 {\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
-\newenvironment{adventurebox}[1]{%
-  \begin{mdframed}[%
-    linewidth=2pt,%
-    linecolor=black,%
-    backgroundcolor=gray!10,%
-    innertopmargin=10pt,%
-    innerbottommargin=10pt,%
-    innerrightmargin=10pt,%
-    innerleftmargin=10pt,%
-    frametitle={#1},%
-    frametitlefont=\sffamily\bfseries,%
-  ]%
-}{%
-  \end{mdframed}%
-}
+\newmdenv[
+  linewidth=2pt,
+  linecolor=black,
+  backgroundcolor=gray!10,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  innerrightmargin=10pt,
+  innerleftmargin=10pt,
+  frametitlefont=\sffamily\bfseries
+]{adventurebox}
 
-\newenvironment{mechanicbox}[1]{%
-  \begin{mdframed}[%
-    linewidth=1pt,%
-    linecolor=gray,%
-    backgroundcolor=gray!5,%
-    innertopmargin=8pt,%
-    innerbottommargin=8pt,%
-    innerrightmargin=8pt,%
-    innerleftmargin=8pt,%
-    frametitle={#1},%
-    frametitlefont=\sffamily\itshape,%
-  ]%
-}{%
-  \end{mdframed}%
-}
+\newmdenv[
+  linewidth=1pt,
+  linecolor=gray,
+  backgroundcolor=gray!5,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  innerrightmargin=8pt,
+  innerleftmargin=8pt,
+  frametitlefont=\sffamily\itshape
+]{mechanicbox}
 
 \newcommand{\mechanic}[2]{%
-  \begin{mechanicbox}{#1}
+  \begin{mechanicbox}[frametitle={#1}]
     #2
   \end{mechanicbox}
 }
@@ -90,7 +80,7 @@
 }
 
 \newcommand{\sessionbox}[2]{%
-  \begin{adventurebox}{Session #1: #2}
+  \begin{adventurebox}[frametitle={Session #1: #2}]
 }
 
 \newcommand{\endsession}{%
@@ -420,4 +410,3 @@ For lower-tier characters, reduce the scope of the threat (perhaps it's containe
 This adventure works well as a mid-to-late campaign arc. The bone-ledger debt that appears at the end can be a recurring element, and Varnek Karn can become a long-term antagonist. The Curriculum Core, if not destroyed, could resurface in future adventures, perhaps in the hands of other factions who want to use it for their own purposes.
 
 \end{document}
-
