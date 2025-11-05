@@ -33,7 +33,7 @@ cd $git_root/ttrpg/reference
 # cd $git_root/ttrpg/quickstart
 # ../../tools/compile_latex.sh -f quickstart.tex -n "Fate's Edge - Quickstart Guide.pdf" > /dev/null 2>&1|| echo "Quickstart Guide did not build"
 
-echo "Building adventures"
+echo "Building Adventures"
 cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  ashes_of_infernal_accord.tex -n "Fate's Edge - Ashes of the Infernal Accord.pdf" > /dev/null 2>&1|| echo "#1. Did not build"
 ../../../tools/compile_latex.sh -f  between-knot-and-gate.tex -n "Fate's Edge - Between Knot & Gate.pdf" > /dev/null 2>&1|| echo "#2. Did not build"
@@ -48,10 +48,11 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  whispers_in_the_stacks.tex -n "Fate's Edge - Whispers in the Stacks.pdf" > /dev/null 2>&1|| echo "#11. Did not build"
 ../../../tools/compile_latex.sh -f  whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
 
-echo "Building adventures"
+echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  horror_campaigns.tex -n "Fate's Edge Expansion - Horror Campaigns.pdf" > /dev/null 2>&1|| echo "#1. Did not build"
-../../../tools/compile_latex.sh -f  modern_noir.tex -n "Fate's Edge Expansion - Modern Noir.pdf" > /dev/null 2>&1|| echo "#1. Did not build"
+../../../tools/compile_latex.sh -f  modern_noir.tex -n "Fate's Edge Expansion - Modern Noir.pdf" > /dev/null 2>&1|| echo "#2. Did not build"
+../../../tools/compile_latex.sh -f  dragons-lair.tex -n "Fate's Edge Expansion - Dragon's Lair.pdf" > /dev/null 2>&1|| echo "#3. Did not build"
 
 
 echo "Committing and pushing to git"
