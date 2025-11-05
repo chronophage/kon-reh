@@ -35,24 +35,24 @@ cd $git_root/ttrpg/quickstart
 
 echo "Building adventures"
 cd $git_root/ttrpg/reference/adventures/
-../../tools/compile_latex.sh -f  ashes_of_infernal_accord.tex -n "Fate's Edge - Ashes of the Infernal Accord.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  between-knot-and-gate.tex -n "Fate's Edge - Between Knot & Gate.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  blood_and_silk_intro_adv.tex -n "Fate's Edge - Blood & Silk Intro Adventure.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  crimson-ledger.tex -n "Fate's Edge - The Crimson Ledger of Ecktoria.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  hags_panopticon.te x-n "Fate's Edge - The Hag's Panopticon.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  mad-cantor-of-frosthollow.tex -n "Fate's Edge - The Mad Cantor of Frosthollow.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  of_ways_between.tex -n "Fate's Edge - Of Ways Between.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  shadows_of_broken_memory.tex -n "Fate's Edge - Shadows of Broken Memory.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  the_recursive_garden.tex -n "Fate's Edge - The Recursive Garden.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  the_serpents_coil.tex -n "Fate's Edge - The Serpent's Coil.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  whispers_in_the_stacks.tex -n "Fate's Edge - Whispers in the Stacks.pdf" > /dev/null 2>&1|| echo "Did not build"
-../../tools/compile_latex.sh -f  whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  ashes_of_infernal_accord.tex -n "Fate's Edge - Ashes of the Infernal Accord.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  between-knot-and-gate.tex -n "Fate's Edge - Between Knot & Gate.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  blood_and_silk_intro_adv.tex -n "Fate's Edge - Blood & Silk Intro Adventure.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  crimson-ledger.tex -n "Fate's Edge - The Crimson Ledger of Ecktoria.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  hags_panopticon.te x-n "Fate's Edge - The Hag's Panopticon.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  mad-cantor-of-frosthollow.tex -n "Fate's Edge - The Mad Cantor of Frosthollow.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  of_ways_between.tex -n "Fate's Edge - Of Ways Between.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  shadows_of_broken_memory.tex -n "Fate's Edge - Shadows of Broken Memory.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  the_recursive_garden.tex -n "Fate's Edge - The Recursive Garden.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  the_serpents_coil.tex -n "Fate's Edge - The Serpent's Coil.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  whispers_in_the_stacks.tex -n "Fate's Edge - Whispers in the Stacks.pdf" > /dev/null 2>&1|| echo "Did not build"
+../../../tools/compile_latex.sh -f  whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" > /dev/null 2>&1|| echo "Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
 IFS=$'\n';for i in $(ls *.pdf | sed -e 's/\.pdf//g'); do pdftotext -nopgbrk $i.pdf ~/fe_work/$i.txt
 done
-cd $git_root/ttrpg/reference/adventures/
+cd $git_root/ttrpg/build/adventures/
 IFS=$'\n';for i in $(ls *.pdf | sed -e 's/\.pdf//g'); do pdftotext -nopgbrk $i.pdf ~/fe_work/$i.txt
 done
 git add --all
