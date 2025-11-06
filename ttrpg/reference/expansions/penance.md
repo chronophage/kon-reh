@@ -3846,3 +3846,58 @@ HARMED: Elara Thornwright    HELPED: [ ]    UNRESOLVED: Elara Thornwright
 ---
 
 *This Quickstart Guide is designed to get you running the Lich's Dungeon of Penance with minimal prep and maximum impact. The adventure's strength lies in its emotional depth and meaningful choices—let the players' decisions drive the story forward.*
+
+# Utar Empire — GM Brief (Canon: 300 Years Ago)
+
+*Use this to keep the Utar implications tight, consistent, and subtle across the dungeon.*
+
+## Canon Snapshot
+
+* **Utar Empire**: a river-ringed, granary-rich empire that **collapsed ~300 years ago** through a compounded crisis of **plague**, **civil war**, and **external wars**—a long decline punctuated by final shocks (think “late‑imperial crumble,” not a single cataclysm).
+* **Aftermath**: de‑urbanization; successor polities; refugee diasporas; archives scattered; many civic records lost or altered; memorials vandalized or repurposed.
+* **Why it matters here**: The Penitent Lich’s worst decision chain ties to the fall. The dungeon **implies** his culpability through motifs, names, and bureaucratic detritus—**never** a direct confession.
+
+## Visual & Material Motifs (Late‑Utar)
+
+Reuse these whenever you want to hint “Utar” without saying it:
+
+* **Ash‑Snow**: Pale ash that melts clear; smells faintly of river silt when warmed.
+* **Wheat‑Glyph**: Three‑stalk seal used on grain rations, tithe ledgers, and coin.
+* **River‑Stone Brick**: Flat gray with mica flecks; signature city masonry.
+* **Tri‑Mark Script**: Administrative hand with three end‑ticks; common in late‑Utar ledgers and decrees.
+* **Broken Crest**: Circular civic seal with a clean heat‑crack.
+* **Bell of Noon**: A dull chime motif that “never quite resolves.”
+
+> Fold these into **Anchors**, **Senses**, and **Name‑as‑Key** clues. The more mercy the party chooses, the more legible these cues become.
+
+## Dating Clues (300 Years Ago)
+
+* **Coin**: Greened bronze grain‑tokens; edge‑notches worn in threes.
+* **Ink**: Oak‑gall formula that “brown‑ghosts” on the reverse of thin ledgers.
+* **Stonework**: River‑stone courses with every **tenth brick ticked three times**.
+* **Text**: Tri‑Mark margins around ration rolls and oaths of office.
+
+## Mechanical Hooks
+
+* **Research Bonus**: When a PC frames an action as **late‑Utar research** and brings a relevant token (coin, brick chip, ledger scrap), grant **DV −1** or **Position +1** for Evidence/Insight once per floor.
+* **Mercy → Clarity**: If a scene is resolved by **Mercy** or **Renunciation**, reveal a **clearer Utar clue** (watermark, seal fragment, correct civic title).
+* **Utar Tokens**: Shards of river‑stone, cracked bread chits, soot‑petals—**3 tokens** may be spent for **+1 progress** on the Final Persuasion clock or to ask, “What would restitution look like for the city?”
+
+## Language & Titles (for Name‑as‑Key)
+
+Sprinkle these into names and clues without naming Utar explicitly:
+
+* **Offices**: *Master of the Wheat‑Tithes; Warden of the Eastern Gate; Keeper of the River Ring; Registrar of Noon*.
+* **Civic Phrases**: *“By the Ring and the River,” “Noon keeps the watch,” “Three marks bind truth.”*
+
+## GM Guidance
+
+* **Imply, Don’t Accuse**: NPCs never say “he destroyed Utar.” Let the **Name Ledger**, motifs, and final litany suggest it.
+* **Echo Consistency**: Choose **2–3 motifs** and repeat them across multiple floors to build recognition.
+* **Restitution Beats**: Offer tangible civic repairs—restoring a gate roster, mending a ration roll, repairing a bell—so players can make the fall and its repair feel real.
+
+## Tie‑ins
+
+* **Runekeeper Patron**: +1 Favor when a PC restores a civic record **without erasing uncomfortable names**.
+* **Corruption**: Refusing civic restitution while using Utar clues can trigger **Ash Crown**‑style Major Corruption.
+* **Final Floor**: Mapping the 30 candles as a **ring‑wall** is intentional; the unlit phylactery sits on **river‑stone**. During the Thirty‑Spoken, the **Bell of Noon** finally rings true.

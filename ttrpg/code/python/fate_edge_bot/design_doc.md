@@ -496,7 +496,7 @@ Instead of "Create the entire bot", use:
 ### Day 5-6: Game Systems
 6. **Combat System**
    ```
-   Prompt: "Create a combat manager for Fate's Edge that tracks: position states (Controlled/Risky/Desperate), range bands (Close/Near/Far), tactical clocks (Mob Overwhelm, etc.), and party conditions"
+   Prompt: "Create a combat manager for Fate's Edge that tracks: position states (Dominant/Controlled/Desperate), range bands (Close/Near/Far), tactical clocks (Mob Overwhelm, etc.), and party conditions"
    ```
 
 7. **Magic System**

@@ -73,7 +73,7 @@ class CombatCommands(commands.Cog):
     @app_commands.describe(
         name="Participant name",
         is_character="Is this a player character? (true/false)",
-        position="Starting position (Controlled/Risky/Desperate)",
+        position="Starting position (Dominant/Controlled/Desperate)",
         range_band="Starting range (Close/Near/Far/Absent)"
     )
     @app_commands.choices(

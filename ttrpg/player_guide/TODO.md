@@ -179,7 +179,7 @@ Based on the review of the Player's Guide and Reference Guide, here's a comprehe
   - Travel system with deck generators
   - Supply Clock
   - Fatigue system
-  - Position states (Controlled/Risky/Desperate)
+  - Position states (Dominant/Controlled/Desperate)
   - Range bands (Close/Near/Far/Absent)
   - Deck of Consequences integration
 

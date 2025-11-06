@@ -102,7 +102,7 @@ const FateEdgeCampaignSetup = (() => {
             <h3>Core Mechanic</h3>
             <ul>
                 <li><strong>Approach:</strong> Describe intent and method</li>
-                <li><strong>Position:</strong> Controlled/Risky/Desperate</li>
+                <li><strong>Position:</strong> Dominant/Controlled/Desperate</li>
                 <li><strong>Roll:</strong> Attribute + Skill d10s</li>
                 <li><strong>Count:</strong> 6+ = Success, 1 = Story Beat</li>
             </ul>
