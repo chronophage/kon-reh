@@ -14,7 +14,7 @@ const FateEdgeCampaignSetup = (() => {
             },
             {
                 name: "Roll Challenge",
-                action: "!roll ?{Dice Pool|4} ?{Position|Controlled|Risky|Desperate} ?{Action Description|Generic Action}",
+                action: "!roll ?{Dice Pool|4} ?{Position|Dominant/Controlled/Desperate} ?{Action Description|Generic Action}",
                 visibleto: "all",
                 description: "Make a basic challenge roll"
             },
@@ -44,13 +44,13 @@ const FateEdgeCampaignSetup = (() => {
             },
             {
                 name: "Magic Channel",
-                action: "!roll ?{Pool|3} ?{Position|Controlled|Risky|Desperate} Channel Spell",
+                action: "!roll ?{Pool|3} ?{Position|Dominant/Controlled/Desperate} Channel Spell",
                 visibleto: "all",
                 description: "Channel potential for magic"
             },
             {
                 name: "Magic Weave",
-                action: "!roll ?{Pool|3} ?{Position|Controlled|Risky|Desperate} Weave Spell",
+                action: "!roll ?{Pool|3} ?{Position|Dominant/Controlled/Desperate} Weave Spell",
                 visibleto: "all",
                 description: "Weave magical effect"
             }

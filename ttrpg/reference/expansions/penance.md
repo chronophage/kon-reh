@@ -309,7 +309,7 @@ Copy this block for each floor. Replace bracketed prompts with your details. Kee
 
 Memory in One Line: [What did the lich do (or fail to do), in 1 honest sentence?]
 Tone Tags: [e.g., contrition • frost • ceremony • whispers]
-Start Position: Controlled / Risky / Desperate
+Start Position: Dominant/Controlled/Desperate
 Floor Clock: [4–6] — [What advances it? e.g., “cold shards fall, guests turn hostile, vows unravel”]
 
 Extended Lore (For GM Eyes)

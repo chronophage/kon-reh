@@ -171,7 +171,7 @@ class CombatManager:
         if participant_name not in self.combat_state["participants"]:
             return {"status": "error", "message": f"{participant_name} not in combat"}
             
-        valid_positions = ["Controlled", "Risky", "Desperate"]
+        valid_positions = ["Dominant/Controlled/Desperate"]
         if position not in valid_positions:
             return {"status": "error", "message": f"Invalid position. Valid: {valid_positions}"}
             

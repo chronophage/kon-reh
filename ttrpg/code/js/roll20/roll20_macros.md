@@ -4,12 +4,12 @@
 
 ### 1. Basic Challenge Roll
 ```javascript
-!roll --template simple --{{name=Challenge Roll}} --{{description=@{selected|character_name} attempts @{selected|action_description}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{roll=[[?{Dice Pool|4}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Challenge Roll}} --{{description=@{selected|character_name} attempts @{selected|action_description}}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{roll=[[?{Dice Pool|4}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 2. Attribute + Skill Roll
 ```javascript
-!roll --template simple --{{name=@{selected|skill_name} Check}} --{{description=@{selected|character_name} uses @{selected|skill_name}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|attribute|max} + @{selected|skill_value}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=@{selected|skill_name} Check}} --{{description=@{selected|character_name} uses @{selected|skill_name}}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|attribute|max} + @{selected|skill_value}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 3. Spend Story Beat (SB)
@@ -34,17 +34,17 @@
 
 ### 6. Melee Attack
 ```javascript
-!roll --template simple --{{name=Melee Attack}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|body|max} + @{selected|melee}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Melee Attack}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|body|max} + @{selected|melee}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 7. Ranged Attack
 ```javascript
-!roll --template simple --{{name=Ranged Attack}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|wits|max} + @{selected|ranged}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Ranged Attack}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|wits|max} + @{selected|ranged}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 8. Defense Roll
 ```javascript
-!roll --template simple --{{name=Defense}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|body|max} + @{selected|athletics}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Defense}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|body|max} + @{selected|athletics}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ## Magic System Macros
@@ -56,12 +56,12 @@
 
 ### 10. Freeform Casting - Weave
 ```javascript
-!roll --template simple --{{name=Weave Spell}} --{{element=?{Element|Earth|Fire|Air|Water|Fate|Life|Luck|Death}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|wits|max} + @{selected|arcana}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{backlash=[[ones > 0]]}}
+!roll --template simple --{{name=Weave Spell}} --{{element=?{Element|Earth|Fire|Air|Water|Fate|Life|Luck|Death}}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|wits|max} + @{selected|arcana}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{backlash=[[ones > 0]]}}
 ```
 
 ### 11. Invoke Rite
 ```javascript
-!roll --template simple --{{name=Invoke Rite}} --{{rite=?{Rite Name}}} --{{dv=?{Difficulty Value|2|3|4|5}}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|spirit|max} + @{selected|lore}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{obligation=+1}}
+!roll --template simple --{{name=Invoke Rite}} --{{rite=?{Rite Name}}} --{{dv=?{Difficulty Value|2|3|4|5}}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|spirit|max} + @{selected|lore}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}} --{{obligation=+1}}
 ```
 
 ### 12. Summon Spirit
@@ -130,12 +130,12 @@
 
 ### 22. Sway Roll
 ```javascript
-!roll --template simple --{{name=Sway Attempt}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|presence|max} + @{selected|sway}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Sway Attempt}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|presence|max} + @{selected|sway}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ### 23. Command Roll
 ```javascript
-!roll --template simple --{{name=Command}} --{{position=?{Position|Controlled|Risky|Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|presence|max} + @{selected|command}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
+!roll --template simple --{{name=Command}} --{{position=?{Position|Dominant/Controlled/Desperate}}} --{{effect=?{Effect|Limited|Standard|Great}}} --{{pool=[[@{selected|presence|max} + @{selected|command}]]}} --{{roll=[[@{pool}d10]]}} --{{successes=[[count(roll, 6, 10)]]}} --{{ones=[[count(roll, 1, 1)]]}}
 ```
 
 ## Quick Utility Macros
