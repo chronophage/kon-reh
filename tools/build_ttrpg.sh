@@ -53,7 +53,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  horror_campaigns.tex -n "Fate's Edge Expansion - Horror Campaigns.pdf" > /dev/null 2>&1|| echo "#1. Did not build"
 ../../../tools/compile_latex.sh -f  modern_noir.tex -n "Fate's Edge Expansion - Modern Noir.pdf" > /dev/null 2>&1|| echo "#2. Did not build"
 ../../../tools/compile_latex.sh -f  dragons-lair.tex -n "Fate's Edge Expansion - Dragon's Lair.pdf" > /dev/null 2>&1|| echo "#3. Did not build"
-../../../tools/compile_latex.sh -f  penitent-lich.tex -n "Fate's Edge Expansion - The Penitent Lich.pdf" > /dev/null 2>&1|| echo "#3. Did not build"
+../../../tools/compile_latex.sh -f  penitent-lich.tex -n "Fate's Edge Expansion - The Lich's Dungeon of Penance.pdf" > /dev/null 2>&1|| echo "#4. Did not build"
 
 
 echo "Committing and pushing to git"
