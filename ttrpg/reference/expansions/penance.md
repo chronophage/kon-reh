@@ -8,7 +8,7 @@ How to Run This Adventure
 
 Floor-as-Leg Procedure
 	1.	Seed the Floor: Treat each floor as a Travel “leg.” Draw your seed (Spade = place, Heart = actor, Club = pressure, Diamond = leverage) from a reskinned “Dungeon Deck,” or choose elements that match the listed floor. Highest rank sets the Floor Clock.
-	2.	Set Position: Start at Controlled. Adjust during play for bold risks, insight, or rising backlash.
+	2.	Set Position: Start at Dominant. Adjust during play for bold risks, insight, or rising backlash.
 	3.	Track the Floor Clock [4–6]: Use [4] for compact scenes, [5] for tense puzzles/social play, [6] for complex combats or multifaceted dilemmas.
 	4.	SB Economy = Revelation Engine: Prefer spending SB to reveal memory, raise stakes, or tilt loyalties over raw damage. Draw from the Deck of Consequences when the scene earns it (multiple 1s, spikes in tension) to color omens, debts, or emotional fallout.
 	5.	End with a Choice: Each floor ends on a fork that reframes the lich. Choices tune Position for the next floor and unlock boons or burdens.
@@ -48,7 +48,7 @@ Stakes: You descend to hold the lich accountable—or to free him.
 
 The 30 Floors of Penance
 
-Each floor below lists: Memory, Environment, Clock, Handles, SB Spends, and Choices. Start Position is Controlled unless stated.
+Each floor below lists: Memory, Environment, Clock, Handles, SB Spends, and Choices. Start Position is Dominant unless stated.
 
 1) The Abandoned Apprentice
 	•	Memory: He left his first student locked out of the rite to claim credit.
@@ -262,7 +262,7 @@ Each floor below lists: Memory, Environment, Clock, Handles, SB Spends, and Choi
 	•	SB Spends: (2) Candles gutter images of those you saved; (4) A beloved echo asks you to forgive him—or forbid forgiveness.
 	•	Endings (Pick by Persuasion Result):
 	•	Continue Penance: The lich seals himself deeper. Grant Fetter’s Boon (1/session: erase 1 SB from a roll; GM banks +1).
-	•	Find Peace: He passes on; a Soul-Light remains (1/arc: remove a Desperate → Controlled shift for one scene).
+	•	Find Peace: He passes on; a Soul-Light remains (1/arc: remove a Desperate → Dominant shift for one scene).
 	•	Join You: He returns in frail flesh; a Mortal Oath binds him to aid you against a defined threat. Mark a Debt clock that ticks on misuse.
 
 ⸻
@@ -309,7 +309,7 @@ Copy this block for each floor. Replace bracketed prompts with your details. Kee
 
 Memory in One Line: [What did the lich do (or fail to do), in 1 honest sentence?]
 Tone Tags: [e.g., contrition • frost • ceremony • whispers]
-Start Position: Dominant/Controlled/Desperate
+Start Position: Dominant/Dominant/Desperate
 Floor Clock: [4–6] — [What advances it? e.g., “cold shards fall, guests turn hostile, vows unravel”]
 
 Extended Lore (For GM Eyes)
@@ -424,7 +424,7 @@ Mini Example (Floor 7: The Broken Vow)
 
 Memory in One Line: He left his wedding mid-ritual to chase discovery.
 Tone Tags: contrition • frost • ceremony • hush
-Start Position: Controlled
+Start Position: Dominant
 Floor Clock: [6] — Shards of cold fall; vows unravel; guests awaken hostile.
 
 Extended Lore: He believed a perfect theorem could spare future grief, and so he traded the present for the promise. She stood alone with a vow in her mouth and a ring gone cold. The aisle’s frost is the breath of every apology he never learned to make.
@@ -456,7 +456,7 @@ Exit: The frost melts into dew; lilies breathe; the aisle warms under your steps
 Final Floor — The Last Light (revised)
 	•	Memory: He chose lichdom to pay for everything—and to be unable to stop paying.
 	•	Environment: A quiet study of candles. Thirty flames, each the height of a floor you climbed. The lich sits unarmed; the air is bright with names unsaid.
-	•	Start Position: Controlled if you showed mercy/restitution on ≥10 floors; Risky otherwise. Any violent approach starts Desperate.
+	•	Start Position: Dominant if you showed mercy/restitution on ≥10 floors; Controlled otherwise. Any violent approach starts Desperate.
 
 Optimal Resolution: Nonviolent
 	•	Primary Clock: Persuasion [6–8] (6 for merciful runs, 8 for mixed).
@@ -483,7 +483,7 @@ Violent Resolution (Daring, Suboptimal)
 
 Endings
 	•	Continue Penance: He seals himself deeper. Gain Fetter’s Boon (1/session erase 1 SB from a roll; GM banks +1 SB). The stair closes for a year and a day.
-	•	Find Peace: He passes onward; a Soul-Light remains (1/arc: shift Desperate → Controlled for one scene).
+	•	Find Peace: He passes onward; a Soul-Light remains (1/arc: shift Desperate → Dominant for one scene).
 	•	Join You: He returns in frail flesh; a Mortal Oath binds him against a named greater threat. Track Debt [4] that ticks on misuse.
 
 Treasure—Only if The Thirty-Spoken: When the party recites all 30 names and he yields, he bequeaths the Glaive of the Thirty (below). If he’s slain, only a fine (non-enchanted) glaive lies here unless later awakened by returning at least ten names to the living record.
@@ -533,7 +533,7 @@ Runekeeper: What You Get
 
 When you swear to the Penitent Lich as Runekeeper, you learn to inscribe small, portable bindings called runes. Each rune is a single-use inscription prepared during downtime or a quiet scene.
 	•	Preparing Runes: In downtime, prepare 2 runes from your list; carry at most 3 at a time. You may overwrite an unspent rune by marking Obligation to the Patron.
-	•	Invoking Runes: Invoking a rune is usually Controlled and takes a quick action unless the scene is in chaos (then Risky).
+	•	Invoking Runes: Invoking a rune is usually Dominant and takes a quick action unless the scene is in chaos (then Controlled).
 	•	Interacting with Position/DV: Runes usually raise Position one step or give +1 effect toward their stated sphere.
 
 ⸻
@@ -559,7 +559,7 @@ Favor 3 — Warden of Restitution
 	•	Boon—Vigil: When you keep watch over a warded thing for a full scene, everyone on your side begins the next scene one Position higher.
 
 Favor 4 — Litany-Bearer
-	•	Rune: Litany: Speak a short list of rightful names. For the next minute, your side treats the scene’s first Desperate roll as Controlled. Consumes one distinct name from your Name Ledger.
+	•	Rune: Litany: Speak a short list of rightful names. For the next minute, your side treats the scene’s first Desperate roll as Dominant. Consumes one distinct name from your Name Ledger.
 	•	Boon—Mercy Carried Forward: When you choose a nonviolent exit in a grievous scene, remove 1 segment from a Memory/Alert clock.
 
 Favor 5 — Keeper of the Last Light
@@ -663,9 +663,9 @@ Roll when you take a petty cruelty or minor desecration.
 	2.	Ink-Fingers: Black ink stains your hands. Evidence-type actions suffer DV +1 unless you start by admitting a relevant fault.
 	3.	Wrong-Whisper: Echoes misname you. Sway vs any harmed party is -1d unless you begin with acknowledgment; on acknowledgment, steady Position.
 	4.	Guttering Candle: Nearby flames flutter toward you. When you lie about the past, immediately draw the Deck of Consequences.
-	5.	Numb Grip: Fingers won’t warm. Your first delicate action each scene (Tinker/Theft/etc.) starts Risky unless you carry a token of the harmed.
+	5.	Numb Grip: Fingers won’t warm. Your first delicate action each scene (Tinker/Theft/etc.) starts Controlled unless you carry a token of the harmed.
 	6.	Cold Ring: A band bites your finger. If you break a promise this scene, tick a Memory Collapse [4] sub-clock +1.
-	7.	Skittering Shadow: Your shadow jitters. Stealth starts Risky unless you spoke a true name today.
+	7.	Skittering Shadow: Your shadow jitters. Stealth starts Controlled unless you spoke a true name today.
 	8.	Frosted Mirror: Your reflection fogs first. When acting from self-deception, DV +1; if you speak your true name, ignore this for the scene.
 	9.	Ash in Pocket: Coin spent for selfish gain becomes an IOU; tick Obligation +1 segment (to anyone harmed by the scene).
 	10.	Blurred Margins: Names blur at the edges of pages. Once/scene the GM may ask, “Whose name is missing?” If you cannot answer, Position -1.
@@ -681,7 +681,7 @@ Roll when you violate a taboo or commit a grievous erasure.
 	2.	The Unlit Candle: A thirty-first candle won’t catch. Undead prefer you as a target, but you gain +1 effect on Rites after confession.
 	3.	Tongue of Ash: Mispronouncing a true name adds +1 segment to Persuasion/Memory Collapse and locks that name until restitution.
 	4.	Name-Scar: Healed wounds etch a name you can’t say. Choose an NPC’s name you are unable to speak until you perform a fitting repair.
-	5.	Frosted Vows: Your touch chills vows. Allies start the next social scene Risky unless you consecrate with Rune: Witness.
+	5.	Frosted Vows: Your touch chills vows. Allies start the next social scene Controlled unless you consecrate with Rune: Witness.
 	6.	Mirror-Shard Soul: On being reduced to 0, you split into two conflicting drives for one scene (GM tool) until healed by a Vigil.
 	7.	Debtor’s Sigil: Mark Obligation [4] to the Patron. Until cleared, you cannot invoke the same Litany or Glaive name twice per arc.
 	8.	Name-Eater: On a critical failure, one random name moves from Helped → Unresolved; gain +1d to your immediate follow-up and mark Stain.
@@ -724,7 +724,7 @@ GM Usage Notes
 
 **Memory in One Line:** He left his first student locked out of the rite to claim credit.
 **Tone Tags:** contrition • workshop • betrayal • stolen knowledge
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Tools hum louder; chalk-circle sparks; memory-constructs awaken.
 
 **Extended Lore (For GM Eyes)**
@@ -818,7 +818,7 @@ The circle's light dims as Elara's name echoes through the chamber. Her notes fl
 
 **Memory in One Line:** He abandoned his wedding mid-ritual for discovery.
 **Tone Tags:** contrition • frost • ceremony • whispers
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Shards of cold fall; vows unravel; guests awaken hostile.
 
 **Extended Lore (For GM Eyes)**
@@ -910,7 +910,7 @@ The frost melts into dew; lilies breathe; the aisle warms under your steps.
 
 **Memory in One Line:** He fled, leaving a shield-mate to die.
 **Tone Tags:** contrition • sand • battle • guilt
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Banners tighten into nooses; sand shifts to quicksand; campaign clock ticks.
 
 **Extended Lore (For GM Eyes)**
@@ -1002,7 +1002,7 @@ The sand settles into a proper grave as Thane's name is spoken. His shield gleam
 
 **Memory in One Line:** He spurned mortal affection to pursue immortality.
 **Tone Tags:** contrition • night • garden • heartbreak
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Flowers close; heart slows; silver lilies wilt.
 
 **Extended Lore (For GM Eyes)**
@@ -1094,7 +1094,7 @@ The lilies' glow softens as Lyra's name is spoken. The heart's beat steadies, an
 
 **Memory in One Line:** He stole forbidden pages.
 **Tone Tags:** contrition • study • theft • hypocrisy
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Footnotes recite accusations; cane taps faster; secret pages flare.
 
 **Extended Lore (For GM Eyes)**
@@ -1186,7 +1186,7 @@ The footnotes fall silent as Master Rhem's name is spoken. The forbidden pages s
 
 **Memory in One Line:** He quarantined too harshly, dooming survivors.
 **Tone Tags:** contrition • infirmary • plague • mercy
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Lullaby grows discordant; vents cough worse fumes; time loss imminent.
 
 **Extended Lore (For GM Eyes)**
@@ -1278,7 +1278,7 @@ The lullaby softens into a proper tune as the children's names are spoken. Their
 
 **Memory in One Line:** He traded a friend to the authorities.
 **Tone Tags:** contrition • tea-house • masks • betrayal
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Masks tilt accusingly; whispers grow louder; sealed writ lands.
 
 **Extended Lore (For GM Eyes)**
@@ -1370,7 +1370,7 @@ The masks settle as Kira's name is spoken. Her friendship token warms briefly be
 
 **Memory in One Line:** He failed a sacred watch.
 **Tone Tags:** contrition • temple • door • vigil
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Hinge screams; pilgrim-echo pushes through; breach-creature stirs.
 
 **Extended Lore (For GM Eyes)**
@@ -1462,7 +1462,7 @@ The gate's locks click into place as the oath is spoken. The missing tooth settl
 
 **Memory in One Line:** He discredited a rival through lies.
 **Tone Tags:** contrition • lecture-hall • chalk • falsehood
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Bell tolls on falsehoods; note-mites chew proofs; reputation crumbles.
 
 **Extended Lore (For GM Eyes)**
@@ -1554,7 +1554,7 @@ The bell's toll steadies as Dr. Greenwell's name is spoken. Her research papers 
 
 **Memory in One Line:** He sold a neighborhood to fund research.
 **Tone Tags:** contrition • siege • hearth • betrayal
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Roof collapse; hostage ledger appears; house-gods glare.
 
 **Extended Lore (For GM Eyes)**
@@ -1644,7 +1644,7 @@ The house-gods' glares soften as Hearth-Row's name is spoken. The eviction notic
 
 **Memory in One Line:** He broke a village's water-pact.
 **Tone Tags:** contrition • drought • well • thirst
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Cracks spread underfoot; thirst-curse licks lips; spirit sighs below.
 
 **Extended Lore (For GM Eyes)**
@@ -1736,7 +1736,7 @@ The salt rings glisten as Nimue's name is spoken. Water begins to seep from the 
 
 **Memory in One Line:** He let enemies lie unburied to study them.
 **Tone Tags:** contrition • bones • windmill • flies
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Bone-sail cleaves cover; skull remembers childhood; flies grow louder.
 
 **Extended Lore (For GM Eyes)**
@@ -1828,7 +1828,7 @@ The bone-windmill slows as the dead are named. The flies settle into respectful 
 
 **Memory in One Line:** He stole a rival's lover through glamour.
 **Tone Tags:** contrition • ballroom • mirrors • glamour
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Floor becomes slick with spilled secrets; mirror eats dice; reflections turn hostile.
 
 **Extended Lore (For GM Eyes)**
@@ -1920,7 +1920,7 @@ The mirrors clear as Valerian's name is spoken. His reflection smiles sadly befo
 
 **Memory in One Line:** He promised to guard a grave.
 **Tone Tags:** contrition • hill • standing stones • broken promise
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Cold wind steals breath; name tries to climb into mouth; stones hum with power.
 
 **Extended Lore (For GM Eyes)**
@@ -2012,7 +2012,7 @@ The standing stones ring clearly as Master Aldric's name is spoken. The scratche
 
 **Memory in One Line:** He set a fire to hide evidence.
 **Tone Tags:** contrition • stacks • blaze • soot
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Roof beam falls; "saved" book is false; soot-spirits chant accusations.
 
 **Extended Lore (For GM Eyes)**
@@ -2102,7 +2102,7 @@ The flames dim as the truth's name is spoken. Ash settles into peaceful patterns
 
 **Memory in One Line:** He trained a child assassin.
 **Tone Tags:** contrition • rooftop • bell-lanterns • corruption
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Knife flashes at throat; kill-phrase echoes; bell-lanterns swing wildly.
 
 **Extended Lore (For GM Eyes)**
@@ -2194,7 +2194,7 @@ The bell-lanterns still as the child's true name is spoken. Their blade falls ha
 
 **Memory in One Line:** He field-tested a weapon on a village.
 **Tone Tags:** contrition • ballista field • stones • screams
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Misfire blasts the party; sponsor-echo offers coin; villagers' ghosts rise.
 
 **Extended Lore (For GM Eyes)**
@@ -2286,7 +2286,7 @@ The siege engine falls silent as Thornwick's name is spoken. The weeping stones 
 
 **Memory in One Line:** He blocked reparations to a harmed cohort.
 **Tone Tags:** contrition • senate • candles • ballots
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Whip flips votes; clock gains segment; academic censors arrive.
 
 **Extended Lore (For GM Eyes)**
@@ -2378,7 +2378,7 @@ The candles brighten as the students' names are spoken. The bleeding ballots sea
 
 **Memory in One Line:** He misled peers into a lethal dig.
 **Tone Tags:** contrition • necropolis • tent • sand
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Trench collapses; plague-sigil coughs; ancient guardian stirs.
 
 **Extended Lore (For GM Eyes)**
@@ -2470,7 +2470,7 @@ The sand settles as the expedition's name is spoken. The tombs close respectfull
 
 **Memory in One Line:** He used a lover's confession in a paper.
 **Tone Tags:** contrition • confessional • glass • ink
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Ink stains hands; echo asks for PC confession; privacy barrier weakens.
 
 **Extended Lore (For GM Eyes)**
@@ -2560,7 +2560,7 @@ The ink stops dripping as Elara's name is spoken. The glass walls fog over respe
 
 **Memory in One Line:** He stole a ritual and sold it.
 **Tone Tags:** contrition • standing stones • fog • betrayal
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Buyer names an ally; stone groans; threshold tears.
 
 **Extended Lore (For GM Eyes)**
@@ -2652,7 +2652,7 @@ The stones ring clearly as the coven's name is spoken. The borrowed sigils fade 
 
 **Memory in One Line:** He speculated on grain during famine.
 **Tone Tags:** contrition • market • scales • hunger
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Spoilage spreads; grain-storm blinds; desperate mob gathers.
 
 **Extended Lore (For GM Eyes)**
@@ -2744,7 +2744,7 @@ The scales balance as Ravenholt's name is spoken. The empty baskets fill with si
 
 **Memory in One Line:** He let a rival fall to claim a seat.
 **Tone Tags:** contrition • endless stair • rails • ambition
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Boot slips; third climber grabs ankle; rival's echo calls for justice.
 
 **Extended Lore (For GM Eyes)**
@@ -2836,7 +2836,7 @@ The stair's treacherous rail smooths as Thaddeus's name is spoken. The greased s
 
 **Memory in One Line:** He took a predatory loan that doomed a village.
 **Tone Tags:** contrition • coin-hall • drake • debt
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Interest compounds; draconic omen opens eye; village echoes plead.
 
 **Extended Lore (For GM Eyes)**
@@ -2928,7 +2928,7 @@ The ledgers balance as Goldenfields' name is spoken. The ink binding loosens, an
 
 **Memory in One Line:** He abandoned a patron's calling mid-rite.
 **Tone Tags:** contrition • chapel • icons • apostasy
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Omen turns its face; icon drinks breath; faithful arrive demanding answers.
 
 **Extended Lore (For GM Eyes)**
@@ -3018,7 +3018,7 @@ The icons right themselves as the congregation's name is spoken. Light returns t
 
 **Memory in One Line:** He ignored a binding to chase a rumor.
 **Tone Tags:** contrition • house • mirrors • counting
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Counting accelerates; mirrors disagree; captive shade grows stronger.
 
 **Extended Lore (For GM Eyes)**
@@ -3110,7 +3110,7 @@ The mirrors align as Margaret's name is spoken. The counting settles into a peac
 
 **Memory in One Line:** He extorted pilgrims for passage.
 **Tone Tags:** contrition • gatehouse • tally-rope • oath
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [4] — Saint's bell rings; riot starts; pilgrim echoes grow desperate.
 
 **Extended Lore (For GM Eyes)**
@@ -3202,7 +3202,7 @@ The gate swings open as the pilgrims' name is spoken. The tally-rope unravels, a
 
 **Memory in One Line:** He accepted a crown promised to another.
 **Tone Tags:** contrition • throne room • ash • crowns
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [6] — Ash-snow blinds; spectral court demands oaths; rightful heir's echo rises.
 
 **Extended Lore (For GM Eyes)**
@@ -3294,7 +3294,7 @@ The ash settles as Alaric's name is spoken. One crown fades away while the other
 
 **Memory in One Line:** He erased a persecuted lineage to hide himself.
 **Tone Tags:** contrition • scriptorium • fading names • persecution
-**Start Position:** Controlled
+**Start Position:** Dominant
 **Floor Clock:** [5] — Your name blurs; PC risks losing past; inquisitors close in.
 
 **Extended Lore (For GM Eyes)**
@@ -3386,7 +3386,7 @@ The pages stabilize as the family name is spoken. Letters flow into place like r
 
 **Memory in One Line:** He chose lichdom to pay for everything.
 **Tone Tags:** contrition • study • candles • choice
-**Start Position:** Controlled if you showed mercy/restitution on ≥10 floors; Risky otherwise. Any violent approach starts Desperate.
+**Start Position:** Dominant if you showed mercy/restitution on ≥10 floors; Controlled otherwise. Any violent approach starts Desperate.
 
 **Extended Lore (For GM Eyes)**
 
@@ -3457,7 +3457,7 @@ Renunciation: Join the Living (He returns in frail flesh; a Mortal Oath binds hi
 
 **Outcomes & Carry-Forward**
 
-Boons: Soul-Light (1/arc: remove a Desperate → Controlled shift for one scene)
+Boons: Soul-Light (1/arc: remove a Desperate → Dominant shift for one scene)
 Burdens: Fetter's Boon requires the GM to bank +1 SB; Ledger - Helped: All previous if you find peace
 Shard Kit: Final candle grants permanent +1d to recognize true contrition
 Links: The final choice determines the campaign's legacy and any future encounters
@@ -3507,7 +3507,7 @@ The final candle's flame dances as the thirtieth name is spoken. Whether it sett
 - Highest rank sets Floor Clock
 
 **2. Set Position**
-- Start: Controlled
+- Start: Dominant
 - Adjust for bold risks, insight, or rising backlash
 
 **3. Track Floor Clock [4-6]**
@@ -3581,8 +3581,8 @@ HARMED: Elara Thornwright    HELPED: [ ]    UNRESOLVED: Elara Thornwright
 ## Position & Effect Quick Reference
 
 ### Position States:
-- **Controlled:** Safe, prepared (+0 to DV)
-- **Risky:** Default danger (+1 to DV)
+- **Dominant:** Safe, prepared (+0 to DV)
+- **Controlled:** Default danger (+1 to DV)
 - **Desperate:** High stakes (-1 Position, +2 to DV)
 
 ### Effect Levels:
@@ -3746,7 +3746,7 @@ HARMED: Elara Thornwright    HELPED: [ ]    UNRESOLVED: Elara Thornwright
 
 ### Position Tracking Issues:
 - Use index cards to track per-player Position
-- Announce shifts clearly: "Seris, your Position worsens to Risky"
+- Announce shifts clearly: "Seris, your Position worsens to Controlled"
 - Make consequences visible: "That choice means Floor 9 starts Desperate"
 
 ---
@@ -3779,8 +3779,8 @@ HARMED: Elara Thornwright    HELPED: [ ]    UNRESOLVED: Elara Thornwright
 ## Final Floor Quick Reference
 
 ### Starting Position:
-- **Controlled:** ≥10 mercy/restitution choices
-- **Risky:** 5-9 mercy/restitution choices
+- **Dominant:** ≥10 mercy/restitution choices
+- **Controlled:** 5-9 mercy/restitution choices
 - **Desperate:** <5 mercy/restitution choices
 
 ### Persuasion Clock:

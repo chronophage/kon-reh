@@ -119,7 +119,7 @@ Rival Move (1d6 when their clock ticks): 1 Snipe a treasure • 2 Ambush at a ch
 
 Each Depth has: presence cues, a generator, 6–10 keyed Zones, bespoke Wandering, and a signature Puzzle Room. Depths stack in risk and weirdness. Shortcuts can skip Depths at the cost of Annotations or Curses.
 
-Depth 0: The Catalog Hall (Controlled Reality)
+Depth 0: The Catalog Hall (Dominant Reality)
 
 Atmosphere: bright lamps, tidy aisles, impossible sight-lines.
 
@@ -514,8 +514,8 @@ Any PC who reads their own name vanishes into the stacks for 1 scene; the party 
 Library Node A — The Shelves That Refuse
 
 A narrow aisle packed with chained tomes. Every time someone speaks, the shelves swing shut to block the exit.
-	•	Quiet = Controlled
-	•	Speaking = Risky
+	•	Quiet = Dominant
+	•	Speaking = Controlled
 	•	Shouting/fighting = Desperate, shelves slam and crush
 
 Obstacle:
@@ -540,7 +540,7 @@ Library Node B — The Ink Tide
 Floor slopes downward. Ahead, black ink floods from a toppled jar.
 
 Mechanics:
-	•	Crossing without action: Risky, on a 1–3, soaked in ink → cannot speak for one scene
+	•	Crossing without action: Controlled, on a 1–3, soaked in ink → cannot speak for one scene
 	•	Casting a Rite in ink → Breach +1, the ink writes back
 	•	Burning pages to dam the ink grants +1 Boon later
 
@@ -567,8 +567,8 @@ If the party fights, the shelves begin re-writing themselves and cause a maze sh
 Breach Node — The Shelf That Forgets You
 
 A tall aisle with whispering books.
-	•	Walking through quietly: Controlled
-	•	Searching: Risky
+	•	Walking through quietly: Dominant
+	•	Searching: Controlled
 	•	Reading: Desperate — PC loses a Trait for the delve
 
 GM chooses:
@@ -936,7 +936,7 @@ These go between the entry and the rooms we already built. Depth 2 introduces tr
 
 ⸻
 
-✅ DEPTH 2 — The Catalog Hall (Controlled Reality)
+✅ DEPTH 2 — The Catalog Hall (Dominant Reality)
 
 Tone: False safety, bureaucratic traps, order that hides predation
 
