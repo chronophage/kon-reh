@@ -1,661 +1,261 @@
 \documentclass[11pt,letterpaper]{article}
 
-% Language and Input Encoding
+% ---------- Packages ----------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-
-% Page Layout and Geometry
 \usepackage[margin=1in]{geometry}
-
-% Graphics and Colors (for minor visual elements if needed)
+\usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{xcolor}
-
-% Headers and Footers
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{} % Clear all header and footer fields
-\renewcommand{\headrulewidth}{0pt} % No header rule
-\renewcommand{\footrulewidth}{0pt} % No footer rule
-% Define a simple footer if desired (page number centered)
-% \fancyfoot[C]{\thepage}
-
-% Section Title Formatting
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{enumitem}
 \usepackage{titlesec}
-% Customize section titles (e.g., remove numbering, add space)
-\titleformat{\section}{\large\bfseries}{}{0em}{}
-\titleformat{\subsection}{\bfseries}{}{0em}{}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{0.5\baselineskip}
-
-% Paragraph and List Spacing
-\usepackage{parskip} % Add space between paragraphs, remove indent
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5\baselineskip}
-
-% Hyperlinks (for PDF, optional)
 \usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+
+% ---------- Hyperref ----------
 \hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=magenta,
-    urlcolor=cyan,
-    pdftitle={Carol of the Cursed Holly},
-    pdfauthor={Fate's Edge One-Shot},
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=teal!60!black,
+  pdftitle={Mad Cantor of Frosthollow},
+  pdfauthor={Fate's Edge Adventure},
 }
 
-% Metadata
-\title{\textbf{Carol of the Cursed Holly}\\ A Fate's Edge One-Shot Adventure}
-\author{}
-\date{}
+% ---------- Title Formatting ----------
+\titleformat{\section}{\large\bfseries\scshape}{}{0.5em}{}
+\titleformat{\subsection}{\bfseries}{}{0.5em}{}
+\titleformat{\paragraph}{\itshape}{}{0.5em}{}
+\titlespacing\section{0pt}{1.0\baselineskip}{0.5\baselineskip}
+\titlespacing\subsection{0pt}{0.8\baselineskip}{0.25\baselineskip}
+\titlespacing\paragraph{0pt}{0.6\baselineskip}{0.2\baselineskip}
 
+% ---------- Lists ----------
+\setlist{itemsep=0.2\baselineskip,leftmargin=1.25em}
+\setlength{\parskip}{0.5\baselineskip}
+\setlength{\parindent}{0pt}
+
+% ---------- Colors ----------
+\definecolor{FeInk}{HTML}{222222}
+\definecolor{FeAccent}{HTML}{3F6E8C}
+\definecolor{FePale}{HTML}{F5F7FA}
+\definecolor{FeWarn}{HTML}{8C3F3F}
+\definecolor{FeGood}{HTML}{2E7D32}
+
+% ---------- Macros ----------
+\newcommand{\clock}[2]{\textbf{#1} \fbox{\rule{#2em}{0pt}\rule{0pt}{0.75em}}}
+\newcommand{\tagbox}[1]{\tcbox[colback=FePale,colframe=FeAccent,boxrule=0.4pt,arc=2pt,left=3pt,right=3pt,top=1pt,bottom=1pt]{\small\textsf{#1}}}
+\newcommand{\dv}[1]{\textbf{DV #1}}
+
+% ---------- Boxes ----------
+\tcbset{colframe=black!15, colback=white, boxrule=0.5pt, arc=2pt}
+
+\newtcolorbox{FEhook}{colback=FePale,colframe=FeAccent,boxrule=0.8pt,title=\textbf{Hook}}
+\newtcolorbox{FEdial}{colback=white,colframe=black!30,boxrule=0.6pt,title=\textbf{GM Dials \& Options}}
+\newtcolorbox{FEclock}{colback=white,colframe=FeAccent,boxrule=0.8pt}
+\newtcolorbox{FEstat}{colback=white,colframe=black!40,boxrule=0.8pt,title=\textbf{Stat Block}}
+\newtcolorbox{FElore}{colback=white,colframe=black!20,boxrule=0.6pt,title=\textbf{Lore \& Signs}}
+\newtcolorbox{FEscene}{colback=white,colframe=black!25,boxrule=0.6pt,title=\textbf{Scene}}
+\newtcolorbox{FEmove}{colback=FePale,colframe=black!25,boxrule=0.6pt,title=\textbf{Moves \& Challenges}}
+\newtcolorbox{FEout}{colback=white,colframe=black!25,boxrule=0.6pt,title=\textbf{Outcomes}}
+
+% ============================================================
+% Document
+% ============================================================
 \begin{document}
 
-% Title Page
-\maketitle
-\thispagestyle{empty} % No page number on title page
+\begin{center}
+{\huge\bfseries Mad Cantor of Frosthollow}\\[0.25em]
+{\large A Fate's Edge One–Shot of Joy, Dread, and Winter}\\[0.5em]
+\tagbox{Folk Horror} \ \tagbox{Multiple Patrons} \ \tagbox{Social \& Ritual Play} \ \tagbox{Low Combat Optional}
+\end{center}
 
-% Table of Contents (optional, can be commented out)
-% \newpage
-% \tableofcontents
-% \newpage
+\section{Premise \& Tone}
+Frosthollow’s solstice rite, the \emph{Feast of the Endless Night}, has curdled. The village cantor, \textbf{Elara Nightweaver}, wears a living crown of holly and sings with a voice not wholly hers. Revelers decorate with blood–bright berries and do not sleep. Three Powers lean in: \textbf{Thrysos} (ecstasy and excess), the \textbf{Pale Shepherd} (thresholds and the passage), and the \textbf{Silent Choir} (mercy through silence). PCs arrive as storm and song rise together. Their choices decide whether Frosthollow remembers joy—or becomes its grave.
 
-% --- Content Starts Here ---
-
-\section{Premise}
-
-The remote mountain village of Frosthollow, nestled in a valley perpetually shrouded in winter twilight, is preparing for its annual ``Feast of the Endless Night'' -- a solstice celebration meant to ward off the dark. However, the Cantor traditionally leading the festivities, Elara Nightweaver, has gone mad. Influenced by the Patron \textbf{Thrysos, King of Revels}, her carols now carry an infectious, compulsive joy that's driving the villagers into a dangerous, ecstatic frenzy. They work themselves to exhaustion decorating, feasting non-stop, and dancing. Worse, whispers suggest the \textbf{Pale Shepherd} (thresholds, guidance) is claiming souls drawn by this false revelry, and the \textbf{Silent Choir} (mercy, silence) seeks to end the cacophony permanently, perhaps by silencing the village entirely.
-
-\section{Setting}
-
-Frosthollow is a collection of timber-framed houses blanketed in snow, surrounding a central stone chapel and a large, open square where the Feast is held. The air is crisp, and the perpetual twilight casts long shadows. The village is isolated, a day's hard travel from the nearest settlement.
-
-\section{Player Characters (PCs)}
-
-Assume a mixed group of 3-4 players, ideally with varied skill sets (combat, magic, social, stealth). They might be:
+\begin{FEhook}
+\textbf{Offer three clear entries:}
 \begin{itemize}
-    \item A sellsword seeking shelter or a contract.
-    \item A Runekeeper investigating strange magical disturbances.
-    \item A local hunter or guide with deep knowledge of the area.
-    \item An exiled minor noble or scholar fleeing something (or someone).
+  \item \textbf{Shelter in a Storm:} Snow closes behind; bells peal off–rhythm.
+  \item \textbf{A Missing Brother:} A hunter’s letter begs you to fetch him from the Feast.
+  \item \textbf{Ritual Competence:} A nearby abbot sends you to audit a troubled solstice mass.
 \end{itemize}
+\end{FEhook}
 
-\section{Hook}
+\section{Fronts \& Clocks}
+\begin{multicols}{2}
+\begin{FEclock}
+\textbf{Village Hysteria [6]} advances when the party indulges, delays, or escalates spectacle.\\
+\emph{1–2:} Harmless mania. \emph{3–4:} Harm 1 from exposure/exhaustion. \emph{5–6:} Stampede, collapse, or freezing injuries (Harm 2).
+\end{FEclock}
 
-The PCs arrive in Frosthollow seeking shelter from a sudden, fierce winter storm or are drawn by a specific request (a bounty on the ``mad Cantor,'' a plea for help from a surviving villager who fled, a need for supplies, or perhaps they are investigators from a nearby town responding to reports of strange lights/sounds). Upon arrival (or shortly after), they witness the effects of the ``Cheer'': villagers caroling off-key with manic grins, decorating trees with their own hair or clothing, or dancing frantically until they collapse.
+\begin{FEclock}
+\textbf{Holly Crown’s Hold [6]} advances when Elara sings unopposed or offerings are made.\\
+\emph{1–2:} Subtle compulsion (\(-1\)d to resist revelry). \emph{3–4:} \(-1\) Position near the square. \emph{5–6:} Crown roots through flesh; Elara becomes \emph{Avatar of Revel}.
+\end{FEclock}
+
+\begin{FEclock}
+\textbf{Storm’s Mercy [4]} advances on time passage or failed shelter efforts.\\
+\emph{1:} Whiteout pockets. \emph{2:} Paths vanish. \emph{3:} Avalanches threaten. \emph{4:} Outlying homes cut off (people die without aid).
+\end{FEclock}
+
+\begin{FEclock}
+\textbf{Silent Choir Mandate [4]} advances when harm spreads or pleas for rest go unheard.\\
+\emph{4:} Choir imposes \emph{Great Silence}—speech fails in the square until the rite is resolved.
+\end{FEclock}
+\end{multicols}
 
 \section{Key NPCs}
 
-\subsection*{Elara Nightweaver (Mad Cantor - Thrysos' Influence)}
-
-Once beloved, now gaunt and wild-eyed, her voice carries an otherworldly resonance. She wears a crown of holly that seems to grow into her scalp. She believes she's bringing true joy and light to the world, but it's a joy that consumes.
-
-\subsection*{Thrysos (Patron - Ecstasy \& Excess)}
-
-Manifests subtly through Elara and the revelry. His influence makes resistance feel wrong, makes the revelry feel \emph{necessary}. His goal is to sustain and grow the revel until it consumes the village and perhaps spreads.
-
-\subsection*{The Pale Shepherd (Patron - Thresholds \& Liminality)}
-
-Drawn by the unnatural energy and the souls teetering on the brink due to exhaustion and madness. The Shepherd seeks to guide \emph{some} souls peacefully away, but also sees this as a potential ``corral'' for lost memories or unwanted truths (perhaps related to the village's past). Its presence might manifest as fleeting shadows, a lost lamb, or a sense of being watched by something benevolent yet distant.
-
-\subsection*{The Silent Choir (Patron - Mercy \& Silence)}
-
-Perceives the revelry as a cacophony of false joy masking underlying pain and desperation. The Choir seeks to impose silence, to end the suffering by ending the noise. This could manifest through a local priest who becomes obsessed with ``silencing the heresy'' or through direct supernatural effects like objects becoming impossible to speak near.
-
-\subsection*{Greta Frostwhisper (Survivor/Villager)}
-
-An elderly woman who hid in the chapel's bell tower when the madness began. She's terrified but sane, knows the village's history, and can warn the PCs. She believes the holly crown is the source.
-
-\subsection*{Father Markus (Possibly Influenced)}
-
-The village priest, struggling against the revelry. He might be helpful or an obstacle depending on which Patron influences him.
-
-\section{Structure}
-
-\subsection*{1. Introduction (Establishing the Situation)}
-
-\begin{itemize}
-    \item \textbf{Scene:} PCs arrive in Frosthollow during/just before the storm. They encounter the initial signs of madness (the revelry).
-    \item \textbf{Key NPCs Introduced:} Elara (briefly, singing), Villagers (affected), Greta (if found early), Father Markus (conflicted).
-    \item \textbf{Major Objective:} Understand the source of the madness and stop it before the Feast of the Endless Night (set for tonight/soon).
-    \item \textbf{Story Beats Generated:} Initial confusion, witnessing the effects of the ``Cheer,'' potential minor conflict with frenzied villagers.
-\end{itemize}
-
-\subsection*{2. Development (Challenges and Investigation)}
-
-\begin{itemize}
-    \item \textbf{Challenge 1: Surviving the Revelry:} Simply navigating the village is difficult. PCs must resist the urge to join in (Resolve tests, perhaps gaining Fatigue or a ``Revelry'' Condition if they fail). Helping affected villagers without getting pulled in is a challenge.
-    \item \textbf{Challenge 2: Investigating the Source:} PCs need to learn about Elara, the holly crown, and the strange influences. This involves:
-    \begin{itemize}
-        \item Talking to Greta (if found) for history/context.
-        \item Investigating Elara's home/lair (the chapel or a decorated grove) for clues about Thrysos' influence.
-        \item Dealing with Father Markus, who might be helpful or an obstacle.
-        \item Possibly encountering manifestations of the Pale Shepherd or the Silent Choir.
-    \end{itemize}
-    \item \textbf{Challenge 3: Countering the Influences:} Direct action against the supernatural forces.
-    \begin{itemize}
-        \item Dealing with Thrysos: Disrupt revelry, confront Elara, break his hold (ritual, opposing magic).
-        \item Dealing with the Pale Shepherd: Protect souls, negotiate, understand its intent.
-        \item Dealing with the Silent Choir: Understand its motive, stop its agent, find peaceful resolution.
-    \end{itemize}
-    \item \textbf{Key Scenes:} The chaotic village square, Elara's lair (the chapel), Greta's hiding place (bell tower), confrontations with patrons/villagers.
-\end{itemize}
-
-\subsection*{3. Climax (Major Confrontation)}
-
-\begin{itemize}
-    \item \textbf{Scene:} The Feast of the Endless Night. Elara, at the height of her power, leads the final revel. Patron influences are strongest.
-    \item \textbf{Objective:} Stop Elara and break the spell of the ``Cheer.'' This likely involves:
-    \begin{itemize}
-        \item A social/mental challenge to resist/counter the joy (Wits+Resolve vs. Thrysos).
-        \item A potential physical/magical confrontation with Elara.
-        \item A crucial act to destroy/remove the holly crown (ritual, magic, trickery).
-        \item Managing Patron interactions (leveraging one against another?).
-    \end{itemize}
-\end{itemize}
-
-\subsection*{4. Resolution (Consequences)}
-
-\begin{itemize}
-    \item \textbf{If Successful:} The ``Cheer'' is broken. Elara is freed/defeated. Villagers recover. Decide Patron fates and the village's future.
-    \item \textbf{If Partial Success:} Revelry dampened, core problem remains. Setup for future threat.
-    \item \textbf{If Unsuccessful:} Revelry consumes, Choir silences, Shepherd claims souls. Dark ending.
-\end{itemize}
-
-\section{GM Tools \& Dials}
-
-\begin{itemize}
-    \item \textbf{Patron Prominence:} Adjust how overtly the Patrons act. Thrysos should be most obvious. Shepherd and Choir can be subtle.
-    \item \textbf{Revelry Mechanic:} Represent the compulsive ``Cheer'' with a clock (e.g., ``Village Hysteria [6]''). Actions feeding it advance it. Countering it slows/reduces it.
-    \item \textbf{Temptation:} Make the revelry \emph{feel} good initially. PCs need rolls to resist joining. Offer minor benefits at the cost of advancing the Hysteria clock.
-    \item \textbf{Environmental Hazards:} The winter storm, perpetual twilight, potential avalanches or structural damage.
-    \item \textbf{Deck Usage:} Draw from Wilds/Dungeon generator for unexpected complications (hidden cellar, mad animal, structural damage).
-\end{itemize}
-
-\section{Conclusion}
-
-This one-shot provides a mix of social investigation, potential combat (with frenzied villagers or the Cantor), magical problem-solving, and dealing with the complex, morally ambiguous influences of multiple Patrons, all wrapped in a wintry, folk-horror atmosphere.
-
-\section*{Duel to the Death: Miniatures Optional Extension}
-\addcontentsline{toc}{section}{Duel to the Death: Miniatures Optional Extension}
-
-\vspace{0.5em}
-
-\noindent
-This module enhances the martial arts tournament scenario with optional miniatures-based combat.
-It preserves Fate's Edge narrative focus while adding tactical depth, cultural nuance, and opportunities
-for dramatic spectacle worthy of the Seven Bell Court. Groups may use only the sections they enjoy;
-nothing here is required for play.
-
-% =====================================================
-% 1. PREAMBLE — WHY MINIATURES?
-% =====================================================
-
-\begin{tcolorbox}[title=The Purpose of the Arena]
-In Sihai, mastery is precision.
-In Nihon, mastery is lethality.
-In Ayokha, mastery is spectacle.
-
-When the world watches, every motion has meaning.
-
-Miniatures combat is not merely about striking an opponent.
-It is about honor, form, spirit, and intent. The Seven Bell Court judges every bout,
-and the crowd shapes the battlefield through awe, fear, and fury.
-
-Use minis when blows are more than violence---when the duel itself could shape nations.
-\end{tcolorbox}
-
-\vspace{1em}
-
-% =====================================================
-% 2. OPTIONS & DIALS
-% =====================================================
-
-\section*{Options \& Dials}
-
-\begin{tcolorbox}
-Choose your table's desired level of tactical complexity. All options preserve narrative focus.
-\end{tcolorbox}
-
-\begin{center}
-\begin{tabularx}{\linewidth}{|X|X|X|X|}
-\hline
-\textbf{Play Style} & \textbf{Use Minis For} & \textbf{Skip Minis For} & \textbf{Recommended Rules} \\
-\hline
-Narrative Focused & Final duel only & Everything else &
-Abstract zones; Seven Bell Scoring only \\ \hline
-Tactical Light & Qualifiers, ambushes, riots &
-Diplomatic scenes &
-Movement + flanking only \\ \hline
-Full Tactical & All major conflicts &
---- &
-Facing, reach, terrain effects \\ \hline
-\end{tabularx}
-\end{center}
-
-\vspace{1em}
-
-\subsection*{Visual Tone Dials}
-
-\begin{tabularx}{\linewidth}{|X|X|X|}
-\hline
-\textbf{Culture} & \textbf{Style} & \textbf{Mechanical Expression} \\
-\hline
-Sihai & Wuxia precision & Long leaps, redirect attacks, bonus to Form \\
-\hline
-Nihon & Lethal minimalism & Hidden weapons, stealth zones, bonus to Spirit under pressure \\
-\hline
-Ayokha & Ceremonial spectacle & Crowd interaction, environmental effects, bonus to Intent \\
-\hline
-\end{tabularx}
-
-\vspace{1em}
-
-% =====================================================
-% 3. CINEMATIC MANEUVERS
-% =====================================================
-
-\section*{Cinematic Maneuvers}
-
-\begin{tcolorbox}
-Any combatant---PC or NPC---may use these maneuvers in miniature-based scenes.
-Each one encourages motion, spectacle, and cultural style.
-\end{tcolorbox}
-
-\begin{tabularx}{\linewidth}{|>{\raggedright}p{3cm}|X|X|}
-\hline
-\textbf{Maneuver} & \textbf{Trigger} & \textbf{Effect} \\
-\hline
-Heaven-Shaking Leap & Start turn with full movement available & Jump 3 hexes ignoring terrain; +1d on first strike \\
-\hline
-Flow Like Silk & Use Withdraw instead of Attack & +2 Defense until next turn \\
-\hline
-Iron Lotus Counter & Enemy misses melee attack & Immediate counterattack at +1d \\
-\hline
-Tiger's Pounce & Charge 3+ hexes in a straight line & +1 Harm \emph{or} +2 Crowd Mood \\
-\hline
-Honor Bind & Spare helpless foe & +2 Spirit points on Seven Bell Scoring \\
-\hline
-Shadow Step (if stealthy) & Begin turn Hidden & Teleport 2 hexes to new cover; +1d next attack \\
-\hline
-\end{tabularx}
-
-\vspace{1em}
-
-% =====================================================
-% 4. ARENA FEATURES
-% =====================================================
-
-\section*{The Seven Bell Arena}
-
-\begin{tabularx}{\linewidth}{|X|X|}
-\hline
-\textbf{Arena Feature} & \textbf{Mechanical Effect} \\
-\hline
-Judges' Platform (elevated) & +1d to Notice; +1 Spirit if bowing before judges \\
-\hline
-Crowd Sections & Influence Crowd Mood clock (cheers, jeers) \\
-\hline
-Ceremonial Gates & Entering through proper gate grants +1 Intent \\
-\hline
-Temple Banners & On defense, gain +1 Form when fighting near banners \\
-\hline
-\end{tabularx}
-
-\vspace{1em}
-
-% =====================================================
-% 5. CHAMPIONS (MINIS STATS)
-% =====================================================
-
-\section*{Champion Miniatures Profiles}
-
-\subsection*{Master Li Wei (Sihai)}
-Size Medium; Speed 4; Moves Close→Near in one action.
-
-\begin{itemize}
-  \item \textbf{Melee:} +3d (Elemental Strike), +2d (Unarmed)
-  \item \textbf{Special:} Five Elements Flow (change element once/round),
-  Celestial Balance (ignore first Fear each scene),
-  Harmony Shield (+2 Armor vs. elemental attacks)
-  \item \textbf{Weakness:} Emotionally Compromised when rivalry escalates
-\end{itemize}
-
-\subsection*{Shinobi Kage (Nihon)}
-Size Medium; Speed 5; Can Dash as movement.
-
-\begin{itemize}
-  \item \textbf{Melee:} +3d (Kusarigama), +2d (Tanto)
-  \item \textbf{Special:} Shadow Step (teleport 2 hexes once/scene),
-  Multi-Weapon (swap with no penalty),
-  Psychological Warfare (-1d to foes when Crowd Mood $\ge$ 3)
-  \item \textbf{Weakness:} Exposed after Shadow Step
-\end{itemize}
-
-\vspace{1em}
-
-% =====================================================
-% 6. TERRAIN BONUSES
-% =====================================================
-
-\section*{Cultural Terrain Bonuses}
-
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Terrain Feature} & \textbf{Sihai} & \textbf{Nihon} & \textbf{Ayokha} \\
-\hline
-Temple Banner & +1 Spirit & +1 Form & +1 Intent \\
-\hline
-Shadowed Corners & --- & +2 Stealth & +1 Spirit \\
-\hline
-Water Pools & +1 Form & --- & +2 Intent \\
-\hline
-Open Floor & +1 Intent & --- & -1 Spirit \\
-\hline
-\end{tabular}
-\end{center}
-
-\vspace{1em}
-
-% =====================================================
-% 7. SEVEN BELL COURT SCORING (IN MINIS PLAY)
-% =====================================================
-
-\section*{Seven Bell Court Scoring}
-
-\begin{tabularx}{\linewidth}{|X|X|}
-\hline
-\textbf{Event} & \textbf{Seven Bell Score} \\
-\hline
-Exemplary Technique (perfect attack + ideal position) & +2 Form \\
-\hline
-Mercy Shown (decline killing blow) & +2 Spirit \\
-\hline
-Protect Innocents / Defend Honored Guests & +2 Intent \\
-\hline
-Shameful Excess (cruelty, humiliation) & -1 Spirit \\
-\hline
-Cowardice or Dishonor in view of crowd & -2 Intent \\
-\hline
-\end{tabularx}
-
-\vspace{1em}
-
-% =====================================================
-% 8. CONSPIRACY FIGHT CLOCKS
-% =====================================================
-
-\section*{Conspiracy Fight Clocks}
-
-\subsection*{Sabotage Clock [4]}
-Each time a PC rolls a \emph{Miss} in combat:
-\begin{itemize}
-  \item collapsing scaffolds
-  \item poisoned darts
-  \item hidden explosives
-\end{itemize}
-When full: \textbf{arena catastrophe} and civilians endangered.
-
-\subsection*{Crowd Panic Clock [6]}
-Violence, dishonor, or chaos fill segments.
-When full: stampede, riot, and diplomatic disaster.
-
-\vspace{1em}
-
-% =====================================================
-% 9. SAMPLE MINIATURE ENCOUNTER
-% =====================================================
-
-\section*{Sample Encounter: The Dojo Defense}
-
-\begin{tcolorbox}[title=Setup]
-Scale: 12$\times$12 hexes.  
-Saboteurs attempt to burn or sabotage the training grounds.
-\end{tcolorbox}
-
-\textbf{Objectives:}
-\begin{itemize}
-  \item Prevent further sabotage
-  \item Capture conspirators alive
-  \item Protect students and evidence
-\end{itemize}
-
-\textbf{Threats:}
-\begin{itemize}
-  \item Falling beams (DV 3 to avoid, Harm 2)
-  \item Oil slicks (risk falling Prone)
-  \item Saboteurs using shadows for +1d attacks
-\end{itemize}
-
-\textbf{Seven Bell Scoring:}
-\begin{itemize}
-  \item +2 Spirit: Rescue civilians
-  \item +2 Form: Perfect defense with no casualties
-  \item +2 Intent: Preserve tournament integrity
-\end{itemize}
-
-\vspace{1em}
-
-% =====================================================
-% 10. WHY MINIATURES MATTER
-% =====================================================
-
-\section*{Why Miniatures Matter}
-
-\begin{tabularx}{\linewidth}{|X|X|}
-\hline
-\textbf{Without Minis} & \textbf{With Minis} \\
-\hline
-Duel is abstract & Duel becomes a wuxia set-piece \\
-\hline
-Crowd is background & Crowd affects Position, dice, politics \\
-\hline
-Champions feel similar & Cultural styles emerge in motion \\
-\hline
-Conspiracy is hidden & Sabotage is visible and explosive \\
-\hline
-PCs watch the duel & PCs intervene, protect innocents, sway judges \\
-\hline
-\end{tabularx}
-
-\vspace{1em}
-
-% =====================================================
-% END
-% =====================================================
-\section{Eastern Patron Translation Table}
-\label{sec:eastern-patrons}
-
-\subsection{Re-Theming Western Patrons for Eastern Adventures}
-
-This translation table adapts Western-style patrons to the spiritual, philosophical, and cultural frameworks of \textbf{Sihai}, \textbf{Nihon}, and \textbf{Ayokha}. Each Patron maintains their metaphysical identity and game mechanics, but their symbols, rites, and cultural expectations are re-expressed through Eastern idioms.
-
-\begin{tcolorbox}[colback=black!2,colframe=black!40,title=\textbf{Design Philosophy}]
-\begin{itemize}
-    \item \textbf{Maintain Core Themes:} The Patron's nature and rites never change.
-    \item \textbf{Cultural Reskinning:} Names, symbols, and rituals change to match the region.
-    \item \textbf{Mechanical Integrity:} All game effects and Rites function identically.
-    \item \textbf{Regional Interpretation:} The same Patron may be feared in one land and revered in another.
-\end{itemize}
-\end{tcolorbox}
-
-%---------------------------------------------------------------
-% Patron Translation Table
-%---------------------------------------------------------------
-\subsection{Translation Table}
-
-\begin{longtable}{@{}p{3.3cm}p{3.1cm}p{3.1cm}p{3.2cm}p{3cm}@{}}
+\subsection*{Elara Nightweaver — Mad Cantor of Frosthollow}
+\begin{FEstat}
+\textbf{Tags:} \tagbox{Singer–Ritualist} \tagbox{Tragic} \tagbox{Beloved}\\
+\textbf{Approach:} Presence 3, Spirit 3, Wits 2, Body 1\\
+\textbf{Skills:} Sway 3, Arcana 3, Insight 2, Melee 1\\
+\textbf{Talents:} \emph{Cantor’s Gift}, \emph{Rite Adjudicator}, \emph{Perfect Pitch}\\
+\textbf{Harm:} 4–clock; \textbf{Armor:} 0(2 when Avatar)\\
+\textbf{Special:} \emph{Contagious Cheer} — nearby NPCs must \dv{2} Resolve or gain the \emph{Revelry} condition (see below).\\
+\textbf{Goal:} Save her people by \emph{more} joy; can’t see it’s killing them.
+\end{FEstat}
+
+\subsection*{Patron Pressures (Use as GM Moves)}
+\begin{longtable}{@{}p{3cm}p{7.5cm}p{3.8cm}@{}}
 \toprule
-\textbf{Western Patron} & \textbf{Sihai Equivalent} & \textbf{Nihon Equivalent} & \textbf{Ayokha Equivalent} & \textbf{Core Theme} \\
+\textbf{Patron} & \textbf{Pressure / Offer} & \textbf{Cost / Tell}\\
 \midrule
-The Oath & The Mandate & The Bushido Code & The Celestial Vow & Binding Promises \\
-Sealed Gate & The Great Wall & The Barrier Kami & The Threshold Guardians & Boundaries / Closure \\
-Raéyn & The Celestial Bureaucracy & The Tide Masters & The Monsoon Lords & Storms / Tides \\
-Khemesh & The Sunken Palace & The Deep Kami & The Abyssal Nat & Abyssal Pressure \\
-The Witness & The Imperial Historians & The Chroniclers & The Memory Keepers & Truth / Revelation \\
-Mab & The Courtesan's Guild & The Geisha Houses & The Dance Temples & Glamour / Courts \\
-Sacred Geometry & The Feng Shui Masters & The Architect Monks & The Sacred Masons & Perfect Forms \\
-Clockwork Monad & The Canal Engineers & The Mechanist Guilds & The Water Clock Keepers & Mechanism / Process \\
-Varnek Karn & The Ancestor Cults & The Death Shrines & The Bone Temples & Necromancy / Dominion \\
-Nidhoggr & The Primordial Forests & The Ancient Kami & The Root Spirits & Deep Earth / Rot \\
-The Traveler & The Silk Road Merchants & The Wandering Monks & The Trade Winds & Roads / Ways \\
-Oath of Flame \& Light & The Celestial Court & The Shrine Keepers & The Temple Flames & Dawn / Vows \\
-Carrion King & The Decomposition Cycle & The Scavenger Kami & The Rot Spirits & Renewal / Carrion \\
-Gallows Bell & The Executioner's Code & The Death Poets & The Final Judgment & Doom / Last Rites \\
-Old Man of the Black Forest & The Primal Spirits & The Wild Kami & The Untamed Nat & Primal Humanity \\
-Ikasha & The Shadow Sects & The Ninja Clans & The Night Spirits & Shadow / Potential \\
-Inaea & The Hearth Temples & The Family Shrines & The Ancestral Fires & Mercy / Hearth \\
-Mykkiel & The Law Courts & The Magistrate Temples & The Justice Shrines & Judgment / Writ \\
-Maelstraeus & The Merchant Lords & The Trading Houses & The Gold Temples & Infernal Bargaining \\
-Livaea & The Seduction Arts & The Temptation Scrolls & The Desire Spirits & Temptation / Desire \\
-Aliyah & The Cursed Saints & The Bound Kami & The Chained Spirits & Curses / Corruption \\
+\textbf{Thrysos} & Amplify a scene with music, color, shared breath; grant +1d to any social roll that escalates the revel. & Mark 1 Fatigue or advance \textit{Hysteria}. Sweet wine tastes of copper.\\
+\textbf{Pale Shepherd} & Open a gentler path: safe escort across snow, a sleeping child spared. +1 Position to protective actions. & Accept a memory tithe (lose a detail of your past). A lamb–bell rings once.\\
+\textbf{Silent Choir} & Still the panic: cancel one chaotic complication. \(-1\)d to hostiles this scene. & Words fail: your next plea can only be \emph{gesture}. A white filament settles on lips.\\
 \bottomrule
 \end{longtable}
 
-%---------------------------------------------------------------
-% Detailed Cultural Variants
-%---------------------------------------------------------------
+\section{Conditions \& Environmental Moves}
+\begin{FElore}
+\textbf{Condition — Revelry:} You feel \emph{wonderful}. \(-1\)d to resist joining songs, dances, or feasts; ignoring an invitation advances \textit{Hysteria}. Cleansed by cold immersion, fasting, or a counter–hymn.\\[0.25em]
+\textbf{Winter Moves:} Whiteout, Black Ice, Roof–Load Collapse, Bone–Chill Seep (\emph{Harm 1}), Lost Lanterns (separate the party), Avalanche Shadow (clock tick + forced scramble).
+\end{FElore}
 
-\subsection{Detailed Cultural Variations}
+\section{Core Scenes}
 
-\subsubsection{The Oath $\rightarrow$ The Mandate / Bushido / Celestial Vow}
+\subsection*{1. Arrival: Snow, Smoke, \& Holly}
+\begin{FEscene}
+\textbf{Read:} Frosthollow’s square blazes with lanterns; off–key choirs bellow carols. A crown of holly gleams wetly on the cantor’s brow. The bells are late. The storm inhales.
+\end{FEscene}
 
-\paragraph{Sihai: The Mandate (\textit{Tianming})}
+\begin{FEmove}
+\textbf{Challenges}
 \begin{itemize}
-    \item \textbf{Symbol:} Golden seal upon red lacquer.
-    \item \textbf{Patron’s Gift:} \textit{Imperial Voice} — Gain +1d to Command when invoking official authority.
-    \item \textbf{Favored Rites:} Oaths of service, binding decrees, magistrate contracts.
-    \item \textbf{Corruption Tell:} Skin becomes papery and stamped with red seals; speech becomes legalistic, emotionless.
+  \item \textbf{Assess the Rite:} \emph{Lore + Insight} \dv{3} — learn the hymn is mis-keyed to force breath patterns (\(+1\) SB to GM if ignored).
+  \item \textbf{Resist the Cheer:} \emph{Resolve} \dv{2} — on a miss, gain \emph{Revelry}.
+  \item \textbf{Shepherd the Elderly to Shelter:} \emph{Command + Athletics} \dv{3} — on a hit, reduce \textit{Storm’s Mercy}.
 \end{itemize}
+\end{FEmove}
 
-\paragraph{Nihon: The Bushido Code (\textit{Bushidō})}
+\subsection*{2. The Bell Tower — Greta’s Truth}
+\begin{FEscene}
+Greta Frostwhisper, trembling in the belfry, clutches a ledger of the old hymn. “They changed the breathing. Too long. Too fast. They’ll fall and never rise.”
+\end{FEscene}
+
+\begin{FEmove}
 \begin{itemize}
-    \item \textbf{Symbol:} Paired katana and inkbrush.
-    \item \textbf{Patron’s Gift:} \textit{Warrior’s Rectitude} — +1d Melee when defending honor or clan.
-    \item \textbf{Favored Rites:} Duels, testimony, loyalty oaths, ritual confessions.
-    \item \textbf{Corruption Tell:} User hallucinates dishonor everywhere; bleeding ink from pores.
+  \item \textbf{Compare Hymns:} \emph{Lore + Craft} \dv{3} — identify a \emph{counter–refrain} that resets breathing safely.
+  \item \textbf{Befriend Greta:} \emph{Sway + Presence} \dv{2} — gain a trusted guide; +1d on village social rolls.
 \end{itemize}
+\end{FEmove}
 
-\paragraph{Ayokha: The Celestial Vow}
+\subsection*{3. Elara’s House — The Red Thread}
+\begin{FEscene}
+Holly cuttings root in bowls; old lyrics are crossed out; a red thread binds prayer–knots to a goblet.
+\end{FEscene}
+
+\begin{FEmove}
 \begin{itemize}
-    \item \textbf{Symbol:} Conch-shell etched with sigils.
-    \item \textbf{Patron’s Gift:} \textit{Heaven-Backed Speech} — +1d Sway when speaking a sacred vow.
-    \item \textbf{Favored Rites:} Temple contracts, marriage oaths, diplomatic binding.
-    \item \textbf{Corruption Tell:} Voice becomes too beautiful; others must Save or obey.
+  \item \textbf{Unravel the Charm:} \emph{Arcana + Tinker} \dv{4} — separate the goblet (Thrysos vessel) from the holly. On partial, advance \textit{Holly Crown’s Hold}.
+  \item \textbf{Quiet the Home:} \emph{Shepherd’s Bargain} — accept a memory tithe to sanctify this space (Choir \(-1\) this scene).
 \end{itemize}
+\end{FEmove}
 
-%---------------------------------------------------------------
+\subsection*{4. Climax: Feast of the Endless Night}
+\begin{FEscene}
+Elara raises her hands; the village inhales as one. Snow becomes confetti. The bells strike \emph{late}.
+\end{FEscene}
 
-\subsubsection{Sealed Gate $\rightarrow$ Great Wall / Barrier Kami / Threshold Guardians}
-
-\paragraph{Sihai: The Great Wall}
+\begin{FEmove}
+Choose one or braid them:
 \begin{itemize}
-    \item \textbf{Symbol:} Miniature stone brick wrapped in red cord.
-    \item \textbf{Patron’s Gift:} \textit{Bastion of Empire} — +1 Armor when protecting others.
-    \item \textbf{Corruption Tell:} Masonry patterns appear beneath the skin; paranoia and xenophobia intensify.
+  \item \textbf{Counter–Hymn:} \emph{Presence + Sway} \dv{4} — lead a new refrain; on success, reduce \textit{Hysteria} by 2, stabilize breath; on miss, \textit{Holly Hold} +1 and Choir advances.
+  \item \textbf{Sunder the Crown:} \emph{Melee/Arcana + Athletics} \dv{4} — break holly roots; on partial, take \emph{Harm 1 (thorns/acid sap)}.
+  \item \textbf{Triune Negotiation:} name each Patron’s \emph{concession}: \emph{Insight + Lore} \dv{5} — forge a pact: \emph{short feast, long rest, and a hymn of remembrance}. On hit, all clocks freeze; on miss, one Patron takes primacy (GM move).
 \end{itemize}
+\end{FEmove}
 
-\paragraph{Nihon: The Barrier Kami}
+\begin{FEout}
+\textbf{Resolutions}
 \begin{itemize}
-    \item \textbf{Symbol:} Paper wards (ofuda) sealed in wax.
-    \item \textbf{Patron’s Gift:} \textit{Purifying Seal} — +1d Arcana to repel spirits or demons.
-    \item \textbf{Corruption Tell:} Locked joints; speech comes only in ritual language.
+  \item \textbf{Mercy Kept (Best):} Feast becomes vigil; the storm parts; Elara lives, crown withers. PCs gain 2 Boons (Community/Thresholds).
+  \item \textbf{Joy Saved but Costly:} Revelry quiets; 1–2 deaths; Elara scarred. PCs gain 1 Boon; choose: spare a life or spare a memory.
+  \item \textbf{Silence Falls (Grim):} Silent Choir imposes Great Silence; Feast ends forever. PCs gain Favor with the Choir; village loses its song.
+  \item \textbf{Rapture Eternal (Dark):} Thrysos claims the square; Frosthollow dances into legend. PCs marked with \emph{Revelry} until exorcised.
 \end{itemize}
+\end{FEout}
 
-\paragraph{Ayokha: The Threshold Guardians}
+\section{Elara as Avatar (If the Crown Consumes)}
+\begin{FEstat}
+\textbf{Elara, Avatar of Revel}\\
+\textbf{Tags:} \tagbox{Elite} \tagbox{Mythic Song} \tagbox{Zone Control}\\
+\textbf{Aura — Crescendo:} Each round, all in the square test \emph{Resolve} \dv{3} or gain/advance \emph{Revelry}.\\
+\textbf{Song–Strike:} \emph{Presence + Arcana} vs. the crowd; on hit, split \emph{Harm 2 (breathless)} among up to three targets.\\
+\textbf{Roots of Holly:} On melee hit against Elara, attacker tests \emph{Wits} \dv{2} or be \emph{Entangled}.\\
+\textbf{Weakness:} Counter–hymn sung by a \emph{beloved voice} (Greta or a PC who earned the choir’s trust) reduces her Position by one step this round.
+\end{FEstat}
+
+\section{GM Dials \& Tools}
+\begin{FEdial}
 \begin{itemize}
-    \item \textbf{Symbol:} Carved jade key.
-    \item \textbf{Patron’s Gift:} \textit{Gatekeeper’s Sight} — +1d Insight to read intentions.
-    \item \textbf{Corruption Tell:} Eyes resemble padlocks; obsession with control escalates.
+  \item \textbf{Patron Prominence:} Feature 1, 2, or all 3. For one–shot pace, lead with Thrysos, let Shepherd save, let Choir judge.
+  \item \textbf{Combat Light or Heavy:} Swap \emph{Sunder the Crown} to a pure ritual (\emph{Arcana + Insight}) or to a brawl in the choir loft.
+  \item \textbf{Hard Mode:} Add \emph{Breath Debt}: each failed Revelry resist deals \emph{Harm 1 (asphyxia)} that only the counter–hymn heals.
+  \item \textbf{Mechanical Rewards:} \emph{If Mercy Wins:} +1d on future \emph{Comfort/Recovery} scenes. \emph{If Rapture Tempted:} bank 1 \emph{Joy Token}—cash for +1d on one grand celebration later.
 \end{itemize}
+\end{FEdial}
 
-%---------------------------------------------------------------
+\section{Treasure \& Fallout}
+\begin{multicols}{2}
+\begin{tcolorbox}[title=\textbf{Holly Circlet (Relic)}]
+\emph{Once/session:} Turn a crowd from fear to festivity (+1d to mass morale). Each use risks \emph{Revelry}. Cleansed if crowned with snow–water at dawn.
+\end{tcolorbox}
 
-\subsubsection{Raéyn $\rightarrow$ Celestial Bureaucracy / Tide Masters / Monsoon Lords}
+\begin{tcolorbox}[title=\textbf{Greta’s Ledger of Hymns}]
+Advantage (\(+1\)d) to \emph{Ritual Audit} checks; reveals mis-keyed breath patterns used for crowd control.
+\end{tcolorbox}
+\end{multicols}
 
-\paragraph{Sihai: The Celestial Bureaucracy}
-\begin{itemize}
-    \item \textbf{Symbol:} Silver brush pen.
-    \item \textbf{Patron’s Gift:} \textit{Storm Decree} — Once per scene, amplify or calm wind/rain.
-    \item \textbf{Corruption Tell:} Paper birds swarm the character; storms whisper their name.
-\end{itemize}
-
-\paragraph{Nihon: The Tide Masters}
-\begin{itemize}
-    \item \textbf{Symbol:} Shell inlaid with gold.
-    \item \textbf{Patron’s Gift:} \textit{Salt-Sense} — +1d Survival for navigation and sea prediction.
-    \item \textbf{Corruption Tell:} Hair floats as if underwater; breath smells of seawater.
-\end{itemize}
-
-\paragraph{Ayokha: The Monsoon Lords}
-\begin{itemize}
-    \item \textbf{Symbol:} Knotted wind-chime of bone and pearl.
-    \item \textbf{Patron’s Gift:} \textit{Wind-Reader} — +1d Notice to detect incoming threats.
-    \item \textbf{Corruption Tell:} Skin cracks like parched earth; voice becomes thunderous.
-\end{itemize}
-
-%---------------------------------------------------------------
-\subsection{Rivalries in Eastern Context}
-
-\begin{longtable}{@{}p{3cm}p{3cm}p{3cm}p{3cm}@{}}
+\section{Casting the Patrons (Optional Flavor)}
+\begin{longtable}{@{}p{3.2cm}p{10.6cm}@{}}
 \toprule
-\textbf{Patron} & \textbf{Sihai Rival} & \textbf{Nihon Rival} & \textbf{Ayokha Rival} \\
-\midrule
-The Mandate & Ancestor Cults & Death Poets & Abyssal Nat \\
-The Bushido Code & Celestial Bureaucracy & Shadow Sects & Rot Spirits \\
-The Celestial Vow & Merchant Lords & Ninja Clans & Justice Shrines \\
-The Great Wall & Silk Road Merchants & Wandering Monks & Threshold Guardians \\
-The Barrier Kami & Trade Winds & Ancient Kami & Night Spirits \\
+\textbf{Thrysos} & Laughing hearth–god turned too loud; smells of cider and iron; color over truth.\\
+\textbf{Pale Shepherd} & A lantern across snow; speaks in exchanged memories; never hurries.\\
+\textbf{Silent Choir} & Frost–haze in candlelight; mercy as cessation; demands \emph{quiet means consent}.\\
 \bottomrule
 \end{longtable}
 
-%---------------------------------------------------------------
-\subsection{Corruption Themes by Region}
-
-\paragraph{Sihai Corruption}
+\section{Quick Start for PCs}
 \begin{itemize}
-    \item Loss of face, rigid legalism, obsession with hierarchy.
-    \item Bureaucratic stamps or seals spread across the skin.
+  \item \textbf{Runekeeper (Thresholds):} Bargain with the Shepherd for safe passage; pay in story or scar.
+  \item \textbf{Cantor / Bard:} Compose the counter–hymn; lead call–and–response to cleanse \emph{Revelry}.
+  \item \textbf{Sellsword:} Guard the bell ropes; hold the square against stampede or falling ice.
+  \item \textbf{Healer:} Replace \emph{Cheer} with \emph{Breath}—synchronized breathing drills under the eaves.
 \end{itemize}
 
-\paragraph{Nihon Corruption}
-\begin{itemize}
-    \item Honor becomes suicidal pride.
-    \item Beautiful black rot spreads like ink beneath veins.
-\end{itemize}
-
-\paragraph{Ayokha Corruption}
-\begin{itemize}
-    \item Ritual without meaning; divine perfection eclipses empathy.
-    \item Voice becomes too compelling; mortals obey without question.
-\end{itemize}
-
-%---------------------------------------------------------------
-\subsection{Sample Patron Encounters (Eastern Expression)}
-
-\paragraph{The Mandate (Sihai)}
-A courier kneels, delivering a jade-sealed edict: investigate corruption. Refusing brings dishonor—and perhaps divine punishment.
-
-\paragraph{The Bushido Code (Nihon)}
-A formal challenge scroll appears at dawn. Resolve a feud between samurai houses. Failure stains everyone’s honor.
-
-\paragraph{The Celestial Vow (Ayokha)}
-Dream-message from a forgotten temple flame: restore worship—or the spirits will claim the shrine entirely.
-
-%---------------------------------------------------------------
-\subsection{Integration with \textit{Duel to the Death}}
-
-\begin{itemize}
-    \item \textbf{The Crimson Merchants’ Guild} = Sihai Merchant Lords / Nihon Trading Houses / Ayokha Gold Temples.
-    \item \textbf{Master Li Wei} may serve the Celestial Bureaucracy or Temple Flames.
-    \item \textbf{Shinobi Kage} may serve the Night Spirits or Shadow Sects.
-\end{itemize}
-
-%---------------------------------------------------------------
-\subsection{Conclusion}
-
-These cultural translations preserve mechanical identity while enriching play with meaningful, respectful cultural differences. A Patron remains a Patron—whether worshipped by monk, samurai, or spice-merchant.
+\vfill
+\begin{center}
+\small\itshape
+“When the song is too sweet to end, mercy is a hard hand on the bell rope.”\\
+— Greta Frostwhisper
+\end{center}
 
 \end{document}
