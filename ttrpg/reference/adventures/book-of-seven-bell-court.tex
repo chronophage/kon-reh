@@ -22,7 +22,7 @@
 \setlist[itemize]{nosep}
 
 % section formatting (optional, SRD-style)
-\titleformat{\section}{\normalfont\bfseries\Large}{}{0pt}{}
+\titleformat{\chapter}{\normalfont\bfseries\Large}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\bfseries\large}{}{0pt}{}
 
 \begin{document}
@@ -39,28 +39,166 @@
 
 \noindent
 \textit{The Seven Bell Court} is an anthology of twelve modular adventures designed for easy insertion into ongoing campaigns set across Sihai, Nihon, and Ayokha. Each scenario highlights one or more pillars of Fate's Edge play: investigation, culture, negotiation, ritual, and cinematic conflict. All are written with the Court's core virtues in mind:
+\documentclass[11pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{sectsty}
+\usepackage{needspace}
+\usepackage{changepage}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
 
-\begin{itemize}
-  \item \textbf{Form} – Grace, precision, mastery of self
-  \item \textbf{Spirit} – Courage, compassion, mercy
-  \item \textbf{Intent} – Purpose, consequence, the deeper meaning behind action
+\geometry{margin=1in}
+\setstretch{1.2}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=cyan,
+  pdftitle={The Book of the Seven Bell Court},
+  pdfauthor={Fate's Edge},
+  pdfsubject={Adventure Anthology (Twelve Tales, Two Showpieces, Extras)},
+  pdfkeywords={Fate's Edge, Seven Bell Court, anthology, adventures, Sihai, Nihon, Ayokha}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\allsectionsfont{\sffamily\bfseries}
+\chapterfont{\sffamily\Huge\bfseries}
+\chapterfont{\sffamily\Large\bfseries}
+\subsectionfont{\sffamily\large\bfseries}
+
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\bfseries\Huge}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% ---------- Boxes ----------
+\newmdenv[
+  linewidth=2pt,
+  linecolor=black,
+  backgroundcolor=gray!10,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  innerrightmargin=10pt,
+  innerleftmargin=10pt,
+  frametitlefont=\sffamily\bfseries
+]{adventurebox}
+
+\newmdenv[
+  linewidth=1pt,
+  linecolor=gray,
+  backgroundcolor=gray!5,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  innerrightmargin=8pt,
+  innerleftmargin=8pt,
+  frametitlefont=\sffamily\itshape
+]{mechanicbox}
+
+\newcommand{\Mechanic}[2]{%
+  \begin{mechanicbox}[frametitle={#1}]
+    #2
+  \end{mechanicbox}
+}
+
+% ---------- Title Page ----------
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Huge\bfseries The Book of the Seven Bell Court\par}
+\vspace{0.6cm}
+{\Large Twelve Tales, Two Showpieces, and Supporting Systems for \emph{Fate's Edge}\par}
+\vspace{1.2cm}
+{\large \textbf{Contents}}\par
+\vspace{0.6cm}
+\begin{minipage}{0.9\textwidth}
+\begin{itemize}[leftmargin=1.25em]
+  \item \textbf{Twelve Tales (Minor Adventures):} quick-run scenarios tuned for 3–5 hours
+  \item \textbf{Two Showpiece Adventures:} multi-session arcs with deeper investigation and set-pieces
+  \item \textbf{Extras:} Seven Bell Court judging system, cultural deep-dives, and TAGS-based equipment
+\end{itemize}
+\end{minipage}
+\vfill
+{\small Version 1.0 \quad|\quad \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ---------- Intro ----------
+\chapter*{Introduction: How to Use This Book}
+\addcontentsline{toc}{chapter}{Introduction: How to Use This Book}
+
+\begin{adventurebox}[frametitle=What This Anthology Contains]
+This anthology is organized into three clearly labeled parts:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Part I – Twelve Tales:} 12 modular minor adventures for one session each (3–5 hours). Each Tale includes a clear premise, 1–3 signature clocks, a mechanical twist, scaling notes, and a cinematic set-piece.
+  \item \textbf{Part II – Two Showpiece Adventures:} \emph{Duel to the Death} (conspiracy tournament) and \emph{The Bridge of Three Echoes} (contemplative pilgrimage). These are multi-session arcs with deeper NPC development, investigation layers, and culture-forward mechanics.
+  \item \textbf{Part III – Extras:} the \emph{Seven Bell Court} judging system, regional cultural guidance (Sihai, Nihon, Ayokha), and a curated \emph{Equipment for Contemplative Adventures} section showcasing the TAGS system.
+\end{itemize}
+\end{adventurebox}
+
+\chapter*{At-a-Glance GM Guidance}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Read the Premise box} and set the \emph{stakes} in one sentence.
+  \item \textbf{Pick clocks} appropriate to your table’s pace (resolve 1–3 per session).
+  \item \textbf{Spot the mechanical twist} (e.g., Truth Duel, Split-Screen Timer, Lantern Placement) and telegraph it early.
+  \item \textbf{Use Seven Bell Court} when victory should reflect \emph{Form, Spirit, and Intent}, not just harm dealt.
+  \item \textbf{Signal culture respectfully:} use flavor cues as \emph{gifts}, not gates. Reward understanding with \emph{Cultural Edge} tokens.
 \end{itemize}
 
-Every adventure below contains:
-\begin{itemize}
-  \item A concise hook and setup
-  \item A distinctive mechanical twist
-  \item 2--3 scene-ready clocks
-  \item Cultural framing grounded in the setting
-  \item Player-facing hooks for multiple archetypes
-  \item Scaling guidance for table size and difficulty
+\chapter*{Quick-Prep Matrix: The Twelve Tales}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}p{3.2cm} p{3.4cm} p{5.5cm} p{1.6cm}@{}}
+\toprule
+\textbf{Title} & \textbf{Theme} & \textbf{Mechanical Twist} & \textbf{Sessions}\\
+\midrule
+Silk, Salt, and Shadows & Noir Heist & \emph{Split-Screen Timer} (three parallel advancing clocks) & 1 \\
+The Emperor's Quiet & Political Thriller & \emph{Mandate Ledger} (legitimacy vs expediency) & 1 \\
+The Ronin's Winter & Duel Arc (Nihon) & \emph{Seven Bell Court} judging (Form/Spirit/Intent) & 1 \\
+Monsoon of Knives & Navy Caper & \emph{Weather Dice} affect Position/Effect & 1 \\
+The City That Forgets & Mystic Mystery & \emph{Memory Tokens} + dual Truth Tracks (Boon/Bane) & 1 \\
+Festival of Ten Thousand Lanterns & Social Sandbox & \emph{Lantern Placement} drives faction influence & 1 \\
+The Jade Locust & Plague Investigation & \emph{Dual Clocks: Civic \& Personal} & 1 \\
+Ash at Sunrise & Tactical Warfare & \emph{Battlefront Clocks} + morale pressure & 1 \\
+The Thousand-Step Court & Paradox Dungeon & \emph{Trial Steps} re-write Position on ascent & 1 \\
+Black Powder, White Paper & Tech vs Tradition & \emph{Innovation Pressure} vs \emph{Customary Rights} & 1 \\
+Court of Perfumed Knives & Palace Intrigue & \emph{Mask Exchanges} (identity play) & 1 \\
+The House that Eats Oaths & Haunted Law & \emph{Binding Clauses} as geasa & 1 \\
+\bottomrule
+\end{tabularx}
+
+\chapter*{Visual Organization}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Part headers} (\emph{Twelve Tales}, \emph{Two Showpieces}, \emph{Extras}) make prep scope obvious.
+  \item \textbf{Minor adventures} use concise boxes (Premise/Clocks/Twist/Scaling).
+  \item \textbf{Showpieces} include investigation layers, NPC webs, and end-state matrices.
 \end{itemize}
 
-All are suitable for one-shots (3--5 hours) or expanded into multi-session arcs.
+\chapter*{Session Planning}
+Minor adventures are built for a single night. Showpieces are intended for 2–4 sessions—each contains natural intermissions (rituals, court sessions, travel chapters) to pause cleanly.
 
-\bigskip
-\hrule
-\vspace{6pt}
+\cleardoublepage
 
 \begin{tcolorbox}[
   colback=white,
@@ -99,7 +237,10 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \end{tcolorbox}
 
-\section{Silk, Salt, and Shadows (Sihai Noir Heist)}
+\mainmatter
+\part{Twelve Tales}
+
+\chapter{Silk, Salt, and Shadows (Sihai Noir Heist)}
 
 \begin{tcolorbox}[title={Silk, Salt, and Shadows}]
 \textbf{Premise.} Three rival crews target the same customs auction under lanternlight. PCs may steal, expose, or exploit the operation.
@@ -132,7 +273,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   2. THE EMPEROR'S QUIET
 % =====================================================================
-\section{The Emperor's Quiet (Sihai Political Thriller)}
+\chapter{The Emperor's Quiet (Sihai Political Thriller)}
 
 \begin{tcolorbox}[title={The Emperor's Quiet}]
 \textbf{Premise.} Seven ritual days of imperial silence. Bureaucrats slip edicts through sleeping offices; PCs decide what becomes law.
@@ -161,7 +302,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   3. THE RONIN'S WINTER
 % =====================================================================
-\section{The Ronin's Winter (Nihon Duel Drama)}
+\chapter{The Ronin's Winter (Nihon Duel Drama)}
 
 \begin{tcolorbox}[title={The Ronin's Winter}]
 \textbf{Premise.} A legendary duelist refuses battle until someone proves what victory is \emph{for}. Steel alone cannot win this duel.
@@ -190,7 +331,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   4. MONSOON OF KNIVES
 % =====================================================================
-\section{Monsoon of Knives (Ayokha Naval Caper)}
+\chapter{Monsoon of Knives (Ayokha Naval Caper)}
 
 \begin{tcolorbox}[title={Monsoon of Knives}]
 \textbf{Premise.} A coastal convoy must outrun both pirates and the incoming monsoon. PCs serve as escorts, saboteurs, or double agents.
@@ -221,7 +362,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   5. THE CITY THAT FORGETS
 % =====================================================================
-\section{The City That Forgets (Sihai–Ayokha Mystic Mystery)}
+\chapter{The City That Forgets (Sihai–Ayokha Mystic Mystery)}
 
 \begin{tcolorbox}[title={The City That Forgets}]
 \textbf{Premise.} Memories vanish at dawn. Names, faces, debts, and crimes—gone. PCs must solve the mystery before they forget themselves.
@@ -252,7 +393,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   6. FESTIVAL OF TEN THOUSAND LANTERNS
 % =====================================================================
-\section{Festival of Ten Thousand Lanterns (Ayokha Social Sandbox)}
+\chapter{Festival of Ten Thousand Lanterns (Ayokha Social Sandbox)}
 
 \begin{tcolorbox}[title={Festival of Ten Thousand Lanterns}]
 \textbf{Premise.} Lanterns rise into a sacred sky—each blessing a god, spirit, or ancestor. But someone plans to poison the winds.
@@ -283,7 +424,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   7. THE JADE LOCUST
 % =====================================================================
-\section{The Jade Locust (Sihai Plague Investigation)}
+\chapter{The Jade Locust (Sihai Plague Investigation)}
 
 \begin{tcolorbox}[title={The Jade Locust}]
 \textbf{Premise.} A plague devours harvests overnight. Glowing jade locusts burrow into grain stores—and into dreams.
@@ -314,7 +455,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   8. ASH AT SUNRISE
 % =====================================================================
-\section{Ash at Sunrise (Nihon Battlefield Scenario)}
+\chapter{Ash at Sunrise (Nihon Battlefield Scenario)}
 
 \begin{tcolorbox}[title={Ash at Sunrise}]
 \textbf{Premise.} A fallen village stands between two armies. PCs choose which banners to protect—or exploit both.
@@ -345,7 +486,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   9. THE THOUSAND-STEP COURT
 % =====================================================================
-\section{The Thousand-Step Court (Paradox Dungeon)}
+\chapter{The Thousand-Step Court (Paradox Dungeon)}
 
 \begin{tcolorbox}[title={The Thousand-Step Court}]
 \textbf{Premise.} A riddle-court where time loops, mirrors speak, and each misstep rewrites history.
@@ -376,7 +517,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   10. BLACK POWDER, WHITE PAPER
 % =====================================================================
-\section{Black Powder, White Paper (Sihai Tech vs. Tradition)}
+\chapter{Black Powder, White Paper (Sihai Tech vs. Tradition)}
 
 \begin{tcolorbox}[title={Black Powder, White Paper}]
 \textbf{Premise.} A printing guild and gunpowder foundry strike an illegal pact. Revolution whispers on the page and the barrel.
@@ -407,7 +548,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   11. COURT OF PERFUMED KNIVES
 % =====================================================================
-\section{Court of Perfumed Knives (Ayokha Palace Intrigue)}
+\chapter{Court of Perfumed Knives (Ayokha Palace Intrigue)}
 
 \begin{tcolorbox}[title={Court of Perfumed Knives}]
 \textbf{Premise.} A masked ball where every dance is a duel, every toast a negotiation, every mask a lie.
@@ -438,7 +579,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   12. THE HOUSE THAT EATS OATHS
 % =====================================================================
-\section{The House that Eats Oaths (Haunted Legal Horror)}
+\chapter{The House that Eats Oaths (Haunted Legal Horror)}
 
 \begin{tcolorbox}[title={The House that Eats Oaths}]
 \textbf{Premise.} Breaking promises empowers a hungry house. Walls whisper names. Signed contracts appear in dreams.
@@ -465,6 +606,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \textbf{Scaling.} High-tier: house begins rewriting reality. Low-tier: simple haunt with legal curses.
 \end{tcolorbox}
+
 % -------------------------------------------------
 % (Your rules, scorecard tables, or generators go here)
 % -------------------------------------------------
@@ -473,44 +615,9 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % DUEL TO THE DEATH: WU-XING vs. NINJA (LaTeX Conversion)
 % Requires: tcolorbox, tabularx, longtable, xcolor, enumitem
 % =========================================================
-\begin{tcolorbox}[
-  colback=white,
-  colframe=black,
-  fonttitle=\bfseries,
-  title=The Judgment of the Seven Bell Court]
+\part{Two Showpiece Adventures}
 
-In Ayokha, a duel is not merely the meeting of steel and skill.
-To the Celestial Order, combat without meaning is savagery.
-To Sihai philosophers, technique without restraint is chaos.
-To Nihon poets, victory without honor is an empty shadow.
-
-Thus, every formal bout is overseen by the \textbf{Seven Bell Court}:
-a neutral panel of masters, scholars, and priest-judges who weigh each clash
-by three sacred pillars of excellence:
-
-\begin{itemize}[nosep]
-  \item \textbf{Form} – discipline, precision, and mastery of technique.
-  \item \textbf{Spirit} – composure, respect, and dignity in conflict.
-  \item \textbf{Intent} – purpose beyond ego: protection, duty, justice, or peace.
-\end{itemize}
-
-A fighter may fall, yet be honored as victorious.  
-A fighter may stand triumphant, yet be judged disgraced.
-
-The Scorecard system turns every match into a story:
-\begin{itemize}[nosep]
-  \item A reckless strike might land—yet shame the audience.
-  \item A humble bow might calm a volatile crowd.
-  \item A moment of mercy might prevent a war.
-\end{itemize}
-
-Use the Judges’ Scorecards in tournaments, duels of honor,
-trial-by-combat, diplomatic exhibitions, or ritual tests of skill.
-When the world watches, a single point of Spirit may be worth more than blood.
-
-\end{tcolorbox}
-
-\section{Duel to the Death: Wu\,-Xing vs.\ Ninja}
+\chapter{Duel to the Death: Wu\,-Xing vs.\ Ninja}
 \label{sec:duel-wuxing-ninja}
 \subsection*{Conspiracy of Shadows and Elements}
 
@@ -885,7 +992,268 @@ Position shifts with timing/approach; Effect modified by evidence presented; cul
 % Balanced presentation and quick-roll tables
 % =========================================================
 
-\section{The Isles of the Dawn Spirit (Nihon)}
+% =====================================================================
+%  THE BRIDGE OF THREE ECHOES — TRIPLE-CULTURE CONTEMPLATIVE SHOWPIECE
+% =====================================================================
+\chapter{The Bridge of Three Echoes (Pilgrimage of Memory and Mercy)}
+
+\begin{tcolorbox}[title={The Bridge of Three Echoes}]
+\textbf{Premise.} Once every century, a spectral bridge appears across the Valley of Silent Ash.  
+Upon it walk the forgotten dead of three nations, seeking closure.  
+Only those who carry truth may cross.
+
+\textbf{Purpose.} Resolve ancient wrongs between Sihai, Nihon, and Ayokha without blades, armies, or scripts of state.  
+A single night on the bridge can calm wars or spark them anew.
+
+\textbf{Tone.} Quiet, solemn, beautiful.  
+The adventure favors reflection, diplomacy, vows, compassion, and the verdict of ancestors.
+\end{tcolorbox}
+
+% ---------------- SCENE STRUCTURE ----------------
+\subsection{Structure of Play}
+The bridge manifests for a single night.  
+Each \textbf{Act} is one crossing:
+\begin{itemize}
+  \item \textbf{Act I: Lanterns of Regret} (Ayokha)
+  \item \textbf{Act II: Blades of Memory} (Nihon)
+  \item \textbf{Act III: Scrolls of Truth} (Sihai)
+\end{itemize}
+
+Each act offers:
+\begin{itemize}
+  \item A symbolic ritual
+  \item A moral choice with no easy answer
+  \item A chance to earn or lose \textbf{Echo Tokens}
+\end{itemize}
+
+At dawn, the bridge judges the living.
+
+% ---------------- UNIQUE MECHANIC ----------------
+\subsection{Echo Tokens (Core Mechanic)}
+\begin{tcolorbox}[title={Echo Tokens}]
+PCs earn or lose \textbf{Echo Tokens} by honoring the dead:
+\begin{itemize}
+  \item Show mercy to a bitter spirit [+1]
+  \item Tell a painful truth [+1]
+  \item Break a vow [-1]
+  \item Spill blood on the bridge [-2]
+\end{itemize}
+
+At dawn:
+\begin{description}
+  \item[3+ Tokens:] Spirits grant a Blessing of Peace
+  \item[1–2 Tokens:] The bridge leaves the world unchanged
+  \item[0 or less:] The bridge cracks, releasing ancestral wrath
+\end{description}
+\end{tcolorbox}
+
+% ---------------- CLOCKS ----------------
+\subsection{Clocks}
+\begin{itemize}
+  \item \textbf{Bridge Stability [6]} – grows with violence or lies
+  \item \textbf{Spirit Unrest [8]} – shrinks with compassion or ritual
+  \item \textbf{Dawn Approaches [10]} – the night is short
+\end{itemize}
+
+% ---------------- ACT I ----------------
+\subsection{Act I: Lanterns of Regret (Ayokha)}
+Floating lanterns hover in ash-filled fog.  
+Each lantern holds a recorded sorrow—love unspoken, apology unmade, duty abandoned.
+
+\textbf{Ritual:} PCs place a lantern into the river of ash.  
+Its flame brightens or dims depending on their sincerity.
+
+\begin{itemize}
+  \item Heal a grieving spirit [+1 Echo Token]
+  \item Sailor begs forgiveness from drowned crew
+  \item Parent apologizes to a forgotten child
+  \item Romantic rival confesses they saved a life instead of taking it
+\end{itemize}
+
+\textbf{Set-Piece.} A thousand lanterns rise, illuminating spectral tatami pavilions and Ayokhan funeral masks.
+
+\textbf{Test.} PCs must speak a sorrow of their own.  
+Silence counts as fear, not respect.
+
+% ---------------- ACT II ----------------
+\subsection{Act II: Blades of Memory (Nihon)}
+A silent battlefield of polished stone.  
+The dead are not hostile—they demand \emph{acknowledgment}.
+
+\textbf{Ritual: Truth Duel.}  
+No blades strike flesh.  
+To “win” is to yield the proud truth you never wished to speak.
+
+Examples:
+\begin{itemize}
+  \item A warrior admits they killed for glory, not justice
+  \item A magistrate admits they saved face instead of saving lives
+  \item A monk admits they fled duty and called it enlightenment
+\end{itemize}
+
+\textbf{Outcome.}
+\begin{itemize}
+  \item Mutual truth: both sides bow, [+1 Token]
+  \item Refusal to speak: spirits grow restless, [-1 Token]
+\end{itemize}
+
+\textbf{Set-Piece.}  
+Rows of ash-blade swords hum in the wind, each engraved with an unspoken name.
+
+% ---------------- ACT III ----------------
+\subsection{Act III: Scrolls of Truth (Sihai)}
+A grand pavilion of drifting parchment and calligraphy that writes itself.  
+The spirits seek \emph{record}, not vengeance.
+
+\textbf{Ritual:} PCs must inscribe a truth on the Eternal Scroll:
+\begin{itemize}
+  \item Confess a lineage secret
+  \item Acknowledge a war crime
+  \item Reveal a corruption
+  \item Forgive a historic enemy
+\end{itemize}
+
+\textbf{Set-Piece.}  
+Ink-spirits coil through the air.  
+When a lie is spoken, parchment tears like thunder.
+
+\textbf{Test.}  
+If no one writes truth, the scroll writes \emph{judgment} instead.
+
+% ---------------- OPTIONAL FINAL SET-PIECE ----------------
+\subsection{Final Choice: Break or Bless the Bridge}
+At the last step, three ancestral judges manifest:  
+\textbf{Ayokhan Mercy, Nihon Honor, Sihai Memory.}
+
+PCs must choose:
+\begin{itemize}
+  \item \textbf{Bless the Bridge:} swears a binding vow of peace  
+  \item \textbf{Break the Bridge:} spirits rise to punish the living  
+  \item \textbf{Rewrite History:} one truth is erased or rewritten
+\end{itemize}
+
+\textbf{Echo Token Result Table:}
+\begin{itemize}
+  \item 3–5 Tokens → Dawn Blessing (renewed treaties, ancestral gifts)
+  \item 1–2 Tokens → Neutral departure, bittersweet memory
+  \item 0 or fewer → Vengeful spirits pursue PCs beyond the bridge
+\end{itemize}
+
+% ---------------- PATRON SUGGESTIONS ----------------
+\subsection{Patron Hooks}
+\begin{itemize}
+  \item \textbf{Mab:} promises peace, demands a price in memory
+  \item \textbf{Inkblade:} offers a rewritten scroll—dangerous temptation
+  \item \textbf{Thrysos:} grants mercy to warriors who admit their failures
+  \item \textbf{Black Fox:} the bridge hides a secret worth stealing
+\end{itemize}
+
+\begin{tcolorbox}[title={GM Guidance: Tone}]
+This is not a combat showcase.  
+Use silence as a mechanic.  
+Let players sit in discomfort.  
+Reward vulnerability—characters who speak truth should be mechanically advantaged.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Endings}]
+\textbf{Peace Ending.} The bridge becomes part of living memory; ancestors rest.
+
+\textbf{Bitter Ending.} Some truths are too sharp; one culture departs with permanent scars.
+
+\textbf{Forbidden Ending.} PCs erase a historical truth.  
+History now remembers something that never happened.
+\end{tcolorbox}
+
+% =====================================================================
+%  NPCs OF THE BRIDGE OF THREE ECHOES
+% =====================================================================
+\subsection{NPCs of the Bridge of Three Echoes}
+
+% ------------ SIHAI ------------
+\subsubsection*{Sihai NPCs}
+
+\paragraph{Magistrate Shen Liang}
+Historian-in-exile, gentle and formal. Carries scrolls spilling endless ink.
+\begin{itemize}
+  \item \textbf{Truth Feared:} Falsified census records to save a starving village.
+  \item \textbf{If Helped:} \emph{Seal of Lenient Judgment} --- +1 Position when pleading mercy.
+  \item \textbf{If Silenced:} Spirits mark him with invisible ink; PCs can see ``coward'' across his back.
+\end{itemize}
+
+\paragraph{Jade Archivist Lian Xu}
+Keeper of forbidden histories, brilliant and furious.
+\begin{itemize}
+  \item \textbf{Truth Feared:} A massacre blamed on raiders was ordered internally.
+  \item \textbf{If Helped:} PCs gain a \emph{True Ledger Fragment} to expose corruption later.
+  \item \textbf{If Silenced:} Spirits whisper the forbidden truth to an unwilling PC.
+\end{itemize}
+
+\paragraph{Commander Wei Sun}
+War hero, loved by the empire, hollow with guilt.
+\begin{itemize}
+  \item \textbf{Truth Feared:} Civilian deaths reported as bandit casualties.
+  \item \textbf{If Forgiven:} \emph{Blessing of Gentle Hands} --- treat one lethal wound as nonlethal.
+  \item \textbf{If Condemned:} Silent spirits gather; Unrest +1.
+\end{itemize}
+
+% ------------ NIHOn ------------
+\subsubsection*{Nihon NPCs}
+
+\paragraph{Poet-Swordsman Akiro}
+Duelist-philosopher polishing a perfect blade.
+\begin{itemize}
+  \item \textbf{Truth Feared:} Provoked a duel to steal poetry, not for honor.
+  \item \textbf{If Encouraged:} Offers a memory-haiku restoring one spent Echo Token.
+  \item \textbf{If Mocked:} Challenges a PC to a Truth Duel.
+\end{itemize}
+
+\paragraph{Sister Hana}
+Temple attendant who stole sacred coins to feed orphans.
+\begin{itemize}
+  \item \textbf{Truth Feared:} Her mercy violated temple law.
+  \item \textbf{If Defended:} \emph{Hands of Clean Intent} --- ignore one Corruption tick.
+  \item \textbf{If Condemned:} She vanishes; Stability +1.
+\end{itemize}
+
+\paragraph{Lord Shigure}
+Samurai-turned-traitor, polite and calm as ice.
+\begin{itemize}
+  \item \textbf{Truth Feared:} Betrayed his lord for ambition, not justice.
+  \item \textbf{If Convinced:} \emph{Mask of Honest Silence} --- reroll one failed Sway per adventure.
+  \item \textbf{If Proud:} Becomes a vengeful spirit later.
+\end{itemize}
+
+% ------------ AYOKHA ------------
+\subsubsection*{Ayokha NPCs}
+
+\paragraph{Widow Ishani}
+Merchant-queen carrying three lanterns for lost husbands.
+\begin{itemize}
+  \item \textbf{Truth Feared:} Bribed a captain to sail early; ship sank.
+  \item \textbf{If Admitted:} \emph{Coin of Clean Trade} --- advantage when negotiating peace.
+  \item \textbf{If Denied:} Lanterns sink; Stability +2.
+\end{itemize}
+
+\paragraph{Child-Keeper Tavin}
+Medium holding hands of forgotten children.
+\begin{itemize}
+  \item \textbf{Truth Feared:} One child lives; Tavin hid him to protect him.
+  \item \textbf{If Revealed:} \emph{Promise of Gentle Passage} --- advantage on death saves.
+  \item \textbf{If Forced:} Children scatter; Unrest +1.
+\end{itemize}
+
+\paragraph{The Silent Judge}
+Ancient Ayokhan spirit of law without mercy.
+\begin{itemize}
+  \item \textbf{Demand:} Truth \emph{and} consequence.
+  \item \textbf{If Satisfied:} Stability resets; Echo Token +1.
+  \item \textbf{If Defied:} Condemns PC, NPC, or culture --- canon impact.
+\end{itemize}
+
+
+\part{Supporting Systems \& Cultural Material}
+
+\chapter{The Isles of the Dawn Spirit (Nihon)}
 \label{sec:nihon}
 
 \begin{tcolorbox}[title={\textbf{Nihon --- The Isles of the Dawn Spirit}},colback=white,colframe=black!70]
@@ -1040,7 +1408,7 @@ Nihon is contrast made culture: serene moss temples beneath volcanic rims; disci
 \end{tabularx}
 
 % =========================================================
-\section{Ayokha — The Monsoon Throne}
+\chapter{Ayokha — The Monsoon Throne}
 \label{sec:ayokha}
 
 \begin{tcolorbox}[title={\textbf{Ayokha --- The Monsoon Throne, River of Heaven}},colback=white,colframe=black!70]
@@ -1144,7 +1512,7 @@ Ayokha measures borders in loyalty, harbors, and wind. A god-king sits at the ce
 \end{tabularx}
 
 % =========================================================
-\section{Sihai — The Central Kingdom}
+\chapter{Sihai — The Central Kingdom}
 \label{sec:sihai}
 
 \begin{tcolorbox}[title={\textbf{Sihai --- The Central Kingdom, The Ordered Land}},colback=white,colframe=black!70]
@@ -1438,7 +1806,7 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
                     \end{tcolorbox}
                     \end{center}
 
-                    \section*{Appendix: Cultural Sensitivity \& Best Practices}
+                    \chapter*{Appendix: Cultural Sensitivity \& Best Practices}
                     This adventure is inspired by the philosophies, aesthetics, and martial traditions of East and Southeast Asia. While the cultures presented here are \emph{fictional}, they draw from real-world analogues. This appendix provides guidance for respectful, conscientious presentation at the table.
                     
                     \subsection*{Core Design Principles}
@@ -1534,269 +1902,11 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
                     The goal is storytelling that honors the philosophical beauty, ritual depth, and human drama that inspired these cultures.
 
 % =====================================================================
-%  THE BRIDGE OF THREE ECHOES — TRIPLE-CULTURE CONTEMPLATIVE SHOWPIECE
-% =====================================================================
-\section{The Bridge of Three Echoes (Pilgrimage of Memory and Mercy)}
-
-\begin{tcolorbox}[title={The Bridge of Three Echoes}]
-\textbf{Premise.} Once every century, a spectral bridge appears across the Valley of Silent Ash.  
-Upon it walk the forgotten dead of three nations, seeking closure.  
-Only those who carry truth may cross.
-
-\textbf{Purpose.} Resolve ancient wrongs between Sihai, Nihon, and Ayokha without blades, armies, or scripts of state.  
-A single night on the bridge can calm wars or spark them anew.
-
-\textbf{Tone.} Quiet, solemn, beautiful.  
-The adventure favors reflection, diplomacy, vows, compassion, and the verdict of ancestors.
-\end{tcolorbox}
-
-% ---------------- SCENE STRUCTURE ----------------
-\subsection{Structure of Play}
-The bridge manifests for a single night.  
-Each \textbf{Act} is one crossing:
-\begin{itemize}
-  \item \textbf{Act I: Lanterns of Regret} (Ayokha)
-  \item \textbf{Act II: Blades of Memory} (Nihon)
-  \item \textbf{Act III: Scrolls of Truth} (Sihai)
-\end{itemize}
-
-Each act offers:
-\begin{itemize}
-  \item A symbolic ritual
-  \item A moral choice with no easy answer
-  \item A chance to earn or lose \textbf{Echo Tokens}
-\end{itemize}
-
-At dawn, the bridge judges the living.
-
-% ---------------- UNIQUE MECHANIC ----------------
-\subsection{Echo Tokens (Core Mechanic)}
-\begin{tcolorbox}[title={Echo Tokens}]
-PCs earn or lose \textbf{Echo Tokens} by honoring the dead:
-\begin{itemize}
-  \item Show mercy to a bitter spirit [+1]
-  \item Tell a painful truth [+1]
-  \item Break a vow [-1]
-  \item Spill blood on the bridge [-2]
-\end{itemize}
-
-At dawn:
-\begin{description}
-  \item[3+ Tokens:] Spirits grant a Blessing of Peace
-  \item[1–2 Tokens:] The bridge leaves the world unchanged
-  \item[0 or less:] The bridge cracks, releasing ancestral wrath
-\end{description}
-\end{tcolorbox}
-
-% ---------------- CLOCKS ----------------
-\subsection{Clocks}
-\begin{itemize}
-  \item \textbf{Bridge Stability [6]} – grows with violence or lies
-  \item \textbf{Spirit Unrest [8]} – shrinks with compassion or ritual
-  \item \textbf{Dawn Approaches [10]} – the night is short
-\end{itemize}
-
-% ---------------- ACT I ----------------
-\subsection{Act I: Lanterns of Regret (Ayokha)}
-Floating lanterns hover in ash-filled fog.  
-Each lantern holds a recorded sorrow—love unspoken, apology unmade, duty abandoned.
-
-\textbf{Ritual:} PCs place a lantern into the river of ash.  
-Its flame brightens or dims depending on their sincerity.
-
-\begin{itemize}
-  \item Heal a grieving spirit [+1 Echo Token]
-  \item Sailor begs forgiveness from drowned crew
-  \item Parent apologizes to a forgotten child
-  \item Romantic rival confesses they saved a life instead of taking it
-\end{itemize}
-
-\textbf{Set-Piece.} A thousand lanterns rise, illuminating spectral tatami pavilions and Ayokhan funeral masks.
-
-\textbf{Test.} PCs must speak a sorrow of their own.  
-Silence counts as fear, not respect.
-
-% ---------------- ACT II ----------------
-\subsection{Act II: Blades of Memory (Nihon)}
-A silent battlefield of polished stone.  
-The dead are not hostile—they demand \emph{acknowledgment}.
-
-\textbf{Ritual: Truth Duel.}  
-No blades strike flesh.  
-To “win” is to yield the proud truth you never wished to speak.
-
-Examples:
-\begin{itemize}
-  \item A warrior admits they killed for glory, not justice
-  \item A magistrate admits they saved face instead of saving lives
-  \item A monk admits they fled duty and called it enlightenment
-\end{itemize}
-
-\textbf{Outcome.}
-\begin{itemize}
-  \item Mutual truth: both sides bow, [+1 Token]
-  \item Refusal to speak: spirits grow restless, [-1 Token]
-\end{itemize}
-
-\textbf{Set-Piece.}  
-Rows of ash-blade swords hum in the wind, each engraved with an unspoken name.
-
-% ---------------- ACT III ----------------
-\subsection{Act III: Scrolls of Truth (Sihai)}
-A grand pavilion of drifting parchment and calligraphy that writes itself.  
-The spirits seek \emph{record}, not vengeance.
-
-\textbf{Ritual:} PCs must inscribe a truth on the Eternal Scroll:
-\begin{itemize}
-  \item Confess a lineage secret
-  \item Acknowledge a war crime
-  \item Reveal a corruption
-  \item Forgive a historic enemy
-\end{itemize}
-
-\textbf{Set-Piece.}  
-Ink-spirits coil through the air.  
-When a lie is spoken, parchment tears like thunder.
-
-\textbf{Test.}  
-If no one writes truth, the scroll writes \emph{judgment} instead.
-
-% ---------------- OPTIONAL FINAL SET-PIECE ----------------
-\subsection{Final Choice: Break or Bless the Bridge}
-At the last step, three ancestral judges manifest:  
-\textbf{Ayokhan Mercy, Nihon Honor, Sihai Memory.}
-
-PCs must choose:
-\begin{itemize}
-  \item \textbf{Bless the Bridge:} swears a binding vow of peace  
-  \item \textbf{Break the Bridge:} spirits rise to punish the living  
-  \item \textbf{Rewrite History:} one truth is erased or rewritten
-\end{itemize}
-
-\textbf{Echo Token Result Table:}
-\begin{itemize}
-  \item 3–5 Tokens → Dawn Blessing (renewed treaties, ancestral gifts)
-  \item 1–2 Tokens → Neutral departure, bittersweet memory
-  \item 0 or fewer → Vengeful spirits pursue PCs beyond the bridge
-\end{itemize}
-
-% ---------------- PATRON SUGGESTIONS ----------------
-\subsection{Patron Hooks}
-\begin{itemize}
-  \item \textbf{Mab:} promises peace, demands a price in memory
-  \item \textbf{Inkblade:} offers a rewritten scroll—dangerous temptation
-  \item \textbf{Thrysos:} grants mercy to warriors who admit their failures
-  \item \textbf{Black Fox:} the bridge hides a secret worth stealing
-\end{itemize}
-
-\begin{tcolorbox}[title={GM Guidance: Tone}]
-This is not a combat showcase.  
-Use silence as a mechanic.  
-Let players sit in discomfort.  
-Reward vulnerability—characters who speak truth should be mechanically advantaged.
-\end{tcolorbox}
-
-\begin{tcolorbox}[title={Endings}]
-\textbf{Peace Ending.} The bridge becomes part of living memory; ancestors rest.
-
-\textbf{Bitter Ending.} Some truths are too sharp; one culture departs with permanent scars.
-
-\textbf{Forbidden Ending.} PCs erase a historical truth.  
-History now remembers something that never happened.
-\end{tcolorbox}
-
-% =====================================================================
-%  NPCs OF THE BRIDGE OF THREE ECHOES
-% =====================================================================
-\subsection{NPCs of the Bridge of Three Echoes}
-
-% ------------ SIHAI ------------
-\subsubsection*{Sihai NPCs}
-
-\paragraph{Magistrate Shen Liang}
-Historian-in-exile, gentle and formal. Carries scrolls spilling endless ink.
-\begin{itemize}
-  \item \textbf{Truth Feared:} Falsified census records to save a starving village.
-  \item \textbf{If Helped:} \emph{Seal of Lenient Judgment} --- +1 Position when pleading mercy.
-  \item \textbf{If Silenced:} Spirits mark him with invisible ink; PCs can see ``coward'' across his back.
-\end{itemize}
-
-\paragraph{Jade Archivist Lian Xu}
-Keeper of forbidden histories, brilliant and furious.
-\begin{itemize}
-  \item \textbf{Truth Feared:} A massacre blamed on raiders was ordered internally.
-  \item \textbf{If Helped:} PCs gain a \emph{True Ledger Fragment} to expose corruption later.
-  \item \textbf{If Silenced:} Spirits whisper the forbidden truth to an unwilling PC.
-\end{itemize}
-
-\paragraph{Commander Wei Sun}
-War hero, loved by the empire, hollow with guilt.
-\begin{itemize}
-  \item \textbf{Truth Feared:} Civilian deaths reported as bandit casualties.
-  \item \textbf{If Forgiven:} \emph{Blessing of Gentle Hands} --- treat one lethal wound as nonlethal.
-  \item \textbf{If Condemned:} Silent spirits gather; Unrest +1.
-\end{itemize}
-
-% ------------ NIHOn ------------
-\subsubsection*{Nihon NPCs}
-
-\paragraph{Poet-Swordsman Akiro}
-Duelist-philosopher polishing a perfect blade.
-\begin{itemize}
-  \item \textbf{Truth Feared:} Provoked a duel to steal poetry, not for honor.
-  \item \textbf{If Encouraged:} Offers a memory-haiku restoring one spent Echo Token.
-  \item \textbf{If Mocked:} Challenges a PC to a Truth Duel.
-\end{itemize}
-
-\paragraph{Sister Hana}
-Temple attendant who stole sacred coins to feed orphans.
-\begin{itemize}
-  \item \textbf{Truth Feared:} Her mercy violated temple law.
-  \item \textbf{If Defended:} \emph{Hands of Clean Intent} --- ignore one Corruption tick.
-  \item \textbf{If Condemned:} She vanishes; Stability +1.
-\end{itemize}
-
-\paragraph{Lord Shigure}
-Samurai-turned-traitor, polite and calm as ice.
-\begin{itemize}
-  \item \textbf{Truth Feared:} Betrayed his lord for ambition, not justice.
-  \item \textbf{If Convinced:} \emph{Mask of Honest Silence} --- reroll one failed Sway per adventure.
-  \item \textbf{If Proud:} Becomes a vengeful spirit later.
-\end{itemize}
-
-% ------------ AYOKHA ------------
-\subsubsection*{Ayokha NPCs}
-
-\paragraph{Widow Ishani}
-Merchant-queen carrying three lanterns for lost husbands.
-\begin{itemize}
-  \item \textbf{Truth Feared:} Bribed a captain to sail early; ship sank.
-  \item \textbf{If Admitted:} \emph{Coin of Clean Trade} --- advantage when negotiating peace.
-  \item \textbf{If Denied:} Lanterns sink; Stability +2.
-\end{itemize}
-
-\paragraph{Child-Keeper Tavin}
-Medium holding hands of forgotten children.
-\begin{itemize}
-  \item \textbf{Truth Feared:} One child lives; Tavin hid him to protect him.
-  \item \textbf{If Revealed:} \emph{Promise of Gentle Passage} --- advantage on death saves.
-  \item \textbf{If Forced:} Children scatter; Unrest +1.
-\end{itemize}
-
-\paragraph{The Silent Judge}
-Ancient Ayokhan spirit of law without mercy.
-\begin{itemize}
-  \item \textbf{Demand:} Truth \emph{and} consequence.
-  \item \textbf{If Satisfied:} Stability resets; Echo Token +1.
-  \item \textbf{If Defied:} Condemns PC, NPC, or culture --- canon impact.
-\end{itemize}
-
-% =====================================================================
 %  EQUIPMENT FOR CONTEMPLATIVE ADVENTURES
 %  Showcasing the TAGS System
 % =====================================================================
 
-\section{Equipment for Contemplative Adventures}
+\chapter{Equipment for Contemplative Adventures}
 The following items demonstrate how the TAGS system handles equipment that is both
 practical and symbolic. These tools are ideal for adventures focused on memory,
 mercy, negotiation, or moral choice. Each item is presented with clear TAG
