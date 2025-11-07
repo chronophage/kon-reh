@@ -47,7 +47,8 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  the_serpents_coil.tex -n "Fate's Edge - The Serpent's Coil.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
 ../../../tools/compile_latex.sh -f  whispers_in_the_stacks.tex -n "Fate's Edge - Whispers in the Stacks.pdf" > /dev/null 2>&1|| echo "#11. Did not build"
 ../../../tools/compile_latex.sh -f  whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
-../../../tools/compile_latex.sh -f  nameless.tex -n "Fate's Edge Adventure - The Nameless.pdf" > /dev/null 2>&1|| echo "#4. Did not build"
+../../../tools/compile_latex.sh -f  nameless.tex -n "Fate's Edge - The Nameless.pdf" > /dev/null 2>&1|| echo "#4. Did not build"
+../../../tools/compile_latex.sh -f  duel-to-the-death.tex -n "Fate's Edge - Duel to the Death.pdf" > /dev/null 2>&1|| echo "#4. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
