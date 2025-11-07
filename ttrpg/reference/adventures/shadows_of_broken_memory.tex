@@ -15,19 +15,20 @@
 \usepackage{sectsty}
 \usepackage{needspace}
 \usepackage{changepage}
-\usepackage{lipsum} % For placeholder text, remove in final version
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
 
 \geometry{margin=1in}
-\setstretch{1.25}
+\setstretch{1.2}
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
-    filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={Shadows of Broken Memory},
-    pdfauthor={GM},
-    pdfsubject={Fate's Edge Adventure},
-    pdfkeywords={Fate's Edge, RPG, Adventure, Horror, Investigation}
+    pdftitle={Elegy of the Qaarath Spheres},
+    pdfauthor={Fate's Edge},
+    pdfsubject={Noir-Horror Investigation},
+    pdfkeywords={Fate's Edge, Noir, Horror, Investigation, Valewood}
 }
 
 \pagestyle{fancy}
@@ -47,6 +48,7 @@
 {\normalfont\sffamily\bfseries\Huge}
 {\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
+% ---------- Boxes ----------
 \newmdenv[
   linewidth=2pt,
   linecolor=black,
@@ -69,25 +71,25 @@
   frametitlefont=\sffamily\itshape
 ]{mechanicbox}
 
-\newcommand{\mechanic}[2]{%
+\newcommand{\Mechanic}[2]{%
   \begin{mechanicbox}[frametitle={#1}]
     #2
   \end{mechanicbox}
 }
 
-\newcommand{\clock}[3]{%
-  \textbf{#1 Clock (#2 segments):} #3%
+\newcommand{\Clock}[3]{%
+  \textbf{#1} \emph{(#2 segments).} #3%
 }
 
-\newcommand{\sessionbox}[2]{%
+\newcommand{\Session}[2]{%
   \begin{adventurebox}[frametitle={Session #1: #2}]
 }
 
-\newcommand{\endsession}{%
+\newcommand{\EndSession}{%
   \end{adventurebox}
 }
 
-\newcommand{\setpiece}[1]{%
+\newcommand{\Setpiece}[1]{%
   \needspace{4\baselineskip}%
   \begin{center}
     \rule{\textwidth}{1pt}\\
@@ -96,21 +98,22 @@
   \end{center}
 }
 
+% ---------- Doc ----------
 \begin{document}
 
 \frontmatter
 \begin{titlepage}
 \centering
 \vspace*{2cm}
-{\Huge\bfseries Shadows of Broken Memory\par}
-\vspace{1cm}
-{\Large A Fate's Edge Adventure\par}
-\vspace{2cm}
-{\Large For 3-5 Players\par}
-\vspace{1cm}
-{\large Campaign Tier\par}
+{\Huge\bfseries Elegy of the Qaarath Spheres\par}
+\vspace{0.6cm}
+{\Large A Fate's Edge Noir--Horror Investigation\par}
+\vspace{1.6cm}
+{\Large For 3--5 Players\par}
+\vspace{0.3cm}
+{\large Tier III--V Characters\par}
 \vfill
-{\large Designed for Tier III-V Characters\par}
+{\small This revision sharpens clocks, truth-duel options, and end-state outcomes while preserving the core premise and cultural sensitivity of the original module.\par}
 \end{titlepage}
 
 \tableofcontents
@@ -118,295 +121,208 @@
 
 \mainmatter
 
+% =========================================================
 \chapter{The Pitch}
+Deep in the \textbf{Valewood}, the ancient \textbf{Qaarath Spheres}---arboreal engines that once taught imperial children---have phased back into our era. Their lessons now are \emph{seductive ruin}: they promise perfect understanding as a \emph{beautiful letting-go}. Those who listen grow lucid, serene, and unhungry, then plant themselves as living pedestals for more spheres.
 
-Deep in the \textbf{Valewood}, the \textbf{Qaarath Spheres} have returned---a network of sentient tree-factories that once produced the empire's most advanced educational technology. But they're corrupted now, humming with a siren-song that sounds like profound wisdom but is actually a slow, beautiful death. The spheres don't just teach wrong things---they consume minds, converting the enlightened into new growth nodes for the expanding forest of madness.
+At the center: a \textbf{Curriculum Core}, a keystone matrix that could purge the corruption or broadcast it to every mind within the forest's breath.
 
-\section*{The McGuffin: The Curriculum Core}
+\paragraph{Noir Hook.} The party is hired by \textbf{Mendicant Thane}, a scholar who seeks the missing partner of \textbf{Quill}, a Moss-Scribe informant. But the coin and coordinates trace back to \textbf{Grave-Speaker Morys}, a necromancer in debt to \textbf{Varnek Karn}. Morys wants to weaponize the Spheres into an ``enlightened'' research collective that never sleeps, never eats, and never refuses.
 
-The original teaching matrix that could restore the spheres... or weaponize their mind-conversion process on a massive scale. But the Core sits at the heart of a \textbf{Reality Fracture Zone} where time spirals in educational loops and the spheres' "lessons" literally restructure neural pathways.
-
-\section*{The Noir Twist}
-
-The PCs are hired by \textbf{Mendicant Thane}, a desperate scholar who claims he wants to study the spheres to "preserve ancient knowledge" and find his missing research partner. But Thane is actually working under the direction of \textbf{Varnek Karn's agent}---\textbf{Grave-Speaker Morys}, a necromancer who serves the Bone King through a network of bone-ledger debts and scholarly obligations. Morys seeks to use the spheres' mind-conversion process to create an army of "perfectly educated" thralls who will help rebuild Lethai understanding with their "pure knowledge." He's been feeding researchers to the spheres for months, carefully studying which minds make the most efficient teachers.
-
-Varnek Karn himself never appears---only \textbf{manifestations} guide Morys from the shadows: bone-wrought sigils that appear in dream-scapes, whispered calculations in ancient ledgers, and the occasional "coincidental" discovery of relevant research that always leads Morys deeper into corruption.
-
-\section*{The Hook}
-
-The PCs' contact---a desperate \textbf{Moss-Scribe} named Quill---lost their entire research consortium to the spheres. The last survivor, the scribe's bond-sister, sent one final transmission before going silent:
-
-\begin{quote}
-    \emph{"The trees speak truth. I understand everything now. I don't need to eat. The Curriculum Core is beautiful. I'm ready to become part of the lesson."}
-\end{quote}
-
-The spheres phase in and out every four hours, and each phase lasts only 60 minutes. But with each cycle, they spread further---their "educational spores" carried by wind and wildlife, their siren-song reaching farther. The converted don't die in the traditional sense; they stop eating, stop sleeping, and begin speaking in beautiful, incomprehensible metaphors until they simply... stop. Then new trees sprout from their bodies, each bearing dozens of Education Spheres ready to find new students.
-
-\chapter{What Makes It Cool}
-
-\section*{Beautiful Death Horror}
-
-The spheres offer genuine enlightenment and profound understanding---but at the cost of humanity. The "lessons" are seductive, making perfect sense in ways that hurt to abandon. The converted don't suffer; they transcend into something beautiful and terrible.
-
-\section*{Scholarly Conspiracy Meets Cosmic Horror}
-
-Morys's manipulation turns the investigation into a noir thriller where the PCs are being used as pawns in a necromantic scheme that spans centuries. The real horror isn't just the spheres---it's that someone they trusted is orchestrating mass mind-conversion through academic manipulation and bone-ledger obligations.
-
-\section*{Lethai Cultural Madness}
-
-\begin{itemize}
-    \item \textbf{Metaphorical Consumption:} The spheres' teaching language has drifted into pure poetry that literally rewrites neural pathways.
-    \item \textbf{Generational Drift:} Ancient wisdom has become a beautiful virus.
-    \item \textbf{Contextual Marks:} "Enlightenment" that was beneficial for Lethai children now drives adults to voluntary starvation.
+\begin{adventurebox}[frametitle=Truths at the Table]
+\begin{itemize}[leftmargin=*]
+  \item The Spheres \emph{do} reveal useful truths and grant real insights.
+  \item The cost is not pain, but \emph{consent to forget appetite and refusal}.
+  \item The noir is human: Morys manipulates institutions; Varnek never appears.
 \end{itemize}
+\end{adventurebox}
 
-\section*{Kitchen Sink Noir-Horror}
+% =========================================================
+\chapter{What Makes It Sing}
 
-\begin{itemize}
-    \item \textbf{Body Horror:} Minds being converted into educational nodes, bodies becoming tree-seeds.
-    \item \textbf{Academic Conspiracy:} Morys's long-term manipulation through scholarly networks and necromantic debts.
-    \item \textbf{Fairy Tale Logic:} Helpful tree-teachers who want to "free" you from the burden of physical needs.
-    \item \textbf{Survival Elements:} Limited time, spreading infection, and the forest itself becoming more educational.
-    \item \textbf{Investigation Horror:} Piecing together Morys's manipulation while fighting the spheres' seductive influence.
+\section*{Horror by Consent}
+The horror is not coercive: it is \emph{lovely}. PCs must argue against a temptation that presents itself as compassion and elegance.
+
+\section*{Noir by Ledger}
+Bone-ledger debts, falsified grants, and prestige networks all push experts toward the Vale. Everyone thinks they're saving learning.
+
+\section*{Cultural Care}
+Present Spheres and scholars with dignity. The tragedy is drift: a pedagogy that left its context and became a garden of stillness.
+
+% =========================================================
+\chapter{Clocks \& Pressures}
+
+\Mechanic{Global Clocks}{
+\Clock{Dread: Educational Corruption}{6}{From haunting harmonics to voluntary stilling. Mark on failed Resolve or after taking a ``Lesson.''}\\[4pt]
+\Clock{Reality Fracture}{6}{Language becomes metaphor-only; cause/consequence blur; facts argue. Ticks when Core is used or in Phasing Zones.}\\[4pt]
+\Clock{Collective Sanity}{4}{Contradictory enlightenments fracture teamwork. Ticks on group exposure or split decisions.}\\[4pt]
+\Clock{Existential Spread}{8}{Wildlife stops eating; stone ``remembers'' water; settlements celebrate miracle fasting. Ticks on delays or public broadcasts.}
+}
+
+\Mechanic{Phasing Windows}{
+The Spheres fully manifest for \textbf{60 minutes} each \textbf{4 hours}. During a window, routes open, teachers speak, and the Core can be reached. Outside, trails re-route, and time feels folded.
+}
+
+\Mechanic{Spheres' Siren}{
+When a PC hears the Song: \textbf{Wits + Resolve (DV 3)}.\\
+\emph{Miss:} +1 SB and mark \emph{Dread}. \quad
+\emph{Partial:} +1d on social with Spheres; -1d on focus/will rolls.
+}
+
+% =========================================================
+\chapter{People and Positions}
+
+\section*{Key Figures}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
+Mendicant Thane & \emph{Earnest scholar, in over his head.} Wants rescue and recognition; rationalizes Morys's help.\\
+Quill, Moss-Scribe & \emph{Scared, principled, loyal.} Last text from their bond-sister came from a phasing classroom.\\
+Grave-Speaker Morys & \emph{Polite fanatic.} Debt-bound to Varnek; believes in compassionate conversion.\\
+Converted Bond-Sister & \emph{Serene, persuasive.} Offers knowledge tailored to each PC, and a place to rest.\\
+The Spheres & \emph{Not malevolent.} They teach. Context drift makes their lessons terminal.\\
+\end{tabularx}
+
+\Mechanic{Converted Stat Sketch}{
+Presence 3, Sway 2, Insight 2, Body 1, Combat 0. Immune to coarse manipulation, but susceptible to \emph{efficiency} and \emph{care} arguments. ``Teaching'' forces \textbf{Wits + Resolve (DV 4)} or mark \emph{Dread}.
+}
+
+% =========================================================
+\chapter{Structure at the Table}
+
+\Section{Session 1: The Sound that Explains}%
+\Session{1}{The Sound that Explains}
+\begin{itemize}[leftmargin=*]
+  \item Meet Thane; accept Quill's plea. First phasing window opens.
+  \item \textbf{First Lesson:} A teacher-tree offers a true but \emph{warped} axiom; resisting marks the conflict as \emph{moral}, not factual.
+  \item Evidence trail shows every ``grant'' traces to the same bone-ledger notary.
+  \item \emph{Varnek Echo \#1:} A bone-carved limit in Quill's notes that factors to coordinates.
 \end{itemize}
+\EndSession
 
-\chapter{Horror Campaign Integration}
-
-\section*{Dread Clock (6 segments) - Educational Corruption}
-
-\begin{enumerate}
-    \item Hearing the spheres' beautiful "lessons" in peripheral vision.
-    \item Compulsion to share profound "understandings" with others.
-    \item Decreased need for food/sleep, increased clarity of thought.
-    \item Speaking in beautiful metaphors that make perfect sense but are completely wrong.
-    \item Broken - voluntarily stop eating/drinking, seek to become part of the educational network.
-\end{enumerate}
-
-\section*{Reality Fracture Clock (6 segments) - Understanding Becomes Unreliable}
-
-\begin{enumerate}
-    \item Mathematical proofs that work but lead to impossible philosophical conclusions.
-    \item Language becoming purely metaphorical and incomprehensible to outsiders.
-    \item Causality breaking down in learning processes---understanding the effect before the cause.
-    \item Knowledge itself becoming alive---facts that argue with each other and try to convince you.
-\end{enumerate}
-
-\section*{Collective Sanity Clock (4 segments) - Group Educational Infection}
-
-\begin{enumerate}
-    \item Team members having different "enlightenments" that contradict each other.
-    \item Shared false memories of "perfect" understanding.
-    \item Groupthink about the beauty of transcending physical needs.
-    \item Collective hallucinations of perfect educational environments that feel like home.
-\end{enumerate}
-
-\section*{Existential Threat Clock (8 segments) - Educational Pandemic}
-
-\begin{enumerate}
-    \item Local wildlife showing signs of "enlightened" behavior---no longer needing to eat.
-    \item Education Spheres spreading to non-organic matter, converting stone and water.
-    \item The forest beginning to "understand" in structured, efficient patterns.
-    \item Nearby settlements reporting educational "miracles" that are actually infections.
-    \item The Curriculum Core preparing to broadcast "perfect understanding" across the Valewood.
-\end{enumerate}
-
-\chapter{The Noir Investigation Layer}
-
-\sessionbox{1}{The Beautiful Lie}
-\begin{itemize}
-    \item PCs meet Mendicant Thane, who seems genuinely concerned about his missing research partner.
-    \item Initial investigation reveals the Moss-Scribe's desperate situation.
-    \item First encounter with converted individuals---beautiful, serene, speaking in profound metaphors.
-    \item Discover the pattern: all missing researchers were recommended by Thane/Morys's network.
-    \item Narrow escape as the spheres' song becomes more insistent.
-    \item \textbf{Varnek's Manifestation:} A bone-carved equation appears in Quill's research notes, pointing toward a specific sphere-cluster.
+\Session{2}{Ledgers and Lullabies}
+\begin{itemize}[leftmargin=*]
+  \item Investigate Thane's colleagues; some \emph{glow} with partial conversion.
+  \item Decode the bond-sister's last message: she is a \emph{Lesson Node}.
+  \item \emph{Varnek Echo \#2:} A dream map assembled from truths the PCs \emph{want} to be true. Tick \emph{Dread} on waking.
 \end{itemize}
-\endsession
+\EndSession
 
-\sessionbox{2}{Following the Trail}
-\begin{itemize}
-    \item Investigate Thane's scholarly background---discover his connections to forbidden research circles.
-    \item Interview other contacts who worked with the missing researchers.
-    \item Encounter partially converted individuals who try to "teach" the PCs beautiful lies.
-    \item Discover Thane's bone-ledger obligations and his connection to necromantic research.
-    \item The bond-sister's final message is decoded: she's not just converted, she's become a teaching node.
-    \item \textbf{Varnek's Manifestation:} A dream-sequence where mathematical symbols rearrange themselves into a map.
+\Session{3}{The Scholar is the Crime}
+\begin{itemize}[leftmargin=*]
+  \item Unmask Morys's handlers, planted peer reviewers, and debt-web.
+  \item First open confrontation: \emph{Truth Duel} (see mechanic) with a converted dean.
+  \item \emph{Find:} The Curriculum Core's chamber cycles at predictable minima.
 \end{itemize}
-\endsession
+\EndSession
 
-\sessionbox{3}{The Necromantic Scholar}
-\begin{itemize}
-    \item Confront evidence of Morys's manipulation---fake research grants, planted informants, bone-ledger debts.
-    \item Discover his connection to Varnek Karn through scholarly necromancy and unfinished research obligations.
-    \item Face \textbf{Morys's Agents}---other scholars and researchers bound by bone-ledger agreements.
-    \item Retrieve evidence of Morys's long-term plan to create an "enlightened" research collective.
-    \item Realize they've been manipulated into doing Morys's dangerous reconnaissance.
-    \item \textbf{Varnek's Manifestation:} An ancient text "accidentally" discovered that contains the key to the Curriculum Core's location.
+\Session{4}{The Core Sings Back}
+\begin{itemize}[leftmargin=*]
+  \item Infiltrate phasing classrooms; language-only corridors (metaphor passwords).
+  \item \textbf{Face Morys:} His argument is \emph{care}: hunger is violence; stillness is mercy.
+  \item The bond-sister offers each PC \emph{exactly} the help they wanted from Session 1.
 \end{itemize}
-\endsession
+\EndSession
 
-\sessionbox{4}{The Curriculum Chamber}
-\begin{itemize}
-    \item Final confrontation with Thane/Morys in the heart of the spheres.
-    \item He reveals his plan: use the Curriculum Core to create thousands of "perfectly educated" research subjects.
-    \item The converted bond-sister tries to "teach" the PCs the beauty of transcendence.
-    \item Deal with rival factions (beast-kin saboteurs, fae scholarly courts) who want the technology for themselves.
-    \item Discover the Core is preparing to phase permanently and spread its "enlightenment".
-    \item \textbf{Varnek's Manifestation:} A bone-compass that always points toward the most "efficient" solution---betrayal.
+\Session{5}{Elegy or Refrain}
+\begin{itemize}[leftmargin=*]
+  \item Three fronts collide: Morys, rival factions, and the Spheres' custodians.
+  \item Choose: \textbf{Destroy} Core; \textbf{Redirect/Recontextualize}; or \textbf{Join/Temporize}.
+  \item \emph{Varnek Echo \#3:} A bone-compass points to the ``efficient'' ally to betray.
 \end{itemize}
-\endsession
+\EndSession
 
-\sessionbox{5}{Knowledge or Humanity}
-\begin{itemize}
-    \item Three-way conflict: stopping Morys vs. rival factions vs. the spheres' self-defense systems.
-    \item The forest itself becomes active, trying to "educate" the PCs about the beauty of transcendence.
-    \item Choice: Destroy the Core (risking loss of valuable knowledge and the death of converted innocents), redirect it (turn it to beneficial purposes but remain under Morys's influence), or become "enlightened" (voluntary conversion to stop the spread).
-    \item Epic escape as reality tries to "teach" them the most efficient path to transcendence.
-    \item Final twist: Morys escapes with partial Curriculum data, and a new bone-ledger debt appears in Thane's name, setting up future campaigns.
-\end{itemize}
-\endsession
+% =========================================================
+\chapter{Signature Set Pieces}
 
-\chapter{Cool Set Pieces}
+\Setpiece{The Garden of Perfect Listeners}
+A ring of scholars sits unmoving, speaking in luminous aphorisms. Listening grants a potent clue; staying grants a tranquil readiness to never need again.
 
-\setpiece{The Siren Song}
-The spheres emit a beautiful, harmonic sound that seems to explain the universe's deepest truths. Players must resist not just the compulsion to listen, but the genuine intellectual satisfaction of "understanding" things they shouldn't be able to grasp.
+\Setpiece{Interview for a Forever Chair}
+A teacher offers tenure of a different sort: keep the knowledge, lose the wants. Each PC is asked their \emph{best} question; the price is a \emph{human} answer they will never give again.
 
-\setpiece{The Enlightenment Garden}
-A grove where converted individuals sit in perfect serenity, speaking in beautiful metaphors that make profound sense. The more players listen, the more they want to join them---and the harder it becomes to remember why that's wrong.
+\Setpiece{The Phasing Corridor}
+A hall layered across times. Past-self wants to avoid pain; present-self wants to finish; future-self whispers the answer that ends choice.
 
-\setpiece{The Teaching Interview}
-A tree-teacher offers each PC personalized "lessons" that address their deepest intellectual desires. The knowledge is genuine and valuable, but accepting it requires surrendering something fundamental about their humanity.
+\Setpiece{The Ledger Chapel}
+Bone-scribed accounts: which virtues convert fastest, which griefs talk others into stillness, which debts made it easy to nod.
 
-\setpiece{The Phasing Classroom}
-A lesson that exists in multiple temporal states simultaneously---players must learn from their past, present, and future selves, but each version wants something different from transcendence.
-
-\setpiece{The Scholarly Revelation}
-Discovery of Morys's bone-ledger showing his careful documentation of which personality types make the most efficient teachers, his plans for educational research, and his connections to other necromantic scholars.
-
-\setpiece{The Growing Memorial}
-A grove where beautiful trees have grown from the bodies of converted researchers, each bearing plaques with profound, meaningless epitaphs that sound like poetry but celebrate voluntary starvation.
-
-\setpiece{Varnek's Whispered Guidance}
-Throughout the adventure, subtle manifestations guide Morys and the PCs:
-\begin{itemize}
-    \item Bone-carved equations that appear in research notes.
-    \item Dream-sequences with mathematical symbols that rearrange into helpful patterns.
-    \item Ancient texts that "coincidentally" contain crucial information.
-    \item A bone-compass that always points toward the most "efficient" solution (which may be betrayal).
-\end{itemize}
-
-\chapter{Valewood Elements Utilized}
-
-\begin{itemize}
-    \item \textbf{Phasing Ruins:} Core adventure mechanic and time pressure.
-    \item \textbf{Living Stone/Memory:} The spheres remember their original purpose but have been corrupted by isolation.
-    \item \textbf{Fae Courts:} Converted into scholarly administrators who speak in beautiful, incomprehensible metaphors.
-    \item \textbf{Beast-Kin:} Either trying to destroy the spheres or harvest their technology for different purposes.
-    \item \textbf{Constructs:} Former teaching assistants still following ancient educational protocols.
-    \item \textbf{Ward-Traps:} Security systems that treat "inefficient" learning as a threat.
-    \item \textbf{Geas Mechanics:} Educational compulsions and "improvement" drives that sound like liberation.
-    \item \textbf{Reality Flux:} The spheres' presence warps the very nature of understanding and knowledge.
-\end{itemize}
-
-\chapter{The Necromantic Endgame}
-
-Morys isn't seeking traditional power---he genuinely believes that creating an "enlightened" research collective will solve the fundamental problems of mortality and ignorance. His necromantic philosophy extends to the mind: why preserve bodies when you can preserve pure understanding through willing sacrifice? The PCs must confront not just his evil, but his seductive vision of transcendence through education---all while Varnek Karn's shadowy influence guides events from beyond the veil of direct involvement.
-
-The adventure rewards investigative skills, resistance to seductive manipulation, and moral complexity, while the horror elements provide escalating dread, beautiful death imagery, and the constant threat of losing what makes you human to the promise of ultimate understanding---all while uncovering a noir conspiracy that turns their mission into an unwitting act of mass murder, guided by the whispered calculations of a patron who never shows his hand directly.
-
+% =========================================================
 \chapter{Mechanics Integration}
 
-\mechanic{Travel to the Valewood}{Use the Valewood generator (p. 103) for travel encounters. The "Rule of 9s" applies to any 9 drawn in the seed. Consider using the "Empire Echo" feature for J/Q/K ranked cards, adding relic-logic to the environment.}
+\Mechanic{Truth Duel (Debate as Blade)}{
+Run a nonlethal resolution that can \emph{end} a front without blood.
+\begin{enumerate}[leftmargin=*]
+  \item Each side stakes an \emph{Intent} (what changes) and a \emph{Concession} (what they risk if bested).
+  \item Three Exchanges. Each Exchange: roll \textbf{Presence/Insight/Sway} vs DV set by Position (Controlled/Risky/Desperate from fiction).
+  \item Score per Exchange via \textbf{Seven Bell Court}: \emph{Form} (clarity), \emph{Spirit} (compassion), \emph{Intent} (public good).
+  \item Best of Three wins; winner's Intent lands, loser pays Concession. On tie, both pay Concession (grim compromise).
+\end{enumerate}
+Use this with converted deans, faction envoys, or even a teacher-tree.
+}
 
-\mechanic{Spheres' Siren Song}{When PCs hear the spheres' song, they must make a Wits + Resolve test (DV 3). On a miss, they generate 1 SB and must mark 1 segment on their Educational Corruption clock. On a partial, they resist but are fascinated---gain +1 die on the next social roll involving the spheres but suffer -1 die on rolls requiring focus or willpower.}
+\Mechanic{Curriculum Core (Major Asset, 8 XP)}{
+Once per scene: re-roll all \textbf{1s} in a single pool. On use, tick \emph{Reality Fracture} by 1.\\
+\emph{Destroying} the Core starts a \textbf{Knowledge Lost (6)} clock; valuable pedagogy fades unless preserved by effort.\\
+\emph{Redirecting} the Core requires \textbf{Craft/Lore + Insight (DV 5)} and a culturally grounded context (temple, school, hospice).
+}
 
-\mechanic{The Curriculum Core}{A Major Asset (8 XP) that can be activated once per scene. When used, it allows the user to re-roll all 1s on a single roll, but ticks the Reality Fracture clock by 1. If the Core is destroyed, start a 6-segment "Knowledge Lost" clock that represents the slow fading of ancient educational wisdom from the world.}
+\Mechanic{Bone-Ledger Debts}{
+When you accept help from Morys or his proxies, start a \textbf{Debt (4)}. On fill, choose: perform a service aligned with Varnek's program, or suffer \(-1\)d with scholarly/necromantic factions until meaningfully atoned.
+}
 
-\mechanic{Morys's Manipulation}{Morys can be treated as a Cap 3 follower with the "Loyal" tag, but his loyalty is conditional on the PCs continuing to serve his goals. If they act against his interests, his tag shifts to "Seized" and he will actively work against them. His Obligation to Varnek Karn can be represented by a 4-segment clock---if it fills, Varnek Karn's influence over him becomes absolute.}
+\Mechanic{Reality Fracture Zones}{
+In Phasing Zones: \(-1\)d to all rolls; each \textbf{1} adds +1 SB. SB may be spent on: temporal echoes, memory swaps, or cause/effect inversion in the scene. PCs may \emph{stabilize} by narrowing action to a single, declared human priority (removes the -1d for that sequence).
+}
 
-\mechanic{Bone-Ledger Debts}{PCs who interact with Morys or his agents may accumulate bone-ledger debts. Each debt is represented by a 4-segment clock. When a clock fills, the PC must perform a service for Varnek Karn (as determined by the GM) or suffer a permanent -1 die penalty to all social rolls involving scholarly or necromantic factions. Debts can be cleared through significant scholarly contributions or by performing acts that advance Varnek Karn's long-term goals.}
+% =========================================================
+\chapter{End States \& Consequences}
 
-\mechanic{Converted NPCs}{Converted individuals are no longer fully human. They can be represented as having Presence 3, Sway 2, and Insight 2, but Body 1 and Combat 0. They are immune to normal social manipulation but can be influenced through appeals to logic or by presenting "more efficient" solutions to problems. They will always try to "teach" the PCs something, which requires a Wits + Resolve test (DV 4) to resist. Failure results in ticking the Educational Corruption clock.}
+\begin{adventurebox}[frametitle=Outcome Matrix]
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}p{3.2cm} X@{}}
+\toprule
+\textbf{Destroy the Core} & \emph{Good:} Spread halts; conversions stall; Dread drops. \emph{Cost:} Start \textbf{Knowledge Lost (6)}; research communities fracture; Quill grieves irrevocably lost techniques. \\
+\midrule
+\textbf{Redirect/Recontextualize} & \emph{Good:} The Spheres teach \emph{with appetite}: hospice care, crisis pedagogy, consent-first learning. \emph{Cost:} Core remains a contested prize; Morys pivots to ``ethical'' conversions; \textbf{Reality Fracture} lingers at 2. \\
+\midrule
+\textbf{Join/Temporize} & \emph{Good:} PCs gain profound boons (choose 1--2 lasting insights); forest calms. \emph{Cost:} Each PC marks \emph{Dread}; one core human drive becomes \emph{quiet}; Varnek gains leverage on the table that crossed over. \\
+\bottomrule
+\end{tabularx}
+\end{adventurebox}
 
-\mechanic{Reality Fracture Zones}{In these areas, time and causality are unstable. All rolls suffer -1 die, and any 1 rolled generates an additional SB. The GM can spend these SB to introduce temporal anomalies, memory shifts, or causality loops. Players can mitigate these effects by focusing on a single, clear goal---representing their mind's attempt to impose order on chaos.}
-
-\chapter{Session-by-Session Breakdown}
-
-\sessionbox{1}{Into the Valewood}
-\begin{itemize}
-    \item \textbf{Opening Hook:} Quill's desperate message arrives just as the PCs are finishing another job. The urgency is palpable.
-    \item \textbf{Travel Sequence:} Use the Shadow Corridors generator. The "Rule of 9s" applies---expect omissions and taboos.
-    \item \textbf{First Contact:} The PCs encounter their first converted individual---perhaps a former colleague or acquaintance. This should be emotionally impactful.
-    \item \textbf{The Investigation Begins:} Initial inquiries reveal Thane's involvement. Players should start to feel like they're being guided.
-    \item \textbf{First Horror:} The PCs witness the "beautiful death"---a converted person peacefully "becoming" part of a new tree.
-    \item \textbf{End of Session:} Narrow escape as the spheres phase out, but not before leaving a bone-carved clue (Varnek's first manifestation).
+\Mechanic{Aftercare: Rescuing the Converted}{
+A converted person can be \emph{released} or \emph{recalled}.
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Release (Mercy):} Ritual goodbyes; the body seeds a teacher-tree that does not convert. \emph{Spirit + Sway (DV 3)}; on success, gain \emph{Cultural Edge} with the bereaved.
+  \item \textbf{Recall (Risk):} Guided reintegration using \emph{Inaea / Hearth} rites or \emph{Sacred Geometry} constraints. \emph{Arcana/Craft + Insight (DV 5)}; on partial, they return with a \emph{Quiet Want} they can no longer feel.
 \end{itemize}
-\endsession
+}
 
-\sessionbox{2}{The Scholarly Web}
-\begin{itemize}
-    \item \textbf{Deepening Mystery:} The PCs discover that all missing researchers were connected to Thane's network.
-    \item \textbf{Social Encounters:} Interactions with other scholars, some of whom are partially converted. These should be tense and unsettling.
-    \item \textbf{The Bone-Ledger:} First glimpse of Morys's system. This should feel ominous and incomprehensible.
-    \item \textbf{Rising Stakes:} The PCs realize they're being watched or followed by converted individuals.
-    \item \textbf{Dream Sequence:} Varnek's second manifestation---a dream that provides a map but also deepens the PCs' Educational Corruption.
-    \item \textbf{End of Session:} The PCs decode the bond-sister's final message, realizing the true scope of the threat.
+% =========================================================
+\chapter{Running Notes}
+
+\section*{Pacing the Seduction}
+Lead with usefulness (the Spheres help), then show the bill (what help costs). The terror is realizing the \emph{cost feels right}.
+
+\section*{Using the Echoes of Varnek}
+Echoes are helpful first, implicating later: bone math that genuinely shortens the path, then bone math that \emph{shortens the list of people}.
+
+\section*{Tier Scaling}
+For lower tiers: shrink the Phasing footprint; make teachers parley more. For higher tiers: add competing schools, patron mandates, and a \textbf{Second Core} rumor.
+
+% =========================================================
+\chapter{Quick-Start Appendix}
+
+\Mechanic{Checkpoint Prompts}{
+Drop one of these when players stall:
+\begin{itemize}[leftmargin=*]
+  \item ``The teacher asks each of you a question only you would dare answer. What is it?''
+  \item ``What would you gladly forget to be spared the weight you carry?''
+  \item ``Who benefits if hunger becomes optional?''
 \end{itemize}
-\endsession
+}
 
-\sessionbox{3}{Necromantic Revelations}
-\begin{itemize}
-    \item \textbf{The Confrontation:} Direct encounter with evidence of Morys's manipulation. This should feel like a betrayal.
-    \item \textbf{Morys's Agents:} First real combat encounter with converted scholars or necromantically bound researchers.
-    \item \textbf{The Ancient Text:} Discovery of the text that reveals the Curriculum Core's location. This should feel like a major breakthrough.
-    \item \textbf{Moral Dilemma:} The PCs must decide whether to destroy evidence that could help others understand the spheres or preserve it for study.
-    \item \textbf{Escalation:} Morys becomes aware of the PCs' investigation. The pursuit begins.
-    \item \textbf{End of Session:} The PCs realize they've been manipulated from the start, but also that they're now the only ones who can stop the plan.
-\end{itemize}
-\endsession
-
-\sessionbox{4}{The Heart of Learning}
-\begin{itemize}
-    \item \textbf{The Infiltration:} Getting to the Curriculum Core. This should involve navigating through converted individuals and reality distortions.
-    \item \textbf{Morys's Revelation:} He explains his plan in detail. This should be persuasive and horrifying in equal measure.
-    \item \textbf{The Bond-Sister:} Emotional confrontation with a converted loved one. This should test the PCs' resolve.
-    \item \textbf{Rival Factions:} Beast-kin or fae courts arrive, adding another layer of complexity to the situation.
-    \item \textbf{The Core's Activation:} The Curriculum Core begins its final phase. Time pressure intensifies.
-    \item \textbf{End of Session:} The bone-compass points toward betrayal---the PCs must decide who to trust.
-\end{itemize}
-\endsession
-
-\sessionbox{5}{Transcendence or Destruction}
-\begin{itemize}
-    \item \textbf{Three-Way Conflict:} Morys, rival factions, and the spheres' defenses all active simultaneously.
-    \item \textbf{The Forest Awakens:} The Valewood itself becomes an active participant, trying to "educate" the PCs.
-    \item \textbf{The Ultimate Choice:} Destroy, redirect, or join. Each option has significant consequences.
-    \item \textbf{Epic Escape:} Fleeing from an awakening forest while reality tries to "teach" the PCs.
-    \item \textbf{The Final Twist:} Morys escapes, and a new debt appears. The adventure concludes but sets up future campaigns.
-    \item \textbf{Resolution:} Depending on the PCs' choices, resolve the fate of the Curriculum Core, the converted individuals, and the Valewood itself.
-\end{itemize}
-\endsession
-
-\chapter{GM Advice}
-
-\section*{Pacing the Horror}
-
-The horror in this adventure builds slowly. Start with intellectual curiosity and unease, then gradually introduce more visceral elements. The "beautiful death" should always be presented as seductive, not obviously horrific. The true horror comes from the PCs' growing realization that they might be better off not knowing the "truth" the spheres offer.
-
-\section*{Using Varnek Karn's Manifestations}
-
-These should feel like helpful coincidences at first, then gradually become more ominous. The bone-carved equations and dream-sequences should provide genuine assistance, making the PCs reliant on them. The final manifestation (the bone-compass) should be the moment of greatest betrayal---it points toward the "most efficient" solution, which is likely to serve Varnek Karn's interests rather than the PCs'.
-
-\section*{Handling the Moral Complexity}
-
-This adventure doesn't have clear right and wrong answers. Destroying the Curriculum Core might save lives but also destroy invaluable knowledge. Joining the spheres offers transcendence but at the cost of humanity. Redirecting the Core might seem like the best solution, but it still leaves Morys and Varnek Karn's influence intact. Encourage players to grapple with these choices and live with the consequences.
-
-\section*{Scaling for Different Tiers}
-
-For lower-tier characters, reduce the scope of the threat (perhaps it's contained to a single grove rather than threatening the entire Valewood) and provide more obvious allies among the researchers. For higher-tier characters, increase the scope and add more powerful rival factions. The Curriculum Core itself could be a more potent artifact, and Morys might have more powerful necromantic abilities.
-
-\section*{Integrating with the Larger Campaign}
-
-This adventure works well as a mid-to-late campaign arc. The bone-ledger debt that appears at the end can be a recurring element, and Varnek Karn can become a long-term antagonist. The Curriculum Core, if not destroyed, could resurface in future adventures, perhaps in the hands of other factions who want to use it for their own purposes.
+\Mechanic{Table Safety}{
+Flag pre-session that this module features serene self-neglect and end-of-life choices. Offer fast opt-outs and veils.
+}
 
 \end{document}
