@@ -25,7 +25,7 @@
 
 3. [The Eastern Lands](#the-eastern-lands)
    - [Dhahara — "Monsoon of Empires"](#dhahara--monsoon-of-empires)
-   - [Nihon — "The Isles of the Dawn Spirit"](#nihon--the-isles-of-the-dawn-spirit)
+   - [Nihori — "The Isles of the Dawn Spirit"](#nihon--the-isles-of-the-dawn-spirit)
    - [Ayokha — "The Monsoon Throne, The River of Heaven"](#ayokha--the-monsoon-throne-the-river-of-heaven)
    - [Sihai — "The Central Kingdom, The Ordered Land"](#sihai--the-central-kingdom-the-ordered-land)
 
@@ -1194,12 +1194,12 @@ Far southeast of Galanina, past Sidhi marches and salt flats, the Dhaharan penin
 #### Tone in a line
 In Dhahara, you count the winds, kiss the seal, and keep your word—or the sky remembers.
 
-### Nihon — "The Isles of the Dawn Spirit"
+### Nihori — "The Isles of the Dawn Spirit"
 
 #### Tagline: A storm-wracked archipelago of fierce clans, divine spirits, and unparalleled artisans, forever living in the shadow of the continental giant, Sihai, and defined by its struggle to absorb and redefine its influence.
 
 #### Overview
-Nihon is a land of stark contrasts: serene, moss-covered temples nestled against jagged volcanic peaks; silent, disciplined warriors in the midst of chaotic feudal warfare; a deep reverence for nature that coexists with mastery over metal and fire. The islands are beautiful, violent, and deeply spiritual. The people of Nihon have taken the cultural seed of Sihai and forged it in their own unique fire, creating a culture that is both recognizably related and fiercely independent.
+Nihori is a land of stark contrasts: serene, moss-covered temples nestled against jagged volcanic peaks; silent, disciplined warriors in the midst of chaotic feudal warfare; a deep reverence for nature that coexists with mastery over metal and fire. The islands are beautiful, violent, and deeply spiritual. The people of Nihori have taken the cultural seed of Sihai and forged it in their own unique fire, creating a culture that is both recognizably related and fiercely independent.
 
 #### Geography
 * The Isles: A chain of four main islands and countless smaller ones, formed by volcanic activity. The landscape is dominated by steep, forested mountains, narrow fertile valleys, and a dramatic, rocky coastline battered by the storms of the Hintara Ocean.
@@ -1207,7 +1207,7 @@ Nihon is a land of stark contrasts: serene, moss-covered temples nestled against
 * The Inland Sea: A relatively calm body of water between the main islands, serving as the heart of trade and communication for the realm.
 
 #### Government & Structure
-Nihon is a fractured, feudal society, locked in a state of constant, low-grade conflict known as the Sengoku Jidai (The Era of the Warring Clans).
+Nihori is a fractured, feudal society, locked in a state of constant, low-grade conflict known as the Sengoku Jidai (The Era of the Warring Clans).
 * The Heavenly Sovereign: A divine, hereditary emperor who resides in the ancient capital. His power is almost entirely ceremonial and spiritual; he is the link to the gods but holds little temporal authority.
 * The Shōgun: The theoretical "generalissimo" and military dictator who rules in the emperor's name. In practice, the title is often contested or powerless, with real power lying with…
 * The Daimyō: The powerful regional lords who rule their own provinces with absolute authority. They maintain private armies of samurai and constantly jockey for power, land, and influence.
@@ -1215,8 +1215,8 @@ Nihon is a fractured, feudal society, locked in a state of constant, low-grade c
 
 #### Society & Culture
 * Ethos: A culture of exquisite beauty and sudden, extreme violence. Concepts like "mono no aware" (the poignant awareness of impermanence) exist alongside the brutal pragmatism of the battlefield. Personal honor and loyalty to one's lord are the highest virtues.
-* The Arts: Despite the constant warfare, or perhaps because of it, the arts flourish. Nihon is renowned for:
-  * Swordsmithing: Nihonese katana are considered the finest blades in the world, folded steel believed to hold the soul of the smith.
+* The Arts: Despite the constant warfare, or perhaps because of it, the arts flourish. Nihori is renowned for:
+  * Swordsmithing: Nihoriese katana are considered the finest blades in the world, folded steel believed to hold the soul of the smith.
   * Pottery: Simple, rustic, and profound wares that find beauty in imperfection.
   * Poetry & Theater: Highly formalized and evocative art forms that explore nature, love, and loss.
   * Cuisine: Focus on freshness, simplicity, and presentation. Fish, rice, pickled vegetables, and seaweed are staples.
@@ -1233,11 +1233,11 @@ Nihon is a fractured, feudal society, locked in a state of constant, low-grade c
 
 #### Religion & Spirituality
 * The Way of the Spirits (Kannagara): The indigenous animistic religion. It holds that all things—rocks, trees, waterfalls, volcanoes—possess a spirit or kami. It focuses on rituals of purity, respect for nature, and honoring one's ancestors.
-* The Path of the Empty Self (Zenshū): A school of thought imported from Sihai but radically transformed in Nihon. Its emphasis on discipline, meditation, and achieving a state of "no-mind" became deeply intertwined with Bushidō and the arts.
+* The Path of the Empty Self (Zenshū): A school of thought imported from Sihai but radically transformed in Nihori. Its emphasis on discipline, meditation, and achieving a state of "no-mind" became deeply intertwined with Bushidō and the arts.
 
 #### Relations
-* Sihai: The defining relationship. Nihon views Sihai with a complex mix of awe, resentment, and rivalry. They voraciously import Sihai's culture, art, and philosophy but fiercely assert their independence. They are the rebellious younger sibling, desperate to prove their worth and step out of Sihai's long shadow. The competition for control of the Nasan Sea is a permanent state of affairs.
-* The West (Kahfagia, etc.): Westerners are rare curiosities. Nihonese Daimyō are intensely interested in their gunpowder weapons, maps, and ship designs, seeing them as potential tools to gain an advantage over their rivals, both domestic and in Sihai.
+* Sihai: The defining relationship. Nihori views Sihai with a complex mix of awe, resentment, and rivalry. They voraciously import Sihai's culture, art, and philosophy but fiercely assert their independence. They are the rebellious younger sibling, desperate to prove their worth and step out of Sihai's long shadow. The competition for control of the Nasan Sea is a permanent state of affairs.
+* The West (Kahfagia, etc.): Westerners are rare curiosities. Nihoriese Daimyō are intensely interested in their gunpowder weapons, maps, and ship designs, seeing them as potential tools to gain an advantage over their rivals, both domestic and in Sihai.
 
 #### Adventure Hooks
 1. The Broken Sword: A legendary swordsmith has been murdered, and his final, masterpiece katana is missing. The players are hired to recover the blade before it sparks a war between two rival clans who claim its ownership.
@@ -1248,7 +1248,7 @@ Nihon is a fractured, feudal society, locked in a state of constant, low-grade c
 
 ### Ayokha — "The Monsoon Throne, The River of Heaven"
 
-#### Tagline: A sprawling, river-and-jungle fed kingdom famed for its celestial temples, mastery of the monsoon winds, and its role as the great cultural sponge of the Hintara Ocean—absorbing and blending the influences of Sihai, Nihon, and the western world.
+#### Tagline: A sprawling, river-and-jungle fed kingdom famed for its celestial temples, mastery of the monsoon winds, and its role as the great cultural sponge of the Hintara Ocean—absorbing and blending the influences of Sihai, Nihori, and the western world.
 
 #### Overview
 Ayokha is less a centralized empire and more a mandala—a circle of power. At its core lies a god-king in a sublime temple-city. His influence radiates outward through vassal port-principalities, jungle chieftains, and monsoon sailors, growing weaker until it blends into the territories of rival kings. Its power is not measured in fixed borders, but in the loyalty of its captains, the reach of its trade, and the awe inspired by its divine architecture.
@@ -1282,7 +1282,7 @@ Ayokha is less a centralized empire and more a mandala—a circle of power. At i
 
 #### Economy & Trade
 * Exports: Spices (cloves, nutmeg, pepper), tropical hardwoods (teak, ebony), gemstones, gold, textiles, and medicinal herbs.
-* Imports: Silks and porcelain from Sihai, finished metalwork from Nihon, incense, and ideas.
+* Imports: Silks and porcelain from Sihai, finished metalwork from Nihori, incense, and ideas.
 * The Monsoon Marketplace: Ayokha's entire trade cycle is built around the predictable monsoon winds. Ships arrive from the west with one monsoon, trade in the ports for six months, and depart with the reverse monsoon. This makes its harbors some of the most cosmopolitan places in the world, filled with temporary communities of foreign merchants.
 
 #### Religion & Spirituality
@@ -1292,7 +1292,7 @@ A layered syncretic blend:
 * The Middle Path: A philosophy of moderation and enlightenment imported from the west, which has found a strong foothold among the merchant and intellectual classes.
 
 #### Relations
-* Sihai & Nihon: Ayokha is a respected peer and crucial trading partner. It absorbs their cultural and religious ideas, but remixes them into something uniquely Ayokhan. It is far enough away to avoid being dominated by Sihai, and its navy is strong enough to command Nihon's respect.
+* Sihai & Nihori: Ayokha is a respected peer and crucial trading partner. It absorbs their cultural and religious ideas, but remixes them into something uniquely Ayokhan. It is far enough away to avoid being dominated by Sihai, and its navy is strong enough to command Nihori's respect.
 * The Western Sea-Lanes: Ayokha is the eastern terminus for Kahfagian and other western traders. It views them as wealthy, strange, and occasionally crude partners, vital for the flow of gold and exotic goods from the west.
 * Inland Tribes: A relationship of uneasy tribute and mutual need. The capital needs the jungle's resources and warriors; the tribes desire the finished goods and protection of the kingdom.
 
@@ -1330,7 +1330,7 @@ Sihai is an absolute monarchy governed by the Son of Heaven, the emperor who rul
 #### Military
 * The Imperial Army: One of the largest military forces in the world. Its core is a mass of highly disciplined infantry (spearmen, crossbowmen) backed by elaborate logistics.
 * The Warrior Monks: A renowned and elite tradition. Monasteries train adepts in sophisticated martial arts, meditative discipline, and strategic philosophy. They serve as special forces, bodyguards for the elite, and keepers of esoteric knowledge.
-* The Navy: Controls the Hintara Ocean and the Nasan Sea. Its massive junks are floating fortresses, protecting trade routes and projecting power to its colonies and rival Nihon.
+* The Navy: Controls the Hintara Ocean and the Nasan Sea. Its massive junks are floating fortresses, protecting trade routes and projecting power to its colonies and rival Nihori.
 
 #### Economy & Trade
 * Exports: Silk (its most famous and namesake export), porcelain, tea, jade, paper, ink, and finished goods of exquisite quality.
@@ -1344,7 +1344,7 @@ No single state religion, but a complex blend of three intertwined philosophical
 * Inner Reflection: A spiritual tradition focused on meditation, enlightenment, and escaping the cycle of suffering. It is popular with commoners and the warrior-monk tradition.
 
 #### Relations
-* Nihon: Intense rivalry and cultural exchange. They compete for control of the Hintara Ocean and the Nasan Sea. Sihai views Nihon as a proud but rebellious offshoot of its own culture.
+* Nihori: Intense rivalry and cultural exchange. They compete for control of the Hintara Ocean and the Nasan Sea. Sihai views Nihori as a proud but rebellious offshoot of its own culture.
 * The Kuvani: A constant threat and tool on the western frontier. Sihai alternately trades with, bribes, and fights the Kuvani tribes to secure the Altan Plains.
 * The West (Taharka, Oshiira, etc.): Viewed with distant, scholarly curiosity. Westerners are "interesting barbarians" who possess useful goods and some clever ideas, but who lack the profound order and ancient wisdom of Sihai. Trade is valuable, but cultural influence is a one-way street flowing east to west.
 
@@ -1353,7 +1353,7 @@ No single state religion, but a complex blend of three intertwined philosophical
 2. The Lost Legion: A entire imperial legion sent to secure a pass in the Himadri Mountains vanished centuries ago. Their standard, a powerful artifact, is said to still be there, guarded by their vengeful spirits.
 3. Tea and Poison: The player characters must escort a diplomatic mission to negotiate a tea trade agreement, navigating deadly court intrigue where a misplaced word or a poisoned cup could shatter the peace.
 4. The Monkey King's Tomb: An infamous heretic and rebel, known as the Monkey King, was buried in an unmarked grave. His tomb is said to contain philosophies that could undermine the entire imperial system, and both the government and underground rebels race to find it.
-5. The Colony's Cry: A multicultural trading colony on the coast is threatened by a Nihonese warlord. The colonists plea for help from the distant Imperial Navy, forcing the PCs to hold the line against impossible odds.
+5. The Colony's Cry: A multicultural trading colony on the coast is threatened by a Nihoriese warlord. The colonists plea for help from the distant Imperial Navy, forcing the PCs to hold the line against impossible odds.
 
 #### This gazetteer presents Sihai as a formidable, fascinating, and deeply ordered culture, perfect for creating stories of philosophical conflict, bureaucratic intrigue, and epic scale.
 
