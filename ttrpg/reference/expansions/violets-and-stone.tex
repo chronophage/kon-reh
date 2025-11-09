@@ -1,0 +1,298 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{sectsty}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+% Page setup
+\geometry{margin=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}
+\titleformat{\subsection}{\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\itshape}{}{0em}{}
+
+% List formatting
+\setlist[itemize]{left=0pt .. 1.5em, itemsep=0.25em}
+\setlist[enumerate]{left=0pt .. 1.5em, itemsep=0.25em}
+
+% Custom commands
+\newcommand{\sectionrule}{\vspace{0.5em}\noindent\textcolor{gray}{⸻}\par\vspace{0.5em}}
+\newcommand{\subsectionrule}{\vspace{0.3em}\noindent\textcolor{gray}{⸻}\par\vspace{0.3em}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Fantasy City Expansion: Violets \& Stone}} \\
+    {\large (Fate’s Edge v0.2)} \\
+    \vspace{0.5em}
+    A plug-and-play urban module for Fate’s Edge campaigns set among bridges, aqueducts, rites, caravans, and crown politics.
+\end{center}
+
+\sectionrule
+
+\section*{Design Goals}
+\begin{itemize}
+    \item City as character. Districts and institutions carry tags, strings, and clocks that push back.
+    \item Plug into core. Use Position/DV, SB, and clocks; no new dice math.
+    \item Street to state. Blend casework, capers, and civic settlements.
+    \item Low bookkeeping. Track names and tags; let clocks and strings carry weight.
+\end{itemize}
+
+\sectionrule
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+    \item Pick a City Kit (§7). Set Mandate 2 / Crisis 2 unless fiction says otherwise.
+    \item Choose 4 Factions from the kit; copy their Strings; start Influence [6] / Stability [6–8] / Exposure [6].
+    \item Mark 2 volatile stakes on the relationship map.
+    \item Draw the Urban Deck (§6.2): one Incident (Spade), one Person (Heart), one Complication (Club) to spark the opening dilemma.
+    \item Frame the first Situation Clock [4–8] and at least one Counter-Clock [4–6].
+    \item Play scenes. All 1s generate SB; spend city-flavored Social SB (§3.4).
+\end{enumerate}
+
+\sectionrule
+
+\section*{1) City Sheet (Template)}
+\textbf{[CITY NAME]} \\
+Mandate (0–6): public legitimacy of the company in this city \\
+Crisis (0–6): ambient pressure (riots, audits, plague, war drums) \\
+Districts (5–8): each with tags \& a District Effect \\
+Institutions (3–6): councils, courts, guilds, rites; each has Strings \\
+Factions (4–8): playset; use Influence / Stability / Exposure clocks \\
+Relationship Map: arrows with stakes; mark two volatile \\
+Rites \& Laws: 1–2 citywide oaths, bans, or permissions that change Position \\
+Chase Modes: foot • canal • rooftops • alleyways (DV ladders in §5) \\
+Events: festival/omen/weather tables \\
+
+\textbf{District Effect (per scene):} Acting with a district’s tags → Position +1 or DV –1 once/scene. Acting against a district’s tags → Position –1 or GM banks +1 SB.
+
+\sectionrule
+
+\section*{2) District Tags \& Effects (pick 6–8 common)}
+\begin{itemize}
+    \item \textbf{Harbor \& Quays} — brackish, fog, bribes, cranes \\
+    Effect: +1 Position for Smuggle/Survey; –1 Position for Sanctify/Expose. \\
+    Hazard: Night-lantern failures; docksiders rumor clock.
+    
+    \item \textbf{Market Ward} — hucksters, scales, guild seals \\
+    Effect: DV –1 for Broker/Petition with writs; +1 SB on Infiltrate (watchful). \\
+    Hazard: Guild watch can ``price'' entry (concession).
+    
+    \item \textbf{Temple Quarter} — bells, incense, oaths \\
+    Effect: Shield/Host Rite start Controlled; Bribe starts Desperate. \\
+    Hazard: Breaking hospitality ticks Exposure +1.
+    
+    \item \textbf{Scholars’ Quarter} — scriptoriums, apprentices, disputes \\
+    Effect: Research/Expose DV –1 with proof; Blackmail Position –1 (they lawyer up). \\
+    Hazard: Scholastic feud counter-clock.
+    
+    \item \textbf{Underways \& Sewers} — echo, mildew, sigils, smugglers \\
+    Effect: Infiltrate DV –1; on any 1, start Sewer Folk or Wards Stir clock. \\
+    Hazard: Flood surge; ward backlash.
+    
+    \item \textbf{Legion/Watch Barracks} — drill, pennons, billets \\
+    Effect: Petition (order) starts Controlled; Expose starts Desperate. \\
+    Hazard: Curfews lower Position by one step.
+    
+    \item \textbf{Bridges \& Canals} — mossy stone, toll bells \\
+    Effect: Chase (boat/rooftop) DV –1; Broker worsens if tolls unpaid. \\
+    Hazard: Bridge-lords demand dues (Favor spend or stall).
+    
+    \item \textbf{Patrician Heights} — courtyards, old blood \\
+    Effect: Petition DV –1 with Standing; otherwise Blackmail gains +1 SB. \\
+    Hazard: Duels and scandal escalate quickly.
+    
+    \item \textbf{Foundries \& Yards} — smoke, sparks, strikes \\
+    Effect: Intimidate/Strike-bust Position +1; Host Feast Position –1. \\
+    Hazard: Rolling strike counter-clock.
+    
+    \item \textbf{Bazaars \& Caravanserais} — spices, dialects, caravan law \\
+    Effect: Broker (trade) DV –1; Expose Position –1 (outsider loyalties). \\
+    Hazard: Caravan feud ignites on SB spends.
+\end{itemize}
+
+\sectionrule
+
+\section*{3) City Procedures}
+\subsection*{3.1 Scene Framing}
+State the question; pick a Situation Clock; set Position \& DV from fiction + district effect; start a Counter-Clock if opposition is active; tag the venue (Audience/Institution).
+
+\subsection*{3.2 Strings (Urban)}
+Common Strings: Bridge Tolls, Aqueduct Permits, Ferry Passbooks, Oath-Tablet Registry, Harbor Pilots, Festival Licenses, Censor’s Seal. \\
+Acting with/through a relevant String: Position +1 or DV –1 once/scene. \\
+Cut/Seize a String with a 4–6 clock; on fill, move the String or strike it.
+
+\subsection*{3.3 City Dials}
+\begin{itemize}
+    \item \textbf{Mandate 0–6 (public legitimacy):} at 4–5, cancel one Social SB in public venues once/session; public offices DV –1. At 6, start public scenes Controlled unless fiction forbids.
+    \item \textbf{Crisis 0–6 (pressure/backlash):} at 4–5, first failed public scene ticks party Exposure +1; at 6, start with a crowd Counter-Clock [4].
+\end{itemize}
+
+\subsection*{3.4 Social SB Menu (City-flavored)}
+Faux pas title/ritual; lose 1 Favor in venue • leverage leak → target/party Exposure +1 • crowd turns (Warm→Skeptical→Hostile) • permit pulled (lose a String access this act) • patrol arrives biased • festival crush • toll chain drops.
+
+\subsection*{3.5 Between-Session Cycle}
+Update world state → draw events → resolve off-screen orders → recompute dials → prep next Situation (see §6 for events and omens).
+
+\sectionrule
+
+\section*{4) Urban Actions (additions)}
+\begin{itemize}
+    \item \textbf{Invoke Rite (Wits/Presence + Rite):} Claim hospitality, sanctuary, or festival privilege. Hit: protective tag; miss: Exposure +1.
+    \item \textbf{Grease Palms (Wits + Streetwise):} Secure permits/tolls. Hit: tag Greased Palms; miss: rumor of bribery (Exposure +1).
+    \item \textbf{Audit Ledger (Wits + Investigation):} Catch graft/tithe anomalies. Hit: DV –1 on later Expose.
+    \item \textbf{Call the Watch (Presence + Command):} Leverage order. Hit: Watchful Patrols tag; miss: they arrive biased.
+    \item \textbf{Smuggle (Wits + Subterfuge):} Move goods/people across wards. Hit: gain Leverage (1) or fill; 1s start Contraband Trail.
+    \item \textbf{Carouse for Rumors (Presence + Performance):} Trade coin and stories. Hit: bank 1 Clue (§6.1); miss: SB → Hangover Debts.
+\end{itemize}
+
+\sectionrule
+
+\section*{5) Chases in Tight Streets (DV Ladders)}
+Pick a mode; on a hit, advance Pursuit (or Escape) clock by effect.
+\begin{itemize}
+    \item \textbf{Foot:} DV 2 market • DV 3 alleys • DV 4 rooftops • DV 5 through procession.
+    \item \textbf{Boat/Canal:} DV 2 open run • DV 3 under bridges • DV 4 against tide • DV 5 in fog storm.
+    \item \textbf{Mount/Cart:} DV 2 quay road • DV 3 wagon traffic • DV 4 stair-streets • DV 5 temple steps.
+\end{itemize}
+Complications on 1s: overturned barrow, toll chain drops, lantern goes out, festival throng.
+
+\sectionrule
+
+\section*{6) Urban Generators}
+\subsection*{6.1 Clues \& Casework}
+Grades: A+ (witnessed oath; sealed writ) • A (signed testimony; verified mark) • B (two-source rumor; ledger trail) • C (hearsay; graffiti) • D (single rumor) • F (planted tale; forged writ). \\
+A day without follow-up degrades one step if contested. \\
+Spend: 1 Clue → DV –1 on a related Expose/Petition once.
+
+\subsection*{6.2 Urban Deck (52-card)}
+Draw: Spade (Incident), Heart (Person), Club (Complication), Diamond (Boons/Resolution).
+\begin{itemize}
+    \item \textbf{Spades:} ritual misfire • theft of a writ • bridge collapse • missing tax barge • assassin in procession • cursed play • guild strike • seditious broadsheet • shrine desecration • plague rumor • treason trial • flood omen • Ace: cover for a coup.
+    \item \textbf{Hearts:} harbormaster • guild factor • inquisitor • bridge-lord • mummer • tribune • ferry pilot • matron • archivist • street saint • exile heir • quartermaster • Ace: a most trusted patron is complicit.
+    \item \textbf{Clubs:} curfew • festival crush • foreign immunities • taboo ground • closed shop • informant vanishes • watch obstruction • blackmail • riot brewing • double agent • cursed weather • Ace: solving it ruins someone you love.
+    \item \textbf{Diamonds:} sealed archive • tariff exemption • festival license • street mandate • protection writ • house favor • council seat • tithe forgiving • pardon • endowment • patrol command • treasury award • Ace: The Truth, at public cost.
+\end{itemize}
+Clock Size by Highest Rank: 2–5 → [4], 6–10 → [6], J/Q/K → [8], A → [10].
+
+\subsection*{6.3 Events, Omens, Weather}
+Festivals: Boat Blessing • New Charter Day • Founders’ Procession • Lantern Vigil • Moon Market. \\
+Omens: blood tide • comet • cracked idol • whisper-plague • augur’s scandal. \\
+Weather: fog bank • heat wave • black rain • river in spate • winter of knives.
+
+\sectionrule
+
+\section*{7) City Kits (Playsets)}
+\subsection*{7.1 Mid Ahkaz — Ykrul Trade Capital of the Violet Steppe/Meadows}
+Vibe: violet grasses in wind-bands, caravan gold, contract law, oasis politics, foreign tongues. \\
+Districts: Violet Bazaar; Steppe Gate; Satrap Gardens; Coin-Weigh House; Under-Arcades; Caravan Rings. \\
+Institutions: Ykrul Coin-Weigh (tariff court); Oasis Compact (water rights council); Steppe Rangers (patrol and feuds). \\
+Factions:
+\begin{itemize}
+    \item \textbf{Coin-Weigh Tribunal (Tier crown):} Aim—stabilize tariffs; Strings—Tariff Seals, Coin Scales, Audit Teams.
+    \item \textbf{Oasis Clans Compact (Tier city):} Aim—protect wells; Strings—Water Shares, Caravan Well Rights, Desert Guides.
+    \item \textbf{Foreign Factors’ League (Tier guild):} Aim—preferential duties; Strings—Warehousing, Bonded Guards, Letters of Credit.
+    \item \textbf{Sand-Road Brotherhood (Tier street→guild):} Aim—own the under-arcades; Strings—Contraband Vaults, Night Porters, False Seals.
+\end{itemize}
+Special Rule — Steppe Mandates: In Bazaars/Caravan Rings, Broker DV –1. Exposing fraud without a Coin-Weigh Seal starts Exposure +1. \\
+Adventure Starters: Missing Water Share deeds flood the market • Steppe Rangers feud spills into the Violet Bazaar • A cursed dye caravan seeks sanctuary under the Satrap Gardens.
+
+\subsection*{7.2 Ecktoria — Marble \& Fire (Post-Imperial Capital)}
+Vibe: fallen grandeur, aqueducts, legions remnant, exarch audits. \\
+Districts: Grand Forum; Aqueduct Heights; Legion Quarter; Foundries; Riverside Tenements; Consecrated Courts. \\
+Institutions: Imperial Exarchate (audit/oversight); Merchant Courts; Sun-Temples; Civic Aqueducts Office. \\
+Factions:
+\begin{itemize}
+    \item \textbf{Exarchate (Tier crown):} Aim—rebalance old grants; Strings—Audit Writs, Tax Ledgers, Censures.
+    \item \textbf{Legions Remnant (Tier city):} Aim—restore stipends; Strings—Veteran Rolls, Armory Keys, Drill Grounds.
+    \item \textbf{Merchant Courts (Tier guild):} Aim—secure monopolies; Strings—Guild Charters, Bridge Tolls, Import Licenses.
+    \item \textbf{Sun-Temple Synod (Tier synod):} Aim—purify rites; Strings—Sanctuary, Procession Routes, Oath Tablets.
+\end{itemize}
+Special Rule — Aqueduct Integrity: Any Expose of water theft is public: on hit, Mandate +1; on miss, Exposure +1 (panic). \\
+Adventure Starters: A lost aqueduct patent resurfaces • Legions demand arrears from the treasury • A relic procession goes off-script into riot.
+
+\subsection*{7.3 Silkstrand — City of Bridges}
+Vibe: fog, dyes, masks, mummers; everything happens on a bridge. \\
+Districts: Bridges \& Canals; Dye Yards; Archivolt; Playhouse Row; Pilots’ Quays; Sestiere Courts. \\
+Institutions: Dye Syndicate; Archivolt Curia; Bridge-Lords Council; Riverine Patrol; Playhouse Guild. \\
+Factions:
+\begin{itemize}
+    \item \textbf{Dye Syndicate (Tier guild):} Aim—maintain pigment monopoly; Strings—Vat Houses, Guild Scales, Apprentice Oaths.
+    \item \textbf{Bridge-Lords (Tier city):} Aim—rule crossings; Strings—Toll Chains, Bridge Charters, Night Keys.
+    \item \textbf{Riverine Patrol (Tier city):} Aim—curb smuggling; Strings—Patrol Boats, Fog Bells, Harbor Warrants.
+    \item \textbf{Playhouse Mummers (Tier street→guild):} Aim—public favor; Strings—Masque Licenses, Satire Broadsheets, Crowd Hooks.
+\end{itemize}
+Special Rule — Fog Bells: In fog, Chase (boat/rooftop) DV –1 but Expose Position –1; a hit satire can create Audience tags citywide. \\
+Adventure Starters: A satire names names • The Night Keys list leaks • A foreign pigment line undercuts the vats.
+
+\subsection*{7.4 Thepyrgos — Synod \& Collegium}
+Vibe: law and rites braided; harbor guilds and a scholastic war. \\
+Districts: Synod Hill; Collegium of Keys; Harbor Quarter; Law Courts; Pilgrims’ Steps; Scriptorium Lanes. \\
+Institutions: Archons’ Synod; Collegium of Keys; Harbor Guild; Ember-Temple. \\
+Factions:
+\begin{itemize}
+    \item \textbf{Archons’ Synod (Tier crown):} Aim—codify chapterhouse votes; Strings—Writs of Law, Censure, Clerks.
+    \item \textbf{Collegium (Tier synod):} Aim—protect privileges; Strings—Oath Registry, Sealed Stacks, Licentiae.
+    \item \textbf{Harbor Guild (Tier guild):} Aim—tariffs/pilots; Strings—Pilot Licenses, Quay Masters, Lantern-Law.
+    \item \textbf{Ember-Temple (Tier synod):} Aim—zeal/charity; Strings—Processions, Sanctuary, Inquisitors.
+\end{itemize}
+Special Rule — Ritual Hospitality: Begin with rites: Broker starts Controlled; breaking rites adds Exposure +1. \\
+Adventure Starters: Charter revision threatens the Collegium • Temple schism spills into streets • A curse knits into tithe ledgers.
+
+\subsection*{7.5 Zakov — Iron River, Ash Lanterns}
+Vibe: river-forge sprawl; ash-snow, union strikes, black markets. \\
+Districts: Ironworks; Ash-Lantern Rows; Smugglers’ Cut; Old Citadel; Copper Market; Blackwater Quays. \\
+Institutions: Ironmasters’ Collegium; Union Brotherhoods; Lantern Wardens; Smugglers’ Syndicate. \\
+Factions:
+\begin{itemize}
+    \item \textbf{Ironmasters (Tier guild):} Aim—secure raw ore/export tithes; Strings—Foundry Licenses, Ore Contracts, Bonded Guards.
+    \item \textbf{Union Brotherhoods (Tier street→guild):} Aim—wage/safety; Strings—Strike Votes, Shop Stewards, Picket Lines.
+    \item \textbf{Lantern Wardens (Tier city):} Aim—curfews/safety; Strings—Ash-Lantern Lines, Curfew Bells, Inspection Seals.
+    \item \textbf{Blackwater Syndicate (Tier street):} Aim—own night routes; Strings—Hidden Cut, Silent Boats, Night Watchers.
+\end{itemize}
+Special Rule — Ash Curfew: At curfew, public scenes start one Position lower unless you display an Inspection Seal. \\
+Adventure Starters: Ironmasters import scab labor • A lantern line fails; fires roll downwind • The Syndicate seizes the Hidden Cut.
+
+\sectionrule
+
+\section*{8) Player-Facing Options (light)}
+Urban Talents: Streetwise, Ledger-Eye, Bridge-Runner, Rite-Speaker, Patrol-Friend, Crowd-Reader. \\
+Background Hooks: Guild-taught, Pilot’s Kin, Temple Page, Festival Barker, Caravan Clerk, Exarchate Apprentice. \\
+Temptations (optional): Replace vice with Ambition / Comfort / Fury / Pride. Track a 4-segment Temptation Clock that the GM can press in districts tagged with that flavor; spend Boons to resist or clear.
+
+\sectionrule
+
+\section*{9) GM Toolkit}
+Prep: City, dials, factions (4), volatile stakes (2), districts (6–8), first draw (Spade/Heart/Club), Situation/Counter clocks. \\
+SB Spends: faux pas • leverage leak • crowd turns • permit pulled • patrol biased • festival crush • toll chain drops. \\
+Default Ripple: Success → ally Influence +1 (or +2 if on Aim); enemy Exposure +1; clean win reduces ally Exposure –1. Failure → enemy Influence +1 (or +2 on Aim); ally Exposure +1; internal failure also Stability +1. \\
+DV Cheats: Petition 2–4 (temple/court), Broker 3–4 (neutral ground helps), Expose 3–5 (proof lowers), Infiltrate 3–5 (wards raise).
+
+\sectionrule
+
+\section*{10) Printable Aids}
+City Sheet • District Cards (tags/effects) • Factions \& Strings minis • Urban Deck prompts • Chase Ladders sidecard • Events \& Omens mini-table.
+
+\sectionrule
+
+\section*{Changelog}
+v0.2 — Expanded City Kits (added Steppe/Meadows detail for Mid Ahkaz); refined district effects; added adventure starters; clarified city dials; consolidated generators and chase ladders.
+
+\end{document}
