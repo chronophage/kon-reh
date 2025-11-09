@@ -1,0 +1,347 @@
+\documentclass[11pt,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{framed}
+\usepackage{needspace}
+
+% Colors
+\definecolor{headerblue}{RGB}{25, 30, 120}
+\definecolor{sidebarblue}{RGB}{40, 50, 150}
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{darkgray}{RGB}{80, 80, 80}
+
+% Headers and Footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{Psionics - Fate's Edge Extension}
+\fancyhead[RE]{Psionics - Fate's Edge Extension}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Section formatting
+\titleformat{\section}
+  {\needspace{4\baselineskip}\Large\bfseries\color{headerblue}}
+  {\thesection}{1em}{}
+  
+\titleformat{\subsection}
+  {\needspace{3\baselineskip}\large\bfseries\color{sidebarblue}}
+  {\thesubsection}{1em}{}
+
+% Document info
+\hypersetup{
+    colorlinks=true,
+    linkcolor=sidebarblue,
+    filecolor=magenta,      
+    urlcolor=sidebarblue,
+}
+
+\title{\textcolor{headerblue}{\Huge Psionics} \\ \large Extension Module for Fate's Edge}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\begin{framed}
+\noindent \textbf{Design Philosophy:} Psionics in Fate's Edge represents the disciplined mastery of the mind's hidden potentials. Unlike the chaotic forces of magic or the structured pacts of Patrons, psionic power comes from within, shaped by will and honed by practice. This internal source makes psions both powerful and vulnerable—their greatest strength is also their most dangerous weakness.
+\end{framed}
+\end{minipage}
+\end{center}
+
+\section*{Introduction: The Mind Ascendant}
+
+In the shadowed courts and ancient ruins where Fate's Edge adventurers tread, power comes in many forms. Some bargain with Patrons, others weave elemental forces, and still others summon spirits from beyond. But there exists a subtler path—one that requires no oaths, no incantations, no material components. This is the path of Psionics, where the disciplined mind becomes the greatest tool of all.
+
+Psionics represents the evolution of human potential, the unlocking of abilities that science claims impossible and magic struggles to explain. Where a warlock might call lightning from the sky, a psion shapes reality through the sheer force of thought. Where a mage might scry through mystical mirrors, a psion reaches across space with their consciousness alone.
+
+But this power comes at a cost. The mind that bends reality to its will also bears the scars of that bending. Mental Fatigue becomes as real a threat as physical exhaustion, and the constant strain of psychic activity can fracture even the strongest psyche.
+
+\section{Core Mechanics}
+
+\subsection{Mental Fatigue Track}
+
+Your Mental Fatigue track represents your capacity for sustained psychic activity, combining both mental acuity and physical resilience.
+
+\textbf{Mental Fatigue = Wits + Body}
+
+This creates a unique resource pool that differs from standard Fatigue (which equals Body). High Wits \textit{or} Body characters can become effective psions, but true masters often excel in both.
+
+\subsection{Psionics Skill}
+
+Psionics is a learned Art that requires dedicated study and practice. Unlike magical paths that might be granted through Patronage, psionic abilities must be earned through XP investment.
+
+\textbf{Psionics (0-5):} This skill represents your training, control, and understanding of psychic phenomena. You cannot use psionic Arts without investing in this skill.
+
+\subsection{Resolution}
+
+All psionic effects use the standard Fate's Edge resolution system:
+
+\textbf{Wits or Body + Psionics vs. DV}
+
+Choose your Attribute based on the effect:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Wits + Psionics:} Precision, subtlety, mental effects
+    \item \textbf{Body + Psionics:} Raw power, physical effects
+\end{itemize}
+
+DV is set by the GM based on narrative scope (2-5+).
+
+\section{Psionic Costs}
+
+Beyond the standard Mental Fatigue expenditure, each psionic Art carries unique costs that reflect its nature and potential for abuse.
+
+\subsection{Base Costs}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Activation:} 1 Mental Fatigue
+    \item \textbf{Maintenance:} 1 Mental Fatigue per Scene/Significant Time
+    \item \textbf{Skill Requirement:} Must invest XP in Psionics skill
+\end{itemize}
+
+\section{Psionic Arts}
+
+\subsection{Telekinesis}
+\textbf{Attribute:} Body + Psionics (raw force), Wits + Psionics (precision) \\
+\textbf{Unique Cost:} \textbf{Additional Fatigue Scaling}
+
+Effect increases DV and requires extra Mental Fatigue based on mass/force:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Light (DV 2-3):} No extra cost (pennies, small tools)
+    \item \textbf{Medium (DV 4):} +1 Mental Fatigue per use
+    \item \textbf{Heavy (DV 5+):} +2 Mental Fatigue per use, +1 per additional Scene maintained
+\end{itemize}
+
+\textbf{Example:} Lifting a sword (DV 3) vs. hurling a boulder (DV 5)
+
+\subsection{Telepathy}
+\textbf{Attribute:} Wits + Psionics \\
+\textbf{Unique Cost:} \textbf{Story Beats (SB) Generation}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Intrusion:} Reading surface thoughts generates 1 SB on Partial/Miss
+    \item \textbf{Deep Probe:} Each level deeper generates +1 SB (Partial = surface, Success = emotions, Strong Hit = specific memories)
+    \item \textbf{Mental Combat:} Opposed rolls generate SB for both participants
+    \item \textbf{Maintaining Contact:} +1 SB per scene for sustained mental link
+\end{itemize}
+
+\textbf{Defensive Cost:} Targets can resist, converting attacker's successes to SB against them
+
+\subsection{Clairvoyance}
+\textbf{Attribute:} Wits + Psionics \\
+\textbf{Unique Cost:} \textbf{XP Investment per Sense Type}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Basic Scrying:} Default range/scene (no extra cost)
+    \item \textbf{Extended Range:} +1 XP per distance tier (Nearby town = +1 XP, Region = +2 XP, Continent = +3 XP)
+    \item \textbf{Temporal Glimpses:} +2 XP for limited precognition/causality sight
+    \item \textbf{Deep Perception:} +1 XP to see through illusions/magical concealment
+    \item \textbf{Permanent Enhancements:} XP costs are one-time investments
+\end{itemize}
+
+\textbf{Usage Cost:} Still requires base Mental Fatigue, but enhanced ranges/types cost no additional Fatigue
+
+\subsection{Biofeedback}
+\textbf{Attribute:} Body + Psionics \\
+\textbf{Unique Cost:} \textbf{Harm Conversion}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Healing:} Convert 1 Harm to 2 Mental Fatigue (instead of normal healing)
+    \item \textbf{Enhancement:} Gain +1 die to physical rolls, but mark 1 Harm when effect ends
+    \item \textbf{Pain Suppression:} Ignore first level of Harm, but mark 1 Mental Fatigue per level suppressed
+    \item \textbf{Regeneration:} Convert 1 Mental Fatigue to clear 1 Fatigue (1:1 ratio)
+\end{itemize}
+
+\textbf{Risk:} Overuse leads to direct Harm conversion when Mental Fatigue exceeds capacity
+
+\subsection{Astral Projection}
+\textbf{Attribute:} Spirit + Psionics \\
+\textbf{Unique Cost:} \textbf{Exposure \& Vulnerability}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Projection:} Your physical body becomes Unconscious/Helpless
+    \item \textbf{Duration:} 1 Mental Fatigue per Scene away from body
+    \item \textbf{Distance:} Farther projections cost +1 Mental Fatigue per range band beyond Near
+    \item \textbf{Interaction:} Non-physical interactions cost +1 SB to GM pool
+    \item \textbf{Banishment:} If astral form takes Harm 3+, physical body takes Harm 2
+\end{itemize}
+
+\textbf{Unique Risk:} Death in astral form = Death in physical form
+
+\subsection{Psychic Assault}
+\textbf{Attribute:} Wits or Body + Psionics \\
+\textbf{Unique Cost:} \textbf{Corruption Clock}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Base Effect:} Deal Harm directly to target's Mind (track separately)
+    \item \textbf{Corruption Clock:} Each use marks +1 segment (Size = Spirit)
+    \item \textbf{When Full:} 
+        \begin{itemize}
+            \item Gain permanent "Psychic Scars" Condition (-1 die to social rolls)
+            \item Attract entities that feed on psychic violence
+            \item Lose 1 point from random Attribute permanently
+        \end{itemize}
+    \item \textbf{Clearing:} Requires meditation scenes, absolution rites, or specific XP expenditures
+\end{itemize}
+
+\subsection{Mind Shield}
+\textbf{Attribute:} Wits + Psionics \\
+\textbf{Unique Cost:} \textbf{Reactive Drain}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Passive Defense:} No active cost, but generates 1 SB whenever successfully resisting psychic intrusion
+    \item \textbf{Active Barrier:} Spend 1 Action, cost 1 Mental Fatigue + 1 additional Mental Fatigue for each psychic effect blocked that Scene
+    \item \textbf{Overextension:} If you block more psychic effects than your Psionics skill rating in one Scene, mark 1 Harm
+\end{itemize}
+
+\textbf{Paradox:} Protecting others costs double the Fatigue
+
+\subsection{Empathic Manipulation}
+\textbf{Attribute:} Presence + Psionics \\
+\textbf{Unique Cost:} \textbf{Emotional Contamination}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Basic Influence:} +1 SB generated for every level of emotional change induced
+    \item \textbf{Strong Manipulation:} Target's current emotional state affects you for the Scene
+    \item \textbf{Mass Influence:} Affects large groups but costs 1 XP per major use (not per target)
+    \item \textbf{Backlash:} If resisted or fails, you suffer the emotion you were trying to induce
+\end{itemize}
+
+\textbf{Moral Mechanic:} Using this Art for cruel purposes accelerates Corruption Clock (if taken)
+
+\subsection{Precognition}
+\textbf{Attribute:} Spirit + Psionics \\
+\textbf{Unique Cost:} \textbf{Certainty Points}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Minor Visions:} 1 Mental Fatigue, generates 1 SB (future is chaotic)
+    \item \textbf{Major Sight:} 2 Mental Fatigue, spend 1 XP, generates 2 SB (knowing too much burdens the mind)
+    \item \textbf{Certainty Points:} Spend XP (1:1) to convert SB into "This Will Happen" narrative declarations
+    \item \textbf{Limit:} Max Certainty Points = Psionics skill rating
+    \item \textbf{Use:} Spend 1 Certainty Point to guarantee one specific outcome per session
+\end{itemize}
+
+\textbf{Paradox:} The more you see, the more fixed the future becomes, reducing free will
+
+\section*{Psionic Consequences}
+
+\subsection{Mental Fatigue Overflow}
+
+When Mental Fatigue exceeds your track:
+\begin{enumerate}[leftmargin=*]
+    \item Increase Harm by one level (e.g., 0→Harm 1, Harm 1→Harm 2, Harm 2→Harm 3)
+    \item Clear all Mental Fatigue to 0
+\end{enumerate}
+
+\subsection{Psionic Backlash}
+
+All psionic rolls that generate 1s create Story Beats for the GM, representing:
+\begin{itemize}[leftmargin=*]
+    \item Mental strain and headaches
+    \item Psychic feedback affecting other abilities
+    \item Attracting unwanted attention from psychic entities
+    \item Temporary loss of specific psionic abilities
+\end{itemize}
+
+\subsection{Long-term Effects}
+
+Prolonged psionic use can lead to permanent Conditions:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Psychic Scars:} -1 die to social rolls due to mental trauma
+    \item \textbf{Migraine Sensitivity:} -1 Position in bright lights or noisy environments
+    \item \textbf{Empathic Resonance:} Constantly feel others' emotions as background noise
+    \item \textbf{Astral Echo:} Leave faint psychic traces that can be tracked
+\end{itemize}
+
+\section*{Psionic Society}
+
+\subsection{The Silent Orders}
+
+Psionic practitioners rarely form large, public organizations. Instead, they gather in small, secretive conclaves known as Silent Orders. These groups share techniques, warn of dangers, and maintain the delicate balance between using their powers and being consumed by them.
+
+\subsection{The Psionic Underground}
+
+In many regions, psionic abilities are feared or outlawed. Practitioners must hide their talents or face persecution. This has led to the development of the Psionic Underground—a network of safe houses, coded signals, and false identities that allow psions to move freely while concealing their true nature.
+
+\subsection{Psionic Artifacts}
+
+Objects that have been exposed to strong psionic energies can retain psychic imprints. These artifacts might enhance psionic abilities, store mental energy, or even house fragments of consciousness. However, they often carry the mental scars of their previous users.
+
+\section*{GM Guidance}
+
+\subsection{Introducing Psionics}
+
+Psionics should feel rare and mysterious. Not every NPC should have psychic abilities, and when they do, it should be notable. Consider making psionic practitioners:
+\begin{itemize}[leftmargin=*]
+    \item Members of secretive orders
+    \item Individuals who have undergone specific training or trauma
+    \item People with unique genetic or spiritual heritage
+\end{itemize}
+
+\subsection{Balancing Psionic Power}
+
+Psionics can be incredibly versatile. To maintain balance:
+\begin{itemize}[leftmargin=*]
+    \item Emphasize the unique costs of each Art
+    \item Use Story Beats liberally for psychic activities
+    \item Introduce psionic-specific threats (psychic predators, mental parasites)
+    \item Remember that Mental Fatigue overflow leads to real Harm
+\end{itemize}
+
+\subsection{Psionic Antagonists}
+
+Enemies with psionic abilities present unique challenges:
+\begin{itemize}[leftmargin=*]
+    \item They can bypass physical defenses
+    \item They might know the PCs' plans before they're enacted
+    \item They can turn the PCs' emotions against them
+    \item They leave no physical evidence of their crimes
+\end{itemize}
+
+\section*{Character Options}
+
+\subsection{Psionic Talents}
+
+Characters can invest XP in psionic-specific Talents:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Psionic Resilience (3 XP):} +1 to Mental Fatigue track
+    \item \textbf{Focused Mind (4 XP):} Reduce SB generation from psionic use by 1 (minimum 1)
+    \item \textbf{Psychic Synergy (5 XP):} When assisting another psion, both gain +1 die
+    \item \textbf{Mental Fortress (6 XP):} Immune to non-magical psychic intrusion
+\end{itemize}
+
+\subsection{Psionic Complications}
+
+Consider these Complications for psionic characters:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Uncontrolled Talent:} Your powers activate involuntarily under stress
+    \item \textbf{Psychic Mark:} You're known to psionic hunters or organizations
+    \item \textbf{Mental Parasite:} A fragment of another consciousness shares your mind
+    \item \textbf{Empathic Overflow:} You constantly feel others' emotions, making social interaction difficult
+\end{itemize}
+
+\section*{Conclusion: The Mind's Edge}
+
+Psionics in Fate's Edge represents the ultimate expression of human potential—and its greatest peril. The disciplined mind that can move mountains with thought can also be shattered by the weight of that responsibility. Every psionic practitioner walks a razor's edge between godlike power and complete mental collapse.
+
+This extension provides tools for players who want to explore the depths of mental discipline, and for GMs who wish to introduce subtle, mind-bending threats to their campaigns. Remember that psionics is not just another form of magic—it is the manipulation of reality itself through the power of consciousness.
+
+Use these rules to tell stories where the greatest battles are fought in the space between thoughts, where the most dangerous weapons cannot be seen, and where the line between hero and monster is drawn in the architecture of the mind itself.
+
+The future belongs to those who can shape it with their thoughts alone. Will you be among them?
+
+\end{document}
+
