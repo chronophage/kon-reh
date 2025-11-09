@@ -57,6 +57,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  book-of-seven-bell-court.tex -n "Fate's Edge Expansion - The Book of The Seven Bell Court.pdf" > /dev/null 2>&1|| echo "#4. Did not build"
 ../../../tools/compile_latex.sh -f  amaranthine-sea.tex -n "Fate's Edge Expansion - The Amaranthine Sea.pdf" > /dev/null 2>&1|| echo "#5. Did not build"
 ../../../tools/compile_latex.sh -f  psionics.tex -n "Fate's Edge Expansion - Psionics.pdf" > /dev/null 2>&1|| echo "#6. Did not build"
+../../../tools/compile_latex.sh -f  political-intrigue.tex -n "Fate's Edge Expansion - Political Intrigue.pdf" > /dev/null 2>&1|| echo "#7. Did not build"
 
 
 echo "Committing and pushing to git"
