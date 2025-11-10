@@ -1,4 +1,4 @@
-% Assets & Worldly Patrons — Fate's Edge Module (v0.1)
+% Assets & Worldly Patrons — Fate's Edge Module (v0.2)
 % Single-file LaTeX source, print-ready
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
@@ -9,6 +9,7 @@
 \usepackage{array}
 \usepackage{setspace}
 \usepackage{graphicx}
+\usepackage{framed}
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
 \setlist{noitemsep, topsep=4pt, leftmargin=1.2em}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
@@ -19,7 +20,7 @@
 \begin{center}
 {\LARGE \textbf{Assets \& Worldly Patrons}}\\[3pt]
 {\large A Fate's Edge module for holdings, leases, and mortal patronage}\\[2pt]
-\textit{Version 0.1 (Playtest)}
+\textit{Version 0.2 (Playtest Revised)}
 \end{center}
 \vspace{0.25em}
 \hrule\vspace{0.75em}
@@ -30,6 +31,7 @@
   \item \textbf{Patrons with teeth:} Patronage brings Position, seals, and coin---and obligations, audits, and scandals.
   \item \textbf{Use the core:} Position/DV, SB, clocks, Favor/Leverage/Exposure, Reputation, Strings. No new dice math.
   \item \textbf{Low bookkeeping:} Track names, tags, and a few clocks; orders and events move the world.
+  \item \textbf{Campaign continuity:} Assets and patrons persist and evolve across story arcs.
 \end{itemize}
 
 \section*{Quickstart (2 minutes)}
@@ -46,20 +48,21 @@
 
 \section{Asset Sheet (Template \& Tags)}
 \subsection{Asset Sheet (Template)}
-\begin{verbatim}
-[ASSET NAME]
-Type: safehouse / barge company / workshop / archive / shrine / foundry line / office / permit / theatre / farm / mine / caravan yard / canal lock lease
-Locale: district & city (matters for Position & dials)
-Strings (1–3): permits, seals, routes, rites, keys
-Tags (2–4): see tag lists below
-Tracks:
-- Integrity [6]: condition/standing; fill → shutdown, collapse, or seizure
-- Resources [6]: cashflow, inventory, staff slack; empty → shortages/concessions
-- Heat [6] (optional): locals’ attention; fill → protest, inquiry, rough visit
-Projects (0–3): named [4–8] clocks to upgrade, expand, or pivot
-Upkeep: coin/favor/rites required each cycle (choose 1–2)
-Notes: staff names, neighbors, rivals, liens
-\end{verbatim}
+\begin{framed}
+\noindent\textbf{[ASSET NAME]}\\
+\textbf{Type:} safehouse / barge company / workshop / archive / shrine / foundry line / office / permit / theatre / farm / mine / caravan yard / canal lock lease\\
+\textbf{Locale:} district \& city (matters for Position \& dials)\\
+\textbf{Strings (1--3):} permits, seals, routes, rites, keys\\
+\textbf{Tags (2--4):} see tag lists below\\
+\textbf{Tracks:}\\
+\hspace{10pt}- Integrity [6]: condition/standing; fill $\rightarrow$ shutdown, collapse, or seizure\\
+\hspace{10pt}- Resources [6]: cashflow, inventory, staff slack; empty $\rightarrow$ shortages/concessions\\
+\hspace{10pt}- Heat [6] (optional): locals' attention; fill $\rightarrow$ protest, inquiry, rough visit\\
+\textbf{Projects (0--3):} named [4--8] clocks to upgrade, expand, or pivot\\
+\textbf{Upkeep:} coin/favor/rites required each cycle (choose 1--2)\\
+\textbf{Legacy Notes:} campaign events, reputation effects, historical significance\\
+\textbf{Notes:} staff names, neighbors, rivals, liens
+\end{framed}
 
 \subsection{Asset Tags (pick 2--4)}
 \begin{itemize}
@@ -106,22 +109,53 @@ Choose up to \textbf{2 orders} per session per asset (1 if Resources $\leq$ 2):
 \end{itemize}
 \paragraph{Resolution} The directing PC rolls once per order (appropriate action). Tier/Tags adjust Position/DV. On hits, apply the order effect; on 1s, GM banks SB and hits Heat/Integrity/Exposure.
 
+\section{Campaign Continuity}
+\subsection{Asset Legacy System}
+Assets evolve and leave marks across campaigns through their \textbf{Legacy Notes}:
+\begin{itemize}
+  \item \textbf{Reputation Effects:} Notorious (feared), Respected (trusted), Infamous (recognized), Legendary (historical significance)
+  \item \textbf{Historical Events:} Siege Survived, Scandal Weathered, Expansion Completed, Crisis Averted
+  \item \textbf{Relationship Changes:} Patron Gained/Lost, Rival Created/Resolved, Community Bond/Feud
+  \item \textbf{Physical Evolution:} Renovated, Damaged, Expanded, Relocated
+\end{itemize}
+
+\textbf{Legacy Benefits:} Assets with positive legacy gain +1 Resources or +1 Integrity at start of new campaigns.\\
+\textbf{Legacy Burdens:} Assets with negative legacy start with Heat +2 or Sanction +1 with relevant patrons.
+
+\subsection{Patron Relationship Continuity}
+Worldly Patron relationships persist with modified standing:
+\begin{itemize}
+  \item \textbf{Active Patrons:} Reduce Tier by 1 but retain 1 Standing tag
+  \item \textbf{Dormant Patrons:} Convert Tier to Favor Ledger entries; can be reactivated
+  \item \textbf{Former Patrons:} Become Rivals [4] or Contacts [4] based on ending relationship
+  \item \textbf{Legacy Patrons:} Historical figures whose mandates still influence current politics
+\end{itemize}
+
+\subsection{Campaign Transition Events}
+At campaign end/beginning, roll for transition events:
+\begin{itemize}
+  \item \textbf{Economic Shift (d6):} 1-2 Resources +1, 3-4 No change, 5-6 Resources -1
+  \item \textbf{Political Change (d6):} 1-2 Gain new patron opportunity, 3-4 Status quo, 5-6 Lose a patron string
+  \item \textbf{Physical Event (d6):} 1-2 Asset improves, 3-4 No change, 5-6 Asset takes Integrity -1
+\end{itemize}
+
 \section{Worldly Patrons}
 \subsection{Patron Sheet (Template)}
-\begin{verbatim}
-[PATRON NAME]
-Type: noble / guild / office / temple / factor / satrap / councilor
-Stance toward PCs: Allied / Wary / Hostile
-Strings (3): writs, permits, routes, rites, audiences
-Boons: what they can grant (seals, escorts, stipends, protection)
-Obligations: tithes, appearances, tasks, ideological lines
-Tracks:
-- Favor Ledger (narrow favors owed or granted)
-- Sanction [4]: warning → censure → seizure/revocation → hunt/prosecution
-- Patron Exposure [6]: public risk to them from association with you
-Patron Tier: 0 Contact / 1 Sponsor / 2 Patron / 3 Protector
-Mandate/Crisis Effects: how their public wins/losses alter your Position/Exposure in their venues
-\end{verbatim}
+\begin{framed}
+\noindent\textbf{[PATRON NAME]}\\
+\textbf{Type:} noble / guild / office / temple / factor / satrap / councilor\\
+\textbf{Stance toward PCs:} Allied / Wary / Hostile\\
+\textbf{Strings (3):} writs, permits, routes, rites, audiences\\
+\textbf{Boons:} what they can grant (seals, escorts, stipends, protection)\\
+\textbf{Obligations:} tithes, appearances, tasks, ideological lines\\
+\textbf{Tracks:}\\
+\hspace{10pt}- Favor Ledger (narrow favors owed or granted)\\
+\hspace{10pt}- Sanction [4]: warning $\rightarrow$ censure $\rightarrow$ seizure/revocation $\rightarrow$ hunt/prosecution\\
+\hspace{10pt}- Patron Exposure [6]: public risk to them from association with you\\
+\textbf{Patron Tier:} 0 Contact / 1 Sponsor / 2 Patron / 3 Protector\\
+\textbf{Mandate/Crisis Effects:} how their public wins/losses alter your Position/Exposure in their venues\\
+\textbf{Legacy Status:} Historical role, ongoing influence, campaign connections
+\end{framed}
 
 \subsection{Patron Tiers \& Benefits}
 \begin{itemize}
@@ -204,7 +238,8 @@ Pick a \textbf{Project [4--8]} to install a blueprint; on fill, add the effect a
 \textbf{Scene --- Petition:} They seek a \emph{Tariff Exemption} for a festival barge. Position \textbf{Controlled} (Prestige + patron venue). DV 3. Strong hit: gain the boon; Favor Ledger +1; GM banks SB from a rolled 1 $\to$ \textbf{Rumor Run} starts.\\
 \textbf{Orders:} \emph{Operate} (yield coin; a 1 ticks Heat +1). \emph{Improve} (Archive Annex [6] +1 segment).\\
 \textbf{Event:} \textbf{Inspection [4]} begins. PCs \emph{Secure} next cycle; on a hit reduce Heat --1. A satirical Playhouse offers help for a cut---risking \textbf{Patron Exposure} if mocked.\\
-\textbf{Dilemma:} A rival \textbf{Patron} (Playhouse Guild) offers Tier 2 if they host a scandalous masque; \textbf{Split Loyalty [4]} begins. On fill, Bridge-Lords demand: cancel the masque or surrender \emph{Night Keys (String)}.
+\textbf{Dilemma:} A rival \textbf{Patron} (Playhouse Guild) offers Tier 2 if they host a scandalous masque; \textbf{Split Loyalty [4]} begins. On fill, Bridge-Lords demand: cancel the masque or surrender \emph{Night Keys (String)}.\\
+\textbf{Campaign Transition:} At arc's end, roll Economic Shift (d6: 3 = No change), Political Change (d6: 1 = Gain new patron opportunity), Physical Event (d6: 6 = Asset takes Integrity -1). Tollhouse becomes "Notorious" legacy with "Scandal Weathered" event.
 
 \section*{GM Reference (one page)}
 \begin{itemize}
@@ -214,10 +249,12 @@ Pick a \textbf{Project [4--8]} to install a blueprint; on fill, add the effect a
   \item \textbf{Patron Tiers:} 0 Contact \textbullet{} 1 Sponsor (+Pos once/scene; 1 stipend) \textbullet{} 2 Patron (cancel 1 Social SB; DV --1 to Petition) \textbullet{} 3 Protector (start Controlled; Bandwagon clock).
   \item \textbf{Sanctions:} Admonish $\to$ Censure $\to$ Seizure/Revocation $\to$ Hunt/Prosecution.
   \item \textbf{Events:} Inspection \textbullet{} Accident \textbullet{} Shortages \textbullet{} Tax/Lease Hike \textbullet{} Rival Claim \textbullet{} Rumor Run \textbullet{} Favor Called.
+  \item \textbf{Continuity:} Legacy effects modify starting conditions; patrons retain Standing; transition events reshape holdings.
 \end{itemize}
 
 \vfill
 \section*{Changelog}
+\textbf{v0.2} --- Added Campaign Continuity section with Legacy System, Patron Relationship Continuity, and Transition Events. Enhanced templates with Legacy Notes and Status fields.\\
 \textbf{v0.1} --- First pass with Asset/Patron sheets, tags, orders \& upkeep, patron tiers/obligations/sanctions, events \& blueprints, regional examples, and a worked example of play.
 
 \begin{center}\small This module adds procedures only; defer to the core SRD for roll math and adjudication.\end{center}
