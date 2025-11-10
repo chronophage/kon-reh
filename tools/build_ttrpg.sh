@@ -59,6 +59,8 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  psionics.tex -n "Fate's Edge Expansion - Psionics.pdf" > /dev/null 2>&1|| echo "#6. Did not build"
 ../../../tools/compile_latex.sh -f  political-intrigue.tex -n "Fate's Edge Expansion - Political Intrigue.pdf" > /dev/null 2>&1|| echo "#7. Did not build"
 ../../../tools/compile_latex.sh -f  violets-and-stone.tex -n "Fate's Edge Expansion - Violets and Stone.pdf" > /dev/null 2>&1|| echo "#8. Did not build"
+../../../tools/compile_latex.sh -f  allies-and-adversaries.tex -n "Fate's Edge Expansion - Allies and Adversaries.pdf" > /dev/null 2>&1|| echo "#9. Did not build"
+../../../tools/compile_latex.sh -f  assets-wordly-patrons.tex -n "Fate's Edge Expansion - Assets and Wordly Patrons.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
 
 
 echo "Committing and pushing to git"

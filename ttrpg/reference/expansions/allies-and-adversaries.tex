@@ -1,0 +1,240 @@
+% Allies & Adversaries — Fate's Edge Module (v0.1)
+% Single-file LaTeX source, print-ready
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{graphicx}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
+\setlist{noitemsep, topsep=4pt, leftmargin=1.2em}
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Allies \& Adversaries}}\\[3pt]
+{\large A Fate's Edge module for companions, cohorts, and organizations}\\[2pt]
+\textit{Version 0.1 (Playtest)}
+\end{center}
+\vspace{0.25em}
+\hrule\vspace{0.75em}
+
+\section*{Design Goals}
+\begin{itemize}
+  \item \textbf{Companions with teeth:} Followers act on-screen and off-screen with clear risks, clocks, and costs.
+  \item \textbf{Social fabric as engine:} Loyalty, morale, bonds, and rivalries generate scenes and consequences.
+  \item \textbf{Organizations as levers:} Cohorts and institutions move through clocks, strings, and orders without spreadsheets.
+  \item \textbf{Plug into core:} Uses Position/DV, SB, clocks, Favor/Leverage/Exposure, Reputation, and Strings. No new dice math.
+\end{itemize}
+\emph{Principle:} Add procedures and tracks that tell you when to roll, what to tick, and how to escalate.
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+  \item Make 1--3 \textbf{Follower Sheets}; mark \textbf{Loyalty [6]} and \textbf{Morale [6]} on each.
+  \item Attach \textbf{Strings} the follower controls (permits, keys, oaths). These matter more than stats.
+  \item Pick an \textbf{Organization} (if any) and fill \textbf{Cohesion [6--8]}, \textbf{Exposure [6]}, and \textbf{Bandwidth} (orders/phase) = 1--3.
+  \item At scene start, choose for each follower: \textbf{Assist}, \textbf{Cover}, or \textbf{Delegate}.
+  \item Between sessions, run \textbf{Orders \& Entanglements} for organizations.
+\end{enumerate}
+
+\tableofcontents
+\newpage
+
+\section{Follower Sheets \& Templates}
+\subsection{Follower Sheet (Template)}
+\begin{verbatim}
+[NAME & ROLE]
+Tier: Green / Trained / Veteran / Elite
+Playbook: Combat Ally / Specialist / Magical Assistant
+Capabilities (2–3): short phrases like "shield wall", "ledger-eye", "silent step"
+Edges (1–2): what they do exceptionally well
+Liabilities (1–2): what gets them in trouble
+Strings (1–3): permits, keys, rites, access, local reputation
+Costs: wages / shares / favor / oath / taboo
+Tracks:
+- Loyalty [6]: long-term commitment to the PCs' cause
+- Morale [6]: short-term willingness to risk; wavers in hard scenes
+- Harm [3]: minor / serious / broken (or corrupted, if mystical)
+Tags: (2–3 personal or social tags that matter on-screen)
+Notes: relationships, debts, secret, ambition
+\end{verbatim}
+
+\paragraph{Tier (quality) guidance}
+\begin{itemize}
+  \item \textbf{Green:} When acting alone, start one step worse Position.
+  \item \textbf{Trained:} Baseline Position.
+  \item \textbf{Veteran:} Treat DV --1 when acting on their Capabilities.
+  \item \textbf{Elite:} Position +1 when acting on their Edges.
+\end{itemize}
+\emph{No new dice.} Followers don't have separate pools; their tier nudges Position/DV and their tracks/tags determine fallout.
+
+\subsection{Templates}
+\subsubsection*{Combat Ally (guard, scout, duelist)}
+Capabilities: formation fighting; hold a doorway; skirmish in alleys\\
+Edges: fearless under missile fire; shield others\\
+Liabilities: pride; feud; easily baited\\
+Strings: watch rotation; barracks armory key\\
+Costs: shares; honor code taboo
+
+\subsubsection*{Specialist (scribe, pilot, barrister, spy, apothecary)}
+Capabilities: crack ledgers; navigate fog; writs \& filings; ghost a meeting; treat wounds\\
+Edges: unobtrusive; encyclopedic gossip\\
+Liabilities: temper; debts; guild loyalty first\\
+Strings: archive desk; ferry passbooks; guild seals\\
+Costs: wages; bribe budget; guild tithes
+
+\subsubsection*{Magical Assistant (rite-acolyte, hedge-mage, psion acolyte)}
+Capabilities: ward a room; amplify rites; anchor a vision; soothe a crowd\\
+Edges: ritual precision; calm presence\\
+Liabilities: taboo; frail; omen-prone\\
+Strings: sanctuary access; oath-tablet registry; reliquary key\\
+Costs: offerings; rest days; ritual purity
+
+\subsection{Onboarding a Follower}
+Name two non-overlapping Capabilities and one Liability; the table adds one Tag. Tie them to the map with one \textbf{String} that matters this arc. Mark \textbf{Loyalty 2/6}, \textbf{Morale 3/6}, Harm none.
+
+\section{Followers On-Scene}
+At the start of a scene, declare the role for each present follower.
+
+\subsection{Assist}
+They bolster a PC's action on their Capability.
+\begin{itemize}
+  \item \textbf{Effect:} Improve \textbf{Position +1} \emph{or} treat \textbf{DV --1} (once/scene per follower).
+  \item \textbf{SB Hook:} On any 1 in the roll, the GM may tick follower \textbf{Morale +1} (shaken) or \textbf{Harm (minor)} instead of a PC-facing complication.
+\end{itemize}
+
+\subsection{Cover}
+They absorb heat or run interference.
+\begin{itemize}
+  \item \textbf{Effect:} Once this scene, reduce a GM \textbf{Social SB} spend by 1 or cancel a single \textbf{tag flip} against the party in their venue.
+  \item \textbf{Cost:} Tick follower \textbf{Exposure +1} (if tracked) or \textbf{Morale +1} (took the blame).
+\end{itemize}
+
+\subsection{Delegate}
+They take an independent scene action (legwork, duel, petition, infiltration). Resolve with the \textbf{PC's roll} that commands, enables, or coordinates (e.g., Presence+Command, Wits+Tactics, Wits+Investigation).
+\begin{itemize}
+  \item \textbf{Effect:} On a hit, fill the target Situation Clock by effect or create a useful tag; on a partial, do it but suffer \textbf{Harm (minor)} or \textbf{Morale +1}; on a miss, GM banks SB and may apply a temporary Liability tag (e.g., \emph{Compromised}).
+  \item \textbf{Tier Nudge:} Apply the Tier bonus/penalty when setting Position/DV.
+\end{itemize}
+\emph{Alone vs with PCs:} Acting alone in hostile ground starts one Position worse; with a PC on-screen, use the higher Position among the pair.
+
+\subsection{Harm \& Recovery}
+\begin{itemize}
+  \item \textbf{Harm [3]:} minor (--) / serious (can't Assist/Delegate) / broken (removed until healed). Treat mystic overloads similarly.
+  \item \textbf{Heal:} \emph{Shield} or \emph{Biofeedback} scenes may reduce Harm; otherwise Significant Time + coin/favor reduces one level.
+\end{itemize}
+
+\section{Loyalty \& Morale}
+\subsection{Loyalty [6] (long-term)}
+Tick up when promises are kept, credit/coin shared, public protection given, or their Ambition advances. Tick down for oath-breaking, humiliation, skipped payment, or betrayal of values.\\
+At 0: they leave or flip neutral (rescue resets to 1). At 6: trigger a \textbf{Loyalty Event}---they offer an oath or ask a Price; choose for a lasting Tag (e.g., \emph{Oath-Bound}) or a new String.
+
+\subsection{Morale [6] (short-term)}
+Mark Morale for fear, hunger, injury, or public shame.
+\begin{itemize}
+  \item 4+: bold; may Assist/Delegate freely.
+  \item 2--3: hesitant; Delegate starts one Position worse.
+  \item 0--1: balk; require \emph{Reassure} (Presence+Sway) or \emph{Command} at DV 3--4 to act; on miss, they withdraw.
+  \item \textbf{Reset:} Rest, food, respect scene, or public praise clears 1--2 Morale.
+\end{itemize}
+
+\subsection{Paying the Costs}
+Each follower lists Costs (wages, shares, favor, taboo). When skipped two sessions in a row, tick Loyalty --1 and start \textbf{Debt [4]}. Clearing the clock cancels the penalty.
+
+\section{Follower Advancement (Long-Term)}
+At arc end or every 2--3 sessions, if the follower was central, choose one:
+\begin{itemize}
+  \item \textbf{Capability +1:} add a new Capability or sharpen an Edge; gain that Edge's Tier nudge for one more context.
+  \item \textbf{String Gained:} seize/cut a String via play; write it on their sheet.
+  \item \textbf{Harm Tolerance:} add \emph{Armor (1)} tag once per session when acting on their Capabilities.
+  \item \textbf{Bond Deepens:} start \textbf{Bond [4]} with a PC; acting for that PC's ideal grants Position +1 once/scene.
+  \item \textbf{Reputation:} convert three favors from one institution into \textbf{Standing (Tag)} tied to the follower.
+\end{itemize}
+If a follower becomes plot-defining, promote them to a \textbf{Lieutenant}: they can carry an \textbf{Off-Screen Order} without PC oversight.
+
+\section{Organizations (Guilds, Armies, Syndicates)}
+\subsection{Organization Sheet (Template)}
+\begin{verbatim}
+[ORG NAME]
+Tier: street / guild / city / crown / synod
+Aim (this season): what this org wants now
+Leaders & Lieutenants: names + one-line intent
+Cohorts (2–4): "dockside crew", "auditors", "pickets" …
+Strings (3): permits, routes, seals, charters
+Tracks:
+- Cohesion [6–8]: unity/discipline; fill → schism/strike/coup
+- Exposure [6]: heat/visibility; fill → audit/raid/purge
+- Resources [6]: operational slack; empty → shortages & concessions
+Bandwidth: 1–3 orders per cycle
+Entanglements: debts, rivals, promises
+\end{verbatim}
+
+\subsection{Using Cohorts}
+A cohort is a follower group. When a cohort acts on-screen, apply Tier nudges like a Veteran/Elite follower. Wounds/fear usually tick \textbf{Cohesion +1} rather than individual Harm.
+
+\subsection{Orders \& Entanglements (Between Sessions)}
+Once per session or when Significant Time passes:
+\begin{enumerate}
+  \item \textbf{Allocate Bandwidth:} choose up to Bandwidth orders: Audit, Guard, Smuggle, Petition, Strike-bust/Strike, Patrol, Build, Research, Evangelize, Bribe, Expose.
+  \item \textbf{Resolve Each Order:} one roll by the directing PC (or a Lieutenant). Set Position/DV from fiction; apply Org Tier as DV --1 within its wheelhouse.
+  \item \textbf{On Hit:} fill a related Project Clock (4--8) or create a lasting Tag. On 1s, GM banks SB and may tick Exposure +1 or Cohesion +1.
+  \item \textbf{Upkeep:} if Resources drops to 0, choose: accept Crisis +1, lose Bandwidth --1, or start \textbf{Shortages [6]}.
+  \item \textbf{Entanglement Roll:} for each banked SB this cycle, trigger a minor entanglement (rival, debt call-in, inspector visit). Convert into clocks, not binary losses.
+\end{enumerate}
+
+\section{Relationship Dynamics}
+\subsection{Bonds \& Frictions}
+Start a \textbf{Bond [4]} between a PC and a follower who has shared scenes. When the PC publicly protects/praises the follower, fill 1; when they shame or endanger them, clear 1. When full, add a permanent tag (\emph{Devoted}, \emph{Trusted Confidant}); once per scene, acting in line with that bond grants Position +1.\\
+\textbf{Frictions [4]} capture triangles, rival mentors, or ideology splits. On fill, start a \textbf{Follower Conflict} or add the tag \emph{Soured}.
+
+\subsection{Romance \& Family (optional)}
+Treat as Bonds with consent. A full romance Bond may convert to a \textbf{String} (access to a house/court) or a \textbf{cost} (taboos, obligations).
+
+\subsection{Reputation \& Standing}
+Followers can hold \textbf{Standing} with institutions. In that venue, Standing acts like a once/scene Position +1 or DV --1, and counts toward party reputation checks.
+
+\section{Follower Conflicts}
+\subsection{When Allies Disagree}
+Frame the splitting question. Start a \textbf{Dilemma Clock [4--6]}. Each side argues via Petition/Broker/Expose; use Assist/Cover from their allies. On 1s, spend Social SB to escalate: \emph{Ultimatum}, \emph{Walk-out}, \emph{Leverage Leak}, \emph{Public Scene}, \emph{Split the Crew}.\\
+\textbf{Resolution:} on fill choose one---\textbf{Concession} (one side wins; other Loyalty --1), \textbf{Compromise} (create a new String you must honor), or \textbf{Break} (follower departs; start \textbf{Recruit/Repair [6]}).
+
+\subsection{Competing Agendas (Long-Term)}
+Give key followers a private \textbf{Agenda [4]} tied to a String or ideal. Tick when off-screen orders favor them; clear when you publicly choose against it. On fill, they demand a scene to cash it in---or flip a String against you.
+
+\section{Generators \& Tables}
+\subsection{Follower Seeds (d66)}
+11--12: penitent enforcer; 13--14: debt-sold pilot; 15--16: oath-keep scribe; 21--22: relic courier; 23--24: disgraced auditor; 25--26: crowd-reader mummer; 31--32: hedge-rite acolyte; 33--34: picket captain; 35--36: ash-lantern warden; 41--42: smugglers' quartermaster; 43--44: bridge-lord's nephew; 45--46: psion novice; 51--52: syndicate fixer; 53--54: canal pilot; 55--56: inquisitor's clerk; 61--62: ex-legion drill; 63--64: dye house chemist; 65--66: caravan law clerk.
+
+\subsection{Costs \& Ambitions}
+\textbf{Costs:} wages; shares; favor; bribes; offerings; rest days; ritual purity; family duty.\\
+\textbf{Ambitions:} vindication; mastery; homecoming; reform; riches; reputation; faith; revenge; discovery.
+
+\subsection{Entanglements (roll 1--2 between sessions)}
+Rival poaches a cohort; Auditor audits your Strings; a family claim interrupts a mission; Debtor calls; old oath resurfaces; festival duel challenge; informant flips; patrol biased; riot brewing in their home ward.
+
+\section{Example of Play (short)}
+\textbf{Scene:} The party needs a sealed ledger from the Archivolt. Their \emph{Specialist} (ledger-eye) \textbf{Delegates} to pull it during a playhouse feast. Position: \textbf{Controlled} (venue tags + String); Tier: \textbf{Veteran} (DV --1). Roll \emph{Wits+Investigation} to coordinate. Partial: ledger secured but \textbf{Morale +1}. A 1 shows $\to$ GM spends Social SB to start \textbf{Rumor [4]} about bribery.\\
+Between sessions, the party's \textbf{Guild} runs two \textbf{Orders}: \emph{Audit} (to validate the ledger) and \emph{Bribe} (to cushion exposure). One hit, one partial: a \textbf{Project [6]} advances; \textbf{Exposure +1} ticks on the Guild. Next arc, the Specialist's \textbf{Agenda [4]} (protect guild loyalties) fills and they demand edits before release.
+
+\section*{GM Reference (one page)}
+\begin{itemize}
+  \item \textbf{Follower roles:} Assist (Pos +1 or DV --1) \textbullet{} Cover (cancel 1 Social SB or tag flip once/scene; cost: Morale/Exposure) \textbullet{} Delegate (independent action via PC roll; apply Tier).
+  \item \textbf{Tracks:} Loyalty [6] (0 leave/flip; 6 event) \textbullet{} Morale [6] (0--1 balk; 2--3 hesitant; 4+ bold) \textbullet{} Harm [3].
+  \item \textbf{Org tracks:} Cohesion [6--8] \textbullet{} Exposure [6] \textbullet{} Resources [6] \textbullet{} Bandwidth 1--3.
+  \item \textbf{Orders:} Audit \textbullet{} Guard \textbullet{} Smuggle \textbullet{} Petition \textbullet{} Strike-bust / Strike \textbullet{} Patrol \textbullet{} Build \textbullet{} Research \textbullet{} Evangelize \textbullet{} Bribe \textbullet{} Expose.
+  \item \textbf{SB spends (social):} Ultimatum \textbullet{} Walk-out \textbullet{} Leverage Leak \textbullet{} Public Scene \textbullet{} Split the Crew \textbullet{} Permit Pulled.
+\end{itemize}
+
+\vfill
+\section*{Changelog}
+\textbf{v0.1} --- First pass: follower sheets/tiers, on-scene roles, loyalty \& morale, advancement, organization sheets \& orders phase, bonds/frictions, conflicts, generators, and GM reference.
+
+\begin{center}\small This module adds procedures only; defer to the core SRD for roll math and basic adjudication.\end{center}
+
+\end{document}
+
