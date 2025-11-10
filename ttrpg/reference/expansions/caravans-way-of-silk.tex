@@ -1,0 +1,376 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Caravans: Way of Silk}
+\rfoot{Fate's Edge Expansion}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Caravans: Way of Silk}} \\
+\vspace{0.5em}
+{\large (Fate's Edge v0.1)} \\
+\vspace{1em}
+A plug-and-play module for long-haul trade, escort, and diplomacy across the Violet Steppe/Meadows and deserts toward Sihai and Dhahara. Built to run caravans of Fhara, Tulkani, Ashaani, Dhaharan, and Kuvani traders.
+\end{center}
+
+\section*{Design Goals}
+\begin{itemize}[leftmargin=*]
+\item Convoy as character. A caravan has strings, tags, and clocks that bite back.
+\item From road to court. Scenes flow between trail hazards, border posts, and negotiation halls.
+\item Low bookkeeping. Track a few clocks (Distance, Danger, Supplies, Morale); let strings and orders do the heavy lifting.
+\item Use the core. Keep Position/DV, SB, clocks, Favor/Leverage/Exposure, Strings. No new dice math.
+\end{itemize}
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}[leftmargin=*]
+\item Make a Caravan Sheet (\S1) with Supplies [6], Morale [6], Condition [6], Heat [6] (optional) and 1--3 Strings (writs, water shares, waymarks).
+\item Pick a Route Leg (\S2) and mark Distance [4--8] and Danger [4--6]. Note Terrain and Season.
+\item Assign Roles to PCs/followers (\S3). Choose an Intent Dial for the leg: Speed / Stealth / Show.
+\item Run scenes from the Caravan Deck (\S6) and from fiction. All 1s generate SB; spend city/road flavored Social SB (\S5.4).
+\item End of Leg: Pay Upkeep, adjust tracks, trade at market, and advance projects/patrons.
+\end{enumerate}
+
+\section{Caravan Sheet (Template)}
+
+\begin{tabular}{|p{\textwidth}|}
+\hline
+\textbf{[CARAVAN NAME] --- Way of Silk Convoy} \\
+Kind: Fhara / Tulkani / Ashaani / Dhaharan / Kuvani / mixed \\
+Wagons \& Beasts: list (and tags) • Cohorts: outriders, guards, teamsters, cooks \\
+Strings (1--3): waymark beads • water-right shares • coin-weigh seals • border writ • festival license \\
+Tags (2--4): choose below (e.g., Fast Teams, Heavy Wagons, Shrine-Banner, Smuggler Compartments) \\
+Tracks: \\
+- Supplies [6]: food, fodder, lamp-oil, repair stock \\
+- Morale [6]: grit and confidence of crew and clients \\
+- Condition [6]: wear/tear to wagons, harness, and trains \\
+- Heat [6] (optional): attention from tollmen, raiders, and rumor \\
+Bandwidth (Orders per Leg): 2 + number of lieutenants (max 4) \\
+Projects (0--3): route or asset improvements (4--8) \\
+Patrons/Clients: names + what they expect this season \\
+\hline
+\end{tabular}
+
+\subsection{Caravan Tags (pick 2--4)}
+\begin{itemize}[leftmargin=*]
+\item Fast Teams (steppe ponies, spare yokes): Start Speed legs one Position higher.
+\item Heavy Wagons (armored sides): Expose/Rob against you starts one Position worse.
+\item Long Train (many clients): +1 Bandwidth, but a 1 on Operate may tick Heat +1 (gossip).
+\item Shrine-Banner (oath to a road-saint): Once/leg, Host Rite starts Dominant; breaking rites adds Exposure +1.
+\item Smuggler Compartments (false floors): Smuggle DV --1; on 1s, start Contraband Trail [4].
+\item Scout Eyes (trained outriders): Survey/Track DV --1 on open ground.
+\item Riverwise (barges/rafts carried/leased): Treat a canal/ford as neutral ground; Chase (boat) DV --1.
+\item Caravan Doc (apothecary wagon): Once/leg clear one minor Harm or tick Morale +1 after a rest scene.
+\item Ward-Woven Tents (sigils): Infiltrate against camp starts one Position worse.
+\end{itemize}
+
+\subsection{Beasts \& Wagons (examples)}
+\begin{itemize}[leftmargin=*]
+\item Steppe Travois: capacity 1; tag Fast; fragile in rocks.
+\item Desert Camels: capacity 2; tag Water-wise (Supplies loss --1 on drought checks once/leg).
+\item Dray Lizards: capacity 3; tag Sure-footed (mountains DV --1) but Hungry (Supplies --1 if a 1 shows in a danger scene).
+\item Covered Wagon: capacity 3; tag Shelter (Weather starts one Position higher).
+\end{itemize}
+
+\section{Route \& Leg Structure}
+
+A Route is made of Legs (days/weeks) between safe stops.
+
+\subsection{Set a Leg}
+\begin{itemize}[leftmargin=*]
+\item Distance [4--8]: how many progress segments to reach the next safe stop.
+\item Danger [4--6]: the leg's ambient pressure (raiders, terrain, ward-storms). GM advances on 1s or when fiction dictates.
+\item Terrain: steppe • desert • mountain pass • river flats • saltpan • reedmarsh.
+\item Season/Weather Clock [4--6]: rains • dust winds • fog • heat wave • freeze.
+\end{itemize}
+
+\subsection{Pre-Leg Intent \& Roles}
+
+Pick one Intent Dial (it sets default Position for travel scenes):
+\begin{itemize}[leftmargin=*]
+\item Speed: make Distance faster; Broker/Petition at stops start one Position worse (rushed).
+\item Stealth: avoid Danger; Distance advances only on strong hits.
+\item Show: parade banners; +1 Favor opportunities at stops; Heat +1 on any 1.
+\end{itemize}
+
+Assign Roles (\S3) to PCs/followers.
+
+\subsection{Running the Leg}
+\begin{itemize}[leftmargin=*]
+\item At each scene, use district/terrain effects and caravan tags to set Position/DV.
+\item Progress: On relevant hits (Survey, Navigate, Drive, Scout, Broker, etc.), tick Distance by effect.
+\item Complications: 1s → GM spends SB with Caravan SB options (\S5.4) or advances Danger/Weather.
+\item When Distance fills, the leg ends at a safe stop: run Upkeep \& Market (\S4).
+\end{itemize}
+
+\section{Roles in the Caravan}
+
+Assign any number; one person can hold two if fiction allows.
+\begin{itemize}[leftmargin=*]
+\item Caravan Master: final calls; Petition/Broker at posts/stops; can sacrifice 1 Favor to cancel one Social SB once/leg.
+\item Quartermaster: Supplies, repairs; rolls Wits+Tactics/Craft to prevent Condition ticks.
+\item Factor: contracts and customs; Audit/Broker; converts 1 Clue to Favor once/leg with proof.
+\item Scout/Vanguard: ride ahead; Survey/Track; can mark Ambush Signs (tag) once.
+\item Rearguard Captain: watches tail; Shield/Command during pursuit.
+\item Envoy/Interpreter: rites and tongues; Host Rite, Sway; cancels one tag flip in parley once/leg.
+\item Beast-Master: animal welfare; can clear one Supplies loss once/leg after a rest scene.
+\item Lore-Keeper: maps, omens; Research/Expose myths and ward lines; grants DV --1 vs Ward-storm once/leg.
+\end{itemize}
+
+\section{Upkeep, Market \& Stops}
+
+At leg's end (waystation, oasis, city gate, monastic house):
+
+\subsection{Upkeep}
+
+Pay one: coin • Favor • rite/appearance. If skipped → Supplies --1 and start Creditors [4] or Inspection [4].
+
+\subsection{Repairs \& Rest}
+\begin{itemize}[leftmargin=*]
+\item Spend coin/Favor or a scene to reduce Condition --1.
+\item A positive public moment (feast, song) clears Morale +1.
+\end{itemize}
+
+\subsection{Market (no heavy math)}
+
+Pick one cargo tag you carried (Common • Desired • Contraband • Sacred) and one market appetite tag at this stop (Hungry • Saturated • Pious • Lawful • Lax • Wary). Roll a single Broker/Petition action:
+\begin{itemize}[leftmargin=*]
+\item On strong hit: gain coin + Favor (narrow) or Standing with a local office.
+\item On hit: choose coin or Favor.
+\item On partial: you gain coin but tick Heat +1 or a rival gains a String.
+\item On miss: coin lost or cargo seized; start Litigation [4] or Rival Claim [4].
+\end{itemize}
+
+\subsection{Projects}
+
+If you worked a Project [4--8] this leg (e.g., ``Open a new oasis'', ``Bribe a toll chain''), mark it. On fill, add the new String or tag to the caravan.
+
+\section{Road Procedures \& DV Ladders}
+
+\subsection{Typical Actions on the Way}
+\begin{itemize}[leftmargin=*]
+\item Navigate (Wits+Survey): set course, find ford. DV 2--4 (terrain/weather).
+\item Drive/Handle Teams (Body+Tactics/Craft): keep pace or brake wagons. DV 2 steppe • 3 dunes • 4 pass road • 5 storm.
+\item Parley at Post (Presence+Sway/Diplomacy): get water, shelter, writs. DV 2--4; --1 with Strings.
+\item Outride/Screen (Body+Ride): intercept scouts; DV 3--5.
+\item Ambush/Break Ambush (Wits+Tactics): DV 3--5; +1 Position with Ambush Signs tag.
+\item Broker (Wits+Diplomacy/Streetwise): sell cargo or buy feed. DV 2--5; --1 with Coin-Weigh Seal.
+\end{itemize}
+
+\subsection{Chases \& Skirmishes (Open Ground)}
+
+Use the chase ladders from city play, substituting:
+\begin{itemize}[leftmargin=*]
+\item Foot/Horse: DV 2 (open steppe), 3 (gulley), 4 (broken ground), 5 (stampede field).
+\item Wagon: DV 2 (road), 3 (ruts), 4 (switchbacks), 5 (dune crest).
+\end{itemize}
+
+Complications on 1s: dust cloud, dropped axle-pin, panicked team, toll chain snaps.
+
+\subsection{Weather \& Terrain Pressures}
+
+When Weather advances or fiction says:
+\begin{itemize}[leftmargin=*]
+\item Sand/Dust Storm: Position --1 for sight-based actions; Supplies --1 unless shelter tag present.
+\item Monsoon Flood: fords impassable; Distance doesn't move without a strong hit; wagons risk Condition +1.
+\item Ward-Storm: spirits along the old way; treat as Desperate unless rites observed or you have Ward-Woven.
+\end{itemize}
+
+\subsection{Social SB on the Road (GM Menu)}
+\begin{itemize}[leftmargin=*]
+\item Leverage Leak: a client contract goes public → your Heat +1 or a rival gains a String.
+\item Camp Discord: tick Morale --1 unless a rest scene is spent.
+\item Toll Escalation: dues rise; accept a concession or start Litigation [4].
+\item Guide's Pride: your scout/officer demands a say; start Friction [4].
+\item Raider Rumor: band banners gather; Danger +1.
+\end{itemize}
+
+\section{The Caravan Deck (52-card)}
+
+Draw at scene start or between legs: Spade (Hazard), Heart (Person), Club (Complication), Diamond (Boons/Route).
+\begin{itemize}[leftmargin=*]
+\item Spades: dune ambush • flash-flood • cursed milepost • stampede • ward-storm • bridge collapse • tax spotters • plague rumor • raider parley • oasis poisoned • river pirates • mountain rockfall • Ace: border closes.
+\item Hearts: toll captain • road saint votary • rival caravan master • desert guide • steppe prince • customs factor • mummer troupe • shrine keeper • way-witch • exile noble • coin-weigh auditor • beast-doctor • Ace: a patron rides with you.
+\item Clubs: missing axle pin • scrip counterfeits • curfew at gate • water rights dispute • night theft • guide rivalry • forbidden cargo • client feud • fuel shortage • strike among teamsters • insulted chieftain • Ace: someone inside betrays you.
+\item Diamonds: fair wind • dry track • caravan fair • festival license • seal of safe-conduct • bridge opened • waymark rediscovered • oasis cleared • new buyer • debt forgiven • relic found • Ace: The Great Market convenes.
+\end{itemize}
+
+Clock Size by Highest Rank: 2--5 → [4], 6--10 → [6], J/Q/K → [8], A → [10].
+
+\section{Peoples of the Way (playset hooks)}
+
+Use these as cultural levers and Strings; tune to table canon. The analogues below are inspirations---not prescriptions.
+
+Inspirations (GM shorthand): Fhara = Arab traders • Kuvani = Steppe peoples • Tulkani = Roma • Dhaharan = India • Sihai = China • Ashaani = Egypt (imperial ambition) • Pereshi = inland Persians • Sidhi = Levant/North Africa.
+
+Portrayal guardrails (recommended):
+\begin{itemize}[leftmargin=*]
+\item Show internal diversity (class, creed, region) in each culture; avoid single-note caricatures.
+\item Emphasize craft, contracts, rites, and strings over mystification or criminal tropes.
+\item When using divination/omens, frame them as social rituals or legal custom, not exotic power.
+\item Let conflicts be about interests and institutions, not ``peoples are like this.''
+\end{itemize}
+
+\subsection{Fhara (Oasis Caravaneers)}
+
+Vibe: incense routes, water-law, tent courts, call-and-response poetry. \\
+Favored cargo: dates, glass lamps, wool, frankincense/myrrh. \\
+Strings: Water-Share Tablets, Caravan Law Oaths, Escort Writs. \\
+Etiquette: coffee/salt shared before business; three cups bind goodwill (hospitality rites).
+
+\subsection{Kuvani (Steppe Hosts)}
+
+Vibe: remount lines, felt tents, wind-bands across violet grass. \\
+Favored cargo: remounts, leatherwork, smoked meats. \\
+Strings: Pennon Right-of-Way, Remount Lines, Kurgan Oaths. \\
+Etiquette: ride-in gifts; never unsaddle before greeting; insult duels are ritualized races.
+
+\subsection{Tulkani (Itinerant Courts \& Crafts)}
+
+Vibe: master farriers, tinkers, enamelers, musicians; caravan courts arbitrate disputes. \\
+Favored cargo: metalwork, vibrant dyes, instruments. \\
+Strings: Caravan Court Writ, Bead-Chains of Passage, Safe-Haven Oath (neutral camp). \\
+Etiquette: arrive with song; camp neutrality is sacred. \\
+Notes for portrayal: highlight artistry, negotiation, and legal custom; avoid harmful stereotypes (e.g., criminalization, ``curses'').
+
+\subsection{Ashaani (River Imperium)}
+
+Vibe: reed boats, monumental rites, temple bureaucracy, imperial roads. \\
+Favored cargo: papyrus, natron, gold leaf, incense resins. \\
+Strings: Festival Licenses, Harbor Warrants, Procession Rights. \\
+Etiquette: offerings at household shrines; titles spoken before names.
+
+\subsection{Dhaharan (Monsoon Guilds)}
+
+Vibe: caravanserais, philosopher-merchants, monsoon trade cycles. \\
+Favored cargo: textiles, spices, glass bangles. \\
+Strings: Temple Tithe Stamps, Ghat Permits, Monsoon Schedules. \\
+Etiquette: remove shoes at shrines; red mark for auspice.
+
+\subsection{Sihai (Mandarinate of Porcelain)}
+
+Vibe: flood-dikes and tea hills, kiln towns, exam halls, mandarins. \\
+Favored cargo: porcelain, tea, lacquerware. \\
+Strings: Censor's Seal, Silk-House Contracts, Inundation Schedules. \\
+Etiquette: seal-stacking protocol; bows set order; chop-marks authenticate goods.
+
+\subsection{Pereshi (Plateau Satrapies)}
+
+Vibe: royal road relays, fire shrines, garden courts. \\
+Favored cargo: carpets, saffron, warhorses. \\
+Strings: Satrap Relay Posts, Fire-Temple Safe-Conduct, Waystation Keys. \\
+Etiquette: bread and salt; signet rings bear authority.
+
+\subsection{Sidhi (Littoral Ports)}
+
+Vibe: caravan ports and spice bazaars, mosaic guilds, pilgrim routes. \\
+Favored cargo: glass, citrus, purple dye, olive oil. \\
+Strings: Dockage Rights, Pilgrim Hostels, Mosaic-Guild Seals. \\
+Etiquette: clasp or cheek-kiss greetings; lamp-oil gifts seal deals.
+
+\section{Endpoints \& Borderlands (sketch)}
+
+\begin{itemize}[leftmargin=*]
+\item Sihai: eastern entrepôt of silk and porcelain; mandarinate courts, ritual permits, flood dikes. Strings: Censor's Seal, Procession Routes, Inundation Schedules.
+\item Dhahara: desert capital; satrap gardens, coin-weigh halls, pearl markets. Strings: Coin-Weigh Seals, Oasis Compacts, Escort Writs.
+\item The Violet Steppe/Meadows: windswept caravan grass; way-shrines and storm beacons; Events: stampede moons, steppe prince weddings.
+\end{itemize}
+
+\section{Cargo \& Clients}
+
+\subsection{Cargo Tags (choose 1--2 per lot)}
+\begin{itemize}[leftmargin=*]
+\item Common (grain, lamp-oil, linens)
+\item Desired (dyes, porcelain, rare herbs)
+\item Contraband (forbidden tracts, unsealed relics, untithed silks)
+\item Sacred (ritual items, saint bones, shrine bells)
+\end{itemize}
+
+Complications: Contraband adds Heat +1 on any 1; Sacred adds Obligation---a rite at arrival or Sanction +1 from its patron.
+
+\subsection{Client Types}
+
+House factor • shrine keeper • satrap's agent • guild compact • mummer troupe • exiled noble • legion paymaster • university procurer. \\
+Promised Terms: share of profit • safe escort • secrecy • ritual procession • price floor • exclusive rights. Turn any into a String on success.
+
+\section{Orders Between Legs}
+
+Each leg, choose up to Bandwidth orders:
+\begin{itemize}[leftmargin=*]
+\item Operate: push Distance; risk Condition or Supplies on 1s.
+\item Scout: pre-empt hazards; reduce Danger --1 or create Ambush Signs tag.
+\item Charm the Post: improve next stop's Position by one step; on 1s, Heat +1.
+\item Smuggle: move forbidden cargo; on hit, gain Leverage (1); on 1s, start Contraband Trail [4].
+\item Rite of the Road: Host rite; on hit, clear Morale +1 or cancel one Ward-Storm penalty this leg.
+\item Repair: reduce Condition --1.
+\end{itemize}
+
+\section{Generators \& Tables}
+
+\subsection{d66 Road Events}
+
+\begin{tabular}{llllll}
+11 stampede at dawn & 12 fallen way-shrine & 13 counterfeit scrip & 14 rain-bogged ford & 15 rival's poisoned rumor & 16 lantern-line snapped \\
+21 raider parley & 22 toll audit & 23 tax farmer replaced & 24 plague scare & 25 saint's procession & 26 comet omen \\
+31 guide feud & 32 axle break & 33 desert mirage & 34 trader wedding & 35 night theft & 36 ward-storm \\
+41 court courier & 42 border closes & 43 floodgate opens & 44 smugglers' cut & 45 lost child in dunes & 46 shrine demands tithe \\
+51 salt storm & 52 way-witch offer & 53 forest spirits & 54 bridge collapse & 55 coin-weigh strike & 56 inquisitor questions \\
+61 relic rumor & 62 caravan fair & 63 exile prince & 64 mountain rockfall & 65 sacred relic requests escort & 66 Great Market summons \\
+\end{tabular}
+
+\subsection{Rivals \& Threats}
+
+Band banners (Grey Hawks, Glass Jackals) • Toll captains on the take • Sand-road brotherhood splinters • Shrine zealots • Coin-weigh auditors • Ward-witches with a price • River pirates • Steppe princes with honor games.
+
+\subsection{Prices without Numbers (Boons)}
+
+On strong market hits, take two: coin, Favor (narrow), Standing, Clue, Leverage (1). On hits, take one. On partials, take coin but also Heat +1 or promise a String back to the buyer.
+
+\section{Example of Play (short)}
+
+Setup: Kuvani-led mixed caravan with Fast Teams and Scout Eyes runs the Steppe to Pass leg (Distance [6], Danger [4]; Season: dust winds [4]). Intent: Stealth. Roles: Scout/Vanguard, Quartermaster, Factor, Envoy.
+
+Scene 1 --- Survey the Dunes (Wits+Survey): Strong hit → Distance +2; a 1 shows → SB spent to tick Danger +1 (raider rumors).
+
+Scene 2 --- Parley at Pass-Beads (Presence+Sway): With Pass Bead-Chain (String), Position Controlled, DV 3. Hit → Distance +1 and Favor (narrow); partial → Heat +1 (a rival whispers).
+
+Scene 3 --- Ward-Storm: Weather clock fills; Envoy hosts a road rite under Shrine-Banner → cancels penalty; Quartermaster saves Supplies.
+
+End of Leg: Upkeep paid with coin; Market: sell Desired dyes in a Hungry pass town → strong hit = coin + Standing. Start Project Open Oasis Annex [6].
+
+\section{GM Reference (one page)}
+
+\begin{itemize}[leftmargin=*]
+\item Tracks: Supplies [6] • Morale [6] • Condition [6] • Heat [6] • Distance [4--8] • Danger [4--6] • Weather [4--6].
+\item Intent: Speed (faster Distance; worse petitions) • Stealth (safer; slower) • Show (Favor chances; Heat risk).
+\item Roles: Master • Quartermaster • Factor • Scout • Rearguard • Envoy • Beast-Master • Lore-Keeper.
+\item Orders: Operate • Scout • Charm the Post • Smuggle • Rite of the Road • Repair.
+\item SB Spends: Leverage Leak • Camp Discord • Toll Escalation • Guide's Pride • Raider Rumor.
+\item Market Boons: coin • Favor • Standing • Clue • Leverage (1).
+\end{itemize}
+
+\section*{Changelog}
+
+v0.1 --- First pass: caravan sheet/tags, leg structure, roles, upkeep/market, road procedures, deck, peoples of the Way, endpoints, cargo/clients, orders, generators, example, GM reference.
+
+\end{document}
