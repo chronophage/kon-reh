@@ -1,0 +1,243 @@
+% Wilderness: Hinterlands & Hearthfires — Fate's Edge Module (v0.1)
+% Single-file LaTeX source, print-ready
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{graphicx}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
+\setlist{noitemsep, topsep=4pt, leftmargin=1.2em}
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Wilderness: Hinterlands \& Hearthfires}}\\[3pt]
+{\large A Fate's Edge module for expeditions, survival, hunts, and camps}\\[2pt]
+\textit{Version 0.1 (Playtest)}
+\end{center}
+\vspace{0.25em}
+\hrule\vspace{0.75em}
+
+\section*{Design Goals}
+\begin{itemize}
+  \item \textbf{Wilds as character:} Biomes carry tags, strings, hazards, and clocks that push back.
+  \item \textbf{From trail to hearth:} Each day's push ends with a camp where choices ripple forward.
+  \item \textbf{Low bookkeeping:} A handful of party tracks and a simple day/leg structure.
+  \item \textbf{Integrates cleanly:} Works with urban, caravan, political, asset, and psionic play.
+\end{itemize}
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+  \item Pick a \textbf{Region Kit} (\S\ref{sec:region}) and mark \textbf{Distance [4--8]}, \textbf{Danger [4--6]}, \textbf{Weather [4--6]}.
+  \item Start party tracks: \textbf{Supplies [6]}, \textbf{Weariness [6]} (fatigue), \textbf{Sign [6]} (traceability).
+  \item Choose a daily \textbf{Intent Dial}: \textbf{Traverse / Scout / Hunt / Hide / Endure} (\S\ref{sec:intents}).
+  \item Play 2--3 scenes (Navigate, Forage, Cross, Track, Parley). On any 1, GM spends SB with \textbf{Wilderness SB} (\S\ref{sec:sb}).
+  \item \textbf{Camp Phase}: build camp $\to$ watches $\to$ hearthfire rite $\to$ repair/recap $\to$ adjust tracks (\S\ref{sec:camp}).
+\end{enumerate}
+
+\tableofcontents
+\newpage
+
+\section{Region Sheet \& Biomes}\label{sec:region}
+\subsection{Region Sheet (Template)}
+\begin{verbatim}
+[REGION NAME]
+Biomes in play (2–3): forest / steppe / desert / marsh / mountain / coast / tundra / badlands
+Strings (2–4): waystones • ford rights • grazing compacts • shrine hospitality • hunting warrants
+Threats (2–3): raider banners • ward-storm bands • apex predators • inquisitors • poachers • spirits
+Tracks:
+- Distance [4–8] to the next safe haven
+- Danger [4–6] (ambient pressure)
+- Weather [4–6] (seasonal band)
+- Beast Pressure [4–6] (apex attention; optional)
+Landmarks (4–6): short names
+Notes: seasons, taboos, native trails, friendly outposts
+\end{verbatim}
+
+\subsection{Biome Tags \& Effects}
+Pick two tags per biome in play.
+
+\paragraph{Forest} canopy; deadfalls; spoor; sap.\\
+\textbf{Effect:} \emph{Stalk/Hunt} DV --1 with \emph{Track} or \emph{Herbalist} tags; \emph{Navigate} Position --1 without a trail.\\
+\textbf{Hazards:} widowmakers; boggy pockets; parasite swarms.
+
+\paragraph{Steppe} wind-bands; wide sky; mirage; remounts.\\
+\textbf{Effect:} \emph{Chase (horse)} DV --1; \emph{Hide Sign} Position --1 (you leave tracks).\\
+\textbf{Hazards:} grassfire; stampede; dust whiteout.
+
+\paragraph{Desert} dunes; salt; night cold; scarce wells.\\
+\textbf{Effect:} \emph{Forage} Position --1; \emph{Endure} DV --1 with \emph{Water-wise}.\\
+\textbf{Hazards:} heat stroke; dune slip; salt glare.
+
+\paragraph{Marsh} reeds; sucking mud; gnats; leeches.\\
+\textbf{Effect:} \emph{Infiltrate} Position +1; \emph{Drive} Position --1.\\
+\textbf{Hazards:} miasma; hidden channels; rot.
+
+\paragraph{Mountain} scree; ledges; avalanches; switchbacks.\\
+\textbf{Effect:} \emph{Navigate/Climb} DV +1 unless \emph{Sure-footed}; \emph{Ambush} Position +1 from above.\\
+\textbf{Hazards:} fall; rockfall; thin air.
+
+\paragraph{Coast} cliffs; tides; riptides; sea fog.\\
+\textbf{Effect:} \emph{Chase (boat)} DV --1 with \emph{Riverwise}; \emph{Camp} Position --1 in exposure.\\
+\textbf{Hazards:} surf; slick kelp; storm surge.
+
+\paragraph{Tundra} permafrost; whiteout; brittle cold.\\
+\textbf{Effect:} \emph{Endure} DV --1 with \emph{Shelter}; \emph{Forage} Position --1.\\
+\textbf{Hazards:} frostbite; thin ice; drift.
+
+\paragraph{Badlands} ravines; hoodoos; echo.\\
+\textbf{Effect:} \emph{Hide/Ambush} Position +1; \emph{Navigate} DV +1 without sun or waystone.\\
+\textbf{Hazards:} collapses; blind turns; flash floods.
+
+\section{Expedition Procedures}
+\subsection{Scales \& Party Tracks}
+\begin{itemize}
+  \item \textbf{Distance [4--8]} to the next haven or objective. Tick on strong travel hits.
+  \item \textbf{Danger [4--6]} advances on 1s or loud moves; on fill, trigger a set-piece (raid, beast strike, stormfront).
+  \item \textbf{Weather [4--6]} seasonal pressure; see the Weather Matrix (\S\ref{sec:weather}).
+  \item \textbf{Supplies [6]} food/fuel/repair stock. At 0, \textbf{Weariness +1} per day until replenished.
+  \item \textbf{Weariness [6]} party fatigue/morale. At 6, someone balks or collapses; clear via Camp rest.
+  \item \textbf{Sign [6]} spoor, smoke, rumor. At fill, you're found by a threat or rival.
+\end{itemize}
+
+\subsection{Intent Dials}\label{sec:intents}
+Choose one each day.
+\begin{description}[leftmargin=1.2em]
+  \item[Traverse] Move Distance efficiently; \emph{Parley} starts one Position worse (you look hurried).
+  \item[Scout] Avoid Danger; \emph{Distance} only on strong travel hits.
+  \item[Hunt] Focus on prey/clues; \emph{Forage/Hunt} DV --1; Distance advances slowly.
+  \item[Hide] Minimize Sign; \emph{Hide Sign} and \emph{Infiltrate} start one Position higher; \emph{Broker/Parley} worse.
+  \item[Endure] Conserve Supplies and protect Condition; ignore the first \emph{Weather} penalty each day.
+\end{description}
+
+\subsection{Day Flow}
+Morning scene $\to$ Mid-day trek $\to$ \textbf{Camp Phase}. On long pushes, insert a \textbf{Mid-day Review}: change Intent, check \textbf{Weather}, remind \textbf{Projects}.
+
+\section{Wilderness Actions (Common)}
+\begin{itemize}
+  \item \textbf{Navigate (Wits+Survey):} set course/avoid hazard. DV 2--4 by biome/Weather.
+  \item \textbf{Forage (Wits+Survival/Craft):} gather food, water, fuel, or herbs. DV 2--5 by biome.
+  \item \textbf{Hunt/Track (Wits+Track):} stalk prey or follow spoor. DV 2--5; Forest/Badlands help; Steppe/Desert hinder.
+  \item \textbf{Cross Hazard (Body+Tactics/Craft):} ford, ledge, dune. DV 2--5; failure ticks \textbf{Weariness +1} or \textbf{Supplies --1}.
+  \item \textbf{Hide Sign (Wits+Subterfuge):} erase spoor, control smoke, false trails. DV 2--4; on hit reduce \textbf{Sign --1}.
+  \item \textbf{Blaze Trail (Wits+Craft):} leave discrete waymarks; on hit, create \emph{Trail} tag for your party; rivals can notice on 1s.
+  \item \textbf{Parley with Wardens/Spirits (Presence+Sway/Rites):} claim rites or hospitality; on miss start \textbf{Oath/Offense [4]}.
+  \item \textbf{Harvest Components (Wits+Craft/Herbal):} gain one-use tags: \emph{Hardy Rations}, \emph{Bitter Tincture} (clear minor Harm), \emph{Sap-Resin} (firestarter), \emph{Smoke-Blend} (Hide Sign +1).
+\end{itemize}
+\emph{DV Cheats:} using a relevant \textbf{String} (ford rights, shrine hospitality, grazing compact) is DV --1 or Position +1 once/scene.
+
+\section{Camps \& Hearthfires}\label{sec:camp}
+\subsection{Camp Quality (0--3)}
+How well you settle (shelter, heat, dryness, watch). Improves Position next day by Camp Quality (max +1) and speeds recovery.
+
+\subsection{Making Camp}
+\begin{itemize}
+  \item \textbf{Build Camp (Wits+Craft):} set Quality 1 on hit; +1 with good site; on 1 start \textbf{Vermin/Leak [4]}.
+  \item \textbf{Assign Watches:} 1--3 PCs/followers; each can pre-empt one SB spend or spot an approach early.
+  \item \textbf{Hearthfire Rite (Presence+Rites):} claim hospitality with the land. On hit, clear \textbf{Weariness --1} and create \textbf{Audience: Warm}; on 1, add \textbf{Superstition: Ill Omen}.
+  \item \textbf{Repair \& Recuperate:} clear \textbf{Weariness --1}; step down one minor \textbf{Harm} with supplies/time; spend \textbf{Supplies} to cook $\to$ add \emph{Heartened} tag for tomorrow (one Position +1).
+\end{itemize}
+
+\subsection{Breaking Camp}
+Poor break (rush, storm) $\to$ \textbf{Sign +1}; careful break $\to$ \textbf{Sign --1} with time.
+
+\section{Hazards \& Pressures}
+\subsection{Terrain Hazards}
+\begin{description}[leftmargin=1.2em]
+  \item[Forest] deadfall (Cross DV 3--4), widowmaker (Defense), parasite swarm (\textbf{Weariness +1} unless protected).
+  \item[Steppe] grassfire (Outrun DV 3--4), stampede (Shield/Drive DV 3--5), dust whiteout (Navigate DV 3--4; \textbf{Sign +1}).
+  \item[Desert] heat stroke (Endure DV 3--4 or \textbf{Supplies --1} water), dune slip (Cross DV 3--4; wagon \textbf{Condition +1}), night cold (\textbf{Weariness +1} if no fire).
+  \item[Marsh] sucking mud (Cross DV 3--5; drop gear), miasma (\textbf{Weariness +1} + start \textbf{Sickness [4]}), hidden channel (Swim/Boat).
+  \item[Mountain] rockfall (Defense), ledge gap (Cross DV 4--5), thin air (\textbf{Weariness +1} on failures).
+  \item[Coast] rip (\emph{Chase (boat)}), surge (Cross), sea fog (Navigate).
+  \item[Tundra] whiteout (Navigate DV 3--4), thin ice (Cross DV 3--5; \textbf{Harm} risk), frostbite (\textbf{Weariness +1}).
+\end{description}
+
+\subsection{Weather Matrix}\label{sec:weather}
+Advance \textbf{Weather [4--6]} on 1s or fiction.
+\begin{itemize}
+  \item \textbf{Rain/Monsoon:} fords impassable; \textbf{Distance} only on strong hits; on any 1, \textbf{Condition +1} (soak/rot).
+  \item \textbf{Snow/Whiteout:} sight/aim Position --1; \textbf{Weariness +1} at day end unless \emph{Shelter}.
+  \item \textbf{Heat/Dry:} \emph{Forage} Position --1; at camp spend \textbf{Supplies} or \textbf{Weariness +1}.
+  \item \textbf{Dust/Sand:} \emph{Hide Sign} Position --1; on any 1, \textbf{Condition +1} (abrasion) and \textbf{Supplies --1} (waste).
+  \item \textbf{Ward-Storm:} supernatural; scenes start \textbf{Desperate} unless rites/wards; strong hit clears \textbf{Weariness --1}; 1 $\to$ \textbf{Sign +1}.
+\end{itemize}
+
+\subsection{Predation \& Territorial Response (optional)}
+Track \textbf{Beast Pressure [4--6]} when apex threats notice. On fill, they test your camp or claim the trail. Reduce by \emph{Hide Sign}, tribute rites, or relocating.
+
+\subsection{Wilderness SB (GM menu)}\label{sec:sb}
+Spook the Team (\textbf{Weariness +1} or \textbf{Supplies --1}) \textbullet{} Unwelcome Smoke (\textbf{Sign +1}; start \textbf{Watcher [4]}) \textbullet{} Bad Footing (minor \textbf{Harm} or wagon \textbf{Condition +1}) \textbullet{} Rumor on the Wind (rivals gain 1 \textbf{Clue}) \textbullet{} Foul Water (start \textbf{Sickness [4]}).
+
+\section{Hunts, Chases \& Stalks}
+\subsection{Pursuit Ladders}
+\textbf{Foot:} DV 2 open ground; 3 brush; 4 rocky; 5 marsh.\\
+\textbf{Horse/Beast:} DV 2 steppe road; 3 ruts; 4 switchbacks; 5 dunes.\\
+\textbf{Boat (backwaters/coast):} DV 2 open; 3 reeds; 4 tidal; 5 fog.
+
+\subsection{Stalk \& Ambush}
+Create \emph{Concealment} (Stalk DV 2--4); spend for Position +1 or DV --1 on the strike. On a 1 while stalking, the prey gains \emph{Wind of You} (tag).
+
+\subsection{Prey \& Harvest}
+Small game (DV 2--3) \textbullet{} Herd beasts (DV 3--4) \textbullet{} Apex (DV 4--5). On hit, take \textbf{Supplies +1} and 1 \textbf{Component} tag; on strong hit choose +1 extra or a \textbf{Clue}. On 1s, start \textbf{Retaliation [4]}.
+
+\section{Outposts \& Strongholds (Asset tie-ins)}
+Treat semi-permanent bases as \textbf{Assets}: \emph{Outpost}, \emph{Hunting Lodge}, \emph{Ranger Tower}, \emph{Shrine Hermitage}.\\
+\textbf{Projects:} \emph{Smokehouse (4)}, \emph{Ward-Rings (6)}, \emph{Hidden Cache (4)}, \emph{Tethered Ferry (6)}.\\
+\textbf{Upkeep/Yield:} as assets; gain \textbf{Clue/Favor/Leverage} themed to the wilds.
+
+\section{Denizens \& Factions}
+Ranger Orders (Strings: watchtowers, trail codes) \textbullet{} Shrine Keepers (hospitality, taboo enforcement) \textbullet{} Game Wardens (hunting warrants) \textbullet{} Poacher Bands (hidden blinds, buyers) \textbullet{} Beast Courts/Spirits (ward-rings, omen stones) \textbullet{} Raid Banners (camp maps, remount chains).\\
+\textbf{Faction Clocks:} Influence/Stability/Exposure work unchanged; Exposure may reflect \textbf{Sign} or rumor rather than city scandal.
+
+\section{Generators}
+\subsection{Landmarks (d66)}
+11 stone waygate; 12 singing dune; 13 blue fenlight; 14 shattered menhir; 15 frostwell; 16 cliff hive; 21 thorn maze; 22 rope bridge; 23 kurgan field; 24 tide cave; 25 obsidian flow; 26 wolf run; 31 birch ring; 32 drowned bell; 33 salt jackstraws; 34 sky-stair; 35 whispering reeds; 36 geyser plain; 41 storm beacon; 42 peat stack; 43 hunter's cairn; 44 moon pool; 45 basalt organ; 46 amber mire; 51 stag wallow; 52 avalanche chute; 53 tide mill; 54 dead forest; 55 sunken road; 56 glacier window; 61 giant's table; 62 foxfire glen; 63 saint's anchor; 64 glass beach; 65 hanging valley; 66 dragon's brows.
+
+\subsection{Trail Complications (d12)}
+1 cracked axle; 2 false cairns; 3 flooded ford; 4 hostile patrol; 5 lost kit; 6 gust front; 7 slick lichen; 8 jealous spirit; 9 echo confusion; 10 fresh predator spoor; 11 smoke on horizon; 12 fire in camp.
+
+\subsection{Boons \& Finds (d12)}
+1 ripe berries; 2 clean spring; 3 dry cave; 4 remount cache; 5 sacred ash; 6 ironwood stave; 7 resin patch; 8 herb clutch; 9 fossil charm; 10 hunter's map; 11 ferryman token; 12 storm-proof tarp.
+
+\section{Integration Notes}
+\begin{itemize}
+  \item \textbf{Urban:} Trail markets and wardens' courts are venues; district-style tags apply. Standing with local offices = Position +1 for writs.
+  \item \textbf{Caravans:} Wilderness legs use this module; \emph{Camp} replaces caravan stops; \emph{Overextend} increases \textbf{Weariness/Condition}.
+  \item \textbf{Political:} Ranger orders and wardens function as factions; Strings = warrants, towers, taboo rites.
+  \item \textbf{Assets/Patrons:} Outposts as assets; hunting/ford rights as \textbf{Patron Strings}.
+  \item \textbf{Psionics:} \emph{Dream Weather}---psions may read omens for \textbf{Clue} or reduce \textbf{Weather}; \emph{Mind Beacon}---telepathic whistles once/day at \textbf{Sign +1}.
+  \item \textbf{Dragon's Lair:} Landmarks (kurgans, storm beacons, saint's anchors) can map to lairs/hoards; \emph{Ward-Storms} hide wyrm traffic.
+\end{itemize}
+
+\section{Example of Play (short)}
+\textbf{Setup:} Expedition crosses \emph{Thornweald $\to$ Skybreak Pass} (Distance [6], Danger [4], Weather [4: rain]). Intent: \textbf{Scout}. Tracks: Supplies 4/6, Weariness 2/6, Sign 1/6.\\
+\textbf{Navigate the Tangle (Wits+Survey, Forest DV 3):} Hit $\to$ \textbf{Distance +1}; a 1 shows $\to$ GM spends SB \emph{Bad Footing}, minor Harm.\\
+\textbf{Hide Sign (Wits+Subterfuge, DV 2):} Strong hit $\to$ \textbf{Sign --2}. You blaze a subtle \emph{Trail} for return.\\
+\textbf{Camp Phase:} Build Camp (Quality 1); Hearthfire Rite (hit) clears \textbf{Weariness --1} and creates \textbf{Audience: Warm} with a shrine keeper. Night watch pre-empts a \emph{Spook the Team} SB.\\
+\textbf{Morning---Cross Scree (Body+Tactics, Mountain DV 4):} Partial $\to$ progress with \textbf{Weariness +1}. Weather advances $\to$ \textbf{Condition +1} risk; choose \textbf{Endure} intent tomorrow to ignore first penalty.
+
+\section*{GM Reference (one page)}
+\begin{itemize}
+  \item \textbf{Daily Intent:} Traverse \textbullet{} Scout \textbullet{} Hunt \textbullet{} Hide \textbullet{} Endure.
+  \item \textbf{Tracks:} Distance [4--8] \textbullet{} Danger [4--6] \textbullet{} Weather [4--6] \textbullet{} Supplies [6] \textbullet{} Weariness [6] \textbullet{} Sign [6] (opt: Beast Pressure [4--6]).
+  \item \textbf{Common Actions:} Navigate \textbullet{} Forage \textbullet{} Hunt/Track \textbullet{} Cross \textbullet{} Hide Sign \textbullet{} Blaze Trail \textbullet{} Parley (wardens/spirits) \textbullet{} Harvest.
+  \item \textbf{Camp:} Build \textbullet{} Watches \textbullet{} Hearthfire Rite \textbullet{} Repair/Recuperate \textbullet{} Break.
+  \item \textbf{Weather Matrix:} Rain/Monsoon (Distance hard; Condition +1 on 1) \textbullet{} Snow/Whiteout (Position --1; Weariness +1 without Shelter) \textbullet{} Heat/Dry (Forage --1; Weariness +1 without extra water) \textbullet{} Dust/Sand (Hide Sign --1; Condition +1; Supplies --1) \textbullet{} Ward-Storm (Desperate w/o wards).
+  \item \textbf{SB Menu:} Spook the Team \textbullet{} Unwelcome Smoke \textbullet{} Bad Footing \textbullet{} Rumor on the Wind \textbullet{} Foul Water.
+  \item \textbf{Integration Hooks:} Outposts as assets \textbullet{} Warrants/rites as Strings \textbullet{} Psionic omens \textbullet{} Dragon landmarks.
+\end{itemize}
+
+\vfill
+\section*{Changelog}
+\textbf{v0.1} --- First pass: region sheet, biome tags, intent dials, party tracks (Supplies/Weariness/Sign), camp phase, hazards \& weather, hunts \& chases, outposts tie-in, denizens, generators, integration, example, and GM one-pager.
+
+\begin{center}\small This module adds procedures only; defer to the core SRD for roll math and adjudication.\end{center}
+
+\end{document}
