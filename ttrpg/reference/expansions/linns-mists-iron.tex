@@ -1,0 +1,301 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{mdframed}
+\usepackage{sectsty}
+\usepackage{needspace}
+\usepackage{changepage}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{marginnote}
+
+\geometry{margin=1in}
+\setstretch{1.2}
+\sectionfont{\large}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\small}
+
+\newmdenv[linecolor=black,linewidth=1pt,backgroundcolor=gray!5]{adventurebox}
+\newmdenv[linecolor=gray,linewidth=0.5pt,backgroundcolor=gray!3]{mechanicbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Linn: Mist \& Iron}
+\fancyhead[R]{Fate's Edge Module}
+\fancyfoot[C]{\thepage}
+
+\title{Linn: Mist \& Iron \\ \large Raids, Rivers, and Oathbinding (Fate's Edge v0.1)}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{A culture-focused module for coastal raids, river thrusts, oath-law, and seasonal expeditions by the Linns---seafarers of the north who strike the Violet Steppe littoral, run the Yloka up into the Abderrian Sea and Mistlands, and range as far south as Theona in the Dolmis. Built to slot into Amaranthine Sea, Political Intrigue, Wilderness, and Caravans using core Fate's Edge procedures (Position/DV, SB, clocks, Strings, Favor/Leverage/Exposure).}
+\end{center}
+
+\section*{Design Goals}
+\begin{itemize}
+\item \textbf{Oath before oar.} Social bonds, boasts, and blood-silver shape play as much as blades.
+\item \textbf{Raider--trader parity.} Raids, mercenary service, and escort trade are equally supported.
+\item \textbf{Seamless integration.} Uses existing chase/ship rules, faction clocks, and currencies---no new dice math.
+\item \textbf{Low bookkeeping.} Crew, ship, season wheel, and 2--3 visible clocks per scenario.
+\end{itemize}
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+\item Make a Crew/Clan Sheet (\S1) and a Ship Sheet (\S2). Pick 1--2 Strings (river-right, winter harbor, thing-seat) and 3--4 Tags.
+\item Mark the Season Wheel (\S3) and current Theaters (coast, river, mist). Start Repute [6], Feud [4], Oath Ledger.
+\item Pick an opening Score Type (\S4): Coastal Raid, River Strike, Escort/Trade, or Thing Moot.
+\item Frame the approach, set Position/DV from tags/venue, play. On any 1, GM spends from Mist \& Iron SB (\S6.4).
+\end{enumerate}
+
+\section{Linn Crew/Clan Sheet (Template)}
+
+\begin{center}
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\textbf{[CLAN / CREW NAME]} & \\
+\hline
+Aett (home seat): \_\_\_\_\_\_\_\_\_\_\_\_ & Thing Affiliation: \_\_\_\_\_\_\_\_\_\_\_\_ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Strings (2--3):} winter harbor $\bullet$ river-right $\bullet$ trade oath $\bullet$ feud settlement $\bullet$ warding chant $\bullet$ pilot's stone
+
+\textbf{Tags (2--4):} Oathbound $\bullet$ Riverwise $\bullet$ Ice-Trained $\bullet$ Reaver-Known $\bullet$ Hospitable $\bullet$ Law-Strict $\bullet$ Skald-Loud $\bullet$ Wolf-Banner
+
+\textbf{Tracks:}
+\begin{itemize}
+\item Repute [6] (standing among Linn and neighbors)
+\item Feud [4] (active quarrel; on fill $\rightarrow$ blood-price owed or war)
+\item Exposure [6] (to foreign powers; for non-Linn venues)
+\end{itemize}
+
+\textbf{Oath Ledger:} favors owed/held (name + what; acts like Favor/Leverage within Linn spheres)
+
+\textbf{Notables:} steersman $\bullet$ war-leader $\bullet$ speaker $\bullet$ skald $\bullet$ shipwright
+
+\textbf{Repute [6]:} Tick up for kept oaths, fair trade, valor; tick down for oath-breaking, cowardice, or sacrilege. High Repute grants Audience: Respectful at thing; low invites Audience: Skeptical.
+
+\textbf{Feud [4]:} Name the counterparty. Ticks on insult, theft, or harm; clear by blood-silver, ordeal, or deed.
+
+\section{Ship Sheet (Longhulls \& Rivercraft)}
+
+\textbf{Pick a hull and 3--4 tags.}
+
+\textbf{Longhull (raider):} shallow draft, fast oars, beachable.
+
+\textbf{Broadshore (cargo):} higher freeboard, stout frames, slower oars.
+
+\textbf{River-spear (cutter):} light, narrow, collapsible mast for weirs.
+
+\textbf{Ship Tags (choose 3--4)}
+\begin{itemize}
+\item Shallow Draft --- River rapids Drive/Handle DV --1; cross bars, weirs.
+\item Beaching Hull --- Land/sail from beaches; Disengage gains Position +1 at surf.
+\item Ice-Ready --- In thaw/freeze scenes, first Condition +1 is ignored.
+\item Mistwise --- In fog/gares, Navigate DV --1; Ambush at Sea starts one Position higher.
+\item River-Runner --- Row Upstream DV --1; portage checks Position +1.
+\item Wolf-Boarding Gear --- Board \& Brace DV --1; entangling hooks/ropes.
+\item High Shields --- +1 die defending vs arrows/sling; on 1: Side-Slip penalty (windage) applies.
+\item Skald-Drum --- Once/score gain Audience: Fierce aboard; can rally morale.
+\item Pilots' Stones --- Hidden cairn-marks; once/score Navigate Position +1 in shoals.
+\end{itemize}
+
+\textbf{Roles (choose at table)}\\
+Steersman (helm), War-Leader (boarding/assault), Speaker (parley), Skald (morale/saga), Shorehand (portage/repairs), Lookout (weather/ice).
+
+\section{Season Wheel \& Theaters}
+
+Spring Muster $\rightarrow$ Summer Raids $\rightarrow$ Autumn Trade/Settling $\rightarrow$ Winter Hearth/Thing.
+
+At each transition:
+\begin{itemize}
+\item Advance Politics (Mandate/Crisis) for coastal powers.
+\item Roll Weather/Ice [4--6] for the theater in play (coast, river, mistland).
+\item Offer Oath Opportunities (escort, feud settlement, shrine warding).
+\end{itemize}
+
+\textbf{Theaters}
+\begin{itemize}
+\item Coast (Abderrian/Mistlands): cliffs, skerries, tide races, fog.
+\item River (Yloka): bars, rapids, weirs, toll-fords, riverside towns.
+\item Dolmis Reach (south): broader seas, warmer storms, foreign courts.
+\end{itemize}
+
+\section{Score Types \& Procedures}
+
+Pick approach (Deceit $\bullet$ Speed $\bullet$ Shock $\bullet$ Parley) $\rightarrow$ set Position/DV from venue/tags $\rightarrow$ roll.
+
+\subsection{Coastal Raid (Objective: Plunder / Message / Prisoner)}
+
+\textbf{Clocks:} Alarm [4--6], Plunder [6--8], Ship Damage [4], Blood-Price [4].
+
+\textbf{Entry:} surf landing, hidden cove, tide gate, harbor ruse.
+
+\textbf{On 1s:} GM spends SB $\rightarrow$ alarm bells, hidden shoal, torch-chain across channel, watch-tower signal.
+
+\textbf{Resolution:} When Plunder fills, choose coin or Strings (hostage pledge, toll writ, seasonal tithe). If Blood-Price fills, mark Feud +1 or pay blood-silver (Favor loss or obligation clock).
+
+\subsection{River Strike (Objective: Tollhouse / Weir / Rival Barge)}
+
+\textbf{Clocks:} Current [4], Pursuit [6], Sentries [4], Plunder/Terms [6].
+
+\textbf{Position tweaks:} River-Runner/Shallow Draft help; crosswinds/hail hurt.
+
+\textbf{On 1s:} weir gets raised, arrows from reed-blind, boom-chain snaps at wrong time.
+
+\subsection{Escort/Trade (Objective: Profit / Standing)}
+
+Use Market from Amaranthine/Caravans; add Linn perks:
+\begin{itemize}
+\item Thing Tokens (oath-markers) count as String once/session in Linn venues.
+\item Skald-Drum can convert Audience: Warm $\rightarrow$ Favor (narrow) once/score with a saga.
+\end{itemize}
+
+\subsection{Thing Moot (Objective: Law / Settlement)}
+
+\textbf{Venue:} ring of stones, winter hall.
+
+\textbf{Moves:} Oath-Swear (commit under penalty), Wager Wyrd (ordeal by feat), Blood-Silver (compensation roll), Witness the Saga (Skald stakes a truth).
+
+\textbf{Outcomes:} resolve Feud, write Oath to ledger (acts as durable String), assign winter land or river-right.
+
+\section{Oaths, Blood-Silver, \& Repute}
+\begin{itemize}
+\item \textbf{Oath (currency):} Inside Linn spheres, treat Oath Ledger entries as Favor/Leverage equivalents; breaking one ticks Repute --1 and creates Feud +1.
+\item \textbf{Blood-Silver (settlement):} Pay with coin, hostage-string, or deed. Roll Petition/Broker vs DV 2--4 (standing, witnesses, hurt). On hit, reduce Feud --2; on partial, --1; on miss, counter-oath demanded.
+\item \textbf{Boasts \& Sagas:} A public boast creates Audience: Expectant; fulfill it to gain Repute +1, fail and mark Exposure or Feud.
+\end{itemize}
+
+\section{Sea \& River Procedures}
+
+\subsection{DV Ladders}
+\begin{itemize}
+\item \textbf{Chase (Sea):} DV 2 reach $\bullet$ 3 skerries $\bullet$ 4 reef line $\bullet$ 5 storm eddies.
+\item \textbf{Chase (River):} DV 2 open $\bullet$ 3 bars $\bullet$ 4 rapids $\bullet$ 5 weirs/locks.
+\item \textbf{Board \& Brace:} DV 3--5 (tags: Wolf-Boarding Gear lowers DV).
+\end{itemize}
+
+\subsection{Weather/Ice Matrix [4--6]}
+
+Advance on 1s or fiction:
+\begin{itemize}
+\item \textbf{Fog/Mist:} sight Position --1; Mistwise cancels. On 1, Pursuit +1 (lost bearings).
+\item \textbf{Squall/Hail:} ranged actions --1 die; on 1, Condition +1 (sails/rig).
+\item \textbf{Ice/Floe:} Navigate DV +1; on 1, choose Delay (Distance stalls) or Keel-Scuff (Condition +1).
+\end{itemize}
+
+\subsection{Portage \& Weirs}
+
+Treat as Cross Hazard (Body+Tactics/Craft) DV 3--5; River-Runner/Shallow Draft grant Position +1. On 1, Oarline snaps or Axle-sled breaks.
+
+\subsection{Mist \& Iron SB (GM menu)}
+\begin{itemize}
+\item Hidden Shoal: sudden ground; Ship Damage +1 unless Position was high.
+\item Tower Fire: beacon lit; Pursuit +1 and Alarm +1.
+\item Oarline Breaks: lose Position; repair or fight short-handed.
+\item Witness at Cliff: an enemy skiff sees; Exposure +1 (foreign) or Feud +1 (Linn).
+\item Saga Twisted: rumor flips an Audience tag against you.
+\end{itemize}
+
+\section{Linn Culture Tools (portrayal guidance)}
+\begin{itemize}
+\item Emphasize law and reciprocity (oaths, blood-silver, witness) over caricature.
+\item Show plural livelihoods: fishers, traders, wardens, mercenaries, skalds---not only raiders.
+\item Let women/elders hold seats and steer deals; avoid monolith tropes.
+\item Lean into seasonality and thing assemblies as civic life.
+\end{itemize}
+
+\textbf{Etiquette Hooks (once/scene in Linn venues):} gift the host's hearth with salt/fish oil; name your mother's line; offer a verse---each can grant Position +1 in parley.
+
+\section{Factions \& Fronts}
+\begin{itemize}
+\item \textbf{Linns Union (docks \& dues):} Strings---dock priority, barge pilots.
+\item \textbf{Mistland Wardens:} Strings---fog bell chains, cliff beacons.
+\item \textbf{Yloka Tollmen:} Strings---boom-chains, river seals.
+\item \textbf{Dolmis Factors:} Strings---winter contracts, bonded warehouses.
+\item \textbf{Shrine of Storm-Whale:} Strings---safe-run chants, tithe.
+\end{itemize}
+
+\textbf{Front Clocks (examples):}
+\begin{itemize}
+\item Reprisals Fleet [6--8] (coastal power organizes counterstrike).
+\item Thing Schism [6] (oath controversies split halls).
+\item Mistland Famine [6] (trade mission needed; gain Standing if solved).
+\end{itemize}
+
+\section{Generators}
+
+\subsection{Coastal Targets (d66)}
+
+11 tide mill $\bullet$ 12 beacon tower $\bullet$ 13 cliff monastery $\bullet$ 14 saltworks $\bullet$ 15 fishing fleet $\bullet$ 16 lord's boathouse $\bullet$ 21 skerry storehouse $\bullet$ 22 ropewalk $\bullet$ 23 ferry-chain $\bullet$ 24 dyeshed $\bullet$ 25 customs shed $\bullet$ 26 river gate $\bullet$ 31 amber beach $\bullet$ 32 quarry pier $\bullet$ 33 seal rookery $\bullet$ 34 barge yard $\bullet$ 35 sheep isle $\bullet$ 36 fortress quay $\bullet$ 41 smokehouse row $\bullet$ 42 eel-weirs $\bullet$ 43 pilot stone $\bullet$ 44 winter harbor $\bullet$ 45 tax sloop $\bullet$ 46 river lighthouse $\bullet$ 51 shrine cove $\bullet$ 52 smugglers' cut $\bullet$ 53 patrol launch $\bullet$ 54 tollhouse $\bullet$ 55 grain pier $\bullet$ 56 seawall breach $\bullet$ 61 ice slip $\bullet$ 62 wreckers' fires $\bullet$ 63 tide cave $\bullet$ 64 chain boom $\bullet$ 65 slate wharf $\bullet$ 66 mint barge.
+
+\subsection{River Hazards (d12)}
+
+1 bar on a bend $\bullet$ 2 sudden freshet $\bullet$ 3 weir rat-lines $\bullet$ 4 deadwood snag $\bullet$ 5 eel-pots $\bullet$ 6 ice pans $\bullet$ 7 hidden side-cut $\bullet$ 8 bluff echo $\bullet$ 9 toll chain half-raised $\bullet$ 10 reeds conceal archers $\bullet$ 11 rain-swollen ford $\bullet$ 12 sand-suck bank.
+
+\subsection{Thing Cases (d12)}
+
+1 insult in song $\bullet$ 2 stolen pilot stone $\bullet$ 3 broken oath on winter grain $\bullet$ 4 blood-price disputed $\bullet$ 5 marriage claim $\bullet$ 6 warding chant stolen $\bullet$ 7 hostage pledge lapsed $\bullet$ 8 salvage rights $\bullet$ 9 border cairn moved $\bullet$ 10 feud cooling terms $\bullet$ 11 saga witness contest $\bullet$ 12 mercenary pay withheld.
+
+\subsection{Sagas \& Boons (d12)}
+
+1 oar-song that steadies arms $\bullet$ 2 whale omen at dawn $\bullet$ 3 amber find $\bullet$ 4 pilot's ghost shows a cut $\bullet$ 5 storm-whale spares you $\bullet$ 6 omen of red sails $\bullet$ 7 skald's verse spreads $\bullet$ 8 winter hall adopts you $\bullet$ 9 river seal renewed $\bullet$ 10 cliff bell silent $\bullet$ 11 mist opens path $\bullet$ 12 oath-ring warms (truth told).
+
+\section{Integration Notes}
+\begin{itemize}
+\item \textbf{Amaranthine Sea:} Use ship chase and blockade tools; Linn Skald-Drum converts Audience to Favor once/score in port riots or dock disputes.
+\item \textbf{Caravans:} Swap staging at waystations with winter harbors; River-Runner aids barge convoys upriver.
+\item \textbf{Wilderness:} Portage/overland jumps tie into outpost assets; fjord hunts use Hunt/Chase ladders.
+\item \textbf{Political Intrigue:} Treat the Thing as a political venue; Repute sets default Position; Blood-Silver interacts with Favor/Exposure economies.
+\item \textbf{Psionics:} Seers translate as omen-readers; allow Psychic Weather Sense to soften fog/ice penalties once/leg.
+\item \textbf{Dragon's Lair:} Skerries and glacier valleys hide wyrm shrines; oaths may bind to ancient powers for perilous boons.
+\end{itemize}
+
+\section{Example of Play (short)}
+
+\textbf{Setup:} Longhull with Shallow Draft, Mistwise, Wolf-Boarding Gear. Crew Repute 3/6, Feud 1/4 (with Yloka Tollmen). Score: River Strike against a boom-chain tollhouse (Plunder/Terms).
+
+\textbf{Approach:} Parley-then-Shock. Speaker petitions for winter discount (DV 3). Partial $\rightarrow$ Position stays Risky, GM +1 SB.
+
+\textbf{Action:} War-Leader triggers Board \& Brace at the boom. Wolf-Boarding Gear drops DV to 3. Hit $\rightarrow$ Plunder +2; a 1 shows $\rightarrow$ GM spends Tower Fire (Alarm +1, Pursuit +1).
+
+\textbf{Twist:} Fog rolls in. Mistwise cancels Position penalty. Steersman runs a Pilots' Stone line: Navigate gains Position +1; Pursuit --1.
+
+\textbf{Close:} Plunder fills. Crew chooses a seasonal tithe String instead of coin. Blood-Price at 2/4; they pledge blood-silver at winter thing to avoid Feud tick.
+
+\section{GM Reference (one page)}
+\begin{itemize}
+\item \textbf{Crew:} Repute [6] $\bullet$ Feud [4] $\bullet$ Exposure [6] $\bullet$ Oath Ledger.
+\item \textbf{Ships:} choose hull + 3--4 tags. Roles: Steersman $\bullet$ War-Leader $\bullet$ Speaker $\bullet$ Skald $\bullet$ Shorehand $\bullet$ Lookout.
+\item \textbf{Season Wheel:} Spring muster $\bullet$ Summer raids $\bullet$ Autumn trade/settle $\bullet$ Winter thing.
+\item \textbf{Score Types:} Coastal Raid $\bullet$ River Strike $\bullet$ Escort/Trade $\bullet$ Thing Moot.
+\item \textbf{Key Clocks:} Alarm $\bullet$ Plunder $\bullet$ Ship Damage $\bullet$ Blood-Price $\bullet$ Pursuit.
+\item \textbf{Weather/Ice:} Fog/Mist $\bullet$ Squall/Hail $\bullet$ Ice/Floe.
+\item \textbf{SB Menu:} Hidden Shoal $\bullet$ Tower Fire $\bullet$ Oarline Breaks $\bullet$ Witness at Cliff $\bullet$ Saga Twisted.
+\item \textbf{Integration:} Portage $\leftrightarrow$ Wilderness $\bullet$ Dock riots $\leftrightarrow$ Amaranthine $\bullet$ Thing $\leftrightarrow$ Political $\bullet$ Omens $\leftrightarrow$ Psionics.
+\end{itemize}
+
+\section{Changelog}
+
+\textbf{v0.1} --- First draft: crew/ship sheets, tags \& roles, season wheel, sea/river procedures, raid/river/thing scores, oath \& blood-silver economy, generators, integration, and an example.
+
+\textbf{End of v0.1}
+
+\end{document}
