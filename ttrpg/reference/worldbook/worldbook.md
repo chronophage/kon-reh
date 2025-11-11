@@ -1,5 +1,144 @@
-# Fate's Edge: Worldbook of the Northern and Eastern Shores
 
+Welcome to the World of Fate’s Edge
+
+“Every choice tips the balance. Every deed carries a price.”
+
+The world that remains is a mosaic of splintered nations, ancient oaths, forgotten gods, and rising powers. Three centuries have passed since the fall of the Utaran Empire, the last great unifying force the world has ever known. Its legions, its roads, its shared currency and law—gone. Borders fractured. Armies vanished. Plagues, war, and hunger carved civilization down to the bone.
+
+Now, the world belongs to the survivors.
+
+Kingdoms rise, but none are stable.
+Trade returns, but only through danger.
+Magic burns brighter, but every spell demands something in return.
+
+In Fate’s Edge, you play characters who dare to act in a world that punishes hesitation as fiercely as it does ambition. Heroes, scoundrels, exiles, scholars, revolutionaries—anyone bold enough to claim their own story. The world won’t hand you power. You will have to seize it, bargain for it, or bleed for it.
+
+This is a setting of consequence.
+
+Your blade might decide the fate of a city.
+Your oath might ignite a war.
+Your magic might save thousands—or condemn them.
+
+⸻
+
+What Kind of Setting Is This?
+
+Fate’s Edge is a low-fantasy, consequence-driven world shaped by:
+	•	Political intrigue and shifting alliances
+	•	Ancient ruins and forgotten powers
+	•	Magic that is unpredictable, costly, and dangerous
+	•	A world still rebuilding itself after an age of collapse
+
+There are no perfect kingdoms and no chosen ones. Power is earned, contested, and paid for. Every nation carries wounds from the Empire’s fall, and every frontier hides secrets older than recorded history.
+
+You will find:
+	•	Cities ruled by merchant houses instead of kings
+	•	Orders of knights bound by oath, debt, and reputation
+	•	Scholars who trade in forbidden texts
+	•	Runekeepers who bind themselves to Patrons in exchange for devastating power
+	•	Cults, conspiracies, and mercenary companies fighting to shape the future
+
+The world is familiar enough to understand—but harsh enough to surprise.
+
+⸻
+
+The Fall of Utar
+
+The Utaran Empire was grand, brutal, brilliant, and deeply flawed.
+Its collapse was not a single event, but a chain of catastrophes:
+	•	Plague
+	•	War on multiple fronts
+	•	Economic implosion
+	•	Magical disasters
+	•	The ambition of its own generals
+	•	And rumors, even now, of something older that stirred beneath its capitals
+
+Now only echoes remain:
+	•	Crumbling roads
+	•	Abandoned forts
+	•	Haunted libraries
+	•	Vaults sealed since the last Emperors vanished
+
+Scholars disagree on how it fell. Priests say it was judgment. Soldiers say it was betrayal. Survivors say it was inevitable.
+
+What matters is that the world has learned nothing from it.
+
+⸻
+
+A World on the Brink
+
+Trade has returned.
+Learning has begun again.
+Cities prosper.
+Kingdoms expand.
+
+But beneath every hopeful step lies danger.
+
+Factions plot.
+Borders shift.
+War is always half a breath away.
+Magic stretches the seams of reality.
+Patrons whisper to mortals, offering power in exchange for devotion, sacrifice…or worse.
+
+Civilization is rebuilding—
+but it stands on the very edge of the blade.
+
+⸻
+
+Your Place in This World
+
+You are not bystanders.
+
+You are the ones who ride into the unknown, who test the frontier, who unravel conspiracies, who recover lost magics and forbidden relics. You break curses, topple tyrants, challenge Patrons, and write your own legend.
+
+Some call you heroes.
+Some call you mercenaries.
+Some call you fools.
+
+It doesn’t matter.
+
+What matters is this:
+
+Your choices change the world.
+Not because prophecy demands it, but because your actions have weight. Fate’s Edge is a setting where stories grow from the consequences of what you dare to attempt.
+
+Stand, and the world shifts with you.
+Hesitate, and it cuts you down.
+
+Welcome to Fate’s Edge.
+Take your first step carefully.
+The ground is not as steady as it seems.
+
+⸻
+
+Want a Shorter Version?
+
+Here’s a compact 1-page version for the opening inside-cover or GM handout:
+
+⸻
+
+Fate’s Edge: Setting Overview (Short Form)
+
+Three hundred years after the Utaran Empire fell, the world claws its way back toward civilization. Kingdoms rise and fall. Trade returns, though the roads are haunted. Magic reawakens, but always with a cost. Scholars unearth ancient secrets while generals redraw borders in blood.
+
+This is a world of consequence:
+	•	No perfect kingdoms
+	•	No chosen ones
+	•	No magic without a price
+
+The powerful fear change.
+The desperate demand it.
+And the bold—like you—have the chance to shape it.
+
+Whether you serve a Patron, wield strange magic, or simply carry a sword and enough stubbornness to keep breathing, the world of Fate’s Edge is yours to change.
+
+But remember:
+
+Every victory demands sacrifice.
+Every secret has a keeper.
+And the world stands on a knife’s edge—ready to cut anyone who slips.
+
+# Fate's Edge: Worldbook of the Northern and Eastern Shores
 ## Table of Contents
 
 1. [The Northern Shore of the Amaranthine Sea](#the-northern-shore-of-the-amaranthine-sea)
