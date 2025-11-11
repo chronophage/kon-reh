@@ -1,0 +1,388 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+% Needed for shaded + leftbar
+\usepackage{framed}
+\usepackage{color}
+
+\geometry{margin=1in,headheight=15pt}
+
+\sectionfont{\large\bfseries}
+\subsectionfont{\normalsize\bfseries}
+
+\definecolor{shadecolor}{gray}{0.95}
+\definecolor{headercolor}{rgb}{0.2,0.2,0.6}
+\definecolor{accentcolor}{rgb}{0.6,0.1,0.1}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{The Obsidian Convergence}
+\fancyhead[LO,RE]{Fate's Edge Showpiece Adventure}
+\fancyfoot[C]{\thepage}
+
+\newenvironment{adventurebox}[1]{%
+  \begin{shaded}%
+  \textbf{\large #1}\\%
+}{\end{shaded}}
+
+\newenvironment{gmnote}[1]{%
+  \begin{leftbar}%
+  \textbf{GM Note: #1}\\%
+}{\end{leftbar}}
+
+% Safer clock environment: no open table across env boundary
+\newenvironment{clock}[2]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
+    #1 & #2
+  \end{tabularx}\par
+}{}
+
+\newenvironment{scene}[1]{%
+  \vspace{0.5cm}
+  \begin{center}
+    \textbf{\large Scene: #1}
+  \end{center}
+  \vspace{0.3cm}
+}{}
+
+\title{\Huge The Obsidian Convergence\\ \Large A Fate's Edge Showpiece Adventure}
+\author{}
+\date{Tier III-IV (6-8 sessions)}
+
+\begin{document}
+
+\maketitle
+
+\begin{adventurebox}{Adventure Summary}
+When the celestial alignment of the Seven Obsidian Stars occurs, ancient seals binding the Void Between Realms begin to fracture. The party must navigate political intrigue, cosmic horror, and personal sacrifice to prevent an invasion that would consume all existence. This adventure showcases Fate's Edge's multi-domain capabilities, scaling from urban intrigue to wilderness survival to cosmic horror.
+\end{adventurebox}
+
+\section{Campaign Overview}
+
+\subsection{Premise}
+Every thousand years, seven obsidian meteorites align in the night sky, their gravitational resonance weakening the barriers between realities. The ancient Keth'moran Empire sealed these rifts with sacrifice and forbidden knowledge, but their protections are failing. As cultists seek to tear down the last barriers, reality itself begins to unravel.
+
+\subsection{Themes}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Cosmic Horror:} The insignificance of mortals when facing incomprehensible forces
+\item \textbf{Political Intrigue:} Kingdoms and cults maneuver for power during the crisis
+\item \textbf{Personal Sacrifice:} Heroism requires giving up what matters most
+\item \textbf{Reality's Fragility:} The thin membrane between what is and what could be
+\end{itemize}
+
+\subsection{Key Locations}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Vorthak Spire:} Floating city of scholars studying the convergence
+\item \textbf{The Shattered Wastes:} Desert where obsidian meteorites fell
+\item \textbf{Keth'moran Vaults:} Ancient underground complex with final seals
+\item \textbf{The Between:} Pocket dimension where reality fractures
+\end{itemize}
+
+\section{Campaign Clocks}
+
+\begin{clock}{Reality Fracture [12]}{How much fundamental laws of reality have been altered by cosmic influence. Advances when: Impossible phenomena observed (+1), Dimensional mathematics researched (+2), PCs directly perceive alien geometry (+3)}
+\end{clock}
+
+\begin{clock}{Void Invasion [15]}{How close cosmic entity is to full manifestation in our reality. Advances when: Reality Fracture reaches 6 (+2), Collective Sanity reaches 6 (+3), PCs attempt to communicate with alien intelligence (+3)}
+\end{clock}
+
+\begin{clock}{Political Collapse [10]}{Stability of mortal realms under cosmic pressure. Advances when: Noble houses declare independence (+1), Trade routes collapse (+2), Military units defect to cults (+3)}
+\end{clock}
+
+\begin{clock}{Seal Integrity [8]}{Strength of ancient barriers containing the Void. Advances when: Cult rituals completed (+2), Scholarly research reveals weaknesses (+1), Reality distortions stress foundations (+2)}
+\end{clock}
+
+\section{Key Factions}
+
+\subsection{The Keth'moran Circle}
+\textbf{Leaders:} Archon Valdris, Loremaster Serenne\\
+\textbf{Goal:} Maintain ancient seals at any cost\\
+\textbf{Methods:} Scholarly research, ritual magic, willing sacrifice\\
+\textbf{Complication:} Their methods require increasingly horrific sacrifices
+
+\subsection{The Stellar Cult}
+\textbf{Leaders:} Void-Prophet Malachar, Star-Seer Zephyn\\
+\textbf{Goal:} Welcome the entities from beyond reality\\
+\textbf{Methods:} Cosmic rituals, reality distortion, recruitment\\
+\textbf{Complication:} Members gain cosmic awareness but lose humanity
+
+\subsection{The Kingdom of Vorthak}
+\textbf{Leaders:} Queen Morvaine, High General Tharik\\
+\textbf{Goal:} Protect mortal realms from cosmic threat\\
+\textbf{Methods:} Military force, diplomatic alliances, magical defenses\\
+\textbf{Complication:} Resources stretched thin, political factions divide response
+
+\section{Character Hooks}
+
+\subsection{For Each PC, Choose One:}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{The Scholar's Burden:} You possess forbidden knowledge about the Keth'moran seals
+\item \textbf{The Cult Survivor:} You escaped the Stellar Cult but still hear their whispers
+\item \textbf{The Royal Agent:} You serve Queen Morvaine with special authority during the crisis
+\item \textbf{The Void-Touched:} You've been marked by contact with reality's edges
+\item \textbf{The Guardian's Oath:} You swore to protect a specific location or person during the convergence
+\end{enumerate}
+
+\section{Act I: Signs in the Sky (Sessions 1-2)}
+
+\begin{scene}{The Celestial Proclamation}
+The adventure begins as the first obsidian star appears in the night sky. Strange phenomena occur across the realm: gravity fluctuates in certain areas, dreams become prophetic, and cult activity spikes. The party is called to Vorthak Spire, the floating city of scholars who have been monitoring the convergence for decades.
+
+\textbf{Key NPCs:}
+\begin{itemize}[leftmargin=*]
+\item Archon Valdris - Ancient scholar who knows too much
+\item Loremaster Serenne - Keeper of forbidden texts
+\item Queen Morvaine - Desperate ruler seeking solutions
+\end{itemize}
+
+\textbf{Initial Challenges:}
+\begin{itemize}[leftmargin=*]
+\item Social maneuvering to gain access to Vorthak Spire
+\item Investigation of reality distortions affecting the city
+\item Confrontation with cult infiltrators
+\end{itemize}
+
+\textbf{GM Notes:} Establish the cosmic horror tone early. Use minor reality distortions to make players uncomfortable with their understanding of physics. Introduce the first signs of cosmic awareness in characters who were touched by the Void.
+\end{scene}
+
+\begin{scene}{The Shattered Observatory}
+A research outpost in the desert reports catastrophic failure as reality begins to fracture around the second obsidian star. The party is dispatched to investigate and recover crucial data about the convergence patterns.
+
+\textbf{Environmental Hazards:}
+\begin{itemize}[leftmargin=*]
+\item Gravity pockets where up becomes down
+\item Time loops that repeat conversations
+\item Geometric impossibilities that hurt to perceive
+\end{itemize}
+
+\textbf{Key Discovery:} The observatory's final log reveals that the convergence is not natural—it was orchestrated by entities from beyond reality to weaken the seals.
+
+\textbf{GM Notes:} This scene introduces wilderness survival elements with cosmic horror complications. Use the environment itself as an antagonist. Advance Reality Fracture clock as players encounter impossible phenomena.
+\end{scene}
+
+\section{Act II: The Fracturing World (Sessions 3-5)}
+
+\begin{scene}{Infiltration of the Keth'moran Vaults}
+With two stars visible, the ancient vaults begin to resonate with cosmic energy. The party must gain access to retrieve the final sealing ritual, but the vaults are guarded by constructs that test not just strength but sanity.
+
+\textbf{Vault Challenges:}
+\begin{itemize}[leftmargin=*]
+\item Puzzle rooms that require non-Euclidean thinking
+\item Guardian constructs that exist partially outside normal space
+\item Sanity tests when viewing the true nature of the seals
+\end{itemize}
+
+\textbf{Moral Dilemma:} The complete sealing ritual requires sacrificing someone the characters care about. The partial ritual will only delay the invasion but preserve lives.
+
+\textbf{GM Notes:} This scene showcases the horror elements. Each character should face personal fears made manifest. Use the Collective Sanity clock to track group psychological effects.
+\end{scene}
+
+\begin{scene}{The Between}
+When reality fractures severely, the party finds themselves partially pulled into the space between realms. Here, the laws of physics are suggestions, and the entities from beyond begin to take notice of their presence.
+
+\textbf{The Between Environment:}
+\begin{itemize}[leftmargin=*]
+\item Colors that shouldn't exist
+\item Sounds that move independently of their sources
+\item Thoughts that aren't your own
+\end{itemize}
+
+\textbf{Key Encounter:} The Whispering Geometry - An entity that exists as pure mathematical concept, offering knowledge in exchange for conceptual sacrifices (memories, skills, aspects of identity).
+
+\textbf{GM Notes:} This is the adventure's horror centerpiece. Make normal perception unreliable. Advance Void Invasion clock significantly if players linger too long in this realm.
+\end{scene}
+
+\begin{scene}{Political Storm}
+As reality becomes unstable, the political situation in Vorthak deteriorates. Factions within the court debate whether to attempt sealing the rifts or flee to other realms. The party must navigate this dangerous political landscape while preventing civil war.
+
+\textbf{Political Factions:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{The Purifiers:} Want to destroy all magical knowledge to prevent further corruption
+\item \textbf{The Escapists:} Plan to abandon the realm and seek refuge elsewhere
+\item \textbf{The Sacrificers:} Believe massive sacrifice can strengthen the seals
+\end{itemize}
+
+\textbf{Climactic Event:} A cult infiltration attempt during a crucial council meeting. The party must protect key figures while not revealing their own cosmic awareness.
+
+\textbf{GM Notes:} Balance social maneuvering with cosmic horror elements. Characters' sanity and cosmic awareness should affect their political effectiveness. Advance Political Collapse clock based on party's success or failure.
+\end{scene}
+
+\section{Act III: The Final Convergence (Sessions 6-8)}
+
+\begin{scene}{The Stellar Alignment}
+With five stars visible, reality becomes increasingly unstable. The party must travel to the convergence point—a location where all seven meteorites will align—before the cult can complete their ritual to tear down the final seals.
+
+\textbf{Journey Challenges:}
+\begin{itemize}[leftmargin=*]
+\item Reality storms that shift geography
+\item Cult ambushes with reality-warping abilities
+\item Environmental hazards from dimensional bleed-through
+\end{itemize}
+
+\textbf{Allies and Enemies:} Along the way, the party encounters other groups—some helpful, others hindering their progress. The landscape itself becomes an active participant in the conflict.
+
+\textbf{GM Notes:} This journey should feel epic and dangerous. Use the travel framework but with cosmic horror complications. Each segment of travel should present unique challenges that test different character capabilities.
+\end{scene}
+
+\begin{scene}{The Convergence Chamber}
+The final confrontation takes place in an ancient chamber where the first seals were cast. Reality here is fluid, and the barriers between realms are paper-thin. The party faces both the cult leaders and the entities they have summoned.
+
+\textbf{The Chamber's Properties:}
+\begin{itemize}[leftmargin=*]
+\item Time flows differently in each section
+\item Gravity changes based on emotional state
+\item Thoughts become reality for brief moments
+\end{itemize}
+
+\textbf{Cult Leaders:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Void-Prophet Malachar:} Transformed into a being of pure concept
+\item \textbf{Star-Seer Zephyn:} Gained cosmic sight but lost human empathy
+\item \textbf{The Collective:} Cultists merged into a single entity
+\end{itemize}
+
+\textbf{GM Notes:} This is a multi-faceted battle—physical, mental, and conceptual. Characters should use all their abilities and resources. The environment itself provides both opportunities and dangers.
+\end{scene}
+
+\begin{scene}{The Choice}
+In the climactic moment, the party discovers that stopping the invasion requires a final, ultimate sacrifice. They must choose between:
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{The Sealing:} One character must become the final seal, existing forever between realms
+\item \textbf{The Containment:} All characters must sacrifice their cosmic awareness, losing any powers gained but containing the threat
+\item \textbf{The Gambit:} Attempt to negotiate with the entities, with uncertain and potentially horrific consequences
+\end{enumerate}
+
+\textbf{Consequences:} Each choice leads to different campaign outcomes and character developments. The decision should feel weighty and personal to each player.
+
+\textbf{GM Notes:} This is the emotional core of the adventure. Focus on character moments and personal stakes. The mechanical resolution should support the narrative conclusion the players have earned.
+\end{scene}
+
+\section{Resolution and Aftermath}
+
+\subsection{Possible Endings}
+
+\subsubsection{The Eternal Guardian (Sealing Choice)}
+One character becomes the final seal, existing in the space between realms to prevent the invasion. They gain immense cosmic power but lose their mortal existence. The other characters become legends who saved reality, but they carry the burden of their friend's sacrifice.
+
+\textbf{Campaign Hooks:} The sealed character can communicate occasionally, providing cosmic insights but at a cost. The cult may seek to free them, believing they were imprisoned unjustly.
+
+\subsubsection{The Cleansed World (Containment Choice)}
+All characters lose their cosmic awareness and powers but successfully contain the threat. Reality stabilizes, but the world is forever changed. The characters return to normal lives, but they remember what was lost.
+
+\textbf{Campaign Hooks:} Residual cosmic energy may still affect the world. Other entities might seek to take advantage of the weakened barriers. Characters may seek to regain their lost powers through new adventures.
+
+\subsubsection{The New Equilibrium (Gambit Choice)}
+Negotiation with the entities creates a new balance—some cosmic influence enters the world, but not enough to cause invasion. Characters gain unique abilities and responsibilities as intermediaries between realms.
+
+\textbf{Campaign Hooks:} Managing the new cosmic presence becomes an ongoing challenge. Other factions may seek to exploit or eliminate the cosmic influence. Characters must navigate their new roles as reality's guardians.
+
+\section{GM Toolkit}
+
+\subsection{Cosmic Horror Elements}
+
+\begin{gmnote}{Reality Distortion Zones}
+Areas where physics become unreliable. Modify dice rolls or Position based on the distortion level. Minor distortions might impose -1 die penalties, while major distortions could require entirely different approaches to problem-solving.
+\end{gmnote}
+
+\begin{gmnote}{Collective Sanity Management}
+Track group psychological effects separately from individual character sanity. When Collective Sanity advances, all characters suffer minor penalties. When it fills, shared hallucinations become reality for the group.
+\end{gmnote}
+
+\begin{gmnote}{Entity Encounters}
+Cosmic entities should be encountered gradually, with increasing intensity. Start with environmental effects, then sensory phenomena, then partial manifestations, and finally full encounters. Each level should advance the appropriate clocks.
+\end{gmnote}
+
+\subsection{Scaling for Different Tiers}
+
+\subsubsection{Tier II (4-6 sessions)}
+\begin{itemize}[leftmargin=*]
+\item Reduce clock sizes by 2-4 segments
+\item Simplify cosmic entity encounters
+\item Focus on one or two domains rather than all three
+\item Reduce the scope of political elements
+\end{itemize}
+
+\subsubsection{Tier IV-V (8+ sessions)}
+\begin{itemize}[leftmargin=*]
+\item Add additional locations and factions
+\item Include sub-plots for individual characters
+\item Expand the cosmic threat to multiple realms
+\item Add long-term consequences that span campaigns
+\end{itemize}
+
+\subsection{Modular Elements}
+
+This adventure can be broken into smaller modules:
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{The Celestial Proclamation} (1-2 sessions) - Introduction and initial investigation
+\item \textbf{The Shattered Observatory} (1 session) - Wilderness survival with cosmic horror
+\item \textbf{Vaults of the Ancients} (2-3 sessions) - Dungeon exploration with sanity elements
+\item \textbf{The Between} (1-2 sessions) - Pure cosmic horror experience
+\item \textbf{Political Storm} (1-2 sessions) - Social intrigue under pressure
+\item \textbf{The Final Convergence} (2-3 sessions) - Epic conclusion
+\end{enumerate}
+
+\section{Character Advancement}
+
+\subsection{XP Awards}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Session Participation:} 2 XP per session
+\item \textbf{Cosmic Encounters:} 1-3 XP for significant entity interactions
+\item \textbf{Moral Choices:} 2-4 XP for difficult decisions with consequences
+\item \textbf{Sacrifices Made:} 3-5 XP for meaningful personal losses
+\item \textbf{Campaign Milestones:} 8-12 XP for completing major acts
+\end{itemize}
+
+\subsection{Cosmic Talents}
+
+Characters exposed to cosmic entities may gain unique abilities:
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Void Sight (6 XP):} Can perceive reality distortions and entities from beyond
+\item \textbf{Conceptual Anchor (8 XP):} Immune to minor reality distortions, can stabilize others
+\item \textbf{Between Step (12 XP):} Can briefly exist partially outside normal space
+\item \textbf{Cosmic Resonance (15 XP):} Can communicate with and influence cosmic entities
+\end{itemize}
+
+\subsection{Complications}
+
+Exposure to cosmic entities creates lasting effects:
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Cosmic Awareness:} Gain insights but lose some human perspective
+\item \textbf{Reality Sensitivity:} Suffer penalties in areas of high magical/technological interference
+\item \textbf{Whisper Dreams:} Receive prophetic dreams but suffer sleep disturbances
+\item \textbf{Conceptual Hunger:} Crave understanding of impossible truths, risking sanity
+\end{itemize}
+
+\section{Conclusion}
+
+\textbf{The Obsidian Convergence} is designed to showcase Fate's Edge at its finest—combining social intrigue, wilderness survival, dungeon exploration, and cosmic horror into a cohesive narrative experience. The modular structure allows GMs to adapt the adventure to their group's preferences and capabilities, while the escalating cosmic threat provides compelling stakes throughout.
+
+The adventure emphasizes character growth and difficult choices, ensuring that players feel their decisions have meaningful consequences. Whether the party chooses sacrifice, containment, or negotiation, the ending should feel earned and impactful.
+
+Most importantly, this adventure demonstrates how Fate's Edge's core mechanics—Position/Effect, Story Beats, and Boons—can support any genre while maintaining the collaborative storytelling that makes the system special. The cosmic horror elements enhance rather than replace the fundamental principles of player agency and narrative focus.
+
+\begin{adventurebox}{Final GM Advice}
+Trust your players to make interesting choices. The cosmic horror elements work best when they enhance player agency rather than constrain it. Let the story evolve based on character decisions, and don't be afraid to escalate the cosmic threat when players take bold actions. Remember that in cosmic horror, the most terrifying thing is often not the monsters, but the realization that humanity's place in the universe is far more precarious than we imagined.
+\end{adventurebox}
+
+\end{document}
