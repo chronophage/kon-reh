@@ -1,0 +1,677 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{mdframed}
+\usepackage{sectsty}
+\usepackage{needspace}
+\usepackage{changepage}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{marginnote}
+
+\geometry{margin=1in}
+\setstretch{1.2}
+\sectionfont{\large}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\small}
+
+\newmdenv[linecolor=black,linewidth=1pt,backgroundcolor=gray!5]{adventurebox}
+\newmdenv[linecolor=gray,linewidth=0.5pt,backgroundcolor=gray!3]{mechanicbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Sands of Moon \& Brass}
+\fancyhead[R]{Fate's Edge Module}
+\fancyfoot[C]{\thepage}
+
+\title{Sands of Moon \& Brass \\ \large Deserts of Galaninan, Fhara, and Ashaan (v0.1)}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{A culture-focused module for desert trade, nomad law, star-path navigation, and qanat politics by the caravanserai folk of the Galaninan Great Erg, Fharan Marches, and Ashaani Provinces. Built to slot into Caravans, Wilderness, Sea, Political Intrigue, and Psionics using core Fate's Edge procedures (Position/DV, SB, clocks, Strings, Favor/Leverage/Exposure).}
+\end{center}
+
+\section*{Design Goals}
+\begin{itemize}
+\item \textbf{Etiquette with teeth.} Water first, lamp-lit contracts, and title respect shape play as much as blades.
+\item \textbf{Caravan--nomad parity.} Trade routes, tribal law, and oasis politics are equally supported.
+\item \textbf{Seamless integration.} Uses existing market rules, faction clocks, and currencies---no new dice math.
+\item \textbf{Low bookkeeping.} Caravan, tribe, season wheel, and 2--3 visible clocks per scenario.
+\end{itemize}
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+\item Make a Caravan/Tribe Sheet (\S1) and a Mount/Camel Sheet (\S2). Pick 1--2 Strings (water-share tablet, lamp-oath seal, wind-tower charter) and 3--4 Tags.
+\item Mark the Season Wheel (\S3) and current Theaters (erg, marches, provinces). Start Standing [6], Feud [4], Exposure [6].
+\item Pick an opening Score Type (\S4): Desert Caravan, Oasis Siege, Qanat Sabotage, or Council Moot.
+\item Frame the approach, set Position/DV from tags/venue, play. On any 1, GM spends from Sands \& Brass SB (\S6.4).
+\end{enumerate}
+
+\section{Caravan/Tribe Sheet (Template)}
+
+\begin{center}
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\textbf{[CARAVAN / TRIBE NAME]} & \\
+\hline
+Seat (home oasis): \_\_\_\_\_\_\_\_\_\_\_\_ & Council Affiliation: \_\_\_\_\_\_\_\_\_\_\_\_ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Strings (2--3):} water-share tablet $\bullet$ lamp-oath seal $\bullet$ trade charter $\bullet$ feud settlement $\bullet$ way-song $\bullet$ guide-stone
+
+\textbf{Tags (2--4):} Water-Wise $\bullet$ Star-Pathed $\bullet$ Heat-Trained $\bullet$ Merchant-Known $\bullet$ Hospitable $\bullet$ Law-Strict $\bullet$ Poet-Loud $\bullet$ Falcon-Banner
+
+\textbf{Tracks:}
+\begin{itemize}
+\item Standing [6] (reputation among desert folk and cities)
+\item Feud [4] (active quarrel; on fill $\rightarrow$ blood-price owed or war)
+\item Exposure [6] (to foreign powers; for non-desert venues)
+\end{itemize}
+
+\textbf{Oath Ledger:} favors owed/held (name + what; acts like Favor/Leverage within desert spheres)
+
+\textbf{Notables:} guide $\bullet$ war-leader $\bullet$ speaker $\bullet$ poet $\bullet$ water-keeper
+
+\textbf{Standing [6]:} Tick up for kept oaths, fair trade, valor; tick down for oath-breaking, cowardice, or sacrilege. High Standing grants Audience: Respectful at council; low invites Audience: Skeptical.
+
+\textbf{Feud [4]:} Name the counterparty. Ticks on insult, theft, or harm; clear by blood-silver, ordeal, or deed.
+
+\section{Mount/Camel Sheet (Dromedaries \& Chargers)}
+
+\textbf{Pick a mount and 3--4 tags.}
+
+\textbf{Dromedary (caravan):} water-efficient, steady pace, cargo capacity.
+
+\textbf{Charger (war):} fast sprint, agile turns, combat-trained.
+
+\textbf{Sand Runner (scout):} light, narrow feet, collapsible saddle for dunes.
+
+\textbf{Mount Tags (choose 3--4)}
+\begin{itemize}
+\item Sand-Sure --- Desert sand Drive/Handle DV --1; dune ridges, quicksand.
+\item Water-Efficient --- Half water consumption; ignore first Fatigue from heat.
+\item Night-Runner --- In darkness, Navigate DV --1; Ambush at Dawn starts one Position higher.
+\item Heat-Ready --- In sun/fire scenes, first Condition +1 is ignored.
+\item Qanat-Swimmer --- Underground water passages; Disengage gains Position +1 in tunnels.
+\item Falcon-Eye --- +1 die on Lookout/Watches; spot distant smoke/sand columns.
+\item Brass-Bearer --- Carries heavy loads; ignore encumbrance penalties for trade goods.
+\item Poet's Drum --- Once/score gain Audience: Fierce aboard; can rally morale.
+\item Guide-Stones --- Hidden cairn-marks; once/score Navigate Position +1 in trackless sand.
+\end{itemize}
+
+\textbf{Roles (choose at table)}\\
+Guide (navigation), War-Leader (combat/assault), Speaker (parley), Poet (morale/saga), Water-Keeper (supplies/repairs), Lookout (weather/sandstorm).
+
+\section{Season Wheel \& Theaters}
+
+Spring Caravan $\rightarrow$ Summer Heat $\rightarrow$ Autumn Trade/Settling $\rightarrow$ Winter Council.
+
+At each transition:
+\begin{itemize}
+\item Advance Politics (Mandate/Crisis) for desert powers.
+\item Roll Weather/Heat [4--6] for the theater in play (erg, marches, provinces).
+\item Offer Oath Opportunities (escort, feud settlement, shrine warding).
+\end{itemize}
+
+\textbf{Theaters}
+\begin{itemize}
+\item Galaninan Erg (central): vast dunes, oases, ancient ruins, star-temples.
+\item Fharan Marches (north): rocky plateaus, seasonal rivers, nomad camps.
+\item Ashaani Provinces (south): qanat cities, date gardens, merchant houses.
+\end{itemize}
+
+\section{Score Types \& Procedures}
+
+Pick approach (Deceit $\bullet$ Speed $\bullet$ Shock $\bullet$ Parley) $\rightarrow$ set Position/DV from venue/tags $\rightarrow$ roll.
+
+\subsection{Desert Caravan (Objective: Profit / Passage)}
+
+\textbf{Clocks:} Alarm [4--6], Trade [6--8], Mount Damage [4], Blood-Price [4].
+
+\textbf{Entry:} sand gate, hidden wadi, qanat shortcut, market ruse.
+
+\textbf{On 1s:} GM spends SB $\rightarrow$ sandstorm warning, hidden quicksand, rival caravan ambush, guide betrayal.
+
+\textbf{Resolution:} When Trade fills, choose coin or Strings (trade charter, seasonal tithe, guide contract). If Blood-Price fills, mark Feud +1 or pay blood-silver (Favor loss or obligation clock).
+
+\subsection{Oasis Siege (Objective: Water / Tribute)}
+
+\textbf{Clocks:} Thirst [4], Defense [6], Sentries [4], Terms [6].
+
+\textbf{Position tweaks:} Water-Efficient/Heat-Ready help; sandstorms/hail hurt.
+
+\textbf{On 1s:} qanat gets blocked, arrows from palm grove, sand-burst collapses wall.
+
+\subsection{Qanat Sabotage (Objective: Flood / Blockade)}
+
+Use Market from Caravans/Wilderness; add desert perks:
+\begin{itemize}
+\item Water-Share Tablets count as String once/session in desert venues.
+\item Poet's Drum can convert Audience: Warm $\rightarrow$ Favor (narrow) once/score with a verse.
+\end{itemize}
+
+\subsection{Council Moot (Objective: Law / Settlement)}
+
+\textbf{Venue:} circle of stones, winter pavilion, qanat meeting hall.
+
+\textbf{Moves:} Oath-Swear (commit under penalty), Wager Wyrd (ordeal by feat), Blood-Silver (compensation roll), Witness the Verse (Poet stakes a truth).
+
+\textbf{Outcomes:} resolve Feud, write Oath to ledger (acts as durable String), assign seasonal water rights or trade route.
+
+\section{Etiquette, Blood-Silver, \& Standing}
+\begin{itemize}
+\item \textbf{Etiquette (mechanics):} Water first grants Position +1; lamp-lit contracts add +1 Effect; titles before names improve Audience tags.
+\item \textbf{Blood-Silver (settlement):} Pay with coin, hostage-string, or deed. Roll Petition/Broker vs DV 2--4 (standing, witnesses, hurt). On hit, reduce Feud --2; on partial, --1; on miss, counter-oath demanded.
+\item \textbf{Boasts \& Verses:} A public boast creates Audience: Expectant; fulfill it to gain Standing +1, fail and mark Exposure or Feud.
+\end{itemize}
+
+\section{Desert \& Qanat Procedures}
+
+\subsection{DV Ladders}
+\begin{itemize}
+\item \textbf{Chase (Sand):} DV 2 dune ridge $\bullet$ 3 rocky pass $\bullet$ 4 salt flat $\bullet$ 5 sandstorm wall.
+\item \textbf{Chase (Qanat):} DV 2 open tunnel $\bullet$ 3 narrow passage $\bullet$ 4 flooded section $\bullet$ 5 collapse zone.
+\item \textbf{Board \& Brace:} DV 3--5 (tags: Charger helps lower DV).
+\end{itemize}
+
+\subsection{Weather/Heat Matrix [4--6]}
+
+Advance on 1s or fiction:
+\begin{itemize}
+\item \textbf{Khamsin/Sandstorm:} sight Position --1; Sand-Sure cancels. On 1, Pursuit +1 (lost bearings).
+\item \textbf{Flash Flood:} ranged actions --1 die; on 1, Condition +1 (saddle/gear).
+\item \textbf{Ward Storm:} Navigate DV +1; on 1, choose Delay (Distance stalls) or Sand-Blast (Condition +1).
+\end{itemize}
+
+\subsection{Qanat Navigation \& Hazards}
+
+Treat as Cross Hazard (Body+Tactics/Craft) DV 3--5; Qanat-Swimmer/Sand-Sure grant Position +1. On 1, Tunnel Collapse or Water Breach.
+
+\subsection{Sands \& Brass SB (GM menu)}
+\begin{itemize}
+\item Hidden Quicksand: sudden sink; Mount Damage +1 unless Position was high.
+\item Sandstorm Warning: dust wall rises; Pursuit +1 and Alarm +1.
+\item Guide Betrayal: lose Position; find new path or fight lost.
+\item Witness at Dune: a rival caravan sees; Exposure +1 (foreign) or Feud +1 (desert).
+\item Verse Twisted: rumor flips an Audience tag against you.
+\end{itemize}
+
+\section{Desert Culture Tools (portrayal guidance)}
+\begin{itemize}
+\item Emphasize law and reciprocity (oaths, blood-silver, witness) over caricature.
+\item Show plural livelihoods: traders, guides, water-keepers, poets, warriors---not only raiders.
+\item Let women/elders hold seats and steer deals; avoid monolith tropes.
+\item Lean into seasonality and council assemblies as civic life.
+\end{itemize}
+
+\textbf{Etiquette Hooks (once/scene in desert venues):} offer water first; name your grandfather's line; recite a verse---each can grant Position +1 in parley.
+
+\section{Factions \& Fronts}
+\begin{itemize}
+\item \textbf{Desert Caravans (routes \& dues):} Strings---priority passage, guide contracts.
+\item \textbf{Oasis Wardens:} Strings---water rights, palm grove charters.
+\item \item \textbf{Qanat Builders:} Strings---tunnel access, water-share tablets.
+\item \textbf{Star-Temple Keepers:} Strings---safe-run chants, tithe.
+\item \textbf{Night Moon Markets:} Strings---lamp-oath seals, rare goods contracts.
+\end{itemize}
+
+\textbf{Front Clocks (examples):}
+\begin{itemize}
+\item Rival Caravan Fleet [6--8] (desert power organizes counterstrike).
+\item Council Schism [6] (oath controversies split halls).
+\item Qanat Drought [6] (trade mission needed; gain Standing if solved).
+\end{itemize}
+
+\section{Generators}
+
+\subsection{Desert Targets (d66)}
+
+11 star-temple $\bullet$ 12 beacon tower $\bullet$ 13 cliff monastery $\bullet$ 14 salt works $\bullet$ 15 oasis fleet $\bullet$ 16 lord's pavilion $\bullet$ 21 dune storehouse $\bullet$ 22 rope walk $\bullet$ 23 ferry-chain $\bullet$ 24 dye shed $\bullet$ 25 customs tent $\bullet$ 26 river gate $\bullet$ 31 amber dunes $\bullet$ 32 quarry ridge $\bullet$ 33 ibex herd $\bullet$ 34 camel yard $\bullet$ 35 sheep isle $\bullet$ 36 fortress gate $\bullet$ 41 smokehouse row $\bullet$ 42 eel-weirs $\bullet$ 43 guide stone $\bullet$ 44 winter oasis $\bullet$ 45 tax caravan $\bullet$ 46 river lighthouse $\bullet$ 51 shrine cove $\bullet$ 52 smugglers' cut $\bullet$ 53 patrol launch $\bullet$ 54 tollhouse $\bullet$ 55 grain pier $\bullet$ 56 sand wall breach $\bullet$ 61 ice slip $\bullet$ 62 wreckers' fires $\bullet$ 63 tide cave $\bullet$ 64 chain boom $\bullet$ 65 slate wharf $\bullet$ 66 mint caravan.
+
+\subsection{Desert Hazards (d12)}
+
+1 dune on a bend $\bullet$ 2 sudden flash flood $\bullet$ 3 quicksand pool $\bullet$ 4 deadwood snag $\bullet$ 5 scorpion nest $\bullet$ 6 heat shimmer $\bullet$ 7 hidden side-cut $\bullet$ 8 rock echo $\bullet$ 9 toll chain half-raised $\bullet$ 10 reeds conceal archers $\bullet$ 11 rain-swollen ford $\bullet$ 12 sand-suck bank.
+
+\subsection{Council Cases (d12)}
+
+1 insult in verse $\bullet$ 2 stolen guide stone $\bullet$ 3 broken oath on winter grain $\bullet$ 4 blood-price disputed $\bullet$ 5 marriage claim $\bullet$ 6 way-song stolen $\bullet$ 7 hostage pledge lapsed $\bullet$ 8 salvage rights $\bullet$ 9 border cairn moved $\bullet$ 10 feud cooling terms $\bullet$ 11 verse witness contest $\bullet$ 12 mercenary pay withheld.
+
+\subsection{Verses \& Boons (d12)}
+
+1 drum-song that steadies hands $\bullet$ 2 falcon omen at dawn $\bullet$ 3 amber find $\bullet$ 4 guide's ghost shows a cut $\bullet$ 5 sand-storm spares you $\bullet$ 6 omen of red sails $\bullet$ 7 poet's verse spreads $\bullet$ 8 winter pavilion adopts you $\bullet$ 9 qanat seal renewed $\bullet$ 10 cliff bell silent $\bullet$ 11 stars open path $\bullet$ 12 oath-ring warms (truth told).
+
+\section{Integration Notes}
+\begin{itemize}
+\item \textbf{Caravans:} Use trade market and caravan tools; desert Poet's Drum converts Audience to Favor once/score in market disputes.
+\item \textbf{Wilderness:} Dune/overland jumps tie into outpost assets; desert hunts use Hunt/Chase ladders.
+\item \textbf{Sea:} Swap staging at ports with oasis harbors; Water-Efficient aids ship convoys in arid ports.
+\item \textbf{Political Intrigue:} Treat the Council as a political venue; Standing sets default Position; Blood-Silver interacts with Favor/Exposure economies.
+\item \textbf{Psionics:} Seers translate as omen-readers; allow Psychic Weather Sense to soften sandstorm/heat penalties once/leg.
+\item \textbf{Dragon's Lair:} Dunes and ancient ruins hide wyrm shrines; oaths may bind to ancient powers for perilous boons.
+\end{itemize}
+
+\section{Example of Play (short)}
+
+\textbf{Setup:} Dromedary with Sand-Sure, Night-Runner, Falcon-Eye. Caravan Standing 3/6, Feud 1/4 (with Fharan Nomads). Score: Desert Caravan to Bir al-Qamar (Trade).
+
+\textbf{Approach:} Parley-then-Speed. Speaker petitions for priority passage (DV 3). Partial $\rightarrow$ Position stays Risky, GM spends 1 SB.
+
+\textbf{Action:} Guide triggers Navigate at night. Night-Runner drops DV to 2. Hit $\rightarrow$ Trade +2; a 1 shows $\rightarrow$ GM spends Sandstorm Warning (Alarm +1, Pursuit +1).
+
+\textbf{Twist:} Flash Flood rolls in. Sand-Sure cancels Position penalty. Water-Keeper finds a Guide-Stone line: Navigate gains Position +1; Pursuit --1.
+
+\textbf{Close:} Trade fills. Caravan chooses a seasonal guide contract String instead of coin. Blood-Price at 2/4; they pledge blood-silver at winter council to avoid Feud tick.
+
+\section{GM Reference (one page)}
+\begin{itemize}
+\item \textbf{Caravan:} Standing [6] $\bullet$ Feud [4] $\bullet$ Exposure [6] $\bullet$ Oath Ledger.
+\item \textbf{Mounts:} choose mount + 3--4 tags. Roles: Guide $\bullet$ War-Leader $\bullet$ Speaker $\bullet$ Poet $\bullet$ Water-Keeper $\bullet$ Lookout.
+\item \textbf{Season Wheel:} Spring caravan $\bullet$ Summer heat $\bullet$ Autumn trade/settle $\bullet$ Winter council.
+\item \textbf{Score Types:} Desert Caravan $\bullet$ Oasis Siege $\bullet$ Qanat Sabotage $\bullet$ Council Moot.
+\item \textbf{Key Clocks:} Alarm $\bullet$ Trade $\bullet$ Mount Damage $\bullet$ Blood-Price $\bullet$ Pursuit.
+\item \textbf{Weather/Heat:} Khamsin/Sandstorm $\bullet$ Flash Flood $\bullet$ Ward Storm.
+\item \textbf{SB Menu:} Hidden Quicksand $\bullet$ Sandstorm Warning $\bullet$ Guide Betrayal $\bullet$ Witness at Dune $\bullet$ Verse Twisted.
+\item \textbf{Integration:} Dunes $\leftrightarrow$ Wilderness $\bullet$ Market disputes $\leftrightarrow$ Caravans $\bullet$ Council $\leftrightarrow$ Political $\bullet$ Omens $\leftrightarrow$ Psionics.
+\end{itemize}
+
+\section{Changelog}
+
+\textbf{v0.1} --- First draft: caravan/tribe sheets, tags \& roles, season wheel, desert/qanat procedures, caravan/oasis/council scores, oath \& blood-silver economy, generators, integration, and an example.
+
+\textbf{End of v0.1}
+
+
+\section*{FHARA — Caravan Law \& Lamp-Lit Bargains}
+
+\textbf{Where you'll meet them:} Oasis belts, tent-courts, caravanserai streets, night markets, relief trains.
+
+\textbf{Strings (pick 2--3 to start):} water-share tablets $\bullet$ caravan court writs $\bullet$ escort oaths $\bullet$ salt-road passes.
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item \textbf{Water First:} Offer water before business → Position +1 on Petition/Broker.
+\item \textbf{Lamp for Contracts:} Light a small lamp for signatures → +1 Effect on a contract-binding roll at dusk courts.
+\item \textbf{Verse of Courtesy:} Open with a short couplet of thanks → convert Audience: Cool → Warm with officials.
+\end{itemize}
+
+\textbf{Faux Pas (SB):} Parched Pride — skipping water service flips Audience against you.
+
+\textbf{Venue Tags}
+\begin{itemize}
+\item \textbf{Caravan Court:} neutral tent tribunal; Lamp-Oaths bind as durable Strings; breaking ticks Exposure +1.
+\item \textbf{Moon Market:} night bazaar; Market starts Position +1; on 1, rumor spreads (Lamplighter Gossip).
+\end{itemize}
+
+\textbf{Mounts \& Gear}
+\begin{itemize}
+\item \textbf{Desert Camel:} Water-wise, Heat-hardy (prevent one thirst Supplies --1 per leg).
+\item \textbf{Covered Wagon:} grants shade; first Heat tick/day ignored while traveling slowly.
+\end{itemize}
+
+\textbf{Common Play Roles}\\
+Envoy, Quartermaster, Water-Finder, Lamp-Notary, Escort Captain, Poet-Mediator.
+
+\textbf{Factions}\\
+Caravan Courts $\bullet$ Water-Share Clerks $\bullet$ Lamp-Guilds $\bullet$ Escort Companies $\bullet$ Shrine Hosts.
+
+\textbf{Adventure Seeds}
+\begin{itemize}
+\item A forged water-share tablet triggers Oasis Water Rights Dispute [6].
+\item An escort oath is broken; recover cargo or stand surety at midnight court.
+\end{itemize}
+
+\section*{SIDHI — Pilots, Traders, and Coast-Road Courts}
+
+\textbf{Where you'll meet them:} Coastal entrepôts, river mouths, lighthouse towns, caravan junctions, inner-quarter courts.
+
+\textbf{Strings:} pilot stones $\bullet$ ferry contracts $\bullet$ lighthouse charters $\bullet$ guild guest-rights.
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item \textbf{Bread \& Salt:} Share a simple plate before negotiation → Position +1 in Parley at homes or guild halls.
+\item \textbf{Name the Line:} Give family/mentor line when introduced → Audience: Cool → Warm with civic officials.
+\item \textbf{Guest-Right Token:} Present a stamped guest-right from a guild → DV --1 on first Petition in that venue.
+\end{itemize}
+
+\textbf{Faux Pas (SB):} Cut Line — ignoring lineage or guest-right protocol imposes Position --1 for the scene.
+
+\textbf{Venue Tags}
+\begin{itemize}
+\item \textbf{Pilots' Quay:} navigation disputes settled by local charts; Clue +1 on routes with a token.
+\item \textbf{Lighthouse Court:} tolls and wreck law; Board \& Brace DV --1 when acting as sworn rescue.
+\end{itemize}
+
+\textbf{Mounts \& Gear}
+\begin{itemize}
+\item \textbf{River Barge Teams:} Riverwise; Row Upstream DV --1 with trained crews.
+\item \textbf{Pilot Stones Map:} once/leg Navigate Position +1 through shoals.
+\end{itemize}
+
+\textbf{Common Play Roles}\\
+Factor, Pilot, Wreck-Warden, Guild Mediator, Street Broker, Quay Advocate.
+
+\textbf{Factions}\\
+Pilots' Union $\bullet$ Lighthouse Wardens $\bullet$ Quay Guilds $\bullet$ Ferry Syndicates $\bullet$ Shrine of Safe Crossing.
+
+\textbf{Adventure Seeds}
+\begin{itemize}
+\item A lighthouse charter is forged; expose the plot before a storm convoy arrives.
+\item Pilots' stones are moved to benefit wreckers; restore the line under cover of fog.
+\end{itemize}
+
+\section*{ASHAANI — Processions, Weighhouses, and Cistern Law}
+
+\textbf{Where you'll meet them:} Provincial capitals, desert watchposts, processional avenues, cistern towns, shrine courts.
+
+\textbf{Strings:} weighhouse seals $\bullet$ festival licenses $\bullet$ relief priorities $\bullet$ cistern ledgers.
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item \textbf{Titles Before Names:} Use offices first → Audience: Cool → Warm with administrators.
+\item \textbf{Procession Deference:} Step aside, lower voices during rites → Position +1 on the next roll with witnesses.
+\item \textbf{Seal \& Receipt:} Present stamped receipt at weighhouse → DV --1 on audits/inspections.
+\end{itemize}
+
+\textbf{Faux Pas (SB):} Defaced Seal — mishandling a seal lets the GM start Inspection [4].
+
+\textbf{Venue Tags}
+\begin{itemize}
+\item \textbf{Weighhouse:} tariff hall; on 1, Inspection [4] advances; exact tallies can convert Exposure --1.
+\item \textbf{Processional Way:} festivals; Crowd tag can be spent for Position +1 in public persuasion.
+\end{itemize}
+
+\textbf{Mounts \& Gear}
+\begin{itemize}
+\item \textbf{Relief Cart Trains:} Burdened, Shade-Canopy; Heat --1 on rest if canopies are intact.
+\item \textbf{Ledger Clips:} prove payment; once/stop convert Inspection --1.
+\end{itemize}
+
+\textbf{Common Play Roles}\\
+Auditor, Quartermaster, Procession Marshal, Shrine Scribe, Road Captain.
+
+\textbf{Factions}\\
+Satrap Offices $\bullet$ Relief Granaries $\bullet$ Processional Guilds $\bullet$ Shrine Courtiers $\bullet$ Desert Watch.
+
+\textbf{Adventure Seeds}
+\begin{itemize}
+\item Relief grain diverted by a weighhouse clerk; audit under pressure amid a festival.
+\item A procession mask is stolen; retrieve it before rites fail and Crisis ticks up.
+\end{itemize}
+
+\section*{PERESHI — Charter-Makers, Gardeners, and High-Road Hosts}
+
+\textbf{Where you'll meet them:} Inland caravan routes, terrace towns, archive courts, roof-gardens, mountain passes.
+
+\textbf{Strings:} land-charter tablets $\bullet$ archive citations $\bullet$ high-road guest-rings $\bullet$ garden water-shares.
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item \textbf{Fruit \& Tea:} Offer fruit and a warm cup on arrival → Position +1 in household negotiations.
+\item \textbf{Shoes at Threshold:} Observe house thresholds; remove shoes indoors → negate a Position --1 penalty from prior brusqueness.
+\item \textbf{Couplet of Courtesy:} A brief couplet acknowledging hosts' craft → Audience: Cool → Warm with artisans/scribes.
+\end{itemize}
+
+\textbf{Faux Pas (SB):} Dust on the Mat — barging in tracks Exposure +1 among neighbors.
+
+\textbf{Venue Tags}
+\begin{itemize}
+\item \textbf{Archive Court:} precedent-driven; present citations to treat a social DV --1 once/scene.
+\item \textbf{Roof-Garden Pact:} settlements on rooftops; a hosted pact counts as a String across partnered houses.
+\end{itemize}
+
+\textbf{Mounts \& Gear}
+\begin{itemize}
+\item \textbf{Pack Mules:} Sure-footed; Cross (switchbacks) DV --1.
+\item \textbf{High-Road Litter:} sheltered; grants Heat --1 on long climbs at the cost of Distance --1 progress/day.
+\end{itemize}
+
+\textbf{Common Play Roles}\\
+Land Clerk, High-Road Host, Charter Advocate, Garden Steward, Archive Scribe, Pass Warden.
+
+\textbf{Factions}\\
+Archive Leagues $\bullet$ Gardeners' Courts $\bullet$ High-Road Hospices $\bullet$ Charter-Makers $\bullet$ Terrace Wardens.
+
+\textbf{Adventure Seeds}
+\begin{itemize}
+\item Two terrace towns feud over a spring; arbitrate via archive citations and garden pacts.
+\item A forged charter threatens to displace a hospice; uncover the scribe ring.
+\end{itemize}
+
+\section*{KUVANI — Steppe Hosts, Remount Chains, and Sky-Road Songs}
+
+\textbf{Where you'll meet them:} Meadow edges, steppe roads, remount posts, border fairs, winter camps.
+
+\textbf{Strings:} remount chain marks $\bullet$ steppe guest-ropes $\bullet$ grazing compacts $\bullet$ sky-road songs (route lore).
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item \textbf{Guest Tent Rope:} Leave a rope coiled outside to signal neutrality → Position +1 on first Parley in camp.
+\item \textbf{Bowl Before Blade:} Accept a simple bowl before speaking of arms → Audience: Cool → Warm with elders.
+\item \textbf{Honor the Horse:} Praise mounts; tend tack before sleep → DV --1 on next Chase related to horse teams.
+\end{itemize}
+
+\textbf{Faux Pas (SB):} Spurned Mount — neglecting a horse lets the GM impose Position --1 among riders.
+
+\textbf{Venue Tags}
+\begin{itemize}
+\item \textbf{Remount Post:} swap fresh mounts; once/leg treat Chase (horse) DV --1.
+\item \textbf{Sky-Road Cairns:} waystones; spend a song token to convert Navigate Position +1 across open grass.
+\end{itemize}
+
+\textbf{Mounts \& Gear}
+\begin{itemize}
+\item \textbf{Remount String:} rotating horses; ignore first Weariness +1 from a Chase each day.
+\item \textbf{Steppe Bow Kit:} in open terrain gain +1 Effect on first ranged volley of a clash.
+\end{itemize}
+
+\textbf{Common Play Roles}\\
+Host-Captain, Scout, Lore-Keeper, Herd Steward, Banner Rider, Border Mediator.
+
+\textbf{Factions}\\
+Remount Leagues $\bullet$ River-Edge Hosts $\bullet$ Banner Circles $\bullet$ Steppe Courts $\bullet$ Way-Shrine Keepers.
+
+\textbf{Adventure Seeds}
+\begin{itemize}
+\item Grazing compacts broken by a border satrap; negotiate new strings before herds clash.
+\item A remount post is burned; rebuild the chain under threat from raiders.
+\end{itemize}
+
+\section{Cross-Peoples Integration (quick rules)}
+\begin{itemize}
+\item \textbf{Etiquette Equivalence:} Any culture's etiquette hook can substitute in mixed venues if a local sponsor vouches; treat as Position +0 (not +1) unless the PCs hold a relevant String.
+\item \textbf{Strings as Passports:} A String earned in one sphere (e.g., water-share tablet) lowers DV or raises Position in another when fictionally relevant (e.g., purchasing feed at a Sidhi quay).
+\item \textbf{Markets:} Map appetites across peoples—Fhara (Relief/Ritual), Sidhi (Harbor/Luxury), Ashaani (Official/Relief), Pereshi (Artisan/Scholarly), Kuvani (Travel/Beast). Apply +1 Position when selling into a matching appetite with a native broker.
+\item \textbf{Followers:} When recruiting followers from these peoples, give one culture tag that can be spent once/leg for Position +1 (e.g., Water-Finder, Pilot, Procession Marshal, Archive Clerk, Remount Handler).
+\end{itemize}
+
+\section{GM Portrayal Notes (keep it plural)}
+\begin{itemize}
+\item Represent multiple livelihoods within each people (clerks and camel-drivers; pilots and street brokers; gardeners and charter-makers; riders and lore-keepers).
+\item Use oaths, courts, and hospitality to show social fabric; let etiquette shift mechanics, not caricature.
+\item Ask players what their characters learned from hosts; bring that forward as advantage tags and Strings.
+\item When in doubt, lean on law and reciprocity over spectacle.
+\end{itemize}
+
+\section*{Print Aid}
+
+Arrange each culture as a half-page card. Add icons: cup (hospitality), lamp (oaths), scale (law), mount (travel), knot (Strings), wave/grass/brick for venue type.
+
+\section*{Changelog}
+
+\textbf{v0.1} — Five quick cards with etiquette hooks, lawful Strings, venue tags, mounts/gear, roles, factions, seeds, cross-integration, and portrayal notes.
+
+\textbf{End of v0.1}
+
+% ------------ ADVENTURE 1 ------------
+\section*{The Thirst Ledger (Tier II)}
+\textit{Oasis arbitration, qanat sabotage, and lamp-court verdicts.}
+
+\paragraph{Overview} In the Fharan oasis of \textbf{Bir al-Qamar}, a forged water-share tablet ignites a crisis. The crew must audit ledgers in the \emph{Qanat Quarter}, unmask saboteurs in the wadis, and argue terms before the dusk \emph{Lamp Court}.
+
+\paragraph{Peoples at the Table} 
+\textbf{Fhara} caravan court clerks; \textbf{Sidhi} quay factors with stored cistern grain; \textbf{Ashaani} weighhouse auditors in transit; \textbf{Pereshi} archive-citation scribe; \textbf{Kuvani} remount outriders guarding relief carts.
+
+\subsection*{Fronts \& Clocks}
+\begin{itemize}
+  \item \textbf{Oasis Water Rights Dispute [6]} — riots if unresolved.
+  \item \textbf{Qanat Warden Alert [4--6]} — patrols tighten; Exposure on miss.
+  \item \textbf{Lamp-Court Patience [4]} — judge ends hearings if filled.
+  \item \textbf{Khamsin Front [4]} — dust gales raise Heat/Condition.
+\end{itemize}
+
+\subsection*{Key Sites (Tags)}
+\textbf{Moon Market} (Market +1 Position; SB: Lamplighter Gossip), 
+\textbf{Qanat Quarter} (Infiltrate +1 Position; on 1: Exposure +1), 
+\textbf{Lamp Court} (Lamp-Oaths bind), 
+\textbf{Wadi Country} (Stealth +1 Position; Flash Flood risk).
+
+\subsection*{Beats \& Procedures}
+\textbf{B1: Market Murmurs} (Presence+Sway, DV 3). Etiquette: \emph{Water First} $\rightarrow$ Position +1. On 1: SB \emph{Lamplighter Gossip} flips Audience. \\
+\textbf{B2: Qanat Audit} (Wits+Diplomacy/Audit, DV 3--4). On strong hit, reveal ledger splice; on 1, start \emph{Inspection [4]}. \\
+\textbf{B3: Wadi Pursuit} (Chase: Foot/Beast DV 2--4 by terrain). \emph{Kuvani Remount Post} lowers DV by 1 once/leg. \\
+\textbf{B4: Lamp-Court Plea} (Presence+Sway, DV 3). \emph{Lamp-lit Contract} grants +1 Effect; stake a \emph{Lamp-Oath String} with season clock [4--6].
+
+\subsection*{Hazards \& Sirocco SB}
+\emph{Thirst Bites} (Heat +1), \emph{Mirage Cut} (Distance stalls), \emph{Qanat Quarrel} (Inspection [4]), \emph{Khamsin} (Supplies --1; Condition +1).
+
+\subsection*{Outcomes \& Rewards}
+If the crew proves the forgery: reduce \emph{Oasis Water Rights Dispute} to 0; gain \textbf{Strings}: water-share tablet, tent-court seal; Standing with caravan courts or wardens. Failure ticks Crisis and spawns a riot scene.
+
+\subsection*{Integration Hooks}
+Political Intrigue (\emph{Lamp-Oath Engine}); Caravans (Escort relief carts under Heat); Wilderness (Flash Flood crossing); Sea/Sidhi (quay granaries).
+
+% ------------ ADVENTURE 2 ------------
+\section*{Night of the Moon Kilns (Tier II–III)}
+\textit{A glass monopoly war in Sar Qalyat’s wind towers.}
+
+\paragraph{Overview} In \textbf{Sar Qalyat}, the Galaninan Mirror League runs a secret moon-kiln with outlawed sand. Lamplighters strike; ward-lines whisper. The crew can heist the kiln, flip contracts in lamp-court, or expose saboteurs.
+
+\paragraph{Peoples at the Table}
+\textbf{Fhara} envoy brokering night freight; \textbf{Sidhi} factor with harbor buyers; \textbf{Ashaani} courier bearing festival seals; \textbf{Pereshi} glass-measurer; \textbf{Kuvani} dust-sailer crew hired as decoy.
+
+\subsection*{Fronts \& Clocks}
+\begin{itemize}
+  \item \textbf{Mirror War [6--8]} — assassins, sabotage, price shocks.
+  \item \textbf{Lamplighter Strike [4]} — escorts needed to move safely by night.
+  \item \textbf{Ward-Line Murmurs [6]} — ward-storm risk rises near ruins quarter.
+  \item \textbf{Inspection Dragnet [6]} — weighhouse sweeps for contraband sand.
+\end{itemize}
+
+\subsection*{Key Sites (Tags)}
+\textbf{Wind Towers} (Heat advances slower; Navigate rooftop +1 Position), 
+\textbf{Moon Market} (Market +1 Position), 
+\textbf{Lamp Court} (+1 Effect with lamp-gift),
+\textbf{Ruin Fields Edge} (Ward-Storm risk).
+
+\subsection*{Beats \& Procedures}
+\textbf{B1: Rooftop Recon} (Wits+Survey, DV 3). Pilot lines, watch rotations; on 1: SB \emph{Witness at Roof} starts \emph{Inspection [4]}.\\
+\textbf{B2: Contract Turn} (Presence+Sway, DV 3). \emph{Lamp-lit Contract} grants +1 Effect; a Pereshi citation reduces DV --1 once/scene.\\
+\textbf{B3: Moon-Kiln Heist} (Multi-action: Infiltrate DV 3, Disable DV 4, Escape DV 3). Dust-sailer decoy $\rightarrow$ \emph{Chase (dust)} DV ladder 2–5.\\
+\textbf{B4: Ward-Storm Crossing} (Psionics opt.). Without wards, scene starts \emph{Desperate}; strong hit clears Heat/Morale --1.
+
+\subsection*{Hazards \& SB}
+\emph{Lamplighter Gossip} (Audience flips), 
+\emph{Dust-Sail Ambush} (start Pursuit [6]), 
+\emph{Ward Surge} (Scene Desperate), 
+\emph{Inspection Sweep} (Dragnet +1).
+
+\subsection*{Outcomes \& Rewards}
+Strings: lamplighter contract, mirror-toll beads, ward indemnity. Choose: shutter the illegal kiln (Standing with lamplighters) or seize its contracts (coin + Exposure). Sidhi factor can open sea lanes if favored.
+
+\subsection*{Integration Hooks}
+Caravans (night freight), Psionics (Ward-Storm), Sea (Sidhi buyers), Political (court injunctions), Dragons (mirrored halls in ruin fields).
+
+% ------------ ADVENTURE 3 ------------
+\section*{Breath of Relief (Tier III)}
+\textit{Escort a relief train through khamsin and raids to the Qattara Lines.}
+
+\paragraph{Overview} Famine grips the Ashaani provinces. A relief caravan must cross salt flats, survive dust gales, and pass a crooked weighhouse. Raiders and ward-storms threaten every leg.
+
+\paragraph{Peoples at the Table}
+\textbf{Fhara} escort captains and court notaries; \textbf{Sidhi} pilots coordinating river offload; \textbf{Ashaani} satrap officials and procession marshals; \textbf{Pereshi} auditors tracking grain; \textbf{Kuvani} outriders screening the regs.
+
+\subsection*{Fronts \& Clocks}
+\begin{itemize}
+  \item \textbf{Relief Train in Peril [6]} — if filled, famine riots tick Crisis.
+  \item \textbf{Sirocco Raiders [6]} — dust-sail ambushes along flats.
+  \item \textbf{Ward-Storm Front [4]} — psionic weather spikes.
+  \item \textbf{Weighhouse Corruption [4]} — false tallies, bribe attempts.
+\end{itemize}
+
+\subsection*{Leg Structure (use Intent Dials)}
+\textbf{Leg A: Salt Flats (Speed)} — strong hits add Distance +1; on 1: Supplies --1, Condition +1. \\
+\textbf{Leg B: Wadis (Stealth)} — avoid Pursuit; Flash Flood check (Cross DV 4--5). \\
+\textbf{Leg C: Ruin Fields (Endure)} — Ward-Storm scene; wards negate Desperate. \\
+\textbf{Leg D: Weighhouse (Show)} — Procession etiquette $\rightarrow$ Position +1; Audit DV 3.
+
+\subsection*{Key Scenes}
+\textbf{S1: Khamsin Wall} (Body+Tactics, DV 3). Quartermaster converts Supplies $\rightarrow$ Heat --1 once/day. \\
+\textbf{S2: Dust-Sail Pursuit} (Chase DV: 2 flats • 3 gusty • 4 crosswind • 5 khamsin). Kuvani remount chain can substitute once (treat as longship mapping if using Linn tools). \\
+\textbf{S3: Weighhouse Trial} (Presence+Sway/Audit, DV 3). Titles-before-names converts Audience; Pereshi ledger clips reduce \emph{Inspection} by 1.
+
+\subsection*{Sirocco SB Menu}
+\emph{Thirst Bites}, \emph{Mirage Cut}, \emph{Dust-Sail Ambush}, \emph{Lamplighter Gossip} (at night market), \emph{Ward Surge}.
+
+\subsection*{Outcomes \& Rewards}
+Deliver relief: Standing with satrap office and caravan courts; Strings: festival license, weighhouse seal, escort oath. Failure spawns \emph{Relief Riot [4]} and reduces regional Mandate.
+
+\subsection*{Integration Hooks}
+Political (mandate/relief), Caravans (orders, Overextend), Wilderness (Heat/Camp), Sea (Sidhi offload at port).
+
+% ------------ ADVENTURE 4 ------------
+\section*{Song Beneath the Dunes (Tier III–IV)}
+\textit{Ward-lines awaken under a mirrored ruin; bargains with dust-djanni.}
+
+\paragraph{Overview} Ruin-keepers hire the crew to stabilize a ward-line below a dune-shrouded ziggurat. A rival dig seeks forbidden sand. The crew must cross by star paths, parley with a dust-djanni, and decide what power the wards will serve.
+
+\paragraph{Peoples at the Table}
+\textbf{Fhara} guides and water-finders; \textbf{Sidhi} artifact brokers awaiting port sale; \textbf{Ashaani} shrine courtiers with ritual indemnities; \textbf{Pereshi} scholars mapping star shafts; \textbf{Kuvani} scouts screening raiders.
+
+\subsection*{Fronts \& Clocks}
+\begin{itemize}
+  \item \textbf{Awakening Ward-Lines [8]} — scenes trend Desperate; psionic echoes.
+  \item \textbf{Rival Digs [6]} — sabotage, poaching workers.
+  \item \textbf{Djanni Bargain [4]} — unmet terms bring Heat +1/leg.
+  \item \textbf{Heat Track [6]} — if full, Harm +1 then reset to 3.
+\end{itemize}
+
+\subsection*{Key Sites (Tags)}
+\textbf{Erg Dunes} (Navigate DV +1 without stars), 
+\textbf{Star Shaft} (Lore-Keeper lowers DV --1 at night), 
+\textbf{Mirrored Hall} (Ward-Storm risk), 
+\textbf{Shrine of the North Star} (Navigate DV --1 once/leg).
+
+\subsection*{Beats \& Procedures}
+\textbf{B1: Night Approach} (Star Paths, DV -1 with astrolabe). Strong hit grants a Clue to ward nodes. \\
+\textbf{B2: Djanni Parley} (Presence+Rites, DV 3). Offer verse+water to gain \emph{Passage String}; on miss, \emph{Djanni Bargain} advances. \\
+\textbf{B3: Stabilize the Line} (Wits+Craft/Psionics, DV 4). On strong hit, reduce \emph{Awakening Ward-Lines -2}. On 1, scene becomes Desperate; Fatigue risk. \\
+\textbf{B4: Rival Interference} (Chase or Skirmish). Use Regs for Ambush +1 Position; capture their ledger for exposure in lamp-court later.
+
+\subsection*{Hazards \& SB}
+\emph{Khamsin}, \emph{Ward Surge}, \emph{Mirage Cut}, \emph{Qanat Quarrel} (supply spat at camp).
+
+\subsection*{Outcomes \& Rewards}
+Choose one: bind wards to shrine (Standing with ruin-keepers; sacred cargo boon), redirect to city grid (Standing with Mirror League; coin), or slacken the line to map a dragon route (clue to hoard; Exposure +1). Strings: ward-ring, oath-lamp, survey map.
+
+\subsection*{Integration Hooks}
+Psionics (Aegis, Mental Navigation), Political (who controls the ward grid), Dragons (ancient routes), Caravans (sacred cargo transport), Sea (Sidhi brokers).
+
+\end{document}
