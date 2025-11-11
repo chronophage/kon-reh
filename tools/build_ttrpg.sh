@@ -62,8 +62,9 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  violets-and-stone.tex -n "Fate's Edge Expansion - Violets and Stone.pdf" > /dev/null 2>&1|| echo "#8. Did not build"
 ../../../tools/compile_latex.sh -f  allies-and-adversaries.tex -n "Fate's Edge Expansion - Allies and Adversaries.pdf" > /dev/null 2>&1|| echo "#9. Did not build"
 ../../../tools/compile_latex.sh -f  assets-wordly-patrons.tex -n "Fate's Edge Expansion - Assets and Wordly Patrons.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
-../../../tools/compile_latex.sh -f  caravans-way-of-silk.tex -n "Fate's Edge Expansion - Caravans: The Way of Silk.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
-../../../tools/compile_latex.sh -f  wilds-hinterlands-hearthfires.tex -n "Fate's Edge Expansion - Wilds: Hinterlands and Hearthfires.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
+../../../tools/compile_latex.sh -f  caravans-way-of-silk.tex -n "Fate's Edge Expansion - Caravans: The Way of Silk.pdf" > /dev/null 2>&1|| echo "#11. Did not build"
+../../../tools/compile_latex.sh -f  wilds-hinterlands-hearthfires.tex -n "Fate's Edge Expansion - Wilds: Hinterlands and Hearthfires.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
+../../../tools/compile_latex.sh -f  linns-mists-iron.tex -n "Fate's Edge Expansion - Linns: Mists and Iron.pdf" > /dev/null 2>&1|| echo "#13. Did not build"
 
 
 echo "Committing and pushing to git"
