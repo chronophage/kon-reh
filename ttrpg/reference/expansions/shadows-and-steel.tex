@@ -1,0 +1,235 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{framed}
+\usepackage{xcolor}
+
+\geometry{margin=1in}
+\setstretch{1.15}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge Module}
+\lhead{Shadows \& Steel v0.2}
+\rfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\bfseries}{}{0em}{}
+
+\newcommand{\moduletitle}{Shadows \& Steel — Underworld and Criminal Networks (Fate's Edge v0.2)}
+\newcommand{\subtitle}{A criminal‑campaign module for Fate's Edge: crime families, smugglers, black markets, fences, fixers, and the law that hunts them. Built to sit beside Violets \& Stone (districts), Political Intrigue (faction play), Caravans (smuggling legs), Allies \& Adversaries (crew/org management), Assets \& Patrons, and the core SRD. Uses Position/DV, SB, clocks, Strings, Favor/Leverage/Exposure—no new math.}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Shadows \& Steel — Underworld and Criminal Networks}} \\
+{\large (Fate's Edge v0.2)}
+\end{center}
+
+\vspace{0.2in}
+
+A criminal‑campaign module for Fate's Edge: crime families, smugglers, black markets, fences, fixers, and the law that hunts them. Built to sit beside Violets \& Stone (districts), Political Intrigue (faction play), Caravans (smuggling legs), Allies \& Adversaries (crew/org management), Assets \& Patrons, and the core SRD. Uses Position/DV, SB, clocks, Strings, Favor/Leverage/Exposure—no new math.
+
+\section*{What's New in v0.2 (from playtest)}
+\begin{itemize}
+\item More playbooks: added Fixers and Ward‑Breakers.
+\item Heat threshold table: formal Crew/City Heat triggers; Setup SB → Heat/Alarm rule.
+\item Overhead tools: Clock Budget (3+1), Heat‑to‑Complication conversion, one‑page Heist Cheat Sheet.
+\item Supernatural tie‑ins: Arcane Tier black market, ward crimes, psionic hooks.
+\item Long arcs: three campaign frames with milestones.
+\item Political mapping: War ↔ Faction clocks, formal Blood‑Silver + Witness settlement.
+\end{itemize}
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+\item Make a Crew Sheet (§1) and pick a Playbook (Smugglers, Thieves, Enforcers, Grifters, Fixers, Ward‑Breakers). Choose 3 Crew Tags and 2 Strings.
+\item Sketch a Turf Map (§2) with 4–6 nodes (districts/venues/routes). Mark 1 Racket you control.
+\item Start tracks: Crew Heat [6], City Heat [6], Notoriety [4] (opt.), Law Mandate/Crisis 2/2.
+\item Choose an opening Score Type (§6): Heist, Smuggling Run, Protection Play, or Confidence Game.
+\item On any 1, GM spends from Shadows \& Steel SB (§9.4). Setup Rule: each SB gained during Setup may either Alarm +1 or Crew Heat +1 (GM picks by fiction).
+\end{enumerate}
+
+\section{Crew Sheet (Template)}
+\begin{framed}
+\noindent \textbf{[CREW NAME]} \\
+Type: Smugglers / Thieves / Enforcers / Grifters / Fixers / Ward‑Breakers \\
+Tags (choose 3): Riverwise • Locksmiths • Shadow Accounts • Bribe Web • Knives Out • Silver Tongues • Wrecker's Fire • Clean Faces • Ghost Safehouses • Ward Keys • Court Whisper \\
+Strings (choose 2): dockmaster favor • tollhouse key • guild fence • customs blind • patrol captain's debt • theater front • lamp‑notary on retainer • ruin‑keeper indulgence \\
+Tracks:
+\begin{itemize}
+\item Crew Heat [6] (recent attention)
+\item Notoriety [4] (opt., famous style)
+\item Rep [6] (standing underground)
+\item Bank (coin abstraction)
+\end{itemize}
+Allies/Rivals: fixers, fences, patrol captains, rival crews \\
+Safehouses/Fronts: names + tags
+\end{framed}
+
+\subsection*{Crew Benefits by Type}
+\begin{itemize}
+\item \textbf{Smugglers:} start Riverwise, Customs Blind; once/leg, Smuggle DV –1.
+\item \textbf{Thieves:} start Locksmiths, Clean Faces; once/score, Infiltrate Position +1.
+\item \textbf{Enforcers:} start Knives Out, Wrecker's Fire; once/score, Intimidate/Break Effect +1.
+\item \textbf{Grifters:} start Silver Tongues, Shadow Accounts; once/score, convert Audience: Cool → Warm.
+\item \textbf{Fixers (NEW):} start Bribe Web, Court Whisper; once/score, treat Petition/Broker DV –1 in courts/markets.
+\item \textbf{Ward‑Breakers (NEW):} start Ward Keys, Ghost Safehouses; once/score, ignore first Desperate from wards/psionic weather.
+\end{itemize}
+
+\section{Turf Map \& Territory Control}
+Turf Map: Draw 4–6 nodes: Districts (e.g., Dye Yards, Pilots' Quays), Venues (Moon Market, Gambling Row), Pipelines (river cut, sewer run, postern stairs). Connect with arrows that show movement/contraband flow.
+
+\subsection*{Rackets:} gambling den • dice house • ropewalk skims • dock tithe • counterfeit inks • lanternhouses • fighting pits • lockshop chain • locker barge • eel‑channel • ward‑glass salvage (NEW) • oath‑lamp forgery (NEW).
+
+\subsection*{Taking Turf:} create Claim [6] on a node. During scores aimed at this node, strong outcomes tick Claim. When it fills, add the racket and a String (front or bribe web). Mark Crew Heat +1.
+
+\subsection*{Holding Turf:} each session, roll Hold (Wits+Tactics) vs DV 2–4 by pressure. On hit, gain Bank +1 or Audience: Warm in that node. On 1s, advance a Trouble [4] for that turf (rivals, inspectors, unions).
+
+\subsection*{Territory War:} When rivals contest, start War [8]. While War>0, Bandwidth –1 between sessions. Settlement Template: pay Blood‑Silver (2 Bank each) + name a Witness Faction; all parties stake a Lamp‑Oath [4]. Breaking it: Exposure +1, Repute –1 with the witness faction, War resumes at 2/8.
+
+\section{Heat, Law, and Crackdowns}
+\subsection*{Crew Heat [6] thresholds}
+\begin{itemize}
+\item 0–2: background hum.
+\item 3: start Patrol Sweep [4].
+\item 4–5: random stops; Notoriety +1 when you make a flashy move.
+\item 6: trigger Sting [6] and Exposure +1.
+\end{itemize}
+
+\subsection*{City Heat [6] thresholds}
+\begin{itemize}
+\item 0–2: routine.
+\item 3: curfew murmurs, stop‑and‑search; start Patrol Sweep [4] in hot districts.
+\item 6: Crackdown [4] (DV +1 on criminal actions, law starts with Audience: Hostile).
+\end{itemize}
+
+\subsection*{Cooling Actions}
+\begin{itemize}
+\item \textbf{Lay Low:} lose 1 Bandwidth; clear Crew Heat –2; gain Notoriety +1 (opt.).
+\item \textbf{Grease Palms:} spend Bank/Favor; clear Crew Heat –1 and one Inspection.
+\item \textbf{Hard Pivot:} burn a front (lose one racket) to clear Crew Heat –3 and City Heat –1.
+\end{itemize}
+
+Law Tools: Riverine Patrol, City Watch, Tax Assessor, Bridge Guards—each tracks a Sting [6].
+
+\section{Black Markets \& Rare Goods}
+Use Market from Caravans.
+
+\subsection*{Tiers \& DV:} Street DV 2–3 • Guild DV 3–4 • Court DV 4–5 • Arcane (NEW) DV 5 (wards, psionic keys, oath‑lamps). \\
+Tags: Contraband, Hot, Forged, Sacred, Perishable, Traceable, Warded (NEW).
+
+\subsection*{Partials:} price spike (Bank –1) • Crew Heat +1 • quality flaw (–1 Effect next use) • seller's Temp String • Inspection [4] starts. \\
+\textbf{Miss:} sting springs (Sting [6] +2), counterfeit, or owed favor to a rival fence. \\
+\textbf{Laundering:} Broker/Account DV 3–4. On hit, convert Hot → Clean; on 1, City Heat +1.
+
+\section{Informant Webs}
+Map a Web: 3–5 Informants (dock porter, lamplighter, clerk, patrol runner, skald…). Each has Access, Reliability [4], Price, Flags.
+
+Use: pay Price for Clue +1, small String, or DV –1 in their sphere. On 1s, Reliability –1. At 0, they flip or vanish; start Burn [4] to recover/replace.
+
+\subsection*{Moves (NEW):}
+\begin{itemize}
+\item \textbf{Cross‑Check:} spend 2 informants on same topic → take +1 Effect and only the lowest Reliability –1 applies on a 1.
+\item \textbf{Mask a Source:} spend Bank 1 to prevent Reliability –1 once.
+\end{itemize}
+
+\section{Score Types \& Heist Planner}
+\subsection*{Approaches:} Deceit • Stealth • Violence • Bribe • Con.
+
+\subsection*{Heist Planner (lightweight)}
+\begin{enumerate}
+\item Objective \& Venue.
+\item Entry/Exit Strings (2 hooks you can invoke once each).
+\item Setup Rolls (0–2): each strong hit Position +1 or DV –1 later; each 1 → GM +1 SB or Alarm +1/Crew Heat +1 (Setup Rule).
+\item Threat Clocks: Alarm [4–6], Patrol Routes [4], Inside Man [4].
+\item Flashbacks (opt.) at cost (Bank/Favor/Heat).
+\end{enumerate}
+
+\subsection*{Kit Tokens (NEW):} start each score with 2; spend to declare plausible gear or a small contact. Each extra beyond 2 adds Crew Heat +1.
+
+\subsection*{Score Menus:} Heist • Smuggling Run • Protection Play • Confidence Game. (See §8 for ward/arcane crimes.)
+
+\section{Organization Management (with Allies \& Adversaries)}
+Treat the crew as an Organization Asset with Cohorts (cut‑purses, rowdies, scouts). Elevate via Projects: Front Business [4], Bribe Web [6], Ghost Safehouse [6], Route Map [4].
+
+\subsection*{Advancement Triggers:} hold 3 rackets • beat a sting • launder a hot take • settle a feud at court • broker peace between gangs.
+
+\section{Supernatural Crimes \& Ward Work (NEW)}
+\begin{itemize}
+\item \textbf{Ward‑Glass Salvage:} lift mirrored panes from ruin halls; hazards: Ward‑Storm, Arcane Tier buys.
+\item \textbf{Oath‑Lamp Forgery:} forge ritual lamps; Lamp‑Oath fallout on miss: Exposure +1, City Heat +1.
+\item \textbf{Psionic Fences:} buy/sell noetic prisms; Aegis of Will reduces risk once/score.
+\end{itemize}
+
+\section{Tools for Play}
+\subsection{Typical Actions (DV)}
+Infiltrate 2–4 • Disable 3–5 • Skulk/Shadow 2–4 • Broker 2–4 • Intimidate/Break 2–4 • Evade 2–4 • Operate (Smuggle) 2–4.
+
+\subsection{Chases (Urban Ladder)}
+Foot: 2 open • 3 markets • 4 rooftops • 5 sewers. \\
+Cart/Boat: 2 canal • 3 locks • 4 eel‑cuts • 5 tide race.
+
+\subsection{Heat Events (thresholds)}
+At Crew Heat 3: Patrol Sweep [4]. \\
+At Crew Heat 6: Sting [6] + Exposure +1. \\
+At City Heat 3: random stops/curfew murmurs. \\
+At City Heat 6: Crackdown [4] (DV +1).
+
+\subsection{Shadows \& Steel SB (GM menu)}
+Marked Silver (Inspection [4]) • Bad Badge (Alarm +1) • Gossip Sting (Audience flips) • Dogged Tail (Pursuit [6]) • Union Pushback (Blood‑Silver owed) • Turned Informant (Reliability –1) • Watch List (Crew Heat +1).
+
+\subsection{Overhead Aids (NEW)}
+\begin{itemize}
+\item \textbf{Clock Budget (3+1):} keep three visible clocks (Objective, Alarm/Patrol, a Rival/War) + one shadow (GM). Fold extra pressures into SB spends.
+\item \textbf{Heat→Complication:} when tempted to add a new clock mid‑score, raise Crew Heat +1 and spend an SB item instead.
+\end{itemize}
+
+\section{Generators}
+\subsection*{Black Market Goods (d12):} 1 rare pigment • 2 forged seal kit • 3 ward key • 4 eel‑channel charts • 5 customs stamps • 6 moon‑kiln glass • 7 lockspike set • 8 poison salts • 9 tax records • 10 theater takings • 11 relic case • 12 ledger cipher.
+
+\subsection*{Fences \& Fixers (d12):} 1 archivolt broker • 2 quay factor • 3 lamp‑notary • 4 skald bookie • 5 guild widow • 6 patrol sergeant • 7 foreign factor • 8 tie‑in priest • 9 river witch • 10 street doctor • 11 dice lord • 12 mask troupe.
+
+\subsection*{Law Gambits (d12):} 1 bait coin • 2 uniform sweep • 3 warrant blitz • 4 lamplighter eaves • 5 snitch buy • 6 courier sting • 7 tax audit • 8 curfew test • 9 postern watch • 10 vessel inspection • 11 customs raid • 12 proof‑of‑life stall.
+
+\section{Example of Play (short)}
+As in v0.1, updated to reflect Setup SB → Heat/Alarm and Clock Budget. (See canvas appendix for the full "Dyer's Ledger" walkthrough.)
+
+\section{Long Arcs (NEW)}
+\begin{itemize}
+\item \textbf{Ledger War:} expose or control citywide tax records; milestones: seize weighhouse seal • flip a lamp‑notary • bargain with Tax Assessor • settle with guilds.
+\item \textbf{Convoy Black:} dominate river/port smuggling; milestones: eel‑channel map • union détente • patrol captain's debt • free harbor writ.
+\item \textbf{Ward Grid:} steal/broker arcane infrastructure; milestones: ward‑glass salvage • oath‑lamp control • ruin‑keeper pact • mirrored hall heist.
+\end{itemize}
+
+\section{Political Integration (NEW)}
+Link War [8] to Political Faction Clocks: each War +2 also ticks a related Influence/Stability/Exposure +1 for the two factions most involved. Settlement with witness faction grants Favor +1 with that faction if the oath stands a season.
+
+\section{GM Reference (one page)}
+\begin{itemize}
+\item Crew: tags, Strings, Crew Heat [6], Notoriety (opt.), Rep.
+\item Turf Map: nodes; Claim [6]; War [8]; settlement template.
+\item Heat: thresholds; Sweep → Sting → Crackdown; Cooling.
+\item Markets: tiers (Street/Guild/Court/Arcane); partials; laundering.
+\item Informants: Web; Reliability [4]; Cross‑Check/Mask.
+\item Scores: planner; Kit Tokens; threat clocks.
+\item SB Menu \& Overhead: SB list; Clock Budget (3+1); Heat→Complication.
+\item Integration: V\&Stone districts; Political factions; Caravan smuggling; psionic/ward crimes.
+\end{itemize}
+
+\section*{Changelog}
+v0.2 — Added Fixers \& Ward‑Breakers; formal Heat thresholds and Setup rule; Arcane Tier market; supernatural crimes; overhead aids; long arcs; political mapping; settlement template; revised example pointers.
+
+End of v0.2
+
+\end{document}

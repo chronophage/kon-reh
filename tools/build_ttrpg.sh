@@ -66,6 +66,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  wilds-hinterlands-hearthfires.tex -n "Fate's Edge Expansion - Wilds: Hinterlands and Hearthfires.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
 ../../../tools/compile_latex.sh -f  linns-mists-iron.tex -n "Fate's Edge Expansion - Linns: Mists and Iron.pdf" > /dev/null 2>&1|| echo "#13. Did not build"
 ../../../tools/compile_latex.sh -f  sands-of-moon-and-brass.tex -n "Fate's Edge Expansion - Sands of Moon and Brass.pdf" > /dev/null 2>&1|| echo "#14. Did not build"
+../../../tools/compile_latex.sh -f  shadows-and-steel.tex -n "Fate's Edge Expansion - Shadows and Steel.pdf" > /dev/null 2>&1|| echo "#15. Did not build"
 
 
 echo "Committing and pushing to git"
