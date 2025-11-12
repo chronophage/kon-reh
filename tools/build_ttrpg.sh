@@ -70,6 +70,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  aeler-stone-breath-ledger.tex -n "Fate's Edge Expansion - Aeler: Stone, Breath, and Ledger.pdf" > /dev/null 2>&1|| echo "#16. Did not build"
 ../../../tools/compile_latex.sh -f  iron-and-blood.tex -n "Fate's Edge Expansion - Ykrul: Iron & Blood.pdf" > /dev/null 2>&1|| echo "#17. Did not build"
 ../../../tools/compile_latex.sh -f  threshold-folk.tex -n "Fate's Edge Expansion - Threshold Folk: Small Peoples & Hidden Realms.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
+../../../tools/compile_latex.sh -f  elves-lethai-root-law-river-courts.tex -n "Fate's Edge Expansion - Lethai: Root-Law and River Courts.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
