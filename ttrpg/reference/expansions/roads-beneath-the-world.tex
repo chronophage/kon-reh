@@ -1,0 +1,757 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+\setmainfont{TeX Gyre Pagella}
+
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}
+\titleformat{\subsection}{\bfseries}{}{0em}{}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newcommand{\designgoal}[1]{\item \textbf{#1}}
+\newcommand{\quickstart}[1]{\item \textbf{#1}}
+\newcommand{\people}[1]{\subsection*{#1}}
+\newcommand{\trait}[1]{\item \textbf{#1}}
+\newcommand{\road}[1]{\item \textbf{#1}}
+\newcommand{\trade}[1]{\item \textbf{#1}}
+\newcommand{\track}[1]{\item \textbf{#1}}
+\newcommand{\intent}[1]{\item \textbf{#1}}
+\newcommand{\dv}[1]{\item \textbf{#1}}
+\newcommand{\sb}[1]{\item \textbf{#1}}
+\newcommand{\etiquette}[1]{\item \textbf{#1}}
+\newcommand{\faction}[1]{\subsection*{#1}}
+\newcommand{\bestiaryentry}[1]{\subsection*{#1}}
+\newcommand{\stringentry}[1]{\item \textbf{#1}}
+\newcommand{\diamondentry}[1]{\item \textbf{#1}}
+\newcommand{\seed}[1]{\item \textbf{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Roads Beneath the World}} \\
+    {\large A Fate’s Edge Sourcebook for Deep Cultures, Dark Economies, and Survival Under Stone}
+\end{center}
+
+\section*{Design Goals}
+\begin{itemize}
+    \designgoal{Lived Underground} Make depth a culture, not just a map—air, light, pressure, and custom matter as much as steel.
+    \designgoal{Courts, Not Caves} Replace “monster holes” with societies that negotiate: web-law tribunals, keystone charters, pressure guilds.
+    \designgoal{Simple, Scary Procedures} Survival tracks (Air/Light/Noise/Pressure) drive fiction without new math.
+    \designgoal{Seams to the Surface} Plug cleanly into Political Intrigue, Shadows & Steel, Wilderness, Caravans, and Psionics.
+\end{itemize}
+
+\section*{Quickstart (2 minutes)}
+\begin{enumerate}
+    \quickstart{Pick a Route Type} Keystone Road (Aeler), Pressure Way (Mazereth), Web-Law Lane (Lethai-ar), Drift-River (underwater/boat), or Raw Vein (wild).
+    \quickstart{Track Four Things} Air [6], Light [6], Noise [4], Pursuit/Attention [6] (choose drakes, patrols, or hazards).
+    \quickstart{Intent Dial (per leg)} Stealth / Speed / Survey / Communion (parley with place-spirits). It changes your default Position.
+    \quickstart{Strings to Carry} keystone courtesy, bell-wire, toll-chalk, web token, shed-skin writ, pressure map, reed charm.
+    \quickstart{Etiquette On Entry} Step on stone; speak under beam; ring once. (Grants Position +1 in first scene if observed.)
+\end{enumerate}
+
+\section{I. Peoples \& Polities Below}
+
+\people{Lethai-ar — Courts of Web \& Scale}
+Wood-kin sworn to Inae (the Weaver) or Isoka (the Serpent Queen), ruling shadow-vales, web-bridges, and mirror chambers.
+\begin{itemize}
+    \trait{Doctrine} Order through context. Oaths are woven, not hammered; a clause can be as binding as a chain.
+    \trait{Marks} Animist skin-script that enhances sense/body—older ones can slip “out of season” and behave as Curses until recontexted.
+    \trait{War} Asymmetric. Light discipline, kill-lanes, denial of approach; they prefer deterrence to slaughter. Most peoples leave them alone.
+    \trait{Etiquette} Candle-right (never blow out another’s light); Web-Law token gains DV −1 in courtly scenes; Shed-Skin rite (Isoka) forgives one past identity in exchange for a future favor.
+    \trait{Strings} Web-Token (enter parley anywhere their silk is anchored), Shed-Skin Writ (voids 1 coercive clause once), Hedge-Pass (move unseen on a marked ledge, once/leg).
+\end{itemize}
+
+\people{Aeler — Holds of Stone \& Ledger}
+Mountain folk whose under-roads and keystone works keep nations standing. Underground to them is survival horror with accounting.
+\begin{itemize}
+    \trait{Orders}
+    \begin{itemize}
+        \item Iron Avengers: feud-keepers; make blood ledgers balance.
+        \item Spirit Shield Warriors: ancestor rites + corridor defense.
+        \item True Masons: wandering repair crews (Acasia, Vhasia, Viterra).
+        \item Edgewalkers: coin-hungry rogues in the seams of law.
+    \end{itemize}
+    \trait{Politics} Collectivist, mercantile, pre-colonial soft power: your display equals what you’ve delivered to the common works. Many oppose human exploitation and live in foothills and cities.
+    \trait{Etiquette} Keystone Courtesy (touch stone, name the builder if known); Public Weights (declare said/meant).
+    \trait{Strings} Keystone Seal (close a passage behind you once), Display Writ (Position +1 when invoking public works), Stone-Oath Witness (turn a duel into arbitration).
+\end{itemize}
+
+\people{Mazereth — Pressure Guilds \& Root-Warrens}
+Deep tunnelers (a subculture of the Aelinnel “People of Sums”) who live by math and marrow: pressure shafts, root-veins, earthen acoustics.
+\begin{itemize}
+    \trait{Traits} Medium-small; +1 die underground; Pressure Adaptation. Gifts: Deep Earthen Sense, Tunnel Craft, Pressure Resistance, Pattern Reading.
+    \trait{Costs} Surface sickness; Lantern Sway (SB: bright light causes missteps).
+    \trait{Customs} Counting-breaths, toll-chalk tallies, bell-wire message lines.
+    \trait{Strings} Pressure Map (DV −1 to navigate collapses), Bell-Wire Tap (hear “ahead”), Tally-Chalk (prove dues paid at a junction).
+\end{itemize}
+
+
+\section*{Bestiary Entries}
+
+\subsection*{Tag Key}
+\begin{itemize}
+    \item \tag{BOSS} (set-piece)
+    \item \tag{PACK} (many, small)
+    \item \tag{SIEGE} (breaks structures)
+    \item \tag{SWARM} (overrun)
+    \item \tag{AMBUSH} (first strike)
+    \item \tag{DOMAIN} (controls space)
+    \item \tag{CIVIL} (can negotiate)
+    \item \tag{HAZARD} (terrain-as-enemy)
+    \item \tag{PSIONIC} (mind pressure)
+\end{itemize}
+
+\begin{creature}[Trow — Shadow Bargainers]
+\tag{CIVIL} • \tag{AMBUSH} • \tag{DOMAIN} (gloam) \\
+\signs{Footprints that start mid-floor, laughter behind you, cold where your shadow should be.} \\
+\etiquette{Offer copper with the left hand; never speak a true name until the lamp is raised.} \\
+\moves{Steal a shadow (−1 Position in bright scenes), “borrow” a memory for collateral, flip directions inside a room.} \\
+\strings{Trow Knot (once: slip any mundane bond), Night-Guest Writ (safe conduct between two duskmarks).} \\
+\weaknesses{Iron filings, bread-and-salt under a lifted lamp.}
+\end{creature}
+
+\begin{creature}[Mycotheres — Fungal Shepherds]
+\tag{CIVIL} • \tag{SWARM} (spore-caste) \\
+\signs{Damp wool smell, chiming toadstools, careful stone gardens.} \\
+\etiquette{No open flame. Trade ash-free heat and water as gifts.} \\
+\moves{Blanket a path in spore-snow (obscure; tick Noise), claim fuel, demand “mold tithe.”} \\
+\strings{Glow-Silk Lease (Light +1 for a leg), Ash Ledger (erase one accidental fire from your debt).} \\
+\weaknesses{Lye, salt lines; respect witnessed repair.}
+\end{creature}
+
+\begin{creature}[Cordycen Sovereigns — Parasite Courts]
+\tag{DOMAIN} • \tag{SWARM} • \tag{CIVIL}(ish) \\
+\signs{Perfectly still sentries, red pin-prick eyes beneath helms, synchronized breath.} \\
+\etiquette{Address the host by name; bow to the crown (fruiting body).} \\
+\moves{Co-opt a fallen PC/NPC as Quiet Host [2], pollen burst (DV −1 to resist commands), trade “peaceful labor” for safe passage.} \\
+\strings{Quiet Host Token (one scene: immunity to minor crowd control, mark Fatigue), Spore Census (learn who’s in a district).} \\
+\weaknesses{Fresh running water; incense smoke that isn’t flame.}
+\end{creature}
+
+\begin{creature}[Puffcap Braves — Spoor Militia]
+\tag{SWARM} • \tag{AMBUSH} \\
+\signs{Drumlike pops, short spears lacquered with mycelium.} \\
+\moves{Overrun boots (trip), blind with burst caps, call a Shepherd parley.} \\
+\strings{Foraged Kit (downgrade one gear failure to cosmetic).}
+\end{creature}
+
+\begin{creature}[Deep Drakes — Crowned in Thought]
+\tag{BOSS} • \tag{DOMAIN} • \tag{PSIONIC} \\
+\signs{Pressure behind eyes, warmth on stone, memory echoes.} \\
+\moves{Wake Flood (memories as Harm), Quiet Bargain (convert fear to a clock), map the party’s intentions louder than their light.} \\
+\strings{Quiet Breath (one scene calm; costs Fatigue), Wake-Shard (clue from the past; start Price of Knowing [2]).} \\
+\weaknesses{Dissonant bells, conflicting witnesses; hate noisy truth.}
+\end{creature}
+
+\begin{creature}[Thread-Spiders — Silk Engineers]
+\tag{PACK} • \tag{AMBUSH} • \tag{SIEGE} (lines) \\
+\signs{Hair-fine threads across a corridor, braided guy-lines.} \\
+\moves{Snap load-bearing silk (drop!), silence a lantern (wick tie), sell a bridge you didn’t notice.} \\
+\strings{Bridge-Tag (cross silk safely once), Spinner’s Favor (DV −1 on traverse where silk stands).} \\
+\weaknesses{Resonant humming (vibrates traps), sticky soot.}
+\end{creature}
+
+\begin{creature}[Stone-Bores — Pillar-Eaters]
+\tag{SIEGE} • \tag{SLOW} \\
+\signs{Wet grinding, lemon-metal smell, chewed pillars.} \\
+\moves{Undermine footing, follow lantern heat, shed acid slurry.} \\
+\strings{Bore Map (predict collapse path once).} \\
+\weaknesses{Cold, flooded galleries; lured by hot scrap.}
+\end{creature}
+
+\begin{creature}[Basalt Golems — Old Work Awakened]
+\tag{BOSS} • \tag{SIEGE} • \tag{CIVIL} (with writ) \\
+\signs{Mortar dust like breath, chisel-runes glowing.} \\
+\etiquette{Present a Keystone Courtesy or builder-name.} \\
+\moves{Enforce old right-of-way, crush to pinned not dead, demand repair years.} \\
+\strings{Builder’s Pass (open/close a gate once), Load-Share (golem carries your burden for a scene).} \\
+\weaknesses{False names; misfit stones (they stop to fix them).}
+\end{creature}
+
+\begin{creature}[Rust-Eaters — Oxidizer Beetles]
+\tag{SWARM} • \tag{HAZARD} \\
+\signs{Orange dust, ticking under mail.} \\
+\moves{Bloom on steel (gear −1 Effect), skeletonize a bridge rail, flee oil-fire lines.} \\
+\strings{Rust Pollen (ruin a lock/hinge), Scrap-Bed (reduce encumbrance by shedding junk).}
+\end{creature}
+
+\begin{creature}[Chasm Anglers — Lure of the Drop]
+\tag{AMBUSH} • \tag{HAZARD} \\
+\signs{Lonely lamp over a black mouth, rhythmic drip.} \\
+\moves{Fake a safe ledge, pull one into the dark, thrash rope lines.} \\
+\strings{Angler Tooth (once: treat a drift-river reach as neutral).} \\
+\weaknesses{Multiple lights; bells (they hate harmonic interference).}
+\end{creature}
+
+\begin{creature}[Alchemic Slimes (Vitrum Wakes)]
+\tag{HAZARD} • \tag{SIEGE} (gear) \\
+\signs{Prism sheen, glassed footprints.} \\
+\moves{Dissolve adhesives, glass a floor (skid), eat ink/wax (erase seals).} \\
+\strings{Neutral Salt (end one ooze scene), Vitrum Thread (repair a crack invisibly).} \\
+\weaknesses{Sand, porous stone; devours writs—guard your Letters.}
+\end{creature}
+
+\begin{creature}[Tomb-Lanterns — Lights That Lead]
+\tag{CIVIL} • \tag{AMBUSH} (if dishonored) \\
+\signs{A light that waits around corners, soot without flame.} \\
+\etiquette{Ring once and name the dead.} \\
+\moves{Lure toward witness or toward a fall, demand burial rites, expose thieves.} \\
+\strings{Lantern’s Pardon (erase one petty theft from social memory), Grave-Path (shortcut to a crypt or exit).} \\
+\weaknesses{Mockery; false bells.}
+\end{creature}
+
+\begin{creature}[Gas Wisps — Breath of the Vein]
+\tag{HAZARD} \\
+\signs{Sweet-metal smell, hairs rising, quiet that presses.} \\
+\moves{Replace air (tick Air), drift toward flames (boom), carry whispers.} \\
+\strings{Reed-Baffler (vent a chamber safely once).} \\
+\weaknesses{Cross-flow; stone baffles; no witnesses—treat with Survey.}
+\end{creature}
+
+\begin{creature}[Umbral Moths — Eaters of Light]
+\tag{SWARM} • \tag{AMBUSH} \\
+\signs{Warm wings, dimming halo.} \\
+\moves{Blanket a lamp (Light +1 tick), carry a mask persona for a scene (Lethai-ar trick).} \\
+\strings{Shadow Scale (once: benefit from darkness as if hidden).} \\
+\weaknesses{Cold iron mesh; sudden bright sound (clap, bell).}
+\end{creature}
+
+\begin{creature}[Salt Revenants — Brined Rememberers]
+\tag{PACK} • \tag{CIVIL}(ish) \\
+\signs{Cracking salt, wet footfalls, old oaths recited wrong.} \\
+\etiquette{Water the dead (a ladle), correct the oath.} \\
+\moves{Desiccate gear/skin (Fatigue), insist on ancient tolls, crumble in tears.} \\
+\strings{Salt Claim (invoke an old boundary once).} \\
+\weaknesses{Flowing water; honest laughter (breaks fixation).}
+\end{creature}
+
+\begin{creature}[Ferrydrowned — Toll of the Blackwater]
+\tag{DOMAIN} (under-river) • \tag{CIVIL} \\
+\signs{Coins stacked on a rock, rope that loops your wrist gently.} \\
+\etiquette{Pay said and meant; never cut a ferry rope.} \\
+\moves{Hold you mid-channel until a truth is spoken, demand passage for the uncounted dead, sink gear not witnessed.} \\
+\strings{Cold Crossing (ferry at storm Position +1), Drowned Ledger (learn who didn’t pay last season).} \\
+\weaknesses{Twin lanterns; second witness on a boat.}
+\end{creature}
+
+\begin{creature}[Mirrorleeches — Attention Thieves]
+\tag{AMBUSH} • \tag{CIVIL} (with Lethai-ar) \\
+\signs{Breath on cold glass, a blink that isn’t yours.} \\
+\etiquette{Mask Right—name your role to your reflection.} \\
+\moves{Feed on attention (DV +1 to resist), trap a scene in repetition, sell back a moment for a price.} \\
+\strings{Polished Truth (once: negate a False Orders by replaying the real scene).} \\
+\weaknesses{Imperfect mirrors; chaotic crowds.}
+\end{creature}
+
+\begin{creature}[Crystal Choir — Singing Stone]
+\tag{DOMAIN} • \tag{HAZARD} \\
+\signs{Ringing in ears, dust dancing, hairline cracks.} \\
+\moves{Harm by resonance (Endure), shatter glass, scramble orders (False Orders as echo).} \\
+\strings{Pitch Key (hum to cancel one collapse), Choir Note (secret door opens to the right frequency).} \\
+\weaknesses{Felt-wrapped tools, silence rites.}
+\end{creature}
+
+\begin{creature}[Echo Wights — Commands That Linger]
+\tag{HAUNT} • \tag{AMBUSH} \\
+\signs{Your name spoken exactly right, boot calls from a dead officer.} \\
+\moves{Make you obey an old order, replay a death at the worst moment, cling to a rank insignia.} \\
+\strings{Order of Safe Passage (once: enemies hesitate).} \\
+\weaknesses{True story under a bell; burning the last written order.}
+\end{creature}
+
+\begin{creature}[Gravel Seraphs — Witnesses in Stone]
+\tag{CIVIL} • \tag{DOMAIN} (oath-sites) \\
+\signs{Wind-carved faces, feathers of shale, eyes that collect dew.} \\
+\etiquette{Offer a repair promise or a name-bead.} \\
+\moves{Freeze weapons under witness, bind a vow, mark the liar’s shadow.} \\
+\strings{Seraph Mark (one oath gains Witness anywhere), Feather Tally (prove a truth later).} \\
+\weaknesses{No witness? They’re statues.}
+\end{creature}
+
+\section*{Using This Bestiary}
+\begin{itemize}
+    \item Offer etiquette first. A single correct courtesy often grants Position +1 or DV −1.
+    \item Let Strings/Diamonds solve scenes. They’re your “keys” that keep depth fast.
+    \item Spend SB as environment > creature. Collapse, sputter, echo—then teeth.
+    \item Tie harvests to projects. Glow-silk repairs lamps; vitrum thread mends cracked keystones; a Seraph Mark changes a court scene topside.
+\end{itemize}
+
+\section{II. Geography \& Economies of Depth}
+
+\subsection*{Road Types}
+\begin{itemize}
+    \road{Keystone Roads (Aeler)} mortared galleries, air chimneys, counted lantern niches (repairable).
+    \road{Pressure Ways (Mazereth)} breath-matched shafts, root-arches, drip ledges (readable).
+    \road{Web-Law Lanes (Lethai-ar)} silk bridges, mirror turns, hush zones (negotiable).
+    \road{Drift-Rivers} cold black water, rope ferries, bell-buoys (timed).
+    \road{Raw Veins} ore cracks, crystal falls, gas pockets (hungry).
+\end{itemize}
+
+\subsection*{Trade \& Tithe}
+\begin{itemize}
+    \trade{Light Economy} Lantern oil, glow-silk, sun-scrip (surface days “bottled” in lenses).
+    \trade{Air Rights} Chimney shares, bellows rents, breath auctions during sieges.
+    \trade{Repair Years} Payment in labor to fix aqueducts, pillars, weirs; converts harm to civic credit.
+\end{itemize}
+
+\section{III. Procedures Under Stone}
+
+\subsection*{Tracks (keep visible)}
+\begin{itemize}
+    \track{Air [6]} suffocation, foul pockets, smoke.
+    \track{Light [6]} lamps, glow-silk, mirror routes.
+    \track{Noise [4]} stealth & echo discipline.
+    \track{Attention [6]} choose: Drake Notice, Patrol Net, or Vein Unrest.
+\end{itemize}
+
+When Air or Light ≥ 4, all risky maneuvers start one Position worse unless you cash a String (lamp, bell, mirror) or switch Intent to Survey.
+
+\subsection*{Intent Dial (per leg)}
+\begin{itemize}
+    \intent{Stealth} Low Noise, slower; better vs patrol nets.
+    \intent{Speed} Tick Noise to push distance; invites mishaps.
+    \intent{Survey} Read the stone/web/flow; stabilizes Air/Light by 1 on a hit.
+    \intent{Communion} Parley with place-spirits/ancestors/keepers; risky boons.
+\end{itemize}
+
+\subsection*{DV Ladder (pick base by route)}
+\begin{itemize}
+    \dv{Keystone Road} DV 2 (clear) / 3 (ruined) / 4 (siege).
+    \dv{Pressure Way} DV 3 (stable) / 4 (rising) / 5 (gassing).
+    \dv{Web-Lane} DV 2 (escorted) / 3 (marked) / 4 (disputed).
+    \dv{Drift-River} DV 3 (charted) / 4 (swollen) / 5 (blackwater).
+    \dv{Raw Vein} DV 4 (open) / 5 (shifting).
+\end{itemize}
+
+\subsection*{SB Menu: Under-Realms (Keeper)}
+\begin{itemize}
+    \sb{Micro-collapse; lantern sputter; pocket gas; echo-lure answers in your voice; leech bloom; silk strand snaps; oath-magnet pulls a lie; drake whisper (mark Fatigue or start Wake-Sickness [2]); patrol net tightens; lose the bell-wire.}
+\end{itemize}
+
+\section{IV. Etiquette \& Law (Position wins)}
+\begin{itemize}
+    \etiquette{Step on Stone} Don’t scuff sacred thresholds; grants Position +1 on first entry scene.
+    \etiquette{Speak Under Beam} Any negotiation under a single visible light gains Witness—convert one future social SB to a Price (repair, rite).
+    \etiquette{Ring Once} One bell to announce, two to plead, three for Bell Dawn (truce to bury, water, repair—break it and gain a portable Black Mark).
+    \etiquette{Two Ledgers (Said/Meant)} Required in Aeler holds and Lethai-ar courts; present both to gain DV −1 in disputes.
+    \etiquette{Mask Right (Lethai)} Respect a declared mask/persona; failure worsens Position in any social scene this leg.
+\end{itemize}
+
+\section{V. Faction Play}
+
+\faction{Lethai-ar Courts} Web-law vs shed-skin jurisprudence; rival cults of Inae and Isoka debate whether mercy is a cut thread or a new weave.
+
+\faction{Aeler Holds} Iron Avengers enforce feud balances; Spirit Shields maintain ancestor cryptways; True Masons travel with contracts to fix your world.
+
+\faction{Mazereth Syndics} Pressure guilds sell maps, breaths, and safe shunts; lantern disputes become festivals or fights.
+
+\faction{Drake Dominions} Thrall councils “protect” border towns from nightmares—at the cost of teachable obedience.
+
+Rival Etiquettes = Adventure: Keystone audit vs web-law token vs pressure claims. Who witnesses whom?
+
+\section{VI. Bestiary (tags = what the fiction gives you)}
+
+\bestiaryentry{Deep Drake (ELDER / PSIONIC / DOMAIN)}
+Area Mind Pressure, Wake Flood (memories as Harm), Quiet Bargain (treat a PC’s panic as a clock they can negotiate down).
+
+\bestiaryentry{Thread-Spiders (PACK / AMBUSH / SILK)}
+Eat vibration; cut light lines. Diamond: a blessing of silence for a price.
+
+\bestiaryentry{Stone-Bores (SIEGE / SLOW / ACID)}
+Chew supports; follow lamp heat; predictable if mapped.
+
+\bestiaryentry{Mycotherd (CIVIL / SENSITIVE / FIRE-HATE)}
+Gifts in exchange for ash-free camp; violations = spore court.
+
+\bestiaryentry{Echo Wight (HAUNT / VOICE / REGRET)}
+Fed by names; appeased by bell + true story.
+
+\section{VII. Strings \& Diamonds (carry these)}
+
+\begin{itemize}
+    \stringentry{Bell-Wire Spool} Lay quick witness across rooms; convert one False Order/Echo Lure into Confusion Only.
+    \stringentry{Keystone Courtesy} Once/leg, raise or drop a portcullis “by the book” without a roll—if you can name the builder.
+    \stringentry{Web-Token} Enter Lethai-ar parley from a position of safety once.
+    \stringentry{Pressure Map} DV −1 in collapse/quake scenes; reveal one exit that costs Air +1.
+    \stringentry{Reed-Charm (under-river)} Treat a blackwater reach as neutral terrain once.
+\end{itemize}
+
+\section{VIII. Example of Play (one page)}
+
+\textbf{Setup:} PCs escort a treaty delegation from an Aeler hold to a Lethai-ar court through Mazereth pressure ways while a Deep Drake stirs. Tracks start Air 1/6, Light 1/6, Noise 0/4, Attention (Drake) 0/6. Intent: Survey.
+
+\textbf{Scene 1 — The Junction.} Keeper sets Pressure Way DV 3. Scout rolls Survey; strong hit: Air −1 (vented) and you find a bell-wire. SB spent: pocket gas → Noise +1 if you rush. They slow; Position remains Controlled.
+
+\textbf{Scene 2 — The Web Bridge.} Etiquette: Speak Under Beam; they hang a lamp and gain Witness. The envoy presents Two Ledgers (said/meant). DV −1 for the parley. A rival house tries to spring a Mask Right trap; Mirror-sharp PC honors the mask, flipping Position to Good.
+
+\textbf{Scene 3 — Drake Wake.} Attention ticks on an echo; the Deep Drake whispers the captain’s childhood. Player marks Fatigue, keeps focus with Bell-Wire as third-party witness (negates first False Order). They trade a Repair Years pledge (fix three chimneys) to pass without a feud.
+
+\textbf{Fallout:} Air 2/6, Light 2/6, Noise 1/4, Attention 3/6. They earned Keystone Courtesy (portcullis access) and Web-Token for the return—but owe chimneys.
+
+\section{IX. Adventure Seeds}
+\begin{itemize}
+    \seed{Bell Dawn Broken} Someone used truce to plant drake-glass. Prove it before Articles turn to ash.
+    \seed{The Missing Chimneys} A hold suffocates; politics say sabotage, math says collapse. Find the third ledger.
+    \seed{Shed-Skin Bride} An Isoka rite frees a noble from a brutal identity; the “discarded” name becomes a curse in the mirrors.
+    \seed{The Quiet Charter} A town sleeps peacefully because thought-tax is paid to something below. Change the payer or change the price.
+    \seed{Pressure Festival} Mazereth races to re-balance a vein; bet strings, win breaths, make enemies.
+\end{itemize}
+
+\section{X. Running Depth at the Table (cheats)}
+\begin{itemize}
+    \item Start every leg by naming a rule of the place (stone, web, pressure, water). Make rolls answer to it.
+    \item Keep Air/Light/Noise/Attention visible; let players buy relief with Strings or etiquette, not just dice.
+    \item Always offer one Diamond that could solve the scene if they’ll accept a future Price (repair, rite, or debt).
+    \item Spend SB as environment first (collapse, sputter, echo) before monsters. The dark should be the first antagonist, the people the second, the beasts the third.
+\end{itemize}
+
+\textbf{The under realms are not a pit to be cleared but a commons to be negotiated. Where lights are counted and breaths are tallied, procedure is mercy—and every crossing is a promise that must hold under weight.}
+
+\clearpage
+
+\begin{center}
+    {\LARGE \textbf{Fallen Aeler Kingdoms}} \\
+    {\large ``Stone holds memory better than pride.'' — mason's proverb}
+\end{center}
+
+The Aeler don't like to dwell on it, but the knife-ridges and snow-crowns of their range are studded with failure. Vaulted galleries collapsed by frost and bad sums. Aqueducts that ran backward for a season and drowned whole wards. Bell-niches silent because no one is left to ring them. Under every thriving hold is a map of older, broken names.
+
+Most Aeler will tell you the mountains themselves culled the weak. The honest ledger says otherwise: environment, things that think from below, and human mistakes—in that order, braided tight.
+
+\section*{The Three Great Failures}
+
+\subsection*{1) Breath, Light, Witness}
+Aeler civilization underground lives and dies by simple counts: air, light, and who saw what when. Many kingdoms fell because one of those three was mispriced.
+\begin{itemize}
+    \item \textbf{Breath:} Chimneys silted; vent-wrights ignored warnings; winter inversion trapped smoke. Galleries suffocated in minutes.
+    \item \textbf{Light:} Oil caravans missed a season; vitrum lamps shattered in a crystal choir; glow-silk rights fought in court while miners groped in the dark.
+    \item \textbf{Witness:} Recorders fled a plague; oaths and contracts unmoored; feuds ate corridors that should have been roads.
+\end{itemize}
+
+\subsection*{2) The Drake Wars (that nobody declared)}
+Deep Drakes don't march; they lean. Pressure in the mind, a whisper that says ``close this door, just for a minute.'' Holds that tried to fight thoughts with steel became museums of panic: doors barred against their own and command words that never stopped echoing. A few holds ``survived'' by arranging thrall courts—quiet minds for quiet obedience—until the price devoured their children.
+
+\subsection*{3) The Quiet Famines}
+Not starvation of bellies—starvation of fuel, salt, rope, and the repair years that keep water moving and stone honest. During bad winters, caravans failed, buttresses wept, and True Masons were pulled to richer patrons. Some kingdoms survived by strip-mining their own works for scrap; most didn't.
+
+\begin{quotebox}
+``We fell in ledgers before we fell in halls.'' — last archivist of Harn Teth
+\end{quotebox}
+
+\section*{How Kingdoms Break (A Short Catalogue)}
+\begin{itemize}
+    \catalogue{Drowned Holds} Mis-vented aqueducts, melted glacier lakes, or a single wrong gate left open. You can still find bell-lanterns on the ceiling of flooded courts.
+    \catalogue{Bell-Silent Cryptways} Plague or panic took the recorders; without witness, feuds metastasized. Iron Avengers still carve tallies into doorposts there.
+    \catalogue{Glass Mines} Alchemic slimes (``vitrum wakes'') ate supports; heat and panic glazed floors. The last defenders' footprints are clear as days-old rain.
+    \catalogue{Ledger Wars} Aelinnel sumwrights warned a collapse; politickers cooked the numbers; a faction burned the sums and called it honor. The mountain balanced their pride.
+    \catalogue{Cordycen Winters} Parasite courts took over garrisons; ``peaceful labor'' replaced soldiery; web-law neighbors closed gates and waited a generation.
+\end{itemize}
+
+\section*{What Remains (and Who Lives There Now)}
+\begin{itemize}
+    \remain{Lethai-ar Border Courts} Web-law bridges ditched collapsing spans and claimed tunnel mouths ``for safety.'' They will parley, mask-first; they will deny you entry if your light disrespects their dark.
+    \remain{Mazereth Pressure Warrens} Deep tunnelers rerouted breath through ruins. Pay the toll-chalk and mind the Lantern Sway (bright light makes their steps wander). They keep convoys alive where others count graves.
+    \remain{Mycothere Groves} Fungal shepherds turned throne rooms into humid gardens. No open flame; trade water and ash-free heat for glow-silk leases.
+    \remain{Vilikari Squats} Night-road hustlers with a genius for salvage and smuggling moved in at the edges. If you see copper charms on a lintel, their countkeeper runs the market below.
+    \remain{Drake Dominions} Some caverns are quiet as a held breath. Folks there are polite, careful, almost too calm. You've entered priced silence.
+\end{itemize}
+
+\section*{Politics of Memory}
+The Aeler ethic ties display to what you've delivered the commons. Nothing wrecks that calculus more completely than a collapsed kingdom with your ancestor's name on it.
+\begin{itemize}
+    \memory{Right to Name} A claim to ``restore'' a fallen hold requires a Keystone Witness—a Gravel Seraph, a Seraphic bell-stone, or a living order (True Mason's seal) that remembers the builder. Without witness, you're looting your grandparents.
+    \memory{The Four Ledgers} Any reclamation worth the breath carries four books: Said, Meant, Owed, Owed-By. Aelinnel accountants often hold the second and fourth—they won't let you lie to stone with your sums.
+    \memory{Feudkeepers} The Iron Avengers enforce blood ledgers that were never balanced when the bells went quiet. Expect duels in narrow stairs and arbitration at noon with lantern high.
+    \memory{The Spirit Shield Charge} Spirit Shield Warriors keep cryptways clear and ancestors orderly. In fallen halls, they fight grief as much as drakes—echo wights of commanders still give orders.
+    \memory{Dissenters \& Diaspora} Many Aeler reject exploiting human protectorates to fund ``glory projects.'' You'll find them in foothill communes and cities, rebuilding wells and schools while their cousins gamble names on dead stone.
+\end{itemize}
+
+\section*{Famous Fallen (Ask Three Aeler; Get Four Spells of Silence)}
+\begin{itemize}
+    \fallen{Khar-Malec, the Throat-Ford} A triumph of sluices and singing locks until one bitter spring turned every valve into a knife. Now a black canal with bell-keys on chains; ferrydrowned keep the tolls.
+    \fallen{Vyr Aeldra} ``The hold that thinks too loud.'' The first drake to crown a court did it here; survivors speak soft and never sleep alone.
+    \fallen{The Nine Keystones of Reth} A gallery of load-bearing arches each signed by a different master. Eight cracked; the ninth stands. Bands wager a life per season testing who may pass beneath.
+    \fallen{Hammerdeep's Red Ledger} A city that ran on debt and honor until a winter of missed oil turned oaths into knives. The Iron Avengers keep a hostel there; payment in stories and stitches.
+    \fallen{Sereth Under-Sea} A coastal underhold spliced to tide-caves. Sea banners fly black beneath—mariners and masons agreeing on one thing: the ocean owes nobody stability.
+\end{itemize}
+
+\section*{Reclaimer's Road (Why They Try, Why They Fall)}
+
+Why try? Display. Legends. The right to carve your pattern into the public stone. A reclaimed hold can bankroll ten generations and let a name travel far.
+
+Why fall again? Because they treat reclamation like a battle instead of a repair project with neighbors. Because they underprice fuel and overprice heroics. Because they forget that the mountain keeps receipts.
+
+Those who succeed:
+\begin{enumerate}
+    \reclaimer{Start with Breath} Fix chimneys and vents; pay repair years to True Masons and Mazereth syndics before a single banner unfurls.
+    \reclaimer{Buy Witness} Invite Gravel Seraphs, bell-chaplains, Lethai-ar mask-right envoys. Make your first victory a signed corridor.
+    \reclaimer{Price the Quiet} If a drake hums nearby, you negotiate. Expect to give repair, routes, or rituals in exchange for noise it can stand.
+    \reclaimer{Bring Aelinnel Sums} Let the People of Sums hold your Meant ledger. You're not cleverer than pressure.
+    \reclaimer{Feed Neighbors} Mycotheres hate fire; give them heat. Vilikari hate closed hands; cut them into the salvage.
+\end{enumerate}
+
+\section*{Currencies of the Dead}
+\begin{itemize}
+    \currency{Bell-Keys} Ritual instruments tied to a crypt's bells; unlock one Bell Dawn (truce to bury, mend, water). Break the dawn and every neutral in range turns their face from you for a year.
+    \currency{Keystone Hearts} Fist-sized cores of masterworks, warm to the tongue, hum with load. Return one to its arch and that corridor loves you back.
+    \currency{Ledger Stones} Black slate tablets with grooves for said/meant beads. A seraph's feather etched in the corner marks a binding witness.
+    \currency{Display Writs} Certificates that let you wear wealth openly because you bought water for other mouths. Counterfeiting one earns a private war.
+\end{itemize}
+
+\section*{Under-Realm Etiquette for Grave Works}
+\begin{itemize}
+    \etiquette{Step on Stone} Never cross a threshold as if it were dirt. Position +1 on your first scene when you show it.
+    \etiquette{Speak Under Beam} Parley under a single light gives Witness—one future lie becomes a Price instead of a knife.
+    \etiquette{Ring Once} To announce. Twice to plead. Three bells for Bell Dawn. Fail this and even the friends you brought will un-know you in the ledgers.
+    \etiquette{Two Ledgers, Always} Said and Meant presented together. If you cannot bear that, the mountain will write your confession in collapse.
+\end{itemize}
+
+\section*{Who Profits from Ruins (and How)}
+\begin{itemize}
+    \profit{True Masons} They hate glory and love straight roads. Pay them and they will save a thousand lives you'll never meet.
+    \profit{Edgewalkers} Aeler rogues who live on the seam between law and opportunity. They find the gear you forgot to list and sell it to people who spell need without shame.
+    \profit{City Factors} Neutral accountants who will read your ledger in public and write you back into polite society—for a price called future entanglement.
+    \profit{Leech Circles} In the under-realms, medicine is politics. If you can't pay them in coin, pay them in time. They keep the singing going.
+\end{itemize}
+
+\section*{Adventure Sparks}
+\begin{itemize}
+    \spark{The Quiet Crown} A spirit-shield calls you to a fallen hall where orders still walk. Lay the captain to rest; don't obey him on the way.
+    \spark{The Eighth Breath} A collapsed vent-line kills any expedition that moves faster than prayer. Find the lost Aelinnel pressure sums and re-open the gallery.
+    \spark{Bell Dawn Broken} Someone used truce to plant drake-glass in a hospital quarter. Name the liar under beam before Iron Avengers start dueling in corridors built for mercy.
+    \spark{Keystone Heart Heist} A Vilikari countkeeper offers you a heart stolen from the Nine Keystones. Return it, ransom it, or build your own corridor of enemies.
+    \spark{Repair Years} A foothill town claims your patron owes a century of labor for water stolen by their ancestors. Pay in hands, pay in coin—or pay in display you don't deserve.
+\end{itemize}
+
+\section*{What the Aeler Say (When They're Honest)}
+\begin{itemize}
+    \say{We don't fear the dark; we fear bad bookkeeping.}
+    \say{Deep things don't hate us; they hate our noise.}
+    \say{A fallen hall is a mirror: it shows you exactly where your sums are lies.}
+\end{itemize}
+
+The mountains are full of countries that died counting the wrong things. If you go to raise one from its knees, count breath, count light, and count witness first. The rest is pride—and pride is heavier than stone.
+\clearpage
+
+\begin{center}
+    {\LARGE \textbf{The Quiet Crown of Reth}} \\
+    {\large A horror-tinged reclamation of a fallen Aeler kingdom}
+\end{center}
+
+\begin{quotebox}
+A 4–7 session adventure that follows a mixed company (or Aeler-led expedition) as they try to pry a keystone ``heart'' and lost ledgers from Reth, a collapsed Aeler hold famed for its Nine Keystones. The ``dragon'' here is no dragon at all, but an elder Deep Drake called the Quiet Crown, whose hoard is not gold but silence, witness, and keystone hearts.
+\end{quotebox}
+
+\textbf{System levers used:} Position/DV/Effect; clocks; Strings \& Diamonds; Under-Realms tracks (Air/Light/Noise/Attention); Political Intrigue fronts; Black Banners (Payday/Supply/Cohesion).
+
+\textbf{Mood:} Folk horror under stone; riddles that bite; contracts that rot; courage in the beam of a single lamp.
+
+\section*{Themes \& Safety (table-facing)}
+\begin{itemize}
+    \theme{Horror via deprivation} low air, dying lamps, stolen attention, collapsing trust.
+    \theme{Identity pressure} name-rights, mask-rights, bargains that strip context.
+    \theme{Soft law vs hard rock} said/meant ledgers, bell dawns, oaths under witness.
+\end{itemize}
+
+Establish lines/veils for confinement, parasitism, and memory manipulation. Remind players that Strings/Diamonds and etiquette (Step on Stone, Speak under Beam, Ring Once) can defang scenes without new math.
+
+\section*{Hooks (pick one)}
+\begin{itemize}
+    \hook{The Display Writ} A foothill city offers a Display Writ if the party returns the Ninth Keystone Heart of Reth. Status buys safety…or enemies.
+    \hook{True Mason's Plea} A wandering True Mason begs you to recover a lost Meant Ledger proving which sluice orders drowned Reth.
+    \hook{A Name-Bead Debt} A Vilikari countkeeper promises routes and silence if you bring back a Name-Bead that proves their people kept good witness during the fall.
+    \hook{Banner Work} Your company needs a payday; a broker has a quiet charter to escort a small Aeler entourage into Reth and back — ``no sacking, only counting.''
+\end{itemize}
+
+\section*{Cast}
+\begin{itemize}
+    \cast{Matriarch Tera Vell (Aeler True Mason)} Candle-voiced, ruthless about sums, anti-glory.
+    \cast{Karn of the Iron Ledger (Aeler Iron Avenger)} Keeps feud-marks on his bracers; wants the Ninth Heart to ``balance history.''
+    \cast{Magistrate Sel of Seven Masks (Lethai-ar)} Lives behind mask law; will detain trespassers ``until context is restored.''
+    \cast{Farrin ``Countkeeper'' (Vilikari)} Night-road broker; sells shortcuts and believable lies.
+    \cast{The Quiet Crown (Deep Drake)} Soundless majesty; speaks by memory-pressure. Wants the Nine to stay quiet.
+\end{itemize}
+
+Optional banners to complicate Act V: Iron Lanterns (siege company), Thornwrights (sappers), a Ykrul ring-band, and a small Sea Charter detachment up the drift-river.
+
+\section*{Tracks always visible}
+\begin{itemize}
+    \item Air [6] • Light [6] • Noise [4] • Attention (Drake) [6]
+\end{itemize}
+
+If Air/Light ≥ 3, risky maneuvers start one Position worse unless you cash a String, Diamond, or etiquette.
+
+\section*{Strings \& Diamonds seeded early}
+\begin{itemize}
+    \stringentry{Bell-Keys of Reth} (open a Bell Dawn once inside; breaks on betrayal)
+    \stringentry{Pressure Map (Mazereth)} (DV −1 in collapses; costs +1 Air when used)
+    \stringentry{Web-Token (Lethai-ar)} (enter parley anywhere silk anchors)
+    \stringentry{Keystone Courtesy} (raise/drop one gate ``by the book,'' once)
+    \stringentry{Reed Charm} (treat one drift-river reach as neutral terrain)
+    \stringentry{Name-Bead} (compels witness etiquette in a scene; risks Anonymity [1])
+\end{itemize}
+
+\section*{Structure (five acts)}
+
+\act{Act I — Night-Meat \& Contracts (the ``trolls in the dark'' beat)}
+
+\begin{scenebox}[Scene A: Broker's Table]
+Two charters on black: recover ledgers only (Matriarch Tera) vs recover the Ninth Heart (Karn). Trying to carry both starts Political Pressure [2].
+\end{scenebox}
+
+\begin{scenebox}[Scene B: Trow at the carts]
+At a hedge-camp, Trow Bargainers try to ``buy'' your lamp oil and witnesses. They're almost polite, and very hungry for context.
+\begin{itemize}
+    \item \textbf{Etiquette:} offer copper with the left hand; never speak a true name until the lamp is raised.
+    \item \textbf{Keeper SB menu:} tie wicks, swap the right cart, steal a shadow (−1 Position in bright scenes).
+    \item \textbf{Counter:} Ring Once to start a quasi-Bell Dawn; stall with bargains and riddles until the bell-answerer arrives (a leech with a handbell).
+\end{itemize}
+\end{scenebox}
+
+\textbf{Riddle cues (short, table-friendly):}
+\begin{itemize}
+    \item ``I am eaten by mouths that never close and feared by voices that never start.'' (Silence)
+    \item ``I cross a room without moving, but you will cross me to move.'' (Threshold)
+    \item ``I am a debt that grows when paid in full.'' (Witness)
+\end{itemize}
+
+\textbf{Outcome:} Win the parley for Bell-Keys of Reth and a rumor of a mirror-court ahead. Fail and Attention +1 (the Crown hears the quiet change).
+
+\act{Act II — Masks \& Barrels (the ``captured by woodland court'' \& barrel escape beat)}
+
+\begin{scenebox}[Scene A: Web-Law Court]
+Magistrate Sel detains the party for mask-right violations (you spoke to a reflection without declaring your role).
+\begin{itemize}
+    \item \textbf{Fix:} Present Two Ledgers (Said/Meant); use Web-Token to call safe parley under beam.
+    \item \textbf{Stakes:} a repair years bond to restore a silk span; a Shed-Skin Writ to free a companion from a bad identity—owed later.
+\end{itemize}
+\end{scenebox}
+
+\begin{scenebox}[Scene B: Drift-River Escape/Transit]
+If diplomacy sours or time's tight, a Vilikari plan floats you through in sealed casks.
+\begin{itemize}
+    \item \textbf{DV:} 3 (charted) / 4 (swollen) / 5 (blackwater).
+    \item \textbf{Diamonds:} Reed Charm to breathe and baffle gas; Ferrydrowned may demand the name of someone you owe.
+    \item \textbf{Complication:} A Chasm Angler lures a cask; a Bell Dawn from a monastery above gives one clean shot to salvage.
+\end{itemize}
+\end{scenebox}
+
+\act{Act III — Riddles \& Shadows (the ``riddles in the dark'' beat)}
+
+\begin{scenebox}[The Lantern Crypt]
+A gallery where Tomb-Lanterns wait for names and Echo Wights replay contradictory orders from Reth's last day. The party needs two things: the Meant Ledger and the position of the Ninth Keystone.
+\begin{itemize}
+    \item \textbf{Puzzle:} Translate three contradictory commands into a single ``repair project'' the lanterns will witness. Examples: ``Hold the sluice'' + ``Bury the dead'' + ``Open the way'' → ``Build a weir with a corpse-gate.''
+    \item \textbf{Test:} Riddle or story told under beam; failure spawns a False Orders echo in the next scene.
+    \item \textbf{Reward:} Keystone Courtesy (raise/drop a portcullis once) and a Name-Bead from an archivist's skein.
+\end{itemize}
+\end{scenebox}
+
+\textbf{Horror pressure:} Attention +1–2 as the Quiet Crown hums at the edge of hearing; players mark Fatigue to ignore intrusive memories.
+
+\act{Act IV — The Quiet Crown \& the Nine}
+
+\begin{scenebox}[The Gallery of the Nine Keystones]
+Eight cracked arches weep condensation. The ninth sings quietly when anyone lies. The Quiet Crown unfurls thought like warm fog.
+\begin{itemize}
+    \item \textbf{The Hoard:} keystone hearts, bell-keys, ledgers bound in skin of display writs. The Crown cares less about treasure than the silence the hoard creates.
+    \item \textbf{Parley or Theft?}
+    \item \textbf{Parley:} Offer repair years (re-open chimneys so noise flows), cede one route per season, or promise to end a feud above.
+    \item \textbf{Theft:} Use Keystone Courtesy + Pressure Map to lift the heart and collapse a false trail; pay +1 Air when you do.
+    \item \textbf{Moves (Keeper):} Wake Flood (memory as Harm), Quiet Bargain (convert panic to a negotiable clock), Weight (pin under thought).
+    \item \textbf{Hard Choice:} Karn will try to pocket the heart for his ledger; Tera will try to secure the Meant Ledger and leave the heart. If they split, start Cohesion [2] (party or escorts).
+\end{itemize}
+\end{scenebox}
+
+\act{Act V — Five Banners at the Ford (the ``battle of five armies'' beat)}
+
+At Hush-Ford, every debt collides: a Ykrul ring-band, Iron Lanterns with a lawful charter to ``secure artifacts,'' Thornwrights eyeing the bridges, Vilikari with night coaches, Lethai-ar envoys claiming mask-right over the road, and your people in the middle—plus the mood of a disturbed Crown.
+
+\begin{itemize}
+    \item \textbf{Use Black Banners procedures:}
+    \item Roll Allegiances in Flux each scene.
+    \item Keep Payday/Supply/Cohesion visible for any company in play (even abstractly).
+    \item Slide Honor ↔ Pragmatism based on choices (release prisoners, keep a silent truce, sabotage a bridge).
+\end{itemize}
+
+\textbf{End paths (choose \& tilt):}
+\begin{itemize}
+    \endpath{Blue Moot Diplomacy} Spend Bell-Keys to call a Bell Dawn at noon; put the Ninth under neutral witness and trade repair years for route rights.
+    \endpath{Ambush Geometry} Side with Thornwrights to strand the Iron Lanterns while the Vilikari run the heart; costs you Black Marks with lawful patrons.
+    \endpath{Quiet Accord} Return the heart to the Crown but carry the Meant Ledger out; the under-realms quiet, surface politics scream.
+    \endpath{Heroic Folly} Keep the heart and beat everyone by force; the Crown reaches for your names. You win the ford and lose the nights.
+\end{itemize}
+
+\section*{Locations (fast anchors)}
+\begin{itemize}
+    \location{Condotta Crossroads} mud, ink, bells; brokers under awnings; Diamonds in piles you can't afford.
+    \location{Trow Night-Market} copper, shadows, riddles; every mirror covered.
+    \location{Web-Law Court} bridge of silk with a single lamp; speak under beam or not at all.
+    \location{Drift-River} black mirror, bell-buoys, ferrydrowned coins.
+    \location{Lantern Crypt} soot-smell memories; orders that still think they're officers.
+    \location{The Nine} eight cracked arches, the ninth humming, condensation falling like breath.
+    \location{Hush-Ford} shallow rapids, stone teeth, banners on black, and a single bell that can make murder wait a minute.
+\end{itemize}
+
+\section*{Horror Veil (how to keep it Fate's Edge)}
+\begin{itemize}
+    \horror{Make the environment the first enemy} Spend SB as sputter, echo, pressure; only then as teeth.
+    \horror{Let etiquette save lives} One correct courtesy (Step on Stone; Speak under Beam; Ring Once) can flip a scene to solvable.
+    \horror{Identity costs} The Name-Bead works—at the price of Anonymity [1]. If it fills, someone forgets you who shouldn't.
+    \horror{Glory is suspect} Anyone who claims the Ninth for display risks a personal clock: Crown's Favor [4]—on fill, they prefer silence to friends.
+\end{itemize}
+
+\section*{Rewards \& Fallout}
+\begin{itemize}
+    \reward{Meant Ledger of Reth} A political nuke; clears or condemns ancestral names.
+    \reward{Ninth Keystone Heart} Install it to reopen a corridor anywhere—the corridor will remember who you became to win it.
+    \reward{Display Writ / Repair Years} Status in cities or a debt to a valley—either spends across arcs.
+    \reward{Strings} Web-Token renewed; Bell-Keys (spent or broken); Ferrydrowned's favor (or grudge); Vilikari countkeeper's book (one reroll on a smuggling scene); Keystone Courtesy (burnt).
+\end{itemize}
+
+\textbf{Legacy:} If the Crown got what it wanted (quiet routes), under-realms scenes start one Position better for your party this campaign. If not, Attention begins at 2 whenever you go below.
+
+\section*{Drop-in Cards (ready to table)}
+
+\textbf{Clocks:}
+\begin{itemize}
+    \clock{Air [6] | Light [6] | Noise [4] | Attention (Crown) [6]}
+    \clock{Bell Dawn [3] (call \& keep) | Cohesion [6] (escorts) | Political Pressure [4]}
+\end{itemize}
+
+\textbf{SB (Under Reth):} pocket gas; lantern sputter; echo order; silk span frays; shadow theft; wake-flood.
+
+\textbf{Position Tweaks:}
+\begin{itemize}
+    \position{Under witness lamp} +1 Position (social)
+    \position{Under silk} DV −1 to parley if Mask Right declared
+    \position{In the Nine} +1 Effect to truths; −1 Position to lies
+\end{itemize}
+
+\textbf{Three One-Line NPCs:}
+\begin{itemize}
+    \npc{Leech Mera (she/they)} bell at hip, blood on sleeves, absolutely tired of heroes.
+    \npc{Sergeant Ivo (he/him)} tells the same joke before a collapse; stops if someone's about to die.
+    \npc{Mask Quill (they/them)} Lethai-ar courier who likes you but likes law more.
+\end{itemize}
+
+\section*{Running note}
+
+It's fine—good, even—if the party never fights the Crown. The best endings are bargains and bridges. When they do swing steel, make each cut ring in the ledger: more Attention, more Noise, more people to explain this to on the way out.
+
+\begin{quotebox}
+``Count breath, count light, count witness. Then decide what kind of story a heart belongs to.''
+\end{quotebox}
+
+\end{document}
