@@ -240,6 +240,46 @@ The traditional fiscal spine: 10% due to one's patron, who owed 10% upward, etc.
   * Crimson Talon — paramilitary operations, deniable violence.
 Factions compete for methods, not the end.
 
+
+## Trade and Regional Relationships
+
+## Core Economic Dependencies
+
+**Aeler's Agricultural Reliance**: The Aeler dwarves depend entirely on imported food from human territories - Acasia, Vhasia, and Viterra. This creates a fundamental power imbalance where their survival depends on maintaining good relations with grain convoys. Their "Protectorate" over the Mistlands functions essentially as their agricultural hinterland, where they extract food resources to sustain their mountain cities.
+
+**Acasia's Extortion Economy**: Rather than producing goods for trade, Acasia survives by extracting tribute from caravans passing through its territory en route to Silkstrand. This creates a parasitic relationship where Acasia's wealth depends on its ability to make passage costly and dangerous enough to warrant payment for safe passage.
+
+## Regional Power Dynamics
+
+**The Inner Sea Core** (Ecktoria/Viterra/Vhasia/Thepyrgos): 
+- **Ecktoria** maintains ancient imperial traditions and legal systems that influence the entire region through precedent and bureaucracy
+- **Viterra** operates on complex property rights and legal precedents tied to hedge-boundaries and territorial markers
+- **Vhasia** exists in a state of internal division with multiple competing authorities claiming legitimacy
+- **Thepyrgos** serves as a center of learning and philosophical law, with its synods creating precedents that ripple outward through scholarly networks
+
+**Highland Buffer Zones** (Ubral/Aeler/Mistlands):
+- **Ubral** exists in constant tension with lowland powers, maintaining clan law and serving as a frontier zone of competing jurisdictions
+- **Aeler** control crucial infrastructure but depend on their human neighbors for basic sustenance
+- **Mistlands** function as agricultural dependency territory under Aeler oversight
+
+## Trade Route Hierarchies
+
+**The Silk Road Dynamic**: Caravans must pay Acasian tolls and protection money to reach Silkstrand, making Acasia wealthy through pure rent-seeking. This creates a funnel where wealth flows from the productive Inner Sea core through the extortion-barrier of Acasia to the trading hub of Silkstrand.
+
+**Maritime vs. Overland**: Kahfagia's sea power competes with and complements the overland routes, offering an alternative that bypasses Acasian extortion but requires navigating their beacon-controlled passage system.
+
+**Mountain Chokepoints**: Aeler control of passes makes them kingmakers for north-south trade, but their agricultural dependence limits their ability to leverage this power aggressively.
+
+## Cultural Exchange Patterns
+
+**Legal Traditions**: Thepyrgos's synod decisions, Viterra's boundary law, Vhasia's parlement systems, and Ecktoria's imperial bureaucracy create a complex legal ecosystem where understanding multiple jurisdictions becomes a form of currency.
+
+**Frontier Synthesis**: Regions like Ubral and Vilikari serve as cultural mixing zones where different legal traditions (imperial, clan, feudal) must coexist, creating unique hybrid systems of governance.
+
+**Religious Networks**: Various orthodoxy movements compete with local traditions, creating another axis of cultural influence that transcends political boundaries.
+
+This creates a world where economic power flows through chokepoints and dependencies rather than simple production, where legal knowledge becomes as valuable as physical goods, and where maintaining the right papers and relationships determines whether you prosper or perish.
+
 ### Acasia (The Broken Province)
 
 #### Snapshot
