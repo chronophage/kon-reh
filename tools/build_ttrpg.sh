@@ -61,7 +61,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  political-intrigue.tex -n "Fate's Edge Expansion - Political Intrigue.pdf" > /dev/null 2>&1|| echo "#7. Did not build"
 ../../../tools/compile_latex.sh -f  violets-and-stone.tex -n "Fate's Edge Expansion - Violets and Stone.pdf" > /dev/null 2>&1|| echo "#8. Did not build"
 ../../../tools/compile_latex.sh -f  allies-and-adversaries.tex -n "Fate's Edge Expansion - Allies and Adversaries.pdf" > /dev/null 2>&1|| echo "#9. Did not build"
-../../../tools/compile_latex.sh -f  assets-wordly-patrons.tex -n "Fate's Edge Expansion - Assets and Wordly Patrons.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
+../../../tools/compile_latex.sh -f  assets-worldly-patrons.tex -n "Fate's Edge Expansion - Assets and Wordly Patrons.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
 ../../../tools/compile_latex.sh -f  caravans-way-of-silk.tex -n "Fate's Edge Expansion - Caravans: The Way of Silk.pdf" > /dev/null 2>&1|| echo "#11. Did not build"
 ../../../tools/compile_latex.sh -f  wilds-hinterlands-hearthfires.tex -n "Fate's Edge Expansion - Wilds: Hinterlands and Hearthfires.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
 ../../../tools/compile_latex.sh -f  linns-mists-iron.tex -n "Fate's Edge Expansion - Linns: Mists and Iron.pdf" > /dev/null 2>&1|| echo "#13. Did not build"
@@ -72,7 +72,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  threshold-folk.tex -n "Fate's Edge Expansion - Threshold Folk: Small Peoples & Hidden Realms.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
 ../../../tools/compile_latex.sh -f  elves-lethai-root-law-river-courts.tex -n "Fate's Edge Expansion - Lethai: Root-Law and River Courts.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
 ../../../tools/compile_latex.sh -f  black-banners-condotta-and-crowns.tex -n "Fate's Edge Expansion - Black Banners: Condotta & Crowns.pdf" > /dev/null 2>&1|| echo "#19. Did not build"
-../../../tools/compile_latex.sh -f  roads-beneath-the-world.tex -n "Fate's Edge Expansion - Under Realms: Roads Beneath the World.pdf" > /dev/null 2>&1|| echo "#19. Did not build"
+../../../tools/compile_latex.sh -f  roads-beneath-the-world.tex -n "Fate's Edge Expansion - Under Realms: Roads Beneath the World.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
