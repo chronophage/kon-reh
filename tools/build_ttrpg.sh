@@ -74,7 +74,8 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  elves-lethai-root-law-river-courts.tex -n "Fate's Edge Expansion - Lethai: Root-Law and River Courts.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
 ../../../tools/compile_latex.sh -f  black-banners-condotta-and-crowns.tex -n "Fate's Edge Expansion - Black Banners: Condotta & Crowns.pdf" > /dev/null 2>&1|| echo "#19. Did not build"
 ../../../tools/compile_latex.sh -f  roads-beneath-the-world.tex -n "Fate's Edge Expansion - Under Realms: Roads Beneath the World.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
-../../../tools/compile_latex.sh -f  witches-of-fates-edge.tex -n "Fate's Edge Expansion - Witches of Fate's Edge: Large Cords, Curses, and the Quiet Work of Names.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
+../../../tools/compile_latex.sh -f  witches-of-fates-edge.tex -n "Fate's Edge Expansion - Witches of Fate's Edge: Large Cords, Curses, and the Quiet Work of Names.pdf" > /dev/null 2>&1|| echo "#21. Did not build"
+../../../tools/compile_latex.sh -f  book-of-talents.tex -n "Fate's Edge Expansion - The Book of Talents.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
