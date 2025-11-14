@@ -90,5 +90,5 @@ git add --all
 git commit -a -m "PDF Build $(date)"
 git push
 cd $git_root
-git clean -x -f
+git clean -x -f > /dev/null 2>&1
 exit
