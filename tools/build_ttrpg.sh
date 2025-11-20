@@ -49,7 +49,8 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  whispers_in_the_tunnels.tex -n "Fate's Edge - Whispers in the Tunnels.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
 ../../../tools/compile_latex.sh -f  nameless.tex -n "Fate's Edge - The Nameless.pdf" > /dev/null 2>&1|| echo "#13. Did not build"
 ../../../tools/compile_latex.sh -f  obsidian-convergence.tex -n "Fate's Edge - The Obsidian Convergence.pdf" > /dev/null 2>&1|| echo "#14. Did not build"
-../../../tools/compile_latex.sh -f  banner-swap-in-the-wind.tex -n "Fate's Edge - The Banner Swap in the Wind.pdf" > /dev/null 2>&1|| echo "#14. Did not build"
+../../../tools/compile_latex.sh -f  banner-swap-in-the-wind.tex -n "Fate's Edge - The Banner Swap in the Wind.pdf" > /dev/null 2>&1|| echo "#15. Did not build"
+../../../tools/compile_latex.sh -f  crimson-veil.tex -n "Fate's Edge - The Crimson Veil.pdf" > /dev/null 2>&1|| echo "#16. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
