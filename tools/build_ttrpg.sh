@@ -64,7 +64,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  violets-and-stone.tex -n "Fate's Edge Expansion - Violets and Stone.pdf" > /dev/null 2>&1|| echo "#8. Did not build"
 # ../../../tools/compile_latex.sh -f  allies-and-adversaries.tex -n "Fate's Edge Expansion - Allies and Adversaries.pdf" > /dev/null 2>&1|| echo "#9. Did not build"
 # ../../../tools/compile_latex.sh -f  assets-worldly-patrons.tex -n "Fate's Edge Expansion - Assets and Wordly Patrons.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
- ../../../tools/compile_latex.sh -f  assets-allies-advesaries.tex -n "Fate's Edge Expansion - Assets, Allies, and Adversaries.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
+../../../tools/compile_latex.sh -f  assets-allies-advesaries.tex -n "Fate's Edge Expansion - Assets, Allies, and Adversaries.pdf" > /dev/null 2>&1|| echo "#10. Did not build"
 ../../../tools/compile_latex.sh -f  caravans-way-of-silk.tex -n "Fate's Edge Expansion - Caravans: The Way of Silk.pdf" > /dev/null 2>&1|| echo "#11. Did not build"
 ../../../tools/compile_latex.sh -f  wilds-hinterlands-hearthfires.tex -n "Fate's Edge Expansion - Wilds: Hinterlands and Hearthfires.pdf" > /dev/null 2>&1|| echo "#12. Did not build"
 ../../../tools/compile_latex.sh -f  linns-mists-iron.tex -n "Fate's Edge Expansion - Linns: Mists and Iron.pdf" > /dev/null 2>&1|| echo "#13. Did not build"
@@ -78,6 +78,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  roads-beneath-the-world.tex -n "Fate's Edge Expansion - Under Realms: Roads Beneath the World.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
 ../../../tools/compile_latex.sh -f  witches-of-fates-edge.tex -n "Fate's Edge Expansion - Witches of Fate's Edge: Large Cords, Curses, and the Quiet Work of Names.pdf" > /dev/null 2>&1|| echo "#21. Did not build"
 ../../../tools/compile_latex.sh -f  book-of-talents.tex -n "Fate's Edge Expansion - The Book of Talents.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
+../../../tools/compile_latex.sh -f  peoples-and-cultures.tex -n "Fate's Edge Expansion - Peoples and Cultures.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
