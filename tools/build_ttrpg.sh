@@ -53,6 +53,8 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  crimson-veil.tex -n "Fate's Edge - The Crimson Veil.pdf" > /dev/null 2>&1|| echo "#16. Did not build"
 ../../../tools/compile_latex.sh -f  silk-and-velvet.tex -n "Fate's Edge - Silk & Velvet.pdf" > /dev/null 2>&1|| echo "#17. Did not build"
 ../../../tools/compile_latex.sh -f  step-into-sorrow.tex -n "Fate's Edge - Step Into Sorrow.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
+../../../tools/compile_latex.sh -f  stone-and-silence.tex -n "Fate's Edge - Stone & Silence.pdf" > /dev/null 2>&1|| echo "#19. Did not build"
+
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
