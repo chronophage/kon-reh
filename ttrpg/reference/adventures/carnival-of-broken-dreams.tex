@@ -1,0 +1,432 @@
+Here’s a pdflatex-safe version (no fontspec, no \setmainfont, no \filcenter, and the bullets are converted to \textbullet):
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{array}
+
+\sectionfont{\Large\bfseries}
+\subsectionfont{\bfseries}
+
+\titleformat{\section}{\large\bfseries\centering}{}{0em}{}
+\titleformat{\subsection}{\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\itshape}{}{0em}{}
+
+\setlist{itemsep=0pt}
+\setlist[enumerate]{itemsep=0pt}
+
+\newcommand{\divider}{\vspace{12pt}\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}\vspace{12pt}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{The Carnival of Broken Dreams}} \\
+\vspace{6pt}
+{\large A Folk Horror \& Social Commentary adventure for Fate's Edge} \\
+\vspace{6pt}
+{\large Tiers: I--III \textbullet{} Length: 3--6 sessions \textbullet{} Themes: Temptation, public goods, predatory spectacle}
+\end{center}
+
+\divider
+
+\subsection*{What this is}
+
+A traveling night-market of tents, music, and miracles glides the trade-roads between Silkstrand and Thepyrgos. It grants wishes---precisely---and charges a price in things people didn't know they valued. As the Desire Index rises, a town's intangibles unravel: lullabies vanish, bell-rights lapse, markets drift off schedule. The party can expose terms, retune the engine, or divert its appetite before the carnival moves on.
+
+This module leans on core Fate's Edge procedures:
+\begin{itemize}
+\item Position \& DV: earn leverage first (permits, bells, seats), then roll.
+\item Clocks: visible pressure on community, appetite, and exposure.
+\item SB spends (on 1s): crowds shift, contracts ``correct,'' law turns mid-scene.
+\item Diamonds: codified outcomes (e.g., Witness Seal, Stage Permit) that move Position without a roll.
+\end{itemize}
+
+\divider
+
+\subsection*{Where it fits (Setting)}
+\begin{itemize}
+\item Silkstrand bridge-wards crave spectacle and short-cuts to prestige; Diamonds like Bellmark, Stage Permit, and Witness Seal reflect local bureaucracy and show-rights.
+\item Thepyrgos law-by-bell and stair-rights make crowd scenes volatile; a single peal can flip Position or freeze a performance.
+\item Patron Orbit (Lore): The carnival often courts Livaea (Desire) devotees and accepts etiquette enforcement by Mab's envoys---neither must be the villain. Treat them as cultural gravity and flavor, not rules engines.
+\end{itemize}
+
+\divider
+
+\subsection*{Adventure Summary (at a glance)}
+
+\textbf{Act I --- Firelight} \\
+Parade arrives; a ``free wish'' hooks an important NPC. The party sees a miracle, then the missing price.
+
+\textbf{Act II --- Mirrors \& Ledgers} \\
+Investigate tents, negotiate terms, steal leverage from the Ledger Wagon, and win Diamonds to constrain predation.
+
+\textbf{Act III --- The Calliope Heart} \\
+A public performance powers the engine. Break one pillar---Rhythm, Mask Index, or Ticket Chain---to starve it or retool it.
+
+\divider
+
+\subsection*{Core Clocks (start values)}
+\begin{itemize}
+\item \textbf{Desire Index [6]} -- local wish-rate and price magnitude.
+\item \textbf{Community Unraveling [6]} -- customs, names, and bonds fray.
+\item \textbf{Carnival Appetite [8]} -- grand act when filled.
+\item \textbf{Spotlight Heat [4]} -- how targeted the party is by staff.
+\end{itemize}
+
+\textbf{Tick examples}
+\begin{itemize}
+\item Desire Index: each granted wish (+1), heavy crowd teaser (+1 if unopposed).
+\item Unraveling: any wish taken without informed terms (+1), public goods priced (+1).
+\item Appetite: each botched sabotage the engine can ``eat'' (+1), retuning misfire (+1).
+\item Heat: public confrontations, breaking taboos, or humiliating staff (+1).
+\end{itemize}
+
+\divider
+
+\subsection*{The Desire Tax (custom procedure)}
+
+\textbf{Idea:} Every fulfilled wish costs something the wisher didn't know they valued. As more wishes accrue, the Desire Index rises and prices escalate.
+
+\textbf{Per Wish (run this)}
+\begin{enumerate}
+\item State the desire. Tag: Need, Ambition, or Indulgence.
+\item Set the base price. Choose/roll on Taxable Intangibles (below).
+\item Apply rate. Tax Magnitude = 1 + Desire Index. Scale the loss accordingly.
+\item Resolve. The carnival fulfills; the price disappears from the wisher or town.
+\item Advance clocks. Desire Index +1; Unraveling +1 if terms weren't fully understood; Appetite +1 on greedy staff actions.
+\end{enumerate}
+
+\textbf{Taxable Intangibles (d10)}
+\begin{enumerate}
+\item Private memory
+\item Unconscious skill
+\item Social grace
+\item Local luck/wind
+\item Shared custom
+\item Legal right (bellmark/stair-pass)
+\item Relationship texture
+\item Place-name
+\item Future possibility
+\item Invisible boundary (e.g., where a river ``should'' bend)
+\end{enumerate}
+
+\textbf{Fallout thresholds}
+\begin{itemize}
+\item 0--1: Rumors, coincidences, sampler wishes.
+\item 2--3: Faces feel unfamiliar; crowds drift to the midway.
+\item 4--5: Names slip; permits misread; bells mistime.
+\item 6+: Foundational loss unless stopped.
+\end{itemize}
+
+\textbf{Countermeasures}
+\begin{itemize}
+\item Informed consent: If the exact price is spoken and voluntarily accepted $\rightarrow$ reduce Magnitude by 1 (min 1) and don't tick Unraveling.
+\item Substitution: PCs may volunteer an equal-value price to block Appetite.
+\item Audited wish: Present a Witness Seal (Diamond) to force staff to state the exact terms; --1 DV vs carnival staff.
+\end{itemize}
+
+\divider
+
+\subsection*{Diamonds (codified leverage)}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Diamond} & \textbf{What it does} & \textbf{Typical Position shift} \\
+\hline
+Witness Seal & Compels staff to name the exact price aloud. & Risky $\rightarrow$ Controlled (social) \\
+Stage Permit & One lawful interruption of a live act. & Controlled $\rightarrow$ Dominant (on-stage) \\
+Bellmark of Honest Trade & Shields from predatory refinances. & --1 DV for term disputes \\
+Mirror Warrant & Break a mirror without accruing Heat. & Ignore one glamour penalty \\
+Calliope Key & Retune the engine's rhythm for a beat. & Group +1 Position vs engine hazards \\
+\hline
+\end{tabular}
+
+Hand out Diamonds as scene goals or rewards for clever prep. They change Position first; then roll.
+
+\divider
+
+\subsection*{Sites \& set pieces}
+
+\textbf{Firelight Parade (opening)}
+
+Mood: Lanterns, brass, thrilled hush. \\
+Default Position: Controlled (DV 3). Public accusations raise DV to 4. \\
+Beats: Free raffle-wish ``won'' by a sympathetic NPC; staff ``clarifies'' nothing. \\
+SB spends (on 1s): Confetti seals a micro-contract; crowd tilts; a bell cue flips the scene order.
+
+\textbf{Midway of Masks}
+
+Try-before-buy illusions ``prove'' the wish.
+\begin{itemize}
+\item Risk: Each test without refusal ticks Desire Index +1.
+\item Fail-forward: Small boon gained but a habit is lost (whistling, prayer, smile cadence) until resolved.
+\end{itemize}
+
+\textbf{House of Honest Mirrors}
+
+Shows visitors as they believe themselves to be; mirrors hold their price ledger.
+\begin{itemize}
+\item Position: Risky (DV 4).
+\item Action: Break a mirror under Mirror Warrant to read its ledger safely.
+\item Heat on miss: Mirror shards animate and reassign masks mid-scene.
+\end{itemize}
+
+\textbf{The Wishwright's Tent}
+
+Velvet-law negotiation.
+\begin{itemize}
+\item Leverage: Witness Seal or Bellmark shifts Position; otherwise staff ``assumes the difference.''
+\item Magic: Divination finds missing clauses but attracts Livaea-touched attendants.
+\end{itemize}
+
+\textbf{Ledger Wagon (backstage heist)}
+
+A traveling records office; prices are written as negative space on vellum.
+\begin{itemize}
+\item Position: Risky $\rightarrow$ Desperate if loud (DV 4--5).
+\item Reward: Copying a ledger grants leverage to unwind a price; the reader temporarily loses a related social grace.
+\end{itemize}
+
+\textbf{The Calliope Heart (finale)}
+
+Engine under the stage with three pillars:
+\begin{itemize}
+\item Rhythm: crowd cadence; break with counter-song (Cantor), bell off-beat, or Calliope Key.
+\item Mask Index: who plays which role; scramble labels or sanctify a mask.
+\item Ticket Chain: consent tokens; reroute or void them with contract sigils.
+\end{itemize}
+
+Break any one pillar to starve the engine or change its appetite.
+
+\divider
+
+\subsection*{NPC Roster}
+
+\textbf{Maestra Pann (Ringmaster)} --- velvet coaxing, bell cues, spectacle first.
+\begin{itemize}
+\item Wants: Growth, clean shows, no scandal.
+\item Moves: Change the beat; elevate stakes; flatter a rival into compliance.
+\item Tell: Two-finger bell count before a hard turn.
+\end{itemize}
+
+\textbf{Mr. Vellum (Ledger-Clerk)} --- papery whisper, ink under nails.
+\begin{itemize}
+\item Wants: Balanced books (ethos of fairness... on their terms).
+\item Moves: ``Correct'' a contract; split a cost between bystanders; misfile your name.
+\item Tell: Checks quill nib before lying.
+\end{itemize}
+
+\textbf{The Cotton Witch (Livaea-touched)} --- sugared lips, cravings-as-magic.
+\begin{itemize}
+\item Wants: To feed your appetite until you consent to anything.
+\item Moves: Offer a sweeter ``trial''; mirror your desire; name your envy aloud.
+\item Tell: Hums when you hesitate.
+\end{itemize}
+
+\textbf{Harlequin of Courts (Mab's Envoy)} --- etiquette duels as combat.
+\begin{itemize}
+\item Wants: Order, pretty rules, public victories.
+\item Moves: Demand apology; set a forfeit; bind you to a bit of theatre.
+\item Tell: Bows before cuts.
+\end{itemize}
+
+\textbf{Ticket Twins (Ushers)} --- synchronized blinks, bright patter.
+\begin{itemize}
+\item Wants: Throughput, safety theatre.
+\item Moves: Reassign seating; isolate meddlers; ``check'' tokens that edit consent after the fact.
+\end{itemize}
+
+Add one local anchor NPC (Bellwarden, Market Matron, or a child prodigy) to personify the stakes.
+
+\divider
+
+\subsection*{Procedures \& guidance}
+
+\textbf{Position \& DV (quick ladder)}
+\begin{itemize}
+\item Dominant: Tier+2 --- permits in hand, crowd yours, law on your side.
+\item Controlled: Tier+3 --- proper intros, stable ground.
+\item Risky: Tier+4 --- time pressure, partial leverage.
+\item Desperate: Tier+5+ --- taboo broken, wrong place/time, Heat high.
+\end{itemize}
+
+Use Diamonds to change Position before rolling. Reward prep with downshifts.
+
+\textbf{SB spend menus (sample)}
+
+\textbf{Parade Grounds}
+\begin{itemize}
+\item Free wish ``won'' by an allied NPC $\rightarrow$ Desire Index +1.
+\item Crowd surge separates PC from their leverage.
+\item Confetti-contract sticks to a sleeve: tear it = social harm.
+\end{itemize}
+
+\textbf{Backstage}
+\begin{itemize}
+\item Ledger page sticks to a shadow: lose a habit until returned.
+\item A bell cue retimes the scene: +1 DV until the beat is broken.
+\item Mask roles swap: allies briefly count as ``audience.''
+\end{itemize}
+
+\divider
+
+\subsection*{Act structure (with beats)}
+
+\textbf{Act I --- Firelight (1--2 sessions)}
+\begin{itemize}
+\item Hook via raffle-wish to a sympathetic townie.
+\item Identify the Desire Tax through consequences.
+\item Win first Diamond (Witness Seal) in a fair-game contest or etiquette duel.
+\item Clocks: Desire Index 1--2; Unraveling 1; Heat 1.
+\end{itemize}
+
+\textbf{Fail-forward examples}
+\begin{itemize}
+\item Calling out the price in public: you force a lesser cost to be named, but it latches onto a bystander unless countered.
+\item Breaking the line: you reach the tent; a child slips toward a booth you shut down.
+\end{itemize}
+
+\textbf{Act II --- Mirrors \& Ledgers (1--3 sessions)}
+\begin{itemize}
+\item House of Honest Mirrors $\rightarrow$ Wishwright's Tent $\rightarrow$ Ledger Wagon heist.
+\item Earn Stage Permit or Mirror Warrant.
+\item Decide whether to regulate, starve, or divert the engine.
+\item Clocks: Desire Index 3--4; Unraveling 3--4; Appetite 3--5; Heat 2--3.
+\end{itemize}
+
+\textbf{Fail-forward examples}
+\begin{itemize}
+\item Mirror smash: gain a ledger shard; your reflection walks off (lose a habit) until reunited.
+\item Retune calliope: DV --1 but Appetite +1 (the engine takes a taste).
+\end{itemize}
+
+\textbf{Act III --- The Calliope Heart (1 session)}
+\begin{itemize}
+\item Public show as ritual; break Rhythm, Mask Index, or Ticket Chain.
+\item Choose an ending and settle prices.
+\end{itemize}
+
+\divider
+
+\subsection*{Endings}
+\begin{itemize}
+\item \textbf{Expose \& Regulate:} Carnival stays but all wishes require informed, spoken terms. Unraveling clears; Livaea's devotees take interest in you.
+\item \textbf{Starve the Engine:} Break any pillar; tents collapse; debts become letters and must be hand-delivered back.
+\item \textbf{Divert the Appetite:} Offer a greater, voluntary group vow; the carnival leaves on a promise and returns when it matures.
+\end{itemize}
+
+\divider
+
+\subsection*{Magic \& Talents (table-facing prompts)}
+\begin{itemize}
+\item Cantors: Lead counter-cadence; --1 DV vs crowd sway. Risk: echo-choir ticks Desire Index.
+\item Runekeepers: Stamp fair-contract sigils; negate one clause (Obligation may rise if Courts are offended).
+\item Invokers: Call a neutral market spirit to enforce equivalence; it tithes your luck.
+\item Casters: Euclidean wards block mirror tricks; wards hum appetites that draw the Cotton Witch.
+\item Summoners: Bind a ``lost-and-found'' spirit to return a price; it pockets a token from you.
+\end{itemize}
+
+\divider
+
+\subsection*{XP milestones (suggested)}
+\begin{itemize}
+\item Name a Price (publicly, precisely): +6 XP
+\item Save a Wisher (undo a price without harming others): +8 XP
+\item Backstage Leverage (copy/steal ledger): +6 XP
+\item Retune the Engine (break a pillar or reduce Desire Index to 0): +10 XP
+\item Community Heals (clear Unraveling before departure): +12 XP
+\item Session Base: +6 XP per session for exploration, roleplay, and setbacks
+\end{itemize}
+
+\divider
+
+\subsection*{Random tables}
+
+\textbf{d6 Midway Booths}
+\begin{enumerate}
+\item Guess-the-Secret (mirror reads you)
+\item Cotton Alchemy (flavors as feelings)
+\item Fortune Stair (mini-stair-right lottery)
+\item Prize Hook (catch your ``best self'')
+\item Lantern Maze (lefts are regrets)
+\item Mask Painter (face becomes contract text)
+\end{enumerate}
+
+\textbf{d6 Crowd Moments}
+\begin{enumerate}
+\item Chant swells off-beat
+\item Bell rings early
+\item Child returns with a stranger's voice
+\item Vendors swap prices mid-sentence
+\item Duel of apologies erupts
+\item Parade pauses; all eyes on you
+\end{enumerate}
+
+\textbf{d6 Prices That Hurt Just Right}
+\begin{enumerate}
+\item The last note of a cradle-song
+\item Market wind that smells of dye
+\item The shortcut only you knew
+\item Your knack for remembering faces
+\item The right to ring the bell once
+\item The name of the street you grew up on
+\end{enumerate}
+
+\divider
+
+\subsection*{Session 1 quickstart (3 hours)}
+\begin{enumerate}
+\item Cold Open (15 min): Parade arrives; raffle-wish triggers.
+\item Investigation Beat (45 min): Midway of Masks or Honest Mirrors.
+\item Pressure Beat (30 min): Public call-out; win Witness Seal.
+\item Choice Beat (30 min): Who to help first; start or cool a clock.
+\item Climax (30--40 min): Mini-debate or mirror heist.
+\item Fallout (10 min): Hand out a Diamond; foreshadow the Calliope.
+\end{enumerate}
+
+\divider
+
+\subsection*{Safety \& tone}
+\begin{itemize}
+\item This arc spotlights exploitation and ``price of desire.'' Use upfront consent tools. Swap any personal-price beats for harmless-but-meaningful community intangibles (songs, routes, customs) when that serves your table.
+\end{itemize}
+
+\divider
+
+\subsection*{Printables (drop-in)}
+
+\textbf{Clocks}
+\begin{itemize}
+\item Desire Index [\,] [\,] [\,] [\,] [\,] [\,]
+\item Community Unraveling [\,] [\,] [\,] [\,] [\,] [\,]
+\item Carnival Appetite [\,] [\,] [\,] [\,] [\,] [\,] [\,] [\,]
+\item Spotlight Heat [\,] [\,] [\,] [\,]
+\end{itemize}
+
+\textbf{Diamonds (handouts)}
+\begin{itemize}
+\item Witness Seal \quad Stage Permit \quad Bellmark of Honest Trade \quad Mirror Warrant \quad Calliope Key
+\end{itemize}
+
+\divider
+
+\subsection*{Ties \& follow-ons}
+\begin{itemize}
+\item Silk \& Velvet Arc: Bell-law and etiquette duels at the carnival foreshadow Crimson Masque.
+\item Steps Into Sorrow: If a town loses its lullaby or street-name, those shards can seed sorrow-echoes on the Bridge or in Seven-Sorrows.
+\end{itemize}
+
+\divider
+
+\subsection*{Running note}
+
+Keep rolls scarce by rewarding preparation with Position shifts. Spend 1s to move the crowd, ``correct'' papers, or hit a new bell cue that alters scene order. The carnival is a machine for desire---let the party decide whether to smash, regulate, or re-aim it.
+
+\end{document}
