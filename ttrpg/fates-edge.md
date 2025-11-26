@@ -416,8 +416,8 @@ Session 0 campaign-framing tool:
 
 ### Five-Second Position & Effect
 **Risk Assessment**:
-- **Controlled**: Safe, prepared, low threat
-- **Risky**: Pressure, danger, uncertainty
+- **Dominant**: Safe, prepared, low threat
+- **Controlled**: Pressure, danger, uncertainty
 - **Desperate**: Immediate danger, overmatched, exposed
 
 **Impact Assessment**:
