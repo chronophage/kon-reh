@@ -55,6 +55,7 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  step-into-sorrow.tex -n "Fate's Edge - Step Into Sorrow.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
 ../../../tools/compile_latex.sh -f  stone-and-silence.tex -n "Fate's Edge - Stone & Silence.pdf" > /dev/null 2>&1|| echo "#19. Did not build"
 ../../../tools/compile_latex.sh -f  carnival-of-broken-dreams.tex -n "Fate's Edge - The Carnival of Broken Dreams.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
+../../../tools/compile_latex.sh -f memory-merchants-labyrinth.tex -n "Fate's Edge - The Memory Merchant's Labyrinth.pdf" > /dev/null 2>&1|| echo "#21. Did not build"
 
 
 echo "Building Expansions"

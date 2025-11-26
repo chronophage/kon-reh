@@ -1,222 +1,236 @@
-# Fate's Edge Adventure Module Template
-**The Gold Standard for Adventure Design**
+# The Fate's Edge Adventure Template
 
----
+## Core Concept Framework
 
-## Template Structure
+### 1. Adventure Identity Statement
+Every adventure should begin with a clear identity statement that answers:
+- **What makes this adventure sing?** (Unique hook/theme)
+- **What is the central tension?** (Core conflict)
+- **What will players remember?** (Memorable takeaway)
 
-### 1. Adventure Overview Card
-**Title:** [Adventure Name] - [Genre/Theme]
-**Tier:** [Character Tier Range] [XP Range]
-**Session Length:** [Estimated Sessions] [Hours per Session]
-**Adventure Type:** [Village Defense / Investigation / Heist / War / Cosmic Horror / etc.]
+### 2. Thematic Pillars (Choose 2-3)
+- **Horror by...** (Consent, Atmosphere, Consequence)
+- **Social by...** (Intrigue, Manipulation, Performance)
+- **Exploration by...** (Discovery, Navigation, Revelation)
+- **Combat by...** (Tactics, Momentum, Sacrifice)
+- **Mystery by...** (Investigation, Revelation, Misdirection)
 
-**Hook Summary:** [2-3 sentence compelling premise]
-**Real Hook:** [What's really going on beneath the surface]
-**Key Themes:** [3-5 core thematic elements]
-**Mechanical Focus:** [Which system elements are highlighted]
+## Structural Template
 
-### 2. Quick Start Box
-**30-Minute Setup:**
-- [Pre-generated characters or quick build guide]
-- [Core conflict in 3 bullet points]
-- [Opening scene hook]
-- [Primary campaign clock and size]
-- [Key mechanical tutorial elements]
+### Act I: Entry & Engagement
+**Hook (Opening Scene)**
+- Present immediate, concrete stakes
+- Introduce core threat/ally/opportunity
+- Establish tone through sensory details
+- Surface one visible player advantage/resource
 
-### 3. Campaign Clocks Framework
-**Primary Clock:** [Name] ([Segments]) - [Purpose]
-- Advancement Triggers: [4-6 specific, thematic triggers]
-- Consequences when filled: [Clear narrative outcomes]
+**Establishment Beats (2-3 scenes)**
+- Character integration with setting
+- First major encounter (social/combat/investigation)
+- Introduction of primary campaign clocks
+- Seed first hard choice or moral dilemma
 
-**Secondary Clocks:** (2-3 clocks)
-- [Name] ([Segments]) - [Purpose and triggers]
-- [Name] ([Segments]) - [Purpose and triggers]
+### Act II: Complications & Choices
+**Rising Tension (3-4 scenes)**
+- Escalate core conflict
+- Introduce secondary threats/allies
+- Present meaningful player choices
+- Advance campaign clocks through player actions
 
-**Clock Interaction:** [How clocks influence each other mechanically]
+**Midpoint Crisis**
+- Major revelation or setback
+- Test player commitments
+- Shift power dynamics
+- Consequences that ripple forward
 
-### 4. Core Mechanical Innovation
-**Signature System:** [New or adapted mechanic that defines this adventure]
-- **Purpose:** [What does it add to the game?]
-- **Integration:** [How it connects to theme and existing mechanics]
-- **Player Agency:** [How players interact with/control it]
-- **Sample Uses:** [2-3 specific examples in play]
+### Act III: Climax & Resolution
+**Approach to Climax**
+- Players consolidate resources/position
+- Final preparations/choices
+- Last opportunity for alternative approaches
 
-### 5. Session-by-Session Structure
+**Climactic Encounter**
+- Multiple resolution paths
+- Significant consequences regardless of outcome
+- Integration of adventure's core themes
+- Meaningful cost for success
 
-**Session 1: [Title]**
-- **Opening Hook:** [Immediate engagement]
-- **Key Encounters:** [2-3 major scenes with mechanical focus]
-- **Discovery:** [What players learn that changes everything]
-- **Clock Movement:** [Expected advancement]
-- **Character Integration:** [How it connects to PC backgrounds]
+**Resolution & Aftermath**
+- Immediate consequences of choices
+- Award earned resources/advancement
+- Seed ongoing campaign elements
+- Character reflection/development moments
 
-**Session 2: [Title]**
-- **Escalation:** [How stakes increase]
-- **Player Choice:** [Major decision point with consequences]
-- **Key Encounters:** [2-3 major scenes]
-- **Asset Building:** [What resources players can gain]
-- **Clock Movement:** [Expected advancement]
+## Mechanical Integration Framework
 
-**Session 3: [Title]**
-- **Climax Setup:** [How previous choices matter]
-- **Multiple Paths:** [2-3 different approaches based on earlier decisions]
-- **Key Encounters:** [2-3 climactic scenes]
-- **Resolution:** [How success/failure manifests narratively]
-- **Continuation Hooks:** [What comes next regardless of outcome]
+### Core Innovation Box
+```
+Signature System: [Name] - [Brief description]
+• Purpose: [What thematic element does this serve?]
+• Integration: [How does it connect to existing mechanics?]
+• Player Agency: [What choices does it enable?]
+• Sample Uses: [2-3 concrete examples]
+```
 
-### 6. Key NPCs & Entities
-
-**Protagonist-Adjacent:**
-- [Name] - [Role/Connection to PCs] - [Motivation] - [Mechanical Stats if needed]
-- [Redemption arc or personal stake options]
-
-**Antagonist/Obstacle:**
-- [Name] - [Thematic representation] - [Motivation beyond "be evil"] - [Weakness/Complication]
-- [How they evolve based on player actions]
-
-**Supporting Cast:**
-- [3-4 memorable characters with clear functions]
-- [Each with 1-2 sentence personality/hooks]
-
-### 7. Location & Environment System
-**Signature Environmental Mechanics:**
-- [How the setting affects gameplay beyond description]
-- [Specific modifiers or complications]
-- [Player interaction opportunities]
-
-**Key Locations:**
-1. [Name] - [Distinctive feature] - [Mechanical significance]
-2. [Name] - [Distinctive feature] - [Mechanical significance]
-3. [Name] - [Distinctive feature] - [Mechanical significance]
-
-### 8. Resource Management Integration
+### Resource Management Layer
 **Adventure-Specific Resources:**
-- [New currency or tracking system]
-- [How it's earned and spent]
-- [Narrative weight beyond mechanical benefit]
+- What new currencies/trackers are introduced?
+- How do they interact with Boons/SB economy?
+- What choices do they force players to make?
+- How do they create tension/engagement?
 
 **Asset Building Opportunities:**
-- [3-4 specific ways players can gain lasting resources]
-- [Each tied to meaningful choices or sacrifices]
+- What can players gain that persists?
+- How do assets change gameplay?
+- What meaningful costs are associated?
+- How do they scale with character investment?
 
-### 9. Resolution Paths Matrix
-| Path | Requirements | Outcome | XP Reward | Mechanical Consequences |
-|------|-------------|---------|-----------|------------------------|
-| [Path 1] | [What must happen] | [Narrative result] | [XP Range] | [Lasting changes] |
-| [Path 2] | [What must happen] | [Narrative result] | [XP Range] | [Lasting changes] |
-| [Path 3] | [What must happen] | [Narrative result] | [XP Range] | [Lasting changes] |
+### Custom Mechanics Integration
+**New Resolution Methods:**
+- When to use instead of/alongside core rolls
+- How they interact with Position/DV
+- What SB spends they enable
+- How they handle partial success/failure
 
-### 10. GM Toolkit
-**Session Preparation Checklist:**
-- [ ] [Key elements to prep before session 1]
-- [ ] [Clock tracking method]
-- [ ] [Key NPC motivations and secrets]
-- [ ] [Environmental complication deck/index cards]
+**Clock Architecture:**
+- Primary campaign clock (6-12 segments)
+- 2-3 supporting clocks (4-8 segments each)
+- Clear advancement triggers tied to player actions
+- Meaningful consequences when filled
 
-**Complication Generator:**
-- **Mild (1 (SB)):** [2-3 examples specific to this adventure]
-- **Moderate (2 (SB)):** [2-3 examples]
-- **Serious (3 (SB)):** [2-3 examples]
-- **Major (4+ (SB)):** [2-3 examples]
+## GM Support Systems
 
-**Player Agency Reminders:**
-- [How to handle when players choose unexpected approaches]
-- [When to push back vs. embrace creativity]
-- [How to maintain tension without being adversarial]
+### Session Preparation Checklist
+- [ ] Core conflict/choices identified
+- [ ] Key NPCs with motivations/weaknesses
+- [ ] Location descriptions with sensory details
+- [ ] Custom mechanics summarized
+- [ ] SB spend menus prepared
+- [ ] Player agency moments highlighted
 
-### 11. Character Integration Hooks
-**Background Connections:**
-- [How different background types can connect to this adventure]
-- [Specific hooks for common character concepts]
+### Player Agency Reminders
+**At Choice Points:**
+- "What's the cost you're willing to pay?"
+- "Who benefits if you succeed here?"
+- "What would your character regret most?"
+- "How does this align with your drives?"
 
-**Bond Integration:**
-- [How existing bonds can be relevant]
-- [Opportunities to create new bonds during play]
-- [Mechanical rewards for bond-driven actions]
+**When Tension Lags:**
+- Introduce time pressure
+- Raise personal stakes
+- Complicate success
+- Force resource expenditure
 
-### 12. Scaling & Variation
-**For Experienced Players:**
-- [Mechanical tweaks to increase challenge]
-- [Additional complications or layers]
-- [Higher tier character considerations]
+### Complication Generator
+**Mild (1 SB):** Environmental/Personal pressure
+**Moderate (2 SB):** Tactical disadvantage/New element
+**Serious (3 SB):** Major setback/Threat escalation
+**Major (4+ SB):** Scene shift/Fundamental change
 
-**For New Players:**
-- [Simplified elements or safety mechanisms]
-- [Additional guidance or scaffolding]
-- [Streamlined systems]
+## Thematic Consistency Tools
 
-**Campaign Integration:**
-- [How this adventure fits into larger campaigns]
-- [Hooks for sequel adventures]
-- [World-changing consequences to track]
+### Tone Maintenance
+- **Opening Description:** Set atmosphere with 2-3 vivid sensory details
+- **NPC Voices:** Distinctive speech patterns/motivations
+- **Environmental Storytelling:** What does the setting reveal?
+- **Pacing Markers:** When to accelerate/decelerate tension
 
-### 13. Quick Reference Appendix
-**At-a-Glance Cards:**
-- **Mechanics Summary:** [Key rolls and DVs]
-- **Clock Management:** [Advancement triggers and consequences]
-- **Resource Spending:** [Cost/benefit quick reference]
-- **NPC Stats:** [Essential stats for key figures]
+### Theme Reinforcement
+**Each Scene Should:**
+- Advance the core conflict OR reveal character
+- Include at least one thematic element
+- Present a meaningful choice or consequence
+- Connect to larger campaign through details
 
-**Index Card Prep:**
-- [What to put on index cards for smooth running]
-- [Tracking sheets or reminder cards needed]
+### Moral Complexity Integration
+- **Gray Choices:** No clear right/wrong options
+- **Cascading Consequences:** Actions have multiple effects
+- **Personal Stakes:** Tie to character backgrounds/drives
+- **Community Impact:** Show broader effects of choices
 
-### 14. Resolution & Modularity
-**Respect Modularity:** Ensure all new elements can integrate cleanly with core Fate's Edge and other modules
+## Resolution Path Framework
 
-**Mechanical Consequences Integration:**
-- **Clock-to-(SB) Conversion:** [How filled clocks generate Story Beats for ongoing campaigns]
-- **Backward Compatibility:** [How consequences translate to standard Outcome Matrix effects]
-- **Escalation Carryover:** [How unresolved tensions become future campaign threads]
+### Multiple Valid Approaches
+1. **Direct Confrontation:** Face threat head-on
+2. **Indirect Manipulation:** Work through others/systems
+3. **Creative Solution:** Find alternative path
+4. **Sacrificial Gambit:** Trade something significant
 
-**Special Item Adaptation:**
-- **Core Compatibility:** [How new items interact with standard gear categories and rules]
-- **Power Benchmarking:** [Where items fall on standard power curve (Minor/Standard/Major effects)]
-- **Integration Hooks:** [How items can appear in other adventures/settings]
-- **Corruption/Downside:** [Built-in limitations preventing power creep]
+### Outcome Matrix
+**Success:** Theme fulfilled, significant cost
+**Compromise:** Partial goal, ongoing complications  
+**Failure:** Goal blocked, new opportunities opened
+**Transformation:** Unexpected change, new direction
 
-**Special Skill/Talent Adaptation:**
-- **Core System Alignment:** [How new skills/talents use standard Attribute + Skill framework]
-- **Power Level Consistency:** [Balanced against existing talents (3-5 XP early, 6-10 XP mid, 12+ XP prestige)]
-- **Cross-Module Utility:** [Which talents remain useful in different genres/settings]
-- **Progression Path:** [How talents can evolve or combine with other abilities]
+### Consequence Types
+- **Immediate:** Resolve within session
+- **Ongoing:** Affect future sessions/campaign
+- **Character:** Personal growth/trauma
+- **World:** Setting permanently changed
 
-**Special Asset Adaptation:**
-- **Standard Asset Framework:** [How new assets fit Minor/Standard/Major cost structure]
-- **Off-Screen Integration:** [How assets function with standard activation rules]
-- **Maintenance Requirements:** [What ongoing attention assets require to remain viable]
-- **Campaign Scaling:** [How assets can grow or change over time]
+## Scalability Framework
 
-**Modular Design Principles:**
-- **Plug-and-Play Elements:** [Which components work independently in other adventures]
-- **Genre Flexibility:** [How elements adapt to different thematic contexts]
-- **Power Scaling:** [How elements adjust for different character tiers]
-- **Narrative Portability:** [How consequences and relationships carry forward]
----
+### Tier Adaptation
+**Lower Tiers:**
+- Reduce clock sizes by 2-4 segments
+- Simplify custom mechanics
+- Focus on 1-2 domains
+- Reduce scope of political elements
 
-## Design Philosophy Requirements
+**Higher Tiers:**
+- Add complexity layers
+- Include sub-plots for individual characters
+- Expand scope to multiple realms
+- Add long-term consequences
 
-### Must Include:
-- **Meaningful Player Choice:** Every major decision should have clear, lasting consequences
-- **Mechanical-Theme Integration:** Every new system should serve the adventure's themes
-- **Gradual Complexity:** If complex mechanics, introduce gradually across sessions
-- **Multiple Valid Approaches:** Combat, social, and skill-based solutions should all be viable
-- **Character Spotlights:** Each session should provide opportunities for different character types
-- **Clear Continuation Hooks:** Win or lose, the world should respond meaningfully
+### Session Modularity
+**Can Break Into:**
+- 2-3 session arcs (Acts I-II, Act III, Epilogue)
+- 1-2 session adventures (Core conflict focus)
+- Standalone encounters (Single significant scene)
 
-### Should Avoid:
-- **Railroading:** Player choices should genuinely matter to outcomes
-- **Information Dumps:** Lore should emerge through play, not exposition
-- **Mechanical Bloat:** New systems should enhance, not complicate unnecessarily
-- **Unwinnable States:** Even failure should lead to interesting continuation
-- **Generic Elements:** Every location, NPC, and encounter should serve the theme
+## Documentation Standards
 
-### Excellence Indicators:
-- **Innovative but Accessible:** New mechanics that feel natural to the genre
-- **Thematic Consistency:** Every element reinforces core themes
-- **Scalable Design:** Works for different group sizes and experience levels
-- **Prep-Efficient:** GM can run with minimal preparation after first read
-- **Session-Sized Beats:** Clear goals and climaxes for each session
-- **Player Agency Documentation:** Clear guidance on handling unexpected choices
+### Player-Facing Materials
+- Clear, concise handouts
+- Visual clock representations
+- Quick reference cards for custom mechanics
+- Safety/toolkit reminders
 
+### GM Quick Reference
+- Key NPC motivations at a glance
+- Scene/encounter flowcharts
+- Custom mechanic summary
+- SB spend menu cheat sheet
+
+### Adventure Scaling Notes
+- **Fast Play:** Core scenes highlighted
+- **Deep Dive:** Additional content/complications
+- **Character Spotlights:** Moments for each PC type
+- **Campaign Integration:** Hooks to larger story
+
+## Quality Assurance Checklist
+
+### Essential Elements
+- [ ] Clear adventure identity statement
+- [ ] Meaningful player choices with consequences
+- [ ] Integration with core Fate's Edge mechanics
+- [ ] Custom mechanics that serve theme
+- [ ] Multiple valid approaches to conflicts
+- [ ] Clear escalation patterns
+- [ ] Memorable NPCs with distinct voices
+- [ ] Atmospheric location descriptions
+- [ ] Meaningful resource management
+- [ ] Consequences that ripple forward
+
+### Excellence Indicators
+- [ ] Mechanical innovation serves narrative
+- [ ] Player agency reinforced throughout
+- [ ] Thematic consistency maintained
+- [ ] Multiple resolution paths available
+- [ ] Consequences feel earned and meaningful
+- [ ] Scalability options clearly marked
+- [ ] GM support materials comprehensive
+- [ ] Safety/toolkit considerations included
+
+This template provides a framework for creating adventures that integrate mechanically with Fate's Edge while maintaining the narrative focus and player agency that makes the system distinctive. Each adventure should feel like it could only exist in Fate's Edge while pushing the system's boundaries in thematically appropriate ways.
