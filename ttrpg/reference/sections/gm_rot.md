@@ -7,8 +7,8 @@ Here’s what can help, framed as actionable advice and cheat sheets.
 Stop overthinking. Ask these two questions in order:
 
 **A) What's the RISK?** (This sets **Position**)
-*   **Controlled:** Is the character safe, prepared, or in charge? → "No big risk."
-*   **Risky:** (DEFAULT) Is there some pressure, danger, or uncertainty? → "Standard risk."
+*   **Dominant:** Is the character safe, prepared, or in charge? → "No big risk."
+*   **Controlled:** (DEFAULT) Is there some pressure, danger, or uncertainty? → "Standard risk."
 *   **Desperate:** Is the character in immediate, severe danger or over their head? → "High risk."
 
 **B) What's the IMPACT?** (This sets **Effect**)
@@ -18,11 +18,11 @@ Stop overthinking. Ask these two questions in order:
 
 **The Flowchart in Practice:**
 Player: "I kick down the door and charge the cultist!"
-GM: *("Risk? Charging in is pretty standard danger... Risky. Impact? Knocking down a door and attacking is standard... Standard. Got it.")*
-"Risky/Standard. Roll."
+GM: *("Risk? Charging in is pretty standard danger... Controlled. Impact? Knocking down a door and attacking is standard... Standard. Got it.")*
+"Controlled/Standard. Roll."
 
 Player: "I sneak up behind the cultist while he's chanting and slit his throat."
-GM: *("Risk? If he turns around, you're exposed... that's Risky or even Desperate. Impact? A stealth kill from behind is a huge impact... Great.")*
+GM: *("Risk? If he turns around, you're exposed... that's Controlled or even Desperate. Impact? A stealth kill from behind is a huge impact... Great.")*
 "Desperate/Great. Roll."
 
 ### 2. The Lazy GM's DV Chart (Stick This On Your Screen)
@@ -51,7 +51,7 @@ When a player rolls a 1, don't plan. React. Pick ONE thing from this list. One a
 
 *   **Spend 2 SB:** Introduce a **Moderate Complication**.
     *   *"An alarm is raised."*
-    *   *"You lose your advantageous position (Controlled -> Risky)."*
+    *   *"You lose your advantageous position (Dominant -> Controlled)."*
     *   *"A key piece of gear breaks or is lost."*
     *   *"A more significant enemy appears."*
     *   **Tick a Clock +2.**

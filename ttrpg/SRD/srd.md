@@ -66,7 +66,7 @@ All significant actions follow this three-step process:
 
 ### 2.5 Position & Effect
 
-- **Position**: Controlled (safe), Risky (default), Desperate (high stakes)
+- **Position**: Domiant (safe), Controlled (default), Desperate (high stakes)
 - **Effect**: Limited (weak), Standard (expected), Great (strong)
 
 ### 2.6 Shifting Position in Play
