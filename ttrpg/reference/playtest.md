@@ -8,7 +8,7 @@ This document provides a comprehensive party setup that can playtest all availab
 ### Character 1: Kestra the Runekeeper
 **Background:** Aelaerem scholar bound to the Patron Raéyn, Storm Queen of the Sea
 **Path:** Rites User (Runekeeper)
-**Core Talents:** Codex (4 XP), Familiar (2 XP), Caster's Gift (2 XP)
+**Core Talents:** Codex (4 XP), Familiar (2 XP), Caster's Gift (6 XP)
 **Skills:** Wits 3, Arcana 3, Lore 2, Survival 2
 **Attributes:** Body 2, Spirit 4, Presence 2
 **Starting XP:** 0

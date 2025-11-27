@@ -453,13 +453,13 @@ Talents are the building blocks of character specialization. They represent lear
 
 | Type | Cost | Examples |
 |------|------|----------|
-| Minor Edge | 2 XP | Caster's Gift, +1 situational bonus |
+| Minor Edge | 2 XP | Quick Hands, +1 situational bonus |
 | Major Edge | 4 XP | Patron's Symbol, strong summon upgrade |
 | Prestige | 6+ XP | Campaign-defining effects |
 
 ### 7.2 Magic Access Talents
 
-- **Caster's Gift (2 XP)**: Access to Weave & Cast freeform spellcasting
+- **Caster's Gift (6 XP)**: Access to Weave & Cast freeform spellcasting
 - **Familiar (2 XP)**: Required for Patron features
 - **Codex (4 XP)**: Full access to a Patron's Rites and Obligation system
 - **Patron's Symbol (4 XP)**: Ritual access to a Patron's Rites

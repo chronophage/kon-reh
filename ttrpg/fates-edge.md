@@ -111,7 +111,7 @@ All significant actions follow this three-step process:
 - **Complications**: +4 XP total
 
 ### Key Talents
-- **Caster's Gift (2 XP)**: Freeform magic access
+- **Caster's Gift (6 XP)**: Freeform magic access
 - **Familiar (2 XP)**: Patron features access
 - **Codex (4 XP)**: Runekeeper rites and Obligation
 - **Patron's Symbol (4 XP)**: Invoker ritual access
@@ -364,7 +364,7 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 - **Epic**: 15+ XP (legendary abilities)
 
 ### Magic Access Talents
-- **Caster's Gift (2 XP)**: Weave & Cast freeform spellcasting
+- **Caster's Gift (6 XP)**: Weave & Cast freeform spellcasting
 - **Familiar (2 XP)**: Patron features access
 - **Codex (4 XP)**: Runekeeper rites and Obligation system
 - **Patron's Symbol (4 XP)**: Invoker ritual access
