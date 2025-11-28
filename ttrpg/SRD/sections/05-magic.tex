@@ -133,126 +133,200 @@ All paths share the same dice engine and SB/Obligation economies, but their flav
 \medskip
 \noindent\textit{Rule of thumb: if it is big, weird, or campaign-shaping, expect real cost, setup, or the GM to say ``no'' or ``yes, but\ldots''}
 
-\subsection{Rites Users (Runekeepers)}
-\paragraph{Requirements}
-A Patron bond, a Thiasos (Familiar; small spirit in the form of a creature/construct), and a Codex (4 XP) mark a character as a Runekeeper. 
+\subsection{Rites Users (Runekeepers and Invokers)}
+\label{sec:rites-users}
+\index{Rites!Users}
+\index{Runekeeper}
+\index{Invoker}
 
-\paragraph{Invocation}
-\begin{itemize}
-  \item \textbf{Action Cost:} Invoking a Rite requires 1 Action. 
-  \item \textbf{Obligation:} Each Rite used marks Obligation on its clock. 
-  \item \textbf{Push It:} Once per Rite, you may Push to increase its duration or potency by +1 step at the cost of +1 Obligation.
-\end{itemize}
+Rites are structured, Patron-linked magical workings. They trade flexibility for stability: each Rite has a clear cost, clear purpose, and clear consequences.  
+Two archetypes specialize in them:
+
+\begin{description}
+  \item[\textbf{Runekeepers}] Rune-binding mystics who channel their Patron through a
+  \textit{Thiasos} (a minor spirit) and a \textit{Codex} of structured symbols.
+  
+  \item[\textbf{Invokers}] Symbol-bearers who call their Patron's authority directly
+  through a physical \textbf{Symbol}. Their magic is slower, safer, and highly ritualized.
+\end{description}
+
+Both track \textbf{Obligation}---the Patron’s claim on their actions and future.
 
 \paragraph{Obligation Clock}
-Tracks the Patron’s claim. When full, the GM resolves the debt in-fiction. Obligation is reduced through service or downtime actions.
+Tracks the Patron’s claim. When full, the GM resolves the debt in-fiction.  
+Obligation is reduced through service, downtime actions, or story-appropriate acts of devotion.
 
-\subsection{Rites Difficulty Value}
+% ============================================
+%   RITES: DIFFICULTY VALUE
+% ============================================
+\subsection{Rites Difficulty Value (DV)}
 \label{sec:rites-dv-expanded}
-\index{Rites!Difficulty Value}
 \index{DV}
+\index{Rites!DV}
 
 The Difficulty Value (DV) to cast a Rite is:
-
 \[
-\text{DV} = \max\!\big(\text{Obligation Cost} - \text{Spirit}, \, \text{Tier}\big)
+\text{DV} = \max\!\bigl(\text{Obligation Cost} - \text{Spirit},\; \text{Tier}\bigr)
 \]
 
 \begin{description}
-  \item[Obligation Cost:] The Rite’s listed cost in Obligation segments. This reflects the Patron’s toll for the magic.
-  \item[Spirit:] The caster’s Spirit attribute. Each point reduces the effective weight of the Obligation, representing inner resilience and willpower.
-  \item[Tier:] The Rite’s intrinsic difficulty based on scope or potency. DV can never fall below this floor.
+  \item[Obligation Cost:] The Rite’s listed toll in Obligation segments.
+  \item[Spirit:] Each point of Spirit reduces how heavily that toll weighs on you.
+  \item[Tier:] A floor representing the Rite’s inherent complexity.
 \end{description}
 
-\begin{fatebox}[Invoker Path Features]
-  \begin{tabularx}{\textwidth}{lX}
-  \toprule
-  \textbf{Feature} & \textbf{Description and Limitations} \\
-  \midrule
-  Invoker's Grimoire & Major Talent, 6 XP. Grants knowledge of Ritual Magic theory and access to perform a limited number of Rites. \\
-  Ritual Repertoire & Start with knowledge of \textbf{2} Low or Standard Rites from any Patrons you research. Learn new Rites through Downtime study (see below). \\
-  Ritual Invocation & Takes \(\text{DV}\) rounds (default 2--3 rounds). Requires specific components/materials. \\
-  Base Cost & Mark \textbf{+1 Obligation} when you successfully resolve any known Rite (Low or Standard). \textit{(High-Power/High Rites are normally unavailable; if the Keeper permits, treat their \emph{base} Obligation as +2.)}\\
-  Symbol Enhancement & Possessing the correct Patron's Symbol for a Rite you are casting reduces its \textbf{DV by 1} and its \textbf{Obligation cost by 1} (minimum 0). Only one Symbol may apply to a given Rite. \\
-  \textbf{No Symbol (Explicit Penalties)} & You may attempt the Rite without the Patron's Symbol, but suffer: \textbf{+1 DV}, \textbf{+1 Obligation} (in addition to Base), and \textbf{+1 round} casting time. On \emph{Partial/Failure}, generate \textbf{+1 extra SB}. \\
-  Symbol Display & The Symbol must be visible/active throughout the ritual. If it is concealed, disrupted, or removed mid-cast: immediately \textbf{+1 DV}; on Failure, apply \emph{Backlash} (see below). \\
-  Crack the Seal & Desperate technique. Instantly cast any known Rite by setting the relevant Symbol to \textsc{Compromised}. Mark \textbf{+2 Obligation} (\textbf{+3} for High-Power Rites). Does not reduce Base Obligation below 0. \\
-  Optional Push & Invokers may \emph{Push} a Rite: choose one (\(+2\) dice \emph{or} +1 Effect \emph{or} resolve one round faster). Always mark \textbf{+1 Obligation} \emph{and} generate \textbf{1 SB}, in addition to other costs. \\
-  Cross-Resonance & If you cast Rites from \emph{different Patrons} in the same scene, each Patron after the first adds \textbf{+1 DV} to that Rite. \\
-  \bottomrule
-  \end{tabularx}
-  \end{fatebox}
-  
-  \paragraph{Symbol States \& Repair}
-  \begin{itemize}
-    \item \textsc{Compromised:} A Symbol set to \textsc{Compromised} (e.g., via \emph{Crack the Seal}) provides \emph{no} DV/Obligation reduction until repaired. Casting with a \textsc{Compromised} Symbol imposes \(-1\) die on the Casting Test.
-    \item \textsc{Shattered:} If you \emph{Crack the Seal} again while the Symbol is \textsc{Compromised}, it becomes \textsc{Shattered} and cannot be used until replaced (Asset lost).
-    \item \textbf{Repair (Downtime):} 1 day of focused work and a \emph{Craft or Lore + Tinker} test vs.\ DV~3. Success: clear \textsc{Compromised}. Failure: no progress. Alternatively, spend \textbf{1 XP} to auto-repair.
-  \end{itemize}
-  
-  \paragraph{Backlash \& Failure (Explicit)}
-  \begin{itemize}
-    \item \textbf{Success:} Rite resolves; apply Base/added Obligation and any SB from Push or No-Symbol clauses.
-    \item \textbf{Partial:} Effect \(-1\) step \emph{or} shortened duration; mark \textbf{Fatigue 1}. If cast \emph{without} a Symbol, Keeper gains \textbf{+1 SB} (in addition to normal SB generation).
-    \item \textbf{Failure:} No effect; mark \textbf{Fatigue 1}; Keeper gains \textbf{+1 SB}. Then test \emph{Spirit + Resolve} vs.\ DV~3:
-      \begin{itemize}
-        \item On Fail: suffer \textbf{Harm 1 (Shock)} or start \textbf{Backlash Static [4]} (Keeper's choice).
-        \item If the Symbol was disrupted/hidden mid-cast \emph{or} you \emph{Cracked the Seal}: upgrade to \textbf{Harm 2 (Shock)}.
-      \end{itemize}
-    \item \textbf{Interrupted:} Harm, Silence, or disruption before resolution counts as \emph{Failure}.
-  \end{itemize}
-  
-  \textbf{Example:} Magus Vex, bearing the \textbf{Invoker's Grimoire}, has studied the rites of Raéyn and the Sealed Gate. He knows Raéyn's \emph{Whispering Currents} (Low) and the Sealed Gate's \emph{Circle of Denial} (Standard). Faced with a collapsing tunnel, he attempts the Sealed Gate's ritual. It's a Standard Rite, so \textbf{DV 3}, taking \textbf{3 rounds}, and costs \textbf{+1 Obligation}. He has the Sealed Gate's Symbol, reducing the DV to \textbf{2} and the Obligation cost to \textbf{0}. When ambushed, he needs quick protection. He \textbf{Cracks the Seal} on the \emph{Circle of Denial}. The Symbol becomes \textsc{Compromised}, the Rite is instant, and he marks \textbf{+2 Obligation}. Later, needing to bind a particularly strong foe, he \textbf{Pushes} the Rite, marking an additional \textbf{+1 Obligation} and generating \textbf{1 SB}; the barrier strengthens. If he tried a Raéyn Rite afterwards in the same scene, \emph{Cross-Resonance} would add \textbf{+1 DV} to that casting.
-  
-  \subsubsection*{Learning New Rites}
-  An Invoker can expand their \textbf{Ritual Repertoire} through dedicated study during \textbf{Downtime}.
-  \begin{itemize}
-      \item \textbf{Cost:} 1 week of Downtime + 2 XP.
-      \item \textbf{Requirement:} Access to texts, a teacher, or direct observation of the Rite being performed by another adept.
-      \item \textbf{Test:} \emph{Lore + Investigation} (or a relevant skill) vs.\ DV~3--5 (based on Rite rarity/complexity).
-      \item \textbf{Success:} Add the Rite to your Ritual Repertoire.
-      \item \textbf{Failure:} Cannot learn this specific Rite for a significant time (GM discretion). The Keeper may set a relevant Complication (e.g., \emph{Forbidden Knowledge Pursued}).
-  \end{itemize}
-  
-  \subsubsection*{Symbols as Assets}
-  \begin{itemize}
-      \item A Patron's Symbol is a \textbf{Minor Asset (4 XP)} whose primary value is as a \textbf{ritual focus/component}.
-      \item You \emph{can} attempt any ritual \textbf{without} the Symbol, but you incur these \textbf{No Symbol} penalties: \textbf{+1 DV} \emph{(and therefore +1 round to cast, since casting time = DV rounds)}, \textbf{+1 Obligation} \emph{(in addition to Base)}, and on \emph{Partial/Failure} the Keeper gains \textbf{+1 extra SB}.    \item Symbols can be \textbf{maintained/upgraded} like other Assets. Example upgrades: \emph{Hardened} (ignore the first application of \textsc{Compromised} per session), \emph{Bright} (treat as \emph{visible} for Symbol Display while concealed on your person).
-  \end{itemize}
-  
-  \subsection*{Borrowed Grace}
-  \label{talent:borrowed-grace}
-  \index{Talents!Invoker}\index{Imbuement!Lesser}
-  
-  \textbf{Type:} Invoker Talent — \textit{Lesser Imbuement}
-  
-  \subsubsection*{Use}
-  \begin{itemize}
-    \item \textbf{Cost:} \textbf{1 Boon}, \textbf{1 action}.
-    \item \textbf{Effect (pick one on use):} \textbf{+1 Melee} \emph{or} \textbf{+1 Thematic} (your table's signature/thematic Skill).
-    \item \textbf{Duration:} \textit{Single action/attack} (instantaneous boost only).
-    \item \textbf{Requirement:} Wield/display the relevant Patron's \textbf{Symbol}.
-    \item \textbf{Obligation:} Immediately mark \textbf{+1 Obligation} to that Patron (see \S\ref{sec:obligation}).
-    \item \textbf{Limits:} Cannot be extended, stacked, or \emph{Pushed} for duration. Using \emph{Borrowed Grace} while the Symbol is \textsc{Compromised} lowers your \textbf{Position} by one step \emph{(or imposes \(-1\) die if already \textbf{Desperate})}.)
-  \end{itemize}
+Higher Obligation Rites strain the soul; higher Tier Rites strain reality.
 
-\subsection{Patron’s Gift (Imbuements)}
-\textbf{Patron’s Gift (Free, Requires Thiasos)}\\
-Duration: Scene; Range: Touch; Stacking: No.\\
-Effect: Imbue one item with +1 Weapon (Melee) and +1 Thematic Skill (Patron domain) for the scene.\\
-Activation: Requires 1 Action once per scene.\\
-Push It: The item’s power persists for one additional scene but marks +1 Obligation.\\
-Requires: Familiar (Invoke: 1 Boon).
+% ============================================
+%   RUNEKEEPERS
+% ============================================
+\subsubsection{Runekeepers}
+\index{Runekeeper}
 
-\subsection{Mixing the Paths}
-Players may combine Casting, Rites, and Invoking, but each path introduces its own bookkeeping:
+Runekeepers bind structured magic through carved glyphs, charms, tattoos, or inscribed Codices.  
+They excel at \emph{prepared}, \emph{reliable} magic with short-term boosts and thematic utility.
+
+\paragraph{Requirements}
+To be a Runekeeper, a character needs:
 \begin{itemize}
-  \item Casters track Backlash. 
-  \item Rites users track Obligation. 
-  \item Invokers track Symbol states and Obligation (Maintained, Neglected, Compromised). 
+  \item A \textbf{Patron bond}
+  \item A \textbf{Thiasos} (Familiar spirit)
+  \item A \textbf{Codex} (4 XP)
 \end{itemize}
-Mixing provides flexibility but less efficiency than specialization. Specialists gain stronger benefits, while mixers gain narrative breadth.
 
+\paragraph{Invocation}
+\begin{itemize}
+  \item \textbf{1 Action} to invoke a Rune or Rite.
+  \item Marks \textbf{Obligation} as listed.
+  \item \textbf{Push It:} Increase duration or potency by +1 step; mark +1 additional Obligation.
+\end{itemize}
+
+% ----- Patron's Gift -----
+\paragraph*{Patron's Gift (Runekeeper Talent)}
+\label{talent:patrons-gift}
+
+\noindent\textbf{Daily Magical Enhancement}\\[2pt]
+\begin{description}[leftmargin=1.25em]
+  \item[Cost:] Free (requires Thiasos).
+  \item[Activation:] 1 Action; once per scene.
+  \item[Effect:] Gain +1 die to one Skill check linked to your Patron’s domain, and +1 Melee \emph{or} Ranged for the scene.
+  \item[Limitations:] Must be thematically appropriate; does not stack with other magical enhancements; usable only by the Runekeeper.
+  \item[Cost:] Generates \textbf{1 SB} (Diamonds).
+\end{description}
+
+\paragraph*{Using Patron's Gift Well}
+\begin{itemize}
+  \item \textbf{Domain Focus:} Pick uses that reinforce your Patron’s themes.
+  \item \textbf{Small but Reliable:} Designed for routine magical support.
+  \item \textbf{Complications as Flavor:} Let the SB inform dramatic shifts in scene tone.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Patron} & \textbf{Typical Applications} \\
+\hline
+Ra\'{e}yn (Sea) & Navigation, currents, weather-sense \\
+Ikasha (Shadow) & Stealth, investigation, escape artistry \\
+Inaea (Webs) & Persuasion, bargaining, relationship reading \\
+Oath of Flame & Honor, purification, ceremonial presence \\
+Sealed Gate & Wards, construction, boundary-setting \\
+\hline
+\end{tabular}
+\end{center}
+
+% ============================================
+%   INVOKERS
+% ============================================
+\subsubsection{Invokers}
+\index{Invoker}
+
+Invokers channel power through a \textbf{Patron Symbol}: an inscribed object infused with sacred authority.  
+Their magic is slower but safer, and their Symbol state matters greatly.
+
+% ----- Symbol States -----
+\paragraph{Symbol States and Repair}
+\begin{itemize}
+  \item \textsc{Compromised:} Symbol provides no reductions; casting suffers \(-1\) die.
+  \item \textsc{Shattered:} If Cracked while already \textsc{Compromised}, the Symbol breaks completely (Asset lost).
+  \item \textbf{Repair (Downtime):} 1 day + \emph{Craft or Lore + Tinker} vs.\ DV~3 clears \textsc{Compromised}.  
+        Or spend \textbf{1 XP} to auto-repair.
+\end{itemize}
+
+% ----- Backlash -----
+\paragraph{Backlash and Failure}
+\begin{itemize}
+  \item \textbf{Success:} Rite resolves normally; apply Obligation and SB from Push/conditions.
+  \item \textbf{Partial:} Effect $-1$ step \emph{or} shortened duration; mark \textbf{Fatigue 1}.  
+        If cast without a Symbol: Keeper gains \textbf{+1 SB}.
+  \item \textbf{Failure:} No effect; mark \textbf{Fatigue 1}; Keeper gains \textbf{+1 SB}.  
+        Then roll \emph{Spirit + Resolve} vs.\ DV~3:
+        \begin{itemize}
+          \item Fail: \textbf{Harm 1 (Shock)} or begin \textbf{Backlash Static [4]}.
+          \item If Symbol was disrupted/hidden or the Seal was Cracked: \textbf{Harm 2 (Shock)}.
+        \end{itemize}
+  \item \textbf{Interrupted:} Treat as Failure (Silence, injury, disruption).
+\end{itemize}
+
+% ----- Example -----
+\paragraph*{Example}
+\emph{Magus Vex invokes the Sealed Gate's \emph{Circle of Denial}. He has the Symbol, reducing DV 3 to DV 2 and avoiding Obligation.  
+Ambushed mid-ritual, he \emph{Cracks the Seal}, making the Symbol \textsc{Compromised} but resolving instantly, marking +2 Obligation.  
+Later, he Pushes the Rite to strengthen the barrier, marking +1 more Obligation.  
+If he cast a Raéyn Rite next, Cross-Resonance would impose +1 DV.}
+
+% ----- Learning Rites -----
+\subsubsection*{Learning New Rites}
+Invokers learn new Rites through structured study:
+\begin{itemize}
+  \item \textbf{Cost:} 1 week of Downtime + 2 XP.
+  \item \textbf{Access:} Teacher, text, or witnessed casting.
+  \item \textbf{Test:} \emph{Lore + Investigation} vs.\ DV~3--5.
+  \item \textbf{Success:} Add Rite to repertoire.
+  \item \textbf{Failure:} Cannot retry for a time; GM may introduce a Complication.
+\end{itemize}
+
+% ----- Symbols as Assets -----
+\subsubsection*{Symbols as Assets}
+\begin{itemize}
+  \item A Patron Symbol is a \textbf{Minor Asset (4 XP)}.
+  \item Casting \emph{without} the Symbol imposes:  
+    \begin{itemize}
+      \item \textbf{+1 DV}  
+      \item \textbf{+1 Obligation} (in addition to Base)  
+      \item \textbf{+1 SB} to the Keeper on Partial/Failure  
+    \end{itemize}
+  \item Symbols may be upgraded like other Assets.  
+        Examples: \emph{Hardened} (ignore first Compromised per session), \emph{Bright} (counts as displayed even when concealed).
+\end{itemize}
+
+% ----- Borrowed Grace -----
+\paragraph*{Borrowed Grace (Invoker Talent)}
+\label{talent:borrowed-grace}
+
+\noindent\textbf{Lesser Imbuement}\\[2pt]
+\begin{description}[leftmargin=1.25em]
+  \item[Cost:] 1 Boon; 1 Action.
+  \item[Effect:] +1 die to one combat action \emph{or} +1 Effect for one social/stealth action.
+  \item[Duration:] Single action.
+  \item[Requirement:] Display Patron Symbol.
+  \item[Limits:] Once per scene; cannot stack or extend.
+\end{description}
+
+% ============================================
+%   MIXING THE PATHS
+% ============================================
+\subsection{Mixing the Paths}
+\index{Mixing Paths}
+
+Characters may combine Casting, Rites, and Invoking. Each brings its own bookkeeping:
+\begin{itemize}
+  \item \textbf{Casters} track Backlash.
+  \item \textbf{Runekeepers} track Obligation.
+  \item \textbf{Invokers} track Symbol state \emph{and} Obligation.
+\end{itemize}
+
+Mixing grants narrative breadth but loses the efficiency and reliability gained by specialization.
 % !TEX root = srd_main.tex
 % SRD Insert: Elemental Backlash (Condensed SRD Version)
 
@@ -466,7 +540,7 @@ When you Push:
   \item \textbf{Audience Building:} Cultivate followers who provide +1 die to future performances.
 \end{itemize}
 
-\subsection*{New Talents}
+\subsection*{Talents}
 
 \subsection*{Talent: Resonant Performance (3 XP)}
 \textbf{Requirements:} Cantor's Path, Performance 2+ \\
