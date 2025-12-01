@@ -1,0 +1,515 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{sectsty}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+\sectionfont{\large\bfseries}
+\subsectionfont{\bfseries}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge Adventure}
+\lhead{The Dwarven Debt}
+\rfoot{\thepage}
+
+\newenvironment{mechanics}{\begin{description}[leftmargin=*,style=standard]}{\end{description}}
+\newenvironment{npc}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{faction}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{location}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{resolution}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+
+\title{The Dwarven Debt\\An Adventure for Fate's Edge - Aeler}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Adventure Overview}
+
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\textbf{Title:} & The Dwarven Debt \\
+\textbf{Region:} & Aeler - Crowns \& Under-Vaults \\
+\textbf{Theme:} & Underground exploration, dwarven law and custom, ancient bargains \\
+\textbf{Level:} & Seasoned to Veteran (Tier II-III) \\
+\textbf{Length:} & 4-5 Sessions \\
+\end{tabularx}
+
+\section{Premise}
+
+A dwarven merchant house has called in a debt owed by one of the player characters, demanding they retrieve a sacred artifact from a dangerous section of the Spine Underway. The artifact, a ceremonial hammer known as the Forgefather's Voice, was pledged as collateral decades ago but was never properly transferred according to dwarven law. Now, with the house facing financial difficulties, they're enforcing the ancient contract, forcing the players into the deep places beneath the mountains where ancient dangers still stir.
+
+\section{Hook}
+
+The adventure begins when the players encounter one of the following scenarios:
+\begin{itemize}
+\item Clan-Speaker Thrain Ironhold arrives with a formal delegation to collect on the debt, presenting ancient contracts and demanding immediate compliance under dwarven law. (DV 4 Social encounter, Presence + Command)
+\item The players' patron sends an urgent message warning them that a dwarven house is making claims on their behalf, and they need to resolve the situation before it escalates. (DV 3 Investigation, Wits + Lore)
+\item A dwarven prospector approaches them in a tavern, desperately seeking help to recover the same artifact for reasons he won't fully explain. (DV 3 Social, Presence + Sway)
+\end{itemize}
+
+\section{Key Factions}
+
+\subsection{House Khaz-Vurim}
+\begin{faction}{House Khaz-Vurim}
+\item[Description:] One of the oldest and most respected dwarven houses
+\item[Leader:] Vault-Queen Thora Stonebeard
+\item[Strengths:] Master craftsmen, extensive underground knowledge, legal expertise
+\item[Motivations:] Honor ancient contracts, maintain financial stability
+\item[Methods:] Legal proceedings, measured pressure, traditional dwarven justice
+\item[Position:] Controlled (normal interactions), may shift to Desperate under financial pressure
+\item[DV for Negotiations:] 4 (standard), 5 (under pressure)
+\end{faction}
+
+\subsection{The Deep Stirrings}
+\begin{faction}{The Deep Stirrings}
+\item[Description:] Ancient entities dwelling in the deepest underground realms
+\item[Strengths:] Ancient knowledge, supernatural abilities, patience
+\item[Motivations:] Restore balance, reclaim sacred objects
+\item[Methods:] Subtle influence, dreams and omens, manipulation through dwarven customs
+\item[Position:] Dominant in deep places, Limited influence in shallow areas
+\item[DV for Communication:] 5 (requires proper ritual), 6+ (without preparation)
+\end{faction}
+
+\subsection{Edgewalkers Guild}
+\begin{faction}{Edgewalkers Guild}
+\item[Description:] Dwarven prospectors and explorers specializing in new passages
+\item[Leader:] Guild-Master Thorek Deepdelver
+\item[Strengths:] Exploration expertise, underground survival skills, flexible ethics
+\item[Motivations:] Profit, knowledge, guild solidarity
+\item[Methods:] Competition, information trading, "accidental" discoveries
+\item[Position:] Controlled (normal), may become Desperate if their interests are threatened
+\item[DV for Cooperation:] 3 (mutual benefit), 4 (neutral), 5+ (opposed interests)
+\end{faction}
+
+\section{Key NPCs}
+
+\subsection{Vault-Queen Thora Stonebeard}
+\begin{npc}{Vault-Queen Thora Stonebeard}
+\item[Role:] Leader of House Khaz-Vurim
+\item[Age:] 62
+\item[Skills:] Command 4, Lore 3, Craft 3
+\item[Knowledge:] Dwarven law, house finances, artifact history
+\item[Motivation:] Honor house obligations while preserving tradition
+\item[Complication:] Torn between legal duty and moral concerns
+\item[Position:] Controlled (normal), Desperate (under financial pressure)
+\item[DV for Negotiation:] 4 (standard), 5 (financial pressure)
+\end{npc}
+
+\subsection{Clan-Speaker Thrain Ironhold}
+\begin{npc}{Clan-Speaker Thrain Ironhold}
+\item[Role:] Diplomatic representative
+\item[Age:] 45
+\item[Skills:] Sway 3, Lore 3, Command 2
+\item[Knowledge:] Dwarven and human law, contract procedures
+\item[Motivation:] Resolve situation without conflict
+\item[Complication:] Prepared to enforce house rights if necessary
+\item[Position:] Dominant (legal expertise), may shift to Controlled under pressure
+\item[DV for Persuasion:] 3 (mutual benefit), 4 (neutral), 5 (opposed)
+\end{npc}
+
+\subsection{Forge-Master Durin Emberheart}
+\begin{npc}{Forge-Master Durin Emberheart}
+\item[Role:] Elder master smith
+\item[Age:] 89
+\item[Skills:] Craft 5, Arcana 2, Lore 4
+\item[Knowledge:] Artifact creation, true nature of Forgefather's Voice
+\item[Motivation:] Restore proper balance
+\item[Complication:] Loyalty conflict between house and conscience
+\item[Position:] Controlled (normal), may shift to Desperate if pressed about secrets
+\item[DV for Secrets:] 5 (reluctant), 4 (proper approach), 3 (mutual trust)
+\end{npc}
+
+\subsection{The Stone-Singer}
+\begin{npc}{The Stone-Singer}
+\item[Type:] Ancient Outsider (Cap 5)
+\item[Tags:] [STONE], [DREAM], [ANCIENT], [WARD]
+\item[Abilities:] 
+  \begin{itemize}
+    \item Communicate through stone resonance
+    \item Influence dreams and memories
+    \item Manipulate stone and earth
+    \item Ancient knowledge of underground realms
+  \end{itemize}
+\item[Weaknesses:] Bound to stone, vulnerable to surface disruption
+\item[Tactics:] Prefer manipulation to direct confrontation
+\item[Position:] Dominant in stone-rich environments
+\item[DV for Communication:] 5 (proper ritual), 6+ (improper approach)
+\end{npc}
+
+\section{Key Locations}
+
+\subsection{Khaz-Vurim Halls}
+\begin{location}{Khaz-Vurim Halls}
+\item[Description:] Ancestral home carved from massive stone formation
+\item[Features:] Perfect stonework, intricate metalwork, distant forge sounds
+\item[Atmosphere:] Solemn dignity, ancient tradition
+\item[Challenges:] 
+  \begin{itemize}
+    \item Navigating dwarven protocol (Lore + Presence vs DV 3)
+    \item Understanding legal documents (Lore vs DV 4)
+    \item Gaining audience with leadership (Sway + Command vs DV 4)
+  \end{itemize}
+\item[Security:] Well-guarded, but respectful of proper procedures
+\end{location}
+
+\subsection{The Spine Underway}
+\begin{location}{The Spine Underway}
+\item[Description:] Vast network of ancient tunnels connecting dwarven holds
+\item[Features:] Remnants of pre-dwarven civilizations, maintained and dangerous sections
+\item[Navigation Challenges:] 
+  \begin{itemize}
+    \item Map reading in three dimensions (Survival vs DV 4)
+    \item Avoiding unstable sections (Athletics vs DV 3)
+    \item Dealing with ancient mechanisms (Tinker vs DV 5)
+  \end{itemize}
+\item[Dangers:] Cave-ins, ancient guardians,迷失方向
+\item[Position:] Controlled (familiar paths), Desperate (unknown areas)
+\end{location}
+
+\subsection{The Forgefather's Crypt}
+\begin{location}{The Forgefather's Crypt}
+\item[Description:] Sacred resting place of the Forgefather's Voice
+\item[Protection:] Ancient wards, ceremonial locks
+\item[Features:] Remains of original forge-father, deep power resonance
+\item[Challenges:] 
+  \begin{itemize}
+    \item Respecting sacred protocols (Lore vs DV 5)
+    \item Dealing with disturbed wards (Arcana vs DV 6)
+    \item Communicating with Deep Stirrings (Spirit + Lore vs DV 5)
+  \end{itemize}
+\item[Position:] Desperate (sacred violation), may improve with proper approach
+\end{location}
+
+\subsection{Vault of Whispers}
+\begin{location}{Vault of Whispers}
+\item[Description:] Ancient archive of sacred and dangerous knowledge
+\item[Security:] Multiple locks, guardian constructs
+\item[Features:] Records of original agreement, true artifact history
+\item[Challenges:] 
+  \begin{itemize}
+    \item Gaining access (Sway + Command vs DV 5)
+    \item Interpreting ancient texts (Lore vs DV 4)
+    \item Avoiding dangerous knowledge (Spirit vs DV 4)
+  \end{itemize}
+\item[Position:] Desperate (security violations), Controlled with proper credentials
+\end{location}
+
+\subsection{The Living Stone Gallery}
+\begin{location}{The Living Stone Gallery}
+\item[Description:] Tunnel section where stone responds to sound and movement
+\item[Connection:] Threshold to Deep Stirrings' domain
+\item[Features:] Sound-responsive stone, increased activity near artifact
+\item[Challenges:] 
+  \begin{itemize}
+    \item Moving without triggering responses (Stealth vs DV 4)
+    \item Interpreting stone-song (Arcana vs DV 5)
+    \item Surviving stone manipulation (Athletics vs DV 4)
+  \end{itemize}
+\item[Position:] Controlled (careful movement), Desperate (loud/dishonorable actions)
+\end{location}
+
+\section{Plot Structure}
+
+\subsection{Session 1: The Debt Called}
+
+\textbf{Opening Scene:} Players encounter one of the hook scenarios. Establish the legal and cultural framework of dwarven society.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Learn about the history of the debt and Forgefather's Voice
+\item Meet key dwarven NPCs and understand motivations
+\item Explore legal and social implications
+\item Make initial decisions about approach
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Legal Consultation:} Clan-Speaker explains contract details. (Sway + Lore vs DV 4, Controlled/Standard)
+\item \textbf{House Tour:} Navigate dwarven protocol and customs. (Lore + Presence vs DV 3, Dominant/Limited)
+\item \textbf{Financial Crisis:} Witness House Khaz-Vurim's desperation. (Notice + Insight vs DV 4, Controlled/Standard)
+\end{itemize}
+
+\textbf{Session End:} Players understand the debt's validity but learn there may be complications. Advance Debt Resolution Clock +1.
+
+\subsection{Session 2: Into the Deep}
+
+\textbf{Opening Scene:} Players begin journey into Spine Underway. First signs of supernatural disturbance appear.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Navigate complex underground environment
+\item Encounter first supernatural disturbances
+\item Deal with time-created obstacles
+\item Begin understanding artifact's true nature
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Ancient Mechanism:} Repair or bypass old dwarven security. (Tinker + Wits vs DV 5, Controlled/Standard)
+\item \textbf{Lost Prospector:} Edgewalkers Guild member seeks same artifact. (Social encounter, DV 3-5 depending on approach)
+\item \textbf{Stone Whispering:} First contact with Deep Stirrings' influence. (Spirit + Arcana vs DV 4, Desperate/Limited)
+\end{itemize}
+
+\textbf{Session End:} Players reach deeper areas, supernatural presence becomes clear. Advance Stone-Song Resonance +1.
+
+\subsection{Session 3: The Deep Stirrings}
+
+\textbf{Opening Scene:} Players reach area of maximum Deep Stirrings activity. Direct supernatural contact occurs.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Experience direct contact with ancient entities
+\item Learn true history of Forgefather's Voice
+\item Face moral choices about artifact's fate
+\item Navigate dwarven customs and ancient laws
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Stone-Song Communication:} Speak with The Stone-Singer. (Arcana + Spirit vs DV 5, Desperate/Great)
+\item \textbf{Ancient Guardian:} Deal with construct protecting sacred areas. (Combat/Skill challenge, DV 5)
+\item \textbf{Moral Dilemma:} Choose between dwarven law and supernatural justice. (Command + Insight vs DV 4)
+\end{itemize}
+
+\textbf{Session End:} Players understand all stakeholder positions. Advance all clocks +1.
+
+\subsection{Session 4: Resolution}
+
+\textbf{Opening Scene:} Players return to dwarven halls with knowledge and options.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Present findings to dwarven authorities
+\item Negotiate solution satisfying all parties
+\item Deal with consequences of choices
+\item Determine future relationship with dwarven realm
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Legal Hearing:} Present case before dwarven council. (Command + Lore vs DV 5, Controlled/Great)
+\item \textbf{Final Negotiation:} Last chance to broker deal with all parties. (Sway + Insight vs DV 5, Desperate/Great)
+\item \textbf{Artifact Decision:} Final choice about Forgefather's Voice fate. (Extended ritual challenge, DV 6)
+\end{itemize}
+
+\textbf{Session End:} Resolution implemented, consequences determined. Clocks advance/retreat based on outcome.
+
+\section{Key Mechanics}
+
+\subsection{Debt Resolution Clock [8]}
+\begin{mechanics}
+\item[Advance +1:] House Khaz-Vurim faces increasing financial pressure
+\item[Advance +1:] Legal proceedings move forward
+\item[Advance +2:] Players fail to make adequate progress
+\item[Advance +1:] Supernatural disturbances escalate
+\item[Advance +2:] Key NPC becomes desperate or hostile
+\item[When Full:] House declares emergency measures, immediate artifact retrieval required
+\end{mechanics}
+
+\subsection{Ancient Ward Stability [6]}
+\begin{mechanics}
+\item[Advance +1:] Unauthorized entry attempted
+\item[Advance +1:] Deep Stirrings become more active
+\item[Advance +2:] Players use force instead of proper ritual
+\item[Advance +1:] Dwarven customs violated
+\item[When Full:] Wards collapse, supernatural dangers unleashed
+\end{mechanics}
+
+\subsection{Stone-Song Resonance [4]}
+\begin{mechanics}
+\item[Advance +1:] Players approach crypt area
+\item[Advance +1:] Proper dwarven rituals performed
+\item[Advance +1:] Deep Stirrings influence area
+\item[Advance +1:] Players demonstrate respect for dwarven customs
+\item[When Full:] Artifact calls to return home, supernatural pressure increases
+\end{mechanics}
+
+\subsection{Dwarven Honor Track}
+\begin{mechanics}
+\item[Honored:] +1 die to all dwarven interactions, access to special privileges
+\item[Respected:] Standard interactions, normal access
+\item[Doubted:] -1 die to social rolls with dwarves, limited access
+\item[Shamed:] Hostile reactions, legal consequences, barred from holds
+\end{mechanics}
+
+\section{Possible Resolutions}
+
+\subsection{Proper Restoration}
+\begin{resolution}{Proper Restoration}
+\item[Requirements:] 
+  \begin{itemize}
+    \item Perform ancient ritual to properly transfer artifact (Craft + Arcana vs DV 6)
+    \item Negotiate new terms satisfying all parties (Sway + Command vs DV 5)
+    \item Gain Deep Stirrings' blessing (Spirit + Lore vs DV 5)
+  \end{itemize}
+\item[Procedure:] Formal dwarven ceremony with supernatural elements
+\item[Costs:] Significant time investment, 1 segment Corruption for each participant
+\item[Outcome:] Honor restored, valuable dwarven allies, potential for future cooperation
+\end{resolution}
+
+\subsection{Legal Victory}
+\begin{resolution}{Legal Victory}
+\item[Discovery:] Original transfer was invalid due to procedural violations
+\item[Requirements:] 
+  \begin{itemize}
+    \item Demonstrate procedural violations (Lore vs DV 5)
+    \item Present evidence in dwarven courts (Command + Sway vs DV 5)
+    \item Win legal judgment (Extended social challenge, DV 6)
+  \end{itemize}
+\item[Procedure:] Formal legal proceedings with all parties present
+\item[Costs:] Time, potential enemies among traditionalist dwarves
+\item[Outcome:] Debt canceled, but enemies in traditionalist circles
+\end{resolution}
+
+\subsection{Supernatural Compromise}
+\begin{resolution}{Supernatural Compromise}
+\item[Approach:] Negotiate solution satisfying Deep Stirrings and House Khaz-Vurim
+\item[Options:] 
+  \begin{itemize}
+    \item Offer alternative artifact of comparable value (Investigation vs DV 5)
+    \item Agree to perform services for Deep Stirrings (Extended commitment)
+    \item Create new arrangement benefiting all parties (Sway + Insight vs DV 5)
+  \end{itemize}
+\item[Procedure:] Complex three-way negotiation with ritual elements
+\item[Costs:] Ongoing obligations, 2 segments Corruption for each participant
+\item[Outcome:] Mysterious allies, ongoing supernatural connections, unique magical benefits
+\end{resolution}
+
+\subsection{Forced Acquisition}
+\begin{resolution}{Forced Acquisition}
+\item[Approach:] Take artifact by force, deal with consequences
+\item[Requirements:] 
+  \begin{itemize}
+    \item Overcome dwarven security (Combat/Skill challenges, DV 5+)
+    \item Deal with supernatural backlash (Extended Spirit challenge, DV 6)
+    \item Navigate political fallout (Social consequences, -2 Dwarven Honor)
+  \end{itemize}
+\item[Procedure:] Violent resolution with immediate escape
+\item[Costs:] Powerful enemies, ongoing supernatural complications, legal consequences
+\item[Outcome:] Powerful artifact, powerful enemies, ongoing supernatural complications
+\end{resolution}
+
+\section{Rewards and Consequences}
+
+\subsection{Immediate Rewards}
+\begin{itemize}
+\item Key-Writ for operating a named lock: Access to specific secured areas
+\item Underway Pass for travel between vaultmouths: +1 Position for underground travel
+\item Engineer Shoring for stabilizing corridors: Prevent cave-in once per session
+\item Assay Mark for dwarven metal recognition: +1 die to identify dwarven craftsmanship
+\item Crypt Asylum for temporary sanctuary: Safe haven in dwarven territories
+\item Vault Inventory License for removing items: Legal authority for future acquisitions
+\end{itemize}
+
+\subsection{Long-term Consequences}
+\begin{itemize}
+\item \textbf{Honored Resolution:} Permanent allies in House Khaz-Vurim, +2 Dwarven Honor, access to master craftsmen
+\item \textbf{Legal Victory:} Respect among progressive dwarves, -1 Dwarven Honor with traditionalists, potential for future legal work
+\item \textbf{Supernatural Compromise:} Ongoing connection to Deep Stirrings, unique magical abilities, 1 permanent Corruption segment
+\item \textbf{Forced Acquisition:} Enemies throughout dwarven realm, -3 Dwarven Honor, powerful artifact but constant supernatural pressure
+\item \textbf{Mixed Outcome:} Complex relationships with all factions, moderate standing, ongoing plot hooks
+\end{itemize}
+
+\section{GM Notes}
+
+\subsection{Dwarven Culture}
+Emphasize the importance of honor, tradition, and proper procedure in dwarven society. Every interaction should reflect these values:
+\begin{itemize}
+\item Players respecting customs gain +1 Position
+\item Violating protocols worsens Position by 1 step
+\item Proper titles and ceremonies matter for social interactions
+\item Legal procedures are complex but fair when followed
+\end{itemize}
+
+\subsection{Underground Atmosphere}
+Create a sense of the vast, ancient dwarven realm:
+\begin{itemize}
+\item Use sound descriptions: distant forges, dripping water, stone settling
+\item Vary architectural details: smooth ancient stonework vs. rough natural caves
+\item Describe the weight of stone above, the permanence of underground construction
+\item Different areas should feel distinct: halls of state vs. working tunnels vs. ancient passages
+\end{itemize}
+
+\subsection{Legal Complexity}
+Dwarven law is intricate and ancient:
+\begin{itemize}
+\item Multiple precedents exist for most situations
+\item Specific procedures must be followed for validity
+\item Contracts can have unexpected interpretations
+\item Legal experts (like Clan-Speaker) can find creative solutions
+\end{itemize}
+
+\subsection{Supernatural Elements}
+The Deep Stirrings represent patient, ancient supernatural forces:
+\begin{itemize}
+\item Prefer manipulation to direct confrontation
+\item Communicate through dreams, stone-song, and omens
+\item Have waited decades for proper resolution
+\item Are not inherently evil, but have different priorities
+\end{itemize}
+
+\subsection{Player Agency}
+Provide multiple paths to resolution:
+\begin{itemize}
+\item Legal approach: Navigate dwarven law system
+\item Social approach: Negotiate with all factions
+\item Investigation approach: Discover true history and find creative solutions
+\item Direct action approach: Force resolution through power
+\end{itemize}
+
+\subsection{Story Beats}
+Use dwarven environment and customs for complications:
+\begin{itemize}
+\item 1 SB: Minor procedural violation, small legal complication
+\item 2 SB: Important NPC becomes suspicious, document goes missing
+\item 3 SB: Cave-in blocks path, ancient guardian activates
+\item 4+ SB: Major faction turns hostile, supernatural manifestation occurs
+\end{itemize}
+
+\subsection{Session-Specific Guidance}
+
+\textbf{Session 1 Focus:} Establish dwarven legal/cultural framework. Players should understand the debt is legitimate but complex.
+
+\textbf{Session 2 Focus:} Introduce supernatural elements and underground challenges. Players learn there's more to this than simple contract law.
+
+\textbf{Session 3 Focus:} Deep supernatural contact and moral complexity. Players must balance competing legitimate claims.
+
+\textbf{Session 4 Focus:} Climactic resolution and consequences. All previous elements converge in final choices.
+
+\subsection{Alternative Endings}
+
+If players fail to achieve clean resolution:
+\begin{itemize}
+\item \textbf{Partial Success:} Temporarily satisfy one faction while creating new problems
+\item \textbf{Compromise:} Artifact remains in limbo, ongoing tension between factions
+\item \textbf{Pyrrhic Victory:} Solve immediate problem but create worse long-term issues
+\item \textbf{Escalation:} Situation becomes larger conflict involving multiple dwarven houses
+\end{itemize}
+
+\subsection{Scaling for Different Tiers}
+
+\textbf{Tier II (Seasoned):} Reduce entity Caps, simplify legal procedures, provide more NPC assistance.
+
+\textbf{Tier III (Veteran):} Add political complications, increase entity power, complicate legal requirements.
+
+\textbf{Tier IV (Paragon):} Introduce kingdom-level political implications, multiple simultaneous conflicts, entity gains patron backing.
+
+\end{document}

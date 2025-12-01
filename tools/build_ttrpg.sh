@@ -57,7 +57,12 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  carnival-of-broken-dreams.tex -n "Fate's Edge - The Carnival of Broken Dreams.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
 ../../../tools/compile_latex.sh -f memory-merchants-labyrinth.tex -n "Fate's Edge - The Memory Merchant's Labyrinth.pdf" > /dev/null 2>&1|| echo "#21. Did not build"
 ../../../tools/compile_latex.sh -f gilded-thorn.tex -n "Fate's Edge - The Gilded Thorn.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
-
+../../../tools/compile_latex.sh -f carnival-of-echoes.tex -n "Fate's Edge - The Carnival of Echoes.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f cursed-caravan.tex -n "Fate's Edge - The Cursed Caravan.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f dwarven-debt.tex -n "Fate's Edge - The Dwarven Debt.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f merchant-war.tex -n "Fate's Edge - The Merchant War.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f mist-walker.tex -n "Fate's Edge - The Mist Walker.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f usurpers-gambit.tex -n "Fate's Edge - The Usurpers Gambit.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
@@ -77,10 +82,10 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  linns-mists-iron.tex -n "Fate's Edge Expansion - Linns: Mists and Iron.pdf" > /dev/null 2>&1|| echo "#13. Did not build"
 ../../../tools/compile_latex.sh -f  sands-of-moon-and-brass.tex -n "Fate's Edge Expansion - Sands of Moon and Brass.pdf" > /dev/null 2>&1|| echo "#14. Did not build"
 ../../../tools/compile_latex.sh -f  shadows-and-steel.tex -n "Fate's Edge Expansion - Shadows and Steel.pdf" > /dev/null 2>&1|| echo "#15. Did not build"
-../../../tools/compile_latex.sh -f  aeler-stone-breath-ledger.tex -n "Fate's Edge Expansion - Aeler: Stone, Breath, and Ledger.pdf" > /dev/null 2>&1|| echo "#16. Did not build"
+#../../../tools/compile_latex.sh -f  aeler-stone-breath-ledger.tex -n "Fate's Edge Expansion - Aeler: Stone, Breath, and Ledger.pdf" > /dev/null 2>&1|| echo "#16. Did not build"
 ../../../tools/compile_latex.sh -f  iron-and-blood.tex -n "Fate's Edge Expansion - Ykrul: Iron & Blood.pdf" > /dev/null 2>&1|| echo "#17. Did not build"
-../../../tools/compile_latex.sh -f  threshold-folk.tex -n "Fate's Edge Expansion - Threshold Folk: Small Peoples & Hidden Realms.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
-../../../tools/compile_latex.sh -f  elves-lethai-root-law-river-courts.tex -n "Fate's Edge Expansion - Lethai: Root-Law and River Courts.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
+#../../../tools/compile_latex.sh -f  threshold-folk.tex -n "Fate's Edge Expansion - Threshold Folk: Small Peoples & Hidden Realms.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
+#../../../tools/compile_latex.sh -f  elves-lethai-root-law-river-courts.tex -n "Fate's Edge Expansion - Lethai: Root-Law and River Courts.pdf" > /dev/null 2>&1|| echo "#18. Did not build"
 ../../../tools/compile_latex.sh -f  black-banners-condotta-and-crowns.tex -n "Fate's Edge Expansion - Black Banners: Condotta & Crowns.pdf" > /dev/null 2>&1|| echo "#19. Did not build"
 ../../../tools/compile_latex.sh -f  roads-beneath-the-world.tex -n "Fate's Edge Expansion - Under Realms: Roads Beneath the World.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
 ../../../tools/compile_latex.sh -f  witches-of-fates-edge.tex -n "Fate's Edge Expansion - Witches of Fate's Edge: Large Cords, Curses, and the Quiet Work of Names.pdf" > /dev/null 2>&1|| echo "#21. Did not build"

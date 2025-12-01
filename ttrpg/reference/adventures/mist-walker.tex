@@ -1,0 +1,388 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{sectsty}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+\sectionfont{\large\bfseries}
+\subsectionfont{\bfseries}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge Adventure}
+\lhead{The Mist Walker}
+\rfoot{\thepage}
+
+\newenvironment{mechanics}{\begin{description}[leftmargin=*,style=standard]}{\end{description}}
+\newenvironment{npc}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{location}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{resolution}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+
+\title{The Mist Walker\\An Adventure for Fate's Edge}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Adventure Overview}
+
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\textbf{Title:} & The Mist Walker \\
+\textbf{Region:} & Mistlands - Bells, Salt, and Breath \\
+\textbf{Theme:} & Supernatural horror, thresholds between worlds, corruption of sacred wards \\
+\textbf{Level:} & Seasoned (Tier II) \\
+\textbf{Length:} & 3-4 Sessions \\
+\end{tabularx}
+
+\section{Premise}
+
+A powerful entity from the Ways Between is using the Mistlands as a conduit to enter the mortal world, corrupting the bell-lines and threatening to break the barriers between realms. The players must investigate the growing supernatural disturbances, uncover the source of the corruption, and either stop the entity or find a way to send it back where it came from.
+
+\section{Hook}
+
+The adventure begins when the players encounter one of the following scenarios:
+\begin{itemize}
+\item A ferryman refuses to take them across a normally safe waterway, claiming "the mist walks where it shouldn't" and that bells have been heard tolling underwater.
+\item A Bell-Warden approaches them in a tavern, desperate for help as bell-towers across the region are ringing without being touched, and some bells are ringing notes that don't exist.
+\item Their patron sends them with a letter that should have arrived three days ago, but the courier claims they delivered it - yet the recipient has no knowledge of receiving it.
+\end{itemize}
+
+\section{Key NPCs}
+
+\subsection{Bell-Warden Maren Thorne}
+\begin{npc}{Bell-Warden Maren Thorne}
+\item[Role:] Dedicated keeper of the bell-lines
+\item[Skills:] Lore 3, Notice 2, Command 2
+\item[Knowledge:] Bell-line mechanics, history of Mistlands wards
+\item[Complication:] Increasingly rattled by corruption, may make poor decisions under stress
+\item[Position:] Desperate (when discussing corruption), Controlled (normal interaction)
+\end{npc}
+
+\subsection{Ferryman Eddis Crow}
+\begin{npc}{Ferryman Eddis Crow}
+\item[Role:] River guide with supernatural awareness
+\item[Skills:] Survival 3, Notice 3, Skirmish 1
+\item[Knowledge:] Waterway currents, mist phenomena
+\item[Complication:] Seeing things that aren't there, becoming unreliable
+\item[Position:] Controlled (normal), may shift to Desperate if pressured about visions
+\end{npc}
+
+\subsection{The Mist Walker}
+\begin{npc}{The Mist Walker}
+\item[Type:] Outsider (Cap 4)
+\item[Tags:] [PHASE], [DREAM], [CORRUPT], [WARD]
+\item[Abilities:] 
+  \begin{itemize}
+    \item Phase through physical barriers
+    \item Induce supernatural fear effects
+    \item Corrupt sacred wards and bell-lines
+    \item Tempt with forbidden knowledge
+  \end{itemize}
+\item[Weaknesses:] Vulnerable to sanctified iron/salt, cannot maintain physical form in properly warded areas
+\item[Tactics:] Prefers manipulation to direct confrontation, uses possessed NPCs as proxies
+\end{npc}
+
+\section{Key Locations}
+
+\subsection{Bell-Line Levee}
+\begin{location}{Bell-Line Levee}
+\item[Description:] Raised path protected by bell-towers
+\item[Corruption Effects:] 
+  \begin{itemize}
+    \item Bells ring misleading warnings (DV 4 to navigate safely)
+    \item Some towers house possessed entities
+    \item Mist becomes thicker, reducing visibility
+  \end{itemize}
+\item[Investigation Hooks:] 
+  \begin{itemize}
+    \item Examine bell patterns (Lore + Notice vs DV 3)
+    \item Identify possessed tower keepers (Insight vs DV 4)
+    \item Restore corrupted bells (Craft + Arcana vs DV 5)
+  \end{itemize}
+\end{location}
+
+\subsection{Pall Watch-Tower}
+\begin{location}{Pall Watch-Tower}
+\item[Description:] Elevated observation post above the mist
+\item[Supernatural Features:] 
+  \begin{itemize}
+    \item Reflections move independently (Notice vs DV 3 to detect)
+    \item Temporal echoes of past events
+    \item Watchers may vanish or become echoes themselves
+  \end{itemize}
+\item[Challenges:] 
+  \begin{itemize}
+    \item Climbing while disoriented (Athletics vs DV 4)
+    \item Distinguishing real from echo observations (Insight vs DV 4)
+    \item Avoiding temporal displacement effects
+  \end{itemize}
+\end{location}
+
+\subsection{Ghost-Ferry Slip}
+\begin{location}{Ghost-Ferry Slip}
+\item[Description:] Dock with temporal anomalies
+\item[Anomalies:] 
+  \begin{itemize}
+    \item Ferries arrive before departure
+    \item Passengers gain false memories
+    \item Objects phase in and out of existence
+  \end{itemize}
+\item[Navigation Challenge:] 
+  \begin{itemize}
+    \item Timing ferry departure (Wits + Survival vs DV 4)
+    \item Identifying real vs. temporal echo passengers
+    \item Avoiding memory contamination effects
+  \end{itemize}
+\end{location}
+
+\subsection{Weeping Gate}
+\begin{location}{Weeping Gate}
+\item[Description:] Western palisade with iron-tear bells
+\item[Primary Anchor Point:] 
+  \begin{itemize}
+    \item Bells weep actual iron tears
+    \item Strongest concentration of Mist Walker's influence
+    \item Physical barriers becoming permeable
+  \end{itemize}
+\item[Final Confrontation Features:] 
+  \begin{itemize}
+    \item Multiple approach vectors
+    \item Environmental hazards from bell resonance
+    \item Possessed Bell-Wardens as opponents
+    \item Sanctification ritual area
+  \end{itemize}
+\end{location}
+
+\section{Plot Structure}
+
+\subsection{Session 1: Signs of Disturbance}
+
+\textbf{Opening Scene:} Players encounter one of the hook scenarios. Establish the supernatural nature of the threat through minor but unsettling phenomena.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Interview Maren Thorne or Ferryman Eddis Crow
+\item Investigate disturbed bell-towers (Bell-Line Levee)
+\item Experience first supernatural phenomena
+\item Discover evidence of inter-realm movement
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{False Bell Warning:} Players must navigate levee path while bells ring false warnings. (Athletics + Notice vs DV 4, Controlled/Standard)
+\item \textbf{Possessed Tower Keeper:} NPC behaves normally but gives subtly wrong information. (Insight vs DV 4, Controlled/Limited)
+\item \textbf{Temporal Echo:} At Ghost-Ferry Slip, players see themselves performing different actions. (Wits + Notice vs DV 3, Desperate/Limited)
+\end{itemize}
+
+\textbf{Session End:} Players discover the corruption is supernatural and originates from the Ways Between. Advance Mist Corruption Clock +2.
+
+\subsection{Session 2: Into the Mist}
+
+\textbf{Opening Scene:} Players venture deeper into affected areas. Supernatural phenomena intensify.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Navigate through corrupted bell-line territory
+\item Confront direct manifestations of Mist Walker's influence
+\item Discover the entity's anchoring strategy
+\item Make moral choices about possessed NPCs
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Pall Watch-Tower Investigation:} Players must distinguish real observations from temporal echoes. (Insight + Lore vs DV 5, Desperate/Standard)
+\item \textbf{Possessed Ferry Passenger:} NPC attempts to lead ferry into dangerous mist. (Command + Skirmish vs DV 4, Controlled/Great)
+\item \textbf{Bell Correlation Puzzle:} Decode corrupted bell patterns to find safe path. (Lore + Wits vs DV 5, Controlled/Standard)
+\end{itemize}
+
+\textbf{Session End:} Players identify Weeping Gate as primary anchor point. Advance Mist Corruption Clock +2.
+
+\subsection{Session 3: The Weeping Gate}
+
+\textbf{Opening Scene:} Players approach the primary anchor point. Full supernatural manifestation.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Deal with complete supernatural corruption
+\item Confront the Mist Walker directly or through proxies
+\item Execute chosen resolution strategy
+\item Resolve immediate threat to Mistlands
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Bell-Warden Possession Wave:} Multiple NPCs turn hostile simultaneously. (Combat encounter, Desperate position for players)
+\item \textbf{Sanctification Ritual:} Complex ritual to purify anchor point. (Extended challenge, Craft + Arcana vs DV 6)
+\item \textbf{Mist Walker Confrontation:} Direct encounter with entity. (Variable based on player approach)
+\end{itemize}
+
+\textbf{Session End:} Resolution of main conflict. Advance or reduce Mist Corruption Clock based on outcome.
+
+\section{Key Mechanics}
+
+\subsection{Mist Corruption Clock [8]}
+\begin{mechanics}
+\item[Advance +1:] Bell-lines fail to function properly
+\item[Advance +1:] NPCs become possessed or influenced
+\item[Advance +2:] Players fail to properly sanctify corrupted areas
+\item[Advance +1:] The Mist Walker successfully tempts a PC with forbidden knowledge
+\item[Advance +2:] Direct confrontation with entity results in player retreat
+\item[When Full:] Barriers between realms begin to collapse, permanent supernatural changes to region
+\end{mechanics}
+
+\subsection{Bell-Line Functionality}
+\begin{mechanics}
+\item[Normal:] +1 Position for travelers, clear warnings
+\item[Partially Corrupted:] Controlled position, misleading warnings (DV 4 to navigate)
+\item[Fully Corrupted:] Desperate position, attracting rather than warning (DV 5+ to navigate)
+\item[Restored:] Return to normal function, may grant +1 Boon for safe passage
+\end{mechanics}
+
+\subsection{Possession and Influence}
+\begin{mechanics}
+\item[Detection:] Insight + Notice vs DV 4 to identify possessed NPC
+\item[Resistance:] Spirit + Resolve vs DV 3 to resist temptation
+\item[Temporary Boost:] Possessed characters gain +1 die to one skill for scene, but generate 1 SB
+\item[Permanent Corruption:] If not cleansed, mark 1 segment on personal Corruption Clock
+\item[Cleansing:] Lore + Arcana vs DV 5, requires sanctified iron and salt
+\end{mechanics}
+
+\section{Possible Resolutions}
+
+\subsection{Banishment}
+\begin{resolution}{Banishment}
+\item[Requirements:] 
+  \begin{itemize}
+    \item Sanctify all 4 major corrupted bell-towers (Extended challenge, each DV 5)
+    \item Gather 3 bells that still ring true (Investigation challenge, DV 4 each)
+    \item Perform willing sacrifice (Social/Command challenge, DV 5)
+  \end{itemize}
+\item[Procedure:] Combined ritual requiring all party members
+\item[Costs:] 2 segments marked on each participant's Corruption Clock
+\item[Outcome:] Mist Walker banished, bell-lines restored, but some supernatural knowledge lost
+\end{resolution}
+
+\subsection{Negotiation}
+\begin{resolution}{Negotiation}
+\item[Discovery:] Entity was drawn by ancient barrier damage from 200 years ago
+\item[Options:] 
+  \begin{itemize}
+    \item Help repair original damage (Extended Craft/Arcana challenge, DV 6)
+    \item Offer different anchoring point (Investigation/Survival challenge, DV 5)
+    \item Trade knowledge for departure (Lore vs DV 4, but mark Corruption)
+  \end{itemize}
+\item[Costs:] Ongoing obligation to monitor new anchor point, 1 segment Corruption per party member
+\item[Outcome:] Entity departs but may return with new demands, players gain some forbidden knowledge
+\end{resolution}
+
+\subsection{Containment}
+\begin{resolution}{Containment}
+\item[Approach:] Strengthen existing wards rather than eliminate entity
+\item[Requirements:] 
+  \begin{itemize}
+    \item Establish new protective measures (Craft + Arcana, DV 5)
+    \item Create monitoring protocol (Command + Lore, DV 4)
+    \item Accept entity's continued presence (Mark ongoing Complication)
+  \end{itemize}
+\item[Costs:] Ongoing responsibility, periodic Corruption exposure
+\item[Outcome:] Entity contained but players become wardens, gain access to some supernatural knowledge
+\end{resolution}
+
+\section{Rewards and Consequences}
+
+\subsection{Immediate Rewards}
+\begin{itemize}
+\item Ward-Salt allotment (2 uses): +1 Position when navigating mist
+\item Bell-Key to one tower: Access to restricted bell-line areas
+\item Lantern Writ: Safe passage through mist for one journey
+\item Wraith-Indemnity: Protection from supernatural legal consequences
+\end{itemize}
+
+\subsection{Long-term Consequences}
+\begin{itemize}
+\item \textbf{Banishment:} Region returns to normal, but players lose access to supernatural insights
+\item \textbf{Negotiation:} Entity may return with new demands, players gain 1 segment permanent Corruption
+\item \textbf{Containment:} Players become responsible wardens, gain 1 follower (Bell-Warden apprentice)
+\item \textbf{Personal Effects:} Individual corruption or enlightenment based on choices made
+\end{itemize}
+
+\section{GM Notes}
+
+\subsection{Pacing}
+Maintain tension by gradually increasing supernatural elements:
+\begin{itemize}
+\item Session 1: Minor disturbances, unsettling but manageable
+\item Session 2: Direct supernatural encounters, clear otherworldly threat
+\item Session 3: Full manifestation, existential threat to region
+\end{itemize}
+
+\subsection{Player Agency}
+Provide multiple paths to resolution:
+\begin{itemize}
+\item Combat approach: Direct confrontation with possessed NPCs and entity
+\item Investigation approach: Decoding supernatural phenomena to find weaknesses
+\item Social approach: Negotiating with entity or managing possessed NPCs
+\item Ritual approach: Complex sanctification and restoration procedures
+\end{itemize}
+
+\subsection{Atmosphere}
+Emphasize isolation and otherworldly nature:
+\begin{itemize}
+\item Use fog, bells, and shifting paths to create unsettling atmosphere
+\item Sound effects: Distant bell tones, whispers in mist, temporal echoes
+\item Visual elements: Moving reflections, false memories, phasing objects
+\item Temporal distortion: Events that don't follow logical sequence
+\end{itemize}
+
+\subsection{Story Beats}
+Use Mist Walker's influence to generate complications:
+\begin{itemize}
+\item 1 SB: Minor temporal displacement, false memory fragment
+\item 2 SB: NPC becomes temporarily possessed, misleading information
+\item 3 SB: Environmental hazard from bell resonance, path becomes迷宫-like
+\item 4+ SB: Direct manifestation of Mist Walker's influence, major NPC possession
+\end{itemize}
+
+\subsection{Session-Specific Guidance}
+
+\textbf{Session 1 Focus:} Establish supernatural threat without overwhelming players. Use unsettling but manageable phenomena to build tension.
+
+\textbf{Session 2 Focus:} Escalate to direct supernatural encounters. Players should feel the threat is real and growing.
+
+\textbf{Session 3 Focus:} Climactic confrontation. All previous elements converge. Players' choices have clear, significant consequences.
+
+\subsection{Alternative Endings}
+
+If players fail to resolve the main conflict:
+\begin{itemize}
+\item \textbf{Partial Success:} Reduce corruption but don't eliminate threat. Sets up sequel adventure.
+\item \textbf{Compromise:} Players become possessed but use influence to contain entity from within.
+\item \textbf{Pyrrhic Victory:} Banish entity but at great cost (major NPC death, permanent regional damage).
+\end{itemize}
+
+\subsection{Scaling for Different Tiers}
+
+\textbf{Tier I (Rookie):} Reduce entity Cap to 3, simplify ritual requirements, provide more NPC assistance.
+
+\textbf{Tier III (Veteran):} Increase entity Cap to 5, add secondary entities, complicate ritual with additional requirements.
+
+\textbf{Tier IV (Paragon):} Add political complications, multiple simultaneous anchor points, entity gains patron backing.
+
+\end{document}
