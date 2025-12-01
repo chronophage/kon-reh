@@ -1,624 +1,3457 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{book}
 
-% --- Preamble ---
+%=== PACKAGES ===
 \usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage{xcolor}
-\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{array}
 \usepackage{booktabs}
-\usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{tcolorbox}
+\usepackage{fancyhdr}
 
+%=== PAGE LAYOUT ===
+\geometry{margin=1in}
+\setstretch{1.15}
+
+%=== COLORS ===
+\definecolor{feBlue}{RGB}{30,60,110}
+\definecolor{feGold}{RGB}{210,170,70}
+\definecolor{feGray}{gray}{0.15}
+
+%=== TITLE FORMATTING ===
+\titleformat{\chapter}
+  {\normalfont\Huge\bfseries\color{feBlue}}
+  {\thechapter}{1em}{}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{feBlue}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+%=== HEADER/FOOTER ===
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Fate's Edge: The Book of Talents}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%=== HYPERREF ===
 \hypersetup{
-  colorlinks=true,
-  linkcolor=black,
-  urlcolor=blue!50!black
+    colorlinks=true,
+    linkcolor=feBlue,
+    urlcolor=feBlue,
+    citecolor=feBlue,
+    pdftitle={Fate's Edge: The Book of Talents},
+    pdfauthor={Fate's Edge Development Team},
+    pdfsubject={Talent Expansion for Fate's Edge RPG},
 }
 
-% Headings
-\titleformat{\section}{\Large\bfseries}{}{0em}{}
-\titleformat{\subsection}{\large\bfseries}{}{0em}{}
-\titleformat{\subsubsection}{\bfseries}{}{0em}{}
-
-% Lists
-\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=4pt}
-\setlist[enumerate]{leftmargin=*, itemsep=2pt, topsep=4pt}
-
-% Fate-styled callout
-\tcbset{fateboxstyle/.style={
-    colback=gray!3,
-    colframe=black!70,
-    boxrule=0.4pt,
-    arc=2pt,
-    left=6pt,right=6pt,top=6pt,bottom=6pt,
-}}
-\newtcolorbox{fatebox}[1][]{fateboxstyle,title=\textbf{#1}}
-
-\title{Fate's Edge — Talents Compendium v1.1}
-\author{SRD Addendum \& Synthesis}
-\date{}
-
+%=== DOCUMENT BEGINS ===
 \begin{document}
-\maketitle
 
-\section{Talents by Archetype}
+%=== TITLE PAGE ===
+\begin{titlepage}
+    \centering
+    {\Huge\bfseries Fate's Edge\\[0.3em]
+    \textcolor{feBlue}{The Book of Talents}\par}
+    \vspace{1.5cm}
+    {\Large Advanced Character Options, Synergies, and Expansion Paths\par}
+    \vfill
+    {\large Version 1.1}\\[0.3em]
+    {\large Based on the Talent Compendium \textit{v1.1}}\\
+    {\large \textit{Source: Skills \& Talents SRD Addendum}}\\
+    \vspace{1cm}
+    {\large Fate's Edge Design Team}\\
+    \vspace{0.5cm}
+    {\small \today}
+    \vfill
+\end{titlepage}
 
-\subsection{Fighter}
-\subsubsection*{2 XP (Minor Edge)}
+\tableofcontents
+\newpage
+
+%==========================================
+\chapter{Using This Expansion}
+%==========================================
+
+\section{Purpose of This Book}
+
+\textbf{The Book of Talents} expands the core Fate's Edge talent lists into a fully modular,
+campaign-ready subsystem. While the SRD provides individual talents, this supplement
+integrates them into broader:
 \begin{itemize}
-  \item \textbf{Second Wind}: Once/scene after taking Harm, convert \textbf{1 Harm $\rightarrow$ 1 Fatigue} (after armor/talents).
-  \item \textbf{Narrow Escape}: When you'd take \textbf{Harm 1}, you may mark \textbf{1 Fatigue} instead (once/scene).
+    \item character development paths,
+    \item synergy frameworks,
+    \item archetype roles,
+    \item build scaffolds,
+    \item and thematic playstyles.
 \end{itemize}
 
-\subsubsection*{3 XP (Tactical Edges)}
+It is structured to work seamlessly with:
 \begin{itemize}
-  \item \textbf{Shield Wall}: If you and an adjacent ally both wield shields, you both gain \textbf{+1 die to Defense} and convert the first incoming \textbf{Harm 1} to \textbf{1 Fatigue} for either character.
-  \item \textbf{Overpower}: When you attack a foe at \textbf{Harm 1+}, gain \textbf{+1 die} to the attack.
+    \item \textbf{Fate's Edge SRD},
+    \item \textbf{Political Intrigue Expansion},
+    \item \textbf{Patrons \& Symbols},
+    \item \textbf{Runekeepers \& Process Magic},
+    \item \textbf{Campaigns: Advanced Tools}.
 \end{itemize}
 
-\subsubsection*{4 XP (Major Play)}
+In short: this is no longer just a list of talents—this is a \textbf{framework for advanced
+character expression}.
+
+\section{How to Use This Book}
+
+Each chapter organizes talents not only by archetype, but also by:
 \begin{itemize}
-  \item \textbf{Battle Sense} \emph{(req.\ Narrow Escape)}: After you mitigate Harm (any method), gain \textbf{Position +1} next exchange.
-  \item \textbf{Weapon Mastery}: Pick a weapon family; your attacks with it get \textbf{DV --1} when you have footing or bracing.
+    \item XP tier,
+    \item tactical niche,
+    \item synergy clusters,
+    \item narrative identity,
+    \item and cross-expansion interactions.
 \end{itemize}
 
-\subsubsection*{6 XP (Capstone)}
+Game Masters can use these chapters to:
 \begin{itemize}
-  \item \textbf{Death Denied} \emph{(req.\ Battle Sense)}: \textbf{Once/session}, ignore all Harm from a single source after reductions; mark \textbf{2 Fatigue}.
+    \item Build consistent NPCs quickly.
+    \item Introduce talent-driven factions or schools.
+    \item Offer earned talents as rewards for significant milestones.
 \end{itemize}
 
-\subsubsection*{8 XP (Mythic)}
+Players can use them to:
 \begin{itemize}
-  \item \textbf{Unbreakable Line} \emph{(req.\ Weapon Mastery)}: While you hold a chokepoint or doorway, allies behind you gain \textbf{Position +1} and \textbf{Effect +1} vs.\ foes you engage.
+    \item Reinforce class fantasy,
+    \item Make clean, thematic advancement choices,
+    \item Explore hybrid builds using Patrons, Process Magic, or Assets,
+    \item Track development toward signature abilities.
 \end{itemize}
 
-\subsection{Rogue}
-\subsubsection*{2 XP}
+\section{Talent Philosophy}
+
+Talents in Fate’s Edge balance three priorities:
+\begin{enumerate}
+    \item \textbf{Player Expression:} Talents should change how a character feels to play.
+    \item \textbf{Fiction-First Design:} The talent must reflect real narrative choices.
+    \item \textbf{Mechanical Clarity:} Talents should fit cleanly into Position, Effect, DV,
+          Story Beats, and Fatigue frameworks.
+\end{enumerate}
+
+Talents are also structured with \textbf{niche protection} in mind, ensuring each archetype
+has a unique mechanical silhouette. Where overlap is intentional—such as between Face and Bard—
+rules are clarified from the original Talent Compendium  [oai_citation:1‡Fate's Edge Expansion - The Book of Talents.txt](sediment://file_00000000d19871fda692f2964c77ac94).
+
+\section{What This Book Adds}
+
+Compared to the raw lists, this expansion includes:
+
+\begin{description}[leftmargin=1.8em]
+    \item[1. Expanded Talent Descriptions]  
+    Additional cues, examples, and fiction-first interpretations.
+
+    \item[2. Talent Synergy Maps]  
+    Visual and textual systems showing how talents interlock.
+
+    \item[3. Archetype Identity Pages]  
+    Each archetype begins with a role breakdown, example builds,
+    and progression paths.
+
+    \item[4. Hybrid Class Frameworks]  
+    Rules for combining talents across engines  
+    (Patrons, Casters, Runekeepers, Summoners).
+
+    \item[5. Talent Schools \& Traditions]  
+    Cultural or faction-based interpretations of archetypes.
+
+    \item[6. GM Guidelines for Talent Balance]  
+    How to pace access, integrate NPC talents, and use talents as worldbuilding tools.
+
+    \item[7. Advancement Arcs]  
+    XP-based paths culminating in 6–8 XP signature or mythic-level abilities.
+\end{description}
+
+\section{What Is Not in This Book}
+
+This expansion does \textbf{not}:
 \begin{itemize}
-  \item \textbf{Opportunist}: Attacking from Hidden or from a new angle grants \textbf{Effect +1}.
-  \item \textbf{Evasion}: When targeted by area/volley effects, reduce incoming \textbf{Harm by 1 level} (once/scene).
+    \item Replace the underlying mechanics of your campaign.
+    \item Introduce new core systems (e.g., no new dice subsystems).
+    \item Require players to track more numbers.
 \end{itemize}
 
-\subsubsection*{3--4 XP}
+Instead, it clarifies, enriches, and expands.
+
+\newpage
+
+\chapter{Archetype Overview}
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Talents in Fate’s Edge are not simply mechanical upgrades—they define who a character is,
+how they approach challenges, and what kind of stories they naturally gravitate toward.
+Each archetype in this chapter represents a \textbf{distinct philosophical and mechanical lens}
+through which a character interacts with the world.
+
+Where attributes describe aptitude and skills describe expertise, \textbf{archetypes describe
+identity}: the instincts a character falls back on, the training they rely upon, and the
+narrative “silhouette” they cast in play.
+
+This chapter provides:
 \begin{itemize}
-  \item \textbf{Always an Exit} (3 XP): When disengaging or fleeing, \textbf{Position +1} and ignore one movement penalty.
-  \item \textbf{Cutpurse} (3 XP): Create a “lifted item” \textbf{Diamond} once/leg without a roll if you had close contact.
-  \item \textbf{Ghost on the Wind} (4 XP): On a \emph{Partial} with \textbf{Stealth/Subterfuge}, you still count as Hidden but GM banks +1 SB.
-  \item \textbf{Smoke \& Mirrors} (4 XP): Spend \textbf{1 Boon} to create a \textbf{Decoy [2]} clock; while it ticks, you count as elsewhere for one check.
+    \item a \textbf{snapshot of each archetype} and the role it plays in the broader system,
+    \item a breakdown of its \textbf{core mechanics} and interaction with Position, Effect, Harm,
+          Fatigue, and Story Beats,
+    \item typical \textbf{talent progression paths},
+    \item \textbf{synergy highlights} with other archetypes or engines (Caster, Patron, Runekeeper),
+    \item and the \textbf{narrative themes} that archetype-driven characters tend to explore.
 \end{itemize}
 
-\subsubsection*{5 XP}
+Unlike traditional RPG classes, Fate’s Edge archetypes do not restrict play—they \textbf{guide}
+it. A Fighter can become a battlefield tactician or a brawler-philosopher; a Face might evolve
+into a courtier-spy or a supernatural negotiator. Talents are modular by design, enabling both
+specialization and hybrid expression.
+
+\begin{description}[leftmargin=1.8em]
+    \item[Role Summary]  
+    The archetype's function in fiction and in mechanical play.
+
+    \item[Mechanical Silhouette]  
+    How the archetype interacts with Position, Effect, DV, Harm, Fatigue, and clocks.
+
+    \item[Playstyle Themes]  
+    The emotional and dramatic stories this archetype naturally reinforces.
+
+    \item[Talent Progression Path]  
+    A suggested sequence of minors, majors, and capstones that define iconic play.
+
+    \item[Synergy Notes]  
+    How the archetype interacts with others—where it shines alone, and where it pairs well.
+
+    \item[GM Flags]  
+    Key considerations for encounter design and pacing when this archetype is present.
+\end{description}
+
+\section*{Archetypes as Narrative Lenses}
+\addcontentsline{toc}{section}{Archetypes as Narrative Lenses}
+
+The talents in later chapters are mechanical expressions of philosophy.  
+Each archetype reflects a worldview:
+
 \begin{itemize}
-  \item \textbf{Perfect Setup}: When you succeed on a \textbf{Setup} action, the next ally's action gains \textbf{Effect +2} (instead of +1) against the target.
-  \item \textbf{Vanishing Act}: When you take Harm, immediately test \textbf{Stealth vs.\ DV (Tier)}; on success, become \textbf{Hidden} and clear \textbf{1 Fatigue}.
+    \item Fighters view conflict as structure and discipline.  
+    \item Rogues see the world as leverage and opportunity.  
+    \item Rangers live in the tension between instinct and environment.  
+    \item Bards navigate emotional landscapes and cultural truth.  
+    \item Paladins lean on oath, identity, and moral geometry.  
+    \item Monks distill movement, breath, and awareness into action.  
+    \item Casters shape reality through intention and symbolic pattern.  
+    \item Invokers build worlds through preparation and ritual.  
 \end{itemize}
 
-\subsubsection*{6 XP}
+%===========================================================
+\chapter{Fighter: Resolve and Battlefield Control}
+%===========================================================
+
+\section{Archetype Overview}
+
+Whether a player wants a character of precision, passion, cunning, resolve, flexibility, or
+mystic interpretation, each archetype in this book expresses a different facet of that identity.
+The Fighter channels \textbf{resolve}, \textbf{positioning}, and \textbf{endurance} into a
+clean, reliable chassis: hold the line, break the line, or live long enough to do both.
+
+Fighters in \textit{Fate's Edge} are not just hit-point sponges. They:
 \begin{itemize}
-  \item \textbf{Master of Subterfuge} \emph{(req.\ Ghost on the Wind)}: When you open a scene from Hidden and succeed, you may also \textbf{suppress 1 SB} the GM would spend this exchange.
+  \item manage \textbf{Harm} and \textbf{Fatigue} more efficiently than most,
+  \item translate battlefield awareness into \textbf{Position} and \textbf{Effect},
+  \item unlock high-impact, once/session stunts that can turn a fight,
+  \item and specialize in specific weapon families, chokepoints, or formations.
 \end{itemize}
 
-\subsection{Ranger}
-\subsubsection*{2 XP}
+This chapter presents a curated talent ladder for Fighters, from minor edges
+to mythic battlefield anchors.
+
+\section{Fighter Talent Ladder}
+
+\subsection{2 XP Talents: Minor Edges}
+
+These options define your baseline survivability and grit. Most Fighters will take at least one.
+
+\subsubsection{Second Wind (2 XP)}
+\textbf{Theme:} Grit, stubborn survival.\\
+\textbf{Effect:} Once per scene, after taking Harm, you may convert
+\textbf{1 Harm $\rightarrow$ 1 Fatigue} (after armor and other mitigation are applied).
+
+This is your basic “I refuse to fall yet” button.  
+Pairs well with any build that expects to be focus-fired.
+
+\subsubsection{Narrow Escape (2 XP)}
+\textbf{Theme:} Sudden, desperate survival instinct.\\
+\textbf{Effect:} When you would take \textbf{Harm 1}, you may instead mark
+\textbf{1 Fatigue} (once per scene).
+
+Compared to \emph{Second Wind}, this works pre-emptively on smaller hits.
+It’s ideal for Fighters who manage Fatigue more aggressively than Harm.
+
+\subsection{3 XP Talents: Tactical Edges}
+
+These talents deepen your tactical footprint: defending others or exploiting weakness.
+
+\subsubsection{Shield Wall (3 XP)}
+\textbf{Prerequisites:} Must be wielding a shield; adjacent ally must also wield a shield.\\
+\textbf{Effect:} While both conditions are true:
 \begin{itemize}
-  \item \textbf{Tracker’s Instinct}: \textbf{DV --1} to Track/Survey in wilds; on success, ask 1 follow-up (“time since,” “numbers,” or “load”).
-  \item \textbf{Skirmisher}: After a ranged attack, free \textbf{half-move} without worsening Position.
+  \item You and the adjacent ally gain \textbf{+1 die to Defense}.
+  \item The first incoming \textbf{Harm 1} to either of you this scene is converted to
+        \textbf{1 Fatigue} instead.
 \end{itemize}
 
-\subsubsection*{4 XP}
+Formations matter. This talent rewards disciplined positioning
+and creates a visible “safe lane” for allies to play around.
+
+\subsubsection{Overpower (3 XP)}
+\textbf{Theme:} Pressing an advantage once blood is drawn.\\
+\textbf{Effect:} When you attack a foe who is already at \textbf{Harm 1+},
+you gain \textbf{+1 die} to that attack.
+
+Overpower shines in longer engagements and boss fights,
+rewarding focus fire and follow-through.
+
+\subsection{4 XP Talents: Major Plays}
+
+At this tier, Fighter talents begin to shift the overall flow of a fight.
+
+\subsubsection{Battle Sense (4 XP)}
+\textbf{Prerequisite:} \emph{Narrow Escape}.\\
+\textbf{Theme:} Reading the rhythm of violence.\\
+\textbf{Effect:} After you mitigate Harm \emph{by any method}
+(armor, talents, allies, etc.), you gain \textbf{Position +1}
+on your next exchange.
+
+This turns survival into momentum: each time you blunt a hit,
+you step into a more advantageous spot—closing distance, claiming cover,
+or threatening key targets.
+
+\subsubsection{Weapon Mastery (4 XP)}
+\textbf{Theme:} Specialization and form.\\
+\textbf{Effect:} Choose a weapon family (e.g., spears, greatblades, axes, polearms).
+When attacking with a weapon from that family, you gain \textbf{DV --1}
+\emph{if} you have footing or bracing in the fiction
+(e.g., stable stance, set spear, grounded swing).
+
+Weapon Mastery encourages Fighters to commit to a style:
+shields and spears at doors, greatswords in open ground, etc.
+
+\subsection{6 XP Talent: Capstone}
+
+\subsubsection{Death Denied (6 XP)}
+\textbf{Prerequisite:} \emph{Battle Sense}.\\
+\textbf{Theme:} Refusing the story where you fall now.\\
+\textbf{Effect:} \textbf{Once per session}, you may ignore all Harm from a single source
+(after all other reductions are applied); instead, mark \textbf{2 Fatigue}.
+
+This is the moment where the Fighter stands in the breach,
+takes the dragon’s breath, or intercepts the execution blow.
+It is intentionally \textbf{big} and should be described cinematically.
+
+\subsection{8 XP Talent: Mythic Expression}
+
+\subsubsection{Unbreakable Line (8 XP)}
+\textbf{Prerequisite:} \emph{Weapon Mastery}.\\
+\textbf{Theme:} Becoming the wall the world breaks against.\\
+\textbf{Effect:} While you hold a chokepoint, doorway, or other narrow lane and
+actively engage foes there:
 \begin{itemize}
-  \item \textbf{Mark Prey}: Mark a target; your first successful attack/scene vs.\ them gets \textbf{Effect +1} and reveals a vulnerability tag.
-  \item \textbf{Terrain Mastery}: Pick one terrain; in it, your side starts \textbf{Position +1} unless surprised.
+  \item Allies behind you gain \textbf{Position +1}.
+  \item Those allies also gain \textbf{Effect +1} against foes you are engaging.
 \end{itemize}
 
-\subsubsection*{6 XP}
+This is not only mechanical—it is a statement about who your character is.
+In scenes where routes are tight or time is short, an Unbreakable Fighter can
+single-handedly hold back a tide and elevate everyone behind them.
+
+\section{Build Notes and Synergies}
+
+\subsection{Defender Core}
+
+A classic Fighter-defender chassis might prioritize:
 \begin{itemize}
-  \item \textbf{One with the Wild}: \textbf{Once/scene} in your terrain, reframe a chaotic exchange as \textbf{Controlled / Standard} for your action.
+  \item \emph{Narrow Escape} (2 XP)
+  \item \emph{Second Wind} (2 XP)
+  \item \emph{Shield Wall} (3 XP)
+  \item \emph{Battle Sense} (4 XP)
 \end{itemize}
 
-\subsection{Bard}
-\subsubsection*{2 XP}
+This combination lets you repeatedly transform hits into manageable Fatigue
+and then cash that survival into Position advantages.
+
+\subsection{Aggressive Pressurer}
+
+For a more offensive build:
 \begin{itemize}
-  \item \textbf{Inspiring Performance}: Once/scene, grant an ally \textbf{+1 die} and remove \textbf{1 Fatigue} on a rousing beat.
-  \item \textbf{Cutting Remark}: On a social success, you may impose \textbf{Effect --1} on an opponent’s next social action.
+  \item \emph{Overpower} (3 XP)
+  \item \emph{Weapon Mastery} (4 XP)
+  \item \emph{Death Denied} (6 XP)
 \end{itemize}
 
-\subsubsection*{3--4 XP}
+This Fighter thrives in prolonged duels or elite skirmishes—striking harder
+against already-injured foes and cashing in a single moment of invulnerability
+for a decisive scene pivot.
+
+\subsection{Synergy with Other Archetypes}
+
 \begin{itemize}
-  \item \textbf{Loreweaver} (3 XP): After \textbf{Lore/Investigation} success, ask \textbf{one extra question} or set a 2-tick “Lead” clock.
-  \item \textbf{Glamour Voice} (3 XP): Create a subtle illusion/shift; grants \textbf{Position +1} to the next allied social action.
-  \item \textbf{Rally} (4 XP): Clear \textbf{1 Fatigue} from up to two allies in Near and give them \textbf{Position +1} next exchange.
-  \item \textbf{Song Ward} (4 XP): Allies resist \emph{fear/fray} as if \textbf{Controlled} this scene while you maintain a refrain.
+  \item \textbf{Bard:} Talents like \emph{Rally} and \emph{Crescendo}
+        stack beautifully with a Fighter’s Position and Harm control,
+        letting your “wall” also become the spearhead.
+  \item \textbf{Healer:} Efficient healing and stabilization allow Fighters to
+        lean harder into Fatigue-based mitigation without collapsing.
+  \item \textbf{Invoker / Paladin:} Oath- or ward-based talents reinforce
+        the same front-line space, leading to “blessed bulwark” style parties.
 \end{itemize}
 
-\subsubsection*{6 XP}
+\section{Fighter at the Table}
+
+\subsection{Player Guidance}
+
+As a Fighter, you:
 \begin{itemize}
-  \item \textbf{Crescendo}: \textbf{Once/scene}, convert a successful social roll into a \textbf{scene pivot}: shift 1 active social clock by +2 in your favor.
+  \item Are often the first into danger and the last to leave.
+  \item Should think in terms of \textbf{lanes, cover, and routes},
+        not just single enemies.
+  \item Can deliberately invite attention to protect more fragile allies.
+  \item Are allowed to say, in fiction: “If they want past, they go through me.”
 \end{itemize}
 
-\subsection{Freeform Caster (Wizard)}
-\textit{Requires \textbf{Caster’s Gift} (2 XP).}
-\subsubsection*{2 XP}
+\subsection{GM Guidance}
+
+When a Fighter is present:
 \begin{itemize}
-  \item \textbf{Elemental Affinity}: Pick one element; your weaves of it gain \textbf{Effect +1} when you accept \textbf{+1 Fatigue}.
-  \item \textbf{Overchannel}: When you \emph{Push}, you may split the cost: \textbf{+1 Fatigue} and \textbf{allow GM +1 SB} instead of a larger cost.
+  \item Make chokepoints matter: doors, bridges, corridors, rooftops.
+  \item Give them moments to intercept or hold the line—especially against clocks.
+  \item Use enemies who \emph{test} their resolve:
+        flanking foes, push/drag effects, or moral choices.
+  \item Reward smart positioning and teamwork with meaningful reductions in
+        clock pressure and Harm.
 \end{itemize}
 
-\subsubsection*{3 XP}
+Fighters are the archetype of \textbf{resolve} in motion.  
+These talents give you the mechanical vocabulary to show that resolve on-screen.
+
+%===========================================================
+
+%===========================================================
+\chapter{Rogue: Cunning, Position, and Quiet Catastrophe}
+%===========================================================
+
+\section{Archetype Overview}
+
+Whether a player wants a character of precision, passion, cunning, resolve, flexibility, or
+mystic interpretation, each archetype expresses that identity through a different lens.
+The Rogue is the face of \textbf{cunning} and \textbf{positional play}:
+they do not win fair fights—they make sure the fight is never fair.
+
+Rogues in \textit{Fate's Edge} excel at:
 \begin{itemize}
-  \item \textbf{Focused Casting}: If you maintain concentration (no move/defend) for a full exchange, gain \textbf{Effect +1} on your next casting this scene.
-  \item \textbf{Sympathetic Link}: When you target a creature with magic, mark a \textbf{Connection [2]} clock; while it ticks, you gain \textbf{DV --1} for future effects on that target.
+  \item reframing danger through \textbf{Position} and \textbf{Effect},
+  \item exploiting \textbf{Hidden} status and unusual angles of attack,
+  \item manipulating clocks, resources, and the GM’s SB pool,
+  \item and breaking contact when the story demands a clean exit.
 \end{itemize}
 
-\subsubsection*{4 XP}
+This chapter presents a Rogue talent ladder that supports
+thieves, infiltrators, spies, assassins, and confidence artists.
+
+%===========================================================
+\section{Rogue Talent Ladder}
+
+\subsection{2 XP Talents: Core Rogue Moves}
+
+\subsubsection{Opportunist (2 XP)}
+\textbf{Theme:} Striking when the enemy is unready.\\
+\textbf{Effect:} When you attack from \textbf{Hidden} or from a genuinely new angle
+(e.g., unexpected entry, flank, or altitude), you gain \textbf{Effect +1}
+on that attack.
+
+This is the baseline “sneak attack” expression in this system:
+it rewards creative positioning more than raw damage math.
+
+\subsubsection{Evasion (2 XP)}
+\textbf{Theme:} Living in the margins of blast radius.\\
+\textbf{Effect:} When targeted by area, volley, or otherwise non-precise effects,
+you may reduce incoming \textbf{Harm by 1 level} (once per scene).
+
+This talent is your insurance against the GM’s favorite move:
+“they don’t aim at you—they set the room on fire.”
+
+\subsection{3--4 XP Talents: Mobility, Mischief, and Setup}
+
+\subsubsection{Always an Exit (3 XP)}
+\textbf{Theme:} Never cornered. Ever.\\
+\textbf{Effect:} When you disengage or flee:
 \begin{itemize}
-  \item \textbf{Counterweave}: \textbf{Reaction}—on a success vs DV 3–4, dampen or disperse a rival working; if Partial, you both flicker.
-  \item \textbf{Geometer’s Focus}: Complex shaping (walls/bridges) uses \textbf{DV --1} if you have a diagram or chalk lines.
+  \item gain \textbf{Position +1} for that escape action, and
+  \item ignore one movement penalty (difficult terrain, crowd, narrow span, etc.).
 \end{itemize}
 
-\subsubsection*{6--8 XP}
+This keeps the Rogue from being trivially pinned and
+encourages bold infiltration, knowing there is always a way out.
+
+\subsubsection{Cutpurse (3 XP)}
+\textbf{Theme:} Light fingers, lighter pockets.\\
+\textbf{Effect:} Once per leg of travel or infiltration,
+if you have had close physical contact with a target (bumped into,
+shared a handshake, embraced, etc.), you may create a “lifted item”
+\textbf{Diamond} \emph{without a roll}.
+
+That Diamond represents something plausibly stolen: a purse, seal, key,
+token, note, or whispered secret, to be cashed in later as an asset or leverage.
+
+\subsubsection{Ghost on the Wind (4 XP)}
+\textbf{Theme:} Part rumor, part draft of air.\\
+\textbf{Effect:} On a \emph{Partial} with \textbf{Stealth/Subterfuge}:
 \begin{itemize}
-  \item \textbf{Ruin or Remedy} (6 XP): After a successful weave affecting environment, add a \textbf{new environmental tag} for the scene.
-  \item \textbf{Transcendent Harmony} (8 XP) \emph{(req.\ Caster's Gift, Geometer's Focus \emph{or} Counterweave; revised)}: \textbf{Once/session}, for a single casting sequence of \textit{scene-scale or smaller} (DV $\leq$ 4; not battlefield-scale), set your \textbf{Position to Controlled} for that sequence and remove \textbf{1 SB} from the pool on resolution. \textit{Cost:} mark \textbf{2 Fatigue}. If the cast is \textit{Area/Devastating} or would exceed scene scale, instead gain \textbf{Position +1} (not full Control) and remove no SB.
+  \item You still count as \textbf{Hidden}, but
+  \item the GM banks \textbf{+1 SB}.
 \end{itemize}
 
-\subsection{Invoker (Patron Symbols)}
-\textit{Requires \textbf{Patron’s Symbol} (4 XP).}
-\subsubsection*{2 XP}
+You trade future danger for continued invisibility.  
+This is the talent for players who like staying in the shadows
+even when the dice wobble.
+
+\subsubsection{Smoke \& Mirrors (4 XP)}
+\textbf{Theme:} Confusion as armor.\\
+\textbf{Effect:} Spend \textbf{1 Boon} to create a \textbf{Decoy [2]} clock.
+While this clock has unticked segments, you may count as being
+“elsewhere” for one check at a time (GM and table agree on which).
+
+The Decoy may be a double, a misleading trail, or a staged distraction.
+When the clock fills, the decoy fails or is seen through.
+
+\subsection{5 XP Talents: High-Impact Tricks}
+
+\subsubsection{Perfect Setup (5 XP)}
+\textbf{Theme:} Turning preparation into explosion.\\
+\textbf{Effect:} When you succeed on a \textbf{Setup} action,
+the next ally’s action against the same target or situation
+gains \textbf{Effect +2} (instead of the usual +1).
+
+This is how you turn the Rogue into the party’s artillery spotter,
+trap-framer, or psychological mine-layer.
+
+\subsubsection{Vanishing Act (5 XP)}
+\textbf{Theme:} The knife was there—then wasn’t.\\
+\textbf{Effect:} When you take Harm, you may immediately test
+\textbf{Stealth vs.\ DV (Tier)}. On success:
 \begin{itemize}
-  \item \textbf{Minor Sacrament}: Treat a simple healing/blessing as \textbf{DV --1}; on success, also remove \textbf{1 Fatigue} from the subject.
-  \item \textbf{Consecration}: Sanctify a small zone; allies inside gain \textbf{Position +1} vs a listed threat.
+  \item you become \textbf{Hidden}, and
+  \item you clear \textbf{1 Fatigue}.
 \end{itemize}
 
-\subsubsection*{4 XP}
+This talent converts getting hit into a pivot:
+a brief flash of pain followed by disappearance and repositioning.
+
+\subsection{6 XP Talent: SB Manipulation}
+
+\subsubsection{Master of Subterfuge (6 XP)}
+\textbf{Prerequisite:} \emph{Ghost on the Wind}.\\
+\textbf{Theme:} The story follows your misdirection.\\
+\textbf{Effect:} When you open a scene from \textbf{Hidden}
+and succeed on your first \textbf{Stealth/Subterfuge} action,
+you may also \textbf{suppress 1 SB} the GM would spend this exchange.
+
+You don’t just control where the spotlight lands—you tug on the
+underlying tension economy of the scene.
+
+%===========================================================
+\section{Build Notes and Synergies}
+
+\subsection{Classic Infiltrator}
+
+A stealth-and-theft oriented Rogue might favor:
 \begin{itemize}
-  \item \textbf{Rebuke the Unquiet}: Against undead/spirits, your invocations gain \textbf{Effect +1} and may mark \textbf{Morale} clocks.
-  \item \textbf{Oathbinder}: Bind a witnessed oath; breaking it creates a \textbf{Breach [4]} clock you can sense.
+  \item \emph{Opportunist} (2 XP)
+  \item \emph{Evasion} (2 XP)
+  \item \emph{Cutpurse} (3 XP)
+  \item \emph{Ghost on the Wind} (4 XP)
+  \item \emph{Vanishing Act} (5 XP)
 \end{itemize}
 
-\subsubsection*{6 XP}
+This combination supports a loop of:
+get in unseen, steal or sabotage, weather partial failures
+without being revealed, then disappear when things go loud.
+
+\subsection{Tactical Saboteur}
+
+A Rogue who acts as a battlefield controller and enabler might build:
 \begin{itemize}
-  \item \textbf{Miracle of Mercy}: \textbf{Once/session}, downgrade \textbf{Harm 2 $\rightarrow$ Harm 1} on up to two allies or \textbf{clear 2 Fatigue} across the group.
+  \item \emph{Opportunist} (2 XP)
+  \item \emph{Always an Exit} (3 XP)
+  \item \emph{Smoke \& Mirrors} (4 XP)
+  \item \emph{Perfect Setup} (5 XP)
+  \item \emph{Master of Subterfuge} (6 XP)
 \end{itemize}
 
-\subsection{Runekeeper (Codex \& Thaisos)}
-\textit{Requires \textbf{Codex} (4 XP) and \textbf{Thaisos} (2 XP).}
-\subsubsection*{2 XP}
+They thrive in multi-layered encounters, where setting up allies
+for massive Effect bonuses and reshaping the GM’s SB flow matters
+more than direct damage.
+
+\subsection{Cross-Archetype Synergy}
+
 \begin{itemize}
-  \item \textbf{Process Consecration}: When you define a method and follow it, your related rolls gain \textbf{Effect +1}; start a site \textbf{Hunger [4]}.
-  \item \textbf{Loop Breaker}: On success with a noisy/variance action, \textbf{clear Loop [2]} or prevent a “repeat” comp once/scene.
+  \item \textbf{With Fighters:} Rogues break formations so Fighters can
+        exploit chokepoints. \emph{Perfect Setup} plus \emph{Overpower}
+        or \emph{Weapon Mastery} equals brutal scene pivots.
+  \item \textbf{With Bards / Faces:} Rogues create leverage
+        (\emph{Cutpurse}, Diamonds) that Bards and Faces cash in through
+        social boards, Crescendos, and Deals.
+  \item \textbf{With Casters:} Rogues are excellent target-designers:
+        they pin foes into kill-zones or lock them into specific terrain,
+        magnifying area or control weaves.
 \end{itemize}
 
-\subsubsection*{4 XP}
+%===========================================================
+\section{Rogue at the Table}
+
+\subsection{Player Guidance}
+
+As a Rogue, you:
 \begin{itemize}
-  \item \textbf{Quarantine Seal}: Box an anomaly into a marked area/tool; allies get \textbf{Position +1} to work around; stress ticks \textbf{Containment}.
-  \item \textbf{Masker Auditor}: \textbf{DV --1} to impose safety/mercy clauses in contracts; refusal gives them a \textbf{Black Mark} (campaign tag).
+  \item should constantly ask: “Can I come at this from a stranger angle?”
+  \item are responsible for thinking about \textbf{routes, exits, and decoys},
+        not just enemies.
+  \item excel when you set up others—your biggest damage may be indirect.
+  \item are encouraged to bargain with the GM:
+        “I’ll give you +1 SB here if I stay Hidden.”
 \end{itemize}
 
-\subsubsection*{6--8 XP}
+Narrate your cleverness:
+describe misdirection, disguises, feints, and prepared contingencies.
+The mechanics exist to reward that storytelling.
+
+\subsection{GM Guidance}
+
+When a Rogue is present:
 \begin{itemize}
-  \item \textbf{Human-in-the-Loop} (6 XP): \textbf{Once/scene}, convert a machine failure into a \textbf{human choice}—you pick who decides and stakes.
-  \item \textbf{Supply Architect} (8 XP): Consecrate a chain to create \textbf{Surplus [2]} (banked asset). Cash later; the GM ticks \textbf{Anomaly [1]} upstream.
+  \item Put value on \textbf{angles}: balconies, ducts, secret stairs,
+        festival crowds, rooftops, and back rooms.
+  \item Let \textbf{Hidden} status matter:
+        crucial levers, keys, and unguarded moments should exist.
+  \item Make \textbf{SB manipulation} visible:
+        when the Rogue suppresses or feeds SB, explain how the fiction shifts.
+  \item Avoid defeating the Rogue by fiat (``they can’t possibly sneak here'')
+        unless the stakes are extremely clear and agreed upon.
 \end{itemize}
 
-\subsection{Paladin}
-\subsubsection*{2 XP}
+Rogues are the sharp edge of \textbf{cunning} in your campaign:
+they change how every encounter feels, simply by always having
+another way in—and another way out.
+
+%===========================================================
+
+%===========================================================
+\chapter{Ranger: Precision, Instinct, and the Wild Geometry}
+%===========================================================
+
+\section{Archetype Overview}
+
+Each archetype in this book expresses some facet of character identity—precision, passion,
+cunning, resolve, flexibility, or mystic interpretation.  
+The Ranger embodies \textbf{precision} and \textbf{instinct}:
+they see patterns where others see chaos, and they move through the world
+as though it were a familiar map.
+
+Rangers in \textit{Fate's Edge} excel at:
 \begin{itemize}
-  \item \textbf{Vowkeeper}: Choose a vow (mercy, defense, truth). When acting in it, gain \textbf{Position +1} on the opening exchange.
-  \item \textbf{Lay on Hands}: Touch to \textbf{reduce Harm by 1 level} (or \textbf{clear 2 Fatigue}) once/scene.
+  \item battlefield zoning with \textbf{terrain control} and mark effects,
+  \item ranged or mixed-range pressure,
+  \item tracking, scouting, and hazard interpretation,
+  \item manipulating clocks tied to travel, threats, and exposure,
+  \item and anchoring wilderness, urban, or planar traversal scenes.
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+This chapter presents a Ranger talent ladder designed for snipers,
+beast-guides, wardens, scouts, bounty hunters, and trackers.
+
+%===========================================================
+\section{Ranger Talent Ladder}
+
+\subsection{2 XP Talents: Instinctual Edge}
+
+\subsubsection{Hunter’s Instinct (2 XP)}
+\textbf{Theme:} Reading movement and weakness.\\
+\textbf{Effect:} When you Observe or Track a foe and succeed,
+you gain \textbf{Position +1} on your next action against that target.
+
+This rewards entering a fight with reconnaissance
+and maintains a rhythm of “spot → strike.”
+
+\subsubsection{Surefoot (2 XP)}
+\textbf{Theme:} Terrain is your ally.\\
+\textbf{Effect:} Ignore one instance of difficult terrain per scene,
+and gain \textbf{+1 die} to any roll where stable footing matters
+(ledges, slopes, debris, mud, snow, etc.).
+
+This talent is subtle but incredibly high-value across campaigns
+with verticality or harsh environments.
+
+\subsection{3--4 XP Talents: Wilderness Mastery and Combat Flow}
+
+\subsubsection{Marked Prey (3 XP)}
+\textbf{Theme:} Zeroing in.\\
+\textbf{Effect:} When you successfully attack a target from range,
+you may \emph{mark} them. While marked:
 \begin{itemize}
-  \item \textbf{Smite} (4 XP): Against a sworn foe or oathbreaker, your hit gains \textbf{Effect +1} and a brief awe/fear tag.
-  \item \textbf{Ward of the Innocent} (4 XP): While defending noncombatants, you may take an ally’s \textbf{Harm 1} onto your Fatigue instead (once/scene).
-  \item \textbf{Aura of Resolve} (6 XP): Allies within Near ignore the first \textbf{Position drop} this scene.
+  \item you gain \textbf{+1 die} when attacking them,
+  \item and they cannot gain Position against you by retreat alone
+        (they must break LoS or take cover).
 \end{itemize}
 
-\subsection{Barbarian}
-\subsubsection*{2 XP}
+Marks last until end of scene or the target escapes your awareness.
+
+\subsubsection{Wild Path (3 XP)}
+\textbf{Theme:} Moving where others can’t.\\
+\textbf{Effect:} When you move through foliage, rubble, crowd, or ruins:
 \begin{itemize}
-  \item \textbf{Battle-Rage}: When you \emph{Push} by marking Fatigue, gain \textbf{Effect +1} and ignore Difficult Terrain penalties this exchange.
-  \item \textbf{Thick Hide}: Reduce the \textbf{first Harm 1} you’d take each scene to \textbf{1 Fatigue}.
+  \item ignore engagement penalties,
+  \item and gain \textbf{Stealth +1 die} for entering concealment.
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+This is the “ghost of the woods/city” Ranger:
+the one who always has a line no one else took.
+
+\subsubsection{Sniper’s Poise (4 XP)}
+\textbf{Theme:} Stillness as a weapon.\\
+\textbf{Effect:} If you begin an action from a stable, braced, or elevated position,
+you gain \textbf{Effect +1} on ranged attacks.
+
+Pairs beautifully with battlefield exploration
+and any ally able to create “held-down” or controlled spaces.
+
+\subsubsection{Beast Bond (4 XP)}
+\textbf{Theme:} A companion that mirrors your instincts.\\
+\textbf{Effect:} You gain a \textbf{Bonded Companion}:
+a creature of Tier–1 that acts as a narrative extension of your abilities.
+It grants one of the following passive bonuses each scene:
 \begin{itemize}
-  \item \textbf{Relentless} (4 XP): When reduced to \textbf{Harm 2}, immediately take a free \textbf{Attack} or \textbf{Move} before consequences land.
-  \item \textbf{Reckless Charge} (4 XP): Enter melee from Near with \textbf{Position +1}; on a Partial/Miss, also mark \textbf{1 Fatigue}.
-  \item \textbf{Last to Fall} (6 XP): \textbf{Once/session}, remain active at \textbf{Harm 3} long enough to complete your declared action.
+  \item \textbf{+1 die to Observe}, or
+  \item \textbf{+1 die to Stealth}, or
+  \item \textbf{+1 die to Movement-based actions}.
 \end{itemize}
 
-\subsection{Monk}
-\subsubsection*{2 XP}
+This keeps companions mechanically light but narratively rich.
+
+\subsection{5 XP Talents: Major Wilderness Techniques}
+
+\subsubsection{Suppressing Volley (5 XP)}
+\textbf{Theme:} Zoning an area with sheer pressure.\\
+\textbf{Effect:} When you lay down covering fire or area pressure:
 \begin{itemize}
-  \item \textbf{Breath Control}: Clear \textbf{1 Fatigue} as a 1-action focus (once/scene).
-  \item \textbf{Flow Step}: Free \textbf{Dash} after a successful melee attack.
+  \item create a \textbf{Suppression Zone [3]} clock,
+  \item and enemies crossing or acting within it roll at \textbf{–1 die}
+        or take \textbf{Harm 1} (GM’s choice based on context).
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+This gives Rangers genuine battlefield control without imitating casters.
+
+\subsubsection{Trailbreaker (5 XP)}
+\textbf{Theme:} Cutting a path others can follow.\\
+\textbf{Effect:} When leading travel, infiltration, or escape:
 \begin{itemize}
-  \item \textbf{Deflect Missiles} (4 XP): On a successful defense vs ranged, reduce \textbf{Harm by 1}; on a 10, send it to another Near target.
-  \item \textbf{Stunning Palm} (4 XP): On melee success, you may replace damage with a \textbf{Stagger [2]} clock.
-  \item \textbf{Perfect Stillness} (6 XP): Begin a scene \textbf{Hidden} in plain sight until you move or act (once/scene).
+  \item reduce Travel clocks by \textbf{–1 segment},
+  \item and the party ignores the first environmental hazard
+        (exposure, traps, unstable footing) each leg.
 \end{itemize}
 
-\subsection{Druid}
-\textit{Choose \textbf{Caster’s Gift} or \textbf{Patron’s Symbol} as your engine.}
-\subsubsection*{2 XP}
+Scene-agnostic and extremely powerful in long-form play.
+
+\subsection{6 XP Talent: Apex Tracking}
+
+\subsubsection{Blood Trail (6 XP)}
+\textbf{Prerequisite:} \emph{Marked Prey}.\\
+\textbf{Theme:} Nothing that bleeds escapes you.\\
+\textbf{Effect:} When a marked target takes Harm:
 \begin{itemize}
-  \item \textbf{Wildcraft}: Minor shape (sense/limb/feature) for a scene; grants \textbf{Position +1} on a relevant test.
-  \item \textbf{Speak to Beasts}: Parley with animals as if a shared tongue; you may ask one motive each encounter.
+  \item you immediately know their direction and rough distance,
+  \item and you gain \textbf{Effect +1} against them for the rest of the scene.
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+This turns the Ranger into a relentless force in hunts, ambushes, or duels.
+
+\subsection{8 XP Talent: Mythic Expression}
+
+\subsubsection{Warden of the Wilds (8 XP)}
+\textbf{Theme:} You and the land are one.\\
+\textbf{Effect:} Once per session, declare a zone (forest, glade, canyon,
+market district, ruined fortress, cavern complex, etc.) as \textbf{Your Ground}.
+For the rest of the scene:
 \begin{itemize}
-  \item \textbf{Entangling Roots} (4 XP): Create difficult/holding terrain (\textbf{Trap [4]}).
-  \item \textbf{Circle Rite} (4 XP): Sanctify a grove or spring; allied recovery there is \textbf{twice as fast} for Fatigue and minor Harm.
-  \item \textbf{Season’s Turn} (6 XP): Shift a local environmental tag (dry$\rightarrow$wet, calm$\rightarrow$windy, etc.) once/scene.
+  \item allies gain \textbf{Position +1} while inside your declared zone,
+  \item enemies treat all movement as difficult terrain,
+  \item and you may convert \textbf{1 Harm → 1 Fatigue} (once per exchange)
+        while defending or acting within this zone.
 \end{itemize}
 
-\subsection{Sorcerer (Innate Arcana)}
-\textit{Requires \textbf{Caster’s Gift}.}
-\subsubsection*{2 XP}
+This is the archetypal “the land rises with me” Ranger moment.
+
+%===========================================================
+\section{Build Notes and Synergies}
+
+\subsection{Archer / Sniper}
+
+A precision build might choose:
 \begin{itemize}
-  \item \textbf{Wild Talent}: When your roll shows at least one \textbf{1}, you may accept the GM spending +1 SB to gain \textbf{+1 success} on that cast.
-  \item \textbf{Bloodline Surge}: Once/scene, add \textbf{+1 die} to a cast and mark \textbf{1 Fatigue} after.
+  \item \emph{Hunter’s Instinct} (2 XP)
+  \item \emph{Marked Prey} (3 XP)
+  \item \emph{Sniper’s Poise} (4 XP)
+  \item \emph{Suppressing Volley} (5 XP)
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+This build is excellent in large-scale fights and sieges,
+controlling a lane with a single presence.
+
+\subsection{Scout / Trailblazer}
+
+For navigation, infiltration, and terrain mastery:
 \begin{itemize}
-  \item \textbf{Font of Power} (4 XP): On a clean success, bank \textbf{Arcane Residue [1]}; spend later for \textbf{Effect +1} on a related element.
-  \item \textbf{Spell Eater} (4 XP): When targeted by magic, on a success vs DV 3, convert it to \textbf{1 Boon} (or harmless static).
-  \item \textbf{Overwhelming Presence} (6 XP): \textbf{Once/scene}, your cast sets nearby mundane foes to \textbf{Hesitate} unless they mark \textbf{1 Fatigue} to act.
+  \item \emph{Surefoot} (2 XP)
+  \item \emph{Wild Path} (3 XP)
+  \item \emph{Beast Bond} (4 XP)
+  \item \emph{Trailbreaker} (5 XP)
 \end{itemize}
 
-\subsection{Healer (any engine)}
-\subsubsection*{2 XP}
+This character makes the travel game and verticality sing.
+
+\subsection{Hunter / Pursuer}
+
+For relentless chases and single-target pressure:
 \begin{itemize}
-  \item \textbf{Field Medic}: Treating \textbf{Harm 1--2} gains \textbf{DV --1}; if you stabilize during combat, patient gets \textbf{Position +1} on their next action.
-  \item \textbf{Physicker’s Kit}: When you spend an \textbf{Asset} to heal, clear \textbf{+1 extra Fatigue} or step Harm down an additional level on a 10.
+  \item \emph{Hunter’s Instinct} (2 XP)
+  \item \emph{Marked Prey} (3 XP)
+  \item \emph{Blood Trail} (6 XP)
 \end{itemize}
 
-\subsubsection*{4 XP}
+This build thrives in bounty hunting arcs, monstrous hunts, and rival duels.
+
+\subsection{Cross-Archetype Synergy}
+
 \begin{itemize}
-  \item \textbf{Steady Hands}: On a healing \emph{Partial}, also grant the patient \textbf{+1 die} on their next roll this scene.
-  \item \textbf{Triage}: In a pinch, stabilize \textbf{two} allies at once (Hard DV).
+  \item \textbf{With Rogues:} Rangers create sightlines and pin enemies,
+        letting Rogues slip in—and out—more easily.
+  \item \textbf{With Casters:} Terrain shaping + terrain spells = nightmare zones.
+  \item \textbf{With Fighters:} Rangers force enemies into lanes Fighters can block.
+  \item \textbf{With Bards:} Diamonds from \emph{Cutpurse} or leverage operators
+        combine beautifully with Ranger recon for social infiltrations.
 \end{itemize}
 
-\subsection{Face (Diplomat/Broker)}
-\subsubsection*{2 XP}
+%===========================================================
+\section{Ranger at the Table}
+
+\subsection{Player Guidance}
+
+As a Ranger, you:
 \begin{itemize}
-  \item \textbf{Table Sense}: On entering a negotiation, ask 1 of: “Who has leverage?”, “What clause is hidden?”, “Who can be turned?”
-  \item \textbf{Good Faith}: When you openly concede a minor point, gain \textbf{Position +1} on the next major ask.
+  \item should constantly ask how the environment can help or hinder,
+  \item decide how you want to “draw the map” in every scene,
+  \item think of yourself as a scout, sniper, guide, or zoner,
+  \item and describe your precision—eyes narrowing, breath steadying,
+        ground reading, signs interpreting.
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+Your power is in how you \emph{shape the field}.
+
+\subsection{GM Guidance}
+
+When a Ranger is present:
 \begin{itemize}
-  \item \textbf{Two Ledgers} (4 XP): Keep said \& meant on record; your side gets \textbf{DV --1} to enforce or unwind clauses.
-  \item \textbf{Cold Read} (4 XP): After a successful \textbf{Sway/Diplomacy}, you may apply \textbf{Effect --1} to one opponent for the rest of the scene.
-  \item \textbf{Deal Architect} (6 XP): \textbf{Once/scene}, convert a tangled dispute into a \textbf{Board}: set a shared concession clock and assign ticks. \emph{Tag note:} Boards you open have the \textbf{Negotiation} tag; while active, a Bard's Rally/Crescendo may move that Board's clock by +1 once/scene.
+  \item add meaningful sightlines, chokepoints, elevation, and cover,
+  \item let tracking matter—include fleeing foes, footprints, sounds,
+        blood trails, residual magic, and recent movement,
+  \item highlight weather, wind, terrain, and verticality,
+  \item reward scouting with genuine intel, shortcuts, or advantages,
+  \item and create enemies who respect or subvert positioning.
 \end{itemize}
 
-\subsection{Artificer (Tinker-Savant)}
-\textit{Requires \textbf{Craft} 2+ and \textbf{Tinker} 3+.}
-\subsubsection*{2 XP}
+Rangers express \textbf{precision in motion}:
+choose your ground, read the pattern, and strike where the world bends around you.
+
+%===========================================================
+
+%===========================================================
+\chapter{Monk: Rhythm, Centerline, and the Geometry of Flow}
+%===========================================================
+
+\section{Archetype Overview}
+
+Monks are practitioners of bodily discipline, rhythm, and internal geometry.
+Where Fighters express force and Rogues manipulate opportunity,
+Monks manipulate \textbf{tempo}, \textbf{breath}, and \textbf{centerline control}.
+
+A Monk is not defined by mysticism alone—some are martial philosophers,
+some are disciplined athletes, some are wanderers who have turned their body
+into a language of intention.
+
+Monks excel at:
 \begin{itemize}
-  \item \textbf{Jury Rig}: As an action, improve a Broken/Neglected tool/weapon to \textbf{Adequate} for one scene (DV 3).
-  \item \textbf{Gadgeteer}: Create a temporary \textbf{Improvised Device [2]} clock; spend ticks to grant allies \textbf{+1 die} or \textbf{Effect +1} once/scene.
+  \item turning motion into mechanical advantage,
+  \item controlling the flow of Position and Effect,
+  \item denying enemy momentum by interrupting sequences,
+  \item manipulating Harm, Fatigue, and breathing-based focus,
+  \item redirecting force through grapples, throws, or rhythm breaks.
 \end{itemize}
 
-\subsubsection*{4 XP}
+This chapter presents a talent ladder suited for martial artists,
+ascetic mystics, urban hand-to-hand tacticians, wardancers,
+and spiritualists.
+
+%===========================================================
+\section{Monk Talent Ladder}
+
+\subsection{2 XP Talents: Foundations of Form}
+
+\subsubsection{Centered Breath (2 XP)}
+\textbf{Theme:} Breath governs movement; movement governs outcome.\\
+\textbf{Effect:} Once per scene, you may convert \textbf{1 Harm → 1 Fatigue}
+as long as the Harm came from a physical strike or exertion.
+
+This is the first expression of a Monk’s bodily discipline.
+
+\subsubsection{Flow Step (2 XP)}
+\textbf{Theme:} Moving through space without breaking rhythm.\\
+\textbf{Effect:} When you move into melee:
 \begin{itemize}
-  \item \textbf{Overcharge}: Push a magical or mechanical device beyond limits; gain \textbf{Effect +2} but mark it \textbf{Compromised} (or \textbf{Broken} if already Compromised).
-  \item \textbf{Trick Assembly}: When crafting or repairing, \textbf{DV --1}; on success, the item gains a minor beneficial quirk (GM's discretion).
+  \item gain \textbf{Position +1} on your next melee attack,
+  \item and ignore engagement penalties once per scene.
 \end{itemize}
 
-\subsubsection*{6 XP}
+This talent rewards dynamic movement and choreographic thinking.
+
+\subsection{3–4 XP Talents: Harmonizing Motion and Impact}
+
+\subsubsection{Soft Redirect (3 XP)}
+\textbf{Theme:} Using an enemy’s force against them.\\
+\textbf{Effect:} When you Dodge or avoid a melee attack with a success,
+you may impose \textbf{Position –1} on the attacker or
+\textbf{Effect –1} on their next action.
+
+A clean, reliable tempo-denial tool.
+
+\subsubsection{Rhythm Break (3 XP)}
+\textbf{Theme:} Interrupting timing to create openings.\\
+\textbf{Effect:} When you Strike in melee and roll at least two successes,
+you may force the target to:
 \begin{itemize}
-  \item \textbf{Inventor's Spark}: Once/session, rapidly prototype a solution; treat any \textbf{Craft/Tinker} roll as if you had the perfect tools and \textbf{Position +1}.
+  \item delay their next action (they act at end of exchange), or
+  \item lose one held Effect bonus.
 \end{itemize}
 
-\subsection{Universal (any build)}
-\subsubsection*{2--3 XP}
+This creates dramatic beats in combat and emphasizes tempo disruption.
+
+\subsubsection{Iron Line Stance (4 XP)}
+\textbf{Theme:} The body becomes an unbroken pillar.\\
+\textbf{Effect:} When you Brace or stand your ground:
 \begin{itemize}
-  \item \textbf{Boon Savant} (2 XP): When you gain Boons from a \emph{Partial}, gain \textbf{+1 extra Boon} (max once/scene).
-  \item \textbf{Hardy} (2 XP): Your \textbf{Fatigue overflow} upgrades to \textbf{Harm 1} (not higher), once/scene.
-  \item \textbf{Steadfast Heart} (3 XP): Once/scene, ignore the first tick of any \textbf{Fear} clock or \emph{Shaken} condition you accumulate.
-  \item \textbf{Quick Reactions} (3 XP): You may take one \textbf{Free Strike} or \textbf{Immediate Defense} per exchange when not engaged.
+  \item gain \textbf{Effect +1} on your next melee or unarmed attack,
+  \item and count the first 1 Harm taken as \textbf{Fatigue} instead.
 \end{itemize}
 
-\subsubsection*{4--6 XP}
+Monks gain a defensive anchor that turns stillness into offense.
+
+\subsubsection{Palm of Warning (4 XP)}
+\textbf{Theme:} Subtle predictive intuition.\\
+\textbf{Effect:} Once per scene, after you Observe an enemy successfully,
+you may declare one of:
 \begin{itemize}
-  \item \textbf{Tactical Reframe} (4 XP): \textbf{Once/scene}, shift your action’s \textbf{Position by +1} after the roll, before consequences.
-  \item \textbf{Teamwork Expert} (4 XP): When leading a group action, you may spread a single \textbf{Harm 1} among up to two allies as \textbf{1 Fatigue each}.
-  \item \textbf{Master of Improvisation} (5 XP): Once/scene, treat any improvised tool or approach as if it had \textbf{Superior Quality} for one action.
-  \item \textbf{Pressure Point} (5 XP): When you successfully attack a living foe, mark a \textbf{Weakness [2]} clock on them; while it ticks, they act at \textbf{--1 die}.
-  \item \textbf{Scene Steal} (6 XP) \emph{(req.\ Tactical Reframe; revised)}: \textbf{Once/session}, spend \textbf{2 Boons} to cancel a single \textbf{3+ SB} spend \emph{that has been declared but not yet resolved}. Replace it with a \textbf{2 SB} complication of your framing that fits established fiction (choose: split focus, resource pinch, position drop, or clock tick +1). Cannot negate Patron edicts, completed clocks, or out-of-scene consequences.
+  \item their next move is weaker (\textbf{Effect –1}),
+  \item their next move is slower (they lose initiative priority),
+  \item their next move reveals an opening (you gain \textbf{Position +1}).
 \end{itemize}
 
-\subsubsection*{7+ XP (High Impact)}
+This talent bridges investigation with melee control.
+
+\subsection{5 XP Talents: Redirection, Pressure, and Mastery}
+
+\subsubsection{Throwing Arc (5 XP)}
+\textbf{Theme:} Controlled momentum release.\\
+\textbf{Effect:} When grappling or in melee range,
+on a successful Strike you may:
 \begin{itemize}
-  \item \textbf{Heroic Moment} (7 XP): Once/session, after any roll, re-roll the entire pool and choose the better result. Mark \textbf{1 Fatigue} and generate \textbf{+1 SB} on 1s from the second roll.
+  \item reposition the target up to 2 meters,
+  \item impose \textbf{Position –1} on them,
+  \item or inflict \textbf{Harm 1} from impact/landing.
 \end{itemize}
 
-\paragraph{Mitigation Order (stacking).}
-Armor/shield $\rightarrow$ talents $\rightarrow$ Harm$\rightarrow$Fatigue transposition $\rightarrow$ Boon mitigation (if used).
+Great for battlefield choreography and ally synergy.
 
-\section{Rules Clarifications \& Addenda}
-
-\begin{fatebox}[Diamonds \& Assets (SRD Addendum)]
-\textbf{What is a Diamond?} A one-use, fiction-backed asset that \emph{bypasses a roll} or grants \textbf{DV --1} where stated. It must be plausibly introduced on-screen.
-
-\medskip
-\textbf{Creation:} If a talent creates a Diamond (e.g., \emph{Cutpurse}), you gain a \emph{Light-value} Diamond (small item, document, leverage) usable \textbf{once per leg or scene} as specified. It does \emph{not} occupy inventory unless it's physical; if physical, it can be found, stolen, or lost like any asset.
-
-\medskip
-\textbf{Limits:} Max \textbf{2 unspent Diamonds/PC}. Additional Diamonds overwrite one of your choice.
-\end{fatebox}
-
-\begin{fatebox}[Tags — Quick Impact Rule]
-Unless a talent specifies otherwise, a relevant scene/tag provides:
+\subsubsection{Breath of Balance (5 XP)}
+\textbf{Theme:} Internal regulation of energy and endurance.\\
+\textbf{Effect:} Once per scene, you may:
 \begin{itemize}
-  \item \textbf{Edge Tag} (e.g., High Ground, Consecrated, Darkness): \textbf{Position +1} \emph{or} \textbf{Effect +1} (GM/fiction chooses the most honest).
-  \item \textbf{Hindrance Tag} (e.g., Slippery, Echoing, Choking Smoke): \textbf{Position --1} \emph{or} \textbf{DV +1}.
-\end{itemize}
-Conflicting tags on the \emph{same axis} cancel one step. Two or more allied tags cannot stack beyond \textbf{+1 Position} \emph{and} \textbf{+1 Effect} total without a talent that says so.
-\end{fatebox}
-
-\begin{fatebox}[Environmental Tags — Scope \& Duration]
-Effects like \emph{Ruin} or \emph{Remedy} create an \textbf{Environmental Tag} that lasts \textbf{for the scene} (combat/social) or \textbf{one leg} (travel), whichever the action targeted. The tag can be removed early by:
-\begin{itemize}
-  \item An opposed success that directly counters the fiction (e.g., \emph{clear smoke}, \emph{shore rubble}), or
-  \item A \textbf{3+ SB} GM spend reframing the environment.
-\end{itemize}
-Scene-end clears temporary tags unless a clock or consequence promotes them to \emph{campaign tags}.
-\end{fatebox}
-
-\subsection*{Niche Notes (to reduce overlap)}
-\begin{itemize}
-  \item \textbf{Healer vs.\ Bard:} Healer sets \emph{Harm math} (DV, step-downs). Bard sets \emph{scene math} (Position shifts, social pivots). They stack, not duplicate.
-  \item \textbf{Face vs.\ Bard:} Face manipulates \emph{structures} (Boards, clauses); Bard manipulates \emph{mood and tempo} (Rally, Crescendo).
-  \item \textbf{Invoker vs.\ Runekeeper:} Invoker anchors \emph{oaths/warded space}. Runekeeper stabilizes \emph{process/sites} with risk of loops.
+  \item clear 1 Fatigue,
+  \item or gain \textbf{+1 die} on a physical roll,
+  \item or stabilize yourself, negating a wobbling or off-balance penalty.
 \end{itemize}
 
-\section{Runekeepers as Emulators}
-\label{sec:runekeeper-emulators}
+A flexible resource-management tool.
 
-Runekeepers bind processes, contracts, and sites to a Patron’s domain and then \emph{route} power through method, seals, and audit. With the same chassis (Familiar + Codex + Thaisos), a Runekeeper can convincingly cover many party roles by choosing Patrons, rites, and talents that echo a classic archetype. Patrons are vast intelligences of domain and story—entreating them is power \emph{and} obligation.  [oai_citation:0‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+\subsection{6 XP Talent: Master of Tempo}
 
-\subsection{Defender (Fighter/Paladin Emulation)}
-\textbf{Patrons \& Motifs.}
+\subsubsection{Interrupting Form (6 XP)}
+\textbf{Theme:} Turning an opponent’s motion into your opportunity.\\
+\textbf{Effect:} When an enemy within melee range attacks (hit or miss),
+you may immediately take a \textbf{free melee Strike} at \textbf{–1 die}.
+If you score at least one success:
 \begin{itemize}
-  \item \textbf{Oath of Flame \& Light} (Dawn, Vows): vow-anchored wards, “shield by promise,” righteous burn.  [oai_citation:1‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Mykkiel} (Zeal, Flame, Judgment): verdict, writ, and purging fire to bind or censure foes.  [oai_citation:2‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Gallows Bell} (Doom, Last Rites): endings made formal—banes, last-right seals, toll of reckoning.  [oai_citation:3‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item reduce their Effect by 1,
+  \item or cancel a Position bonus,
+  \item or force them to lose initiative next exchange.
 \end{itemize}
 
-\textbf{Rite Cues.} Consecrate chokepoints; bind \emph{oath-backed cover}; toll a “last rites” clause to sap Morale or bar passage (scene clock). (Domains fit these effects by fiction and table 7.13 domain notes.)  [oai_citation:4‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+This is a tempo monster—perfect for duelists and rhythm tacticians.
 
-\textbf{Talent Hooks.} \emph{Weapon Mastery}, \emph{Shield Wall}, \emph{Ward of the Innocent} (from Paladin), \emph{Quarantine Seal} (Runekeeper).
+\subsection{8 XP Talent: Mythic Expression}
 
-\subsection{Shadow Auditor (Rogue Emulation)}
-\textbf{Patrons \& Motifs.}
+\subsubsection{Stillness Beyond Stillness (8 XP)}
+\textbf{Theme:} True mastery of breath, timing, and centerline.\\
+\textbf{Effect:} Once per session, you may enter a state of absolute internal control:
 \begin{itemize}
-  \item \textbf{Ikasha} (Shadow, Penumbra): hush, negative space, seams; perfect for silent process and “absence-ledger.”  [oai_citation:5‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Aveh} (Freedom, Erasure): erasing trails, cutting identity ties, unbinding routes; low rites like \emph{Storm-Step} exemplify escape/vanish play.  [oai_citation:6‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item you gain \textbf{Position +1} and \textbf{Effect +1} for the entire scene,
+  \item your first Harm each exchange becomes Fatigue,
+  \item and once per exchange, you may cancel any one penalty or debuff
+        (wobbled stance, suppressed, poisoned, distracted, etc.)
 \end{itemize}
 
-\textbf{Rite Cues.} Seal a room’s \emph{footfall channel} (Stealth DV--1), write an \emph{erasure clause} that blurs pursuit (travel clocks -1 segment to track).
+The expression of “perfect form”—the Monk at peak insight.
 
-\textbf{Talent Hooks.} \emph{Ghost on the Wind}, \emph{Smoke \& Mirrors}, \emph{Cutpurse}, \emph{Masker Auditor} (contracts to hide costs).
+%===========================================================
+\section{Build Notes and Synergies}
 
-\subsection{Pathfinder (Ranger/Druid Emulation)}
-\textbf{Patrons \& Motifs.}
+\subsection{Tempo Duelist}
+
+A Monk who controls the rhythm of combat might take:
 \begin{itemize}
-  \item \textbf{Raéyn} (Storm, Tides): routes, sea-roads, weather leverage; edge loci on decks and stormways.  [oai_citation:7‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Old Man of the Black Forest} (Primal Humanity, Instinct): raw wayfinding, animal wisdom.  [oai_citation:8‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Nidhoggr} (Deep Earth, Rot): stone memory, root paths, ancient cuts through terrain.  [oai_citation:9‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item \emph{Flow Step} (2 XP)
+  \item \emph{Rhythm Break} (3 XP)
+  \item \emph{Interrupting Form} (6 XP)
 \end{itemize}
 
-\textbf{Rite Cues.} Sanctify a \emph{way-mark}, call \emph{forest witness} to reduce ambush Position, bargain a \emph{safe ford} under storm-as-contract.
+This build excels in 1v1 duels and hero–villain rival scenes.
 
-\textbf{Talent Hooks.} \emph{Terrain Mastery}, \emph{Tracker’s Instinct}, \emph{Circle Rite}, \emph{Season’s Turn}.
+\subsection{Grappler / Thrower}
 
-\subsection{Artificer (Wizard/Engineer Emulation)}
-\textbf{Patron \& Motif.}
+Perfect for urban brawls or battlefield repositioning:
 \begin{itemize}
-  \item \textbf{Clockwork Monad} (Mechanism, Process): iteration, automation, hungry improvement; recursive devices, consecrated workshops, and evolution/consumption clocks.  [oai_citation:10‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item \emph{Soft Redirect} (3 XP)
+  \item \emph{Throwing Arc} (5 XP)
+  \item \emph{Iron Line Stance} (4 XP)
 \end{itemize}
 
-\textbf{Rite Cues (examples from your guide).}
+These Monks create spatial advantages for allies.
+
+\subsection{Mystic Ascetic}
+
+A breath-centering, inner-stillness style:
 \begin{itemize}
-  \item \emph{Rite of the Gnawing Gear}—re-roll a Tinker die, bind Hunger to a device (becomes \texttt{COMPROMISED} when full).  [oai_citation:11‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \emph{Heretical Automation}—spin up an autonomous mechanism with a Consumption clock.  [oai_citation:12‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \emph{Singularity Crucible}—consecrate a shop: +Effect to Tinker/Arcana, reroll once/scene; starts an Anomaly clock.  [oai_citation:13‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item \emph{Centered Breath} (2 XP)
+  \item \emph{Palm of Warning} (4 XP)
+  \item \emph{Stillness Beyond Stillness} (8 XP)
 \end{itemize}
 
-\textbf{Talent Hooks.} \emph{Process Consecration}, \emph{Trick Assembly}, \emph{Overcharge}, \emph{Supply Architect}. % mind the loops and anomaly clocks
+A build suited for spiritual journeys, visions, and cosmic-scale conflicts.
 
-\subsection{Exorcist/Justiciar (Cleric/Witch-Hunter Emulation)}
-\textbf{Patrons \& Motifs.}
+%===========================================================
+\section{Monk at the Table}
+
+\subsection{Player Guidance}
+
+As a Monk:
 \begin{itemize}
-  \item \textbf{Mykkiel} (Judgment, Law): writ-backed censures, verdict rites, “name and bind” actions.  [oai_citation:14‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Gallows Bell} (Doom, Last Rites): funerary closure, toll that breaks undead morale and compels endings.  [oai_citation:15‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Pale Shepherd} (Thresholds, Guidance): escorting spirits and boundary-lit grace.  [oai_citation:16‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item describe breath, stance, and rhythm shifts—your body is your instrument,
+  \item ask the GM about footing, balance, elevation, and timing,
+  \item think in beats: approach, disrupt, flow into advantage,
+  \item and use environmental details—pillars, stones, rails, stairs, dust—
+        to gain subtle leverage.
 \end{itemize}
 
-\textbf{Rite Cues.} Ward a shrine against the unquiet; toll a \emph{due ending}; draft an \emph{oath writ} that censors witchcraft in a district (Board/clock).
+Monks shine when they narrate motion as intention.
 
-\textbf{Talent Hooks.} \emph{Rebuke the Unquiet}, \emph{Oathbinder}, \emph{Quarantine Seal}, \emph{Human-in-the-Loop}.
+\subsection{GM Guidance}
 
-\subsection{Courtier/Skald (Bard/Face Emulation)}
-\textbf{Patrons \& Motifs.}
+When a Monk is at the table:
 \begin{itemize}
-  \item \textbf{Mab} (Glamour, Courts): mask, favor, audience management.  [oai_citation:17‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Livaea} (Temptation, Desire): leverage through longing and allure.  [oai_citation:18‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Palinode} (Performance, Rapture): performance as binding structure and rapture as pivot.  [oai_citation:19‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item add opportunities for stance, timing, and balance,
+  \item include enemies with big telegraphed attacks for rhythm-breaking moments,
+  \item incorporate duels, sparring, meditation trials, and ascetic challenges,
+  \item and let momentum, timing, and breath meaningfully matter.
 \end{itemize}
 
-\textbf{Rite Cues.} Consecrate an \emph{audience hall} (Position +1 for your side’s social), bind a \emph{favor clause}, or reframe the scene with a formal \emph{performance rite}.
+A Monk’s story is a study in flow—fight scenes should feel like choreography,
+and exploration like a moving meditation.
 
-\textbf{Talent Hooks.} \emph{Deal Architect} (as a formal Board), \emph{Rally}, \emph{Crescendo}, \emph{Two Ledgers}.
+%===========================================================
 
-\subsection{Breaker/Ascetic (Barbarian/Monk Emulation)}
-\textbf{Patrons \& Motifs.}
+%===========================================================
+\chapter{Bard: Motif, Emotion, and the Architecture of Influence}
+%===========================================================
+
+\section{Archetype Overview}
+
+Bards in \textit{Fate's Edge} are not wandering minstrels by default—unless the player wants that.
+Instead, they embody \textbf{motif}, \textbf{emotional leverage}, and
+\textbf{scene-shaping presence}. A Bard can rally allies, unmake hesitation,
+undermine resolve, or manipulate social contexts through performance, rhetoric,
+ritual, or artistry.
+
+Their tools are not spells or static buffs—they are \textbf{patterns},
+\textbf{phrases}, \textbf{refrains}, and \textbf{beats} that change tempo,
+tone, and stakes of the moment.
+
+Bards excel at:
 \begin{itemize}
-  \item \textbf{Khemesh} (Abyss, Pressure): crushing silence, depth-pressure—perfect for “strip the scaffold” encounters.  [oai_citation:20‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Silent Choir} (Mercy, Silence): stillness rites, hush that turns violence aside.  [oai_citation:21‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
-  \item \textbf{Lunara} (Reflection, Hidden Truths): mirror stance, reveal angles, redirect force.  [oai_citation:22‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+  \item raising allies' Position and Effect through shared emotional momentum,
+  \item manipulating morale, fear, hesitation, or frenzy,
+  \item turning Story Beats into powerful scene tools,
+  \item bridging social and combat encounters through “performance logic,”
+  \item identifying and exploiting emotional truths in NPCs,
+  \item adding rhythm to otherwise chaotic scenes.
 \end{itemize}
 
-\textbf{Rite Cues.} Invoke \emph{quiet pressure} to degrade enemy coordination (Effect --1), mirror an assault back as a \emph{Stagger} clock, or sanctify calm (“no voice, no blade” zone).
+Their talents are written to feel *musical*, *rhetorical*, or *artistic* without ever requiring the player to sing, recite, or act—unless they want to.
 
-\textbf{Talent Hooks.} \emph{Battle-Rage} (for the Khemesh path), \emph{Breath Control}, \emph{Perfect Stillness}, \emph{Deflect Missiles}.
+%===========================================================
+\section{Bard Talent Ladder}
 
-\subsection{Shifter/Knife of Choice (Assassin/Skirmisher Emulation)}
-\textbf{Patron \& Motif.}
+\subsection{2 XP Talents: Opening Motifs}
+
+\subsubsection{Rallying Cry (2 XP)}
+\textbf{Theme:} Urgent unity.\\
+\textbf{Effect:} Once per scene, choose up to two allies who can hear you.
+They gain \textbf{Position +1} on their next action.
+
+This is the simplest, quickest expression of a Bard’s force of personality.
+
+\subsubsection{Disarming Wit (2 XP)}
+\textbf{Theme:} Deflecting hostility with charm or absurdity.\\
+\textbf{Effect:} Once per scene, when an NPC becomes hostile or escalates,
+you may test Presence. On any success:
 \begin{itemize}
-  \item \textbf{Isoka} (Serpents, Shedding): identity-shedding, venom decisions, and decisive strikes; her rites foreground disguise, loosening conditions, and “venomous benediction.”  [oai_citation:23‡Fate's Edge - Comprehensive Resource Guide.txt](file-service://file-D6iQFU3UgLM1TE1ySWJRS6)
+  \item reduce hostility by one step,
+  \item or impose \textbf{Effect –1} on their next aggressive action.
 \end{itemize}
 
-\textbf{Rite Cues (from your guide).} \emph{Venomous Benediction} to spike an ally’s hit, \emph{Loosening Skin} to shed conditions, \emph{Subtle Shift} to pass within a role.  [oai_citation:24‡Fate's Edge - Comprehensive Resource Guide.txt](sediment://file_000000005ae071f6ae5d0e58fa3b81bb)
+A social-pressure valve that can prevent entire fights.
 
-\textbf{Talent Hooks.} \emph{Forked Sight Mark}–style play via social truth, \emph{Opportunist}, \emph{Vanishing Act}, \emph{Perfect Setup}.
+\subsection{3–4 XP Talents: Building Phrases and Harmonies}
+
+\subsubsection{Crescendo (3 XP)}
+\textbf{Theme:} Rising momentum and emotional swell.\\
+\textbf{Effect:} After an ally succeeds on a significant action,
+you may reinforce the moment. They gain:
+\begin{itemize}
+  \item \textbf{Effect +1} on their next roll,
+  \item or clear 1 Fatigue.
+\end{itemize}
+
+Your emotional amplification becomes tactical advantage.
+
+\subsubsection{Undertone (3 XP)}
+\textbf{Theme:} Subtle suggestion, emotional coloration.\\
+\textbf{Effect:} When you make a social roll,
+you may choose to “seed” an emotional tone in your target:
+\begin{itemize}
+  \item Resolve breaks: target suffers \textbf{Position –1},
+  \item Confidence falters: \textbf{Effect –1},
+  \item Curiosity rises: future Investigate tests gain \textbf{+1 die} for you or allies.
+\end{itemize}
+
+Undertone is your quiet influence engine.
+
+\subsubsection{Battle Chant (4 XP)}
+\textbf{Theme:} Repetitive rhythm that reinforces action.\\
+\textbf{Effect:} Once per scene, you may begin a chant.
+Until end of scene:
+\begin{itemize}
+  \item one chosen ally gains \textbf{+1 die} on a repeated type of roll
+        (all melee, or all ranged, or all movement, etc.),
+  \item but you must continuously participate (audibly or symbolically)
+        or the benefit ends.
+\end{itemize}
+
+This creates a shared beat—great for duos and frontliners.
+
+\subsubsection{Harmonic Disruption (4 XP)}
+\textbf{Theme:} Using discord to break enemy coordination.\\
+\textbf{Effect:} When two or more enemies coordinate (pack tactics,
+group maneuvers, shield walls, spiritual links),
+you may impose:
+\begin{itemize}
+  \item \textbf{Effect –1 on the whole group}, or
+  \item disrupt a formation (they lose positioning synergy).
+\end{itemize}
+
+Ideal for anti-horde, anti-squad play.
+
+\subsection{5 XP Talents: Signature Performances}
+
+\subsubsection{Spotlight Shift (5 XP)}
+\textbf{Theme:} Forcing the scene to follow your emotional framing.\\
+\textbf{Effect:} Once per scene, you may declare a Spotlight Shift:
+\begin{itemize}
+  \item one ally becomes the focus—the “hero” of the moment,
+  \item they gain \textbf{Position +1} and \textbf{Effect +1},
+  \item and they may reroll 1 die on their next action.
+\end{itemize}
+
+Mechanical highlighter + narrative spotlight.
+
+\subsubsection{Dissonant Note (5 XP)}
+\textbf{Theme:} Weaponized discomfort.\\
+\textbf{Effect:} When you insult, unnerve, expose hypocrisy,
+or create psychic discomfort in an NPC:
+\begin{itemize}
+  \item they take \textbf{1 Fatigue}, and
+  \item suffer \textbf{Effect –1} next action.
+\end{itemize}
+
+Excellent for social duels and boss-taunting.
+
+\subsection{6 XP Talent: Emotional Architecture}
+
+\subsubsection{Resonant Frequency (6 XP)}
+\textbf{Theme:} Establishing an emotional “carrier wave” that shapes an entire scene.\\
+\textbf{Effect:} Once per session, you may set a Resonance:
+\begin{itemize}
+  \item choose an emotion (hope, dread, defiance, unity, grief, fury),
+  \item all allies gain \textbf{Position +1} on actions aligned with that emotional tone,
+  \item NPCs misaligned with it suffer \textbf{Position –1}.
+\end{itemize}
+
+This is a battle hymn, elegy, war speech, ritual invocation, or whispered bond.
+
+\subsection{8 XP Talent: Mythic Expression}
+
+\subsubsection{Grand Overture (8 XP)}
+\textbf{Theme:} The world stops to listen.\\
+\textbf{Effect:} Once per campaign arc, you may perform a Grand Overture.
+For the duration of the scene:
+\begin{itemize}
+  \item allies gain \textbf{Position +1}, \textbf{Effect +1},
+        and may clear 1 Fatigue each exchange,
+  \item NPCs must test Resolve to act against the party’s intentions,
+  \item emotional truths are laid bare—no lies hold.
+\end{itemize}
+
+This is the Bard’s “mythic statement”—it ends wars, saves cities,
+or redeems villains.
+
+%===========================================================
+\section{Build Notes and Synergies}
+
+\subsection{Support Conductor}
+
+A classic Bard support build:
+\begin{itemize}
+  \item \emph{Rallying Cry} (2 XP)
+  \item \emph{Crescendo} (3 XP)
+  \item \emph{Battle Chant} (4 XP)
+  \item \emph{Spotlight Shift} (5 XP)
+\end{itemize}
+
+This Bard lifts heroes into heroic mode.
+
+\subsection{Social Duelist}
+
+A rhetorical assassin might choose:
+\begin{itemize}
+  \item \emph{Disarming Wit} (2 XP)
+  \item \emph{Undertone} (3 XP)
+  \item \emph{Dissonant Note} (5 XP)
+\end{itemize}
+
+Great for courts, politics, negotiations, and villain monologues.
+
+\subsection{Mythic Orator}
+
+For emotionally seismic arcs:
+\begin{itemize}
+  \item \emph{Crescendo} (3 XP)
+  \item \emph{Resonant Frequency} (6 XP)
+  \item \emph{Grand Overture} (8 XP)
+\end{itemize}
+
+This build can change the world’s emotional geometry.
+
+%===========================================================
+\section{Bard at the Table}
+
+\subsection{Player Guidance}
+
+As a Bard:
+\begin{itemize}
+  \item describe how your performance shifts the scene’s emotional tone,
+  \item look for moments where characters hesitate, doubt, or hope,
+  \item use your abilities to redirect tension, raise stakes, or soften outcomes,
+  \item remember: a Bard’s truth is felt, not explained.
+\end{itemize}
+
+\subsection{GM Guidance}
+
+When a Bard is present:
+\begin{itemize}
+  \item give emotional leverage points—fearful crowds, desperate allies,
+        anxious commanders,
+  \item treat performance as a mechanical substrate in both social and combat scenes,
+  \item allow emotional truths to open or close narrative paths,
+  \item reward bold, dramatic, or quietly moving moments with SB or fiction-first gains.
+\end{itemize}
+
+A Bard shapes the *feeling* of the story just as a Fighter shapes the battlefield.
+
+%===========================================================
+
+\chapter{Paladin}
+\label{chap:paladin}
+
+\section{The Oathbound}
+A Paladin is not defined by armor, weapon, or even faith---but by \emph{alignment}, a lived axis
+of conviction that binds their actions to principle. In Fate’s Edge, Paladins are
+\textbf{Vow-driven guardians}: warriors who transform belief into leverage, protection, and
+inevitable judgment. They are the characters who stand in thresholds, shape stakes, enforce
+sanctuary, and turn their own will into a battlefield tool.
+
+Paladins fight with two engines in tension:
+\begin{itemize}
+  \item \textbf{Conviction}: inner resolve, the steady flame of purpose.
+  \item \textbf{Wrath}: outer pressure, righteous force that escalates in proportion to threat.
+\end{itemize}
+
+A Paladin’s playstyle blends tactical discipline and spiritual authority. They mitigate harm,
+anchor allies, and impose order on chaotic situations. Their choices matter---breaking a vow
+does not only sting narratively; it can produce clocks, consequences, or narrative leverage
+for enemies who exploit that breach.
+
+\subsection{Core Themes}
+\begin{itemize}
+  \item \textbf{Sanctity}: protection by presence, enforcing boundaries.
+  \item \textbf{Judgment}: revealing truths, asserting consequences.
+  \item \textbf{Devotion}: channeling inner belief into mechanical stability.
+  \item \textbf{Burden}: accepting responsibility in exchange for authority.
+\end{itemize}
+
+\subsection{Paladin Identity in Play}
+A Paladin shapes the battlefield through:
+\begin{itemize}
+  \item \textbf{Opening leverage}: bonuses when acting in accordance with their Oath.
+  \item \textbf{Mitigation}: downgrading Harm, sharing burdens, and stabilizing position.
+  \item \textbf{Presence}: shifting the tone of a scene simply by stepping into it.
+  \item \textbf{Accountability}: their choices reframe social and moral stakes.
+\end{itemize}
+
+\noindent Their talents reinforce this identity—frontline stability, aura effects,
+and situational dominance where principle becomes power.
+
+\section{Oaths \& Disciplines}
+Every Paladin expresses their conviction through an \textbf{Oath} (their vow) and a
+\textbf{Discipline} (their method).
+
+\subsection{Oath Examples}
+\begin{itemize}
+  \item \textbf{Oath of Mercy} – protect the weak, spare the fallen, forbid cruelty.
+  \item \textbf{Oath of Fire \& Light} – purge deception, bring clarity, uplift.
+  \item \textbf{Oath of Vigilance} – anticipate danger, guard thresholds.
+  \item \textbf{Oath of Truth} – reveal lies, uphold honest dealing.
+\end{itemize}
+
+\subsection{Discipline Examples}
+\begin{itemize}
+  \item \textbf{Bulwark}: shield technique, positional mastery.
+  \item \textbf{Warden}: choke-point specialist, zone control.
+  \item \textbf{Ardent}: heat, pressure, righteous escalation.
+  \item \textbf{Penitent}: self-sacrifice, rebound effects, vow inversion.
+\end{itemize}
+
+\section{Paladin Talents}
+Talents emphasize warding, truth, resolve, and decisive force. These entries follow the
+standard XP ladder for Paladins.
+
+\subsection*{2 XP (Foundational Vows)}
+\begin{itemize}
+  \item \textbf{Vowkeeper}: Choose a vow (mercy, defense, truth). When acting within it,
+    gain \textbf{Position +1} on the opening exchange of a scene.
+  \item \textbf{Lay on Hands}: Touch to \textbf{reduce Harm by 1 level} (or \textbf{clear
+    2 Fatigue}) once/scene.
+\end{itemize}
+
+\subsection*{3--4 XP (Expanding Duty)}
+\begin{itemize}
+  \item \textbf{Smite} (4 XP): Against a sworn foe or oathbreaker, your hit gains
+    \textbf{Effect +1} and inflicts a brief awe/fear tag.
+  \item \textbf{Ward of the Innocent} (4 XP): While defending noncombatants, you may take
+    an ally’s \textbf{Harm 1} onto your Fatigue instead (once/scene).
+  \item \textbf{Beacon of Truth} (3 XP): When you openly challenge deception, gain
+    \textbf{+1 die} on the next social roll in that exchange.
+\end{itemize}
+
+\subsection*{5 XP (Judgment Techniques)}
+\begin{itemize}
+  \item \textbf{Chains of Oath}: When someone violates a vow you witnessed, mark a
+    \textbf{Breach [3]} clock. While active, you gain \textbf{DV --1} on rolls to confront,
+    confine, or expose them.
+  \item \textbf{Searing Rebuke}: When struck by a sworn foe, you may immediately respond
+    with \textbf{Effect +1} or impose \textbf{Position --1} on them (once/scene).
+\end{itemize}
+
+\subsection*{6 XP (Auras of Conviction)}
+\begin{itemize}
+  \item \textbf{Aura of Resolve}: Allies within Near ignore the \textbf{first Position drop}
+    this scene.
+  \item \textbf{Sanctuary Field}: Establish a zone of grace. Allies who enter clear
+    \textbf{1 Fatigue}. Enemies entering must mark \textbf{1 Stress} or lose \textbf{Position}.
+\end{itemize}
+
+\subsection*{8 XP (Mythic Devotion)}
+\begin{itemize}
+  \item \textbf{Luminous Edict}: \textbf{Once/session}, speak an edict aligned with your vow.
+    For the scene:  
+    \begin{itemize}
+      \item Your attacks gain \textbf{Effect +1}.  
+      \item You suppress the first \textbf{2 SB} spent against you or your ward.  
+      \item If the edict is knowingly defied by any foe, they mark an immediate
+        \textbf{Dread [2]} clock.  
+    \end{itemize}
+  \item \textbf{Unbroken Oath}: When reduced to \textbf{Harm 3}, remain standing long
+    enough to complete one declared action; then mark \textbf{+2 Fatigue}.
+\end{itemize}
+
+\section{Playing a Paladin}
+\subsection{Paladin Strengths}
+\begin{itemize}
+  \item \textbf{Scene Control}: Your presence alters stakes before dice hit the table.
+  \item \textbf{Ally Buffering}: You convert Harm, raise Position, and suppress SB spends.
+  \item \textbf{Moral Leverage}: You force crises of truth, oath, and consequence.
+\end{itemize}
+
+\subsection{Paladin Challenges}
+\begin{itemize}
+  \item \textbf{Burden}: Protection often costs Fatigue or self-risk.
+  \item \textbf{Vow Tension}: Your own discipline can limit your freedom of action.
+  \item \textbf{Exposure}: Standing firm means drawing attention.
+\end{itemize}
+
+\section{Guidance for GMs}
+Paladins thrive when their vows matter. Integrate:
+\begin{itemize}
+  \item \textbf{Moral clocks}: breaches, temptations, bargains.  
+  \item \textbf{Scene leverage}: thresholds, innocents, symbolic spaces.  
+  \item \textbf{Oath echoes}: let their vow open or close opportunities.  
+\end{itemize}
+
+A Paladin should feel the weight of their oath, but also its \emph{power}.
+Their discipline reshapes scenes, offering dramatic pivots for the party.
 
 \bigskip
 
-\noindent\textbf{Build Template (all emulations).}
+\noindent This completes Chapter 10.  
+Which class should I generate next in LaTeX—\textbf{Barbarian}, \textbf{Sorcerer}, \textbf{Druid}, \textbf{Healer}, or another?
+
+\chapter{Barbarian}
+\label{chap:barbarian}
+
+\section{The Unbound}
+Barbarians are engines of instinct, pressure, and emotional truth.  
+Where Fighters master form and Paladins master vow, Barbarians master the \emph{surge}---the
+vital force that erupts when the world tries to cage them.
+
+A Barbarian is not wild because they lack control.  
+They are wild because they consciously choose to \emph{disregard} the structures that restrain
+others: fear, hesitation, decorum, frailty. Their power lies in a deep somatic intelligence,
+a body that remembers how to survive, how to break, and how to keep moving even when wounded.
+
+\subsection{Core Themes}
+\begin{itemize}
+  \item \textbf{Ferocity}: raw force used with intention.
+  \item \textbf{Momentum}: action chained into action, unbroken flow.
+  \item \textbf{Pain as Leverage}: wounds become fuel rather than hindrance.
+  \item \textbf{Defiance}: rejecting the terms set by foes, environments, or fate.
+\end{itemize}
+
+\subsection{Barbarian Identity in Play}
+A Barbarian shifts combat dynamics by:
+\begin{itemize}
+  \item \textbf{Trading safety for power} (Effect, Position, or movement).
+  \item \textbf{Leveraging Fatigue} as tactical currency rather than danger.
+  \item \textbf{Disrupting enemy formations} with shock entries and force pivots.
+  \item \textbf{Standing when others fall} through sheer visceral determination.
+\end{itemize}
+
+They excel at creating \textbf{chaotic zones} the party can exploit, or acting as the
+\textbf{keystone striker} who cracks an enemy line open.
+
+\section{Primal Wellspring}
+Every Barbarian draws from an emotional or spiritual source---their \textbf{Wellspring}.
+This might be rage, sorrow, ecstatic joy, ancestral gnosis, or the pressure of survival.
+
+\subsection{Wellspring Examples}
+\begin{itemize}
+  \item \textbf{The Red Path}: fury as clarity and motion.
+  \item \textbf{Blood Memory}: ancestral instinct, inherited strength.
+  \item \textbf{Stormbone}: physical resonance with tempest and pressure.
+  \item \textbf{Iron Hunger}: compulsion to break that which constrains.
+\end{itemize}
+
+Your Wellspring is not a penalty—it's a permission structure.  
+It determines how you escalate, how you spend Fatigue, and how you define “breaking point.”
+
+\section{Barbarian Talents}
+Talents emphasize momentum, violence, endurance, and battlefield disruption.
+
+\subsection*{2 XP (Instinct Edges)}
+\begin{itemize}
+  \item \textbf{Battle-Rage}: When you \emph{Push} by marking Fatigue, gain \textbf{Effect +1}
+    and ignore Difficult Terrain penalties this exchange.
+  \item \textbf{Thick Hide}: Reduce the \textbf{first Harm 1} you would take each scene to
+    \textbf{1 Fatigue}.
+\end{itemize}
+
+\subsection*{3 XP (Primal Techniques)}
+\begin{itemize}
+  \item \textbf{Blood Price}: When you miss an attack, you may mark \textbf{1 Fatigue} to
+    immediately re-attempt the strike with \textbf{+1 die}. If you miss again, GM gains
+    \textbf{+1 SB}.
+  \item \textbf{Berserker} (3 XP):  
+    When you enter combat, you may choose to \emph{Rage} until the scene ends.  
+    While Raging:
+    \begin{itemize}
+      \item Your melee attacks gain \textbf{Effect +1}.  
+      \item You treat the first \textbf{Position --1} against you as ignored.  
+      \item You cannot take the \emph{Hide} action or perform delicate tasks.  
+    \end{itemize}
+    \textit{Cost:} At scene end, mark \textbf{2 Fatigue}. If already Fatigued 3+, instead mark
+    \textbf{Harm 1}.
+\end{itemize}
+
+\subsection*{4--5 XP (Momentum Engines)}
+\begin{itemize}
+  \item \textbf{Relentless} (4 XP): When reduced to \textbf{Harm 2}, immediately take a free
+    \textbf{Attack} or \textbf{Move} before consequences land.
+  \item \textbf{Reckless Charge} (4 XP): Enter melee from Near with \textbf{Position +1}; on a
+    Partial/Miss, also mark \textbf{1 Fatigue}.
+  \item \textbf{Break Their Line} (5 XP): On a successful melee attack, you may force the
+    target to \emph{shift Position}, open a lane, or collide with one of their allies.
+\end{itemize}
+
+\subsection*{6 XP (Defiance Techniques)}
+\begin{itemize}
+  \item \textbf{Last to Fall}: \textbf{Once/session}, remain active at \textbf{Harm 3} long
+    enough to complete your declared action.
+  \item \textbf{Shatter Will}: When you deal Harm to a foe, you may mark \textbf{1 Fatigue} to
+    start a \textbf{Dread [2]} clock on them (fear, faltering morale).
+\end{itemize}
+
+\subsection*{8 XP (Mythic Ferocity)}
+\begin{itemize}
+  \item \textbf{Avatar of the Wellspring}: \textbf{Once/session}, unleash the core of your
+    emotional reservoir. For the scene:
+    \begin{itemize}
+      \item Your melee attacks gain \textbf{Effect +2}.  
+      \item You may ignore the first \textbf{2 SB} spent against you.  
+      \item Your movement actions automatically count as \textbf{Controlled}.  
+    \end{itemize}
+    \textit{Cost:} After the scene, mark \textbf{2 Fatigue} and \textbf{Harm 1}.
+  \item \textbf{Rend}: When you land a critical success (10+), you may immediately
+    \textbf{inflict an additional Harm 1} or shred a significant enemy asset/shield.
+\end{itemize}
+
+\section{Playing a Barbarian}
+\subsection{Barbarian Strengths}
+\begin{itemize}
+  \item \textbf{Shock Entry}: decisive openings that break formations.
+  \item \textbf{Momentum}: chain actions into escalating pressure.
+  \item \textbf{Resilience}: mitigation through Thick Hide and Fatigue conversion.
+  \item \textbf{Scene Warping}: Raging or charging alters enemy priorities.
+\end{itemize}
+
+\subsection{Barbarian Challenges}
+\begin{itemize}
+  \item \textbf{Fatigue Costs}: power always eats from your reserves.
+  \item \textbf{Overextension}: momentum can pull you into isolation.
+  \item \textbf{All-or-Nothing Pressure}: Raging closes subtle approaches.
+\end{itemize}
+
+\section{Guidance for GMs}
+Barbarians shine in scenes with:
+\begin{itemize}
+  \item \textbf{Clusters of foes}: perfect for charges and line-breaks.
+  \item \textbf{Environmental hazards}: which they can often ignore or exploit.
+  \item \textbf{Emotional stakes}: their Wellspring wants something.
+  \item \textbf{Escalation clocks}: giving their momentum something to race.
+\end{itemize}
+
+When a Barbarian Rages, treat them as a \emph{story event}, not just a combatant.
+Give them obstacles worthy of the upheaval they bring.
+
+\bigskip
+
+\chapter{Cleric / Priest}
+\label{chap:cleric}
+
+\section{The Burdened Miracle-Worker}
+Clerics are not arcane casters. They are \emph{channels}.  
+Every miracle passes through a mortal body unfit to contain it, and so every miracle leaves a mark—exhaustion, obligation, risk, or a wound that is not of flesh.
+
+Where Wizards rely on technique and Casters rely on will, Clerics rely on \textbf{oath, symbol, and sacrifice}.  
+Their magic is powerful but conditional. The gods do not grant freely.
+
+\subsection{Core Themes}
+\begin{itemize}
+  \item \textbf{Miracles Have Cost}: exertion, taboo, or divine obligation.
+  \item \textbf{Consecration}: prepared spaces amplify divine working.
+  \item \textbf{Bargain}: petitions succeed, but may twist on a Partial.
+  \item \textbf{Burden}: divine presence accumulates marks over time.
+  \item \textbf{Grace}: when the Cleric commits fully, the miracle is mighty.
+\end{itemize}
+
+\section{Divine Engines}
+A Cleric draws from three intertwined engines:
+
+\subsection{1. Consecration}
+The Cleric may sanctify a zone, object, or boundary.  
+While consecrated:
+\begin{itemize}
+  \item allied actions against listed threats gain \textbf{Position +1}, or
+  \item healing gains \textbf{DV --1}, or
+  \item fear/doom effects are treated as \textbf{Controlled}.
+\end{itemize}
+A consecration lasts for a scene or leg.
+
+\subsection{2. Invocation}
+A miracle is a \textbf{petition backed by symbol}.  
+Every invocation lists:
+\begin{itemize}
+  \item \textbf{Cost:} Fatigue, taboo, GM +1 SB, or an obligation clock.
+  \item \textbf{Effect:} healing, banishment, warding, revelation, mercy, wrath.
+\end{itemize}
+
+\subsection{3. Taboo}
+Each Cleric keeps one or more \textbf{taboos}. Breaking taboo:
+\begin{itemize}
+  \item increases the next Invocation cost,
+  \item damages the Cleric’s sanctity (position penalty), or
+  \item starts an \textbf{Atonement [4]} clock.
+\end{itemize}
+
+Taboo is not punishment—it is narrative ballast. It keeps the power grounded.
+
+\section{Cleric Talents}
+
+\subsection*{2 XP (Initiate Rites)}
+\begin{itemize}
+  \item \textbf{Minor Sacrament}: Conduct a brief rite of blessing or easing.  
+        Treat a small heal or support action as \textbf{DV --1}.  
+        On success, clear \textbf{1 Fatigue} from the target.
+  \item \textbf{Consecrate Ground}: Sanctify a small zone.  
+        Allies acting against a listed threat gain \textbf{Position +1}.
+\end{itemize}
+
+\subsection*{3--4 XP (Ordained Techniques)}
+\begin{itemize}
+  \item \textbf{Rebuke the Unquiet} (3 XP):  
+    Your miracles gain \textbf{Effect +1} vs.\ undead or spirits.  
+    On success, you may begin a \textbf{Morale [2]} clock against them.
+  \item \textbf{Oathbinder} (4 XP):  
+    Bind any witnessed oath.  
+    If broken, start a \textbf{Breach [4]} clock you can sense anywhere.
+  \item \textbf{Sanctuary Mantle} (4 XP):  
+    Allies in your consecrated zone may downgrade \textbf{Harm 1 $\rightarrow$ Fatigue}.
+\end{itemize}
+
+\subsection*{5 XP (Miraculous Arts)}
+\begin{itemize}
+  \item \textbf{Miracle of Mercy}:  
+    \textbf{Once/session}, downgrade \textbf{Harm 2 $\rightarrow$ Harm 1} for up to two allies  
+    \textbf{or} clear \textbf{2 Fatigue} across the group.  
+    \emph{Cost:} mark \textbf{1 Fatigue}.
+  \item \textbf{Revelation}:  
+    Ask the GM one \textbf{hidden truth}.  
+    GM may mark \textbf{1 SB} or impose a \textbf{Mark of Revelation} (roleplay tag).
+\end{itemize}
+
+\subsection*{6 XP (Heavy Miracles)}
+\begin{itemize}
+  \item \textbf{Excommunicate}:  
+    On a successful Invocation, purge a foe from a zone—banish, repel, or strip advantage.  
+    \emph{Cost:} \textbf{GM +1 SB} and start a \textbf{Stain [2]} clock.
+  \item \textbf{Circle of Atonement}:  
+    Create a ritual circle.  
+    Allies inside ignore \textbf{fear, shame, or spiritual pressure}.  
+    Ends if the Cleric breaks taboo this scene.
+\end{itemize}
+
+\subsection*{8 XP (Mythic Divine Intercession)}
+\begin{itemize}
+  \item \textbf{Hand of the Patron}:  
+    \textbf{Once/session}, call a full miracle of your deity’s domain.  
+    Examples:  
+    \begin{itemize}
+      \item extinguish or ignite a large fire,  
+      \item command a host of ancestral shades,  
+      \item force a battlefield lull,  
+      \item reshape weather, flesh, or stone.  
+    \end{itemize}
+    \emph{Cost:} mark \textbf{2 Fatigue} and \textbf{Harm 1}, and begin an \textbf{Obligation [4]} clock.
+  \item \textbf{The Burden Accepted}:  
+    Ignore \textbf{all Harm from one source}.  
+    \emph{Cost:} GM gains \textbf{2 SB}, and you take on a visible divine mark.
+\end{itemize}
+
+\section{Clerics in Play}
+
+\subsection{Strengths}
+\begin{itemize}
+  \item Best \textbf{scene shapers} through sanctuary, domain leverage, and banishment.
+  \item Elite \textbf{group support} through Fatigue management and Harm downgrades.
+  \item Deep \textbf{narrative hooks} via taboo, obligation, and divine marks.
+\end{itemize}
+
+\subsection{Challenges}
+\begin{itemize}
+  \item Divine power comes with \textbf{debt}.  
+  \item Invocations are strong but limited by \textbf{costs}.  
+  \item Breaking taboo can unravel consecrations already in play.
+\end{itemize}
+
+\section{Guidance for GMs}
+Give Clerics:
+\begin{itemize}
+  \item moral dilemmas rather than mechanical puzzles,
+  \item moments of petition where the deity responds creatively,
+  \item consequences that feel mythic rather than punitive,
+  \item scenes where consecration deeply matters.
+\end{itemize}
+A Cleric should feel like a \textbf{scalpel of divine narrative pressure}—a bringer of pivots and fate.
+
+
+\chapter{Adapting Magic to Other Archetypes}
+\label{chap:magic-archetype-adaptation}
+
+\section{Magic as a Chassis, Not a Class}
+In Fate’s Edge, magic is not a standalone class.  
+It is an \textbf{engine}: an additional subsystem a character may integrate into their identity.
+
+This chapter explains how the existing magic engines—
+\begin{itemize}
+  \item \textbf{Caster} (freeform arcana),
+  \item \textbf{Invoker} (divine symbols and petitions),
+  \item \textbf{Runekeeper} (methods, seals, and process magic),
+  \item \textbf{Summoner} (entities, contracts, and bound spirits)
+\end{itemize}
+—can be adapted to reinforce any archetype.
+
+A Fighter may call storms.  
+A Rogue may erase footprints with shadow rites.  
+A Ranger may guide the wind or speak to the forest’s memory.  
+A Barbarian may embody primal thunder.  
+A Cleric may exorcise with Runekeeper precision.  
+A Monk may bind sigils into their footwork.
+
+Magic amplifies an archetype’s \textbf{core verbs} rather than replacing them.
+
+\section{The Four Magic Engines}
+Each engine represents a \textbf{philosophy of power}, not a spell list.
+
+\subsection{Caster Engine: Will Shapes Reality}
+Unstructured, intention-driven, dangerous when overused.
+
+\textbf{Use this engine if the archetype:}
+\begin{itemize}
+  \item shapes elements or raw forces,
+  \item bends space or energy,
+  \item desires freeform magical expression,
+  \item draws from innate talent or personal force.
+\end{itemize}
+
+\textbf{Costs:} Fatigue spikes, GM SB, loss of Control, burnout.
+
+\subsection{Invoker Engine: Petition and Consequence}
+The power is \emph{not yours}; it is borrowed, conditional, obligate.
+
+\textbf{Use this engine if the archetype:}
+\begin{itemize}
+  \item upholds vows or sacred duties,
+  \item channels a patron, deity, spirit, or court,
+  \item relies on ritual authority or taboo,
+  \item binds oaths, sanctifies, judges, or protects.
+\end{itemize}
+
+\textbf{Costs:} Obligation clocks, taboo risks, divine Stain.
+
+\subsection{Runekeeper Engine: Method and Process}
+Define the method → follow it → channel power through it.
+
+\textbf{Use this engine if the archetype:}
+\begin{itemize}
+  \item works through ritual craft or sacred processes,
+  \item stabilizes anomalies, sanctifies sites, inspects contracts,
+  \item values structure, technique, symbols, or procedural order,
+  \item manipulates patterns, cycles, or encoded meaning.
+\end{itemize}
+
+\textbf{Costs:} Hunger clocks, contamination, procedural burden.
+
+\subsection{Summoner Engine: Entities and Bonds}
+Call what is bound, bargain with what listens.
+
+\textbf{Use this engine if the archetype:}
+\begin{itemize}
+  \item forms relationships with spirits, ancestors, beasts, or echoes,
+  \item prefers emissaries or avatars over direct casting,
+  \item manipulates battlefield space via minions or manifestations,
+  \item derives identity from lineage, pact, or totem.
+\end{itemize}
+
+\textbf{Costs:} Feed/maintain the summoned, attention clocks, loss of control.
+
+\section{Adapting Magic to Each Archetype}
+
+\subsection{Fighter as Arcanist, Warden, or Knight-Invoker}
+\paragraph{Caster-Fighter (Battle Geomancer).}
+Martial forms shape elemental arcs:
+\begin{itemize}
+  \item strikes ignite flame,
+  \item precise stances redirect force,
+  \item sweeping motions channel wind.
+\end{itemize}
+\textbf{Recommendations:} Caster’s Gift, Elemental Affinity, Focused Casting.
+
+\paragraph{Invoker-Fighter (Sworn Knight).}
+Power comes from oath:
+\begin{itemize}
+  \item ward allies,
+  \item smite oathbreakers,
+  \item consecrate ground in the heat of battle.
+\end{itemize}
+\textbf{Recommendations:} Oathbinder, Consecrate Ground, Smite.
+
+\paragraph{Runekeeper-Fighter (Forge Guard).}
+Channel sigils etched into armor or weapons.
+
+\paragraph{Summoner-Fighter (Guardian Beastmaster).}
+A bound companion fights as your mirrored extension.
+
+\subsection{Rogue as Shadowmancer or Trickster-Invoker}
+\paragraph{Caster-Rogue (Umbral Weaver).}
+Manipulate negative space; fold into shadows; distort perception.
+
+\paragraph{Invoker-Rogue (Court of Masks).}
+A deity of glamour or trickery blesses misdirection and silence.
+
+\paragraph{Runekeeper-Rogue (Auditor of Secrets).}
+Contracts, erasures, wards against scrying, paper trails that vanish.
+
+\paragraph{Summoner-Rogue (Spirit Fox or Shade-Twin).}
+A spirit doubles your approach routes or distracts guards.
+
+\subsection{Ranger as Wildcaster, Totemist, or Druidic Warden}
+\paragraph{Caster-Ranger (Stormspath).}
+Elemental winds guide arrows; lightning leaps across bowstrings.
+
+\paragraph{Invoker-Ranger (Oath of the Path).}
+Sacred routes, blessed woods, forest guardianship.
+
+\paragraph{Runekeeper-Ranger (Trail-Signer).}
+Mark waypoints, bind forest spirits with path-runes, stabilize wild zones.
+
+\paragraph{Summoner-Ranger (Beast-Kin).}
+Totemic beasts manifest as allies or projections.
+
+\subsection{Monk as Sigil-Stepper or Breath-Caster}
+\paragraph{Caster-Monk (Kinetic Adept).}
+Breath shapes force; steps crystallize energy.
+
+\paragraph{Invoker-Monk (Stillness Doctrine).}
+Mercy, balance, silence, thresholds—monastic pacts.
+
+\paragraph{Runekeeper-Monk (Form Sutra).}
+Each kata is a method; each stance a binding.
+
+\paragraph{Summoner-Monk (Inner Guardian).}
+Call ancestral avatars through perfect stillness.
+
+\subsection{Barbarian as Storm Herald or Totem-Bound}
+\paragraph{Caster-Barbarian (Stormbone Shaman).}
+Rage resonates with lightning or earth-pressure.
+
+\paragraph{Invoker-Barbarian (Doom-Caller).}
+Invoke wrathful spirits or ancestors in the heat of battle.
+
+\paragraph{Runekeeper-Barbarian (Bone-Scripted).}
+Etch runes into skin, weapons, or scars.
+
+\paragraph{Summoner-Barbarian (Totem Warrior).}
+Manifest a primal beast that mirrors your Wellspring.
+
+\subsection{Cleric / Priest as Invoker, Runekeeper, or Summoner}
+By default Clerics use \textbf{Invoker}, but:
+
+\paragraph{Runekeeper-Cleric (Liturgical Engineer).}
+Miracles require strict process, incantations, candles, motions.
+
+\paragraph{Caster-Cleric (Theurgical Channel).}
+Divine energy is raw and dangerous; casting burns through you.
+
+\paragraph{Summoner-Cleric (Psychopomp).}
+Petition ancestors, saints, or spirits directly.
+
+\subsection{Paladin as Invoker or Runekeeper}
+\paragraph{Invoker-Paladin (Oath-Knight).}
+Power flows through vows and bonds.
+
+\paragraph{Runekeeper-Paladin (Writ-Bound).}
+The oath is a contract; seals and clauses matter.
+
+\paragraph{Caster-Paladin (Radiant Conduit).}
+Righteous force flares out in beams or shields.
+
+\subsection{Druid / Shaman as Any Engine}
+\paragraph{Runekeeper-Druid (Grove Warden).}
+Nature is process: seasons, cycles, flows.
+
+\paragraph{Invoker-Druid (Totemist).}
+Patrons of storm, rot, roots, tides.
+
+\paragraph{Caster-Druid (Wildcrafter).}
+Raw primal magic, mutable, adaptive.
+
+\paragraph{Summoner-Druid (Pack-Speaker).}
+Animal spirits, ancestors of the grove.
+
+\section{Fusion Builds}
+Characters may combine two engines at Tier II+:
+\begin{itemize}
+  \item \textbf{Caster + Invoker}: raw power moderated by taboo.
+  \item \textbf{Invoker + Runekeeper}: priest-lawyer; sacred process.
+  \item \textbf{Caster + Summoner}: magic that manifests as living force.
+  \item \textbf{Runekeeper + Summoner}: blueprint + spirit; engineered life.
+\end{itemize}
+
+Fusion builds should always:
+\begin{itemize}
+  \item track both costs,
+  \item create interplay between engines,
+  \item respect theme integrity.
+\end{itemize}
+
+\section{Guidance for Players and GMs}
+\subsection{For Players}
+Choose the engine that best expresses:
+\begin{itemize}
+  \item what your character \emph{believes},
+  \item how they \emph{interact with the world},
+  \item what actions they perform most often.
+\end{itemize}
+
+\subsection{For GMs}
+Let adapted magic:
+\begin{itemize}
+  \item enhance traits, not replace them,
+  \item add flavor to classic roles,
+  \item provide thematic costs,
+  \item deepen world-lore.
+\end{itemize}
+
+Magic should \textbf{reinforce the archetype’s story}, not overshadow it.
+
+%===========================================================
+\chapter{Advanced Talent Integration}
+%===========================================================
+
+\section{The Role of Talents in High-Tier Play}
+
+Talents shape a character’s identity, but at higher tiers they become engines of
+\textbf{campaign-scale influence}, \textbf{synergistic expression}, and \textbf{narrative transformation}.
+Chapter~15 presents a framework for understanding how Talents behave in long-running campaigns,
+and how Game Masters can use them to reinforce story structure, pacing, and world evolution.
+
+At this depth of play, Talents no longer act in isolation.
+They intersect with clocks, faction turns, political arcs, environmental rules,
+and character development engines.
+This chapter provides guidance for navigating those intersections with clarity and purpose.
+
+\section{Talent Pressure and Narrative Gravity}
+
+Every Talent exerts \textbf{pressure} on the narrative based on how often it engages,
+what resources it consumes, and what problems it solves.
+
+\subsection{Three Forms of Talent Pressure}
+
+\begin{description}[leftmargin=1.8em]
+    \item[Mechanical Pressure]  
+    How strongly the Talent affects outcomes, harm, fatigue, position, or resources.
+
+    \item[Narrative Pressure]  
+    How much the Talent pulls the story toward certain types of scenes or conflicts.
+    (Examples: stealth-heavy arcs, moral dilemmas, social intrigue.)
+
+    \item[Environmental Pressure]  
+    How the world reacts to repeated use of the Talent—especially visible or disruptive ones.
+\end{description}
+
+A campaign remains balanced when no single Talent dominates more than one pressure axis.
+
+\section{Talent Expression Across Campaign Tiers}
+
+Fate’s Edge talent development is non-linear.
+Characters naturally pivot between themes and playstyles.
+This chapter introduces the concept of \textbf{Talent Expression Tiers}.
+
+\subsection{Tier I: Identity Talents}
+These establish the PC’s fundamental style.
+Their pressure is mostly local: per scene or per short arc.
+
+\subsection{Tier II: Synergy Talents}
+These combine abilities across categories.
+Their pressure affects multi-session arcs.
+
+\subsection{Tier III: Transformation Talents}
+These recontextualize the character.
+They change stakes and reshape how the group interacts with the world.
+
+\subsection{Tier IV: Legacy Talents}
+These produce lasting effects beyond the scope of a single adventure or campaign.
+Legacy Talents often:
+\begin{itemize}
+    \item alter faction relationships,  
+    \item introduce new setting elements,  
+    \item modify regional rules, or  
+    \item generate follow-up campaigns.
+\end{itemize}
+
+\section{Managing Synergy Density}
+
+As characters gain XP, multiple Talents may begin to overlap.
+This is normal—and often desirable—but the GM must track
+\textbf{Synergy Density}: the combined complexity and narrative weight
+of active talent interactions.
+
+\subsection{Symptoms of High Synergy Density}
+
+\begin{itemize}
+    \item Sessions dominated by one character’s combo.
+    \item Repetition of encounter types.
+    \item Difficulty escalating stakes without targeting specific characters.
+    \item Fatigue from too many sub-systems engaging simultaneously.
+\end{itemize}
+
+\subsection{GM Interventions}
+
+\begin{itemize}
+    \item Rotate spotlight scenes using Scene Types (Appendix: GM Load Tools).
+    \item Introduce novel environments or constraints.
+    \item Add thematic complications connected to Talent pressure.
+    \item Use faction responses to reflect long-term consequences.
+\end{itemize}
+
+\section{Talent Synergy Framework}
+
+\subsection{Four Synergy Pillars}
+
 \begin{enumerate}
-  \item \textbf{Engine:} Familiar + Codex (Runekeeper) with a Patron whose \emph{domain tags} match the job.
-  \item \textbf{Method:} Anchor one \emph{site/process/contract} per arc (e.g., warded gate, audience clause, consecrated workshop).
-  \item \textbf{Talents:} Mix core Runekeeper tools (\emph{Process Consecration, Quarantine Seal, Masker Auditor}) with role talents (e.g., \emph{Shield Wall}, \emph{Crescendo}, \emph{Tracker’s Instinct}).
-  \item \textbf{Costs:} Track \emph{Obligation} through acts of service aligned to the Patron’s theme to keep the ledger clean.  [oai_citation:25‡Fate's Edge - Comprehensive Resource Guide.txt](file-service://file-D6iQFU3UgLM1TE1ySWJRS6)
+    \item \textbf{Action Synergy}  
+    Talents that modify Position and Effect, or adapt to specific Action types.
+
+    \item \textbf{Attribute Synergy}  
+    Talents that scale off high attributes or create alternate Attribute pathways.
+
+    \item \textbf{Resource Synergy}  
+    Talents that interact with Story Beats, Fatigue, Clocks, Momentum, or seasonal rules.
+
+    \item \textbf{Campaign Synergy}  
+    Talents that expand character impact on factions, territory, politics, or lore.
 \end{enumerate}
 
-\section{Monk Builds (Caster \& Summoner Hybrids)}
-% Each build is framed for Tier II (adjust stats +1/-1 per table).
-% Uses SRD talents and canon Patrons; rites are phrased fiction-first with clear hooks.
+Each archetype chapter includes synergy guidance;
+this chapter unifies the logic behind those recommendations.
 
-\subsection*{Drunken Master of Thrysos (Monk/Runekeeper)}
-\textit{Patron: Thrysos — revelry, fermentation, ecstatic misrule under a guiding cup. Process through ritual cups, counts, and festival routes.}
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{Tier} & II (control skirmisher / off-healer)\\
-\textbf{Attributes} & Body 3, Wits 3, Spirit 3, Presence 2\\
-\textbf{Skills} & Melee 2, Subterfuge 1, Athletics 1, Insight 2, Performance 1, Lore 1\\
-\textbf{Monk Talents} & \textbf{Breath Control}, \textbf{Flow Step}, \textbf{Stunning Palm}\\
-\textbf{Runekeeper Talents} & \textbf{Process Consecration}, \textbf{Loop Breaker}; later \textbf{Human-in-the-Loop}\\
-\textbf{Rites (Thrysos)} & \textit{Blessing of the Cup}: designate a “shared bowl” method; allies who \emph{toast} (free beat) gain \textbf{Position +1} once/scene; starts \textbf{Merriment [2]}.\\
-& \textit{Ferment the Floor}: sanctify ground as \emph{slippery revel}; foes risk \textbf{Stagger [2]} on advance; on Partial you also sway (mark 1 Fatigue).\\
-& \textit{Stagger Into Grace}: on a clean hit, you may \emph{reframe} your next defense as \textbf{Controlled} if you roleplay the swaying guard.\\
-\textbf{Strings} & Festival Writ (once: parley DV --1 in public square), Shared Cup (clear 1 Fatigue for two allies during truce)\\
-\textbf{Kit} & Iron cup (bell-lined), sash knot-counters, light staff, festival scarf (mask-right by mood)\\
-\textbf{Tactics} & Consecrate the “cup routine,” then \emph{sway}—Flow Step to new lanes, Stunning Palm to set \textbf{Stagger [2]}, run Loop Breaker to break enemy cadence. \\
-\bottomrule
-\end{tabularx}
+\section{Talent Conflicts and Tension Points}
 
-\subsection*{Mirror Sutra Adept (Monk/Caster of Lunara)}
-\textit{Patron: Lunara — reflection, hidden angles, revealed counter.}
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{Tier} & II (evasion/control)\\
-\textbf{Attributes} & Body 2, Wits 4, Spirit 3, Presence 2\\
-\textbf{Skills} & Stealth 2, Melee 1, Insight 2, Arcana 2, Subterfuge 1\\
-\textbf{Monk Talents} & \textbf{Deflect Missiles}, \textbf{Perfect Stillness}\\
-\textbf{Caster Talents} & \textbf{Geometer’s Focus}, \textbf{Counterweave}; later \textbf{Focused Casting}\\
-\textbf{Weaves (Lunara)} & \textit{Glass Veil}: treat your defense as if behind a mirrored plane (\textbf{Position +1} vs ranged/aimed).\\
-& \textit{Counter-Stance}: when you \emph{deflect}, mark \textbf{Mirror Mark [2]}; spend 1 to \textbf{DV --1} on your riposte.\\
-& \textit{Many-Faces Kata}: brief doubles (illusion): allies gain \textbf{Effect +1} on the first strike from a new angle.\\
-\textbf{Strings} & Polished Truth (negate one \emph{False Orders}), Shard Token (once: step through a hand mirror as \emph{Near} move)\\
-\textbf{Kit} & Mirror chips, chalk frame, silk wraps, short staff\\
-\textbf{Tactics} & Open Hidden (Perfect Stillness) → Glass Veil → bait shot, Deflect to place Mirror Mark → Counterweave the follow-up cast.\\
-\bottomrule
-\end{tabularx}
+A rich campaign includes \textbf{constructive friction} between talents.
 
-\subsection*{Storm-Path Ascetic (Monk/Caster of Raéyn)}
-\textit{Patron: Raéyn — storm, tide, route. Wind-step mobility and space control.}
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{Tier} & II (mobile striker / terrain shaper)\\
-\textbf{Attributes} & Body 3, Wits 3, Spirit 3, Presence 2\\
-\textbf{Skills} & Athletics 2, Melee 1, Arcana 2, Survival 1, Tactics 1\\
-\textbf{Monk Talents} & \textbf{Flow Step}, \textbf{Breath Control}; later \textbf{Deflect Missiles}\\
-\textbf{Caster Talents} & \textbf{Elemental Affinity (Air/Water)}, \textbf{Overchannel}\\
-\textbf{Weaves (Raéyn)} & \textit{Wind-Step}: Dash as a free beat after a hit (once/scene), or treat \emph{Near} as \emph{Close} for one exchange.\\
-& \textit{Tide Pull}: drag a foe one band or unseat archers; on Partial, both sides shift.\\
-& \textit{Storm Guard}: swirling air: allies \textbf{Position +1} vs volleys while you maintain.\\
-\textbf{Strings} & River Prefect Stamp (crossing DV --1), Storm-Oath (once: resist knockback as if braced)\\
-\textbf{Kit} & Rope ring, tide tokens, light spear, rain veil\\
-\textbf{Tactics} & Pin with Tide Pull, Flow Step across gaps, Overchannel for burst \emph{Wind-Step} chains to isolate targets.\\
-\bottomrule
-\end{tabularx}
+\subsection{Three Types of Talent Conflict}
 
-\subsection*{Psychopomp Lantern (Monk/Summoner of the Pale Shepherd)}
-\textit{Patron: Pale Shepherd — thresholds, guidance, gentle endings. Summons are ancestral shades bound to witness.}
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{Tier} & II (support/control summoner)\\
-\textbf{Attributes} & Body 2, Wits 3, Spirit 4, Presence 2\\
-\textbf{Skills} & Insight 2, Lore 2, Melee 1, Diplomacy 1, Stealth 1\\
-\textbf{Monk Talents} & \textbf{Perfect Stillness} (ambush setups), \textbf{Stunning Palm}\\
-\textbf{Invoker Talents} & \textbf{Consecration}, \textbf{Rebuke the Unquiet}; later \textbf{Miracle of Mercy}\\
-\textbf{Symbols/Rites} & \textit{Lantern-Ward}: set a consecrated circle; allies in it treat fear as \textbf{Controlled}.\\
-& \textit{Call of the Patient Dead}: summon \textbf{Lantern-Companions [4]} (tags: Ethereal, Tethered, Gentle). Spend 1 tick: +1 die on defend, or \emph{hold} a foe from crossing a threshold.\\
-& \textit{Name the Crossing}: bind a departing spirit to speak one truth (Position +1 on parley that honors it).\\
-\textbf{Strings} & Grave-Path (shortcut once), Lantern’s Pardon (erase one petty theft from social memory)\\
-\textbf{Kit} & Spirit lantern, bell-token, white cord, prayer knives (blunt)\\
-\textbf{Tactics} & Open with ward; bring Lantern-Companions to pin lanes; Stunning Palm stacks \textbf{Stagger} while shades shield lines.\\
-\bottomrule
-\end{tabularx}
+\begin{description}
+    \item[Mechanical Overlap]  
+    Two characters excel at the same approach; solution is spotlight differentiation.
 
-\subsection*{Serpent-Knot Initiate (Monk/Summoner of Isoka)}
-\textit{Patron: Isoka — serpents, shedding, decisive truths. Summoned coils strike choice-points.}
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{Tier} & II (assassin/control)\\
-\textbf{Attributes} & Body 3, Wits 3, Spirit 3, Presence 2\\
-\textbf{Skills} & Stealth 2, Subterfuge 2, Melee 1, Insight 1\\
-\textbf{Monk Talents} & \textbf{Flow Step}, \textbf{Stunning Palm}\\
-\textbf{Invoker Talents} & \textbf{Minor Sacrament} (antidote/blessing), \textbf{Oathbinder}\\
-\textbf{Symbols/Rites} & \textit{Shed-Skin Escape}: clear a binding/mark; leave a \emph{Husk [2]} that confuses pursuit.\\
-& \textit{Venom Truce}: bind a dawn decision—any stall marks \textbf{Decision [2]} against the staller.\\
-& \textit{Summon the Coil}: \textbf{Serpent Ally [3]} (tags: Venomous, Grapple, Fragile). Spend 1: \emph{Grapple} (DV --1 to your strike) or \emph{Distract} (Position +1 for you).\\
-\textbf{Strings} & Scale Garden Draught (resist fear once), Forked Truth (force an NPC to answer one \emph{this-or-that} honestly)\\
-\textbf{Kit} & Twin knives, ash-milk, scale salve, hooded sash\\
-\textbf{Tactics} & Create a \emph{choice crisis} (Venom Truce), drop the Coil to pin, Flow Step for the keystone strike; Stunning Palm converts to \textbf{Stagger}.\\
-\bottomrule
-\end{tabularx}
+    \item[Thematic Tension]  
+    Talents imply different ethical priorities or approaches to conflict.
 
-\subsection*{Widow-Line Sentinel (Monk/Summoner of Inaea)}
-\textit{Patron: Inaea — web, witness, guest-right. Summoned threads and spiderlings enforce sanctuary and extraction.}
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{Tier} & II (escort/extraction control)\\
-\textbf{Attributes} & Body 3, Wits 3, Spirit 3, Presence 2\\
-\textbf{Skills} & Athletics 1, Stealth 1, Subterfuge 1, Melee 1, Diplomacy 1, Lore 1\\
-\textbf{Monk Talents} & \textbf{Flow Step}, \textbf{Deflect Missiles}\\
-\textbf{Invoker Talents} & \textbf{Consecration}, \textbf{Oathbinder}\\
-\textbf{Symbols/Rites} & \textit{Wedding Line}: lay a \emph{sanctuary thread}; allies crossing get \textbf{Position +1} vs pursuit this scene.\\
-& \textit{Dew-Mirror Vigil}: read two scene truths; start \textbf{Web-Attention [2]} (on fill, a local spirit watches).\\
-& \textit{Summon Threadlings}: \textbf{Spider Cohort [4]} (tags: Small, Climb, Tripline). Spend 1: lay a \emph{Tripline} (DV +1 to chase) or \emph{Carry Line} to a new anchor.\\
-\textbf{Strings} & Bride-Line Audience (force parley under your line), Context Key (restore a failing oath with proper role)\\
-\textbf{Kit} & Silk coils, bell chime, resin pins, ladder-plugs\\
-\textbf{Tactics} & Drop Wedding Line early; threadlings seed triplines; Flow Step conducts the escort while you Deflect to cover the retreat.\\
-\bottomrule
-\end{tabularx}
+    \item[Resource Collision]  
+    Multiple Talents draw on the same limited currency (Story Beats, clocks, campaign momentum).
+\end{description}
 
-\paragraph{Advancement Notes.}
+GM tip: talent conflict is not a flaw—it is a driver of meaningful character arcs.
+
+\section{Faction, Patron, and Region Interactions}
+
+Talents can:
 \begin{itemize}
-  \item \textbf{Monk/Caster} builds love \emph{Counterweave}, \emph{Focused Casting}, and \emph{Geometer’s Focus} to stabilize big plays without stealing the spotlight from martial beats.
-  \item \textbf{Monk/Summoner} builds scale minions using simple clocks: [3–4] for a single ally (Fragile/Powerful tags), [6] for a cohort. Keep tags honest and spend ticks for discrete maneuvers.
-  \item Consider \textbf{Heroic Moment (7 XP)} as a late pick on stunt-heavy monks; it pairs well with \emph{Flow Step} chains and “save-the-escort” turns.
+    \item shift faction clocks,  
+    \item unlock new Patron reactions,  
+    \item modify how environments respond,  
+    \item or open region-specific playstyles.
 \end{itemize}
 
-\paragraph{Table Guidance.}
+This section explains how to incorporate talents into the broader campaign ecology.
+
+\subsection{Faction Reactions}
+Talents that improve social leverage or undermine hostile factions should advance or regress:
 \begin{itemize}
-  \item Summoned allies should be \emph{scene-bound assets}, not replacement PCs: give them clear tags, 1–2 maneuvers, and a compact [3–6] clock.
-  \item When a rite establishes a \emph{method} (Runekeeper), start a small \textbf{Hunger/Attention} clock appropriate to Patron; pay it off in fiction with witness, rest, or a minor offering.
-  \item Keep mobility central: monks change Position more than they change raw Effect. Let that shine.
+    \item faction Influence,  
+    \item faction Stability,  
+    \item and faction Relationship tracks.
 \end{itemize}
+
+\subsection{Patron Dynamics}
+Some Talents create obligations, miracles, or supernatural influence.
+They may:
+\begin{itemize}
+    \item trigger Patron attention,  
+    \item modify the cost or nature of boons,  
+    \item or escalate Divine Pressure clocks.
+\end{itemize}
+
+\subsection{Regional Rules}
+Talents interact differently based on:
+\begin{itemize}
+    \item local law,  
+    \item cultural practices,  
+    \item environmental hazards,  
+    \item and magical weather patterns.
+\end{itemize}
+
+This is the bridge between Chapter~15 and the Regional Customization Appendices.
+
+\section{Talent Spotlight Scenes}
+
+Every major Talent deserves a moment of cinematic impact.
+These scenes reinforce player investment and help the GM distribute narrative weight.
+
+\subsection{Spotlight Scene Triggers}
+
+\begin{itemize}
+    \item A character hits a major XP threshold.
+    \item The player chooses a rare or flavorful Talent.
+    \item A Talent aligns with the arc’s theme.
+    \item The synergy density reaches a new level.
+\end{itemize}
+
+Spotlight scenes must be short, evocative, and mechanically meaningful.
+
+\section{The Talent Ecology of a Campaign}
+
+Over time, the interlocking mesh of Talents creates a \textbf{Talent Ecology}.
+Healthy Talent Ecologies exhibit:
+
+\begin{itemize}
+    \item Diversity of roles and approaches.
+    \item Multiple valid solutions to the same obstacle.
+    \item Nuanced consequences that reflect character choices.
+    \item Meaningful interactions with setting design.
+\end{itemize}
+
+The ecology model helps GMs understand when to expand the world,
+introduce new systems, or evolve antagonists to maintain dramatic tension.
+
+\section{Evolving Talents into Legacies}
+
+This final section provides rules of thumb for transforming late-campaign Talents into Legacy outcomes.
+
+\begin{description}[leftmargin=1.8em]
+    \item[Personal Legacy]  
+    The Talent changes the character’s identity or future story arcs.
+
+    \item[Social Legacy]  
+    The Talent alters faction dynamics, political influence, or cultural meaning.
+
+    \item[Environmental Legacy]  
+    The Talent changes how a region functions or what dangers threaten it.
+
+    \item[Mythic Legacy]  
+    The Talent becomes part of the setting’s lore, enabling future campaigns to reference it.
+\end{description}
+
+\section{Conclusion}
+
+Advanced Talent Integration is designed to help GMs and players engage with Talents
+as more than isolated mechanical widgets.
+They are nodes in a narrative network—
+reinforcing themes, driving conflict, and shaping the unfolding world.
+
+Understanding these interactions elevates the campaign
+from a sequence of encounters into a cohesive, evolving story
+where every character’s growth has weight and consequence.
+
+%===========================================================
+
+%===========================================================
+\chapter{Talent Tags and Subsystems}
+%===========================================================
+
+\section{Purpose of the Tag System}
+
+As the Talent list grows across archetypes, expansions, and supplements,
+players and Game Masters need a reliable method of identifying patterns:
+themes, synergies, overlap, and mechanical niches.
+
+The Talent Tag system offers a consistent vocabulary for:
+\begin{itemize}
+    \item understanding Talent function at a glance,
+    \item identifying synergy pathways,
+    \item evaluating campaign-level impact,
+    \item designing new Talents with internal logic,
+    \item and managing cognitive load during play.
+\end{itemize}
+
+Tags never replace Talent text; they \emph{augment} it.
+They reveal the structure beneath the system.
+
+\section{Tag Categories Overview}
+
+Every Talent may have 1--3 tags.  
+Rarely, a major Talent may justify a fourth.
+
+Tags are grouped into seven categories:
+
+\begin{enumerate}
+    \item \textbf{Action Tags} — how the Talent interacts with action rolls.
+    \item \textbf{Attribute Tags} — which Attribute(s) the Talent emphasizes.
+    \item \textbf{Role Tags} — broad playstyle or narrative identity.
+    \item \textbf{Resource Tags} — currencies the Talent uses or modifies.
+    \item \textbf{Synergy Tags} — Talent clusters that combine powerfully.
+    \item \textbf{World Tags} — Talents with setting-level implications.
+    \item \textbf{Risk Tags} — how the Talent interacts with danger or cost.
+\end{enumerate}
+
+\section{Action Tags}
+
+Action Tags identify what types of actions the Talent enhances or modifies.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Meaning} \\ \hline
+\textbf{Strike} & Enhances melee/ranged direct attacks. \\ \hline
+\textbf{Move} & Grants mobility, repositioning, traversal options. \\ \hline
+\textbf{Observe} & Improves perception, intuition, investigation. \\ \hline
+\textbf{Influence} & Enhances persuasion, intimidation, diplomacy. \\ \hline
+\textbf{Focus} & Supports preparation, channeling energy, or long actions. \\ \hline
+\textbf{Craft} & Applies to building, tinkering, enchanting, or engineering tasks. \\ \hline
+\end{longtable}
+
+These tags help GMs quickly understand how a Talent fits into encounter design
+and helps players identify which Talents support their chosen playstyle.
+
+\section{Attribute Tags}
+
+Attribute Tags highlight the primary stat interaction.
+These are especially important for hybrid builds.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Meaning} \\ \hline
+\textbf{MIG} & Scales with Might. \\ \hline
+\textbf{AGI} & Scales with Agility. \\ \hline
+\textbf{WIT} & Scales with Wit or tactical awareness. \\ \hline
+\textbf{SPT} & Scales with Spirit. \\ \hline
+\end{longtable}
+
+\section{Role Tags}
+
+Role Tags describe the Talent’s functional identity within the party.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Description} \\ \hline
+\textbf{Defender} & Protects allies, absorbs hits, controls space. \\ \hline
+\textbf{Striker} & Deals high focused damage or creates openings. \\ \hline
+\textbf{Controller} & Manipulates battlefield, emotions, or environment. \\ \hline
+\textbf{Support} & Buffs allies, heals, enables combos. \\ \hline
+\textbf{Utility} & Provides flexible non-combat solutions. \\ \hline
+\end{longtable}
+
+These tags help players understand how a Talent shapes their role in the group.
+
+\section{Resource Tags}
+
+Talents increasingly interact with the system’s currencies:
+Story Beats, Fatigue, Clocks, Momentum, Favor, etc.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Meaning} \\ \hline
+\textbf{SB} & Generates or consumes Story Beats. \\ \hline
+\textbf{FAT} & Modifies Fatigue (reduces, shifts, converts). \\ \hline
+\textbf{Clock} & Advances, pauses, rewinds, or splits clocks. \\ \hline
+\textbf{Momentum} & Interacts with Campaign Momentum systems. \\ \hline
+\textbf{Favor} & Gains or spends divine, faction, or mystical favor. \\ \hline
+\end{longtable}
+
+These help GMs understand campaign-scale interactions at a glance.
+
+\section{Synergy Tags}
+
+These identify Talent families or patterns that reinforce one another.
+They help players craft builds intentionally.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Meaning} \\ \hline
+\textbf{Combo} & Talents that chain into one another within a scene. \\ \hline
+\textbf{Stance} & Talents that toggle modes or conditional bonuses. \\ \hline
+\textbf{Gambit} & Risk–reward Talents that rely on player creativity. \\ \hline
+\textbf{Aegis} & Talents that emphasize protection, shielding, prevention. \\ \hline
+\textbf{Flow} & Talents that interact with movement or seamless action. \\ \hline
+\textbf{Channel} & Talents connected to magic, psionics, or invocation cycles. \\ \hline
+\end{longtable}
+
+\section{World Tags}
+
+These identify Talents that can shape campaigns or interact with systems beyond characters.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Meaning} \\ \hline
+\textbf{Faction} & Affects faction clocks, influence, or stability. \\ \hline
+\textbf{Patron} & Connects to divine or supernatural powers. \\ \hline
+\textbf{Region} & Interacts with environmental, cultural, or terrain rules. \\ \hline
+\textbf{Legacy} & Creates lasting changes in the world beyond the campaign. \\ \hline
+\end{longtable}
+
+\section{Risk Tags}
+
+Risk Tags help identify Talents that introduce dramatic tension or cost.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Tag} & \textbf{Meaning} \\ \hline
+\textbf{Overload} & Can cause Harm or severe costs on failure. \\ \hline
+\textbf{Reckless} & Creates openings for consequences; boosts Effect or Position. \\ \hline
+\textbf{Toll} & Requires sacrifice—resources, obligations, or relationships. \\ \hline
+\end{longtable}
+
+\section{Using Tags in Character Building}
+
+\subsection{Tag Density}
+Players can track how many unique tags appear in their Talent list.
+
+\begin{itemize}
+    \item \textbf{2–3 tags}: Focused build.  
+    \item \textbf{4–6 tags}: Balanced build.  
+    \item \textbf{7+ tags}: Hybrid or experimental build.
+\end{itemize}
+
+Tag density predicts whether a character will:
+\begin{itemize}
+    \item excel in spotlight scenes,  
+    \item perform consistently across varied encounters,  
+    \item specialize deeply in one narrative theme.
+\end{itemize}
+
+\subsection{Identifying Build Arcs with Tags}
+
+Players can use tag patterns to identify their character’s evolving path:
+\begin{itemize}
+    \item \textbf{Strike + Flow + Combo} = Agile Fighter  
+    \item \textbf{Influence + Support + Aegis} = Court Guardian  
+    \item \textbf{Channel + Observe + Legacy} = Mystic Interpreter  
+\end{itemize}
+
+\section{Using Tags in Encounter and Campaign Design}
+
+\subsection{Encounter Balance}
+GMs can scan Talent tags to anticipate:
+
+\begin{itemize}
+    \item how players might bypass certain obstacles,
+    \item what types of scenes feel rewarding,
+    \item where the party is weak (missing Role or Attribute tags),
+    \item what new scenes should be introduced to balance spotlight.
+\end{itemize}
+
+\subsection{Campaign Integration}
+Tags that include:
+\begin{itemize}
+    \item \textbf{Faction},  
+    \item \textbf{Clock},  
+    \item \textbf{Legacy},  
+    \item or \textbf{Momentum},  
+\end{itemize}
+should be monitored by the GM as potential campaign-shifting tools.
+
+\section{Talent Tag Notation for This Book}
+
+Talent entries will present tags in a consistent format:
+
+\begin{quote}
+\textbf{Tags:} Strike, AGI, Flow
+\end{quote}
+
+Tags appear directly under the Talent name, before mechanical text.
+
+\section{Conclusion}
+
+The Talent Tag system provides players and Game Masters with an essential layer of structure.
+It transforms the Talent list from a catalogue into an interconnected web of
+narrative roles, mechanical functions, and campaign-level consequences.
+
+Chapters~17 and onward will build on this foundation,
+demonstrating how Tags shape Talent design, hybrid archetypes,
+NPC threats, and long-form campaign play.
+
+%===========================================================
+
+%===========================================================
+\chapter{High-Tier Talent Design Rules}
+%===========================================================
+
+\section{Introduction}
+
+As campaigns advance, Talents evolve from simple action modifiers
+into drivers of theme, synergy, identity, and world impact.
+This chapter presents the internal design doctrine used throughout
+\emph{The Book of Talents}—a concise but powerful framework
+that ensures Talents:
+\begin{itemize}
+    \item remain balanced,
+    \item enable spotlight scenes,
+    \item promote player creativity,
+    \item and preserve Fate’s Edge’s narrative-first design.
+\end{itemize}
+
+These guidelines are not rigid formulas;
+they are principles meant to maintain elegance,
+avoid mechanical bloat, and support coherent design across expansions.
+
+\section{The Three Pillars of Talent Design}
+
+Every Talent—minor, major, or master-level—must satisfy
+\textbf{at least two} of the following:
+
+\begin{enumerate}
+    \item \textbf{Narrative Identity}  
+    Does the Talent deepen the character’s fantasy, role, or arc?
+
+    \item \textbf{Mechanical Expression}  
+    Does it offer a meaningful mechanism that interacts with
+    Position, Effect, Harm, Fatigue, Story Beats, Clocks, or subsystems?
+
+    \item \textbf{Player Agency}  
+    Does it open new choices, not just add numbers?
+\end{enumerate}
+
+Talents that hit all three pillars are centerpiece abilities.
+Talents that hit only one are cut or rewritten.
+
+\section{The Talent Power Curve}
+
+Fate’s Edge uses a \textbf{flat but expressive power curve}.
+This means:
+\begin{itemize}
+    \item Characters expand their toolkit more than they escalate raw power.
+    \item Power is contextual, situational, and driven by creativity.
+    \item High-tier Talents provide \emph{breadth} and \emph{impact}, not raw scaling.
+\end{itemize}
+
+\subsection{2 XP Talents (Minor)}
+
+\begin{itemize}
+    \item Add a new option or improve a common action.
+    \item Never erase another character’s niche.
+    \item Should be comprehensible in 2--4 sentences.
+    \item Provide a consistent, moderate benefit.
+\end{itemize}
+
+\subsection{4 XP Talents (Major)}
+
+\begin{itemize}
+    \item Unlock a specialization, stance, or synergy engine.
+    \item Enable one “signature moment” per session.
+    \item Should meaningfully interact with 1–2 subsystems.
+    \item Example: harm conversion, scene control, magical channels.
+\end{itemize}
+
+\subsection{6 XP Talents (Master)}
+
+\begin{itemize}
+    \item Transform the character’s relationship to a subsystem.
+    \item Introduce a new form of agency.
+    \item Rarely increase raw output—they shift narrative stakes.
+    \item Often have a cost, tension, or requirement.
+\end{itemize}
+
+\section{Subsystem Interaction Rules}
+
+A Talent can interact with subsystems—but must do so cleanly.
+Below are the core rules for adding subsystem hooks.
+
+\subsection{Position \& Effect}
+
+\begin{itemize}
+    \item Should never grant flat +1/+2s.  
+    \item Should grant \emph{conditional leverage}, e.g. “When isolated,” “When acting boldly,” etc.
+    \item Should encourage specific playstyles.
+\end{itemize}
+
+\subsection{Harm \& Fatigue}
+
+\begin{itemize}
+    \item Minor Talents may shift or reduce Fatigue.
+    \item Major Talents can convert costs: e.g., Harm $\leftrightarrow$ Fatigue.
+    \item Master Talents can resist consequences at a narrative price.
+\end{itemize}
+
+\subsection{Story Beats}
+
+\begin{itemize}
+    \item No Talent should create SB without narrative justification.
+    \item Major Talents may refund SB when a trigger fires.
+    \item Master Talents may break SB rules—but always at a cost.
+\end{itemize}
+
+\subsection{Clocks}
+
+\begin{itemize}
+    \item 2 XP Talents may interact with clocks indirectly.
+    \item 4 XP Talents may adjust a clock once per session.
+    \item 6 XP Talents may alter clocks as part of their identity.
+\end{itemize}
+
+\section{Talent Cost vs. Talent Complexity}
+
+A simple rule:
+
+\begin{quote}
+\textbf{The more a Talent does, the narrower its trigger must be.}
+\end{quote}
+
+\subsection{Wide Trigger = Small Effect}
+Example: “When acting with compassion…”
+
+\begin{itemize}
+    \item +1 Effect or small Fatigue mitigation.
+\end{itemize}
+
+\subsection{Narrow Trigger = Big Effect}
+Example: “Once per arc, when a sworn oath is broken…”
+
+\begin{itemize}
+    \item Clock shift, narrative power, or a restructuring of Position.
+\end{itemize}
+
+\section{Talent Synergy Rules}
+
+\subsection{Synergy Is Intentional, Not Accidental}
+
+Every Talents chapter includes synergy paths,
+but synergy is governed by three principles:
+
+\begin{enumerate}
+    \item \textbf{Horizontal Synergy}  
+    Talents across the same XP tier should form clusters.
+
+    \item \textbf{Vertical Synergy}  
+    A 2→4→6 XP sequence should feel like a natural evolution.
+
+    \item \textbf{Diagonal Synergy}  
+    Unexpected cross-archetype synergies should create unique builds.
+\end{enumerate}
+
+\subsection{Synergy Limits}
+
+To preserve balance:
+\begin{itemize}
+    \item No synergy chain should produce guaranteed success.  
+    \item No synergy should neuter an entire subsystem.  
+    \item No synergy should make Fatigue irrelevant.  
+\end{itemize}
+
+\section{Risk, Cost, and Tension}
+
+High-tier Talents require \textbf{risk design}.
+A Talent without a tension point is incomplete.
+
+\subsection{Tension Types}
+
+\begin{description}
+    \item[Mechanical Tension]  
+    Harm, Fatigue, limited uses, SB costs.
+
+    \item[Narrative Tension]  
+    Obligations, vows, divine prices, faction repercussions.
+
+    \item[Psychological Tension]  
+    Moral weight, social consequences, identity conflicts.
+\end{description}
+
+\section{Narrative Consequence Framework}
+
+A Talent must produce consequences that:
+\begin{itemize}
+    \item reinforce theme,
+    \item shape character identity,
+    \item and expand world meaning.
+\end{itemize}
+
+\subsection{Minor Talent Consequences}
+\begin{itemize}
+    \item Small complications.
+    \item Targeted GM moves.
+    \item Changes in NPC attitude.
+\end{itemize}
+
+\subsection{Major Talent Consequences}
+\begin{itemize}
+    \item Shift faction stability.
+    \item Advance or regress a campaign clock.
+    \item Introduce a new threat vector.
+\end{itemize}
+
+\subsection{Master Talent Consequences}
+\begin{itemize}
+    \item Reshape player–Patron dynamics.
+    \item Create new setting lore.
+    \item Trigger campaign transitions.
+\end{itemize}
+
+\section{Modes, Stances, and Alternatives}
+
+High-tier Talents must offer more than a flat bonus.
+They should provide:
+\begin{itemize}
+    \item a stance,
+    \item a mode,
+    \item a channel,
+    \item or a conditional toggle.
+\end{itemize}
+
+Modes express internal tension:
+\begin{itemize}
+    \item “Reckless / Guarded”
+    \item “Flow / Anchor”
+    \item “Open Channel / Closed Conduit”
+\end{itemize}
+
+This reinforces dynamic, cinematic decision-making.
+
+\section{Scaling Rules}
+
+Talents are not mathematical formulas; they scale by \textbf{fictional positioning}.
+
+Rules:
+\begin{itemize}
+    \item Scaling happens through added options, not larger numbers.
+    \item Consequences scale faster than benefits.
+    \item High-tier Talents scale via relevance, not mathematics.
+\end{itemize}
+
+\section{Design Templates}
+
+Below are internal templates for each XP tier.
+
+\subsection{2 XP Template}
+
+\textbf{Name}  
+\emph{Tags:} <2--3 tags>  
+\textbf{Effect:} <One simple, reliable benefit.>  
+\textbf{Trigger:} <Broad, but theme-consistent.>  
+\textbf{Notes:} <Optional.>
+
+\subsection{4 XP Template}
+
+\textbf{Name}  
+\emph{Tags:} <2--4 tags>  
+\textbf{Effect:} <Significant benefit; interacts with a subsystem.>  
+\textbf{Trigger:} <Conditional; moderately narrow.>  
+\textbf{Cost:} <Fatigue, SB, or narrative constraint.>  
+\textbf{Notes:} <Usage examples.>
+
+\subsection{6 XP Template}
+
+\textbf{Name}  
+\emph{Tags:} <2--4 tags>  
+\textbf{Identity Shift:} <How this Talent redefines the character.>  
+\textbf{Effect:} <Transformative ability; subsystem rewrite.>  
+\textbf{Price:} <The tension point.>  
+\textbf{Legacy:} <How it might affect the world.>  
+\textbf{Notes:} <Designer guidance.>
+
+\section{Anti-Patterns and Red Flags}
+
+A Talent must be rewritten if:
+
+\begin{itemize}
+    \item It replaces another character’s niche entirely.
+    \item It removes all consequences from a subsystem.
+    \item It introduces unnecessary numerical complexity.
+    \item It encourages spotlight hogging.
+    \item It produces a “must-pick” dominance loop.
+    \item It relies on constant GM intervention to function.
+\end{itemize}
+
+\section{Conclusion}
+
+High-tier Talent design is an art:
+balancing narrative identity, meaningful mechanics,
+and player-driven agency without overshadowing the table’s collective experience.
+
+By following the principles in this chapter,
+designers can create Talents that:
+\begin{itemize}
+    \item feel powerful but not overwhelming,
+    \item interact gracefully with subsystems,
+    \item inspire character arcs,
+    \item and elevate campaigns into mythic, unforgettable stories.
+\end{itemize}
+
+Chapters~18 and onward expand these rules into hybrid archetypes, NPC expression,
+world-scope Talents, and modular structures for future expansions.
+
+%===========================================================
+
+%===========================================================
+\chapter{High-Tier Talent Design Rules}
+%===========================================================
+
+\section{Introduction}
+
+As campaigns advance, Talents evolve from simple action modifiers
+into drivers of theme, synergy, identity, and world impact.
+This chapter presents the internal design doctrine used throughout
+\emph{The Book of Talents}—a concise but powerful framework
+that ensures Talents:
+\begin{itemize}
+    \item remain balanced,
+    \item enable spotlight scenes,
+    \item promote player creativity,
+    \item and preserve Fate’s Edge’s narrative-first design.
+\end{itemize}
+
+These guidelines are not rigid formulas;
+they are principles meant to maintain elegance,
+avoid mechanical bloat, and support coherent design across expansions.
+
+\section{The Three Pillars of Talent Design}
+
+Every Talent—minor, major, or master-level—must satisfy
+\textbf{at least two} of the following:
+
+\begin{enumerate}
+    \item \textbf{Narrative Identity}  
+    Does the Talent deepen the character’s fantasy, role, or arc?
+
+    \item \textbf{Mechanical Expression}  
+    Does it offer a meaningful mechanism that interacts with
+    Position, Effect, Harm, Fatigue, Story Beats, Clocks, or subsystems?
+
+    \item \textbf{Player Agency}  
+    Does it open new choices, not just add numbers?
+\end{enumerate}
+
+Talents that hit all three pillars are centerpiece abilities.
+Talents that hit only one are cut or rewritten.
+
+\section{The Talent Power Curve}
+
+Fate’s Edge uses a \textbf{flat but expressive power curve}.
+This means:
+\begin{itemize}
+    \item Characters expand their toolkit more than they escalate raw power.
+    \item Power is contextual, situational, and driven by creativity.
+    \item High-tier Talents provide \emph{breadth} and \emph{impact}, not raw scaling.
+\end{itemize}
+
+\subsection{2 XP Talents (Minor)}
+
+\begin{itemize}
+    \item Add a new option or improve a common action.
+    \item Never erase another character’s niche.
+    \item Should be comprehensible in 2--4 sentences.
+    \item Provide a consistent, moderate benefit.
+\end{itemize}
+
+\subsection{4 XP Talents (Major)}
+
+\begin{itemize}
+    \item Unlock a specialization, stance, or synergy engine.
+    \item Enable one “signature moment” per session.
+    \item Should meaningfully interact with 1–2 subsystems.
+    \item Example: harm conversion, scene control, magical channels.
+\end{itemize}
+
+\subsection{6 XP Talents (Master)}
+
+\begin{itemize}
+    \item Transform the character’s relationship to a subsystem.
+    \item Introduce a new form of agency.
+    \item Rarely increase raw output—they shift narrative stakes.
+    \item Often have a cost, tension, or requirement.
+\end{itemize}
+
+\section{Subsystem Interaction Rules}
+
+A Talent can interact with subsystems—but must do so cleanly.
+Below are the core rules for adding subsystem hooks.
+
+\subsection{Position \& Effect}
+
+\begin{itemize}
+    \item Should never grant flat +1/+2s.  
+    \item Should grant \emph{conditional leverage}, e.g. “When isolated,” “When acting boldly,” etc.
+    \item Should encourage specific playstyles.
+\end{itemize}
+
+\subsection{Harm \& Fatigue}
+
+\begin{itemize}
+    \item Minor Talents may shift or reduce Fatigue.
+    \item Major Talents can convert costs: e.g., Harm $\leftrightarrow$ Fatigue.
+    \item Master Talents can resist consequences at a narrative price.
+\end{itemize}
+
+\subsection{Story Beats}
+
+\begin{itemize}
+    \item No Talent should create SB without narrative justification.
+    \item Major Talents may refund SB when a trigger fires.
+    \item Master Talents may break SB rules—but always at a cost.
+\end{itemize}
+
+\subsection{Clocks}
+
+\begin{itemize}
+    \item 2 XP Talents may interact with clocks indirectly.
+    \item 4 XP Talents may adjust a clock once per session.
+    \item 6 XP Talents may alter clocks as part of their identity.
+\end{itemize}
+
+\section{Talent Cost vs. Talent Complexity}
+
+A simple rule:
+
+\begin{quote}
+\textbf{The more a Talent does, the narrower its trigger must be.}
+\end{quote}
+
+\subsection{Wide Trigger = Small Effect}
+Example: “When acting with compassion…”
+
+\begin{itemize}
+    \item +1 Effect or small Fatigue mitigation.
+\end{itemize}
+
+\subsection{Narrow Trigger = Big Effect}
+Example: “Once per arc, when a sworn oath is broken…”
+
+\begin{itemize}
+    \item Clock shift, narrative power, or a restructuring of Position.
+\end{itemize}
+
+\section{Talent Synergy Rules}
+
+\subsection{Synergy Is Intentional, Not Accidental}
+
+Every Talents chapter includes synergy paths,
+but synergy is governed by three principles:
+
+\begin{enumerate}
+    \item \textbf{Horizontal Synergy}  
+    Talents across the same XP tier should form clusters.
+
+    \item \textbf{Vertical Synergy}  
+    A 2→4→6 XP sequence should feel like a natural evolution.
+
+    \item \textbf{Diagonal Synergy}  
+    Unexpected cross-archetype synergies should create unique builds.
+\end{enumerate}
+
+\subsection{Synergy Limits}
+
+To preserve balance:
+\begin{itemize}
+    \item No synergy chain should produce guaranteed success.  
+    \item No synergy should neuter an entire subsystem.  
+    \item No synergy should make Fatigue irrelevant.  
+\end{itemize}
+
+\section{Risk, Cost, and Tension}
+
+High-tier Talents require \textbf{risk design}.
+A Talent without a tension point is incomplete.
+
+\subsection{Tension Types}
+
+\begin{description}
+    \item[Mechanical Tension]  
+    Harm, Fatigue, limited uses, SB costs.
+
+    \item[Narrative Tension]  
+    Obligations, vows, divine prices, faction repercussions.
+
+    \item[Psychological Tension]  
+    Moral weight, social consequences, identity conflicts.
+\end{description}
+
+\section{Narrative Consequence Framework}
+
+A Talent must produce consequences that:
+\begin{itemize}
+    \item reinforce theme,
+    \item shape character identity,
+    \item and expand world meaning.
+\end{itemize}
+
+\subsection{Minor Talent Consequences}
+\begin{itemize}
+    \item Small complications.
+    \item Targeted GM moves.
+    \item Changes in NPC attitude.
+\end{itemize}
+
+\subsection{Major Talent Consequences}
+\begin{itemize}
+    \item Shift faction stability.
+    \item Advance or regress a campaign clock.
+    \item Introduce a new threat vector.
+\end{itemize}
+
+\subsection{Master Talent Consequences}
+\begin{itemize}
+    \item Reshape player–Patron dynamics.
+    \item Create new setting lore.
+    \item Trigger campaign transitions.
+\end{itemize}
+
+\section{Modes, Stances, and Alternatives}
+
+High-tier Talents must offer more than a flat bonus.
+They should provide:
+\begin{itemize}
+    \item a stance,
+    \item a mode,
+    \item a channel,
+    \item or a conditional toggle.
+\end{itemize}
+
+Modes express internal tension:
+\begin{itemize}
+    \item “Reckless / Guarded”
+    \item “Flow / Anchor”
+    \item “Open Channel / Closed Conduit”
+\end{itemize}
+
+This reinforces dynamic, cinematic decision-making.
+
+\section{Scaling Rules}
+
+Talents are not mathematical formulas; they scale by \textbf{fictional positioning}.
+
+Rules:
+\begin{itemize}
+    \item Scaling happens through added options, not larger numbers.
+    \item Consequences scale faster than benefits.
+    \item High-tier Talents scale via relevance, not mathematics.
+\end{itemize}
+
+\section{Design Templates}
+
+Below are internal templates for each XP tier.
+
+\subsection{2 XP Template}
+
+\textbf{Name}  
+\emph{Tags:} <2--3 tags>  
+\textbf{Effect:} <One simple, reliable benefit.>  
+\textbf{Trigger:} <Broad, but theme-consistent.>  
+\textbf{Notes:} <Optional.>
+
+\subsection{4 XP Template}
+
+\textbf{Name}  
+\emph{Tags:} <2--4 tags>  
+\textbf{Effect:} <Significant benefit; interacts with a subsystem.>  
+\textbf{Trigger:} <Conditional; moderately narrow.>  
+\textbf{Cost:} <Fatigue, SB, or narrative constraint.>  
+\textbf{Notes:} <Usage examples.>
+
+\subsection{6 XP Template}
+
+\textbf{Name}  
+\emph{Tags:} <2--4 tags>  
+\textbf{Identity Shift:} <How this Talent redefines the character.>  
+\textbf{Effect:} <Transformative ability; subsystem rewrite.>  
+\textbf{Price:} <The tension point.>  
+\textbf{Legacy:} <How it might affect the world.>  
+\textbf{Notes:} <Designer guidance.>
+
+\section{Anti-Patterns and Red Flags}
+
+A Talent must be rewritten if:
+
+\begin{itemize}
+    \item It replaces another character’s niche entirely.
+    \item It removes all consequences from a subsystem.
+    \item It introduces unnecessary numerical complexity.
+    \item It encourages spotlight hogging.
+    \item It produces a “must-pick” dominance loop.
+    \item It relies on constant GM intervention to function.
+\end{itemize}
+
+\section{Conclusion}
+
+High-tier Talent design is an art:
+balancing narrative identity, meaningful mechanics,
+and player-driven agency without overshadowing the table’s collective experience.
+
+By following the principles in this chapter,
+designers can create Talents that:
+\begin{itemize}
+    \item feel powerful but not overwhelming,
+    \item interact gracefully with subsystems,
+    \item inspire character arcs,
+    \item and elevate campaigns into mythic, unforgettable stories.
+\end{itemize}
+
+Chapters~18 and onward expand these rules into hybrid archetypes, NPC expression,
+world-scope Talents, and modular structures for future expansions.
+
+%===========================================================
+
+%===========================================================
+\appendix
+\chapter{Talent Tag Index}
+%===========================================================
+
+\section{Purpose}
+
+This appendix collects every Talent Tag introduced in Chapter~16
+and organizes them for fast reference during play and character creation.
+Use this index to:
+\begin{itemize}
+    \item locate Talents by mechanical niche,
+    \item identify synergy clusters,
+    \item balance party composition,
+    \item and support fast-build character templates.
+\end{itemize}
+
+Tags are grouped by category and include page references to Talent listings.
+
+\section{Action Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+\textbf{Tag} & \textbf{Description} & \textbf{Talents (Page)} \\ \hline
+Strike & Enhances direct attacks. & ... \\ \hline
+Move & Movement, traversal, repositioning. & ... \\ \hline
+Observe & Perception, intuition, investigation. & ... \\ \hline
+Influence & Social leverage, persuasion, intimidation. & ... \\ \hline
+Focus & Preparation, channeling, long actions. & ... \\ \hline
+Craft & Building, engineering, enchanting. & ... \\ \hline
+\end{longtable}
+
+\section{Attribute Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+MIG & Might scaling. & ... \\ \hline
+AGI & Agility scaling. & ... \\ \hline
+WIT & Tactical/mental scaling. & ... \\ \hline
+SPT & Spiritual/magical scaling. & ... \\ \hline
+\end{longtable}
+
+\section{Role Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+Defender & Protection, anchoring zones, damage mitigation. & ... \\ \hline
+Striker & Focused offense, precision harm. & ... \\ \hline
+Controller & Manipulates battlefield or emotions. & ... \\ \hline
+Support & Enhances allies' actions or outcomes. & ... \\ \hline
+Utility & Tools for exploration, infiltration, or problem-solving. & ... \\ \hline
+\end{longtable}
+
+\section{Resource Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+SB & Generates or spends Story Beats. & ... \\ \hline
+FAT & Interacts with Fatigue/Harm. & ... \\ \hline
+Clock & Alters clocks or time pressure. & ... \\ \hline
+Momentum & Affects Campaign Momentum systems. & ... \\ \hline
+Favor & Divine, factional, or mystical influence. & ... \\ \hline
+\end{longtable}
+
+\section{Synergy Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+Combo & Chains multiple actions or results. & ... \\ \hline
+Stance & Mode-switching abilities. & ... \\ \hline
+Gambit & High creativity, high reward options. & ... \\ \hline
+Aegis & Defense or protection oriented. & ... \\ \hline
+Flow & Movement-driven or seamless action. & ... \\ \hline
+Channel & Magical/psionic cycle Talents. & ... \\ \hline
+\end{longtable}
+
+\section{World Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+Faction & Alters faction relationships or influence. & ... \\ \hline
+Patron & Connects to divine or supernatural forces. & ... \\ \hline
+Region & Terrain, weather, local cultural effects. & ... \\ \hline
+Legacy & Long-term or campaign-wide impact. & ... \\ \hline
+\end{longtable}
+
+\section{Risk Tags}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+Overload & Causes harm or instability on failure. & ... \\ \hline
+Reckless & Boosts Effect but exposes risk. & ... \\ \hline
+Toll & Requires sacrifice beyond resources. & ... \\ \hline
+\end{longtable}
+
+\section{Tag Density Cheat Sheet}
+
+\begin{description}
+    \item[2–3 Tags] Focused/theme builds.
+    \item[4–6 Tags] Balanced builds.
+    \item[7+ Tags] Hybrid or experimental builds.
+\end{description}
+
+\section{GM Guidance: Using Tags in Encounter Prep}
+
+\begin{itemize}
+    \item Identify player strengths (high-density tags) to design meaningful challenges.
+    \item Detect party weaknesses (missing tags) to vary encounter types.
+    \item Track Role Tags to distribute spotlight scenes fairly.
+    \item Use World Tags to create thematic continuity between arcs.
+\end{itemize}
+
+\section{Conclusion}
+
+This index consolidates the Talent Tag system into an easy reference
+that supports both quick character building and advanced campaign prep.
+Use it in conjunction with Appendices~B--F for a complete Talent reference suite.
+
+%===========================================================
+
+%===========================================================
+\chapter{GM Talent Load Tools}
+%===========================================================
+
+\section{Purpose}
+
+This appendix provides Game Masters with practical tools for managing the cognitive complexity introduced by Talents during play.  
+It focuses on:
+\begin{itemize}
+    \item spotlight distribution,
+    \item synergy density monitoring,
+    \item encounter-load prediction,
+    \item narrative integration,
+    \item and real-time scene management.
+\end{itemize}
+
+These tools ensure that high-Talent characters remain exciting without overwhelming pacing, balance, or emotional tone.
+
+%===========================================================
+\section{Talent Load Basics}
+
+\subsection{The Four Load Indicators}
+
+GM Talent Load is primarily determined by:
+\begin{enumerate}
+    \item \textbf{Option Load} — How many different mechanical choices a Talent introduces.
+    \item \textbf{Synergy Load} — How many Talents activate or reinforce one another.
+    \item \textbf{Scene Load} — How much a Talent alters the fiction of the scene.
+    \item \textbf{GM Response Load} — How much interpretive or adjudicative work the GM must perform.
+\end{enumerate}
+
+A Talent is “heavy” if it raises two or more of these indicators at once.
+
+\subsection{Load Thresholds}
+
+\begin{description}[leftmargin=1.8em]
+    \item[Low Load]  
+    Easy to adjudicate; applies once per scene or via a simple trigger.
+
+    \item[Moderate Load]  
+    Requires occasional interpretation or positional judgment.
+
+    \item[High Load]  
+    Reframes subsystem interactions, repeatedly progresses clocks, or enables conditional stance/mode switching.
+
+    \item[Severe Load]  
+    Alters campaign structure, faction relationships, or world systems.
+\end{description}
+
+\textbf{GM Note:} Severe Load Talents are not errors—they are arc-driving tools.
+
+%===========================================================
+\section{Spotlight Distribution Toolkit}
+
+Spotlight is a pacing resource.  
+Talents naturally push characters toward spotlight scenes, but the GM must shape distribution.
+
+\subsection{The Spotlight Cycle}
+
+Use the following cycle for multi-session arcs:
+
+\begin{center}
+\begin{tabular}{|c|p{9cm}|}
+\hline
+\textbf{Phase} & \textbf{GM Intent} \\ \hline
+1. Introduction & Purposeful exposure of a character’s Talent identity. \\ \hline
+2. Escalation & Challenges that stress-test the Talent’s strengths. \\ \hline
+3. Complication & Consequences or required sacrifices emerge. \\ \hline
+4. Resolution & Character-driven payoff; spotlight moment. \\ \hline
+5. Redistribution & Rotate focus to next character. \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Spotlight Signals}
+
+Insert spotlight scenes when you observe:
+
+\begin{itemize}
+    \item A Talent hasn’t triggered meaningfully for 2+ sessions.
+    \item A synergy chain is clearly built but unused.
+    \item A character is drifting into reactive play.
+    \item A player has made a high-cost choice recently.
+\end{itemize}
+
+\subsection{Spotlight Safety}
+
+Avoid:
+\begin{itemize}
+    \item spotlight chaining (same character featured twice in a row),
+    \item spotlight denial (others never receive a payoff),
+    \item spotlight collapse (scene shifts away before payoff occurs).
+\end{itemize}
+
+%===========================================================
+\section{Synergy Density Tools}
+
+Chapter~15 introduced Synergy Density; this appendix operationalizes it.
+
+\subsection{Identifying High Synergy Density}
+
+A character’s synergy load becomes “high” when:
+\begin{itemize}
+    \item 3+ Talents interact within the same round or scene,
+    \item the player describes moves referencing multiple tags,
+    \item the Talent list includes more than 6 unique synergy tags,
+    \item most of the character’s abilities are mode- or stance-based,
+    \item they frequently manipulate SB, clocks, Fatigue, or Position concurrently.
+\end{itemize}
+
+\subsection{GM Tools for High-Density Characters}
+
+\begin{itemize}
+    \item Introduce \textbf{constraint scenes} (narrow spaces, social courts, storms).
+    \item Use \textbf{synergy friction}:  
+    Scenes where two Talents conflict thematically.
+    \item Provide \textbf{multi-layered obstacles} requiring several PCs’ strengths.
+    \item Deploy NPC \textbf{counter-synergy Talents} sparingly.
+    \item Ensure that no synergy dominates entire arcs.
+\end{itemize}
+
+\subsection{Synergy Density Heat Map}
+
+GMs can evaluate each character’s density:
+
+\begin{center}
+\begin{tabular}{|c|p{9cm}|}
+\hline
+\textbf{Density Level} & \textbf{GM Strategy} \\ \hline
+Low & Provide opportunities to reinforce identity. \\ \hline
+Medium & Balance with environmental twists. \\ \hline
+High & Add tension, constraint, or narrative cost. \\ \hline
+Extreme & Introduce arc-level consequences or legacy shifts. \\ \hline
+\end{tabular}
+\end{center}
+
+%===========================================================
+\section{Encounter Load Tools}
+
+\subsection{Encounter Signal Categories}
+
+Every encounter should address one of the following load categories:
+
+\begin{description}
+    \item[Skill Load]  
+    High-perception, infiltration, or deduction challenges.
+
+    \item[Combat Load]  
+    Adversaries/numbers that stretch Strike/Flow/Aegis tags.
+
+    \item[Social Load]  
+    Scenes driven by Influence, Support, or Controller roles.
+
+    \item[Environmental Load]  
+    Hazards, storms, rituals, terrain, magical cycles.
+
+    \item[Narrative Load]  
+    Emotional stakes, obligations, moral dilemmas.
+\end{description}
+
+\subsection{Encounter Load Balancing}
+
+Over the course of an arc, ensure:
+\begin{itemize}
+    \item 2–3 high-combat scenes,
+    \item 2–3 high-social scenes,
+    \item 2 environmental or exploration scenes,
+    \item 1 narrative or moral crisis scene,
+    \item 1 downtime/personal scene.
+\end{itemize}
+
+Talents should shine differently across each encounter type.
+
+\section{The Signal–Response Loop}
+
+Every Talent produces a \textbf{signal}—a narrative or mechanical ripple.  
+The GM must produce a \textbf{response} that:
+\begin{itemize}
+    \item escalates tension,
+    \item expands possibilities,
+    \item or reveals consequences.
+\end{itemize}
+
+\subsection{Signal Categories}
+
+\begin{description}
+    \item[Positive Signal]  
+    PCs succeed dramatically or express identity powerfully.  
+    (Response: raise stakes or present a new challenge.)
+
+    \item[Negative Signal]  
+    PCs fail or incur consequences.  
+    (Response: open new narrative directions.)
+
+    \item[Disruptive Signal]  
+    PCs fundamentally reframe the scene.  
+    Example: mode shift, teleport, oath invocation.  
+    (Response: shift tone, environment, or NPC priorities.)
+
+    \item[Transformative Signal]  
+    Talents that alter factions, regions, or fate.  
+    (Response: begin a new arc or escalate the campaign.)
+\end{description}
+
+\section{Practical GM Tools}
+
+\subsection{Talent Triage}
+
+When overwhelmed, use the following triage system:
+
+\begin{enumerate}
+    \item \textbf{Identify the Trigger} — What Talent just fired?
+    \item \textbf{Translate to Fiction} — What does it look/feel like?
+    \item \textbf{Choose a Response Category} — Positive, negative, disruptive, transformative.
+    \item \textbf{Apply One Consequence} — Not two, not three. One.
+\end{enumerate}
+
+\subsection{The One-Scene Rule}
+
+No scene should activate:
+\begin{itemize}
+    \item more than 4 Talents from one PC,
+    \item more than 2 conflicting subsystems at once,
+    \item more than 1 mode/stance shift,
+    \item or more than 1 clock-resetting effect.
+\end{itemize}
+
+If this happens, break the scene into smaller beats.
+
+\subsection{The Ladder of Impact}
+
+Use this escalation ladder to set difficulty:
+
+\begin{enumerate}
+    \item Minor mechanical friction.
+    \item Environmental complication.
+    \item Social pressure or moral cost.
+    \item Clock advancement.
+    \item Harm/Fatigue escalation.
+    \item Faction or Patron reaction.
+    \item Narrative/arc consequence.
+    \item Legacy impact.
+\end{enumerate}
+
+Climb the ladder gradually.
+
+\section{GM Cheat Sheets}
+
+\subsection{When to Introduce Constraint Scenes}
+
+\begin{itemize}
+    \item A character’s synergy chain resolves the same type of scene consistently.
+    \item A Talent’s risk tag has never triggered.
+    \item The party’s build overly favors one load category.
+\end{itemize}
+
+\subsection{When to Introduce Expansion Scenes}
+
+\begin{itemize}
+    \item A character’s identity arc needs payoff.
+    \item Players choose talents indicating new directions.
+    \item The narrative pressure is too narrow or repetitive.
+\end{itemize}
+
+\section{Low-Prep GM Tools}
+
+\subsection{The Five-Sentence Encounter Prep}
+
+\begin{enumerate}
+    \item What is the emotional tone?  
+    \item What is the primary load category?  
+    \item Which PC Talent should shine here?  
+    \item What is the key complication?  
+    \item What is the arc consequence if they fail?
+\end{enumerate}
+
+\subsection{One-Roll Threat Calibration}
+
+When uncertain:
+\begin{itemize}
+    \item Roll 1d6 to set Danger (1–2 Low, 3–4 Medium, 5–6 High).
+    \item Roll 1d4 to choose Load (1 Skill, 2 Combat, 3 Social, 4 Environmental).
+    \item Pick a Talent tag opposite to the party’s strengths.
+\end{itemize}
+
+\section{Conclusion}
+
+This appendix gives Game Masters actionable tools to manage Talent complexity
+without losing narrative flow or emotional tone.
+Talents are engines of agency and drama—proper load management ensures they stay exciting, manageable, and deeply cinematic.
+
+Use these tools alongside:
+\begin{itemize}
+    \item Chapter~15 (Advanced Talent Integration),
+    \item Chapter~16 (Tags),
+    \item Chapter~18 (NPC Talents),
+\end{itemize}
+to maintain coherence, momentum, and balance across long-form campaigns.
+
+%===========================================================
 
 \end{document}
