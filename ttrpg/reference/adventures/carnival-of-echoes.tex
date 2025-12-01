@@ -1,53 +1,39 @@
-```latex
-\documentclass[11pt,twoside]{article}
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{geometry}
-\usepackage{titlesec}
+\usepackage{lmodern}
+\usepackage{sectsty}
 \usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{multicol}
-\usepackage{fancyhdr}
 
-\geometry{
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=25mm,
-    bottom=25mm
-}
-
+\sectionfont{\large\bfseries}
+\subsectionfont{\bfseries}
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
+    linkcolor=black,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={The Carnival of Echoes},
-    pdfauthor={Fate's Edge Adventure}
 }
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{The Carnival of Echoes}
-\fancyhead[RE,LO]{A Fate's Edge Adventure}
-\fancyfoot[C]{\thepage}
+\rhead{Fate's Edge Adventure}
+\lhead{The Carnival of Echoes}
+\rfoot{\thepage}
 
-\titleformat{\section}
-{\Large\bfseries}
-{\thesection}
-{1em}
-{}
+\newenvironment{mechanics}{\begin{description}[leftmargin=*,style=standard]}{\end{description}}
+\newenvironment{npc}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{location}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{encounter}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
 
-\titleformat{\subsection}
-{\bfseries}
-{\thesubsection}
-{1em}
-{}
-
-\setlist{itemsep=0.5em}
-
-\title{\textbf{The Carnival of Echoes}\\A Fate's Edge Adventure for Tiers I--II}
+\title{The Carnival of Echoes\\A Fate's Edge Adventure for Tiers I--II}
 \author{}
 \date{}
 
@@ -55,247 +41,554 @@
 
 \maketitle
 
-\begin{center}
-\textbf{A Stepwise Adventure Design}
-\end{center}
+\section*{Adventure Overview}
 
-\section*{STEP 1 --- Define the Core Premise}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\textbf{Title:} & The Carnival of Echoes \\
+\textbf{Level:} & Tiers I--II \\
+\textbf{Length:} & 3-4 Sessions \\
+\textbf{Theme:} & Psychological horror, identity, memory, the price of desire \\
+\end{tabularx}
 
-\subsection*{1. What is happening?}
+\section{Core Premise}
+
+\subsection{What is happening?}
 A traveling carnival that grants wishes is stealing memories and identities from visitors, leaving hollow shells behind.
 
-\subsection*{2. Why now?}
-The carnival arrives in town tonight for a three-day festival, and its malevolent attraction grows stronger with each victim---it plans to consume the entire town's collective memories by the final night.
+\subsection{Why now?}
+The carnival arrives in town tonight for a three-day festival, and its malevolent attraction grows stronger with each victim—it plans to consume the entire town's collective memories by the final night.
 
-\subsection*{3. Why the PCs?}
+\subsection{Why the PCs?}
 Each PC received a mysterious invitation to the carnival, and one of them has been having prophetic dreams about it. Local authorities are mysteriously absent or unresponsive.
 
-\section*{STEP 2 --- Establish Setting \& Tone}
+\section{Setting \& Tone}
 
-\subsection*{4. Where does the adventure occur?}
-The riverside town of Millhaven during its annual Harvest Festival:
+\subsection{Location: Millhaven}
+A riverside town during its annual Harvest Festival:
 \begin{itemize}
-    \item \textbf{Smell:} Cinnamon and roasting chestnuts mixed with something metallic
-    \item \textbf{Sound:} Calliope music that sounds slightly off-key, distant carnival barker's voice
-    \item \textbf{Architecture:} Victorian-era buildings with paper lanterns, the carnival's black-and-gold tents visible on the outskirts
-    \item \textbf{Culture:} Close-knit farming community with superstitions about ``traveling folk''
-    \item \textbf{Sight:} Strange shadows that don't match their owners in the evening light
+\item \textbf{Smell:} Cinnamon and roasting chestnuts mixed with something metallic
+\item \textbf{Sound:} Calliope music that sounds slightly off-key, distant carnival barker's voice
+\item \textbf{Architecture:} Victorian-era buildings with paper lanterns, black-and-gold tents on outskirts
+\item \textbf{Culture:} Close-knit farming community with superstitions about "traveling folk"
+\item \textbf{Sight:} Strange shadows that don't match their owners in evening light
 \end{itemize}
 
-\subsection*{5. What is the tone/theme?}
+\subsection{Tone and Theme}
 Psychological horror with elements of wonder and melancholy. Themes of identity, memory, and the price of desire.
 
-\subsection*{6. What environmental pressures exist?}
+\subsection{Environmental Pressures}
 \begin{itemize}
-    \item The carnival only operates at night
-    \item Town curfew enforced by mysterious carnival ``security''
-    \item Increasing difficulty distinguishing real memories from false ones
-    \item Growing paranoia as townspeople become ``hollowed''
+\item The carnival only operates at night
+\item Town curfew enforced by mysterious carnival "security"
+\item Increasing difficulty distinguishing real memories from false ones
+\item Growing paranoia as townspeople become "hollowed"
 \end{itemize}
 
-\section*{STEP 3 --- Build Key NPCs}
+\section{Key NPCs}
 
-\subsection*{Quest-giver: Mayor Elena Vasquez}
-\begin{itemize}
-    \item \textbf{Goal:} Save her town and her missing daughter
-    \item \textbf{Fear:} Losing her remaining family and reputation
-    \item \textbf{Method:} Gathering evidence while maintaining public order
-    \item \textbf{Secret:} She made a wish 20 years ago that started this curse
-    \item \textbf{Connection:} Knows one PC's family or has information they need
-\end{itemize}
+\subsection{Mayor Elena Vasquez}
+\begin{npc}{Mayor Elena Vasquez}
+\item[Role:] Quest-giver, desperate mother
+\item[Goal:] Save her town and her missing daughter
+\item[Fear:] Losing her remaining family and reputation
+\item[Method:] Gathering evidence while maintaining public order
+\item[Secret:] Made a wish 20 years ago that started this curse
+\item[Connection:] Knows one PC's family or has information they need
+\item[Skills:] Command 3, Insight 2, Sway 3
+\item[Position:] Desperate (missing daughter), Controlled with player help
+\item[DV for Help:] 3 (mutual benefit), 4 (neutral), 5+ (suspicious)
+\end{npc}
 
-\subsection*{Local ally: ``Granny'' Moira Thornfield}
-\begin{itemize}
-    \item \textbf{Goal:} Protect the town's children and uncover the truth
-    \item \textbf{Fear:} Becoming like her ``hollowed'' neighbors
-    \item \textbf{Method:} Folk magic and local knowledge
-    \item \textbf{Secret:} She's 153 years old and has seen this carnival before
-    \item \textbf{Connection:} Offers sanctuary and information to the PCs
-\end{itemize}
+\subsection{Granny Moira Thornfield}
+\begin{npc}{Granny Moira Thornfield}
+\item[Role:] Local ally, keeper of old knowledge
+\item[Age:] 153 (appears 70s)
+\item[Goal:] Protect town's children and uncover truth
+\item[Fear:] Becoming like her hollowed neighbors
+\item[Method:] Folk magic and local knowledge
+\item[Secret:] Has seen this carnival before, centuries old
+\item[Connection:] Offers sanctuary and information to PCs
+\item[Skills:] Lore 4, Arcana 3, Insight 3
+\item[Position:] Dominant (ancient knowledge), Controlled under direct threat
+\item[DV for Information:] 4 (proper respect), 5 (neutral), 6+ (hostile)
+\end{npc}
 
-\subsection*{Rival group: The Hollowed Townsfolk}
-\begin{itemize}
-    \item \textbf{Goal:} Protect the carnival (they can't remember why they want to)
-    \item \textbf{Fear:} The return of their painful memories
-    \item \textbf{Method:} Subtle sabotage and misinformation
-    \item \textbf{Secret:} They're aware they're compromised but can't resist the carnival's pull
-    \item \textbf{Connection:} Former friends, family, or contacts of the PCs
-\end{itemize}
+\subsection{Hollowed Townsfolk}
+\begin{npc}{Hollowed Townsfolk}
+\item[Type:] Afflicted NPCs (Cap 2)
+\item[Tags:] [HOLLOW], [CONFUSED], [LOYAL]
+\item[Description:] Former townspeople with stolen memories
+\item[Behavior:] 
+  \begin{itemize}
+    \item Speak in fragmented sentences about "beautiful dreams"
+    \item Protect carnival without understanding why
+    \item Fear return of painful memories
+  \end{itemize}
+\item[Weaknesses:] Vulnerable to memory restoration, confused by contradiction
+\item[Tactics:] Subtle sabotage, misinformation, emotional manipulation
+\item[Position:] Controlled (normal), Desperate when threatened
+\end{npc}
 
-\subsection*{Villain: The Carnival Master (Mr. Dram)}
-\begin{itemize}
-    \item \textbf{Goal:} Collect enough memories to become a god of forgotten dreams
-    \item \textbf{Fear:} Being forgotten himself
-    \item \textbf{Method:} Manipulation through desire and fear
-    \item \textbf{Secret:} He's a construct made from the collective forgotten memories of previous victims
-    \item \textbf{Connection:} Knows each PC's deepest desires and fears
-\end{itemize}
+\subsection{Carnival Master (Mr. Dram)}
+\begin{npc}{Carnival Master (Mr. Dram)}
+\item[Type:] Ancient Outsider (Cap 5)
+\item[Tags:] [DREAM], [MEMORY], [ILLUSION], [FEED]
+\item[Description:] Construct of collective forgotten memories
+\item[Goal:] Collect 1000 souls' memories to ascend to godhood
+\item[Fear:] Being forgotten himself
+\item[Method:] Manipulation through desire and fear
+\item[Secret:] Made from previous victims' forgotten dreams
+\item[Connection:] Knows each PC's deepest desires and fears
+\item[Abilities:] 
+  \begin{itemize}
+    \item Memory manipulation and theft
+    \item Illusion creation based on desires
+    \item Feed on forgotten dreams
+    \item Partial existence outside normal reality
+  \end{itemize}
+\item[Position:] Dominant (carnival domain), Controlled when plan disrupted
+\item[DV for Confrontation:] 6 (direct), 5 (ritual), 4 (preparation)
+\end{npc}
 
-\subsection*{Lieutenants:}
-\begin{enumerate}
-    \item \textbf{The Fortune Teller (Madame Zara)} - Reads victims' desires to tailor the perfect wish trap
-    \item \textbf{The Strongman (Bull) Carson} - Enforces the carnival's will through intimidation and violence
-    \item \textbf{The Carousel Operator (Twins)} - Literally spins victims' memories away through hypnotic rides
-\end{enumerate}
+\section{Carnival Lieutenants}
 
-\section*{STEP 4 --- Define the Villain's Plan}
+\subsection{Madame Zara - The Fortune Teller}
+\begin{npc}{Madame Zara}
+\item[Role:] Desire reader and wish trap creator
+\item[Skills:] Insight 4, Sway 3, Arcana 2
+\item[Abilities:] Reads victims' desires, creates perfect wish traps
+\item[Position:] Controlled (carnival operations), Desperate when exposed
+\item[DV for Information:] 4 (proper approach), 5 (neutral), 6+ (hostile)
+\end{npc}
 
-\subsection*{7. What does the villain want?}
+\subsection{Bull Carson - The Strongman}
+\begin{npc}{Bull Carson}
+\item[Role:] Enforcer through intimidation and violence
+\item[Skills:] Skirmish 4, Command 2, Athletics 3
+\item[Abilities:] Physical intimidation, memory suppression through fear
+\item[Position:] Dominant (physical threat), Controlled under strategy
+\item[DV for Combat:] 5 (direct), 4 (tactical), 3 (tricked)
+\end{npc}
+
+\subsection{The Twins - Carousel Operators}
+\begin{npc}{The Twins}
+\item[Role:] Memory thieves through hypnotic rides
+\item[Skills:] Craft 3, Arcana 3, Subterfuge 2
+\item[Abilities:] Literally spin memories away, hypnotic influence
+\item[Position:] Controlled (carnival operations), Desperate when machinery threatened
+\item[DV for Sabotage:] 4 (technical), 5 (direct), 3 (misdirection)
+\end{npc}
+
+\section{Villain's Plan}
+
+\subsection{Ultimate Goal}
 To collect 1,000 souls' worth of memories to ascend to godhood, becoming the eternal keeper of forgotten dreams.
 
-\subsection*{8. Why can't they be stopped easily?}
+\subsection{Why Not Easily Stopped}
 The carnival exists partially outside normal reality and feeds on the desires that draw people to it. Destroying it requires breaking the collective belief in its magic.
 
-\subsection*{9. What are the phases of their plan?}
+\subsection{Plan Phases}
 
-\textbf{Setup (Night 1):} Carnival arrives, begins subtle memory collection through ``free'' wishes. Victims seem happier but lose small memories.
+\textbf{Setup (Night 1):} Carnival arrives, begins subtle memory collection through "free" wishes. Victims seem happier but lose small memories.
+\begin{itemize}
+\item Advance Hollowing Clock +1
+\item Gain 2-3 Memory Fragments
+\item Establish carnival presence in town
+\end{itemize}
 
-\textbf{Escalation (Night 2):} More aggressive collection, ``hollowed'' townspeople begin to act strangely. The carnival expands, offering more tempting wishes.
+\textbf{Escalation (Night 2):} More aggressive collection, "hollowed" townspeople begin to act strangely. The carnival expands, offering more tempting wishes.
+\begin{itemize}
+\item Advance Hollowing Clock +2
+\item Hollow 3-5 key townspeople
+\item Introduce Midpoint Twist (PC memory compromise)
+\end{itemize}
 
 \textbf{Crisis (Night 3):} Final ritual to consume all remaining memories in town. Hollowed townsfolk become actively hostile to interference.
-
-\section*{STEP 5 --- Map Out Player Choices}
-
-\subsection*{10. What are the first three meaningful choices?}
 \begin{itemize}
-    \item Investigate the carnival's arrival and strange effects
-    \item Confront a hollowed friend/family member for information
-    \item Accept a tempting wish from the carnival to gain an advantage
+\item Advance Hollowing Clock to Full
+\item Final confrontation with Carnival Master
+\item Resolution choice determines ending
 \end{itemize}
 
-\subsection*{11. What are the secondary choices?}
-\begin{itemize}
-    \item Rescue specific townspeople before they're fully hollowed
-    \item Choose which memories to sacrifice to gain carnival knowledge
-    \item Decide whether to destroy the carnival or try to reform it
-\end{itemize}
+\section{Player Choices}
 
-\subsection*{12. What consequences do choices cause?}
-\begin{itemize}
-    \item Accepting wishes makes PCs more vulnerable to memory manipulation
-    \item Rescuing townspeople gains allies but alerts the carnival
-    \item Destroying the carnival without understanding it may leave fragments that return
-\end{itemize}
-
-\section*{STEP 6 --- Design the Core Mystery}
-
-\subsection*{13. What is the central unknown?}
-How the carnival steals memories and what happens to them, plus the Carnival Master's true identity and weakness.
-
-\subsection*{14. What clues lead to answers?}
-\begin{itemize}
-    \item Hollowed townspeople speak in fragmented sentences about ``beautiful dreams''
-    \item Granny Moira's old journals mention a similar carnival from decades ago
-    \item The carnival's financial records (if accessed) show impossible payment methods
-\end{itemize}
-
-\subsection*{15. How do the players uncover the truth?}
-
-\textbf{Three Clue Rule - The Carnival's True Nature:}
+\subsection{First Three Meaningful Choices}
 \begin{enumerate}
-    \item \textbf{Investigation:} Research the carnival's past appearances reveals pattern of memory-theft
-    \item \textbf{Social:} A partially hollowed NPC reveals the carnival feeds on forgotten dreams
-    \item \textbf{Occult:} Magical investigation shows the carnival exists partially in the realm of dreams
+\item Investigate the carnival's arrival and strange effects (Investigation + Notice vs DV 3)
+\item Confront a hollowed friend/family member for information (Social challenge, DV 4)
+\item Accept a tempting wish from the carnival to gain an advantage (Command + Spirit vs DV 4)
 \end{enumerate}
 
-\section*{STEP 7 --- Build Encounter Variety}
-
-\subsection*{16. Tactical Combat Encounter}
-Battle with Bull Carson and hollowed townsfolk in the Strongman tent---fighting while resisting memory manipulation effects.
-
-\subsection*{17. Exploration/Traversal Scene}
-Navigating the ever-shifting carnival grounds where paths loop and familiar landmarks become threatening.
-
-\subsection*{18. Social negotiation or deception}
-Negotiating with Madame Zara for information while she tries to trick them into making wishes.
-
-\subsection*{19. Set-piece or unique challenge}
-Racing against time on the Carousel of Echoes---must escape before it ``spins away'' their memories permanently.
-
-\subsection*{20. Skill challenge or hazard}
-Disabling the carnival's dream-weaving machinery in the back areas while avoiding supernatural security measures.
-
-\section*{STEP 8 --- Clarify the Stakes}
-
-\subsection*{21. What happens if players succeed?}
-The carnival is destroyed or reformed, memories are restored, but the town is left with trauma and some permanent changes. PCs gain reputation as protectors.
-
-\subsection*{22. What happens if players fail?}
-The carnival consumes the town's memories, turning everyone into hollow shells. It moves on to the next location with increased power.
-
-\subsection*{23. What happens if players walk away?}
-The carnival succeeds in Millhaven and grows stronger, becoming a recurring threat in future adventures. The PCs' hometown connections are lost.
-
-\section*{STEP 9 --- Add a Midpoint Twist}
-
-\subsection*{24. What ``oh shit'' moment flips assumptions?}
-Halfway through Night 2, the PCs discover that one of their own has been making wishes at the carnival, and their memories are already compromised. They must decide whether to trust this PC or consider them compromised.
-
-\section*{STEP 10 --- Prepare Player Spotlights}
-
-\subsection*{25. Where is their personal moment?}
-
+\subsection{Secondary Choices}
 \begin{itemize}
-    \item \textbf{Investigator/Tracker PC:} Gets to use their skills to uncover the carnival's pattern of previous victims across different towns
-    \item \textbf{Magic User PC:} Faces a moral dilemma about using carnival magic to fight carnival magic
-    \item \textbf{Social/Charismatic PC:} Must convince a hollowed loved one to remember who they really are
-    \item \textbf{Combat Specialist PC:} Gets to fight the supernatural threat directly while protecting civilians
-    \item \textbf{Stealth/Skill PC:} Infiltrates the carnival's backstage areas to disable its memory-stealing machinery
+\item Rescue specific townspeople before they're fully hollowed (Extended challenge, DV 5)
+\item Choose which memories to sacrifice to gain carnival knowledge (Lore + Insight vs DV 4)
+\item Decide whether to destroy the carnival or try to reform it (Moral choice with consequences)
 \end{itemize}
 
-\section*{STEP 11 --- Final Confrontation + Dilemma}
-
-\subsection*{26. What is the final set-piece?}
-The Dream Consumption Ritual in the carnival's central tent---a swirling vortex of stolen memories where the Carnival Master grows more powerful as more townspeople are drawn in.
-
-\subsection*{27. What choice defines the finale?}
-To destroy the carnival completely (saving the town but losing the power it offered) or make one final wish to become the carnival's new masters (gaining great power but at an unknown cost to their humanity).
-
-\section*{STEP 12 --- Aftermath \& Ripple Effects}
-
-\subsection*{28. Who changes?}
+\subsection{Choice Consequences}
 \begin{itemize}
-    \item The PCs gain or lose memories based on their choices
-    \item Hollowed townspeople slowly recover (or don't, becoming NPCs)
-    \item Granny Moira reveals more of her true nature and age
-    \item Mayor Vasquez must deal with the political fallout
+\item Accepting wishes makes PCs more vulnerable to memory manipulation (+1 SB on memory-related rolls)
+\item Rescuing townspeople gains allies but alerts the carnival (Advance Hollowing Clock +1)
+\item Destroying without understanding may leave fragments (New adventure seed)
 \end{itemize}
 
-\subsection*{29. What alliances form or break?}
+\section{Core Mystery}
+
+\subsection{Central Unknown}
+How the carnival steals memories and what happens to them, plus the Carnival Master's true identity and weakness.
+
+\subsection{Investigation Clues}
+\textbf{Three Clue Rule - The Carnival's True Nature:}
+\begin{enumerate}
+\item \textbf{Investigation:} Research reveals pattern of memory-theft across different towns (Lore + Investigation vs DV 5)
+\item \textbf{Social:} Partially hollowed NPC reveals carnival feeds on forgotten dreams (Sway + Insight vs DV 4)
+\item \textbf{Occult:} Magical investigation shows partial existence in dream realm (Arcana vs DV 5)
+\end{enumerate}
+
+\section{Key Encounters}
+
+\subsection{Tactical Combat Encounter}
+\begin{encounter}{Battle with Bull Carson and Hollowed Townsfolk}
+\item[Location:] Strongman tent with memory manipulation effects
+\item[Challenge:] Fighting while resisting memory theft (Spirit vs DV 4 each round)
+\item[Complications:] 
+  \begin{itemize}
+    \item Allies among enemies (hollowed friends/family)
+    \item Environmental hazards (falling weights, crowd control)
+    \item Memory confusion effects (-1 die to recognition rolls)
+  \end{itemize}
+\item[Position:] Desperate (surrounded), may improve with strategy
+\item[DV:] 5 (combat), 4 (tactical approach)
+\end{encounter}
+
+\subsection{Exploration Scene}
+\begin{encounter}{Navigating Ever-Shifting Carnival Grounds}
+\item[Challenge:] Paths loop and landmarks become threatening
+\item[Skills:] Survival + Notice vs DV 4 to navigate successfully
+\item[Hazards:] 
+  \begin{itemize}
+    \item Spatial disorientation (lose 1 Move per failed check)
+    \item Hidden threats in familiar areas
+    \item Time distortion effects (actions take longer)
+  \end{itemize}
+\item[Rewards:] Shortcuts to key areas, hidden items, escape routes
+\end{encounter}
+
+\subsection{Social Negotiation}
+\begin{encounter}{Negotiating with Madame Zara}
+\item[Challenge:] Gain information while avoiding wish traps
+\item[Skills:] Sway + Insight vs DV 5
+\item[Dangers:] 
+  \begin{itemize}
+    \item Subtle wish temptation (mark 1 Wish Corruption)
+    \item Misinformation leading to traps
+    \item Emotional manipulation based on PC fears
+  \end{itemize}
+\item[Success Rewards:] Carnival operational knowledge, lieutenant weaknesses
+\end{encounter}
+
+\subsection{Set-Piece Challenge}
+\begin{encounter}{Carousel of Echoes Escape}
+\item[Challenge:] Race against time to escape memory theft
+\item[Mechanics:] Extended Athletics + Wits challenge, DV 5
+\item[Effects:] 
+  \begin{itemize}
+    \item Memory loss per failed check (lose 1 skill temporarily)
+    \item Physical strain (mark 1 Fatigue)
+    \item Time pressure (Hollowing Clock advances +1)
+  \end{itemize}
+\item[Complications:] Carousel speeds up, exits move, illusions confuse
+\end{encounter}
+
+\subsection{Skill Challenge}
+\begin{encounter}{Disabling Dream-Weaving Machinery}
+\item[Location:] Carnival back areas with supernatural security
+\item[Challenge:] Technical sabotage under pressure
+\item[Skills:] Tinker + Arcana vs DV 6
+\item[Security Measures:] 
+  \begin{itemize}
+    \item Supernatural guardians (outsider constructs)
+    \item Illusory defenses (false layouts, hidden dangers)
+    \item Time constraints (Hollowing Clock +1 per failed attempt)
+  \end{itemize}
+\item[Success Effects:] Weaken carnival, gain inside knowledge, rescue victims
+\end{encounter}
+
+\section{Key Mechanics}
+
+\subsection{Hollowing Clock [6]}
+\begin{mechanics}
+\item[Advance +1:] Carnival operates normally, minor memory theft
+\item[Advance +1:] Townspeople show first signs of hollowing
+\item[Advance +2:] Hollowed townsfolk become active threats
+\item[Advance +1:] PCs accept wishes or fail to stop memory theft
+\item[Advance +1:] Carnival Master grows stronger
+\item[When Full:] Town's collective memories consumed, carnival ascends
+\end{mechanics}
+
+\subsection{Memory Fragments Track}
+\begin{mechanics}
+\item[Collection:] PCs can collect stolen memories as assets
+\item[Benefits:] 
+  \begin{itemize}
+    \item Gain insights into carnival operations
+    \item Temporary skill boosts related to memory content
+    \item Leverage against hollowed townspeople
+  \end{itemize}
+\item[Costs:] 
+  \begin{itemize}
+    \item Emotional baggage (-1 die to related social rolls)
+    \item Identity confusion (difficulty distinguishing real memories)
+    \item Vulnerability to memory manipulation
+  \end{itemize}
+\item[Maximum:] 5 fragments per PC (reduce to 2 at scene end)
+\end{mechanics}
+
+\subsection{Wish Corruption}
+\begin{mechanics}
+\item[Gains:] Each wish grants power but creates weakness
+\item[Effects:] 
+  \begin{itemize}
+    \item +1 die to one skill for scene
+    \item Gain specific supernatural ability temporarily
+    \item Improved Position for related actions
+  \end{itemize}
+\item[Corruption:] 
+  \begin{itemize}
+    \item Corresponding vulnerability or moral compromise
+    \item Mark 1 segment on Corruption Clock
+    \item Increased susceptibility to carnival influence
+  \end{itemize}
+\item[Limit:] Maximum 3 wishes per PC per adventure
+\end{mechanics}
+
+\subsection{Dream Echoes}
+\begin{mechanics}
+\item[Manifestation:] PCs experience dreams of other victims' memories
+\item[Benefits:] 
+  \begin{itemize}
+    \item Gain insight into carnival's methods
+    \item Forewarning of dangers
+    \item Understanding of victims' motivations
+  \end{itemize}
+\item[Risks:] 
+  \begin{itemize}
+    \item Risk to own identity (confusion between real and borrowed memories)
+    \item Emotional trauma from victims' experiences
+    \item Vulnerability to carnival influence during dreams
+  \end{itemize}
+\item[Control:] Requires Spirit + Resolve vs DV 4 to maintain self during echoes
+\end{mechanics}
+
+\section{Stakes and Consequences}
+
+\subsection{Success Outcomes}
 \begin{itemize}
-    \item Strong bond with Granny Moira if she survives
-    \item Tension with townspeople who made wishes they now regret
-    \item Potential rivalry with other monster hunters who arrive too late
-    \item New understanding of how supernatural threats work
+\item Carnival destroyed or reformed
+\item Memories restored to willing victims
+\item Town left with trauma but intact
+\item PCs gain reputation as protectors
+\item Potential allies in Granny Moira and Mayor Vasquez
 \end{itemize}
 
-\subsection*{30. What new adventure seeds emerge?}
+\subsection{Failure Outcomes}
 \begin{itemize}
-    \item Other carnival fragments survived and are appearing elsewhere
-    \item Granny Moira's past with similar threats
-    \item The Carnival Master's true origins in the realm of forgotten dreams
-    \item PCs' own compromised memories may resurface later
+\item Carnival consumes town's memories
+\item Everyone becomes hollow shells
+\item Carnival moves on with increased power
+\item PCs lose hometown connections
+\item New recurring supernatural threat
 \end{itemize}
 
-\section*{🧩 Optional Modules}
+\subsection{Walk Away Outcomes}
+\begin{itemize}
+\item Carnival succeeds in Millhaven
+\item Grows stronger for future encounters
+\item PCs' hometown connections lost
+\item Moral weight of abandonment
+\item Adventure becomes ongoing campaign thread
+\end{itemize}
 
-\subsection*{Memory Fragments Track}
-PCs can collect pieces of stolen memories as assets, but each fragment comes with emotional baggage.
+\section{Midpoint Twist}
 
-\subsection*{Hollowing Clock}
-[6] segments tracking how close the town is to total memory consumption.
+\subsection{The Revelation}
+Halfway through Night 2, PCs discover that one of their own has been making wishes at the carnival, and their memories are already compromised.
 
-\subsection*{Wish Corruption}
-Each wish made at the carnival grants power but creates a corresponding weakness or moral compromise.
+\subsection{Immediate Consequences}
+\begin{itemize}
+\item Compromised PC gains Wish Corruption segment
+\item Other PCs must decide whether to trust this PC
+\item Carnival now has inside knowledge of party dynamics
+\item Hollowing Clock advances +1 due to betrayal
+\end{itemize}
 
-\subsection*{Dream Echoes}
-PCs begin experiencing dreams of other victims' memories, gaining insight but risking their own identity.
+\subsection{Resolution Options}
+\begin{itemize}
+\item Confront and potentially exclude compromised PC
+\item Work together to overcome the compromise
+\item Use compromise as tactical advantage against carnival
+\item Allow PC to make redemption choice
+\end{itemize}
 
-\vspace{2em}
+\section{Player Spotlights}
 
-\begin{center}
-\textbf{Total estimated play time: 3-4 sessions with room for expansion based on player choices and investigation depth.}
-\end{center}
+\subsection{Investigator/Tracker PC}
+\begin{itemize}
+\item Use skills to uncover carnival's pattern of previous victims
+\item Connect current events to historical records
+\item Identify key operational patterns and weaknesses
+\item Opportunity for extended investigation scenes
+\end{itemize}
+
+\subsection{Magic User PC}
+\begin{itemize}
+\item Face moral dilemma about using carnival magic against carnival
+\item Potential for corruption or power gain
+\item Unique insights into supernatural nature of threat
+\item Opportunity to directly combat Carnival Master
+\end{itemize}
+
+\subsection{Social/Charismatic PC}
+\begin{itemize}
+\item Convince hollowed loved ones to remember true selves
+\item Navigate complex emotional negotiations
+\item Potential to turn enemies into allies
+\item Handle key social encounters with lieutenants
+\end{itemize}
+
+\subsection{Combat Specialist PC}
+\begin{itemize}
+\item Direct confrontation with supernatural threats
+\item Protect civilians from hollowed townsfolk
+\item Opportunity for tactical combat encounters
+\item Physical challenges against Bull Carson
+\end{itemize}
+
+\subsection{Stealth/Skill PC}
+\begin{itemize}
+\item Infiltrate backstage areas undetected
+\item Disable memory-stealing machinery
+\item Gather intelligence without alerting enemies
+\item Handle technical challenges and traps
+\end{itemize}
+
+\section{Final Confrontation}
+
+\subsection{Set-Piece: Dream Consumption Ritual}
+\begin{itemize}
+\item Location: Central carnival tent with swirling vortex of stolen memories
+\item Effect: Carnival Master grows more powerful as townspeople drawn in
+\item Challenge: Multiple simultaneous threats (Master, hollowed townsfolk, environmental hazards)
+\item Time Pressure: Hollowing Clock fills during encounter
+\end{itemize}
+
+\subsection{Defining Choice}
+To destroy the carnival completely (saving town but losing power) or make one final wish to become carnival's new masters (gaining power but unknown cost to humanity).
+
+\subsection{Resolution Paths}
+\begin{itemize}
+\item \textbf{Destruction:} Complex ritual requiring sacrifice, memory restoration, breaking collective belief
+\item \textbf{Mastery:} Temptation requiring moral compromise, potential for future corruption
+\item \textbf{Reformation:} Transform carnival into force for good, ongoing responsibility
+\item \textbf{Escape:} Save some townspeople but leave threat unresolved
+\end{itemize}
+
+\section{Aftermath and Ripple Effects}
+
+\subsection{Character Changes}
+\begin{itemize}
+\item PCs gain or lose memories based on choices
+\item Hollowed townspeople slowly recover (or don't, becoming NPCs)
+\item Granny Moira reveals more of her true nature and age
+\item Mayor Vasquez deals with political fallout
+\end{itemize}
+
+\subsection{Alliance Shifts}
+\begin{itemize}
+\item Strong bond with Granny Moira if she survives
+\item Tension with townspeople who made regretted wishes
+\item Potential rivalry with other monster hunters arriving late
+\item New understanding of supernatural threats
+\end{itemize}
+
+\subsection{Adventure Seeds}
+\begin{itemize}
+\item Other carnival fragments survived elsewhere
+\item Granny Moira's past with similar threats
+\item Carnival Master's origins in realm of forgotten dreams
+\item PCs' compromised memories resurface later
+\item New carnival appears in different location
+\end{itemize}
+
+\section{Session Structure}
+
+\subsection{Session 1: The Carnival Arrives (Night 1)}
+\begin{itemize}
+\item PCs receive mysterious invitations
+\item Investigate carnival's arrival and initial effects
+\item Meet key NPCs (Mayor, Granny Moira)
+\item Experience first minor memory thefts
+\item Advance Hollowing Clock +1
+\end{itemize}
+
+\subsection{Session 2: Deeper Involvement (Night 2)}
+\begin{itemize}
+\item Investigate carnival operations more deeply
+\item Confront hollowed townspeople
+\item Introduce Midpoint Twist (compromised PC)
+\item Major combat or skill challenge encounter
+\item Advance Hollowing Clock +2
+\end{itemize}
+
+\subsection{Session 3: Crisis Point (Night 3)}
+\begin{itemize}
+\item Final preparations for carnival's climax
+\item Rescue remaining townspeople
+\item Confront lieutenants and disable key machinery
+\item Advance Hollowing Clock toward full
+\end{itemize}
+
+\subsection{Session 4: Final Confrontation}
+\begin{itemize}
+\item Dream Consumption Ritual in central tent
+\item Defining choice about carnival's fate
+\item Resolution of all major plot threads
+\item Determine long-term consequences
+\item Set up future adventure seeds
+\end{itemize}
+
+\section{GM Notes}
+
+\subsection{Atmosphere Guidance}
+\begin{itemize}
+\item Emphasize sensory details: off-key music, metallic smells, wrong shadows
+\item Create cognitive dissonance: beautiful carnival masking horror
+\item Use lighting effects: increasing darkness, flickering lanterns
+\item Make time feel distorted: nights that seem too long
+\end{itemize}
+
+\subsection{Memory Mechanics}
+\begin{itemize}
+\item Players may forget real details about their characters
+\item Distinguish between real and false memories becomes challenging
+\item Use confusion to create tension without frustrating players
+\item Provide clear mechanical indicators of memory compromise
+\end{itemize}
+
+\subsection{Horror Elements}
+\begin{itemize}
+\item Psychological horror over gore
+\item Loss of identity more frightening than death
+\item Familiar becoming threatening
+\item Moral ambiguity in choices
+\end{itemize}
+
+\subsection{Scaling for Tiers}
+\begin{itemize}
+\item \textbf{Tier I:} Reduce entity Caps, simplify ritual requirements, provide more NPC assistance
+\item \textbf{Tier II:} Standard challenges, full complexity, moderate supernatural threats
+\item \textbf{Tier III+:} Add political complications, increase entity power, complicate resolution
+\end{itemize}
 
 \end{document}
-```

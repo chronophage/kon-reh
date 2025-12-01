@@ -1,30 +1,40 @@
-\documentclass[12pt,letterpaper]{article}
-\usepackage[utf8]{inputenc}
+\documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{titlesec}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{sectsty}
 \usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{multicol}
 
-% Define colors
-\definecolor{silkpurple}{RGB}{128, 0, 128}
-\definecolor{silkgold}{RGB}{218, 165, 32}
-\definecolor{silkred}{RGB}{178, 34, 34}
+\sectionfont{\large\bfseries}
+\subsectionfont{\bfseries}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
-% Section formatting
-\titleformat{\section}
-{\color{silkpurple}\normalfont\Large\bfseries}
-{\color{silkpurple}\thesection}{1em}{}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge Adventure}
+\lhead{The Merchant War}
+\rfoot{\thepage}
 
-\titleformat{\subsection}
-{\color{silkgold}\normalfont\large\bfseries}
-{\color{silkgold}\thesubsection}{1em}{}
+\newenvironment{mechanics}{\begin{description}[leftmargin=*,style=standard]}{\end{description}}
+\newenvironment{npc}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{faction}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{location}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{resolution}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
 
-% Item spacing
-\setlist{itemsep=2pt}
-
-\title{\color{silkpurple} \textbf{The Merchant War}\\ \large An Adventure for Fate's Edge - Silkstrand}
+\title{The Merchant War\\An Adventure for Fate's Edge - Silkstrand}
 \author{}
 \date{}
 
@@ -34,11 +44,13 @@
 
 \section*{Adventure Overview}
 
-\textbf{Title:} The Merchant War\\
-\textbf{Region:} Silkstrand - City of Bridges \& Dyewater\\
-\textbf{Theme:} Economic warfare, social manipulation, urban intrigue\\
-\textbf{Level:} Seasoned (Tier II)\\
-\textbf{Length:} 3-4 Sessions
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\textbf{Title:} & The Merchant War \\
+\textbf{Region:} & Silkstrand - City of Bridges \& Dyewater \\
+\textbf{Theme:} & Economic warfare, social manipulation, urban intrigue \\
+\textbf{Level:} & Seasoned (Tier II) \\
+\textbf{Length:} & 3-4 Sessions \\
+\end{tabularx}
 
 \section{Premise}
 
@@ -46,191 +58,412 @@ Two powerful merchant houses in Silkstrand are engaged in an escalating economic
 
 \section{Hook}
 
-The adventure begins when the players encounter one of the following scenarios:
-
+The adventure begins when the players encounter one of the following scenarios (Investigation + Notice vs DV 3 to determine truth):
 \begin{itemize}
-  \item Their cargo is seized at the docks due to a "regulatory dispute" between the two merchant houses, requiring them to navigate the political maze to recover their goods.
-  \item A contact offers them a lucrative job that involves retrieving sensitive information from the rival merchant house, but the job goes wrong and they become targets.
-  \item They witness an assassination attempt on a prominent merchant, making them both witnesses and potential targets in the escalating conflict.
+\item \textbf{Cargo Seizure:} Their cargo is seized at the docks due to a "regulatory dispute" between the two merchant houses, requiring them to navigate the political maze to recover their goods. (Legal/Social challenge, Sway + Command vs DV 4)
+\item \textbf{Botched Job:} A contact offers them a lucrative job that involves retrieving sensitive information from the rival merchant house, but the job goes wrong and they become targets. (Infiltration/Combat encounter, DV 5)
+\item \textbf{Witness to Violence:} They witness an assassination attempt on a prominent merchant, making them both witnesses and potential targets in the escalating conflict. (Combat/Skill challenge, DV 4)
 \end{itemize}
 
 \section{Key Factions}
 
 \subsection{House Valdris}
-Led by Guildmistress Thalia Valdris, this traditional merchant house controls the dye trade and has strong connections with the old nobility. They favor established procedures and view the upstart Crimson Sails as disrespectful newcomers threatening the established order.
-
-\textbf{Strengths:} Established connections, dye monopoly, political influence\\
-\textbf{Methods:} Legal maneuvering, political pressure, traditional sabotage\\
-\textbf{Symbol:} Purple and silver
+\begin{faction}{House Valdris}
+\item[Leader:] Guildmistress Thalia Valdris
+\item[Description:] Traditional merchant house controlling dye trade
+\item[Strengths:] Established connections, dye monopoly, political influence
+\item[Weaknesses:] Resistant to change, declining popular support
+\item[Methods:] Legal maneuvering, political pressure, traditional sabotage
+\item[Symbol:] Purple and silver
+\item[Position:] Dominant (established authority), Desperate (losing ground)
+\item[DV for Alliance:] 4 (mutual benefit), 5 (neutral), 6+ (opposed)
+\end{faction}
 
 \subsection{Crimson Sails Trading Company}
-Led by Captain-Merchant Renn Kestral, this aggressive newcomer has disrupted traditional trade routes with innovative practices and ruthless efficiency. They view House Valdris as corrupt and stagnant, blocking progress for personal gain.
-
-\textbf{Strengths:} Naval power, innovative practices, popular with younger merchants\\
-\textbf{Methods:} Economic warfare, bribery, direct action\\
-\textbf{Symbol:} Crimson and gold
+\begin{faction}{Crimson Sails Trading Company}
+\item[Leader:] Captain-Merchant Renn Kestral
+\item[Description:] Aggressive newcomer disrupting traditional trade
+\item[Strengths:] Naval power, innovative practices, popular with younger merchants
+\item[Weaknesses:] Limited political connections, viewed as upstarts
+\item[Methods:] Economic warfare, bribery, direct action
+\item[Symbol:] Crimson and gold
+\item[Position:] Dominant (popular momentum), Controlled under legal pressure
+\item[DV for Alliance:] 3 (shared goals), 4 (neutral), 5+ (opposed)
+\end{faction}
 
 \section{Key NPCs}
 
 \subsection{Guildmistress Thalia Valdris}
-A calculating woman in her fifties who has built House Valdris into a Silkstrand institution. She believes in tradition and proper procedure, but her methods have become increasingly desperate as Crimson Sails gains ground. She offers the players legitimate contracts with the promise of long-term stability.
+\begin{npc}{Guildmistress Thalia Valdris}
+\item[Role:] Leader of House Valdris
+\item[Age:] 54
+\item[Skills:] Command 4, Sway 3, Lore 3
+\item[Knowledge:] Traditional trade practices, political connections, legal precedents
+\item[Motivation:] Preserve established order and family legacy
+\item[Complication:] Becoming increasingly desperate as Crimson Sails gains ground
+\item[Position:] Controlled (established authority), Desperate (under pressure)
+\item[DV for Negotiation:] 4 (mutual benefit), 5 (neutral), 6+ (opposed)
+\end{npc}
 
 \subsection{Captain-Merchant Renn Kestral}
-A charismatic former corsair who turned legitimate trader. In his forties, he's dynamic and innovative, willing to take risks that traditional merchants wouldn't consider. He offers the players exciting opportunities with high rewards but significant danger.
+\begin{npc}{Captain-Merchant Renn Kestral}
+\item[Role:] Leader of Crimson Sails Trading Company
+\item[Age:] 42
+\item[Skills:] Command 3, Sway 4, Skirmish 2
+\item[Knowledge:] Naval operations, innovative trade practices, popular sentiment
+\item[Motivation:] Disrupt traditional corruption and create new opportunities
+\item[Complication:] Former corsair background creates legal vulnerabilities
+\item[Position:] Dominant (popular support), Controlled under political pressure
+\item[DV for Partnership:] 3 (shared goals), 4 (neutral), 5+ (opposed)
+\end{npc}
 
 \subsection{Matron Esme Blackwater}
-The nominal ruler of Silkstrand who maintains order while the merchant houses fight their war. She's growing increasingly concerned about the impact on the city's stability and may approach the players to help end the conflict.
+\begin{npc}{Matron Esme Blackwater}
+\item[Role:] Nominal ruler of Silkstrand
+\item[Age:] 67
+\item[Skills:] Command 4, Insight 3, Sway 3
+\item[Knowledge:] City governance, faction dynamics, long-term consequences
+\item[Motivation:] Maintain city stability and prosperity
+\item[Complication:] Limited direct power, must work through factions
+\item[Position:] Dominant (legitimate authority), Controlled (dependent on factions)
+\item[DV for Audience:] 4 (legitimate request), 5 (neutral), 6+ (opposition)
+\end{npc}
 
 \subsection{The Broker}
-A mysterious figure who facilitates transactions between the two houses while secretly fueling the conflict for profit. The Broker knows secrets about both factions and can provide valuable information to the players - for a price.
+\begin{npc}{The Broker}
+\item[Role:] Secret manipulator fueling conflict
+\item[Skills:] Subterfuge 4, Sway 4, Insight 3
+\item[Knowledge:] Secrets of both factions, conflict manipulation methods
+\item[Motivation:] Profit from ongoing conflict through facilitation
+\item[Complication:] Maintains cover while manipulating both sides
+\item[Position:] Controlled (operating in shadows), Desperate if exposed
+\item[DV for Information:] 5 (secrecy), 4 (proper approach), 3 (trusted ally)
+\end{npc}
 
 \section{Key Locations}
 
 \subsection{Three-Queens Bridge}
-The central marketplace where the two factions compete for customers. The bridge has become a battleground with each house trying to outmaneuver the other through pricing, quality, and customer service. Duels are common here when business disputes escalate.
+\begin{location}{Three-Queens Bridge}
+\item[Description:] Central marketplace and faction battleground
+\item[Features:] Multiple levels, vendor stalls, observation points
+\item[Conflict Zone:] Business disputes escalate to violence
+\item[Challenges:] 
+  \begin{itemize}
+    \item Navigating faction tensions (Social challenge, DV 4)
+    \item Participating in Bridge Duel Protocol (Combat/Skill, varies)
+    \item Gathering intelligence from vendors (Sway + Insight vs DV 3)
+  \end{itemize}
+\item[Position:] Controlled (normal), Desperate (during faction clashes)
+\end{location}
 
 \subsection{The Dye Works}
-House Valdris's primary facility where they produce their famous silk dyes. The works are heavily guarded and contain valuable trade secrets. Recent sabotage attempts have made security even tighter.
+\begin{location}{The Dye Works}
+\item[Description:] House Valdris's primary dye production facility
+\item[Features:] Complex chemical processes, valuable trade secrets, heavy security
+\item[Security Level:] High - guarded facility with restricted access
+\item[Challenges:] 
+  \begin{itemize}
+    \item Infiltrating secured areas (Stealth + Tinker vs DV 5)
+    \item Sabotaging production processes (Tinker + Subterfuge vs DV 6)
+    \item Gathering trade secrets (Investigation vs DV 5)
+  \end{itemize}
+\item[Protection Measures:] Patrols, guard dogs, alarm systems
+\end{location}
 
 \subsection{The Crimson Docks}
-Crimson Sails' naval base where their fast ships are maintained. The docks are a hub of activity and a potential target for House Valdris operations. The area is heavily patrolled and has its own code of conduct.
+\begin{location}{The Crimson Docks}
+\item[Description:] Crimson Sails' naval base and ship maintenance hub
+\item[Features:] Fast ships, naval equipment, maritime activity
+\item[Security Level:] Medium - patrolled area with naval protocols
+\item[Challenges:] 
+  \begin{itemize}
+    \item Boarding ships undetected (Stealth + Survival vs DV 4)
+    \item Interfering with ship operations (Tinker + Subterfuge vs DV 5)
+    \item Gathering naval intelligence (Sway + Notice vs DV 3)
+  \end{itemize}
+\item[Naval Code:] Specific conduct rules for visitors and workers
+\end{location}
 
 \subsection{The Archivolt}
-The bureaucratic heart of Silkstrand where contracts are recorded and disputes are settled. Both merchant houses maintain offices here and employ advocates to argue their cases. The building is a maze of legal precedents and bureaucratic procedures.
+\begin{location}{The Archivolt}
+\item[Description:] Bureaucratic heart where contracts and disputes are settled
+\item[Features:] Legal archives, advocate offices, bureaucratic procedures
+\item[Complexity:] Maze of legal precedents and procedures
+\item[Challenges:] 
+  \begin{itemize}
+    \item Navigating legal bureaucracy (Lore + Sway vs DV 5)
+    \item Winning legal cases (Command + Lore vs DV 5)
+    \item Researching faction histories (Investigation vs DV 4)
+  \end{itemize}
+\item[Access Requirements:] Proper documentation or influential connections
+\end{location}
 
 \subsection{The Salt Gate Quay}
-The main import/export facility where goods enter and leave Silkstrand. Control of the quay means control of trade flows, making it a key strategic location. Recent "accidents" have disrupted operations and increased costs for both houses.
+\begin{location}{The Salt Gate Quay}
+\item[Description:] Main import/export facility controlling trade flows
+\item[Features:] Cargo handling, customs operations, strategic importance
+\item[Strategic Value:] Control means control of trade routes
+\item[Challenges:] 
+  \begin{itemize}
+    \item Influencing customs operations (Sway + Command vs DV 4)
+    \item Sabotaging cargo operations (Tinker + Subterfuge vs DV 5)
+    \item Coordinating with dock workers (Social challenge, DV 3)
+  \end{itemize}
+\item[Recent Issues:] "Accidents" disrupting normal operations
+\end{location}
 
 \section{Plot Structure}
 
 \subsection{Session 1: Entanglement}
-The players become involved in the merchant war through their hook. They should:
+
+\textbf{Opening Scene:} Players encounter one of the hook scenarios. Establish the immediate effects of merchant warfare.
+
+\textbf{Key Objectives:}
 \begin{itemize}
-  \item Experience the effects of the economic warfare firsthand
-  \item Meet representatives from both factions
-  \item Learn about the conflict's origins and current state
-  \item Make initial choices about which side to support (if any)
+\item Experience direct effects of economic warfare
+\item Meet representatives from both factions
+\item Learn conflict's origins and current state
+\item Make initial choices about faction support
 \end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Regulatory Dispute:} Navigate legal maze to recover seized cargo. (Sway + Lore vs DV 4, Controlled/Standard)
+\item \textbf{Faction Recruitment:} Both houses attempt to recruit players. (Social encounter, DV 3-5 depending on approach)
+\item \textbf{Marketplace Tension:} Experience faction conflict at Three-Queens Bridge. (Social/Combat encounter, DV 4)
+\end{itemize}
+
+\textbf{Session End:} Players committed to one side or maintaining neutrality. Advance Merchant War Clock +1.
 
 \subsection{Session 2: Deepening Involvement}
-The players take on more significant roles in the conflict. They should:
+
+\textbf{Opening Scene:} Players take on more significant faction roles. Conflict escalates visibly.
+
+\textbf{Key Objectives:}
 \begin{itemize}
-  \item Complete missions for their chosen faction (or both)
-  \item Experience the escalating consequences of the war
-  \item Discover secrets about both houses
-  \item Face moral dilemmas about their involvement
+\item Complete missions for chosen faction (or both)
+\item Experience escalating consequences of war
+\item Discover secrets about both houses
+\item Face moral dilemmas about involvement
 \end{itemize}
 
-\subsection{Session 3: The Breaking Point}
-The conflict reaches a crisis point that threatens to destroy both factions and the city. The players should:
+\textbf{Sample Encounters:}
 \begin{itemize}
-  \item Deal with the full consequences of their previous actions
-  \item Make crucial decisions about how to resolve the conflict
-  \item Potentially face off against the secret manipulator
-  \item Determine the future of Silkstrand's merchant community
+\item \textbf{Sabotage Mission:} Infiltrate rival facility to gather intelligence or cause disruption. (Stealth + Tinker vs DV 5, Desperate/Standard)
+\item \textbf{Legal Battle:} Represent faction in Archivolt proceedings. (Command + Lore vs DV 5, Controlled/Great)
+\item \textbf{Assassination Attempt:} Defend or attack key faction figure. (Combat encounter, DV 5)
 \end{itemize}
+
+\textbf{Session End:} Players gain significant faction influence. Advance Merchant War Clock +2, shift Reputation Tracks.
+
+\subsection{Session 3: The Breaking Point}
+
+\textbf{Opening Scene:} Conflict reaches crisis point threatening city stability.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Deal with consequences of previous actions
+\item Make crucial decisions about conflict resolution
+\item Potentially face secret manipulator (The Broker)
+\item Determine future of Silkstrand's merchant community
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{City-Wide Crisis:} Deal with economic disruption affecting civilians. (Leadership challenge, DV 5)
+\item \textbf{The Broker's Revelation:} Confront secret manipulator. (Social/Combat encounter, DV 6)
+\item \textbf{Final Negotiation:} Broker peace or decisive victory. (Sway + Command vs DV 6, Desperate/Great)
+\end{itemize}
+
+\textbf{Session End:} Major conflict resolution. Advance Merchant War Clock to culmination.
 
 \section{Key Mechanics}
 
 \subsection{Merchant War Clock [8]}
-Tracks the escalating conflict between the two merchant houses. Advances when:
-\begin{itemize}
-  \item Economic sabotage is successful
-  \item Assassinations occur
-  \item Political maneuvering fails
-  \item Players make choices that escalate the conflict
-\end{itemize}
+\begin{mechanics}
+\item[Advance +1:] Economic sabotage successfully executed
+\item[Advance +1:] Assassinations or violent incidents occur
+\item[Advance +2:] Political maneuvering fails spectacularly
+\item[Advance +1:] Players make choices that escalate conflict
+\item[Advance +2:] Key faction leaders suffer major setbacks
+\item[Advance +1:] Civilian casualties or economic disruption
+\item[When Full:] Conflict reaches breaking point, city stability threatened
+\end{mechanics}
 
 \subsection{Reputation Tracks}
-Both merchant houses track their opinion of the players:
-\begin{itemize}
-  \item House Valdris: Traditionalist to Rebel
-  \item Crimson Sails: Corrupt to Progressive
-\end{itemize}
-Player actions shift these tracks, affecting available missions and NPC reactions.
+\begin{mechanics}
+\item[House Valdris Track:] Traditionalist ←→ Rebel
+\item[Crimson Sails Track:] Corrupt ←→ Progressive
+\item[Movement:] Player actions shift tracks by ±1 per significant interaction
+\item[Effects:] 
+  \begin{itemize}
+    \item High Traditionalist/Progressive: +1 die to faction interactions
+    \item High Rebel/Corrupt: -1 die to opposing faction interactions
+    \item Extreme positions: Access to special missions or complete rejection
+  \end{itemize}
+\end{mechanics}
 
 \subsection{Bridge Duel Protocol}
-When business disputes escalate to violence on Three-Queens Bridge:
-\begin{itemize}
-  \item Declare Stakes: Purse, Permit, or Pride
-  \item Seconds may spend 1 Boon to Call the Colors
-  \item Refusing triggers automatic reputation damage
-\end{itemize}
+\begin{mechanics}
+\item[Trigger:] Business disputes escalate to violence on Three-Queens Bridge
+\item[Stakes Declaration:] Choose Purse (money), Permit (legal right), or Pride (reputation)
+\item[Seconds:] May spend 1 Boon to "Call the Colors" (improve Position by 1 step)
+\item[Refusal Consequences:] Automatic reputation damage (-1 die to social rolls with faction)
+\item[Resolution:] Standard combat rules with declared stakes determining consequences
+\end{mechanics}
 
 \subsection{Exchange Mini-Game}
-Trading and negotiation mechanics:
-\begin{itemize}
-  \item Track a scene-long Spread (starts at 1)
-  \item Each good call on the floor moves Spread by ±1
-  \item Cash Out: gain Price Edge tag (+1 die) when buying/selling
-\end{itemize}
+\begin{mechanics}
+\item[Setup:] Track scene-long Spread (starts at 1)
+\item[Actions:] Each good call on trading floor moves Spread by ±1
+\item[Cash Out:] Gain Price Edge tag (+1 die) when buying/selling during scene
+\item[Skills Used:] Sway, Notice, Insight for reading market
+\item[DV:] 3 (basic trading), 4 (complex deals), 5+ (high-stakes negotiations)
+\end{mechanics}
 
 \section{Possible Resolutions}
 
 \subsection{Faction Victory}
-The players help one faction decisively defeat the other:
-\begin{itemize}
-  \item Complete a major sabotage mission against the rival
-  \item Win a crucial legal case in the Archivolt
-  \item Eliminate key leadership of the opposing faction
-\end{itemize}
-\textbf{Consequences:} Winner gains control, but the city's balance of power shifts dangerously.
+\begin{resolution}{Faction Victory}
+\item[Requirements:] 
+  \begin{itemize}
+    \item Complete major sabotage mission against rival (Tinker + Subterfuge vs DV 6)
+    \item Win crucial legal case in Archivolt (Command + Lore vs DV 6)
+    \item Eliminate key leadership of opposing faction (Combat/Skill vs DV 5)
+  \end{itemize}
+\item[Procedure:] Decisive action giving one faction overwhelming advantage
+\item[Costs:] City's balance of power shifts dangerously, potential for future rebellion
+\item[Outcome:] Winner gains control, but creates new tensions and dependencies
+\end{resolution}
 
 \subsection{Negotiated Settlement}
-The players broker a peace agreement between the factions:
-\begin{itemize}
-  \item Discover the Broker's manipulation and expose them
-  \item Find a compromise that benefits both houses
-  \item Convince the Matron to intervene with authority
-\end{itemize}
-\textbf{Consequences:} Stable business environment, but both houses owe the players favors.
+\begin{resolution}{Negotiated Settlement}
+\item[Discovery:] Expose The Broker's manipulation and secret influence
+\item[Requirements:] 
+  \begin{itemize}
+    \item Gather evidence of manipulation (Investigation vs DV 5)
+    \item Convince both factions of mutual benefit (Sway + Command vs DV 5)
+    \item Gain Matron's support for intervention (Social challenge, DV 4)
+  \end{itemize}
+\item[Procedure:] Complex three-way negotiation with city authority backing
+\item[Costs:] Both houses must compromise, ongoing oversight required
+\item[Outcome:] Stable business environment, mutual obligations to players
+\end{resolution}
 
 \subsection{Revolutionary Change}
-The players help overthrow the old system entirely:
-\begin{itemize}
-  \item Expose corruption in both houses
-  \item Rally the common merchants and workers
-  \item Install a new form of governance
-\end{itemize}
-\textbf{Consequences:} Complete upheaval with uncertain future, but potential for great personal power.
+\begin{resolution}{Revolutionary Change}
+\item[Approach:] Overthrow old system entirely, create new governance
+\item[Requirements:] 
+  \begin{itemize}
+    \item Expose corruption in both houses (Investigation + Subterfuge vs DV 5)
+    \item Rally common merchants and workers (Command + Sway vs DV 5)
+    \item Install new form of governance (Political challenge, DV 6)
+  \end{itemize}
+\item[Procedure:] Popular uprising with player leadership
+\item[Costs:] Complete upheaval with uncertain future, potential for chaos
+\item[Outcome:] New order with player influence, but ongoing instability
+\end{resolution}
 
 \section{Rewards and Consequences}
 
 \subsection{Immediate Rewards}
 \begin{itemize}
-  \item Bridge token for peak-hour cart crossing
-  \item Dye-permit chit to process "questionable" color
-  \item Warehouse seal from winning faction
-  \item Exchange pass for trading without sponsor
-  \item Watergate priority to skip closures
+\item Bridge token for peak-hour cart crossing: +1 Position for bridge navigation
+\item Dye-permit chit to process "questionable" color: Legal authority for special dyes
+\item Warehouse seal from winning faction: Access to premium storage facilities
+\item Exchange pass for trading without sponsor: Independent trading privileges
+\item Watergate priority to skip closures: Priority access to restricted areas
 \end{itemize}
 
 \subsection{Long-term Consequences}
 \begin{itemize}
-  \item Permanent business relationships with the surviving faction
-  \item Reputation as either a stabilizing force or dangerous revolutionary
-  \item Access to exclusive trading opportunities or loss of previous connections
-  \item Potential leadership roles in the new order or exile from Silkstrand
+\item \textbf{Faction Victory:} Permanent business relationship with winner, access to resources, but enemies in losing faction
+\item \textbf{Negotiated Settlement:} Reputation as stabilizing force, mutual obligations from both houses, stable trading environment
+\item \textbf{Revolutionary Change:} Potential leadership roles in new order, great personal power but ongoing responsibility
+\item \textbf{Neutral Outcome:} Maintained independence but limited faction access, potential for future recruitment by either side
 \end{itemize}
 
 \section{GM Notes}
 
 \subsection{Social Dynamics}
-Emphasize the social aspects of the conflict. This is as much about reputation and influence as it is about money. Every interaction should have social stakes and potential long-term consequences.
+Emphasize social aspects of conflict:
+\begin{itemize}
+\item Every interaction has social stakes and long-term consequences
+\item Reputation affects access to resources and opportunities
+\item Social manipulation as important as economic warfare
+\item Class tensions between old nobility and new merchants
+\end{itemize}
 
 \subsection{Economic Realities}
-Make the economic warfare feel real by showing its effects on ordinary people. Rising prices, job losses, and disrupted supply chains should be visible throughout the city.
+Make economic warfare tangible:
+\begin{itemize}
+\item Rising prices affecting ordinary citizens
+\item Job losses and business closures throughout city
+\item Disrupted supply chains creating shortages
+\item Economic pressure driving people to extreme measures
+\end{itemize}
 
 \subsection{Moral Ambiguity}
-Neither faction is entirely good or evil. House Valdris provides stability but resists progress, while Crimson Sails brings innovation but disrupts established communities. Players should face genuine moral choices.
+Present complex moral landscape:
+\begin{itemize}
+\item Neither faction entirely good or evil
+\item House Valdris: Stability vs. resistance to progress
+\item Crimson Sails: Innovation vs. disruption of communities
+\item Players face genuine moral choices with consequences
+\end{itemize}
 
 \subsection{Player Agency}
-Provide multiple paths to influence the conflict. Players might choose to work for one side, play both against each other, or work to end the war entirely. Their choices should have meaningful consequences.
+Provide multiple paths to influence conflict:
+\begin{itemize}
+\item Work for one side exclusively
+\item Play both sides against each other
+\item Work to end war entirely
+\item Create third option through revolutionary change
+\item Focus on personal objectives while navigating conflict
+\end{itemize}
 
 \subsection{Urban Environment}
-Use Silkstrand's unique environment - the bridges, dyeworks, and waterways - to create distinctive scenes. The city itself should feel like a character in the story.
+Use Silkstrand's unique features:
+\begin{itemize}
+\item Bridges create vertical complexity and strategic points
+\item Dyeworks provide industrial hazards and valuable resources
+\item Waterways offer transportation and smuggling routes
+\item Archivolt represents bureaucratic maze and legal complexity
+\end{itemize}
 
 \subsection{Story Beats}
-Use the economic conflict to generate Story Beats that complicate the players' efforts while advancing the plot. Sabotage, betrayal, and unexpected alliances should keep the players on their toes.
+Use economic conflict for complications:
+\begin{itemize}
+\item 1 SB: Minor business disruption, small price fluctuation
+\item 2 SB: Key contact becomes suspicious, shipment delayed
+\item 3 SB: Major sabotage incident, faction leader threatened
+\item 4+ SB: City-wide economic crisis, faction headquarters attacked
+\end{itemize}
+
+\subsection{Session-Specific Guidance}
+
+\textbf{Session 1 Focus:} Establish conflict dynamics and player involvement. Players should understand both factions have strengths and weaknesses.
+
+\textbf{Session 2 Focus:} Deepen faction involvement and escalate consequences. Players gain significant influence but face moral complexity.
+
+\textbf{Session 3 Focus:} Climactic resolution with city-wide implications. All previous elements converge in final choices about Silkstrand's future.
+
+\subsection{Alternative Endings}
+
+If players attempt unconventional solutions:
+\begin{itemize}
+\item \textbf{Information Broker Path:} Become neutral facilitator profiting from both sides
+\item \textbf{City Guardian Role:} Work directly for Matron to maintain balance
+\item \textbf{Foreign Intervention:} Invite external power to resolve conflict
+\item \textbf{Economic Innovation:} Create new business model transcending faction divide
+\end{itemize}
+
+\subsection{Scaling for Different Tiers}
+
+\textbf{Tier II (Seasoned):} Standard economic and social challenges, local city scope.
+
+\textbf{Tier III (Veteran):} Add regional political implications, foreign trade complications, and more powerful faction resources.
+
+\textbf{Tier IV (Paragon):} Introduce international trade war consequences, faction gains patron backing, threat to entire trade network.
 
 \end{document}

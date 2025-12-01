@@ -1,31 +1,40 @@
-\documentclass[12pt,letterpaper]{article}
-\usepackage[utf8]{inputenc}
+\documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{titlesec}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{sectsty}
 \usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{multicol}
 
-% Define colors
-\definecolor{eckpurple}{RGB}{128, 0, 128}
-\definecolor{eckgold}{RGB}{218, 165, 32}
-\definecolor{eckred}{RGB}{178, 34, 34}
-\definecolor{eckmarble}{RGB}{248, 248, 255}
+\sectionfont{\large\bfseries}
+\subsectionfont{\bfseries}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
-% Section formatting
-\titleformat{\section}
-{\color{eckpurple}\normalfont\Large\bfseries}
-{\color{eckpurple}\thesection}{1em}{}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Fate's Edge Adventure}
+\lhead{The Usurper's Gambit}
+\rfoot{\thepage}
 
-\titleformat{\subsection}
-{\color{eckgold}\normalfont\large\bfseries}
-{\color{eckgold}\thesubsection}{1em}{}
+\newenvironment{mechanics}{\begin{description}[leftmargin=*,style=standard]}{\end{description}}
+\newenvironment{npc}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{faction}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{location}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
+\newenvironment{ending}[1]{\begin{description}[leftmargin=*,style=standard]\item[\textbf{#1}]}{\end{description}}
 
-% Item spacing
-\setlist{itemsep=2pt}
-
-\title{\color{eckpurple} \textbf{The Usurper's Gambit}\\ \large An Adventure for Fate's Edge - Ecktoria}
+\title{The Usurper's Gambit\\An Adventure for Fate's Edge - Ecktoria}
 \author{}
 \date{}
 
@@ -35,147 +44,496 @@
 
 \section*{Adventure Overview}
 
-\textbf{Title:} The Usurper's Gambit\\
-\textbf{Region:} Ecktoria -- Marble, Brass, \& Fire\\
-\textbf{Theme:} Legitimacy, bureaucracy, ritual power, imperial decline\\
-\textbf{Level:} Veteran (Tier III)\\
-\textbf{Length:} 4--5 Sessions
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\textbf{Title:} & The Usurper's Gambit \\
+\textbf{Region:} & Ecktoria – Marble, Brass, \& Fire \\
+\textbf{Theme:} & Legitimacy, bureaucracy, ritual power, imperial decline \\
+\textbf{Level:} & Veteran (Tier III) \\
+\textbf{Length:} & 4–5 Sessions \\
+\end{tabularx}
 
 \section{Premise}
 
-Ecktoria, heir to the shattered Utaran Empire, stands on the knife-edge of civil conflict. A charismatic pretender has seized the loyalty of the capital militia, silenced dissenting censores, and begun invoking ancient rites to claim the Mandate of Everflame. Meanwhile, the recognized heir --- King Aldric the Lame --- clings to legitimacy through law, tradition, and the blessing of the High Temple.
+Ecktoria, heir to the shattered Utaran Empire, stands on the knife-edge of civil conflict. A charismatic pretender has seized the loyalty of the capital militia, silenced dissenting censores, and begun invoking ancient rites to claim the Mandate of Everflame. Meanwhile, the recognized heir — King Aldric the Lame — clings to legitimacy through law, tradition, and the blessing of the High Temple.
 
 The players navigate a city where every marble colonnade hides a conspiracy, every mosaic conveys a political message, and every oath is engraved in red-lacquered tablets guarded by the Censors. They must decide: bolster one claimant, forge a third path, or engineer a peaceful transfer of power in a system designed to resist change violently.
 
 \section{Hook}
 
-Choose or roll:
-
+Choose or roll (DV 3 Investigation to determine truth):
 \begin{itemize}
-  \item \textbf{The Envoy's Humiliation:} Before the Great Baths of Aurix, the Lame King's Envoy is publicly mocked, their ceremonial staff struck from their hand --- a grave insult in Ecktoria. The crowd cheers the Pretender's heralds.
-  \item \textbf{A Dead Man’s Seal:} A courier collapses into the players’ arms with a sealed tablet bearing the mark of a supposedly-dead claimant. If true, a surviving cousin could upend every faction's plans.
-  \item \textbf{A Contract Invalidated:} A lucrative patronage contract is voided by a Senate Decree --- half the Senate claims the decree is legal, the other half claims the seals were forged.
+\item \textbf{The Envoy's Humiliation:} Before the Great Baths of Aurix, the Lame King's Envoy is publicly mocked, their ceremonial staff struck from their hand — a grave insult in Ecktoria. The crowd cheers the Pretender's heralds. (Social/Skill challenge, Presence + Command vs DV 4)
+\item \textbf{A Dead Man's Seal:} A courier collapses into the players' arms with a sealed tablet bearing the mark of a supposedly-dead claimant. If true, a surviving cousin could upend every faction's plans. (Investigation + Lore vs DV 5)
+\item \textbf{A Contract Invalidated:} A lucrative patronage contract is voided by a Senate Decree — half the Senate claims the decree is legal, the other half claims the seals were forged. (Legal investigation, Sway + Lore vs DV 4)
 \end{itemize}
 
 \section{Key Factions}
 
 \subsection{The Lame King's Line}
-Not medieval nobility --- but \textbf{imperial-bureaucratic loyalists}. They adhere to:
-\begin{itemize}
-  \item \textbf{High Priest of Everflame:} Wielder of ceremonial fire and keeper of coronation rites.
-  \item \textbf{Coin-House Factors:} Masters of imperial credit and tax ledgers.
-  \item \textbf{Veteran Standard-Bearers:} The disciplined remnant of the old Utaran Legion, clad in lamellar bronze and crimson silk.
-\end{itemize}
+\begin{faction}{The Lame King's Line}
+\item[Description:] Imperial-bureaucratic loyalists adhering to law and tradition
+\item[Key Members:] High Priest of Everflame, Coin-House Factors, Veteran Standard-Bearers
+\item[Strengths:] Ritualistic power, institutional authority, legal legitimacy
+\item[Weaknesses:] Slow, cautious, inflexible
+\item[Methods:] Ceremonial rites, legal procedures, traditional military
+\item[Position:] Controlled (established authority), Desperate (losing popular support)
+\item[DV for Alliance:] 4 (mutual benefit), 5 (neutral), 6+ (opposed)
+\end{faction}
 
-Their power is \textbf{ritualistic and institutional}. Their weakness: \textit{slow, cautious, inflexible.}
-
-\subsection{The Pretender’s Cause}
-Duke Marcus promises a ``New Augustan Revival" and wields:
-\begin{itemize}
-  \item \textbf{Reformist Senators:} Toga-clad politicians seeking relevance in a fading state.
-  \item \textbf{Condotta Captains:} Foreign-trained mercenary cohorts who thrive in urban conflict.
-  \item \textbf{The New Merchants:} Silk caravans, spice importers, and canal guilds wanting deregulation.
-\end{itemize}
-
-Their power is \textbf{popular and military}. Their weakness: \textit{shallow legal standing.}
+\subsection{The Pretender's Cause}
+\begin{faction}{The Pretender's Cause}
+\item[Description:] Reformist movement promising "New Augustan Revival"
+\item[Key Members:] Reformist Senators, Condotta Captains, New Merchants
+\item[Strengths:] Popular support, military flexibility, economic influence
+\item[Weaknesses:] Shallow legal standing, reliance on charisma
+\item[Methods:] Public demonstrations, military action, economic pressure
+\item[Position:] Dominant (popular momentum), may shift to Controlled under pressure
+\item[DV for Alliance:] 3 (shared goals), 4 (neutral), 5+ (opposed)
+\end{faction}
 
 \subsection{The Silent Opposition}
-They reject both claimants and imagine a return to provincial autonomy.
-\begin{itemize}
-  \item \textbf{Guild Conspiracies:} Especially the \textit{Marblewrights}, whose control of monuments lets them encode political messages in stone.
-  \item \textbf{Shadow Council:} Disaffected nobles who meet in abandoned bathhouses.
-  \item \textbf{Regional Governors:} Each with their own armed retinues, quietly waiting.
-\end{itemize}
-
-Their power: \textbf{economic sabotage}.  
-Their weakness: \textit{disunity.}
+\begin{faction}{The Silent Opposition}
+\item[Description:] Reject both claimants, seek provincial autonomy
+\item[Key Members:] Guild Conspiracies, Shadow Council, Regional Governors
+\item[Strengths:] Economic sabotage, decentralized structure, patience
+\item[Weaknesses:] Disunity, lack of public support
+\item[Methods:] Economic pressure, covert operations, political manipulation
+\item[Position:] Controlled (hidden influence), may shift based on player actions
+\item[DV for Alliance:] 4 (shared opposition), 5 (neutral), 6+ (competing interests)
+\end{faction}
 
 \section{Key NPCs}
 
 \subsection{King Aldric the Lame}
-A legalist monarch steeped in ceremony, whose limp is from bearing the sacred Everflame during the siege of Ecktoria. Pious, cautious, but deeply principled.
+\begin{npc}{King Aldric the Lame}
+\item[Role:] Recognized heir to Ecktoria
+\item[Age:] 45
+\item[Skills:] Command 4, Lore 3, Presence 3
+\item[Knowledge:] Imperial law, ceremonial rites, political tradition
+\item[Motivation:] Preserve legitimate succession and imperial stability
+\item[Complication:] Physical disability affects public perception
+\item[Position:] Controlled (legitimate authority), Desperate (losing ground)
+\item[DV for Persuasion:] 4 (appeal to duty), 5 (neutral), 6 (opposed)
+\end{npc}
 
 \subsection{Duke Marcus the Bold}
-Glossy armor, public charisma, and immaculate timing. He invokes ancient Utaran military rites --- even if he barely understands them.
+\begin{npc}{Duke Marcus the Bold}
+\item[Role:] Charismatic pretender to the throne
+\item[Age:] 38
+\item[Skills:] Presence 5, Sway 4, Command 3
+\item[Knowledge:] Public relations, military rites, popular sentiment
+\item[Motivation:] Seize power through popular support and reform
+\item[Complication:] Limited understanding of true imperial traditions
+\item[Position:] Dominant (popular support), Controlled under legal pressure
+\item[DV for Manipulation:] 3 (flattery), 4 (neutral), 5+ (opposition)
+\end{npc}
 
 \subsection{Grand Magistrate Valeria Thorne}
-A razor-edged legal scholar who knows every precedent for imperial succession. Her chambers overflow with red tablets inscribed with shame and honor. She alone can interpret the \textit{Pact of Three Flames}, the ancient document defining lawful coronations.
+\begin{npc}{Grand Magistrate Valeria Thorne}
+\item[Role:] Keeper of imperial law and succession precedents
+\item[Age:] 52
+\item[Skills:] Lore 5, Insight 4, Sway 2
+\item[Knowledge:] Every precedent for imperial succession, Pact of Three Flames
+\item[Motivation:] Preserve legal integrity of imperial system
+\item[Complication:] Torn between legal duty and political reality
+\item[Position:] Controlled (institutional power), Desperate (personal safety)
+\item[DV for Legal Consultation:] 4 (proper approach), 5 (neutral), 6+ (hostile)
+\end{npc}
 
 \subsection{High Priest Dominicus}
-Keeper of the Sacred Brazier. His blessing determines which claimant the people accept as crowned by the Everflame. Torn between stability and renewal.
+\begin{npc}{High Priest Dominicus}
+\item[Role:] Keeper of the Sacred Brazier and Everflame
+\item[Age:] 67
+\item[Skills:] Arcana 4, Presence 3, Lore 3
+\item[Knowledge:] Coronation rites, divine signs, spiritual legitimacy
+\item[Motivation:] Ensure rightful claimant receives divine blessing
+\item[Complication:] Torn between stability and renewal
+\item[Position:] Dominant (religious authority), Controlled under political pressure
+\item[DV for Spiritual Guidance:] 3 (genuine seeking), 4 (neutral), 5+ (manipulation)
+\end{npc}
 
 \subsection{The Lame King's Envoy}
-Masked, elegant, and unsettlingly silent. Rumored to have been a Senator, a spymaster, or Aldric’s illegitimate sibling.
+\begin{npc}{The Lame King's Envoy}
+\item[Role:] Mysterious representative of King Aldric
+\item[Skills:] Subterfuge 4, Insight 3, Command 2
+\item[Knowledge:] Secret negotiations, hidden political moves
+\item[Motivation:] Advance Aldric's cause through covert means
+\item[Complication:] Unknown true identity and loyalties
+\item[Position:] Controlled (operating in shadows), Desperate if exposed
+\item[DV for Information:] 5 (secrecy), 4 (proper approach), 3 (trusted ally)
+\end{npc}
 
 \section{Key Locations}
 
 \subsection{The Grand Forum}
-Not a medieval square, but a marble theatre of politics: multi-level balconies, colored awnings, statues of emperors with missing fingers, and mosaic floors depicting the victories of old Utar.
+\begin{location}{The Grand Forum}
+\item[Description:] Marble theatre of politics with multi-level balconies
+\item[Features:] Statues of emperors, mosaic floors, colored awnings
+\item[Political Significance:] Center of public opinion and political theater
+\item[Challenges:] 
+  \begin{itemize}
+    \item Navigating public sentiment (Presence + Sway vs DV 4)
+    \item Interpreting political symbols (Lore + Notice vs DV 3)
+    \item Avoiding public humiliation (Social challenge, DV 5)
+  \end{itemize}
+\item[Position:] Controlled (normal), may shift based on current political climate
+\end{location}
 
 \subsection{Imperial Arena}
-Still used for trials by ordeal, military demonstrations, and ceremonial oaths. Beneath it lie tunnels once used for exotic beasts --- now used for political prisoners.
+\begin{location}{Imperial Arena}
+\item[Description:] Site of trials by ordeal and ceremonial oaths
+\item[Features:] Underground tunnels, ceremonial spaces, public viewing areas
+\item[Uses:] Military demonstrations, legal trials, political statements
+\item[Challenges:] 
+  \begin{itemize}
+    \item Participating in trials by ordeal (Varies by trial type)
+    \item Navigating underground tunnels (Stealth + Athletics vs DV 4)
+    \item Public performance under pressure (Presence + Command vs DV 5)
+  \end{itemize}
+\item[Security:] Heavily guarded during public events
+\end{location}
 
 \subsection{Coin-House Floor}
-A Byzantine-style financial temple. Gold seals, abacus-boards, clerks chanting interest schedules, and styluses scratching into wax tablets. A single misplaced ledger entry can bankrupt a province.
+\begin{location}{Coin-House Floor}
+\item[Description:] Byzantine-style financial temple with gold seals and clerks
+\item[Features:] Abacus-boards, wax tablets, chanting clerks
+\item[Power:] Financial control can bankrupt provinces or fund armies
+\item[Challenges:] 
+  \begin{itemize}
+    \item Understanding financial records (Lore + Wits vs DV 5)
+    \item Bribing or influencing clerks (Sway vs DV 4)
+    \item Sabotaging ledgers (Tinker + Subterfuge vs DV 6)
+  \end{itemize}
+\item[Position:] Controlled (legitimate business), Desperate (illegal activity)
+\end{location}
 
-\subsection{Censor’s Hall}
-A labyrinth of documents, rank-lists, shame-tablets, and censored histories. Red lacquer glows like dried blood under the lantern light. The Hall’s archivists maintain \textit{The Line of Fire}, a genealogical record of every legitimate claimant.
-
-Access is tightly controlled and politically explosive.
+\subsection{Censor's Hall}
+\begin{location}{Censor's Hall}
+\item[Description:] Labyrinth of documents, shame-tablets, and censored histories
+\item[Features:] Red lacquer tablets, genealogical records, censored archives
+\item[Significance:] Maintains The Line of Fire - genealogical record of claimants
+\item[Challenges:] 
+  \begin{itemize}
+    \item Finding specific documents (Investigation vs DV 5)
+    \item Deciphering censored texts (Lore vs DV 4)
+    \item Avoiding detection (Stealth + Subterfuge vs DV 5)
+  \end{itemize}
+\item[Security:] Extremely tight - access requires high-level authorization
+\end{location}
 
 \subsection{The Fire-Blessed Basilica}
-The spiritual heart of Ecktoria. The ceiling is a dome of gold and lapis, depicting the Everflame descending upon the First Emperor. The final coronation ritual must occur here.
+\begin{location}{The Fire-Blessed Basilica}
+\item[Description:] Spiritual heart with gold and lapis dome depicting Everflame
+\item[Features:] Sacred Brazier, ceremonial spaces, religious artifacts
+\item[Importance:] Final coronation ritual must occur here
+\item[Challenges:] 
+  \begin{itemize}
+    \item Gaining access during blockade (Combat/Skill challenge, DV 5)
+    \item Participating in coronation rites (Varies by role)
+    \item Convincing High Priest (Presence + Sway vs DV 5)
+  \end{itemize}
+\item[Current Status:] Blockaded by Pretender's forces
+\end{location}
 
 \section{Adventure Structure}
 
-\subsection{Act I --- Cracks in Marble}
-The PCs witness an event signaling that the Pretender’s forces are seizing soft power: forged decrees, altered statues, or militia patrols wearing new colors. They must investigate whether Duke Marcus’s claim is real or subterfuge.
+\subsection{Act I — Cracks in Marble}
 
-\subsection{Act II --- Shadows in the Censorium}
-The Grand Magistrate is attacked by masked agents attempting to steal the \textit{Pact of Three Flames}. PCs must navigate the Censor's Hall, uncover forged genealogies, or extract truths from censored archives.
+\textbf{Opening Scene:} Players witness public demonstration of shifting power through one of the hook scenarios.
 
-Choices here determine which claimant gains legal ground.
-
-\subsection{Act III --- Coin, Steel, and Fire}
-The Pretender blockades the Basilica, controlling the square. Loyalist Standard-Bearers muster but cannot act without legal sanction. PCs mediate, sabotage, or escalate:
-
+\textbf{Key Objectives:}
 \begin{itemize}
-  \item Reveal a hidden legitimate claimant.
-  \item Break the blockade via mercantile leverage in the Coin-House Floor.
-  \item Expose Marcus’s forged lineage.
-  \item Convince Dominicus to deny Marcus his blessing.
+\item Investigate signs of Pretender's growing influence
+\item Determine if Duke Marcus's claim has substance
+\item Identify key supporters and opponents of each faction
+\item Begin building relationships with influential NPCs
 \end{itemize}
 
-\subsection{Act IV --- The Coronation of Ash or Glory}
-At dawn, the Basilica doors open. The coronation ritual begins. PCs decide which claimant steps forward --- or whether the old imperial rites are subverted entirely.
-
-The \textbf{Trial of the Everflame} may occur:
+\textbf{Sample Encounters:}
 \begin{itemize}
-  \item A rhetorical duel before the people.
-  \item A ritual combat under priestly supervision.
-  \item A miraculous display (real or faked).
+\item \textbf{Statue Alteration Investigation:} Notice and investigate changes to imperial statues. (Investigation + Notice vs DV 4, Controlled/Limited)
+\item \textbf{Militia Patrol Encounter:} Deal with new militia wearing unfamiliar colors. (Social/Combat encounter, DV 4)
+\item \textbf{Political Rumor Gathering:} Collect information from Forum conversations. (Sway + Insight vs DV 3, Dominant/Limited)
 \end{itemize}
+
+\textbf{Act End:} Players discover evidence of systematic effort to legitimize Pretender's claim. Advance Legitimacy Clock +2.
+
+\subsection{Act II — Shadows in the Censorium}
+
+\textbf{Opening Scene:} Grand Magistrate Valeria Thorne is attacked; players must respond.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Protect or avenge Grand Magistrate Thorne
+\item Navigate Censor's Hall to uncover truth about succession
+\item Find or protect the Pact of Three Flames
+\item Expose forged genealogies or hidden legitimate claimants
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Censor's Hall Infiltration:} Sneak through document labyrinth. (Stealth + Investigation vs DV 5, Desperate/Standard)
+\item \textbf{Genealogical Puzzle:} Verify authenticity of claimant lineages. (Lore + Insight vs DV 6, Controlled/Great)
+\item \textbf{Archivist Interrogation:} Extract information from knowledgeable but secretive clerks. (Sway + Insight vs DV 4, Controlled/Standard)
+\end{itemize}
+
+\textbf{Act End:} Players gain crucial legal knowledge about succession. Advance either Lame King's or Pretender's Legal Standing Clock +2.
+
+\subsection{Act III — Coin, Steel, and Fire}
+
+\textbf{Opening Scene:} Pretender's forces blockade the Basilica; crisis point reached.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Mediate between factions or choose sides
+\item Sabotage opposing faction's efforts
+\item Escalate conflict through strategic actions
+\item Prepare for final confrontation at coronation
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Coin-House Sabotage:} Disrupt financial support for one faction. (Tinker + Subterfuge vs DV 5, Desperate/Standard)
+\item \textbf{Mercantile Leverage:} Negotiate with New Merchants for support. (Sway + Command vs DV 4, Controlled/Great)
+\item \textbf{Basilica Siege:} Break through Pretender's blockade. (Combat/Strategy challenge, DV 6)
+\end{itemize}
+
+\textbf{Act End:} Players position themselves for final act. Advance Coronation Readiness Clock +2.
+
+\subsection{Act IV — The Coronation of Ash or Glory}
+
+\textbf{Opening Scene:} Dawn at the Basilica; final confrontation begins.
+
+\textbf{Key Objectives:}
+\begin{itemize}
+\item Decide which claimant to support or oppose
+\item Participate in coronation ritual and Trial of the Everflame
+\item Deal with consequences of previous choices
+\item Determine Ecktoria's future political structure
+\end{itemize}
+
+\textbf{Sample Encounters:}
+\begin{itemize}
+\item \textbf{Rhetorical Duel:} Participate in public debate before the people. (Presence + Sway vs DV 5, Desperate/Great)
+\item \textbf{Ritual Combat:} Engage in ceremonial combat under priestly supervision. (Melee + Spirit vs DV 5, Desperate/Great)
+\item \textbf{Miraculous Display:} Create or expose fake divine signs. (Arcana + Subterfuge vs DV 6, Controlled/Great)
+\end{itemize}
+
+\textbf{Act End:} Resolution of succession crisis. All clocks culminate in final outcome.
+
+\section{Key Mechanics}
+
+\subsection{Legitimacy Clock [8]}
+\begin{mechanics}
+\item[Advance +1:] Public demonstrations support Pretender
+\item[Advance +1:] Lame King's supporters lose ground
+\item[Advance +2:] Key legal documents are compromised
+\item[Advance +1:] Religious figures declare for Pretender
+\item[Advance +2:] Military units defect to Pretender
+\item[When Full:] Pretender achieves effective control of capital
+\end{mechanics}
+
+\subsection{Legal Standing Clock [6] (Separate for each claimant)}
+\begin{mechanics}
+\item[Advance +1:] Genealogical evidence discovered
+\item[Advance +1:] Precedent found supporting claim
+\item[Advance +2:] Key legal figure declares support
+\item[Advance +1:] Ceremonial requirements met
+\item[When Full:] Claimant achieves legal legitimacy
+\end{mechanics}
+
+\subsection{Coronation Readiness Clock [6]}
+\begin{mechanics}
+\item[Advance +1:] Religious preparations completed
+\item[Advance +1:] Military support secured
+\item[Advance +2:] Public opinion shifts decisively
+\item[Advance +1:] Ceremonial artifacts gathered
+\item[Advance +1:] Opposing faction neutralized
+\item[When Full:] Coronation can proceed
+\end{mechanics}
+
+\subsection{Imperial Favor Track}
+\begin{mechanics}
+\item[Exalted:] +2 die to all imperial interactions, access to highest circles
+\item[Respected:] +1 die to imperial interactions, normal access
+\item[Neutral:] Standard imperial interactions
+\item[Suspect:] -1 die to imperial interactions, limited access
+\item[Enemy:] Hostile reactions, wanted by authorities
+\end{mechanics}
 
 \section{Endings}
 
 \subsection{Aldric Crowned Lawfully}
-A stable but static Ecktoria that prizes tradition. PCs may become honored advisors --- or tools of a rigid bureaucracy.
+\begin{ending}{Aldric Crowned Lawfully}
+\item[Conditions:] Lame King's Legal Standing Clock fills first
+\item[Outcome:] Stable but static Ecktoria that prizes tradition
+\item[Rewards:] 
+  \begin{itemize}
+    \item Official positions in imperial bureaucracy
+    \item Access to traditional imperial resources
+    \item Honor and respect among conservative factions
+  \end{itemize}
+\item[Consequences:] 
+  \begin{itemize}
+    \item May become tools of rigid bureaucracy
+    \item Ongoing tension with reformist elements
+    \item Limited ability to drive significant change
+  \end{itemize}
+\end{ending}
 
 \subsection{Marcus Claims the Throne}
-A revitalized but turbulent empire driven by reform. PCs navigate rapid militarization, mercantile upheaval, and foreign ambitions.
+\begin{ending}{Marcus Claims the Throne}
+\item[Conditions:] Pretender's Legal Standing Clock fills first
+\item[Outcome:] Revitalized but turbulent empire driven by reform
+\item[Rewards:] 
+  \begin{itemize}
+    \item Positions in new imperial administration
+    \item Access to military and mercantile resources
+    \item Opportunity for rapid advancement
+  \end{itemize}
+\item[Consequences:] 
+  \begin{itemize}
+    \item Navigate rapid militarization and upheaval
+    \item Deal with foreign ambitions and internal opposition
+    \item Risk being purged if Marcus consolidates power
+  \end{itemize}
+\end{ending}
 
 \subsection{A Third Path}
-PCs install:
-\begin{itemize}
-  \item The hidden claimant.
-  \item A Council of Three Flames.
-  \item Regional autonomy under imperial oversight.
-\end{itemize}
-
-This ending creates future adventure hooks across Ecktoria.
+\begin{ending}{A Third Path}
+\item[Conditions:] Players engineer alternative solution
+\item[Options:] 
+  \begin{itemize}
+    \item Install hidden legitimate claimant
+    \item Establish Council of Three Flames
+    \item Create regional autonomy under imperial oversight
+  \end{itemize}
+\item[Rewards:] 
+  \begin{itemize}
+    \item Key roles in new political structure
+    \item Unique position bridging factions
+    \item Significant influence over Ecktoria's future
+  \end{itemize}
+\item[Consequences:] 
+  \begin{itemize}
+    \item Ongoing responsibility for maintaining balance
+    \item Enemies from disappointed factions
+    \item Future adventure hooks across Ecktoria
+  \end{itemize}
+\end{ending}
 
 \subsection{Ecktoria Falls}
-If diplomacy, legality, and ritual fail, the city collapses into street warfare.  
-The PCs become the only force capable of rebuilding order --- or escaping the ashes.
+\begin{ending}{Ecktoria Falls}
+\item[Conditions:] All clocks fill without decisive resolution
+\item[Outcome:] City collapses into street warfare
+\item[Rewards:] 
+  \begin{itemize}
+    \item Unchallenged power in local territory
+    \item Freedom to pursue personal agenda
+    \item Reputation as survivor and leader
+  \end{itemize}
+\item[Consequences:] 
+  \begin{itemize}
+    \item Destruction of imperial institutions
+    \item Ongoing chaos and instability
+    \item Need to rebuild order from ashes
+  \end{itemize}
+\end{ending}
+
+\section{Rewards and Consequences}
+
+\subsection{Immediate Rewards}
+\begin{itemize}
+\item Imperial Signet Ring: +1 die to bureaucratic interactions
+\item Ceremonial Blade: Elegant weapon with historical significance
+\item Red Lacquer Tablet: Document granting special legal privileges
+\item Merchant's Charter: License for tax-free trade in Ecktoria
+\item Priest's Blessing: +1 die to religious interactions
+\item Military Commission: Temporary authority over small unit
+\end{itemize}
+
+\subsection{Long-term Consequences}
+\begin{itemize}
+\item \textbf{Aldric Victory:} Permanent positions in traditional bureaucracy, conservative allies, reformist enemies
+\item \textbf{Marcus Victory:} Roles in new administration, military/mercantile connections, traditionalist opposition
+\item \textbf{Third Path:} Unique political influence, cross-faction relationships, ongoing responsibility for stability
+\item \textbf{Ecktoria's Fall:} Survival skills and local power base, but destroyed traditional institutions and ongoing chaos
+\end{itemize}
+
+\section{GM Notes}
+
+\subsection{Political Complexity}
+Emphasize the Byzantine nature of Ecktorian politics:
+\begin{itemize}
+\item Every action has multiple interpretations and consequences
+\item Legal precedents can be interpreted in conflicting ways
+\item Public opinion shifts based on ceremonial displays and rhetoric
+\item Economic power is as important as military force
+\end{itemize}
+
+\subsection{Ceremonial Importance}
+Make ritual and ceremony central to the adventure:
+\begin{itemize}
+\item Proper titles and protocols matter for social interactions
+\item Ceremonial objects and locations have real power
+\item Public performances can shift political momentum
+\item Religious rites determine ultimate legitimacy
+\end{itemize}
+
+\subsection{Bureaucratic Atmosphere}
+Create a sense of the weight of imperial tradition:
+\begin{itemize}
+\item Describe marble halls, gold decorations, and ceremonial regalia
+\item Emphasize the importance of proper documentation and seals
+\item Show the slow but powerful movement of imperial institutions
+\item Illustrate the contrast between public grandeur and hidden manipulation
+\end{itemize}
+
+\subsection{Player Agency}
+Provide multiple paths to influence the outcome:
+\begin{itemize}
+\item Legal approach: Master imperial law and precedent
+\item Social approach: Manipulate public opinion and personal relationships
+\item Military approach: Use force to support chosen faction
+\item Economic approach: Control financial resources and trade
+\item Religious approach: Influence spiritual legitimacy
+\end{itemize}
+
+\subsection{Story Beats}
+Use the political environment for complications:
+\begin{itemize}
+\item 1 SB: Minor bureaucratic delay, small legal complication
+\item 2 SB: Important document goes missing, key NPC becomes suspicious
+\item 3 SB: Public scandal damages faction, military unit defects
+\item 4+ SB: Major political upheaval, assassination attempt, ceremonial disaster
+\end{itemize}
+
+\subsection{Session-Specific Guidance}
+
+\textbf{Session 1 Focus:} Establish political landscape and hook players into the conflict. Players should understand both claimants have strengths and weaknesses.
+
+\textbf{Session 2 Focus:} Deep dive into legal and archival aspects. Players learn that legitimacy is complex and can be influenced.
+
+\textbf{Session 3 Focus:} Crisis point with Basilica blockade. Players must make strategic choices that affect final outcome.
+
+\textbf{Session 4 Focus:} Climactic resolution and consequences. All previous elements converge in final choices about Ecktoria's future.
+
+\subsection{Alternative Endings}
+
+If players attempt unconventional solutions:
+\begin{itemize}
+\item \textbf{Popular Uprising:} Players incite general revolt against both claimants
+\item \textbf{Foreign Intervention:} Players invite external power to resolve succession
+\item \textbf{Religious Solution:} Players convince High Priest to reject both claimants
+\item \textbf{Economic Coup:} Players use financial power to force political resolution
+\end{itemize}
+
+\subsection{Scaling for Different Tiers}
+
+\textbf{Tier III (Veteran):} Standard complexity with significant political and military resources.
+
+\textbf{Tier IV (Paragon):} Add foreign power complications, multiple simultaneous succession crises, and empire-wide implications.
+
+\textbf{Tier V (Mythic):} Introduce divine intervention, reality-altering political magic, and consequences that reshape the entire region.
 
 \end{document}
