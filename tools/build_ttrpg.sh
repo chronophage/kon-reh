@@ -59,10 +59,11 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f gilded-thorn.tex -n "Fate's Edge - The Gilded Thorn.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
 ../../../tools/compile_latex.sh -f carnival-of-echoes.tex -n "Fate's Edge - The Carnival of Echoes.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
 ../../../tools/compile_latex.sh -f cursed-caravan.tex -n "Fate's Edge - The Cursed Caravan.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
-../../../tools/compile_latex.sh -f dwarven-debt.tex -n "Fate's Edge - The Dwarven Debt.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
-../../../tools/compile_latex.sh -f merchant-war.tex -n "Fate's Edge - The Merchant War.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
-../../../tools/compile_latex.sh -f mist-walker.tex -n "Fate's Edge - The Mist Walker.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
-../../../tools/compile_latex.sh -f usurpers-gambit.tex -n "Fate's Edge - The Usurpers Gambit.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f dwarven-debt.tex -n "Fate's Edge - The Dwarven Debt.pdf" > /dev/null 2>&1|| echo "#24. Did not build"
+../../../tools/compile_latex.sh -f merchant-war.tex -n "Fate's Edge - The Merchant War.pdf" > /dev/null 2>&1|| echo "#25. Did not build"
+../../../tools/compile_latex.sh -f mist-walker.tex -n "Fate's Edge - The Mist Walker.pdf" > /dev/null 2>&1|| echo "#26. Did not build"
+../../../tools/compile_latex.sh -f usurpers-gambit.tex -n "Fate's Edge - The Usurpers Gambit.pdf" > /dev/null 2>&1|| echo "#27. Did not build"
+../../../tools/compile_latex.sh -f into-the-direwood.tex -n "Fate's Edge - Into the Direwood.pdf" > /dev/null 2>&1|| echo "#28. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
@@ -90,7 +91,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  roads-beneath-the-world.tex -n "Fate's Edge Expansion - Under Realms: Roads Beneath the World.pdf" > /dev/null 2>&1|| echo "#20. Did not build"
 ../../../tools/compile_latex.sh -f  witches-of-fates-edge.tex -n "Fate's Edge Expansion - Witches of Fate's Edge: Large Cords, Curses, and the Quiet Work of Names.pdf" > /dev/null 2>&1|| echo "#21. Did not build"
 ../../../tools/compile_latex.sh -f  book-of-talents.tex -n "Fate's Edge Expansion - The Book of Talents.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
-../../../tools/compile_latex.sh -f  peoples-and-cultures.tex -n "Fate's Edge Expansion - Peoples and Cultures.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
+../../../tools/compile_latex.sh -f  peoples-and-cultures.tex -n "Fate's Edge Expansion - Peoples and Cultures.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
 ../../../tools/compile_latex.sh -f  advanced-campaigns.tex -n "Fate's Edge Expansion - Campaigns: Advanced Tools and Reference.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
 
 echo "Committing and pushing to git"
