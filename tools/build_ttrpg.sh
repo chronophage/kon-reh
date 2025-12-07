@@ -64,6 +64,7 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f mist-walker.tex -n "Fate's Edge - The Mist Walker.pdf" > /dev/null 2>&1|| echo "#26. Did not build"
 ../../../tools/compile_latex.sh -f usurpers-gambit.tex -n "Fate's Edge - The Usurpers Gambit.pdf" > /dev/null 2>&1|| echo "#27. Did not build"
 ../../../tools/compile_latex.sh -f into-the-direwood.tex -n "Fate's Edge - Into the Direwood.pdf" > /dev/null 2>&1|| echo "#28. Did not build"
+../../../tools/compile_latex.sh -f guest-who-brought-death.tex -n "Fate's Edge - The Guest Who Brought Death.pdf" > /dev/null 2>&1|| echo "#28. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
