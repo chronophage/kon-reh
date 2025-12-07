@@ -67,6 +67,7 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f guest-who-brought-death.tex -n "Fate's Edge - The Guest Who Brought Death.pdf" > /dev/null 2>&1|| echo "#29. Did not build"
 ../../../tools/compile_latex.sh -f forbidden-library.tex -n "Fate's Edge - The Forbidden Library.pdf" > /dev/null 2>&1|| echo "#30. Did not build"
 ../../../tools/compile_latex.sh -f ninth-bell.tex -n "Fate's Edge - The Ninth Bell.pdf" > /dev/null 2>&1|| echo "#31. Did not build"
+../../../tools/compile_latex.sh -f city-of-forgetting.tex -n "Fate's Edge - The City Of Forgetting.pdf" > /dev/null 2>&1|| echo "#31. Did not build"
 
 
 echo "Building Expansions"
