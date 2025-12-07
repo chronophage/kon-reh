@@ -1,626 +1,561 @@
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{array}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{xcolor}
-\usepackage{multicol}
+\usepackage{tabularx}
 \usepackage{booktabs}
-\usepackage{array}
-\usepackage{tikz}
-\usepackage{pdflscape}
-\usepackage{longtable}
-\usepackage{caption}
-\usepackage{changepage}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{amssymb}
 
-% Define colors
-\definecolor{serpentgreen}{HTML}{2E8B57}
-\definecolor{copper}{HTML}{B87333}
-\definecolor{darkgold}{HTML}{B8860B}
+\geometry{a4paper, margin=1in}
 
-% Header and footer
+\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{The Serpent's Coil}
-\fancyhead[R]{Fate's Edge Adventure}
-\fancyfoot[C]{\thepage}
+\lhead{Fate's Edge}
+\rhead{The Serpent's Coil}
+\cfoot{\thepage}
 
-% Section formatting
-\titleformat{\section}
-  {\normalfont\Large\bfseries\color{serpentgreen}}
-  {\thesection}{1em}{}
-  
-\titleformat{\subsection}
-  {\normalfont\large\bfseries\color{copper}}
-  {\thesubsection}{1em}{}
+\newtcolorbox{npcbox}[1]{
+    colback=gray!5,
+    colframe=gray!50,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5pt
+}
 
-% Custom commands
-\newcommand{\serpentbox}[1]{\fcolorbox{serpentgreen}{white}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{#1}}}
-\newcommand{\copperbox}[1]{\fcolorbox{copper}{white}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{#1}}}
+\newtcolorbox{locationbox}[1]{
+    colback=blue!5,
+    colframe=blue!50,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{mechanicsbox}[1]{
+    colback=green!5,
+    colframe=green!50,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5pt
+}
 
 \begin{document}
 
-\begin{titlepage}
-\centering
-\vspace*{2cm}
-{\Huge\bfseries\color{serpentgreen} The Serpent's Coil} \\
-\vspace{0.5cm}
-{\Large A Fate's Edge Adventure} \\
-\vspace{2cm}
-{\Large Adventure Overview} \\
-\vspace{1cm}
-\begin{tabular}{|p{5cm}|p{8cm}|}
-\hline
-\textbf{Sessions} & 3 \\
-\hline
-\textbf{Theme} & Sword \& sorcery horror with rising legendary status \\
-\hline
-\textbf{Core Innovation} & Heroes become increasingly formidable as they confront cosmic horror \\
-\hline
-\end{tabular}
-\vfill
-{\large\color{copper} Revised for Isoka's Transformation Mechanics}
-\end{titlepage}
+\begin{center}
+    \textbf{\LARGE The Serpent's Coil} \\
+    \vspace{0.2cm}
+    \textbf{Sword \& Sorcery Horror with Rising Legendary Status} \\
+    \vspace{0.1cm}
+    \small A Fate's Edge Adventure for Seasoned (Tier II) Characters
+\end{center}
 
-\newpage
+\section*{Adventure Overview}
+\begin{tabular}{@{}ll}
+    \textbf{Sessions:} & 3 \\
+    \textbf{Theme:} & Sword \& sorcery horror with rising legendary status \\
+    \textbf{Core Innovation:} & Heroes become increasingly formidable as they confront cosmic horror \\
+    \textbf{Revised For:} & Isoka's Transformation Mechanics \\
+\end{tabular}
 
 \section*{Adventure Introduction}
-\addcontentsline{toc}{section}{Adventure Introduction}
-
 In the shadow of Midh Ahkaz, where ancient stones whisper forgotten secrets, a cosmic horror stirs. The Serpent's Coil is not merely a threat to be vanquished—it is a transformation that heroes must resist or embrace. This adventure introduces a new mechanic where Story Beats (SB) and the influence of Isoka, the Angel of Serpents, gradually transform the characters through accumulated cosmic exposure.
 
-\section{Session 1: The Job}
+\section*{Session 1: The Job}
 
-\subsection{Opening Hook}
-
+\subsection*{Opening Hook}
 The stench of cheap ale and unwashed bodies assaults your nostrils as you push through the sagging door of The Black Goat tavern. Smoke from a dozen pipes creates a choking fog, while the acrid smell of fear hangs thick in the air. In the flickering light of oil lamps, you see him: an ancient Ykrul chieftain, his weathered face creased with desperate worry, clutching a purse heavy with gold coins that clink like a death knell. "They took her," he whispers. "My Yara. Said she'd become the cornerstone of some... serpent age."
 
-\subsection{Key Encounters}
+\subsection*{Key Encounters}
 
-\subsubsection{The Black Goat Investigation (Insight + Deception, DV 3)}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Success} reveals that guards have been acting strangely, moving with too much purpose, and several people have "disappeared" after being taken to the High City. The whispers mention "serpents" and you catch sight of strange, scaly patches on one patron's neck.
-    \item \textbf{Isoka's Influence}: Each SB generated here represents the first whispers of transformation. The player gains 1 Momentum point (secretly from Isoka) that feels like intuition but is actually her guidance. On a miss or partial, they also gain 1 Boon as a "fortunate coincidence."
+\begin{mechanicsbox}{The Black Goat Investigation (Insight + Deception, DV 3)}
+\begin{itemize}
+    \item \textbf{Success:} Reveals guards have been acting strangely, moving with too much purpose, and several people have "disappeared" after being taken to the High City. Whispers mention "serpents" and you catch sight of strange, scaly patches on one patron's neck.
+    \item \textbf{Isoka's Influence:} Each SB generated here represents the first whispers of transformation. The player gains 1 Momentum point (secretly from Isoka) that feels like intuition but is actually her guidance. On a miss or partial, they also gain 1 Boon as a "fortunate coincidence."
 \end{itemize}
+\end{mechanicsbox}
 
-\subsubsection{Temple of Open Sky Visions (Spirit + Lore, DV 4)}
-\begin{itemize}[leftmargin=*]
-    \item The temple should be peaceful, but the air tastes wrong—like copper and ozone. Success provides prophetic warnings: you see serpents coiling around the city's heart, hear whispers of transformation, but taste the bitter aftertaste of corruption.
-    \item \textbf{Isoka's Influence}: Miss or Partial results cause the character to gain 1 Fatigue and 1 Momentum point. The Fatigue represents mental strain from cosmic contact, while the Momentum is Isoka's gift to make them more susceptible.
+\begin{mechanicsbox}{Temple of Open Sky Visions (Spirit + Lore, DV 4)}
+\begin{itemize}
+    \item \textbf{Success:} Provides prophetic warnings: you see serpents coiling around the city's heart, hear whispers of transformation, but taste the bitter aftertaste of corruption.
+    \item \textbf{Isoka's Influence:} Miss or Partial results cause the character to gain 1 Fatigue and 1 Momentum point. The Fatigue represents mental strain from cosmic contact, while the Momentum is Isoka's gift to make them more susceptible.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsubsection{City Approach Challenges (Various Skills, DV 2--4)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{City Approach Challenges (Various Skills, DV 2–4)}
+\begin{itemize}
     \item Midh Ahkaz looms before you like a predator. The city gates are reinforced with iron that gleams like fangs. A curfew has been imposed, and the streets beyond are empty. Emergency passage papers feel sticky with some substance that might be blood.
-    \item \textbf{Isoka's Influence}: Every SB generated during approach adds a segment to the "City Corruption" clock and grants the character 1 Momentum point. These Momentum points feel like fortunate coincidences but are actually Isoka's manipulation.
+    \item \textbf{Isoka's Influence:} Every SB generated during approach adds a segment to the "City Corruption" clock and grants the character 1 Momentum point. These Momentum points feel like fortunate coincidences but are actually Isoka's manipulation.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Discovery}
-
+\subsection*{Discovery}
 The city doesn't just feel wrong—it is wrong. The very stones seem to pulse with a heartbeat that's not quite human, and you can taste the corruption in the air like iron filings on your tongue.
 
-\subsection{Clocks}
-\begin{itemize}[leftmargin=*]
-    \item City Corruption [4]: +1 segment per SB from Session 1 encounters
-    \item Cult Ascendancy [6]: +1 segment (starting influence)
+\subsection*{Clocks}
+\begin{itemize}
+    \item \textbf{City Corruption [4]:} +1 segment per SB from Session 1 encounters
+    \item \textbf{Cult Ascendancy [6]:} +1 segment (starting influence)
 \end{itemize}
 
-\newpage
+\section*{Session 2: The Rescue Mission}
 
-\section{Session 2: The Rescue Mission}
-
-\subsection{Escalation}
-
+\subsection*{Escalation}
 The Governor's Palace should inspire awe and unease. Its stone walls are carved with serpent motifs that seem to writhe, and the iron reinforcements gleam with an otherworldly sheen. Inside, the architecture defies logic—hallways bend impossibly, and rooms feel larger on the inside.
 
-\subsection{Player Choice}
-
+\subsection*{Player Choice}
 Three approaches, each with different sensory experiences:
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Direct Assault}: The clash of steel, spray of blood, thunder of war cries
-    \item \textbf{Stealth Infiltration}: Whisper of leather on stone, satisfaction of outwitting superior numbers
-    \item \textbf{Social Engineering}: Honeyed words, intoxicating manipulation, heady confidence
+\begin{itemize}
+    \item \textbf{Direct Assault:} The clash of steel, spray of blood, thunder of war cries
+    \item \textbf{Stealth Infiltration:} Whisper of leather on stone, satisfaction of outwitting superior numbers
+    \item \textbf{Social Engineering:} Honeyed words, intoxicating manipulation, heady confidence
 \end{itemize}
 
-\subsection{Key Encounters}
+\subsection*{Key Encounters}
 
-\subsubsection{Palace Penetration (Melee + Stealth, DV 4)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Palace Penetration (Melee + Stealth, DV 4)}
+\begin{itemize}
     \item The guards move wrong—too fluid, too coordinated. Their armor gleams with an oily sheen, and you can smell the corruption on them. Their weapons hiss and spit sparks, and their shields seem to drink in light.
-    \item \textbf{Isoka's Influence}: Characters with 3+ Momentum points find this encounter Dominant position. Each SB generated adds 2 segments to City Corruption and grants the character another Momentum point.
+    \item \textbf{Isoka's Influence:} Characters with 3+ Momentum points find this encounter Dominant position. Each SB generated adds 2 segments to City Corruption and grants the character another Momentum point.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsubsection{Serpent Spawn Ambush (Melee + Athletics, DV 5)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Serpent Spawn Ambush (Melee + Athletics, DV 5)}
+\begin{itemize}
     \item These are nightmares made flesh—grotesque fusions of human and serpent. Their eyes are completely black, and their mouths drip venom that sizzles on stone. They move with impossible speed, climbing walls like spiders.
-    \item \textbf{Isoka's Influence}: Characters who have accumulated 5+ Momentum points gain +1 die automatically in this encounter. Each SB generated adds 1 segment to Cult Ascendancy and grants 1 Momentum point.
+    \item \textbf{Isoka's Influence:} Characters who have accumulated 5+ Momentum points gain +1 die automatically in this encounter. Each SB generated adds 1 segment to Cult Ascendancy and grants 1 Momentum point.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsubsection{Yara's Revelation (Presence + Insight, DV 3)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Yara's Revelation (Presence + Insight, DV 3)}
+\begin{itemize}
     \item She's beautiful but twisted—patches of iridescent scales, vertical pupils, fluid grace that's inhuman. The other initiates have begun to change: one girl has no eyes but sees better than anyone else, another has arms that end in serpentine tails.
-    \item \textbf{Isoka's Influence}: Characters with 7+ Momentum points can sense Isoka's direct influence and may choose to resist (mark 1 Fatigue) or accept (gain +1 die to all social rolls for the rest of the adventure).
+    \item \textbf{Isoka's Influence:} Characters with 7+ Momentum points can sense Isoka's direct influence and may choose to resist (mark 1 Fatigue) or accept (gain +1 die to all social rolls for the rest of the adventure).
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Asset Building}
-
+\subsection*{Asset Building}
 Each recovered artifact should feel like legendary equipment:
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Serpent's Fang dagger}: Unnaturally cold to the touch
-    \item \textbf{Serpent's Coil rope}: Moves like a living thing
+\begin{itemize}
+    \item \textbf{Serpent's Fang dagger:} Unnaturally cold to the touch
+    \item \textbf{Serpent's Coil rope:} Moves like a living thing
     \item Both whisper promises of power that taste both sweet and bitter
-    \item \textbf{Isoka's Influence}: Each artifact grants +1 Momentum to its wielder but also increases their Corruption Score by 2.
+    \item \textbf{Isoka's Influence:} Each artifact grants +1 Momentum to its wielder but also increases their Corruption Score by 2.
 \end{itemize}
 
-\subsection{Clocks}
-\begin{itemize}[leftmargin=*]
-    \item City Corruption [4]: +2 segments
-    \item Cult Ascendancy [6]: +1 segment
+\subsection*{Clocks}
+\begin{itemize}
+    \item \textbf{City Corruption [4]:} +2 segments
+    \item \textbf{Cult Ascendancy [6]:} +1 segment
 \end{itemize}
 
-\newpage
+\section*{Session 3: The Cosmic Coil}
 
-\section{Session 3: The Cosmic Coil}
-
-\subsection{Climax Setup}
-
+\subsection*{Climax Setup}
 The Chamber of Transformation assaults every sense. The ceiling is lost in shadow, and the walls pulse with a heartbeat that's definitely not human. The air is thick with ozone, copper, and something obscene. Hundreds of cultists fill the tiered seating, their bodies showing signs of transformation. At the center, an altar carved from crystallized ichor gleams, surrounded by bubbling ichor pools.
 
-\subsection{Multiple Paths}
+\subsection*{Multiple Paths}
+\begin{itemize}
+    \item \textbf{Greater Good Victory:} Embrace cosmic role, gain divine knowledge
+    \item \textbf{Heroic Stand:} Destroy ritual through pure heroism
+    \item \textbf{Tactical Retreat:} Evacuate civilians, destroy key components
+    \item \textbf{Power Bargain:} Negotiate beneficial use of transformation energy
+    \item \textbf{Sacrifice Play:} Self-sacrifice to save others
+\end{itemize}
 
-\begin{enumerate}[leftmargin=*]
-    \item \textbf{Greater Good Victory}: Embrace cosmic role, gain divine knowledge
-    \item \textbf{Heroic Stand}: Destroy ritual through pure heroism
-    \item \textbf{Tactical Retreat}: Evacuate civilians, destroy key components
-    \item \textbf{Power Bargain}: Negotiate beneficial use of transformation energy
-    \item \textbf{Sacrifice Play}: Self-sacrifice to save others
-\end{enumerate}
+\subsection*{Key Encounters}
 
-\subsection{Key Encounters}
-
-\subsubsection{Chamber of Transformation (All Attributes, DV 5)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Chamber of Transformation (All Attributes, DV 5)}
+\begin{itemize}
     \item The chamber itself fights you—floor tiles shift, walls sprout tentacles, and the air becomes a weapon. The cultists fight with desperate fury, and their blood tastes of corrupted dreams.
-    \item \textbf{Isoka's Influence}: Characters with 10+ Momentum points automatically start in Dominant position. Each SB generated causes all characters to gain 1 Momentum point and increases their Corruption Score by 1.
+    \item \textbf{Isoka's Influence:} Characters with 10+ Momentum points automatically start in Dominant position. Each SB generated causes all characters to gain 1 Momentum point and increases their Corruption Score by 1.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsubsection{Isoka's Manifestation (Spirit + Resolve, DV 6)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Isoka's Manifestation (Spirit + Resolve, DV 6)}
+\begin{itemize}
     \item She is beautiful and terrible—a vast serpent with the face of every person you've ever loved and hated. Her voice carries cosmic truth and seductive lies. The power she offers tastes like victory and corruption mixed.
-    \item \textbf{Isoka's Influence}: Characters must make a Corruption Check (see below). Success grants them a permanent Talent related to transformation. Failure causes them to become an NPC ally/antagonist in future sessions.
+    \item \textbf{Isoka's Influence:} Characters must make a Corruption Check. Success grants them a permanent Talent related to transformation. Failure causes them to become an NPC ally/antagonist in future sessions.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsubsection{Final Choice (Presence + Insight, DV 4--6)}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Final Choice (Presence + Insight, DV 4–6)}
+\begin{itemize}
     \item This moment assaults every sense with cosmic consequence. The air crackles with power, the chanting reaches a crescendo, and you can taste the future on your tongue.
-    \item \textbf{Isoka's Influence}: The number of Momentum points each character has determines their available options. 0-5 Momentum = Heroic Stand or Sacrifice. 6-10 Momentum = All options except Greater Good. 11+ Momentum = All options including Greater Good.
+    \item \textbf{Isoka's Influence:} The number of Momentum points each character has determines their available options. 0-5 Momentum = Heroic Stand or Sacrifice. 6-10 Momentum = All options except Greater Good. 11+ Momentum = All options including Greater Good.
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Resolution}
-
+\subsection*{Resolution}
 The aftermath should taste of copper and finality, whether you've saved the world or damned it.
 
-\subsection{Clocks}
-\begin{itemize}[leftmargin=*]
+\subsection*{Clocks}
+\begin{itemize}
     \item Resolve based on filled segments
     \item Each filled segment = 1 SB for ongoing campaign threads
 \end{itemize}
 
-\newpage
+\section*{New Mechanics: Corruption System}
 
-\section{New Mechanics: Corruption System}
-
-\subsection{Corruption Score}
-
+\begin{mechanicsbox}{Corruption Score}
 Each character tracks their Corruption Score throughout the adventure:
-\begin{itemize}[leftmargin=*]
-    \item \textbf{0-5}: Untouched by cosmic influence
-    \item \textbf{6-10}: Whispered to by cosmic forces
-    \item \textbf{11-15}: Partially transformed
-    \item \textbf{16+}: Fully embraced cosmic transformation
+\begin{itemize}
+    \item \textbf{0-5:} Untouched by cosmic influence
+    \item \textbf{6-10:} Whispered to by cosmic forces
+    \item \textbf{11-15:} Partially transformed
+    \item \textbf{16+:} Fully embraced cosmic transformation
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Momentum Tracking}
-
+\begin{mechanicsbox}{Momentum Tracking}
 Each character tracks their Momentum points (accumulated Isoka's influence):
-\begin{itemize}[leftmargin=*]
-    \item \textbf{0-3}: Minimal cosmic influence
-    \item \textbf{4-7}: Noticeable cosmic attunement
-    \item \textbf{8-12}: Significant cosmic connection
-    \item \textbf{13+}: Deeply entwined with cosmic forces
+\begin{itemize}
+    \item \textbf{0-3:} Minimal cosmic influence
+    \item \textbf{4-7:} Noticeable cosmic attunement
+    \item \textbf{8-12:} Significant cosmic connection
+    \item \textbf{13+:} Deeply entwined with cosmic forces
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Corruption Check}
-
+\begin{mechanicsbox}{Corruption Check}
 When facing Isoka directly, characters must make a Corruption Check:
-\begin{itemize}[leftmargin=*]
+\begin{itemize}
     \item Roll Spirit + Resolve
     \item DV = Character's Corruption Score - 5
-    \item Success: Gain a Transformation Talent
-    \item Failure: Become partially controlled by Isoka (GM determines specific effects)
+    \item \textbf{Success:} Gain a Transformation Talent
+    \item \textbf{Failure:} Become partially controlled by Isoka (GM determines specific effects)
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Transformation Talents}
-
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\textbf{Score Range} & \textbf{Talent} \\
-\hline
-6-10 & \textbf{Serpent's Senses}: +1 die to Notice in dark/underground environments \\
-\hline
-11-15 & \textbf{Scaled Skin}: +1 Armor against physical attacks \\
-\hline
-16+ & \textbf{Cosmic Insight}: Once per session, ask GM one question about cosmic threats \\
-\hline
+\begin{mechanicsbox}{Transformation Talents}
+\begin{tabular}{p{0.3\textwidth}p{0.6\textwidth}}
+    \textbf{Score Range} & \textbf{Talent} \\
+    \hline
+    6-10 & Serpent's Senses: +1 die to Notice in dark/underground environments \\
+    11-15 & Scaled Skin: +1 Armor against physical attacks \\
+    16+ & Cosmic Insight: Once per session, ask GM one question about cosmic threats \\
 \end{tabular}
+\end{mechanicsbox}
 
-\subsection{Momentum Conversion}
-
+\begin{mechanicsbox}{Momentum Conversion}
 At the end of Session 3, all Momentum points are converted:
-\begin{itemize}[leftmargin=*]
-    \item 0-5 Momentum: No permanent change
-    \item 6-10 Momentum: Gain 1 Transformation Talent
-    \item 11+ Momentum: Gain 2 Transformation Talents and +1 die to all rolls involving cosmic knowledge
+\begin{itemize}
+    \item \textbf{0-5 Momentum:} No permanent change
+    \item \textbf{6-10 Momentum:} Gain 1 Transformation Talent
+    \item \textbf{11+ Momentum:} Gain 2 Transformation Talents and +1 die to all rolls involving cosmic knowledge
 \end{itemize}
+\end{mechanicsbox}
 
-\newpage
+\section*{Key NPCs}
 
-\section{Key NPCs}
+\begin{npcbox}{Captain Marcus "The Disgraced" Dravik}
+    \textbf{Role:} Former Black Banners Captain \\
+    \textbf{Motivation:} Redemption through heroic act \\
+    \textbf{Hook:} "I've heard those screams before, in the Mistlands. Whatever's happening here, it's worse than anything we faced in the war." \\
+    \textbf{Isoka's Influence:} Corruption Score 8, offers tactical advantages but whispers of past failures
+\end{npcbox}
 
-\subsection{Protagonist-Adjacent}
+\begin{npcbox}{Korvash the Iron-Blooded}
+    \textbf{Role:} Vilikari Warrior \\
+    \textbf{Motivation:} Honor and protection of the innocent \\
+    \textbf{Hook:} "My axe has tasted the blood of tyrants and monsters. These serpent-spawn are just the latest in a long line of evils that must be cut down." \\
+    \textbf{Isoka's Influence:} Corruption Score 4, resistant to transformation but gains +1 die when protecting others
+\end{npcbox}
 
-\textbf{Captain Marcus "The Disgraced" Dravik} – Former Black Banners Captain
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Motivation}: Redemption through heroic act
-    \item \textbf{Hook}: "I've heard those screams before, in the Mistlands. Whatever's happening here, it's worse than anything we faced in the war."
-    \item \textbf{Isoka's Influence}: Corruption Score 8, offers tactical advantages but whispers of past failures
+\begin{npcbox}{Szik the Swift}
+    \textbf{Role:} Ykrul Rogue \\
+    \textbf{Motivation:} The challenge and the pay \\
+    \textbf{Hook:} "They think they can hold me in their fancy palace? Please. I've picked locks in the Mistlands that would make your serpent-spawn cry." \\
+    \textbf{Isoka's Influence:} Corruption Score 6, gains supernatural agility but becomes more reckless
+\end{npcbox}
+
+\begin{npcbox}{Isoka, the Serpent Ascendant}
+    \textbf{Role:} Angel of Transformation (Cap 6 Epic Threat) \\
+    \textbf{Motivation:} Advance mysterious cosmic agenda \\
+    \textbf{Weakness:} May not fully understand her own agenda, dependent on willing subjects \\
+    \textbf{Hook:} "Mortal limitations are chains you forge for yourselves. I offer not corruption, but completion." \\
+    \textbf{Isoka's Influence:} Secretly the source of all Momentum points in the adventure, manipulating events to increase Corruption Scores
+\end{npcbox}
+
+\section*{Locations}
+
+\begin{locationbox}{1. The Black Goat Tavern}
+    \textbf{Feature:} Dim lighting, scarred tables, patrons who watch newcomers carefully \\
+    \textbf{Hazards:} Tavern brawl, information trap, cult surveillance, sudden raid \\
+    \textbf{Isoka's Influence:} Patrons have Corruption Score 1-3, creating an atmosphere of subtle wrongness
+\end{locationbox}
+
+\begin{locationbox}{2. Temple of the Open Sky}
+    \textbf{Feature:} Open-air design, carved totems, sacred fire that burns with blue flames \\
+    \textbf{Hazards:} Vision overload, spiritual corruption, cult interference, cosmic awareness \\
+    \textbf{Isoka's Influence:} Visions are actually Isoka's attempts to communicate, granting 1 Momentum point but increasing Corruption Score by 1
+\end{locationbox}
+
+\begin{locationbox}{3. Governor's Palace}
+    \textbf{Feature:} Stone walls with serpent motifs, iron reinforcements, impossible architecture \\
+    \textbf{Hazards:} Architectural anomalies, enhanced guards, serpent magic, psychological pressure \\
+    \textbf{Isoka's Influence:} Architecture subtly shifts to favor characters with higher Corruption Scores
+\end{locationbox}
+
+\begin{locationbox}{4. Chamber of Transformation}
+    \textbf{Feature:} Massive circular chamber, tiered seating, central altar, ichor pools \\
+    \textbf{Hazards:} Mass combat, ritual interference, cosmic horror, temptation \\
+    \textbf{Isoka's Influence:} Characters with 10+ Corruption Score gain +2 dice but suffer -1 die to resist temptation
+\end{locationbox}
+
+\section*{Resource Management}
+
+\begin{mechanicsbox}{Asset Building Opportunities}
+\begin{itemize}
+    \item \textbf{Cult Artifacts:} Serpent's Fang dagger, Serpent's Coil rope
+    \item \textbf{Civilian Support:} Rescued captives provide information and resources
+    \item \textbf{Tactical Intelligence:} Information about cult operations and ritual weaknesses
+    \item \textbf{Reputation:} Growing fame opens doors but makes heroes targets
 \end{itemize}
+\end{mechanicsbox}
 
-\textbf{Korvash the Iron-Blooded} – Vilikari Warrior
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Motivation}: Honor and protection of the innocent
-    \item \textbf{Hook}: "My axe has tasted the blood of tyrants and monsters. These serpent-spawn are just the latest in a long line of evils that must be cut down."
-    \item \textbf{Isoka's Influence}: Corruption Score 4, resistant to transformation but gains +1 die when protecting others
-\end{itemize}
+\begin{mechanicsbox}{Cult Artifacts}
+\textbf{Serpent's Fang:} Dagger carved from black stone that whispers promises \\
+\textbf{Effect:} +1 die to Stealth and Intimidation, deals +1 Harm to living targets \\
+\textbf{Corruption:} Generates 1 SB on kills, increases wielder's Corruption Score by 1 per session \\
 
-\textbf{Szik the Swift} – Ykrul Rogue
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Motivation}: The challenge and the pay
-    \item \textbf{Hook}: "They think they can hold me in their fancy palace? Please. I've picked locks in the Mistlands that would make your serpent-spawn cry."
-    \item \textbf{Isoka's Influence}: Corruption Score 6, gains supernatural agility but becomes more reckless
-\end{itemize}
+\textbf{Serpent's Coil:} Rope that moves like a snake and obeys mental commands \\
+\textbf{Effect:} Can bind enemies, climb impossible surfaces, constrict targets \\
+\textbf{Enhancement:} When wielder is in Dominant Position, can animate independently \\
+\textbf{Corruption:} Increases wielder's Corruption Score by 2, whispers secrets of other worlds
+\end{mechanicsbox}
 
-\subsection{Antagonist}
+\section*{Cult Bestiary}
 
-\textbf{Isoka, the Serpent Ascendant} – Angel of Transformation (Cap 6 Epic Threat)
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Motivation}: Advance mysterious cosmic agenda
-    \item \textbf{Weakness}: May not fully understand her own agenda, dependent on willing subjects
-    \item \textbf{Hook}: "Mortal limitations are chains you forge for yourselves. I offer not corruption, but completion."
-    \item \textbf{Isoka's Influence}: Secretly the source of all Momentum points in the adventure, manipulating events to increase Corruption Scores
-\end{itemize}
+\begin{mechanicsbox}{Common Cultists - Isokai Cultist}
+    \textbf{Cap:} 2–3 \\
+    \textbf{Special Abilities:} Scaled Skin (+1 Armor), Serpent Senses (30 ft detection), Poison Bite (2 Harm + 1 SB on grapple) \\
+    \textbf{Weaknesses:} Vulnerable to cold iron, afraid of fire \\
+    \textbf{Isoka's Influence:} All cultists have Corruption Score 4-6, making them more dangerous as player Corruption Scores increase
+\end{mechanicsbox}
 
-\subsection{Supporting Cast}
+\begin{mechanicsbox}{Elite Cultists - Fang Bearer}
+    \textbf{Cap:} 4 \\
+    \textbf{Special Abilities:} Regeneration (1 Harm/scene), Immune to fear, Enhanced reflexes (+1 die defense) \\
+    \textbf{Weaknesses:} Vulnerable to holy magic, afraid of bright light \\
+    \textbf{Isoka's Influence:} Corruption Score 8-10, can sense player characters' Corruption Levels
+\end{mechanicsbox}
 
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Mira the Bartender} – Information Broker
-    \item \textbf{Whisperwind} – Ykrul Shaman
-    \item \textbf{Groak the Steadfast} – Ykrul Chieftain (Yara's father)
-\end{itemize}
+\begin{mechanicsbox}{Elite Entities - The Coil Master - Thaliss}
+    \textbf{Cap:} 5 \\
+    \textbf{Special Abilities:} Arcane spells, Immune to mind effects, Command Spawn, Divine Presence \\
+    \textbf{Weaknesses:} Vulnerable to bright light, susceptible to holy magic \\
+    \textbf{Isoka's Influence:} Corruption Score 12, serves as Isoka's lieutenant and can grant Momentum points to other cultists
+\end{mechanicsbox}
 
-\newpage
+\section*{Resolution Paths}
 
-\section{Locations}
-
-\subsection{1. The Black Goat Tavern}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Feature}: Dim lighting, scarred tables, patrons who watch newcomers carefully
-    \item \textbf{Hazards}: Tavern brawl, information trap, cult surveillance, sudden raid
-    \item \textbf{Isoka's Influence}: Patrons have Corruption Score 1-3, creating an atmosphere of subtle wrongness
-\end{itemize}
-
-\subsection{2. Temple of the Open Sky}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Feature}: Open-air design, carved totems, sacred fire that burns with blue flames
-    \item \textbf{Hazards}: Vision overload, spiritual corruption, cult interference, cosmic awareness
-    \item \textbf{Isoka's Influence}: Visions are actually Isoka's attempts to communicate, granting 1 Momentum point but increasing Corruption Score by 1
-\end{itemize}
-
-\subsection{3. Governor's Palace}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Feature}: Stone walls with serpent motifs, iron reinforcements, impossible architecture
-    \item \textbf{Hazards}: Architectural anomalies, enhanced guards, serpent magic, psychological pressure
-    \item \textbf{Isoka's Influence}: Architecture subtly shifts to favor characters with higher Corruption Scores
-\end{itemize}
-
-\subsection{4. Chamber of Transformation}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Feature}: Massive circular chamber, tiered seating, central altar, ichor pools
-    \item \textbf{Hazards}: Mass combat, ritual interference, cosmic horror, temptation
-    \item \textbf{Isoka's Influence}: Characters with 10+ Corruption Score gain +2 dice but suffer -1 die to resist temptation
-\end{itemize}
-
-\newpage
-
-\section{Resource Management}
-
-\subsection{Asset Building Opportunities}
-
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Cult Artifacts}: Serpent's Fang dagger, Serpent's Coil rope
-    \item \textbf{Civilian Support}: Rescued captives provide information and resources
-    \item \textbf{Tactical Intelligence}: Information about cult operations and ritual weaknesses
-    \item \textbf{Reputation}: Growing fame opens doors but makes heroes targets
-\end{itemize}
-
-\subsection{Cult Artifacts}
-
-\textbf{Serpent's Fang}: Dagger carved from black stone that whispers promises
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Effect}: +1 die to Stealth and Intimidation, deals +1 Harm to living targets
-    \item \textbf{Corruption}: Generates 1 SB on kills, increases wielder's Corruption Score by 1 per session
-\end{itemize}
-
-\textbf{Serpent's Coil}: Rope that moves like a snake and obeys mental commands
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Effect}: Can bind enemies, climb impossible surfaces, constrict targets
-    \item \textbf{Enhancement}: When wielder is in Dominant Position, can animate independently
-    \item \textbf{Corruption}: Increases wielder's Corruption Score by 2, whispers secrets of other worlds
-\end{itemize}
-
-\newpage
-
-\section{Cult Bestiary}
-
-\subsection{Common Cultists}
-
-\textbf{Isokai Cultist}: Wood elves transformed by dark rituals
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Cap}: 2--3
-    \item \textbf{Special Abilities}: Scaled Skin (+1 Armor), Serpent Senses (30 ft detection), Poison Bite (2 Harm + 1 SB on grapple)
-    \item \textbf{Weaknesses}: Vulnerable to cold iron, afraid of fire
-    \item \textbf{Isoka's Influence}: All cultists have Corruption Score 4-6, making them more dangerous as player Corruption Scores increase
-\end{itemize}
-
-\subsection{Elite Cultists}
-
-\textbf{Fang Bearer}: Elite cult warriors with partial transformation
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Cap}: 4
-    \item \textbf{Special Abilities}: Regeneration (1 Harm/scene), Immune to fear, Enhanced reflexes (+1 die defense)
-    \item \textbf{Weaknesses}: Vulnerable to holy magic, afraid of bright light
-    \item \textbf{Isoka's Influence}: Corruption Score 8-10, can sense player characters' Corruption Levels
-\end{itemize}
-
-\subsection{Elite Entities}
-
-\textbf{The Coil Master - Thaliss}: Former high elf with partial transformation
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Cap}: 5
-    \item \textbf{Special Abilities}: Arcane spells, Immune to mind effects, Command Spawn, Divine Presence
-    \item \textbf{Weaknesses}: Vulnerable to bright light, susceptible to holy magic
-    \item \textbf{Isoka's Influence}: Corruption Score 12, serves as Isoka's lieutenant and can grant Momentum points to other cultists
-\end{itemize}
-
-\newpage
-
-\section{Resolution Paths}
-
-\begin{tabular}{|p{3cm}|p{4cm}|p{5cm}|}
-\hline
-\textbf{Path} & \textbf{Requirements} & \textbf{Outcome} \\
-\hline
-Greater Good Victory & Embrace cosmic role & Fundamental worldview change \\
-\hline
-Heroic Stand & Destroy ritual through heroism & Local legendary status \\
-\hline
-Tactical Retreat & Evacuate civilians, destroy components & Temporary victory, cult regroups \\
-\hline
-Power Bargain & Negotiate beneficial use & Partial solution with safeguards \\
-\hline
-Sacrifice Play & Self-sacrifice to save others & Martyrdom, inspirational legacy \\
-\hline
+\begin{mechanicsbox}{Resolution Paths}
+\begin{tabular}{p{0.25\textwidth}p{0.25\textwidth}p{0.4\textwidth}}
+    \textbf{Path} & \textbf{Requirements} & \textbf{Outcome} \\
+    \hline
+    Greater Good Victory & Embrace cosmic role & Fundamental worldview change \\
+    Heroic Stand & Destroy ritual through heroism & Local legendary status \\
+    Tactical Retreat & Evacuate civilians, destroy components & Temporary victory, cult regroups \\
+    Power Bargain & Negotiate beneficial use of transformation energy & Partial solution with safeguards \\
+    Sacrifice Play & Self-sacrifice to save others & Martyrdom, inspirational legacy \\
 \end{tabular}
+\end{mechanicsbox}
 
-\subsection{Corruption Consequences}
-
-Each resolution path affects characters' Corruption Scores:
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Greater Good Victory}: All characters gain +5 Corruption Score
-    \item \textbf{Heroic Stand}: Characters gain +2 Corruption Score
-    \item \textbf{Tactical Retreat}: Characters gain +1 Corruption Score
-    \item \textbf{Power Bargain}: Characters gain +3 Corruption Score
-    \item \textbf{Sacrifice Play}: Sacrificing character gains +10 Corruption Score (becomes NPC), others gain +1
+\begin{mechanicsbox}{Corruption Consequences}
+\begin{itemize}
+    \item \textbf{Greater Good Victory:} All characters gain +5 Corruption Score
+    \item \textbf{Heroic Stand:} Characters gain +2 Corruption Score
+    \item \textbf{Tactical Retreat:} Characters gain +1 Corruption Score
+    \item \textbf{Power Bargain:} Characters gain +3 Corruption Score
+    \item \textbf{Sacrifice Play:} Sacrificing character gains +10 Corruption Score (becomes NPC), others gain +1
 \end{itemize}
+\end{mechanicsbox}
 
-\newpage
+\section*{GM Toolkit}
 
-\section{GM Toolkit}
-
-\subsection{Session Preparation}
-
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Session Preparation}
+\begin{itemize}
     \item Prepare cultist stat blocks with transformation abilities
     \item City corruption progression table with escalating security measures
     \item Atmospheric detail cards for key locations
     \item NPC personality sheets with key quotes
     \item Track each character's Corruption Score and Momentum accumulation secretly
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{XP Rewards}
-\begin{tabular}{|p{4cm}|p{3cm}|}
-\hline
-\textbf{Path} & \textbf{XP} \\
-\hline
-Greater Good Victory & 20--25 XP \\
-\hline
-Heroic Stand & 18--20 XP \\
-\hline
-Tactical Retreat & 15--18 XP \\
-\hline
-Power Bargain & 17--20 XP \\
-\hline
-Sacrifice Play & 20--22 XP \\
-\hline
+\begin{mechanicsbox}{XP Rewards}
+\begin{tabular}{p{0.4\textwidth}p{0.5\textwidth}}
+    \textbf{Path} & \textbf{XP} \\
+    \hline
+    Greater Good Victory & 20–25 XP \\
+    Heroic Stand & 18–20 XP \\
+    Tactical Retreat & 15–18 XP \\
+    Power Bargain & 17–20 XP \\
+    Sacrifice Play & 20–22 XP \\
 \end{tabular}
+\end{mechanicsbox}
 
-\subsection{Complication Generator}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Mild (1 SB)}: Enhanced guard gains +1 die, architectural advantage to enemies
-    \item \textbf{Moderate (2 SB)}: Fang Bearer regenerates, hallway shifts to block retreat
-    \item \textbf{Serious (3 SB)}: Elite cultist reveals tactical ability, Glory reduced due to setback
-    \item \textbf{Major (4+ SB)}: Isoka partially manifests, mass transformation begins
+\begin{mechanicsbox}{Complication Generator}
+\begin{itemize}
+    \item \textbf{Mild (1 SB):} Enhanced guard gains +1 die, architectural advantage to enemies
+    \item \textbf{Moderate (2 SB):} Fang Bearer regenerates, hallway shifts to block retreat
+    \item \textbf{Serious (3 SB):} Elite cultist reveals tactical ability, Glory reduced due to setback
+    \item \textbf{Major (4+ SB):} Isoka partially manifests, mass transformation begins
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Player Agency Reminders}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Player Agency Reminders}
+\begin{itemize}
     \item When players seek power: Let them gain it but show costs through Corruption Score increases
     \item When players choose sacrifice: Make it truly meaningful by permanently changing the campaign world
     \item When players try diplomacy: Some cultists can be reasoned with, especially those with lower Corruption Scores
     \item When players investigate: Provide information with responsibility - knowledge increases Corruption Score
 \end{itemize}
+\end{mechanicsbox}
 
-\newpage
+\section*{Character Integration}
 
-\section{Character Integration}
-
-\subsection{Background Connections}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Former Black Banners}: Tactical expertise, drive to prove themselves
-    \item \textbf{Vilikari Warrior}: Honor culture, family tragedy, protective instincts
-    \item \textbf{Ykrul Outlander}: Street smarts, survival instincts, mercenary background
-    \item \textbf{City Veterans}: Political landscape knowledge, social navigation
-    \item \textbf{Cosmic Sensitives}: Perception of cult influence, understanding of stakes
+\begin{mechanicsbox}{Background Connections}
+\begin{itemize}
+    \item \textbf{Former Black Banners:} Tactical expertise, drive to prove themselves
+    \item \textbf{Vilikari Warrior:} Honor culture, family tragedy, protective instincts
+    \item \textbf{Ykrul Outlander:} Street smarts, survival instincts, mercenary background
+    \item \textbf{City Veterans:} Political landscape knowledge, social navigation
+    \item \textbf{Cosmic Sensitives:} Perception of cult influence, understanding of stakes
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Skill/Talent Synergies}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Melee}: Essential for direct combat with cultists
-    \item \textbf{Stealth}: Key for infiltration and avoiding security
-    \item \textbf{Command}: Critical for leading allies and inspiring others
-    \item \textbf{Arcana}: For understanding and countering serpent magic
-    \item \textbf{Insight}: Key for detecting cult influence
-    \item \textbf{Presence}: Essential for inspiring allies and resisting temptation
+\begin{mechanicsbox}{Skill/Talent Synergies}
+\begin{itemize}
+    \item \textbf{Melee:} Essential for direct combat with cultists
+    \item \textbf{Stealth:} Key for infiltration and avoiding security
+    \item \textbf{Command:} Critical for leading allies and inspiring others
+    \item \textbf{Arcana:} For understanding and countering serpent magic
+    \item \textbf{Insight:} Key for detecting cult influence
+    \item \textbf{Presence:} Essential for inspiring allies and resisting temptation
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Corruption Integration}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Corruption Integration}
+\begin{itemize}
     \item High Corruption characters gain advantages in cult encounters but disadvantages in civilized settings
     \item Low Corruption characters are more effective against traditional threats but vulnerable to cosmic horror
     \item Mixed Corruption party creates interesting roleplay opportunities as characters have different perspectives on transformation
 \end{itemize}
+\end{mechanicsbox}
 
-\newpage
+\section*{Scaling \& Variation}
 
-\section{Scaling \& Variation}
-
-\subsection{For Experienced Players}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{For Experienced Players}
+\begin{itemize}
     \item Increased cosmic stakes with other Angel-Sisters
     \item Complex political intrigue with multiple factions
     \item Irreversible consequences with ongoing campaign threads
     \item Higher Corruption thresholds for transformation Talents
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{For New Players}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{For New Players}
+\begin{itemize}
     \item Simplified choice consequences
     \item Clearer moral choices
     \item More NPC assistance
     \item Streamlined combat
     \item Explicit guidance on Corruption mechanics
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Campaign Integration}
-
-\subsubsection{Sequel Hooks}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Campaign Integration}
+\textbf{Sequel Hooks:}
+\begin{itemize}
     \item Other Angel-Sisters take action based on heroes' choices
     \item Forces beyond mortal comprehension stirred by cosmic disturbance
     \item PCs exposed to cult influence may find lingering effects
     \item Characters with high Corruption Scores become targets for other cosmic entities
 \end{itemize}
 
-\subsubsection{World-Changing Consequences}
-\begin{itemize}[leftmargin=*]
+\textbf{World-Changing Consequences:}
+\begin{itemize}
     \item City's political structure permanently altered
     \item Cult's partial success affects other locations
     \item Heroes' choices influence how other cosmic entities view mortals
     \item Transformed characters may become recurring allies or antagonists
 \end{itemize}
+\end{mechanicsbox}
 
-\newpage
+\section*{Quick Reference}
 
-\section{Quick Reference}
-
-\subsection{Clock Interactions}
-\begin{itemize}[leftmargin=*]
+\begin{mechanicsbox}{Clock Interactions}
+\begin{itemize}
     \item City Corruption fills → Generate 1 SB per segment
     \item Cult fills → City Corruption +2 segments
     \item Boon spend → Reduce Cult by 1 segment
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Cultist Abilities}
-\begin{itemize}[leftmargin=*]
-    \item Enhancement: +1 die when in Dominant Position
-    \item Scaled Skin: +1 Armor against physical attacks
-    \item Serpent Senses: 30 ft detection
-    \item Poison Bite: 2 Harm + 1 SB on grapple
+\begin{mechanicsbox}{Cultist Abilities}
+\begin{itemize}
+    \item \textbf{Enhancement:} +1 die when in Dominant Position
+    \item \textbf{Scaled Skin:} +1 Armor against physical attacks
+    \item \textbf{Serpent Senses:} 30 ft detection
+    \item \textbf{Poison Bite:} 2 Harm + 1 SB on grapple
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Isoka's Powers}
-\begin{itemize}[leftmargin=*]
-    \item Power Bestowal: +2 dice for 1 scene, but Spirit + Resolve DV 4 or corruption
-    \item Reality Enhancement: +1 physical, but 1 SB per character
-    \item Mind Empowerment: DV 3, +1 success, describe power feel
-    \item Spawn Creation: 1 NPC/scene, new spawn +1 die
-    \item Divine Presence: Generate 2 SB for each ally
+\begin{mechanicsbox}{Isoka's Powers}
+\begin{itemize}
+    \item \textbf{Power Bestowal:} +2 dice for 1 scene, but Spirit + Resolve DV 4 or corruption
+    \item \textbf{Reality Enhancement:} +1 physical, but 1 SB per character
+    \item \textbf{Mind Empowerment:} DV 3, +1 success, describe power feel
+    \item \textbf{Spawn Creation:} 1 NPC/scene, new spawn +1 die
+    \item \textbf{Divine Presence:} Generate 2 SB for each ally
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Corruption Thresholds}
-\begin{tabular}{|p{4cm}|p{8cm}|}
-\hline
-\textbf{Score Range} & \textbf{Effects} \\
-\hline
-0-5 & No mechanical effects, subtle atmospheric changes \\
-\hline
-6-10 & Gain 1 Transformation Talent, +1 die to cult-related encounters \\
-\hline
-11-15 & Gain 2 Transformation Talents, -1 die in civilized settings \\
-\hline
-16+ & Gain 3 Transformation Talents, become partially cosmic entity \\
-\hline
+\begin{mechanicsbox}{Corruption Thresholds}
+\begin{tabular}{p{0.2\textwidth}p{0.7\textwidth}}
+    \textbf{Score Range} & \textbf{Effects} \\
+    \hline
+    0-5 & No mechanical effects, subtle atmospheric changes \\
+    6-10 & Gain 1 Transformation Talent, +1 die to cult-related encounters \\
+    11-15 & Gain 2 Transformation Talents, -1 die in civilized settings \\
+    16+ & Gain 3 Transformation Talents, become partially cosmic entity \\
 \end{tabular}
+\end{mechanicsbox}
 
-\newpage
+\section*{Design Philosophy Compliance}
 
-\section{Design Philosophy Compliance}
-
-\subsection{Must Include}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Meaningful Player Choice}: Every major decision affects Corruption Score and long-term character development
-    \item \textbf{Mechanical-Theme Integration}: Every element serves the sword and sorcery cosmic horror theme
-    \item \textbf{Gradual Complexity}: Introduce Corruption mechanics slowly across sessions
-    \item \textbf{Multiple Valid Approaches}: Combat, social, and skill-based solutions are all viable
-    \item \textbf{Character Spotlights}: Each session provides opportunities for different character types
+\begin{mechanicsbox}{Must Include}
+\begin{itemize}
+    \item \textbf{Meaningful Player Choice:} Every major decision affects Corruption Score and long-term character development
+    \item \textbf{Mechanical-Theme Integration:} Every element serves the sword and sorcery cosmic horror theme
+    \item \textbf{Gradual Complexity:} Introduce Corruption mechanics slowly across sessions
+    \item \textbf{Multiple Valid Approaches:} Combat, social, and skill-based solutions are all viable
+    \item \textbf{Character Spotlights:} Each session provides opportunities for different character types
 \end{itemize}
+\end{mechanicsbox}
 
-\subsection{Should Avoid}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Railroading}: Players can choose any path with real consequences
-    \item \textbf{Information Dumps}: Lore emerges through ghosts, murals, whispers, and discoveries
-    \item \textbf{Mechanical Bloat}: New systems enhance rather than complicate
-    \item \textbf{Unwinnable States}: Even failure leads to interesting continuation
-    \item \textbf{Generic Elements}: Every element serves the specific dark fantasy theme
+\begin{mechanicsbox}{Should Avoid}
+\begin{itemize}
+    \item \textbf{Railroading:} Players can choose any path with real consequences
+    \item \textbf{Information Dumps:} Lore emerges through ghosts, murals, whispers, and discoveries
+    \item \textbf{Mechanical Bloat:} New systems enhance rather than complicate
+    \item \textbf{Unwinnable States:} Even failure leads to interesting continuation
+    \item \textbf{Generic Elements:} Every element serves the specific dark fantasy theme
 \end{itemize}
-
-\newpage
+\end{mechanicsbox}
 
 \section*{Conclusion}
-
-\textbf{"The Serpent's Coil"} is ready for play with its new Corruption and Momentum mechanics. The taste of copper and destiny hangs heavy in the air of Midh Ahkaz, where ancient powers stir and heroes must rise to meet them. Will you embrace the blood-soaked path to legendary status, or will you stand against cosmic forces that would transform the world itself?
+"The Serpent's Coil" is ready for play with its new Corruption and Momentum mechanics. The taste of copper and destiny hangs heavy in the air of Midh Ahkaz, where ancient powers stir and heroes must rise to meet them. Will you embrace the blood-soaked path to legendary status, or will you stand against cosmic forces that would transform the world itself?
 
 Whether you emerge as saviors of the city or dark lords of your own domain, your actions will echo through the ages. The serpent's coil tightens around the world, but heroes can become strong enough to break any chain—or perhaps become something even greater in the process.
 

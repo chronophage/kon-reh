@@ -8,17 +8,38 @@
 \usepackage{titling}
 \usepackage{longtable}
 \usepackage{tabularx}
+\usepackage{fancyhdr}
 
 \geometry{margin=0.75in}
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0em}
 
-\newcommand{\sectionheader}[1]{\vspace{0.35em}\textbf{\large #1}\\[0.2em]}
-\newcommand{\subsectionheader}[1]{\textbf{#1}\\}
-\newcommand{\monsterbox}[1]{\fbox{\begin{tabular}{@{}p{6in}@{}} #1 \end{tabular}}\\[0.5em]}
-\newenvironment{npcbox}{\par\noindent\begin{tabular}{@{}p{6in}@{}}\hline\\[-0.8em]}{\vspace{0.2em}\\\hline\end{tabular}\par}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{The Forbidden Library}
+\lhead{Fate's Edge Adventure}
+\cfoot{\thepage}
 
-\title{\textbf{The Forbidden Library}\\A Fate's Edge Homage (Hooks, NPCs, Rumors)}
+\newcommand{\sectionheader}[1]{\vspace{0.5em}\textbf{\large #1}\\[0.3em]}
+\newcommand{\subsectionheader}[1]{\textbf{#1}\\}
+
+% Patron box as an environment (matches your \begin{patronbox} ... \end{patronbox} usage)
+\newenvironment{patronbox}{%
+  \par\noindent
+  \fbox{%
+    \begin{minipage}{6.5in}%
+}{%
+    \end{minipage}%
+  }\\[0.5em]%
+}
+
+\newenvironment{npcbox}{%
+  \par\noindent\begin{tabular}{@{}p{6.5in}@{}}\hline\\[-0.8em]
+}{%
+  \vspace{0.2em}\\\hline\end{tabular}\par
+}
+
+\title{\textbf{The Forbidden Library}\\A Fate's Edge Adventure}
 \author{}
 \date{}
 
@@ -26,8 +47,72 @@
 \maketitle
 
 \begin{center}
-\textit{Beneath Thepyrgos, the Witness binds back the Ninth. The stacks hunger. The catalogs lie. Knowledge stains.}
+\textit{Beneath Thepyrgos, the Witness binds back the Ninth. The stacks hunger. The catalogs lie. Knowledge stains.\\
+A library is not merely a place for books—it is a covenant with the patrons of memory and silence.}
 \end{center}
+
+% ======================
+% INTRODUCTION
+% ======================
+\sectionheader{The Library as Covenant}
+The Library of Thepyrgos is no mere repository of knowledge—it is the physical manifestation of a covenant between the Witness and the Ninth. For centuries, the Witness has preserved knowledge while binding back the Ninth, the patron of silence and oblivion. The Library is their shared domain, a place where truth is preserved but also where the temptation to forget is ever-present.
+
+The Library's architecture reflects this tension:
+\begin{itemize}
+    \item \textbf{The Witness's Domain:} Brightly lit sections with precise cataloging, where books whisper truths but never lies
+    \item \textbf{The Ninth's Reach:} Shadowed sections with erasing voids, where knowledge dissolves into silence
+    \item \textbf{The Neutral Ground:} The main halls where both patrons' influences are balanced, creating stability through tension
+\end{itemize}
+
+The Library's current crisis began when a junior archivist accidentally tore the Binding Page—a single sheet that maintained the balance between the patrons. Now, the Ninth's influence grows while the Witness struggles to maintain the Library's integrity. What was once a careful balance is now a slow collapse.
+
+% ======================
+% PATRON LORE
+% ======================
+\sectionheader{Patron Lore: The Witness \& The Ninth}
+
+\begin{patronbox}
+\textbf{The Witness} \\
+\textbf{Domain:} Memory, Truth, Preservation \\
+\textbf{Manifestation:} A figure of shifting ink and parchment, always recording but never intervening \\
+\textbf{Nature:} Lawful Neutral \\
+\textbf{Agenda:} Preserve all knowledge, even painful truths \\
+\textbf{Key Principles:}
+\begin{itemize}
+    \item Knowledge must be preserved, even when it causes suffering
+    \item The truth is inviolable, but the recording of it may be obscured
+    \item The Witness cannot speak falsehoods, but may omit truths
+    \item The Library is the physical manifestation of the Witness's will
+\end{itemize}
+\textbf{Current State:} Weakened by the torn Binding Page; forced to make difficult choices about what to preserve
+\end{patronbox}
+
+\begin{patronbox}
+\textbf{The Ninth} \\
+\textbf{Domain:} Silence, Oblivion, Forgetting \\
+\textbf{Manifestation:} An absence that speaks, a silence that contains multitudes \\
+\textbf{Nature:} True Neutral \\
+\textbf{Agenda:} Return all knowledge to silence, release the burden of memory \\
+\textbf{Key Principles:}
+\begin{itemize}
+    \item All knowledge is a burden; oblivion is the ultimate mercy
+    \item The Ninth does not destroy but rather \textit{unwrites}
+    \item The Ninth respects hospitality and formal agreements
+    \item The Ninth's touch erases not just memory but the very concept of what was forgotten
+\end{itemize}
+\textbf{Current State:} Gaining strength as the Binding Page weakens; testing the Library's boundaries
+\end{patronbox}
+
+\textbf{The Binding Page:} A single sheet of vellum that maintains the Library's balance. It contains a perfect copy of the original covenant between the patrons. When torn, it created a breach that allows the Ninth's influence to spread while weakening the Witness's control.
+
+\sectionheader{The Library's Structure}
+
+\begin{itemize}
+    \item \textbf{The Outer Halls (Witness Domain):} Brightly lit, precise cataloging, safe for visitors
+    \item \textbf{The Mid-Stacks (Neutral Ground):} Where both patrons' influences balance; most scholars work here
+    \item \textbf{The Deep Archives (Ninth's Reach):} Where knowledge slowly returns to silence; accessible only to the desperate or foolish
+    \item \textbf{The Heart Chamber (Binding Site):} Where the Binding Page was kept; now a contested space
+\end{itemize}
 
 % ======================
 % CAMPAIGN HOOKS
@@ -35,29 +120,52 @@
 \sectionheader{Campaign Hooks}
 \begin{enumerate}[leftmargin=*]
 \item \textbf{Dean's Quiet Panic} — Recover 3 ``misfiled'' theses (they're people).\\
-\emph{Starter:} Containment Breach +1. \emph{Complication:} Disavowed if it's loud.
+\emph{Starter:} Containment Breach +1. \emph{Complication:} Disavowed if it's loud. \\
+\emph{Patron Twist:} The theses are former scholars the Witness bound to preserve their dangerous knowledge; the Ninth is trying to unwrite them.
+
 \item \textbf{The Coughing Manuscript} — Track a soot-coughing book to its shelf.\\
-\emph{Starter:} Knowledge Corruption +1. \emph{Complication:} It knows your name.
+\emph{Starter:} Knowledge Corruption +1. \emph{Complication:} It knows your name. \\
+\emph{Patron Twist:} The book contains a fragment of the Ninth that's trying to escape; the Witness is trying to contain it.
+
 \item \textbf{Missing Custodian Cart} — Find a Bone Custodian's cart of keys.\\
-\emph{Starter:} Wandering every Turn. \emph{Complication:} Vertebrae argue.
+\emph{Starter:} Wandering every Turn. \emph{Complication:} Vertebrae argue. \\
+\emph{Patron Twist:} The cart contains keys to both Witness and Ninth domains; the keys are arguing whether to preserve or unwrite.
+
 \item \textbf{Inheritance Clause} — Retrieve/destroy a sealed question.\\
-\emph{Starter:} Obligation (Library) +1. \emph{Complication:} The question is you.
+\emph{Starter:} Obligation (Library) +1. \emph{Complication:} The question is you. \\
+\emph{Patron Twist:} The question is a paradox that could shatter the Witness's understanding; the Ninth wants to exploit it.
+
 \item \textbf{A Scholar's Last Route} — Map 3-node safe path for first-years.\\
-\emph{Starter:} Library starts hostile. \emph{Complication:} Your map corrects you.
+\emph{Starter:} Library starts hostile. \emph{Complication:} Your map corrects you. \\
+\emph{Patron Twist:} The route must balance both patrons' domains; the Library itself is adjusting to maintain equilibrium.
+
 \item \textbf{The Failing Annotation} — Stabilize a loved one bound in pages.\\
-\emph{Starter:} Annotation Fade [4]=1. \emph{Complication:} They ask not to save them.
+\emph{Starter:} Annotation Fade [4]=1. \emph{Complication:} They ask not to save them. \\
+\emph{Patron Twist:} The loved one is becoming an Echo Scholar; they're caught between the Witness's preservation and the Ninth's silence.
+
 \item \textbf{The Choir Without Voices} — Prove a sect's silencing with a Memory Core.\\
-\emph{Starter:} First Echo hostile. \emph{Complication:} They offer you silence.
+\emph{Starter:} First Echo hostile. \emph{Complication:} They offer you silence. \\
+\emph{Patron Twist:} The choir chose the Ninth's silence over the Witness's preservation; the Memory Core contains their last truth.
+
 \item \textbf{Grant Funding} — Secure a marketable artifact for a donor.\\
-\emph{Starter:} Rivals one layer ahead. \emph{Complication:} Donor backs rivals too.
+\emph{Starter:} Rivals one layer ahead. \emph{Complication:} Donor backs rivals too. \\
+\emph{Patron Twist:} The artifact is a fragment of the Binding Page; the Ninth wants it destroyed while the Witness wants it preserved.
+
 \item \textbf{The Syllabus War} — Arbitrate a curriculum via Codex clause.\\
-\emph{Starter:} Grey Scribe tails a PC. \emph{Complication:} Clause wants a living cite.
+\emph{Starter:} Grey Scribe tails a PC. \emph{Complication:} Clause wants a living cite. \\
+\emph{Patron Twist:} The Codex clause is a trap set by the Ninth; the "living cite" must be sacrificed to maintain balance.
+
 \item \textbf{The Door That Finds You} — The door appears wherever you sleep.\\
-\emph{Starter:} Library Reach 1. \emph{Complication:} Friends dream floorplans.
+\emph{Starter:} Library Reach 1. \emph{Complication:} Friends dream floorplans. \\
+\emph{Patron Twist:} The door is a manifestation of the Witness reaching out; the dreams contain fragments of the Binding Page.
+
 \item \textbf{Paper Storm} — Fetch Sealed Sigil to shield the city archive.\\
-\emph{Starter:} Breach +2 in 24h. \emph{Complication:} Sigil flags a PC as contraband.
+\emph{Starter:} Breach +2 in 24h. \emph{Complication:} Sigil flags a PC as contraband. \\
+\emph{Patron Twist:} The Sigil is a piece of the Witness's binding power; the Ninth will try to intercept it to weaken the Library.
+
 \item \textbf{Immortality Buyer} — Deliver ``proof'' (or lie) and live.\\
-\emph{Starter:} Rumor Heat [6]=2. \emph{Complication:} Buyer is their own Annotation.
+\emph{Starter:} Rumor Heat [6]=2. \emph{Complication:} Buyer is their own Annotation. \\
+\emph{Patron Twist:} The buyer seeks the Witness's promise of eternal remembrance; the Ninth offers a different kind of eternity.
 \end{enumerate}
 
 % ======================
@@ -67,41 +175,98 @@
 
 \begin{npcbox}
 \textbf{The Witness (Curator of Containment)}\\
-\emph{Demeanor:} Precise, weary. \emph{Leverage:} Halt a scene's time one exchange.\\
-\emph{Offer:} Bind your truth to spare you. \emph{Secret:} Lied about immortality.\\
-\emph{Move:} Re-index the room (reposition all). \emph{Clock:} Patience [6].\\
-\emph{Tags:} Neutral Lawful; Cannot Lie; Hates Waste.
+\emph{Demeanor:} Precise, weary. Moves with the deliberate pace of ink drying on parchment.\\
+\emph{Leverage:} Halt a scene's time one exchange (preserving a moment of truth).\\
+\emph{Offer:} Bind your truth to spare you (record a secret in exchange for safety).\\
+\emph{Secret:} Lied about immortality—true immortality is eternal remembrance, not endless life.\\
+\emph{Move:} Re-index the room (reposition all, as if cataloging a misfiled collection).\\
+\emph{Clock:} Patience [6] (advances when truth is concealed; resets when revealed).\\
+\emph{Tags:} Neutral Lawful; Cannot Lie; Hates Waste.\\
+\emph{Patron Truth:} The Witness doesn't want to preserve all knowledge out of duty, but because it's the only way to prevent the Ninth's complete dominance.
 \end{npcbox}
 
 \begin{npcbox}
 \textbf{The Hollow Librarian (Echo of the Ancient)}\\
-\emph{Demeanor:} Kind, dusty rain. \emph{Leverage:} Trade memory for shortcut.\\
-\emph{Offer:} Safe passage for a regret. \emph{Secret:} Wants unwriting.\\
-\emph{Move:} Helpful mislabel (truth later, cost now). \emph{Clock:} Mercy Owed [4].\\
-\emph{Tags:} Ancient; Gentle; Dangerous if cornered.
+\emph{Demeanor:} Kind, dusty rain. Speaks in whispers that sound like turning pages.\\
+\emph{Leverage:} Trade memory for shortcut (give up a memory for safe passage).\\
+\emph{Offer:} Safe passage for a regret (exchange a regret for protection).\\
+\emph{Secret:} Wants unwriting—the Echo Scholars are those who chose the Ninth's silence.\\
+\emph{Move:} Helpful mislabel (truth later, cost now; a path leads somewhere useful but with a price).\\
+\emph{Clock:} Mercy Owed [4] (advances when the Librarian helps; requires payment).\\
+\emph{Tags:} Ancient; Gentle; Dangerous if cornered.\\
+\emph{Patron Truth:} The Hollow Librarian is a former Witness agent who chose the Ninth's peace; now serves as a bridge between the two.
 \end{npcbox}
 
 \begin{npcbox}
 \textbf{The Void Keeper (Hand of the Ninth)}\\
-\emph{Demeanor:} Gaps and wind. \emph{Leverage:} Remove 1 harmful tag (erase a bond).\\
-\emph{Offer:} Erase debt, enemy, or you. \emph{Secret:} Bound by hospitality.\\
-\emph{Move:} Null Glyph (1s count twice). \emph{Clock:} Unwriting Tide [6].\\
-\emph{Tags:} Patient; Implacable; Polite.
+\emph{Demeanor:} Gaps and wind. Where it stands, silence seems to have weight.\\
+\emph{Leverage:} Remove 1 harmful tag (erase a bond; the Ninth unwrites connections).\\
+\emph{Offer:} Erase debt, enemy, or you (the ultimate mercy of oblivion).\\
+\emph{Secret:} Bound by hospitality—the Ninth respects formal agreements.\\
+\emph{Move:} Null Glyph (1s count twice; the Ninth's influence makes failures more significant).\\
+\emph{Clock:} Unwriting Tide [6] (advances as the Ninth's influence grows).\\
+\emph{Tags:} Patient; Implacable; Polite.\\
+\emph{Patron Truth:} The Void Keeper is not destructive but restorative—the Ninth doesn't destroy knowledge but returns it to the silence from which it came.
 \end{npcbox}
 
 \begin{npcbox}
 \textbf{Professor Isola Thren (Echo Scholar)}\\
-\emph{Demeanor:} Bright eyes, ink nails. \emph{Leverage:} Route to Heart (for your middle name).\\
-\emph{Offer:} Exchange one truth each. \emph{Secret:} An Annotation in a body.\\
-\emph{Move:} Footnote a PC (can be ``referenced'' once). \emph{Clock:} Loaned Breath [3].\\
-\emph{Tags:} Charming; Transactional; Homesick.
+\emph{Demeanor:} Bright eyes, ink nails. Carries a book that's always slightly out of focus.\\
+\emph{Leverage:} Route to Heart (for your middle name; the Library responds to true names).\\
+\emph{Offer:} Exchange one truth each (the Witness's bargain, not the Ninth's).\\
+\emph{Secret:} An Annotation in a body—part of her is still bound in the Library's pages.\\
+\emph{Move:} Footnote a PC (can be "referenced" once; the Library records your actions).\\
+\emph{Clock:} Loaned Breath [3] (advances each time she helps; she's losing her connection to life).\\
+\emph{Tags:} Charming; Transactional; Homesick.\\
+\emph{Patron Truth:} Isola represents those who chose partial preservation—neither fully bound by the Witness nor fully released by the Ninth.
 \end{npcbox}
 
 \begin{npcbox}
 \textbf{Rival Parties}\\
-\emph{The Annotated Order:} Procedure-bound scholar-knights; invoke precedent; fate is margins.\\
-\emph{The Broken Choir:} Silence contradictions; paradox stuns them; fate is painless absence.
+\emph{The Annotated Order:} Procedure-bound scholar-knights; invoke precedent; fate is margins. They serve the Witness, believing order preserves truth.\\
+\emph{The Broken Choir:} Silence contradictions; paradox stuns them; fate is painless absence. They serve the Ninth, seeking peace through forgetting.\\
+\emph{The Grey Scribes:} Neutral arbiters who record but don't take sides; they're the Library's immune system, trying to maintain balance.\\
+\emph{The Unbound:} Those who escaped both patrons' influences; they're dangerous because they remember both truth and silence.
 \end{npcbox}
+
+% ======================
+% PATRON INTERACTION
+% ======================
+\sectionheader{Patron Interaction Mechanics}
+
+\subsectionheader{The Witness's Bargains}
+The Witness offers truth for safety, but never false promises:
+\begin{itemize}
+    \item \textbf{The Record:} When you reveal a truth, gain +1d to a related roll; however, the truth is now part of the Library's record (may come back to haunt you)
+    \item \textbf{The Bookmark:} Save a moment of time (one exchange) for later use; costs a truth about yourself
+    \item \textbf{The Catalog:} Gain +1d to identify connections between people/things; costs a promise to preserve something
+\end{itemize}
+
+\subsectionheader{The Ninth's Mercy}
+The Ninth offers release from burdens but at a price:
+\begin{itemize}
+    \item \textbf{The Unwriting:} Remove a Condition or complication; costs erasing a memory related to it
+    \item \textbf{The Quiet Room:} Become immune to mental stress for a scene; costs 1 point of social capital (your influence is silenced)
+    \item \textbf{The Final Page:} End a threat permanently; costs becoming an Echo Scholar (lose a major aspect of your identity)
+\end{itemize}
+
+\subsectionheader{Patron Conflict}
+When patrons' influences clash:
+\begin{itemize}
+    \item A location may become \textbf{Contested:} Both patrons' effects apply, creating dangerous instability
+    \item A character may be \textbf{Torn:} Must make a Resolve test (DV 3) or gain a Condition (Conflicted)
+    \item An object may become \textbf{Unstable:} Functions unpredictably, with both preservation and erasure effects
+\end{itemize}
+
+\sectionheader{The Library's Reactions}
+
+The Library responds to patron influence:
+\begin{itemize}
+    \item \textbf{Witness Influence:} Books whisper truths, paths straighten, time becomes precise
+    \item \textbf{Ninth Influence:} Pages crumble to dust, paths disappear, time becomes fluid
+    \item \textbf{Balance:} The Library maintains stability through the tension between patrons
+    \item \textbf{Breach:} When balance is broken, the Library begins to rewrite itself chaotically
+\end{itemize}
 
 % ======================
 % PLAYER-FACING RUMORS
@@ -111,18 +276,22 @@
 \toprule
 \textbf{d12} & \textbf{Rumor} & \textbf{Status}\\
 \midrule
-1 & The door only appears when you're alone. & Mixed \\
-2 & Write your name in the Core Tome to live forever. & False \\
-3 & If you carry no writing, the Library can't track you. & False \\
-4 & Speak your true name and Paper Wraiths retreat. & True \\
-5 & Salt lines stall Archivorous Cubes. & True \\
-6 & The Hollow Librarian hates fire. & Mixed \\
-7 & The Witness cannot harm a guest. & True \\
-8 & A staircase goes up to the same place. & True \\
-9 & The Ninth's touch erases debt. & Mixed \\
-10 & Echo Scholars can be freed with a kiss. & False \\
-11 & Catalogue Hounds track the smell of secrets. & True \\
-12 & The Library sometimes pays for good indexing. & True \\
+1 & The door only appears when you're alone. & Mixed (The Witness seeks truth in solitude) \\
+2 & Write your name in the Core Tome to live forever. & False (The Witness records, but doesn't grant life) \\
+3 & If you carry no writing, the Library can't track you. & False (The Library remembers all) \\
+4 & Speak your true name and Paper Wraiths retreat. & True (The Witness honors true names) \\
+5 & Salt lines stall Archivorous Cubes. & True (Salt disrupts the Ninth's erasure) \\
+6 & The Hollow Librarian hates fire. & Mixed (Fire is the enemy of knowledge but also of silence) \\
+7 & The Witness cannot harm a guest. & True (Hospitality is sacred to both patrons) \\
+8 & A staircase goes up to the same place. & True (The Library reconfigures itself) \\
+9 & The Ninth's touch erases debt. & Mixed (It erases the memory of debt but not the obligation) \\
+10 & Echo Scholars can be freed with a kiss. & False (They chose silence; only they can return) \\
+11 & Catalogue Hounds track the smell of secrets. & True (They serve the Witness's need for order) \\
+12 & The Library sometimes pays for good indexing. & True (In knowledge, not gold) \\
+13 & The Binding Page was torn by the Dean. & Mixed (The Dean was manipulated by the Ninth) \\
+14 & The Heart Chamber contains the original covenant. & True \\
+15 & The Grey Scribes are the Library's immune system. & True \\
+16 & The Unbound remember both truth and silence. & True (And are hunted by both patrons) \\
 \bottomrule
 \end{longtable}
 
@@ -131,12 +300,21 @@
 % ======================
 \sectionheader{Stubs (Next Installments)}
 \begin{itemize}[leftmargin=*]
-\item Heart Chamber Final Level (Full)
-\item Legacy Scars \& Treasures (Full)
-\item Rival Party System (Full Procedures)
-\item Library Fights Back (Campaign Reach)
-\item Depths 1--5 (Rooms, Keys, Maps)
-\item Monsters \& Wards (Complete)
+\item \textbf{Heart Chamber Final Level (Full)}: The Binding Site where the torn Binding Page is kept; includes both patrons' domains and a contested neutral zone. Contains the original covenant and the source of the Library's power.
+
+\item \textbf{Legacy Scars \& Treasures (Full)}: Patrons' gifts carry both power and cost. The Witness's boons come with memory burdens; the Ninth's gifts with memory losses. Includes artifacts like the Sealed Sigil and Memory Core.
+
+\item \textbf{Rival Party System (Full Procedures)}: Rules for interacting with The Annotated Order, The Broken Choir, The Grey Scribes, and The Unbound. Each has their own agendas, resources, and methods of influence.
+
+\item \textbf{Library Fights Back (Campaign Reach)}: How the Library responds to patron imbalance. Includes the Wandering Turn, Knowledge Corruption, and Containment Breach mechanics with patron-specific manifestations.
+
+\item \textbf{Depths 1--5 (Rooms, Keys, Maps)}: Detailed maps of the Library's deepest levels, where the Ninth's influence is strongest. Includes specific locations, hazards, and patron interactions for each level.
+
+\item \textbf{Monsters \& Wards (Complete)}: Creatures and defenses created by the patron conflict, including Paper Wraiths (Ninth's creations), Catalogue Hounds (Witness's creations), and Archivorous Cubes (unstable manifestations).
 \end{itemize}
+
+\begin{center}
+\textit{The Library is neither a prison nor a sanctuary—it is a covenant. The patrons do not care about you, but they care about their agreement. In that space between truth and silence, you may yet find a way to restore balance.}
+\end{center}
 
 \end{document}

@@ -1,691 +1,261 @@
-% Mad Cantor of Frosthollow - Fate's Edge One-Shot
-% Author: [Your Name]
-% License: CC-BY 4.0
-
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{fontspec}
-\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{multicol}
-\usepackage{tcolorbox}
+\usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{multicol}
 \usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{tikz}
-\usepackage{array}
-\usepackage{longtable}
+\usepackage{amssymb}
+
+\geometry{a4paper, margin=1in}
+
+\titleformat{\section}{\large\bfseries\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Fate's Edge: Mad Cantor of Frosthollow}
-\lhead{Expanded One-Shot Module}
-\rfoot{\thepage}
+\lhead{Fate's Edge}
+\rhead{The Mad Cantor of Frosthollow}
+\cfoot{\thepage}
 
-\allsectionsfont{\centering\Large\bfseries}
-\titleformat{\section}{\centering\Large\bfseries}{}{0em}{}
-\titleformat{\subsection}{\bfseries}{}{0em}{}
-\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+\newtcolorbox{npcbox}[1]{
+    colback=gray!5,
+    colframe=gray!50,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5pt
+}
 
-\newtcolorbox{callout}[1][]{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title=#1}
-\newtcolorbox{danger}[1][]{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,title=#1}
-\newtcolorbox{success}[1][]{colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title=#1}
+\newtcolorbox{mechanicsbox}[1]{
+    colback=green!5,
+    colframe=green!50,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5pt
+}
 
 \begin{document}
 
 \begin{center}
-{\Huge \textbf{Mad Cantor of Frosthollow}} \\
-{\Large A Fate's Edge One–Shot of Joy, Dread, and Winter} \\
-\textit{Folk Horror Adventure for 3-5 Players}
+    \textbf{\LARGE The Mad Cantor of Frosthollow} \\
+    \vspace{0.2cm}
+    \textbf{A Fate's Edge One-Shot of Joy, Dread, and Winter} \\
+    \vspace{0.1cm}
+    \small Folk Horror - Multiple Patrons - Social \& Ritual Play
 \end{center}
 
+\section*{Adventure Overview}
+\begin{tabular}{@{}ll}
+    \textbf{Premise:} & Frosthollow's solstice rite, the Feast of the Endless Night, has curdled \\
+    \textbf{Theme:} & Folk Horror \\
+    \textbf{Focus:} & Social \& Ritual Play \\
+    \textbf{Combat:} & Low Combat Optional \\
+    \textbf{Length:} & One-Shot \\
+\end{tabular}
+
 \section*{Premise \& Tone}
-Frosthollow's solstice rite, the Feast of the Endless Night, has curdled. The village cantor, Elara Nightweaver, wears a living crown of holly and sings with a voice not wholly hers. Revelers decorate with blood–bright berries and do not sleep. Three Powers lean in: Thrysos (ecstasy and excess), the Pale Shepherd (thresholds and the passage), and the Silent Choir (mercy through silence). PCs arrive as storm and song rise together. Their choices decide whether Frosthollow remembers joy—or becomes its grave.
+Frosthollow's solstice rite, the Feast of the Endless Night, has curdled. The village cantor, Elara Nightweaver, wears a living crown of holly and sings with a voice not wholly hers. Revelers decorate with blood-bright berries and do not sleep. Three Powers lean in: Thrysos (ecstasy and excess), the Pale Shepherd (thresholds and the passage), and the Silent Choir (mercy through silence).
 
-This adventure is designed for a 3-4 hour session with moderate to high tension. The horror is psychological and atmospheric rather than gory, focusing on the creeping dread of a community losing its mind to ecstatic madness.
+PCs arrive as storm and song rise together. Their choices decide whether Frosthollow remembers joy—or becomes its grave.
 
-\section*{Hook Options}
-Choose one of these entry points to draw the players into Frosthollow:
-
-\subsection*{Shelter in a Storm}
-The PCs are caught in a sudden blizzard while traveling. Seeking refuge, they stumble upon Frosthollow just as the bells begin to peal off-rhythm. The villagers are already deep in their solstice celebrations, but something feels wrong. The storm outside is getting worse, and the warmth inside is... too warm.
-
-\subsection*{A Missing Brother}
-One PC receives a desperate letter from their sibling, a hunter who came to Frosthollow for the Feast. "The singing won't stop. I can't leave. The crown is watching. Please, come quickly." The letter is stained with what looks like berry juice, and the postmark is from Frosthollow—but the post office there burned down three years ago.
-
-\subsection*{Ritual Competence}
-A nearby monastery or religious order has sent the PCs to audit Frosthollow's solstice mass. The Feast of the Endless Night is a traditional rite, but reports from other villages suggest Frosthollow's version has become... excessive. The PCs are to observe, report, and if necessary, intervene.
+\section*{Hook}
+Offer three clear entries:
+\begin{itemize}
+    \item \textbf{Shelter in a Storm:} Snow closes behind; bells peal off-rhythm.
+    \item \textbf{A Missing Brother:} A hunter's letter begs you to fetch him from the Feast.
+    \item \textbf{Ritual Competence:} A nearby abbot sends you to audit a troubled solstice mass.
+\end{itemize}
 
 \section*{Fronts \& Clocks}
-These clocks track the escalating tension in Frosthollow. Each segment filled represents a step closer to catastrophe.
 
-\subsection*{Holly Crown's Hold [6]}
-This clock represents Elara's transformation and the crown's growing power over the village.
-
-\textbf{Advances when:}
+\begin{mechanicsbox}{Holly Crown's Hold [6]}
+Advances when Elara sings unopposed or offerings are made.
 \begin{itemize}
-    \item Elara sings unopposed for more than 10 minutes
-    \item Blood offerings are made to the holly crown
-    \item PCs fail to resist the Revelry condition
-    \item The red thread in Elara's house is disturbed
+    \item \textbf{1–2:} Subtle compulsion (−1d to resist revelry)
+    \item \textbf{3–4:} −1 Position near the square
+    \item \textbf{5–6:} Crown roots through flesh; Elara becomes Avatar of Revel
 \end{itemize}
+\end{mechanicsbox}
 
-\textbf{Segments:}
-\begin{enumerate}
-    \item Subtle compulsion (−1d to resist revelry). Villagers begin humming unconsciously.
-    \item −1 Position near the square. The holly crown's thorns seem to grow longer.
-    \item −1d to resist joining celebrations. Some villagers begin wearing berry crowns.
-    \item The square becomes a Controlled Position for anyone trying to leave or resist.
-    \item Crown roots visibly through Elara's flesh; she gains +1 die to Sway rolls.
-    \item Elara becomes Avatar of Revel (stat block provided). The crown is now a living entity.
-\end{enumerate}
-
-\subsection*{Village Hysteria [6]}
-This clock tracks the community's descent into madness.
-
-\textbf{Advances when:}
+\begin{mechanicsbox}{Village Hysteria [6]}
+Advances when the party indulges, delays, or escalates spectacle.
 \begin{itemize}
-    \item PCs participate in or encourage revelries
-    \item Revelers are not redirected or calmed
-    \item The storm worsens (time passes)
-    \item PCs make loud noises or draw attention to themselves
+    \item \textbf{1–2:} Harmless mania
+    \item \textbf{3–4:} Harm 1 from exposure/exhaustion
+    \item \textbf{5–6:} Stampede, collapse, or freezing injuries (Harm 2)
 \end{itemize}
+\end{mechanicsbox}
 
-\textbf{Segments:}
-\begin{enumerate}
-    \item Harmless mania. Villagers dance in circles, laugh at nothing.
-    \item Harm 1 from exposure/exhaustion. Some villagers collapse from overexertion.
-    \item −1d to social rolls due to confusion. Villagers begin arguing with each other.
-    \item Harm 1 (exhaustion) to all PCs in the village square.
-    \item Stampede, collapse, or freezing injuries (Harm 2). Mass panic erupts.
-    \item Village-wide breakdown. All NPCs become hostile or catatonic.
-\end{enumerate}
-
-\subsection*{Storm's Mercy [4]}
-This clock represents the worsening weather and the PCs' ability to find shelter.
-
-\textbf{Advances when:}
+\begin{mechanicsbox}{Storm's Mercy [4]}
+Advances on time passage or failed shelter efforts.
 \begin{itemize}
-    \item Time passes without finding proper shelter
-    \item PCs fail shelter-related rolls
-    \item Elara's singing intensifies (each time the Holly Crown clock advances)
-    \item PCs make noise or light fires that attract attention
+    \item \textbf{1:} Whiteout pockets
+    \item \textbf{2:} Paths vanish
+    \item \textbf{3:} Avalanches threaten
+    \item \textbf{4:} Outlying homes cut off (people die without aid)
 \end{itemize}
+\end{mechanicsbox}
 
-\textbf{Segments:}
-\begin{enumerate}
-    \item Whiteout pockets. −1d to navigation and perception rolls.
-    \item Paths vanish. Travel rolls suffer −2d penalty.
-    \item Avalanches threaten. Any loud noise has a 50% chance of triggering a rockfall.
-    \item Outlying homes cut off. Rescue attempts automatically fail unless PCs have exceptional shelter.
-\end{enumerate}
-
-\subsection*{Silent Choir Mandate [4]}
-This clock represents the Silent Choir's growing influence and the suppression of rational thought.
-
-\textbf{Advances when:}
+\begin{mechanicsbox}{Silent Choir Mandate [4]}
+Advances when harm spreads or pleas for rest go unheard.
 \begin{itemize}
-    \item Harm spreads among villagers
-    \item Pleas for rest or help go unanswered
-    \item PCs speak loudly or make demands
-    \item The Holly Crown clock advances
+    \item \textbf{4:} Choir imposes Great Silence—speech fails in the square until the rite is resolved
 \end{itemize}
-
-\textbf{Segments:}
-\begin{enumerate}
-    \item Whispers become harder to hear. −1d to overhear conversations.
-    \item −1d to all social rolls as people become withdrawn.
-    \item Speech becomes difficult. All social rolls suffer −1d.
-    \item Great Silence imposed. Speech fails in the square until the rite is resolved.
-\end{enumerate}
+\end{mechanicsbox}
 
 \section*{Key NPCs}
 
-\subsection*{Elara Nightweaver — Mad Cantor of Frosthollow}
-\textbf{Tags:} Singer–Ritualist, Tragic, Beloved \\
-\textbf{Approach:} Presence 3, Spirit 3, Wits 2, Body 1 \\
-\textbf{Skills:} Sway 3, Arcana 3, Insight 2, Melee 1 \\
-\textbf{Talents:} Cantor's Gift, Rite Adjudicator, Perfect Pitch \\
-\textbf{Harm:} 4–clock; Armor: 0(2 when Avatar) \\
-\textbf{Special:} Contagious Cheer — nearby NPCs must DV 2 Resolve or gain the Revelry condition. \\
-\textbf{Goal:} Save her people by more joy; can't see it's killing them.
+\begin{npcbox}{Elara Nightweaver — Mad Cantor of Frosthollow}
+    \textbf{Stat Block} \\
+    \textbf{Tags:} Singer-Ritualist, Tragic, Beloved \\
+    \textbf{Approach:} Presence 3, Spirit 3, Wits 2, Body 1 \\
+    \textbf{Skills:} Sway 3, Arcana 3, Insight 2, Melee 1 \\
+    \textbf{Talents:} Cantor's Gift, Rite Adjudicator, Perfect Pitch \\
+    \textbf{Harm:} 4-clock; Armor: 0(2 when Avatar) \\
+    \textbf{Special:} Contagious Cheer — nearby NPCs must DV 2 Resolve or gain the Revelry condition \\
+    \textbf{Goal:} Save her people by more joy; can't see it's killing them.
+\end{npcbox}
 
-\textbf{Background:} Elara was once the beloved cantor of Frosthollow, known for her beautiful voice and kind heart. Three winters ago, during a particularly harsh storm, she discovered an ancient holly crown in the church crypts. Desperate to lift the villagers' spirits during the endless night, she wore it during the solstice feast. The crown took root, and now she cannot remove it without dying.
-
-\subsection*{Greta Frostwhisper — The Bell Tower Keeper}
-\textbf{Tags:} Elder, Keeper of Truth, Fearful \\
-\textbf{Approach:} Wits 2, Spirit 2, Presence 1, Body 1 \\
-\textbf{Skills:} Lore 3, Stealth 2, Insight 2 \\
-\textbf{Harm:} 2–clock; Armor: 0 \\
-\textbf{Special:} Bell-Keeper's Knowledge — can identify changes in bell patterns and their meanings.
-
-Greta has been the keeper of Frosthollow's bell tower for forty years. She remembers when the bells sang true, and she's the only one who realizes they've been wrong for days. She's hidden in the belfry with an old ledger that contains the original hymns—proof that something has gone terribly wrong.
-
-\subsection*{The Pale Shepherd — Manifestation}
-\textbf{Tags:} Threshold Guardian, Guide of Transitions, Melancholic \\
-\textbf{Approach:} Spirit 4, Wits 3, Presence 2, Body 2 \\
-\textbf{Skills:} Insight 4, Survival 3, Sway 2 \\
-\textbf{Harm:} 6–clock; Armor: 1 \\
-\textbf{Special:} Liminal Navigation — can guide through any threshold or boundary.
-
-The Pale Shepherd appears as a cloaked figure with eyes like winter mist. It speaks only in whispers and offers guidance to those who are lost—though its help always comes with a price. In Frosthollow, it manifests at crossroads and doorways, watching and waiting.
-
-\section*{Patron Pressures}
-Each Patron exerts influence over the scene, offering both aid and complications.
-
-\begin{longtable}{|>{\bfseries}p{2.5cm}|p{5cm}|p{5cm}|}
-\hline
-\textbf{Patron} & \textbf{Pressure / Offer} & \textbf{Cost / Tell} \\
-\hline
-\endfirsthead
-\hline
-\textbf{Patron} & \textbf{Pressure / Offer} & \textbf{Cost / Tell} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\endlastfoot
-
-Thrysos & Amplify a scene with music, color, shared breath; grant +1d to any social roll that escalates the revel. & Mark 1 Fatigue or advance Hysteria. Sweet wine tastes of copper. \\
-\hline
-Pale Shepherd & Still the panic: cancel one chaotic complication. & Accept a memory tithe (lose a detail of your past). A lamb–bell rings once. \\
-\hline
-Silent Choir & Words fail: your next plea can only be gesture. & A white filament settles on lips. \\
-\hline
-\end{longtable}
+\begin{mechanicsbox}{Patron Pressures (GM Moves)}
+\begin{tabular}{p{0.25\textwidth}p{0.35\textwidth}p{0.3\textwidth}}
+    \textbf{Patron} & \textbf{Pressure / Offer} & \textbf{Cost / Tell} \\
+    \hline
+    Thrysos & Amplify a scene with music, color, shared breath; grant +1d to any social roll that escalates the revel. & Mark 1 Fatigue or advance Hysteria. Sweet wine tastes of copper. \\
+    Pale Shepherd & Open a gentler path: safe escort across snow, a sleeping child spared. +1 Position to protective actions. & Accept a memory tithe (lose a detail of your past). A lamb-bell rings once. \\
+    Silent Choir & Still the panic: cancel one chaotic complication. −1d to hostiles this scene. & Words fail: your next plea can only be gesture. A white filament settles on lips. \\
+\end{tabular}
+\end{mechanicsbox}
 
 \section*{Conditions \& Environmental Moves}
 
-\subsection*{Revelry Condition}
-You feel wonderful. −1d to resist joining songs, dances, or feasts; ignoring an invitation advances Village Hysteria. Cleansed by cold immersion, fasting, or a counter–hymn.
+\begin{mechanicsbox}{Revelry Condition}
+You feel wonderful. −1d to resist joining songs, dances, or feasts; ignoring an invitation advances Hysteria. Cleansed by cold immersion, fasting, or a counter-hymn.
+\end{mechanicsbox}
 
-\subsection*{Winter Moves}
+\begin{mechanicsbox}{Winter Moves}
 \begin{itemize}
-    \item \textbf{Whiteout:} −2d to all perception rolls for 1 scene.
-    \item \textbf{Black Ice:} Any movement roll automatically generates 1 SB.
-    \item \textbf{Roof–Load Collapse:} DV 3 Body + Athletics to avoid falling debris; Harm 2 on failure.
-    \item \textbf{Bone–Chill Seep:} All characters mark 1 Fatigue.
-    \item \textbf{Lost Lanterns:} Separate the party; each group member must make a Wits + Stealth test (DV 2) or become lost.
-    \item \textbf{Avalanche Shadow:} Clock tick + forced scramble.
+    \item Whiteout
+    \item Black Ice
+    \item Roof-Load Collapse
+    \item Bone-Chill Seep (Harm 1)
+    \item Lost Lanterns (separate the party)
+    \item Avalanche Shadow (clock tick + forced scramble)
 \end{itemize}
+\end{mechanicsbox}
 
 \section*{Core Scenes}
 
 \subsection*{1. Arrival: Snow, Smoke, \& Holly}
-\textbf{Scene Read:} Frosthollow's square blazes with lanterns; off–key choirs bellow carols. A crown of holly gleams wetly on the cantor's brow. The bells are late. The storm inhales.
+\textbf{Read:} Frosthollow's square blazes with lanterns; off-key choirs bellow carols. A crown of holly gleams wetly on the cantor's brow. The bells are late. The storm inhales.
 
-\textbf{Key Elements:}
+\begin{mechanicsbox}{Moves \& Challenges}
 \begin{itemize}
-    \item Elara stands in the center square, singing a haunting melody that seems to make the snow dance.
-    \item Villagers wear berry crowns and dance in erratic patterns.
-    \item The church bells ring in an unfamiliar pattern.
-    \item The storm outside is getting worse.
+    \item \textbf{Assess the Rite:} Lore + Insight DV 3 — learn the hymn is mis-keyed to force breath patterns (+1 SB to GM if ignored)
+    \item \textbf{Resist the Cheer:} Resolve DV 2 — on a miss, gain Revelry
+    \item \textbf{Shepherd the Elderly to Shelter:} Command + Athletics DV 3 — on a hit, reduce Storm's Mercy
 \end{itemize}
-
-\textbf{Challenges:}
-\begin{itemize}
-    \item \textbf{Assess the Rite:} Lore + Insight DV 3 — learn the hymn is mis-keyed to force breath patterns (+1 SB to GM if ignored).
-    \item \textbf{Resist the Cheer:} Resolve DV 2 — on a miss, gain Revelry.
-    \item \textbf{Shepherd the Elderly to Shelter:} Command + Athletics DV 3 — on a hit, reduce Storm's Mercy.
-\end{itemize}
-
-\textbf{Complications:}
-\begin{itemize}
-    \item A villager approaches, offering a berry crown and insisting the PCs join the celebration.
-    \item The church bells suddenly stop, then begin ringing in a discordant pattern.
-    \item A child points at the PCs and whispers, "They don't belong here."
-\end{itemize}
+\end{mechanicsbox}
 
 \subsection*{2. The Bell Tower — Greta's Truth}
-Greta Frostwhisper, trembling in the belfry, clutches a ledger of the old hymn. "They changed the breathing. Too long. Too fast. They'll fall and never rise."
+\textbf{Read:} Greta Frostwhisper, trembling in the belfry, clutches a ledger of the old hymn. "They changed the breathing. Too long. Too fast. They'll fall and never rise."
 
-\textbf{Key Elements:}
+\begin{mechanicsbox}{Moves \& Challenges}
 \begin{itemize}
-    \item The bell tower is ancient, with wooden stairs that creak ominously.
-    \item Greta is hiding behind the bell ropes, afraid of being found.
-    \item The ledger contains the original hymns, marked with annotations about breath patterns.
-    \item The storm howls outside, and the tower sways slightly.
+    \item \textbf{Compare Hymns:} Lore + Craft DV 3 — identify a counter-refrain that resets breathing safely
+    \item \textbf{Befriend Greta:} Sway + Presence DV 2 — gain a trusted guide; +1d on village social rolls
 \end{itemize}
-
-\textbf{Challenges:}
-\begin{itemize}
-    \item \textbf{Compare Hymns:} Lore + Craft DV 3 — identify a counter–refrain that resets breathing safely.
-    \item \textbf{Befriend Greta:} Sway + Presence DV 2 — gain a trusted guide; +1d on village social rolls.
-    \item \textbf{Navigate the Tower:} Athletics + Wits DV 4 — avoid falling through weakened floorboards.
-\end{itemize}
-
-\textbf{Rewards:}
-\begin{itemize}
-    \item Greta becomes a follower (Cap 2) who can assist with social rolls in the village.
-    \item The ledger provides the key to the counter-hymn.
-    \item Information about the holly crown's origins in the church crypts.
-\end{itemize}
+\end{mechanicsbox}
 
 \subsection*{3. Elara's House — The Red Thread}
-Holly cuttings root in bowls; old lyrics are crossed out; a red thread binds prayer–knots to a goblet.
+\textbf{Read:} Holly cuttings root in bowls; old lyrics are crossed out; a red thread binds prayer-knots to a goblet.
 
-\textbf{Key Elements:}
+\begin{mechanicsbox}{Moves \& Challenges}
 \begin{itemize}
-    \item Elara's house is warm and inviting, but the warmth feels unnatural.
-    \item The walls are covered with holly branches and red thread patterns.
-    \item A ceremonial goblet sits on the table, connected to the red thread network.
-    \item The singing from the square seems louder here.
+    \item \textbf{Unravel the Charm:} Arcana + Tinker DV 4 — separate the goblet (Thrysos vessel) from the holly. On partial, advance Holly Crown's Hold
+    \item \textbf{Quiet the Home:} Shepherd's Bargain — accept a memory tithe to sanctify this space (Choir −1 this scene)
 \end{itemize}
+\end{mechanicsbox}
 
-\textbf{Challenges:}
-\begin{itemize}
-    \item \textbf{Unravel the Charm:} Arcana + Tinker DV 4 — separate the goblet (Thrysos vessel) from the holly. On partial, advance Holly Crown's Hold.
-    \item \textbf{Quiet the Home:} Shepherd's Bargain — accept a memory tithe to sanctify this space (Choir −1 this scene).
-    \item \textbf{Investigate the Thread:} Investigation + Lore DV 3 — understand the thread's connection to the villagers.
-\end{itemize}
+\subsection*{4. Climax: Feast of the Endless Night}
+\textbf{Read:} Elara raises her hands; the village inhales as one. Snow becomes confetti. The bells strike late.
 
-\textbf{Dangers:}
-\begin{itemize}
-    \item Touching the red thread without permission advances Village Hysteria.
-    \item The holly cuttings animate if disturbed (Cap 2 plant spirits).
-    \item Elara may return unexpectedly, forcing a confrontation.
-\end{itemize}
-
-\subsection*{4. The Church Crypts — Ancient Secrets}
-Beneath the village church lies a forgotten crypt where the holly crown was first discovered.
-
-\textbf{Key Elements:}
-\begin{itemize}
-    \item The crypt entrance is hidden behind a loose stone in the church floor.
-    \item Ancient murals depict the Pale Shepherd guiding souls through winter.
-    \item The holly crown rests on a stone pedestal, pulsing with dark energy.
-    \item The air is thick with the scent of berries and decay.
-\end{itemize}
-
-\textbf{Challenges:}
-\begin{itemize}
-    \item \textbf{Navigate the Crypt:} Survival + Wits DV 3 — avoid triggering ancient wards.
-    \item \textbf{Decipher the Murals:} Lore + Insight DV 4 — learn the true purpose of the crown.
-    \item \textbf{Approach the Crown:} Resolve + Spirit DV 5 — resist the crown's corrupting influence.
-\end{itemize}
-
-\textbf{Discoveries:}
-\begin{itemize}
-    \item The crown was created as a test by the Pale Shepherd.
-    \item Removing it will kill Elara, but leaving it will destroy the village.
-    \item A ritual exists to transfer its power to a willing vessel.
-\end{itemize}
-
-\subsection*{5. Climax: Feast of the Endless Night}
-Elara raises her hands; the village inhales as one. Snow becomes confetti. The bells strike late.
-
-\textbf{Key Elements:}
-\begin{itemize}
-    \item The square is packed with revelers in a trance-like state.
-    \item Elara floats above the crowd, her holly crown blazing with supernatural light.
-    \item The storm reaches its peak, with lightning illuminating the scene.
-    \item The church bells ring in perfect, hypnotic harmony.
-\end{itemize}
-
-\textbf{Resolution Options:}
+\begin{mechanicsbox}{Moves \& Challenges}
 Choose one or braid them:
 \begin{itemize}
-    \item \textbf{Counter–Hymn:} Presence + Sway DV 4 — lead a new refrain; on success, reduce Hysteria by 2, stabilize breath; on miss, Holly Hold +1 and Choir advances.
-    \item \textbf{Sunder the Crown:} Melee/Arcana + Athletics DV 4 — break holly roots; on partial, take Harm 1 (thorns/acid sap).
-    \item \textbf{Triune Negotiation:} Name each Patron's concession: Insight + Lore DV 5 — forge a pact: short feast, long rest, and a hymn of remembrance. On hit, all clocks freeze; on miss, one Patron takes primacy (GM move).
+    \item \textbf{Counter-Hymn:} Presence + Sway DV 4 — lead a new refrain; on success, reduce Hysteria by 2, stabilize breath; on miss, Holly Hold +1 and Choir advances
+    \item \textbf{Sunder the Crown:} Melee/Arcana + Athletics DV 4 — break holly roots; on partial, take Harm 1 (thorns/acid sap)
+    \item \textbf{Triune Negotiation:} name each Patron's concession: Insight + Lore DV 5 — forge a pact: short feast, long rest, and a hymn of remembrance. On hit, all clocks freeze; on miss, one Patron takes primacy (GM move)
 \end{itemize}
+\end{mechanicsbox}
 
 \section*{Outcomes}
-The resolution depends on the PCs' choices and the state of the clocks.
 
-\subsection*{Mercy Kept (Best)}
-Feast becomes vigil; the storm parts; Elara lives, crown withers. PCs gain 2 Boons (Community/Thresholds).
-
-\textbf{Narrative:} The counter-hymn works perfectly. The villagers slowly come to their senses, confused but alive. Elara collapses as the crown withers and dies. She survives but is forever changed, her voice never quite the same. The storm breaks, and sunlight pierces the clouds.
-
-\subsection*{Joy Saved but Costly}
-Revelry quiets; 1–2 deaths; Elara scarred. PCs gain 1 Boon; choose: spare a life or spare a memory.
-
-\textbf{Narrative:} The ritual works, but not without cost. Some villagers have danced themselves to death. Elara survives but bears the scars of the crown's removal—thorny vines where the crown rooted, a voice that now carries an otherworldly echo. The PCs must choose between saving a life or preserving a memory.
-
-\subsection*{Silence Falls (Grim)}
-Silent Choir imposes Great Silence; Feast ends forever. PCs gain Favor with the Choir; village loses its song.
-
-\textbf{Narrative:} The Silent Choir's influence overwhelms the feast. All sound in the square ceases—no singing, no speaking, no breathing. The villagers stand motionless, their eyes blank. The feast is over, but so is Frosthollow's joy. The PCs gain the Choir's favor but at a terrible price.
-
-\subsection*{Rapture Eternal (Dark)}
-Thrysos claims the square; Frosthollow dances into legend. PCs marked with Revelry until exorcised.
-
-\textbf{Narrative:} Thrysos's power consumes everything. The villagers dance eternally, their faces frozen in expressions of ecstasy. The square becomes a place of legend, where travelers hear singing but never find the source. The PCs escape but carry the mark of endless revelry.
+\begin{mechanicsbox}{Resolutions}
+\begin{itemize}
+    \item \textbf{Mercy Kept (Best):} Feast becomes vigil; the storm parts; Elara lives, crown withers. PCs gain 2 Boons (Community/Thresholds)
+    \item \textbf{Joy Saved but Costly:} Revelry quiets; 1–2 deaths; Elara scarred. PCs gain 1 Boon; choose: spare a life or spare a memory
+    \item \textbf{Silence Falls (Grim):} Silent Choir imposes Great Silence; Feast ends forever. PCs gain Favor with the Choir; village loses its song
+    \item \textbf{Rapture Eternal (Dark):} Thrysos claims the square; Frosthollow dances into legend. PCs marked with Revelry until exorcised
+\end{itemize}
+\end{mechanicsbox}
 
 \section*{Elara as Avatar (If the Crown Consumes)}
-If the Holly Crown's Hold clock fills completely, Elara transforms into the Avatar of Revel.
 
-\textbf{Elara, Avatar of Revel}
-\textbf{Tags:} Elite, Mythic Song, Zone Control \\
-\textbf{Aura — Crescendo:} Each round, all in the square test Resolve DV 3 or gain/advance Revelry. \\
-\textbf{Song–Strike:} Presence + Arcana vs. the crowd; on hit, split Harm 2 (breathless) among up to three targets. \\
-\textbf{Roots of Holly:} On melee hit against Elara, attacker tests Wits DV 2 or be Entangled. \\
-\textbf{Weakness:} Counter–hymn sung by a beloved voice (Greta or a PC who earned the choir's trust) reduces her Position by one step this round.
+\begin{npcbox}{Elara, Avatar of Revel}
+    \textbf{Tags:} Elite, Mythic Song, Zone Control \\
+    \textbf{Aura — Crescendo:} Each round, all in the square test Resolve DV 3 or gain/advance Revelry \\
+    \textbf{Song-Strike:} Presence + Arcana vs. the crowd; on hit, split Harm 2 (breathless) among up to three targets \\
+    \textbf{Roots of Holly:} On melee hit against Elara, attacker tests Wits DV 2 or be Entangled \\
+    \textbf{Weakness:} Counter-hymn sung by a beloved voice (Greta or a PC who earned the choir's trust) reduces her Position by one step this round
+\end{npcbox}
 
 \section*{GM Dials \& Tools}
 
-\subsection*{Patron Prominence}
-Feature 1, 2, or all 3 Patrons based on your group's preferences:
+\begin{mechanicsbox}{GM Dials \& Options}
 \begin{itemize}
-    \item \textbf{Light (1 Patron):} Focus on one power's influence for a cleaner narrative.
-    \item \textbf{Moderate (2 Patrons):} Create tension between opposing forces.
-    \item \textbf{Full (3 Patrons):} Maximum thematic complexity and player choice.
+    \item \textbf{Patron Prominence:} Feature 1, 2, or all 3. For one-shot pace, lead with Thrysos, let Shepherd save, let Choir judge
+    \item \textbf{Combat Light or Heavy:} Swap Sunder the Crown to a pure ritual (Arcana + Insight) or to a brawl in the choir loft
+    \item \textbf{Hard Mode:} Add Breath Debt: each failed Revelry resist deals Harm 1 (asphyxia) that only the counter-hymn heals
+    \item \textbf{Mechanical Rewards:} If Mercy Wins: +1d on future Comfort/Recovery scenes. If Rapture Tempted: bank 1 Joy Token—cash for +1d on one grand celebration later
 \end{itemize}
-
-\subsection*{Combat Intensity}
-\begin{itemize}
-    \item \textbf{Light Combat:} Focus on social and ritual challenges. Combat encounters are brief and narrative-driven.
-    \item \textbf{Moderate Combat:} Include 2-3 combat encounters with standard mechanics.
-    \item \textbf{Heavy Combat:} Add tactical elements, minion swarms, and extended combat scenes.
-\end{itemize}
-
-\subsection*{Horror Level}
-\begin{itemize}
-    \item \textbf{Atmospheric:} Psychological horror and creeping dread. Minimal physical danger.
-    \item \textbf{Moderate:} Mix of psychological and physical threats. Some Harm is likely.
-    \item \textbf{Intense:} High stakes and genuine danger. Death is possible but not guaranteed.
-\end{itemize}
-
-\subsection*{Mechanical Rewards}
-\begin{itemize}
-    \item \textbf{If Mercy Wins:} +1d on future Comfort/Recovery scenes.
-    \item \textbf{If Rapture Tempted:} Bank 1 Joy Token—cash for +1d on one grand celebration later.
-    \item \textbf{If Silence Falls:} Gain the Silent Choir's Mark (permanent Condition: −1d to loud social actions).
-    \item \textbf{If Transformation Occurs:} Choose one: +1 Spirit or gain the Cantor's Path talent.
-\end{itemize}
+\end{mechanicsbox}
 
 \section*{Treasure \& Fallout}
 
-\subsection*{Holly Circlet (Relic)}
-Once/session: Turn a crowd from fear to festivity (+1d to mass morale). Each use risks Revelry. Cleansed if crowned with snow–water at dawn.
+\begin{mechanicsbox}{Holly Circlet (Relic)}
+Once/session: Turn a crowd from fear to festivity (+1d to mass morale). Each use risks Revelry. Cleansed if crowned with snow-water at dawn.
+\end{mechanicsbox}
 
-\subsection*{Greta's Ledger of Hymns}
+\begin{mechanicsbox}{Greta's Ledger of Hymns}
 Advantage (+1d) to Ritual Audit checks; reveals mis-keyed breath patterns used for crowd control.
+\end{mechanicsbox}
 
-\subsection*{Thrysos's Chalice}
-A silver cup that never empties. Once/session, grant +1d to social rolls but mark 1 Fatigue from overindulgence.
-
-\subsection*{Pale Shepherd's Token}
-A small bell that rings only for you. Once/session, gain +1d to navigation or finding hidden paths.
-
-\subsection*{Silent Choir's Veil}
-A white cloth that muffles sound. Once/session, impose −1d to all noise-based detection rolls against you.
-
-\section*{Casting the Patrons (Optional Flavor)}
-
-\subsection*{Thrysos}
-Laughing hearth–god turned too loud; smells of cider and iron; color over truth.
-
-\subsection*{Pale Shepherd}
-Lantern across snow; speaks in exchanged memories; never hurries.
-
-\subsection*{Silent Choir}
-Frost–haze in candlelight; mercy as cessation; demands quiet means consent.
+\begin{mechanicsbox}{Casting the Patrons (Optional Flavor)}
+\begin{itemize}
+    \item \textbf{Thrysos:} Laughing hearth-god turned too loud; smells of cider and iron; color over truth
+    \item \textbf{Pale Shepherd:} A lantern across snow; speaks in exchanged memories; never hurries
+    \item \textbf{Silent Choir:} Frost-haze in candlelight; mercy as cessation; demands quiet means consent
+\end{itemize}
+\end{mechanicsbox}
 
 \section*{Quick Start for PCs}
 
-\subsection*{Runekeeper (Thresholds)}
-Bargain with the Shepherd for safe passage; pay in story or scar.
-
-\subsection*{Cantor / Bard}
-Compose the counter–hymn; lead call–and–response to cleanse Revelry.
-
-\subsection*{Sellsword}
-Guard the bell ropes; hold the square against stampede or falling ice.
-
-\subsection*{Healer}
-Replace Cheer with Breath—synchronized breathing drills under the eaves.
-
-\subsection*{Scholar}
-Research the ancient texts; uncover the crown's true nature.
-
-\subsection*{Outsider}
-Navigate the village's customs; find allies among the suspicious.
-
-\begin{callout}[Quote]
-"When the song is too sweet to end, mercy is a hard hand on the bell rope." — Greta Frostwhisper
-\end{callout}
-
-\section*{GM Preparation Checklist}
-
-\subsection*{Before the Session}
 \begin{itemize}
-    \item Print or prepare NPC stat blocks
-    \item Set up the four main clocks (visible to players)
-    \item Prepare 3-5 random complication cards from the Deck of Consequences
-    \item Review Patron pressure tables and rewards
-    \item Prepare the key scenes with potential complications
+    \item \textbf{Runekeeper (Thresholds):} Bargain with the Shepherd for safe passage; pay in story or scar
+    \item \textbf{Cantor / Bard:} Compose the counter-hymn; lead call-and-response to cleanse Revelry
+    \item \textbf{Sellsword:} Guard the bell ropes; hold the square against stampede or falling ice
+    \item \textbf{Healer:} Replace Cheer with Breath—synchronized breathing drills under the eaves
 \end{itemize}
 
-\subsection*{During the Session}
-\begin{itemize}
-    \item Track clock advancement visibly
-    \item Use Patron pressures to add flavor to scenes
-    \item Introduce Winter Moves when tension lags
-    \item Let player choices drive the narrative
-    \item Be prepared to adapt结局 based on player actions
-\end{itemize}
-
-\subsection*{After the Session}
-\begin{itemize}
-    \item Note which Patron resonated most with players
-    \item Record any interesting character developments
-    \item Consider how this one-shot could expand into a campaign
-\end{itemize}
-
-\section*{Expanding to a Campaign}
-This one-shot can easily expand into a larger campaign:
-\subsection*{The Pale Shepherd's Test}
-The Pale Shepherd was merely testing Frosthollow. Other villages face similar trials. The PCs become wandering judges, sent to evaluate communities and prevent their fall to madness. Each village presents a different Patron's challenge.
-
-\subsection*{The Holly Crown's Legacy}
-Pieces of the holly crown survived its destruction. These fragments have begun appearing in other locations, each starting a new cycle of corruption. The PCs must track down and destroy these fragments before they take root.
-
-\subsection*{The Silent Choir's Choir}
-Those who experienced the Great Silence have formed a new religious order. They seek to spread their interpretation of mercy through enforced silence. The PCs must decide whether to oppose them or join their cause.
-
-\subsection*{Thrysos's Eternal Feast}
-Some revelers from Frosthollow escaped, carrying the seeds of endless celebration to other lands. These "Joy-Bearers" establish new festivals that slowly corrupt their hosts. The PCs become hunters of these dangerous evangelists.
-
-\section*{Character Advancement Seeds}
-
-\subsection*{For Runekeepers}
-The experience with the three Patrons gives you insight into their natures. Choose one Patron whose Rites you can now Invoke at -1 Obligation cost (minimum 1).
-
-\subsection*{For Cantors}
-The counter-hymn becomes part of your Repertoire. Add it as a Known Song. You may also choose to Embrace Corruption from one of the three Patrons, gaining a thematic boon/condition.
-
-\subsection*{For Pact-Whisperers}
-The Pale Shepherd takes notice of your actions. You may add the Pale Shepherd as a potential Patron, starting with a 2-segment Bond Clock.
-
-\subsection*{For All Characters}
-The trauma of Frosthollow leaves its mark. Each PC may choose one:
-\begin{itemize}
-    \item Gain the "Winter-Touched" Condition (-1d in warm climates, but +1d in cold)
-    \item Gain the "Crowd-Familiar" Talent (once/session, treat social Position as one step better in large groups)
-    \item Gain 1 XP toward a Talent related to one of the three Patrons
-\end{itemize}
-
-\section*{Alternative Endings}
-
-\subsection*{The Sacrifice}
-If a PC offers to take Elara's place as the crown's host, they become the new Avatar. This grants them immense power but at the cost of their humanity. The village is saved, but at what price?
-
-\subsection*{The Escape}
-If the PCs choose to flee rather than intervene, they escape Frosthollow but carry the guilt of abandonment. The village becomes a haunted place in local legends, and the PCs may face consequences from those who sought their help.
-
-\subsection*{The Transformation}
-If the PCs fully embrace the revelry, they become part of the endless feast. They gain power and immortality but lose their individuality. The square becomes a place of pilgrimage for those seeking eternal joy.
-
-\section*{Random Complications Table}
-When the tension needs a boost, roll on this table or draw from the Deck of Consequences:
-
-\begin{longtable}{|c|p{10cm}|}
-\hline
-\textbf{Roll} & \textbf{Complication} \\
-\hline
-1 & A child approaches, offering a berry crown and whispering, "The Pale Shepherd says you must join us." \\
-\hline
-2 & The church bells begin ringing in reverse, causing all present to feel dizzy and disoriented (-1d to all rolls for one round). \\
-\hline
-3 & A sudden gust of wind extinguishes all lanterns in the square. The scene becomes Desperate Position for all actions relying on sight. \\
-\hline
-4 & Villagers begin pointing at the PCs, accusing them of being "joy-stealers." Social rolls suffer -2d for the remainder of the scene. \\
-\hline
-5 & The temperature drops suddenly. All characters must make a Body + Endurance test (DV 3) or mark 1 Fatigue from the cold. \\
-\hline
-6 & Elara's song shifts to a haunting melody that seems to call each PC by name. They must make a Spirit + Resolve test (DV 4) or gain the Compelled condition to approach her. \\
-\hline
-\end{longtable}
-
-\section*{Environmental Hazards}
-
-\subsection*{The Singing Snow}
-The snow itself has been affected by Elara's song. When disturbed, it hums with an otherworldly melody.
-\begin{itemize}
-    \item \textbf{Effect:} Anyone moving through the snow must make a Wits + Stealth test (DV 3) or generate 1 SB as their movements attract unwanted attention.
-    \item \textbf{Counter:} Move slowly and deliberately, treating movement as a Controlled Position action.
-\end{itemize}
-
-\subsection*{The Berry Wine}
-The fermented berry juice served during the feast has supernatural properties.
-\begin{itemize}
-    \item \textbf{Effect:} Drinking the wine grants +1d to social rolls for one scene but requires a Spirit + Resolve test (DV 2) or gain the Revelry condition.
-    \item \textbf{Addiction:} Each subsequent drink increases the DV by 1.
-\end{itemize}
-
-\subsection*{The Dancing Lights}
-The lanterns in the square move in response to the music, creating shifting pools of light and shadow.
-\begin{itemize}
-    \item \textbf{Effect:} Ranged attacks suffer -1d due to constantly changing light conditions.
-    \item \textbf{Opportunity:} Characters can use the shifting lights for cover, gaining +1d to Stealth rolls.
-\end{itemize}
-
-\section*{Patron-Specific Challenges}
-
-\subsection*{Thrysos's Trial}
-To gain Thrysos's favor, characters must participate in a test of excess.
-\begin{itemize}
-    \item \textbf{Challenge:} Consume increasingly potent forms of the berry wine while maintaining coherent speech.
-    \item \textbf{Reward:} +2d to social rolls involving celebration or revelry for the remainder of the session.
-    \item \textbf{Risk:} Failure results in the Drunk condition and 1 segment added to Village Hysteria.
-\end{itemize}
-
-\subsection*{Pale Shepherd's Crossing}
-The Pale Shepherd offers guidance through a liminal space.
-\begin{itemize}
-    \item \textbf{Challenge:} Navigate a path between reality and dream, answering riddles about what you've lost.
-    \item \textbf{Reward:} Gain the "Liminal Sight" talent (once/session, see hidden paths or doors).
-    \item \textbf{Risk:} Failure costs a cherished memory, chosen by the GM.
-\end{itemize}
-
-\subsection*{Silent Choir's Mercy}
-The Silent Choir tests the characters' capacity for restraint.
-\begin{itemize}
-    \item \textbf{Challenge:} Remain silent while witnessing something that demands a response.
-    \item \textbf{Reward:} Gain +2d to resist social manipulation for the remainder of the session.
-    \item \textbf{Risk:} Speaking out results in 1 segment added to Silent Choir Mandate.
-\end{itemize}
-
-\section*{NPC Reactions Table}
-Use this table to determine how villagers react to PC actions:
-
-\begin{longtable}{|c|p{10cm}|}
-\hline
-\textbf{Villager Type} & \textbf{Reaction to PCs} \\
-\hline
-Elderly Villager & Respectful but suspicious. Will answer questions but with cryptic warnings. \\
-\hline
-Young Parent & Desperate for help. Will beg the PCs to save their children from the revelry. \\
-\hline
-Village Elder & Defensive and authoritative. Views PCs as outsiders who don't understand their traditions. \\
-\hline
-Child & Innocent and curious. May inadvertently reveal important information. \\
-\hline
-Reveler & Enthusiastic and pushy. Will try to drag PCs into celebrations. \\
-\hline
-Church Official & Pious but conflicted. Knows something is wrong but fears speaking out. \\
-\hline
-\end{longtable}
-
-\section*{Extended Scene Ideas}
-
-\subsection*{The Midnight Procession}
-If the PCs explore after dark, they may encounter a ghostly procession of past cantors, all wearing holly crowns and singing the corrupted hymn. This scene can provide crucial lore about the crown's history.
-
-\subsection*{The Berry Harvest}
-A side quest involves investigating the source of the blood-red berries. This leads to a grove where the plants seem to grow in response to music, revealing the crown's connection to Thrysos.
-
-\subsection*{The Memory Well}
-An ancient well in the village center contains the collective memories of all who have worn the crown. Drinking from it grants visions of the past but risks losing one's own memories.
-
-\section*{Magical Items for PCs}
-
-\subsection*{Greta's Bell}
-A small handbell that rings with perfect clarity.
-\begin{itemize}
-    \item \textbf{Effect:} Once/session, ring to gain +1d on a Resolve test or to call for help from a nearby ally.
-    \item \textbf{Limitation:} Cannot be used in silence-heavy areas without generating 1 SB.
-\end{itemize}
-
-\subsection*{The Counter-Melody}
-A music box that plays the correct breathing pattern.
-\begin{itemize}
-    \item \textbf{Effect:} Once/session, play to grant +1d to resist the Revelry condition or to calm a panicked crowd.
-    \item \textbf{Limitation:} The tune is hauntingly beautiful but melancholy, imposing -1d to social rolls involving joy or celebration.
-\end{itemize}
-
-\subsection*{Winter's Embrace}
-A cloak that seems woven from snow itself.
-\begin{itemize}
-    \item \textbf{Effect:} Provides +1 Armor and +1d to Stealth in snowy conditions.
-    \item \textbf{Limitation:} In warm climates, the wearer suffers -1d to all physical actions.
-\end{itemize}
-
-\section*{Session Zero Questions}
-
-Before playing, consider discussing these questions with your group:
-
-\begin{itemize}
-    \item What level of horror are players comfortable with? (Atmospheric vs. Intense)
-    \item How much player-versus-player conflict is acceptable?
-    \item Should character death be possible?
-    \item How important is it that every player's character has a moment to shine?
-    \item What themes are players interested in exploring? (Sacrifice, Community, Madness, Faith)
-\end{itemize}
-
-\section*{GM Tips for Atmosphere}
-
-\subsection*{Sound and Music}
-\begin{itemize}
-    \item Play soft, off-key humming in the background during village scenes
-    \item Use wind sounds to emphasize the storm's presence
-    \item Consider having a player hum the counter-melody during crucial scenes
-\end{itemize}
-
-\subsection*{Descriptive Techniques}
-\begin{itemize}
-    \item Emphasize the contrast between the village's apparent warmth and the cold truth of its situation
-    \item Describe the holly crown in unsettling detail - how it seems to pulse with life
-    \item Use sensory details like the taste of copper in the wine, the scent of evergreen, and the feel of unnatural warmth
-\end{itemize}
-
-\subsection*{Pacing Considerations}
-\begin{itemize}
-    \item Start with investigation and build to climax
-    \item Allow moments of false hope to make the horror more effective
-    \item Balance tension with quieter character moments
-\end{itemize}
-
-\begin{danger}[Important Note]
-Remember that this is a folk horror adventure. The real horror comes from the community's descent into madness and the PCs' struggle to maintain their humanity in the face of supernatural temptation. Violence should be a last resort, and the psychological toll should be emphasized over physical combat.
-\end{danger}
-
-\begin{callout}[Final Words]
-Frosthollow will remember this solstice. Whether as a cautionary tale or a legend of eternal joy depends on the choices your players make. The bells may ring true again, or they may forever carry the discord of that endless night. The story is theirs to write.
-\end{callout}
+\begin{center}
+    \textit{"When the song is too sweet to end, mercy is a hard hand on the bell rope."} \\
+    \textit{— Greta Frostwhisper}
+\end{center}
 
 \end{document}
