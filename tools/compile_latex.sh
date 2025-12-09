@@ -9,6 +9,7 @@ BIBLIOGRAPHY=true
 TEXFILE=""
 QUALITY=""
 PDFNAME=""
+LATEX_CMD=""          # will be set by detect_engine
 GIT_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 FILE_PATH="$(pwd)"
 BRANCH=""
@@ -86,11 +87,63 @@ if [[ -z "$PDFNAME" ]]; then
   PDFNAME="$FINAL_PDF"
 fi
 
+# ----- engine detection -----
+detect_engine() {
+  # Allow manual override via LATEX_ENGINE env var (e.g., LATEX_ENGINE=xelatex)
+  if [[ -n "$LATEX_ENGINE" ]]; then
+    local engine="$LATEX_ENGINE"
+    if command -v "$engine" >/dev/null 2>&1; then
+      LATEX_CMD="$engine"
+      echo "Using LaTeX engine from LATEX_ENGINE: $LATEX_CMD"
+      return
+    else
+      echo "⚠️ LATEX_ENGINE='$engine' not found; falling back to auto-detection."
+    fi
+  fi
+
+  local engine="pdflatex"
+
+  # 1) Respect TeXShop-style directive if present
+  if grep -q '%!TEX TS-program *= *xelatex' "$TEXFILE"; then
+    engine="xelatex"
+  elif grep -q '%!TEX TS-program *= *lualatex' "$TEXFILE"; then
+    engine="lualatex"
+  elif grep -q '%!TEX TS-program *= *pdflatex' "$TEXFILE"; then
+    engine="pdflatex"
+  else
+    # 2) Heuristic: fontspec/polyglossia/unicode-math → xelatex
+    if grep -Eq '\\usepackage\{fontspec\}' "$TEXFILE" || \
+       grep -Eq '\\usepackage\{polyglossia\}' "$TEXFILE" || \
+       grep -Eq '\\usepackage\{unicode-math\}' "$TEXFILE" || \
+       grep -Eq '\\setmainfont\{' "$TEXFILE" || \
+       grep -Eq '\\newfontfamily\{' "$TEXFILE"; then
+      engine="xelatex"
+    fi
+  fi
+
+  # 3) Ensure engine exists, fallback chain: chosen → xelatex → lualatex → pdflatex
+  for candidate in "$engine" xelatex lualatex pdflatex; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      LATEX_CMD="$candidate"
+      break
+    fi
+  done
+
+  if [[ -z "$LATEX_CMD" ]]; then
+    echo "❌ No LaTeX engine found (checked: $engine, xelatex, lualatex, pdflatex)."
+    exit 1
+  fi
+
+  echo "Using LaTeX engine: $LATEX_CMD"
+}
+
+detect_engine
+
 # ----- debug mode -----
 if [[ "$DEBUG" == true ]]; then
-  echo -e "Parameters:\n\tDebug: $DEBUG\n\tClean: $CLEAN\n\tTEXFILE: $TEXFILE\n\tBASENAME: $BASENAME\n\tBranch: $BRANCH\n\tQuality: ${QUALITY:-<none>}\n\tPDFNAME: ${PDFNAME:-<none>}\n\tCI_MODE: $CI_MODE"
-  read -p "Run pdflatex once interactively? [y/N] " -n 1 -r; echo
-  if [[ $REPLY =~ ^[Yy]$ ]]; then pdflatex "$TEXFILE"; fi
+  echo -e "Parameters:\n\tDebug: $DEBUG\n\tClean: $CLEAN\n\tTEXFILE: $TEXFILE\n\tBASENAME: $BASENAME\n\tBranch: $BRANCH\n\tQuality: ${QUALITY:-<none>}\n\tPDFNAME: ${PDFNAME:-<none>}\n\tCI_MODE: $CI_MODE\n\tEngine: $LATEX_CMD"
+  read -p "Run $LATEX_CMD once interactively? [y/N] " -n 1 -r; echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then "$LATEX_CMD" "$TEXFILE"; fi
   echo "git clean would remove:"; git clean -x -n
   echo "Exiting debug."
   exit 0
@@ -104,8 +157,8 @@ if [[ "$CI_MODE" != "true" ]]; then
 fi
 
 # ----- compile -----
-echo "Initial compile of $TEXFILE using pdflatex..."
-pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
+echo "Initial compile of $TEXFILE using $LATEX_CMD..."
+"$LATEX_CMD" -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
 
 if [ ! -f "$FINAL_PDF" ]; then
   echo "PDF file was not generated"
@@ -131,8 +184,8 @@ if [[ -f "${BASENAME}.idx" && "$INDEX" = true ]]; then
 fi
 
 # ----- two more latex passes -----
-pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
-pdflatex -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
+"$LATEX_CMD" -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
+"$LATEX_CMD" -interaction=nonstopmode "$TEXFILE" >/dev/null 2>&1
 echo "✅ Compilation complete: $FINAL_PDF"
 
 # ----- optional compression -----

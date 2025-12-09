@@ -73,6 +73,8 @@ cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f silent-court.tex -n "Fate's Edge - The Silent Court.pdf" > /dev/null 2>&1|| echo "#34. Did not build"
 ../../../tools/compile_latex.sh -f forge-of-souls.tex -n "Fate's Edge - The Forge of Souls.pdf" > /dev/null 2>&1|| echo "#35. Did not build"
 ../../../tools/compile_latex.sh -f last-light-of-everflame.tex -n "Fate's Edge - The Last Light of the Everflame: The Lampers vs. The Temple of Light.pdf" > /dev/null 2>&1|| echo "#36. Did not build"
+../../../tools/compile_latex.sh -f truth-that-cannot-be-told.tex -n "Fate's Edge - The Truth That Cannot Be Told.pdf" > /dev/null 2>&1|| echo "#37. Did not build"
+
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
@@ -101,7 +103,8 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  witches-of-fates-edge.tex -n "Fate's Edge Expansion - Witches of Fate's Edge: Large Cords, Curses, and the Quiet Work of Names.pdf" > /dev/null 2>&1|| echo "#21. Did not build"
 ../../../tools/compile_latex.sh -f  book-of-talents.tex -n "Fate's Edge Expansion - The Book of Talents.pdf" > /dev/null 2>&1|| echo "#22. Did not build"
 ../../../tools/compile_latex.sh -f  peoples-and-cultures.tex -n "Fate's Edge Expansion - Peoples and Cultures.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
-../../../tools/compile_latex.sh -f  advanced-campaigns.tex -n "Fate's Edge Expansion - Campaigns: Advanced Tools and Reference.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
+../../../tools/compile_latex.sh -f  advanced-campaigns.tex -n "Fate's Edge Expansion - Campaigns: Advanced Tools and Reference.pdf" > /dev/null 2>&1|| echo "#24. Did not build"
+../../../tools/compile_latex.sh -f  book-of-shadows.tex -n "Fate's Edge Expansion - The Lantern War of Shadows.pdf" > /dev/null 2>&1|| echo "#25. Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
