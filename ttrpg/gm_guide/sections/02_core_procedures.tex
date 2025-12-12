@@ -468,3 +468,111 @@ Use this as a quiet mental script. You do not need to say any of it out loud.
 
 \vspace{1em}
 \noindent\textbf{Remember:} The goal is to tell an exciting story together. These rules are tools, not tests. Start simple, add complexity when you're ready, and keep your lane markers clear: one new idea at a time, one clear consequence per roll, and one or two clocks that really matter.
+
+\newpage
+% === Fate's Edge Systems Map (GM Guide size) ===
+% Requires: \usepackage{tikz}
+% and: \usetikzlibrary{arrows.meta,positioning}
+
+\begin{figure*}[t]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      every node/.style={align=center},
+      core/.style={circle,draw=black,fill=black!85,text=white,thick,minimum size=2.7cm,inner sep=2pt},
+      primary/.style={circle,draw=blue!70,fill=blue!15,thick,minimum size=2.2cm,inner sep=2pt},
+      secondary/.style={circle,draw=blue!45,fill=blue!7,minimum size=1.6cm,inner sep=1pt},
+      narrative/.style={rounded corners,draw=black,fill=yellow!18,thick,minimum width=3.1cm,minimum height=0.85cm,inner sep=3pt},
+      arrow/.style={-Latex,thick},
+      dottedarrow/.style={-Latex,thick,dashed},
+  ]
+  
+  % --- Core ---
+  \node[core] (core) {\textbf{Core Loop}\\[-0.2em]\footnotesize
+  Action\\
+  Position \& DV\\
+  Roll d10\\
+  Successes \& SB\\
+  Outcome};
+  
+  % --- First ring ---
+  \node[primary,above=2.4cm of core] (sb) {\textbf{Story}\\\textbf{Beats}\\[-0.2em]\footnotesize
+  1s $\rightarrow$ SB\\
+  Spend SB};
+  
+  \node[primary,right=2.9cm of core] (clocks) {\textbf{Clocks}\\[-0.2em]\footnotesize
+  Scene \&\\
+  Campaign};
+  
+  \node[primary,below=2.4cm of core] (modules) {\textbf{Player}\\\textbf{Modules}\\[-0.2em]\footnotesize
+  O/C/L};
+  
+  \node[primary,left=2.9cm of core] (boons) {\textbf{Boons}\\[-0.2em]\footnotesize
+  Miss=2\\
+  Partial=1};
+  
+  % Core ↔ First ring
+  \draw[arrow] (core) -- (sb);
+  \draw[arrow] (core) -- (clocks);
+  \draw[arrow] (core) -- (modules);
+  \draw[arrow] (core) -- (boons);
+  
+  \draw[arrow] (sb) -- (core);
+  \draw[arrow] (clocks) -- (core);
+  \draw[arrow] (modules) -- (core);
+  \draw[arrow] (boons) -- (core);
+  
+  % --- Second ring (specialized) ---
+  \node[secondary,above right=1.7cm and 1.2cm of sb] (ob) {\textbf{Obl.}};
+  \node[secondary,below right=1.7cm and 1.2cm of modules] (co) {\textbf{Corr.}};
+  \node[secondary,below left=1.7cm and 1.2cm of modules] (le) {\textbf{Leash}};
+  \node[secondary,above left=1.7cm and 1.2cm of sb] (su) {\textbf{Supply}};
+  
+  \node[secondary,above=1.55cm of core] (fa) {\textbf{Fatigue}\\\textbf{/Harm}};
+  \node[secondary,right=2.0cm of core] (re) {\textbf{Res.}};
+  \node[secondary,below=1.55cm of core] (ma) {\textbf{Mand.}};
+  \node[secondary,left=2.0cm of core] (cr) {\textbf{Crisis}};
+  
+  % Links (keep minimal to avoid spaghetti)
+  \draw[arrow] (modules) -- (ob);
+  \draw[arrow] (modules) -- (co);
+  \draw[arrow] (modules) -- (le);
+  
+  \draw[arrow] (clocks) -- (su);
+  \draw[arrow] (clocks) -- (ma);
+  \draw[arrow] (clocks) -- (cr);
+  
+  \draw[arrow] (su) -- (fa);
+  \draw[arrow] (su) -- (re);
+  
+  \draw[arrow] (re) -- (boons);
+  \draw[arrow] (re) -- (clocks);
+  
+  \draw[dottedarrow] (ob) -- (sb);
+  \draw[dottedarrow] (co) -- (sb);
+  \draw[dottedarrow] (le) -- (sb);
+  
+  \draw[arrow] (fa) -- (core);
+  
+  % --- Narrative layer (compact) ---
+  \node[narrative,above=5.1cm of core] (na) {\textbf{Narrative Consequences}};
+  \node[narrative,left=4.9cm of core] (ca) {\textbf{Campaign Evolves}};
+  \node[narrative,right=4.9cm of core] (ag) {\textbf{Player Agency}};
+  \node[narrative,below=5.1cm of core] (ch) {\textbf{Character Arcs}};
+  
+  \draw[arrow] (sb) -- (na);
+  \draw[arrow] (clocks) -- (ca);
+  \draw[arrow] (modules) -- (ag);
+  \draw[arrow] (boons) -- (ag);
+  
+  \draw[arrow] (na) -- (core);
+  \draw[arrow] (ca) -- (core);
+  \draw[arrow] (ag) -- (core);
+  \draw[arrow] (ch) -- (core);
+  
+  \end{tikzpicture}
+  \caption{Fate’s Edge systems: the Core Loop drives SB/Clocks/Modules/Boons; pressure systems store consequences; narrative outcomes feed back into play.}
+  \label{fig:systems-map}
+  \end{figure*}
+
+\clearpage
