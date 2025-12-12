@@ -208,7 +208,7 @@ These are organized by theme and power level.
 ## Utility Talents
 
 ### Borrowed Grace (Invoker Talent, Lesser Imbuement)
-**Use:** 1 Boon, 1 action
+**Use:** 1 Boon or 1 Fatigue, 1 action
 **Effect:** +1 Melee or +1 Thematic (your table's thematic Skill)
 **Duration:** Single action/attack
 **Requirement:** Wield/display the Patron's Symbol
