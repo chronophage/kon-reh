@@ -37,11 +37,6 @@
 
 \begin{document}
 
-\begin{center}
-{\LARGE \textbf{FATE'S EDGE QUICKSTART}}\\[2pt]
-{\large Narrative-First Roleplay with Sharp Consequences}\\[6pt]
-\end{center}
-
 \section{Welcome to Fate's Edge}
 
 \noindent
@@ -86,7 +81,7 @@ All significant actions follow three steps:
 \subsection{Difficulty Values (DV)}
 \begin{center}
 \small
-\begin{tabular}{cl}
+\begin{longtable}{cl}
 \toprule
 \textbf{DV} & \textbf{Situation} \\
 \midrule
@@ -95,7 +90,7 @@ All significant actions follow three steps:
 4 & Hard: hostile conditions or active opposition \\
 5+ & Extreme: multiple constraints, high precision \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 \end{center}
 
 \subsection{Position \& Effect}
@@ -111,7 +106,7 @@ All significant actions follow three steps:
 \end{itemize}
 
 \begin{examplebox}[Evolving Position]
-\key{Start}: Controlled (quiet corridor).\\
+\key{Start}: Dominant (quiet corridor).\\
 \key{Noisy pick (1 SB)} $\rightarrow$ Controlled (patrol turns).\\
 \key{Reinforcements (2 SB)} $\rightarrow$ Desperate (crossfire).
 \end{examplebox}
@@ -119,7 +114,7 @@ All significant actions follow three steps:
 \subsection{Outcome Matrix}
 \begin{center}
 \small
-\begin{tabular}{ll}
+\begin{longtable}{ll}
 \toprule
 \textbf{Result} & \textbf{What Happens} \\
 \midrule
@@ -128,7 +123,7 @@ Successes $\ge$ DV, SB$\ge$1 & Success \& Cost: intent + complications \\
 0 $<$ Successes $<$ DV & Partial: progress with complication (gain 1 Boon) \\
 Successes $=$ 0 & Miss: no progress (gain 2 Boons) \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 \end{center}
 
 \begin{fatebox}[Story Beats (SB): A Simple Spend Menu]
@@ -241,9 +236,18 @@ No fixed initiative. Spotlight follows fiction:
   \item \key{Invoker (Symbols)}: Patron \emph{Seals} and rituals with time or risk.
 \end{itemize}
 
+\subsection{TAGS System}
+\key{TAGS} are narrative shorthand for magical effects. Each TAG describes a discrete effect that modifies the spell's outcome.
+\begin{itemize}[leftmargin=*]
+  \item \key{DV Calculation}: DV = 1 + number of TAGS (max 6)
+  \item \key{Dangerous TAGS}: [TELEPORT], [TRANSFORM], [DOMINATE] add +2 DV instead of +1
+  \item \key{Example}: "Burning • Area • Force" = DV 4 (1 + 3 TAGS)
+\end{itemize}
+
 \subsection{Casting At a Glance}
 \begin{itemize}[leftmargin=*]
-  \item \key{Caster}: \emph{Channel + Weave} = 2 actions (or \emph{Push} to compress with cost).
+  \item \key{Caster}: \emph{Channel + Weave} = 2 actions (or \emph{Push} to compress with cost).\\
+        \textbf{[TAGS]}: Describe effect with 1-6 TAGS to set DV
   \item \key{Runekeeper}: 1 action to \emph{Invoke}; may \emph{Push} for +1 Obligation.
   \item \key{Invoker}: Rituals take turns; \emph{Crack the Seal} for instant cast at \emph{Desperate}.
 \end{itemize}
@@ -252,10 +256,12 @@ No fixed initiative. Spotlight follows fiction:
 \begin{itemize}[leftmargin=*]
   \item \key{Interrupted}: If harmed/silenced before resolution, spell/rite fails.
   \item \key{Push}: Resolve now, mark +1 Fatigue or +1 Obligation/Corruption.
+  \item \key{TAGS Backlash}: On mixed results, Backlash is colored by the TAGS used
 \end{itemize}
 
 \begin{examplebox}[On-the-Fly Adjudication]
-\emph{Barrier} for a hallway? Personal scale $\Rightarrow$ DV 2; scene-wide $\Rightarrow$ DV 3; sweeping area $\Rightarrow$ DV 4+. Casting under fire $\Rightarrow$ Controlled or Desperate.
+\emph{Barrier} for a hallway? \textbf{[WARD]} $\Rightarrow$ DV 2; scene-wide $\Rightarrow$ DV 3; sweeping area $\Rightarrow$ DV 4+. Casting under fire $\Rightarrow$ Controlled or Desperate.\\
+\emph{Example:} "I create a [WARD] [BARRIER] [FIRE] wall" = DV 4 (1+3)
 \end{examplebox}
 
 % -----------------------------------------------------
@@ -270,10 +276,10 @@ No fixed initiative. Spotlight follows fiction:
 
 \subsection{Key Talents}
 \begin{itemize}[leftmargin=*]
-  \item \key{Caster's Gift (6 XP)}: access to freeform magic
-  \item \key{Familiar (2 XP)}: Patron features access
-  \item \key{Codex (4 XP)}: Runekeeper rites \& Obligation (\emph{Thaisos} defines style)
-  \item \key{Patron's Symbol (4 XP)}: Invoker seals/rituals
+  \item \key{Caster's Gift (6 XP) [FIRE] [WATER]}: access to freeform magic
+  \item \key{Familiar (2 XP) [SPIRIT] [BOND]}: Patron features access
+  \item \key{Codex (4 XP) [FATE] [RITUAL]}: Runekeeper rites \& Obligation (\emph{Thaisos} defines style)
+  \item \key{Patron's Symbol (4 XP) [WARD] [SIGIL]}: Invoker seals/rituals
 \end{itemize}
 
 % -----------------------------------------------------
@@ -310,7 +316,7 @@ No fixed initiative. Spotlight follows fiction:
   \item \key{Guide}: on success, DV –1 for movement challenges
   \item \key{Scout}: on success, ignore the next 1 SB spend
   \item \key{Quartermaster}: on success, reduce Supplies Clock by 1
-  \item \key{Watch}: on success, start next scene at \emph{Controlled}
+  \item \key{Watch}: on success, start next scene at \emph{Dominant}
 \end{itemize}
 
 % -----------------------------------------------------
@@ -390,7 +396,7 @@ Keep at most three active:
 \key{Situation}: Picking a warded lock while guards patrol nearby.\\
 \key{Roll}: Wits 2 + Craft (Tinker) 2 = 4d10 $\rightarrow$ 8, 6, 3, 1.\\
 \key{Result}: 2 successes (DV 2), 1 SB.\\
-\key{Outcome}: Lock opens; GM spends 1 SB: the last pin clicks too loud—boots turn your way. Position worsens to \emph{Desperate}.
+\key{Outcome}: Lock opens; GM spends 1 SB: the last pin clicks too loud—boots turn your way. Position worsens to \emph{Controlled}.
 \end{examplebox}
 
 \begin{examplebox}[False Orders, Real Panic]
@@ -401,10 +407,19 @@ Keep at most three active:
 \key{On Miss}: The captain cross-checks—GM spends SB to tighten security.
 \end{examplebox}
 
-\begin{examplebox}[From Controlled to Desperate]
-\key{Setup}: Thane fires from cover (Controlled).\\
+\begin{examplebox}[From Dominant to Desperate]
+\key{Setup}: Thane fires from cover (Dominant).\\
 \key{Roll}: 6d10 $\rightarrow$ 10, 9, 7, 6, 3, 1 (SB=1). Clean hit (Great).\\
 \key{SB Spend}: 1 SB—return fire chips the pillar, reducing cover. Next ally acts at \emph{Controlled}. Two more SB later, a mob arrives; the scene slips to \emph{Desperate}.
+\end{examplebox}
+
+\begin{examplebox}[TAGS in Action]
+\key{Situation}: Wielder of the Fire and Water paths attempts to create a wall of flame.\\
+\key{Declaration}: "I unleash [Burning] [Area] [Force] against the marauders."\\
+\key{DV}: 1 + 3 TAGS = 4\\
+\key{Roll}: Arcana 3 + Lore 2 = 5d10 $\rightarrow$ 10, 8, 5, 4, 1\\
+\key{Result}: 4 successes (DV 4), 1 SB (Clean Success)\\
+\key{Outcome}: Wall of flame erupts; GM spends SB to have the fire spread to nearby tents.
 \end{examplebox}
 
 % -----------------------------------------------------
@@ -459,18 +474,5 @@ Escort a relic lantern across the haunted Duskway. When lit, forgotten souls sti
   \item \key{SB Economy}: spend often; let tension breathe.
   \item \key{Player Agency}: choices alter the map and the ledger.
 \end{enumerate}
-
-% -----------------------------------------------------
-\section*{License}
-
-This work is released under \textbf{CC BY 4.0}. Share and adapt with attribution.\\
-\url{https://creativecommons.org/licenses/by/4.0/}
-
-\begin{center}
-\small
-\textbf{Fate's Edge Quickstart Guide}\\
-© 2025 by Nick Gasper and collaborators (CC BY 4.0).\\[2pt]
-\emph{In Fate's Edge, nothing is free — and every choice shapes the world.}
-\end{center}
 
 \end{document}
