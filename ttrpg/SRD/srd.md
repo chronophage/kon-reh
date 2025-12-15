@@ -165,7 +165,7 @@ This ensures pacing and drama guide the sequence of actions, not rigid turn stru
 
 Track: Each character has a Fatigue track equal to Body. Mark Fatigue for exertion, strain, or backlash.
 
-In Play: Each Fatigue step worsens your Position by one level (Controlled → Controlled → Desperate).
+In Play: Each Fatigue step worsens your Position by one level (Dominant → Controlled → Desperate).
 If you are already Desperate, instead apply a –1 die penalty per Fatigue to that roll.
 
 Overflow: When your Fatigue track fills, immediately increase Harm by 1 step and clear all Fatigue to 0. If this raises Harm to a level that incapacitates you, you fall out of the scene as normal for Harm.
@@ -529,7 +529,7 @@ Clocks are visual timers representing threats, conditions, or long-term stakes.
 
 When spending SB, consider four categories:
 - **Harm**: Injuries, fatigue, or resource drain.
-- **Position**: Shift from Controlled → Controlled → Desperate.
+- **Position**: Shift from Dominant → Controlled → Desperate.
 - **Resources**: Supplies, wealth, or equipment lost.
 - **Fictional Twist**: Patron interference, rival arrival, mystical surge.
 
