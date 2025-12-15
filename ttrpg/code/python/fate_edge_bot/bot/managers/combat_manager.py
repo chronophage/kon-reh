@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class PositionState(Enum):
     CONTROLLED = "Controlled"
-    RISKY = "Risky"
+    RISKY = "Controlled"
     DESPERATE = "Desperate"
 
 class RangeBand(Enum):
@@ -101,7 +101,7 @@ class CombatManager:
         
     # Participant Management
     def add_participant(self, name: str, is_character: bool = True, 
-                       position: str = "Risky", range_band: str = "Near") -> Dict[str, Any]:
+                       position: str = "Controlled", range_band: str = "Near") -> Dict[str, Any]:
         """Add a participant to combat"""
         if not self.combat_state["active"]:
             return {"status": "error", "message": "No active combat session"}
@@ -448,7 +448,7 @@ class CombatManager:
         """Get descriptive effects for position states"""
         effects = {
             "Controlled": "Advantageous position, minor consequences",
-            "Risky": "Even footing, moderate consequences",
+            "Controlled": "Even footing, moderate consequences",
             "Desperate": "Disadvantaged, severe consequences"
         }
         return effects.get(position, "Unknown position effects")

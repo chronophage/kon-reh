@@ -1,4 +1,4 @@
-s a cultist across open ground. Risk = standard danger (⇒ Risky). Impact = standard attack (⇒ Standard). Risky / Standard. Roll.
+s a cultist across open ground. Risk = standard danger (⇒ Controlled). Impact = standard attack (⇒ Standard). Controlled / Standard. Roll.
 
 ---
 
@@ -44,7 +44,7 @@ Use these tools to make fast decisions and keep the story moving.
 ### Risk Assessment
 Ask: What is the Risk?
 - **Controlled:** Safe, prepared, low threat
-- **Risky (default):** Pressure, danger, uncertainty  
+- **Controlled (default):** Pressure, danger, uncertainty  
 - **Desperate:** Immediate danger, overmatched, exposed
 
 ### Impact Assessment
@@ -84,7 +84,7 @@ If a player invents a spell on the fly:
    - Area / Devastating = DV 4+
 4. Choose Position based on danger while casting
 
-**Example:** Creating a force wall under fire? TAG = Barrier, scale = Scene ⇒ DV 3. Casting in melee ⇒ Risky. Risky / Standard, DV 3. Roll.
+**Example:** Creating a force wall under fire? TAG = Barrier, scale = Scene ⇒ DV 3. Casting in melee ⇒ Controlled. Controlled / Standard, DV 3. Roll.
 
 ---
 

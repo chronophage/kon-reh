@@ -29,7 +29,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Classic D&D cannon fodder with a twist
 - **Hook:** Zara's "budget exhibits" - cheap but numerous
 - **Challenge:** Navigate maze-like tunnels while kobolds "help" by giving directions to wrong exhibits
-- **Position Shift:** Risky (confusing layout) → Controlled (find kobold who wants to "rat out" boss)
+- **Position Shift:** Controlled (confusing layout) → Controlled (find kobold who wants to "rat out" boss)
 - **SB Spends:** 
   - 1 SB: Kobold "accidentally" leads you in circles
   - 2 SB: Dragon shrine activates, kobolds go berserk
@@ -39,7 +39,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Traps disguised as treasure
 - **Hook:** Zara's "interactive exhibits" - everything is trying to eat you
 - **Challenge:** Distinguish between actual exhibits and hungry furniture
-- **Position Shift:** Desperate (everything's a threat) → Risky (learn to spot tells)
+- **Position Shift:** Desperate (everything's a threat) → Controlled (learn to spot tells)
 - **SB Spends:**
   - 1 SB: Treasure chest sprouts teeth during search
   - 2 SB: Exhibit labels are mimics too
@@ -59,7 +59,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Ooze obstacle course
 - **Hook:** Zara's "ecosystem exhibit" - watch digestion in action
 - **Challenge:** Navigate transparent hazards while recovering swallowed items
-- **Position Shift:** Risky (hard to see) → Controlled (learn movement patterns)
+- **Position Shift:** Controlled (hard to see) → Controlled (learn movement patterns)
 - **SB Spends:**
   - 1 SB: Item swallowed (DV 3 Tinker to recover)
   - 2 SB: Multiple cubes merge into Large specimen
@@ -79,7 +79,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Classic D&D "what do you mean it's not a bear?" creatures
 - **Hook:** Zara's "hybrid breeding program" gone wrong
 - **Challenge:** Distinguish between territorial behavior and actual threat
-- **Position Shift:** Risky (unpredictable) → Controlled (learn body language)
+- **Position Shift:** Controlled (unpredictable) → Controlled (learn body language)
 - **SB Spends:**
   - 1 SB: "Hug" attack (grapple + Harm 1)
   - 2 SB: Cubs call for mama (Large owlbear)
@@ -89,7 +89,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Metallic dragons corrupted by Zara's infernal influence
 - **Hook:** Zara's "premium exhibits" - corrupted noble creatures
 - **Challenge:** Appeal to dragon's better nature while avoiding breath weapon
-- **Position Shift:** Desperate (dragon's power) → Risky (negotiation possible)
+- **Position Shift:** Desperate (dragon's power) → Controlled (negotiation possible)
 - **SB Spends:**
   - 1 SB: Corrosive breath affects metal items
   - 2 SB: Dragon's madness causes random rampages
@@ -99,7 +99,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Mind-reading jellyfish creatures
 - **Hook:** Zara's "psychic research facility"
 - **Challenge:** Hide thoughts while creatures inadvertently reveal information
-- **Position Shift:** Risky (mental exposure) → Controlled (learn to shield thoughts)
+- **Position Shift:** Controlled (mental exposure) → Controlled (learn to shield thoughts)
 - **SB Spends:**
   - 1 SB: Flumphs broadcast player's secrets
   - 2 SB: Telepathic feedback causes confusion (Position -1)
@@ -109,7 +109,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Undead constructs
 - **Hook:** Zara's "security system" gone rogue
 - **Challenge:** Disable without destroying valuable exhibits
-- **Position Shift:** Risky (numerous opponents) → Controlled (find command codes)
+- **Position Shift:** Controlled (numerous opponents) → Controlled (find command codes)
 - **SB Spends:**
   - 1 SB: Armor pieces reassemble after "defeat"
   - 2 SB: Exhibit security system activates
@@ -119,7 +119,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Illusionary predators
 - **Hook:** Zara's "perception challenge course"
 - **Challenge:** Distinguish reality from illusion while creatures attack from false positions
-- **Position Shift:** Desperate (can't trust senses) → Risky (learn to spot tells)
+- **Position Shift:** Desperate (can't trust senses) → Controlled (learn to spot tells)
 - **SB Spends:**
   - 1 SB: Multiple illusory attacks (Position -1)
   - 2 SB: Habitat maze shifts (lose Position)
@@ -129,7 +129,7 @@ Players receive a magical contract from Maelstraeus that:
 **Theme:** Psionic horrors
 - **Hook:** Zara's "forbidden research wing"
 - **Challenge:** Resist mental attacks while gathering evidence of Zara's crimes
-- **Position Shift:** Desperate (mental vulnerability) → Risky (psionic countermeasures)
+- **Position Shift:** Desperate (mental vulnerability) → Controlled (psionic countermeasures)
 - **SB Spends:**
   - 1 SB: Telepathic assault (Harm 1 mental)
   - 2 SB: Mind control attempt (DV 3 resist or act against allies)

@@ -66,7 +66,7 @@ Next foraging: DV 2 Survival test
 ```python
 # Commands:
 # /combat start
-# /combat position set="Risky"
+# /combat position set="Controlled"
 # /combat range set="Near"
 # /combat clock create name="Mob Overwhelm" size=6
 # /combat clock advance name="Mob Overwhelm" segments=1
@@ -76,7 +76,7 @@ Next foraging: DV 2 Survival test
 """
 ⚔️ Combat Active - Bandit Ambush
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Position: Risky ⚠️  | Range: Near
+Position: Controlled ⚠️  | Range: Near
 Clocks:
   Mob Overwhelm: [■■□□□□] (2/6)
 Party Conditions:

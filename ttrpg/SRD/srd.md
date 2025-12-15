@@ -75,7 +75,7 @@ Position changes as fiction changes:
 - **Improve Position**: Smart prep, flanking, leverage, correct tools, or spending a Boon (+1 step)
 - **Worsen Position**: Alarms, time pressure, being pinned, darkness, or GM SB spend (–1 step)
 
-**[Evolving Position]** Start: Controlled (quiet corridor). After a noisy lockpick (SB=1): Risky (guards alerted). After reinforcements arrive (SB=2): Desperate (crossfire, no cover).
+**[Evolving Position]** Start: Controlled (quiet corridor). After a noisy lockpick (SB=1): Controlled (guards alerted). After reinforcements arrive (SB=2): Desperate (crossfire, no cover).
 
 ### 2.7 Outcome Matrix
 
@@ -146,7 +146,7 @@ Combat uses the same core mechanic with tactical positioning.
 
 **[Combat Position]** In combat, Position reflects immediate danger this exchange:
 - **Controlled**: Advantage, cover, tempo.
-- **Risky**: Default melee exchange, shifting ground.
+- **Controlled**: Default melee exchange, shifting ground.
 - **Desperate**: Outnumbered, flanked, exposed, or under a doom clock.
 
 GM can shift Position mid-round with SB spends or fictional turns (terrain, reinforcements, hazards).
@@ -165,7 +165,7 @@ This ensures pacing and drama guide the sequence of actions, not rigid turn stru
 
 Track: Each character has a Fatigue track equal to Body. Mark Fatigue for exertion, strain, or backlash.
 
-In Play: Each Fatigue step worsens your Position by one level (Controlled → Risky → Desperate).
+In Play: Each Fatigue step worsens your Position by one level (Controlled → Controlled → Desperate).
 If you are already Desperate, instead apply a –1 die penalty per Fatigue to that roll.
 
 Overflow: When your Fatigue track fills, immediately increase Harm by 1 step and clear all Fatigue to 0. If this raises Harm to a level that incapacitates you, you fall out of the scene as normal for Harm.
@@ -192,7 +192,7 @@ Track persistent combat conditions:
 
 ### 6.1 Three Paths of Magic
 
-- **Caster (Freeform)**: Weave & Cast using Eight Elements (requires Caster's Gift)
+- **Caster (Freeform)**: Weave & Cast using Eight Elements (requires Spellcraft)
 - **Rites User (Runekeeper)**: Patron-based rituals with Obligation (requires Codex)
 - **Invoker (Symbol Path)**: Ritual magic using Patron Symbols
 
@@ -204,11 +204,11 @@ Track persistent combat conditions:
 
 ### 6.3 Examples by Path
 
-**Caster (Freeform)**. Weave Fire + Channel Spirit to lash a flaming whip (DV 3, Risky, Standard Effect). Weave Stone to raise cover (DV 2, Controlled, Limited→Standard with tools).
+**Caster (Freeform)**. Weave Fire + Channel Spirit to lash a flaming whip (DV 3, Controlled, Standard Effect). Weave Stone to raise cover (DV 2, Controlled, Limited→Standard with tools).
 
 **Runekeeper (Rites)**. Bind Sigil: Restrain a foe in spectral chains (DV = max(Obligation – Spirit, Tier); +1 Obligation on Push). Ward Line: Draw a boundary spirits cannot cross (as above; Partial = shorter duration).
 
-**Invoker (Symbols)**. Seal of Storms: Call a lightning strike (DV 4, Risky; Crack the Seal for instant cast but Desperate). Seal of Veils: Cloak an area in shimmering concealment (DV 3; Partial = flickers under stress).
+**Invoker (Symbols)**. Seal of Storms: Call a lightning strike (DV 4, Controlled; Crack the Seal for instant cast but Desperate). Seal of Veils: Cloak an area in shimmering concealment (DV 3; Partial = flickers under stress).
 
 ### 6.4 Disruption & Push
 
@@ -229,7 +229,7 @@ Track persistent combat conditions:
 
 ### 7.2 Key Talents
 
-- **Caster's Gift (2 XP)**: Freeform magic access
+- **Spellcraft (6 XP)**: Freeform magic access
 - **Familiar (2 XP)**: Patron features access
 - **Codex (4 XP)**: Runekeeper rites and Obligation
 - **Patron's Symbol (4 XP)**: Invoker ritual access
@@ -328,7 +328,7 @@ Suits:
 ## 13. Worked Examples
 
 **[From Controlled to Desperate]**
-Setup: Thane (Controlled) charges a hex-brute (DV 3). Roll: 6d10 → 10, 9, 7, 6, 3, 1. Successes=5, SB=1. Outcome: Hit lands (Great Effect). GM spends 1 SB: rubble collapses, reducing cover. Next Beat: Lyra's shot is now Risky. Another 2 SB later, reinforcements arrive—Position drops to Desperate.
+Setup: Thane (Controlled) charges a hex-brute (DV 3). Roll: 6d10 → 10, 9, 7, 6, 3, 1. Successes=5, SB=1. Outcome: Hit lands (Great Effect). GM spends 1 SB: rubble collapses, reducing cover. Next Beat: Lyra's shot is now Controlled. Another 2 SB later, reinforcements arrive—Position drops to Desperate.
 
 **[Lockpick Under Pressure]**
 Situation: Picking a lock while guards patrol nearby
@@ -385,7 +385,7 @@ These pre-generated characters let you jump into play immediately.
 
 - **Attributes**: Body 3, Wits 2, Spirit 2, Presence 2
 - **Skills**: Melee 2, Athletics 1, Survival 1, Command 1
-- **Talents**: Familiar (Patron: Isoka), Caster's Gift
+- **Talents**: Familiar (Patron: Isoka), Spellcraft
 - **Notes**: A wandering knight who channels sunlight through his blade. Strong frontline presence.
 
 ### 15.2 Seris, Whisper of Ash
@@ -529,7 +529,7 @@ Clocks are visual timers representing threats, conditions, or long-term stakes.
 
 When spending SB, consider four categories:
 - **Harm**: Injuries, fatigue, or resource drain.
-- **Position**: Shift from Controlled → Risky → Desperate.
+- **Position**: Shift from Controlled → Controlled → Desperate.
 - **Resources**: Supplies, wealth, or equipment lost.
 - **Fictional Twist**: Patron interference, rival arrival, mystical surge.
 

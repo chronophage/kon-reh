@@ -92,7 +92,7 @@ All significant actions follow this three-step process:
 ## Magic System
 
 ### Three Paths of Magic
-1. **Caster (Freeform)**: Weave & Cast using Eight Elements (requires Caster's Gift)
+1. **Caster (Freeform)**: Weave & Cast using Eight Elements (requires Spellcraft)
 2. **Rites User (Runekeeper)**: Patron-based rituals with Obligation (requires Codex)
 3. **Invoker (Symbol Path)**: Ritual magic using Patron Symbols
 
@@ -111,7 +111,7 @@ All significant actions follow this three-step process:
 - **Complications**: +4 XP total
 
 ### Key Talents
-- **Caster's Gift (6 XP)**: Freeform magic access
+- **Spellcraft (6 XP)**: Freeform magic access
 - **Familiar (2 XP)**: Patron features access
 - **Codex (4 XP)**: Runekeeper rites and Obligation
 - **Patron's Symbol (4 XP)**: Invoker ritual access
@@ -332,7 +332,7 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 | Feature | Summoner | Cantor | Caster | Runekeeper | Invoker |
 |---------|----------|--------|--------|------------|---------|
 | **Identity** | Conjurer | Bootlegger | Artist | Devotee | Ritualist |
-| **Access** | Pact-Whisperer (2 XP) | Cantor's Path (15 XP) | Caster's Gift (2 XP) | Codex (4 XP) + Familiar (2 XP) | Patron's Symbol (4 XP each) |
+| **Access** | Pact-Whisperer (2 XP) | Cantor's Path (15 XP) | Spellcraft (2 XP) | Codex (4 XP) + Familiar (2 XP) | Patron's Symbol (4 XP each) |
 | **How It Works** | Call → Bind → Command | Perform Song → effect | Weave + Cast | Invoke Rite | Ritual Invocation |
 | **Primary Risk** | Loss of Control | Corruption | Backlash | Obligation | Ritual Cost |
 | **Speed** | Fast | Moderate | Moderate | Very fast | Slow |
@@ -364,7 +364,7 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 - **Epic**: 15+ XP (legendary abilities)
 
 ### Magic Access Talents
-- **Caster's Gift (6 XP)**: Weave & Cast freeform spellcasting
+- **Spellcraft (6 XP)**: Weave & Cast freeform spellcasting
 - **Familiar (2 XP)**: Patron features access
 - **Codex (4 XP)**: Runekeeper rites and Obligation system
 - **Patron's Symbol (4 XP)**: Invoker ritual access

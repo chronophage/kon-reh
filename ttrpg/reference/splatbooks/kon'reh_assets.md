@@ -15,7 +15,7 @@ These powerful abilities represent significant personal development or the maste
 **1. Talent (Mid-Tier): The Cartwright's Shift**
 *   **Cost:** 7 XP
 *   **Requirements:** Wits 3+, any two social or mental skills at level 2+.
-*   **Effect:** Once per session, when you are in a **Risky** or **Desperate** Position in a conflict (social, physical, or mental), you can spend 1 XP (instead of a Boon) to immediately shift your Position one step *up* the ladder (e.g., Desperate -> Risky, Risky -> Controlled). This represents breaking the expected flow or finding an asymmetric advantage. Narratively, you "break the mirror" of the conflict.
+*   **Effect:** Once per session, when you are in a **Controlled** or **Desperate** Position in a conflict (social, physical, or mental), you can spend 1 XP (instead of a Boon) to immediately shift your Position one step *up* the ladder (e.g., Desperate -> Controlled, Controlled -> Controlled). This represents breaking the expected flow or finding an asymmetric advantage. Narratively, you "break the mirror" of the conflict.
 *   **Narrative Hook:** This talent embodies the Cartwright School's focus on winning clocks, not just pieces. It's a way to turn a tactical disadvantage into a narrative pivot.
 
 **2. Talent (Mid-Tier): Dhaharan Tollmaster**
@@ -85,7 +85,7 @@ These are concrete resources tied to Kon'reh concepts, providing mechanical or n
 
 **3. Asset (Minor): Sanctum Pouch**
 *   **Cost:** 4 XP
-*   **Effect:** A small, well-made pouch that serves as a symbolic "Sanctum." Once per session, when you are in a **Desperate** Position, you can spend a Boon to declare a brief "sanctuary" action (e.g., meditating, consulting a totem, checking a map). This allows you to shift your Position to **Risky** for the next action only. It's a small, personal refuge.
+*   **Effect:** A small, well-made pouch that serves as a symbolic "Sanctum." Once per session, when you are in a **Desperate** Position, you can spend a Boon to declare a brief "sanctuary" action (e.g., meditating, consulting a totem, checking a map). This allows you to shift your Position to **Controlled** for the next action only. It's a small, personal refuge.
 *   **Narrative Hook:** A reminder of a place of power or safety, even if only in the mind.
 
 **4. Asset (Major): The Reforged Blade**

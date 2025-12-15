@@ -459,7 +459,7 @@ Talents are the building blocks of character specialization. They represent lear
 
 ### 7.2 Magic Access Talents
 
-- **Caster's Gift (6 XP)**: Access to Weave & Cast freeform spellcasting
+- **Spellcraft (6 XP)**: Access to Weave & Cast freeform spellcasting
 - **Familiar (2 XP)**: Required for Patron features
 - **Codex (4 XP)**: Full access to a Patron's Rites and Obligation system
 - **Patron's Symbol (4 XP)**: Ritual access to a Patron's Rites

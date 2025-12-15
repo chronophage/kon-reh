@@ -75,7 +75,7 @@
 ### 13. Mark Fatigue
 ```javascript
 !setattr --sel --custom_controlled --fatigue|+1 --silent
-&{template:default} {{name=Fatigue Marked}} {{reason=?{Reason|Exertion|Magic|Travel}}} {{position_shift=?{Position Shift|Controlled->Risky|Risky->Desperate|Desperate->Harm}}}
+&{template:default} {{name=Fatigue Marked}} {{reason=?{Reason|Exertion|Magic|Travel}}} {{position_shift=?{Position Shift|Controlled->Controlled|Controlled->Desperate|Desperate->Harm}}}
 ```
 
 ### 14. Clear Fatigue
@@ -175,5 +175,5 @@
 
 ### 30. Quick Reference
 ```javascript
-&{template:default} {{name=Quick Reference}} {{dv=?{DV|2 - Routine|3 - Pressured|4 - Hard|5+ - Extreme}}} {{position=?{Position|Controlled - Minor consequences|Risky - Moderate consequences|Desperate - Severe consequences}}} {{effect=?{Effect|Limited - Minor impact|Standard - Expected impact|Great - Major impact}}}
+&{template:default} {{name=Quick Reference}} {{dv=?{DV|2 - Routine|3 - Pressured|4 - Hard|5+ - Extreme}}} {{position=?{Position|Controlled - Minor consequences|Controlled - Moderate consequences|Desperate - Severe consequences}}} {{effect=?{Effect|Limited - Minor impact|Standard - Expected impact|Great - Major impact}}}
 ```

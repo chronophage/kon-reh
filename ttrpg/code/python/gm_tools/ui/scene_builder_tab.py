@@ -40,14 +40,14 @@ class SceneBuilderTab:
         info_text = """
 Scene Building in Fate's Edge:
 • Set clear stakes: What changes if this goes right/wrong?
-• Establish position: Controlled (advantage), Risky (standard), Dangerous (disadvantage)
+• Establish position: Controlled (advantage), Controlled (standard), Dangerous (disadvantage)
 • Define complications: What could go wrong beyond simple failure?
 • Identify rails: Social (Crowd/Sanctity/Curfew) and Kinetic (Hunt/Escape/Hazard)
 • Consider player archetypes: How does this scene engage Solos, Mixed, and Masterminds?
 
 Position Effects:
 • Controlled: +1 die on all rolls
-• Risky: Standard positioning
+• Controlled: Standard positioning
 • Dangerous: -1 die on all rolls
 
 Stakes Questions:
@@ -88,9 +88,9 @@ Rail Types:
         pos_frame = ttk.Frame(details_frame)
         pos_frame.pack(fill="x", pady=5)
         ttk.Label(pos_frame, text="Starting Position:").pack(side="left")
-        self.position_var = tk.StringVar(value="Risky")
+        self.position_var = tk.StringVar(value="Controlled")
         pos_combo = ttk.Combobox(pos_frame, textvariable=self.position_var,
-                               values=["Controlled", "Risky", "Dangerous"],
+                               values=["Controlled", "Controlled", "Dangerous"],
                                width=12, state="readonly")
         pos_combo.pack(side="left", padx=10)
         
@@ -187,7 +187,7 @@ Rail Types:
             {
                 "name": "Noble Parlor Intrigue",
                 "type": "Social",
-                "position": "Risky",
+                "position": "Controlled",
                 "success": "Gain favor with the host, access to private information",
                 "failure": "Offend a guest, create enemy, rumors spread",
                 "social_rail": "Crowd",
@@ -207,7 +207,7 @@ Rail Types:
             {
                 "name": "Street Chase",
                 "type": "Combat",
-                "position": "Risky",
+                "position": "Controlled",
                 "success": "Lose pursuers, reach safe house, gather intelligence",
                 "failure": "Cornered, separated from allies, evidence lost",
                 "social_rail": "Crowd",
@@ -258,7 +258,7 @@ Rail Types:
     def clear_form(self):
         self.scene_name_entry.delete(0, tk.END)
         self.scene_type_var.set("Exploration")
-        self.position_var.set("Risky")
+        self.position_var.set("Controlled")
         self.success_text.delete("1.0", tk.END)
         self.failure_text.delete("1.0", tk.END)
         self.social_rail_var.set("None")
@@ -474,7 +474,7 @@ Rail Types:
                  font=("Arial", 16, "bold")).pack(side="left")
         
         position_color = "green" if self.active_scene["position"] == "Controlled" else \
-                        "orange" if self.active_scene["position"] == "Risky" else "red"
+                        "orange" if self.active_scene["position"] == "Controlled" else "red"
         ttk.Label(header_frame, text=self.active_scene["position"], 
                  foreground=position_color, font=("Arial", 12, "bold")).pack(side="right")
         

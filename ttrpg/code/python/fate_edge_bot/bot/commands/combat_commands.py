@@ -79,7 +79,7 @@ class CombatCommands(commands.Cog):
     @app_commands.choices(
         position=[
             app_commands.Choice(name="Controlled", value="Controlled"),
-            app_commands.Choice(name="Risky", value="Risky"),
+            app_commands.Choice(name="Controlled", value="Controlled"),
             app_commands.Choice(name="Desperate", value="Desperate")
         ],
         range_band=[
@@ -91,7 +91,7 @@ class CombatCommands(commands.Cog):
     )
     async def combat_add(self, interaction: discord.Interaction, name: str, 
                         is_character: bool = True,
-                        position: app_commands.Choice[str] = "Risky",
+                        position: app_commands.Choice[str] = "Controlled",
                         range_band: app_commands.Choice[str] = "Near"):
         """Add a participant to combat"""
         try:
@@ -201,7 +201,7 @@ class CombatCommands(commands.Cog):
     )
     @app_commands.choices(position=[
         app_commands.Choice(name="Controlled", value="Controlled"),
-        app_commands.Choice(name="Risky", value="Risky"),
+        app_commands.Choice(name="Controlled", value="Controlled"),
         app_commands.Choice(name="Desperate", value="Desperate")
     ])
     async def combat_position(self, interaction: discord.Interaction, participant_name: str,
@@ -530,7 +530,7 @@ class CombatCommands(commands.Cog):
         if participants:
             result += "**Participants:**\n"
             for name, participant in participants.items():
-                pos_icon = {"Controlled": "🛡️", "Risky": "⚔️", "Desperate": "⚠️"}.get(participant['position'], "❓")
+                pos_icon = {"Controlled": "🛡️", "Controlled": "⚔️", "Desperate": "⚠️"}.get(participant['position'], "❓")
                 range_icon = {"Close": " melee", "Near": " near", "Far": " far", "Absent": " absent"}.get(participant['range_band'], "")
                 
                 harm = participant['conditions'].get('harm', 0)

@@ -43,7 +43,7 @@ class CombatTrackerTab:
         ttk.Label(add_frame, text="Position:").grid(row=0, column=4, sticky="w", padx=5)
         self.position_var = tk.StringVar(value="Controlled")
         position_combo = ttk.Combobox(add_frame, textvariable=self.position_var, 
-                                    values=["Controlled", "Risky", "Dangerous"], width=10, state="readonly")
+                                    values=["Controlled", "Controlled", "Dangerous"], width=10, state="readonly")
         position_combo.grid(row=0, column=5, padx=5)
         
         ttk.Button(add_frame, text="Add Combatant", command=self.add_combatant).grid(row=0, column=6, padx=10)
@@ -59,7 +59,7 @@ class CombatTrackerTab:
         info_text = """
 Position Effects:
 • Controlled: +1 die on all rolls
-• Risky: Standard positioning
+• Controlled: Standard positioning
 • Dangerous: -1 die on all rolls
 
 Rail Tracking:
@@ -189,14 +189,14 @@ Rail Tracking:
     def get_position_color(self, position):
         colors = {
             "Controlled": "green",
-            "Risky": "orange",
+            "Controlled": "orange",
             "Dangerous": "red"
         }
         return colors.get(position, "black")
         
     def change_position(self, index, direction):
         if 0 <= index < len(self.combatants):
-            positions = ["Controlled", "Risky", "Dangerous"]
+            positions = ["Controlled", "Controlled", "Dangerous"]
             current_pos = self.combatants[index]["position"]
             current_idx = positions.index(current_pos)
             new_idx = max(0, min(len(positions)-1, current_idx + direction))

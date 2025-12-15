@@ -27,7 +27,7 @@
 
 **Risk/Reward Balance:** [How the system creates meaningful choices]
 - **Safe Choices:** [Conservative approaches and their limitations]
-- **Risky Choices:** [High-stakes options and their potential]
+- **Controlled Choices:** [High-stakes options and their potential]
 - **Failure States:** [What happens when things go wrong]
 
 ### 3. Campaign Clock Framework

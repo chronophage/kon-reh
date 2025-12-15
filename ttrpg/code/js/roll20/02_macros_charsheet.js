@@ -118,7 +118,7 @@ const FateEdgeCampaignSetup = (() => {
             <h3>Position Effects</h3>
             <ul>
                 <li><strong>Controlled:</strong> Advantage, minor consequences</li>
-                <li><strong>Risky:</strong> Even footing, moderate consequences</li>
+                <li><strong>Controlled:</strong> Even footing, moderate consequences</li>
                 <li><strong>Desperate:</strong> Disadvantaged, severe consequences</li>
             </ul>
         </div>

@@ -85,7 +85,7 @@ A player wants to do something magical and freeform you didn't expect.
     *   High/Area Effect: **DV 4**
 4.  Set **Position** based on how exposed/distracted they are while casting.
 
-You don't need to invent a new spell. You just need to classify it. "You're creating a wall of force? That's a `[BARRIER]` with a Standard/Scene effect. You're in melee, so that's a **Risky** cast. **DV 3.** Roll."
+You don't need to invent a new spell. You just need to classify it. "You're creating a wall of force? That's a `[BARRIER]` with a Standard/Scene effect. You're in melee, so that's a **Controlled** cast. **DV 3.** Roll."
 
 ### The Ultimate Mindset Hack
 
