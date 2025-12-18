@@ -35,7 +35,7 @@ Here are the rankings for each magic path, considering thematic fit, mechanical 
 24. **The Gallow's Bell (Justice & Judgment)** - Judgment songs, but grim tone
 25. **Grimmir (Instinct & Wild Memory)** - Primitive songs, but limited social application
 26. **Isoka (Transformation & Renewal)** - Songs of change, but personal transformation focus
-27. **Aliyah (Curses & Corruption)** - Corrupting songs, but dark themes
+27. **Malachai (Curses & Corruption)** - Corrupting songs, but dark themes
 28. **Morag the Hag (Twilight Bargains & Cruel Transformations)** - Trickster songs, but malicious intent
 29. **Nidhoggr (Dreaming Antiquity)** - Ancient songs, but obscure themes
 30. **The Inquisitor Prime (Purity & Domination)** - Zealous songs, but authoritarian themes
@@ -58,7 +58,7 @@ Here are the rankings for each magic path, considering thematic fit, mechanical 
 
 **Moderate for Invokers:**
 11. **Mykkiel (Law & Zeal)** - Ritualistic law magic and divine judgment
-12. **Aliyah (Curses & Corruption)** - Curse rituals and corrupting rites
+12. **Malachai (Curses & Corruption)** - Curse rituals and corrupting rites
 13. **Morag the Hag (Twilight Bargains & Cruel Transformations)** - Bargain rituals and transformation rites
 14. **Isoka (Transformation & Renewal)** - Transformation rituals and renewal rites
 15. **Inaea (Webs & Fate)** - Fate-binding and connection rituals
@@ -92,7 +92,7 @@ Here are the rankings for each magic path, considering thematic fit, mechanical 
 **Good for Runekeepers:**
 6. **The Clockwork Monad (Iteration & Forbidden Technology)** - Structured technological magic and precise rites
 7. **The Gallow's Bell (Justice & Judgment)** - Structured judgment and law magic
-8. **Aliyah (Curses & Corruption)** - Structured curse magic and corrupting rites
+8. **Malachai (Curses & Corruption)** - Structured curse magic and corrupting rites
 9. **Morag the Hag (Twilight Bargains & Cruel Transformations)** - Bargain magic and transformation rites
 10. **Isoka (Transformation & Renewal)** - Structured transformation and renewal rites
 

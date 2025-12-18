@@ -57,7 +57,7 @@ Ruled by Isoka, the Angel of Serpents
 
 Throne	Patron	Domain	Aspect
 I	Isoka	Serpents & Renewal	Transformation, Rebirth
-II	Aliyah	Corruption & Cursed Blessings	Penance, Duality
+II	Malachai	Corruption & Cursed Blessings	Penance, Duality
 III	Carrion King	Decay & Renewal	Regeneration, Cycles
 IV	Nidhoggr	Deep Time & Memory	Foundation, Persistence
 V	Khemesh	Abyss & Pressure	Depth, Inexorability
@@ -77,7 +77,7 @@ They are the dark mirror of the Seraphic’s law — where pattern collapses int
 
 Rank	Seraphic (Inaea)	Empyreal (Ikasha)	Chthonic (Isoka)
 I	Inaea	Ikasha	Isoka
-II	Oath of Flame & Light	Raéyn	Aliyah
+II	Oath of Flame & Light	Raéyn	Malachai
 III	Mykkiel	Thrysos	Carrion King
 IV	Sacred Geometry	Mab	Nidhoggr
 V	Inquisitor Prime	Livaea	Khemesh

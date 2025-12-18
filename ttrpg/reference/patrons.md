@@ -134,7 +134,7 @@ Maelstraeus — Infernal Bargainer
 	•	Rivals / Friction: The Traveler (luck), Inaea (mercy)
 	•	Notes: Counting houses, oath-ovens, bonded holds
 
-Malachai, the Chained Angel (replaces “Aliyah”)
+Malachai, the Chained Angel (replaces “Malachai”)
 	•	Domains: Curses, Corruption (Radiance fettered into rot)
 	•	Gift: Blessings that bite; radiance with a price
 	•	Thematic Skill: Command / Lore

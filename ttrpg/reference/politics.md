@@ -1,8 +1,8 @@
 
 1.  **Patronage and Power Dynamics:**
-    *   **Patrons:** Powerful entities (like Aliyah, Aveh, Maelstraeus, Raéyn, The Sealed Gate, etc.) offer power through Rites, Invocations, or Cantos, but demand service, adherence to themes, or accumulate Obligation/Corruption. Managing these relationships is a constant political game.
+    *   **Patrons:** Powerful entities (like Malachai, Aveh, Maelstraeus, Raéyn, The Sealed Gate, etc.) offer power through Rites, Invocations, or Cantos, but demand service, adherence to themes, or accumulate Obligation/Corruption. Managing these relationships is a constant political game.
     *   **Runekeepers/Invokers/Cantors:** Characters tied to Patrons navigate the expectations, rivalries, and consequences associated with their chosen power source, influencing their actions and allegiances.
-    *   **Patron Rivalries:** Explicit rivalries exist (e.g., Aliyah vs. Oath of Flame & Light, Aveh vs. Varnek Karn, Inquisitor Prime vs. Outsiders). Aligning with one Patron can create friction or enemies tied to another.
+    *   **Patron Rivalries:** Explicit rivalries exist (e.g., Malachai vs. Oath of Flame & Light, Aveh vs. Varnek Karn, Inquisitor Prime vs. Outsiders). Aligning with one Patron can create friction or enemies tied to another.
 
 2.  **Regional Governance and Conflict:**
     *   **Fractured Authority (Vhasia):** The "Two Crowns" and competing claimants create a political landscape rife with intrigue, shifting loyalties, levies, and the constant threat of Chevauchée. Legitimacy itself becomes a currency and a target.

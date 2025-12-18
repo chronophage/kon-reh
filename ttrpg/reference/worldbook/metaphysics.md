@@ -177,7 +177,7 @@ The spectrum explains how beings interact with and are affected by metaphysical 
 - Their metaphysical awareness makes them better at perceiving and working with subtle Echo manipulations
 
 **Patrons - High End**
-- Aliyah became the "Chained Angel" - lost individual personality, became embodiment of "cursed blessings"
+- Malachai became the "Chained Angel" - lost individual personality, became embodiment of "cursed blessings"
 - Raéyn = embodiment of "tides and change" rather than a person
 - Their power comes from being fundamental forces, but they lose individual agency
 - This explains why Runekeepers must be careful - you're dealing with cosmic forces, not people

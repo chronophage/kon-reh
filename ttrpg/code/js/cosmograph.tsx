@@ -42,7 +42,7 @@ export default function Cosmograph33() {
       color: "#7F7F7F",
       patrons: [
         "Isoka",
-        "Aliyah",
+        "Malachai",
         "Carrion King",
         "Nidhoggr",
         "Khemesh",
