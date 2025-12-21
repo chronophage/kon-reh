@@ -1,0 +1,319 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fontspec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{helvet}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% Set fonts (requires XeLaTeX or LuaLaTeX)
+\setsansfont{Lato}[
+  Path = ./,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic
+]
+\setmainfont{Lato}[
+  Path = ./,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic
+]
+
+% Define color scheme
+\definecolor{fateblue}{RGB}{65, 105, 225}
+\definecolor{fateearth}{RGB}{139, 69, 19}
+\definecolor{fatestone}{RGB}{169, 169, 169}
+\definecolor{fatepaper}{RGB}{245, 240, 230}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Fate's Edge Character Sheet},
+  pdfauthor={Fate's Edge System},
+  pdfsubject={Fillable Character Sheet},
+  pdfkeywords={RPG, Fate's Edge, Character Sheet},
+  pdfcreator={LaTeX with hyperref},
+  pdfproducer={LaTeX},
+  pdfa=true,
+  pdfborder={0 0 0},
+  pdfdisplaydoctitle=true
+}
+
+% Custom commands
+\newcommand{\sectiontitle}[1]{%
+  \par\vspace{0.3cm}\noindent\textcolor{fateblue}{\textbf{\Large #1}}\par\vspace{0.1cm}%
+}
+
+\newcommand{\statblock}[2]{%
+  \begin{minipage}[t]{0.45\textwidth}
+    \textbf{#1:} #2
+  \end{minipage}%
+}
+
+\newcommand{\checkbox}[1]{%
+  \leavevmode\raisebox{0.05em}{\makebox[1.3em][c]{%
+    \color{fateblue}\rule[0.45em]{0.8em}{0.4pt}%
+  }}\hspace{0.3em}#1%
+}
+
+\newcommand{\statusbox}[1]{%
+  \fbox{\parbox{1.5cm}{\centering #1}}%
+}
+
+\newcommand{\smallnote}[1]{%
+  \footnotesize{#1}%
+}
+
+\newcommand{\sectionheader}[1]{%
+  \vspace{0.2cm}
+  \noindent\colorbox{fatestone}{\parbox{\textwidth}{\color{white}\textbf{#1}}}
+  \vspace{0.2cm}
+}
+
+% Page setup
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{document}
+
+\pagecolor{fatepaper}
+\fontfamily{sans-serif}\selectfont
+
+% Header
+\begin{center}
+  \textcolor{fateblue}{\Huge\textbf{Fate's Edge}}
+  \vspace{-0.3cm}
+  \parbox{0.8\textwidth}{\centering\small A narrative-first RPG where every choice carries weight}
+  \vspace{0.2cm}
+  \hrule
+  \vspace{0.3cm}
+\end{center}
+
+% Character identity
+\begin{minipage}[t]{0.4\textwidth}
+  \textbf{Name:} \TextField[name=name,width=3.5cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \textbf{Race:} \TextField[name=race,width=3.5cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \textbf{Background:} \TextField[name=background,width=3.5cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Current Status}
+  \textbf{Position:} \TextField[name=position,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{}
+  \smallnote{(Dominant, Controlled, Desperate)}
+  
+  \textbf{Harm:} \checkbox{Minor} \checkbox{Serious} \checkbox{Critical}
+  
+  \textbf{Fatigue:} \checkbox{1} \checkbox{2} \checkbox{3} \checkbox{4}
+  
+  \textbf{Boons:} \TextField[name=boons,width=1cm,height=0.5cm,bordercolor=0 0 0]{}/5
+  
+  \textbf{Story Beats:} \TextField[name=sb,width=1cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Obligation Tracking}
+  \textbf{Capacity:} \TextField[name=obligation_capacity,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+  \smallnote{(Spirit + Presence)}
+  
+  \checkbox{1} 1 - No effect
+  
+  \checkbox{2} 2 - Fatigue 1
+  
+  \checkbox{3} 3 - Fatigue 2
+  
+  \checkbox{4} 4 - Fatigue 1, Harm 1, Patron Intrusion
+  
+  \checkbox{5} 5 - Fatigue 2, Harm 1
+  
+  \checkbox{6} 6 - Clear Fatigue, Harm 1, Patron Intrusion
+  
+  \vspace{0.1cm}
+  \textbf{Current:} \TextField[name=obligation,width=1cm,height=0.5cm,bordercolor=0 0 0]{}/\TextField[name=obligation_max,width=1cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Supply}
+  \textbf{Status:} \TextField[name=supply,width=3cm,height=0.5cm,bordercolor=0 0 0]{}
+  \smallnote{(Full, Low, Dangerous, Empty)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+  \sectiontitle{Attributes}
+  
+  \begin{tabularx}{\textwidth}{>{\bfseries}lX}
+    Body & \TextField[name=body,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Physical capability} \\
+    
+    Wits & \TextField[name=wits,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Mental acuity} \\
+    
+    Spirit & \TextField[name=spirit,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Willpower and intuition} \\
+    
+    Presence & \TextField[name=presence,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Social influence} \\
+  \end{tabularx}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Core Skills}
+  
+  \begin{tabularx}{\textwidth}{>{\bfseries}lX}
+    Melee & \TextField[name=melee,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Close combat} \\
+    
+    Athletics & \TextField[name=athletics,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Physical activities} \\
+    
+    Stealth & \TextField[name=stealth,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Avoiding detection} \\
+    
+    Wits & \TextField[name=wits_skill,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Perception, tactics} \\
+    
+    Sway & \TextField[name=sway,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Persuasion, charm} \\
+    
+    Command & \TextField[name=command,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Leadership, authority} \\
+    
+    Lore & \TextField[name=lore,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Knowledge, history} \\
+    
+    Survival & \TextField[name=survival,width=1.5cm,height=0.5cm,bordercolor=0 0 0]{}
+    \smallnote{Wilderness, endurance} \\
+  \end{tabularx}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Current Goal}
+  \TextField[name=goal,width=0.9\textwidth,height=1cm,bordercolor=0 0 0]{}
+\end{minipage}
+
+\sectionheader{Resources \& Advancement}
+
+\begin{minipage}[t]{0.48\textwidth}
+  \sectiontitle{Follower Tracking}
+  
+  \begin{tabularx}{\textwidth}{lXX}
+    \textbf{Name} & \textbf{Harm} & \textbf{Exposure} \\
+    \TextField[name=follower1,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \checkbox{1} \checkbox{2} \checkbox{3} & 
+    \checkbox{1} \checkbox{2} \checkbox{3} \\
+    
+    \TextField[name=follower2,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \checkbox{1} \checkbox{2} \checkbox{3} & 
+    \checkbox{1} \checkbox{2} \checkbox{3} \\
+  \end{tabularx}
+  
+  \vspace{0.2cm}
+  \textbf{Status:} Maintained \checkbox{} Neglected \checkbox{} Compromised \checkbox{}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Asset Tracking}
+  
+  \begin{tabularx}{\textwidth}{lXX}
+    \textbf{Name} & \textbf{Type} & \textbf{Status} \\
+    \TextField[name=asset1,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \TextField[name=asset1_type,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \checkbox{Maintained} \checkbox{Neglected} \checkbox{Compromised} \\
+    
+    \TextField[name=asset2,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \TextField[name=asset2_type,width=2.5cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \checkbox{Maintained} \checkbox{Neglected} \checkbox{Compromised} \\
+  \end{tabularx}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \sectiontitle{Talents \& Special Abilities}
+  
+  \begin{tabularx}{\textwidth}{lX}
+    \textbf{Name} & \textbf{Effect} \\
+    \TextField[name=talent1,width=3cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \TextField[name=talent1_effect,width=3.5cm,height=0.5cm,bordercolor=0 0 0]{} \\
+    
+    \TextField[name=talent2,width=3cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \TextField[name=talent2_effect,width=3.5cm,height=0.5cm,bordercolor=0 0 0]{} \\
+    
+    \TextField[name=talent3,width=3cm,height=0.5cm,bordercolor=0 0 0]{} & 
+    \TextField[name=talent3_effect,width=3.5cm,height=0.5cm,bordercolor=0 0 0]{} \\
+  \end{tabularx}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Patrons \& Rites}
+  
+  \textbf{Patron:} \TextField[name=patron,width=4cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \textbf{Current Rite:} \TextField[name=rite,width=4cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \textbf{Obligation:} \TextField[name=rite_obligation,width=1cm,height=0.5cm,bordercolor=0 0 0]{}
+  
+  \textbf{Rite Cost:} \TextField[name=rite_cost,width=2cm,height=0.5cm,bordercolor=0 0 0]{}
+  \smallnote{(Obligation - Spirit)}
+  
+  \vspace{0.3cm}
+  \sectiontitle{Magic Systems}
+  \checkbox{Free Casting} \checkbox{Rite System} \checkbox{Psionics} \checkbox{Summoning}
+\end{minipage}
+
+\vspace{0.5cm}
+
+% Quick Reference Section
+\sectionheader{Quick Reference}
+
+\begin{minipage}[t]{0.32\textwidth}
+  \textbf{Position Effects}
+  
+  \textbullet~Dominant: Re-roll one failure
+  
+  \textbullet~Controlled: Standard
+  
+  \textbullet~Desperate: Re-roll one success
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+  \textbf{Difficulty Ladder}
+  
+  \textbullet~2: Routine
+  
+  \textbullet~3: Pressured
+  
+  \textbullet~4: Hard
+  
+  \textbullet~5+: Extreme
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+  \textbf{SB Spend Menu}
+  
+  \textbullet~1 SB: Minor complication
+  
+  \textbullet~2 SB: Moderate setback
+  
+  \textbullet~3 SB: Serious trouble
+  
+  \textbullet~4+ SB: Major turn
+\end{minipage}
+
+\vspace{0.5cm}
+
+% Footer
+\begin{center}
+  \small
+  \textcolor{fateblue}{Fate's Edge} | Fillable Character Sheet | \today \\
+  \textit{The world responds to your choices. What will you risk to reshape the world?}
+\end{center}
+
+\end{document}
+
