@@ -105,6 +105,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f  peoples-and-cultures.tex -n "Fate's Edge Expansion - Peoples and Cultures.pdf" > /dev/null 2>&1|| echo "#23. Did not build"
 ../../../tools/compile_latex.sh -f  advanced-campaigns.tex -n "Fate's Edge Expansion - Campaigns: Advanced Tools and Reference.pdf" > /dev/null 2>&1|| echo "#24. Did not build"
 ../../../tools/compile_latex.sh -f  book-of-shadows.tex -n "Fate's Edge Expansion - The Lantern War of Shadows.pdf" > /dev/null 2>&1|| echo "#25. Did not build"
+../../../tools/compile_latex.sh -f  witchcraft.tex -n "Fate's Edge Expansion - The Book of Shadows.pdf" > /dev/null 2>&1|| echo "#26. Did not build"
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
