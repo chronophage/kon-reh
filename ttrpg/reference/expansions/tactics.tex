@@ -1,0 +1,431 @@
+%=============================================================
+%  Fate's Edge – Tactical Combat Module
+%  Optional simulation‑friendly spatial rules
+%  No changes to core mechanics, no HP introduced
+%=============================================================
+\documentclass[12pt]{article}
+
+%--- Packages -------------------------------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{fontspec}               % Unicode fonts (XeLaTeX/LuaLaTeX)
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+%--- Fonts ---------------------------------------------------
+\setmainfont{Calibri Light}[Ligatures=Common]  % any clean sans‑serif will do
+
+%--- Colours -------------------------------------------------
+\definecolor{edgeBlue}{HTML}{003366}
+\definecolor{edgeGray}{HTML}{EEEEEE}
+\definecolor{edgeRed}{HTML}{C00000}
+\definecolor{edgeGreen}{HTML}{006600}
+
+%--- Commands ------------------------------------------------
+\newcommand{\feat}[1]{\textbf{#1}}          % feature name
+\newcommand{\term}[1]{\textit{#1}}          % technical term
+\newcommand{\dice}[2]{\(\displaystyle #1\!\!+\!\!#2\)} % attribute+skill
+\newcommand{\boon}{\textbf{Boons}}
+\newcommand{\sb}{\textbf{Story Beats (SB)}}
+\newcommand{\pos}[1]{\textbf{#1}}           % Position (Dominant/Controlled/Desperate)
+\newcommand{\effect}[1]{\textit{#1}}        % Effect (Limited/Standard/Great)
+
+%--- Document ------------------------------------------------
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries Fate’s Edge}\\[2mm]
+    {\Large\bfseries Tactical Combat Module}\\[4mm]
+    {\large Designed as an optional, simulation‑friendly layer}\\[2mm]
+    {\normalsize Version 1.0 \quad \today}
+\end{center}
+\vspace{1cm}
+\hrule
+\vspace{0.5cm}
+
+\section*{What this module does (and does not do)}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Provides a \term{grid‑based} spatial framework (square or hex) that lets players measure distance, line‑of‑sight and \term{reach} in 5‑ft increments.
+    \item Introduces \term{movement rates}, \term{terrain costs}, \term{zones of control} (ZOC) and \term{flanking} that translate directly into the existing \term{Position} ladder.
+    \item All actions are still resolved with the standard \dice{Attribute}{Skill} pool, the usual \sb\ generation, \boon\ spending and the \term{Position/Effect} outcome matrix.
+    \item \textbf{No new hit‑point or damage track is added.} Harm, Fatigue and the core combat flow remain exactly as described in the core rulebook.
+    \item The module is completely optional; it can be used for a single encounter, a whole campaign, or never at all.
+\end{itemize}
+\vspace{0.4cm}
+\hrule
+\vspace{0.6cm}
+
+\section{Core Principles}
+\begin{enumerate}[label=\arabic*. , leftmargin=*]
+    \item \textbf{Narrative First.}  The grid is a \emph{storytelling tool}, not a wall of numbers.  Every move must be described in‑fiction (e.g. “I sprint three squares to the shattered wall and dive behind it”).
+    \item \textbf{No Mechanics Changes.}  The dice pool, \sb, \boon, Position and Effect work exactly as in the core rules; the module only adds \emph{predictive modifiers} that the GM can read off the board.
+    \item \textbf{Granular Positioning.}  By measuring distance we can decide whether a character has \term{Dominant}, \term{Controlled} or \term{Desperate} footing in a clear, repeatable way.
+    \item \textbf{Predictive Tactics.}  Zones of control, cover, reach and facing give players concrete ways to gain Position or improve Effect before they roll.
+\end{enumerate}
+\vspace{0.3cm}
+\hrule
+\vspace{0.6cm}
+
+\section{The Grid}
+\subsection{Scale}
+\begin{itemize}[noitemsep]
+    \item \textbf{1 square (or hex) = 5 ft (≈ 1.5 m).}
+    \item The grid can be \term{Square} (orthogonal + optional diagonals) or \term{Hex} (6‑sided).  Choose at the start of the session.
+    \item Most characters occupy a single cell; \term{Large} creatures (e.g. a horse) occupy a 2×2 block.
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+  % A simple 8×8 square grid
+  \draw[step=1cm,gray] (0,0) grid (8,8);
+  \node at (4,8.4) {\small\textbf{Square Grid (5 ft)}};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale=0.6]
+  % A simple hex grid (pointy‑top)
+  \foreach \x in {0,1.5,3,4.5,6,7.5}{
+    \foreach \y in {0,1,2,3,4}{
+      \draw[gray] (\x,\y*1.732) ++(0,0) coordinate (A)
+        ++(0:0.75) coordinate (B)
+        ++(60:0.75) coordinate (C)
+        ++(120:0.75) coordinate (D)
+        ++(180:0.75) coordinate (E)
+        ++(240:0.75) coordinate (F)
+        ++(300:0.75) coordinate (G);
+      \draw (A) -- (C) -- (E) -- (G) -- (B) -- (D) -- cycle;
+    }
+  }
+  \node at (4,8.6) {\small\textbf{Hex Grid}};
+\end{tikzpicture}
+\end{center}
+\vspace{0.2cm}
+\subsection{Range Bands Redefined}
+\begin{tabular}{>{\bfseries}l p{9cm}}
+    Close & Adjacent squares (or hexes). Melee weapons normally work at this range. \\
+    Near  & Up to 6 squares (≈ 30 ft). Most ranged weapons and many spells function here. \\
+    Far   & 7–12 squares (≈ 35–60 ft). Long‑range attacks; line‑of‑sight checks become important. \\
+    Absent& Beyond 12 squares or off‑screen; requires travel or a separate scene.\\
+\end{tabular}
+\vspace{0.2cm}
+\noindent\textbf{Important:}  The core \term{Range Bands} still exist in the rules; the grid merely gives a precise count of squares/hexes that correspond to those bands.
+
+\section{Movement}
+\subsection{Movement Rate}
+\begin{itemize}[noitemsep]
+    \item A character’s \term{Move Action} lets them move a number of squares equal to \(\textbf{Body}+3\).  (Example: Body 3 ⇒ 6 squares.)
+    \item \term{Dash} uses the character’s Action to double the movement for that turn.  After dashing, the next \term{defensive} roll is at \pos{Desperate} (see \S\ref{sec:position}).
+    \item \term{Difficult Terrain} (mud, rubble, deep snow, etc.) costs \emph{2} movement points per square entered.
+    \item \term{Elevated Terrain} (stairs, a low wall, a rooftop) costs an extra \emph{1} movement point when moving \emph{up} a level; moving \emph{down} is free.
+\end{itemize}
+\subsection{Movement Examples}
+\begin{enumerate}[label=\arabic*. , leftmargin=*]
+    \item A \dice{Body}{Athletics} 4 character (Body 4) can move up to \(4+3=7\) squares on a normal move.
+    \item The same character \textbf{dashes} and moves \(14\) squares, but any subsequent defence is taken at \pos{Desperate}.
+\end{enumerate}
+
+\section{Zones of Control (ZOC)}\label{sec:zoc}
+\begin{itemize}[noitemsep]
+    \item A unit’s ZOC consists of the orthogonal (or all six) adjacent cells.
+    \item \textbf{Entering} an enemy’s ZOC ends the mover’s movement for that turn and immediately places them in \term{Melee} (i.e. \pos{Controlled}) with that enemy.
+    \item \textbf{Leaving} a ZOC requires a \term{Disengage} test (DV 4 + any relevant modifiers).  Failure forces the character to remain \pos{Desperate} for the next action.
+\end{itemize}
+\subsection{Stacked ZOC}
+If two or more enemies’ ZOCs overlap on a single cell, entering that cell adds +1 to the \term{Disengage} DV for each extra controller.
+
+\section{Cover, Concealment and Position Bonuses}\label{sec:cover}
+\begin{tabular}{>{\bfseries}l p{10cm}}
+\hline
+\textbf{Cover Type} & \textbf{Mechanical Effect}\\
+\hline
+Partial (half‑cover, a low wall) & Grants \(\boldsymbol{+1}\) to Position for any \term{ranged} attack made \emph{against} the covered target.\\
+Full (solid wall, a sturdy table) & Grants \(\boldsymbol{+1}\) to Position for both \term{ranged} and \term{melee} attacks against the target, and the target may shift to \pos{Dominant} when defending.\\
+\hline
+\end{tabular}
+\begin{itemize}[noitemsep]
+    \item Cover does \emph{not} provide a static defensive die bonus; it simply shifts the target’s Position, which then modifies the re‑rolls as per the core rules.
+    \item Cover can be lost: if the GM spends \sb\ (e.g., “the wall collapses”), the cover is removed and any Position bonus disappears.
+\end{itemize}
+
+\section{Flanking and Tactical Position}\label{sec:flank}
+\begin{itemize}[noitemsep]
+    \item \textbf{Flanking Condition}: Two allied characters occupy squares that are \emph{adjacent on opposite sides} of a target (e.g., north and south of the enemy). The third side must be free of other actors or solid obstacles.
+    \item \textbf{Benefit}: The next ally who attacks the flanked target gains \(\boldsymbol{+1}\) to \pos{Dominant} for that attack.  This is applied \emph{before} the roll.
+    \item \textbf{Rear Attack}: If the attacker is directly behind the target (i.e. the target’s back faces the attacker) the attacker gains \(\boldsymbol{+1}\) to \pos{Dominant} \emph{and} \(\boldsymbol{+1}\) to \effect{Great} for that strike.
+    \item \textbf{Loss of Flank}: If the flanking ally moves out of line, the bonus is lost at the start of the next round.
+\end{itemize}
+
+\section{Reach and Weapon Tags}\label{sec:weapon}
+Many weapons already have tags in the core.  The tactical module adds specific grid interactions:
+
+\begin{tabular}{>{\bfseries}p{3.5cm} p{9cm}}
+\toprule
+\textbf{Tag} & \textbf{Grid Interaction}\\
+\midrule
+\term{[Reach]} & The wielder may target squares up to \emph{2} squares away (i.e. \term{Near} but not \term{Close}).  Enemies without \term{[Reach]} receive a \(\boldsymbol{-1}\) to Position when they attempt to move into the wielder’s square.\\
+\midrule
+\term{[Fast]} & After a successful melee attack the attacker may immediately \emph{shift 1 square} (any direction) as a free movement (no Action cost).  The shift does not provoke ZOC entry.\\
+\midrule
+\term{[Set]} & As an Action the character can \"plant\" the weapon in a square.  Any enemy that moves into that square on a \term{Charge} (moving at least 4 squares straight) triggers an automatic \emph{attack} at \(\boldsymbol{+1}\) Effect.\\
+\midrule
+\term{[Brutal]} & On a successful hit the attacker may \emph{push} the target 1 square away (orthogonal only).  If the destination square is occupied, the target suffers \emph{Knockback} – the target is forced into the next square in the same direction, costing an extra \(\boldsymbol{+1}\) to Position for the target’s next defensive roll.\\
+\bottomrule
+\end{tabular}
+
+\section{Action Economy in Tactical Mode}\label{sec:actions}
+Each turn a character has exactly:
+
+\begin{enumerate}[label=\arabic*. , leftmargin=*]
+    \item \textbf{One Action} – attack, cast, use a skill, activate a talent, etc.
+    \item \textbf{One Move} – any combination of squares up to the character’s movement rate (including dashing, see \S\ref{sec:movement}).
+\end{enumerate}
+\noindent The order is free: \emph{Move → Action}, \emph{Action → Move} or \emph{Move–Action–Move} (if the character has a free‑action ability).  The only exceptions are:
+
+\begin{itemize}[noitemsep]
+    \item A character \term{Dashing} uses the Action to double movement; they cannot also take a separate attack that turn (unless a talent grants a \term{Free Attack}).
+    \item Certain weapon tags (e.g. \term{[Fast]}) allow a \emph{post‑attack shift} without consuming the Move.
+\end{itemize}
+
+\section{Integrating Position\label{sec:position}}
+The core mechanics already define three Position levels.  The tactical module adds **predictable ways to gain or lose Position**:
+
+\begin{center}
+\begin{tabular}{>{\bfseries}p{3cm} p{10cm}}
+\toprule
+\textbf{Source} & \textbf{Resulting Position Change}\\
+\midrule
+\term{Cover (Partial)} & Target of a ranged attack moves to \pos{Controlled} (if they were \pos{Dominant}); \pos{Dominant} otherwise unchanged.\\
+\midrule
+\term{Cover (Full)} & Target of any attack moves to \pos{Controlled}; attacker gains \pos{Dominant} when defending against the target.\\
+\midrule
+\term{Flanking} & Attacker gains \pos{Dominant} for the attack.\\
+\midrule
+\term{Rear Attack} & Attacker gains \pos{Dominant} and the attack’s \effect{Standard} upgrades to \effect{Great}.\\
+\midrule
+\term{Dashing} & After moving, the character’s next \emph{defensive} roll is taken at \pos{Desperate}.\\
+\midrule
+\term{Disengage Success} & The character can move away from an enemy’s ZOC and retain their current Position for the next action.\\
+\midrule
+\term{Disengage Failure} & The character ends the turn at \pos{Desperate}.\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent \textbf{Boons and Position.}  Spending a Boon may shift your Position up one step (e.g., \pos{Controlled} → \pos{Dominant}) before you roll.  This works exactly as in the core rules – the Boon is simply a resource.
+
+\section{Line of Sight and Visibility}
+\begin{itemize}[noitemsep]
+    \item A character has line of sight (LoS) to any square that is not blocked by a solid obstacle (wall, large creature, dense forest).  The GM may require a \term{Notice} or \term{Stealth} test if the target is partially concealed.
+    \item \term{Concealment (e.g., fog, smoke)} gives the defender a \(\boldsymbol{+1}\) to Position against \term{ranged} attacks; melee attacks are unaffected unless the attacker must step into the concealed area.
+\end{itemize}
+
+\section{Example Combat Round (Square Grid)}
+\begin{enumerate}[label=\arabic*. , leftmargin=*]
+    \item \textbf{Setup.}  Kaelen (Body 4, \term{Melee 5}) stands 5 squares from the enemy guard.  The guard is in \pos{Controlled} behind a low wooden fence (partial cover).
+    \item \textbf{Kaelen’s Move.}  He dashes 12 squares, ending his movement adjacent to the guard (entering the guard’s ZOC, therefore the guard is now in \pos{Controlled} and Kaelen is \pos{Dominant} for his next action because he has the advantage of having closed distance.
+    \item \textbf{Trigger Flank.}  Valeros (a teammate) is already on the opposite side of the guard.  The guard is now \term{flanked}.
+    \item \textbf{Kaelen’s Attack.}  Before rolling he declares “I gain the flanking bonus: I attack at \pos{Dominant}.”  No dice are changed – the Position bonus simply allows a re‑roll of one failure die after the roll (core rule).  He rolls \dice{Body}{Melee} = 4 + 5 = 9 dice.
+    \item \textbf{Result.}  He gets 6 successes, DV 3, no Story Beats.  Clean Success: the guard is hit.
+    \item \textbf{GM Consequence.}  Because Kaelen has the \term{[Brutal]} tag on his greataxe, he chooses to \emph{push} the guard back 1 square.  The push puts the guard into a square with no cover, shifting his Position to \pos{Desperate} for his next defensive roll.
+    \item \textbf{Valeros’s Turn.}  With the guard now \pos{Desperate} and no cover, Valeros gains \pos{Dominant} simply by virtue of the situation (no extra talent needed).  He attacks with a \term{[Fast]} dagger and may shift 1 square afterwards.
+\end{enumerate}
+\noindent The example shows how the grid supplies concrete sources of Position that are \emph{read off the board} while the dice, Boons and the Outcome matrix stay untouched.
+
+\section{Quick Reference Cheat Sheet}\label{sec:quickref}
+\begin{longtable}{>{\bfseries}p{2.6cm} p{2.8cm} p{3.2cm} p{5.6cm}}
+\caption{Tactical Modifiers at a Glance}\\
+\toprule
+\textbf{Situation} & \textbf{Base DV} & \textbf{Position Change} & \textbf{Effect on Dice/Position}\\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\textit{(continued)}}\\
+\toprule
+\textbf{Situation} & \textbf{Base DV} & \textbf{Position Change} & \textbf{Effect on Dice/Position}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\textit{Continued on next page…}}\\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+Cover – Partial & +0 & Target: \pos{Controlled} (ranged) & No dice change; re‑roll failure die if attacker is \pos{Dominant} \\
+Cover – Full & +0 & Target: \pos{Controlled}; Attacker gains \pos{Dominant} when defending & Same as above \\
+Flanking & +0 & Attacker: \pos{Dominant} & Allows re‑roll of one failure die \\
+Rear Attack & +0 & Attacker: \pos{Dominant} + \effect{Great} & Same re‑roll, plus +1 to Effect tier \\
+Dashing (move‑double) & – & Next defence: \pos{Desperate} & No dice change; re‑roll a success die instead of a failure die \\
+Disengage Success & – & Retain current Position after leaving ZOC & No extra cost \\
+Disengage Failure & – & End turn at \pos{Desperate} & Same as above \\
+Difficult Terrain (enter) & – & +1 to DV for movement (extra squares) & No combat effect unless movement is crucial \\
+Elevation Upward & – & +1 movement cost per level & No combat effect \\
+\end{longtable}
+\noindent \textbf{Boons:}  Spending a Boon before a roll may shift Position up one step (e.g., \pos{Controlled} → \pos{Dominant}) for that action only.
+
+\section{Optional Advanced Rules}
+\begin{enumerate}[label=\alph*. , leftmargin=*]
+    \item \textbf{Facing.}  Characters may declare a facing direction at the end of their move.  Attacks from \term{behind} gain a \pos{Dominant} bonus even without a rear‑attack (useful for sneak attacks).
+    \item \textbf{Line of Fire.}  Ranged attacks that must pass through a square occupied by an ally or an obstacle increase DV by +1 per intervening square.
+    \item \textbf{Height Advantage.}  Being on a square that is \emph{one level higher} than the target grants \(\boldsymbol{+1}\) to Position for ranged attacks; being lower gives \(\boldsymbol{-1}\) to Position.
+    \item \textbf{Running Combat.}  A character may \term{Run} (spend a Boon) to move up to double their normal movement without dashing, but the next action is taken at \pos{Desperate}.
+\end{enumerate}
+All optional rules are fully compatible with the core system; they simply add more sources of the Position modifiers already defined.
+
+\section{GM Guidance}
+\begin{enumerate}[label=\arabic*. , leftmargin=*]
+    \item \textbf{Set the Grid Early.}  Sketch the battlefield on a dry‑erase board, a paper map, or a virtual tabletop before the first round.
+    \item \textbf{Read Position First.}  Before any dice are rolled, ask: “What is the attacker’s Position now? What can the defender do to change it?”  Apply cover, flanking, rear, etc., immediately.
+    \item \textbf{Keep SB Flowing.}  When a roll produces Story Beats, spend them on the most dramatic consequence (new enemy, loss of cover, a fallen ally, etc.) – the tactical module does not alter that process.
+    \item \textbf{Avoid Over‑Granular Damage.}  Since Harm is unchanged, treat knock‑back, pushes and forced movement as positional effects rather than extra HP loss.
+    \item \textbf{Use Boons Sparingly.}  A Boon that upgrades Position is a powerful tactical choice; remind players they can also spend Boons to re‑roll dice.
+\end{enumerate}
+
+\section*{Acknowledgements}
+The author wishes to thank the Fate’s Edge design team for creating a narrative‑first system that easily accommodates a tactical overlay.  This module is offered under the same OGL‑compatible licence as the core SRD.
+
+\section*{License}
+This Tactical Combat Module is released under the \textbf{Creative Commons Attribution‑ShareAlike 4.0 International (CC‑BY‑SA 4.0)} license.  You may copy, modify and distribute it provided you give appropriate credit and share any modifications under the same terms.
+
+%=============================================================
+%  APPENDIX – QUICK CHEAT‑SHEET FOR THE TACTICAL MODULE
+%=============================================================
+\clearpage                         % start the appendix on a fresh page
+\appendix                          % switch to Appendix numbering (A, B, …)
+
+%-------------------------------------------------------------
+%  Appendix title – you can reference it with \ref{app:cheatsheet}
+%-------------------------------------------------------------
+\section{Tactical Combat Cheat‑Sheet}
+\label{app:cheatsheet}
+A compact reference for the most common spatial rules.  Keep this
+page at the edge of the table; it fits on a single side of a sheet
+of paper.
+
+\vspace{0.4cm}
+%-------------------------------------------------------------
+%  1. QUICK LOOKUP TABLE – POSITION & EFFECT MODIFIERS
+%-------------------------------------------------------------
+\subsection{Position / Effect Modifiers}
+\label{sec:pos-effect}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X}
+\toprule
+\textbf{Situation} & \textbf{Result (core rules)} \\
+\midrule
+Full Cover (solid wall, pillar) &
+Target gains \pos{Controlled}; attacker gains \pos{Dominant} when defending the target. \\
+Partial Cover (half‑wall, low table) &
+Target gains \pos{Controlled} only against ranged attacks. \\
+Flanking (two allies on opposite arcs) &
+Attacker gets \pos{Dominant} for the next attack on that target. \\
+Rear Attack (attacker is directly behind the defender) &
+Attacker gets \pos{Dominant} + \effect{Great} for the attack. \\
+Dashing (spend Action to double movement) &
+Next defensive roll is taken at \pos{Desperate}. \\
+Disengage Success (leaving an enemy ZOC) &
+Retain current Position for the next action. \\
+Disengage Failure &
+End the turn at \pos{Desperate}. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.5cm}
+%-------------------------------------------------------------
+%  2. MOVEMENT RATES & TERRAIN
+%-------------------------------------------------------------
+\subsection{Movement}
+\label{sec:movement}
+\begin{tabularx}{\linewidth}{@{}l c X}
+\toprule
+\textbf{Metric} & \textbf{Formula / Cost} & \textbf{Notes}\\
+\midrule
+Movement base & \(\text{Body} + 3\) squares & e.g. Body 4 ⇒ 7 sq per Move action.\\
+Dash (Action) & \(\times 2\) movement & No other Action that turn.\\
+Difficult terrain & \(\;2\) movement points per square entered.\\
+Elevation up & \(\; +1\) movement point per level when moving **up**; free when moving **down**.\\
+Running (optional, spend a Boon) & \(\times 2\) movement, next action at \pos{Desperate}.\\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.5cm}
+%-------------------------------------------------------------
+%  3. ZONES OF CONTROL (ZOC)
+%-------------------------------------------------------------
+\subsection{Zones of Control}
+\label{sec:zoc}
+\begin{tabularx}{\linewidth}{@{}l X}
+\toprule
+\textbf{Rule} & \textbf{Effect}\\
+\midrule
+ZOC definition & All orthogonal (square) or all six adjacent (hex) cells.\\
+Entering an enemy ZOC & Movement ends; the mover is now \term{in melee} with that enemy.\\
+Leaving an enemy ZOC & Requires a Disengage test: \(\text{DV}=4\) plus any terrain or circumstance modifiers.\\
+Stacked ZOC & Each extra enemy adds \(\; +1\) to the Disengage DV.\\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.5cm}
+%-------------------------------------------------------------
+%  4. COVER & POSITION BONUS TABLE
+%-------------------------------------------------------------
+\subsection{Cover \& Position Bonuses}
+\label{sec:cover}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l >{\centering\arraybackslash}p{2.5cm} X}
+\toprule
+\textbf{Cover type} & \textbf{Bonus to Position} & \textbf{When it applies}\\
+\midrule
+None & – & Open field, no obstruction.\\
+Partial & +1 to defender’s Position vs. **ranged** attacks & Low wall, half‑cover, heavy foliage.\\
+Full & +1 to defender’s Position vs. **all** attacks; attacker gains \pos{Dominant} when defending & Solid wall, pillar, closed door.\\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.5cm}
+%-------------------------------------------------------------
+%  5. REACH & WEAPON TAGS
+%-------------------------------------------------------------
+\subsection{Reach and Common Weapon Tags}
+\label{sec:reach}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l >{\centering\arraybackslash}p{2.5cm} X}
+\toprule
+\textbf{Tag} & \textbf{Range effect} & \textbf{Typical use}\\
+\midrule
+\term{[Reach]} & Can attack a target 2 squares away (treated as \term{Near}). & Polearms, spears.\\
+\term{[Fast]} & After a successful melee hit, immediately shift 1 square (no ZOC trigger). & Daggers, short swords.\\
+\term{[Set]} & As an Action, plant the weapon in a square; any enemy that **charges** into that square suffers an automatic attack at \(\boldsymbol{+1}\) Effect. & Traps, pikes.\\
+\term{[Brutal]} & Successful hit may **push** the target 1 square orthogonally; target’s next defensive Position drops one step. & Greatswords, axes.\\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.5cm}
+%-------------------------------------------------------------
+%  6. QUICK REFERENCE – ACTION ECONOMY
+%-------------------------------------------------------------
+\subsection{Action Economy (Tactical)}
+\label{sec:action-econ}
+\begin{tabularx}{\linewidth}{@{}l c X}
+\toprule
+\textbf{What you can do} & \textbf{Cost} & \textbf{Notes}\\
+\midrule
+Attack (melee or ranged) & 1 Action & Must be within weapon’s range.\\
+Move (any distance ≤ movement rate) & 1 Move & Can be taken before or after an Action.\\
+Dash (double movement) & 1 Action (no Attack) & Next defensive roll at \pos{Desperate}.\\
+Disengage (leave ZOC) & 1 Action \emph{or} free if you have a relevant talent & Requires Disengage test.\\
+Use \boon\ to improve Position & 1 Boon (spend before roll) & Shifts Position up one step for that roll.\\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.4cm}
+\noindent\textbf{Tip:}  When the board shows a clear tactical advantage (e.g., you have rear‑cover, you are flanking, you are on higher ground), *declare* the advantage first; the GM then assigns the corresponding Position before you roll.
+
+%-------------------------------------------------------------
+%  End of Appendix
+%-------------------------------------------------------------
+\clearpage
+
+\end{document}
+
