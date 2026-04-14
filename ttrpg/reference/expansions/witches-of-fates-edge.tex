@@ -6,6 +6,68 @@
 \usepackage{titlesec}
 \usepackage{sectsty}
 \usepackage{enumitem}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+
+% Formatting
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+
+% Section styling
+\titleformat{\section}
+  {\normalfont\Large\bfseries\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\itshape}{\thesubsubsection}{1em}{}
+
+% Custom boxes for mechanics
+\newtcolorbox{ritestat}{
+  colback=gray!5,
+  colframe=gray!50!black,
+  boxrule=0.5pt,
+  arc=2mm,
+  left=6pt,
+  right=6pt,
+  top=4pt,
+  bottom=4pt,
+  fonttitle=\bfseries,
+  title={Rite Parameters}
+}
+
+\newtcolorbox{mechanic}[1][]{
+  colback=white,
+  colframe=black!70,
+  boxrule=0.4pt,
+  arc=1mm,
+  left=5pt,
+  right=5pt,
+  fonttitle=\bfseries\scshape\small,
+  title={#1}
+}
+
+\newtcolorbox{sidebar}{
+  colback=black!3,
+  colframe=black!40,
+  boxrule=0.4pt,
+  arc=1mm,
+  left=6pt,
+  right=6pt,
+  top=4pt,
+  bottom=4pt
+}
+
+% Game terms
+\newcommand{\obligation}[1]{\textsc{Obligation~#1}}
+\newcommand{\dv}[1]{\textsc{DV}~#1}
+\newcommand{\xp}[1]{#1~\textsc{xp}}
+\newcommand{\sbmark}{\textsc{sb}}
 \usepackage{hyperref}
 
 % Section formatting
@@ -1209,7 +1271,7 @@ Once per session when confronting occult evidence, choose one:
 \textbf{Sanction Ledger} [4]: Tracks cases where you've used authority beyond scope. When full, local magical communities become wary of your presence.
 
 %===============================================================
-\section{Counter-Orders of Feminist and Communal Magic}
+\section{Counter-Orders of Communal Magic}
 \index{Orders!Counter-Witch Orders}
 \index{Community Magic}
 
@@ -1459,6 +1521,266 @@ Gap token (named absence); duskmark writ (paired thresholds); witness bead (reco
 
 \paragraph*{GM Moves (tone \& pressure).}
 A door is now where a wall was; a line is gone from the writ everyone \emph{remembers} signing; a silent witness appears and the loudest voice loses breath; the shortest path demands a price left unspoken.
+
+\section{The Unbroken Chain}
+
+\subsection{Overview}
+
+The \textbf{Daughters of the Unspoken}---also called the \textbf{Grey Watchers}, \textbf{Pale Midwens}, or simply \textbf{the Chain}---are a mendicant coven bound to the \textbf{High Mother}, a threshold entity sustained by accumulated debt and subtle sacrifice. They appear as midwives, hospice nurses, and deathbed witnesses, offering the mercy of warm hands and the comfort of final words.
+
+They seem harmless. Mostly.
+
+Their magic requires no codex of vellum or bound spirit. Their flesh is the thread; their blood, the dye; their sisters, the loom. They weave the living---binding them in obligations so fine they are invisible until they pull taut.
+
+\subsection{The High Mother}
+
+The High Mother is not a Hag, though the Hags remember when she sat among them. She was Sister Alva, once---Weaver of the Third Spindle---who bound herself so thoroughly to the work of witnessing wrongs that she became their repository. Now she sits in the \textbf{House Without Doors}, neither alive nor dead, sustained by the sacrifices her Daughters feed into the Cord.
+
+She may be a lich. She may be the current \textbf{Vessel}: a mortal woman elected by the coven's triad, granted godlike power through centuries of accumulated obligation, who will burn out in a decade or three and be replaced. The Daughters smile when asked which is true. The Cord does not distinguish between memory and flesh.
+
+\begin{mechanic}[Patron Features]
+\textbf{Access:} Runekeepers and Daughters of the Chain (requires \textsc{Codex} or \textsc{Grey Thread} talent).
+
+\textbf{Obligation:} Standard capacity (Spirit + Presence). When Obligation fills, the High Mother claims a debt immediately:
+\begin{itemize}[noitemsep]
+\item Mark \textsc{Critical Harm} (Level 3) as your body rejects its own blood
+\item Lose one permanent Attribute point (woven into the Cord)
+\item Surrender your Name: Woven into the Cord; you become \textsc{Unnamed} to all outside the coven
+\end{itemize}
+\end{mechanic}
+
+\begin{sidebar}[\textbf{The Vessel:}]
+Every generation, the coven selects a woman---usually a Widow who has outlived her grief---to become the High Mother's anchor. Through the \textit{Rite of the Unbroken Chain}, accumulated Obligation flows into her. She becomes Tier IV-V in power but carries a \textsc{Death Clock} that ticks each time she grants a miracle. When it fills, she is woven into the Cord, and a new Vessel is elected from among the Daughters.
+\end{sidebar}
+
+\subsection{The Flesh-Weave}
+
+Where other witches require a \textsc{Thiasos} and bound \textsc{Codex}, the Daughters have traded mortality for immediate access. The High Mother grants \textbf{Runekeeper} capabilities without the standard familiar or written tome---their flesh serves as both.
+
+\ssububsection{Flesh-Knots}
+
+Daughters tattoo Rites onto their skin using ink mixed with ash from former Vessels and blood-milk from the Cord. These tattoos writhe when the High Mother speaks through them, moving like stitches tightening beneath the skin.
+
+\begin{itemize}[noitemsep]
+\item \textbf{No Codex Required:} Daughters learn Rites by receiving them as tattoos from a senior sister. The Rite is stored in their \textsc{Body} attribute rather than a book.
+\item \textbf{Activation:} To invoke a Rite, the Daughter traces the tattoo with a Thorn-Pin (drawing blood). This marks \textbf{1 Fatigue} (the pain of opening the skin) and the standard Obligation cost.
+\item \textbf{The Hollowed:} Those who bind themselves to the High Mother do not receive a familiar. Instead, they are given a \textbf{Hollowed}---a child (usually male) or animal that has been sacrificed and returned, lacking a heart, with eyes like spilled milk that gaze into souls. The Hollowed does not speak but witnesses all magic, counting as the required threefold presence. Others somehow don't notice that the Hollowed is different, except for a feeling of \textit{unease} when they are near.
+\end{itemize}
+
+\subsubsection{The Heartless}
+
+Standard Runekeepers may learn these Rites through a \textbf{Flesh-Codex}---a tattooed skin-flog taken from a dead Daughter (treat as a Major Asset [\xp{8}], requires the \textsc{Codex} talent). The skin must be kept moist and warm; if it dries, the Rites scream.
+
+Using a flog requires the caster to press their own blood into the tattoos. On failure, they suffer the \textsc{Price Due} of the original donor---often a sudden compulsion to remove their own fingers or an inability to taste sweetness.
+
+\subsection{The Three Offices}
+
+The coven operates in triads. Unlike Morag's pattern, their offices are functions that rotate or deepen, marked by specific mutilations:
+
+\subsubsection{Keeper of the Door (Weaver)}
+
+Sets the terms. She is the one who knocks, the midwife who enters, the nurse who tends. She specializes in \textsc{Hearth} and \textsc{Passage} magic.
+
+\textit{Sacrifice:} She must never be alone. She must always be witnessed by at least one other, or she begins to fade into the Echo (\textsc{Almost-Presence}), her face slipping from mirrors.
+
+\subsubsection{Keeper of the Name (Widow)}
+
+Remembers. She holds the coven's collective memory in her flesh. She can recall any sacrifice made by any Daughter by tasting her own blood.
+
+\textit{Sacrifice:} She must keep fresh the memory of one dead thing. If she forgets, she loses a finger. The finger is added to the Cord.
+
+\subsubsection{Keeper of the Price (Winter)}
+
+Collects. She determines when debts come due and carries the Thorn-Pins. She is the only one allowed to lie to outsiders.
+
+\textit{Sacrifice:} She cannot feel heat. Fire burns her without her noticing until she is ash.
+
+\begin{mechanic}[Communal Bonds]
+When a Daughter performs a \textsc{Threshold Working} with at least one other Daughter in \textsc{Near} range:
+\begin{itemize}[noitemsep]
+\item \textbf{Share Obligation:} Split the Obligation cost of a Rite between them (round up)
+\item \textbf{Witness Each Other:} Count as having \textsc{Soft Witness} automatically; the Hollowed gaze upon each other with milk-white eyes
+\item \textbf{Communal Fatigue:} Convert \textsc{Harm} $\rightarrow$ \textsc{Fatigue} (Monk ability) and donate that Fatigue to another Daughter, who stores it as a \textbf{Knot} wound into her Cord (appearing as a fresh scar or weeping tattoo)
+\end{itemize}
+\end{mechanic}
+
+\subsection{The Subtle Sacrifice}
+
+The Daughters do not slaughter goats on altars. They require domestic sacrifices---acts of violence so small they are dismissed as accidents or cruelty, yet sufficient to feed the Cord.
+
+\begin{itemize}[noitemsep]
+\item \textbf{The Missing Child:} Taken to the House Without Doors. The child is hollowed out, a heartless familiar created. The parents forget they existed (\textsc{Un-Naming})---the child was never born, the pregnancy ended in stillness, the memory becomes a gap in the wallpaper.
+\item \textbf{The Heartless:} An animal preserved without its heart, kept in salt and shadow. The heart beats in the Kettle, revealing household secrets to the Widow. The creature's eyes remain open, seeing souls.
+\item \textbf{The Unspoken Grief:} At a deathbed, the Daughter convinces the dying to forget their greatest love. The memory is trapped in a \textsc{Name-bead} threaded onto the Cord. The dying smile peacefully, having forgotten why they were sad, while their grief feeds the Weave.
+\item \textbf{The Stolen Shadow:} Collected on moonless nights with a silver needle. The victim becomes \textsc{Almost-Present} over months---unable to hold property, unable to father children, fading from ledgers and memories until they are simply gone.
+\end{itemize}
+
+\textit{Mechanics:} Performing a sacrifice clears \textbf{1 segment} of Obligation or reduces a Rite's cost by 1 (minimum 1). Each requires \textsc{Intricate Description} and leaves physical evidence: a patch of colder air, a bloodspot that will not wash out, a sound of weeping from empty rooms.
+
+\subsection{Rites of the High Mother}
+
+These Rites are available to Runekeepers sworn to the High Mother and to Daughters of the Chain (who use flesh-knots). All involve \textsc{Echo}, \textsc{Veil}, or \textsc{Threshold} tags.
+
+\subsubsection{Rite of the Milk Teeth}
+
+\textbf{Tier:} Low \\
+\textbf{Components:} A child's shed tooth, a drop of milk, whispered promise \\
+\textbf{Obligation:} 1 segment \\
+\textbf{Tags:} [BIND] [ECHO] [VEIL]
+
+\textsc{Bind Reflection.} The target's reflection is trapped in a mirror or pool. For one scene, the target acts at \textsc{Position -1} (disoriented, seeing double) while the reflection (an Echo) reports their movements to the caster. The reflection smiles when the target does not.
+
+\textit{Thematic:} Used to spy on abusive fathers or faithless husbands. The tooth is usually stolen from beneath a pillow, replaced with a bead of compressed ash.
+
+\subsubsection{Rite of the Unseen Midwife}
+
+\textbf{Tier:} Standard \\
+\textbf{Components:} Umbilical cord (any mammal), three knots, a doorway threshold \\
+\textbf{Obligation:} 2 segments \\
+\textbf{Tags:} [PASSAGE] [THRESHOLD] [BIND]
+
+\textsc{Threshold Birth.} Create a temporary passage through a barrier by treating it as a birthing canal. The "door" bleeds when opened, thick and dark. Anyone passing through leaves a \textsc{Red Thread} attached to their shadow that the caster can follow.
+
+\textit{Thematic:} Used to enter sealed rooms, escape prisons, or "deliver" assassins into bedchambers. The bloodstain remains for three days and smells of milk and iron.
+
+\subsubsection{Rite of the Kettle's Memory}
+
+\textbf{Tier:} Standard \\
+\textbf{Components:} Kettle of water, personal item of target, fire \\
+\textbf{Obligation:} 2 segments \\
+\textbf{Tags:} [ECHO] [SCRY] [WITNESS]
+
+\textsc{Echo Communion.} By boiling the item, witness events from the target's past tied to that object. Ask three questions about the target's history. For each question, the target feels a sudden chill and knows someone is watching (though not who). The water turns brackish and must be poured at a crossroads or the caster suffers \textsc{Recursion} (the questions asked are asked of her in dreams, endlessly).
+
+\subsubsection{Rite of the Blood Consecration}
+
+\textbf{Tier:} High \\
+\textbf{Components:} The caster's blood (take 1 Harm), or a preserved heart, guest-right invocation \\
+\textbf{Obligation:} 3 segments \\
+\textbf{Tags:} [Hearth-Binding] [WARD] [CURSE]
+
+\textsc{Corrupted Hospitality.} Sanctify a home: grant \textsc{Position +1} to all inside and create an invisible \textsc{Hospitality Toll [4]}. Guests who accept hospitality without offering a truth or grief begin a \textsc{Price Due [4]} clock. When filled, they suffer a \textsc{Curse} chosen by the caster (e.g., "lamps forget to light for him," "milk curdles in his mouth").
+
+\textit{Note:} The Position bonus applies only to Daughters of the Chain; others merely trigger the trap.
+
+\subsubsection{Rite of the Unnamed}
+
+\textbf{Tier:} High \\
+\textbf{Components:} True name written in the caster's blood (1 Harm), a grey feather, silence for three days \\
+\textbf{Obligation:} 4 segments \\
+\textbf{Tags:} [NINTH] [VOID] [UNBIND]
+
+\textsc{Un-Naming.} Remove the target's name from the Veil (current reality) for one week. They cannot be remembered by anyone who knew them, cannot swear binding oaths, and cannot own property. Records fade. At week's end, the caster may speak their name thrice to return them, or they remain \textsc{Unnamed}---becoming a Trow-like entity who wanders thresholds, hollow-eyed and seeking debts to pay.
+
+\textit{Restriction:} Requires the High Mother's direct permission (manifests as a whisper in dreams, or blood in the morning milk).
+
+\subsection{Daughter of the Chain (Character Option)}
+
+\subsubsection{Requirements}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Attributes:} Spirit 3+, Body 2+
+\item \textbf{Skills:} Lore (Thresholds) 1+, Subterfuge 1+
+\item \textbf{Talent:} \textsc{Disciplined Body} (Monk) [\xp{3}]
+\item \textbf{Talent:} \textsc{Grey Thread} [\xp{4}] (see below)
+\end{itemize}
+
+\subsubsection{Talent: Grey Thread}
+
+\textsc{Minor Talent} (4 XP) \\
+\textit{Requires: Disciplined Body, Spirit 3+}
+
+You are bound to the High Mother's Cord. Your flesh accepts the tattooed Rites; your blood activates them.
+
+You may perform \textbf{Rites} of the High Mother without a Codex or Thiasos. Instead, you receive a \textbf{Hollowed}---a heartless familiar with eyes like spilled milk that gaze into souls. It witnesses your magic and counts as the threefold presence required by Hag Law. The Hollowed never speaks, but sometimes weeps blood when debts are near.
+
+\subsubsection{Advanced Talents}
+
+\textbf{Cord of Flesh} (Major, 8 XP) \\
+\textit{Requires: Grey Thread, Body 3+}
+
+Your body stores memories and debts. When you convert \textsc{Harm} $\rightarrow$ \textsc{Fatigue} (Monk ability), you may store up to \textsc{Body} rating points of Fatigue as \textbf{Chained Knots}, appearing uninjured (as fresh scars, weeping tattoos, or coiled threads beneath the skin). A Daughter has until the sunset after the next to perform a sacrifice or take 2 \textsc{Harm}.
+
+Additionally, you may accept \textbf{Obligation} from another Daughter, storing it in your flesh. While carrying another's debt, you are \textsc{Desperate} in all social situations with outsiders---the weight shows in your eyes.
+
+\textbf{The Open Palm, Closed Cord} (Major, 8 XP) \\
+\textit{Requires: Grey Thread, Melee 2+}
+
+Your unarmed strikes or subtle touch (\textsc{DV +1}) carry \textsc{Widow's Measure}. Instead of dealing Harm, you may mark a \textsc{Promise Clock [4]} on the target---they owe the Chain a truth or grief. If they already owe the coven, you may activate that debt: they suffer \textsc{Position -1} (the weight of obligation) for the scene, or you gain \textsc{Effect +1} against them.
+
+\textbf{Milk and Ashes} (Major, 9 XP) \\
+\textit{Requires: Cord of Flesh}
+
+When you offer hospitality (food, healing, shelter) to an enemy or stranger, create a \textsc{Threshold Contract} without their knowledge. They gain the \textsc{Hospiced} condition: cannot lie to you (\textsc{Veil -2}), and any Harm they deal to you is stored as \textsc{Fatigue} on themselves (the debt turns inward).
+
+\textbf{The Unnamed Strike} (Prestige, 12 XP) \\
+\textit{Requires: Tier III+, Open Palm Closed Cord}
+
+Unarmed attack vs. Spirit+Resolve. On hit: Target loses their \textbf{True Name} for one scene. They cannot be targeted by beneficial magic, cannot speak binding oaths, and are \textsc{Invisible to Fate}. You may record this Name in your flesh (appearing as a fresh scar woven into the Cord) to \textsc{Command} them once (\textsc{DV 4}).
+
+\textbf{The High Mother's Shadow} (Epic, 18 XP) \\
+\textit{Requires: Tier IV+, Unnamed Strike, Cord of Flesh}
+
+You become Cord-blooded. You no longer age. Fatigue converts to Obligation automatically (you are never tired, only indebted). You may spend \textbf{Obligation segments} as if they were \textbf{Boons} (1 segment = 1 Boon) for rolls involving silence, memory, or binding.
+
+When you would die, the High Mother claims your body; you rise as a \textsc{Hollow} under her control for a number of days equal to your current Obligation segments. If you have no Obligation, you die permanently---the Chain has no use for you.
+
+\section{Integration Notes}
+
+\textbf{Witch-Hunter Interaction:} Chain-Lantern Inquisitors cannot easily prosecute Daughters. They possess no \textsc{Codex} to seize, and their flesh-sigils appear as mere tattoos or birthmarks. The Lanterns must use \textsc{Sum-Abjurers} to prove debts exist, or \textsc{Silk Vigil} to untangle the social bonds. Often, they simply disappear---\textit{dealt with} by the coven before they can testify.
+
+\textbf{Patron Rivalry:} The High Mother is opposed by \textbf{The Witness} (truth/revelation) and \textbf{The Oath of Flame}---they hate her because she binds secrets rather than reveals them, and her oaths are unbreakable webs rather than burning vows. When a Daughter and a Witness-binder occupy the same scene, both suffer \textsc{Position -1} to magic---revelation and archival cannot coexist. The Chain also has a tense rivalry with \textbf{Morag} and her covens.
+
+\textbf{The Fear:} She represents the fear that \textit{care is a trap}. The nurse who holds your hand while you die is recording your last words for blackmail. The midwife who delivers your child takes a tooth for her collection. The debt you owe for kindness will be collected by your grandchildren, who will never know why their inheritance is empty.
+
+\section{Rituals of the Cord}
+
+Unlike the \textbf{Rites} granted by the High Mother (which bind reality through obligation), \textbf{Rituals} are secular workings—procedures of blood and breath that manipulate the stored Fatigue of the Cord without divine sanction. They require no Hollowed witness, generate no \textsc{Obligation} for the Patron, and operate through \textbf{Craft (Apothecary)} or \textbf{Lore (Thresholds)}.
+
+\subsection{The Loom of Affliction}
+
+When a Daughter has stored \textbf{Knots} (Fatigue held in her flesh via \textsc{Cord of Flesh}) and cannot—or will not—sacrifice to clear them before sunset, she may perform a \textbf{Spreading}. This ritual unweaves the Knots from her body and translates them into \textbf{disease}, encoding debt as pathology.
+
+\subsubsection{Requirements}
+
+The ritual requires \textbf{Significant Time} (1 hour per Knot) and the presence of four elements:
+
+\begin{itemize}[noitemsep] \item \textbf{Blood:} Drawn from her own Cord-scars or Thorn-Pin punctures \item \textbf{Breath:} Expelled into water or onto cloth as the final seal \item \textbf{Water:} A bowl, rain-collecting cloth, or standing pool to receive the working \item \textbf{Fire:} A candle, hearth-coal, or lamp nearby to "heat" the humors \end{itemize}
+
+The Daughter prepares a \textbf{Vector}: a cloth soaked in blood-milk, a breath-prayer into water, or a length of her hair braided with feverfew and passed through flame. She then unweaves the Knots from her flesh-cord, transferring the stored Fatigue into the Vector. The Knots become a \textbf{Disease Clock} attached to the Vector.
+
+\subsubsection{Disease Progression}
+
+\begin{center} \begin{tabular}{@{}clp{8cm}@{}} \toprule \textbf{Knots} & \textbf{The Affliction} & \textbf{Effect} \ \midrule 1 & \textbf{The Shaking Ague} & Infected gains \textsc{Fatigue} 1 per day; cannot rest fully until cured. Visible tremors, teeth-chattering, milky sweat. \ \addlinespace 2 & \textbf{The Red Sweat} & Infected marks \textsc{Fatigue} 1 per scene; all social rolls at \textsc{Desperate} (fever, delirium, visible distress). Skin flushes with spider-web patterns. \ \addlinespace 3 & \textbf{The Milk-Pox} (or \textbf{Weeping Pox}) & Infected takes \textsc{Harm} 1 per day; skin weeps milky fluid (obvious witch-sign). On death, may rise as \textsc{Hollowed} instead of dying. \ \bottomrule \end{tabular} \end{center}
+
+\textit{Resistance:} Infected may roll \textbf{Spirit + Endurance} vs. \textsc{DV} 3 (1 Knot), 4 (2 Knots), or 5 (3 Knots) to resist initial infection. Once infected, the Disease Clock ticks automatically.
+
+\subsubsection{Transmission Vectors}
+
+The Vector must be introduced to the victim through domestic care:
+
+\begin{itemize}[noitemsep] \item \textbf{The Cloth:} A bandage applied to wounds, or a pillow pressed to the fevered \item \textbf{The Milk:} Blood-milk added to fresh dairy (the classic "poisoned" nourishment) \item \textbf{The Linen:} Sheets washed and returned "fresh" by the Daughter \item \textbf{The Breath:} A healing prayer whispered into the mouth of the sleeping \end{itemize}
+
+\subsubsection{Cure and Extraction}
+
+The disease is \textbf{not} cured by conventional medicine. It is \textbf{Obligation made flesh}, and persists until:
+
+\begin{enumerate}[noitemsep] \item \textbf{Transfer:} The Daughter touches the infected, draws the Knot back into her own flesh (clearing their disease but loading her own track), then spreads it to another host (often a prisoner, animal, or rival).
+
+\item \textbf{Sacrifice:} The infected must perform a \textbf{Subtle Sacrifice}—forgetting a loved one, surrendering a True Name, or surrendering a shadow—sufficient to clear the Knots that fuel the disease. The Daughter "nurses" them through this extraction, appearing to heal them while actually harvesting their debt. \end{enumerate}
+
+\begin{sidebar}[\textbf{The Horror of Care}] Because Daughters are already midwives, nurses, and hospice workers, they are \textit{the only ones who can safely tend the sick they create}. This creates a protection racket: \textit{"The fever burns, yes. I can ease it. But you owe the Chain a truth, and your shadow looks heavy. Let me take your grief, and the fever will break."} \end{sidebar}
+
+\subsubsection{The Risk of Solitude}
+
+If a Daughter performs a Spreading while \textbf{unwitnessed} (alone with the patient, no other Sister or Hollowed present), she risks \textbf{infection herself}. The Knots, unobserved by the coven's witness, fray and enter her own bloodstream.
+
+\textit{Mechanic:} Roll \textbf{Body + Resolve} vs. \textsc{DV} 4. On failure, she immediately contracts the disease she was spreading, and cannot clear it via normal sacrifice—it must be transferred to another or cured by a witness from the Chain.
+
+\subsubsection{Counter-Play}
+
+\begin{itemize}[noitemsep] \item \textbf{Fire:} Burning the Vector destroys the Knot instantly, releasing a \textsc{Miasma} (treat as \textsc{Area} hazard: all present take \textsc{Fatigue} 1). \item \textbf{The Witness:} A character with \textsc{The Witness} patron can "see" the Knot in the blood—diagnosing the disease as supernatural and forcing the Daughter to speak the \textsc{Said and Meant} (revealing she is the source). \item \textbf{Quarantine:} The Chain hates quarantine; it prevents the necessary movement of care. If a town is walled off, the Daughter inside must consume her own Knots or die. \end{itemize}
+
 
 \end{document}
 
