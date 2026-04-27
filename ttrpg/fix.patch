@@ -1,0 +1,186 @@
+diff --git a/fates_edge_grimoire.tex b/fates_edge_grimoire.tex
+index 1234abc..5678def 100644
+--- a/fates_edge_grimoire.tex
++++ b/fates_edge_grimoire.tex
+@@ -15,6 +15,8 @@
+ \usepackage{epigraph}
+ \setlength{\epigraphwidth}{0.7\textwidth}
+ \renewcommand{\epigraphflush}{flushright}
+ \usepackage{lettrine}
++\usepackage{booktabs}
++\usepackage{amssymb}
+ 
+ % Chapter styling
+ \titleformat{\chapter}[display]
+@@ -67,7 +69,7 @@
+ }
+ 
+ % Tags for magic
+-\newcommand{\tag}[1]{\textsc{#1}}
++\newcommand{\spelltag}[1]{\textsc{#1}}
+ \newcommand{\dangerous}[1]{\textcolor{red}{\textbf{#1}}}
+ \newcommand{\ritualtag}[1]{\textsc{#1}}
+ 
+@@ -81,7 +83,7 @@
+ % Custom environments
+ \newtcolorbox{patronbox}[2][]{
+     colback=gray!5,
+-    colframe=gray!70,
++    colframe=gray!70!black,
+     fonttitle=\bfseries,
+-    title=⧫ #2 ⧫,
++    title=$\blacklozenge$ #2 $\blacklozenge$,
+     enhanced,
+     attach boxed title to top left={yshift=-2mm,xshift=3mm},
+     boxed title style={colback=gray!20},
+@@ -1040,7 +1042,7 @@
+ \section{Tag Lookup Reference}
+ 
+ \begin{longtable}{@{} p{2.5cm} p{1.2cm} p{2.5cm} p{6cm} @{}}
+-\caption{TAG Reference}\\
++\caption{TAG Reference}\label{tab:tags}\\
+ \toprule
+ \textbf{Tag} & \textbf{DV mod} & \textbf{Category} & \textbf{Effect summary} \\
+ \midrule
+@@ -1048,45 +1050,45 @@
+ \multicolumn{4}{c}{{\bfseries \tablename\ \thetable{} -- continued}} \\
+ \toprule
+ \textbf{Tag} & \textbf{DV mod} & \textbf{Category} & \textbf{Effect summary} \\
+ \midrule
+ \endhead
+ \bottomrule
+ \endfoot
+ 
+ % Elemental TAGS
+-\tag{Burning} & +1 & Elemental & Ignite, heat, combustion, smoke \\
+-\tag{Freezing} & +1 & Elemental & Ice, slowing, brittle shatter, cold \\
+-\tag{Storm} & +1 & Elemental & Lightning, shock, arc, thunder \\
+-\tag{Stone} & +1 & Elemental & Walls, spikes, tremors, armor \\
+-\tag{Wave} & +1 & Elemental & Crushing water, currents, pressure \\
+-\tag{Wind} & +1 & Elemental & Levitation, gusts, deflection, push/pull \\
++\spelltag{Burning} & +1 & Elemental & Ignite, heat, combustion, smoke \\
++\spelltag{Freezing} & +1 & Elemental & Ice, slowing, brittle shatter, cold \\
++\spelltag{Storm} & +1 & Elemental & Lightning, shock, arc, thunder \\
++\spelltag{Stone} & +1 & Elemental & Walls, spikes, tremors, armor \\
++\spelltag{Wave} & +1 & Elemental & Crushing water, currents, pressure \\
++\spelltag{Wind} & +1 & Elemental & Levitation, gusts, deflection, push/pull \\
+ \midrule
+ 
+ % Force TAGS
+-\tag{Force} & +1 & Force & Kinetic power, shields, blasts, telekinesis \\
+-\tag{Area} & +1 & Force & Cone, circle, corridor, zone effect \\
+-\tag{Strike} & +1 & Force & Single target precision \\
+-\tag{Wall} & +1 & Force & Barrier or blockade \\
+-\tag{Bind} & +1 & Force & Restrain, hold, suspend, entangle \\
+-\tag{Dispel} & +1 & Force & Suppress magic, unravel ongoing effects \\
++\spelltag{Force} & +1 & Force & Kinetic power, shields, blasts, telekinesis \\
++\spelltag{Area} & +1 & Force & Cone, circle, corridor, zone effect \\
++\spelltag{Strike} & +1 & Force & Single target precision \\
++\spelltag{Wall} & +1 & Force & Barrier or blockade \\
++\spelltag{Bind} & +1 & Force & Restrain, hold, suspend, entangle \\
++\spelltag{Dispel} & +1 & Force & Suppress magic, unravel ongoing effects \\
+ \midrule
+ 
+ % Mind & Veil TAGS
+-\tag{Veil} & +1 & Mind/Illusion & Conceal, blur, illusion, silence \\
+-\tag{Scry} & +1 & Mind/Illusion & Reveal hidden, see distance, read traces \\
+-\tag{Memory} & +1 & Mind/Illusion & Erase, alter, restore memories \\
+-\tag{Command} & +1 & Mind/Illusion & Compel a short action (one word) \\
+-\tag{Fear} & +1 & Mind/Illusion & Panic, flee, break morale \\
++\spelltag{Veil} & +1 & Mind/Illusion & Conceal, blur, illusion, silence \\
++\spelltag{Scry} & +1 & Mind/Illusion & Reveal hidden, see distance, read traces \\
++\spelltag{Memory} & +1 & Mind/Illusion & Erase, alter, restore memories \\
++\spelltag{Command} & +1 & Mind/Illusion & Compel a short action (one word) \\
++\spelltag{Fear} & +1 & Mind/Illusion & Panic, flee, break morale \\
+ \midrule
+ 
+ % Life & Body TAGS
+-\tag{Mend} & +1 & Life/Body & Close wounds, restore flesh, reduce Harm 1 \\
+-\tag{Purify} & +1 & Life/Body & Remove poison, corruption, disease \\
+-\tag{Strengthen} & +1 & Life/Body & Enhance body, armor, senses (temporary) \\
+-\tag{Waken} & +1 & Life/Body & Counter sleep, paralysis, stun \\
+-\tag{Beast} & +1 & Life/Body & Speak with or influence animals \\
++\spelltag{Mend} & +1 & Life/Body & Close wounds, restore flesh, reduce Harm 1 \\
++\spelltag{Purify} & +1 & Life/Body & Remove poison, corruption, disease \\
++\spelltag{Strengthen} & +1 & Life/Body & Enhance body, armor, senses (temporary) \\
++\spelltag{Waken} & +1 & Life/Body & Counter sleep, paralysis, stun \\
++\spelltag{Beast} & +1 & Life/Body & Speak with or influence animals \\
+ \midrule
+ 
+ % Space & Motion (always dangerous)
+-\tag{Leap} & \dangerous{+2} & Space/Motion & Jump far, blink across short space (Near) \\
+-\tag{Fold} & \dangerous{+2} & Space/Motion & Short-range teleport, vanish–reappear (Far) \\
+-\tag{Gate} & \dangerous{+2} & Space/Motion & Long distance passage, open/close path \\
+-\tag{Gravity} & \dangerous{+2} & Space/Motion & Crush, lift, suspend, walk on walls/ceiling \\
++\spelltag{Leap} & \dangerous{+2} & Space/Motion & Jump far, blink across short space (Near) \\
++\spelltag{Fold} & \dangerous{+2} & Space/Motion & Short-range teleport, vanish–reappear (Far) \\
++\spelltag{Gate} & \dangerous{+2} & Space/Motion & Long distance passage, open/close path \\
++\spelltag{Gravity} & \dangerous{+2} & Space/Motion & Crush, lift, suspend, walk on walls/ceiling \\
+ \midrule
+ 
+ % Creation & Transformation (always dangerous)
+-\tag{Create} & \dangerous{+2} & Creation & Manifest mundane matter briefly (1 scene) \\
+-\tag{Summon} & \dangerous{+2} & Creation & Call a being or construct (see Summoning rules) \\
+-\tag{Transmute} & \dangerous{+2} & Creation & Turn one thing into another (temporary) \\
+-\tag{Animate} & \dangerous{+2} & Creation & Make objects act with intent (1 scene) \\
++\spelltag{Create} & \dangerous{+2} & Creation & Manifest mundane matter briefly (1 scene) \\
++\spelltag{Summon} & \dangerous{+2} & Creation & Call a being or construct (see Summoning rules) \\
++\spelltag{Transmute} & \dangerous{+2} & Creation & Turn one thing into another (temporary) \\
++\spelltag{Animate} & \dangerous{+2} & Creation & Make objects act with intent (1 scene) \\
+ \midrule
+ 
+ % Additional Utility TAGS
+-\tag{Sense} & +1 & Utility & Detect presence of a named tag/element \\
+-\tag{Reveal} & +1 & Utility & Unveil hidden, glamoured, or invisible things \\
+-\tag{Light} & +1 & Utility & Create illumination (glow, torch‑bright) \\
+-\tag{Shadow} & +1 & Utility & Deepen darkness, hide edges, obscure \\
+-\tag{Silence} & +1 & Utility & Suppress sound in zone or on target \\
+-\tag{Protect} & +1 & Utility & Reduce/deflect next harm (Armor 1) \\
++\spelltag{Sense} & +1 & Utility & Detect presence of a named tag/element \\
++\spelltag{Reveal} & +1 & Utility & Unveil hidden, glamoured, or invisible things \\
++\spelltag{Light} & +1 & Utility & Create illumination (glow, torch‑bright) \\
++\spelltag{Shadow} & +1 & Utility & Deepen darkness, hide edges, obscure \\
++\spelltag{Silence} & +1 & Utility & Suppress sound in zone or on target \\
++\spelltag{Protect} & +1 & Utility & Reduce/deflect next harm (Armor 1) \\
+ \midrule
+ 
+ % Reaction / Conditional
+-\tag{Counter} & +1 & Reaction & Interrupt a casting/ritual in its window \\
+-\tag{Reflect} & \dangerous{+2} & Reaction & Turn next targeted effect back on its source \\
+-\tag{Store} & \dangerous{+2} & Utility & Bank 1–2 successes in a vessel (once) \\
+-\tag{Curse} & \dangerous{+2} & Affliction & Attach hostile tag/clock to target \\
+-\tag{Bless} & +1 & Affliction & Grant favourable tag (luck, favour, ward-key) \\
++\spelltag{Counter} & +1 & Reaction & Interrupt a casting/ritual in its window \\
++\spelltag{Reflect} & \dangerous{+2} & Reaction & Turn next targeted effect back on its source \\
++\spelltag{Store} & \dangerous{+2} & Utility & Bank 1–2 successes in a vessel (once) \\
++\spelltag{Curse} & \dangerous{+2} & Affliction & Attach hostile tag/clock to target \\
++\spelltag{Bless} & +1 & Affliction & Grant favourable tag (luck, favour, ward-key) \\
+ \bottomrule
+ \end{longtable}
+ 
+@@ -1124,7 +1126,7 @@
+ \spell{Shadow Fold}{Shadow, Veil, Area}{3}{Blanket a Near zone in supernatural darkness for one scene.}{Minor Backlash – darkness clings to the caster; –1 die to social rolls until washed in sunlight.}
+ \spell{Wind Guide}{Wind, Sense, Scry}{4}{Send a whisper into the wind; it will reach a specific person you know within 1 mile.}{Minor Backlash – the wind answers back with a cryptic omen.}
+-\dangerous{\spell{Fate's Needle}{Fate, Strike, \dangerous{Divination}}{5}{Roll 3d10, keep the highest; that many successes auto-succeed on your next non‑magical action.}{Major Backlash – caster marks Harm 1 and begins a \textit{Fate Debt} clock [4].}}
++\spell{Fate's Needle}{Fate, Strike, \dangerous{Divination}}{5}{Roll 3d10, keep the highest; that many successes auto-succeed on your next non‑magical action.}{Major Backlash – caster marks Harm 1 and begins a \textit{Fate Debt} clock [4].}
+ 
+ \section{Ritual‑Grade Spells (DV 5+)}
+ \spell{Quick Gate}{\dangerous{Gate}, Leap, Self}{5}{Open a shimmering portal to a location you can see (Far range). You and one willing ally may step through.}{Major Backlash – portal destabilises; shunted 1d3 zones in random direction, Harm 1 (dimensional shear).}
+@@ -1633,7 +1635,7 @@
+ 
+ \section*{Hybrid Build Examples}
+ 
+-\subsection*The Spirit Cantor (Lethai Mask-Dancer + Summoner)}
++\subsection*{The Spirit Cantor (Lethai Mask-Dancer + Summoner)}
+ \textit{“I wear the mask of the ancestor. The ancestor sings through me.”}
+ 
+ Paths: Cantor + Summoner (ancestral spirits)
+@@ -1641,7 +1643,7 @@
+ Playstyle: Summon a wolf ancestor or selkie. Use the Cantor’s Inspire Chorus to buff allies while the spirit attacks. When the spirit acts against its nature, you tick your Corruption Clock instead of Leash – you are becoming the mask.
+ 
+-\subsection*The Psionic Witch (Silkstrand Hedge-Witch + Clairvoyance)}
++\subsection*{The Psionic Witch (Silkstrand Hedge-Witch + Clairvoyance)}
+ \textit{“I see the threads. I pluck them. Sometimes the thread plucks back.”}
+ 
+ Paths: Witch + Psion (Clairvoyance, Telepathy)
+
