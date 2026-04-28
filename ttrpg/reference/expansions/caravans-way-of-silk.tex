@@ -1,376 +1,350 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{fontenc}
-\usepackage{lmodern}
-\usepackage{enumitem}
-\usepackage{array}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{fancyhdr}
+% way_of_silk.tex
+\documentclass[11pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a5paper, margin=1in}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{microtype}
+\usepackage{ebgaramond}
 \usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{tabu}
 \usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=gray}
+
+\titleformat{\chapter}[hang] 
+{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
 
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\thepage}
-\lhead{Caravans: Way of Silk}
-\rfoot{Fate's Edge Expansion}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{\leftmark}}
+\fancyhead[LO]{\textit{\rightmark}}
+\renewcommand{\headrulewidth}{0.4pt}
 
-\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5em}
-
-\newcommand{\sectionbreak}{\clearpage}
+\newenvironment{lorebox}{\begin{quote}\small\itshape}{\end{quote}}
 
 \begin{document}
 
-\begin{center}
-{\LARGE \textbf{Caravans: Way of Silk}} \\
-\vspace{0.5em}
-{\large (Fate's Edge v0.1)} \\
-\vspace{1em}
-A plug-and-play module for long-haul trade, escort, and diplomacy across the Violet Steppe/Meadows and deserts toward Sihai and Dhahara. Built to run caravans of Fhara, Tulkani, Ashaani, Dhaharan, and Kuvani traders.
-\end{center}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\huge\bfseries The Way of Silk\par}
+\vspace{0.5cm}
+{\Large A Fate's Edge Expansion\par}
+\vspace{2cm}
+{\large Caravans, Cultures, and the Road That Binds the East\par}
+\vspace{1.5cm}
+\vfill
+\end{titlepage}
 
-\section*{Design Goals}
-\begin{itemize}[leftmargin=*]
-\item Convoy as character. A caravan has strings, tags, and clocks that bite back.
-\item From road to court. Scenes flow between trail hazards, border posts, and negotiation halls.
-\item Low bookkeeping. Track a few clocks (Distance, Danger, Supplies, Morale); let strings and orders do the heavy lifting.
-\item Use the core. Keep Position/DV, SB, clocks, Favor/Leverage/Exposure, Strings. No new dice math.
+\tableofcontents
+
+\mainmatter
+
+\chapter*{Preface: The Road Is a River}
+\addcontentsline{toc}{chapter}{Preface: The Road Is a River}
+
+The maps of the empire show the Way of Silk as a single line – a thread from the Amaranthine to the Eastern Ocean. Those who walk it know the truth: the Way is a river. It has shallows and rapids, tributaries and deltas. Its current carries not only silk and spice but also gods, spies, and the debts of a dozen kingdoms.
+
+This expansion is not a traveller’s gazetteer of “exotic” lands. It is a ledger of the road itself. The peoples who live along the Way – the Fhara, Kuvani, Tulkani, Sidhi, and the divided Dhaharan – are not backdrops. They are the toll‑keepers, the ferrymen, and the witness to every broken promise. Their etiquette is not decoration; it is a negotiation. Their patrons are not distant gods but forces that manifest in the creak of the cart and the smell of rain on dry dust.
+
+We have drawn from the stories of the Silk Road, the caravanserais of Persia, the steppe riders of Turan, the oasis courts of the great deserts. But we have not assembled a museum. The Dhaharan here is split between two administrations – the mountain viceroys and the coastal admiralty – because trade routes create contradictions, not harmonies. The Tulkani spread the cult of Ikasha not through temples but through knots tied in wagon cords. And the amulet Kalrantha, a shard of glass and brass, is a world‑shaking artifact only in the fear it inspires; its true power was sealed from the moment it was stolen.
+
+When you play along the Way of Silk, you will haggle over water‑rights, not holy relics. You will arbitrate disputes between a Fhara water‑clerk and a Kuvani remount master. You will sleep in caravanserais where the walls remember the last three murders. And if you are wise, you will listen when a Tulkani storyteller whispers: *“The road does not forgive a debt. It only reschedules it.”*
+
+The ninth measure – the silence, the empty space, the unsaid name – still applies.
+
+\chapter{The Road Itself}
+
+\section{Geography of the Way}
+
+The Way of Silk is not a single route but a braid of paths that shift with season, war, and the price of fodder.
+
+\begin{itemize}
+    \item \textbf{The Northern Way:} Ykrul steppe → Aeler passes → Sihai frontier. Cold, hard, and fast. Ykrul remount posts are spaced at a day’s ride; the Aeler keep the passes open with breath‑books and toll‑ledgers.
+    \item \textbf{The Central Oasis Route:} Fhara wells → Kuvani summer pastures → Dhaharan highlands. Slow and fraught with water politics. Each well has a keeper, each keeper a price.
+    \item \textbf{The Monsoon Coast:} Kahfagian ports → Ashaani desert fringe → Ayokha delta. Wet and dangerous. The Ashaani press‑gangs and the Kahfagian privateers share a love of false flags.
+    \item \textbf{The Himadri Spur:} Aeler mountain passes connecting Dhaharan plateau to the northern plains. A single pass is a kingdom; to control it is to tax half the silk trade.
 \end{itemize}
 
-\section*{Quickstart (2 minutes)}
-\begin{enumerate}[leftmargin=*]
-\item Make a Caravan Sheet (\S1) with Supplies [6], Morale [6], Condition [6], Heat [6] (optional) and 1--3 Strings (writs, water shares, waymarks).
-\item Pick a Route Leg (\S2) and mark Distance [4--8] and Danger [4--6]. Note Terrain and Season.
-\item Assign Roles to PCs/followers (\S3). Choose an Intent Dial for the leg: Speed / Stealth / Show.
-\item Run scenes from the Caravan Deck (\S6) and from fiction. All 1s generate SB; spend city/road flavored Social SB (\S5.4).
-\item End of Leg: Pay Upkeep, adjust tracks, trade at market, and advance projects/patrons.
+\section{Caravan Procedures}
+
+Use the travel clocks and leg structure from \textit{Caravans: Way of Silk}. Add the following Akilan‑style intent dial for the Way:
+
+\begin{itemize}
+    \item \textbf{Speed:} press camels, risk lameness.
+    \item \textbf{Stealth:} avoid bandits and inspectors.
+    \item \textbf{Show:} fly banners, gain respect, attract spies.
+    \item \textbf{Tribute:} travel as a bonded caravan of a patron; gain protection but pay a portion of all profits.
+\end{itemize}
+
+\subsection*{New Hazards of the Way}
+\begin{itemize}
+    \item \textbf{Dry well:} The oasis keeper is dead. Lose 1 Supply and roll on the Faction table.
+    \item \textbf{Forged seal:} Your papers are false; the local governor demands a bribe or a favour.
+    \item \textbf{Ghost caravan:} A train of skeletal camels passes at midnight. The next day, one of your beasts becomes a spirit for an hour.
+    \item \textbf{Debt collector:} Someone recognises a Tulkani vow‑cord you carry. They demand payment in story or a favour to be named later.
+\end{itemize}
+
+\chapter{Peoples of the Road}
+
+\section{Fhara – Oasis Caravaneers}
+
+\subsection*{Pillars}
+Water‑law, tent courts, coffee ritual, lamp‑lit contracts.
+
+\subsection*{Voice}
+Fhara speak with a dry precision, like a coin chipped to test its purity. They negotiate in couplets – a verse of praise, a verse of price.
+
+\subsection*{Etiquette Hooks}
+\begin{itemize}
+    \item \textbf{Offer coffee first} – Position +1 for trade talks.
+    \item \textbf{Speak in three cups} – first cup introduces, second cup bargains, third cup seals. Rushing the second is an insult (GM gains 1 SB).
+    \item \textbf{Never refuse a date} – the fruit is sacred to their well‑spirits. (Declining ends the conversation.)
+\end{itemize}
+
+\subsection*{Strings}
+Water‑share tablet, caravan court writ, escort oath, lamp‑sealed contract.
+
+\section{Kuvani – Steppe Hosts}
+
+\subsection*{Pillars}
+Remount lines, wind‑bands, felt tents, kurgan oaths.
+
+\subsection*{Voice}
+Kuvani speak as if the wind were an impatient audience – short, quick, and punctuated by gestures toward the horizon.
+
+\subsection*{Etiquette Hooks}
+\begin{itemize}
+    \item \textbf{Praise the horse before the rider} – DV –1 for all negotiations.
+    \item \textbf{Ride at the host’s pace} – never pass the guide. (Breaking this starts a 4‑clock “Insult to the Herd”.)
+\end{itemize}
+
+\subsection*{Strings}
+Remount chain mark, grazing compact, sky‑road song, kurgan oath (sealed with horsehair).
+
+\section{Tulkani – Itinerant Courts}
+
+\subsection*{Pillars}
+Caravan courts, tinkers, musicians, neutrality customs. Agents of Ikasha often walk among them.
+
+\subsection*{Voice}
+Tulkani speak in riddles and stories. A bargain is a parable; a threat is a lullaby. They never say “no” – only “that road is closed for repairs”.
+
+\subsection*{Etiquette Hooks}
+\begin{itemize}
+    \item \textbf{Tie a knot for each truth} – you may cancel one SB by adding a truth (a secret, a confession) to your vow‑cord.
+    \item \textbf{Never sleep outside the circle} – the wagon ring is sanctuary. (Leaving it at night gives the GM 1 SB to use for “something follows”.)
+\end{itemize}
+
+\subsection*{Strings}
+Vow‑bead, safe‑haven oath (neutral camp), caravan judge’s writ, dream‑cord (gift from Ikasha).
+
+\section{Sidhi – Coastal Cousins of Ashaan}
+
+\subsection*{Pillars}
+Sea trade, lighthouse courts, mixed ancestry (Vilikari and Ashaani), fierce independence.
+
+\subsection*{Voice}
+Sidhi speak with a musical lilt, their grammar a creole of Ashaani and Vilikari. They are direct, suspicious of strangers, and quick to laugh.
+
+\subsection*{Etiquette Hooks}
+\begin{itemize}
+    \item \textbf{Light a lamp before docking} – Position +1 in Sidhi ports.
+    \item \textbf{Never ask about ancestry} – the Ashaani slavery raids are a fresh wound. (Breaking this flips Audience from Warm to Cold.)
+\end{itemize}
+
+\subsection*{Strings}
+Lighthouse charter (right to harbour), port‑weight (trade advantage), freedman’s seal (proof of emancipation from Ashaan).
+
+\section{Dhahara – The Split Land (Preview)}
+
+\subsection*{The Northern Mountain Satrapies}
+Aeler viceroys rule the high valleys, collecting taxes in silver and tea. Persianate courts, elephant cavalry, fire‑shrines. The local Aeler have adopted Dhaharan dress and speak a creole of their own tongue. They are loyal to the Mountain Viceroy, who answers to the Aeler High King.
+
+\subsection*{The Southern Brass Coast}
+Administered by the Kahfagian Admiralty, coastal ports with rope‑ways, spice warehouses, and a growing navy. The Admiralty treats Dhahara as a “client state” – profitable, exotic, and restive. The Brass Coast is where Sidhi are most numerous.
+
+\subsection*{Two Loyalties Mechanic}
+Every Dhaharan character or faction has two tracks: \textbf{Loyalty to the Mountain} and \textbf{Loyalty to the Admiralty}. Adventures often force a choice between them; losing favour with one may gain favour with the other.
+
+\subsection*{Adventure Seed: The Viceroy’s Seal}
+The Mountain Viceroy’s seal has been stolen and sold to a Brass Coast merchant. Retrieve it before the Admiralty uses it to forge a treaty that would make the north a colony. The party is hired by a Sidhi dock‑master – who secretly works for the Breath‑less (Ashaani resistance) and has his own plans for the seal.
+
+\subsection*{Full expansion planned: \textit{Dhahara: Throne of Brass}.}
+
+\chapter{Patrons of the Way}
+
+\section{Regional Faces of Core Patrons}
+
+\subsection{The Traveler – Lord of the Forked Road (Eastern variant)}
+Known as \textbf{Jie Lu}, the Road that Asks. His shrines are empty crosses at crossroads; his ceremonies require walking barefoot from one gate to another.
+
+\textbf{Etiquette:} Before speaking of profit, name a place you have never been. (Cancels one social SB about greed.)
+
+\textbf{Rite – The Unlatched Gate:} Once per journey, declare a road closed; it becomes passable for your party only.
+
+\subsection{Ikasha – She Who Sleeps in the Caravan (Tulkani variant)}
+Among the Tulkani, Ikasha is the dream inside the wagon. She speaks through creaking wheels and the scent of rain on canvas. Her cult is spread through story‑ledgers – knots tied in a cord, each knot a secret told to a stranger.
+
+\textbf{Etiquette:} At dusk, whisper a fear into a cup of water. Pour it onto the road. (GM gains 1 SB, but you gain +1 Position on your next Stealth roll.)
+
+\textbf{Rite – The Wagon Circle:} When you camp in a circle, no spirit may cross the line of wheels without an invitation.
+
+\subsection{Mykkiel – The Judge of Galanina}
+In Ashaan, Mykkiel is not a distant arbiter but a direct antagonist to the Veiled Sisters. His followers are the secret courts of the Breath‑less, the judges who try the Sisters in absentia. Mykkiel demands that every oath be written and witnessed; the Sisters rule through unspoken terror. It is a cold war of ink versus silence.
+
+\textbf{Regional Rite – The Unsealed Testimony:} Once per session, you may compel a spirit to speak truth for one question, but the spirit’s former master learns your face. (Mark +2 Obligation)
+
+\subsection{Aveh – The Dust‑Rider (Dhaharan variant)}
+Here, Aveh is a djinn – a spirit of the sandstorm, the liberator of slaves, the patron of those who flee without paying. She appears as a rider without a face, offering an exit from any prison or contract. Her price is always the same: you must never close a door behind you.
+
+\textbf{Etiquette:} When you flee, leave a coin at the threshold. (The GM may convert the first SB of pursuit into a “missed footing” complication instead of harm.)
+
+\textbf{Rite – The Unlatched Chain:} Break one physical bond (shackle, rope, locked door) as a free action. (Mark +1 Obligation; the broken object may later reform.)
+
+\section{New Patrons of the Eastern Road}
+
+\subsection{Nasima – The Oasis That Moves}
+\paragraph{Domain:} Springs, mirages, mercy of water.
+\paragraph{Favored Deeds:} Sharing water, digging a well, guiding the lost without payment.
+\paragraph{Taboos:} Polluting a spring, selling water to the dying, lying about a well.
+\paragraph{Low Rite – The Mirage Cup (4 XP):} Pour water onto sand; know the nearest clean water for a scene. (Mark +1 Obligation)
+\paragraph{Standard Rite – Nasima’s Blessing (8 XP):} A waterskin becomes bottomless for a day. (Mark +2 Obligation)
+\paragraph{High Rite – The Oasis Pact (14 XP):} Create a temporary well that lasts a season. (Mark +3 Obligation; may attract unwanted spirits)
+
+\subsection{Div – The Whisper in the Ruin}
+\paragraph{Domain:} Ruins, forgotten knowledge, echoes of empire.
+\paragraph{Favored Deeds:} Uncovering forgotten truth, destroying false chronicles, letting ruins rest.
+\paragraph{Taboos:} Using a relic for personal gain, selling a historical secret to a tyrant.
+\paragraph{Low Rite – Echo of the Lost (4 XP):} Hear last words spoken in a ruin. (Mark +1 Fatigue)
+\paragraph{Standard Rite – Div’s Accounting (8 XP):} See invisible traces of past violence. (Mark +2 Fatigue)
+\paragraph{High Rite – The Unsealed Archive (14 XP):} Open a sealed door or memory; GM reveals one hidden truth. (Mark +3 Corruption)
+
+\subsection{Zun – The Shepherd of Scales}
+\paragraph{Domain:} Price, balance, fair exchange.
+\paragraph{Favored Deeds:} Correcting false weights, mediating trade disputes.
+\paragraph{Taboos:} Using counterfeit coin, undervaluing labour.
+\paragraph{Low Rite – Weight of Truth (4 XP):} Know if an object was obtained dishonestly. (Mark +1 Obligation)
+\paragraph{Standard Rite – Zun’s Ledger (8 XP):} Guarantee 10\% profit on a trade, but on a miss the profit turns to salt. (Mark +2 Obligation)
+\paragraph{High Rite – The Scale of Judgement (14 XP):} Mirror harm between two opponents for one day. (Mark +3 Obligation)
+
+\subsection{Al‑Qibla – The Stone That Looks West}
+\paragraph{Domain:} Prayer, direction, geometry of faith.
+\paragraph{Favored Deeds:} Building a shrine, drawing accurate maps, praying in a foreign land.
+\paragraph{Taboos:} Defacing a place of worship, selling misleading maps.
+\paragraph{Low Rite – The True Bearing (4 XP):} Always know direction to nearest shrine of your faith. (Mark +1 Fatigue)
+\paragraph{Standard Rite – Stone’s Sanctuary (8 XP):} Create a circle that grants +1 die to resist fear or charm. (Mark +2 Fatigue; you may not leave the circle.)
+\paragraph{High Rite – The Unerring Caravan (14 XP):} Cannot be lost for one leg; you must walk at the front and never look back. (Mark +3 Obligation)
+
+\subsection{Peri – The Fire That Hides}
+\paragraph{Domain:} Caves, hidden springs, the spark waiting.
+\paragraph{Favored Deeds:} Creating hiding places, burying secrets, escaping capture.
+\paragraph{Taboos:} Revealing a cache you were trusted with, using a hiding place to ambush a guest.
+\paragraph{Low Rite – The Hidden Door (4 XP):} One touched doorway becomes invisible to those without the password. (Mark +1 Fatigue)
+\paragraph{Standard Rite – Peri’s Cache (8 XP):} Bury an object; it cannot be found for one month. (Mark +2 Fatigue)
+\paragraph{High Rite – The Cave of Sleep (14 XP):} Create a temporary pocket that can hold six people for one night. (Mark +3 Obligation)
+
+\subsection{Khidr – The Green Man of the Ford}
+\paragraph{Domain:} Water crossings, thresholds of the river, rescue.
+\paragraph{Favored Deeds:} Saving drowning people, maintaining fords, helping travellers cross dangerous water.
+\paragraph{Taboos:} Asking payment from a corpse, letting a bridge collapse from neglect.
+\paragraph{Low Rite – The Hand of the Ford (4 XP):} Pull an ally from water as a reaction. (Mark +1 Fatigue)
+\paragraph{Standard Rite – Khidr’s Path (8 XP):} Allies gain +1 die to any roll crossing water. (Mark +2 Fatigue)
+\paragraph{High Rite – The Second Crossing (14 XP):} Once per campaign, revive an ally who died within sight of water – but they forget the last year. (Mark +3 Corruption)
+
+\subsection{Daeva – The Debt That Screams}
+\paragraph{Domain:} Unpaid vows, broken promises, interest that accrues.
+\paragraph{Favored Deeds:} Collecting a bad‑faith debt, destroying a false contract, exposing a usurer.
+\paragraph{Taboos:} Extending an unpayable loan, forgiving a debt without witness.
+\paragraph{Low Rite – The Tally of Silence (4 XP):} Know if a contract will be broken. (Mark +1 Corruption)
+\paragraph{Standard Rite – Daeva’s Mark (8 XP):} Curse an oath‑breaker with –1 die to all rolls until amends. (Mark +2 Corruption; may rebound.)
+\paragraph{High Rite – The Ledger of Wails (14 XP):} Haunt an oath‑breaker’s bloodline – they cannot sleep, fatigue track doubles. (Mark +3 Corruption; once per campaign.)
+
+\chapter{The Amulet of Kalrantha}
+
+\subsection*{What It Is}
+A small, tear‑shaped amulet of green glass, set in a brass frame that never tarnishes. Warm to the touch when someone nearby is about to make a decision.
+
+\subsection*{Its History (As Told by the Tulkani)}
+> *“Long ago, a prince of Dhahara stole this from a temple where no lamps were lit. He thought it would let him choose his own fortune. He wore it while he conquered a kingdom. The desert ate that kingdom. The prince’s name is not written anywhere, but his shadow is still seen in the Siq at dawn.”*
+
+\subsection*{The Truth (GM Only)}
+The amulet was created by the priests of that temple as a *trap* – a vessel for a demon of indecision. The prince, in his arrogance, released the demon into the world, but the amulet itself was designed to contain it. The disaster that swallowed his kingdom was not a curse; it was the demon using the prince as a puppet. Now the amulet is empty – or almost empty. A fragment of the demon remains, dormant, waiting for a wielder to make a fateful choice. The amulet does not grant wishes; it *offers suggestions*. The horror is that the characters will never know if the suggestion was their own or the amulet’s.
+
+\subsection*{Game Mechanics}
+The amulet is a Tier V artifact that appears to do almost nothing. Give it a small, consistent magical effect (e.g., once per session, the wearer may reroll a single die) and otherwise describe it with ominous language. Whenever the wearer makes a major decision, the GM may ask: *“Is that what you really want to do?”* – and then note the answer. The amulet’s true power is to amplify the consequences of choice, not to prevent them. If the party ever discovers the demon fragment, they may attempt to seal it again – a campaign‑long endeavour.
+
+\subsection*{Adventure Hook: The Empty Vessel}
+A Breath‑less agent in Ashaan claims the amulet can bind the Veiled Sisters’ greatest spirit. She is wrong – it can only hold a fragment – but the Sisters believe her. The party must reach the amulet before the Sisters do, then decide whether to use it, destroy it, or hide it again.
+
+\chapter{Adventure Framework}
+
+\section{Adventure Seeds (Ten Drop‑Ins)}
+\begin{enumerate}
+    \item \textbf{The Vanishing Oasis:} A well the party used last year is gone. The Fhara water‑clerk is dead. Find what erased it – and who is poisoning the remaining wells.
+    \item \textbf{The Tulkani Arbitration:} Two caravan masters invoke the Tulkani oath‑ring to settle a dispute. The party is the witness. The truth is that both are corrupt; a third party planted the evidence.
+    \item \textbf{The Forged Seal of Sihai:} A merchant’s sidhi seal is a forgery. The party must find the forger – who is a disgraced official hiding in the Brass Coast.
+    \item \textbf{The Ghost of the Great Caravan:} Once a year, a spectral caravan crosses the desert. The party follows it to a buried ruin where an old debt must be paid in memory.
+    \item \textbf{The Coffee Challenge:} A Taharkan prince offers a fortune to race his horse against an Oshiiran steed. The loser’s kingdom forfeits a pass.
+    \item \textbf{The Kiln That Dreams:} A Kuvani remount station has a pottery kiln that produces perfect horse‑charm jars – but the spirits inside are children. The maker is a desperate potter who lost a child to Ashaani slavers.
+    \item \textbf{The Lighthouse Court:} A Sidhi lighthouse captain is accused of smuggling. The party must defend her in a court of port‑masters – or help her escape if she really is guilty.
+    \item \textbf{The Brass Gate Bribe:} A high official of the Brass Gate is taking bribes from Ashaan. The party is hired to expose him – but the evidence is in a locked archive that Mykkiel judges as “inadmissible” without a witness.
+    \item \textbf{The Road That Sleeps:} A stretch of the Way has been cursed. Every traveller who sleeps there dreams of drowning. The cause is an old contract with Aveh that was never closed.
+    \item \textbf{The Ninth Cord:} A Tulkani storyteller offers to tell the party a secret for free – a ninth story that never ends. If they listen, they owe her a favour to be named later.
 \end{enumerate}
 
-\section{Caravan Sheet (Template)}
+\section{Showpiece: The Ghost of the Great Caravan}
+A multi‑session mystery across three legs. The party is hired to escort a Tulkani wise‑woman to a ruin where, according to legend, the first silk caravan was destroyed by a sandstorm. The spirits of that caravan re‑enact their death every year. The wise‑woman wants to steal the amulet Kalrantha from the ruins; she believes it can speak to the dead. In truth, the amulet is a decoy; the real treasure is a map that reveals a forgotten pass through the mountains. The map is written in the language of Mykkiel’s old court – and the Sisters will kill to keep it hidden.
 
-\begin{longtable}{|p{\textwidth}|}
+\chapter{GM Toolkit}
+
+\section{Travel Hazards Table (d12)}
+\begin{enumerate}
+    \item Dry well – lose 1 Supply.
+    \item Bandit embassy – they offer safe passage for a toll. Refuse and start a Pursuit clock.
+    \item Ghost caravan – pass peacefully, but one beast becomes a spirit for an hour.
+    \item Sandstorm – Navigator test DV 4 or lose 2 segments of progress.
+    \item Customs inspection – roll Papers or start a 4‑clock Audit.
+    \item Oasis court – a dispute over water rights; mediate or be delayed.
+    \item Elephant stampede – test Stealth or take Harm 1.
+    \item Mirage – a false well; lose 1 Supply and mark Fatigue.
+    \item Debt collector – someone recognises your Tulkani vow‑cord; pay in story or favour.
+    \item Ashfall – from distant volcano; all actions Desperate due to low visibility.
+    \item Singing dunes – the sand hums. A spirit offers a riddle; solve for a Clue.
+    \item The Ninth Hour – sunset lasts twice as long. The GM gains 1 SB to spend in the next scene.
+\end{enumerate}
+
+\section{Factions of the Way}
+\begin{tabu} to \linewidth {|X|c|c|c|X|}
 \hline
-\textbf{[CARAVAN NAME] --- Way of Silk Convoy} \\
-Kind: Fhara / Tulkani / Ashaani / Dhaharan / Kuvani / mixed \\
-Wagons \& Beasts: list (and tags) • Cohorts: outriders, guards, teamsters, cooks \\
-Strings (1--3): waymark beads • water-right shares • coin-weigh seals • border writ • festival license \\
-Tags (2--4): choose below (e.g., Fast Teams, Heavy Wagons, Shrine-Banner, Smuggler Compartments) \\
-Tracks: \\
-- Supplies [6]: food, fodder, lamp-oil, repair stock \\
-- Morale [6]: grit and confidence of crew and clients \\
-- Condition [6]: wear/tear to wagons, harness, and trains \\
-- Heat [6] (optional): attention from tollmen, raiders, and rumor \\
-Bandwidth (Orders per Leg): 2 + number of lieutenants (max 4) \\
-Projects (0--3): route or asset improvements (4--8) \\
-Patrons/Clients: names + what they expect this season \\
+\textbf{Faction} & \textbf{Influence} & \textbf{Stability} & \textbf{Crisis} & \textbf{Goal} \\
 \hline
-\end{longtable}
-
-\subsection{Caravan Tags (pick 2--4)}
-\begin{itemize}[leftmargin=*]
-\item Fast Teams (steppe ponies, spare yokes): Start Speed legs one Position higher.
-\item Heavy Wagons (armored sides): Expose/Rob against you starts one Position worse.
-\item Long Train (many clients): +1 Bandwidth, but a 1 on Operate may tick Heat +1 (gossip).
-\item Shrine-Banner (oath to a road-saint): Once/leg, Host Rite starts Dominant; breaking rites adds Exposure +1.
-\item Smuggler Compartments (false floors): Smuggle DV --1; on 1s, start Contraband Trail [4].
-\item Scout Eyes (trained outriders): Survey/Track DV --1 on open ground.
-\item Riverwise (barges/rafts carried/leased): Treat a canal/ford as neutral ground; Chase (boat) DV --1.
-\item Caravan Doc (apothecary wagon): Once/leg clear one minor Harm or tick Morale +1 after a rest scene.
-\item Ward-Woven Tents (sigils): Infiltrate against camp starts one Position worse.
-\end{itemize}
-
-\subsection{Beasts \& Wagons (examples)}
-\begin{itemize}[leftmargin=*]
-\item Steppe Travois: capacity 1; tag Fast; fragile in rocks.
-\item Desert Camels: capacity 2; tag Water-wise (Supplies loss --1 on drought checks once/leg).
-\item Dray Lizards: capacity 3; tag Sure-footed (mountains DV --1) but Hungry (Supplies --1 if a 1 shows in a danger scene).
-\item Covered Wagon: capacity 3; tag Shelter (Weather starts one Position higher).
-\end{itemize}
-
-\section{Route \& Leg Structure}
-
-A Route is made of Legs (days/weeks) between safe stops.
-
-\subsection{Set a Leg}
-\begin{itemize}[leftmargin=*]
-\item Distance [4--8]: how many progress segments to reach the next safe stop.
-\item Danger [4--6]: the leg's ambient pressure (raiders, terrain, ward-storms). GM advances on 1s or when fiction dictates.
-\item Terrain: steppe • desert • mountain pass • river flats • saltpan • reedmarsh.
-\item Season/Weather Clock [4--6]: rains • dust winds • fog • heat wave • freeze.
-\end{itemize}
-
-\subsection{Pre-Leg Intent \& Roles}
-
-Pick one Intent Dial (it sets default Position for travel scenes):
-\begin{itemize}[leftmargin=*]
-\item Speed: make Distance faster; Broker/Petition at stops start one Position worse (rushed).
-\item Stealth: avoid Danger; Distance advances only on strong hits.
-\item Show: parade banners; +1 Favor opportunities at stops; Heat +1 on any 1.
-\end{itemize}
-
-Assign Roles (\S3) to PCs/followers.
-
-\subsection{Running the Leg}
-\begin{itemize}[leftmargin=*]
-\item At each scene, use district/terrain effects and caravan tags to set Position/DV.
-\item Progress: On relevant hits (Survey, Navigate, Drive, Scout, Broker, etc.), tick Distance by effect.
-\item Complications: 1s → GM spends SB with Caravan SB options (\S5.4) or advances Danger/Weather.
-\item When Distance fills, the leg ends at a safe stop: run Upkeep \& Market (\S4).
-\end{itemize}
-
-\section{Roles in the Caravan}
-
-Assign any number; one person can hold two if fiction allows.
-\begin{itemize}[leftmargin=*]
-\item Caravan Master: final calls; Petition/Broker at posts/stops; can sacrifice 1 Favor to cancel one Social SB once/leg.
-\item Quartermaster: Supplies, repairs; rolls Wits+Tactics/Craft to prevent Condition ticks.
-\item Factor: contracts and customs; Audit/Broker; converts 1 Clue to Favor once/leg with proof.
-\item Scout/Vanguard: ride ahead; Survey/Track; can mark Ambush Signs (tag) once.
-\item Rearguard Captain: watches tail; Shield/Command during pursuit.
-\item Envoy/Interpreter: rites and tongues; Host Rite, Sway; cancels one tag flip in parley once/leg.
-\item Beast-Master: animal welfare; can clear one Supplies loss once/leg after a rest scene.
-\item Lore-Keeper: maps, omens; Research/Expose myths and ward lines; grants DV --1 vs Ward-storm once/leg.
-\end{itemize}
-
-\section{Upkeep, Market \& Stops}
-
-At leg's end (waystation, oasis, city gate, monastic house):
-
-\subsection{Upkeep}
-
-Pay one: coin • Favor • rite/appearance. If skipped → Supplies --1 and start Creditors [4] or Inspection [4].
-
-\subsection{Repairs \& Rest}
-\begin{itemize}[leftmargin=*]
-\item Spend coin/Favor or a scene to reduce Condition --1.
-\item A positive public moment (feast, song) clears Morale +1.
-\end{itemize}
-
-\subsection{Market (no heavy math)}
-
-Pick one cargo tag you carried (Common • Desired • Contraband • Sacred) and one market appetite tag at this stop (Hungry • Saturated • Pious • Lawful • Lax • Wary). Roll a single Broker/Petition action:
-\begin{itemize}[leftmargin=*]
-\item On strong hit: gain coin + Favor (narrow) or Standing with a local office.
-\item On hit: choose coin or Favor.
-\item On partial: you gain coin but tick Heat +1 or a rival gains a String.
-\item On miss: coin lost or cargo seized; start Litigation [4] or Rival Claim [4].
-\end{itemize}
-
-\subsection{Projects}
-
-If you worked a Project [4--8] this leg (e.g., ``Open a new oasis'', ``Bribe a toll chain''), mark it. On fill, add the new String or tag to the caravan.
-
-\section{Road Procedures \& DV Ladders}
-
-\subsection{Typical Actions on the Way}
-\begin{itemize}[leftmargin=*]
-\item Navigate (Wits+Survey): set course, find ford. DV 2--4 (terrain/weather).
-\item Drive/Handle Teams (Body+Tactics/Craft): keep pace or brake wagons. DV 2 steppe • 3 dunes • 4 pass road • 5 storm.
-\item Parley at Post (Presence+Sway/Diplomacy): get water, shelter, writs. DV 2--4; --1 with Strings.
-\item Outride/Screen (Body+Ride): intercept scouts; DV 3--5.
-\item Ambush/Break Ambush (Wits+Tactics): DV 3--5; +1 Position with Ambush Signs tag.
-\item Broker (Wits+Diplomacy/Streetwise): sell cargo or buy feed. DV 2--5; --1 with Coin-Weigh Seal.
-\end{itemize}
-
-\subsection{Chases \& Skirmishes (Open Ground)}
-
-Use the chase ladders from city play, substituting:
-\begin{itemize}[leftmargin=*]
-\item Foot/Horse: DV 2 (open steppe), 3 (gulley), 4 (broken ground), 5 (stampede field).
-\item Wagon: DV 2 (road), 3 (ruts), 4 (switchbacks), 5 (dune crest).
-\end{itemize}
-
-Complications on 1s: dust cloud, dropped axle-pin, panicked team, toll chain snaps.
-
-\subsection{Weather \& Terrain Pressures}
-
-When Weather advances or fiction says:
-\begin{itemize}[leftmargin=*]
-\item Sand/Dust Storm: Position --1 for sight-based actions; Supplies --1 unless shelter tag present.
-\item Monsoon Flood: fords impassable; Distance doesn't move without a strong hit; wagons risk Condition +1.
-\item Ward-Storm: spirits along the old way; treat as Desperate unless rites observed or you have Ward-Woven.
-\end{itemize}
-
-\subsection{Social SB on the Road (GM Menu)}
-\begin{itemize}[leftmargin=*]
-\item Leverage Leak: a client contract goes public → your Heat +1 or a rival gains a String.
-\item Camp Discord: tick Morale --1 unless a rest scene is spent.
-\item Toll Escalation: dues rise; accept a concession or start Litigation [4].
-\item Guide's Pride: your scout/officer demands a say; start Friction [4].
-\item Raider Rumor: band banners gather; Danger +1.
-\end{itemize}
-
-\section{The Caravan Deck (52-card)}
-
-Draw at scene start or between legs: Spade (Hazard), Heart (Person), Club (Complication), Diamond (Boons/Route).
-\begin{itemize}[leftmargin=*]
-\item Spades: dune ambush • flash-flood • cursed milepost • stampede • ward-storm • bridge collapse • tax spotters • plague rumor • raider parley • oasis poisoned • river pirates • mountain rockfall • Ace: border closes.
-\item Hearts: toll captain • road saint votary • rival caravan master • desert guide • steppe prince • customs factor • mummer troupe • shrine keeper • way-witch • exile noble • coin-weigh auditor • beast-doctor • Ace: a patron rides with you.
-\item Clubs: missing axle pin • scrip counterfeits • curfew at gate • water rights dispute • night theft • guide rivalry • forbidden cargo • client feud • fuel shortage • strike among teamsters • insulted chieftain • Ace: someone inside betrays you.
-\item Diamonds: fair wind • dry track • caravan fair • festival license • seal of safe-conduct • bridge opened • waymark rediscovered • oasis cleared • new buyer • debt forgiven • relic found • Ace: The Great Market convenes.
-\end{itemize}
-
-Clock Size by Highest Rank: 2--5 → [4], 6--10 → [6], J/Q/K → [8], A → [10].
-
-\section{Peoples of the Way (playset hooks)}
-
-Use these as cultural levers and Strings; tune to table canon. The analogues below are inspirations---not prescriptions.
-
-Inspirations (GM shorthand): Fhara = Arab traders • Kuvani = Steppe peoples • Tulkani = Roma • Dhaharan = India • Sihai = China • Ashaani = Egypt (imperial ambition) • Pereshi = inland Persians • Sidhi = Levant/North Africa.
-
-Portrayal guardrails (recommended):
-\begin{itemize}[leftmargin=*]
-\item Show internal diversity (class, creed, region) in each culture; avoid single-note caricatures.
-\item Emphasize craft, contracts, rites, and strings over mystification or criminal tropes.
-\item When using divination/omens, frame them as social rituals or legal custom, not exotic power.
-\item Let conflicts be about interests and institutions, not ``peoples are like this.''
-\end{itemize}
-
-\subsection{Fhara (Oasis Caravaneers)}
-
-Vibe: incense routes, water-law, tent courts, call-and-response poetry. \\
-Favored cargo: dates, glass lamps, wool, frankincense/myrrh. \\
-Strings: Water-Share Tablets, Caravan Law Oaths, Escort Writs. \\
-Etiquette: coffee/salt shared before business; three cups bind goodwill (hospitality rites).
-
-\subsection{Kuvani (Steppe Hosts)}
-
-Vibe: remount lines, felt tents, wind-bands across violet grass. \\
-Favored cargo: remounts, leatherwork, smoked meats. \\
-Strings: Pennon Right-of-Way, Remount Lines, Kurgan Oaths. \\
-Etiquette: ride-in gifts; never unsaddle before greeting; insult duels are ritualized races.
-
-\subsection{Tulkani (Itinerant Courts \& Crafts)}
-
-Vibe: master farriers, tinkers, enamelers, musicians; caravan courts arbitrate disputes. \\
-Favored cargo: metalwork, vibrant dyes, instruments. \\
-Strings: Caravan Court Writ, Bead-Chains of Passage, Safe-Haven Oath (neutral camp). \\
-Etiquette: arrive with song; camp neutrality is sacred. \\
-Notes for portrayal: highlight artistry, negotiation, and legal custom; avoid harmful stereotypes (e.g., criminalization, ``curses'').
-
-\subsection{Ashaani (River Imperium)}
-
-Vibe: reed boats, monumental rites, temple bureaucracy, imperial roads. \\
-Favored cargo: papyrus, natron, gold leaf, incense resins. \\
-Strings: Festival Licenses, Harbor Warrants, Procession Rights. \\
-Etiquette: offerings at household shrines; titles spoken before names.
-
-\subsection{Dhaharan (Monsoon Guilds)}
-
-Vibe: caravanserais, philosopher-merchants, monsoon trade cycles. \\
-Favored cargo: textiles, spices, glass bangles. \\
-Strings: Temple Tithe Stamps, Ghat Permits, Monsoon Schedules. \\
-Etiquette: remove shoes at shrines; red mark for auspice.
-
-\subsection{Sihai (Mandarinate of Porcelain)}
-
-Vibe: flood-dikes and tea hills, kiln towns, exam halls, mandarins. \\
-Favored cargo: porcelain, tea, lacquerware. \\
-Strings: Censor's Seal, Silk-House Contracts, Inundation Schedules. \\
-Etiquette: seal-stacking protocol; bows set order; chop-marks authenticate goods.
-
-\subsection{Pereshi (Plateau Satrapies)}
-
-Vibe: royal road relays, fire shrines, garden courts. \\
-Favored cargo: carpets, saffron, warhorses. \\
-Strings: Satrap Relay Posts, Fire-Temple Safe-Conduct, Waystation Keys. \\
-Etiquette: bread and salt; signet rings bear authority.
-
-\subsection{Sidhi (Littoral Ports)}
-
-Vibe: caravan ports and spice bazaars, mosaic guilds, pilgrim routes. \\
-Favored cargo: glass, citrus, purple dye, olive oil. \\
-Strings: Dockage Rights, Pilgrim Hostels, Mosaic-Guild Seals. \\
-Etiquette: clasp or cheek-kiss greetings; lamp-oil gifts seal deals.
-
-\section{Endpoints \& Borderlands (sketch)}
-
-\begin{itemize}[leftmargin=*]
-\item Sihai: eastern entrepôt of silk and porcelain; mandarinate courts, ritual permits, flood dikes. Strings: Censor's Seal, Procession Routes, Inundation Schedules.
-\item Dhahara: desert capital; satrap gardens, coin-weigh halls, pearl markets. Strings: Coin-Weigh Seals, Oasis Compacts, Escort Writs.
-\item The Violet Steppe/Meadows: windswept caravan grass; way-shrines and storm beacons; Events: stampede moons, steppe prince weddings.
-\end{itemize}
-
-\section{Cargo \& Clients}
-
-\subsection{Cargo Tags (choose 1--2 per lot)}
-\begin{itemize}[leftmargin=*]
-\item Common (grain, lamp-oil, linens)
-\item Desired (dyes, porcelain, rare herbs)
-\item Contraband (forbidden tracts, unsealed relics, untithed silks)
-\item Sacred (ritual items, saint bones, shrine bells)
-\end{itemize}
-
-Complications: Contraband adds Heat +1 on any 1; Sacred adds Obligation---a rite at arrival or Sanction +1 from its patron.
-
-\subsection{Client Types}
-
-House factor • shrine keeper • satrap's agent • guild compact • mummer troupe • exiled noble • legion paymaster • university procurer. \\
-Promised Terms: share of profit • safe escort • secrecy • ritual procession • price floor • exclusive rights. Turn any into a String on success.
-
-\section{Orders Between Legs}
-
-Each leg, choose up to Bandwidth orders:
-\begin{itemize}[leftmargin=*]
-\item Operate: push Distance; risk Condition or Supplies on 1s.
-\item Scout: pre-empt hazards; reduce Danger --1 or create Ambush Signs tag.
-\item Charm the Post: improve next stop's Position by one step; on 1s, Heat +1.
-\item Smuggle: move forbidden cargo; on hit, gain Leverage (1); on 1s, start Contraband Trail [4].
-\item Rite of the Road: Host rite; on hit, clear Morale +1 or cancel one Ward-Storm penalty this leg.
-\item Repair: reduce Condition --1.
-\end{itemize}
-
-\section{Generators \& Tables}
-
-\subsection{d66 Road Events}
-
-\begin{longtable}{llllll}
-11 stampede at dawn & 12 fallen way-shrine & 13 counterfeit scrip & 14 rain-bogged ford & 15 rival's poisoned rumor & 16 lantern-line snapped \\
-21 raider parley & 22 toll audit & 23 tax farmer replaced & 24 plague scare & 25 saint's procession & 26 comet omen \\
-31 guide feud & 32 axle break & 33 desert mirage & 34 trader wedding & 35 night theft & 36 ward-storm \\
-41 court courier & 42 border closes & 43 floodgate opens & 44 smugglers' cut & 45 lost child in dunes & 46 shrine demands tithe \\
-51 salt storm & 52 way-witch offer & 53 forest spirits & 54 bridge collapse & 55 coin-weigh strike & 56 inquisitor questions \\
-61 relic rumor & 62 caravan fair & 63 exile prince & 64 mountain rockfall & 65 sacred relic requests escort & 66 Great Market summons \\
-\end{longtable}
-
-\subsection{Rivals \& Threats}
-
-Band banners (Grey Hawks, Glass Jackals) • Toll captains on the take • Sand-road brotherhood splinters • Shrine zealots • Coin-weigh auditors • Ward-witches with a price • River pirates • Steppe princes with honor games.
-
-\subsection{Prices without Numbers (Boons)}
-
-On strong market hits, take two: coin, Favor (narrow), Standing, Clue, Leverage (1). On hits, take one. On partials, take coin but also Heat +1 or promise a String back to the buyer.
-
-\section{Example of Play (short)}
-
-Setup: Kuvani-led mixed caravan with Fast Teams and Scout Eyes runs the Steppe to Pass leg (Distance [6], Danger [4]; Season: dust winds [4]). Intent: Stealth. Roles: Scout/Vanguard, Quartermaster, Factor, Envoy.
-
-Scene 1 --- Survey the Dunes (Wits+Survey): Strong hit → Distance +2; a 1 shows → SB spent to tick Danger +1 (raider rumors).
-
-Scene 2 --- Parley at Pass-Beads (Presence+Sway): With Pass Bead-Chain (String), Position Dominant, DV 3. Hit → Distance +1 and Favor (narrow); partial → Heat +1 (a rival whispers).
-
-Scene 3 --- Ward-Storm: Weather clock fills; Envoy hosts a road rite under Shrine-Banner → cancels penalty; Quartermaster saves Supplies.
-
-End of Leg: Upkeep paid with coin; Market: sell Desired dyes in a Hungry pass town → strong hit = coin + Standing. Start Project Open Oasis Annex [6].
-
-\section{GM Reference (one page)}
-
-\begin{itemize}[leftmargin=*]
-\item Tracks: Supplies [6] • Morale [6] • Condition [6] • Heat [6] • Distance [4--8] • Danger [4--6] • Weather [4--6].
-\item Intent: Speed (faster Distance; worse petitions) • Stealth (safer; slower) • Show (Favor chances; Heat risk).
-\item Roles: Master • Quartermaster • Factor • Scout • Rearguard • Envoy • Beast-Master • Lore-Keeper.
-\item Orders: Operate • Scout • Charm the Post • Smuggle • Rite of the Road • Repair.
-\item SB Spends: Leverage Leak • Camp Discord • Toll Escalation • Guide's Pride • Raider Rumor.
-\item Market Boons: coin • Favor • Standing • Clue • Leverage (1).
-\end{itemize}
-
-\section*{Changelog}
-
-v0.1 --- First pass: caravan sheet/tags, leg structure, roles, upkeep/market, road procedures, deck, peoples of the Way, endpoints, cargo/clients, orders, generators, example, GM reference.
+Fhara Caravan Courts & 5 & 6 & 4 & Keep water law intact \\
+Kuvani Remount Leagues & 4 & 5 & 3 & Maintain grazing compacts \\
+Tulkani Mother‑Roads & 3 & 4 & 2 & Keep the Way neutral \\
+Sidhi Port Guilds & 5 & 4 & 6 & Stay free of Ashaan \\
+Dhaharan Viceroyalty & 6 & 5 & 5 & Balance Mountain and Admiralty \\
+\hline
+\end{tabu}
+
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+
+\vspace{2\baselineskip}
+\begin{lorebox}
+The road is a ledger. Every oasis is a credit, every broken wheel a debt. The Tulkani tie knots to remember who owes whom. The Fhara weigh water before they weigh silver. The Kuvani count the legs of their remounts as if the horses were coins. And the Sidhi – the Sidhi keep lighthouse lamps burning for the dead who still have not reached the shore.
+
+When you walk the Way of Silk, walk with empty hands. The last cup of water is never yours to keep. The ninth cord is never cut. And the amulet Kalrantha does not grant wishes – it only watches you decide.
+
+— \textit{Dusana of the Raven Road, at a caravanserai whose name she refused to give. The ink was cut with rain.}
+\end{lorebox}
 
 \end{document}
