@@ -1,0 +1,541 @@
+\documentclass[10pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{needspace}
+\usepackage{changepage}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Custom boxes
+\newtcolorbox{adventurebox}[1][]{colback=gray!10,colframe=black!70,fonttitle=\bfseries,title=#1}
+\newtcolorbox{mechanicbox}[1][]{colback=gray!15,colframe=gray!60,fonttitle=\bfseries,title=#1}
+\newtcolorbox{npcbox}[1][]{colback=blue!5,colframe=blue!50,fonttitle=\bfseries,title=#1}
+\newtcolorbox{clocksidebar}[1][]{colback=red!5,colframe=red!70,fonttitle=\bfseries,title=#1}
+\newtcolorbox{tipsbox}[1][]{colback=green!5,colframe=green!50,fonttitle=\bfseries,title=#1}
+\newtcolorbox{advancementbox}[1][]{colback=purple!5,colframe=purple!50,fonttitle=\bfseries,title=#1}
+
+% Title formatting
+\titleformat{\chapter}{\Huge\bfseries}{\thechapter}{20pt}{}
+\titleformat{\section}{\Large\bfseries}{\thesection}{15pt}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{12pt}{}
+
+% Headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Huge\bfseries Beyond Millhaven\par}
+\vspace{1cm}
+{\Large The Ford of Three Promises\par}
+\vspace{2cm}
+{\large A Starter Adventure for Fate's Edge\par}
+\vspace{1cm}
+{\normalsize \textit{Sequel to ``Blood and Silk''}\par}
+\vspace{2cm}
+{\normalsize Designed for 4–6 players, Transition from Rookie to Seasoned (30–60 XP)\par}
+\vspace{1cm}
+{\normalsize Game Master's Guide Included\par}
+\vfill
+{\normalsize Featuring: Strings • Faction Clocks • Mediation • Threshold Negotiation • Advancement\par}
+\vspace{0.5cm}
+{\normalsize Cover illustration by (placeholder)\par}
+\end{titlepage}
+
+\chapter*{How to Run This Adventure}
+\addcontentsline{toc}{chapter}{How to Run This Adventure}
+
+This adventure assumes your players have completed \textit{Blood and Silk} or have reached approximately 30–40 XP. They are no longer desperate exiles—they have proven themselves in Millhaven. Now they face a different kind of challenge: one that cannot be solved with a sword.
+
+\section*{The GM's Mindset}
+
+This is a \textbf{negotiation thriller}. Combat is possible, but it is a failure state. The drama comes from competing legitimate claims, not from villainy. Each faction at the ford has a grievance you can sympathize with. Your job is not to decide who is right—it is to make the players choose, and to make that choice matter.
+
+\begin{tipsbox}[GM Mantra]
+\textit{Set the DV low. Make the world react honestly. Let the pressure do the work.}
+\end{tipsbox}
+
+\section*{Pacing the Three Acts}
+
+\begin{itemize}
+\item \textbf{Act I (The Road to the Ford):} 45–60 minutes. Establish the mission, introduce the factions, arrive at the standoff.
+\item \textbf{Act II (The Three Promises):} 60–90 minutes. Meet each faction, uncover hidden needs, gather leverage.
+\item \textbf{Act III (The Mediation):} 45–60 minutes. The moot, the crossing, the resolution.
+\end{itemize}
+
+Total: 2.5–3.5 hours. If players are deeply engaged in negotiation, let it breathe. The clocks will keep pressure from stalling.
+
+\section*{Handling the Clocks}
+
+The \textbf{Ford Standoff} clock (8 segments) is your primary pacing tool. Advance it when:
+
+\begin{itemize}
+\item A negotiation fails outright (any faction walks away). \textit{+2 segments}
+\item A partial success creates new tension (a faction learns of the salt cache). \textit{+1 segment}
+\item The PCs take too long to act (two scenes without progress). \textit{+1 segment}
+\end{itemize}
+
+Retreat the clock when:
+
+\begin{itemize}
+\item The PCs broker a partial agreement (two factions agree on one point). \textit{-1 segment}
+\item The PCs uncover a hidden need and address it. \textit{-1 segment}
+\item The PCs propose a creative solution that genuinely surprises you. \textit{-1 segment}
+\end{itemize}
+
+If the clock fills before a resolution, the standoff collapses. Roll once on the table below to determine who strikes first—then run a desperate escape, not a full battle.
+
+\begin{center}
+\begin{tabular}{@{}l l@{}}
+\toprule
+\textbf{d6} & \textbf{First Striker} \\
+\midrule
+1–2 & Ykrul riders charge the bridge (honor insult). \\
+3–4 & Aeler engineers seal the bridge permanently (collapse risk). \\
+5–6 & Black Banner mercenaries loot both sides (Rusk's payday). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Advanced Tips for Tier II Play}
+
+Your players have survived Millhaven. They understand Boons, Clocks, and the basic dice loop. Now you can introduce:
+
+\begin{itemize}
+\item \textbf{Strings as currency.} Remind players they can offer their existing Strings as leverage. A Ykrul safe-conduct from a previous adventure might sway Sarnai.
+\item \textbf{Bonds in negotiation.} When a PC invokes a Bond with another PC during a social roll, grant +1 die. The memory of shared struggle is leverage.
+\item \textbf{Debt as a resource.} Rusk's price is a \textbf{Debt clock} (4 segments). The PCs can pay it now (sacrifice a String or asset) or accept the debt and have it come due later.
+\end{itemize}
+
+\begin{mechanicbox}[Tier II Transition]
+This adventure is designed to bridge Rookie (30–40 XP) and Seasoned (41–90 XP). By the end, each PC should have:
+\begin{itemize}
+\item Earned 8–12 XP (see Chapter: Advancement)
+\item Gained at least one new String
+\item Made a meaningful choice about their character's relationship to power
+\end{itemize}
+\end{mechanicbox}
+
+\section*{If the Players Get Stuck}
+
+The most common stall is analysis paralysis—too many options, no clear path. If the negotiation stalls for more than ten minutes:
+
+\begin{enumerate}
+\item Advance the Ford Standoff clock by 1. \textit{``The Ykrul grow restless. A rider spurs her horse in a tight circle.''}
+\item Have an NPC make an offer. \textit{``Tema pulls you aside. 'I can pay Rusk with the salt cache—but I'll need your word you'll protect the seeds.'''}
+\item Introduce Morvain early. The Ecktorian prefect is a catalyst; his arrival forces factions to choose sides.
+\end{enumerate}
+
+\section*{When to Roll (and When Not To)}
+
+Not every conversation needs a roll. If a PC asks a straightforward question and the NPC has no reason to lie, just answer. Reserve rolls for:
+
+\begin{itemize}
+\item Persuading a faction to change a stated position
+\item Detecting hidden needs (Insight)
+\item Hiding the salt cache (Deception)
+\item Interpreting ancient charters (Lore)
+\end{itemize}
+
+When a player rolls, state the Position and DV before the dice hit the table. \textit{``This is Controlled, DV 3. Sarnai respects directness.''}
+
+\section*{Safety and Consent}
+
+This adventure deals with honor, shame, and the weight of grudges. Some players may have strong reactions to themes of blood-debt, public apology, or coercive negotiation. Use Lines and Veils as your table requires. The X-card is always available.
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+The road from Millhaven leads west, toward the passes that separate Acasia from the Ecktorian frontier. Beyond the garrison town of Ironbound, the mountains give way to the Violet Steppe. And at the edge of the steppe, where the last stone bridge crosses the River Adurn, stands the Valvano Ford.
+
+Once the seat of a fallen ducal house, now a contested crossing where Ykrul herders, Aeler toll-keepers, and Vilikari merchants stare at one another across a span of grey stone.
+
+You are no longer the desperate exiles who stumbled into Millhaven. You have proven yourselves. But the road does not care about your reputation. The road only cares about the price of crossing.
+
+The caravan master Sorian Tabb offers you honest work: escort a cargo of grain seed to the monastery of St. Arilan in the upper Karasus basin. The pay is modest. The real prize is a Letter of Introduction—a chance to leave Acasia behind and start anew among the Vilikari river lords.
+
+But the ford is closed. A silence furlong seals the east bank. A keystone clause locks the bridge. And a Black Banner mercenary counts coin while three factions refuse to move.
+
+No one can break the deadlock. No one, perhaps, except those who have already learned that every choice has a price—and that some debts are worth incurring.
+
+\section*{Design Philosophy}
+
+This adventure is a negotiation thriller. Combat is possible but treated as a failure of diplomacy. The themes—legitimacy, debt, silence, and the weight of oaths—emerge through play, not exposition. Each faction has a legitimate grievance. No one is evil. The players' choices create the resolution.
+
+\section*{What You Need}
+
+\begin{itemize}
+\item The Fate's Edge Core Rules
+\item The travel deck (or substitute card draws)
+\item A handful of tokens for tracking Strings and Clocks
+\item (Optional) The pre-generated characters from \textit{Blood and Silk}
+\end{itemize}
+
+\chapter{The Valvano Ford}
+
+\section{Geography}
+
+The Valvano Ford lies at the western edge of the Acasian marches, where the last Aelerian foothills give way to the Ecktorian frontier. A single stone bridge—Aeler-built, Vilikari-chartered—spans the River Adurn. Three routes converge here:
+
+\begin{itemize}
+\item \textbf{The Western Road (from Acasia):} Through the Aelerian foothills, past the garrison town of Ironbound.
+\item \textbf{The Steppe Track (north-east):} Ykrul seasonal pastures along the Violet Steppe's edge.
+\item \textbf{The River Path (south-east):} Along the Karasus toward Vilikari riverlands.
+\end{itemize}
+
+Control of the ford is control of access. The Aeler built the bridge and hold the maintenance charter. The Ykrul claim the right of undisturbed passage for their herds—a right older than the charter. The Vilikari need the route open for trade with Acasia and the west. And the Ecktorian prefect at Ironbound watches from a distance, ready to declare the whole crossing an imperial road.
+
+\begin{mechanicbox}[Geography as Leverage]
+The ford's position between Acasia, Ecktoria, and the Ykrul steppe means every faction has a different legal claim. Players who pay attention to geography can argue: ``The Ecktorians have no authority here—this is Acasian soil, and Acasia recognizes the Vilikari charter.'' (Presence + Lore, DV 4, grants +1 die to negotiations with Voss or Tema.)
+\end{mechanicbox}
+
+\section{The Standoff}
+
+When the party arrives, they find a tense silence. On the east bank, Ykrul riders have raised a \textit{silence furlong}—a ritual border of rope and bone. No speech, no crossing. They demand the Aeler remove iron spikes from the bridge that lame horses, and the Vilikari pay a blood-price for a herder killed last season.
+
+On the west bank, Aeler engineers have locked the bridge's winch with a rune-sealed padlock. Factor-Emissary Voss cites a charter granting his guild the right to collect tolls. He will open the bridge only if the Ykrul recognize the charter and the Vilikari stop smuggling salt by the lower ford.
+
+Between them, the Vilikari factor Tema and a Black Banner captain named Rusk argue over a ledger. Tema's caravan carries grain seed for a famine-relief monastery—and a hidden cache of untaxed salt. Rusk cares only about payment.
+
+\section{Factions at a Glance}
+
+\begin{center}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Faction} & \textbf{Leader} & \textbf{Key Demand} \\
+\midrule
+Ykrul Grey Ash & Khatun Sarnai & Remove iron spikes; blood-price for her nephew \\
+Aeler Guild & Factor Voss & Recognize charter; stop salt smuggling \\
+Vilikari & Tema (merchant) & Open ford; preserve cargo secret \\
+Black Banner & Captain Rusk & Get paid (loyalty to highest bidder) \\
+Ecktorian (wild card) & Prefect Morvain & Impose imperial tariff; undermine locals \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\chapter{Act I: The Road to the Ford}
+
+\section{Opening Scene: Sorian's Offer}
+
+The party meets Sorian Tabb in a waystation called the Muddy Stilt, two days west of Millhaven. He is a Vilikari caravan master with a broken nose and honest eyes.
+
+\begin{adventurebox}[Sorian Tabb]
+\textit{``I've run this route a dozen times. Never seen the ford locked like this. The Ykrul say they'll wait till the snows; the Aeler say they'll wait till the charter expires; the Vilikari say they'll hire more swords. Me? I just need these seeds to the monastery before the first frost.''}
+
+He offers each PC a letter of introduction to a Vilikari lord—a chance to start over. The pay is three silver marks each, plus a share of any trade negotiated.
+\end{adventurebox}
+
+The players may ask questions. Sorian knows:
+
+\begin{itemize}
+\item The Ykrul clan is the Grey Ash, led by Khatun Sarnai. Her nephew was killed by a Vilikari caravan that fled without paying wergild.
+\item The Aeler factor is Voss, a mid-level bureaucrat under audit by the high council. He cannot afford to lose face.
+\item The Black Banner captain is Rusk, a pragmatist. He will side with whoever pays his company's arrears.
+\item There is a fourth interested party: Prefect Morvain from Fort Ironbound. He has no authority at the ford, but he carries papers that could create one.
+\end{itemize}
+
+\begin{tipsbox}[Establishing Stakes]
+Before the first scene, ask each player: \textit{``What does your character want more than coin?''} Write the answers down. You will use them to tempt hard choices in Act III.
+\end{tipsbox}
+
+\section{Travel Leg: The Western Road}
+
+If the GM wishes to include a short journey, draw one card from the Acasia or Ecktorian travel deck. Suggested hazards:
+
+\begin{itemize}
+\item \textit{Ecktorian Inspection} (Club): A patrol from Ironbound demands papers. The party must bluff, bribe, or fight.
+\item \textit{Ykrul Scouts} (Club): Riders circle the caravan at dusk, testing their nerve. A successful Presence + Command (DV 3) sends them away respectful.
+\end{itemize}
+
+Success on the travel leg grants +1 die to future negotiations with the faction the PCs impressed (e.g., bribing the Ecktorian patrol earns a +1 die with Morvain).
+
+\section{Arrival at the Ford}
+
+Describe the scene:
+
+\begin{quote}
+\textit{The river is slate-grey under a low sky. On the far bank, a rope strung between two cairns bears bleached horse-skulls—the silence furlong. Behind it, Ykrul riders sit motionless on shaggy ponies. On this side, the stone bridge rises, its winch sealed with a brass lock etched in Aeler runes. A Vilikari wagon train huddles under canvas, and a scarred man in a black surcoat leans on a two-handed sword.}
+\end{quote}
+
+Sorian introduces the party as neutral mediators. \textit{``You have no flag,'' he says, ``so you can talk to all of them without making an enemy.''}
+
+\begin{mechanicbox}[Reading the Scene]
+A successful Wits + Notice (DV 3) reveals:
+\begin{itemize}
+\item The Ykrul riders are restless—their horses keep shifting weight. \textit{(Sarnai is under pressure from her clan.)}
+\item The Aeler lock has fresh tool marks. \textit{(Voss has been tampering with his own seal, testing it.)}
+\item Rusk's sword is notched. \textit{(He has seen recent combat—he is not just posturing.)}
+\end{itemize}
+Each observation grants +1 die to the first social roll against that faction.
+\end{mechanicbox}
+
+\chapter{Act II: The Three Promises}
+
+\section{Meeting the Ykrul}
+
+\textit{Etiquette:} Leave two exits. Offer salt before asking questions. Never speak the name of a dead ancestor without permission.
+
+\begin{npcbox}[Khatun Sarnai]
+\textit{``My nephew bled in that river. The Vilikari threw coins at his body and rode on. I do not want silver. I want them to say his name aloud, here, where the water can hear it.''}
+\end{npcbox}
+
+\noindent \textbf{Her demands:}
+\begin{enumerate}
+\item Remove the iron studs from the bridge (they injure horses).
+\item A public acknowledgment of fault from the Vilikari caravan, plus a wergild of one horse and a saddle.
+\end{enumerate}
+
+\noindent \textbf{Her hidden need:} Sarnai's clan is losing status among the Ykrul. A public apology would restore her honor. She does not care about the grain seed.
+
+\noindent \textbf{Mechanical hooks:}
+\begin{itemize}
+\item A successful Wits + Insight (DV 3) reveals her true need.
+\item If the PCs offer a \textit{salt oath} (a minor Ykrul ritual), they gain a \textbf{String}: \textit{Ykrul safe-conduct} (one free passage through Grey Ash land).
+\item A PC with the Kon'reh Tactics talent (see Appendix) gains +1 die to all social rolls with Sarnai.
+\end{itemize}
+
+\begin{tipsbox}[Playing Sarnai]
+Sarnai is not a villain. She is a leader whose authority is slipping. Speak with quiet intensity. When she talks about her nephew, let the anger fade into grief. She will respect PCs who speak the same way—direct, honest, and unwilling to posture.
+\end{tipsbox}
+
+\section{Meeting the Aeler}
+
+\textit{Etiquette:} Present copper, not iron. State your name and purpose in two ledgers (said / meant). Never rush.
+
+\begin{npcbox}[Factor-Emissary Voss]
+\textit{``The bridge is Aeler work. The charter is signed by the Vilikari crown. That is law. I will open the lock when the Ykrul accept the law and the Vilikari stop using the lower ford to cheat the toll.''}
+\end{npcbox}
+
+\noindent \textbf{His demands:}
+\begin{enumerate}
+\item The Ykrul must formally recognize the Aeler charter (a symbolic gesture).
+\item The Vilikari must pay a salt tariff on all cargo passing the ford.
+\end{enumerate}
+
+\noindent \textbf{His hidden need:} Voss is being audited. He must show revenue. A creative solution—such as a temporary toll waiver with a reopening clause—allows him to save face.
+
+\noindent \textbf{Mechanical hooks:}
+\begin{itemize}
+\item A Wits + Lore (DV 4) reveals the forgotten clause in the charter that waives tolls for ``humanitarian grain.''
+\item A successful negotiation grants a \textbf{String}: \textit{Aeler keystone courtesy} (reduce tolls by half once).
+\end{itemize}
+
+\begin{tipsbox}[Playing Voss]
+Voss is a bureaucrat, not a warrior. He speaks in paragraphs. He will never agree to something that makes him look weak to his auditors. Frame every concession as a ``temporary measure'' or ``pilot program.'' He needs to save face more than he needs the tolls.
+\end{tipsbox}
+
+\section{Meeting the Vilikari}
+
+\textit{Etiquette:} Speak plainly. Name the price you are willing to pay. Never make an offer you cannot repeat in public.
+
+\begin{npcbox}[Tema and Captain Rusk]
+Tema: \textit{``I carry medicine, not profit. The monastery will feed a valley. If this ford stays closed, children will starve.''}
+Rusk: \textit{``I carry a contract. Pay my company what it's owed, and I'll open the road myself. Point me at the lock.''}
+\end{npcbox}
+
+\noindent \textbf{Tema's demands:}
+\begin{enumerate}
+\item Open the ford immediately.
+\item Keep the cargo's true nature secret (the grain seed).
+\end{enumerate}
+
+\noindent \textbf{Her hidden secret:} The wagon contains a small cache of untaxed salt, intended to finance the monastery's repairs. If the Aeler discover it, they will seize the entire caravan.
+
+\noindent \textbf{Rusk's demands:} Get paid. He does not care by whom.
+
+\noindent \textbf{Mechanical hooks:}
+\begin{itemize}
+\item A successful Presence + Deception (DV 3) hides the salt from the Aeler inspector.
+\item A successful Presence + Command (DV 4) convinces Rusk to accept a promise of future payment (creating a \textbf{Debt clock}, 4 segments).
+\item Helping Tema grants a \textbf{String}: \textit{Vilikari trading credit} (discount on black market goods).
+\end{itemize}
+
+\begin{advancementbox}[Debt as a Mechanic]
+Rusk's Debt clock (4 segments) is an obligation the party can call in later. When the clock fills (because they ignore the debt or fail to pay), Rusk may appear at an inopportune moment demanding payment—or sell the debt to a less scrupulous collector. This is an excellent hook for future adventures.
+\end{advancementbox}
+
+\section{The Wild Card: Prefect Morvain (Optional)}
+
+If the GM wishes to add a fourth pressure—or if the negotiation stalls—Morvain arrives on a lean horse, wearing Ecktorian blue.
+
+\begin{npcbox}[Prefect Morvain]
+\textit{``This ford lies on an old imperial road. The empire is dead, but its tariffs are not. I will declare this crossing a royal highway—and collect the tolls myself—unless the parties reach an agreement by dawn.''}
+\end{npcbox}
+
+Morvain is bluffing. His papers are old and of doubtful legality, but no one wants to test them in court. The PCs can expose his bluff (Wits + Lore, DV 5) or bribe him (one String or a notable asset). Success removes him from the scene; failure turns him into a fourth claimant.
+
+\begin{tipsbox}[Using Morvain]
+Introduce Morvain if the negotiation stalls or if the players are enjoying the political complexity. He is a catalyst whose presence forces the other factions to choose: unite against the outsider, or lose everything to imperial decree.
+\end{tipsbox}
+
+\chapter{Act III: The Mediation}
+
+\section{The Moot Circle}
+
+The GM sets a \textbf{Ford Standoff} clock (8 segments). The clock advances when the PCs fail a negotiation or take sides too aggressively. It retreats when they broker a partial agreement or defuse tension with a clever idea.
+
+The players must propose terms that satisfy at least two factions. Possible resolutions include:
+
+\begin{itemize}
+\item \textbf{The Wergild Solution:} The Vilikari pay a symbolic blood-price (a horse and a saddle). The Aeler remove the iron spikes. The Ykrul open the ford. (Costs: Vilikari lose one asset, Ykrul gain honor.)
+\item \textbf{The Charter Solution:} The Aeler recognize the Ykrul's seasonal crossing rights in exchange for a fixed annual payment from the Vilikari. The Ykrul accept the charter as legitimation. (Costs: Aeler lose toll revenue, Vilikari pay a fee.)
+\item \textbf{The Stone Clause:} The PCs discover the forgotten humanitarian clause in the Aeler charter. They force Voss to honor it. The Ykrul and Vilikari celebrate; the Aeler become hostile (but not violent).
+\item \textbf{Morvain's Gambit:} The PCs accept the prefect's ``protection.'' The ford becomes an imperial crossing, and all three local factions lose. The party gains an enemy in each.
+\end{itemize}
+
+\begin{mechanicbox}[Running the Moot]
+This is a structured social encounter. Each faction's representative speaks, then the PCs respond. Use a simple 3-success system: the players need 3 successful social rolls (using any combination of Sway, Command, Insight, or Lore) before 2 failures to broker a deal. Partial successes count as successes but generate a Story Beat you can spend to add a complication (e.g., ``Tema agrees to the wergild, but Rusk demands his payment now, not later.'').
+\end{mechanicbox}
+
+\section{The Crossing}
+
+Once terms are agreed, the party must escort the caravan across the ford. This is a \textbf{skill challenge} (3 successes before 2 failures). Suggested skills:
+
+\begin{itemize}
+\item Navigation (to read the ford and avoid hidden currents)
+\item Command (to keep nervous draft animals calm)
+\item Diplomacy (to smooth last-minute objections)
+\item Survival (to spot a safe path if the Aeler lock remains)
+\end{itemize}
+
+Complications on failure:
+
+\begin{itemize}
+\item A Ykrul rider challenges the party's honor (a brief duel, resolved in one roll). The PC may yield (mark Fatigue 1) or fight (Body + Melee, DV 3). Winning impresses the Ykrul; losing costs 1 String.
+\item A bridge plank breaks (Body + Athletics, DV 3 to save the cargo). Failure costs 1 Supply.
+\item Rusk demands a last-minute bribe (spend 1 Boon or lose a String).
+\end{itemize}
+
+\chapter{Resolution and Strings}
+
+\section{Outcomes}
+
+\begin{itemize}
+\item \textbf{Clean Success:} The caravan crosses without violence. Each PC gains 2 Strings (one from two factions they aided). All three factions remain neutral or friendly.
+\item \textbf{Costly Success:} The caravan crosses, but one faction is left unsatisfied. That faction becomes a recurring antagonist. PCs gain 1 String each.
+\item \textbf{Failure:} The ford remains closed. Sorian's caravan turns back. The party must choose a new route (through Ironbound, with Ecktorian scrutiny) or abandon the mission. The GM may offer a rescue by one faction in exchange for a future obligation.
+\end{itemize}
+
+\section{Gaining Strings}
+
+Sample Strings earned in this adventure:
+
+\begin{description}
+\item[Ykrul Safe-Conduct:] Once, when traveling through Grey Ash territory, the bearer may ignore one hostile encounter or gain +1 Position on a navigation roll.
+\item[Aeler Keystone Courtesy:] The bearer may reduce any Aeler toll by half, once per session.
+\item[Vilikari Trading Credit:] The bearer may buy or sell one item at a black-market price without rolling, once per journey.
+\item[Black Banner Marker:] Captain Rusk owes you a favor. He will provide a squad of mercenaries for one scene, but he will remember if you abuse it.
+\end{description}
+
+\section{The Letter of Introduction}
+
+If the mission succeeds, Sorian gives each PC a sealed letter addressed to \textbf{Lord Halvek of the Karasus}. The letter does not promise a position—only an audience. But that audience is a foothold, and a foothold is more than an exile has.
+
+\chapter{Character Advancement}
+
+Your players have survived Millhaven and brokered peace at the Valvano Ford. They are ready to leave the Rookie tier behind.
+
+\section{Experience Points}
+
+Award XP at the end of the adventure:
+
+\begin{itemize}
+\item \textbf{Attendance:} +2 XP
+\item \textbf{Successful negotiation (any resolution):} +2 XP
+\item \textbf{Broker a deal without violence:} +2 XP bonus
+\item \textbf{Discover all three hidden needs (Sarnai's honor, Voss's audit, Tema's salt):} +2 XP
+\item \textbf{Defuse Morvain without combat:} +1 XP
+\item \textbf{Each PC's personal goal (from Act I):} +1–2 XP
+\end{itemize}
+
+Total: 8–12 XP per PC, bringing Rookie characters (30–40 XP) to the low end of Seasoned (41–90 XP).
+
+\section{Spending XP}
+
+Remind players of their options:
+
+\begin{itemize}
+\item Raise an Attribute (new rating ×3 XP, downtime = new rating days)
+\item Raise a Skill (new level ×2 XP, downtime = new level days)
+\item Acquire a Minor Asset (4 XP, 1 day downtime)
+\item Learn a Minor Talent (2–4 XP)
+\item Convert 2 Boons to 1 XP (once per session, max 2 XP)
+\end{itemize}
+
+\begin{advancementbox}[From Rookie to Seasoned]
+At Seasoned tier (41+ XP), characters begin to attract regional attention. Their reputation from Millhaven and the Valvano Ford will precede them. Consider asking each player: \textit{``What do people say about you now?''} Their answer becomes a new String or Bond.
+\end{advancementbox}
+
+\section{Converting Pre-Generated Characters}
+
+If using the \textit{Blood and Silk} pre-gens, suggest the following advancement paths:
+
+\begin{itemize}
+\item \textbf{Kestra (Scholar):} Raise Arcana from 2 to 3 (6 XP). Gain the \textit{Ritual Master} Talent (8 XP). Acquire a \textit{Library} Asset (8 XP).
+\item \textbf{Marcus (Blade):} Raise Melee from 3 to 4 (8 XP). Gain the \textit{Silver Tongue} Talent (4 XP). Acquire a \textit{Trusted Mount} Asset (4 XP).
+\item \textbf{Sariel (Shadow):} Raise Stealth from 2 to 3 (6 XP). Gain the \textit{Beast-Tongue} Talent (8 XP). Acquire a \textit{Spy Network} Asset (8 XP).
+\item \textbf{Elena (Healer):} Raise Medicine from 2 to 3 (6 XP). Gain the \textit{Healing Light} Talent (8 XP). Acquire a \textit{Healing Sanctuary} Asset (8 XP).
+\end{itemize}
+
+\section{Bonds and Evolution}
+
+Ask each player to revisit their Bonds from \textit{Blood and Silk}. Have any changed? A Bond like ``We both made choices that cost us our place in Silkstrand'' might evolve into ``We chose to stay when we could have run.'' This evolution can grant +1 XP as a milestone award.
+
+\chapter{Appendix: Pre-Generated Additions}
+
+For players continuing from \textit{Blood and Silk}, add the following option:
+
+\begin{npcbox}[Temur ``The Oath-Keeper'' (Ykrul exile)]
+\textit{``My grandfather's name was Valvano. The Fenwoods buried it. I carry only the braid.''}
+\begin{itemize}
+\item \textbf{Attributes:} Body 3, Spirit 2
+\item \textbf{Skills:} Melee 2, Survival 2, Command 1
+\item \textbf{Bond:} With Marcus – ``He judged me by my deeds, not my grandfather's name.''
+\item \textbf{Talent:} \textit{Kon'reh Tactics} – Once per scene, declare ``I count two exits'' to improve Position by one step when retreating or disengaging.
+\item \textbf{Asset:} \textit{Oath-Braid} – A woven cord that can be traded for Ykrul hospitality (one free night's shelter).
+\end{itemize}
+\end{npcbox}
+
+\chapter{Optional: Patron Interference}
+
+A GM who wishes to introduce magic—or foreshadow the wider world—may include a \textbf{Trow} at the ford.
+
+\begin{quote}
+\textit{A hooded figure sits on a stone in midstream, smoking a pipe that gives no smoke. ``The charter has a line you haven't read. The silence furlong has a knot you haven't loosened. I can show you—for a price.''}
+\end{quote}
+
+The Trow offers to reveal a hidden clause or a loophole in exchange for a \textit{memory}, a \textit{name}, or a \textit{promise to be named later}. A PC who accepts gains +2 dice on the next negotiation but marks an \textbf{Obligation} clock (4 segments). When the clock fills, the Trow returns to collect.
+
+\begin{tipsbox}[Magic as Leverage]
+If your table includes a Runekeeper, Cantor, or Invoker, use the Trow to introduce the concept of Obligation as a story engine. The PC's Patron may also appear in dreams after the ford, commenting on their choices—and adding a new clause to their personal ledger.
+\end{tipsbox}
+
+\chapter*{Epilogue: The Name on the Stone}
+\addcontentsline{toc}{chapter}{Epilogue: The Name on the Stone}
+
+If the players look closely at the bridge's keystone, they will see, worn almost smooth, the name \textbf{Valvano}. No one speaks it. No one explains. But the old ford remembers what the new lords tried to bury.
+
+The road continues.
+
+\end{document}
