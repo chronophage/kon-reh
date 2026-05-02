@@ -26,7 +26,7 @@
 \usepackage{caption}
 \captionsetup{font=small, labelfont=bf}
 
-% ===== Links and indexing =====
+% ===== Links, bookmarks, and cross‑referencing =====
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -35,9 +35,18 @@
   citecolor=gray,
   pdfborder={0 0 0}
 }
+\usepackage{bookmark}       % Improved PDF bookmarks
+
+% ===== Indexing (run makeindex after pdflatex) =====
 \usepackage{imakeidx}
-\makeindex
+\makeindex[columns=3, title=Index, options=-s index_style.if % optional style file
+           ]
 \indexsetup{level=\section*, toclevel=section}
+
+% ===== Optional glossary (uncomment if needed) =====
+%\usepackage[ acronym, nonumberlist, nopostdot ]{glossaries}
+%\makeglossaries
+%\loadglsentries{glossary_entries}   % external file
 
 % ===== Colours (muted, accessible) =====
 \usepackage{xcolor}
@@ -47,23 +56,39 @@
 \definecolor{green5}{RGB}{235,255,235}
 \definecolor{gray75}{RGB}{80,80,80}
 \definecolor{gray5}{RGB}{245,245,245}
+\definecolor{yellow75}{RGB}{200,150,0}
+\definecolor{yellow5}{RGB}{255,245,225}
+\definecolor{red75}{RGB}{180,0,0}
+\definecolor{red5}{RGB}{255,235,235}
 
-% ===== Single consistent infobox =====
+% ===== Consistent infobox for examples, warnings, asides =====
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable}
 \newtcolorbox{infobox}[1]{
-  colback=blue5!white,
-  colframe=blue75!black,
+  colback=blue5,
+  colframe=blue75,
   fonttitle=\bfseries,
   title=#1,
   breakable,
   arc=0pt
 }
-
-% ===== Optional: simple note box (can be used rarely) =====
 \newtcolorbox{notebox}{
   colback=gray5,
   colframe=gray75,
+  breakable,
+  arc=0pt
+}
+\newtcolorbox{warningbox}{
+  colback=red5,
+  colframe=red75,
+  breakable,
+  arc=0pt
+}
+\newtcolorbox{fatebox}[1]{
+  colback=yellow5,
+  colframe=yellow75,
+  fonttitle=\bfseries,
+  title=#1,
   breakable,
   arc=0pt
 }
@@ -101,19 +126,29 @@ To view a copy of this license, visit:
 
 \mainmatter
 
-\include{sections/01_intro.tex}
-\include{sections/02_core_procedures.tex}
-\include{sections/03_managing_resources.tex}
-\include{sections/04_magic.tex}
-\include{sections/05_campaign_design.tex}
-\include{sections/06_advanced_gm_tools.tex}
-\include{sections/07_enhanced_gm_play.tex}
-\include{sections/08_epic_tier.tex}
-\include{sections/09_lore.tex}
-\include{sections/10_running_scenarios.tex}
-\include{sections/11_appendix.tex}
+% ============================================================
+%  Section files – each chapter is a separate .tex file
+%  (user will provide the content of these files)
+% ============================================================
 
-\backmatter 
+\include{sections/01_intro}                % GM Introduction
+\include{sections/02_core_procedures}      % Core Procedures & GM Mindset
+\include{sections/03_managing_resources}   % Resources: Supply, Fatigue, Boons, XP
+\include{sections/04_magic}               % Magic and Backlash (adjudication)
+\include{sections/05_campaign_design}      % Campaigns, Clocks, Consequences
+\include{sections/06_advanced_gm_tools}    % Advanced Techniques (SB, deck, factions)
+\include{sections/07_enhanced_gm_play}     % Enhanced GM Play & Threat Pool
+\include{sections/08_epic_tier}           % Tier IV–V Epic Adventures
+\include{sections/09_lore}                % The Known World (Lore Compendium)
+\include{sections/10_running_scenarios}   % Example Play & GM Survival Guide
+\include{sections/11_appendix}            % Appendices (tables, optional rules, etc.)
+
+\backmatter
+
+% Print index
 \printindex
 
-\end{document} 
+% Optional glossary print (if used)
+%\printglossaries
+
+\end{document}
