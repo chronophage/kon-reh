@@ -1,0 +1,440 @@
+\documentclass[10pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{paper=b5, margin=1.2in, top=1.5in, bottom=1.5in}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage[hang]{footmisc}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+}
+
+% Custom colours
+\definecolor{chainGrey}{RGB}{80,80,80}
+\definecolor{threadRed}{RGB}{160,40,40}
+\definecolor{hearthBrown}{RGB}{120,80,60}
+\definecolor{parchment}{RGB}{245,240,225}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RE,LO]{\textit{The Sister Coven – Daughters of the Unbroken Chain}}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot[CE,CO]{\textcolor{chainGrey}{— \textit{The soup is always free. The price never is.} —}}
+
+% Chapter style
+\titleformat{\chapter}[display]
+  {\normalfont\Huge\bfseries\color{threadRed}}
+  {\titlerule[1pt]\vspace{4pt}\Large\chaptertitlename\ \thechapter}
+  {0pt}
+  {}
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+
+% Encounter box (optional)
+\newenvironment{storybox}
+  {\begin{quote}\itshape\small\setlength{\parskip}{0.5em}}
+  {\end{quote}}
+
+\begin{document}
+
+% --- TITLE PAGE ---
+\titlepage
+\begin{center}
+\vspace*{2cm}
+{\huge\bfseries\color{threadRed} The Sister Coven}\\[0.8cm]
+{\Large\itshape Daughters of the Unbroken Chain}\\[1.5cm]
+\rule{0.6\textwidth}{1pt}\\[0.5cm]
+\emph{A Faction Expansion for Fate's Edge}\\[1cm]
+\vfill
+{\small \textcolor{chainGrey}{Under the lamp, bread and salt — and a whisper that the mountains cannot silence.}}\\[0.2cm]
+{\small \textcolor{chainGrey}{The ink is fresh. The road is south. The Hollowed is watching.}}
+\end{center}
+\newpage
+
+% --- FRONT MATTER ---
+\chapter*{What This Is}
+\addcontentsline{toc}{chapter}{What This Is}
+This expansion details the Daughters of the Unbroken Chain, a mendicant coven bound to the High Mother – a threshold entity sustained by accumulated debt, subtle sacrifice, and the silent witness of the hollowed. They appear as midwives, hospice nurses, deathbed attendants, and keepers of alms‑houses. They offer the mercy of warm hands and the comfort of final words.
+
+But the mercy has a ledger. The comfort has a price.
+
+In these pages, Game Masters will find:
+\begin{itemize}
+\item The philosophy and hierarchy of the Chain.
+\item Mechanics for the Cord – a personal Obligation track for player Daughters.
+\item The Hollowed as followers and witnesses.
+\item Rivalries with other Patrons (Malachai, Ikasha, Inaea, Isoka, and others).
+\item Player options for Runekeeper and Witch Daughters.
+\item Sample Rites, adventure hooks, and GM tools.
+\item A confession from a midwife who serves the Chain.
+\end{itemize}
+
+\emph{The soup is always free. The price never is.}
+
+\tableofcontents
+\newpage
+
+% --- MAIN CONTENT ---
+\chapter{What the Daughters Are (And What They Are Not)}
+
+The Daughters of the Unbroken Chain are not a cult in the conventional sense. They have no temples, no holy texts, no recruitment drives. They are a \emph{system} – an invisible infrastructure of obligation woven into the fabric of birth, illness, and death across dozens of cultures.
+
+\section{The Cord as Ledger}
+The \textbf{Cord} is their ledger: a vast, non‑physical tangle of grey thread that records every secret whispered, every grief accepted, every name surrendered. The \textbf{High Mother} sits at its centre, weaving the threads into patterns that shape dynasties, cull the weak, and prop up the powerful.
+
+\section{Two Faces of the Chain}
+Some Sisters embrace the power. They see themselves as surgeons of society, cutting away the dead weight, nurturing worthy bloodlines.
+Others feel \emph{trapped} – bound by oaths they swore in desperation, unable to leave because the Chain knows their truest secrets.
+A few have tried to flee; those who succeeded are now hunted. Most remain, hollowed by degrees, tending the dying while the Chain tightens around their own throats.
+
+\section{The Unspoken Ethic}
+The Daughters do not preach. Their ethics are encoded in practices, not scriptures:
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{Debt is the only immortality.} What you owe outlives you; what you are owed defines your descendants.
+\item \textbf{Mercy is a futures contract.} Every kindness is a thread. The one who accepts may not pay; their children will.
+\item \textbf{The weak must be culled – but gently.} A bad death (alone, unmourned) breeds hungry ghosts. A Daughter ensures a \emph{good death} – and harvests the debt.
+\item \textbf{Witness is power.} To see a thing is to own it. To record a name is to possess it. The Hollowed are perfect witnesses: they cannot lie, and they cannot speak.
+\item \textbf{No thread is ever cut.} Debts are not forgiven; they are \emph{transferred} – to a child, to a rival, to a village. The Chain never breaks; it only changes shape.
+\end{enumerate}
+
+\chapter{Hierarchy – The Three Offices}
+
+The Coven is organised in triads of three offices. These are functions, not fixed ranks. A Sister may serve in one role for a decade, then shift to another. The High Mother is the only fixed position; she who sits at the Cord's centre is effectively immortal.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{>{\bfseries}l p{0.35\textwidth} p{0.35\textwidth}}
+\toprule
+Office & Function & Sacrifice \\
+\midrule
+Keeper of the Door (Weaver) & Sets terms, knocks, enters. Midwife, hospice intake, first contact. & Must never be alone. Always witnessed by another Sister or a Hollowed. \\
+Keeper of the Name (Widow) & Remembers debts, records names, holds the coven's collective memory in her flesh. & Must keep fresh the memory of one dead thing. If she forgets, she loses a finger (added to the Cord). \\
+Keeper of the Price (Winter) & Collects debts, carries Thorn‑Pins, decides when obligations come due. The only Office allowed to lie to outsiders. & Cannot feel heat. Fire burns unnoticed until she is ash. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A full coven consists of three Sisters, one of each Office, bonded by a shared Hollowed. Larger covens are multiple triads, each reporting to a senior Winter.
+
+\vspace{0.5cm}
+\noindent\textbf{The High Mother} is not an Office; she is the Cord's avatar. She no longer walks the world. Her whispers guide the Winters; her dreams shape the pattern. To meet her is to enter the \textit{House Without Doors} – a liminal space at the centre of the Chain – and to leave behind a piece of yourself.
+
+\chapter{The Cord – Mechanics}
+
+A Daughter (player character) has a \textbf{Cord Clock} – a track representing her accumulated debt to the Chain.
+
+\section{The Cord Clock [6]}
+Mark a segment when:
+\begin{itemize}
+\item She accepts a major debt from a dying person (grief, a secret, a name) → +1
+\item She performs a Rite of the High Mother without a Hollowed witness → +1
+\item She fails to collect a promised debt within a season → +1
+\item She disobeys a direct order from a Winter → +2
+\item She helps someone escape the Chain (knowingly) → +3
+\end{itemize}
+
+\noindent\textbf{When the Cord Clock fills (6/6):} The High Mother demands payment. The Sister must perform one of:
+\begin{itemize}
+\item \textbf{Harvest a life} (cause a patient to die a “good death” – the debt is paid in soul‑stuff).
+\item \textbf{Give up a memory} (permanent, choose a significant NPC or event to forget).
+\item \textbf{Cut a thread} (sever a relationship – lose a Bond with another PC or a significant ally).
+\item \textbf{Accept a Scar} (permanent visible mark – all social rolls are Desperate with those who know the Chain).
+\end{itemize}
+After payment, the Cord Clock resets to 0, but the Sister's \textbf{Obligation} to the High Mother increases by 1 permanent segment (cannot be cleared except by leaving the coven – see \textit{Breaking the Chain}).
+
+\section{The Hollowed}
+Every Sister receives a Hollowed – a child or animal whose heart was removed and replaced with a bundle of grey thread and the ash of a forgotten name. The eyes are sewn open with silver wire. They do not eat, sleep, or age. They witness every working.
+
+\noindent\textbf{Mechanics:}
+\begin{itemize}
+\item The Hollowed is a \textbf{Cap 2 Follower} that never needs upkeep. It cannot fight, speak, or be targeted by mundane attacks (spirits can harm it).
+\item While within Near range, you count as having \textbf{Soft Witness} (improve Position by one step for any Rite of the High Mother).
+\item If your Hollowed is destroyed, you immediately mark +1 Obligation and your Cord Clock ticks +2. You may acquire a new Hollowed after a significant ritual (4 XP and a major sacrifice – a memory, a scar, or a life).
+\end{itemize}
+
+\section{Flesh‑Codex}
+A Daughter's Rites are not stored in a book; they are tattooed into her flesh. These tattoos writhe, weep, and occasionally bleed.
+\begin{itemize}
+\item You do not need a Codex asset. Your body is the Codex.
+\item Your Rites cannot be stolen or destroyed (short of flaying you alive).
+\item Anyone who sees your tattoos can attempt a Wits + Lore test (DV 3) to deduce which Patron and which Rites you carry. Inquisitors can identify you on sight.
+\end{itemize}
+
+\chapter{The Conspiracy – Propping and Culling Dynasties}
+
+The Daughters are the hidden hand of succession across dozens of noble houses, merchant dynasties, and patron‑bound bloodlines.
+
+\section{How It Works}
+A Sister attends a dying matriarch. She listens to the matriarch’s secrets, her fears about her heirs, her desire to see the family continue – or her wish to see it burn. The Sister offers a \textit{good death}: peace, release, the promise that the matriarch's will is done. In exchange for a \textit{thread} – a name, a memory, a future favour.
+
+The thread is woven into the Cord. Later, when an heir contests the inheritance, a Daughter appears – not as a witch, but as a neutral nurse who “happens” to recall the dying matriarch's final words. Or a key document is “found” in a Daughter's alms‑house. Or a rival family suffers a sudden plague, tended by Sisters who ensure a very efficient death rate.
+
+\section{The Goal}
+Not mere wealth, but \textbf{balance}. The Chain prefers stable, predictable dynasties – those that will pay their debts quietly. It culls unstable houses (those prone to war, to Inquisitor purges, to wild magic) by letting them fade through “natural” death rates. It props up houses that are useful: those that sponsor Daughters' hospices, that ignore the Chain's activities, that provide a steady stream of unclaimed bodies for the Hollowing.
+
+\section{Player Hooks}
+\begin{itemize}
+\item A PC learns that their own noble house has been \textit{managed} by the Chain for generations. Their grandmother's death was not natural; it was a \textit{collection}.
+\item A rival house is collapsing from a “mysterious wasting disease” – actually a targeted curse delivered through a Daughter's soup. The party must decide whether to expose the Chain or exploit the weakness.
+\item A Winter approaches the party with an offer: help her cull an upstart magocracy that threatens to destabilise the region, and the Chain will forget a debt the party owes (from a previous adventure).
+\end{itemize}
+
+\chapter{Rivalries with Other Patrons}
+
+The Daughters are not allied with major Patrons; they exist in tension with many, and outright hostility with some.
+
+\section{Malachai – Addiction vs. Generational Debt}
+Malachai offers \emph{immediate} relief – a silver coin that buys sea‑lungs, a thorn that makes arrows strike true. The Daughters offer \emph{deferred} relief. A Daughter sees a Malachai‑touched addict as a wasted asset – they burn out before their debt can compound. \textbf{Conflict:} Daughters refuse to tend Malachai's followers; Malachai sends cursed items into Daughter‑run hospices.
+
+\section{Ikasha – Latent Debt vs. Hidden Potential}
+Ikasha is the patron of \emph{latent} debt – obligations not yet called, secrets not yet spoken. The Daughters deal in \emph{active} debt – threads already woven. They see Ikasha's followers as hoarders of potential. \textbf{Conflict:} A Daughter and an Ikasha cultist both seek the same dying person. The Daughter wants the death to be witnessed and recorded; the Ikasha wants it silent. Neither can act openly; a cold war of whispers.
+
+\section{Inaea – Web of Mercy vs. Web of Debt}
+Inaea weaves mercy – threads that comfort, knots that bind gently. The Daughters weave debt. They are the dark mirror of Inaea's covenant. \textbf{Conflict:} An Inaean silk‑weaver and a Daughter both tend the same community. The weaver establishes a Wedding Line (sanctuary); the Daughter establishes a Hospitality Toll (every meal incurs a debt). The party must mediate – or choose which web to support.
+
+\section{Isoka – Transformation vs. Perpetuation}
+Isoka teaches shedding – the old self dies, the new self emerges. The Daughters teach perpetuation – the debt continues, the bloodline continues. A Daughter sees Isoka's shedding as waste; Isoka sees the Chain as stagnation. \textbf{Conflict:} An Isoka cult is trying to help a noble heir “shed” their identity – escape the family, abandon their debts. The Daughters have a vested interest in keeping that heir bound.
+
+\section{Minor Rivalries}
+\begin{itemize}
+\item \textbf{The Pale Shepherd:} Respectful distance. Both tend thresholds between life and death. The Shepherd guides; the Daughters harvest.
+\item \textbf{The Witness:} Hostile. The Witness records truths; the Daughters hide, omit, and occasionally destroy records. A Witness‑bound Runekeeper is a natural enemy.
+\item \textbf{The Traveler:} Neutral. Daughters maintain waystation hospices – useful to travellers. The Traveler's followers respect their hospitality, even if they dislike the cost.
+\end{itemize}
+
+\chapter{Player Options – Daughter of the Chain}
+
+Players may join the Chain as a \textbf{Runekeeper} (most common) or a \textbf{Witch}. Invokers cannot become full Daughters (they carry too many conflicting Symbols), but they can be contractors.
+
+\section{Daughter of the Chain (Runekeeper Path)}
+\subsection*{Requirements}
+Spirit 3+, Body 2+. Lore (Thresholds) 1+. Talents: \textit{Disciplined Body} (3 XP, Monk) and \textit{Grey Thread} (new, 4 XP).
+
+\subsection*{Patron}
+The High Mother (treated as a Patron for Obligation). Her Rites appear below and in \textit{Witches of Fate's Edge}.
+
+\subsection*{Unique Mechanic – Cord as Obligation}
+Your Obligation to the High Mother is tracked separately from other Patrons. You cannot swear to another Patron without breaking your vow to the Chain.
+
+\subsection*{Talents}
+\begin{itemize}
+\item \textbf{Grey Thread (Minor, 4 XP):} You receive a Hollowed (Cap 2). While it is within Near range, your first Rite of the High Mother each scene costs -1 Obligation (min 0) and you count as having Soft Witness.
+\item \textbf{Cord of Flesh (Major, 8 XP, req Grey Thread, Body 3+):} Your body stores Fatigue as invisible knots. Convert up to Body rating points of Fatigue into \textit{Knots}. You appear uninjured. You may spend a Knot as 1 Boon for any Rite of the High Mother. Between sessions, if you have any Knots remaining, you must perform a Subtle Sacrifice (take a memory, a shadow, or a name) or take 2 Harm.
+\item \textbf{The Open Palm, Closed Cord (Major, 8 XP, req Grey Thread, Melee 2+):} Your unarmed strikes or subtle touch (DV +1) carry \textit{Widow's Measure}. Instead of dealing Harm, you may mark a Promise Clock [4] on the target – they owe the Chain a truth or grief. If they already owe the Chain, you may activate that debt: they suffer Position -1 for the scene, or you gain Effect +1 against them.
+\item \textbf{Milk and Ashes (Major, 9 XP, req Cord of Flesh):} When you offer hospitality (food, healing, shelter) to an enemy or stranger, create a \textit{Threshold Contract} without their knowledge. They gain the \textbf{Hospiced} condition: cannot lie to you (Veil -2), and any Harm they deal to you is stored as Fatigue on themselves.
+\item \textbf{The Unnamed Strike (Prestige, 12 XP, req Tier III+, Open Palm Closed Cord):} Unnamed attack vs. Spirit+Resolve. On hit: Target loses their True Name for one scene. Cannot be targeted by beneficial magic, cannot speak binding oaths, and is \textit{Invisible to Fate}. You may record this Name in your flesh to Command them once (DV 4).
+\item \textbf{The High Mother's Shadow (Epic, 18 XP, req Tier IV+, Unnamed Strike, Cord of Flesh):} You become Cord‑blooded. You no longer age. Fatigue converts to Obligation automatically. You may spend Obligation segments as if they were Boons (1 segment = 1 Boon) for rolls involving silence, memory, or binding. When you would die, the High Mother claims your body; you rise as a Hollowed under her control for a number of days equal to your current Obligation segments. If you have no Obligation, you die permanently.
+\end{itemize}
+
+\section{Daughter of the Chain (Witch Path)}
+\subsection*{Requirements}
+Spirit 3+, Wits 3+. The \textit{Grey Thread} talent (as above, but costing 2 XP less – the Hollowed replaces a Codex). Witch talents (e.g., \textit{Warm Hand}, \textit{Cup and Salt}) are recommended.
+
+\subsection*{Differences from Runekeeper}
+You practice threshold witchcraft. Your Cord Clock replaces Obligation. Your Rites are those of the High Mother (see below) and any Witch Rites that fit the themes of death, memory, or debt.
+
+When the Cord fills, the High Mother demands a payment (as in §??), but you may also choose to \textit{Bloom} – gain a permanent Cord‑based mutation.
+
+\subsection*{Cord Mutations (d6)}
+\begin{enumerate}
+\item \textbf{Silver Eyes:} You see invisible threads of obligation; +1 die to Insight about debts, but -1 die to ignore them.
+\item \textbf{Thread‑Fingers:} Your touch can knot or unravel minor promises; once per scene, reroll a failed social roll involving an oath.
+\item \textbf{Hollowed Voice:} Your singing can compel a short confession (Resist DV 2). Afterward, you lose your voice for one scene.
+\item \textbf{Witness Scar:} A visible mark on your cheek; anyone who sees it knows you are a Daughter. +1 die to Intimidation with those who fear the Chain, -1 die to social rolls with those who revile it.
+\item \textbf{Cold Blood:} You no longer feel warmth; ignore first environmental penalty from cold, but suffer -1 die to Empathy rolls.
+\item \textbf{Fugue Memory:} You occasionally forget faces; each session, the GM may ask you to forget one minor detail (a name, a room layout, a promise). Gain +1 Boon when you accept.
+\end{enumerate}
+
+\section{Breaking the Chain – Leaving the Coven}
+Leaving the Daughters is a major arc, not a simple respec.
+
+\textbf{Costs:}
+\begin{itemize}
+\item You lose all Daughter‑specific talents (they become inert).
+\item You gain the \textbf{Unbound} condition: the High Mother's attention follows you. Once per session, the GM may impose a \textit{Debt Echo} – a former obligation resurfaces unpredictably.
+\item You may never again take a Daughter talent, nor accept a Hollowed.
+\item You must perform the \textit{Rite of Unbinding}.
+\end{itemize}
+
+\textbf{Rite of Unbinding (40 XP arc):} Find a threshold (doorway, crossroads, ford) at dawn. Light a beeswax candle. Speak your true name three times. Drink salt water. Do not look behind you. The Hollowed will be there, watching. If you meet its eyes, you will forget why you began.
+
+If successful, the Cord Clock shatters. Your Obligation to the High Mother becomes 0 (cannot be raised). You are free – but the Chain remembers.
+
+\chapter{Sample Rites of the High Mother}
+These are available to Daughters (Runekeepers and Witches) in addition to those in \textit{Witches of Fate's Edge}.
+
+\section{Rite of the Unspoken Grief (Low, 4 XP)}
+\textbf{Tags:} [ECHO] [VEIL]  \textbf{Threshold:} A deathbed or a grave.
+
+Absorb the grief of one dying person. They die peacefully, forgetting their sorrow. You gain a \textbf{Grief Token} (counts as 1 Boon for any Rite involving memory or comfort). The grief is stored in your Cord; you may release it later as a \textit{Wail} (Fear effect, DV 3, area). \textbf{Cost:} 1 Obligation. \textbf{Push:} Absorb grief from a living person; they forget the source of their sorrow entirely (may create a narrative mystery). Mark +1 Obligation.
+
+\section{Rite of the Silent Tithe (Standard, 7 XP)}
+\textbf{Tags:} [PRICE] [THRESHOLD] \textbf{Threshold:} A doorway of a house you have tended.
+
+Once per season, you may declare that a household owes the Chain a \textit{tithe} – a memory, a shadow, or a first breath of a newborn. The tithe is collected within the week, often without the household's awareness. You gain 1 permanent segment of Influence (as an Asset) within that household's community. \textbf{Cost:} 2 Obligation. \textbf{Push:} Collect the tithe immediately (if the household resists, start a Debt Clock [4] that fills with conflict). Mark +1 Obligation.
+
+\section{Rite of the Hollowed Union (High, 12 XP)}
+\textbf{Tags:} [BIND] [NINTH] \textbf{Threshold:} A birthing bed or a deathbed where three generations have passed.
+
+Join two bloodlines through a debt that will be paid by a child not yet conceived. Write the terms in blood on a strip of linen, then feed the linen to your Hollowed. The Hollowed's eyes film over for a day. One year later, the debt will manifest – a stillbirth, a windfall, a sudden illness – as you decreed. \textbf{Cost:} 3 Obligation, and the Hollowed must witness the union. \textbf{Push:} The debt is paid immediately, but the Chain takes a permanent interest in the bloodline (GM may introduce complications whenever that family is involved). Mark +2 Obligation.
+
+\chapter{The Hollowed – A Confession}
+
+The following confession was recorded by a silenced scribe of the Witness, found in a lead‑lined box. It is told from the lips of Sister Aris, Keeper of the Door, to her Hollowed daughter – a hollowed who was once the weaker of two twins.
+
+\vspace{1em}
+\noindent\rule{\textwidth}{0.5pt}
+\stoybox
+
+The first thing you learn, little one, is that a woman in labor does not see you. She sees the pain. She sees the face of her mother, or the face of her god. She does not see the girl who never blinks, who holds the linens with hands that do not warm.
+
+You are good at linens. I am proud of you.
+
+This was a farmhouse, a good one. Stone floor, thick beams, ash on the hearth. The father was the nervous type. He kept touching his belt where a knife should hang. I told him to boil water. Men need tasks. It keeps them from counting their fears.
+
+The mother was young, maybe eighteen, with the broad hips of a woman built for this. Her name was Ellia. I had delivered her own mother twenty‑three years ago, a quick birth, a quiet one. That mother paid with a lock of hair and a promise to name her first daughter after my own mother, who had no name I ever spoke aloud.
+
+That debt is still in the Cord. It will be collected eventually. Maybe by you.
+
+Ellia screamed. Good screams – productive, open‑throated. I checked her progress. Eight centimetres, then nine. The child was positioned well. I told her to push.
+
+You stood by the washbasin, your hands folded, your eyes open. The father glanced at you once, then again. He could not hold your gaze. No one ever can. They think it's shyness. They think you are simple. They do not see the silver wire, even when it glints in the firelight. That is the miracle of the Chain, little one. No one sees the help.
+
+The first twin came fast. A boy, red‑faced, strong, with fists that knew how to hold the air. I tied the cord, passed him to the mother. She laughed and wept at once. The father touched the boy's cheek, and his hand did not shake.
+
+Then the second twin.
+
+He was smaller, paler, and his cord was wrapped around his neck twice, maybe three times. I felt the knot with my fingers. I could have unwrapped him. I have done it before. But I also felt the weight of the thread in my pocket – the thread that would have bound him to a lifetime of coughing, of debts to physicians, of nights when his parents would not be sure if he would wake.
+
+I looked at you. You were watching the father.
+
+He was still smiling at the first boy. He had not yet looked at the second.
+
+So I did not unwrap the cord. I held it tight, just for a moment. I felt his heart slow. It was quick. It was quiet. It was kind.
+
+I wrapped the second boy in a clean cloth and laid him on the table.
+
+“The second one did not make it,” I said. My voice was calm. It is always calm. That is why they trust me.
+
+The mother's face did what faces do – the grief tried to arrive. I placed my hand on her forehead. “You have one healthy son. Focus on him. Do not let the shadow of the one you lost touch the one you hold.”
+
+She nodded. Her eyelids fluttered. I had not given her anything yet. But the words were enough. The debt of the dead child was already transferring – from her memory to the Cord.
+
+The father looked at the still bundle. “He was so small,” he whispered.
+
+“He was weak,” I said. “He would have grown sickly, frail. A lifetime of coughing, of debts to physicians, of nights when you are not sure if he will wake. This is easier. Kinder.”
+
+He did not argue.
+
+I cut two pieces of the umbilical cord. One for his mother's memory box. One for the Cord.
+
+You took it. You placed it in your pocket, next to your heart that does not beat.
+
+The mother asked for tea. I poured it. Dark, a little milk, a little iron. The father asked if he could have some. I poured a second cup. He drank it without tasting.
+
+As he drank, he looked at you.
+
+He saw you.
+
+Not the shy girl. Not the helper. He saw the thread where your mouth had been sewn. He saw the hollow where your heart should be. He saw the grey cord trailing from your chest, pulsing with the rhythm of his own heartbeat.
+
+His hand went to his throat. His mouth opened.
+
+“Drink,” I said. “The tea will help you forget.”
+
+He drank.
+
+I told him: “The child was weak. This is better. You have one healthy son. That is enough.”
+
+He nodded. He was already forgetting the shape of the dead boy's face.
+
+\noindent\rule{\textwidth}{0.5pt}
+\small\emph{The testimony continues for several pages, describing the three days of recovery, the forgetting, and the eventual visit months later when the father offers water and calls the Hollowed a “kind face.” The confession ends with the midwife's ambiguous penance:}
+
+I do not know if I am confessing because I am sorry, little one, or because the ritual demands it. Perhaps there is no difference.
+
+The mother was young. The father was kind. The dead child was weak. I told the truth.
+
+But truth, like tea, is a matter of preparation.
+
+\emph{The soup is always free. The price never is.}
+\end{storybox}
+\noindent\rule{\textwidth}{0.5pt}
+
+\chapter{GM Tools – Running the Chain}
+
+\section{Campaign Clocks}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{p{0.25\textwidth} p{0.3\textwidth} p{0.35\textwidth}}
+\toprule
+Clock & Purpose & Advance / Retreat \\
+\midrule
+Chain's Patience [6] & How long the Daughters tolerate interference before taking action. & Advance when PCs expose a Daughter, steal a Hollowed, or break a promise. Retreat when PCs pay a tithe, help a Daughter, or keep a secret. \\
+Debt Spread [8] & How extensively the Chain has entangled local nobles and merchants. & Advance when PCs witness a “natural” death that seems too convenient, or a dynasty suddenly collapses. Retreat when PCs expose a conspiracy, save an endangered heir, or redirect a tithe. \\
+Hollowed Hunger [4] & How close a local Hollowed is to acting independently (dangerous). & Advance when the Hollowed is ignored, mistreated, or separated from its Sister. Retreat when the Sister performs a soothing rite or sacrifices a small memory. \\
+Winter's Goal [6] & A specific Sister's personal agenda (culling a house, collecting a rare debt, etc.). & Advance as the Winter succeeds. Retreat when the party thwarts her. Filling the clock means her goal is achieved (or she is promoted). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Sample SB Spends for Daughter Encounters}
+\begin{itemize}
+\item \textbf{1 SB:} A Hollowed's gaze lingers on a PC; they feel watched. Next roll involving secrecy is Desperate.
+\item \textbf{2 SB:} A thread of grey cord appears tied around a PC's wrist. They cannot recall when it happened. Remove it (action, DV 3) or suffer -1 die to social rolls with anyone who knows the Chain.
+\item \textbf{3 SB:} A Winter invokes a \textit{Threshold Contract} the party unknowingly accepted (they ate soup at a Daughter's hospice). The party must choose: accept a minor debt (lose 1 Boon, gain 1 Obligation to the Chain) or reject it (gain 2 SB banked for the Winter in the next scene).
+\item \textbf{4 SB:} The High Mother's attention falls on a PC. They dream of the Cord. When they wake, they have forgotten a significant memory (GM chooses – a face, a secret, a location). To recover it, they must travel to a Daughter's hospice and bargain.
+\end{itemize}
+
+\section{Cultural Integration}
+\begin{itemize}
+\item \textbf{Aeler:} Daughters are tolerated as “Breath Wardens” in the Deep Vaults – they tend miners dying of stone‑lung. The Aeler audit their ledgers. As long as the Cord's debts are recorded, the dwarves accept them.
+\item \textbf{Aelaerem:} The Halflings reject the Daughters. Their own Hearth‑Mothers see the Chain as a perversion of hospitality. Aelfish communities actively warn travellers against Daughter‑run hospices.
+\item \textbf{Ecktoria:} The Everflame's Inquisition hunts Daughters as heretics (they practice magic without a patriarchal witness, and their debts undermine the Church's control over death rites). But many noble families secretly employ Daughters for discreet end‑of‑life arrangements.
+\item \textbf{Kahfagia:} The Admiralty tolerates Daughter‑run infirmaries in port cities – they reduce plague mortality. However, any Sister caught interfering with a ship's manifest is hanged.
+\item \textbf{Vilikari:} The Daughters have a symbiotic relationship with the Vilikari syndicates. The syndicates provide bodies for Hollowing (unclaimed debtors); the Daughters provide untraceable poison and alibis.
+\item \textbf{Ykrul:} The steppe clans revile the Daughters. Their concept of \textit{good death} is to die in the open, under sky, witnessed by the wind. A Daughter's hospice is a desecration. Any Sister found on the steppe is killed.
+\end{itemize}
+
+\chapter{Adventure Hooks & Campaign Frames}
+\begin{enumerate}
+\item \textbf{The Trapped Sister (Introductory).} A Daughter contacts the party secretly. She feels the Chain closing around her – she has been ordered to harvest a child's breath to pay a debt she did not incur. She wants help to reroute the debt to a deserving target. The party must decide: assist her (gaining a Daughter ally, but incurring the Chain's attention) or betray her (earning a String with the local Winter, but losing a potential ally).
+
+\item \textbf{The Winter's Cull (Political).} A Winter has decided to cull a noble house that has grown too independent. She has infiltrated their staff, and their matriarch is dying. The Chain wants the house to fragment, so its lands become available for a “loyal” family. The party is hired by a loyalist of the house to ensure a peaceful transition – one that passes leadership smoothly. They must outmanoeuvre the Winter's agents (who are also acting as nurses and healers). No one is obviously evil; both sides want a good death – just different heirs.
+
+\item \textbf{The Debt That Walks (Horror).} A Duke's daughter was saved from a plague by a Daughter, but the price was a promise on her firstborn. She now has a child, and the Chain is coming to collect – not the child's life, but a \textit{shadow} (rendering the child legally invisible, unable to inherit). The Duke hires the party to break the promise. They must find a way to nullify the debt without harming the Daughter (who is just following orders) or inciting the High Mother's wrath. Options: find a loophole (the promise was made under duress), pay an equivalent debt (steal a shadow from a criminal), or confront the Winter directly.
+
+\item \textbf{The High Mother's Shadow (Epic).} A powerful necromancer threatens one of the Chain's key hospices. The Daughters cannot fight openly; they ask the party to act as their weapon. In exchange, they will erase a debt the party owes. But as the party investigates, they discover that the necromancer is actually a former Daughter who broke free – and she claims the Chain has been manipulating royal bloodlines for centuries to breed a perfect vessel for the High Mother. Decide: help the Daughters (perpetuate the conspiracy) or help the necromancer (risk unleashing a greater evil).
+
+\item \textbf{The House Without Doors (Dungeon).} The party is invited to a Daughter's hospice – a place of healing and peace. They soon realise that every kindness is a thread, every meal a debt. The doors do not lead where they expect. The Hollowed watch from corners. A Winter offers them a deal: help her prune a troublesome ghost, and she will let them leave. But the ghost is the spirit of a woman who died in childbirth – and her baby now toils as a Hollowed. The party must find a way to unbind both mother and child without breaking the Chain's laws.
+\end{enumerate}
+
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+This expansion was written in the margins of hospice ledgers, on paper that smelled of milk and iron. The ink is lamp‑black, cut with the ash of a forgotten name. The binding is grey cord, tied with nine knots. The ninth knot is not cut.
+
+The chain waits. The Hollowed watches.
+
+\vspace{0.5cm}
+\noindent
+\textit{The ink is fresh. The road is south.}
+
+\end{document}

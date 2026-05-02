@@ -1,0 +1,878 @@
+\documentclass[9pt,a5paper]{extbook}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{cmap}
+
+% Fonts
+\usepackage{amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\usefont{T1}{ptm}{m}{n}}
+
+% Quotes
+\usepackage{csquotes}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.8\textwidth}
+\renewcommand{\epigraphflush}{flushright}
+
+% Layout
+\usepackage[top=1.2cm,bottom=1.2cm,left=1.1cm,right=0.9cm,headheight=12pt,headsep=0.3cm]{geometry}
+\usepackage{multicol,array,longtable,booktabs,ragged2e}
+
+% Spacing
+\usepackage{setspace}
+\setstretch{1.08}
+\setlength{\parskip}{0.4ex plus 0.2ex minus 0.1ex}
+\setlength{\parindent}{1em}
+\frenchspacing
+
+% Colors
+\usepackage{xcolor}
+\definecolor{darkblue}{RGB}{0,45,90}
+\definecolor{patronblue}{RGB}{48,63,96}
+\definecolor{warningred}{RGB}{139,26,26}
+\definecolor{ritualgold}{RGB}{184,134,11}
+\definecolor{steelgray}{RGB}{70,70,80}
+\definecolor{softgray}{RGB}{245,245,245}
+
+% Boxes
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{warriorbox}[2][]{%
+    enhanced, colback=softgray, colframe=steelgray,
+    fonttitle=\bfseries\small\sffamily\color{steelgray},
+    fontupper=\small, fontlower=\small,
+    title={$\blacklozenge$ #2 $\blacklozenge$},
+    attach boxed title to top left={yshift=-1.5mm,xshift=3mm},
+    boxed title style={colback=white,colframe=steelgray,boxrule=0.5pt},
+    sharp corners, boxrule=0.6pt,
+    left=3pt, right=3pt, top=4pt, bottom=3pt,
+    breakable, #1}
+
+\newtcolorbox{talentbox}[2][]{%
+    breakable, enhanced, colback=softgray, colframe=steelgray,
+    fonttitle=\bfseries\small\sffamily\color{darkblue},
+    fontupper=\small, title={#2},
+    attach boxed title to top left={yshift=-2mm,xshift=3mm},
+    boxed title style={colback=white,colframe=steelgray,boxrule=0.5pt},
+    sharp corners, boxrule=0.6pt,
+    left=4pt, right=4pt, top=5pt, #1}
+
+\newtcolorbox{weaponcard}[2][]{%
+    breakable, enhanced, colback=softgray, colframe=steelgray!60,
+    fonttitle=\bfseries\small\sffamily\color{steelgray!90!black},
+    fontupper=\small, title={#2},
+    attach boxed title to top left={yshift=-2mm,xshift=3mm},
+    boxed title style={colback=white,colframe=steelgray!60,boxrule=0.5pt},
+    sharp corners, boxrule=0.6pt,
+    left=4pt, right=4pt, top=5pt, #1}
+
+% Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\thepage\quad\textsc{\leftmark}}
+\fancyhead[RO]{\textsc{\rightmark}\quad\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% Hyperlinks
+\usepackage[colorlinks=true,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkblue,
+    pdftitle={The Way of the Warrior},pdfauthor={Master Tarian Ironhand}]{hyperref}
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty}
+
+\begin{center}
+\vspace*{1.5cm}
+
+{\LARGE\scshape\color{darkblue} The Way of the Warrior}\\[0.8cm]
+
+{\normalsize\itshape A Fate's Edge Expansion for Combat, Courage, and the Edge of the Blade}\\[1.0cm]
+
+\rule{0.5\textwidth}{1.0pt}\\[0.8cm]
+
+{\small\textit{``Steel is a language. Learn to speak it, or learn to bleed.''}}\\[1.5cm]
+
+\vfill
+
+{\footnotesize\textsc{Compiled from the notebooks of Master Tarian Ironhand}\\[0.2em]
+\textit{Fencing Master of the Iron Rose Academy, Silkstrand}}
+
+\end{center}
+
+\clearpage
+
+\section*{A Letter from the Master}
+
+\epigraph{``You think the sword is the weapon? No. The weapon is the space between heartbeats. The sword is just the messenger.''}{\textit{--- Master Tarian Ironhand, from a letter to a former student}}
+
+I have trained soldiers, duelists, palace guards, and gutter fighters. I have seen a Sekogo throw-knife unhorse a knight at forty paces. I have watched a Dhaharan elephant cavalry stampede shatter a shield wall that held for three hours. I have stood in the arena sand of Ecktoria while the crowd screamed for blood, and I have walked away clean.
+
+This book is not a catalogue of techniques. You will not learn the perfect lunge or the unbreakable guard by reading. What you will learn is \textit{how to think} when the steel sings.
+
+The Six Roads are for witches and runekeepers. This is the Seventh Road: the road of the warrior. No patron, no symbol, no codex—only the edge, the will, and the breath you have left.
+
+I have written these pages for three kinds of student:
+
+\noindent\textbf{The Soldier} who wants to stand in the shield wall and not break.
+
+\noindent\textbf{The Duelist} who wants to end a fight before it begins.
+
+\noindent\textbf{The Survivor} who wants to walk away from places where others die.
+
+Take what serves you. Leave the rest. And if you ever find yourself in Silkstrand, seek me out at the Iron Rose. The first lesson is free. The second costs a story.
+
+\vspace{0.5cm}
+\hfill --- \textit{Master Tarian Ironhand, Silkstrand, Year of the Broken Crown}
+
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\mainmatter
+
+\chapter{The Warrior's Path}
+\epigraph{``Every scar is a lesson. Some lessons are written in flesh. Some are written in the memories of the ones who watched you survive.''}{\textit{--- Master Tarian}}
+
+To walk the Warrior's Path is to understand that violence is a \textit{language}. It has grammar, syntax, and dialects. The Fhara lancer speaks in thunder. The Sidhi skirmisher speaks in whispers. The Ashaan charioteer speaks in patience. All are valid. All will kill you if you mispronounce.
+
+This chapter draws from the great warrior traditions of Fate's Edge: the chariot warfare of Ashaan, the armored lancers of Oshiira, the throw-knife hunters of Sekogo, the cataphracts of Pereshi, the light cavalry of the Sidhi, the elephant riders of Dhahara, and the desert raiders of Fhara.
+
+\section{The Warrior's Attributes}
+
+A warrior's body is their first weapon. But the mind is the hand that wields it.
+
+\begin{itemize}
+    \item \textbf{Body} – strength, endurance, the ability to deal and receive harm.
+    \item \textbf{Wits} – timing, perception, the ability to read an opponent's intent.
+    \item \textbf{Spirit} – courage, resolve, the will to stand when standing is foolish.
+    \item \textbf{Presence} – command, intimidation, the ability to shape a battlefield with a word.
+\end{itemize}
+
+\section{The Warrior's Talents}
+
+\subsection{Foundation Talents (2-4 XP)}
+
+\begin{talentbox}{Disciplined Body (2 XP)}
+You may ignore 1 point of Fatigue from physical exertion once per scene.
+\end{talentbox}
+
+\begin{talentbox}{Weapon Mastery (4 XP)}
+Choose a weapon category (swords, axes, spears, etc.). When using a weapon from that category, you gain +1 die to attack rolls and may re-roll one 1 on damage. You may take this talent multiple times for different categories.
+\end{talentbox}
+
+\begin{talentbox}{Second Wind (2 XP)}
+Once per session, as an action, you may clear 2 Fatigue and remove one minor Condition (Dazed, Winded, etc.).
+\end{talentbox}
+
+\subsection{Advanced Talents (6-8 XP)}
+
+\begin{talentbox}{Weapon Mastery II — Flowing Strike (6 XP)}
+\textit{Requires Weapon Mastery.} \\
+When you successfully hit a target, you may immediately make a free repositioning move (up to Near distance) without provoking opportunity attacks. You may use this ability once per scene.
+\end{talentbox}
+
+\begin{talentbox}{Disciplined Body II — Iron Resilience (6 XP)}
+\textit{Requires Disciplined Body.} \\
+You have two additional Harm boxes (for a total of 5). Additionally, the first time you would be reduced to 0 Harm in a scene, you may instead remain standing with 1 Harm and mark 2 Fatigue.
+\end{talentbox}
+
+\begin{talentbox}{Battlefield Awareness (6 XP)}
+\textit{Requires Wits 3+.} \\
+At the start of any combat scene, you may ask the GM one tactical question: “Which enemy is most dangerous?”, “Where is the best cover?”, “What is the escape route?” The GM must answer truthfully.
+\end{talentbox}
+
+\clearpage
+
+\chapter{Martial Archetypes}
+\epigraph{``The tank is the anvil. The striker is the hammer. The ranger is the knife that finds the gap between ribs. Know which you are before the drum sounds.''}{\textit{--- Master Tarian}}
+
+\section{The Tank}
+
+The tank stands where others cannot. She absorbs harm, holds chokepoints, and forces enemies to waste their strength on her armored shell.
+
+\subsection{Core Talents}
+\begin{itemize}
+    \item \textit{Disciplined Body} (2 XP)
+    \item \textit{Shield Bearer} (4 XP): When wielding a shield, you gain +1 Armor and may use the \textit{Protect} action to interpose yourself between an ally and an attack, taking the harm yourself.
+    \item \textit{Disciplined Body II — Iron Resilience} (6 XP)
+\end{itemize}
+
+\subsection{Signature Talent Chain — Sentinel}
+
+\begin{talentbox}{Sentinel — Stand Fast (4 XP)}
+You may use an action to adopt a stationary defensive stance. While in this stance, you cannot move, but enemies attacking you suffer –1 die, and any enemy that attempts to move past you must test Resolve (DV 3) or be stopped in their tracks. You may end the stance as a free action.
+\end{talentbox}
+
+\begin{talentbox}{Sentinel II — Unmovable (8 XP)}
+\textit{Requires Sentinel — Stand Fast.} \\
+While in your defensive stance, you ignore the first shove, trip, or knockback attempt each round. Additionally, allies within Near range gain +1 die to resist fear or compulsion effects.
+\end{talentbox}
+
+\begin{talentbox}{Sentinel III — Shield of the Fallen (12 XP)}
+\textit{Requires Sentinel II.} \\
+Once per session, when an ally within Near range would be reduced to 0 Harm, you may instead take that harm yourself (reducing it by 2 before applying to yourself). After using this ability, you mark 1 Fatigue and cannot move for one full exchange.
+\end{talentbox}
+
+\subsection{Cultural Variant: Dhaharan Elephant Rider}
+\label{culture:dhahara}
+The Dhaharan principalities field elephant cavalry that serve as mobile fortresses. A warrior who bonds with a war elephant gains the \textit{Mahout's Authority} talent: while mounted, your mount gains +1 Armor and your melee reach extends to Near. Requires the \textit{Sentinel} talent chain.
+
+\vspace{0.2cm}
+\noindent\textit{“The elephant does not charge. It walks. And everything in its path becomes mud.”}  
+\hfill --- \textit{Rajah Anant, Dhaharan mahout}
+
+\clearpage
+
+\section{The Striker}
+
+The striker deals harm. Fast, precise, and often fragile, the striker ends fights before they become wars.
+
+\subsection{Core Talents}
+\begin{itemize}
+    \item \textit{Weapon Mastery} (4 XP)
+    \item \textit{Flurry} (4 XP): Once per scene, you may make two attacks against the same target as a single action. Resolve each attack separately. After using Flurry, you suffer –1 die on your next action.
+    \item \textit{Weapon Mastery II — Flowing Strike} (6 XP)
+\end{itemize}
+
+\subsection{Signature Talent Chain — Bladestorm}
+
+\begin{talentbox}{Bladestorm — Whirlwind (4 XP)}
+When you are surrounded by two or more enemies in Close range, you may make a single attack roll against all of them simultaneously. Roll once; compare to each enemy's DV. You cannot use this ability more than once per scene.
+\end{talentbox}
+
+\begin{talentbox}{Bladestorm II — Death’s Draw (8 XP)}
+\textit{Requires Bladestorm — Whirlwind.} \\
+Once per session, when you reduce an enemy to 0 Harm, you may immediately make a free move (up to Near distance) and make one attack against a different enemy. This does not count as your action for the round.
+\end{talentbox}
+
+\subsection{Cultural Variant: Sekogo Throw-Knife Hunter}
+\label{culture:sekogo}
+The Sekogo warriors of the southern jungles carry the \textit{kpinga}—a multi-bladed throwing knife with a rotating motion that inflicts deep wounds. Their signature talent is \textit{Whirling Steel}: when you throw a kpinga, it returns to your hand after striking (or missing) if you have a clear line of sight. This replaces \textit{Flurry} in the talent chain.
+
+\vspace{0.2cm}
+\noindent\textit{“The kpinga does not fly. It dances. And the dance always ends with blood.”}  
+\hfill --- \textit{Mkara, Sekogo hunter}
+
+\clearpage
+
+\section{The Ranger}
+
+The ranger fights at range, moves through difficult terrain, and lives by patience. They are the hunter, the scout, the one who sees the enemy before the enemy sees them.
+
+\subsection{Core Talents}
+\begin{itemize}
+    \item \textit{Weapon Mastery (bows or thrown weapons)} (4 XP)
+    \item \textit{Keen Senses} (2 XP): +1 die to Perception rolls.
+    \item \textit{Heightened Senses} (3 XP): You cannot be surprised in natural terrain.
+\end{itemize}
+
+\subsection{Signature Talent Chain — Pathfinder}
+
+\begin{talentbox}{Pathfinder — Trackless Step (4 XP)}
+You leave no trail when moving through natural terrain unless you choose to. Pursuers suffer –2 dice to track you.
+\end{talentbox}
+
+\begin{talentbox}{Pathfinder II — Eagle Eye (6 XP)}
+\textit{Requires Pathfinder — Trackless Step.} \\
+When you make a ranged attack from a hidden position, treat your Position as one step higher (Desperate $\rightarrow$ Controlled, Controlled $\rightarrow$ Dominant). Additionally, you may ignore one level of range penalty (Near $\rightarrow$ Close, Far $\rightarrow$ Near).
+\end{talentbox}
+
+\begin{talentbox}{Pathfinder III — The Patient Hunter (10 XP)}
+\textit{Requires Pathfinder II.} \\
+If you spend at least one scene observing a target (tracking them, watching their patterns), you gain +2 dice on your first attack against them and may choose to convert a hit into a non-lethal takedown (unconscious, pinned, disarmed) instead of dealing harm.
+\end{talentbox}
+
+\subsection{Cultural Variant: Ashaan Chariot Archer}
+\label{culture:ashaan}
+The Ashaan horse-drawn chariot is a lightweight vehicle that carries a driver and a warrior. The chariot archer fires from a moving platform, using the vehicle's speed to evade return fire. Their signature talent is \textit{Chariot Volley}: when you fire from a chariot that has moved at least Near distance this round, you may make two attacks as a single action. This replaces \textit{Eagle Eye} in the chain.
+
+\vspace{0.2cm}
+\noindent\textit{“The chariot is not a carriage. It is a falcon with wheels. Strike, wheel, strike again.”}  
+\hfill --- \textit{Seneny Khenemet, Ashaan chariot captain}
+
+\clearpage
+
+\chapter{Cultural Warriors}
+\epigraph{``The same cut that is honorable in one land is an insult in another. Learn the customs of the blade before you learn its weight.''}{\textit{--- Master Tarian}}
+
+\section{Ashaan — Charioteers of the Twin Rivers}
+
+The chariot is the arm of Ashaani power. Lightweight, two‑wheeled, crewed by a driver and a warrior, it moves like a striking cobra. Ashaani warriors train from youth in archery, and every noble owns a chariot.
+
+\subsection{Core Talents for Ashaani Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (chariot archery)} (4 XP): When firing from a chariot, you ignore the first range penalty.
+    \item \textit{Chariot Driver} (4 XP): You may drive a chariot and fire a bow in the same action (one roll for both).
+    \item \textit{The Unblinking Eye} (6 XP): Ashaani archers are trained to hold their draw under fire. You may delay your shot for up to one full exchange without losing accuracy; if you release after a delay, your attack gains +1 die.
+\end{itemize}
+
+\subsection{Signature Technique: Khopesh Hook}
+The \textit{khopesh} is a sickle‑sword with a curved blade, evolved from battle axes. The Ashaani warrior uses the hook to pull aside an enemy's shield before striking.
+
+\begin{talentbox}{Khopesh Hook (6 XP)}
+When you attack with a khopesh, you may declare a hook attempt. Make a normal attack roll. On a hit, you may choose to forgo damage and instead disarm the target (they drop one held item) or pull them off balance (–1 die to their next action). You may use this ability once per scene.
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“The khopesh is not a sword. It is a question. The hook asks: will you drop your shield or your life?”}  
+\hfill --- \textit{Pharaoh's Guard inscription}
+
+\clearpage
+
+\section{Oshiira — Sahelian Lancers}
+
+The Sahelian grasslands breed fast horses and faster warriors. Oshiira cavalry wear quilted armor and iron helmets, carry lances, sabers, and sometimes horse‑bows. They fight in loose formations, charging, wheeling, and charging again.
+
+\subsection{Core Talents for Oshiira Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (lance or saber)} (4 XP)
+    \item \textit{Mounted Charger} (4 XP): When you attack from horseback after moving at least Near distance, your attack gains +2 dice.
+    \item \textit{Chainmail Shirt} (2 XP): You wear a light chainmail shirt; +1 Armor, but –1 die to Stealth.
+\end{itemize}
+
+\subsection{Signature Techniques: The Lance and the Bow}
+
+\begin{talentbox}{Lance Couched (6 XP)}
+When you charge with a lance and hit, your target must test Body + Endurance (DV 4) or be knocked prone. If the target is prone, your next attack against them gains +1 die.
+\end{talentbox}
+
+\begin{talentbox}{Horse Archery (8 XP)}
+You may fire a bow from horseback without penalty, even at a gallop. Additionally, when you make a ranged attack from horseback, you may move up to Near distance before or after the attack without provoking opportunity attacks.
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“The horse is my legs. The lance is my arm. The enemy is my proof.”}  
+\hfill --- \textit{Farari Souleymane, Oshiira war captain}
+
+\clearpage
+
+\section{Sekogo — Jungle Throw-Knife Hunters}
+
+The Sekogo warriors of the southern jungles wield the \textit{kpinga}, a multi‑bladed throwing knife that spins through the air, striking with at least one blade. A Sekogo hunter carries three or four, hidden behind a shield, and throws them only after exhausting his spears.
+
+\subsection{Core Talents for Sekogo Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (throwing knives)} (4 XP)
+    \item \textit{Keen Senses} (2 XP)
+    \item \textit{Poisoner} (4 XP): You can craft and apply poisons to your throwing knives. Crafting requires a Wits + Craft test (DV 3) and a downtime scene.
+\end{itemize}
+
+\subsection{Signature Technique: The Spiral Throw}
+
+\begin{talentbox}{Spiral Throw (6 XP)}
+When you throw a kpinga, you may declare a spiral throw. The weapon spins in a wide arc, striking multiple targets in a Near zone. Make a single attack roll; compare it to the DV of every target in the zone. You may use this ability once per scene.
+\end{talentbox}
+
+\begin{talentbox}{Court Metal (8 XP)}
+Your kpinga is of the highest quality, forged under a chieftain's patronage. You may throw a kpinga without penalty in melee range, and retrieving a thrown kpinga is a free action (you have trained to catch it by the handle). However, you must announce your throw loudly before releasing it, as is the custom of the jungle.
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“I do not throw the kpinga. I send it to speak for me. When it returns, it brings the truth.”}  
+\hfill --- \textit{Avongara clan proverb}
+
+\clearpage
+
+\section{Pereshi — Cataphracts of the High Plateau}
+
+The Pereshi cataphract is a walking fortress. Rider and horse are both encased in scale or chain armor. Armed with the heavy \textit{kontos} lance, sword, mace, and sometimes a horse‑bow, the cataphract is designed to smash infantry lines and terrify lighter cavalry.
+
+\subsection{Core Talents for Pereshi Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (lance or mace)} (4 XP)
+    \item \textit{Heavy Armor Training} (4 XP): You ignore the first –1 die penalty for wearing heavy armor.
+    \item \textit{Cataphract Charge} (6 XP): When you charge with a kontos lance, your attack ignores 1 point of Armor and, on a hit, the target must test Resolve (DV 4) or be Shaken (–1 die to all actions for one exchange).
+\end{itemize}
+
+\subsection{Signature Techniques: The Armored Fence}
+
+\begin{talentbox}{Armored Fence (8 XP)}
+When you form a line with at least two other cataphracts, your unit gains +1 Armor and cannot be charged without the enemy first testing Resolve (DV 5). Breaking the formation costs 1 Fatigue.
+\end{talentbox}
+
+\begin{talentbox}{Kontos Thrust (6 XP)}
+The kontos lance is held with two hands and braced against the horse's neck. You may use it one‑handed while carrying a shield, but your attack suffers –1 die. If you use it two‑handed, you gain +1 die and +1 Harm, but cannot use a shield.
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“The cataphract does not fight. He arrives. And arrival is sufficient.”}  
+\hfill --- \textit{Shahanshah inscription}
+
+\clearpage
+
+\section{Sidhi — Light Skirmishers of the Broken Coast}
+
+The Sidhi ride fast, unarmored horses, controlling their mounts with a simple rope around the neck. They carry a handful of javelins, a short sword, and a round leather shield. Their tactic is simple: charge, throw javelins, wheel away, repeat.
+
+\subsection{Core Talents for Sidhi Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (javelin or short sword)} (4 XP)
+    \item \textit{Light Cavalry} (4 XP): You may ride without saddle or bridle; your horse responds to knee pressure and spoken commands. When you make a Ride test, you gain +1 die.
+    \item \textit{Javelin Volley} (6 XP): You carry four javelins. As an action, you may throw two of them at the same target. Resolve each attack separately. After the volley, you are unarmed until you retrieve more javelins.
+\end{itemize}
+
+\subsection{Signature Technique: Harassing Skirmish}
+
+\begin{talentbox}{Harassing Skirmish (8 XP)}
+When you throw a javelin and then move away, your target suffers –1 die to their next action (distracted by the near miss). You may use this ability once per round.
+\end{talentbox}
+
+\begin{talentbox}{The Feigned Flight (6 XP)}
+You may pretend to retreat, luring an enemy into pursuit. Make a Deception test (DV 3). On a success, the enemy pursues, and on their next turn they must move toward you. On your following turn, you may turn and attack with +2 dice. This ability costs 1 Fatigue.
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“We do not hold the line. We draw the line, and then we draw it somewhere else.”}  
+\hfill --- \textit{Sidhi cavalry captain}
+
+\clearpage
+
+\section{Dhahara — Elephant- Riders of the Monsoon Plains}
+
+The Dhaharan war elephant is a mobile fortress. The mahout sits on the elephant's neck, guiding it with voice and hook. From the howdah (a fortified platform on the elephant's back), archers and javelin‑throwers rain death on enemies below.
+
+\subsection{Core Talents for Dhaharan Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (composite bow or javelin)} (4 XP)
+    \item \textit{Mahout's Bond} (6 XP): You have bonded with a specific war elephant. While riding it, your melee reach extends to Near, and you may treat the elephant as having +1 Armor.
+    \item \textit{Elephant Charge} (8 XP): Your elephant may make a trample attack against all enemies in a Near zone. Each target must test Body + Athletics (DV 4) or take Harm 2 and be knocked prone. Using this ability costs 2 Fatigue for the elephant.
+\end{itemize}
+
+\subsection{Signature Techniques: Howdah Archery}
+
+\begin{talentbox}{Howdah Archery (6 XP)}
+You may fire a bow or throw a javelin from the howdah without penalty, even while the elephant is moving. Additionally, you gain +1 Armor while in the howdah (cover).
+\end{talentbox}
+
+\begin{talentbox}{Stampede (10 XP)}
+Once per session, you may send your elephant into a stampede. All enemies in a Large zone must test Spirit + Resolve (DV 5) or flee in panic. Those who fail also take Harm 1 (trampled). After the stampede, your elephant is Winded (–1 die on all actions for the rest of the scene).
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“The elephant does not forget. It also does not forgive. That is why we ride them into battle.”}  
+\hfill --- \textit{Rajah inscription}
+
+\clearpage
+
+\section{Fhara — Desert Raiders of the Dune Sea}
+
+The Fhara Bedouin are masters of the lance and the saber. They ride swift horses, wear only light chain or leather, and rely on speed and surprise. Their lance is often a hollow bamboo tube tipped with iron; after the lance is spent, they draw their curved saber (seif).
+
+\subsection{Core Talents for Fhara Warriors}
+\begin{itemize}
+    \item \textit{Weapon Mastery (lance or saber)} (4 XP)
+    \item \textit{Desert Rider} (4 XP): You ignore the first environmental penalty from heat or sand. Your horse also ignores the first penalty.
+    \item \textit{Furusiyya Training} (6 XP): You have trained in the full art of the horse warrior: lance, saber, bow, and horsemanship. You gain +1 die to all Ride tests and may re‑roll one failed attack with a lance or saber per scene.
+\end{itemize}
+
+\subsection{Signature Techniques: The Lance and the Saber}
+
+\begin{talentbox}{Lance Recover (6 XP)}
+After impaling an enemy with your lance, you may recover the weapon as a free action (you have trained to brace, strike, and withdraw in one motion). If you fail to recover, you must draw your saber.
+\end{talentbox}
+
+\begin{talentbox}{Curved Blade (8 XP)}
+Your saber's curved edge is designed for slashing while riding past. When you make a melee attack from horseback and continue moving, your attack gains +1 die and, on a hit, you may move an additional Near distance after the strike.
+\end{talentbox}
+
+\begin{talentbox}{The Hollow Lance (10 XP)}
+Your lance is made of a hollow tube that whistles when thrown. Once per session, you may throw your lance as a ranged weapon (Near range). On a hit, the target is Shaken (–1 die to all actions) for one exchange, and the whistling sound panics nearby horses (they must test Resolve or flee).
+\end{talentbox}
+
+\vspace{0.2cm}
+\noindent\textit{“The lance is the question. The saber is the answer. The horse is the silence between them.”}  
+\hfill --- \textit{Fhara poet}
+
+\clearpage
+
+\chapter{Runekeeper Body Builds}
+\epigraph{``The Codex is not only for scholars. Carve your vows into your flesh. Let your scars be your scripture.''}{\textit{--- Master Tarian}}
+
+Runekeepers usually focus on spirit and wits. But some carve their Rites into their bones, their muscles, the very architecture of their bodies. These are the \textbf{Body Runekeepers}—paladins, sentinels, and sword magi who channel Patron power through steel and sinew.
+
+\subsection{The War-Priest of Ashaan (Mykkiel / Inquisitor Prime)}
+
+The Ashaani war‑priest serves the law of the Twin Rivers. He is both judge and executioner, carrying a \textit{khopesh} that has witnessed a hundred oaths. His Thiasos is often a hound of ash and seal‑wax, and his Codex is a bronze plague bound to his shield.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Disciplined Body} (2 XP)
+    \item \textit{Shield Bearer} (4 XP)
+    \item \textit{Rites of Mykkiel or Inquisitor Prime}
+\end{itemize}
+
+\subsection{Signature Talent Chain — Oath of the Khopesh}
+
+\begin{talentbox}{Oath of the Khopesh — Hook and Cut (6 XP)}
+When you hit with your khopesh, you may choose to hook the target instead of dealing harm. The target is pulled off balance; they suffer –1 die to their next action. You may use this ability once per scene.
+\end{talentbox}
+
+\subsection{The Gilded Lancers of Oshiira (The Traveler / The Sealed Gate)}
+
+The Oshiira Gilded Lancers are professional cavalrymen who have sworn to protect the trade routes of the Sahel. Their Codex is a saddlebag of route charts; their Thiasos is a spirit horse that leaves no tracks.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Weapon Mastery (lance)} (4 XP)
+    \item \textit{Mounted Charger} (4 XP)
+    \item \textit{Rites of the Traveler}
+\end{itemize}
+
+\subsection{Signature Talent Chain — Way of the Horse}
+
+\begin{talentbox}{Way of the Horse — Ride the Wind (6 XP)}
+Your Thiasos grants your mount +1 Speed and the ability to ignore difficult terrain for one scene. You mark 1 Obligation each time you use this ability.
+\end{talentbox}
+
+\subsection{The Jungle Wardens of Sekogo (The Carrion-King / Isoka)}
+
+The Sekogo jungle warden sheds his old skin with each battle, transforming from hunter to hunted to hunter again. His Codex is a belt of throw‑knives; his Thiasos is a python that watches from the trees.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Weapon Mastery (throwing knives)} (4 XP)
+    \item \textit{Poisoner} (4 XP)
+    \item \textit{Rites of the Carrion-King or Isoka}
+\end{itemize}
+
+\subsection{Signature Talent Chain — The Shed Skin}
+
+\begin{talentbox}{The Shed Skin — Venomous Strike (6 XP)}
+When you throw a kpinga, you may choose to apply a poison (if you have one) as a free action. The poison takes effect on a hit, even if the target is armored.
+\end{talentbox}
+
+\subsection{The Cataphract of Pereshi (Mykkiel / The Witness)}
+
+The Pereshi cataphract is a knight of the high plateau, sworn to uphold the laws of the ancient empire. His Codex is a lance; his Thiasos is a war‑horse clad in scale armor.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Heavy Armor Training} (4 XP)
+    \item \textit{Cataphract Charge} (6 XP)
+    \item \textit{Rites of Mykkiel or The Witness}
+\end{itemize}
+
+\subsection{Signature Talent Chain — The Kontos}
+
+\begin{talentbox}{The Kontos — Lance of Judgment (8 XP)}
+When you charge with your kontos lance, your attack ignores 1 point of Armor and, on a hit, the target must test Resolve (DV 4) or be Shaken. You may spend 1 Obligation to increase the DV to 5.
+\end{talentbox}
+
+\subsection{The Light Riders of Sidhi (Aveh / Ikasha)}
+
+The Sidhi light rider has no fixed patron—she answers only to the wind and her own hunger. Her Codex is a handful of javelins; her Thiasos is a horse that has never felt a bridle.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Light Cavalry} (4 XP)
+    \item \textit{Harassing Skirmish} (8 XP)
+    \item \textit{Rites of Aveh or Ikasha}
+\end{itemize}
+
+\subsection{Signature Talent Chain — The Feigned Flight}
+
+\begin{talentbox}{The Feigned Flight — Dust and Smoke (6 XP)}
+When you fake a retreat, you may throw a javelin behind you as a free action. The attack is made at –1 die, but if it hits, the enemy is Shaken (confused by your treachery).
+\end{talentbox}
+
+\subsection{The Elephant-Rider of Dhahara (Grimmir / Raéyn)}
+
+The Dhaharan elephant‑rider serves the monsoon and the plain. His Codex is a howdah; his Thiasos is the elephant itself, a living mountain of memory and rage.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Mahout's Bond} (6 XP)
+    \item \textit{Elephant Charge} (8 XP)
+    \item \textit{Rites of Grimmir or Raéyn}
+\end{itemize}
+
+\subsection{Signature Talent Chain — The Howdah}
+
+\begin{talentbox}{The Howdah — Archer's Nest (6 XP)}
+While in the howdah, you gain +1 Armor (cover) and may fire a bow without penalty, even while the elephant is moving. You may spend 1 Obligation to extend this protection to one other archer in the howdah.
+\end{talentbox}
+
+\subsection{The Desert Raider of Fhara (Aveh / The Traveler)}
+
+The Fhara desert raider lives by the code of \textit{furusiyya}: horsemanship, chivalry, and the mutual dependence of man and horse. His Codex is a saddle; his Thiasos is a falcon that returns after each flight.
+
+\subsection{Core Talents (Existing)}
+\begin{itemize}
+    \item \textit{Furusiyya Training} (6 XP)
+    \item \textit{Lance Recover} (6 XP)
+    \item \textit{Rites of Aveh or the Traveler}
+\end{itemize}
+
+\subsection{Signature Talent Chain — The Falcon's Return}
+
+\begin{talentbox}{The Falcon's Return — Lance Recall (6 XP)}
+After throwing your hollow lance, you may whistle; the lance returns to your saddle as a free action. You may use this ability once per scene.
+\end{talentbox}
+
+\clearpage
+
+\chapter{Monks and Ascetics}
+\epigraph{``The fist is a weapon. The open hand is a promise. Learn both before you need either.''}{\textit{--- Master Tarian}}
+
+Monks do not wear armor. They do not carry shields. They walk the world with nothing but their bodies and their breath—and they are among the deadliest fighters alive.
+
+\subsection{Foundations of the Unarmed Path}
+
+Monks use unarmed strikes as their primary weapon. Unarmed strikes deal Harm 1, may be used to grapple, and benefit from the following core talents.
+
+\begin{talentbox}{Unarmed Combatant (4 XP)}
+Your unarmed strikes deal Harm 1 and may be used to grapple, trip, or pin. You gain +1 die to grapple attempts.
+\end{talentbox}
+
+\begin{talentbox}{Disciplined Body (2 XP)}
+You may ignore 1 point of Fatigue from physical exertion once per scene.
+\end{talentbox}
+
+\begin{talentbox}{Flurry of Blows (6 XP)}
+Once per scene, you may make three unarmed attacks against a single target as one action. Roll each separately. After using Flurry of Blows, you suffer –1 die to defense for one exchange.
+\end{talentbox}
+
+\subsection{Cultural Variant: Ashaan Stick Dancer (Tahtib)}
+
+The Ashaani art of Tahtib is a martial dance with a long stick, performed to music. The practitioner uses the stick to strike, parry, and entangle.
+
+\begin{talentbox}{Tahtib — Dance of Sticks (6 XP)}
+When you wield a long stick (or a staff), you gain +1 die to Parry and may make a free trip attempt after a successful parry. Additionally, your movements are hypnotic; enemies who watch you fight suffer –1 die to attack you (distracted by your motion).
+\end{talentbox}
+
+\subsection{Cultural Variant: Dhaharan Kalaripayattu}
+
+The Dhaharan martial art of Kalaripayattu combines yoga, breathing exercises, and weapon combat. Practitioners are incredibly flexible and use their entire body as a weapon.
+
+\begin{talentbox}{Kalaripayattu — Body as Serpent (6 XP)}
+You may contort your body to escape grapples as a free action (once per round). Additionally, your unarmed strikes may target specific body parts; on a critical hit, you may impose a Condition (Blinded, Muted, Lamed) for one exchange.
+\end{talentbox}
+
+\subsection{Cultural Variant: Sidhi Knife Dancer}
+
+The Sidhi knife dancer uses a curved blade (khanjar) in each hand, moving in a deadly spiral. The tradition blends dance and combat, and a skilled knife dancer can strike two opponents at once.
+
+\begin{talentbox}{Knife Dance — Twin Blades (6 XP)}
+When you wield two khanjar knives, you may make two attacks as a single action against two different targets within Close range. Resolve each attack separately. You may use this ability once per scene.
+\end{talentbox}
+
+\clearpage
+
+\chapter{Shadow Warriors}
+\epigraph{``The best fight is the one the enemy never knows happened. The second-best is the one they survive to regret.''}{\textit{--- Master Tarian}}
+
+Shadow warriors are martials who prefer stealth, misdirection, and the sudden strike. They are not rogues—they do not pick pockets or climb walls (though they can). They are \textit{killers} who hide in plain sight.
+
+\subsection{The Ashaani Assassin (Veiled Hunter)}
+
+Ashaani assassins are trained in the art of the hidden blade. They strike from crowds, from shadows, from the moment when the victim blinks.
+
+\subsection{Core Talents}
+\begin{itemize}
+    \item \textit{Stealth} (existing)
+    \item \textit{Weapon Mastery (hidden blade or dagger)} (4 XP)
+    \item \textit{Poisoner} (4 XP)
+\end{itemize}
+
+\subsection{Signature Technique: The Veiled Strike}
+
+\begin{talentbox}{Veiled Strike (8 XP)}
+When you attack from a hidden position or from a crowd, your target suffers –1 die to defend (they do not see the threat until it is too late). Additionally, if you attack with a poisoned blade, the poison's DV is reduced by 1 (to a minimum of 1).
+\end{talentbox}
+
+\subsection{The Sekogo Ambusher}
+
+The jungles of Sekogo are dark and dense. Sekogo warriors use the terrain to vanish after each thrown knife, reappearing elsewhere.
+
+\subsection{Core Talents}
+\begin{itemize}
+    \item \textit{Stealth} (existing)
+    \item \textit{Weapon Mastery (throwing knives)} (4 XP)
+    \item \textit{Keen Senses} (2 XP)
+\end{itemize}
+
+\subsection{Signature Technique: Vanishing Throw}
+
+\begin{talentbox}{Vanishing Throw (8 XP)}
+After throwing a kpinga, you may immediately move up to Near distance and make a Stealth test (DV 4). On a success, you become Hidden. If you were already Hidden, your next thrown attack gains +1 die.
+\end{talentbox}
+
+\clearpage
+
+\chapter{Encounter Tactics}
+\epigraph{``A fool learns from his own scars. A wise warrior learns from the scars of others. A genius never gets scarred at all.''}{\textit{--- Master Tarian}}
+
+\section{Positioning and Terrain}
+
+\begin{itemize}
+    \item \textbf{High Ground:} Gain +1 die to ranged attacks and +1 Position when defending against melee.
+    \item \textbf{Chokepoints:} A doorway or bridge turns a horde into a queue. Tanks can hold a chokepoint while strikers attack from behind.
+    \item \textbf{Cover:} A low wall or a wagon provides Partial Cover (+1 Armor), Total Cover (cannot be targeted). Destroying cover is a valid tactic.
+    \item \textbf{Difficult Terrain:} Mud, rubble, or shallow water halves movement. Ranged attackers thrive here; melee fighters suffer.
+\end{itemize}
+
+\section{Action Economy}
+
+The side that takes more actions wins. Use these principles:
+\begin{itemize}
+    \item \textbf{Teamwork:} Use the \textit{Aid} action to give an ally +1 die. Two characters aiding a striker can turn a miss into a crit.
+    \item \textbf{Interrupts:} Talents like \textit{Wound-Drinker} or \textit{The Replacement} allow actions outside your turn. These are gold.
+    \item \textbf{Use Boons:} Boons can be spent to improve Position or re-roll failures. Do not hoard them.
+\end{itemize}
+
+\section{Non-Combat Tactics}
+
+The best fight is the one you avoid. Use these approaches:
+\begin{itemize}
+    \item \textbf{Intimidation:} After a display of violence (a kill, a shattered weapon), make a Presence + Command test. On success, remaining enemies may flee or surrender.
+    \item \textbf{Deception:} A false flag (dressing as the enemy) can let you walk through a camp. Requires a Deception test and a plausible story.
+    \item \textbf{Parley:} Even in combat, a shouted offer of mercy can stop a fight. The GM may allow a Presence + Sway test as a free action.
+    \item \textbf{Environmental Manipulation:} Cut the rope holding the chandelier. Set fire to the grain store. Collapse the tunnel. Creativity trumps stats.
+\end{itemize}
+
+\begin{warriorbox}{Table Tactics: The Seven Bells of Combat}
+A quick reference for players and GMs to keep combat flowing:
+
+1. \textbf{State Intent:} “I want to flank the spearman.”
+2. \textbf{Assess Risk:} The GM sets Position (Controlled/Dominant/Desperate).
+3. \textbf{Declare Action:} Roll dice.
+4. \textbf{Spend Boons:} Before or after the roll.
+5. \textbf{Resolve Effect:} Apply harm, Conditions, or narrative changes.
+6. \textbf{Spend SB:} GM may introduce complications (reinforcements, collapsing floor).
+7. \textbf{Pivot to Next Player:} Keep the rhythm short. Combat should feel urgent.
+\end{warriorbox}
+
+\clearpage
+
+\chapter{Arms and Armor}
+\epigraph{``The sword is a lie. What matters is the hand that holds it. But a good lie is easier to sell.''}{\textit{--- Master Tarian}}
+
+\section{Weapon Tags (Reminder)}
+
+\begin{itemize}
+    \item \textbf{ACCURATE:} +1 die to attack rolls.
+    \item \textbf{Armor Piercing:} Ignore 1 point of Armor.
+    \item \textbf{Brutal:} On a critical hit, add +1 Harm.
+    \item \textbf{Defensive:} +1 die to Parry actions.
+    \item \textbf{Heavy:} Two-handed; cannot be used with a shield.
+    \item \textbf{Light:} May be dual-wielded.
+    \item \textbf{Reach:} Can attack from Near range without closing.
+    \item \textbf{Thrown:} May be used as a ranged weapon (Near).
+\end{itemize}
+
+\section{Cultural Weapons with Unique Mechanics}
+
+\subsection{Khopesh (Ashaan)}
+
+\begin{weaponcard}{Khopesh}
+\textbf{Type:} Light (one-handed). \\
+\textbf{Tags:} Accurate, Hook (see Khopesh Hook talent). \\
+\textbf{Damage:} Harm 1 (slashing). \\
+\textbf{Special:} The khopesh can be used to hook shields and weapons; see the Khopesh Hook talent.
+\end{weaponcard}
+
+\subsection{Kpinga (Sekogo)}
+
+\begin{weaponcard}{Kpinga (Throwing Knife)}
+\textbf{Type:} Light (thrown). \\
+\textbf{Tags:} Thrown, Accurate, Brutal. \\
+\textbf{Damage:} Harm 1 (piercing). \\
+\textbf{Special:} A Sekogo warrior carries three or four kpinga. When thrown, the knife spins; if it hits, it deals +1 Harm (Brutal). A warrior must announce the throw loudly before releasing it (Court Metal custom).
+\end{weaponcard}
+
+\subsection{Kontos Lance (Pereshi)}
+
+\begin{weaponcard}{Kontos Lance}
+\textbf{Type:} Heavy (two-handed). \\
+\textbf{Tags:} Armor Piercing, Reach, Charge (when used from horseback after moving, +1 die). \\
+\textbf{Damage:} Harm 2 (piercing). \\
+\textbf{Special:} The kontos can be used one-handed while carrying a shield, but the attack suffers –1 die.
+\end{weaponcard}
+
+\subsection{Saber (Seif) (Fhara)}
+
+\begin{weaponcard}{Seif (Saber)}
+\textbf{Type:} Light (one-handed). \\
+\textbf{Tags:} Curved Blade (see Curved Blade talent). \\
+\textbf{Damage:} Harm 1 (slashing). \\
+\textbf{Special:} The curved blade is designed for slashing while riding past. See the Curved Blade talent.
+\end{weaponcard}
+
+\subsection{Javelin (Sidhi)}
+
+\begin{weaponcard}{Javelin}
+\textbf{Type:} Light (thrown or melee). \\
+\textbf{Tags:} Thrown, Accurate. \\
+\textbf{Damage:} Harm 1 (piercing). \\
+\textbf{Special:} A Sidhi warrior carries four javelins. The Javelin Volley talent allows two to be thrown as a single action.
+\end{weaponcard}
+
+\subsection{War Elephant (Dhahara)}
+
+\begin{weaponcard}{War Elephant (Mount)}
+\textbf{Type:} Heavy (mount). \\
+\textbf{Tags:} Armored, Trample, Fear. \\
+\textbf{Damage:} Trample deals Harm 2 and knocks prone. \\
+\textbf{Special:} Requires the Mahout's Bond talent. The elephant has its own Harm track (4) and Armor (2). It can be targeted separately from the mahout.
+\end{weaponcard}
+
+\clearpage
+
+\chapter{Last Words from the Master}
+\epigraph{``Put down the book. Pick up the sword. The ink will dry. The steel will not.''}{\textit{--- Master Tarian}}
+
+I have taught you what I can. The rest you must learn in the dust, the sand, the blood of the arena and the mud of the battlefield. Do not fear the edge—it is only the edge. What lies beyond is what you make of it.
+
+If you find yourself in Silkstrand, seek me out. The gate to the Iron Rose is always open. The tea is always hot. The practice ring is always waiting.
+
+And if I am not there, do not mourn. I have likely gone to find a student who needs me more.
+
+\vspace{0.5cm}
+\hfill --- \textit{Master Tarian Ironhand}
+
+\clearpage
+
+\appendix
+
+\chapter{Quick Reference: Martial Talents by Tier}
+
+{\small
+\begin{longtable}{@{}p{2.5cm} p{4.5cm} p{5cm}@{}}
+\toprule
+\textbf{Tier} & \textbf{Talent} & \textbf{Effect} \\
+\midrule
+Foundation (2-4 XP) & Disciplined Body & Ignore 1 Fatigue/scene. \\
+& Weapon Mastery & +1 die with chosen weapon. \\
+& Second Wind & Clear 2 Fatigue, remove Condition. \\
+& Shield Bearer & +1 Armor when using shield; Protect action. \\
+& Unarmed Combatant & Unarmed strikes Harm 1; grapple bonus. \\
+\midrule
+Advanced (6-8 XP) & Weapon Mastery II — Flowing Strike & Free reposition after hit. \\
+& Disciplined Body II — Iron Resilience & +2 Harm boxes; survive 0 Harm once. \\
+& Battlefield Awareness & Ask one tactical question before combat. \\
+& Flurry & Two attacks in one action (once/scene). \\
+& Pathfinder — Trackless Step & Leave no trail in natural terrain. \\
+& Khopesh Hook & Disarm or off-balance with khopesh. \\
+& Harassing Skirmish & Javelin throw and move imposes –1 die. \\
+& Kontos Thrust & Two‑handed lance use: +1 die, +1 Harm. \\
+\midrule
+Signature (10-12 XP) & Sentinel III — Shield of the Fallen & Take harm for an ally. \\
+& Spiral Throw (Sekogo) & Throw kpinga hits all in a zone. \\
+& Stampede (Dhahara) & Elephant forces panic in enemies. \\
+& Cataphract Charge & Lance ignores armor, shakes foes. \\
+& Veiled Strike (Ashaan) & Hidden attack ignores defense. \\
+\bottomrule
+\end{longtable}
+}
+
+\clearpage
+
+\end{document}

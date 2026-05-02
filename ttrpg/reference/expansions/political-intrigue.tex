@@ -1,5 +1,5 @@
-% Political Intrigue Campaign Framework — Fate's Edge (v0.2)
-% LaTeX single-file, print-ready
+% Political Intrigue Campaign Framework — Fate's Edge (v0.3)
+% Expanded with corrected Fenwood genealogy, timeline notes, and “Blood on the Belworth” adventure.
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{enumitem}
@@ -9,16 +9,23 @@
 \usepackage{array}
 \usepackage{setspace}
 \usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{lettrine}
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
 \setlist{noitemsep, topsep=4pt, leftmargin=1.2em}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
 
+% Custom commands
+\newcommand{\clock}[2]{\textbf{#1:} [#2]}
+\newcommand{\position}[1]{\textit{Position:} #1}
+\newcommand{\dv}[1]{\textit{DV:} #1}
+
 \begin{document}
 \begin{center}
 {\LARGE \textbf{Political Intrigue Campaign Framework}}\\[3pt]
-{\large for \emph{Fate's Edge} — Version 0.2 (Playtest)}\\[2pt]
+{\large for \emph{Fate's Edge} — Version 0.3 (Expanded)}\\[2pt]
 \end{center}
 \vspace{0.25em}
 \hrule\vspace{0.75em}
@@ -35,9 +42,9 @@
 \section*{Quickstart (2 minutes)}
 \begin{enumerate}
   \item Pick a \textbf{Seat of Power} (city, court, guildhall, synod).
-  \item Create \textbf{3--5 Faction Sheets}. Give each faction an \textbf{Influence} clock [6], an \textbf{Exposure} clock [6], and a \textbf{Stability} clock [6--8].
-  \item Place \textbf{Campaign Dials}: \emph{Mandate} and \emph{Crisis} at 2 (0--6 each) unless fiction says otherwise.
-  \item For each session, declare a \textbf{Situation Clock} [4--8] for the immediate political question.
+  \item Create \textbf{3–5 Faction Sheets}. Give each faction an \textbf{Influence} clock [6], an \textbf{Exposure} clock [6], and a \textbf{Stability} clock [6–8].
+  \item Place \textbf{Campaign Dials}: \emph{Mandate} and \emph{Crisis} at 2 (0–6 each) unless fiction says otherwise.
+  \item For each session, declare a \textbf{Situation Clock} [4–8] for the immediate political question.
   \item Play scenes. Any \textbf{1s generate SB}; the GM uses \emph{Social SB options}.
   \item Between sessions, run the \textbf{Intrigue Cycle} to advance clocks off-screen and seed the next scandal.
 \end{enumerate}
@@ -45,7 +52,7 @@
 \tableofcontents
 \newpage
 
-\section{Faction Play: Components \\ \& Templates}
+\section{Faction Play: Components \& Templates}
 \subsection{Faction Sheet (Template)}
 \begin{verbatim}
 [FACTION NAME]
@@ -75,7 +82,7 @@ A \textbf{String} is a concrete tie: ``Controls river tolls,'' ``Holds three Syn
 \begin{itemize}
   \item Acting \emph{with/through} a relevant String: improve \textbf{Position +1} \emph{or} treat \textbf{DV as --1} (once per scene).
   \item Acting \emph{against} a target's String: \textbf{Position --1} \emph{or} GM banks +1 SB.
-  \item Cutting or seizing a String is a \textbf{4--6 segment clock}; on fill, move the String to the victor or strike it.
+  \item Cutting or seizing a String is a \textbf{4–6 segment clock}; on fill, move the String to the victor or strike it.
 \end{itemize}
 
 \subsection{Relationship Map (Strings \& Stakes)}
@@ -96,44 +103,44 @@ Sketch the web. For every arrow between two factions, write a \textbf{stake} (e.
 \end{itemize}
 
 \subsection{Campaign Dials}
-\paragraph{Mandate (0--6)} Table's public legitimacy and door-opening power.
-\paragraph{Crisis (0--6)} Pressure from rivals, costs, and backlash.
+\paragraph{Mandate (0–6)} Table's public legitimacy and door-opening power.
+\paragraph{Crisis (0–6)} Pressure from rivals, costs, and backlash.
 Set both to 2 at start unless fiction says otherwise.
 
 \subsubsection*{Mechanical Hooks}
 \textbf{Mandate}
 \begin{itemize}
-  \item 0--1: Cold reception. Public venues start \textbf{Desperate} unless you bring Favors/Strings.
-  \item 2--3: Recognized. Once per social scene, treat Position as \textbf{one step higher} when invoking a relevant Favor or String.
-  \item 4--5: Credible power. Once per session, \textbf{cancel} one Social SB spend targeting you in public venues; public institutions set \textbf{DV --1} versus your petitions.
+  \item 0–1: Cold reception. Public venues start \textbf{Desperate} unless you bring Favors/Strings.
+  \item 2–3: Recognized. Once per social scene, treat Position as \textbf{one step higher} when invoking a relevant Favor or String.
+  \item 4–5: Credible power. Once per session, \textbf{cancel} one Social SB spend targeting you in public venues; public institutions set \textbf{DV --1} versus your petitions.
   \item 6: Standard-bearers. Start public scenes \textbf{Dominant} unless fiction strongly opposes; your endorsements create a 4-clock \emph{Bandwagon} on targets.
 \end{itemize}
 \textbf{Crisis}
 \begin{itemize}
-  \item 0--1: Calm waters.
-  \item 2--3: Tension. At the start of each session, GM banks +1 SB for political scenes.
-  \item 4--5: Boiling. First failed social action each session ticks party \textbf{Exposure +1}.
+  \item 0–1: Calm waters.
+  \item 2–3: Tension. At the start of each session, GM banks +1 SB for political scenes.
+  \item 4–5: Boiling. First failed social action each session ticks party \textbf{Exposure +1}.
   \item 6: Breaking point. Start political scenes with a \textbf{Counter-Clock [4]} in play.
 \end{itemize}
 
 \section{Scene Procedures for Social Conflict}
-\subsection*{2.0 Social Conflict at a Glance}
+\subsection*{Social Conflict at a Glance}
 \begin{enumerate}
   \item \textbf{Intent} $\to$ \textbf{Position/DV} $\to$ \textbf{Roll} $\to$ \textbf{Outcome} $\to$ \textbf{Ripple}.
-  \item Set Dominant/Dominant/Desperate and DV from fiction. \textbf{Any 1s generate SB} in social scenes.
+  \item Set Dominant/Controlled/Desperate and DV from fiction. \textbf{Any 1s generate SB} in social scenes.
 \end{enumerate}
 
 \subsection{Intrigue Actions (examples)}
-Each uses the table's attribute/skill list. Suggested positions/DVs and on-hit effects below.
+Each uses the table's attribute/skill combination. Suggested positions/DVs and on-hit effects below.
 \begin{itemize}
-  \item \textbf{Petition (Presence+Sway):} Present a case to a decision-maker. Dominant with writs/favors; Desperate when hostile. DV 2--4. Hit: fill Situation; strong hit: tick ally Influence.
-  \item \textbf{Bribe (Wits+Streetwise/Lore):} Move resources to open doors. Dominant; worsens if watched/holy ground. DV 2--3. Hit: create a temporary tag (\emph{Greased Palms}); miss: tick Exposure.
-  \item \textbf{Blackmail (Wits+Investigation):} Apply leverage. Dominant $\to$ Desperate if unverified. DV 3--5. Hit: concession now or place a 4-clock \emph{Compromise} usable later for Position Dominant.
-  \item \textbf{Broker (Presence+Diplomacy):} Reconcile two parties. Dominant on neutral ground; Dominant with ritual hospitality; Desperate if blades present. DV 3--4. Hit: reduce both parties' Exposure by 1; fill Influence for the favored side.
-  \item \textbf{Expose (Presence+Performance):} Publicly reveal truth/forgery. Dominant with corroboration; Desperate with hearsay. DV 3--5. Hit: add \emph{Disgraced} tag; fill 2--3 segments on target Exposure.
+  \item \textbf{Petition (Presence+Sway):} Present a case to a decision-maker. Dominant with writs/favors; Desperate when hostile. DV 2–4. Hit: fill Situation; strong hit: tick ally Influence.
+  \item \textbf{Bribe (Wits+Streetwise/Lore):} Move resources to open doors. Dominant; worsens if watched/holy ground. DV 2–3. Hit: create a temporary tag (\emph{Greased Palms}); miss: tick Exposure.
+  \item \textbf{Blackmail (Wits+Investigation):} Apply leverage. Dominant $\to$ Desperate if unverified. DV 3–5. Hit: concession now or place a 4-clock \emph{Compromise} usable later for Position Dominant.
+  \item \textbf{Broker (Presence+Diplomacy):} Reconcile two parties. Dominant on neutral ground; Dominant with ritual hospitality; Desperate if blades present. DV 3–4. Hit: reduce both parties' Exposure by 1; fill Influence for the favored side.
+  \item \textbf{Expose (Presence+Performance):} Publicly reveal truth/forgery. Dominant with corroboration; Desperate with hearsay. DV 3–5. Hit: add \emph{Disgraced} tag; fill 2–3 segments on target Exposure.
   \item \textbf{Shield (Wits+Tactics/Lore):} Pre-empt rival plays via law/protocol/counter-messaging. Dominant; Dominant with counsel/rites. DV 3. Hit: reduce incoming Social SB by 1 this scene; mark ally Stability $-$1 (cohere under pressure).
-  \item \textbf{Host Feast/Vigil (Presence+Performance/Rite):} Gather elites; set tone. Dominant if traditions observed; Desperate if taboo. DV 2--4. Hit: create Audience tags; if triumph, \emph{Mandate +1}.
-  \item \textbf{Infiltrate (Body/Wits+Stealth/Deception):} Plant evidence, steal ledgers, ghost a meeting. Desperate when warded/sanctified. DV 3--5. Hit: gain \emph{Leverage (1)} or fill Situation; on partials, start a \emph{Security} or \emph{Rumor} counter-clock.
+  \item \textbf{Host Feast/Vigil (Presence+Performance/Rite):} Gather elites; set tone. Dominant if traditions observed; Desperate if taboo. DV 2–4. Hit: create Audience tags; if triumph, \emph{Mandate +1}.
+  \item \textbf{Infiltrate (Body/Wits+Stealth/Deception):} Plant evidence, steal ledgers, ghost a meeting. Desperate when warded/sanctified. DV 3–5. Hit: gain \emph{Leverage (1)} or fill Situation; on partials, start a \emph{Security} or \emph{Rumor} counter-clock.
 \end{itemize}
 
 \subsection{Social SB Options}
@@ -161,7 +168,7 @@ A scene resolves when the \textbf{Situation Clock} fills or fiction dictates. Th
 \section{The Intrigue Cycle (Between Sessions)}
 Use once per session (or per in-fiction week/month on jumps).
 \subsection*{Step A — Update World State}
-For each active faction, advance \emph{Stability} or \emph{Exposure} by 1 if they suffered public pressure or internal strain. Tick unresolved thread clocks by 1 or start a 4--6 clock.
+For each active faction, advance \emph{Stability} or \emph{Exposure} by 1 if they suffered public pressure or internal strain. Tick unresolved thread clocks by 1 or start a 4–6 clock.
 
 \subsection*{Step B — Draw/Prompt for Events}
 \textbf{Method:} Draw blindly from a standard deck or deliberately pick suits matching themes. Use \textbf{Suit} for type (Hearts=court/crowd; Spades=violence; Clubs=resources/strikes; Diamonds=environment/omens) and \textbf{Rank} for severity (low=+1, mid=+2, face/ace=+3 segments).\\
@@ -175,7 +182,7 @@ Each PC directs one off-screen move using a follower/asset/network. Resolve with
 If wins were visible and valued, \textbf{Mandate +1}. If costs, scandals, or riots mounted, \textbf{Crisis +1}. Both may move.
 
 \subsection*{Step E — Prep Next Situation}
-Name the next immediate political question. Put a \textbf{4--8} clock on it. Grab 2--3 complications tied to factions and prior tags.
+Name the next immediate political question. Put a \textbf{4–8} clock on it. Grab 2–3 complications tied to factions and prior tags.
 
 \section{Currencies: Favor, Leverage, Exposure, Reputation}
 \subsection{Favor (Table Currency)}
@@ -193,24 +200,24 @@ Favors are narrow; specify scope (``Harbormaster's Office,'' not ``All of Kahfag
   \item \textbf{Decay:} Only \emph{public} uses count. After two public uses of the same leverage, convert it to \emph{Exposure +1} on you or the target (your choice). Private uses do not decay it, but three private uses make it stale; refresh with new proof/witness/circumstance before it functions again.
 \end{itemize}
 
-\subsection{Exposure (You \\ \& Them)}
+\subsection{Exposure (You \& Them)}
 Track \textbf{Exposure [6]} for the party (or per face) and on major factions. When a track fills, trigger a \textbf{Scandal Event}: public censure, hostile audit, inquisitorial summons, riot, duel demand, etc. Clear 2 on a successful \emph{Shield} scene or by accepting a humiliating concession on-screen.
 
 \subsection{Reputation Tiers}
-Check at arc end (or every 2--3 sessions). If two are true, advance Reputation Tier:
+Check at arc end (or every 2–3 sessions). If two are true, advance Reputation Tier:
 \begin{itemize}
   \item Convert 3 favors from one institution into \textbf{Standing (Tag)} \emph{or} hold Standing with two institutions.
   \item End with \textbf{Mandate $\geq$ 4} \emph{or} resolve a city-scale Situation Clock [8] in your favor.
   \item Your deeds create/resolve a \emph{regional law/rite} or seat/remove a leader.
 \end{itemize}
-\textbf{Gatekeeping Effects:} Higher tiers grant default access to higher-tier factions/venues; DVs for petitions to lower-tier offices drop by 1; clocks scale up (use 6--8 segments at higher tiers; 4--6 at low tier). When your tier outstrips a scene's stakes, the GM may simply hand you the room unless opposing Strings/Leverage are present.
+\textbf{Gatekeeping Effects:} Higher tiers grant default access to higher-tier factions/venues; DVs for petitions to lower-tier offices drop by 1; clocks scale up (use 6–8 segments at higher tiers; 4–6 at low tier). When your tier outstrips a scene's stakes, the GM may simply hand you the room unless opposing Strings/Leverage are present.
 
 \section{Followers \& Assets in Politics}
 \subsection*{On-Scene}
 Assign a follower to Assist or to take an independent scene action with its own risk. Harm to followers often lands as \emph{Stability} or \emph{Exposure} ticks on their home faction.
 
 \subsection*{Off-Screen Orders (Intrigue Cycle)}
-Each PC may direct one follower/asset on a \emph{Significant-Time} operation (surveil, seed rumors, counter-bribe, audit a ledger, escort witnesses). This can occur mid-adventure as a cutaway or between sessions. Resolve with one roll using the follower's capability as positioning; on a hit, apply 1--2 segments to the intended clock; on 1s, bank SB and mark \emph{Exposure +1}.
+Each PC may direct one follower/asset on a \emph{Significant-Time} operation (surveil, seed rumors, counter-bribe, audit a ledger, escort witnesses). This can occur mid-adventure as a cutaway or between sessions. Resolve with one roll using the follower's capability as positioning; on a hit, apply 1–2 segments to the intended clock; on 1s, bank SB and mark \emph{Exposure +1}.
 
 \subsection*{Upkeep \& Entanglements}
 Track names, not ledgers. When the GM spends 2+ SB in a political arc, an ally may face the consequence instead (compromised informant, bribed clerk, stolen seal). Convert entanglements into new \emph{threads} and \emph{clocks} rather than binary losses.
@@ -223,8 +230,8 @@ Clubs: resources, trade shocks, supply, strikes.\\
 Diamonds: environment, festivals, omens, disasters.
 
 \subsection*{Ranks as Severity}
-Low (2--5): gossip/minor obstruction (\,+1 segment).\\
-Mid (6--9): scandals, votes, riots, inquisitors (\,+2 segments).\\
+Low (2–5): gossip/minor obstruction (\,+1 segment).\\
+Mid (6–9): scandals, votes, riots, inquisitors (\,+2 segments).\\
 Face/Ace: institutions shift; laws change; thrones wobble (\,+3 segments; start/finish a major clock).
 
 \subsection*{Draw Procedures}
@@ -240,108 +247,85 @@ Act Builder: Establishment $\to$ Escalation $\to$ Resolution; note which clocks 
   \item \textbf{Diamonds 9:} Omens sour during a procession; tick \emph{Exposure +2} on the Ember-Temple unless rites appease it.
 \end{itemize}
 
-\section{Regional Starting Kits (Seeds)}
-\subsection*{Thepyrgos — Synod \& Collegium}
-\textbf{Factions:} Archons' Synod; Collegium of Keys; Harbor Guild; Ember-Temple; Vagrant Companies.\\
-\textbf{Sparks:} Charter revision threatens Collegium privileges; Harbor Guild bankrolls reform; Temple schism spills into streets.
+\section{Long-Term Campaign Management}
+Running a multi-arc intrigue campaign requires pacing and player investment. Use these additional tools.
 
-\subsection*{Silkstrand — City of Bridges}
-\textbf{Factions:} Dye Syndicate; Archivolt; Riverine Patrol; Bridge-Lords; Playhouse Mummers.\\
-\textbf{Sparks:} A curse knits into tithe ledgers; river patrol seizes a rival's barge; a mummer's satire names names.
-
-\subsection*{Viterra — Hedge-Law Realm}
-\textbf{Factions:} Parish Courts; Crown Surveyors; Dike Brotherhoods; Village Moots; Tithe-Keepers.\\
-\textbf{Sparks:} Boundary survey voids ancestral rights; moot declares hedge-law embarrassing a duke; floodworks need a vote \emph{now}.
-
-\subsection*{Ecktoria — Marble \& Fire}
-\textbf{Factions:} Legions Remnant; Sun-Temples; Merchant Courts; Imperial Exarchs; Civic Aqueducts Office.\\
-\textbf{Sparks:} Lost patent resurfaces; relic procession turns political; Exarch audits Aqueducts before summer.
-
-\subsection*{Kahfagia — Lantern-Law Harbors}
-\textbf{Factions:} Admiralty; Pilots; Fog-Bell Wardens; Tide-Chart Office; Salt Syndicates.\\
-\textbf{Sparks:} Lantern-law reform collapses smuggler bargains; a bell-line goes dark in storm week; pilots strike.
-
-\section{Example of Play (Short)}
-\textbf{Frame:} PCs want the Harbor Guild to endorse their candidate for Tide-Marshal.\\
-\textbf{Setup:} Situation \emph{Guild Endorsement} [6]; Counter \emph{Rival Frames You as Smugglers} [4]; Mandate 3; Crisis 2; Harbor Guild Influence 2/6; Exposure 1/6.
-
-\paragraph{Scene 1 — Petition} Position Dominant (sponsor pilot), DV 3. Partial: fill 1 on Endorsement; GM SB: concession required (guild donation). PCs pay; Position holds.
-
-\paragraph{Scene 2 — Expose (Counterplay)} Position Dominant (documented proof), DV 3. Strong hit: fill 2 on Endorsement; +2 on rival Exposure; gallery warms; tag \emph{Smell of Salted Justice}.
-
-\paragraph{Scene 3 — Shield} Position Dominant, DV 3. Success: reduce incoming Social SB by 1; tick Guild Stability $-$1 (they rally behind rules).
-
-\textbf{Resolution:} Endorsement fills in Scene 4 after a \emph{Broker} action. \emph{Mandate +1}. Rival Exposure hits 6/6 $\to$ scandal: treasurer resigns. Next hook writes itself.
-
-\section*{Guidance for Use}
+\subsection*{Seasonal Arcs}
+Each arc (4–6 sessions) should focus on a single \textbf{Seasonal Aim} for the party (e.g., ``Seat an allied candidate'', ``Expose a treasonous conspiracy'', ``Negotiate a trade treaty''). At the end of the arc, the party may:
 \begin{itemize}
-  \item \textbf{Stay Visible:} Every spend changes the map: a tag, a clock, a dial.
-  \item \textbf{Escalate Honestly:} When Crisis climbs, show it: protests, inquisitors, budgets, bans.
-  \item \textbf{Reward Face-Saving:} In intrigue, dignity can be worth more than coin.
-  \item \textbf{Keep It Human:} Even in a world of rites and spirits, politics is people.
+  \item Permanently increase \textbf{Mandate} by 1 (if the aim succeeded and was visible).
+  \item Gain a \textbf{Legacy String} (a permanent tie usable once per arc).
+  \item Convert a major rival faction's \textbf{Influence} clock into a \textbf{Debt} on them.
 \end{itemize}
 
-\section*{Changelog}
-\textbf{v0.2} — Clarified tick triggers; gave Strings concrete effects; added volatility triggers and map hooks; defined Mandate/Crisis mechanical hooks; established default Situation$\to$Faction ripple; expanded Social SB options; confirmed \emph{all 1s generate SB} in social; clarified Leverage decay; added Reputation Tier checks; clarified follower Significant-Time orders; added scandal examples; added a core summary box; tightened Quickstart wording.
+\subsection*{Faction Rivalry Clocks}
+In addition to Influence/Stability/Exposure, you may track a \textbf{Rivalry Clock [6]} between two factions. Each time one faction publicly humiliates the other, tick the clock. When full, a decisive confrontation occurs (duel, vote, raid, trial). The PCs can influence the outcome by spending Favors or Leverage.
 
-\vfill
-\begin{center}\small \emph{This file presents procedures only; defer to the Fate's Edge core SRD for roll math and basic adjudication.}\end{center}
+\subsection*{Managing Downtime}
+Between arcs, run a \textbf{Downtime Phase} where players narrate their characters' activities (3–5 scenes). Each activity:
+\begin{itemize}
+  \item Restores a resource (Favor, Leverage, or clears Exposure).
+  \item Advances a personal project (gaining a new String or improving an Asset).
+  \item May trigger a \textbf{Personal Complication} (GM banks 2 SB for the next arc).
+\end{itemize}
 
 \clearpage
+
+% ===================================================================
+%   BLOOD ON THE BELWORTH ADVENTURE
+% ===================================================================
 
 \begin{center}
     {\Huge \textbf{Blood on the Belworth}} \\
     \vspace{0.5em}
-    {\Large A Political Intrigue adventure for Fate's Edge using the v0.2 framework}
+    {\Large A Political Intrigue adventure for Fate's Edge using the v0.3 framework}
 \end{center}
 
-\section*{Backdrop}
-Duke Fenwood has ruled nearly forty years from Tarlington, former seat of the Tarling Kings of Viterra. Soon after aiding the new Queen of Viterra to ascend her throne, he was gravely injured in an assassination attempt. Eight years ago he invaded and sacked Lence, the Vhasian capital, causing a succession crisis. Now, as the duke lies infirm, his sons---the even-keeled heir Constano and his hot-headed martial brother Seniro---must keep House Fenwood's power on both the Vhasian and Viterran sides of the Belworth River.
+\lettrine{D}{uke} Braedon Fenwood, the last of the old Valvano line, has just died. His sons — the cautious Constano (heir) and the martial Seniro — now struggle to maintain House Fenwood's power on both sides of the Belworth River. The succession crisis of Viterra festers: Queen Veralyn Demoneye’s throne is contested, and the Vhasian Regency sees opportunity. In the midst of this, a ferry is found adrift with three stabbed corpses and a Fenwood quartermaster’s armband nailed to the mast. The river turns to rumor, and the old duke’s final words echo: \textit{“Count exits before enemies. The road reschedules.”}
+
+\section*{Timeline Note (GM Eyes Only)}
+The Fourth Sack of Ecktoria (c. 620 AR) occurred seventy years after the Third Sack and the Valvano exile. The events of \textit{The Exile Road} and \textit{The Nameless} take place around that era. Braedon Fenwood lives centuries later, after the Tarling kings have fallen, the Fenwoods have risen to ducal status, and the Everbloods have taken the crown. The debt foreshadowed in \textit{The Exile Road} was paid long ago. This adventure deals with the \textit{consequences} of those ancient choices: the Black Scrip indemnities, the ghost of the Thornhill child, and the Aeler keystone rights.
 
 \section*{Using This Adventure}
-This module is built on the Political Intrigue Campaign Framework (v0.2):
-\begin{itemize}
-    \item Run each major question with a Situation Clock (4--8) and at least one Counter-Clock (4--6).
-    \item Use Strings to tune Position/DV and as prizes/failure states.
-    \item Apply Mandate/Crisis dials and the Situation→Faction Ripple rules after each scene.
-\end{itemize}
+This module is built on the Political Intrigue Campaign Framework (v0.3). Run each major question with a Situation Clock (4–8) and at least one Counter-Clock (4–6). Use Strings to tune Position/DV and as prizes/failure states. Apply Mandate/Crisis dials and the Situation→Faction Ripple rules after each scene.
 
-\textbf{Intended length:} 2--4 sessions. \textbf{Tone:} border-court drama, false flags, rites of hospitality, hedge-law wrangling.
+\textbf{Intended length:} 2–4 sessions. \textbf{Tone:} border-court drama, false flags, rites of hospitality, hedge-law wrangling. \textbf{Prerequisite:} The adventure assumes the events of \textit{The Old Duke’s Wars} (vignettes of Braedon’s life) have recently occurred. The party may have played those vignettes, or the GM can narrate the key beats.
 
 \section*{Seats, Locales \& Assets}
 \begin{itemize}
-    \item \textbf{Tarlington (Viterra):} ducal seat; marble halls, Hedge-Law Moot Court, lantern beacons along the river stairs.
-    \item \textbf{Belworth River Corridor:} ferry towns, reedmarshes, customs towers, lantern-law posts, ruined fortlets from the Tarling era.
-    \item \textbf{Lence (Vhasia):} half-rebuilt after the sack; Restorationist salons; a palace-in-exile flavor.
-    \item \textbf{The Red Span:} a half-finished bridge across the Belworth; a scandal of budgets and graft.
-    \item \textbf{Lantern-Rites House of Oria:} neutral ground by custom; oaths, feasts, and river burials are sanctified here.
+  \item \textbf{Tarlington (Viterra):} Ducal seat; marble halls, Hedge-Law Moot Court, lantern beacons along the river stairs. Old Braedon’s solar now holds his Canray board and a sealed letter.
+  \item \textbf{Belworth River Corridor:} Ferry towns, reedmarshes, customs towers, lantern-law posts, ruined Tarling fortlets.
+  \item \textbf{Lence (Vhasia):} Half-rebuilt after the sack; Restorationist salons; a palace-in-exile flavor.
+  \item \textbf{The Red Span:} A half-finished Aeler bridge across the Belworth; a scandal of budgets and graft. The Aeler True Masons have a dormant keystone clause that could swing control.
+  \item \textbf{Lantern-Rites House of Oria:} Neutral ground by custom; oaths, feasts, and river burials are sanctified here. Sister Oria was a confidante of old Braedon.
 \end{itemize}
 
 \subsection*{Named Assets (examples):}
 \begin{itemize}
-    \item Ferry Passbooks (who may legally cross at dusk)
-    \item Tarler's Seal (ducal customs stamp)
-    \item Ledger of Tithes (grain barges)
-    \item Lantern-Rite Basin (ritual hospitality)
-    \item The Black Scrip (indemnities owed by Lence)
-    \item Red Span Budget Roll (inflated contracts)
+  \item Ferry Passbooks (who may legally cross at dusk)
+  \item Tarler's Seal (ducal customs stamp)
+  \item Ledger of Tithes (grain barges)
+  \item Lantern-Rite Basin (ritual hospitality)
+  \item The Black Scrip (indemnities owed by Lence after the Sack)
+  \item Red Span Budget Roll (inflated contracts)
+  \item \textbf{Braedon’s Canray Board} (a slate with an unfinished game; the positions reveal hidden alliances)
 \end{itemize}
 
 \section*{Factions (Sheets)}
 
 \subsection*{House Fenwood (Viterra)}
 \begin{longtable}{@{}lll@{}}
-Tier: crown & Aim: Preserve cross-river power and succession & Stance: Needs the PCs \\
-Levers: blades, law, tolls & Leader: Duke Fenwood (infirm); Constano (heir), Seniro (marshal) & \\
+Tier: crown & Aim: Preserve cross-river power and ensure a smooth succession for Veralyn & Stance: Needs the PCs \\
+Levers: blades, law, tolls, Canray wisdom & Leader: Duke Braedon (deceased); Constano (heir), Seniro (marshal) & \\
 Reputation: Old-Blood, Stern & & \\
 Clocks: Influence [6], Stability [8], Exposure [6] & & \\
-Strings: Custodian of the Lantern Beacons; Controls Red Span work crews; Holds oaths of three ferry captains & & \\
+Strings: Custodian of the Lantern Beacons; Controls Red Span work crews; Holds oaths of three ferry captains; *Braedon’s unfinished game – a metaphor for the succession* & & \\
 \end{longtable}
 
-\subsection*{Vhasian Regency Council (Vhasia)}
+\subsection*{Vhasian Regency Council}
 \begin{longtable}{@{}lll@{}}
-Tier: crown & Aim: Cement a successor loyal to Lence & Stance: Wary \\
-Levers: law, clergy, spies & Leaders: Lady-Envoy Mael Vesht; Arch-Rector Irsen & \\
+Tier: crown & Aim: Cement a successor loyal to Lence and challenge Fenwood indemnities & Stance: Wary \\
+Levers: law, clergy, spies, ancestral grievances & Leaders: Lady-Envoy Mael Vesht; Arch-Rector Irsen & \\
 Reputation: Restorers, Grievant & & \\
 Clocks: Influence [6], Stability [6], Exposure [6] & & \\
 Strings: Custodian of the Black Scrip; Holds exile petitions; Sanctions river pilgrimages & & \\
@@ -359,7 +343,7 @@ Strings: Neutral Sanctum of Hospitality; Funerary authority on the Belworth; Oat
 \subsection*{River Syndicate (Pilots \& Ferrymen)}
 \begin{longtable}{@{}lll@{}}
 Tier: guild & Aim: Profit from stability and exemptions & Stance: Opportunists \\
-Levers: ships, tolls, rumor & Leader: Captain Pell Rivermark & \\
+Levers: ships, tolls, rumor, fog-sense & Leader: Captain Pell Rivermark & \\
 Reputation: Practical, Superstitious & & \\
 Clocks: Influence [6], Stability [6], Exposure [6] & & \\
 Strings: Ferry Passbooks; Night-lantern routes; Smuggler hush-oaths & & \\
@@ -367,217 +351,235 @@ Strings: Ferry Passbooks; Night-lantern routes; Smuggler hush-oaths & & \\
 
 \subsection*{Red Span Contractors (Graft Bloc)}
 \begin{longtable}{@{}lll@{}}
-Tier: merchant & Aim: Keep funds flowing, finish or delay as profits dictate & Stance: Smiling knives \\
-Levers: coin, labor, saboteurs & Leader: Master Mason Ghiro & \\
+Tier: merchant & Aim: Keep funds flowing – finish or delay as profits dictate & Stance: Smiling knives \\
+Levers: coin, labor, saboteurs, counterfeit ledger pages & Leader: Master Mason Ghiro & \\
 Reputation: Gilded, Cut-Rate & & \\
 Clocks: Influence [6], Stability [6], Exposure [6] & & \\
-Strings: Hold on budget rolls; Union stevedores; Secret pact with Seniro's quartermaster & & \\
+Strings: Hold on budget rolls; Union stevedores; Secret pact with Seniro’s quartermaster & & \\
 \end{longtable}
 
 \subsection*{Lence Restorationists (Radicals)}
 \begin{longtable}{@{}lll@{}}
-Tier: street→guild & Aim: Public trial of Fenwood; purge collaborators & Stance: Hostile to waffling \\
-Levers: crowds, broadsheets, knives & Leader: Jaska the Poet & \\
+Tier: street→guild & Aim: Public trial of Fenwood war‑crimes; purge collaborators & Stance: Hostile to waffling \\
+Levers: crowds, broadsheets, knives, martyrs & Leader: Jaska the Poet & \\
 Reputation: Zealous, Wounded & & \\
 Clocks: Influence [6], Stability [6], Exposure [6] & & \\
-Strings: Printing house in the Reeds; Honor cult of the fallen; List of collaborators & & \\
+Strings: Printing house in the Reeds; Honor cult of the fallen; List of collaborators (real and imagined) & & \\
 \end{longtable}
 
 \section*{Relationship Map (Strings \& Stakes)}
 \begin{itemize}
-    \item Fenwood ↔ Regency: Black Scrip indemnities; volatile.
-    \item Fenwood ↔ River Syndicate: Ferry exemptions; volatile.
-    \item Regency ↔ Restorationists: Street muscle vs legitimacy.
-    \item Fenwood ↔ Red Span Contractors: Overruns \& kickbacks; volatile.
-    \item Lantern-Rites ↔ Everyone: Hospitality oaths.
-    \item Syndicate ↔ Contractors: Work crews \& permits.
+  \item Fenwood ↔ Regency: \textit{Black Scrip indemnities}; \textbf{volatile}.
+  \item Fenwood ↔ River Syndicate: \textit{Ferry exemptions}; \textbf{volatile}.
+  \item Regency ↔ Restorationists: \textit{Street muscle vs legitimacy}.
+  \item Fenwood ↔ Red Span Contractors: \textit{Overruns \& kickbacks}; \textbf{volatile}.
+  \item Lantern-Rites ↔ Everyone: \textit{Hospitality oaths}.
+  \item Syndicate ↔ Contractors: \textit{Work crews \& permits}.
 \end{itemize}
-
-\textbf{Volatility Triggers:} Exposure fill on either node; Crisis +1; or targeted Social SB spend. \\
-\textbf{Map Hooks:} Acting with a positive String on a node: Position +1 or DV –1 (once/scene). Acting against a hostile node: Position –1 or GM banks +1 SB.
+\textbf{Volatility Triggers:} Exposure fill on either node; Crisis +1; or a targeted Social SB spend. \\
+\textbf{Map Hooks:} Acting with a positive String on a node → Position +1 or DV –1 (once/scene). Acting against a hostile node → Position –1 or GM banks +1 SB.
 
 \section*{Campaign Dials (Start)}
-Mandate 2 (recognized) • Crisis 2 (tension). Move them honestly: public wins/losses change access and pressure as per rules.
+\textbf{Mandate:} 2 (recognized but brittle) \\
+\textbf{Crisis:} 3 (tension after Brightstride’s death and the contested succession)
 
-\section*{Inciting Incident --- ``Blood on the Ferry''}
+Move them honestly: public wins/losses change access and pressure as per framework rules.
+
+\section*{Inciting Incident – “Blood on the Ferry”}
 At dusk, the ferry \textit{Belworth Grace} drifts to shore with its lanterns guttering. A Vhasian courier and two clerks lie stabbed; a Fenwood quartermaster's armband is nailed to the mast. Survivors whisper conflicting tales. The river turns to rumor overnight.
 
-\clock{Immediate Situation Clock}{6}: Contain the Spiral --- keep the border calm for 24 hours. \\
-\clock{Counter-Clock}{4}: Hotheads March --- Seniro's men assemble to cross at dawn. \\
-\clock{Counter-Clock}{4}: Justice Now! --- Restorationists demand arrests at the Lantern-Rites House.
+In Braedon’s solar, his Canray board has been moved – the Blue piece is now isolated. Those who see it read a warning: \textit{the king is vulnerable}.
 
-If the PCs do nothing: Crisis +1; Fenwood Exposure +1; Regency Influence +1; volatile stake Black Scrip triggers (audit squads arrive).
+\clock{Immediate Situation Clock}{6}: \textbf{Contain the Spiral} – keep the border calm for 24 hours. \\
+\clock{Counter-Clock}{4}: \textbf{Hotheads March} – Seniro’s men assemble to cross at dawn. \\
+\clock{Counter-Clock}{4}: \textbf{Justice Now!} – Restorationists demand arrests at the Lantern-Rites House.
 
-\section*{Act I --- Holding the River}
-\textbf{Goal:} Prevent escalation; establish inquiry ground rules under Lantern-Rites.
+If the PCs do nothing: \textbf{Crisis +1}, Fenwood Exposure +1, Regency Influence +1, and the volatile stake \textit{Black Scrip} triggers (audit squads arrive).
 
-\subsection*{Core Scenes (pick 2--3):}
+\section*{Act I – Holding the River}
+\textbf{Goal:} Prevent escalation; establish an inquest under Lantern-Rites.
+
+\subsection*{Core Scenes (pick 2–3)}
+
+\paragraph{Petition at Lantern-Rites}
+Claim neutral inquest rights before Sister Oria.  
+\position{Dominant with offerings (a candle, a tithe, a memory of Braedon); Desperate if arriving with blades.} \dv{3–4}  
+\textbf{On hit:} Situation +1–2; Lantern-Rites Influence +1.  
+\textbf{On miss:} Exposure +1 (you profane rites).
+
+\paragraph{Shield the Captains}
+Keep Seniro’s hotheads from marching. Use Hedge‑Law precedents or Sister Oria’s writ.  
+\position{Dominant with Hedge‑Law dicta; Dominant if you secure Oria’s seal.} \dv{3}  
+\textbf{On hit:} Counter‑Clock \textit{Hotheads March} –1; Seniro grudgingly respects you.
+
+\paragraph{Broker a Truce}
+Arrange a dusk meeting between Regency envoys and Fenwood stewards at Lantern-Rites.  
+\position{Dominant if hosting on sacred ground; Desperate if in the open.} \dv{3–4}  
+\textbf{On hit:} Both sides’ Exposure –1; start a concession clock \textit{Shared Inquest} [4].
+
+\paragraph{Infiltrate the Red Span}
+Sneak onto the unfinished bridge to see who planted the quartermaster’s armband.  
+\position{Desperate (saboteurs may still be present).} \dv{4–5}  
+\textbf{On hit:} Gain Leverage (1) – \textit{“Seniro’s quartermaster took bribes from Ghiro”} – or fill \textit{Contain the Spiral} by 1.
+
+\subsection*{Vignette Echo (from \textit{The Old Duke’s Wars})}
+If the party spared the Thornhill child in the vignettes, his ghost appears during infiltration, whispering warnings. This grants +1 die to the roll but adds a \textbf{Haunted} condition (Dread +1).
+
+\textbf{End of Act I:} If \textit{Contain the Spiral} fills, Mandate +1. If any counter‑clock fills first, Crisis +1 and trigger a volatile arrow (GM’s choice: likely \textit{Fenwood ⇄ Contractors} or \textit{Fenwood ⇄ Regency}).
+
+\section*{Act II – Ledger and Blood}
+\textbf{Goal:} Identify the hand behind the ferry murders.
+
+\subsection*{Clue Threads (any 3 lead to the culprit)}
 \begin{enumerate}
-    \item \textbf{Petition (Presence+Sway)} at Lantern-Rites to claim neutral inquest rights.
-    \begin{itemize}
-        \item \position{Position:} Dominant with offerings; Desperate if arriving with blades. \dv{3--4}.
-        \item \textbf{On hit:} Situation +1--2; Lantern-Rites Influence +1. \textbf{On miss:} Exposure +1 (you profane rites).
-    \end{itemize}
-    
-    \item \textbf{Shield (Wits+Lore/Tactics)} to keep Seniro's captains from marching.
-    \begin{itemize}
-        \item \position{Position:} Dominant with Hedge-Law dicta; Dominant if you secure Sister Oria's writ. \dv{3}.
-        \item \textbf{On hit:} Reduce incoming Social SB by 1 this scene; Fenwood Stability –1 (they cohere behind rules).
-    \end{itemize}
-    
-    \item \textbf{Broker (Presence+Diplomacy):} a dusk truce between Regency envoys and Fenwood stewards.
-    \begin{itemize}
-        \item \position{Position:} Dominant if hosting at Lantern-Rites; Desperate if in army camp. \dv{3--4}.
-        \item \textbf{On hit:} Both sides Exposure –1; choose a concession clock ``Shared Inquest'' [4].
-    \end{itemize}
-    
-    \item \textbf{Infiltrate (Body/Wits+Stealth/Deception)} the Red Span site to see who planted the armband.
-    \begin{itemize}
-        \item \position{Position:} Desperate at night among saboteurs. \dv{4--5}.
-        \item \textbf{On hit:} Gain Leverage (1): ``Seniro's Quartermaster took bribes'' or fill Contain the Spiral by 1.
-    \end{itemize}
+  \item \textbf{Tithe Ledger} – Missing customs stamps the night of the murder (points to Syndicate colluding with Contractors).
+  \item \textbf{Printing House in the Reeds} – Broadsheets were printed hours after the killings (Restorationists prepped the narrative).
+  \item \textbf{Black Scrip Clerk} – The dead courier carried documents for a renegotiation of the indemnity (someone wanted that negotiation to fail).
+  \item \textbf{Quartermaster’s Armband Fibers} – Match a Red Span uniform batch, not Fenwood’s armory (Contractors frame‑job).
 \end{enumerate}
 
-\textbf{End of Act I:} If Contain the Spiral fills, Mandate +1. If any counter fills first, Crisis +1 and trigger a volatile arrow (GM choice).
-
-\section*{Act II --- Ledger and Blood}
-\textbf{Goal:} Follow money and oaths; identify the hand behind the ferry murders.
-
-\subsection*{Clue Threads (any 3 get you to the culprit):}
+\subsection*{Likely Culprits (choose one or let players expose one)}
 \begin{itemize}
-    \item Tithe Ledger shows missing customs stamps the night of the murder (Syndicate → Contractors String).
-    \item Printing House in the Reeds ran broadsheets hours after the killings (Restorationists prepped the narrative).
-    \item Black Scrip clerk in Lence was due to sail---his blood is on the ferry; he carried a planned indemnity renegotiation.
-    \item Quartermaster's Armband fibers match a Red Span uniform batch, not Fenwood's armory (Contractors frame-job).
+  \item \textbf{Ghiro’s Contractors} – Staged a false flag to prolong funding and tie Seniro closer.
+  \item \textbf{Restorationists} – Struck to collapse any indemnity deal, forcing a hard break.
+  \item \textbf{Syndicate Hardliners} – Provoked crisis to win permanent night‑route exemptions.
+\end{itemize}
+\textit{Tip: leave two culprits plausible; the third is a red herring that still moves clocks.}
+
+\subsection*{Core Scenes (pick 3–4)}
+
+\paragraph{Expose Budget Graft at the Moot Court}
+\position{Dominant with corroboration (ledger + witness).} \dv{4–5}  
+\textbf{On hit:} Target faction gains \textit{Disgraced} tag; Exposure +2; Mandate +1 if public.
+
+\paragraph{Blackmail a Syndicate Captain}
+\position{Dominant → Desperate if leverage unverified.} \dv{3–5}  
+\textbf{On hit:} Place \textit{Compromise} [4] on the captain (later shift Position to Dominant once).
+
+\paragraph{Host a Feast or Vigil at Lantern-Rites}
+Cool the crowd.  
+\position{Dominant if rites observed.} \dv{2–3}  
+\textbf{On hit:} Create Audience Tags (\textit{Warmed}, \textit{Sobering}); Mandate +1 on triumph.
+
+\paragraph{Petition the Regency to Stay Arrests}
+\position{Dominant (you have neutral ground).} \dv{3}  
+\textbf{On hit:} Tick \textit{Shared Inquest} [4] twice; Regency Influence +1 (they respect your diligence).
+
+\textbf{End of Act II:} If culprit identified on‑screen and public mood calms, reduce \textbf{Crisis –1} (min 0). On messy wins, tick Fenwood Exposure +1 (your methods smell of law‑twisting).
+
+\section*{Act III – Judgment on the Water}
+\textbf{Goal:} Secure a settlement that prevents war, punishes the guilty, and sets the river’s law.
+
+\clock{Final Situation Clock}{8}: \textbf{Bind the Belworth Accord} \\
+\clock{Counter}{6}: \textit{March at Dawn} (if Seniro’s influence is high) or \textit{Honor the Fallen} (if Restorationists are ascendant)
+
+\subsection*{Settlement Options (pick one primary + one concession)}
+\begin{itemize}
+  \item \textbf{Hedge‑Law Trial at the River} – Culprit faction yields its leader to a public rite at Lantern-Rites.  
+    \textit{Effect:} Mandate +1; culprit Exposure fill → scandal.
+  \item \textbf{Indemnity Rescript} – Black Scrip terms renegotiated; Lence gets relief; Fenwood pays in river tolls (not gold).  
+    \textit{Effect:} Regency Influence +1; Syndicate gains Standing (Tag) \textit{Night‑Routes Deputized}.
+  \item \textbf{Red Span Purge} – Contractors ousted; work crews handed to Syndicate and Lantern-Rites oversight.  
+    \textit{Effect:} Fenwood Stability –1 (short‑term), Mandate +1 (public cleansed).
+  \item \textbf{Marshal’s Oath} – Seniro swears to Constano before Sister Oria to obey lantern‑law in all crossings.  
+    \textit{Effect:} House Stability +1; if broken later, automatic Exposure fill.
 \end{itemize}
 
-\subsection*{Likely Culprits (choose at prep or by play):}
+\subsection*{Resolution Scenes (choose 2)}
 \begin{itemize}
-    \item Ghiro's Contractors staged a false flag to prolong funding and tie Seniro closer.
-    \item Restorationists struck to collapse any indemnity deal, forcing a hard break.
-    \item Syndicate hardliners provoked crisis to win permanent night-route exemptions.
-\end{itemize}
-\textit{(Tip: leave two culprits plausible; the third is a red herring that still moves clocks.)}
-
-\subsection*{Core Scenes (pick 3--4):}
-\begin{enumerate}
-    \item \textbf{Expose (Presence+Performance)} budget graft at the Moot Court.
-    \begin{itemize}
-        \item \position{Position:} Dominant with corroboration (ledger + witness). \dv{4--5}.
-        \item \textbf{On hit:} Target gains Disgraced tag; Exposure +2. Mandate +1 if public.
-    \end{itemize}
-    
-    \item \textbf{Blackmail (Wits+Investigation)} a Syndicate captain to reveal hush-oaths.
-    \begin{itemize}
-        \item \position{Position:} Dominant → Desperate if leverage unverified. \dv{3--5}.
-        \item \textbf{On hit:} Place Compromise [4] on the captain (later shift Position to Dominant once).
-    \end{itemize}
-    
-    \item \textbf{Host Feast/Vigil (Presence+Performance/Rite)} to cool the crowd at Lantern-Rites.
-    \begin{itemize}
-        \item \position{Position:} Dominant if rites observed. \dv{2--3}.
-        \item \textbf{On hit:} Create Audience Tags (Warmed, Sobering); Mandate +1 on triumph.
-    \end{itemize}
-    
-    \item \textbf{Petition the Regency} to stay arrests for 72 hours.
-    \begin{itemize}
-        \item \position{Position:} Dominant; \dv{3}.
-        \item \textbf{On hit:} Tick Shared Inquest [4] twice; Regency Influence +1.
-    \end{itemize}
-\end{enumerate}
-
-\textbf{End of Act II:} If culprits identified on-screen and public mood calms, reduce Crisis –1 (min 0). On messy wins, tick Fenwood Exposure +1 (your methods smelled of witchery or law-twisting).
-
-\section*{Act III --- Judgment on the Water}
-\textbf{Goal:} Secure a settlement that prevents war, punishes the guilty, and sets the river's law.
-
-\clock{Final Situation Clock}{8}: Bind the Belworth Accord. \\
-\clock{Counter}{6}: March at Dawn (Seniro) or Honor the Fallen (Restorationists) depending on Act II.
-
-\subsection*{Settlement Options (pick one primary + one concession):}
-\begin{itemize}
-    \item \textbf{Hedge-Law Trial at the River:} Culprit faction yields its leader to a public rite at Lantern-Rites.
-    \begin{itemize}
-        \item \textbf{Effect:} Mandate +1; culprit Exposure fill → scandal.
-    \end{itemize}
-    
-    \item \textbf{Indemnity Rescript:} Black Scrip terms renegotiated; Lence gets relief; Fenwood pays in river tolls (not gold).
-    \begin{itemize}
-        \item \textbf{Effect:} Regency Influence +1; Syndicate gains Standing (Tag) Night-Routes Deputized.
-    \end{itemize}
-    
-    \item \textbf{Red Span Purge:} Contractors ousted; work crews handed to Syndicate and Lantern-Rites oversight.
-    \begin{itemize}
-        \item \textbf{Effect:} Fenwood Stability –1 (short term), Mandate +1 (public cleansed).
-    \end{itemize}
-    
-    \item \textbf{Marshal's Oath:} Seniro swears to Constano before Sister Oria to obey lantern-law in all crossings.
-    \begin{itemize}
-        \item \textbf{Effect:} House Stability +1; if broken later, automatic Exposure fill.
-    \end{itemize}
+  \item \textbf{Broker the Accord} (Presence + Sway, \dv{4–5}) – Fill \textit{Bind the Belworth Accord} by 2 on success.
+  \item \textbf{Expose last‑minute sabotage} (Wits + Investigation, \dv{3–4}) – Prevent a counter‑clock advance.
+  \item \textbf{Shield the rite from blades} (Body + Melee or Stealth, \dv{3}) – Protect the ceremony.
+  \item \textbf{Petition the Queen’s chancellor to ratify} (Presence + Command, \dv{4}) – Gain Mandate +1.
 \end{itemize}
 
-\subsection*{Resolution Scenes (choose 2):}
+\subsection*{Success}
+If the PCs fill \textit{Bind the Belworth Accord} before the counter‑clock triggers:
 \begin{itemize}
-    \item Broker the Accord (\dv{4--5}); Expose last-minute sabotage (\dv{3--4}); Shield the rite from blades (\dv{3}); Petition queen's chancellor to ratify terms (\dv{4}).
+  \item \textbf{Mandate +1}
+  \item \textbf{Crisis –1}
+  \item Apply Settlement effects.
+  \item Advance allied faction Influence +1 (+2 if the settlement directly satisfied their Aim).
+  \item \textbf{Braedon’s legacy:} The old duke’s Canray board is found to have a hidden compartment – inside, a map of Aeler keystone rights that gives the Fenwoods permanent leverage on the Red Span (gain Asset: \textit{Keystone Charter}).
 \end{itemize}
 
-\textbf{If PCs succeed:}
+\subsection*{Failure}
+If a counter‑clock fills first:
 \begin{itemize}
-    \item Fill Bind the Belworth Accord. Mandate +1; Crisis –1. Apply Settlement effects; advance allied Influence +1 (+2 if it directly satisfied their Aim).
-\end{itemize}
-
-\textbf{If PCs fail:}
-\begin{itemize}
-    \item Counter fills; a crossing turns bloody. Crisis +1 (maybe +2). Tick House Fenwood Stability +1 (schism risk) and Exposure +1 (butcher tales). Rival Influence +1.
+  \item A crossing turns bloody. \textbf{Crisis +2} (maybe +3).
+  \item Tick House Fenwood Stability +1 (schism risk) and Exposure +1 (butcher tales).
+  \item Rival faction Influence +1.
+  \item The Gray Wanderer appears in the aftermath, shaking his head: \textit{“He counted the exits wrong.”}
 \end{itemize}
 
 \section*{Scandal \& Event Prompts (use deck)}
 \begin{itemize}
-    \item Hearts 9 --- River Oath Broken: A ferryman violates hospitality; tick Exposure +2 on the Syndicate and start Honor Debt [4].
-    \item Spades 7 --- Night Blades: Masked men assault a witness's boat; start Witness Intimidated [4]; on fill, your Compromise clock vanishes.
-    \item Clubs 8 --- Short Rations: The Red Span crews strike; Fenwood Stability +1; tag Pickets at Dawn.
-    \item Diamonds King --- Blood Moon on the Belworth: Public panic; all public scenes start one Position lower until appeased.
+  \item \textbf{Hearts 9} – River Oath Broken: A ferryman violates hospitality; tick \textit{Exposure +2} on the Syndicate; start \textit{Honor Debt} [4].
+  \item \textbf{Spades 7} – Night Blades: Masked men assault a witness’s boat; start \textit{Witness Intimidated} [4]; on fill, your Compromise clock vanishes.
+  \item \textbf{Clubs 8} – Short Rations: The Red Span crews strike; Fenwood Stability +1; tag \textit{Pickets at Dawn}.
+  \item \textbf{Diamonds King} – Blood Moon on the Belworth: Public panic; all public scenes start one Position lower until appeased.
+  \item \textbf{Clubs Ace} – Ghiro’s ledger surfaces – shows payments to Seniro’s quartermaster; \textit{Contractors} gain \textit{Disgraced} tag; Exposure +3; Mandate +1 for exposing graft.
 \end{itemize}
 
 \section*{NPCs at a Glance}
 \begin{itemize}
-    \item \textbf{Constano Fenwood (heir):} careful, pragmatic, favors courts; wants a durable accord.
-    \item \textbf{Seniro Fenwood (marshal):} decisive, angry, tempted by force; wants fear to keep order.
-    \item \textbf{Sister Oria (Lantern-Rites):} courteous, iron ritualist; wants peace kept in the rites.
-    \item \textbf{Lady-Envoy Mael Vesht (Regency):} smiling lawyer; wants leverage for Lence's successor.
-    \item \textbf{Captain Pell (Syndicate):} superstitious pilot; wants exemptions and no riots.
-    \item \textbf{Master Mason Ghiro (Contractors):} perfumed operator; wants the Red Span forever unfinished.
-    \item \textbf{Jaska the Poet (Restorationists):} martyr-maker; wants spectacle and justice on camerae.
+  \item \textbf{Constano Fenwood} (heir): careful, pragmatic, favors courts. Wants a durable accord.
+  \item \textbf{Seniro “the Red” Fenwood} (marshal): decisive, angry, tempted by force. Wants fear to keep order.
+  \item \textbf{Sister Oria} (Lantern-Rites): courteous, iron ritualist. Wants peace kept in the rites.
+  \item \textbf{Lady-Envoy Mael Vesht} (Regency): smiling lawyer. Wants leverage for Lence’s successor.
+  \item \textbf{Captain Pell Rivermark} (Syndicate): superstitious pilot. Wants exemptions and no riots.
+  \item \textbf{Master Mason Ghiro} (Contractors): perfumed operator. Wants the Red Span forever unfinished.
+  \item \textbf{Jaska the Poet} (Restorationists): martyr‑maker. Wants spectacle and justice.
+  \item \textbf{Duke Braedon Fenwood} (deceased): speaks through his Canray board and a sealed letter. The party may find his final instructions.
 \end{itemize}
 
 \subsection*{Voice \& Levers (use in play):}
 \begin{itemize}
-    \item Constano: ``By hedge-law precedent...'' (Strings: Moot Court access)
-    \item Seniro: ``River justice is steel.'' (Strings: Border patrols)
-    \item Oria: ``Within the lantern's ring, all are guests.'' (Strings: Hospitality sanctum)
+  \item Constano: \textit{“By hedge‑law precedent…”} (Strings: Moot Court access)
+  \item Seniro: \textit{“River justice is steel.”} (Strings: Border patrols)
+  \item Oria: \textit{“Within the lantern’s ring, all are guests.”} (Strings: Hospitality sanctum)
+  \item Ghiro: \textit{“Contracts are like bridges – they only need to hold long enough to collect.”}
+  \item Jaska: \textit{“The dead have voices. We will lend them ours.”}
 \end{itemize}
 
 \section*{Rewards, Standing \& Fallout}
-On a public, clean win: convert 3 favors from Lantern-Rites or the Syndicate into Standing (Tag), grant Audience Tag: Steady River, and set Mandate +1. On messy wins: rival Exposure +1 but allied Stability –1. On failures: the volatile Black Scrip stake triggers (audit, seizures, or arrests), setting up the next arc.
+On a public, clean win: convert 3 favors from Lantern-Rites or the Syndicate into \textbf{Standing (Tag)}. Grant Audience Tag: \textit{Steady River}. Increase \textbf{Mandate +1} (now at least 3). Braedon’s slate fragment – Minor Asset granting +1 die to any roll involving strategy or timing, once per session.
+
+On messy wins: rival Exposure +1 but allied Stability –1. The settlement holds, but someone whispers: \textit{“The Fenwoods won by cheating.”}
+
+On failure: the volatile \textit{Black Scrip} stake triggers – audits, seizures, or arrests. The river stays closed for a season. Set up the next arc.
 
 \section*{Running Notes}
 \begin{itemize}
-    \item Keep human dignity visible: funerals on water, oaths before witnesses, the cost of fear.
-    \item Use Strings as positional levers and as victory spoils.
-    \item Spend Social SB to erode consent, leak leverage, or twist crowd tags rather than to ``nope'' the PCs.
-    \item Let magic (if present) move Position/tags, not erase hard choices.
+  \item \textbf{Stay Visible:} Every spend changes the map: a tag, a clock, a dial.
+  \item \textbf{Escalate Honestly:} When Crisis climbs, show it: protests, inquisitors, budgets, bans.
+  \item \textbf{Reward Face-Saving:} In intrigue, dignity can be worth more than coin.
+  \item \textbf{Keep It Human:} Even in a world of rites and spirits, politics is people.
+  \item \textbf{Use Strings as positional levers and as victory spoils.}
+  \item \textbf{Braedon’s Canray board} can be used as a prop. The GM may reveal that the positions of pieces on his board mirror the political landscape – the last unfinished game of a dying duke.
 \end{itemize}
 
 \section*{Quick Prep Checklist}
 \begin{itemize}
-    \item Print Faction Sheets \& Strings.
-    \item Mark Mandate 2 / Crisis 2.
-    \item Lay Act I clocks: Contain the Spiral [6]; Hotheads March [4]; Justice Now! [4].
-    \item Choose/seed 2 likely culprits; plant 3 clue threads.
-    \item Pick 2 scandal prompts to foreshadow.
-    \item Decide settlement option most desired by each faction.
+  \item Print Faction Sheets \& Strings (update with Constano, Seniro, and Braedon’s death).
+  \item Mark Mandate 2 / Crisis 2 (or 3).
+  \item Lay Act I clocks: \textit{Contain the Spiral} [6]; \textit{Hotheads March} [4]; \textit{Justice Now!} [4].
+  \item Choose/seed 2–3 likely culprits; plant 3 clue threads.
+  \item Pick 2 scandal prompts to foreshadow (e.g., Clubs 8 \textit{Short Rations}, Spades 7 \textit{Night Blades}).
+  \item Decide which settlement option each faction most desires.
+  \item Place Braedon’s solar as a memory – the party may visit to read his letter (gain a clue or a String).
 \end{itemize}
 
-\end{document}
+\section*{Integration with \textit{The Old Duke’s Wars}}
+If the players have completed the vignette adventure \textit{The Old Duke’s Wars}, incorporate the following echoes:
+\begin{itemize}
+  \item If they spared the Thornhill child, the ghost haunts the Red Span, granting a one-time +1 die but adding a \textbf{Haunted} condition.
+  \item If they exposed Alaysha’s conspiracy, Veralyn’s court is more cooperative – Mandate starts at 3 instead of 2.
+  \item If they executed the Thornhill child, the Restorationists are fanatical – \textit{Justice Now!} counter‑clock starts at 2/4 instead of 0.
+  \item If they kept Baldvyn’s letter unopened, the letter contains a secret Aeler clause – the party gains the Keystone Charter asset immediately.
+\end{itemize}
+The GM may also allow players to use Braedon’s Canray proverbs as a minor resource: spend 1 Boon to ask for a “Kon’reh insight” – the GM gives a cryptic but actionable clue.
 
+\vfill
+\begin{center}\small \emph{This file presents procedures and a complete adventure. Defer to the Fate's Edge core SRD for roll math and basic adjudication.}\end{center}
+\end{document}

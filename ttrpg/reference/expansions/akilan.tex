@@ -1,4 +1,607 @@
-% akilan.tex
+\documentclass[10pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.5cm,inner=1.5cm,outer=1.2cm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{needspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=darkblue,urlcolor=darkblue}
+
+% Custom commands
+\newcommand{\tag}[1]{\textsc{#1}}
+\newcommand{\clk}[1]{\textit{[#1]}}
+\newcommand{\stringitem}[1]{\textit{#1}}
+\newcommand{\dusana}[1]{\begin{quote}\itshape #1 — Dusana of the Raven Road\end{quote}}
+\newcommand{\letter}[2]{\begin{quote}\small\itshape #1 \hfill --- #2\end{quote}}
+
+% Styling
+\titleformat{\chapter}{\Huge\bfseries}{\thechapter}{20pt}{}
+\titleformat{\section}{\Large\bfseries}{\thesection}{15pt}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8ex}
+
+% Colored boxes
+\newmdenv[linecolor=black,backgroundcolor=gray!5,innertopmargin=8pt,innerbottommargin=8pt,innerrightmargin=8pt,innerleftmargin=8pt]{infobox}
+
+% Adjust paragraph spacing inside infobox
+\mdfdefinestyle{infoboxstyle}{%
+    linecolor=black,backgroundcolor=gray!5,
+    innertopmargin=8pt,innerbottommargin=8pt,
+    innerrightmargin=8pt,innerleftmargin=8pt,
+    skipabove=6pt,skipbelow=6pt,
+    font=\small
+}
+\newmdenv[style=infoboxstyle]{infobox}
+
+\begin{document}
+
+\title{\Huge\textbf{The Eastern Realms}\\ \Large Lotus, Blade, and Bell}
+\author{Set down by Dusana of the Raven Road\\ \small Under the lamp, bread and salt}
+\date{\small The ink is cut with monsoon rain}
+\maketitle
+
+\tableofcontents
+
+\chapter{Preface: The East That Is Not One Thing}
+
+The maps of the empire draw the East as a single sweep—Sihai, Nihori, Ayokha—all pressed together like tiles on a game board. The roads know better. Sihai measures time in dynasties; Nihori counts it in storms. Ayokha negotiates between them with the patience of the monsoon. And beneath them all, the older peoples keep their own thresholds, their own debts, their own ways of not being seen.
+
+This expansion presents the Eastern Realms not as a backdrop but as a web of obligations, courtesies, and carefully maintained boundaries. You will find travel decks for Sihai, Nihori, and Ayokha; Patrons who speak in ink and ash; and—most importantly—the survival tactics of the small peoples who have lived here longest.
+
+\vspace{1em}
+\dusana{I spent a season among the silk farms of Ayokha, and another among the bell-towers of the Inland Sea. The Lethai there do not speak of the Valewood; they speak of a different Fall, one that left them archivists of a dynasty that never was. The gnomes do not hide from the fae—they live with them, borrowing sugar and never returning it. And the halflings? They still pour the ninth cup and hope the Hollow is not hungry. The road changes the walker. Walk carefully. Count to eight. Light a lamp before dusk.}
+
+\section{How to Use This Book}
+
+Each of the three major realms—Sihai, Nihori, Ayokha—receives a travel deck (Spade=place, Heart=actor, Club=pressure, Diamond=leverage) following the standard \textit{Fate's Edge} travel procedure. Highest rank sets clock size (4/6/8/10). The Inland Sea provides a shared deck for crossings.
+
+New cultural mechanics appear for the Eastern threshold peoples: the \textbf{Lethai-thora} (fallen archivists), \textbf{Lethai-al} (forest ronin), \textbf{Lethai-ar} (oathbound silk vigil), \textbf{Aelinnel} (bell‑tending gnomes), and \textbf{Aelaerem} (halflings who court the Hollow). Each includes etiquette hooks, strings, and a unique survival tactic.
+
+Finally, you will find eight new Patrons—spirits of grain, sun, storm, rivers, commerce, war, foxes, and the sky—each with Rites and obligations suited to the Eastern threshold.
+
+\chapter{The Threshold Peoples of the East}
+
+The Eastern Realms are not only the domain of human empires. Beneath the Mandate, the storm, and the monsoon live those who remember older pacts. They are the descendants of spirits who chose mortality, the keepers of thresholds, and the neighbors of the Hollow. Each has a unique way of surviving—and thriving—between empires.
+
+\section{Lethai-thora — The Fallen Archivists of Sihai}
+
+\noindent \textit{We remember the dynasty before the dynasty. We keep the silence where names were erased.}
+
+Long before the first human emperor, the Lethai-thora served a celestial bureaucracy that no longer exists. They are the mortal descendants of beings who once walked the Spirit Courts—call them \textit{xian} in the old tongue, or \textit{kami} in the northern isles. Their blood still carries the memory of that older world. When the old gods fell silent, the Lethai-thora fell with them. Now they dwell in hidden pavilions, maintaining the “forgotten ledgers” that record what the Mandate of Heaven would prefer to erase.
+
+Unlike their kin in the Valewood, the Lethai-thora of the East lean toward the \textbf{Gift of the Mind}. They are keepers of context, scholars of forgotten ritual, and the only ones who can still read the script of the dynasty that never was. But their knowledge is a burden: each secret they preserve slowly erases something of themselves. An archivist who guards a forbidden truth may find that they can no longer remember their mother’s face—a small price, they say, for keeping the ledger whole.
+
+\vspace{0.5em}
+\dusana{A Lethai-thora archivist once let me read a scroll that had no words. “It’s not blank,” she said. “The words are waiting for the right season.” She refused to tell me when the season would come.}
+
+\letter{“We do not burn the dangerous scrolls. We bury them in plain sight, on shelves where no one thinks to look. The Emperor’s Censor once stood in our archive and asked for a tax ledger. We gave him one. He did not notice the shelf behind him held the true history of his own grandfather’s death. Silence is not emptiness. It is a door that only opens inward.”}{— Lian, Keeper of the Seventh Gutter, from a letter found pinned to a corkboard in a tea house}
+
+\begin{infobox}
+\textbf{Cultural Mechanics}
+
+- \textbf{Silence as Sanctuary:} Once per scene, when asked a direct question, you may answer with a silence. That silence counts as a successful Deception roll against any attempt to extract the truth—but the GM gains 1 SB (the silence has weight). This reflects the archivist’s ability to \textit{not say} what would harm the ledger.
+
+- \textbf{Context Keys:} To read an old text or recall a forbidden history, you need three keys: place, season, and witness. Without all three, roll at Disadvantage. A Lethai-thora may create a temporary Context Key by spending 1 Boon and describing a small ritual (lighting incense, touching a stone, speaking a name).
+
+- \textbf{The Archivist’s Toll:} When you use a Lethai-thora Rite or consult a hidden archive, mark 1 Fatigue. The knowledge costs something—a moment of warmth, a pleasant memory, the scent of rain.
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item Offer ink before speech – \texttt{Position +1} in Lethai-thora halls.
+\item Never touch a scroll without announcing your lineage (even a lie improves DV by 1).
+\item A bow held three seconds longer than expected means “I will remember this slight.”
+\item At dusk, pour a drop of water onto the ground before speaking of the dead.
+\end{itemize}
+
+\textbf{Strings:} Forbidden scroll (one truth no one wants spoken), ink-stone (right to consult a hidden archive), silence-token (a debt of secrecy owed to you), gloss-paper (turns one forgotten fact into a clue).
+\end{infobox}
+
+\section{Lethai-al — The Ronin Remnants of Nihori}
+
+\noindent \textit{Our empire fell to the sea. We learned to read storms instead of dynasties.}
+
+The Lethai-al of Nihori once guarded a drowned kingdom—an archipelago that sank when a volcano spoke a name that should not have been uttered. They are the mortal kin of the \textit{Orang Bunian}, the hidden people, and their blood still carries the salt of that ancient catastrophe. Now they are ronin in the oldest sense: masterless, honor‑bound to no lord, but fiercely bound to each other. They live in hidden mountain groves, emerging to duel storms, pacify spirits, and occasionally steal from merchants who overcharge.
+
+They lean toward the \textbf{Gift of the Body}, but with a difference: their strength is not brute force but \textit{endurance}. A Lethai-al can walk for three days without sleep, hold their breath under a tidal wave, and survive a fall that would shatter human bones. They say this is the gift of their drowned ancestors, who learned to live where the sea did not want them.
+
+\vspace{0.5em}
+\dusana{“A Lethai-al once told me that the secret to reading a storm is to stop reading and start listening. ‘The wind has a voice,’ she said. ‘You just have to forget your name long enough to hear it.’”}
+
+\letter{“My grandmother used to say: ‘The sea does not forgive, but it does forget. If you can wait long enough, the waves will erase your debt.’ She waited eighty years for a storm that never came. I do not wait. I walk into the rain and let it decide.”}{— Kenji, who left his sword at his mother’s grave and never drew another}
+
+\begin{infobox}
+\textbf{Cultural Mechanics}
+
+- \textbf{Storm‑Reading:} Once per journey, you may predict the weather for the next 24 hours with perfect accuracy (Wits + Survival vs. DV 3). On success, choose one leg to ignore weather penalties. On a miss, the storm finds you anyway, and the GM gains 1 SB to spend on a thunderclap or flash flood.
+
+- \textbf{Broken Oath Compensation:} When you break a promise (even a minor one), you must immediately offer a compensation—a gift, a service, or a truth. If you refuse, you gain the Condition \textit{Ronin's Shame} (–1 die to all social rolls until you make amends). A Lethai-al who accepts a geas (a vow bound by ritual) may gain +1 die to actions that serve it, but breaking it costs 2 Harm (Spirit).
+
+- \textbf{Tidal Resilience:} Once per scene, when you would take Harm from a water‑based or storm‑based effect, you may reduce it by 1 level (to a minimum of 0). Mark 1 Fatigue.
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item Leave a single arrow behind when you leave a camp (\texttt{Position +1} next visit).
+\item Never sit with your back to the sea—it implies you do not fear the drowned.
+\item A shared cup of sake before a duel means first blood, not death.
+\item After a battle, offer a handful of salt to the wind before tending your wounds.
+\end{itemize}
+
+\textbf{Strings:} Storm-charm (one weather bypass), broken arrow (proof of oath), ancestor shard (a piece of the drowned kingdom’s crystal), seawater bead (one reroll on a swimming or endurance test).
+\end{infobox}
+
+\section{Lethai-ar — The Silk Vigil of Ayokha}
+
+\noindent \textit{We do not bargain. We witness. And what we witness, we may choose to remember.}
+
+The Lethai-ar of Ayokha follow the \textit{Silk Vigil}—a syncretic path that blends the spider’s mercy with the serpent’s shedding. They are the neutral arbiters of the river markets, the ones who hold the lanterns that never go out, the ones who remember every promise made on the monsoon wharves. Their ancestors were spirits of the threshold, and that legacy lives in their vow‑cords and their silence.
+
+Unlike their northern kin who swore to Inaea or Isoka, the Lethai-ar of Ayokha often serve \textbf{Benzaiten} (the river of words) or \textbf{Inari} (the fox’s ledger). They do not bind with oaths of iron; they weave with silk. A Lethai-ar’s vow is a physical cord, braided from their own hair and dyed with river mud. When the vow is fulfilled, the cord is burned. When it is broken, the cord tightens around the oath‑breaker’s wrist until blood is drawn.
+
+\vspace{0.5em}
+\dusana{“I once saw a Lethai-ar witness a contract between a Sihai silk merchant and a Nihori ronin. The merchant lied about the thread count. The Lethai-ar said nothing—just cut the witness cord. The merchant’s next shipment arrived as silk worms, not bolts. The ronin paid double. The Lethai-ar kept the cord as a reminder.”}
+
+\letter{“A witness cord is not a leash. It is a mirror. If you speak truly, you see yourself. If you lie, you see what you could have been. I have cut two cords in my life. I still dream of the faces in the silk.”}{— Lady Suyin, retired Vigil, now keeper of a waystation for lost travellers}
+
+\begin{infobox}
+\textbf{Cultural Mechanics}
+
+- \textbf{Witness Clause:} Once per session, when you are present for an oath or contract, you may declare yourself a witness. That oath gains +1 DV to break, and if broken, the oath‑breaker owes you a personal favor (in addition to any other penalty). The witness cord glows faintly for the duration.
+
+- \textbf{Lantern of Attendance:} You carry a small oil lamp. As long as it burns, you cannot be surprised in social situations (the flame flickers when deception begins). If the lamp goes out, you lose this benefit for the scene. Refilling the lamp requires a minor offering (a prayer to Benzaiten, a coin in a river).
+
+- \textbf{Silk Debt:} Once per arc, you may offer a witness cord as a String to a faction or NPC. While they hold it, you gain +1 die to all social rolls against them, but they may also call on you to witness one of their own oaths (refusing costs the String and 1 Fatigue).
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item Touch the lamp before speaking – \texttt{Position +1} for truth‑telling.
+\item Never pour the ninth cup (the Vigil enforces the Ayokhan taboo).
+\item A gift of silk is a promise; a gift of silk \textit{cut} is a declaration of feud.
+\item When entering a negotiation, state your name and your witness cord’s color (white for mercy, red for binding, black for truth).
+\end{itemize}
+
+\textbf{Strings:} Vigil lantern (social edge), silk witness cord (proof of oath), monsoon mirror (reflects hidden intentions), river stone (one question about a river’s witness).
+\end{infobox}
+
+\section{Aelinnel — The Bell‑Tenders of the Inland Sea}
+
+\noindent \textit{We live among the spirits. They borrow milk. We borrow mathematics. It is a fair trade.}
+
+The Aelinnel of the East do not hide from the spirits—they \textit{coexist}. Small spirits inhabit every rock, tree, and wave. The Aelinnel have learned to negotiate with them using copper bells, precise counting, and the occasional offering of pickled plums. They are the engineers of shrines, the builders of floating bridges, and the keepers of the bell‑lines that keep the tide‑spirits from straying. Some say Kuva, the sky, taught them the first counting song, and that the Hollow is simply the space where the count fails.
+
+Unlike the Aelinnel of the west, who lean toward the \textbf{Gift of the Mind}, the Eastern Aelinnel practice a folk mathematics that blends logic and superstition. They believe every spirit has a \textit{number-name}—a frequency that can be rung out of a bell, a sequence of steps that can be walked, a knot that can be tied. To offend a spirit is to miscount.
+
+\vspace{0.5em}
+\dusana{“I asked an Aelinnel bell‑tender how she kept the tide-spirits from flooding her village. She tapped her temple. ‘I count them,’ she said. ‘One, two, three, four, five, six, seven, eight. Then I stop. They know that if I ever count nine, I am not counting them.’”}
+
+\letter{“The Hollow is not a place. It is a miscount. The ninth step that is not there, the ninth cup that is never poured, the ninth name that is never spoken. We do not fight the Hollow. We leave one empty chair, one unlit lamp, one uncounted stone. That is the price of sitting at the table.”}{— Tumble, bell‑warden of the Seventh Tide, from a letter sealed with copper wax}
+
+\begin{infobox}
+\textbf{Cultural Mechanics}
+
+- \textbf{Bell‑Tending:} Once per scene, when near a shrine or threshold, you may ring a copper bell. The next environmental hazard (tide, fog, landslide) is delayed by 1 segment of the relevant clock. The bell’s tone also pacifies minor spirits (Cap 1) for the scene.
+
+- \textbf{Fae Courtesy:} Aelinnel never say “no” to a spirit. They say “that road is closed for repairs” or “the season is not right.” This phrasing cancels the first SB generated by a spirit encounter. If forced to refuse outright, they mark 1 Fatigue (the spirit’s disappointment is heavy).
+
+- \textbf{Kuva’s Count:} Once per journey, you may roll Wits + Lore (DV 3) to recall a forgotten sky‑omen; on success, the next travel leg ignores the first Club card drawn. On a miss, the omen is true, but the GM draws an additional Club for that leg.
+
+- \textbf{The Ninth Step:} When you cross a threshold that has a missing ninth step (a stair, a bridge, a door), you may \textit{count} the absence. Gain +1 die to resist the Hollow’s attention for the scene, but mark 1 Obligation (the Hollow now knows your name).
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item Count your steps on a bridge—odd numbers invite mischief.
+\item Never refuse a spirit’s offered food—but you need not eat it. Holding it is enough.
+\item A copper coin in a shrine’s offering box buys one question about local conditions.
+\item At dusk, ring a bell once, then listen. If you hear a second ring, leave an offering.
+\end{itemize}
+
+\textbf{Strings:} Bell-charter (right to ring a named shrine), tide-bead (safe passage on Inland Sea), offering box key (access to shrine supplies), counting stone (one reroll on a navigation test in fog).
+\end{infobox}
+
+\section{Aelaerem — The Hollow’s Neighbors}
+
+\noindent \textit{We live next to the thing that watches from under the hill. We leave butter. It leaves us alone. Mostly.}
+
+The Aelaerem of Nihori and Ayokha have adapted their hedge-magic to the eastern thresholds. Here the Hollow wears a different face—it is the space between the bamboo stalks, the silence after the storm bell, the missing step on the temple stair. They survive through ritual appeasement: red thread tied at crossroads, a bowl of rice left at dusk, a single bell rung and then muffled. They whisper that the Hollow is the shadow of Kuva, cast when the sky first turned from the sun.
+
+Unlike the Aelaerem of the west, who live in close-knit villages, the Eastern Aelaerem are often solitary or live in small family groups. They are the ones who know where the boundary between the living and the Hollow is thinnest, and they are the ones paid to keep it closed. Their magic is humble: a knot to bind a promise, a thread to guide a lost ghost, a cup of sake to buy a night’s silence.
+
+\vspace{0.5em}
+\dusana{“A halfling once woke me before dawn. ‘The Hollow walked last night,’ she said. I asked how she knew. She pointed to a single red thread tied around my wrist. ‘It moved,’ she said. ‘Sleep with that knot, and it will know where you are.’”}
+
+\letter{“My grandmother taught me that the Hollow is not evil. It is hungry. There is a difference. A hungry thing can be fed. Pour a cup, tie a thread, leave a bell on the doorstep. Do not feed it too much, or it will learn your name.”}{— Old Mila, hedge-keeper of the Moss Road, from a letter found under a floorboard}
+
+\begin{infobox}
+\textbf{Cultural Mechanics}
+
+- \textbf{The Empty Cup:} Once per journey, when you are lost or pursued, you may pour a cup of sake or water onto the ground and whisper a name that is not yours. The Hollow will lead you away from danger—but you will forget one minor memory. (GM chooses a trivial fact; if you have no minor memories, advance the Hollow Debt clock [4].) The forgotten memory can be recovered by returning to the same spot and speaking your own name.
+
+- \textbf{Neighbor’s Courtesy:} When camping, if you leave a small offering (rice, salt, a button) at the edge of the light, the night’s travel hazard roll is made with Advantage (roll twice, take the less severe). If you forget three nights in a row, the Hollow begins to watch. Start a Hollow Attention clock [4].
+
+- \textbf{Kuva’s Eavesdrop:} Once per night, if you sleep under open sky, you may ask one yes/no question about the next day’s weather; the GM answers truthfully, but the question must be whispered to the wind. On a 1, the wind answers but the Hollow also hears.
+
+- \textbf{Red Thread Binding:} You may tie a red thread around an object or a threshold to ward against minor spirits (Cap 1) for one scene. If the thread is cut, the spirits notice—start a Spirit Attention clock [4].
+
+\textbf{Etiquette Hooks}
+\begin{itemize}
+\item Never whistle after dusk—the Hollow thinks you are calling it.
+\item A red thread tied around a lantern means “this light is spoken for.”
+\item Count to eight before opening a door that has been closed for more than a season.
+\item If you meet a stranger at a crossroads at midnight, offer them a cup of sake. If they refuse, walk away without looking back.
+\end{itemize}
+
+\textbf{Strings:} Red thread bundle (one safe crossing), Hollow cup (proof of a debt paid in memory), offering plate (right to camp in a dangerous spot), wind‑knot (one question about the Hollow’s mood).
+\end{infobox}
+
+\chapter{Travel Decks for the Eastern Realms}
+
+Use the standard Fate’s Edge travel procedure (draw one card from each suit: Spade=place, Heart=actor, Club=pressure, Diamond=leverage). Highest rank sets clock size (4/6/8/10). Each deck below replaces the regional decks from the core travel guide.
+
+\section{Sihai — The Central Kingdom}
+
+\begin{tabularx}{\textwidth}{c X}
+\toprule
+\textbf{Spades – Places} & \\
+2–5 & Examination hall; ink‑stained desks, silent proctors. \\
+6–10 & Grand Canal lock; barges queue, officials stamp manifests. \\
+J–K & Ancestral temple; spirit tablets, a single gong. \\
+A & The Forbidden Archive; scrolls that rewrite themselves. \\
+\midrule
+\textbf{Hearts – People} & \\
+2–5 & Provincial censor with a list of forbidden words. \\
+6–10 & Salt merchant; her scales are honest—except when they aren’t. \\
+J–K & Lethai-thora archivist; carries a silence-token. \\
+A & The Emperor’s Quiet Chancellor; speaks only in couplets. \\
+\midrule
+\textbf{Clubs – Complications} & \\
+2–5 & A scroll is found to be a forgery; the party is blamed. \\
+6–10 & Monsoon breaks early; the canal closes (delay 2 segments). \\
+J–K & Ancestor demands a public accounting of a forgotten debt. \\
+A & The Mandate wavers; local officials arrest anyone with foreign papers. \\
+\midrule
+\textbf{Diamonds – Leverage} & \\
+2–5 & A stamped pass from a provincial governor (one use). \\
+6–10 & A copy of the Celestial Ledger (reveals one hidden tax). \\
+J–K & A Lethai-thora’s silence-token (one question the archivist must answer). \\
+A & A junta seal (impersonate an official for one scene). \\
+\bottomrule
+\end{tabularx}
+
+\section{Nihori — The Isles of the Dawn Spirit}
+
+\begin{tabularx}{\textwidth}{c X}
+\toprule
+\textbf{Spades – Places} & \\
+2–5 & A swordsmith’s forge; waterfall cooling tank, prayer strips on the bellows. \\
+6–10 & A bamboo grove where duels are fought at dawn. \\
+J–K & A storm‑shrine on a cliff; ropes for climbing during high tide. \\
+A & The Drowned Palace; half‑submerged columns, silent fish. \\
+\midrule
+\textbf{Hearts – People} & \\
+2–5 & Ronin with a broken sword and a grudge. \\
+6–10 & Shrine maiden; her bells keep the tide‑spirits at bay. \\
+J–K & Aelinnel bell‑tender; sells tide‑beads. \\
+A & The Storm Emperor’s ghost; offers a deal to the desperate. \\
+\midrule
+\textbf{Clubs – Complications} & \\
+2–5 & A volcano god stirs; ashfall covers the path (all actions Desperate). \\
+6–10 & A pirate flotilla claims the strait; pay toll or fight. \\
+J–K & The Hollow watches from the bamboo; a character hears their own name whispered. \\
+A & A duel challenge is issued; refusal loses face for the party. \\
+\midrule
+\textbf{Diamonds – Leverage} & \\
+2–5 & A swordsmith’s token (one reroll on a failed melee attack). \\
+6–10 & A shrine bell that reveals hidden spirits for one scene. \\
+J–K & A ronin’s oath‑bracelet (one use to compel a service). \\
+A & A storm‑charmer’s hat (safe passage through one storm). \\
+\bottomrule
+\end{tabularx}
+
+\section{Ayokha — The Monsoon Throne}
+
+\begin{tabularx}{\textwidth}{c X}
+\toprule
+\textbf{Spades – Places} & \\
+2–5 & A river market on stilts; goods in baskets, prices in smiles. \\
+6–10 & A step‑pyramid temple; carvings of the monsoon’s first year. \\
+J–K & A silk village; mulberry groves, spinning sheds. \\
+A & The Bridge of Three Echoes; appears only once a century. \\
+\midrule
+\textbf{Hearts – People} & \\
+2–5 & River merchant whose boat has more secrets than cargo. \\
+6–10 & A spirit‑medium who speaks for the \textit{nat} of the ford. \\
+J–K & Lethai-ar silk‑weaver; offers a witness clause. \\
+A & The God‑King’s astrologer; reads omens in the monsoon’s arrival. \\
+\midrule
+\textbf{Clubs – Complications} & \\
+2–5 & The river floods; a bridge is swept away. \\
+6–10 & A rival merchant spreads rumors of cursed silk. \\
+J–K & The \textit{nat} of the well is offended; no one may draw water until appeased. \\
+A & The God‑King falls ill; all travel grinds to a halt. \\
+\midrule
+\textbf{Diamonds – Leverage} & \\
+2–5 & A monsoon schedule (predicts safe sailing days). \\
+6–10 & A silk voucher (trade goods at 10\% profit). \\
+J–K & A Lethai-ar witness cord (enforce any oath). \\
+A & A blessing from the God‑King (one national favor). \\
+\bottomrule
+\end{tabularx}
+
+\section{The Inland Sea (Shared Deck)}
+
+\begin{tabularx}{\textwidth}{c X}
+\toprule
+\textbf{Spades – Places} & \\
+2–5 & A floating shrine; bells on every corner. \\
+6–10 & A pirate cove disguised as a fishing village. \\
+J–K & A reef where spirit‑ships are said to anchor. \\
+A & The sunken gate of the drowned Lethai kingdom. \\
+\midrule
+\textbf{Hearts – People} & \\
+2–5 & A pilot with a cloud‑chart and a price. \\
+6–10 & A Kuvani horse‑trader bound for Sihai. \\
+J–K & A Tulkani storyteller with a vow‑cord; she whispers a sky‑omen. \\
+A & The Drowned Captain; offers passage for a memory. \\
+\midrule
+\textbf{Clubs – Complications} & \\
+2–5 & A sudden squall; all navigation rolls at Disadvantage. \\
+6–10 & A pirate attack; pay cargo or fight. \\
+J–K & A spirit‑whirlpool; lose 1 Supply to escape. \\
+A & The Drowned Kingdom rises; all spirits of the deep demand a tithe. \\
+\midrule
+\textbf{Diamonds – Leverage} & \\
+2–5 & A pilot’s chart (one leg ignores weather). \\
+6–10 & A pirate’s flag (safe passage through one blockade). \\
+J–K & A Tulkani story‑knot (one reroll on a failed negotiation). \\
+A & A memory of the drowned (ask one historical question; answer is true). \\
+\bottomrule
+\end{tabularx}
+
+\chapter{Patrons of the Eastern Realms}
+
+\section{Shennong — The Farmer of a Thousand Grains}
+
+\noindent \textbf{Domain:} Agriculture, medicine, the rhythm of planting and harvest. \\
+\textbf{Lore:} The spirit who taught the first emperor to plow. He is patient, generous, and furious about waste. His shrines are terraced fields, not temples. His offerings are the first handful of grain and the last. He is said to have tasted a hundred herbs to discover which heal and which poison; his followers still test medicines on themselves before giving them to others.
+
+\vspace{0.5em}
+\dusana{A priest of Shennong once refused to heal a wound because the injured man had burned a field. “The grain remembers,” he said. “So do I.”}
+
+\letter{“Shennong does not speak in words. He speaks in the taste of soil and the colour of the sprout. A healthy rice stalk is a sentence. A blighted one is a warning. Learn to read the field, and you will never need a temple.”}{— Yi, terraced farmer of the upper Sihon, from a letter stained with mud}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Seed’s Memory (4 XP):} Touch a grain; know where it was grown and what season. (Mark +1 Obligation) The grain’s memory may include the farmer’s name, the weather, or a debt unpaid.
+\item \textit{Standard – Shennong’s Brew (8 XP):} Create a medicinal tea that heals 1 Harm or removes one Poison. The tea tastes of earth and requires a pinch of the patient’s own sweat. (Mark +2 Obligation)
+\item \textit{High – The Thriving Field (14 XP):} Double the yield of one farm for a season; the land is tired for the next year. Shennong demands a promise that the surplus will feed the hungry, not hoarded. (Mark +3 Obligation; if you break the promise, the land fails the next season.)
+\end{itemize}
+\end{infobox}
+
+\section{Amaterasu — The Hidden Sun}
+
+\noindent \textbf{Domain:} Light, truth, the sun behind clouds. \\
+\textbf{Lore:} The Lethai-thora speak of a sun that once hid in a cave. Her return is a promise that truth cannot be hidden forever. She is served by mirror‑keepers and lamp‑lighters. Her shrines are dark, windowless rooms with a single bronze mirror; the worshipper must light a candle and watch until they see their own face clearly. That moment is her blessing.
+
+\textbf{Favored Deeds:} Revealing a lie, lighting a lamp in a dark place, honoring a promise made at dawn, polishing a mirror. \\
+\textbf{Taboos:} Hiding a crime, extinguishing a sacred flame, swearing an oath you do not mean, breaking a mirror without ritual.
+
+\letter{“I polished the mirror for forty days before I saw her. She looked nothing like the paintings. Her face was my own, but younger, and she was laughing at something I had forgotten. That is her blessing: not truth, but the memory of truth.”}{— Hoshi, lamp‑lighter of the Western Terrace, from a letter found in a shrine offering box}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Crack of Light (4 XP):} A single beam of sunlight illuminates a shadowed area for one scene. It lasts only as long as you hold a polished metal surface toward the sun. (Mark +1 Fatigue)
+\item \textit{Standard – The Unhidden Ledger (8 XP):} One hidden document or secret becomes visible to you for a moment. You must speak the secret aloud to the first person you meet, or the vision scars your eyes (–1 die to Perception for a day). (Mark +2 Obligation)
+\item \textit{High – The Sun’s Return (14 XP):} Banish one supernatural darkness or illusion permanently. The ritual requires a mirror, dawn light, and the true name of the darkness. (Mark +3 Corruption; your shadow is slightly shorter for a season.)
+\end{itemize}
+\end{infobox}
+
+\section{Susanoo — The Storm That Clears}
+
+\noindent \textbf{Domain:} Storms, courage, the violence that resets the board. \\
+\textbf{Lore:} A troubled spirit who destroys to make way for the new. His followers are ronin, exiles, and those who have lost everything. He is not evil—only furious. He respects those who face him without flinching. His shrines are hilltops struck by lightning, and his offerings are broken weapons and torn banners.
+
+\textbf{Favored Deeds:} Challenging a tyrant, surviving a storm without shelter, cutting a knot that binds unjustly, repairing a broken bridge after crossing it. \\
+\textbf{Taboos:} Attacking the helpless, breaking a weapon in anger, fleeing a duel, sheltering from a storm when others are outside.
+
+\letter{“My father prayed to Susanoo before every duel. He never won. But he never ran. That is the god’s only demand: that when the lightning comes, you stand where it can see you.”}{— Sato, ronin of no fixed name, from a letter pinned to a shrine gate}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Squall’s Edge (4 XP):} Your next melee attack gains +1 Harm, but you cannot retreat this scene. The attack leaves a faint scorch mark shaped like a lightning bolt. (Mark +1 Fatigue)
+\item \textit{Standard – Susanoo’s Breath (8 XP):} Summon a gust that extinguishes all non‑magical fires in a zone. The wind smells of sea salt and wet pine. (Mark +2 Obligation)
+\item \textit{High – The Clearing Storm (14 XP):} End one ongoing conflict (battle, chase, argument) by force—both sides take Harm 1. The violence is not merciful, but it is final. (Mark +3 Corruption; your voice grows hoarse for a week.)
+\end{itemize}
+\end{infobox}
+
+\section{Benzaiten — The River of Words}
+
+\noindent \textbf{Domain:} Speech, music, the flow of negotiation. \\
+\textbf{Lore:} A spirit of the river’s sound. She favors poets, merchants, and those who can speak three languages. Her shrines are on bridges, where the water’s voice carries the words of travellers. She is said to have taught the first courtesan the art of saying “yes” and meaning “no.” Her followers are often diplomats, spies, and lovers.
+
+\textbf{Favored Deeds:} Translating a misunderstood agreement, singing a lullaby to a spirit, resolving a dispute without bloodshed, writing a poem that makes a stranger weep. \\
+\textbf{Taboos:} Interrupting a poem, silencing a witness, lying about the meaning of a word, using a song to harm.
+
+\letter{“Benzaiten came to me in the sound of water over stones. She said: ‘Every word is a current. Speak gently, and the river will carry you. Speak cruelly, and you will drown.’ I have never lied since. I have also never been silent.”}{— Paya, silk trader of Ayokha, from a letter to her daughter}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Flowing Syllable (4 XP):} Gain +1 die to Sway for one scene; your voice carries unnaturally far. The words leave a faint silver echo that fades after a minute. (Mark +1 Fatigue)
+\item \textit{Standard – The Shared Tongue (8 XP):} You and one target understand each other perfectly for one scene, regardless of language. If either of you lies, the other hears a discordant note—like a bell cracking. (Mark +2 Obligation)
+\item \textit{High – The River’s Verdict (14 XP):} Compel two parties to accept a binding arbitration; refusal causes –2 dice to all social rolls for a week. The verdict must be spoken while both parties touch the same body of water. (Mark +3 Obligation)
+\end{itemize}
+\end{infobox}
+
+\section{Inari — The Fox’s Ledger}
+
+\noindent \textbf{Domain:} Commerce, secrets, the threshold between realms. \\
+\textbf{Lore:} A spirit of the marketplace who wears a fox mask. She is generous to those who honor her rites and merciless to those who cheat. Her shrines are tucked between shops, often with a small bronze fox at the door. She does not speak; she writes on ledgers that appear overnight.
+
+\textbf{Favored Deeds:} Paying a fair price, sharing a meal with a stranger, keeping a promise made over a sale, refusing to sell something that would cause harm. \\
+\textbf{Taboos:} Selling a known counterfeit, hoarding a surplus, refusing to bargain, lying about a product’s origin.
+
+\letter{“Inari left a ledger on my pillow. It listed every customer who had ever shortchanged me, and beside each name, a price: a lost coin, a broken cart, a spoiled harvest. I did not collect. I burned the ledger. The next morning, a fox lay dead on my doorstep. I understood: Inari does not offer justice. She offers the knife. You must choose whether to use it.”}{— Merchant Ken, from a letter found in his abandoned shop}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Mask’s Glimpse (4 XP):} For one scene, you can see if a person is lying about money or trade. Their ears glow faintly red when they lie. (Mark +1 Obligation)
+\item \textit{Standard – Inari’s Scale (8 XP):} Guarantee a 10\% profit on a trade; on a miss, the profit turns to sand. The sand is warm and smells of cinnamon. (Mark +2 Obligation)
+\item \textit{High – The Fox’s Market (14 XP):} For one hour, any mundane item can be bought or sold in any settlement, regardless of availability. The prices are strange—a memory for a sword, a year of silence for a horse. (Mark +3 Obligation; Inari will collect her due within the season.)
+\end{itemize}
+\end{infobox}
+
+\section{Hachiman — The Bow of Ancestors}
+
+\noindent \textbf{Domain:} War, archery, protection of the homeland. \\
+\textbf{Lore:} A warrior spirit who defends borders. His followers are mountain guards, frontier ronin, and those who have lost family to invasion. He is said to ride a black horse and carry a bow that whispers the names of fallen soldiers. His shrines are stone towers at mountain passes, with a single arrow embedded in the door.
+
+\textbf{Favored Deeds:} Defending a village, training a student, using a bow only when necessary, returning a captured banner to its people. \\
+\textbf{Taboos:} Shooting a civilian, abandoning a post, breaking a bow in anger, killing a supplicant who asks for mercy.
+
+\letter{“Hachiman does not answer prayers for victory. He answers prayers for courage. I asked him to let me live through the battle. He showed me a vision of my son growing up without a father. I chose to live anyway. The arrow passed through my shoulder, not my heart. That is his mercy.”}{— Commander Toshiro, from a letter to his wife, never sent}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Arrow’s Memory (4 XP):} You know the last person your weapon wounded. The knowledge comes as a brief vision of their face. (Mark +1 Fatigue)
+\item \textit{Standard – Hachiman’s Wall (8 XP):} For one scene, you and adjacent allies gain +1 Armor against ranged attacks. The arrows that would have struck you fall short, as if stopped by an invisible wind. (Mark +2 Obligation)
+\item \textit{High – The Ancestor’s Shot (14 XP):} One arrow ignores all mundane cover and armor. The arrow leaves a faint blue light in its wake, visible to anyone who has lost a family member to war. (Mark +3 Obligation; the arrow cannot be retrieved.)
+\end{itemize}
+\end{infobox}
+
+\section{Kuva — The Sky That Takes Many Names}
+
+\noindent \textbf{Domain:} The sky, storms, stars, open air, witness of oaths. \\
+\textbf{Lore:} Kuva is the dome above all roads – the endless blue, the monsoon wrath, the night’s silent gaze. To the Kuvani of the eastern steppe, Kuva is a stern witness who hears every promise made under open heaven. To the Dhaharan of the fertile lowlands, Kuva is a storm‑mother, destroyer and renewer, whose rains demand sacrifice and give life. To the Tulkani wanderers, Kuva is a shape‑changing presence – neither kind nor cruel, only watchful, and a slighted sky brings ill fortune. To the Aelinnel, Kuva is the first counter, the one who taught the counting song. To the Aelaerem, Kuva is the Hollow’s boundary – the sky is where the Hollow’s gaze stops.
+
+\vspace{0.5em}
+\dusana{“The Kuvani pour milk upward for Kuva. The Dhaharan offer blood at monsoon bells. The Tulkani tie a knot, throw ash, and look up. The Aelinnel count clouds. The Aelaerem whisper to the wind. One sky, five peoples. Kuva does not correct them. Kuva watches.”}
+
+\letter{“Kuva has no shrine because Kuva is the roof of every shrine. When I pray, I do not bow. I look up. The sky does not answer in words. It answers in weather. A clear day means ‘go.’ A storm means ‘wait.’ Lightning means ‘run.’ Learn to read the weather, and you will never need a priest.”}{— Rani, Kuvani herder, from a letter scratched on a tent flap}
+
+\letter{“We Dhaharan say that Kuva’s third eye is the monsoon. When it opens, the floods come. When it closes, the drought begins. We do not pray for her to close or open. We pray for her to blink.”}{— The monk at the Temple of the Third Rain, from a fragment of palm leaf}
+
+\begin{infobox}
+\textbf{Rites}
+\begin{itemize}
+\item \textit{Low – The Sky’s Witness (4 XP):} For one scene, when you speak a promise outdoors, any listener who hears it must test Resolve (DV 3) to lie about that promise. (Mark +1 Obligation; Kuva remembers your own words as well.) If you break your own promise, the GM gains 2 SB to spend on a sky‑related complication (lightning, sudden fog, a hawk stealing your food).
+
+\item \textit{Standard – Kuva’s Gaze (8 XP):} Call down a brief flash of lightning or a clap of thunder. All who see or hear it must test Spirit (DV 4) or be Stunned for one exchange. (Mark +2 Obligation; cannot be used indoors or underground.) The lightning always strikes the highest point in the zone, which may be inconvenient.
+
+\item \textit{High – The Monsoon’s Due (14 XP):} Once per season, you may pray for rain (or clear skies) over a one‑mile area. The weather shifts within an hour and lasts for a day. The cost is a visible scar on your own flesh – a mark that Kuva has accepted your debt. (Mark +3 Obligation; the scar may be noticed by others who know Kuva’s signs.) If you offer the prayer while standing under open sky, you may also ask for a specific omen – a double rainbow, a lightning strike on a target, a wind that carries a message.
+\end{itemize}
+\end{infobox}
+
+\noindent \textit{Cultural Variations:}
+\begin{itemize}
+\item \textbf{Kuvani:} Kuva is seen as a watcher of oaths. Offerings are mare’s milk thrown upward or a knot tied in a wind‑charm. The debt is \emph{visibility}: you are accountable because you are seen. Kuva’s Rites cost Obligation, but a public confession of a fault may clear a segment.
+\item \textbf{Dhaharan:} Kuva is a storm‑mother of many arms, wearer of a third eye. Offerings are blood (a chicken, or rarely stronger). The debt is \emph{cyclical sacrifice}: pay what you owe, or Kuva takes from you – crops, memory, or kin. Kuva’s Rites often generate additional Story Beats (the storm’s wrath is indiscriminate).
+\item \textbf{Tulkani:} Kuva shifts between faces. Offerings are ash thrown upward or a breath spoken into a knot. Ikasha is said to be Kuva’s \textbf{first cast shadow} – not a child, but the original darkness formed when the sky turned away from the sun. The debt is \emph{awareness}: simply looking up and acknowledging the sky is a form of payment. Tulkani Runekeepers of Kuva often have a lower Obligation cost for Low Rites, but must perform a dawn ritual each day (mark 1 Fatigue if they sleep past sunrise).
+\item \textbf{Aelinnel:} Kuva is the Great Accountant. Offerings are a counted sequence (eight beads, eight stones, eight breaths). The debt is \emph{miscount}: if you ever count to nine where Kuva can hear, the sky will answer.
+\item \textbf{Aelaerem:} Kuva is the boundary. Offerings are silence. The debt is \emph{attention}: if you look up and Kuva looks back, the Hollow will remember you.
+\end{itemize}
+
+\chapter{Adventure Seeds}
+
+\begin{enumerate}
+\item \textbf{The Forgotten Mandate (Sihai):} A Lethai-thora archivist is assassinated. The party must retrieve her memory-silence before the Censorate burns it. The secret: an emperor faked his own death.
+
+\item \textbf{The Ronin’s Grave (Nihori):} A duel was fought to a draw. Now both families demand the party arbitrate the next match—while the ghost of the first duel watches.
+
+\item \textbf{The Monsoon Seal (Ayokha):} A merchant’s seal is stolen the day before the first monsoon ships arrive. The party has one day to find it—or the merchant’s family will be sold.
+
+\item \textbf{The Bell That Did Not Ring (Inland Sea):} A shrine’s bell falls silent. Without its chime, the tide-spirits are confused. Two villages prepare to blame each other.
+
+\item \textbf{The Fox’s Bargain (Sihai):} A farmer claims Inari herself visited him. She promised a great harvest—in exchange for his daughter’s name. The daughter has forgotten who she is.
+
+\item \textbf{The Storm Emperor’s Armor (Nihori):} A set of legendary armor is discovered in a sunken tomb. Three clans claim it. The party must authenticate—or forge—provenance.
+
+\item \textbf{The Silk Witness (Ayokha):} A Lethai-ar witness cord is found cut. Without it, a trade treaty cannot be enforced. The party must re‑weave the cord—and the truth.
+
+\item \textbf{The Hollow Well (Mixed):} A well in a border village is dry. The Aelaerem say the Hollow drank it. The party must descend to negotiate.
+
+\item \textbf{The Copper Bell (Aelinnel):} A shrine’s bell‑tuning has gone wrong. The spirits are agitated. The party must re‑count the steps—or appease them with a story.
+
+\item \textbf{The Ninth Step (Any):} A temple stair has a missing ninth step. Travelers who count “eight” and stop are safe. Those who try to find the ninth invite the Hollow. The party must enter the Hollow to retrieve a lost child.
+\end{enumerate}
+
+\chapter{GM Toolkit: Eastern Clocks and Fronts}
+
+\begin{tabularx}{\textwidth}{X c c X}
+\toprule
+\textbf{Clock} & \textbf{Region} & \textbf{Segments} & \textbf{On Fill} \\
+\midrule
+Mandate Frays & Sihai & 6 & Civil war; passes close \\
+Storm Season & Nihori & 8 & Typhoon; all travel Desperate for 2 legs \\
+Monsoon Delay & Ayokha & 6 & Famine; grain prices double \\
+Hollow Stirring & Any with Aelaerem & 4 & Something follows the party \\
+Sky Debt & Any with Kuva & 6 & A weather catastrophe (drought, flood, lightning plague) \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Faction Influence (d6 per region)}
+
+\textbf{Sihai:}
+1. Censorate (hunts truth)
+2. Salt Monopoly (controls trade)
+3. Lethai-thora Archivists (hidden knowledge)
+4. Provincial Warlords (armed neutrality)
+5. Emperor’s Court (nominal authority)
+6. Aelinnel Bell‑Tenders (infrastructure)
+
+\textbf{Nihori:}
+1. Ashigaru League (commoner levies)
+2. Ronin Brotherhood (masterless swords)
+3. Shrine Maidens (spirit diplomacy)
+4. Pirate Clans (coastal pressure)
+5. Storm Emperor Revivalists (lost dynasty)
+6. Aelaerem Hollow‑Watchers (threshold guardians)
+
+\textbf{Ayokha:}
+1. God‑King’s Astrologers (ritual authority)
+2. River Merchant Guild (trade power)
+3. Lethai-ar Silent Vigil (oath enforcement)
+4. Spirit Mediums (\textit{nat} negotiation)
+5. Monsoon Captains (naval strength)
+6. Mixed‑Heritage Freedmen (cultural bridge)
+
+\chapter{Safety and Consent at the Table}
+
+This expansion deals with themes of spirit possession, ancestor veneration, and cultural practices inspired by East and Southeast Asian traditions. These elements are intended to create atmosphere and tension, not to exoticise or stereotype.
+
+Before play, establish:
+- \textbf{Lines:} Hard boundaries. Example: no forced spirit possession of PCs, no harm to shrine animals, no desecration of ancestral tablets.
+- \textbf{Veils:} Soft boundaries. Example: possession can be described obliquely (“the spirit speaks through them”) rather than depicted as loss of agency.
+- \textbf{X-Card:} Any player may tap a card marked X to pause or remove a scene without explanation. The table pivots immediately.
+
+Use these tools. Trust them.
+
+\chapter{Colophon}
+
+This expansion was written by the edge of the Inland Sea, on a page that refused to dry. The Aelinnel bell‑ringer said I had counted to nine. I apologized three times. He accepted the first apology, ignored the second, and used the third to tune his next bell.
+
+\vspace{1em}
+\dusana{At the floating shrine of the Seventh Tide, the lamp is borrowed, the ink is squid, and the Hollow is not hungry—today.}
+
+\end{document}
+```
+
+```latex
+% akilan.tex (revised with letters and Ikasha's cult as resistance)
 \documentclass[11pt]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,6 +619,9 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=gray}
 
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
 \titleformat{\chapter}[hang] 
 {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{-20pt}{20pt}
@@ -27,7 +633,8 @@
 \fancyhead[LO]{\textit{\rightmark}}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\newenvironment{lorebox}{\begin{quote}\small\itshape}{\end{quote}}
+\newenvironment{lorebox}{\begin{tcolorbox}[colback=black!2!white,colframe=black!40!white,sharp corners,breakable]\small\itshape}{\end{tcolorbox}}
+\newcommand{\letter}[2]{\begin{quote}\small\itshape #1 \hfill --- #2\end{quote}}
 
 \begin{document}
 
@@ -47,47 +654,47 @@
 \chapter*{Preface: Beyond the Dark Continent}
 \addcontentsline{toc}{chapter}{Preface: Beyond the Dark Continent}
 
-When we set out to create the southern realms of Akilan, we sought to avoid a trap all too common in fantasy cartography: the continent rendered as monolith, shadow, or backdrop. ``Fantasy Africa'' has too often meant a single imagined geography—an undifferentiated mass of ``tribes,'' ``savage'' wilderness, and static tradition, existing only to provide exotic color or resources for empires elsewhere. It is the ``Dark Continent'' of Victorian ledgers, empty until filled by foreign ink.
+When we set out to create the southern realms of Akilan, we sought to avoid a trap all too common in fantasy cartography: the continent rendered as monolith, shadow, or backdrop. “Fantasy Africa” has too often meant a single imagined geography—an undifferentiated mass of “tribes,” “savage” wilderness, and static tradition, existing only to provide exotic color or resources for empires elsewhere. It is the “Dark Continent” of Victorian ledgers, empty until filled by foreign ink.
 
 Akilan is not that place.
 
-This expansion presents a continent as fractured, sophisticated, and historically layered as any other region of the known world. The Sahel grasslands of Oshiira are not the jungles of Sekogo; the walking stone cities of Ngomebe share little with the mounted diplomacy of Taharka or the spirit-fleets of Ashaan. The empire of Oshiira operates through a bureaucracy as complex as Ecktoria's, with weighing-houses and canal-mothers whose ledgers track grain shipments with mathematical precision—a nod to the real administrative sophistication of Sahelian states and the ledger traditions of African mercantile societies. The Mason-Kin of Ngomebe partner with Aeler engineers not as ``tribesmen receiving foreign aid,'' but as equals in a millennia-old technological pact that moves mountains on rollers. This is a realm where infrastructure is magic, where the cold war between Oshiira and Kahfagia is fought with tariffs and cipher-books rather than spears, and where the ``primitive'' accusation is revealed as ignorance of hydrology, metallurgy, and spirit-logic.
+This expansion presents a continent as fractured, sophisticated, and historically layered as any other region of the known world. The Sahel grasslands of Oshiira are not the jungles of Sekogo; the walking stone cities of Ngomebe share little with the mounted diplomacy of Taharka or the spirit-fleets of Ashaan. The empire of Oshiira operates through a bureaucracy as complex as Ecktoria’s, with weighing-houses and canal-mothers whose ledgers track grain shipments with mathematical precision—a nod to the real administrative sophistication of Sahelian states and the ledger traditions of African mercantile societies. The Mason-Kin of Ngomebe partner with Aeler engineers not as “tribesmen receiving foreign aid,” but as equals in a millennia-old technological pact that moves mountains on rollers. This is a realm where infrastructure is magic, where the cold war between Oshiira and Kahfagia is fought with tariffs and cipher-books rather than spears, and where the “primitive” accusation is revealed as ignorance of hydrology, metallurgy, and spirit-logic.
 
-We have drawn inspiration from the mythologies of the Sahel, the Horn, the Great Lakes, and the Kongo basin, but we have not assembled a pan-African pantheon. The Patrons here are specific to places and problems: \textbf{Mbira}, the spirit of the first weigh-house, reflects the moral weight of trade and measure found in Mande traditions; \textbf{Ibeji}, the Twin Stones, honors the Yoruba concept of balanced partnership while serving the mechanical need of the walking cities; \textbf{Maji}, the Mother of Wells, speaks to the life-and-death politics of water rights in arid lands. These are not ``African gods'' in the abstract, but spirits of specific pressures—grain, stone, monsoon, and honey—rooted in the material realities of their regions.
+We have drawn inspiration from the mythologies of the Sahel, the Horn, the Great Lakes, and the Kongo basin, but we have not assembled a pan-African pantheon. The Patrons here are specific to places and problems: \textbf{Mbira}, the spirit of the first weigh-house, reflects the moral weight of trade and measure found in Mande traditions; \textbf{Ibeji}, the Twin Stones, honors the Yoruba concept of balanced partnership while serving the mechanical need of the walking cities; \textbf{Maji}, the Mother of Wells, speaks to the life-and-death politics of water rights in arid lands. These are not “African gods” in the abstract, but spirits of specific pressures—grain, stone, monsoon, and honey—rooted in the material realities of their regions.
 
-The diversity of Akilan is not cosmetic. The skin tones range from the iron-black of the southern Aeler ranges to the chestnut-brown of the Crimson Valley Lethai-ar, to the bronze and amber of the Fharan-linked Ashaan. But more importantly, the \textit{political} diversity resists the ``one Africa'' fallacy. Here, empire takes multiple forms: the bureaucratic confederacy of Oshiira, the magocracy of Ashaan, the consensus-based councils of Sekogo, and the ambulatory urbanism of Ngomebe. There are no ``tribes'' here—only cities, guilds, Mason-Kin Houses, Green Councils, and admiralties, each with their own etiquette, engineering, and historical grievances.
+The diversity of Akilan is not cosmetic. The skin tones range from the iron-black of the southern Aeler ranges to the chestnut-brown of the Crimson Valley Lethai-ar, to the bronze and amber of the Fharan-linked Ashaan. But more importantly, the \textit{political} diversity resists the “one Africa” fallacy. Here, empire takes multiple forms: the bureaucratic confederacy of Oshiira, the magocracy of Ashaan, the consensus-based councils of Sekogo, and the ambulatory urbanism of Ngomebe. There are no “tribes” here—only cities, guilds, Mason-Kin Houses, Green Councils, and admiralties, each with their own etiquette, engineering, and historical grievances.
 
-We ask that you approach Akilan not as tourists visiting a ``mystical'' land, but as travelers entering a web of ledgers, obligations, and cold wars as intricate as any in the north. The Widow's Peace is fragile; the stone cities move for reasons of survival, not whimsy; and the spirits remember debts that no foreigner can easily understand. Bring your dice, but also bring the understanding that here, as everywhere in Fate's Edge, the mathematics of power are written in salt, grain, and stone—and the ninth measure is always waiting.
+We ask that you approach Akilan not as tourists visiting a “mystical” land, but as travelers entering a web of ledgers, obligations, and cold wars as intricate as any in the north. The Widow’s Peace is fragile; the stone cities move for reasons of survival, not whimsy; and the spirits remember debts that no foreigner can easily understand. Bring your dice, but also bring the understanding that here, as everywhere in Fate’s Edge, the mathematics of power are written in salt, grain, and stone—and the ninth measure is always waiting.
 
 \begin{tcolorbox}[colback=black!5!white,colframe=crimson!75!black,title=Lines and Veils: Navigating Ashaan and Historical Trauma]
 \textbf{Content Warning:} This expansion includes themes of slavery, spirit-binding, and historical atrocity, particularly regarding Ashaan (the Veiled Throne) and the legacy of the Red Desert wars. While these elements are intended to explore power, trauma, and liberation through the lens of fantasy, they touch on real-world wounds that require care at the table.
 
 \textbf{Safety Tools Required}
 \begin{itemize}
-    \item \textbf{X-Card (John Stavropoulos):} Any player may tap the X-Card or say ``X'' to remove content immediately. When invoked regarding Ashaan's spirit-slavery or the treatment of the Breath-less, pause and redirect without question.
-    \item \textbf{Lines:} Hard boundaries established in Session Zero. Examples: ``No depictions of physical slave markets,'' ``No racialized violence against real-world ethnic groups,'' ``No sexual violence involving captivity.''
-    \item \textbf{Veils:} Soft boundaries. The existence of spirit-slavery can be acknowledged, but scenes of branding, auction, or physical discipline are ``veiled''—described obliquely or occurring off-screen.
+    \item \textbf{X-Card (John Stavropoulos):} Any player may tap the X-Card or say “X” to remove content immediately. When invoked regarding Ashaan’s spirit-slavery or the treatment of the Breath-less, pause and redirect without question.
+    \item \textbf{Lines:} Hard boundaries established in Session Zero. Examples: “No depictions of physical slave markets,” “No racialized violence against real-world ethnic groups,” “No sexual violence involving captivity.”
+    \item \textbf{Veils:} Soft boundaries. The existence of spirit-slavery can be acknowledged, but scenes of branding, auction, or physical discipline are “veiled”—described obliquely or occurring off-screen.
 \end{itemize}
 
 \textbf{Handling Ashaan Specifically}
-Ashaan is designed as a \textit{magocracy recovering from collapse}, not a ``nation of slavers.'' Its use of bound spirits is meant to evoke moral horror—similar to the Lethai-ar's Marks or Oshiira's ledger-obsession—rather than to titillate or reinforce stereotypes of African ``dark magic.'' 
+Ashaan is designed as a \textit{magocracy recovering from collapse}, not a “nation of slavers.” Its use of bound spirits is meant to evoke moral horror—similar to the Lethai-ar’s Marks or Oshiira’s ledger-obsession—rather than to titillate or reinforce stereotypes of African “dark magic.” 
 
 \begin{itemize}
     \item \textbf{The Breath-less as Agents:} The freed-spirit agents (spies, guides) are included specifically to center the agency of the enslaved and formerly enslaved. They are not victims to be saved by the players, but complex characters with their own agendas.
-    \item \textbf{Avoiding Exploitation:} Do not use Ashaan as a setting for ``white savior'' narratives. If players intervene in the Spirit Debt or the Brass Gate plotlines, ensure they are supporting local resistance (the Breath-less networks, dissident Veiled Sisters) rather than imposing external morality.
-    \item \textbf{Historical Context:} The Red Desert as a ``wound'' left by war is analogous to real scars of colonialism and the trans-Saharan slave trade. Treat this with the same gravity you would treat the Mistlands' fog-trauma or the Aelerian deep-ledger guilt.
+    \item \textbf{Avoiding Exploitation:} Do not use Ashaan as a setting for “white savior” narratives. If players intervene in the Spirit Debt or the Brass Gate plotlines, ensure they are supporting local resistance (the Breath-less networks, dissident Veiled Sisters) rather than imposing external morality.
+    \item \textbf{Historical Context:} The Red Desert as a “wound” left by war is analogous to real scars of colonialism and the trans-Saharan slave trade. Treat this with the same gravity you would treat the Mistlands’ fog-trauma or the Aelerian deep-ledger guilt.
 \end{itemize}
 
 \textbf{Resources for Guidance}
 If you are unsure how to portray Ashaan or any Akilan culture respectfully, consult:
 \begin{itemize}
-    \item ``Writing the Other'' by Nisi Shawl and Cynthia Ward
-    \item \textit{African History: A Very Short Introduction} by John Parker and Richard Rathbone (for avoiding ``timeless Africa'' tropes)
+    \item “Writing the Other” by Nisi Shawl and Cynthia Ward
+    \item \textit{African History: A Very Short Introduction} by John Parker and Richard Rathbone (for avoiding “timeless Africa” tropes)
     \item Sensitivity readers for specific cultural elements (recommended for campaigns centering Ashaan or Sekogo)
 \end{itemize}
 
 \textbf{The Golden Rule Applied:}
-When in doubt, choose the story that serves the dignity of the people at your table. Ashaan's horrors should feel weighty, not entertaining; its spirits should feel wronged, not monstrous; and its liberation—should the players seek it—should be hard-won and complex, not a simple act of charity. The ledger of history is still being written, and your dice are part of the ink.
+When in doubt, choose the story that serves the dignity of the people at your table. Ashaan’s horrors should feel weighty, not entertaining; its spirits should feel wronged, not monstrous; and its liberation—should the players seek it—should be hard-won and complex, not a simple act of charity. The ledger of history is still being written, and your dice are part of the ink.
 \end{tcolorbox}
 
 \tableofcontents
@@ -98,13 +705,13 @@ When in doubt, choose the story that serves the dignity of the people at your ta
 
 South of the Kahfagian straits, beyond the Dolmis Narrows, the Amaranthine opens into a warmer, greener sea. This is the Gulf of Oshiira – a body of water that for centuries has been an Oshiiran lake. The great confederacy of the Sahel grasslands, the Oshiira Empire, controls its trade with an iron grip of logistics, treaties, and the legendary \textit{Widow’s Judgment}.
 
-The **Shoreless Bay** marks Oshiira’s northern coastline – a broad, shallow sound where grain barges from the Sahel load for Ecktoria, Vhasia, and Silkstrand. Oshiiran wheat feeds half the Amaranthine; its dense canal cities are the breadbasket of the known world. Ecktoria and Oshiira fought four wars to a standstill, though the empire suffered worse. The memory of those wars lingers in every weigh‑house and every tariff.
+The \textbf{Shoreless Bay} marks Oshiira’s northern coastline – a broad, shallow sound where grain barges from the Sahel load for Ecktoria, Vhasia, and Silkstrand. Oshiiran wheat feeds half the Amaranthine; its dense canal cities are the breadbasket of the known world. Ecktoria and Oshiira fought four wars to a standstill, though the empire suffered worse. The memory of those wars lingers in every weigh‑house and every tariff.
 
 Kahfagia was founded as a check on Ecktorian power – a Oshiiran colony granted independence to harry the empire’s western rival. Now it is a pirate‑republic, bound to Oshiira by a fragile non‑aggression pact and a cold war of spies, tariffs, and proxy raids.
 
 To the east lies Ashaan – a magocracy that is a corpse propped up by the Veiled Sisters. Ashaan invaded Oshiira in the distant past and was broken. The Sisters have no interest in true recovery; they feed on the nation’s remaining vitality like a cancer, suppressing dissent with spirit‑binding and terror. The people are either complicit, cowed, or secretly opposed. The land itself is cursed: the Red Desert was not always a desert. It is a wound left by Ashaan’s own magic, and it continues to spread.
 
-To the south, the highlands of Taharka grow rich on monsoon trade; their horses are legends. Beyond them, the walking stone cities of Ngomebe move across the plateau, their Mason‑Kin Houses trading mineral wealth for Aeler engineering. In the deep jungle of Sekogo, druids whisper to spirits, and in the Crimson Valley, the Lethai‑ar guard their borders fiercely, their chestnut‑brown skin blending with the red earth.
+To the south, the highlands of Taharka grow rich on monsoon trade; their horses are legends. Beyond them, the walking stone cities of Ngomebe move across the plateau, their Mason‑Kin Houses trading mineral wealth for Aeler engineering. In the deep jungle of Sekogo, the old spirits walk; and in the Crimson Valley, the Lethai‑ar guard their borders fiercely, their chestnut‑brown skin blending with the red earth.
 
 This expansion provides cultural frameworks, travel decks, and new Patrons for the lands of southern Akilan. Use it to run campaigns of grain politics, slave‑liberation, stone‑city exploration, and the slow collapse of an empire that has grown too vast for its own ledgers.
 
@@ -187,15 +794,29 @@ Spirit‑lamp (one‑use question), Brass seal (guest status), Veil‑clip (spea
 \subsection*{Factions}
 \begin{itemize}
 \item \emph{The Veiled Sisters} – the ruling wizard‑queens, parasites on a corpse.
-\item \emph{The Black Hand} – the slave‑hunters who capture bodies and spirits.
-\item \emph{The Breath‑less} – a secret network of escaped slaves and forbidden mages fighting to tear down the system.
+\item \emph{The Esoiti} – magistrates who control every ledger, every court, every gate. To cross an Esoiti is to vanish.
+\item \emph{The Black Hand} – the secret police, hunters of bodies and spirits. They wear no uniform; they could be your neighbor, your clerk, your spouse.
+\item \emph{The Breath‑less} – a secret network of escaped slaves, forbidden mages, and whisperers of Ikasha’s name. They fight to tear down the system from within.
 \end{itemize}
+
+\subsection*{Life Under the Esoiti}
+Ashaan is not a place of open rebellion. It is a place of whispered warnings, vanished neighbors, and ledgers that rewrite themselves. The Esoiti control everything: who may travel, who may trade, who may live. A merchant’s family can be sold for a debt they did not know existed. A child taken for “reevaluation” may return hollow‑eyed, if at all. The Black Hand is everywhere and nowhere; to speak Ikasha’s name too loudly is to invite a knock at midnight.
+
+\letter{“My brother was a factor in the spice market. He argued with an Esoiti about a misweighed sack of cardamom. That night, his name was erased from the rolls. His wife and children were sold to a mine in the Red Desert. I am writing this in a cellar, by the light of a smuggled candle. The Sisters do not know I exist. If you are reading this, I am probably dead. Do not try to find me. Burn this letter. But remember: the Esoiti fear two things – a debt they cannot collect, and a witness who refuses to be silenced.”}{— A Breath‑less agent, intercepted by a Tulkani trader}
+
+\letter{“The Esoiti came for my father when I was twelve. They accused him of whispering the ninth name. I watched him walk into the Brass Gate and never walk out. My mother told me to smile, to serve tea, to never look at a Sister’s eyes. That is survival. But Ikasha taught me that silence is not submission. It is a door. I am learning to open it slowly, one whisper at a time.”}{— A shopkeeper’s daughter, now a scout for the Breath‑less}
+
+\subsection*{Ikasha’s Cult as Active Resistance}
+Ikasha, She Who Sleeps, is not a patron of open rebellion. Her followers do not march in the streets. They meet in root cellars, in the hollows of abandoned temples, in the pauses between a Black Hand patrol’s footsteps. They learn to read ledgers without leaving marks, to speak secrets under the cover of a cough, to move through the city as shadows. Her Rites – Touch the Umbral Veil, Secret Keeper’s Burden – become tools of survival. To whisper Ikasha’s name is to declare that you still have a self the Sisters have not yet taken.
+
+\letter{“They say Ikasha sleeps. I say she is patient. The Sisters have ruled for generations; they believe the Veil is eternal. But the Veil is silk. Silk frays. Ikasha is the moth, and she is teaching us to bite through. One secret at a time. One name at a time.”}{— A Breath‑less cell leader, from a letter never sealed}
 
 \subsection*{Adventure Hooks}
 \begin{itemize}
 \item A Veiled Sister offers the party a fortune to smuggle a “cured” spirit out of the country – but the spirit is a witness to a massacre.
 \item A Breath‑less cell asks the party to help free a group of children from a Black Hand caravan. The children are destined to become hollowed vessels.
 \item The Sisters are losing control of a great bound entity. It will break free in three days, and the party must decide whether to help contain it (propping up the corpse) or let it rampage (dooming the innocent as well).
+\item An Esoiti magistrate offers the party a “clean” identity – a new name, new papers – in exchange for betraying a Breath‑less contact. The magistrate’s offer is genuine. The price is your soul.
 \end{itemize}
 
 \section{Ngomebe – The Stone Men}
@@ -248,11 +869,65 @@ Deep jungle between Oshiira and the southern plateau. The Crimson Valley, home t
 \subsection*{Voice}
 Sekogo speak in riddles and plant metaphors. They never say “no” directly; they say “the tree does not grow there”.
 
-\subsection*{Etiquette Hooks}
+\subsection*{The Three Societies}
+Beneath the peaceful mask of the Green Council, Sekogo is governed by three interlocking societies, each rooted in the deep folk‑horror of the jungle. These are not separate factions but overlapping authorities: a Sekogo nganga often belongs to both the Leopard Society and the Earth Society, and the tension between their roles is where drama lives.
+
+\subsubsection*{The Leopard Society (Ekpe)}
+Inspired by the Ekpe lodges of the Cross River, the Leopard Society is the jungle’s immune system. Its members are masked hunters who wear the pelts of great cats and believe they can transform into leopards at night to hunt down those who break the deepest taboos: oath‑breakers, slavers, and outsiders who take more than they give. They are not evil – they are \textit{necessary}. When a honey‑orchard is poisoned or a spirit is bound without consent, the Leopard Society appears at dawn to collect the price.
+
+\textbf{Etiquette Hooks:}
 \begin{itemize}
-\item \textbf{Offer honey} – DV –1 for trade.
-\item \textbf{Speak to the trees} – Position +1 for parley.
-\item \textbf{Do not count} – using exact numbers offends; the GM may bank 1 SB.
+\item \textbf{Never meet a Leopard’s eyes at night} – breaking this may be taken as a challenge (GM gains 2 SB to spend on the hunt).
+\item \textbf{Offer leopard’s bane (a rare jungle root) before speaking of debts} – Position +1 in any negotiation with a Society member.
+\end{itemize}
+
+\subsubsection*{The Earth Society (Ogboni)}
+Ogboni elders worship the Earth as the ultimate witness. They hold that the Ukwe (the Speaking Tree) is not merely a spirit but the \textit{covenant stone} between the first people and the land. Their rituals involve keeping the earth’s secrets: they bury wrongdoers up to their necks for a moon, they adjudicate land disputes by reading the roots, and they maintain the Calendar of Debt – a sacred list of every unpaid obligation that the jungle remembers.
+
+\textbf{Etiquette Hooks:}
+\begin{itemize}
+\item \textbf{Speak while holding a piece of the Ukwe’s bark} – you cannot lie; in return, the GM must answer one question about the land’s memory truthfully.
+\item \textbf{Never cut a marked tree} – each such tree is a living witness; doing so starts a “Roots Remember” clock [4].
+\end{itemize}
+
+\subsubsection*{The Nganga of the Green}
+The nganga are spirit‑doctors who work with \textbf{minkisi} – power objects inhabited by spirits of the dead, animals, or forces of nature. A nkisi can be a carved figure, a pot, a bundle of leaves and feathers; each is “sealed” with a nail, blade, or mirror. To cast a spell, the nganga hammers the nail into the nkisi, releasing its spirit. The price is that the act creates a \textit{debt} – the nkisi remembers every nail and may one day demand service in return.
+
+\textbf{Mechanical Hooks:}
+\begin{itemize}
+\item A nganga’s “spells” are always tied to a specific nkisi. Using the same nkisi more than once per session without renewing its offering advances the “Nkisi Hunger” clock [6]; when it fills, the spirit escapes and wreaks havoc.
+\item Instead of Obligation to a Patron, a nganga tracks \textbf{Debt to the Nkisi}. Mark +1 each time they use a Rite without offering a memory, a name, or a drop of blood.
+\end{itemize}
+
+\subsection*{The Ungwe – The Speaking Tree}
+The Ukwe is not an oracle; it is a \textbf{living ledger}. Its roots extend across Sekogo, and every broken promise, every unpaid tithe, every unburied body stains its leaves. When someone speaks to the Ukwe, it answers – but never with kindness. It may offer a leaf that grants a re‑roll (“Ungwe leaf – the tree’s blessing (one re‑roll on a Survival test)”), but the character who accepts it now owes a \textit{debt to the grove}. The Ukwe’s price might be a memory, a year of silence, or the promise to kill someone the tree names. Accepting without understanding the terms is folly.
+
+\textbf{Mechanical Hooks:}
+\begin{itemize}
+\item A character who touches the Ukwe without offering something first must test Spirit + Resolve (DV 4) or forget a random minor memory (GM chooses).
+\item The Ukwe may speak during scenes of moral crisis. Its advice is always cryptic, never free, and always costs \textit{something} later.
+\end{itemize}
+
+\subsection*{Internal Conflict: Wakers vs. Conservators}
+The Green Council is split by a fundamental argument:
+\begin{itemize}
+\item \textbf{Conservators} believe the jungle must be protected from outsiders and from itself. They enforce the old pacts, maintain the honey‑tithe, and keep the Leopard Society on a short leash.
+\item \textbf{Waker radicals} argue that the jungle has grown sluggish, that the old spirits are sleeping too deeply. They want to “wake” the forest – to encourage fever‑mists, aggressive thorn‑spirits, and even the Leopard Society’s more lethal practices. Some Wakers have already poisoned foreign caravans and collapsed mines that offended the land.
+\end{itemize}
+The Council’s fragile peace is tested every season. A Conservator might ask the party to hunt a Waker who has gone too far; a Waker might recruit the party to assassinate a Conservator who stands in the way of “true balance.” Neither side is clearly right – each has blood on its hands.
+
+\subsection*{Folk‑Horror Twists for the GM}
+\begin{itemize}
+\item A Leopard Society member who helps the party may later demand they participate in a “hunt.” Refusal earns a Leopard’s Mark – a curse that makes the jungle hostile.
+\item A nkisi that the party carries begins whispering at night. It offers power, but each use erodes the holder’s connection to their own memories: once per scene, the GM may ask “What did the nkisi take?” and the player must name a minor fact they forget.
+\item The Ukwe begins asking for names – not of enemies, but of loved ones. If the party refuses, the tree closes its paths. If they comply, they discover the name was a witness to an old crime, and now the debt has transferred to them.
+\end{itemize}
+
+\subsection*{New Strings (Sekogo)}
+\begin{itemize}
+\item \textbf{Leopard’s Favor} – once, you may call on the Leopard Society for a hunt (they will track one person through any terrain, but you owe them a future hunt).
+\item \textbf{Ungwe Debt} – the tree remembers you; once per session, you may reroll a failed Survival or Nature roll, but the GM gains 1 SB to spend on a jungle complication.
+\item \textbf{Nkisi Shard} – a broken power‑object; once, you may add +1 Effect to a magical working, but the shard shatters and costs 1 Corruption.
 \end{itemize}
 
 \section{Lethai‑ar of the Crimson Valley}
@@ -260,11 +935,13 @@ Sekogo speak in riddles and plant metaphors. They never say “no” directly; t
 \subsection*{Appearance}
 The Lethai‑ar in Akilan are chestnut‑brown (darker than the maple‑skinned northern elves). They guard the Crimson Valley – a jungle rift between Sekogo and Oshiira – with fierce neutrality. Their silk bridges span the red canyons; their web‑law keeps both empires from using the valley as a shortcut to war.
 
+Like their northern kin, the Lethai‑ar are descended from spirit‑peoples who once walked the Ways Between. In Akilan, this ancestry is more present: many Lethai‑ar can name the specific mountain, river, or grove where their ancestor left the spirit world to become mortal. They are, in a real sense, \textit{adopted children of the old powers} – not fallen, but \textit{chosen} to carry memory.
+
 \subsection*{Relationships}
 They trade with Sekogo druids (honey for poison) and with Ngomebe (stone‑song for silk). Oshiira respects their borders because any invasion would bleed through the valley.
 
 \subsection*{Marks}
-Their skin‑tattoos (Marks) are woven with red ochre and jungle sap; context keys involve the phases of the crimson moon.
+Their skin‑tattoos (Marks) are woven with red ochre and jungle sap; context keys involve the phases of the crimson moon. A Lethai‑ar’s Mark is also a \textit{debt token} – each line records a promise witnessed. When a Lethai‑ar dies, their Marks are cut from the skin and buried at the Ukwe’s roots, so the tree may remember what they owed.
 
 \section{Aeler of the Southern Ranges}
 
@@ -321,7 +998,7 @@ A & The Widow’s health fails; succession rumors spike. \\
 \multicolumn{2}{|c|}{\textbf{Diamonds – Leverage}} \\
 \hline
 2–5 & Receipt for stolen grain – blackmail material. \\
-6–10 & Barge priority token – skip one queue. \\
+6–10 & Barge priority token – skip one queue at a canal lock or weigh‑station. \\
 J–K & Treaty seal from the cold war pact – safe passage from both navies (once). \\
 A & A page from the Grain Ledger – can be sold or ransomed. \\
 \hline
@@ -356,7 +1033,7 @@ A & The Veil fails – spirit‑visions haunt all present. \\
 \hline
 2–5 & A slave’s true name – can be used to free them (or bind them further). \\
 6–10 & Spirit‑lamp – one question answered by a bound entity. \\
-J–K & Map of the desert salt routes. \\
+J–K & Map of the desert salt routes – gain +2 dice to navigation in the Red Desert for one journey. \\
 A & A sealed brass box containing a Veiled Sister’s secret. \\
 \hline
 \end{tabu}
@@ -395,37 +1072,37 @@ A & Aeler‑Ngomebe partnership seal – access to both guilds. \\
 \hline
 \end{tabu}
 
-\section{Sekogo \& Crimson Valley}
+\section{Sekogo & Crimson Valley}
 
 \begin{tabu} to \linewidth {|X|X|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Spades – Places}} \\
 \hline
-2–5 & Honey‑orchard; the trees hum. \\
-6–10 & Druid circle; stones covered in moss. \\
-J–K & A Lethai‑ar silk bridge spanning a crimson gorge. \\
-A & The Ungwe – a tree so old it speaks. \\
+2–5 & Honey‑orchard; the trees hum. A severed nkisi hangs from a branch. \\
+6–10 & Druid circle; stones covered in moss. A leopard skull sits at the center. \\
+J–K & A Lethai‑ar silk bridge spanning a crimson gorge. Below, the Ukwe’s roots clutch the water. \\
+A & The Ungwe – a tree so old it speaks. Its bark is covered in carved names, each one a debt. \\
 \hline
 \multicolumn{2}{|c|}{\textbf{Hearts – People}} \\
 \hline
-2–5 & Sekogo honey‑gatherer with a fruit offering. \\
-6–10 & Green Council druid carrying a thorn‑staff. \\
-J–K & Waker radical plotting to awaken the jungle. \\
-A & Lethai‑ar silk‑warden, masked and quiet. \\
+2–5 & Sekogo honey‑gatherer with a fruit offering. She wears a leopard claw around her neck. \\
+6–10 & Green Council druid carrying a thorn‑staff. Her eyes are milky; she is blind to the living but sees debts. \\
+J–K & Waker radical plotting to awaken the jungle. He carries a bag of fever‑mist spores. \\
+A & Lethai‑ar silk‑warden, masked and quiet. His mask is painted with the Ukwe’s roots. \\
 \hline
 \multicolumn{2}{|c|}{\textbf{Clubs – Complications}} \\
 \hline
-2–5 & A thorn‑spirit blocks the path – must offer honey or fight. \\
-6–10 & The trees remember a broken promise. \\
-J–K & Waker summons a fever‑mist (all actions Desperate). \\
-A & Lethai‑ar close the silk bridge – no crossing until a debt is paid. \\
+2–5 & A thorn‑spirit blocks the path – must offer honey or fight. The spirit demands a name. \\
+6–10 & The trees remember a broken promise. Roots shift; the path becomes a maze. \\
+J–K & Waker summons a fever‑mist (all actions Desperate). The mist whispers forgotten debts. \\
+A & Lethai‑ar close the silk bridge – no crossing until a debt is paid. The Ukwe watches. \\
 \hline
 \multicolumn{2}{|c|}{\textbf{Diamonds – Leverage}} \\
 \hline
 2–5 & Honey‑charter – safe passage through one druid’s territory. \\
-6–10 & Ungwe leaf – the tree’s blessing (one re‑roll on a Survival test). \\
-J–K & A name spoken by the jungle – reveals a hidden path. \\
-A & Lethai‑ar web‑token – parley under silk, once. \\
+6–10 & Ungwe leaf – the tree’s blessing (one re‑roll on a Survival test). Also a debt marker. \\
+J–K & A name spoken by the jungle – reveals a hidden path (GM describes a route). The name is also a witness to an old crime; a faction tied to that crime now knows your name. \\
+A & Lethai‑ar web‑token – parley under silk, once. The token is woven from the Ukwe’s root. \\
 \hline
 \end{tabu}
 
@@ -489,7 +1166,7 @@ Correcting a false ledger, exposing a grain thief, paying a debt in full with in
 \subsection*{Taboos}
 Burning a receipt, forgiving a debt without witness, using false weights.
 \subsection*{Low Rite – Stamp of Truth (4 XP)}
-Touch a document; for one scene, any forgery attempted on it becomes obvious to you. (Mark +1 Obligation)
+Touch a document; for one scene, any forgery attempted on it becomes obvious to you. Additionally, you may detect if a document has been magically altered. (Mark +1 Obligation)
 \subsection*{Standard Rite – Weigh the Heart (8 XP)}
 Target must confess a minor financial crime or suffer –1 die to all social rolls until they do. (Mark +2 Obligation)
 \subsection*{High Rite – The Ledger of Souls (14 XP)}
@@ -555,7 +1232,7 @@ Breaking a vow of silence, binding a child’s spirit, speaking your true name t
 \subsection*{Low Rite – Knife of Silence (4 XP)}
 For one scene, your footsteps make no sound. (Mark +1 Obligation)
 \subsection*{Standard Rite – Unbind (8 XP)}
-Release a bound spirit from an object; the spirit owes you one question. (Mark +2 Obligation)
+Release a bound spirit from an object; the spirit owes you one question. The spirit may not lie, though it may answer cryptically. (Mark +2 Obligation)
 \subsection*{High Rite – Kalia’s Mask (14 XP)}
 For one day, you may appear as any person you have touched. The illusion breaks if you draw blood. (Mark +3 Obligation)
 
@@ -573,7 +1250,7 @@ For one scene, your Craft rolls gain +1 die. (Mark +1 Obligation)
 \subsection*{Standard Rite – Sefu’s Seal (8 XP)}
 Touch a metal object; for one day, it cannot be melted or reshaped. (Mark +2 Obligation)
 \subsection*{High Rite – The Living Anvil (14 XP)}
-You may forge a single weapon that ignores mundane armor for one battle. At the end, the weapon crumbles. (Mark +3 Obligation)
+You may forge a single weapon that ignores mundane armor for one battle. The ritual requires rare materials (iron from a fallen star, charcoal from the Ukwe, blood from the smith’s own hand). At the end of the battle, the weapon crumbles. (Mark +3 Obligation)
 
 \section{Zuri – The Honey‑Mother}
 \subsection*{Domain}
@@ -671,7 +1348,7 @@ Touch two objects; for one day, they cannot be separated by less than magical fo
 \subsection*{High Rite – The Dance of Stone (14 XP)}
 You and an ally may move a stone city’s roller 1 mile without oxen – but you both mark 2 Fatigue. (Mark +3 Obligation)
 
-\chapter{Campaign Fronts & Clocks}
+\chapter{Campaign Fronts \& Clocks}
 
 Use these global clocks for an Akilan campaign.
 
