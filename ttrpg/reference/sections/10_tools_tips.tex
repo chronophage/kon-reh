@@ -1,5 +1,10 @@
-\chapter{GM Reference Tables}
-\label{chap:gm-reference}
+% -*- coding: utf-8 -*-
+% Chapter: GM Reference Tables
+% Comprehensive Resource Guide for Fate's Edge
+
+\chapter{GM Reference Tables}\label{chap:gm_reference}
+\index{GM reference}\index{Tables}
+
 \definecolor{FeAccent}{HTML}{3F6E8C}
 \definecolor{FeRow}{HTML}{F5F7FA}
 \newcommand{\seg}{\(\square\)}
@@ -10,10 +15,8 @@
 \newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
 \newcommand{\feTableEnd}{\rowcolors{2}{}{}}
 
-% ----------------------------------------
-% CORE LOOP & OUTCOMES
-% ----------------------------------------
-\section*{Core Cycle \& Outcomes}
+\section*{Core Resolution Cycle}\label{sec:core_cycle_ref}
+\index{Core resolution!GM reference}
 
 \begin{center}
 \feTableStart
@@ -24,6 +27,9 @@
 \end{tabularx}
 \feTableEnd
 \end{center}
+
+\section*{Outcome Matrix}\label{sec:outcome_matrix_ref}
+\index{Outcome Matrix}
 
 \begin{center}
 \feTableStart
@@ -40,10 +46,8 @@ $S=0$ & 2 & Spend/bank 1s & \textbf{Miss}: no progress; escalate clocks/pressure
 \feTableEnd
 \end{center}
 
-% ----------------------------------------
-% POSITION, DV, EFFECT, CRITS
-% ----------------------------------------
-\section*{Position, DV, Effect, Criticals}
+\section*{Position, DV, Effect, Criticals}\label{sec:position_ref}
+\index{Position}\index{Difficulty Value (DV)}\index{Effect}\index{Critical success}
 
 \begin{center}
 \feTableStart
@@ -51,9 +55,9 @@ $S=0$ & 2 & Spend/bank 1s & \textbf{Miss}: no progress; escalate clocks/pressure
 \toprule
 \textbf{Position} & \textbf{Mechanical Edge} & \textbf{Consequence Severity} & \textbf{Typical} \\
 \midrule
-Dominant  & Re-roll \emph{one failure} (1--5) & Minor & Ambush, superior prep, leverage. \\
-Controlled& (No built-in reroll)               & Moderate & Even footing; ready. \\
-Desperate & Must re-roll \emph{one success} (6--10) & Severe & Cornered, outmatched, wounded. \\
+Dominant  & Re-roll \emph{one failure} (1–5) & Minor & Ambush, superior prep, leverage. \\
+Controlled& (No built‑in reroll)               & Moderate & Even footing; ready. \\
+Desperate & Must re-roll \emph{one success} (6–10) & Severe & Cornered, outmatched, wounded. \\
 \bottomrule
 \end{tabularx}
 \feTableEnd
@@ -92,16 +96,14 @@ Great    & Major     & Significant harm; rapid progress; surplus benefit. \\
 \feTableStart
 \begin{tabularx}{\linewidth}{@{}l Y@{}}
 \toprule
-\textbf{Criticals \& Counting} & \textbf{10s count as \emph{two} successes each. 1s always create SB (even on rerolls). Criticals \emph{do not} auto-succeed a DV if $S<DV$. Apply Position rerolls \emph{after} the initial count; re-rolled dice can add SB if they show 1.} \\
+\textbf{Criticals \& Counting} & \textbf{10s count as \emph{two} successes each. 1s always create SB (even on rerolls). Criticals \emph{do not} auto‑succeed a DV if $S<DV$. Apply Position rerolls \emph{after} the initial count; re‑rolled dice can add SB if they show 1.} \\
 \bottomrule
 \end{tabularx}
 \feTableEnd
 \end{center}
 
-% ----------------------------------------
-% SB & BOONS
-% ----------------------------------------
-\section*{Story Beats (SB) \& Boons}
+\section*{Story Beats (SB) and Boons}\label{sec:sb_boons_ref}
+\index{Story Beats}\index{Boons}
 
 \begin{center}
 \feTableStart
@@ -126,7 +128,7 @@ Great    & Major     & Significant harm; rapid progress; surplus benefit. \\
 \midrule
 1 Boon & Re-roll one die (after Position) & Once per action. \\
 1 Boon & Improve Position by 1 step       & Max +1/action. \\
-1 Boon & Activate on-screen Asset         & Plausibility test if needed. \\
+1 Boon & Activate on‑screen Asset         & Plausibility test if needed. \\
 2 Boons& Convert to 1 XP                  & Max 2 XP/session via conversion. \\
 Var.   & Power talents/rites              & As specified. \\
 \bottomrule
@@ -134,10 +136,8 @@ Var.   & Power talents/rites              & As specified. \\
 \feTableEnd
 \end{center}
 
-% ----------------------------------------
-% CLOCKS, HARM, FATIGUE
-% ----------------------------------------
-\section*{Clocks, Harm, Fatigue}
+\section*{Clocks, Harm, Fatigue}\label{sec:clocks_harm_ref}
+\index{Clocks}\index{Harm}\index{Fatigue}
 
 \begin{center}
 \feTableStart
@@ -152,7 +152,7 @@ Var.   & Power talents/rites              & As specified. \\
 \feTableEnd
 \end{center}
 
-\begin{fatebox}[Fatigue \& Harm Reference]\index{Fatigue}\index{Harm}
+\begin{tcolorbox}[title={Fatigue \& Harm Reference},colback=FeRow,colframe=FeAccent]
 \begin{tabularx}{\textwidth}{lX}
 \toprule
 \textbf{Fatigue Level} & \textbf{Effect} \\
@@ -171,8 +171,268 @@ Var.   & Power talents/rites              & As specified. \\
 \midrule
 Minor & Concentration taxed; channeled effects DV +1. \\
 Moderate & Risk of disruption: roll DV 2 to maintain channels. \\
-Severe & Channel breaks; freeform casting auto-generates +1 SB. \\
+Severe & Channel breaks; freeform casting auto‑generates +1 SB. \\
 Critical & No further casting; Patron may impose terms for reprieve. \\
 \bottomrule
 \end{tabularx}
-\end{fatebox}
+\end{tcolorbox}
+
+\section*{Difficulty Value (DV) by Tier}\label{sec:dv_by_tier}
+\index{Difficulty Value (DV)!by Tier}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{c c p{8cm}}
+\caption{DV by Character Tier}\label{tab:dv_tier}\\
+\toprule
+\textbf{Tier} & \textbf{Base DV} & \textbf{Example Challenge} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} – continued}} \\
+\toprule
+\textbf{Tier} & \textbf{Base DV} & \textbf{Example Challenge} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+I  & 3 & Local threat / novice test. \\
+II & 4 & Veteran foe or skilled task. \\
+III& 5 & Elite / magical challenge. \\
+IV & 6 & Mythic or cosmic threat. \\
+V  & 7+ & Legendary, world‑shifting. \\
+\end{longtable}
+\end{center}
+\noindent \textbf{Position Modifiers:} Dominant –1, Controlled ±0, Desperate +1.
+
+\section*{Common Action DVs (Quick Reference)}\label{sec:common_dvs}
+\index{Difficulty Value (DV)!common actions}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{l l l}
+\toprule
+\textbf{Action Type} & \textbf{Typical DV} & \textbf{Notes} \\
+\midrule
+Basic Attack (melee/ranged) & 2 & Even footing. \\
+Maneuver (change Position, create advantage) & 2–3 & Set up an ally. \\
+Active Defence (parry, block, evade) & 3 & Under pressure. \\
+Complex Action (multi‑target, strong control) & 4 & Area attack, powerful spell. \\
+High‑Risk Gambit & 5+ & Desperate, extreme precision. \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section*{Magic Backlash (Condensed)}\label{sec:backlash_ref}
+\index{Backlash!quick reference}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{>{\bfseries}l l l}
+\toprule
+\textbf{Element} & \textbf{Minor Backlash} & \textbf{Major Backlash} \\
+\midrule
+Earth / Fate   & Position –1 or \textsc{Encumbered} & Clock +1/2 (Collapse) or \textsc{Pinned} \\
+Fire / Life    & Effect –1 or \textsc{Singed} & Clock +1 (Fire) or 1 Harm \\
+Air / Luck     & Position –1 or Clock +1/2 & Immediate Cost (lose tool) or +1 SB \\
+Water / Obishaal & Effect –1 or \textsc{Waterlogged} & Clock +1/2 (Flood) or intrusion \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section*{Obligation and Patrons}\label{sec:obligation_ref}
+\index{Obligation!quick reference}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{l l}
+\toprule
+\textbf{Action} & \textbf{Obligation Cost} \\
+\midrule
+Invoke Low Rite (Runekeeper) & +1 \\
+Push It (amplify Rite) & +1 additional \\
+Invoke Standard Rite & +2 \\
+Crack the Seal (Instant Invoker) & +2 (+3 for High Rites) \\
+Patron’s Gift (Imbuement) & 0 (with Thiasos) \\
+Borrowed Grace (Invoker talent) & +1 \\
+\bottomrule
+\end{longtable}
+\end{center}
+\noindent Obligation Capacity = Spirit + Presence. Exceeding capacity = +1 Fatigue per segment over.
+
+\section*{Equipment Quick Reference}\label{sec:equipment_ref}
+\index{Equipment!quick reference}
+
+\subsection*{Weapon Modifiers (Melee)}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l c c l@{}}
+\toprule
+\textbf{Weight} & \textbf{Close} & \textbf{Near} & \textbf{Notes} \\
+\midrule
+Light  & +2d & +1d & Fast, concealable. \\
+Medium & +1d & +2d & Set 1/scene or –1d first attack. \\
+Heavy  & –1d & +3d & Set 1/scene or –2d first attack. \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+
+\subsection*{Ranged Tempo}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l c c c l@{}}
+\toprule
+\textbf{Weight} & \textbf{Tempo} & \textbf{Close} & \textbf{Near} & \textbf{Far} \\
+\midrule
+Light  & Fast      & Controlled & +1d & — \\
+Medium & Standard  & Desperate  & +2d & +1d \\
+Heavy  & Slow      & Desperate  & +1d & +3d \\
+\bottomrule
+\end{tabularx}
+\meTableEnd
+
+\subsection*{Armor Conversion}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l c c l@{}}
+\toprule
+\textbf{Armor} & \textbf{Conversion} & \textbf{Penalty} & \textbf{Notes} \\
+\midrule
+Light  & 1 Harm $\rightarrow$ 1 Fatigue & — & \\
+Medium & 2 Harm $\rightarrow$ 1 Fatigue & –1d physical & \\
+Heavy  & 3 Harm $\rightarrow$ 2 Fatigue & –2d physical, no sprint & \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+
+\section*{Travel Clock Sizes}\label{sec:travel_clocks}
+\index{Travel!clock sizes}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{l c p{8cm}}
+\toprule
+\textbf{Card Rank} & \textbf{Clock Size} & \textbf{Typical Journey} \\
+\midrule
+2–5   & 4 segments & Short, straightforward. \\
+6–10  & 6 segments & Standard journey. \\
+J, Q, K & 8 segments & Extended or complex. \\
+Ace   & 10 segments & Epic or highly dangerous. \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section*{Skill List (Abridged)}\label{sec:skills_ref}
+\index{Skills!list}
+
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l Y@{}}
+\toprule
+\textbf{Skill} & \textbf{Typical Uses} \\
+\midrule
+Arcana & Magic theory, wards, ritual preparation. \\
+Athletics & Running, climbing, swimming, jumping. \\
+Brawl & Unarmed combat, grappling, improvised fighting. \\
+Command & Leadership, intimidation, issuing orders. \\
+Craft & Making, mending, construction. \\
+Deception & Lying, bluffing, misdirection. \\
+Insight & Reading emotions, detecting lies, motives. \\
+Investigation & Research, deduction, analysing clues. \\
+Lore & History, culture, religion, ancient sites. \\
+Medicine & Healing, first aid, diagnosis. \\
+Melee & Close combat with weapons. \\
+Notice & Perception, spotting ambushes, hidden details. \\
+Performance & Acting, music, oration. \\
+Ranged & Bows, thrown, firearms. \\
+Stealth & Moving unseen, hiding. \\
+Subterfuge & Casing, impersonation, forgery, sleight of hand. \\
+Survival & Wilderness navigation, foraging, tracking. \\
+Sway & Persuasion, negotiation, charm. \\
+Tinker & Lockpicking, traps, mechanical devices. \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+
+\section*{Talent Cost Tiers}\label{sec:talent_costs_ref}
+\index{Talents!cost tiers}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{l l p{8cm}}
+\toprule
+\textbf{Tier} & \textbf{Cost} & \textbf{Scope} \\
+\midrule
+Minor   & 2–3 XP & Small situational bonus, once per scene. \\
+Major   & 4–6 XP & Strong upgrade, permanent effect in a niche. \\
+Prestige& 7–10 XP & Campaign‑defining, breaks fundamental limits. \\
+Epic    & 11+ XP & Legendary, story‑shaping. \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section*{Asset and Follower Costs}\label{sec:asset_costs_ref}
+\index{Assets!costs}\index{Followers!costs}
+
+\begin{center}
+\feTableStart
+\begin{tabularx}{\linewidth}{@{}l l Y@{}}
+\toprule
+\textbf{Asset Type} & \textbf{XP Cost} & \textbf{Establishment Time} \\
+\midrule
+Minor  & 4 XP & 1 day \\
+Standard & 8 XP & 1 week \\
+Major  & 12 XP & 1 month \\
+\bottomrule
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{}l l Y@{}}
+\toprule
+\textbf{Follower Cap} & \textbf{XP Cost} & \textbf{Assist Dice} \\
+\midrule
+1 & 1 XP & +1d (if relevant skill) \\
+2 & 4 XP & +2d \\
+3 & 9 XP & +3d \\
+4 & 16 XP & +3d (cap applies) \\
+5 & 25 XP & +3d (cap applies) \\
+\bottomrule
+\end{tabularx}
+\feTableEnd
+\end{center}
+
+\section*{XP Awards per Session}\label{sec:xp_awards_ref}
+\index{Experience Points!awards}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{l l}
+\toprule
+\textbf{Award Type} & \textbf{XP Range} \\
+\midrule
+Table Attendance & +2 XP \\
+Major Objective & +2–4 XP \\
+Discovery & +1–2 XP \\
+Hard Choice & +1–2 XP \\
+Complication Spotlight & +1–3 XP \\
+Bond‑Driven Play & +1–2 XP \\
+GM Curveball & +0–3 XP \\
+Arc Completion (major) & +8–12 XP \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section*{Reputation Tiers}\label{sec:reputation_tiers_ref}
+\index{Reputation Tiers}
+
+\begin{center}
+\feTableStart
+\begin{longtable}{l l l}
+\toprule
+\textbf{Tier} & \textbf{XP Range} & \textbf{Influence} \\
+\midrule
+I – Novice   & 0–40 XP   & Local reputation. \\
+II – Seasoned & 41–90 XP & Regional notice. \\
+III – Veteran & 91–150 XP & National influence. \\
+IV – Paragon & 151–220 XP & Continental reputation. \\
+V – Mythic   & 221+ XP   & Legendary, world‑changing. \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+% End of chapter

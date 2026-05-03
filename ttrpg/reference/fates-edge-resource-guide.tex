@@ -1,9 +1,136 @@
 \documentclass[11pt,letterpaper,twoside]{book}
 
-% Preamble input
-\input{preamble}
+% =========================
+% PACKAGES
+% =========================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{
+  letterpaper,
+  inner=1.5in,
+  outer=1in,
+  top=1in,
+  bottom=1in,
+  bindingoffset=0.5cm
+}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable,listings}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{calc}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{chngcntr}
+\usepackage{sectsty}
+\usepackage{setspace}
 
+% =========================
+% COLOR DEFINITIONS
+% =========================
+\definecolor{FePrimary}{HTML}{3F6E8C}
+\definecolor{FeSecondary}{HTML}{2A4D6A}
+\definecolor{FeAccent}{HTML}{C44536}
+\definecolor{FeLightBg}{HTML}{F5F7FA}
+\definecolor{FeDarkText}{HTML}{1A2F3E}
+\definecolor{FeMidGray}{HTML}{6C7A89}
+\definecolor{FeRow}{HTML}{F5F7FA}
+
+% =========================
+% HYPERREF SETUP
+% =========================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=FePrimary,
+  citecolor=FePrimary,
+  urlcolor=FeAccent,
+  pdftitle={Fate's Edge: Comprehensive Resource Guide},
+  pdfauthor={Nicholas A. Gasper},
+  pdfsubject={TTRPG Reference Document},
+  pdfkeywords={Fate's Edge, TTRPG, reference, rules}
+}
+
+% =========================
+% CUSTOM COMMANDS
+% =========================
+\newcommand{\FEsc}[1]{\textsc{#1}}
+\newcommand{\fatebox}[2][colback=FeLightBg, colframe=FePrimary]{
+  \begin{tcolorbox}[#1, sharp corners, boxrule=0.5pt, arc=0pt, left=6pt, right=6pt, top=6pt, bottom=6pt]
+    #2
+  \end{tcolorbox}
+}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+
+% Title page commands
+\newcommand{\feSetTitle}[1]{\def\fetitle{#1}}
+\newcommand{\feSetSubtitle}[1]{\def\fesubtitle{#1}}
+\newcommand{\feSetTagline}[1]{\def\fetagline{#1}}
+\newcommand{\feSetVersion}[1]{\def\feversion{#1}}
+\newcommand{\feSetPublisher}[1]{\def\fepublisher{#1}}
+\newcommand{\feSetCoverArt}[1]{\def\fecoverart{#1}}
+
+\newcommand{\feTitlePage}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Huge\bfseries\sffamily \fetitle \par}
+    \vspace{1cm}
+    {\Large\itshape \fesubtitle \par}
+    \vspace{1.5cm}
+    {\large \fetagline \par}
+    \vfill
+    {\large Version \feversion \par}
+    \vspace{0.5cm}
+    {\normalsize \fepublisher \par}
+    \ifdefined\fecoverart
+      \vspace{1cm}
+      \includegraphics[width=0.6\textwidth]{\fecoverart}
+    \fi
+    \vspace{1cm}
+  \end{titlepage}
+}
+
+% Index and cross-reference setup
+\makeindex
+\counterwithin*{section}{chapter}
+\counterwithin*{subsection}{section}
+
+% =========================
+% HEADERS & FOOTERS
+% =========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\slshape \leftmark}
+\fancyhead[RE,LO]{\slshape \rightmark}
+\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[LE,RO]{\footnotesize \textit{Fate's Edge: Comprehensive Resource Guide}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Chapter style
+\chapterfont{\Huge\bfseries\sffamily}
+\sectionfont{\Large\bfseries\sffamily}
+\subsectionfont{\normalsize\bfseries\sffamily}
+
+% =========================
+% BEGIN DOCUMENT
+% =========================
 \begin{document}
+
+% Title info
 \feSetTitle{Fate's Edge: Comprehensive Resource Guide}
 \feSetSubtitle{Comprehensive Reference Document}
 \feSetTagline{Risk, consequence, and sharp choices at the table.}
@@ -14,7 +141,6 @@
 
 % Front matter
 \frontmatter
-
 \tableofcontents
 
 % Main matter
@@ -23,7 +149,7 @@
 \newpage
 \include{sections/01_core_principles}
 \newpage
-\include{sections/02_core_mechanics.tex}
+\include{sections/02_core_mechanics}
 \newpage
 \include{sections/03_deck_generators}
 \newpage

@@ -1,1013 +1,350 @@
-\chapter{Core Mechanics}
-\label{chap:core-mechanics}
+% -*- coding: utf-8 -*-
+% Section 2: Core Mechanics
+% Comprehensive Resource Guide for Fate's Edge
 
-\section{Adjudicating Rolls: The Core Resolution Cycle}\index{roll adjudication}
+\chapter{Core Mechanics}\label{chap:core_mechanics}
 
-When a player rolls, they are not simply trying to \emph{beat a number}. They are engaging the world through risk, consequence, and discovery. This section walks through the full cycle.
+\section{The Core Resolution Cycle}\label{sec:resolution_cycle}
 
-\subsection{Step-by-Step Roll Resolution}
+When a player rolls, they are not simply trying to beat a number. They are engaging the world through risk, consequence, and discovery.
+
+\subsection{Step‑by‑Step Resolution}\label{subsec:steps}
 
 \begin{enumerate}
-    \item \textbf{Declare Action \& Approach:} Player states intent, Attribute + Skill.
+    \item \textbf{Declare Action \& Approach:} Player states intent and the Attribute + Skill pair.\index{Resolution!declare action}
     \item \textbf{Set Difficulty Value (DV):}\index{Difficulty Value (DV)} Based on narrative stakes, not just mechanics.
     \item \textbf{Roll Pool of d10s.}
-    \item \textbf{Count:} \textbf{Successes (6+)} and \textbf{Story Beats (1s)}.\index{Story Beats}
-    \item \textbf{Check Against DV:} Apply the Outcome Matrix. Note: \textbf{each 10 counts as 2 successes}.
-    \item \textbf{Spend SB:} GM spends/banks Story Beats or draws from the Deck of Consequences.\index{Deck of Consequences}
+    \item \textbf{Count:} \textbf{Successes (6+)} and \textbf{Story Beats (1s)}.\index{Resolution!count successes}
+    \item \textbf{Check Against DV:} Apply the Outcome Matrix (\autoref{tab:outcome_matrix}). Note: \textbf{each 10 counts as two successes}.
+    \item \textbf{Spend Story Beats:} GM spends or banks SB (\autoref{sec:sb_spend_menu}).
 \end{enumerate}
 
-\begin{fatebox}[Difficulty Ladder]\index{Difficulty Ladder}
-\begin{tabularx}{\textwidth}{lX}
+\subsection{Difficulty Value (DV)}\label{subsec:difficulty_value}
+
+DV measures narrative weight, not simulationist difficulty.
+
+\begin{tcolorbox}[title=Default DV Ladder, colback=white!97!gray, colframe=black!80!gray, sharp corners]
+\begin{center}
+\begin{longtable}{c p{3.5in}}
 \toprule
 \textbf{DV} & \textbf{Typical Case} \\
 \midrule
-3 & Routine: clear intent, modest stakes, controlled setting \\
-4 & Pressured: time limits, mild resistance, partial info \\
-5 & Hard: hostile conditions, active opposition, precision required \\
-6+ & Extreme: stacked constraints, dangerous failure, high drama \\
-\bottomrule
-\end{tabularx}
-\end{fatebox}
-
-\begin{tcolorbox}[title=\textbf{Difficulty Values (DV) by Tier},colback=white!97!gray,
-colframe=black!80!gray,sharp corners,boxrule=0.4pt]
-\textbf{Guideline.}
-The base Difficulty Value (DV) for an opposed or environmental test scales with Tier:
-\[
-\boxed{\text{DV} = \text{Tier} + 2 + \text{Modifiers}}
-\]
-
-\textbf{Typical DVs.}
-\begin{center}
-\renewcommand{\arraystretch}{1.1}
-\begin{longtable}{l c c}
-\toprule
-\textbf{Tier} & \textbf{Base DV} & \textbf{Example Challenge}\\
-\midrule
-I & 5 & Local threat / novice test\\
-II & 6 & Veteran foe or skilled task\\
-III & 7 & Elite / magical challenge\\
-IV & 8 & Mythic or cosmic threat\\
+2 & Routine: clear intent, modest stakes, controlled environment \\
+3 & Pressured: time limits, mild resistance, partial information \\
+4 & Hard: hostile conditions, active opposition, precision required \\
+5+ & Extreme: stacked constraints, dangerous failure, high drama \\
 \bottomrule
 \end{longtable}
 \end{center}
-
-\textbf{Positional Modifiers.}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Desperate:} +2  \textbf{Controlled:} +1  \textbf{Controlled:} +0  \textbf{Dominant:} –1
-\end{itemize}
-Use \textit{DV = Tier + 2} as the default; adjust for environment, advantage, or narrative pressure.
 \end{tcolorbox}
 
-\textit{A DV should measure narrative weight as much as difficulty. Scaling a wall is routine. Scaling it while lantern-wardens pursue is pressured—or worse.}
+\noindent When in doubt, start at DV 3.
 
-\begin{fatebox}[Outcome Matrix]\index{Outcome Matrix}
-\begin{tabularx}{\textwidth}{lX}
+\subsection{Position \& Effect}\label{subsec:position_effect}
+
+\begin{description}
+    \item[Position (risk)]\index{Position} – \textbf{Dominant} (safe), \textbf{Controlled} (balanced), \textbf{Desperate} (high stakes).
+    \item[Effect (reward)]\index{Effect} – \textbf{Limited} (small), \textbf{Standard} (expected), \textbf{Great} (big).
+\end{description}
+The GM sets both based on your approach and the fiction.
+
+\subsection{Outcome Matrix}\label{subsec:outcome_matrix}
+
+\begin{longtable}{p{2.5cm} p{10cm}}
+\caption{Outcome Matrix}\label{tab:outcome_matrix}\\
 \toprule
-\textbf{Result} & \textbf{GM Guidance} \\
+\textbf{Roll Result} & \textbf{What Happens} \\
 \midrule
-$S \geq DV$, $C = 0$ & Clean Success: Grant intent, no added friction. \\
-$S \geq DV$, $C > 0$ & Success \& Cost: Intent achieved; GM spends SB for complications. \\
-$0 < S < DV$ & Partial: Progress \emph{proportional} to hits; intent advances but with gaps or risk. Player gains 1 Boon. \\
-$S = 0$ & Miss: No progress. GM escalates with SB/Clocks. Player gains 2 Boons. \\
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} – continued}} \\
+\toprule
+\textbf{Roll Result} & \textbf{What Happens} \\
+\midrule
+\endhead
 \bottomrule
-\end{tabularx}
-\end{fatebox}
+\endfoot
+Successes $\geq$ DV, SB=0 & Clean Success – intent achieved, no complication. \\
+Successes $\geq$ DV, SB>0 & Success \& Cost – intent achieved, GM spends SB for complication. \\
+$0 <$ Successes $<$ DV & Partial – progress with complication; player gains 1 Boon. \\
+Successes = 0 & Miss – no progress; GM escalates with SB; player gains 2 Boons. \\
+\end{longtable}
 
-\section{Fail Forward: Every Roll Matters}\index{Fail Forward}
+\subsection{Critical Success (10s)}\label{subsec:critical_success}
 
-\textbf{Partials are the most common form of “success.”} They always move the fiction forward in proportion to the progress rolled.
+Each \textbf{10} on a success adds narrative weight:
 
-\begin{quote}
-\textit{One success on DV 4:} “The lock is stubborn. You think you can get it if you keep trying.”  
-\textit{Three successes on DV 4:} “The lock springs open with a loud clank—you’re sure the guards heard.” (Upgrade to Success \& Cost; add 2 SB).  
-\end{quote}
-
-\textbf{Misses} fuel escalation but always generate player resources: 2 Boons and a consequence.  
-
-A roll is \emph{meaningful} if:  
-\begin{enumerate}
-  \item The standard procedure is followed (intent + DV + roll).  
-  \item Stakes are stated up front (what changes on success, what bites on failure).  
-  \item Real consequences occur now (SB spent, condition applied, or thread advanced).  
-\end{enumerate}
-
-\subsection{Important Notes}
 \begin{itemize}
-  \item Rolling a \textbf{1} always creates SB for the GM. Rerolls do not erase SB.  
-  \item No Boons for rehearsal, trivial probes, or repeating an identical approach without changing fiction.  
-  \item Controlled tests with no bite give positioning/info, not Boons.  
+    \item \textbf{One 10:} Strong success – improved Position or minor advantage.
+    \item \textbf{Two 10s:} Exceptional success – choose two benefits.
+    \item \textbf{Three 10s:} Legendary success – decisive victory, clear 1 clock segment.
+    \item \textbf{Four+ 10s:} Mythic success – reshape the scene, clear 1–2 clock segments.
+\end{itemize}
+Critical success effects apply only if the roll succeeds. 10s are \textbf{never} rerolled by Position or other effects.
+
+\subsection{Boon Economy}\label{subsec:boon_economy}\index{Boons}
+
+\paragraph{Earning Boons}
+\begin{itemize}
+    \item Partial (0 < successes < DV): gain 1 Boon.
+    \item Miss (successes = 0): gain 2 Boons (on a meaningful roll).
+    \item Bond‑driven action: once per bond per session, gain 1 Boon when acting on that bond with an Intricate Description.
+    \item GM award: creativity, sacrifice, or strong narrative play.
+\end{itemize}
+\noindent No Boons for safe rehearsal, null‑risk probes, or repeated identical attempts in the same scene.
+
+\paragraph{Spending Boons}
+\begin{itemize}
+    \item Reroll a single die (after seeing the result).
+    \item Activate an on‑screen Asset (1 Boon).
+    \item Improve Position by one step before a roll.
+    \item Power certain Rites or abilities.
+    \item Convert 2 Boons $\rightarrow$ 1 XP (once per session during downtime, max 2 XP/session via conversion).
 \end{itemize}
 
-\subsection{Anti-Fishing Measures}
-\begin{itemize}
-  \item \textbf{Cap:} At most 2 Boons from failures per character per scene (further misses still make SB).  
-  \item \textbf{Repetition Rule:} Same action + same stakes in the same scene can’t grant another Boon.  
-\end{itemize}
+\paragraph{Carryover Limit}
+At the end of each scene, reduce held Boons to a maximum of 2. Excess are lost.
 
-\subsection{Example}
-Lockpicking under watch (\emph{Desperate}, DV 3).  
-\textbf{Miss:} GM spends 2 SB to start \emph{Guards Incoming [6]}. Player earns 2 Boons.  
-\textbf{Partial (2 successes):} Door opens halfway; guard footsteps approach. Player earns 1 Boon.  
+\subsection{Story Beats (SB)}\label{subsec:story_beats}\index{Story Beats}
 
-% --- SRD CORE RULE ---
+Every die that shows a \textbf{1} generates one Story Beat for the GM. Rerolling a 1 does \textbf{not} erase its SB; if the reroll also shows 1, it generates additional SB.
 
-\section{Standard Rule: Player-Managed Modules}
-\label{sec:player-managed-modules}
+\paragraph{SB Spend Menus}\label{sec:sb_spend_menu}
 
-This rule makes each player the primary steward of their character-facing trackers (\emph{modules}). It keeps table pace high, reduces hidden bookkeeping, and clarifies when mechanical thresholds trigger. The GM retains authority over world-facing clocks, faction fronts, and all major narrative consequences.
+\begin{longtable}{p{2cm} p{11cm}}
+\caption{Universal SB Spend Menu}\label{tab:sb_universal}\\
+\toprule
+\textbf{Cost} & \textbf{Effect} \\
+\midrule
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} – continued}} \\
+\toprule
+\textbf{Cost} & \textbf{Effect} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1 SB & Minor: noise, trace, tick a 4/6 clock +1, worsen Position one step. \\
+2 SB & Moderate: alarm raised, lose Position/cover, lesser foe appears. \\
+3 SB & Serious: reinforcements, key gear breaks, major twist, advance a front clock by 1. \\
+4+ SB & Major: trap springs, authority arrives, environment shifts, Patron intervenes. \\
+\end{longtable}
 
-\subsection{Scope (\emph{What Counts as a Module})}
-Player-managed modules are any \textbf{character-facing} clocks, counters, or discrete states that sit on a single character sheet:
-\begin{itemize}
-  \item \textbf{Obligation} (per Patron or Symbol).
-  \item \textbf{Corruption Clock} (e.g., Cantor).
-  \item \textbf{Leash} (Summoned spirit strain) and \textbf{Spirit Bond Clock}.
-  \item \textbf{Repertoire Clock} (Cantor) or similar progression clocks.
-  \item \textbf{Asset States} (e.g., Symbol: Maintained / Neglected / \textsc{Compromised} / \textsc{Shattered}).
-  \item \textbf{Scene Counters} explicitly tied to a PC (e.g., Exposure on that PC, personal Buff/Debuff durations).
-\end{itemize}
-\textit{Not included:} GM story resources (global \textbf{Story Beats}), location/faction clocks, and mystery/doom fronts.
+\noindent For combat, stealth, social, travel, and arcana‑specific SB options, see the full \textit{GM Reference}.
 
-\begin{tcolorbox}[colback=black!3,colframe=black!40!white,title={What Players Track (at a Glance)}]
+\section{Player‑Managed Modules}\label{sec:player_managed_modules}
+
+Players are the primary stewards of their character‑facing trackers (Obligation, Corruption, Leash, Asset States). This reduces GM overhead and keeps the table moving.
+
+\begin{tcolorbox}[title=What Players Track, colback=black!3, colframe=black!40!white]
 \begin{tabularx}{\textwidth}{l l X}
 \toprule
-\textbf{Module} & \textbf{Owner} & \textbf{Tick / Change Triggers (examples)} \\
+\textbf{Module} & \textbf{Owner} & \textbf{Tick Triggers (examples)} \\
 \midrule
-Obligation (by Patron) & Player & Invoke/Push/ritual text; Invoker \emph{Borrowed Grace}; cracking a Symbol; bargain costs. \\
-Corruption Clock & Player & Cantor Push; Resonant Rite; GM spends a Beat tied to the PC’s occult actions. \\
-Leash (Summoning) & Player & Harm to spirit; commands against nature; split focus; crossing \texttt{[WARD]} (DV = Cap). \\
-Spirit Bond [4] & Player & Shared victories, mutual aid, meaningful attempts (\emph{near-miss progress} once/session/type). \\
-Repertoire [6] & Player & Learn a new unique Song/rite-as-song; practice milestones. \\
-Asset State (Symbol) & Player & Maintenance/downtime checks; \emph{Crack the Seal} \(\rightarrow\) \textsc{Compromised}; breakage \(\rightarrow\) \textsc{Shattered}. \\
+Obligation (per Patron) & Player & Invoking a Rite, Pushing, \textit{Crack the Seal}. \\
+Corruption Clock & Player & Cantor Push, Resonant Rite, GM spends SB on occult actions. \\
+Leash (Summoning) & Player & Spirit takes Harm, acts against nature, crosses a \texttt{[WARD]}. \\
+Asset State (Symbol) & Player & Maintenance, \textit{Crack the Seal} $\rightarrow$ Compromised. \\
 \bottomrule
 \end{tabularx}
 \end{tcolorbox}
 
-\subsection{Core Principle}
-Players \textbf{immediately} mark their own modules when a rule says ``mark $+X$'' or a trigger fires. Threshold effects resolve as soon as they are reached.
-
-\subsection{Player Duties}
-\begin{enumerate}
-  \item \textbf{Mark Increases/Decreases on Cue.} When you Invoke a Rite, Push, spend/clear per rules text, or a trigger fires, update your module \emph{now}, not later.
-  \item \textbf{Declare Thresholds.} If marking fills a clock or crosses capacity, say so aloud; thresholds resolve before the scene proceeds.
-  \item \textbf{State Ownership.} Keep per-Patron Obligation tallies distinct; track each Symbol’s state if you use Symbols.
-  \item \textbf{Keep It Visible.} Use a tracker the GM and table can see (sheet boxes, index cards, or shared digital).
-\end{enumerate}
-
-\subsection{GM Duties}
-\begin{enumerate}
-  \item \textbf{Spot-Check.} At need, ask any player: current Obligation by Patron, Corruption segments, Leash state, Asset states.
-  \item \textbf{Enforce Thresholds.} When a player reports a threshold, apply the standard effects below \emph{immediately}.
-  \item \textbf{Own the Fallout.} Patron intrusions, faction reactions, front clocks, and major narrative consequences remain GM authority.
-\end{enumerate}
-
-\subsection{Standard Thresholds \& Effects}
 \paragraph{Obligation Capacity}
-\label{sec:obligation-capacity}
 \[
-\textbf{Obligation Capacity} \;=\; \textit{Spirit} + \textit{Presence}
+\text{Obligation Capacity} = \text{Spirit} + \text{Presence}
 \]
 \begin{itemize}
-  \item \textbf{Over Capacity:} Immediately mark \textbf{+1 Fatigue} per segment over capacity.
-  \item \textbf{Over \(\mathbf{2\times}\) Capacity:} Immediately clear all Fatigue, mark \textbf{+1 Harm (Stress)}, and a \textbf{Patron Intrusion} occurs (GM frames on-theme demand/complication).
+    \item Over capacity: mark +1 Fatigue per segment over.
+    \item Double capacity: clear all Fatigue, +1 Harm, and a \textbf{Patron Intrusion} occurs.
 \end{itemize}
 
-\paragraph{Corruption Full}
-When a \textbf{Corruption Clock} fills:
-\begin{itemize}
-  \item Apply the last-Patron \textbf{benefit \& burden} (per Patron table or setting guidance) to the PC (and any listed followers/retainers).
-  \item \textbf{Reset} the Corruption Clock to empty.
-  \item If the player chooses \textbf{Embrace Corruption}, convert the current Patron theme into a permanent boon/curse per \S\ref{subsec:corruption-fading}.
-\end{itemize}
+\paragraph{Corruption Full (Cantor)}
+Apply the last Patron’s theme boon/burden, then reset the clock.
 
-\paragraph{Leash Full (Summoning)}
-When the \textbf{Leash} fills:
-\begin{itemize}
-  \item The spirit acts once to its nature, then \textbf{departs} (or turns hostile at GM discretion and fiction).
-\end{itemize}
-\textbf{Leash Capacity:} \(\textit{Cap} + \textit{Spirit}\) segments. (\textit{Cap} is the outsider’s tier: Cap~1 for Lesser, Cap~3 for Greater.)
+\paragraph{Leash Full (Summoner)}
+Spirit acts once to its nature, then departs (or turns hostile).
 
 \paragraph{Symbol State (Invoker)}
-\begin{itemize}
-  \item \textbf{Maintained} \(\rightarrow\) normal function. \quad
-        \textbf{Neglected} \(\rightarrow\) GM may impose $+1$ DV to related rites.
-  \item \textbf{\textsc{Compromised}} (e.g., \emph{Crack the Seal}) \(\rightarrow\) instant resolution per rules; mark extra Obligation; repair in Downtime or pay 1 XP.
-  \item \textbf{\textsc{Shattered}} \(\rightarrow\) unusable until replaced or ritually restored per fiction.
-\end{itemize}
+\textit{Compromised} (e.g., from \textit{Crack the Seal}) – repair in downtime or pay 1 XP.
 
-\subsection{Table Procedure (90-Second Loop)}
-\paragraph{Start of Session}
-Players read out: per-Patron \textbf{Obligation} totals, \textbf{Corruption} segments, standing \textbf{Asset States}, and any personal clocks at 3+.
-
-\paragraph{End of Scene}
-Quick pass: ``\emph{Any marks?}'' Players tick modules from scene events. If a threshold triggers, resolve now.
-
-\paragraph{Downtime}
-Players apply clears (service, contrition, purification, study) to their own modules. GM verifies any costs or fiction.
-
-\subsection{Disputes \& Order of Operations}
-If two marks would land simultaneously, apply them in the \textbf{least advantageous order for the acting character}, unless a rule specifies otherwise. The GM is final arbiter.
-
-\subsection{Accessibility \& Tools}
-Use highly visible trackers: bold boxes on sheets, poker chips for segments, or a shared table of per-Patron Obligation. Keep modules at-a-glance to minimize interruption.
-
-\subsection{Worked Micro-Examples}
-\begin{itemize}
-  \item \textbf{Invoker Rites Twice:} Vessa Invokes two different Patrons. She marks each Patron’s \textbf{Obligation} separately. Hitting capacity with Patron A causes Fatigue; Patron B remains below capacity.
-  \item \textbf{Cantor Pushes:} Jorel Pushes a Song (mark +1 Corruption). That fill triggers the last-Patron boon/burden immediately; then he resets to 0.
-  \item \textbf{Summoner Clash:} Kestra’s Cap~3 elemental takes Harm and crosses a \texttt{[WARD]}; she ticks her \textbf{Leash} twice. On fill, the elemental flares once and departs.
-\end{itemize}
-
-\subsection{Boon Sharing}
-Players may gift 1 Boon per scene to an ally with narrative justification.  
-\begin{itemize}
-  \item \textbf{Bonded Allies:} Up to 2 Boons gifted per scene.  
-  \item \textbf{Assistance:} Shared Boons can enhance an ally’s roll.  
-  \item \textbf{Campaign Events:} Major milestones may generate party-wide Boons.  
-\end{itemize}
-
-\textbf{GM Note:} Encourage gifts with roleplay beats, but balance generosity with potential dependency or group tension.
-
-\subsection{Critical Success}
-
-Rolling a \textbf{10} on any die indicates a critical tier of success. Each 10 adds weight to the outcome:
-
-\begin{itemize}
-  \item \textbf{One 10:} Strong success with a free boon, improved Position, or other narrative flourish.
-  \item \textbf{Two 10s:} Exceptional success; choose two benefits or a single powerful effect.
-  \item \textbf{Three 10s:} Legendary success; resolve the conflict dramatically and progress or clear 1 segment on a secondary clock (generally, a clock tied to the scene, not the overarching campaign).
-  \item \textbf{Four+ 10s:} Mythic success; progress or clear 1--2 segments from a secondary clock or create a significant story development.
-\end{itemize}
-
-\noindent If no 10s are rolled, resolve the action normally by the highest die result.
-
-\noindent \textbf{10s are never re-rolled by Position effects or other mechanics. Critical hit effects always take place if the roll is successful, despite any SB rolled. Critical successes may reduce Backlash/Obligation/Corruption severity by one tier.}
-\section{SB Spend Menu}
-\label{sec:sb-spend-menu}
-\index{Story Beat (SB)!spend menu}
-
-\subsection{Universal SB Options}
-\label{subsec:universal-sb}
-\index{Story Beat (SB)!universal}
+\section{Turn Economy}\label{sec:turn_economy}
 
 \begin{description}
-\item[\textbf{1 SB}] Minor pressure: suspicious noise, trace left behind, +1 Supply segment, minor time loss. \index{Story Beat (SB)!1 SB}
-\item[\textbf{2 SB}] Moderate setback: alarm raised, lose favorable position/cover, lesser foe appears, added obstacle. \index{Story Beat (SB)!2 SB}
-\item[\textbf{3 SB}] Serious trouble: reinforcements arrive, key gear breaks, significant complication introduced. \index{Story Beat (SB)!3 SB}
-\item[\textbf{4+ SB}] Major turn: trap springs, authority arrives, scene shifts dramatically. \index{Story Beat (SB)!4+ SB}
+    \item[Move] Traverse up to one range band (Close $\leftrightarrow$ Near $\leftrightarrow$ Far) or stand from prone.
+    \item[Action] Options include: Attack, Disengage, Charge\footnote{Full turn action: move two bands and melee attack; costs 1 Fatigue; next defense Desperate; requires open ground.}, Skirmish\footnote{Full turn action: move two bands away and ranged attack; costs 1 Fatigue; next defense Desperate; requires open ground.}, Observe/Change Position (+1 Position once per turn), Setup (grant ally +1 Position/Effect), Assist (spend 1 Boon for +1 die; max +3 dice from assists), Defend, Channel/Weave, Cast Rite/Song, Interact.
 \end{description}
+Talents such as \textit{Effortless Charge}, \textit{Effortless Skirmish}, and \textit{Relentless} modify these actions.
 
-\subsection{Combat-Specific SB Options}
-\label{subsec:combat-sb}
-\index{Story Beat (SB)!combat}
+\subsection{Initiative}
+No fixed initiative. Turn order follows the fiction: GM spotlights based on circumstances; ambushers act first.
 
-\begin{description}
-\item[\textbf{1 SB}] Lose footing (next defense –1 die), minor environmental shift.
-\item[\textbf{2 SB}] Weapon jam or battlefield momentum shifts (fire spreads, cave-in starts, cavalry arrives).
-\item[\textbf{3 SB}] Pinned, disarmed, or separated from allies.
-\item[\textbf{4+ SB}] Enemy reveals a special ability, terrain collapses, a major reinforcement wave hits.
-\end{description}
+\subsection{Opportunity Attacks}
+Moving out of an enemy’s Close range without using the Disengage action provokes one free melee attack (Controlled Position).
 
-\subsection{Stealth \& Intrusion SB Options}
-\label{subsec:stealth-sb}
-\index{Story Beat (SB)!stealth}
+\section{Fatigue \& Harm}\label{sec:fatigue_harm}
 
-\begin{description}
-\item[\textbf{1 SB}] Footstep heard, door squeaks, shadow noticed.
-\item[\textbf{2 SB}] Patrol adjusts, lock resists (extra test), guard becomes suspicious.
-\item[\textbf{3 SB}] Partial alarm triggered (localized response).
-\item[\textbf{4 SB}] Full alarm and lockdown protocol.
-\end{description}
-
-\subsection{Social Interaction SB Options}
-\label{subsec:social-sb}
-\index{Story Beat (SB)!social}
-
-\begin{description}
-\item[\textbf{1 SB}] Faux pas (future interactions with this contact –1 die), rumor spreads.
-\item[\textbf{2 SB}] Concession required (gift, favor, or compromise to proceed).
-\item[\textbf{3 SB}] Rival interjects with leverage; negotiation turns against you.
-\item[\textbf{4 SB}] Patron turns hostile; audience becomes antagonistic.
-\end{description}
-
-\subsection{Travel \& Survival SB Options}
-\label{subsec:travel-sb}
-\index{Story Beat (SB)!travel}
-
-\begin{description}
-\item[\textbf{1 SB}] Lose time, minor injury, weather worsens.
-\item[\textbf{2 SB}] Supply clock +1 segment, mount lamed, gear damaged.
-\item[\textbf{3 SB}] Wrong path or blocked pass; all characters gain Fatigue 1.
-\item[\textbf{4 SB}] Major environmental event—storm, rockslide, flood—scene fundamentally changes.
-\end{description}
-
-\subsection{Arcana \& Ritual SB Options}
-\label{subsec:arcana-sb}
-\index{Story Beat (SB)!arcana}
-
-\begin{description}
-\item[\textbf{1 SB}] Backlash prickle, sensory bleed, minor magical residue.
-\item[\textbf{2 SB}] Unintended side-effect (e.g., cold off a fire working; echoes draw attention).
-\item[\textbf{3 SB}] Residue anchors a hex or attracts supernatural attention.
-\item[\textbf{4 SB}] Significant backlash condition or manifestation; ritual mark persists with ongoing effects.
-\end{description}
-
-\paragraph{High-Tier SB Sinks} \index{Story Beat (SB)!high-tier}
-For major 3–6+ SB spends that affect the campaign world (reputation cascades, faction instability, magical resonance, prophecy triggers), use advanced complications rules. A practical default: \emph{at the end of a journey leg,} \textbf{3 SB → advance 1 Campaign Front}.
-
-\section{Fail Forward: Every Roll Matters}
-\label{sec:fail-forward}
-\index{Fail Forward}\index{Boons}
-
-When a character \textbf{misses} (0 successes) on a \emph{significant action}, they gain \textbf{2 Boons} and one on a \textbf{partial} success. Boons represent insight, opportunity, or a sudden edge that can be spent later.
-
-\subsection{Significant Action Criteria}
-\label{subsec:significant-action}
-\index{Significant Action}
-
-A miss or partial success awards Boons only if \textbf{all three} are true:
-\begin{enumerate}
-\item \textbf{Procedure Followed} — Intent and approach declared; DV set; roll resolved. \index{Core Mechanic!Procedure}
-\item \textbf{Stakes Stated} — What changes on success; what lands on failure. \index{Stakes}
-\item \textbf{Consequence Lands} — The GM spends or banks SB, applies a condition, or advances a thread. \index{Consequences}
-\end{enumerate}
-
-\subsection{Actions That Do \emph{Not} Award Boons}
-\label{subsec:no-boon-actions}
-\begin{itemize}
-\item Rehearsals or null-risk probes with trivial stakes.
-\item Repeated identical attempts in the same scene \emph{without} a new approach, position, or stakes.
-\item Actions whose fallout would be trivial or purely informational.
-\end{itemize}
-
-\subsection{Additional Boon Sources}
-\label{subsec:other-boon-sources}
-\index{Boons!sources}
-\begin{itemize}
-\item Strong bond-driven play that highlights relationships.
-\item Creative solutions to complex problems (GM discretion).
-\item Sacrifices made for the group or greater good.
-\item Spotlighting character flaws or complications.
-\end{itemize}
-
-\subsection{Boon Economy and Limits}
-\label{subsec:boon-economy}
-\index{Boons!economy}
-\begin{description}
-\item[\textbf{Holding Cap}] Hold up to \textbf{5} Boons. \index{Boons!cap}
-\item[\textbf{Scene Carryover}] At scene end, trim to \textbf{2} Boons (excess lost). \index{Boons!carryover}
-\item[\textbf{Spending}] Spend in-scene for re-rolls, Asset activations, Rites, or special abilities. \index{Boons!spending}
-\item[\textbf{Multi-Phase Scenes}] For extended set pieces (chase → duel → escape), trim to 2 only after the sequence ends. \index{Boons!multi-phase}
-\end{description}
-
-\subsection{Rites \& Assets: Practical Notes}
-\label{subsec:rite-asset-notes}
-High-power Rites that require 2 Boons remain viable—characters can start a scene with 2 Boons and must earn more to chain further Invokes. On-screen Asset activations cost \textbf{1 Boon} as normal. \index{Rites}\index{Assets!activation}
-
-\subsection{Anti-Fishing Measures}
-\label{subsec:anti-fishing}
-\index{Boons!limits}
-Optional stability rules:
-\begin{itemize}
-\item \textbf{Failure Limit:} Max \textbf{2 Boons from failures per character per scene}. Further misses still generate SB but no Boon.
-\item \textbf{Repetition Rule:} Same approach with identical stakes in the same scene cannot award another Boon.
-\item \textbf{Position Gate:} Controlled tests with trivial fallout do not award Boons.
-\end{itemize}
-
-\subsection{Practical Examples}
-\label{subsec:boon-examples}
-\begin{itemize}
-\item \textbf{Boons Awarded:} Picking a lock under watch (Desperate, DV 3). Stakes: success opens door; miss triggers alarm. Roll misses; GM spends 2 SB to start \emph{Guards Incoming} [6]. Player gains 2 Boons.
-\item \textbf{No Boon:} Tapping flagstones "just in case" (Controlled, no stakes). Info-only; no SB spent. No Boon.
-\item \textbf{Carryover:} End of scene, character holds 4 Boons → trim to 2. Next scene, they earn/spend freely (never exceeding 5); trim to 2 when that scene ends.
-\end{itemize}
-
-\section{Boon Conversion and Advancement}
-\label{sec:boon-conversion}
-\index{Boons!conversion}
-\begin{itemize}
-\item \textbf{Conversion Rate:} Once per session during downtime, convert \textbf{2 Boons → 1 XP}. \index{Experience Points!from Boons}
-\item \textbf{Limit:} Max \textbf{2 XP/session} via conversion. \index{Experience Points!limits}
-\item \textbf{Timing:} Between scenes or during downtime only. \index{Downtime!Boon conversion}
-\end{itemize}
-
-\subsection{Boon Sharing}
-
-Players may gift \textbf{1 Boon per scene} to an ally with a brief narrative justification.  
-\begin{itemize}
-  \item \textbf{Bonded Allies:} If characters share a bond, they may gift \textbf{2 Boons per scene}.  
-  \item \textbf{Assistance:} Boons may be spent to enhance an ally’s roll (counts as assistance).  
-  \item \textbf{Campaign Events:} Major victories or setbacks may generate shared Boons for the party.  
-\end{itemize}
-
-\textbf{Table Use:} Require a short story beat for each gift. Normal Boon limits apply. Track shared Boons openly.  
-\textbf{GM Notes:} Reward generosity with extra opportunities, introduce occasional complications from dependence, and balance group vs.\ individual needs.
-
-\subsection{Position}
-\label{subsec:position}
-\index{Position}
-
-Every action in \indexterm{Fate's Edge} takes place from a \textbf{Position} that reflects the character’s advantage or disadvantage in the scene. Position sets the tone for the roll, narratively and mechanically. It comes in three states:
+\subsection{Fatigue Track}
+Fatigue track = \textbf{Body}. Mark Fatigue for exertion, magical strain, or stress.
 
 \begin{itemize}
-  \item \textbf{Dominant:} You act from a place of control, leverage, or overwhelming advantage.
-  \item \textbf{Controlled:} The standard state of play. Outcomes are uncertain but balanced.
-  \item \textbf{Desperate:} You act from dire straits, cornered or overmatched, with everything at stake.
+    \item Each Fatigue worsens Position one step: Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate.
+    \item If already Desperate, each Fatigue gives –1 die instead.
+    \item Overflow: when Fatigue fills, increase Harm by 1 step and clear all Fatigue.
 \end{itemize}
+Recovery: short rest clears 1–2 Fatigue; full night’s rest clears all.
 
-\paragraph{Re-roll Mechanic.}  
-Position modifies the dice pool through simple re-rolls:
-\begin{center}
-\begin{longtable}{@{}lll@{}}
+\subsection{Harm Levels}\label{subsec:harm_levels}
+
+\begin{longtable}{p{2cm} p{10cm}}
 \toprule
-\textbf{Position} & \textbf{Narrative Frame} & \textbf{Mechanical Effect} \\
+\textbf{Harm Level} & \textbf{Effect} \\
 \midrule
-Dominant & You press your advantage & Re-roll one \emph{failure} \\
-Controlled    & The balanced norm & No re-rolls \\
-Desperate & You act under duress & Re-roll one \emph{success} \\
+Harm 1 & –1 die on related actions. \\
+Harm 2 & –1 die on most actions until treated. \\
+Harm 3 & Incapacitated or dying. \\
+\bottomrule
+\end{longtable}
+
+Recovery: Harm requires medical/magical care.
+
+\subsection{Fear Effects}\label{subsec:fear_effects}
+
+When a character escalates on the Fear Track (Shaken $\rightarrow$ Frightened $\rightarrow$ Panicked), roll d10 or choose an effect:
+
+\begin{center}
+\begin{longtable}{c l}
+\toprule
+\textbf{d10} & \textbf{Effect} \\
+\midrule
+1 & Freeze (cannot act) \\
+2 & Flee from the source of fear \\
+3 & Drop held item \\
+4 & Beg or bargain incoherently \\
+5 & Hide \\
+6 & Attack in panic (nearest target) \\
+7 & Blunder into danger \\
+8 & Obey a simple command from the fear‑causer \\
+9 & Break down (useless until aided) \\
+10 & Catatonia \\
 \bottomrule
 \end{longtable}
 \end{center}
 
-\section{Asset Activation Mechanics}
-\label{sec:asset-activations}
-\index{Assets!activation}
-Players can activate Assets in several ways:
+\section{Skills}\label{sec:skills}
+
+An action roll pairs an \textbf{Attribute} with a \textbf{Skill}. The GM sets Position and DV from the fiction.
+
+\subsection{Core Skill List (Abridged)}\label{subsec:skill_list}
+
+\begin{longtable}{p{3cm} p{10cm}}
+\toprule
+\textbf{Skill} & \textbf{What It Covers} \\
+\midrule
+Arcana & Magic theory, wards, rituals. \\
+Athletics & Running, climbing, swimming, balance. \\
+Brawl & Unarmed combat, grappling. \\
+Command & Leadership, issuing orders, morale. \\
+Craft & Making and mending (smithing, carpentry, etc.). \\
+Deception & Lying, bluffing, misdirection. \\
+Insight & Reading emotions, motives, detecting lies. \\
+Investigation & Research, deduction, analysing clues. \\
+Lore & History, cultures, religions, general knowledge. \\
+Medicine & Healing, anatomy, first aid. \\
+Melee & Close combat with weapons. \\
+Notice & Perception, spotting ambushes and hidden details. \\
+Performance & Acting, music, oration. \\
+Ranged & Bows, thrown weapons, firearms. \\
+Stealth & Moving unseen, hiding. \\
+Subterfuge & Casing, impersonation, forgery, sleight of hand. \\
+Survival & Wilderness navigation, foraging, tracking. \\
+Sway & Persuasion, negotiation, charm. \\
+Tinker & Lockpicking, traps, mechanical devices. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Choosing the Right Combination}
+The same fictional action can use different Attribute+Skill pairs. Examples:
+\begin{itemize}
+    \item Climbing a wall: Body+Athletics (strength), Wits+Athletics (route‑finding), Spirit+Athletics (determination).
+    \item Persuading a guard: Presence+Sway (charm), Wits+Sway (logic), Spirit+Sway (conviction).
+\end{itemize}
+
+\section{Experience Points (XP)}\label{sec:xp}
+
+\subsection{Awarding XP (per session)}
+\begin{itemize}
+    \item Base participation: +2 XP.
+    \item Major objectives: +2–4 XP.
+    \item Discoveries: +1–2 XP.
+    \item Hard choices: +1–2 XP.
+    \item Story engagement: +1–3 XP.
+    \item Personal goals: +1–2 XP.
+\end{itemize}
+\noindent Arc completion bonus: +8–12 XP.
+
+\subsection{Spending XP}
+\begin{itemize}
+    \item Attribute increase: new rating $\times$ 3 XP.
+    \item Skill increase: new level $\times$ 2 XP.
+    \item Talents: see cost tiers (2–12+ XP).
+    \item Followers: Cap$^2$ XP.
+    \item Assets: Minor (4 XP), Standard (8 XP), Major (12 XP).
+\end{itemize}
+Training time (downtime) equals new rating (days) for Attributes/Skills.
+
+\subsection{Rush Rule}
+Skip required downtime by starting a \textbf{Haste} [4] clock. If it fills, the new ability has flaws or narrative hitches.
+
+\subsection{Reputation Tiers}\label{subsec:tiers}
 \begin{description}
-\item[\textbf{Free Off-Screen}] Each Asset's off-screen effect \emph{once per session} for free. \index{Assets!off-screen}
-\item[\textbf{XP Activation}] Spend \textbf{2 XP} to trigger an extra off-screen effect beyond the session allowance. \index{Assets!XP activation}
-\item[\textbf{Boon Activation}] Spend \textbf{1 Boon} to bring an Asset's influence on-screen now. \index{Assets!Boon activation}
-\item[\textbf{Plausibility Test}] The Asset must have scope/reach appropriate to the effect. \index{Assets!scope}
+    \item[Tier I – Novice (0–40 XP)] Local reputation.
+    \item[Tier II – Seasoned (41–90 XP)] Regional notice.
+    \item[Tier III – Veteran (91–150 XP)] National influence.
+    \item[Tier IV – Paragon (151–220 XP)] Continental reputation.
+    \item[Tier V – Mythic (221+ XP)] Legendary, world‑changing.
 \end{description}
 
-\subsection{Initiative and Turn Order}
+\section{Game Structure}\label{sec:game_structure}
 
-Fate's Edge does not use fixed initiative. 
-Turn order follows the fiction and the GM's facilitation:
-\begin{itemize}
-    \item \textbf{Narrative Fiat:} The GM frames spotlight order based on circumstances, tension, and narrative flow.
-    \item \textbf{Player Input:} Players may suggest acting when it makes sense in the fiction. 
-    \item \textbf{Surprise:} Ambushers act first; targets respond after the opening exchange.
-    \item \textbf{Flexibility:} Spotlight may shift mid-scene if fictionally appropriate (e.g., reacting to a falling ceiling, seizing a moment).
-\end{itemize}
-
-This ensures pacing and drama guide the sequence of actions, not rigid turn structures.
-% =========================
-% Turn Economy (Quick Rules)
-% =========================
-\subsection{Turn Economy (Quick Rules)}
-\label{subsec:turn-economy-quick}
-
-\paragraph{Two Actions.}
-Each character takes \emph{1 Action and 1 Move} on their turn. Actions and Moves may be taken in any order; repeating the same Action is not allowed unless noted. A character may use a Boon to re-roll their action at the expense of their move if they still have it available. Some weapon tempos effect whether you can take an attack and a move.
-
-\paragraph{Move.}
-Traverse up to your normal movement. \emph{Disengage:} move without provoking; your next offensive action is \textbf{Controlled}. \emph{Dash:} move again this turn; your next defense is \textbf{Desperate}.
-
-\paragraph{Attack.}
-Make a melee or ranged attack versus DV set by the GM and fiction. Teamwork/Assist costs 1 Boon.
-
-\paragraph{Observe / Change Position (+1).}
-Take a beat to read the field or set angles; gain \textbf{+1 Position} for one action this turn (e.g., Controlled$\to$Dominant). Limit: once/turn; cannot exceed \textbf{Dominant}.
-
-\paragraph{Activate an Asset.}
-Use gear, symbol, tool, or feature per its text/tags (e.g., torch, grapnel, smoke vial, rune focus). Items with \texttt{[Action]} consume one Action; \texttt{[Free]} do not.
-
-\paragraph{Setup (Teamwork).}
-Create advantage for an ally; on success, grant their next action \textbf{+1 Position} or step up Effect (GM’s call).
-
-\paragraph{Assist (Teamwork).}
-Spend \emph{1 Boon} to give an ally \emph{+1 die} on their current roll; you share appropriate risk/consequence.
-
-\paragraph{Defend / Protect.}
-Adopt a guarding stance or body-block. Choose a nearby ally; until your next turn you may intercept one hit on them and roll to resist it. On success, reduce/negate Harm; you take any fallout the GM assigns.
-
-\paragraph{Channel / Weave.}
-Runekeeper/ritual flow: \emph{Channel} (prime power) then \emph{Weave} (shape/release). Disruption or engagement may worsen Position; if \emph{Interrupted}, the casting fails.
-
-\paragraph{Cast Rite / Song (Cantor).}
-Perform a Rite/Song per its write-up. You may \emph{Push} to accelerate or empower at the cost of Fatigue/Corruption per class rules.
-
-\paragraph{Interact.}
-Lift, pull, flip a lever, shove a foe, break an object, apply a poultice, reload, draw/stow, etc. GM sets DV/Effect.
-
-\paragraph{Free Items.}
-Short shouts, dropping an item, quick glance. Longer or tactical assessments require \emph{Observe / Change Position} or \emph{Interact}.
-
-\paragraph{Reactions (Out of Turn).}
-\emph{Protection} may trigger when an ally is hit and you are in position. Class/Asset reactions fire as written (e.g., counter-runes, ripostes).
-
-\paragraph{Position Caps.}
-Bonuses cannot raise Position above \textbf{Dominant}; penalties cannot drop below \textbf{Desperate}. Beyond these caps, adjust DV or Effect instead.
-
-\section{Experience Point Economy}
-\label{sec:xp-economy}
-\index{Experience Points}
-
-\subsection{Session Awards}
-\label{subsec:session-awards}
-\index{Experience Points!session awards}
+\subsection{Narrative Time Scales}
 \begin{description}
-\item[\textbf{Table Attendance}] +2 XP
-\item[\textbf{Major Objective}] +2–4 XP
-\item[\textbf{Discovery}] +1–2 XP
-\item[\textbf{Hard Choice}] +1–2 XP
-\item[\textbf{Complication Spotlight}] +1–3 XP
-\item[\textbf{Bond-Driven Play}] +1–2 XP
-\item[\textbf{GM Curveball}] +0–3 XP
+    \item[A Moment] A heartbeat, a single action.
+    \item[Some Time] A few minutes (skirmish, lockpick, short negotiation).
+    \item[Significant Time] Hours (travel, ritual, siege).
+    \item[Days] Large‑scale endeavors (marches, training, recovery).
 \end{description}
 
-\subsection{Milestone Awards}
-\label{subsec:milestone-awards}
-\index{Experience Points!milestones}
-At the end of a major arc:
-\begin{itemize}
-\item +8–12 XP to all players (arc completion)
-\item +2 XP to one player for a signature moment
-\end{itemize}
-
-\subsection{Complication Dividend}
-\label{subsec:complication-dividend}
-\index{Experience Points!dividends}
-\begin{itemize}
-\item Resolve a Face-card complication: +1 XP
-\item Resolve an Ace complication: +2 XP
-\end{itemize}
-
-\subsection{XP Spending Costs}
-\label{subsec:xp-spending}
-\index{Experience Points!spending}
+\subsection{Game Units}
 \begin{description}
-\item[\textbf{Attributes}] Cost = new rating $\times$ 3 XP; downtime = new rating (days). \index{Attributes!XP costs}
-\item[\textbf{Skills}] Cost = new level $\times$ 2 XP; downtime = new level (days). \index{Skills!XP costs}
-\item[\textbf{Followers (on-screen)}] Cost = Cap$^{2}$ XP; 1–3 days to recruit/brief. \index{Followers!XP costs}
-\item[\textbf{Assets (off-screen)}] Minor (4 XP, 1 day), Standard (8 XP, 1 week), Major (12 XP, 1 month). \index{Assets!XP costs}
+    \item[Scene] Basic narrative unit; resolves a specific conflict.
+    \item[Session] One game session (3–6 hours).
+    \item[Campaign] Entire story arc (6–20+ sessions).
 \end{description}
 
-\section{Rush Rule for Advancement}
-\label{sec:rush-rule}
-\index{Advancement!rush rule}
-A player may skip required downtime for an advance; the GM creates a \textbf{Haste} [4] clock. If it fills during the rushed period, the new ability or Asset arrives with flaws or narrative complications.
+\section{Assets \& Followers (Quick Reference)}\label{sec:assets_followers}
 
-\section{Tiers of Reputation}
-\label{sec:reputation-tiers}
-\index{Reputation Tiers}
-
-\begin{description}
-\item[\textbf{Tier I — Rookie}] (0–40 XP): Local reputation; prestige abilities locked. \index{Reputation!Tier I}
-\item[\textbf{Tier II — Seasoned}] (41–90 XP): Regional notice; prestige abilities may unlock. \index{Reputation!Tier II}
-\item[\textbf{Tier III — Veteran}] (91–150 XP): National influence; second follower slot suggested. \index{Reputation!Tier III}
-\item[\textbf{Tier IV — Paragon}] (151–220 XP): Movers and shakers; rivals emerge to challenge. \index{Reputation!Tier IV}
-\item[\textbf{Tier V — Mythic}] (221+ XP): Legendary status; kingdoms and cults respond directly. \index{Reputation!Tier V}
-\end{description}
-
-\subsection{Recommended Session Order (GM Checklist)}
-
-\paragraph{1) Off-Screen (Downtime, 10–20 min)}
+\subsection{Assets (Off‑Screen Resources)}
 \begin{itemize}
-  \item Upkeep: choose Efficient/Intensive; apply Neglected/Compromised if missed.
-  \item Obligation: clear via Acts of Service; note Claims/overflow risk.
-  \item Projects: tick long-term clocks; resolve Gather Info; prep assets.
-  \item Intent: each player states one on-screen goal; GM surfaces 1–2 front pressures.
+    \item Minor (4 XP, 1 day), Standard (8 XP, 1 week), Major (12 XP, 1 month).
+    \item Free off‑screen use: once per session.
+    \item Boon activation (1 Boon) for on‑screen dramatic effect.
+    \item Conditions: Maintained $\rightarrow$ Neglected $\rightarrow$ Compromised.
 \end{itemize}
 
-\paragraph{2) On-Screen (Scenes)}
+\subsection{Followers (On‑Screen Allies)}
 \begin{itemize}
-  \item Frame hard: where/what’s at stake; set Position $\to$ DV.
-  \item Run spotlight: rotate beats; fold in bonds and Boon sharing.
-  \item Advance: move faction/Patron clocks openly when triggered.
+    \item Cost = Cap$^2$ XP (Cap = 1–5).
+    \item Assistance: add dice = min(Cap, relevant skill); max +3 dice total from all sources.
+    \item Independent action (once per scene party‑wide): scout, distract, fetch – costs Exposure or Harm.
+    \item Conditions: Exposure and Harm tracks.
 \end{itemize}
 
-\paragraph{3) Wrap-Up (5–10 min)}
+\subsection{Upkeep (per downtime period)}
 \begin{itemize}
-  \item XP \& Talents: award, mark progress; note any Gifts gained/forfeit.
-  \item SB \& Harm: convert Fatigue$\to$Harm if full; apply recoveries.
-  \item Fronts: advance unresolved clocks; note consequences.
+    \item \textbf{Efficient:} Upkeep XP = max(1, acquisition cost / 3), minimal effort.
+    \item \textbf{Intensive:} 1 XP + dedicated downtime action.
 \end{itemize}
+Failure to pay: Asset becomes Neglected (then Compromised); Follower becomes Wary (then Seized).
 
-\paragraph{4) Off-Screen Hooks (2–5 min)}
-\begin{itemize}
-  \item Log next Downtime intents, service opportunities, upkeep deadlines.
-  \item Capture cliffhangers and Patron Largess seeds for next session open.
-\end{itemize}
-
-\emph{Optional:} Add a cold open flash-cut before Step 2 to spotlight a rival or Patron omen.
-
-\subsection{Fatigue}
-\label{subsec:fatigue}
-\index{Fatigue}
-
-\textbf{Track:} Each character has a Fatigue track equal to \textbf{Body}. Mark Fatigue for exertion, strain, or backlash.
-
-\textbf{In Play:} Each Fatigue step worsens your \textbf{Position} by one level 
-(Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate). 
-If you are already \textbf{Desperate}, instead apply a \textbf{--1 die} penalty per Fatigue to that roll.
-
-\textbf{Overflow:} When your Fatigue track fills, immediately increase \textbf{Harm by 1 step} and clear all Fatigue to 0. 
-If this raises Harm to a level that incapacitates you, you fall out of the scene as normal for Harm.
-
-\textbf{Recovery:} Short rest clears 1--2 Fatigue; a full night's rest clears all Fatigue.
-
-
-\subsection{Fear Effects Table}
-\label{subsec:fear-table}
-
-When a character escalates on the Fear Track (Shaken $\rightarrow$ Frightened $\rightarrow$ Panicked), roll on the following table or choose an appropriate effect. These results apply primarily to NPCs, though PCs may adopt them as narrative guidance.
-
-\begin{center}
-\begin{longtable}{>{\bfseries}r l l}
-\toprule
-d10 & Effect & Magic Tags \\
-\midrule
-1 & \textbf{Freeze}: Cannot act this round, staring or trembling. & Silence, Stasis \\
-2 & \textbf{Flee}: Must move at full speed away from the source of Fear. & Movement, Wind \\
-3 & \textbf{Drop}: Character drops what they are holding. & Disarm, Break \\
-4 & \textbf{Beg}: Character pleads or bargains incoherently. & Compulsion, Voice \\
-5 & \textbf{Hide}: Seeks cover, concealment, or allies to cling to. & Shadow, Illusion \\
-6 & \textbf{Attack in Panic}: Lashes out wildly at the nearest target. & Rage, Fire \\
-7 & \textbf{Blunder}: Stumbles into danger (trap, hazard, off balance). & Chaos, Trickery \\
-8 & \textbf{Obey}: Instinctively follows a simple command from the fear-causer. & Command, Charm \\
-9 & \textbf{Break Down}: Sobs, prays, or becomes useless until aided. & Curse, Despair \\
-10 & \textbf{Catatonia}: Becomes unresponsive, requiring intervention. & Sleep, Dream \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\paragraph{Note.}  
-At GM discretion, results may escalate with each step of the Fear Track:  
-- \emph{Shaken}: Apply minor versions (hesitation, lost die, startled).  
-- \emph{Frightened}: Roll normally.  
-- \emph{Panicked}: Apply severe or exaggerated results (e.g., 2 = reckless flight, 6 = attack allies).  
-
-\subsection{Maximum die pool}
-
-An individual can have a max die pool of 10d10. All extra are converted to auto-successes. 
-
-\section{Skills}
-\label{sec:skills}
-
-\subsection*{How Skills Work}
-An action roll pairs an \textbf{Attribute} with a \textbf{Skill} to reflect what you do and how you do it (e.g., \emph{Wits + Subterfuge}, \emph{Body + Athletics}). The Keeper sets \textbf{Position} and \textbf{DV} (difficulty value) from the fiction; your hits determine \textbf{Effect}, with \textbf{SB} (setback) generated on low dice as usual.
-
-\textbf{Fiction-first handles.} Obstacles should present at least two plausible “handles” (different Skills/approaches) so players can choose a method that fits their build and the scene. Assistance uses the helper’s Attribute+Skill; tools, tags, Strings, and Diamonds modify Position/DV/Effect as normal.
-
-\subsection*{Core Skill List (A–Z)}
-Each entry lists what the Skill covers and common Attribute pairings. These are examples, not limits.
-
-\subsubsection*{Arcana}
-\textbf{What:} Magical theory, sigils, wards, occult correspondences, ritual praxis.\\
-\textbf{Pairs:} \emph{Wits} (analyze a sigil), \emph{Spirit} (sustain a rite), \emph{Presence} (lead a chorus).
-
-\subsubsection*{Athletics}
-\textbf{What:} Running, jumping, climbing, swimming, balance under strain.\\
-\textbf{Pairs:} \emph{Body} (vault a gap), \emph{Wits} (time a leap), \emph{Spirit} (push through fatigue).
-
-\subsubsection*{Brawl}
-\textbf{What:} Unarmed strikes, grapples, improvised holds, close scrums.\\
-\textbf{Pairs:} \emph{Body} (tackle), \emph{Wits} (feint), \emph{Spirit} (fight on while dazed).
-
-\subsubsection*{Command}
-\textbf{What:} Directing allies, drilling troops, battlefield orders, keeping cohesion.\\
-\textbf{Pairs:} \emph{Presence} (rally), \emph{Wits} (issue smart orders), \emph{Spirit} (hold the line).
-
-\subsubsection*{Craft}
-\textbf{What:} Making and mending—smithing, carpentry, weaving, cooking, alchemy set-up.\\
-\textbf{Pairs:} \emph{Wits} (plan), \emph{Body} (execute heavy work), \emph{Spirit} (long, careful work).
-
-\subsubsection*{Deception}
-\textbf{What:} Direct lies, misstatements, bluffing in conversation.\\
-\textbf{Pairs:} \emph{Presence} (sell a lie), \emph{Wits} (keep stories straight), \emph{Spirit} (lie under pressure).
-
-\subsubsection*{Diplomacy}
-\textbf{What:} Formal negotiation, etiquette, treaties, court protocol, “Bowl before Board.”\\
-\textbf{Pairs:} \emph{Presence} (host a parley), \emph{Wits} (read concessions), \emph{Spirit} (stay courteous under fire).
-
-\subsubsection*{Endurance}
-\textbf{What:} Marches, exposure, pain tolerance, poison, disease, holding breath.\\
-\textbf{Pairs:} \emph{Spirit} (resist), \emph{Body} (carry load), \emph{Wits} (ration effort).
-
-\subsubsection*{Insight}
-\textbf{What:} Read emotions, motives, tells; spot a con at the \emph{person} level.\\
-\textbf{Pairs:} \emph{Wits} (parse signals), \emph{Presence} (mirror, probe), \emph{Spirit} (keep your center).
-
-\subsubsection*{Investigation}
-\textbf{What:} Structured inquiry—interviews, paper trails, scene reconstruction.\\
-\textbf{Pairs:} \emph{Wits} (deduce), \emph{Presence} (question), \emph{Body} (methodical canvass).
-
-\subsubsection*{Lore}
-\textbf{What:} History, cultures, laws, faiths, bestiaries, ancient sites.\\
-\textbf{Pairs:} \emph{Wits} (recall), \emph{Presence} (cite), \emph{Spirit} (keep taboo rites correctly).
-
-\subsubsection*{Medicine}
-\textbf{What:} First aid, surgery, leechcraft, epidemics, long-term care.\\
-\textbf{Pairs:} \emph{Wits} (diagnose), \emph{Body} (operate), \emph{Spirit} (steady hands under stress).
-
-\subsubsection*{Melee}
-\textbf{What:} Armed close combat—blades, axes, staves, shields.\\
-\textbf{Pairs:} \emph{Body} (strike), \emph{Wits} (footwork), \emph{Spirit} (press the advantage).
-
-\subsubsection*{Nature}
-\textbf{What:} Wilds knowledge—tracks, foraging, animal signs, weather sense.\\
-\textbf{Pairs:} \emph{Wits} (read terrain), \emph{Spirit} (respect dangers), \emph{Body} (set snares).
-
-\subsubsection*{Notice}
-\textbf{What:} Situational awareness—perceive, scan, spot ambushes and tells in \emph{places}.\\
-\textbf{Pairs:} \emph{Wits} (observe), \emph{Body} (react), \emph{Spirit} (keep calm perceptions).
-
-\subsubsection*{Performance}
-\textbf{What:} Acting, music, dance, oratory, crowd-working.\\
-\textbf{Pairs:} \emph{Presence} (captivate), \emph{Wits} (timing), \emph{Spirit} (stage nerve).
-
-\subsubsection*{Ranged}
-\textbf{What:} Bows, crossbows, thrown weapons, firearms (by setting).\\
-\textbf{Pairs:} \emph{Body} (shoot), \emph{Wits} (lead), \emph{Spirit} (hold the shot).
-
-\subsubsection*{Stealth}
-\textbf{What:} Move unseen, silence, shadowing, hide-and-evade.\\
-\textbf{Pairs:} \emph{Body} (sneak), \emph{Wits} (choose routes), \emph{Spirit} (stay still under pressure).
-
-\subsubsection*{Streetwise}
-\textbf{What:} Underworld culture—contacts, fences, black markets, rumor webs.\\
-\textbf{Pairs:} \emph{Presence} (work a contact), \emph{Wits} (vet info), \emph{Spirit} (walk bad streets).
-
-\subsubsection*{Subterfuge}
-\textbf{What:} Criminal craft and social deception: casing, impersonation, forgery, palming/planting, short cons, engineered distractions. Subterfuge tricks \emph{people and systems}, not mechanisms.\\
-\textbf{Pairs:} \emph{Wits} (case routines), \emph{Presence} (talk past checkpoints), \emph{Body} (sleight of hand), \emph{Spirit} (sustain a cover).
-
-\subsubsection*{Tactics}
-\textbf{What:} Small-unit plans, flanking, formations, reading the field, pursuit/evasion.\\
-\textbf{Pairs:} \emph{Wits} (plan), \emph{Presence} (coordinate), \emph{Spirit} (execute under fire).
-
-\subsubsection*{Tinker}
-\textbf{What:} Mechanisms—locks, traps, engines, devices, jury-rigs, sabotage.\\
-\textbf{Pairs:} \emph{Wits} (diagnose), \emph{Body} (delicate work), \emph{Spirit} (keep steady during failure modes).
-
-\bigskip
-\noindent\textbf{Locks \& Wards (clarity note).} Bypass \emph{mechanical} locks/traps with \textbf{Tinker + Attribute}. Bypass \emph{arcane} seals/wards with \textbf{Arcana/Lore + Attribute}. \textbf{Subterfuge} gets you \emph{to} the door and past the people, not \emph{through} the mechanism.
-
-\subsection*{Optional \& Mode Skills}
-Tables may enable additional Skills by mode:
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Psionics} (Psionics module): psychic arts, mental strain, disciplines.
-  \item \textbf{Technology} (Modern Noir): digital systems, intrusion software, electronics.
-  \item \textbf{Perception/Insight merge}: Some tables collapse \emph{Notice} and \emph{Insight} into one \emph{Perception}; if so, keep the above niches visible in examples.
-\end{itemize}
-
-\subsection*{Adding a New Skill (Guidance)}
-Define the gap (one line on what it does that others don’t), list 3–5 common Attribute pairings, and provide 6–8 typical actions. Do \emph{not} delete existing handles from procedures—add your Skill where the fiction justifies it, keeping niches crisp.
-
-\section*{Core DV Philosophy}
-
-Difficulty Values (DV) in Fate's Edge represent \textbf{narrative weight}, not simulationist challenge. The DV system should answer: "How much does this matter to the story right now?"
-
-\section{The Standard DV Ladder}
-
-\begin{center}
-\begin{longtable}{clp{3.5in}}
-\toprule
-\textbf{DV} & \textbf{Category} & \textbf{When to Use} \\
-\midrule
-2 & Routine & Clear intent, modest stakes, controlled environment \\
-3 & Easy & Minor challenge, familiar task, slight pressure \\
-4 & Moderate & Notable challenge, active opposition, time limits \\
-5 & Hard & Significant challenge, hostile conditions, precision required \\
-6 & Very Hard & Exceptional challenge, multiple constraints, high drama \\
-7+ & Extreme & Mythic challenge, campaign-defining, near-impossible \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\section{DV Setting by Narrative Context}
-
-\subsection{Character Capability Baseline}
-
-Start with the character's Tier and adjust based on the specific challenge:
-
-\begin{center}
-\begin{longtable}{cll}
-\toprule
-\textbf{Tier} & \textbf{Baseline DV} & \textbf{Example Character} \\
-\midrule
-I & 3-4 & Rookie, local threat \\
-II & 4-5 & Seasoned, regional threat \\
-III & 5-6 & Veteran, national threat \\
-IV & 6-7 & Paragon, legendary threat \\
-V & 7-8 & Mythic, world-changing threat \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\subsection{Position Modifiers}
-
-\begin{center}
-\begin{longtable}{cl}
-\toprule
-\textbf{Position} & \textbf{DV Modifier} \\
-\midrule
-Dominant & -1 \\
-Controlled & +0 \\
-Desperate & +1 \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\section{Contextual DV Modifiers}
-
-\subsection{Environmental Factors}
-
-\begin{itemize}
-\item \textbf{Favorable Conditions:} -1 DV (good lighting, stable ground, clear weather)
-\item \textbf{Neutral Conditions:} +0 DV (typical environment)
-\item \textbf{Challenging Conditions:} +1 DV (dim light, uneven ground, light wind)
-\item \textbf{Hostile Conditions:} +2 DV (darkness, slippery surfaces, heavy rain)
-\item \textbf{Extreme Conditions:} +3 DV (blizzard, earthquake, magical storm)
-\end{itemize}
-
-\subsection{Time Pressure}
-
-\begin{itemize}
-\item \textbf{No Time Pressure:} -1 DV (deliberate, careful approach)
-\item \textbf{Standard Timing:} +0 DV (normal pace)
-\item \textbf{Moderate Pressure:} +1 DV (limited time, but manageable)
-\item \textbf{Severe Pressure:} +2 DV (countdown, immediate consequences)
-\item \textbf{Critical Timing:} +3 DV (split-second timing, life-or-death)
-\end{itemize}
-
-\subsection{Character Condition}
-
-\begin{itemize}
-\item \textbf{Well-rested, Focused:} -1 DV (clear mind, full attention)
-\item \textbf{Normal Condition:} +0 DV (typical state)
-\item \textbf{Fatigued (1-2):} +1 DV (minor exhaustion, distraction)
-\item \textbf{Fatigued (3-4):} +2 DV (significant strain, impaired focus)
-\item \textbf{Harm 1-2:} +1-2 DV (injury effects, pain penalties)
-\item \textbf{Harm 3+:} +3 DV (severe injury, near incapacity)
-\end{itemize}
-
-\section{Skill and Attribute Considerations}
-
-\subsection{Skill Mastery Modifiers}
-
-\begin{itemize}
-\item \textbf{Skill 0:} +2 DV (untrained attempt)
-\item \textbf{Skill 1-2:} +0 DV (basic competence)
-\item \textbf{Skill 3-4:} -1 DV (skilled practitioner)
-\item \textbf{Skill 5+:} -2 DV (mastery level)
-\end{itemize}
-
-\subsection{Attribute Relevance}
-
-When the primary Attribute is exceptionally high or low:
-
-\begin{itemize}
-\item \textbf{Attribute 5:} -1 DV (exceptional natural talent)
-\item \textbf{Attribute 1:} +2 DV (significant natural limitation)
-\end{itemize}
-
-\section{Group Actions and Assistance}
-
-\subsection{Assistance Modifiers}
-
-\begin{itemize}
-\item \textbf{One Competent Helper:} -1 DV (relevant expertise)
-\item \textbf{Two Helpers:} -1 DV (combined assistance, diminishing returns)
-\item \textbf{Three+ Helpers:} -1 DV (maximum assistance benefit)
-\item \textbf{Unhelpful Environment:} +1-2 DV (crowded, chaotic, obstructive)
-\end{itemize}
-
-\subsection{Group vs. Individual Challenges}
-
-\begin{itemize}
-\item \textbf{Individual Task:} Standard DV
-\item \textbf{Group Coordination Required:} +1-2 DV (communication complexity)
-\item \textbf{Massive Scale:} +2-3 DV (beyond individual scope)
-\item \textbf{Specialized Roles Needed:} +1 DV per missing expertise
-\end{itemize}
-
-\section{Equipment and Tools}
-
-\subsection{Tool Quality Modifiers}
-
-\begin{itemize}
-\item \textbf{Superior Tools:} -1 DV (specialized, well-maintained)
-\item \textbf{Adequate Tools:} +0 DV (standard equipment)
-\item \textbf{Poor Tools:} +1 DV (worn, improvised, inadequate)
-\item \textbf{Wrong Tools:} +2-3 DV (completely inappropriate)
-\item \textbf{Magical/Advanced Tools:} -1 to -2 DV (depending on power)
-\end{itemize}
-
-\subsection{Tool Condition}
-
-\begin{itemize}
-\item \textbf{Maintained:} +0 DV
-\item \textbf{Neglected:} +1 DV
-\item \textbf{Compromised:} +2 DV
-\item \textbf{Broken:} Task impossible without repair
-\end{itemize}
-
-\section{Opposition and Resistance}
-
-\subsection{Opposition Level}
-
-\begin{itemize}
-\item \textbf{No Active Opposition:} -1 DV (unopposed action)
-\item \textbf{Passive Resistance:} +0 DV (natural resistance, no active counter)
-\item \textbf{Active Opposition:} +1-2 DV (opponent actively countering)
-\item \textbf{Skilled Opposition:} +2-3 DV (opponent with relevant expertise)
-\item \textbf{Superior Opposition:} +3-4 DV (opponent significantly more capable)
-\end{itemize}
-
-\section{Scenario-Specific DV Guidelines}
-
-\subsection{Combat DV Modifiers}
-
-\begin{itemize}
-\item \textbf{Target Size:} -1 to +2 DV (tiny to huge)
-\item \textbf{Cover:} +1-2 DV (partial to full cover)
-\item \textbf{Range:} +0 to +2 DV (Close to Far)
-\item \textbf{Mobility:} +1-2 DV (moving target)
-\item \textbf{Illumination:} +1-2 DV (dim to darkness)
-\end{itemize}
-
-\subsection{Social DV Modifiers}
-
-\begin{itemize}
-\item \textbf{Relationship:} -2 to +2 DV (close ally to bitter enemy)
-\item \textbf{Social Distance:} +0 to +2 DV (intimate to formal/professional)
-\item \textbf{Cultural Familiarity:} -1 to +2 DV (native customs to foreign protocols)
-\item \textbf{Stakes Clarity:} -1 to +2 DV (clear, mutual benefit to ambiguous/harmful)
-\item \textbf{Time Pressure:} +0 to +2 DV (leisurely discussion to immediate deadline)
-\end{itemize}
-
-\section{Calculating Final DV}
-
-To determine the final DV for any action:
-
-\begin{enumerate}
-\item Start with the \textbf{Base DV} from the Standard Ladder (2-7+)
-\item Add the character's \textbf{Tier Modifier}: DV = Base DV + (Character Tier - 1)
-\item Apply relevant \textbf{Contextual Modifiers} from previous sections
-\item Consider \textbf{Position Effects}: Dominant (-1), Controlled (±0), Desperate (+1)
-\item Adjust for \textbf{Environmental and Circumstantial Factors}
-\end{enumerate}
-
-\textbf{Minimum DV:} No roll can have a DV lower than 2. If modifiers would reduce it further, treat the action as automatic success with narrative description of the easy victory.
-
-\textbf{Maximum DV:} For extremely challenging tasks, DV may exceed 7. Consider using clocks or extended challenges for DV 8+ tasks rather than single rolls.
-
-\section{Special DV Considerations}
-
-\subsection{Group Actions}
-
-When multiple characters act together on a single goal:
-
-\begin{itemize}
-\item One character leads the action (sets main DV)
-\item Helpers provide assistance (typically -1 DV or +1 Effect)
-\item Each helper accepts shared risk from complications
-\item Complex coordination may increase DV by +1
-\end{itemize}
-
-\subsection{Extended Challenges}
-
-For tasks requiring multiple successes over time:
-
-\begin{itemize}
-\item Set a \textbf{Challenge Clock} (4-8 segments)
-\item Each successful roll advances the clock
-\item Complications may tick the clock backward
-\item Partial successes may advance clock slowly
-\end{itemize}
-
-\subsection{Contested Actions}
-
-When two parties oppose each other directly:
-
-\begin{itemize}
-\item Both parties roll against the same DV
-\item Higher successes win the contest
-\item Tie results favor the defender or status quo
-\item Story Beats generated by either side may be spent by the GM
-\end{itemize}
-
-\section{DV Quick Reference}
-
-For rapid gameplay, use these guidelines:
-
-\begin{center}
-\begin{longtable}{cl}
-\toprule
-\textbf{Situation} & \textbf{Quick DV} \\
-\midrule
-Clear, no pressure & 2 \\
-Standard challenge & 3 \\
-Notable opposition & 4 \\
-Serious danger & 5 \\
-Extreme circumstances & 6 \\
-Mythic challenge & 7+ \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-Remember: DV represents \textbf{narrative weight}, not simulationist difficulty. Adjust based on story importance, not just mechanical challenge.
+% End of Section 2
