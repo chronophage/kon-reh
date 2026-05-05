@@ -1,0 +1,343 @@
+\documentclass[10pt, twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.2cm, top=1.5cm, bottom=1.8cm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Color palette from other Fate's Edge documents
+\definecolor{bronze}{RGB}{205,127,50}
+\definecolor{iron}{RGB}{70,70,70}
+\definecolor{parchment}{RGB}{245,240,225}
+\definecolor{blood}{RGB}{120,30,30}
+\definecolor{deepblue}{RGB}{20,45,80}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\slshape\leftmark}
+\fancyhead[RO]{\slshape\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section formatting
+\titleformat{\chapter}[hang]{\Huge\bfseries\color{bronze}}{\thechapter}{20pt}{}
+\titleformat{\section}{\Large\bfseries\color{iron}}{\thesection}{15pt}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{deepblue}}{\thesubsection}{12pt}{}
+
+% Tcolorbox for sidebars
+\newtcolorbox{sidebar}[1][]{colback=parchment, colframe=bronze, sharp corners, breakable, enhanced, fonttitle=\bfseries, title=#1}
+
+% Custom commands for mechanics
+\newcommand{\tag}[1]{\textsc{[#1]}}
+\newcommand{\sb}{\textsc{sb}}
+\newcommand{\dv}{\textsc{dv}}
+\newcommand{\xp}{\textsc{xp}}
+
+\begin{document}
+
+\title{\Huge The Bronze Gate \\[0.5cm] \large An Urban Intrigue Adventure for Fate's Edge}
+\author{Set down by the fires of Castra Ferrum}
+\date{Year of the Iron Harvest}
+
+\maketitle
+\thispagestyle{empty}
+
+\tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
+
+\chapter{How to Run This Adventure}
+\setcounter{page}{1}
+
+The Bronze Gate is a Tier I–II adventure, suitable for characters who have earned 30–60 \xp. It assumes familiarity with the core resolution loop, Position, \dv, Boons, \sb, and clocks. The adventure introduces terrestrial patronage, Roman‑style wards, and the weight of military honor.
+
+\begin{sidebar}[The Prefect’s Wisdom]
+Set the \dv low. Let the debt do the work. Every seal, every handshake, every whispered promise is a chain – and chains, once forged, are not easily broken.
+\end{sidebar}
+
+\section{Adventure Background}
+
+Castra Ferrum stands at the northern edge of the province, a walled city built atop a Ykrul burial ground. The Bronze Gate is the only pass through the mountains for three weeks' march. Ecktorian officers, tax farmers, and priest‑magistrates hold sway through a web of patronage; a favor given is a debt recorded, a debt recorded is a chain forged.
+
+The Ykrul clans camp beyond the walls, allowed inside only on market days. They sacked the city four times in living memory. Every Ecktorian has a grandfather who fell under a Ykrul arrow. The Vilikari traders who bring grain and iron are looked down upon by the elite – “cart‑lords” and “ledger‑lickers” – and the Black Banner mercenaries camp in the Field of Broken Standards, selling steel to whoever can pay.
+
+Prefect Gaius Marcellus, commander of the garrison, has recovered a lost relic: the Iron Seal of Varus, the standard of the Ninth Hispania Legion, destroyed by the Ykrul two centuries ago. The seal binds oaths with a wasting curse; any who swears on it and lies sickens and dies. Marcellus intends to use it to force Khatun Sarnai, the Ykrul chieftain, to swear a non‑raiding treaty. Sarnai refuses to enter the city, and the seal still carries the old curse – it harms Ecktorians as well.
+
+The party is hired by Tema, a Vilikari grain merchant, to steal the seal. She means to give it to Sarnai as a gesture of peace, opening the steppe trade route. But Marcellus’s rival, Censor Cassia, wants the seal destroyed, and a Black Banner captain named Rusk wants to sell it to the highest bidder – he has already hired a thief called Quick Lena to take it first.
+
+\section{What the Party Should Know}
+
+At the start of the adventure, the players know the following:
+
+\begin{itemize}
+\item The Bronze Gate is the only pass through the mountains. Control of the gate is control of trade.
+\item Prefect Marcellus has a relic that can force oaths. He means to use it on the Ykrul.
+\item Khatun Sarnai will not meet inside the walls. She demands the seal as wergild for the desecrated burial ground beneath the gate.
+\item Tema offers a fortune in silver if the party retrieves the seal for her.
+\item A thief named Quick Lena works for Captain Rusk. She is already casing the tribunal.
+\end{itemize}
+
+\section{New Mechanics for Players}
+
+\subsection{Terrestrial Patrons and Debt Clocks}
+
+Prefect Marcellus, Censor Cassia, and Khatun Sarnai each offer a \textbf{Debt Clock [4]}. Accepting a favor – legal protection, a map, a distraction – marks one segment. When the clock fills, the patron calls in the debt. Refusal turns the patron into an enemy.
+
+\begin{sidebar}[Marcellus’s Ledger]
+\textit{“I do not ask for loyalty. I ask for results. Fail me, and the Bronze Gate will close to you forever.”} \\ — Prefect Marcellus
+\end{sidebar}
+
+\subsection{Traps and Wards (Roman Flavor)}
+
+Traps use the tag system. The most common in Castra Ferrum are:
+
+\begin{itemize}
+\item \tag{ALARM} (\textit{Vigilum Signum}) – a bell triggered by thread or pressure. Raises the Watch Patrol clock. Countered by Stealth or cutting the thread.
+\item \tag{ENTANGLE} (\textit{Plumbum Manus}) – a lead‑weighted net drops from the ceiling. Restrains until freed with Body+Athletics \dv 3. Countered by a blade or \tag{DISPEL}.
+\item \tag{WARD} (\textit{Limen Sacrum}) – a blessed threshold that burns any non‑legionary who crosses. Causes 1 Fatigue per crossing. Countered by offering a coin to the \textit{Lares} (household gods) or reciting a legion password (Wits+Lore \dv 3).
+\item \tag{CURSE} (\textit{Tabula Defixionis}) – a lead tablet hidden in a wall or under a floor. Inflicts a condition such as \textit{Marked by Mars} (enemies gain +1 die to track you). Countered by finding and smashing the tablet (Wits+Investigation \dv 4).
+\end{itemize}
+
+\subsection{Quick Lena’s Talents}
+
+Quick Lena uses talents from the \textit{Velvet Touch}. Her most dangerous is \textbf{The Ghost Did It} – once per arc, a crime she commits leaves no traceable evidence. She also has \textbf{Always Another Exit} (she can declare an escape route when cornered) and \textbf{Light Fingers} (she can lift a small object mid‑conversation without a roll).
+
+\section{Factions and Key NPCs}
+
+\begin{longtable}{p{3cm} p{2.5cm} p{4.5cm} p{3.5cm}}
+\toprule
+\textbf{Faction} & \textbf{Leader} & \textbf{Goal} & \textbf{Leverage / Strings} \\
+\midrule
+Ecktorian Tribunal & Prefect Marcellus & Enforce order, control the seal & Military escort, jail keys, legal immunity \\
+Censor’s Office & Censor Cassia & Destroy the seal, expose Marcellus & Archive access, immunity from prosecution \\
+Ykrul Grey Ash & Khatun Sarnai & Protect her people, reopen trade & Safe passage, horse remounts, Ykrul guide \\
+Vilikari Traders & Tema & Open steppe route for grain & Trade credit, safe house, forged manifests \\
+Black Banner & Captain Rusk & Get paid, get out & Mercenary squad (one scene), battlefield gear \\
+\bottomrule
+\end{longtable}
+
+\subsection{Prefect Gaius Marcellus}
+A wiry, scarred veteran with a voice like a parade ground. He speaks in clipped phrases and never repeats himself. He genuinely believes the seal will bring peace – and also consolidate his power. His debt clock is his primary mechanic.
+
+\subsection{Censor Cassia}
+A thin, aging woman with ink‑stained fingers. Her left eye is a polished silver disc – a magical lens that reveals lies. She is Marcellus’s political rival and knows the seal’s curse is still active.
+
+\subsection{Khatun Sarnai}
+Proud, grieving, hard. Her nephew was killed by a Vilikari caravan. She will not trust Ecktorians, but she respects those who keep their word. She remembers the party from earlier adventures (if any).
+
+\subsection{“Quick” Lena}
+A Sidhi rogue with mismatched eyes and a nervous laugh. She works for Rusk, not out of loyalty but desperation – she owes a debt to a Sidhi smuggler named Kaelen. She is not evil, but she is fast, and she does not like losing.
+
+\subsection{Captain Rusk}
+A former Ykrul hostage, now leading a Black Banner company. He owes no loyalty to any nation. He will sell the seal to whoever pays best – but he is haunted by a promise he made to a dying legionary.
+
+\chapter{Session One – The Bronze Gate}
+
+\section{Opening Scene – Tema’s Warehouse}
+
+The party meets Tema in the Vilikari quarter, a district of tanneries and cheap taverns. The air smells of lime and wet wool. Tema is thinner than they remember, her hands stained with grain dust.
+
+\begin{sidebar}[What Tema Offers]
+\begin{itemize}
+\item 200 silver marks (the party’s weight in coin)
+\item A \textbf{String: Tema’s Trust} – once per arc, she will smuggle a small object past any checkpoint
+\item A Letter of Introduction to a Vilikari lord in the south (a future hook)
+\end{itemize}
+She needs the \textbf{Iron Seal of Varus} stolen from the Prefect’s tribunal. She wants to give it to Sarnai as a peace offering.
+\end{sidebar}
+
+\section{The Bronze Gate – A Tour of Factions}
+
+Run this as a social tour. The party can visit each location in any order. No rolls are required unless the players initiate conflict.
+
+\subsection{The Gate Itself}
+The portcullis is bronze‑banded iron, etched with the names of every legionary who died defending it. A Censor’s clerk keeps the \textit{Ledger of Blood} – a book recording every soul who passes. The Ykrul call it the Weeping Gate; they say the ghosts scratch the stones at night.
+
+\paragraph{Mechanical effect:} The gate is a \tag{WARD} (\textit{Limen Sacrum}). Non‑Ecktorians must pay 1 silver or present a \textbf{Bronze Pass} (a String) to cross. Ykrul are not allowed inside except on market days.
+
+\subsection{Prefect Marcellus – The Tribunal}
+The tribunal is a fortified hall inside the Praetorium. Marcellus invites the party (if they have a patron or bribe a guard) and offers a job: retrieve a stolen tax tablet from a Vilikari smuggler. Reward: a \textbf{Bronze Pass} (one free crossing). Accepting starts his \textbf{Debt Clock [4]}.
+
+\subsection{Censor Cassia – The Archive}
+Cassia’s office is a labyrinth of scrolls and curse tablets awaiting destruction. She offers a different task: steal a copy of Marcellus’s correspondence to prove he is misusing the seal. Reward: an \textbf{Archive Key} (+1 die to Lore rolls in the city) and her protection. She demands a \textbf{String: A Favor to the Censor}.
+
+\subsection{Khatun Sarnai – The Ykrul Camp}
+Outside the walls, a ring of felt wagons guarded by wolf‑banners. Sarnai will not enter the city. She demands the seal as wergild for the desecrated burial ground. If the party swears an oath to bring it to her, she offers a \textbf{Ykrul Guide} (a Cap 2 follower who knows the steppe).
+
+\subsection{Captain Rusk – The Field of Broken Standards}
+Rusk’s camp is a ragged collection of tents and corrals. He is friendly but shrewd. He has already hired Quick Lena to steal the seal. He offers the party a cut if they help – or a bribe to stay out of his way. He has his own \textbf{Debt Clock [4]} (he owes a smuggler named Kaelen). Paying his debt wins a temporary alliance.
+
+\section{End of Session One – The Heist Clock}
+
+Start a \textbf{Heist Clock [6]}. Each downtime scene (or at the end of each session), tick it +1. When it fills, Quick Lena steals the seal first – the rest of the adventure becomes a chase.
+
+The party should choose at least one patron by the end of the session.
+
+\chapter{Session Two – The Tribunal Heist}
+
+\section{Opening Scene – The Night Before}
+
+The party stakes out the tribunal. They can bribe a guard (Presence+Streetwise \dv 3, cost 1 Boon or 10 silver), steal a patrol schedule (Wits+Stealth \dv 4), get a map from Cassia (requires her favor), or wait for a storm (the guards are distracted, but the storm wakes the curse.
+
+Start a \textbf{Watch Patrol Clock [4]}. Each failed Stealth roll ticks it. When full, the alarm is raised.
+
+\section{Chamber One – The Armory}
+
+\textbf{Ward:} \tag{ALARM} + \tag{ENTANGLE}. Lead sheets on the floor trigger a bell and a net.
+
+\textbf{Counter:} Wits+Tinker \dv 4 to disable. On a partial, the bell rings but the net fails – tick Watch Patrol +1.
+
+\textbf{Optional:} A curse tablet hidden in the wall (Wits+Investigation \dv 5). If found, it reveals Marcellus has been using the seal to curse rivals. This is a \textbf{String: Marcellus’s Treason}.
+
+\section{Chamber Two – The Scriptorium}
+
+\textbf{Ward:} \tag{WARD} (\textit{Limen Sacrum}). The door burns non‑legionaries.
+
+\textbf{Counter:} Recite a legion password (Wits+Lore \dv 3) or offer a coin to the \textit{Lares} (1 Boon or 1 silver). Failure costs 1 Fatigue; the guard beyond hears the cry.
+
+Inside: a map of the city marked with Ykrul trade routes, and a forged census tablet showing Marcellus skimming grain tithes – another String.
+
+\section{Chamber Three – The Reliquary}
+
+The seal rests in a lead‑lined chest on an altar to Mars. Quick Lena is already there, trying to crack the lock.
+
+\textbf{Ward:} \tag{CURSE}. Anyone who opens the chest without a blessing gains \textit{Marked by Mars} – enemies gain +1 die to track them.
+
+\textbf{Counter:} Pray to Mars (Spirit+Lore \dv 3) or smash the curse tablet hidden under the altar (Wits+Investigation \dv 4, costs one round).
+
+\subsection{Confronting Quick Lena}
+
+Lena is not a fighter. She will negotiate: split the reward, or she will walk away. A Presence+Sway \dv 3 convinces her. On failure, she uses \textit{Always Another Exit} – a smoke bomb and escape – but drops her lockpicks (a Minor Asset: +1 die to open locks). Tick Watch Patrol +1.
+
+If the party fights, Lena has Harm 2, Stealth 3, Subterfuge 2. She uses \textit{Light Fingers} to steal a weapon mid‑combat (Wits+Subterfuge vs PC’s Wits+Notice). At Harm 2 she surrenders.
+
+\section{Escape}
+
+The party must exit before the Watch Patrol clock fills. For each remaining open segment, they can attempt a skill roll to evade guards. If the clock fills, run a brief chase. On failure, they are arrested – Cassia may bail them out in exchange for the seal, or Marcellus may offer a deal.
+
+\chapter{Session Three – The Curse Unsealed}
+
+\section{Opening Scene – The Seal’s Whisper}
+
+The seal still carries the old curse. Anyone who sleeps near it must make Spirit+Resolve \dv 4 or gain \textit{Varus’s Whispers} (–1 die to resist persuasion). The curse worsens each night.
+
+Rusk and Lena (if she escaped) are hunting them. Marcellus has declared them outlaws.
+
+\section{The Final Confrontation}
+
+The location depends on the party’s chosen patron:
+
+\begin{itemize}
+\item \textbf{The Bronze Gate} (siding with Sarnai). Rusk’s mercenaries attack at midnight.
+\item \textbf{The Archive} (siding with Cassia). She performs a ritual to destroy the seal. Marcellus arrives with guards.
+\item \textbf{The Praetorium} (siding with Marcellus). He forces the party to bind Sarnai’s oath. The curse backfires.
+\end{itemize}
+
+\section{Breaking the Curse – Three Ways}
+
+\subsection{Return the Seal to the Ykrul}
+Give it to Sarnai. She buries it under a cairn with a steppe ritual. The curse ends. Sarnai opens the trade route. Marcellus becomes a permanent enemy.
+
+\subsection{Destroy the Seal with Fire}
+A ritual (Spirit+Arcana \dv 6). On success, the seal shatters. On a partial, it shatters but the curse transfers to the one who strikes it – that PC gains \textit{Varus’s Scourge} (1 Fatigue each dawn until they atone). Cassia rewards a \textbf{Censor’s Seal} (one free legal pardon).
+
+\subsection{Bind the Seal with a New Oath}
+Swear a treaty between Marcellus, Sarnai, and Tema. Requires a \textbf{Persuasion Clock [6]} for each faction. On success, the curse transforms into a blessing – the gate harms no one. The party gains a String with all three factions. Marcellus still owes them a debt.
+
+\section{Ending – The Gate Opens}
+
+At dawn, the portcullis rises. Describe the scene: the Ykrul riders waiting, the merchants with their carts, the legionaries saluting. Then ask each player: \textit{“What does your character want now? And what are you willing to owe to get it?”}
+
+\chapter{Advancement and Rewards}
+
+\section{Experience Points (8–12 \xp per PC)}
+
+\begin{itemize}
+\item Attendance: +2
+\item Retrieve the seal: +2
+\item Break or secure the curse (any method): +2
+\item Neutralize Quick Lena (negotiation or combat): +1
+\item Gain a String from two different factions: +1 per faction (max +2)
+\item Complete a Terrestrial Patron’s Debt Clock: +1
+\item Personal goal (from player’s own backstory): +1–2
+\end{itemize}
+
+\section{Strings and Assets}
+
+\begin{itemize}
+\item \textbf{Bronze Pass} – One free crossing of the Bronze Gate.
+\item \textbf{Archive Key} – +1 die to Lore rolls in Castra Ferrum.
+\item \textbf{Sarnai’s Favor} – Ykrul safe passage for one journey.
+\item \textbf{Marcellus’s Debt [4]} – Track this clock. When full, he demands a dangerous service.
+\item \textbf{Censor’s Seal} – One free legal pardon (destroyed after use).
+\item \textbf{Varus’s Shard} – A piece of the broken seal. Once per arc, curse a target with –1 die to all rolls for one scene; user also takes 1 Fatigue.
+\end{itemize}
+
+\chapter{Appendix – Quick Reference}
+
+\section{Clock Summary}
+
+\begin{longtable}{p{4cm} c p{5cm} p{3cm}}
+\toprule
+\textbf{Clock} & \textbf{Segments} & \textbf{Ticks} & \textbf{When Full} \\
+\midrule
+Heist (Lena) & 6 & End of each downtime scene & Lena steals the seal first – chase begins \\
+Watch Patrol & 4 & Failed Stealth, triggered alarms & Guards arrive in 2 rounds \\
+Marcellus Debt & 4 & Accept his favors & He demands a dangerous task \\
+Rusk Debt & 4 & Party asks him for help & He demands the seal or payment \\
+\bottomrule
+\end{longtable}
+
+\section{Trap Tags (Roman Flavor)}
+
+\begin{longtable}{p{2.5cm} p{3cm} p{4cm} p{3cm}}
+\toprule
+\textbf{Tag} & \textbf{Roman Name} & \textbf{Effect} & \textbf{Counter} \\
+\midrule
+\tag{ALARM} & \textit{Vigilum Signum} & Bell rings, ticks Watch Patrol & Stealth, cut thread \\
+\tag{ENTANGLE} & \textit{Plumbum Manus} & Net restrains & Athletics \dv 3 to break \\
+\tag{WARD} & \textit{Limen Sacrum} & Burns non‑legionary & Offer coin, recite password \\
+\tag{CURSE} & \textit{Tabula Defixionis} & Inflicts condition & Smash the tablet \\
+\bottomrule
+\end{longtable}
+
+\section{NPC Quick Stats}
+
+\subsection{Quick Lena – Rogue (Tier II)}
+Wits 3, Stealth 3, Subterfuge 2. Talents: \textit{Light Fingers}, \textit{Always Another Exit}, \textit{The Ghost Did It} (once). Harm 2.
+
+\subsection{Prefect Marcellus – Terrestrial Patron (Tier III)}
+No combat. Offers Debt Clock. Leverage: guards, jail, military escort.
+
+\subsection{Censor Cassia – Sage (Tier II)}
+Wits 4, Lore 3, Arcana 2. Can see lies through her silver eye (automatically detect Deception \dv 4 or less).
+
+\subsection{Khatun Sarnai – Warrior (Tier II)}
+Body 3, Melee 3, Command 2. Tracks honor debts separately.
+
+\subsection{Captain Rusk – Mercenary Captain (Tier II)}
+Body 3, Melee 3, Command 2. His personal Debt Clock [4] is owed to the smuggler Kaelen.
+
+\chapter{Colophon}
+
+This account was set down in the Prefect’s own scriptorium, by lamplight, on paper seized from a Vilikari caravan. The ink is lamp‑black and the ash of a burned treaty. The binding is legionary leather, stained with rust.
+
+The gate still stands. The debts remain unpaid.
+
+--- Set down by a clerk of the Bronze Gate, Year of the Iron Harvest
+
+\end{document}

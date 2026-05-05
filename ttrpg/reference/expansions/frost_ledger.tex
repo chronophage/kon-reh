@@ -1,0 +1,804 @@
+\documentclass[9pt,a5paper]{extbook}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{cmap}
+
+% Fonts
+\usepackage{amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\usefont{T1}{ptm}{m}{n}}
+
+% Quotes
+\usepackage{csquotes}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.8\textwidth}
+\renewcommand{\epigraphflush}{flushright}
+
+% Layout
+\usepackage[top=1.2cm,bottom=1.2cm,left=1.1cm,right=0.9cm,headheight=12pt,headsep=0.3cm]{geometry}
+\usepackage{multicol,array,longtable,booktabs,ragged2e}
+
+% Spacing
+\usepackage{setspace}
+\setstretch{1.08}
+\setlength{\parskip}{0.4ex plus 0.2ex minus 0.1ex}
+\setlength{\parindent}{1em}
+\frenchspacing
+
+% Colors
+\usepackage{xcolor}
+\definecolor{darkblue}{RGB}{0,45,90}
+\definecolor{patronblue}{RGB}{48,63,96}
+\definecolor{warningred}{RGB}{139,26,26}
+\definecolor{ritualgold}{RGB}{184,134,11}
+\definecolor{steelgray}{RGB}{70,70,80}
+\definecolor{softgray}{RGB}{245,245,245}
+\definecolor{frostblue}{RGB}{100,140,160}
+
+% Boxes
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{warriorbox}[2][]{%
+    enhanced, colback=softgray, colframe=steelgray,
+    fonttitle=\bfseries\small\sffamily\color{steelgray},
+    fontupper=\small, fontlower=\small,
+    title={$\blacklozenge$ #2 $\blacklozenge$},
+    attach boxed title to top left={yshift=-1.5mm,xshift=3mm},
+    boxed title style={colback=white,colframe=steelgray,boxrule=0.5pt},
+    sharp corners, boxrule=0.6pt,
+    left=3pt, right=3pt, top=4pt, bottom=3pt,
+    breakable, #1}
+
+\newtcolorbox{talentbox}[2][]{%
+    breakable, enhanced, colback=softgray, colframe=steelgray,
+    fonttitle=\bfseries\small\sffamily\color{darkblue},
+    fontupper=\small, title={#2},
+    attach boxed title to top left={yshift=-2mm,xshift=3mm},
+    boxed title style={colback=white,colframe=steelgray,boxrule=0.5pt},
+    sharp corners, boxrule=0.6pt,
+    left=4pt, right=4pt, top=5pt, #1}
+
+\newtcolorbox{weaponcard}[2][]{%
+    breakable, enhanced, colback=softgray, colframe=steelgray!60,
+    fonttitle=\bfseries\small\sffamily\color{steelgray!90!black},
+    fontupper=\small, title={#2},
+    attach boxed title to top left={yshift=-2mm,xshift=3mm},
+    boxed title style={colback=white,colframe=steelgray!60,boxrule=0.5pt},
+    sharp corners, boxrule=0.6pt,
+    left=4pt, right=4pt, top=5pt, #1}
+
+% Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\thepage\quad\textsc{\leftmark}}
+\fancyhead[RO]{\textsc{\rightmark}\quad\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% Hyperlinks
+\usepackage[colorlinks=true,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkblue,
+    pdftitle={The Frost Ledger},pdfauthor={Dusana of the Raven Road}]{hyperref}
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty}
+
+\begin{center}
+\vspace*{1.5cm}
+
+{\LARGE\scshape\color{frostblue} The Frost Ledger}\\[0.8cm]
+
+{\normalsize\itshape Tales of the Threshold, from the Linn Shore}\\[1.0cm]
+
+\rule{0.5\textwidth}{1.0pt}\\[0.8cm]
+
+{\small\textit{``The dead in Linn do not wait for payment. They collect.''}}\\[1.5cm]
+
+\vfill
+
+{\footnotesize\textsc{Told by a broken longship's fire at the edge of the Direwood}\\[0.2em]
+\textit{Set down by Dusana of the Raven Road}}
+
+\end{center}
+
+\clearpage
+
+\section*{Preface: The Debt of the Long Dark}
+
+A ledger of stories is a ledger of survival. Some debts are paid in silver. Some in blood. And some—the oldest kind—are paid in the space between a warrior's last breath and the moment the frost claims the body.
+
+My people are the Tulkani. We build no temples. We carry the hearth. But we do not go north. The north is for the Linn, the Mistland, the Direwood, and the Valewood—places where the sun forgets to rise for half the year and the dead do not always stay dead.
+
+This winter, I went north.
+
+A ship—the \textit{Sea-Raven}, out of Zakov—carried me across the Dolmis to the Linn coast. The captain was a one-eyed woman named Hella, who wore a bronze torc around her neck and a scar that ran from her temple to her jaw. She asked no fare, only a story. I told her the one about the Fox's Wedding. She laughed, said, ``The foxes here are different. They eat horses.''
+
+We wrecked on a skerry off the coast of Linn—a land of fjords, heaths, and graves older than the first empire. The crew survived. The ship did not. We borrowed a longhouse from a Linn jarl named Skjöld, who fed us salt fish and sour ale and asked why a Tulkani woman was foolish enough to sail north in winter.
+
+``I owe a debt,'' I said.
+
+``To whom?''
+
+``To a dead man who told me a story twenty years ago. I promised to pass it on. I never did. The debt has grown teeth.''
+
+Skjöld stared at me over the fire. ``The dead in Linn do not wait for payment. They collect.''
+
+He let me stay. In exchange, I told stories—one for each night the storm kept us from building a new boat. The Linn are not a people of the ledger. They are a people of the \textit{skald}, the \textit{thul}, the one who remembers. Their debts are not written in ink. They are carved into runes, woven into hair, braided into the manes of horses.
+
+These are the tales I told.
+
+I have added three more—told to me by a Mistland bone-reader, a Valewood shade-walker, and a shield-maiden who had walked the Direwood and returned with her eyes still open.
+
+The frost does not forgive. The dead do not forget. But a story—a story can buy one more dawn.
+
+At the edge of the Direwood, with a handful of runes and a fire made from the wreckage of a ship. The ninth candle is for the ones who did not come back.
+
+\hfill --- \textit{Dusana of the Raven Road}
+\vspace{0.5cm}
+\hfill \textit{Linn coast, Year of the Long Winter}
+
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\mainmatter
+
+\chapter{The Draugr's Silver}
+
+\epigraph{``A draugr is not a ghost. A ghost is a memory. A draugr is a \textit{choice}.''}{\textit{--- Hella One-Eye}}
+
+\subsection*{Told by}
+
+Hella One-Eye, captain of the \textit{Sea-Raven}, who had sailed the northern sea for thirty years and carried a bronze torc that had been her mother's and her mother's mother's. She spoke while whittling a new peg leg.
+
+\subsection*{The Tale}
+
+The Linn say that a draugr is not a ghost. A ghost is a memory. A draugr is a \textit{choice}—the choice to stay when the door is open, to hold when the hand should release.
+
+A jarl—call him Hakon—died in his bed, not in battle. His warriors mourned. His thralls wept. His wife washed his body and placed a silver coin on each eye.
+
+``The ferryman's toll,'' she said. ``May he sail the Dark Water in peace.''
+
+Three nights later, Hakon sat up.
+
+His eyes were gone—eaten by the silver. In their place were two holes that dripped seawater. He walked to the longhouse door. He did not open it. He walked \textit{through} it.
+
+His wife found him at dawn, standing in the sheepfold, counting the animals.
+
+``These are mine,'' he said. ``I did not pay for them. I will not leave until the debt is settled.''
+
+The wife was afraid, but she was also a Linn. She brought the sheep to the slaughtering stone. ``Take one,'' she said. ``The debt is paid.''
+
+Hakon took a ewe. He bit its throat. The blood steamed in the cold air. He walked back to the longhouse, lay down in his bed, and did not rise again.
+
+But the next night, he sat up again. The sheep's blood was still on his teeth.
+
+``You took the ewe,'' his wife said. ``The debt is paid.''
+
+``I took the ewe,'' Hakon said. ``But the ewe was not mine to take. It belonged to the flock. The flock belongs to the land. The land belongs to the ancestors. You did not ask them.''
+
+The wife did not know how to ask the ancestors. She sent for a \textit{völva}—a rune-witch who spoke to the dead.
+
+The völva came. She cut a lock of her hair and burned it in the hearth. She poured ale into a bowl and watched the patterns.
+
+``Your husband was a thief,'' she said. ``Not of silver. Of \textit{credit}. He borrowed glory from his ancestors and never paid it back. The draugr is the interest.''
+
+``How do I pay it?'' the wife asked.
+
+``You do not. He must pay it himself. He must fight a battle he cannot win.''
+
+The wife armed her husband's corpse. She put a sword in his hand and a shield on his arm. She led him to the edge of the Direwood.
+
+``A draugr-lord lives here,'' she said. ``Destroy it, or be destroyed.''
+
+Hakon walked into the wood. He did not come back.
+
+Three days later, the wife found his body—or what was left of it—propped against a stone. The sword was broken. The shield was splintered. But the silver coins were back on his eyes, and his mouth was closed.
+
+The völva said, ``He fought. He lost. The debt is paid.''
+
+The wife buried him under a cairn. To this day, if you walk the Direwood's edge at midnight, you can hear the sound of a sword breaking—over and over—and a voice saying, ``That was the battle I could not win. Now I rest.''
+
+\subsection*{The Witch's Closing}
+
+``A draugr is not a punishment. It is a \textit{reminder}. Pay your debts before the door closes. The ancestors have long memories and sharp teeth.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Unpaid Interest} — A curse that falls on those who die with outstanding obligations—to ancestors, to the land, to the dead. The corpse rises as a draugr and cannot rest until the debt is paid in blood or in battle.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item When a character dies with an unpaid oath (mechanically, a String held against them by another character or an NPC), they may rise as a draugr after 1d4 days.
+    \item The draugr has the same stats as the character in life, plus:
+    \begin{itemize}
+        \item \textbf{Undead Resilience}: Cannot be harmed by non-magical weapons unless the weapon is made of silver or was forged with the character's own name spoken aloud.
+        \item \textbf{Dreadful Presence}: Anyone within Close range must test Resolve (DV 4) or mark 1 Fatigue (the cold of the grave).
+        \item \textbf{Debt-Driven}: The draugr cannot be reasoned with—only fought. But if a character offers to settle the original debt (by fulfilling the oath the draugr owed), the draugr will stop fighting and listen.
+    \end{itemize}
+    \item \textbf{Clock: The Draugr's Patience [6]} — Ticks each time the draugr is denied payment. When full, the draugr drags its debtor's closest living relative into the grave with it.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn jarl died without paying his weregild to a neighboring clan. His corpse has risen and killed three of his own warriors. The clan wants the draugr destroyed—but the jarl's widow knows the debt can still be paid. The party must find the weregild and offer it to the draugr before it kills again.
+
+\clearpage
+
+\chapter{The Shield That Forgot}
+
+\epigraph{``A shield is a story. A stone is a syllable. A name is a debt you owe to the people who speak it.''}{\textit{--- Skjöld the Jarl}}
+
+\subsection*{Told by}
+
+Skjöld the Jarl, a man with a grey beard and a missing ear, who had ruled his fjord for forty years and never lost a battle—because, he said, he never fought one he could not win.
+
+\subsection*{The Tale}
+
+A Linn warrior—call her Astrid—carried a shield painted with the story of her life. The birth of her first child. The death of her mother. The night she killed a bear with a fishing knife. Every battle, every scar, every oath.
+
+The shield was her \textit{memory}. Without it, she could not remember who she was.
+
+In a raid on a Pereshi trading post, Astrid lost the shield. It fell into the river and was carried downstream. She searched for three days. She did not find it.
+
+She returned to her longhouse. Her husband asked, ``What is your name?''
+
+She could not answer.
+
+Her children asked, ``Who are you?''
+
+She opened her mouth. Nothing came out.
+
+The völva came. She examined Astrid. ``Your name is not in your head,'' she said. ``It was in the shield. The shield is gone. The name is gone.''
+
+``Can you make a new shield?''
+
+``I can. But the memories will be different. You will be a different person.''
+
+Astrid thought. She thought of her mother's face, which she could no longer see. She thought of her daughter's first steps, which she could only remember as a feeling—warmth, not images.
+
+``I do not want to be different.''
+
+``Then find the shield.''
+
+Astrid walked the river for a year. She walked through the Mistland, where the fog erases names. She walked to the edge of the Valewood, where the trees whisper secrets. She did not find the shield.
+
+She found a stone instead. The stone was smooth, black, and warm. In its center was a single rune: \textit{Uruz}—the aurochs, strength, the wild.
+
+She picked it up. Her name came back. Not all of it—just the first syllable. But it was enough.
+
+She carved the stone into a pendant and wore it around her neck. She told the völva, ``The shield is gone. This is my new memory. It is not as big. But it is true.''
+
+The völva nodded. ``That is the way of the Linn. We do not remember everything. We remember what matters.''
+
+\subsection*{The Witch's Closing}
+
+``A shield is a story. A stone is a syllable. A name is a debt you owe to the people who speak it. Lose it, and you become a stranger to yourself.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Stone of Uruz} — A black river stone carved with a single rune. It restores a fragment of lost memory—enough to remember one's name, one's family, one's oath. It cannot restore everything. The rest must be re-learned.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who wears the Stone of Uruz gains +1 die to resist memory-altering magic.
+    \item Once per session, the wearer may ask the GM, ``What did I forget that matters?'' The GM answers truthfully with a single fact (a name, a place, an oath).
+    \item \textbf{Clock: The River's Toll [8]} — Ticks each time the wearer uses the stone to recover a memory. When full, the stone's rune fades. The wearer must return to the river and find a new stone—or accept the forgetting.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn warrior has lost her shield—and her name. She remembers only that she swore an oath to a jarl who is now dead. The party must help her find the shield, or a new memory, before her husband forgets her face.
+
+\clearpage
+
+\chapter{The Ninth Rune}
+
+\epigraph{``The ninth rune is the debt you owe to the ones you could not save. Do not carve it. Speak it.''}{\textit{--- The rune-witch of the Mistland}}
+
+\subsection*{Told by}
+
+An old rune-witch who lived in a cairn at the edge of the Mistland. She had no name—or rather, she had nine, and she would not tell me which one was true.
+
+\subsection*{The Tale}
+
+The Linn have eight runes for the living. \textit{Fehu} for wealth. \textit{Uruz} for strength. \textit{Thurisaz} for the thorn. \textit{Ansuz} for the voice. \textit{Raido} for the road. \textit{Kenaz} for the torch. \textit{Gebo} for the gift. \textit{Wunjo} for the joy.
+
+The ninth rune is not for the living. It has no name. Carve it, and you speak to the dead.
+
+A skald—call him Egil—wanted to know the ninth rune. He was famous for his poems, his memory, his ability to make a jarl weep with a single verse. But he had never written a poem about his own son, who had drowned in a fjord when the boy was seven.
+
+``Why do you not sing of him?'' the other skalds asked.
+
+``Because I do not know the words,'' Egil said. ``The words for grief are not in the eight. They are in the ninth.''
+
+He went to the rune-witch. ``Teach me the ninth.''
+
+She shook her head. ``The ninth is not taught. It is found. And those who find it do not come back.''
+
+Egil walked into the Mistland. He walked for three days. The fog was thick and grey. He heard voices—his son's voice, calling from the water.
+
+``Father, I am cold.''
+
+``I am coming,'' Egil said.
+
+``No,'' said the voice. ``You are already here.''
+
+Egil looked down. He was standing in a river. The water was black. The fog had lifted. He saw a stone—a standing stone, carved with runes. Eight of them were clear. The ninth was a blank space.
+
+He touched the blank space. The stone grew warm. A name appeared in the space: \textit{Egil's Son}.
+
+Not the boy's name. \textit{Egil's Son}.
+
+He understood. The ninth rune is not a letter. It is a \textit{relation}. It is the space between the living and the dead. It cannot be carved. It can only be \textit{witnessed}.
+
+He walked home. He wrote a poem about his son. It had no runes. It had only the boy's name, repeated nine times.
+
+The rune-witch read the poem. ``You have found it,'' she said. ``Now forget it. The ninth rune is not for sharing.''
+
+Egil never carved the ninth rune. But every year on the anniversary of his son's drowning, he walked to the fjord and whispered the boy's name nine times. The water rippled. The fog lifted. And for one breath, he saw his son's face.
+
+\subsection*{The Witch's Closing}
+
+``The ninth rune is the debt you owe to the ones you could not save. Do not carve it. Speak it. And only speak it when you are alone.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Ninth Rune} — A standing stone in the Mistland that shows the name of a visitor's dead loved one. It cannot be used for divination, communication, or resurrection. It simply \textit{witnesses}. The witness is enough to write a poem, but not to heal the wound.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who touches the Ninth Rune sees the name of one person they have lost. They gain +1 die to all rolls related to mourning or memorializing that person for the next month.
+    \item If the character attempts to carve the rune elsewhere, the rune fades—and the character forgets the dead person's name permanently.
+    \item \textbf{Clock: The Rune's Jealousy [8]} — Ticks each time a character uses the Ninth Rune for a practical purpose (e.g., to gain an advantage in negotiation by invoking the dead). When full, the rune vanishes from the stone. The character cannot return.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A skald has gone mad. He carved the ninth rune into his own chest. Now he cannot stop speaking the names of the dead—every name, every death, every grief. The party must find a way to silence him—or to help him un-carve the rune before he forgets his own name.
+
+\clearpage
+
+\chapter{The Mist-Walker's Gift}
+
+\epigraph{``The Mistland is a ledger. Every breath is an entry. Every story is a payment. Do not walk in without something to tell.''}{\textit{--- Bone-reader of the Mistland}}
+
+\subsection*{Told by}
+
+A bone-reader in a Mistland longhouse that had no door—only a hide hung over the threshold. She spoke in a whisper, and her hands never stopped moving, sorting knucklebones into patterns.
+
+\subsection*{The Tale}
+
+The Mistland is not a place. It is a \textit{threshold}. The fog that covers it is not water. It is the breath of the dead, exhaled over centuries, waiting for someone to breathe it back in.
+
+A young Linn—call her Solveig—went into the Mistland to find her father. He had disappeared three winters ago, walking into the fog to hunt a white stag that had been seen near the Direwood.
+
+She walked for a day. The fog was cold and heavy. She called her father's name. No answer.
+
+She walked for two days. The fog thinned. She saw a figure standing in a clearing. It was her father—but his eyes were fog, and his mouth was open, and his breath came out in white clouds that did not dissipate.
+
+``Father,'' she said.
+
+``You should not have come,'' he said. His voice was the sound of wind through dead grass.
+
+``I came to bring you home.''
+
+``I cannot go home. I walked into the Mistland without an offering. The fog took my name. Now I am part of it. Every breath I take is a breath someone else will never take.''
+
+Solveig did not understand. ``What do you mean?''
+
+``Every person who walks in the Mistland breathes a little of the fog. That breath becomes a memory—a memory of the dead. When I breathed in, I breathed the memory of a woman who drowned. Now I remember her drowning. I remember her fear. I remember the water in her lungs.''
+
+``Can I give you an offering? Can I buy your name back?''
+
+The father shook his head. ``The fog does not take offerings. It takes \textit{stories}. Tell me a story I have never heard. If it is good enough, the fog will release one breath. One memory. One name.''
+
+Solveig told a story. She told the story of the night her father taught her to fish. The way the moon looked. The way the herring flashed silver in the net.
+
+The fog listened. When she finished, a single white wisp rose from her father's mouth and floated away.
+
+``I remember that night,'' he said. ``I remember the herring. I remember your hands, small and cold.''
+
+``Come home,'' Solveig said.
+
+``I cannot. The story was good, but it was not enough. I need nine stories. One for each breath the fog took.''
+
+Solveig returned to the longhouse. She gathered the village. She told them her father needed nine stories—one for each breath.
+
+The villagers told their stories. The best fisher. The oldest skald. The woman who had never spoken of her dead husband. They told nine stories.
+
+At dawn, the fog lifted. Solveig's father walked out of the Mistland. His eyes were clear. His mouth was closed.
+
+He never spoke of what he had seen. But every year, he walked to the edge of the fog and left a single coin—a toll for the next person who might get lost.
+
+\subsection*{The Witch's Closing}
+
+``The Mistland is a ledger. Every breath is an entry. Every story is a payment. Do not walk in without something to tell.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Fog's Breath} — A curse that afflicts those who enter the Mistland without an offering. The fog takes one memory for every hour spent inside. To recover a memory, someone must tell a story that has never been told—a story good enough to make the fog listen.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who enters the Mistland without an offering (a coin, a lock of hair, a written name) loses one memory per hour. The GM chooses the memory—a minor one at first (the name of a tavern, the face of a minor NPC), then progressively more significant.
+    \item A character may recover one memory by telling a story. The story must be told to the fog itself (i.e., spoken aloud while in the Mistland). On a successful Spirit + Performance test (DV 5), the fog releases one memory.
+    \item \textbf{Clock: The Fog's Hunger [8]} — Ticks each hour a character spends in the Mistland without telling a story. When full, the character forgets their own name and becomes a Mist-Walker—a fog-spirit that cannot leave.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn chieftain's son walked into the Mistland three days ago. The party must find him—but the fog is thick, and every hour costs a memory. They must tell stories to the fog to keep their own names—and to buy the son's freedom.
+
+\clearpage
+
+\chapter{The Valewood Hunt}
+
+\epigraph{``The Valewood is a mirror. It shows you what you are afraid of—and then it shows you what you forgot.''}{\textit{--- Shield-maiden Gunnhild}}
+
+\subsection*{Told by}
+
+A shield-maiden named Gunnhild, who had walked the Valewood and returned with her eyes still open. Her voice was rust, and her left hand had only three fingers.
+
+\subsection*{The Tale}
+
+The Valewood lies east of the Aberderrin Sea, a forest of silver-barked trees and empty cities that phase in and out of reality. The Aelinnel built those cities once. Now they are silent, save for the whisper of stone shifting between centuries.
+
+The Linn do not go to the Valewood for punishment. They go to prove they are not afraid.
+
+A warrior—call him Ragnar—boasted that he would spend a night in the Valewood and return with a relic from a phasing city. His jarl laughed. ``You will return with nothing but a story you cannot tell.''
+
+Ragnar walked into the wood. The trees were silver and still. The air smelled of autumn and old stone. He found a city—a city that had not been there a heartbeat before. Its gates were open. Its streets were empty.
+
+He walked to the central square. A fountain still ran, though the water was black. In the fountain lay a crown—bronze, unrusted, set with stones that caught light from no sun.
+
+He reached for the crown. A voice spoke from the water: ``That belongs to a queen who died a thousand years ago. Take it, and she will know you are here.''
+
+Ragnar took the crown.
+
+The city groaned. The gates slammed shut. The buildings flickered—here, then gone, then here again. Ragnar ran. The streets rearranged themselves behind him. Doors opened onto walls. Stairs led to ceilings.
+
+He found a gate. It opened onto the forest—but the forest was different. The silver trees were black. The air smelled of rot.
+
+He stepped through. The crown burned his hand. He dropped it. The forest swallowed it.
+
+He walked for three days. He saw things in the Valewood—a woman made of roots, a child who had no face, a tower that grew new windows every time he blinked. He did not speak to any of them. He remembered the voice's warning.
+
+On the fourth day, he walked out. The jarl was waiting.
+
+``Where is the relic?'' the jarl asked.
+
+``I left it,'' Ragnar said. ``The queen wanted it back.''
+
+The jarl stared at him. ``You saw the queen?''
+
+``I saw her fountain. That was enough.''
+
+Ragnar never boasted again. But he never feared the Valewood either. He said, ``The wood does not want your courage. It wants your attention. If you give it that, it will let you leave.''
+
+\subsection*{The Witch's Closing}
+
+``The Valewood is a mirror. It shows you what you are afraid of—and then it shows you what you forgot. Pay attention, but do not take anything. The queens of the empty cities are jealous.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Phasing City} — A Valewood ruin that appears and disappears at irregular intervals. Inside, relics of immense power lie unguarded—but taking one binds the thief to the city's queen, a shade who will hunt them through time and space until the relic is returned.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who enters a phasing city may attempt to take a relic. On a success (Wits + Lore, DV 5), they acquire an ancient item (GM determines powers).
+    \item However, taking the relic curses the character. They gain the Condition \textbf{Hunted by the Queen}. Once per session, the GM may have the queen appear nearby—a flicker of motion, a cold touch, a whisper. The character must test Resolve (DV 4) or mark 1 Fatigue.
+    \item The curse can only be lifted by returning the relic to the city—which may have phased elsewhere.
+    \item \textbf{Clock: The Queen's Patience [8]} — Ticks each time the relic is used. When full, the queen appears in person. She will take the relic by force—and the character's name as interest.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn warrior took a bronze crown from a phasing city. Now the queen walks behind him—everywhere, always. He cannot sleep. The party must find the city again and return the crown before the queen takes more than a name.
+
+\clearpage
+
+\chapter{The Ship That Sailed Over Land}
+
+\epigraph{``A ship is a promise. A forest is a mill. Put the promise in the mill, and it becomes something new.''}{\textit{--- Orm the Shipwright}}
+
+\subsection*{Told by}
+
+A shipwright named Orm, who had built twelve longships and lost eleven to storms, raiders, and—in one case—a sea serpent that mistook the keel for a mate.
+
+\subsection*{The Tale}
+
+The Linn say that a ship is not a thing. It is a \textit{debt}. Every plank is a promise. Every nail is a prayer. And when the ship is old, the debt comes due.
+
+A longship—the \textit{Fjord-Wyrm}—had sailed for forty years. It had carried raiders to the Inland Sea, traders to Zakov, and one jarl to his funeral pyre. The wood was grey. The nails were rusted. The ship could not float.
+
+The jarl's son—call him Harald—wanted to burn it. ``It is old. It is useless. Let it join its ancestors.''
+
+The shipwright said, ``A ship that has carried so many debts cannot be burned. It must be \textit{paid}.''
+
+``How do you pay a ship?''
+
+``You sail it. One last time.''
+
+``But it cannot float.''
+
+``Then sail it over land.''
+
+The shipwright built a sled. He placed the \textit{Fjord-Wyrm} on the sled. He hitched twelve oxen to the prow. He said to Harald, ``You will sail this ship to the Direwood. The trees will take it. They will turn it into soil. The soil will grow new trees. The new trees will become new ships. The debt will be paid.''
+
+Harald was skeptical. But he had sworn to honor his father's memory. He sailed the \textit{Fjord-Wyrm} over land—through fields, over hills, across frozen rivers. The oxen strained. The sled groaned. The ship's planks whispered.
+
+When they reached the edge of the Direwood, the shipwright said, ``Leave it here. The trees will do the rest.''
+
+Harald left the ship. The oxen were turned loose. The sled was burned.
+
+The next spring, a new longship was built from the wood of the Direwood. It was named the \textit{Fjord-Wyrm II}. It sailed for sixty years and never lost a battle.
+
+The shipwright said, ``That is how you pay a debt. You do not burn it. You \textit{transform} it.''
+
+\subsection*{The Witch's Closing}
+
+``A ship is a promise. A forest is a mill. Put the promise in the mill, and it becomes something new. Burn it, and the debt becomes ash—and ash does not float.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Ship's Debt} — A curse on any vessel that has served beyond its natural life. It cannot be destroyed by fire or by breaking. It must be returned to the land—to the forest, the earth, the stone. Only then does the debt dissolve.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who inherits an old ship (or any old tool with significant history) must either:
+    \begin{itemize}
+        \item Return it to the element it came from (wood to forest, iron to earth, leather to herd), or
+        \item Sail it until it falls apart naturally (which may take decades).
+    \end{itemize}
+    \item If the character burns or breaks the ship intentionally, the ship's spirit manifests as a draugr-like entity and haunts the character until the debt is paid in blood.
+    \item \textbf{Clock: The Ship's Patience [8]} — Ticks each year the ship is used without being returned. When full, the ship sinks (if on water) or collapses (if on land). The character must build a new one—and the old one's spirit may not be pleased.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn jarl inherited a longship that has been in his family for six generations. The ship is rotting. It cannot sail. But if he burns it, the ancestors will curse him. The party must help him return the ship to the forest—or convince the forest to accept it.
+
+\clearpage
+
+\chapter{The Skald Who Lost Her Tongue}
+
+\epigraph{``A tongue is a weapon. A whisper is a sharper one. Do not anger a skald. They remember your name—and names have weight.''}{\textit{--- Signy the Skald}}
+
+\subsection*{Told by}
+
+A skald named Signy, who spoke through a bone whistle because her tongue had been cut out by a rival who was jealous of her verses.
+
+\subsection*{The Tale}
+
+A skald's tongue is not a muscle. It is a \textit{bridge}—between the living and the dead, between the past and the future, between the meal and the song.
+
+Signy was the best skald in the fjord. She could make a jarl weep. She could make a thrall feel like a king. She could remember every oath spoken in her presence for forty years.
+
+A rival—a man named Gunnar—could not match her. So he cut her tongue out while she slept.
+
+Signy woke with her mouth full of blood. She could not speak. She could not sing. She could not remember the oaths she had sworn to keep.
+
+She walked to the edge of the fjord. She sat on a stone. She opened her mouth. Blood dripped into the water.
+
+A seal surfaced. It looked at her. It said, ``I am a selkie. I have no tongue either—only skin. Give me your tongue, and I will give you my voice.''
+
+``I cannot give you my tongue,'' Signy wrote in the mud. ``It is gone.''
+
+``Then give me your blood. Blood remembers what the tongue forgets.''
+
+Signy bled into the water. The selkie drank. Then it sang—not with its own voice, but with Signy's. The song was the story of the rival's betrayal. The song was so beautiful and so terrible that the fjord froze.
+
+Gunnar heard the song. He walked to the water's edge. He saw the selkie. He saw Signy. He understood.
+
+``I am sorry,'' he said.
+
+Signy wrote in the mud: ``Sorry is not a song.''
+
+She took the selkie's skin. She wrapped it around her own throat. The skin became flesh. The flesh became a new tongue.
+
+She spoke one word: ``Gunnar.''
+
+Gunnar died. The word was his true name, spoken by a tongue that had been paid in blood. The selkie laughed, took its skin back, and swam away.
+
+Signy became the most feared skald in the north. She never sang again. She only whispered. And when she whispered a name, that person forgot their own story.
+
+\subsection*{The Witch's Closing}
+
+``A tongue is a weapon. A whisper is a sharper one. Do not anger a skald. They remember your name—and names have weight.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Blood Tongue} — A selkie-woven replacement tongue that grants the bearer the power to speak a person's true name. When spoken, the target forgets their own story—their memories, their oaths, their loves. They become a blank slate.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item The Blood Tongue can be used once per session to speak a character's true name. The target must make a Spirit + Resolve test (DV 5). On a failure, the target loses one significant memory (GM's choice). On a critical failure, the target forgets their own name and cannot form new long-term memories for a week.
+    \item Using the Blood Tongue costs 1 Corruption (the selkie's voice is hungry).
+    \item \textbf{Clock: The Selkie's Price [8]} — Ticks each time the Blood Tongue is used. When full, the selkie returns to claim its payment—a memory of the user's own, chosen by the GM.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A skald has been found dead—her tongue cut out, a selkie skin wrapped around her throat. The party must discover who killed her and why—and whether the killer now carries the Blood Tongue.
+
+\clearpage
+
+\chapter{The Hearth That Would Not Die}
+
+\epigraph{``A hearth is a promise. A promise is a fire. A fire is a story. Tell it often enough, and the stone will never go cold.''}{\textit{--- Skjöld the Jarl}}
+
+\subsection*{Told by}
+
+Skjöld the Jarl, again—but this time at the end of the winter, when the fire was low and the ale was mostly gone.
+
+\subsection*{The Tale}
+
+The Linn believe that a hearth is not a place. It is a \textit{witness}. It sees every oath sworn before it. It hears every promise. And when the people forget, the hearth remembers.
+
+A longhouse burned. Not in a raid—in a lightning strike. The jarl's family escaped. The thralls escaped. The animals escaped.
+
+But the hearth—the flat stone at the center of the longhouse—did not burn. It sat in the ashes, warm to the touch.
+
+The jarl said, ``Build a new longhouse. Use the same hearth.''
+
+The builders did. They placed the hearth stone in the center of the new longhouse. They lit a fire. The fire was cold.
+
+``What is wrong?'' the jarl asked.
+
+A völva came. She touched the hearth. ``The hearth remembers the oaths that were sworn before it. But the oaths died in the fire. The hearth is waiting for new ones.''
+
+The jarl gathered his family. They swore new oaths—to protect the land, to feed the hungry, to remember the dead.
+
+The fire warmed.
+
+The hearth accepted.
+
+And now, every year on the anniversary of the fire, the family gathers around the hearth and swears the oaths again. If they forgot, the hearth would go cold—and the longhouse would burn.
+
+\subsection*{The Witch's Closing}
+
+``A hearth is a promise. A promise is a fire. A fire is a story. Tell it often enough, and the stone will never go cold.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Witness Hearth} — A hearth stone that remembers every oath sworn before it. It can be used to test whether a person is lying (the fire flickers) or to bind a new oath (the fire flares). If the oaths are forgotten, the hearth goes cold—and the building above it becomes vulnerable to fire.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who swears an oath before the Witness Hearth gains +1 die to all actions related to that oath. If they break the oath, they mark 1 Corruption and the hearth's fire goes out for a week.
+    \item The hearth can be used to detect lies: a character may touch the hearth and ask, ``Did this person break their oath?'' The fire flickers if the answer is yes.
+    \item \textbf{Clock: The Hearth's Memory [8]} — Ticks each year the family's oaths are not renewed. When full, the hearth stone cracks. The building above it burns within a month.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn longhouse burned to the ground. The family survived, but the hearth stone was taken by a rival clan. Without it, the family cannot swear new oaths—and the spirits of their ancestors are restless. The party must retrieve the hearth stone before the winter solstice.
+
+\clearpage
+
+\chapter{The Debt of the Unsung Dead}
+
+\epigraph{``The Direwood remembers. The mountain remembers. The axe remembers. Do not borrow from the west without asking. The interest is paid in stories, and the stories are never cheap.''}{\textit{--- The Direwood's voice}}
+
+\subsection*{Told by}
+
+The Direwood itself—or so I dreamed. A voice of bark and moss and running sap. It spoke while I slept, and I woke with these words already written.
+
+\subsection*{The Tale}
+
+The Direwood lies west of the Mistland, a forest of black trees and grey moss where the sun does not reach the ground. The wraiths of forgotten kings walk between the trunks. The dead do not stay buried there—they rise as mist-shrouded things with hollow voices and colder hands.
+
+A Linn jarl—call him Bjorn—cut down a tree in the Direwood to build a longship. He did not ask permission. He did not leave an offering. He just cut.
+
+The tree fell. The wood was strong. The ship was fast. The jarl raided for forty years and died rich.
+
+But his descendants did not prosper. Their crops failed. Their ships sank. Their children were born with teeth already grown and eyes that did not blink.
+
+A völva came. She touched the jarl's grave. ``The Direwood remembers the tree you cut. It wants the tree back. But the tree is a ship, and the ship is at the bottom of the sea.''
+
+``Then how do we pay?'' the descendants asked.
+
+``With stories. One story for every ring in the tree. The tree was three hundred years old. You owe three hundred stories. But the Direwood also wants the axe. The axe was forged in the Mistland, from iron that belonged to a wraith-lord. The wraith wants it back.''
+
+The descendants told stories. They told of battles, births, deaths, feasts, storms, loves, betrayals, and one cat who learned to speak. They told for three years.
+
+On the last night, the Direwood spoke. ``I have heard three hundred stories. The tree is paid for. But the axe remains. The wraith-lord is impatient.''
+
+The descendants searched. The axe was in a museum in Ecktoria, hanging on a wall, labeled ``Linn Battle Axe, c. 800.'' They stole it. They returned it to the Mistland. They buried it in a barrow where the wraith-lord was said to sleep.
+
+That night, the wraith-lord rose. It was a thing of fog and bone, with eyes like frozen stars. It took the axe. It looked at the descendants. It said nothing. Then it sank back into the earth.
+
+The barrow sealed itself. The wraith-lord did not return.
+
+The descendants prospered. But every year, they walk to the edge of the Direwood and leave a single coin—a toll for the next tree they might cut. And every year, they walk to the Mistland and leave a cup of ale for the wraith-lord, who sleeps with his axe across his knees.
+
+\subsection*{The Witch's Closing}
+
+``The Direwood remembers. The Mistland remembers. The axe remembers. Do not borrow from the west without asking. The interest is paid in stories, and the stories are never cheap.''
+
+\subsection*{What Lurks in the Shadow of the Tale}
+
+\textbf{The Direwood's Ledger} — A living forest west of the Mistland, full of wraiths and undead. It tracks every resource taken from it. Every debt must be paid in stories, one for each year the resource took to grow. If the debt is not paid, the wraiths come.
+
+\paragraph{Tags / Mechanics:}
+\begin{itemize}
+    \item A character who takes anything from the Direwood without offering a story first gains the Condition \textbf{Forest Debt}. For each item taken (a branch, a stone, a handful of moss), the character owes one story.
+    \item The story must be told to the forest itself. On a successful Spirit + Performance test (DV 4–7, depending on the value of what was taken), the forest accepts the story and clears the debt. On a failure, the forest demands another story—and may send a wraith to remind the character.
+    \item \textbf{Clock: The Wraith-Lord's Hunger [10]} — Ticks each time a debt is unpaid for a month. When full, the wraith-lord rises. He cannot be reasoned with. He will take what he is owed—a memory, a finger, a life.
+\end{itemize}
+
+\paragraph{Adventure Hook:}
+A Linn shipwright has been building ships from Direwood for fifty years. He never told the forest a single story. Now the wraiths are coming—and the shipwright's granddaughter is the only one who can pay the debt. The party must help her tell three hundred stories in three nights.
+
+\clearpage
+
+\chapter*{Epilogue: The Ship That Sailed}
+
+The storm lifted on the forty-third day. Hella the One-Eyed built a new boat from the wreckage of the \textit{Sea-Raven}. She carved the hull with runes: \textit{Fehu, Uruz, Thurisaz, Ansuz, Raido, Kenaz, Gebo, Wunjo}.
+
+She did not carve the ninth.
+
+``Why not?'' I asked.
+
+``The ninth is for the dead,'' she said. ``This ship is for the living.''
+
+We sailed south. The wind was cold. The sea was grey. I watched the Linn coast disappear into the mist.
+
+I did not pay the debt I owed to the dead man in Zakov. I told his story to the Linn—to Skjöld, to Hella, to the bone-reader and the rune-witch and the shield-maiden who had walked the Valewood. They listened. They nodded. They said, ``That is a good story. Now tell another.''
+
+I told nine. I left nine coins on the shore—one for each tale.
+
+The Linn do not keep ledgers. They keep \textit{memories}. And memories, unlike ledgers, do not balance. They only grow.
+
+At the edge of the Dolmis, with a notebook full of frost and salt. The ninth coin is still in my pocket. I will leave it at the next threshold.
+
+The road is south. The debt is lighter. The dead are still waiting.
+
+\hfill --- \textit{Dusana of the Raven Road}
+\vspace{0.5cm}
+\hfill \textit{On the deck of the \textit{Mist-Crow}, sailing south from Linn}
+
+\clearpage
+
+\appendix
+
+\chapter{Customs of the Northern Roads}
+
+{\small
+\begin{longtable}{@{}p{3cm} p{2.5cm} p{6.5cm}@{}}
+\toprule
+\textbf{Custom} & \textbf{Culture} & \textbf{Consequence of Breaking} \\
+\midrule
+Place a silver coin on the eyes of the dead & Linn (all) & The dead may rise as a draugr \\
+Carve your life story into your shield & Linn (warriors) & You may forget your name \\
+Do not carve the ninth rune & Linn (runes) & You speak to the dead. They may answer \\
+Offer a story before entering the Mistland & Mistland (all) & The fog takes one memory per hour \\
+Never take a relic from a phasing city & Valewood (all) & The queen hunts you until the relic is returned \\
+Return an old ship to the forest & Linn (shipwrights) & The ship's spirit haunts the breaker \\
+Do not cut a skald's tongue & Linn (skalds) & The skald may learn to whisper \\
+Swear oaths before the hearth annually & Linn (longhouses) & The hearth goes cold; the longhouse burns \\
+Ask the Direwood before taking its wood & Direwood (all) & The wraith-lord sends his hunters \\
+\bottomrule
+\end{longtable}
+}
+
+\vspace{0.5cm}
+\noindent \textit{These are not laws. They are courtesies extended to the dead, the forest, and the fog. Violate them, and the north will not punish you—it will simply stop being polite. An impolite north is the most dangerous place in the world.}
+
+\clearpage
+
+\chapter*{Colophon}
+
+This book was written on paper made from linen rags, in ink cut with soot and the ash of a rune-stick. The binding is leather, tanned with birch bark.
+
+The ninth page is blank.
+
+The ninth coin is still in my pocket.
+
+The north remembers.
+
+\hfill --- \textit{Dusana of the Raven Road}
+\vspace{0.5cm}
+\hfill \textit{At the edge of the Dolmis, spring equinox}
+
+\end{document}

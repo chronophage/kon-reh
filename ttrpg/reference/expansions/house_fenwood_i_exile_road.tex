@@ -1,0 +1,482 @@
+\documentclass[11pt,a5paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.2in, top=1.3in}
+\usepackage{graphicx}
+\usepackage{epigraph}
+\usepackage{lettrine}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{quoting}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% Fonts compatible with pdfLaTeX
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{biolinum}
+\renewcommand{\ttdefault}{cmtt}
+
+% Color definitions
+\definecolor{ashgray}{RGB}{178,178,178}
+\definecolor{deepred}{RGB}{139,0,0}
+\definecolor{fadedink}{RGB}{60,60,60}
+
+% Author attribution commands
+\newcommand{\defineauthor}[2]{%
+  \expandafter\newcommand\csname #1\endcsname{\textsc{#2}}%
+}
+\defineauthor{gray}{The Gray Wanderer}
+\defineauthor{valerius}{Lord Valerius Valvano}
+\defineauthor{aqyl}{Aqyl, son of Aqyl}
+\defineauthor{survivor}{A Retainer}
+\defineauthor{heir}{The Young Heir}
+\defineauthor{dusana}{Dusana of the Raven Road}
+
+% Game mechanics shortcuts
+\newcommand{\sb}[1]{\textbf{SB #1}}
+\newcommand{\dv}[1]{\textbf{DV #1}}
+\newcommand{\clock}[1]{\textbf{[#1]}}
+\newcommand{\trait}[1]{\textbf{#1}}
+\newcommand{\condition}[1]{\textit{#1}}
+
+% Section formatting
+\titleformat{\chapter}[display]
+  {\huge\scshape\bfseries\centering}
+  {\Large\chaptertitlename\ \thechapter}
+  {20pt}
+  {}
+\titleformat{\section}
+  {\Large\bfseries\scshape}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% Epigraph settings
+\setlength{\epigraphwidth}{0.8\textwidth}
+\renewcommand{\textflush}{flushright}
+
+% Custom environment for "Witch's Closing"
+\newenvironment{witchclosing}
+  {\begin{quoting}[font={small\itshape}, leftmargin=2em, rightmargin=2em]\noindent\textsc{The Witch's Closing.}\par}
+  {\end{quoting}}
+
+% Custom environment for boxed mechanics
+\newenvironment{mechanicbox}[1]
+  {\begin{center}\fbox{\parbox{0.9\textwidth}{\textbf{#1}\par\smallskip}}}
+  {\end{parbox}\end{center}}
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty}
+\begin{center}
+\vspace*{2cm}
+{\Huge\scshape The Exile Road}\\[1em]
+{\Large\textit{A Fenwood Legacy Adventure}}\\[2em]
+{\large\gray}\\[0.5em]
+{\normalsize\textit{Found in the archives of Tarlington, copied by a faithful hand}}\\[2em]
+\vfill
+{\small Year of the Fourth Sack, 876 AR}\\[1em]
+{\small Under the lamp, bread and salt.\\The ink is ash and rain.}
+\end{center}
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+\chapter*{A Note on This Writing}
+\addcontentsline{toc}{chapter}{A Note on This Writing}
+
+\lettrine{T}{his} ledger was found in a sealed chest beneath the Fenwood keep, wrapped in oilcloth and tied with a braid of Ykrul horsehair. The pages are foxed, some scorched, others blurred by water from the fens. Three hands appear: one aristocratic and proud, the second a cramped scholar's script, the third a child's scrawl overwritten by a mother's corrections. A fourth hand---perhaps the archivist---has added marginal notes in a drier ink.
+
+We have transcribed the leaves as they were found, preserving gaps, lacunae, and the occasional whiff of bog-mist. The narrators speak in their own voices, through their own wounds. Let the reader beware: this is not a chronicle of triumph. It is a record of what a house must bury to survive.
+
+The mechanics herein assume familiarity with the Six Roads and the Ledger system. For those unfamiliar: remember that \textit{duty is debt}, \textit{honor is witnessed memory}, and \textit{the ninth step is always a threshold}.
+
+\vspace{1em}
+\noindent\textit{--- \dusana, at a caravanserai in the Violet Steppe, spring of 876 AR}
+
+\mainmatter
+
+\chapter{Introduction: The Third Sack}
+
+\epigraph{The Valvano dynasty is dead. The Third Sack has ended our line---or so the heralds of the usurper proclaim. What remains is a cadet branch: a handful of cousins, servants, heirlooms, and a name that now draws pursuit like a wounded hart draws wolves.}{\valerius}
+
+\lettrine{T}{he} empire of the Noon Bell has fallen. The Pilgrim's Gate is broken. What flees eastward is not an army but a \textit{ledger}---a column of names that must survive to be written in the next generation. This is the tale of the Valvano cadet branch, the Fenwoods-to-be, and their flight through burning Acasia to the dubious sanctuary of the Tarling fens.
+
+\section*{What You Need}
+
+\textbf{Tier:} Seasoned (41--90 XP) \quad \textbf{Players:} 3--6 \quad \textbf{Length:} 3--4 sessions
+
+\subsection*{Core Clocks}
+
+\begin{mechanicbox}{Campaign Clocks}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Valvano Loyalty \clock{6}} --- Clinging to the old name and claims. Advances when you refuse compromise, perform imperial rites, or reject ``barbarian'' customs. When full, you cannot abandon the name; you are bound to restore the dynasty or die in the attempt.
+\item \textbf{Survival \clock{8}} --- Supplies, allies, shelter, and the will to continue. Advances when you lose provisions, suffer setbacks, or make desperate choices. When empty, someone starves, an heirloom is lost forever, or a PC gains the condition \condition{Broken}.
+\item \textbf{Tarling Favor \clock{6}} --- The goodwill of the Viterran house you seek. Advances when you accept humiliation, convert to the Temple of Light, or offer the Laurel Seal as tribute. When full, you are granted the pithy county of Fenwood---a swamp that remembers older fires.
+\item \textbf{Pursuit \clock{6}} --- The usurper's agents on your trail. Advances when you leave witnesses, use the Bell Shard, or tarry in one place too long. When full, a battle occurs; you must flee, surrender, or stand and be ended.
+\end{itemize}
+\end{mechanicbox}
+
+\subsection*{Heirlooms of the Line}
+
+Each heirloom is a Minor Asset (4 XP). Narrate its recovery in play; once lost, it cannot be replaced.
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{The Laurel Seal} --- A bronze disc stamped with the Valvano crest, worn on a chain about the neck. Grants \sb{+1 die} to social rolls when presented as proof of lineage (once per scene). If surrendered to the Tarlings, it becomes a String in their favor for generations.
+\item \textbf{The Bell Shard} --- A fragment of the Noon Bell that once marked imperial time. When rung, all allied rolls are \condition{Dominant} for one exchange---but the usurper's agents hear it, and the Pursuit clock advances immediately by 1.
+\item \textbf{The Debt Ledger} --- A leather-bound book recording every oath the Valvano dynasty swore. Once per session, you may ask the GM: \textit{``What debt can we call in here?''} Gain a concrete advantage, but incur \condition{Obligation 1} to the original debtor's heir (the debt remembers).
+\item \textbf{The Sacred Coal} (Optional) --- An ember from the Everflame chapel. If carried, grants \sb{+1 die} when dealing with Everflame clergy, but marks you as a heretic to the Temple of Light.
+\end{itemize}
+
+\subsection*{A Word on Tone}
+
+This is not a heroic flight. It is a retreat---through burning cities, hostile courts, and fens that swallow hope. Mercy is rare; cruelty is casual. Play not for glory, but for the survival of a memory. 
+
+Remember: \textit{the road does not forgive a debt. It only reschedules it.}
+
+\clearpage
+
+\chapter{Act I: The Sack --- By \valerius}
+
+\epigraph{I write this in a chamber that still reeks of smoke. The elder branch is dead. My cousin the emperor fell at the Iron Gate, his body not recovered. My sister threw herself from the Laurel Tower. My sons---I have no sons. Only nephews, and a daughter who will not look at me.}{\valerius}
+
+\lettrine{I}{} am not well. The smoke has scarred my lungs, but the shame has scarred deeper. The usurper's wolves are at the walls. We have perhaps one candlemark before the Pilgrim's Gate is sealed. I have sent for Aqyl, though I do not trust him. He is too old, too knowing. He remembers things about my grandfather that I prefer forgotten.
+
+But he keeps the witness. That is his duty.
+
+\section*{Opening Scene: The Burning Manor}
+
+The PCs begin in the Valvano manor house, flames visible through the colonnade. They have minutes to gather what they can. Read aloud:
+
+\begin{quoting}
+The smoke stings your eyes. Below, the marble forum has become a charnel pit. A soldier in black plate kicks aside a fallen statue of the Noon Bell. He drinks from a stolen amphora. The wine spills like blood on the white stone.
+
+Aqyl---the old scholar---appears at the stair. He does not run. He has never run. ``Choose what you carry,'' he says. ``The ledger. The seal. The bell. Then the gate. I will meet you on the road.''
+
+Behind you, the chapel's sacred flame gutters. Someone has kicked the brazier. The coal still glows.
+\end{quoting}
+
+\subsection*{Recovering the Heirlooms}
+
+Each PC may attempt one recovery roll before the gate seals. \dv{3}. Success secures an heirloom of their choice. \textbf{Partial} secures it but generates \sb{1} (pursuit, injury, or loss of another item). \textbf{Miss}---the heirloom is lost, and the PC marks \condition{Fatigue 1}.
+
+\begin{mechanicbox}{What Lurks in the Shadow of the Manor}
+\textbf{The Sacred Coal} is not merely a symbol. It is a \textit{threshold}. Any character who takes it gains the condition \condition{Oath-Bound} until they either return it to an Everflame shrine or convert fully to the Temple of Light. While Oath-Bound, they cannot tell a lie in direct sunlight without suffering \condition{Harm 1} (the light burns the throat).
+\end{mechanicbox}
+
+\subsection*{Clock: City Collapse \clock{6}}
+
+Advances by 1 each time a PC fails a recovery roll or when the GM spends \sb{2} (a building collapses, a patrol arrives, a fire spreads). When full, the Pilgrim's Gate slams shut. Any PC still inside must escape through the sewers---\condition{Desperate Position}, \dv{3}---or be captured (start Act II as prisoners, with Survival reduced by 2).
+
+\subsection*{Key Choices}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{The Censor's Daughter.} A young woman (Livia) begs to join the flight. She carries a redacted scroll from the Hall of Censors. She may be a spy for the Witness cult---or its last survivor, fleeing the purge. If accepted, she gains the ability \trait{Cite Precedent} once per session, but her presence advances Pursuit by 1 when discovered.
+\item \textbf{The Oath-Brother.} A Ykrul mercenary (Rekedim's ancestor) offers his sword for safe passage to the steppe. He does not kneel. He waits. If accepted, gain the \textbf{Braid Token}---a future favor from the Grey Ash clan, but mark \condition{Obligation 2} to the Ykrul.
+\item \textbf{The Burning Script.} The Debt Ledger is in a collapsing room. To save it, a PC must enter the flames (\textbf{Body + Athletics}, \dv{3}). On a miss, they take \condition{Harm 1} (burns) but retrieve the book. On a critical miss, the book is singed; one random debt entry is erased forever from the ledger.
+\end{itemize}
+
+\subsection*{Spending SB in Act I}
+
+\begin{itemize}[leftmargin=*]
+\item \sb{1}: A falling beam separates the party; one PC must find another exit (\condition{Desperate} navigation roll).
+\item \sb{2}: The usurper's herald recognizes the Laurel Seal; Pursuit gains \sb{+1 die} for the remainder of the flight.
+\item \sb{3}: The sacred coal ignites a tapestry; \condition{Environmental Hazard}---all rolls \condition{Desperate} until extinguished (costs 1 action and water).
+\item \sb{4+}: A Valvano elder is captured. The PCs hear his screams as they flee. Advance Valvano Loyalty by 1 (rage) or Survival by 1 (guilt).
+\end{itemize}
+
+\subsection*{The Pilgrim's Gate}
+
+When the City Collapse clock reaches 6 (or when the PCs choose to flee), they reach the gate. Aqyl is already there, holding a lantern. Behind them, the manor collapses with a sound like thunder.
+
+Read:
+\begin{quoting}
+The old scholar does not look back. ``Names are thresholds,'' he says. ``Some you cross. Some you burn. Tonight, we cross.'' He steps into the fog. The lantern's flame burns blue---the color of Ykrul witch-fire, or the Everflame, or perhaps both.
+\end{quoting}
+
+\subsection*{Act I Resolution}
+
+Advance \textbf{Survival} by the number of heirlooms lost (none lost = $-2$). Advance \textbf{Valvano Loyalty} by the number of imperial rites performed (taking the coal counts as $+1$). If the Ykrul mercenary joined, note \textbf{The Braid Token}.
+
+\clearpage
+
+\chapter{Act II: The Road --- By \aqyl}
+
+\epigraph{I am not a Valvano. I am older. The first Aqyl compiled the Corpus Canr\'e when the empire was young. I have been called his son, his father, his shade. The truth is less interesting. I keep the witness.}{\aqyl}
+
+\lettrine{T}{he} road east is a ledger of failures. Acasia frays like old rope. Silkstrand---then called Ceylonne---welcomes coin, not refugees. We are pursued by rumor, not men. That is worse. Rumor does not tire. It does not negotiate.
+
+I have seen this before. The Valvanos think themselves unique in their fall. They are not. I have watched seventeen dynasties crumble. The ones that survive are those that learn to \textit{forget} the throne while remembering the table.
+
+\section*{The Ykrul Ford}
+
+The party reaches a river crossing held by the Grey Ash clan. Their chieftain, Khatun Sarnai, blocks the ford. Her riders are not hostile, but they are not welcoming. They are \textit{waiting}.
+
+Read:
+\begin{quoting}
+Sarnai does not rise from her felt stool. ``I know that seal,'' she says, pointing at the Laurel. ``Your great-grandmother gave it to my grandmother as a hostage gift. She left us a son. The braid still hangs in my tent.''
+
+The Ykrul riders do not draw steel. They wait. This is their way. The steppe teaches that violence is certain; it is courtesy that must be negotiated.
+\end{quoting}
+
+\subsection*{The Price of Crossing}
+
+Sarnai offers passage---for a price. The party may choose one:
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Acknowledge the Mixed Blood.} Publicly accept the half-Ykrul offspring as Valvano kin. \textbf{Valvano Loyalty $-2$}, \textbf{Survival $+1$} (safe passage), gain \textbf{The Braid Token} (future Ykrul favor) and the follower \textbf{The Unnamed Child}.
+\item \textbf{The Duel.} A champion fights Sarnai's best rider. \textbf{Body + Melee}, \dv{4}. Win: passage, no loss. Lose: surrender the Laurel Seal (\textbf{Valvano Loyalty $-1$}) or mark \condition{Harm 2}.
+\item \textbf{The Steppe Oath.} Swear a future alliance, sealed with horsehair. Gain passage now, but \textbf{Obligation \clock{4}} to the Grey Ash---they will call in the debt during the fourth sack (a future adventure).
+\end{enumerate}
+
+\begin{mechanicbox}{The Unnamed Child (Follower)}
+\textbf{Cap: 2} \quad \textbf{Upkeep: 1} (food and teaching)\\
+\textbf{Asset: The Braid Token}\\
+\textbf{Independent Action:} Once per session, declare \textit{``He knows the steppe.''} Gain \sb{+2 dice} on Survival rolls involving tracking or foraging.\\
+\textbf{Harm Track:} 2 boxes. If filled, the child is wounded but not killed; they return to the Grey Ash rather than burden the party.
+\end{mechanicbox}
+
+\subsection*{The Linnic Mercenaries}
+
+At a crossroads, a band of sea-raiders (ancestors of the Everbloods) offers escort for a share of future lands. Their captain wears a wolf's-tail cloak.
+
+Read:
+\begin{quoting}
+``The Tarlings are dying,'' the captain says. ``Help us take their country, and we will make you counts. The old kings are ghosts. We offer flesh and steel.''
+
+Aqyl, in a marginal note: \textit{``This is the seed. Remember it. The Everbloods will rise, and the Fenwoods will choose.'')}
+\end{quoting}
+
+If the party accepts, gain the \textbf{Everblood Promise}---a String on the future Everblood dynasty. Once per arc, summon a small company of Linnic mercenaries (Cap 3) for one scene. However, accepting advances \textbf{Pursuit} by 2 (the usurper hears of the alliance).
+
+\subsection*{Clock: Supplies \clock{6}}
+
+The Ykrul ford delays the party. Each failed negotiation or day spent waiting advances the Supplies clock by 1. When it reaches 6, the party must barter a heirloom or mark \condition{Fatigue 2} for all (hunger).
+
+\subsection*{Act II Resolution}
+
+Advance \textbf{Survival} by the number of heirlooms traded (none = $-1$). If the mixed-heritage child joined, start the \textbf{Unnamed Child} follower track. If the Linnic offer was accepted, note the \textbf{Everblood Promise}.
+
+\clearpage
+
+\chapter{Act III: The Rejection --- By \survivor}
+
+\epigraph{My lord Valerius is not well. The smoke scarred his lungs. The stares of the Vhasian court scarred his pride. We crossed the border at dawn, expecting sanctuary from House Terinos. They gave us bread and salt---and a message: \textit{``The Tarlings know you are coming. They are curious to meet the grandchildren of their conquerors.''}}}{\survivor}
+
+\lettrine{I}{} am a soldier. I do not trust curiosity. I especially do not trust it when it wears a ducal coronet and offers wine from a cup that is slightly too small.
+
+\section*{The Mocking Feast}
+
+The Vhasian duke (a cousin of the Terinos) invites the Valvanos to a feast. The courtiers wear masks. The wine is sour. This is the custom of Viterra: hospitality is a contract, and the terms are written in humiliation.
+
+Read:
+\begin{quoting}
+The duke claps his hands. ``Let the exiles prove their lineage! A game of Canray, perhaps? Or a duel? Or---I know---recite the Oath of the Noon Bell. From memory.'' He smiles. ``Your ancestors made us kneel. Now you kneel for entertainment.''
+\end{quoting}
+
+\subsection*{Trials of the Gate}
+
+The party must choose a champion and pass two of three trials. Each failure advances \textbf{Patience of the Gate \clock{4}}.
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Kon'reh.} Play a quick match (use the \textit{Kon'reh Quickstart} or roll \textbf{Wits + Lore}, \dv{4}). Win: \textbf{Tarling Favor $+1$}. Loss: The duke laughs; advance Patience by 1.
+\item \textbf{Duel.} \textbf{Body + Melee}, \dv{4}. Win: the court applauds; \textbf{Tarling Favor $+1$}. Loss: The champion is wounded (\condition{Harm 1}) or disarmed (lose a weapon).
+\item \textbf{Oath-Recitation.} \textbf{Presence + Lore}, \dv{3}. Recite the Oath of the Noon Bell without error. Gain \sb{+1 die} on all future Valvano Loyalty rolls. Critical fail: You misspeak; the duke declares the Valvano line ``broken by error.''
+\end{itemize}
+
+\begin{witchclosing}
+A promise made under duress is still a promise. The bread and salt bind you as surely as chains, until you choose to break the guest-right. And if you break it, the road will remember. It always remembers.
+\end{witchclosing}
+
+\subsection*{The Cadet's Betrayal}
+
+A cousin (NPC) offers to sell the Valvano claim to the usurper for safe passage. A PC may detect the plot with \textbf{Wits + Insight}, \dv{3}. 
+
+If exposed:
+\begin{itemize}[leftmargin=*]
+\item Execute the traitor: \textbf{Valvano Loyalty $-1$} (kin-killing), \textbf{Tarling Favor $+1$} (the duke respects severity).
+\item Exile him: No immediate change, but he may appear later as an enemy agent.
+\end{itemize}
+
+If not exposed: The usurper's agents ambush the party on the road (\sb{+2} banked for the GM).
+
+\subsection*{The Tarling Terms}
+
+A rider from Viterra arrives with a sealed scroll.
+
+Read:
+\begin{quoting}
+``Our grandfathers surrendered to your grandfathers,'' the messenger reads, his voice flat. ``Now you come to our doorstep, asking for crumbs. The gods have a sense of humor. The Tarling duke grants you passage to the fens---on these terms.''
+\end{quoting}
+
+\textbf{Terms:}
+\begin{itemize}[leftmargin=*]
+\item Walk the last hundred miles barefoot (\textbf{Survival $-2$}, \textbf{Tarling Favor $+2$}).
+\item Present the Laurel Seal as a gift, not a claim (\textbf{Valvano Loyalty $-2$}, \textbf{Tarling Favor $+2$}).
+\item Convert to the Temple of Light (\textbf{Valvano Loyalty $-4$}, \textbf{Tarling Favor $+4$}, but lose the Everflame coal's benefit forever).
+\end{itemize}
+
+The party may negotiate (each term reduced by 1 step with a successful \textbf{Presence + Sway}, \dv{4}, but each attempt advances Patience by 1).
+
+\section*{Act III Resolution}
+
+If \textbf{Patience of the Gate} fills, the Terinos expel the party. They must travel through bandit country (\textbf{Survival $-4$}) or seek the Ykrul again. Record final \textbf{Tarling Favor}.
+
+\clearpage
+
+\chapter{Act IV: The Fens --- By \heir}
+
+\epigraph{My name is not yet Fenwood. My father says we must earn the right to bury our name. I do not understand. The fens smell of old death. The tower we are granted is half-collapsed. The local priest of the Temple of Light spat at the ground when he saw my mother's Everflame pendant.}{\heir}
+
+\lettrine{T}{he} Tarling duke gave us Ash-Fenn. I asked why it was called that. No one answers. I am twelve, and I am already learning that some questions are debts that should not be spoken aloud.
+
+\section*{Ash-Fenn}
+
+The cursed site is a clearing of blackened earth, surrounded by bog. A single standing stone marks where a caravan of Witness cultists burned three centuries ago.
+
+Read:
+\begin{quoting}
+The ground is warm, even in autumn. If you press your ear to the stone, you can hear a chanting---not words, but a thrum, like a bell rung underwater. 
+
+Aqyl stands apart. He will not approach the stone. He is writing in the ledger, his hand shaking slightly. 
+
+``This is where they burned the Witness,'' he says, not looking up. ``The ash fell like rain. The road kept no prints. I was here. I remember the thrum. It is older than the cult. It is older than the empire.''
+\end{quoting}
+
+\subsection*{Clock: Winter Provisions \clock{8}}
+
+The party must survive until spring. Each week, roll \textbf{Survival + Wits} (\dv{3}). Failure advances the clock by 1. When it reaches 8, starvation claims someone (the PC with the lowest Survival must choose which NPC follower dies, or mark \condition{Broken} if no followers remain).
+
+\subsection*{The Bog Witch}
+
+A hedge-witch appears at the edge of the camp. She may be a Daughter of the Chain, or simply a woman who knows the old ways.
+
+Read:
+\begin{quoting}
+``You build on dead ground,'' she says. ``I can ward it---for a price. The firstborn child of your line, or a memory of the empire, or a promise to be named later.'' She smiles. Her teeth are grey, but her eyes are kind. ``The soup is free. The price never is.''
+\end{quoting}
+
+\textbf{Options:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Firstborn:} Gain \textbf{Tarling Favor $+2$} (the ward works), but the witch marks the line. Future generations will be haunted---start a \clock{6} curse track for the eventual ``Fourth Sack'' campaign.
+\item \textbf{Memory:} A PC sacrifices a cherished recollection (lose 1 XP, or a Bond). Gain the ward and \sb{+1 die} to all rolls in Ash-Fenn for the remainder of the adventure.
+\item \textbf{Promise:} Accept \condition{Obligation \clock{6}} to the witch. She will collect during the fourth sack, and it will not be pleasant.
+\end{itemize}
+
+\subsection*{The Naming}
+
+At the spring moot, the Tarling duke demands the cadet branch announce its new name.
+
+Read:
+\begin{quoting}
+The duke leans forward on his throne. ``Well? Are you Valvano still? Or something else?'' 
+
+Aqyl lays a hand on your shoulder. His hand is cold. ``The ledger is open,'' he murmurs. ``Write.''
+\end{quoting}
+
+\textbf{The Choice:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Valvano.} \textit{``We are the heirs of the Laurel. We will not kneel.''} Requires \textbf{Valvano Loyalty $5+$}. Gain no land. The party must flee east or join the Ykrul permanently. But the name survives unbroken.
+\item \textbf{Fenwood.} \textit{``We are of the fens and woods. The old name is ash.''} Requires \textbf{Tarling Favor $5+$}. Gain the county, but the Everflame coal must be extinguished in public. The Valvano line is legally ended; you are reborn.
+\item \textbf{Fenwood-Valvano.} \textit{``We are Fenwood of Valvano.''} Requires a compromise: both clocks at $3+$. Gain the county, keep the coal, but the usurper will hear of it (\condition{Obligation 2} to the usurper's agents). You are neither fully accepted nor fully rejected.
+\end{itemize}
+
+\subsection*{Aqyl's Departure}
+
+After the naming, Aqyl speaks his final words:
+
+\emph{``The fourth legacy is not the name. It is the choice. I have watched houses crumble for a thousand years. The ones that survive learn to bury their dead without burying themselves.''}
+
+He walks into the mist. No one sees him again. If searched for, he leaves only the Debt Ledger (now with three new entries in his cramped hand) and a single braid of Ykrul hair tied to the standing stone.
+
+\clearpage
+
+\chapter*{Epilogue: The Braid and the Bell}
+\addcontentsline{toc}{chapter}{Epilogue: The Braid and the Bell}
+
+\lettrine{G}{enerations} later. The Fenwood keep stands. The Tarlings are gone---deposed by the Everbloods, with Fenwood swords. A child finds an old braid in the cellar---Ykrul horsehair woven with a Valvano seal. An old ledger records: \textit{``They left us a son. We sent him away. The Fenwoods do not speak of him.''}
+
+Outside, the Ykrul return for the fourth sack. But the Everbloods are now kings. And the Fenwoods are their trusted chancellor.
+
+\vspace{2em}
+\noindent\textit{The road does not forgive a debt. It only reschedules it.}
+
+\vspace{2em}
+\noindent\textit{--- From the Tarlington archives, copied in the year 876 AR, under the lamp, bread and salt. The ink is ash and rain.}
+
+\clearpage
+
+\appendix
+\chapter*{Appendix: Mechanics \& Tools}
+\addcontentsline{toc}{chapter}{Appendix: Mechanics \& Tools}
+
+\section*{Quick Reference: Clocks}
+
+\begin{center}
+\begin{tabular}{@{}llp{6cm}p{5cm}@{}}
+\toprule
+\textbf{Clock} & \textbf{Size} & \textbf{Advances When} & \textbf{Filled Effect} \\
+\midrule
+City Collapse & 6 & Failed recovery, GM SB spend & Gate seals; sewer escape required \\
+Valvano Loyalty & 6 & Imperial rites, refusing humiliation & Cannot abandon the name; locked into Valvano or Fenwood-Valvano \\
+Survival & 8 & Lost supplies, failed foraging, harsh choices & An NPC dies of starvation or exposure \\
+Tarling Favor & 6 & Accepting humiliation, converting, gifting heirlooms & Granted the county (Fenwood ending) \\
+Pursuit & 6 & Leaving witnesses, using Bell Shard, tarrying & Ambush; must fight, flee, or surrender \\
+Patience of the Gate & 4 & Failed trials, refused terms & Expelled from Vhasia; must seek Ykrul aid \\
+Winter Provisions & 8 & Failed weekly survival rolls & Starvation claims a follower or PC Broken \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Quick Reference: Heirlooms \& Tokens}
+
+\begin{center}
+\begin{tabular}{@{}lp{8cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Effect} \\
+\midrule
+Laurel Seal & +1 die to social rolls when presented as proof of lineage \\
+Bell Shard & Once per scene, make all allied rolls Dominant for one exchange; advances Pursuit \\
+Debt Ledger & Ask GM one question about debts per session; incur Obligation 1 \\
+Sacred Coal & Bonus with Everflame clergy; heretical to Temple of Light; Oath-Bound condition \\
+The Braid Token & Ykrul favor; used in future adventures or to summon aid \\
+Everblood Promise & String; summons Linnic mercenaries (Cap 3) once per arc \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{New Conditions}
+
+\begin{description}[leftmargin=*]
+\item[\condition{Oath-Bound}] Bound to the Everflame. Cannot tell lies in direct sunlight without suffering Harm 1.
+\item[\condition{Broken}] The spirit is crushed. All rolls are Desperate until a Bond is restored or a new Oath is sworn.
+\item[\condition{The Braid}] Marked by the Ykrul. The Grey Ash clan may call upon you once per generation; refusal costs Survival 2.
+\end{description}
+
+\clearpage
+
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+
+\lettrine{T}{his} book was written in a fen-side hut, on paper made from rags and moss. The ink is lamp-black cut with the ash of a burned Tarling decree. The binding is horsehair.
+
+The road does not forgive. The road does not forget. The road reschedules.
+
+\vspace{1em}
+\noindent \textit{--- \dusana, at the edge of Ash-Fenn, the year the braid was found.}
+
+\vspace{1em}
+\noindent The ninth cup remains un-poured. The ninth name remains unspoken. The ledger is open.
+
+\end{document}
+

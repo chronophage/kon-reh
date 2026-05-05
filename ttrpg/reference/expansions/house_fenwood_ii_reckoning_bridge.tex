@@ -1,0 +1,488 @@
+\documentclass[11pt,a5paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a5paper, margin=1.2in, top=1.3in}
+\usepackage{graphicx}
+\usepackage{epigraph}
+\usepackage{lettrine}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{quoting}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% Fonts compatible with pdfLaTeX
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{biolinum}
+\renewcommand{\ttdefault}{cmtt}
+
+% Color definitions
+\definecolor{ashgray}{RGB}{178,178,178}
+\definecolor{deepred}{RGB}{139,0,0}
+\definecolor{fadedink}{RGB}{60,60,60}
+
+% Author attribution commands
+\newcommand{\defineauthor}[2]{%
+  \expandafter\newcommand\csname #1\endcsname{\textsc{#2}}%
+}
+\defineauthor{gray}{The Gray Wanderer}
+\defineauthor{soren}{Søren the One-Eyed}
+\defineauthor{aldric}{Aldric Fenwood}
+\defineauthor{mavron}{Brother Mavron}
+\defineauthor{dusana}{Dusana of the Raven Road}
+\defineauthor{orin}{Orin True-Mason}
+
+% Game mechanics shortcuts
+\newcommand{\sb}[1]{\textbf{SB #1}}
+\newcommand{\dv}[1]{\textbf{DV #1}}
+\newcommand{\clock}[1]{\textbf{[#1]}}
+\newcommand{\trait}[1]{\textbf{#1}}
+\newcommand{\condition}[1]{\textit{#1}}
+
+% Section formatting
+\titleformat{\chapter}[display]
+  {\huge\scshape\bfseries\centering}
+  {\Large\chaptertitlename\ \thechapter}
+  {20pt}
+  {}
+\titleformat{\section}
+  {\Large\bfseries\scshape}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% Epigraph settings
+\setlength{\epigraphwidth}{0.8\textwidth}
+\renewcommand{\textflush}{flushright}
+
+% Custom environment for "Witch's Closing"
+\newenvironment{witchclosing}
+  {\begin{quoting}[font={small\itshape}, leftmargin=2em, rightmargin=2em]\noindent\textsc{The Witch's Closing.}\par}
+  {\end{quoting}}
+
+% Custom environment for boxed mechanics
+\newenvironment{mechanicbox}[1]
+  {\begin{center}\fbox{\parbox{0.9\textwidth}{\textbf{#1}\par\smallskip}}}
+  {\end{parbox}\end{center}}
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty}
+\begin{center}
+\vspace*{2cm}
+{\Huge\scshape The Reckoning Bridge}\\[1em]
+{\Large\textit{A Fenwood Legacy Adventure}}\\[2em]
+{\large\gray}\\[0.5em]
+{\normalsize\textit{Found in the Fenwood ledger, the skald's song, and a Vhasian chronicle}}\\[2em]
+\vfill
+{\small Year of the Everblood Rising, 876 AR}\\[1em]
+{\small Under the lamp, bread and salt.\\The ink is ash and river-mud.}
+\end{center}
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+\chapter*{A Note on This Writing}
+\addcontentsline{toc}{chapter}{A Note on This Writing}
+
+\lettrine{T}{his} account was compiled from three voices: a Linnic raid-mother who burned the passes, a Fenwood chancellor who betrayed his king, and a Vhasian chronicler who watched his kingdom change its name. Between them, a fourth hand---perhaps \gray, perhaps a True Mason---has added marginal notes where the keystone rights are unclear.
+
+The Aeler do not conquer with swords. They conquer with clauses. The bridge at Tarlington is theirs; the Tarlings only held it by sufferance. The Fenwoods learned to pay. The Tarlings did not. The road remembers.
+
+\textit{Note:} This adventure assumes familiarity with \textit{The Exile Road} and the mechanics of the Six Roads. The bridge is a \textit{threshold}; treat it accordingly.
+
+\vspace{1em}
+\noindent\textit{--- The Archive of the True Masons, Tarlington chapter, autumn of 876 AR}
+
+\mainmatter
+
+\chapter{Introduction: The Everblood Tide}
+
+\epigraph{The Linns came from the Dolmis passes, through the old Aeler-warded gateways that the empire had once seized and the republic had neglected. They rode wolf-prowed longships up the Yloka River---the same water that the Aeler had canalized when they still held the land as a province.}{\soren}
+
+\lettrine{T}{he} Linns came from the salt. They did not come as raiders, but as kings-in-waiting. Their ships were iron and oak; their oaths were written in the old way, with witnesses and whalebone, not the imperial seals that the Viterrans had learned to forge. They came because the Fenwoods---those Valvanos reborn---had sent them iron in the night, and promises, and a map of the low fords.
+
+The bridge at Tarlington was not Tarling. It was not Viterran. It was Aeler---a keystone clause carved into every span, a debt older than the empire that had borrowed it.
+
+\section*{What You Need}
+
+\textbf{Tier:} Seasoned (41--90 XP) or Veteran (91--150 XP) \quad \textbf{Players:} 3--6 \quad \textbf{Length:} 3--4 sessions
+
+\subsection*{Core Clocks}
+
+\begin{mechanicbox}{The Campaign Clocks}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Linnic Momentum \clock{8}} --- The invasion's inexorable progress. Advances as the Linns secure supply lines. When full, they reach Tarlington before the Fenwoods and claim the crown by right of conquest.
+\item \textbf{Tarling Resistance \clock{6}} --- The old dynasty's desperate rally. Advances when they remember old oaths. When full, the invasion stalls; the Fenwoods are caught between hammer and anvil.
+\item \textbf{Fenwood Reckoning \clock{6}} --- The countdown to Aldric's betrayal. Advances when the party aids the Linns or seizes Aeler infrastructure. When full, they must declare allegiance openly---no more masks.
+\item \textbf{Keystone Debt \clock{6}} --- The Aeler ledger's patience. Advances when the party takes Aeler aid without payment. When full, an Aeler factor declares the bridge closed to all Fenwood traffic until the debt is settled in blood or silver.
+\item \textbf{True Mason Favor \clock{4}} --- The mendicant order's goodwill. Advances when the party respects rites. When full, the Masons reinforce the bridge; it cannot be burned this season.
+\end{itemize}
+\end{mechanicbox}
+
+\subsection*{Aeler Factions}
+
+The Aeler presence is not a government but a \textit{maintenance contract}:
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{The True Masons} --- Mendicant order of masonry-mages. They repair infrastructure and remember every keystone. They respect tradition and payment in equal measure. Their oath is: \textit{``We do not build. We continue.''}
+\item \textbf{The Fortune-Delvers} --- Rogue prospectors who seek profit in the gaps between ledgers. They are not bound by Masonic oaths and will side with the highest bidder, but their information is always accurate---and always costly.
+\item \textbf{Aeler Factors} --- Guild officials who collect tolls and audit crossings. They are distant, dealing in slate and wax seals rather than swords. They speak of ``load-bearing history'' and ``structural obligations.''
+\end{itemize}
+
+\subsection*{A Word on Tone}
+
+This is not a war of glory. It is a war of ledgers, keystones, and unpaid debts. The Linns bring fire; the Aeler bring contracts; the Fenwoods bring a hundred years of humiliation sharpened into steel. Play not for honor, but for leverage. 
+
+Remember: \textit{the road does not forgive a debt. It only reschedules it.}
+
+\clearpage
+
+\chapter{Act I: The Corsair's Map}
+\textbf{Narrator: \soren, Linnic Raid-Mother}
+
+\epigraph{We knew the crossing before we saw it. The Aeler built a bridge of stone and shadow across the Tarlington Gap---a span so broad that market stalls line its middle, so high that the river below is a whisper.}{\soren}
+
+\lettrine{W}{e} came down the Yloka at the spring thaw. The ice broke behind us like a cheering army. The bridge waited, patient as any Aeler thing, its keystones humming with the weight of centuries.
+
+I had met a True Mason once, in a port called Silkstrand. He told me: ``The bridge is neutral ground. The Tarlings hold it by Aeler grace. That grace can be revoked.'' I did not understand then. I understand now.
+
+\section*{Opening Scene: The Reed Camps}
+
+The PCs are Linnic raiders (or Fenwood agents infiltrating the camp). Longships are hidden in reed beds. Scouts have mapped every ford.
+
+Read aloud:
+\begin{quoting}
+The ice breaks on the Yloka. \soren{} spreads a chart across a drum---skin from a Utaran tax collector, still bearing the imperial grid. ``Tarlington is the hinge,'' she says. ``Take the bridge, and the river roads are ours. The Tarlings will burn their own fields to stop us.'' She looks at you---a Fenwood agent, perhaps---and smiles. ``Your father's iron kept our keels afloat. Now your steel must keep our feet dry.''
+\end{quoting}
+
+\subsection*{Clock: Linnic Momentum \clock{8}}
+
+Advances by 1 when the party:
+\begin{itemize}[leftmargin=*]
+\item Secures a ford against Tarling patrols
+\item Delivers supplies to the forward camps
+\item Translates Aeler maintenance codes for the Linns
+\end{itemize}
+When full, the Linns reach Tarlington first and the Fenwoods lose their leverage.
+
+\subsection*{Key Encounter: The True Mason by the Road}
+
+As the party scouts the northern approach, \orin{} sits on a milestone, tapping a stone rod against the pavement.
+
+Read:
+\begin{quoting}
+The man does not rise. ``My name is Orin of the True Masons. I am not a soldier. I am not a diplomat. I repair things.'' He taps the rod again. The stone hums---a low note that resonates in the teeth. ``This bridge was consecrated to the Aeler Compact. No king, no jarl, no chancellor may close it without paying the toll. So I ask: who will pay?''
+\end{quoting}
+
+\orin{} offers to keep the bridge neutral---for a price. The party must provide:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{A Keystone Offering} --- A valuable heirloom, magical item, or \textit{promised service} to be held by the Aeler guild.
+\item \textbf{The Bridge Oath} --- Swear that no party (Fenwood, Linn, or Tarling) will burn or permanently seize the span without Aeler arbitration.
+\end{enumerate}
+
+If accepted, gain \textbf{True Mason Favor +2} and the bridge becomes a \textbf{Safe Zone}---no fighting on the span until the oath is broken. If refused, \orin{} sighs and vanishes into the mist. The bridge's wards weaken; add \textbf{Bridge Fire \clock{4}} (the Tarlings may attempt to burn it).
+
+\begin{witchclosing}
+A bridge is a ledger. Every crossing is an entry. To destroy a bridge is not war---it is bankruptcy. The Aeler do not mourn the dead, but they weep for broken contracts.
+\end{witchclosing}
+
+\subsection*{Key Encounter: The Fortune-Delver}
+
+Later, the party encounters a \textbf{Fortune-Delver}---an Aeler prospector of opportunity.
+
+Read:
+\begin{quoting}
+She appears in the camp uninvited, stirring a pot of thin stew. ``I hear you're racing the Linns to Tarlington. I can show you a route the Aeler engineers used---a maintenance shaft that bypasses the gates. But the keystone seal is intact. You'll need my key.'' She holds up a brass rod. ``Cost: a share of the bridge's tolls for the next ten years, or a comparable debt.''
+\end{quoting}
+
+\textbf{Offer:} Gain \textbf{+2} to \textbf{Fenwood Leverage} (Act II) if accepted. Cost: a \textbf{Debt Clock \clock{6}} to the Aeler syndicate. If refused, she shrugs and sells the same information to the Linns (adds \textbf{Linnic Momentum +2}).
+
+\subsection*{Act I Resolution}
+
+The party reaches the Viterran plain. The Tarlings have fortified the eastern roads. 
+
+\textbf{Decision Point:} Reveal the secret supply routes (gains \textbf{Linnic Momentum +2}, \textbf{Fenwood Reckoning +2}) or hold back (gain \textbf{Tarling Resistance --1} but risk the Linns' trust).
+
+\clearpage
+
+\chapter{Act II: The Chancellor's Gambit}
+\textbf{Narrator: \aldric, Chancellor of the Fens}
+
+\epigraph{My father took the name Fenwood so we might live. I have spent thirty years building granaries, forging contracts, smiling at Tarling feasts while my brothers sharpened blades in the fens. The Linns did not find our iron by accident.}{\aldric}
+
+\lettrine{M}{y} father knelt so I could stand. I have spent thirty years building granaries in the black timber, forging contracts with Aeler factors, learning the weight of keystone rights. The Tarlings call me Chancellor. They do not know that I have already sworn the Bridge Oath to \soren's ancestors---sealed with whalebone and witnessed by the fog.
+
+The Aeler know. They watch from their toll-keeps. A Fortune-Delver once told me: ``The bridge is a ledger. Every crossing is an entry. You cannot erase a line; you can only pay it forward.'' I intend to pay.
+
+\section*{The Fenwood Estate}
+
+The party arrives at the Fenwood keep---improved from the pithy county of the Exile Road. It is now a grim fortress of black timber and whitewashed stone, surrounded by drained fields and peat stores.
+
+Read:
+\begin{quoting}
+The Fenwood hall is cold despite the hearth. \aldric{}---grey-haired, with the scars of a Black Banner youth---does not rise. ``The Linns have broken the eastern passes,'' he says. ``Tarlington will fall within the month. I have a choice to make. So do you.''
+\end{quoting}
+
+\subsection*{Clock: Tarling Suspicion \clock{4}}
+
+Advances when:
+\begin{itemize}[leftmargin=*]
+\item PCs are seen with Linnic agents in public
+\item \aldric{} fails to provide expected levies
+\item A Tarling spy intercepts correspondence
+\end{itemize}
+When full, the Tarlings arrest \aldric{} and seize the keep. \textbf{Fenwood Reckoning} resets to 0; the party must rescue him or flee.
+
+\subsection*{Key Encounter: The Tarling Council}
+
+The Tarling duke summons the Fenwoods to a war council. He demands a levy of men and iron.
+
+Read:
+\begin{quoting}
+The Tarling duke grips his throne. ``The heathens are at our gates. Every lord owes me swords. What say you, Fenwood?'' Behind him, a map of Viterra shows half the province already in flames.
+
+\aldric{} smiles. ``I have sent what I can. The rest...'' He pauses. ``The rest is coming by hidden road.''
+\end{quoting}
+
+\textbf{Options:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Loyalty Feigned} --- Send a token force. \textbf{Tarling Suspicion +1}, \textbf{Linnic Momentum --1}.
+\item \textbf{Honest Aid} --- Commit real troops. \textbf{Tarling Suspicion --1}, \textbf{Fenwood Reckoning +2}.
+\item \textbf{The False Levy} --- Send men secretly loyal to the Fenwoods, dressed as Tarling conscripts. \textbf{Wits + Deception}, \dv{4}. On success, the troops will turn at a signal. \textbf{Fenwood Reckoning +1}, \textbf{Tarling Suspicion +1} (risky).
+\end{itemize}
+
+\subsection*{Key Encounter: The True Mason's Audit}
+
+A True Mason arrives to inspect the keystone rights of the Fenwood granaries.
+
+Read:
+\begin{quoting}
+A woman in a dust-grey cloak unrolls a parchment. ``The Compact requires an annual tithe in grain or silver. Your family has not paid in three years.'' She taps the parchment. ``The debt is now twelve hundred bushels. Or you may pledge a service.''
+\end{quoting}
+
+\textbf{Options:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Pay the grain:} \textbf{Survival --3}, but \textbf{True Mason Favor +2}.
+\item \textbf{Pledge service:} Repair the Tarlington Bridge after the war. Gain \textbf{Obligation \clock{4}} to the Masons, but \textbf{Keystone Debt --2}.
+\item \textbf{Refuse:} \textbf{Keystone Debt +2}; the Mason warns that the bridge may be closed to Fenwood traffic.
+\end{itemize}
+
+\subsection*{The Linnic Envoy}
+
+A Linnic captain arrives under cover of night. She demands to know when the Fenwoods will strike.
+
+Read:
+\begin{quoting}
+``You would rob us of the prize?'' the captain snarls. ``We bled for the passes. Our dead freeze in the hills.''
+
+\aldric{} pours mead. ``You seek to be kings of Viterra. I seek to be the one who opens the gate. We are not enemies. We are partners. The bridge is large enough for both our banners---but only one hand can hold the key.''
+\end{quoting}
+
+The party must decide: support \aldric's plan (gain \textbf{Fenwood Reckoning +3}, risk alienating the Linns) or cede the glory (gain \textbf{Linnic Momentum +3}, but the Fenwoods become vassals, not allies).
+
+\subsection*{Act II Resolution}
+
+Record \textbf{Fenwood Leverage} as a new clock (starting 0). It advances when the party secures Aeler aid, seizes keystone rights, or outmaneuvers the Linns. When full (\clock{4}), the Fenwoods control the bridge's center.
+
+\clearpage
+
+\chapter{Act III: The Bridge of Stone and Shadow}
+\textbf{Narrator: \mavron, Vhasian Chronicler}
+
+\epigraph{I was in Tarlington when the news came. The Linns had crossed the Yloka. The Fenwoods had marched from the fens. And the great bridge---the Spine of Viterra---became a battlefield of three banners.}{\mavron}
+
+\lettrine{I}{} saw the wraiths rise. Not ghosts of the empire---older things. Echoes of the True Masons who had first laid the keystone. They did not mourn the Tarlings. They did not fear the Linns. They enforced the Compact.
+
+The Tarlings burned the western span to slow the invaders. The fire caught the old wards. For one night, the bridge existed in two places at once---as stone and as shadow. Men walked into the mist and emerged hours older, or not at all.
+
+\section*{The Three-Way Battle}
+
+The Tarlings hold the eastern gatehouse. The Linns press from the north. The Fenwoods approach from the south, their true colors still hidden.
+
+\subsection*{Clocks}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Tarling Resolve \clock{6}} --- Advances with Tarling successes. When full, they refuse all terms and fight to the death.
+\item \textbf{Linnic Fury \clock{6}} --- Advances with Linnic brutality. When full, they storm the bridge regardless of negotiation.
+\item \textbf{Fenwood Leverage \clock{4}} --- Advances when the PCs reveal secrets, sabotage, or rally allies. When full, they control the bridge's center.
+\end{itemize}
+
+\subsection*{The Wraiths' Price}
+
+The ancient bridge-wardens appear, translucent figures in chiseled armor.
+
+Read:
+\begin{quoting}
+``The Spine wakes,'' they speak in unison. ``Name your crossing or turn back. The living do not dictate terms to the dead. The Compact is eternal. Who will pay the toll?''
+\end{quoting}
+
+The wraiths accept payment in concrete terms:
+\begin{itemize}[leftmargin=*]
+\item \textbf{The Laurel Seal} (if still held) --- Surrender to the Aeler guild. Gain \textbf{True Mason Favor +4}, but lose the heirloom permanently (it becomes a keystone anchor).
+\item \textbf{A Repair Vow} --- Swear to rebuild a collapsed Aeler aqueduct. \textbf{Obligation \clock{6}}, but the bridge stands.
+\item \textbf{A Keystone Offering} --- A magical item or significant treasure, weighed against the bridge's shadow. \textbf{Wits + Lore}, \dv{4}.
+\end{itemize}
+If the party fails to pay, the wraiths withdraw their protection. The Tarlings may now burn the span (advance \textbf{Bridge Fire} by 2).
+
+\begin{mechanicbox}{What Lurks in the Shadow of the Bridge}
+\textbf{The Shadow Span:} When the Bridge Fire clock reaches 2, the bridge exists in two states simultaneously. Characters may step into the shadow-bridge (treat as the Mistland's fog: lose 1 memory per hour, but move twice as fast). The wraiths are more talkative here, but less merciful.
+\end{mechanicbox}
+
+\subsection*{The Fortune-Delver's Double-Cross}
+
+If the party accepted her aid in Act I, she now appears on the bridge's midpoint.
+
+Read:
+\begin{quoting}
+``The Compact has been updated,'' she announces. ``The bridge will remain open---for a toll. One silver per head. And the Fenwoods will collect it on our behalf. That was the deal.'' She smiles. ``You didn't ask whose share I was taking.''
+\end{quoting}
+
+\textbf{Outcome:} The party gains control of the toll (a permanent \textbf{Standard Asset}), but the Aeler take a 40\% cut. They may attempt to renegotiate (\textbf{Presence + Sway}, \dv{5}) or refuse and fight (the factors are guarded by \textbf{Cap 3} Aeler armsmen).
+
+\subsection*{The Betrayal}
+
+At the critical moment, \aldric{} signals his hidden troops. The Fenwood levy turns on the Tarling rear guard.
+
+Read:
+\begin{quoting}
+The Tarling duke stares as his own knights lower their lances at his back. ``Fenwood,'' he whispers. ``I gave you land. I gave you bread.''
+
+\aldric{} does not look away. ``You gave us humiliation. The road does not forgive. It reschedules.''
+\end{quoting}
+
+\textbf{Choice for the PCs:}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Mercy} --- Spare the duke. Gain \textbf{Obligation \clock{4}} to a surviving Tarling heir. \textbf{Fenwood Reckoning --2}.
+\item \textbf{Execution} --- Kill him. Future \textbf{Tarling Favor --4}, \textbf{Linnic Momentum +2}, but \aldric{} gains the condition \condition{Oath-Breaker's Eyes} (cannot meet his own gaze in mirrors).
+\end{itemize}
+
+\clearpage
+
+\chapter{Act IV: The King's Capitulation}
+\textbf{Narrator: \aldric{} (final confession)}
+
+\epigraph{The war ended not on the bridge, but in a tent on the south bank. The King of Vhasia---a Blood, a man whose ancestors had wed Valvano princesses---came to parley.}{\aldric}
+
+\lettrine{T}{he} King of Vhasia offered the Linns what they wanted: the crown of Viterra, the title of Duke in Vhasia, and a marriage pact to seal it. They called it a capitulation. It was a coronation.
+
+As for me, I knelt to the new king. He called me ``Chancellor.'' I called him ``my lord.'' We both knew the debt was unpaid. The road only reschedules.
+
+\section*{The Feast of Two Thrones}
+
+The Linnic captain (now Jarl Everblood) takes the crown. The King of Vhasia signs the treaty.
+
+\subsection*{Outcomes}
+\begin{itemize}[leftmargin=*]
+\item \textbf{If the Fenwoods seized the bridge} --- Named \textbf{Marquesses of the Tarlington Gap}, with control of the southern tolls. \textbf{Fenwood Leverage} becomes a permanent \textbf{Standard Asset}.
+\item \textbf{If they ceded to the Linns} --- Named \textbf{Stewards of the Fens}, with a marriage alliance to the new dynasty. Gain \textbf{Everblood Promise} (String).
+\item \textbf{If the Aeler factor was honored} --- The True Masons grant a \textbf{Keystone Charter}. Once per session, reroute a toll or crossing, treating \textbf{Desperate} as \textbf{Controlled}.
+\end{itemize}
+
+\subsection*{The Ledger Closes}
+
+\aldric{} returns to his keep. He writes in the leather book---the same ledger his ancestors carried from Ecktoria.
+
+Read:
+\begin{quoting}
+``We buried the Valvano name so we could live. Today, we helped bury the Tarlings so we could rise. The road is not straight. It is not kind. It is only long. Let the fourth sack come. We will be ready.''
+\end{quoting}
+
+\begin{witchclosing}
+A ledger is a promise that outlives the hand that writes it. The Fenwoods have learned to pay. The Tarlings did not. The Aeler will wait. They have all the time in the world---or at least, until the bridge falls.
+\end{witchclosing}
+
+\clearpage
+
+\chapter*{Epilogue: The Chancellor's Ledger}
+\addcontentsline{toc}{chapter}{Epilogue: The Chancellor's Ledger}
+
+\lettrine{A}{} True Mason arrives at the Fenwood keep a month after the battle. He inspects the keystone of the new granary, nods, and stamps a slate tile.
+
+``The Compact holds,'' he says. ``The bridge will stand for another thousand years---if you keep your promises.''
+
+\aldric{} signs his name in the Aeler ledger---not as Valvano, not as a Tarling vassal, but as \textit{Chancellor of the Fens and Warden of the Spine}.
+
+\vspace{2em}
+\noindent\textit{--- From the Tarlington archives, copied in the year 876 AR, under the lamp, bread and salt.}
+
+\vspace{2em}
+\noindent\textit{The road does not forgive a debt. It only reschedules it.}
+
+\clearpage
+
+\appendix
+\chapter*{Appendix: Mechanics \& Tools}
+\addcontentsline{toc}{chapter}{Appendix: Mechanics \& Tools}
+
+\section*{True Mason Apprentice (Follower)}
+
+If the party aided the True Masons, they may gain a young Mason.
+
+\textbf{Cap: 2} \quad \textbf{Upkeep: 1} (food and materials)
+\begin{itemize}[leftmargin=*]
+\item \textbf{Independent Action:} Once per session, declare \textit{``He reads the stone.''} Gain \textbf{+2 dice} to any roll involving infrastructure, hidden passages, or structural weakness.
+\item \textbf{Harm: 2} \quad \textbf{Exposure: 3}
+\end{itemize}
+
+\section*{The Bridge-Wraith's Boon (Epic Asset, 12 XP)}
+
+If the PCs appeased the Aeler wraiths:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Free Use (once per session):} Declare that a doorway or passage is ``bound.'' Supernatural creatures cannot cross it for one exchange.
+\item \textbf{Boon Activation (1 Boon):} Ask the wraith a question about any bridge or crossing in the known world. It answers truthfully but cryptically.
+\end{itemize}
+
+\section*{Keystone Charter (Standard Asset)}
+
+If the Fenwoods honored the Compact:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Free Use (once per session):} Reroute a toll or bridge crossing. Treat a \textbf{Desperate} navigation roll as \textbf{Controlled}.
+\item \textbf{Boon Activation (1 Boon):} Temporarily close a bridge to pursuing enemies for one exchange.
+\end{itemize}
+
+\clearpage
+
+\chapter*{Quick Reference: Clocks}
+\addcontentsline{toc}{chapter}{Quick Reference: Clocks}
+
+\begin{center}
+\begin{tabular}{@{}llp{5cm}p{5cm}@{}}
+\toprule
+\textbf{Clock} & \textbf{Size} & \textbf{Advances When} & \textbf{Filled Effect} \\
+\midrule
+Linnic Momentum & 8 & Securing fords, delivering supplies & Linns reach Tarlington first \\
+Tarling Resistance & 6 & Successful counter-attacks & Invasion stalls; Fenwoods caught between \\
+Fenwood Reckoning & 6 & Aiding Linns, seizing infrastructure & Must declare allegiance openly \\
+Keystone Debt & 6 & Taking Aeler aid without tribute & Bridge closed to Fenwoods \\
+True Mason Favor & 4 & Offering heirlooms, aiding repairs & Bridge reinforced; cannot be burned \\
+Tarling Suspicion & 4 & Seen with Linns, secrets exposed & Aldric arrested; rescue required \\
+Fenwood Leverage & 4 & Securing Aeler aid, sabotage & Control of bridge's center \\
+Bridge Fire & 4 & Wards weakened, Tarlings desperate & Span burns; battle shifts to river \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+
+\lettrine{T}{his} book was written in a toll-keep on the south bank of the Tarlington Gap, on paper that had once been a customs manifest. The ink is lamp-black cut with the ash of a burned Aeler contract. The binding is stone-grey linen.
+
+\gray{} notes: the Aeler are ``soft colonizers''---they do not wave banners, but their keystones are everywhere. The Fenwoods learned to pay. The Tarlings did not. The road remembers.
+
+\vspace{1em}
+\noindent The ninth keystone remains unsealed. The ninth toll remains uncollected. The ledger is open.
+
+\end{document}
+
