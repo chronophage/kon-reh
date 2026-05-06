@@ -1,9 +1,9 @@
-\documentclass[11pt, twoside]{book}
+\documentclass[11pt,twoside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{ebgaramond} 
+\usepackage{ebgaramond}
 \usepackage{geometry}
-\geometry{a5paper, margin=1.2in, inner=1.5in, outer=0.8in}
+\geometry{a5paper,margin=1.2in,inner=1.5in,outer=0.8in}
 \usepackage{graphicx}
 \usepackage{epigraph}
 \usepackage{lettrine}
@@ -15,62 +15,81 @@
 \usepackage{microtype}
 \usepackage{booktabs}
 
-% Colors
+% ----------------------------------------------------------------------
+%   Colours
+% ----------------------------------------------------------------------
 \definecolor{fracture}{RGB}{120, 80, 60}
 \definecolor{cracksilver}{RGB}{180, 180, 200}
 \definecolor{bloodedge}{RGB}{140, 40, 40}
 \definecolor{forestdeep}{RGB}{40, 70, 50}
 
-% Header/Footer
+% ----------------------------------------------------------------------
+%   Header / Footer
+% ----------------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE]{\leftmark}
 \fancyhead[RO]{\rightmark}
-\fancyfoot[CE, CO]{\thepage}
-\fancyfoot[LE, LO]{\textcolor{fracture}{\textit{The Knave's Regret}}}
+\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[LE,LO]{\textcolor{fracture}{\textit{The Knave's Regret}}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Chapter style
+% ----------------------------------------------------------------------
+%   Chapter / Section Styles
+% ----------------------------------------------------------------------
 \titleformat{\chapter}[display]
-{\normalfont\Huge\bfseries\color{fracture}}
-{\chaptername\ \thechapter}
-{20pt}
-{\Huge}
+  {\normalfont\Huge\bfseries\color{fracture}}
+  {\chaptername\ \thechapter}
+  {20pt}
+  {\Huge}
 \titlespacing*{\chapter}{0pt}{-50pt}{40pt}
 
-% Section style
 \titleformat{\section}
-{\normalfont\Large\bfseries\color{fracture}}
-{\thesection}{1em}{}
+  {\normalfont\Large\bfseries\color{fracture}}
+  {\thesection}{1em}{}
 
-% Epigraph style
+% ----------------------------------------------------------------------
+%   Epigraph
+% ----------------------------------------------------------------------
 \setlength{\epigraphwidth}{0.7\textwidth}
 \renewcommand{\epigraphflush}{flushright}
 \renewcommand{\sourceflush}{flushright}
 
-% Custom commands
-\newcommand{\scenebreak}{\vspace{1em}\centerline{\textcolor{fracture}{\rule{0.4\textwidth}{0.4pt}}}\vspace{1em}}
-\newcommand{\mechanicbox}[1]{\begin{center}\fbox{\parbox{0.9\textwidth}{\textbf{#1}\par\smallskip}}}
+% ----------------------------------------------------------------------
+%   Custom commands
+% ----------------------------------------------------------------------
+\newcommand{\scenebreak}{%
+  \vspace{1em}%
+  \centerline{\textcolor{fracture}{\rule{0.4\textwidth}{0.4pt}}}%
+  \vspace{1em}}
+\newcommand{\mechanicbox}[1]{%
+  \begin{center}\fbox{\parbox{0.9\textwidth}{\textbf{#1}\par\smallskip}}%
+  \end{center}}
 
+% ----------------------------------------------------------------------
+%   Document start
+% ----------------------------------------------------------------------
 \begin{document}
 
-% --- Title Page ---
+% ======================================================================
+%   Title page
+% ======================================================================
 \newgeometry{margin=0.5in}
 \begin{titlepage}
-\centering
-\vspace*{2cm}
-{\Huge\bfseries\color{fracture} THE KNAVE'S REGRET\par}
-\vspace{1cm}
-{\Large A Vhasian Expansion for Fate's Edge\par}
-\vspace{1.5cm}
-{\large Set down in the canton of Rouen, by the Silent Stair\par}
-\vspace{2cm}
-{\normalsize \textcolor{fracture}{``When the armor closes, the heart must open---or break.''}}\par}
-\vspace{1cm}
-{\small Under the lamp, bread and salt --- and a song for the armor-bound.\par}
-\vfill
-{\normalsize Year of the Broken Lance, 847 AR\par}
+  \centering
+  \vspace*{2cm}
+  {\Huge\bfseries\color{fracture} THE KNAVE'S REGRET\par}
+  \vspace{1cm}
+  {\Large A Vhasian Expansion for Fate's Edge\par}
+  \vspace{1.5cm}
+  {\large Set down in the canton of Rouen, by the Silent Stair\par}
+  \vspace{2cm}
+  {\normalsize \textcolor{fracture}{``When the armor closes, the heart must open---or break.''}}\par
+  \vspace{1cm}
+  {\small Under the lamp, bread and salt --- and a song for the armor‑bound.\par}
+  \vfill
+  {\normalsize Year of the Broken Lance, 847 AR\par}
 \end{titlepage}
 \restoregeometry
 
@@ -78,266 +97,385 @@
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
-\emph{For the knight who unbuckled his gorget to hear a boy's voice.\\
-For the Cantor who carries the silence between notes.\\
-For the chivalry that outlives the peace.}
+  \emph{For the knight who unbuckled his gorget to hear a boy's voice.\\
+  For the Cantor who carries the silence between notes.\\
+  For the chivalry that outlives the peace.}
 \end{center}
 \vspace*{\fill}
 \newpage
 
-% --- Framing Device: The Cantor's Vigil ---
+% ======================================================================
+%   Framing device – The Cantor's Vigil
+% ======================================================================
 \chapter*{The Cantor's Vigil}
 \addcontentsline{toc}{chapter}{The Cantor's Vigil}
 \markboth{THE CANTOR'S VIGIL}{THE CANTOR'S VIGIL}
 
-\lettrine{T}{he} bells of Rouen ring differently now. In the cantons beyond the walls, where the ducal forests meet the Ethorian marches, they ring for jousts and for the binding of seasonal oaths. Within the city, they ring for markets and marriages. But in the Chapel of the Silent Stair, where Cantor Alain keeps his vigil, the bells are muffled, wrapped in felt, so that the resonance does not disturb the dead.
+\lettrine{T}{he} bells of Rouen ring differently now.  In the cantons beyond the walls—where the ducal forests meet the Ethorian marches—they ring for jousts and for the binding of seasonal oaths.  Within the city they ring for markets and marriages.  In the Chapel of the Silent Stair, however, the bells are muffled, wrapped in felt so that their resonance does not disturb the dead.
 
-Alain has returned to Vhasia after twenty years on the Cantor's road. He has sung for barons in their drafty halls and for charcoal-burners in their smoke-hollows. He has taken into his flesh the Corruption of his Patron---not as punishment, but as translation. His voice carries harmonics that make candles weep wax. His shadow, when the sun is low, moves a half-step behind his heels. He has feathers, fine as down, growing from his temples that he hides beneath a scholar's cap.
+Alain has returned to Vhasia after twenty years on the Cantor's road.  He has sung for barons in drafty halls and for charcoal‑burners in smoke‑filled hollows.  He bears the Corruption of his patron—not as a curse, but as a translation.  His voice now carries harmonics that make candles weep wax; his shadow, when the sun is low, moves a half‑step behind his heels.  Fine feathers—down‑soft as a newborn’s—grow from his temples, hidden beneath a scholar’s cap.
 
-He touches the silver ring on his thumb---not silver anymore, but silver fused to bone, the metal cracked and the crack widened by time into a canyon that pulses with his heartbeat. He is about to sing the \emph{Planctus Armatus}, the Lament for the Armored, a Cantor's rite that remembers Sir Corin, who unbuckled his gorget to hear a thief's voice and was destroyed by the mercy he offered.
+He presses the ring on his thumb.  It is no longer pure silver but silver fused to bone, a crack widened by time into a canyon that pulses with his heartbeat.  Tonight he will sing the \emph{Planctus Armatus}, the Lament for the Armored—a Cantor’s rite that remembers Sir Corin, the knight who unbuckled his gorget to hear a thief’s voice and was undone by the mercy he offered.
 
-The song is not for the knight's death. It is for the moment before---when the armor opened, and the man inside reached out.
-
-\scenebreak
-
-The Province Wars had not yet ended when Sir Corin found the boy. The duchies of Vhasia were fracturing along ancient fault-lines: Ethor against Adria, the Ethorian marches against the central cantons, each duke claiming the sunburst shield while the peasantry burned the fields to keep them from quartering armies. Rouen was a loyalist city then, holding for the Crown while the provinces fell away like scales from a wounded serpent.
-
-Corin had ridden from the rout at the Black Ford, where the Bulwark of the North had fallen not to treachery but to arithmetic---too many spears, not enough stone. He had ridden through the ash-grey morning, his armor still caked with the mud of the ford, his sword hand cramped from gripping. He was forty years old, a knight of the Ethor canton, sworn to a Crown that had forgotten his name.
-
-He found the boy in a burned orchard, looting the body of a cook. The boy was twelve, humming something tuneless as he worked the dead man's ring from his thumb.
-
-``Stand,'' Corin said.
-
-The boy stood. The ring came free. Corin saw the theft and saw, beneath it, the hunger. The Province Wars had made thieves of honest men, but this was a child.
-
-``I should hang you,'' Corin said. He meant it. He had hanged men for less---deserters, looters, those who broke the chivalric code that was the only law left in the fractured duchies.
-
-But the boy sang.
-
-It was not a song Corin knew. It was Ethorian, perhaps, or older---a ballad of the \emph{Barde de Fer}, the Knight of Iron who forgot his lady's face because his visor was always down. The boy sang it a cappella, his voice clear and untrained, rising from the soot like a lark from a burned field. He sang of the knight who unbuckled his gorget to feel the rain and was struck by an arrow in the throat, who died smiling because he had felt the water.
-
-Corin listened. His armor was heavy. It had been heavy for twenty years, but he had stopped noticing until this moment, this song. He realized he had not seen his own face in a mirror, unhelmed, in months. He realized he did not remember the color of his wife's eyes, only the shape of her letters, which he read by lantern-light through his visor.
-
-``Who taught you that?'' Corin asked.
-
-``No one,'' the boy said. ``I made it. For the cook. He was kind.''
-
-Corin loosened the twine. Not enough to free, but enough to let the blood move. ``Walk,'' he said. ``And sing if you must. The road to Rouen is long, and the armor grows heavier with every mile.''
+The song is not for the knight’s death.  It is for the moment before—when the armor opens and the man inside reaches out.
 
 \scenebreak
 
-Rouen was a city of bells and fractures. The loyalist governor held the citadel, but the lower town was a maze of competing jurisdictions---ducal law, canton law, the law of the sword. Corin brought the boy to the empty courthouse, meaning to fulfill his oath of justice, but the magistrate had fled to Adria, and the seals were broken.
+% ======================================================================
+%   The Province Wars – Corin meets the boy
+% ======================================================================
+The Province Wars had not yet ended when Sir Corin found the boy.  The great cantons of Vhasia were fracturing along ancient fault‑lines: Ethor against Adria, the Ethorian marches against the central cantons, each duke claiming the sunburst seal while the peasantry burned the fields to keep armies from quartering there.  Rouen was a loyalist city then, holding for the Crown while the provinces fell away like scales from a wounded serpent.
 
-The boy watched Corin's face crumble. ``There is no law,'' the boy said. ``Only the armor. Only the song.''
+Corin had ridden from the rout at Black Ford, where the Bulwark of the North fell not to treachery but to arithmetic—too many spears, not enough stone.  He rode through an ash‑grey morning, his armor still caked with the ford’s mud, his sword hand cramped from gripping the hilt.  He was forty, a knight of the Ethor canton, sworn to a Crown that had long forgotten his name.
 
-Corin drew his dagger. The boy did not flinch. But Corin cut the twine, and in that cutting, he unbuckled something in himself. He had kept the chivalric code like a gorget, tight against the throat, and now he loosened it to breathe.
+He found the boy in a burned orchard, looting the corpse of a cook.  The boy was twelve, humming a tuneless fragment as he worked the dead man’s ring free from his thumb.  The kitchen still smelled of fresh dough and smoke; a sack of flour lay open beside the body, a reminder of the night the cook had been forced to feed a starving garrison.
+
+``Stand,'' Corin ordered.
+
+The boy stood.  The ring slipped free.  Corin saw the theft and, behind it, the hunger.  The wars had made thieves of honest men, but this was a child.
+
+``I should hang you,'' Corin said.  He meant it.  He had hanged men for less—deserters, looters, those who broke the chivalric code that was the only law left in the fractured duchies.
+
+Instead of pleading, the boy began to sing.  It was not a song of fear but a simple, halting lament he had learned while kneading bread for the cook.  The rhythm staggered like a limping man, the melody rising and falling like dough in a hearth.  He sang the “Old Vhasian Ballad” that would later echo in Alain’s own voice.
+
+\begin{verse}
+\emph{``Forget‑me‑not,''}\\
+\emph{The proud knight said,}\\
+\emph{Dressed and ready for war.}\\
+\emph{His lady kissed him through her tears,}\\
+\emph{Fearing to see him no more.}\\[4pt]
+
+\emph{Down by the river, where the purple flowers grow,}\\
+\emph{He held her close and whispered his love,}\\
+\emph{But armed and armored, he felt not her touch—}\\
+\emph{The silk of her delicate glove.}\\[4pt]
+
+\emph{She wept. He rose, as if to leave,}\\
+\emph{But turned for the flowers instead.}\\
+\emph{Overreaching, he tumbled down,}\\
+\emph{And as he sank, he said,}\\
+
+\emph{``Forget‑me‑not.''}
+\end{verse}
+
+Corin listened.  His armor was heavy.  It had been heavy for twenty years, but he had stopped noticing its weight until this moment, until this clumsy, heartfelt thing rose from a soot‑streaked child.  He realized he had not seen his own face in a mirror unhelmed for months; he realized he could no longer picture his wife’s eyes, only the shape of her letters, read by lantern‑light through his visor.
+
+``Who taught you that?'' Corin asked, his voice softer now, the edge of the hanging judge gone from it.
+
+``The cook,'' the boy said, gesturing to the dead man. ``He was kind. He taught me to knead, and he taught me the song. Said it was about the weight of things we choose to carry.''
+
+Corin loosened the twine that bound the boy’s wrist.  Not enough to free him, but enough to let the blood flow.  ``Walk,'' he said. ``And sing if you must. The road to Rouen is long, and the armor grows heavier with every mile.''
+
+\scenebreak
+
+% ======================================================================
+%   Rouen – the siege begins
+% ======================================================================
+Rouen was a city of bells and fractures.  The loyalist governor held the citadel, but the lower town was a maze of competing jurisdictions—ducal law, canton law, the law of the sword.  Corin brought the boy to the empty courthouse, intending to fulfil his oath of justice, but the magistrate had fled to Adria, and the seals were broken.
+
+The boy watched Corin’s face crumble.  ``There is no law,'' he said. ``Only the armor. Only the song.''
+
+Corin drew his dagger.  The boy did not flinch.  Cutting the twine, Corin unbuckled something inside himself. He had kept the chivalric code like a gorget, tight against his throat; now he loosened it to breathe.
 
 ``Stay,'' Corin said. ``Help me hold the walls. Help me remember what the armor is for.''
 
-The boy stayed. His name was Alain. He carried water. He sang.
-
-The siege came seven days later. The provincial forces, seeing the loyalist standard still flying, determined to raze Rouen as an example. They brought rams and fire. Corin stood at the south gate, his armor buckled now not for show but for survival, and he fought.
-
-But he had changed. He had unbuckled his mercy, and he could not buckle it closed again. He spared a provincial soldier who begged for his life. He opened the postern to refugees when the governor ordered it sealed. He became, in the eyes of the loyalist command, unreliable.
-
-On the seventh day, when the gate fell, Corin was not at the barricade. He was in the square, helping Alain carry a wounded child to the chapel. The provincial spears found him there, unhelmed, his gorget open, his face turned to the sky.
-
-He died smiling. Alain sang him out---the \emph{Planctus}, the first time it was ever sung---and the song was so beautiful that the provincial soldiers paused in their looting to listen.
-
-Then they burned the chapel.
+The boy stayed.  His name was Alain.  He carried water.  He sang.
 
 \scenebreak
 
-Now, forty years later, Alain sings in the rebuilt chapel. The Province Wars are ended, technically, though the duchies still raid each other and the Crown is more theory than practice. Rouen is prosperous. The jousts have returned to the fields beyond the walls. Knights wear armor polished like mirrors and tilt for the favor of ladies whose names they remember, because the peace allows memory.
+The siege pressed on for a week, a relentless tide of iron and fire that rolled against Rouen’s ancient walls.  The provincial army, angry that the loyalist banner still flew over the citadel, resolved to raze the city as a warning to the rest of the cantons.  Battering rams knelled the outer gate while torch‑lit ranks surged forward, their shadows dancing like black‑winged swallows on the cobblestones.
 
-But Alain knows---knows in his changed flesh, in the feathers that shed when he sings the high notes, in the shadow that moves independently when the moon is full---that the disconnect remains. The knights buckle their gorgets tight. The chivalry is performance. The mercy is scripted. And beneath the jousts and the romance, the old fractures wait, breathing in their iron shells.
+Corin was at the heart of the defence.  From the south gate he barked orders that cut through the clamor like a sword through wheat, his voice a low, steady drum that steadied the weary militia.  He dispatched archers to the parapets, shored up the wooden palisades, and slipped a hand‑signed letter to the quartermaster demanding more supplies.  Alain watched him only in passing—an outline of steel beneath a cracked helm, a flash of determined eyes that never lingered long enough for a name to settle on his tongue.  The knight’s presence was felt more than seen; it was the clink of gauntlets, the rustle of a cloak, the unspoken promise that the gate would hold—at least for a while.
 
-He sings the \emph{Planctus Armatus}. The congregation weeps, not for Corin, who is forty years dead, but for the beauty of the voice. They do not hear the warning. They do not know that Alain sings not for the past but for the future, for the moment when the armor must open again or shatter.
+When the first wave of fire‑spitting siege engines hurled burning projectiles into the city, Alain felt the heat kiss the back of his neck.  He could have fled, could have hidden behind the market stalls like the rest of the townsfolk, but the boy‑song still rang in his ears and the cracked ring on his thumb pulsed with an urgency he could not ignore.  He thought of the cook’s flour‑dusted hands, of the lullaby the child sang while kneading dough, and of the promise the song carried: *“Forget‑me‑not.”*  With that memory as his shield, he made a silent vow.
 
-The song ends. Alain touches the cracked ring on his thumb. It pulses. The peace is old. The armor is polished. But he can hear, beneath the prosperity, the creak of metal tightening, the snap of buckles being secured, the silence of hearts choosing protection over connection.
+He turned away from the chaos and knelt beside a small alley where a wounded child—no older than five—lay cradled in a heap of tattered blankets.  The boy’s breath was shallow, his cheek stained with ash.  Alain lifted him, his feathered hair brushing the child’s forehead, and hurried toward the chapel, the only place that still offered shelter from the rain of arrows.
 
-He bows. He leaves. His shadow follows a half-step behind.
+The battle raged on, and by the time the seventh day’s sun rose pale over the smoke‑blackened horizon, the southern gate finally gave way.  The wall crumbled, and the conquering forces surged into the city’s streets.  In the midst of the clamor, Alain felt a hand grasp his own—strong, calloused, and surprisingly gentle.  It was Sir Corin, his armour stripped of the ornamental gilding that had once glittered in tournament light, the visor half‑drawn as though he wished to see the faces of those he was fighting.
+
+Alain saw only a fleeting glimpse: Corin’s gauntlet, clenched around the child’s small hand for a heartbeat, then released as the knight turned to shield the little one from a falling beam.  The knight’s eyes, dark as forged iron, met Alain’s for a breath‑long instant, and in that look an unspoken apology passed—they would not fight side‑by‑side, but they shared the same sorrow.
+
+When the fighting finally ebbed, a grim procession emerged from the ruined square.  Corin’s body, still clad in the battered plates of his own making, was lifted upon a makeshift stretcher by two exhausted soldiers.  The culminating moment was not the roar of triumph from the victors, but the cold, detached words of the conquering lady who had overseen the assault—Lady Isolde of the Western March, her sable cloak heavy with the scent of pine and iron.
+
+She halted before the stretcher, her gloved hand resting lightly on the knight’s breastplate, where the insignia of the Order of the Iron Gorget was still faintly visible beneath the scorch.  Her eyes, usually sharp as a hawk’s talon, were lowered, not in grief but in calculation.
+
+\begin{quote}
+``A ransom would have solved this,'' Lady Isolde said, her voice flat as steel. ``We could have taken a price and avoided the extra loss.``  
+\end{quote}
+
+Around her, the provincial infantry lowered their weapons; the clang of steel fell silent as the reality of the cost settled over the courtyard.  Lord Merrick of the Black Vale, who had ordered the sack, watched the scene with a slight grimace—aware that the price of victory had already been paid in blood, not gold.
+
+Alain knelt beside the stretcher, his feathers ruffling with each gust of wind that carried ash and sorrow alike.  He pressed his lips to the cold steel of Corin’s breastplate and sang the opening verses of the \emph{Planctus Armatus}, the lament that would become the very soul of the stave.  His voice rose, raw and trembling, over the ruined chapel’s cracked arches, and the soldiers who had come to loot paused, their swords trembling in their hands, as the song wove the image of a knight who chose mercy over steel.
+
+When the final note fell, the chapel’s roof shuddered and a fire‑kissed collapse began.  Flames licked the rafters, and the wind seemed to echo the boy’s forgotten ballad, ``Forget‑me‑not,'' as the stone walls crumbled around them.
+
+Thus Sir Corin was carried out, his body a monument to both his courage and his vulnerability, while the conquering lord and lady stood on the threshold of the ruined chapel—recognising, in their own cold way, that even the most practiced chivalry could not mask the brutal reality of war.
+
+\scenebreak
+
+
+% ======================================================================
+%   Forty years later – Alain sings again
+% ======================================================================
+Now, forty years later, Alain sings in the rebuilt chapel.  The Province Wars are ended, technically, though the duchies still raid one another and the Crown is more theory than practice.  Rouen is prosperous.  Jousts have returned to the fields beyond the walls.  Knights wear armor polished like mirrors and tilt for the favor of ladies whose names they remember, because peace allows memory.
+
+Alain knows—knows in his altered flesh, in the feathers that shed when he hits the high notes, in the shadow that moves a half‑step behind him when the moon is full—that the disconnect remains.  Knights buckle their gorgets tight.  Chivalry is performance.  Mercy is scripted.  Beneath the jousts and the romance, the old fractures wait, breathing in their iron shells.
+
+He sings the \emph{Planctus Armatus}.  The congregation weeps, not for Corin—who is forty years dead—but for the beauty of the voice.  They do not hear the warning.  They do not know that Alain sings not for the past but for the future, for the moment when the armor must open again or shatter.
+
+The song ends.  Alain touches the cracked ring on his thumb.  It pulses.  The peace is old.  The armor is polished.  Yet beneath the prosperity he can hear the creak of metal tightening, the snap of buckles being secured, the silence of hearts choosing protection over connection.
+
+He bows.  He leaves.  His shadow follows a half‑step behind.
 
 \vspace{2em}
 \centerline{\textcolor{fracture}{\rule{0.4\textwidth}{0.4pt}}}
 \vspace{1em}
 
-\textit{This chronicle was compiled from the Cantor's testimony, from the armorer's marks on Corin's breastplate (now in the Rouen museum), and from the Ethorian ballads of the marches, which remember what the cantons forget.}
+\textit{This chronicle was compiled from the Cantor’s testimony, from the armorer’s marks on Corin’s breastplate (now in the Rouen museum), and from the Ethorian ballads of the marches, which remember what the cantons forget.}
 
 \vspace{0.5cm}
-\hfill \textit{--- Dusana of the Raven Road, Rouen, 847 AR}
+\hfill \textit{--- Dusana of the Raven Road, Rouen, 847 AR}
 
 \newpage
 
+% ======================================================================
+%   Table of contents
+% ======================================================================
 \tableofcontents
 \newpage
 
+% ======================================================================
+%   Game‑Mechanics Overview (summary of Fate’s Edge)
+% ======================================================================
+\chapter{Game‑Mechanics Overview}
+\label{ch:mechanics}
+
+Fate’s Edge is a narrative‑first tabletop role‑playing game.  Every action is resolved with the same three‑step loop:
+
+\begin{enumerate}
+  \item \textbf{Declare intent \& approach.}  The player says what they are trying to do and which skill they are using.
+  \item \textbf{Set Difficulty Value (DV) and Position.}  The GM decides how hard the task is (DV = 2–6) and whether the actor is in a \emph{Dominant}, \emph{Controlled}, or \emph{Desperate} position.  Position modifies the roll and may grant a \emph{Boon}.
+  \item \textbf{Roll the dice pool.}  Roll a number of d10 equal to \textbf{Attribute + Skill}.  Each result of 6–10 is a success; each result of 1 generates a \emph{Story Beat (SB)} for the GM.
+\end{enumerate}
+
+The \textbf{Outcome Matrix} (see the SRD) determines what happens:
+
+\begin{itemize}
+  \item \textbf{Clean Success} – successes ≥ DV and no SBs.  Intent achieved, no complications.
+  \item \textbf{Success \& Cost} – successes ≥ DV with one or more SBs.  Intent achieved, but the GM spends the SBs to add a complication, advance a clock, or worsen Position.
+  \item \textbf{Partial} – 0 < successes < DV.  Some progress, a complication, and the player gains 1 Boon.
+  \item \textbf{Miss} – no successes.  No progress, the GM spends SBs for complications, and the player gains 2 Boons.
+\end{itemize}
+
+\textbf{Boons} are a player‑controlled resource (max 5, trimmed to 2 at the end of a scene) that can be spent to:
+
+\begin{itemize}
+  \item Reroll one die after seeing the pool,
+  \item Activate an asset,
+  \item Improve Position by one step, or
+  \item Pay for a special effect listed in a talent or rite.
+\end{itemize}
+
+\textbf{Story Beats (SB)} are the GM’s currency for introducing complications, advancing clocks, or ticking clocks forward.  Every rolled ``1’’ creates one SB.
+
+For a detailed description of attributes, skills, talents, clocks, and the magic system, see the attached *Fate’s Edge – System Reference Document* (SRD).  The rules presented here are sufficient to play the scenes in this expansion.
+
+\scenebreak
+
+% ======================================================================
+%   Introduction – The Fractured Cantons
+% ======================================================================
 \chapter{Introduction: The Fractured Cantons}\label{ch:intro}
 
-\epigraph{When the duke rides out, the peasant locks the door. When the duke rides in, the peasant burns the field. This is the chivalry of Vhasia---the armor that protects and isolates in equal measure.}{--- The Gray Wanderer, at the Ethorian marches}
+\epigraph{When the duke rides out, the peasant locks the door.\\
+When the duke rides in, the peasant burns the field.\\
+This is the chivalry of Vhasia---the armor that protects and isolates in equal measure.}{--- The Gray Wanderer, at the Ethorian marches}
 
-Vhasia is a land of jousts and jurisprudence, of chivalric romance and constant low war. Since the sundering of the old Crown, the great cantons have fractured into duchies, palatinates, and marcher lordships, each claiming the sunburst seal, each raiding its neighbors for tribute, hostages, and the acknowledgment of lineage.
+Vhasia is a land of jousts and jurisprudence, of chivalric romance and constant low war.  Since the sundering of the old Crown, the great cantons have fractured into duchies, palatinates, and marcher lordships, each claiming the sunburst seal, each raiding its neighbours for tribute, hostages, and the acknowledgment of lineage.
 
-In the high season, the land is peaceful enough for tourneys. Knights polish their armor until it mirrors the sky. They ride to the tilt for the favor of ladies whose sleeves they wear, reciting verses of courtly love while the peasantry watches from the lists. But beneath the romance runs the older current: the Ethorian marches where the forest law still holds, the barrow-kings who demand tribute in stories, the sacred groves where armor must be unbuckled or the trees will not witness the oath.
+In the high season the land is peaceful enough for tourneys.  Knights polish their armor until it mirrors the sky.  They ride to the tilt for the favour of ladies whose sleeves they wear, reciting verses of courtly love while the peasantry watches from the lists.  Beneath the romance runs an older current: the Ethorian marches where the forest law still holds, the barrow‑kings who demand tribute in stories, and the sacred groves where armor must be unbuckled or the trees will not witness the oath.
 
-This expansion centers on the tragedy of Sir Corin and the Cantor who witnessed it, but it expands to encompass the chivalric culture of Vhasia---the disconnect between the armored ideal and the unarmored heart.
+This expansion centres on the tragedy of Sir Corin and the Cantor who witnessed it, but it also expands to encompass the chivalric culture of Vhasia—the disconnect between the armored ideal and the unarmoured heart.
 
 \section{The Nature of Vhasian Chivalry}
 
-The knights of Vhasia follow a code older than the Crown. It demands:
+The knights of Vhasia follow a code older than the Crown.  It demands:
+
 \begin{itemize}
-\item \textbf{Protection:} To defend the weak, provided they are within the knight's canton.
-\item \textbf{Courtesy:} To honor all ladies, provided their lineage is suitable.
-\item \textbf{Mercy:} To spare the defeated, provided they swear homage.
+  \item \textbf{Protection:} To defend the weak, provided they are within the knight’s canton.
+  \item \textbf{Courtesy:} To honour all ladies, provided their lineage is suitable.
+  \item \textbf{Mercy:} To spare the defeated, provided they swear homage.
 \end{itemize}
 
-The armor is the physical manifestation of this code---interlocking plates that separate the knight from the world. To unbuckle the gorget is to risk not only death but intimacy. Corin's tragedy was that he unbuckled at the wrong moment, for the wrong mercy, and the world was not gentle enough to receive it.
+Armor is the physical manifestation of this code—interlocking plates that separate the knight from the world.  To unbuckle the gorget is to risk not only death but intimacy.  Corin’s tragedy was that he unbuckled at the wrong moment, for the wrong mercy, and the world was not gentle enough to receive it.
 
 \section{What You Need}
-\textbf{Tier:} Seasoned (41--90 XP) \quad \textbf{Players:} 3--6 \quad \textbf{Length:} 3--4 sessions
+\textbf{Tier:} Seasoned (41–90 XP) \quad \textbf{Players:} 3–6 \quad \textbf{Length:} 3–4 sessions
 
 \subsection{Core Clocks}
 \begin{itemize}
-\item \textbf{The Armor Closes [6]} --- Advances when knights choose protection over mercy, when gorgets are buckled tight, when chivalry becomes siege mentality. When full, the cantons close their borders and the raids become wars.
-\item \textbf{The Song Escapes [8]} --- Advances when Cantors sing the truth, when mercy is shown, when armor is unbuckled. When full, a moment of connection occurs---but it may be fatal.
-\item \textbf{The Fracture Widens [10]} --- Advances with every chivalric gesture that masks a brutal reality. When full, the Province Wars reignite.
+  \item \textbf{The Armor Closes [6]} — advances when knights choose protection over mercy, when gorgets are buckled tight, when chivalry becomes siege mentality.  When full, the cantons close their borders and the raids become wars.
+  \item \textbf{The Song Escapes [8]} — advances when Cantors sing the truth, when mercy is shown, when armor is unbuckled.  When full, a moment of connection occurs—though it may be fatal.
+  \item \textbf{The Fracture Widens [10]} — advances with every chivalric gesture that masks a brutal reality.  When full, the Province Wars reignite.
 \end{itemize}
 
-% --- Setting: The Cantons ---
+% ======================================================================
+%   The Cantons of Vhasia
+% ======================================================================
 \chapter{The Cantons of Vhasia}\label{ch:cantons}
 
 \section{The Ethor Canton}
-The loyalist heartland, where the old Crown still holds nominal sway. Its knights are stern, legalistic, devoted to the code. Corin was Ethorian. Their castles are stone, their forests hunted out, their chivalry a matter of record-keeping.
+The loyalist heartland, where the old Crown still holds nominal sway.  Its knights are stern, legalistic, devoted to the code.  Corin was Ethorian.  Their castles are stone, their forests hunted out, their chivalry a matter of record‑keeping.
 
 \section{The Adria Palatinate}
-The southern canton, rich in wine and olive groves. Its knights are voluptuaries, lovers of poetry and song. They raid less for land than for hostages to ransom, for the drama of capture and release. Their chivalry is theatrical, performed.
+The southern canton, rich in wine and olive groves.  Its knights are voluptuaries, lovers of poetry and song.  They raid less for land than for hostages to ransom, for the drama of capture and release.  Their chivalry is theatrical, performed.
 
 \section{The Ethorian Marches}
-The western forests, where the old ways hold. Here, knights must unbuckle their armor to enter the sacred groves. Here, the \emph{Barde de Fer} ballads originate, warning of the knight who forgets his humanity. The marches are Vhasia's uncivilized heart, dangerous to armored men.
+The western forests, where the old ways hold.  Here, knights must unbuckle their armor to enter the sacred groves.  The \emph{Barde de Fer} ballads originate here, warning of the knight who forgets his humanity.  The marches are Vhasia’s uncivilised heart, dangerous to armored men.
 
 \section{Rouen: The Hub City}
-Where the cantons meet and clash. Rouen is a city of inns and tourney fields, of law courts and Ethorian shrines. It is neutral ground by tradition, though neutrality is a luxury of the powerful. The Silent Stair chapel, where Alain sings, is built on the site of Corin's death.
+Where the cantons meet and clash.  Rouen is a city of inns and tourney fields, of law courts and Ethorian shrines.  It is neutral ground by tradition, though neutrality is a luxury of the powerful.  The Silent Stair chapel, where Alain sings, is built on the site of Corin’s death.
 
-% --- Factions ---
+% ======================================================================
+%   Factions of the Fracture
+% ======================================================================
 \chapter{Factions of the Fracture}\label{ch:factions}
 
 \section{The Order of the Iron Gorget}
-A knightly order sworn to the ideal of total protection. They never unbuckle, never eat without helm, never touch skin to skin. They are fearsome in battle but increasingly isolated from the people they protect. Corin was once a member; he broke his vow when he spared Alain.
+A knightly order sworn to the ideal of total protection.  They never unbuckle, never eat without helm, never touch skin to skin.  They are fearsome in battle but increasingly isolated from the people they protect.  Corin was once a member; he broke his vow when he spared Alain.
 
 \textbf{Strings:} The Unbroken Seal (a gorget that has never opened), the Weight of Iron (inability to feel light touch), the Ledger of Mercies Refused.
 
-\section{The Cantor's Road}
-Not a faction but a calling. Cantors travel between cantons, singing the news, witnessing the truth. They are immune to chivalric protection but subject to its violence. Alain is the most famous of them, the one who survived Rouen.
+\section{The Cantor’s Road}
+Not a faction but a calling.  Cantors travel between cantons, singing the news, bearing witness.  They are immune to chivalric protection but subject to its violence.  Alain is the most famous of them, the one who survived Rouen.
 
 \textbf{Strings:} The Cracked Ring, the Second Voice, the Metamorphosis of Witnessing.
 
 \section{The Ethorian Groves}
-The old religion of the marches, keeper of the barrow-kings and the forest law. They demand that armor be removed on their thresholds. They remember what the cantons forget.
+The old religion of the marches, keeper of the barrow‑kings and the forest law.  They demand that armor be removed on their thresholds.  They remember what the cantons forget.
 
-\textbf{Strings:} The Unbuckled Threshold, the Barrow-King's Tribute (paid in stories), the Green Seal (which opens only to bare skin).
+\textbf{Strings:} The Unbuckled Threshold, the Barrow‑King’s Tribute (paid in stories), the Green Seal (which opens only to bare skin).
 
 \section{The Ducal Courts}
-Each canton has its court, its heralds, its keepers of chivalric record. They are the accountants of honor, tracking who owes whom the \emph{geste} of protection.
+Each canton has its court, its heralds, its keepers of chivalric record.  They are the accountants of honour, tracking who owes whom the \emph{geste} of protection.
 
 \textbf{Strings:} The Sunburst Seal (fractured), the Tourney List, the Ransom Ledger.
 
-% --- The Knight's Story ---
+% ======================================================================
+%   The Knight’s Story (Corin & the Song)
+% ======================================================================
 \chapter{The Armor and the Song}\label{ch:story}
 
 \section{The Ethorian Ballad of the Iron Bard}
-Before Corin, there was the legend. The Ethorians sing of a knight so armored he forgot his own face. He rode to a grove to meet his lady, but the trees would not part for steel. He unbuckled, and in that moment of vulnerability, he was struck. But he died smiling, having felt the sun.
+Before Corin there was the legend.  The Ethorians sing of a knight so armored he forgot his own face.  He rode to a grove to meet his lady, but the trees would not part for steel.  He unbuckled, and in that moment of vulnerability he was struck.  He died smiling, having felt the sun.
 
-This is the paradox of Vhasian chivalry: protection requires isolation, but honor requires connection. The armor is the barrier that makes mercy possible, but it must be lowered to deliver it.
+This is the paradox of Vhasian chivalry: protection requires isolation, but honour requires connection.  The armour is the barrier that makes mercy possible, but it must be lowered to deliver it.
 
-\section{Corin's Choice}
-During the siege of Rouen, Corin had three opportunities to re-buckle his gorget:
+\section{Corin’s Choices}
+During the siege of Rouen Corin had three opportunities to re‑buck his gorget:
+
 \begin{enumerate}
-\item When he captured Alain (he left it open to hear the song).
-\item When he spared the provincial soldier (he unbuckled to offer water).
-\item When he carried the child (he removed his helm to see the boy's face).
+  \item When he captured Alain (he left it open to hear the song).
+  \item When he spared the provincial soldier (he unbuckled to offer water).
+  \item When he carried the child (he removed his helm to see the boy’s face).
 \end{enumerate}
-Each unbuckling was a chivalric act. Each brought him closer to the spear.
 
-% --- Patrons ---
-\chapter{Patrons of the Armored}\label{ch:patrons}
+Each unbuckling was a chivalric act.  Each brought him closer to the spear that would end him.
+
+% ======================================================================
+%   Patrons
+% ======================================================================
+\chapter{Patrons of the Armoured}\label{ch:patrons}
 
 \section{Mykkiel, the Judge of the Scar}
-Here, Mykkiel is the patron of chivalric law, of the code that binds knights. But his Vhasian face is stern: he demands that the code be followed exactly, even when it breaks the heart.
+Mykkiel is the patron of chivalric law, of the code that binds knights.  His Vhasian face is stern: he demands that the code be followed exactly, even when it breaks the heart.
 
-\subsection*{Rite of the Iron Seal (Low, 4 XP)}
-Seal a promise in armor. It cannot be broken without physical pain. (Mark +1 Obligation.)
+\subsection*{Rite of the Iron Seal (Low, 4 XP)}
+Seal a promise in armour.  It cannot be broken without physical pain.  (Mark +1 Obligation.)
 
-\subsection*{Rite of the Unbuckled Gorget (Standard, 8 XP)}
-Open your armor to show vulnerability. Gain +2 dice to mercy rolls, but -2 to defense until the gorget is closed. (Mark +2 Obligation.)
+\subsection*{Rite of the Unbuckled Gorget (Standard, 8 XP)}
+Open your armour to show vulnerability.  Gain +2 dice to mercy rolls, but –2 to defence until the gorget is closed.  (Mark +2 Obligation.)
 
-\section{Ikasha, She Who Sleeps in the Armor}
-The secret patron of knights who long to remove their steel. She offers the dream of connection, the memory of skin. She is dangerous because she makes the armor feel heavy.
+\section{Ikasha, She Who Sleeps in the Armour}
+The secret patron of knights who long to remove their steel.  She offers the dream of connection, the memory of skin.  She is dangerous because she makes the armour feel heavy.
 
-\subsection*{Rite of the Forgotten Touch (Low, 4 XP)}
-Remember the sensation of rain on skin, of wind in hair. Gain +1 die to resist Corruption, but gain a Corruption tick anyway. (Mark +1 Fatigue.)
+\subsection*{Rite of the Forgotten Touch (Low, 4 XP)}
+Remember the sensation of rain on skin, of wind in hair.  Gain +1 die to resist Corruption, but gain a Corruption tick anyway.  (Mark +1 Fatigue.)
 
-\subsection*{Rite of the Open Helm (Standard, 8 XP)}
-Remove your helm in a dangerous place. You are seen truly. The enemy knows your face. (Mark +2 Corruption; gain a String on anyone who witnesses.)
+\subsection*{Rite of the Open Helm (Standard, 8 XP)}
+Remove your helm in a dangerous place.  You are seen truly.  The enemy knows your face.  (Mark +2 Corruption; gain a String on anyone who witnesses.)
 
-% --- New Talents ---
-\chapter{The Knight's Legacy: New Talents}\label{ch:talents}
+% ======================================================================
+%   New Talents
+% ======================================================================
+\chapter{The Knight’s Legacy: New Talents}\label{ch:talents}
 
-\section{The Unbuckled Gorget (Minor, 4 XP)}
+\section{The Unbuckled Gorget (Minor, 4 XP)}
 \emph{Requirement: You have shown mercy while vulnerable.}
 
-You may declare, once per session, that you remove a piece of armor (helm, gauntlet, gorget) to show trust. Gain +1 die to social rolls with honorable enemies, but suffer +1 Harm from the next attack against you.
+Once per session you may declare that you remove a piece of armour (helm, gauntlet, or gorget) to show trust.  Gain +1 die to social rolls with honourable enemies, but suffer +1 Harm from the next attack against you.
 
-\section{The Iron Bard's Burden (Major, 8 XP)}
-\emph{Requirement: You have forgotten your own face in the mirror of your armor.}
+\section{The Iron Bard’s Burden (Major, 8 XP)}
+\emph{Requirement: You have forgotten your own face in the mirror of your armour.}
 
-Your Defense is increased by 1, but you cannot regain Stress through social interaction until you unbuckle for a full scene. The isolation is complete; the protection is total.
+Your Defence is increased by 1, but you cannot regain Stress through social interaction until you unbuckle for a full scene.  The isolation is complete; the protection is total.
 
-\section{The Regret That Remains (Prestige, 12 XP)}
-\emph{Requirement: You have survived a moment of connection that destroyed you, as Corin survived until he didn't.}
+\section{The Regret That Remains (Prestige, 12 XP)}
+\emph{Requirement: You have survived a moment of connection that destroyed you, as Corin survived until he didn’t.}
 
-You are a living witness to the disconnect. When you die, you may choose: rise as a spirit of the threshold (guardian of a bridge or door, unable to leave but remembering all who pass) or pass into the song (become a ballad, sung by Cantors, your name a lesson in mercy).
+You are a living witness to the disconnect.  When you die, you may choose:
 
-% --- Campaign Frame ---
+\begin{itemize}
+  \item Rise as a spirit of the threshold (guardian of a bridge or door, unable to leave but remembering all who pass), or
+  \item Pass into the song (become a ballad, sung by Cantors, your name a lesson in mercy).
+\end{itemize}
+
+% ======================================================================
+%   Campaign Frame
+% ======================================================================
 \chapter{The Joust and the Raid}\label{ch:campaign}
 
 \section{The Setup}
-The party are knights, squires, or witnesses in a Vhasia at peace---but a peace of tightened screws. The tourney season is beginning. The raids have not stopped, merely become ritualized. The Ethorian marches are restive.
+The party are knights, squires, or witnesses in a Vhasia at peace—but a peace of tightened screws.  The tourney season is beginning.  The raids have not stopped, merely become ritualised.  The Ethorian marches are restive.
 
 \section{The Endings}
 \begin{itemize}
-\item \textbf{The Armor Closes:} The party chooses protection over mercy. The cantons close. The Wars begin.
-\item \textbf{The Song Escapes:} The party unbuckles, shows vulnerability, connects. They are destroyed by it, or saved, but the moment is real.
-\item \textbf{The Cantor's Witness:} Alain sings their story. They become legend, cautionary or celebrated, but they become memory.
+  \item \textbf{The Armor Closes:} The party chooses protection over mercy.  The cantons close.  The wars begin.
+  \item \textbf{The Song Escapes:} The party unbuckles, shows vulnerability, connects.  They may be destroyed by it, or saved, but the moment is real.
+  \item \textbf{The Cantor’s Witness:} Alain sings their story.  They become legend—cautionary or celebrated—but they become memory.
 \end{itemize}
 
-% --- Appendix ---
+% ======================================================================
+%   Appendix – The Chivalric Ledger
+% ======================================================================
 \chapter{Appendix: The Chivalric Ledger}\label{ch:appendix}
 
 \section{The Five Gestes of Vhasian Chivalry}
 \begin{enumerate}
-\item The Geste of the Shield (protection offered).
-\item The Geste of the Sword (challenge given).
-\item The Geste of the Helm (courtesy shown).
-\item The Geste of the Unbuckled Gorget (mercy offered).
-\item The Geste of the Song (witness borne).
+  \item The Geste of the Shield (protection offered).
+  \item The Geste of the Sword (challenge given).
+  \item The Geste of the Helm (courtesy shown).
+  \item The Geste of the Unbuckled Gorget (mercy offered).
+  \item The Geste of the Song (witness borne).
 \end{enumerate}
 
 \section{Ethorian Folklore}
-The barrow-kings demand tribute in stories, not gold. The sacred groves require bare feet. The \emph{Barde de Fer} is sung at unhelming ceremonies, when a knight removes armor for the last time (in death or in retirement).
+The barrow‑kings demand tribute in stories, not gold.  The sacred groves require bare feet.  The \emph{Barde de Fer} is sung at un‑helming ceremonies, when a knight removes armour for the last time (in death or in retirement).
 
-% --- Colophon ---
+% ======================================================================
+%   Colophon
+% ======================================================================
 \newpage
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
-\textit{This expansion was written in the Chapel of the Silent Stair, on paper made from tourney programs. The ink is lamp-black and the oil of unbuckled armor. The binding is felt, to muffle the bells.}
+\textit{This expansion was written in the Chapel of the Silent Stair, on paper made from tourney programmes.  The ink is lamp‑black and the oil of unbuckled armour.  The binding is felt, to muffle the bells.}\\[1em]
 
-\vspace{1em}
-\textit{The armor is polished. The song is sung. The gorget is open.}
+\textit{The armour is polished.  The song is sung.  The gorget is open.}\\[2em]
 
-\vspace{2em}
 --- The Clerk of Rouen, in the year of the joust
 \end{center}
 \vspace*{\fill}
 
 \end{document}
+
