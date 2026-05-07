@@ -676,6 +676,61 @@ Add persistent resources when the group cares about territory, organizations, or
 \end{itemize}
 
 % =========================================================
+% ABSTRACTION: TIME AND CURRENCY
+% =========================================================
+\section{Abstracting Time and Currency}
+\label{sec:abstraction}
+\index{time!narrative abstraction}\index{currency!abstraction}
+
+Fate’s Edge uses \textbf{narrative time} and \textbf{abstract wealth} to keep the focus on story, not bookkeeping.
+
+\subsection{Narrative Time (Not Minutes)}
+\label{subsec:narrative-time}
+Describe durations in narrative beats, not concrete minutes or hours. Use these units:
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+\textbf{Narrative Unit} & \textbf{When to Use} \\
+\midrule
+A moment & One action, a heartbeat, a single exchange \\
+Some time & A few minutes – picking a lock, searching a room \\
+Significant time & Hours – a ritual, a short rest, a negotiation \\
+Half a day & Morning to noon, dusk to midnight \\
+A day & Dawn to dusk, including travel or major activity \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Example:}
+Instead of “It takes 20 minutes to climb the tower”, say: “It takes \textbf{significant time} – long enough for the patrol to pass and return.” That keeps pressure without a stopwatch.
+
+\subsection{Abstract Currency (XP as Coin)}
+\label{subsec:xp-as-coin}
+Fate’s Edge abstracts most coinage and barter. Exceptional expenses, bribes, or lifestyle costs are handled through \textbf{Boons}, \textbf{Assets}, or \textbf{Story Beats} – not copper counting.
+
+When a player needs to pay for something significant and has no relevant Asset or favor, they may spend \textbf{XP}. Treat 1 XP as a substantial bribe, emergency fund, or major purchase.
+
+\begin{tcolorbox}[title=When to Use XP for Coin, colback=white!97!gray, colframe=black!80!gray]
+\index{XP!as currency}
+\textbf{Appropriate uses:}
+\begin{itemize}
+\item Bribing a corrupt official (2–4 XP)
+\item Outfitting a small expedition (1 XP per full kit)
+\item Buying a rare magical component (2–3 XP)
+\item Establishing a modest safehouse (4 XP, counts as Minor Asset)
+\end{itemize}
+\textbf{Inappropriate uses:}
+\item Routine meals, lodging, or travel supplies (cover with narrative)
+\item Anything that would trivialize a previous asset purchase
+\item Repeated, low‑stakes expenses
+\end{tcolorbox}
+
+\paragraph{GM Guidance:}
+Spending XP for coin should feel like a meaningful sacrifice, not a tax. Always ask: “Is this advancing the story?” If yes, allow it. If not, offer a different cost (a Boon, a Debt, a Story Beat). This keeps material concerns from derailing the narrative.
+
+% =========================================================
 % SESSION FLOW & CHECKLISTS
 % =========================================================
 \section{Session Flow: A GM Cognitive Checklist}
@@ -721,387 +776,6 @@ Use this as a quiet mental script. You do not need to say any of it out loud.
 
 \vspace{1em}
 \noindent\textbf{Remember:} The goal is to tell an exciting story together. These rules are tools, not tests. Start simple, add complexity when ready, and keep lane markers clear: one new idea at a time, one clear consequence per roll, and one or two clocks that really matter.
-
-\newpage
-% ============================================================
-% Fate's Edge Systems Map
-% ============================================================
-\begin{figure*}[t]
-  \centering
-  \begin{tikzpicture}[
-      node distance=1.2cm and 1.8cm,
-      every node/.style={align=center, font=\small\sffamily},
-      box/.style={rectangle, draw=black!70, thick, fill=white, 
-                  text width=2.8cm, inner sep=6pt, rounded corners=2pt},
-      arrow/.style={-{Stealth[length=3mm,width=2mm]}, thick, draw=black!60},
-      looparrow/.style={-{Stealth[length=3mm,width=2mm]}, thick, draw=black!60, bend right},
-      title/.style={font=\bfseries\sffamily, text width=3.5cm, align=center}
-  ]
-  
-  % === Core Loop ===
-  \node[box, fill=blue!5!white] (core) {Core Resolution\\Loop\\\tiny(Declare → Roll → Outcome)};
-  
-  % === Outputs of the Core Loop ===
-  \node[box, above right=0.8cm and 2.2cm of core] (sb) {Story Beats (SB)};
-  \node[box, right=of core] (clocks) {Clocks};
-  \node[box, below right=0.8cm and 2.2cm of core] (boons) {Boons};
-  \node[box, below=of core] (modules) {Player‑Managed\\Modules};
-  
-  % === Pressure Systems ===
-  \node[box, fill=gray!10, below left=1.2cm and -1cm of modules] (pressure) {Pressure Systems\\\tiny(Supply, Fatigue, Tactical Clocks)};
-  \node[box, fill=gray!10, right=of pressure] (consequences) {Consequence Storage\\\tiny(Harm, Exposure, Asset State)};
-  
-  % === Narrative Feedback ===
-  \node[box, fill=orange!5!white, above=5cm of modules, text width=3.5cm] (narrative) {Narrative Outcomes\\\tiny(Changed Fiction, Twists, New Hooks)};
-  
-  % === Connections ===
-  \draw[arrow] (core.east) -- node[above, font=\tiny] {drives} (clocks.west);
-  \draw[arrow] (core.north east) -- node[above right, font=\tiny] {generates} (sb.south west);
-  \draw[arrow] (core.south east) -- node[below right, font=\tiny] {awards} (boons.north west);
-  \draw[arrow] (core.south) -- node[right, font=\tiny] {triggers} (modules.north);
-  
-  % From SB/Clocks/Boons/Modules to pressure/consequences
-  \draw[arrow] (sb.south) -- ++(0,-0.6) -| (pressure.north);
-  \draw[arrow] (clocks.south) -- ++(0,-0.5) -| (pressure.north);
-  \draw[arrow] (modules.east) -- node[below, font=\tiny] {feed} (pressure.west);
-  \draw[arrow] (boons.south) -- ++(0,-0.5) -| (consequences.north);
-  \draw[arrow] (pressure.east) -- node[above, font=\tiny] {store} (consequences.west);
-  
-  % Narrative feedback loop
-  \draw[arrow] (consequences.north) -- ++(0,0.8) -| (narrative.south);
-  \draw[arrow] (narrative.west) -- ++(-0.6,0) |- (core.north);
-  \draw[arrow] (sb.north) -- ++(0,0.4) -| (narrative.east);
-  
-  % Additional feedback: Boons and SB used to fuel pressure
-  \draw[arrow] (sb.north east) -- ++(0.5,0) |- (pressure.east);
-  \draw[arrow] (boons.east) -- ++(0.6,0) |- (consequences.south);
-  
-  % Labels for major flows (optional)
-  \node[font=\tiny\itshape, above left=0.1cm and -0.5cm of sb] {escalate};
-  \node[font=\tiny\itshape, above right=0.1cm and -0.5cm of boons] {mitigate};
-  \node[font=\tiny\itshape, left=0.1cm of pressure] {absorb};
-  
-  \end{tikzpicture}
-  \caption{Fate’s Edge systems: the Core Resolution Loop drives Story Beats (SB), Clocks, Player‑Managed Modules, and Boons; pressure systems store consequences (Supply, Fatigue, Harm, Exposure); narrative outcomes feed back into play, closing the loop.}
-  \label{fig:systems-map}
-  \end{figure*}
-
-\clearpage
-
-\subsection{The Lazy DV Table (GM Guidance)}
-\label{subsec:lazy-dv}
-\index{DV!lazy table}\index{GM guidance!DV}
-
-Use this table for quick rulings. DV represents the \emph{significance of the challenge}, not its intrinsic difficulty.
-
-\begin{center}
-\small
-\begin{longtable}{clp{7.2cm}}
-\toprule
-\textbf{DV} & \textbf{Label} & \textbf{When to Use It} \\
-\midrule
-2 & Easy & Competent effort; setbacks cause inconvenience or exposure. \\
-3 & Standard & Meaningful challenge with real stakes. \\
-4 & Hard & Time pressure, opposition, danger, or contested effort. \\
-5 & Extreme & High‑risk actions where failure escalates the situation. \\
-6 & Legendary & Apex‑tier challenges, climactic scenes, or mythic feats. \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\paragraph{Default Rule:}
-For a meaningful challenge, assume \textbf{DV = Tier + 2}.  
-If the obstacle is beneath the characters’ tier, do not roll.
-
-Difficulty comes from \textbf{Position}, \textbf{Clocks}, and \textbf{Consequences}—not higher DVs.
-
-\subsection{Lazy Consequence Mapping}
-\label{subsec:lazy-consequences}
-\index{consequences!lazy mapping}
-
-Consequences should scale with \emph{pressure and tier}, not punish routine failure.
-
-\begin{center}
-\small
-\begin{longtable}{p{3cm}p{9cm}}
-\toprule
-\textbf{Pressure} & \textbf{Default Consequence} \\
-\midrule
-Low & Fictional complication, lost time, new exposure \\
-Moderate & \textbf{Fatigue (1)}, Clock advance, Position downgrade \\
-High & \textbf{Fatigue (2)}, Harm~1, major Clock advance \\
-Severe & Harm~2+, capture, separation, or irreversible loss \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\paragraph{Scaling Guidance:}
-\begin{itemize}
-\item At higher Tiers, prefer \textbf{Fatigue}, \textbf{Clock pressure}, and \textbf{collateral fallout} over raw Harm.
-\item Harm represents failure to manage risk – not routine opposition.
-\item Equipment loss, asset damage, or narrative loss should follow clear fictional cause.
-\end{itemize}
-\textbf{Harm is a consequence of escalation, not a default penalty.}
-
-\subsection{Why Fatigue Comes Before Harm}
-\label{subsec:fatigue-first}
-\index{Fatigue!design philosophy}\index{Harm!design philosophy}
-
-\paragraph{Design Intent.}
-Fatigue represents strain, stress, and narrowing options.  
-Harm represents injury, trauma, or lasting damage.
-
-Fatigue:
-\begin{itemize}
-\item Pressures future rolls
-\item Forces resource decisions (Boons, Talents, retreat)
-\item Encourages pacing and teamwork
-\item Keeps characters active in the scene
-\end{itemize}
-
-Harm:
-\begin{itemize}
-\item Removes options
-\item Shortens scenes
-\item Risks sidelining characters
-\item Escalates toward recovery or downtime
-\end{itemize}
-
-\paragraph{GM Guidance.}
-Use Fatigue to say: “You can keep going, but it will cost you.”  
-Use Harm to say: “You cannot ignore this.”  
-If a consequence does not meaningfully change player decisions, it should not be Harm.
-
-\subsection{On Equipment Damage (Read This!)}
-\label{subsec:equipment-damage}
-\index{equipment!damage}\index{GM guidance!equipment}
-
-\paragraph{Default Rule:}
-Do \textbf{not} compromise equipment trivially.
-
-Equipment damage should be:
-\begin{itemize}
-\item Rare
-\item Telegraphed
-\item Thematic
-\item Tied to meaningful stakes
-\end{itemize}
-
-\paragraph{Why.}
-Trivial equipment loss:
-\begin{itemize}
-\item Feels punitive rather than dramatic
-\item Creates bookkeeping without tension
-\item Undermines player investment
-\item Disproportionately punishes martials
-\end{itemize}
-
-\paragraph{Better Alternatives.}
-Before damaging gear, consider:
-\begin{itemize}
-\item Temporary disadvantage (\emph{jammed}, \emph{misaligned}, \emph{unstable})
-\item Increased Fatigue to compensate for strain
-\item Clock advancement representing wear or attention
-\item Forced repositioning or exposure
-\end{itemize}
-
-\paragraph{When to Damage Equipment.}
-Equipment damage is appropriate when:
-\begin{itemize}
-\item The fiction clearly targets the item
-\item A major Story Beat is spent
-\item The moment is climactic or symbolic
-\item The player knowingly risked it
-\end{itemize}
-\emph{Example:} A shattered shield during a last stand is meaningful. A snapped sword on a routine miss is not.
-
-\subsection{DV Is Not Difficulty — It Is Commitment}
-\label{subsec:dv-as-commitment}
-\index{DV!philosophy}
-
-A higher DV does \emph{not} mean:
-\begin{itemize}
-\item harder math
-\item better challenge
-\item greater realism
-\end{itemize}
-A higher DV means:
-\begin{itemize}
-\item fewer partials
-\item fewer Boons
-\item faster escalation
-\item less room to recover
-\end{itemize}
-
-\paragraph{GM Heuristic.}
-If you want:
-\begin{itemize}
-\item more tension → add Clocks
-\item more danger → spend Story Beats
-\item more drama → worsen Position
-\item more consequence → choose harsher costs
-\end{itemize}
-Raise DV only when the \emph{fiction itself} demands commitment.
-
-\subsection{High-Tier Reminder}
-\label{subsec:high-tier-reminder}
-\index{high-tier play!DV}
-
-At Tier IV–V:
-\begin{itemize}
-\item dice pools are larger
-\item consequences carry greater narrative weight
-\end{itemize}
-Do \textbf{not} inflate DV to compensate.
-
-High‑tier difficulty emerges naturally from:
-\begin{itemize}
-\item Boon scarcity (fewer misses and partials mean fewer Boons)
-\item asset activation costs
-\item multi‑threaded Clocks
-\item long‑tail consequences
-\end{itemize}
-Let power feel earned, strained, and visible – never trivial.
-
-\paragraph{GM Mantra.}
-\begin{quote}
-\emph{Set the DV low.  
-Make the world react honestly.  
-Let the pressure do the work.}
-\end{quote}
-
-\clearpage
-\section*{First Session Cheat Sheet: The Pressure Engine in Action}
-\addcontentsline{toc}{section}{First Session Cheat Sheet: The Pressure Engine in Action}
-\label{sec:first-session-cheatsheet}
-\index{first session!checklist}
-
-\begin{tcolorbox}[title=The Pressure Engine at a Glance, colback=white!97!gray, colframe=black!80!gray]
-
-This table distills the core mindset into actionable steps for your first session.
-
-\begin{center}
-\small
-\begin{longtable}{p{3.5cm}p{4cm}p{4.5cm}}
-\toprule
-\textbf{Critical Moment} & \textbf{What to Do} & \textbf{Why It Works} \\
-\midrule
-\textbf{Before the Session} &
-Write the GM Mantra on a notecard:  
-\emph{“Set the DV low. Make the world react honestly. Let the pressure do the work.”}  
-Place it where you’ll see it. &
-\textbf{Mindset matters first.} \\
-\midrule
-\textbf{Introducing the Game} &
-Say:  
-\emph{“Your failures will create opportunities. When you roll a 1, you gain power to shape the story.”} &
-\textbf{Reframes failure as narrative fuel.} \\
-\midrule
-\textbf{Setting the Scene} &
-Before any roll:
-\begin{enumerate}[noitemsep,leftmargin=*]
-\item Listen: “What are you actually doing?”
-\item Assign Position
-\item State it aloud: “This is \emph{[Position]}.” 
-\end{enumerate}
-&
-\textbf{Makes Position the anchor.} \\
-\midrule
-\textbf{When Players Roll} &
-Note every \textbf{1} immediately.  
-Ask: “What does this mean for the story?” &
-\textbf{1s are the narrative engine.} \\
-\midrule
-\textbf{On Partial Success} &
-Don’t say “You succeed, but\ldots”  
-Say: “You succeed at a cost. What does this success cost?” &
-\textbf{Makes the scene dynamic.} \\
-\midrule
-\textbf{When Setting DV} &
-Start with \textbf{DV 3} as your default.  
-Only adjust if the fiction demands it. &
-\textbf{Prevents overcomplication.} \\
-\midrule
-\textbf{When Stuck} &
-Ask: “What’s at stake right now?”  
-Not: “How hard should this be?” &
-\textbf{Aligns with core system logic.} \\
-\midrule
-\textbf{After the Session} &
-Write one sentence:  
-\emph{“What I learned: [your insight].”} &
-\textbf{Cements the mindset.} \\
-\midrule
-\textbf{When in Doubt} &
-Set Position to \textbf{Controlled}, DV to \textbf{3}, and ask:  
-“What happens if this goes wrong?” &
-\textbf{The golden rule.} \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\paragraph{Final Note for GMs}
-This table is not a rulebook. It is a compass. Use it until the rhythm of play becomes second nature.
-\end{tcolorbox}
-
-\clearpage
-\section*{Your First Combat: A GM Cheat Sheet}
-\addcontentsline{toc}{section}{Your First Combat: A GM Cheat Sheet}
-\label{sec:first-combat-cheatsheet}
-\index{combat!first session}\index{GM guidance!combat}
-
-\begin{center}
-\small
-\begin{longtable}{>{\bfseries}p{3cm} p{10cm}}
-\toprule
-\textbf{Stage} & \textbf{What to Do (Simplified)} \\
-\midrule
-Setup &
-Describe the immediate situation clearly: “You’re in a narrow hallway, back to the wall. Three bandits advance.”  
-Skip initiative. Follow narrative flow – who acts first should be obvious.  
-Start at \textbf{Controlled Position} unless the fiction strongly says otherwise. \\
-\midrule
-Position &
-\textbf{Dominant}: Clear advantage (surprise, leverage, flanking).  
-\textbf{Controlled}: Normal fighting (\emph{most rolls}).  
-\textbf{Desperate}: Cornered, outnumbered, or everything at stake.  
-\textbf{The GM always states Position before the roll.} “This is Desperate. If it goes wrong, you’ll be disarmed.” \\
-\midrule
-Dice Pool &
-Roll \textbf{Attribute + Skill} (e.g., Body + Melee). No extra math. Player states approach in fiction. \\
-\midrule
-Outcomes &
-\textbf{Clean Success}: Goal achieved cleanly.  
-\textbf{Success with Cost}: Goal achieved; spend 1 SB for complication.  
-\textbf{Partial}: Progress at reduced scale, improved position, or hard choice.  
-\textbf{Miss}: No progress; spend SB to escalate. \\
-\midrule
-Story Beats &
-Spend SB aggressively but cleanly:  
-1 SB — Minor complication (“Steel sparks; you gain ground, but the noise carries.”)  
-2 SB — Moderate setback (“Your ally is knocked off-balance; their next roll is Desperate.”)  
-3+ SB — Major shift (“Reinforcements arrive. New Clock: Escalation [4].”) \\
-\midrule
-Clocks &
-Use \textbf{one clock maximum} in first combat (e.g., “Enemy Harm [4]”). Advance on Miss or Success-with-Cost. All clocks visible. \\
-\midrule
-Multiple Enemies &
-Treat a group as \textbf{one threat} unless individuals act differently. One clock covers the group. \\
-\midrule
-Boons &
-Players may spend 1 Boon to re-roll a die, improve Position, or activate an Asset. Gain 2 Boons on Miss, 1 on Partial. \\
-\midrule
-What to Ignore &
-No miniatures or grids. No advanced maneuvers. No fatigue-position interactions. No multi-clock combat. \\
-\midrule
-Next Session &
-Add \emph{one} new element: a second clock, environmental pressure, or a structured combat arc. Introduce Three-Beat Combat later. \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\paragraph{First Combat Rule of Thumb.}
-Describe situation → State Position → Roll → Apply outcome → Spend SB once → Move forward. If the scene is moving, you’re doing it right.
 
 \clearpage
 \begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, boxrule=0.5pt, arc=2mm, left=6pt, right=6pt, top=6pt, bottom=6pt]

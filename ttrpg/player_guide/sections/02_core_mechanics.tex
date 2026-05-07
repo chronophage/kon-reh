@@ -131,8 +131,8 @@ Compare your Successes to the DV to determine the outcome.
 \midrule
 \textbf{Clean Success} (S ≥ DV) & You achieve your goal without complication. \\
 \textbf{Success with Cost} (S ≥ DV, SB>0) & You succeed, but the GM spends SB to add a twist. \\
-\textbf{Partial} (0 < S < DV) & You make progress, but the situation remains unresolved. \\
-\textbf{Miss} (S = 0) & You fail, and the situation escalates. \\
+\textbf{Partial} (0 < S < DV) & You make progress, but the situation remains unresolved. You gain 1 Boon. \\
+\textbf{Miss} (S = 0) & You fail, and the situation escalates. You gain 2 Boons. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -158,10 +158,10 @@ A roll of \textbf{10} counts as \textbf{two Successes}. If the roll succeeds, ea
 \toprule
 \textbf{10s} & \textbf{Effect} \\
 \midrule
-1 & Strong success – improved Position, minor advantage. \\
-2 & Exceptional success – choose two benefits. \\
-3 & Legendary success – decisive victory, clear 1 clock segment. \\
-4+ & Mythic success – reshape the scene, clear 1–2 clock segments. \\
+1 & Strong success – improve your Position by one step on your next action this scene, or gain a minor advantage (GM’s discretion). \\
+2 & Exceptional success – choose two benefits from the list above. \\
+3 & Legendary success – decisive victory; clear 1 segment from a relevant clock. \\
+4+ & Mythic success – reshape the scene; clear 1–2 segments from a relevant clock. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -260,6 +260,7 @@ Each character has a Fatigue track equal to \textbf{Body}. Mark Fatigue for exer
 \begin{itemize}
   \item Each Fatigue step worsens your Position: Dominant → Controlled → Desperate (see \ref{sec:position}).
   \item If already Desperate, apply –1 die per Fatigue instead.
+  \item Penalties from Fatigue and Harm \textbf{stack}. For example, a character with Harm 1 (–1 die) who is also Desperate from Fatigue suffers both penalties.
   \item \textbf{Overflow:} When the track fills, increase Harm by 1 step (see \ref{sec:harm}) and clear all Fatigue.
   \item \textbf{Recovery:} Short rest clears 1–2 Fatigue; full night’s rest clears all.
 \end{itemize}
@@ -282,6 +283,39 @@ Harm 3 & Incapacitated or dying \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\subsection{Taking Harm and Fatigue – The Procedure}
+\label{sec:take-harm-fatigue}
+When you are hit, follow these steps \textbf{in order}:
+
+\begin{enumerate}
+  \item \textbf{Convert} incoming Harm to Fatigue using your Armor Conversion (see \ref{sec:armor}).  
+        \textbf{Minimum 1 Fatigue} per hit, even if the conversion would give 0.
+  \item \textbf{Apply remaining Harm} – if any Harm remains after conversion, increase your Harm level by that amount, and \textbf{clear all existing Fatigue} (the shock of a wound resets your exhaustion).
+  \item \textbf{Add the Fatigue} from step 1 to your Fatigue track. If this fills or exceeds your track, resolve \textbf{Overflow} (see \ref{sec:fatigue}).
+\end{enumerate}
+
+\paragraph{Armor Conversion Table}
+\label{sec:armor}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Armor Type} & \textbf{Conversion (Harm → Fatigue)} \\
+\midrule
+Light  & 1 Harm → 1 Fatigue (minimum 1 Fatigue total) \\
+Medium & 2 Harm → 1 Fatigue (minimum 1 Fatigue total) \\
+Heavy  & 3 Harm → 2 Fatigue (minimum 1 Fatigue total) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Examples}
+\begin{itemize}
+  \item \textbf{Light Armor, Harm 2:} Convert 1→1 Fatigue, remaining Harm 1. Apply Harm (clears Fatigue, Harm 0→1), then add 1 Fatigue. Result: Harm 1, Fatigue 1.
+  \item \textbf{Heavy Armor, Harm 3:} Convert 3→2 Fatigue, remaining Harm 0. No Harm taken, add 2 Fatigue. Result: Fatigue +2.
+  \item \textbf{Heavy Armor, Harm 1:} Convert 1→0 Fatigue, but minimum 1 Fatigue. No Harm, add 1 Fatigue. Result: Fatigue +1.
+  \item \textbf{Overflow:} Body 2, currently 1 Fatigue, Heavy Armor hit with Harm 3. Convert 3→2 Fatigue. Add Fatigue: 1+2=3 → track full. Overflow triggers: Harm 0→1, clear Fatigue. Result: Harm 1, Fatigue 0.
+\end{itemize}
 
 \subsection{Recovery}
 \label{sec:harm-fatigue-recovery}
@@ -321,36 +355,43 @@ Traverse up to \textbf{one range band} (Close $\rightarrow$ Near $\rightarrow$ F
 \hline
 \textbf{Action} & \textbf{Effect} & \textbf{Notes} \\
 \hline
-Attack & Make melee or ranged attack vs. DV. & Ranged in Close is \textbf{Desperate}. \\
+Attack & Make melee or ranged attack against a target. & Ranged in Close is \textbf{Desperate}. \\
 \hline
 Disengage & Enable safe movement. & Your Move does not provoke opportunity attacks; you cannot Attack this turn. \\
 \hline
-Charge (Full turn) & Move two bands + melee attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \\
+Charge (Full turn) & Move two bands toward an enemy + make one melee attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \textbf{Leaving Close range during a Charge provokes opportunity attacks as normal.} \\
 \hline
-Skirmish (Full turn) & Move two bands away + ranged attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \\
+Skirmish (Full turn) & Move two bands away from an enemy + make one ranged attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \\
 \hline
 Observe / Change Position & Gain +1 Position once. & Once per turn. \\
 \hline
-Setup (Teamwork) & Grant ally +1 Position or step up Effect. & Requires roll. \\
+Setup (Teamwork) & Grant an ally +1 Position or step up Effect. & Requires a roll (typically Wits + relevant skill). \\
 \hline
-Assist (Teamwork) & Spend 1 Boon to give +1 die. & Max +3 dice from assists. \\
+Assist (Teamwork) & Spend 1 Boon to give +1 die to an ally’s roll. & Max +3 dice from all assists. \\
 \hline
-Defend / Protect & Adopt guarding stance. & Defense rolls improve Position by one step. \\
+Defend / Protect & Adopt a guarding stance. & Your defense rolls improve Position by one step. \\
 \hline
 Channel / Weave & Runekeeper/ritual preparation. & Interruption may worsen Position. \\
 \hline
-Cast Rite / Song & Perform magical action. & May Push (cost Fatigue/Corruption). \\
+Cast Rite / Song & Perform a magical action. & May Push (cost Fatigue/Corruption). \\
 \hline
-Interact & Manipulate object or environment. & GM sets DV. \\
+Interact & Manipulate an object or environment. & GM sets DV. \\
 \hline
 Free Items & Short shouts, dropping an item. & Longer actions require proper action types. \\
 \hline
 \end{tabular}
 
-\paragraph{Reactions (Out of Turn):}
-Protection may trigger when an ally is hit. Class/Asset reactions fire as written.
+\paragraph{Opportunity Attacks}
+\label{sec:opportunity-attacks}
+Leaving an enemy’s \textbf{Close} range without using \textit{Disengage} provokes one free melee attack (Controlled Position, no action cost). Additionally, the following actions provoke an opportunity attack if performed while \textbf{engaged in Close} with an enemy:
+\begin{itemize}
+  \item Making a ranged attack (bow, crossbow, thrown weapon).
+  \item Casting a spell that does not have the \texttt{[TOUCH]} or \texttt{[WARD]} attribute.
+\end{itemize}
+A \textbf{Charge} that takes you out of an enemy’s Close range provokes an opportunity attack as usual (unless you used Disengage beforehand).
 
-\paragraph{Position and Dice Modifiers:}
+\paragraph{Position and Dice Modifiers}
+\label{sec:position-dice}
 \begin{itemize}
   \item \textbf{Position ladder:} Desperate $\rightarrow$ Controlled $\rightarrow$ Dominant.
   \item \textbf{Improving Position:} Each step above Dominant grants \textbf{+1 die} instead.
@@ -430,29 +471,30 @@ Pavise  & 12 & Plant: heavy cover cone & Slow to move; bulky \\
 \end{center}
 
 \subsection{Armor}
+\label{sec:armor-table}
 \begin{center}
 \begin{tabular}{llll}
 \toprule
-\textbf{Armor} & \textbf{XP} & \textbf{Conversion} & \textbf{Penalty} \\
+\textbf{Armor} & \textbf{XP} & \textbf{Conversion (Harm → Fatigue)} & \textbf{Penalty} \\
 \midrule
-Light  & 4  & 1 Harm → 1 Fatigue & — \\
-Medium & 8  & 2 Harm → 1 Fatigue & –1d physical skills \\
-Heavy  & 12 & 3 Harm → 2 Fatigue & –2d physical, no sprint in rough \\
+Light  & 4  & 1→1 (minimum 1 Fatigue per hit) & — \\
+Medium & 8  & 2→1 (minimum 1 Fatigue per hit) & –1d physical skills \\
+Heavy  & 12 & 3→2 (minimum 1 Fatigue per hit) & –2d physical, no sprint in rough \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\paragraph{Notes:} Conversion applies per Harm instance before marking Fatigue. You may still Resist first.
+\paragraph{Notes:} Conversion is applied per Harm instance before marking Fatigue. See \ref{sec:take-harm-fatigue} for the full step‑by‑step procedure.
 
 \subsection{Condition \& Upkeep}
 \label{sec:equipment-condition}
 \index{Equipment condition}\index{Neglected}\index{Compromised}
 
 \begin{description}
-  \item[Neglected] Weapons: –1d; Armor: conversion worsened by one step.
+  \item[Neglected] Weapons: –1d; Armor: conversion worsened by one step (e.g., Light behaves as no armor, Heavy as Medium).
   \item[Compromised] Weapons: –1d first attack each round; Armor: no conversion.
 \end{description}
-\textit{Fix:} Short rest with tools removes Neglected. A scene of work or a smith removes Compromised.
+\textit{Fix:} Short rest with tools removes Neglected (no roll required). A scene of work or a smith removes Compromised; a successful Craft roll (DV 3) can reduce the time to a short rest.
 
 \section{Ranged Options}
 \label{sec:ranged-options}
@@ -495,7 +537,7 @@ Assets can be threatened, degraded, or lost. Overuse attracts attention.
 \midrule
 Nature & People & Resources/Structures \\
 Primary Role & Personal support & Strategic leverage \\
-Activation & Assists, Bonds & Boon expenditure \\
+Activation & Assists (spend Boon) or narrative interaction & Boon expenditure \\
 Risk & Emotional, narrative & Structural, political \\
 Growth & Can become PCs & Can expand or collapse \\
 \bottomrule
@@ -542,7 +584,7 @@ Growth & Can become PCs & Can expand or collapse \\
 \textbf{Success:} 6+ on each die \\
 \textbf{Story Beat:} 1 on any die gives SB to GM \\
 \textbf{DV:} 2 (easy) to 5+ (extreme) \\
-\textbf{Harm:} 3-level system with penalties \\
+\textbf{Harm:} 3-level system; see \ref{sec:take-harm-fatigue} for the procedure \\
 \textbf{Boons:} 2 on miss, 1 on partial
 \end{tcolorbox}
 
@@ -562,10 +604,10 @@ Growth & Can become PCs & Can expand or collapse \\
 \label{sec:small-folk}
 \index{Aelaerem}\index{Aelinnel}\index{Small Folk}
 
-The Aelaerem (halflings) and Aelinnel (gnomes) are diminutive peoples attuned to liminal spaces—doorways, hedge‑gaps, tide‑cut stairs, and the quiet places between hearth and hollow. While they share a small stature and a knack for slipping through cracks, their cultural instincts differ.
+The Aelaerem (halflings) and Aelinnel (gnomes) are diminutive peoples attuned to liminal spaces—doorways, hedge‑gaps, tide‑cut stairs, and the quiet places between hearth and hollow.
 
 \begin{itemize}
-  \item \textbf{Restriction:} Cannot use Heavy Armor. May use any one‑handed or two‑handed weapon, but Heavy Weapons impose \textbf{–1 Position} on all actions while wielding them.
+  \item \textbf{Restriction:} Cannot use Heavy Armor. May use any one‑handed or two‑handed weapon, but Heavy Weapons impose \textbf{–1 Position} on all actions while wielding them (before any other Position modifiers).
   \item \textbf{Bonus:} When wielding a \textbf{spear, quarterstaff, or light polearm} (any Medium or Light weapon with the \texttt{Reach} tag), treat the weapon as \textbf{one weight class lighter} for the purpose of attack modifiers. Additionally, once per scene when you make a melee attack with such a weapon, you may spend \textbf{1 Boon} to convert a \textit{Partial} success into a \textit{Clean Success} (representing a clever thrust that uses the enemy’s momentum against them).
 \end{itemize}
 
@@ -583,14 +625,14 @@ Use your luck wisely. The Hollow is patient.
 \subsubsection*{Aelinnel — The Bright Trick}
 \label{sec:aelinnel}
 Aelinnel are fae‑touched, mathematically clever, and never without a tool for the moment.
-Choose **one** of the following abilities to represent their tricky nature.
+Choose \textbf{one} of the following abilities to represent their tricky nature.
 
 \begin{description}
   \item[Option A: Short Step (Teleport)] \hfill \\
-  \textbf{Bonus — Once per scene}, as a **Move action**, you may instantly teleport to any unobserved location you can see within **Near** range. You cannot pass through solid barriers. This is a fey‑like blink, not a physical jump.
+  \textbf{Bonus — Once per scene}, as a \textbf{Move action}, you may instantly teleport to any location you can see within \textbf{Near} range that is not currently observed by any enemy. You cannot pass through solid barriers. This is a fey‑like blink, not a physical jump.
   
   \item[Option B: Knack for the Right Thing (Handy Item)] \hfill \\
-  \textbf{Bonus — Once per scene}, you may declare that you have a **small, mundane item** on your person that is useful in the current situation (e.g., a coil of rope, a lockpick, a candle, a chalk stick). This costs no Boon and requires no roll. The item must be plausible for your character to carry. (This is a free, once‑per‑scene version of the **Flashback Declaration** mechanic described in \ref{sec:narrative-suggestions}.)
+  \textbf{Bonus — Once per scene}, you may declare that you have a \textbf{small, mundane item} on your person that is useful in the current situation (e.g., a coil of rope, a lockpick, a candle, a chalk stick). This costs no Boon and requires no roll. The item must be plausible for your character to carry. (This is a free, once‑per‑scene version of the \textbf{Flashback Declaration} mechanic described in \ref{sec:narrative-suggestions}.)
 \end{description}
 
 \begin{tcolorbox}[colback=cyan!5!white,colframe=cyan!70!black,title=A Gnomish Maxim]
@@ -599,5 +641,3 @@ Aelinnel never trust a single ledger. Neither should you.
 \end{tcolorbox}
 
 \noindent Both peoples are often underestimated—a mistake that has left many a larger foe stumbling through a door that was never really shut.
-
-\endinput
