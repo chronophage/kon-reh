@@ -1,251 +1,234 @@
-# Fate's Edge - Player's Guide Revision Plan
+# Revision Plan for Fate's Edge Player’s Guide (Preserving File Structure)
 
-Based on the review of the Player's Guide and Reference Guide, here's a comprehensive revision plan to update the Player's Guide to align with the newer rules and content in the Reference Guide:
+This plan follows the same approach as the GM Guide revision: **clarity, usability, and philosophical alignment**, without reorganizing the existing 17 `.tex` files. Each section gets targeted improvements.
 
-## Phase 1: Core Mechanics Alignment (Chapters 1-3)
+---
 
-### Chapter 2: Core Mechanics
-- **Replace d6 system with d10 system**:
-  - Update all dice mechanics to use d10s
-  - Change success threshold from 4+ to 6+
-  - Change Story Beat generation from 1s to 1s on d10s
-- **Update Difficulty Value ladder**:
-  - Routine: DV 2
-  - Pressured: DV 3
-  - Hard: DV 4
-  - Extreme: DV 5+
-- **Revise Outcome Matrix**:
-  - Clean Success: S ≥ DV and C = 0
-  - Success & Cost: S ≥ DV and C > 0
-  - Partial: 0 < S < DV
-  - Miss: S = 0
-- **Add Description Ladder**:
-  - Basic Action (roll as-is)
-  - Detailed Action (re-roll one 1)
-  - Intricate Action (re-roll all 1s, add flourish on success)
-- **Replace "Advancement Points" with "Boons"**:
-  - Update earning conditions
-  - Add Boon economy and limits
-  - Include conversion to XP (2 Boons → 1 XP, max 2 XP/session)
-- **Update Harm system**:
-  - Remove 4-segment clock
-  - Implement Fatigue and Harm levels as in Reference Guide
-- **Add new mechanics**:
-  - Asset activation rules
-  - Over-Stack rule
-  - Anti-Fishing measures
+## Section 01: Introduction (`01_intro.tex`)
 
-### Chapter 3: Character Advancement
-- **Revise XP earning**:
-  - Base attendance: +2 XP
-  - Major objectives: +2-4 XP
-  - Discoveries: +1-2 XP
-  - Hard choices: +1-2 XP
-  - Complication spotlight: +1-3 XP
-  - Bond-driven play: +1-2 XP
-  - GM curveball: +0-3 XP
-- **Update milestone awards**:
-  - Arc completion: +8-12 XP
-  - Signature moment: +2 XP
-- **Revise XP spending**:
-  - Attributes: new rating × 3 XP
-  - Skills: new level × 2 XP
-  - Followers: Cap² XP
-  - Assets: Minor (4 XP), Standard (8 XP), Major (12 XP)
-- **Add Rush Rule**:
-  - Skip downtime for advancement
-  - Create Haste clock
-- **Add Reputation Tiers**:
-  - Tier I (0-40 XP): Rookie
-  - Tier II (41-90 XP): Seasoned
-  - Tier III (91-150 XP): Veteran
-  - Tier IV (151-220 XP): Paragon
-  - Tier V (221+ XP): Mythic
+**Current weaknesses:** Dense philosophy, no explicit Session Zero guidance, safety tools buried, no “Flavor is Free” emphasis for players.
 
-## Phase 2: Magic System Integration (Chapter 4)
+**Revisions:**
 
-### Chapter 4: Magic and Special Abilities
-- **Complete overhaul to match Reference Guide**:
-  - Four Paths of Magic (Casting, Rites, Invokers, Summoners)
-  - Eight Elements system
-  - Backlash mechanics
-  - Obligation system for Rites
-  - Leash system for Summoners
-  - Casting loop (Channel → Weave → Backlash)
-  - Add Patrons and their Rites
-- **Remove old magic system**:
-  - Eliminate d6-based spellcasting
-  - Remove old ritual magic system
+1. **Add a prominent “Session Zero” subsection** (after safety tools) that covers:
+   - The game’s core philosophy for players: *“Optimal play = most fun. Spend Boons. Embrace failure. Courting Patron attention leads to better stories.”*
+   - Player-GM contract: “We are co-creators, not adversaries.”
+   - Resource mindset: “Boons are not XP tokens – spend them.”
+   - Patron expectation: “They demand payment – embrace it as story fuel.”
+   - Sample Session Zero checklist (player‑facing version – what to discuss, what to ask).
+2. **Clarify “Flavor is Free” box:** Add note that this applies to **all** descriptive actions, not just magic – encourage narration of even mundane successes.
+3. **Safety tools:** Keep as is, but add reminder that the GM can use the X‑card too.
+4. **Add a “How to Use This Guide” quick reference** – one‑page summary of where to find core rules, magic, advancement, assets, etc.
 
-## Phase 3: Attributes and Skills Update (Chapter 5)
+---
 
-### Chapter 5: Attributes and Skills
-- **Update Attribute ratings**:
-  - 1-5 scale (was 1-5 but with different descriptions)
-- **Update Skill ratings**:
-  - 0-5 scale (was 0-5 but with different costs)
-- **Revise skill costs**:
-  - New level × 2 XP (was different progression)
-- **Update skill list**:
-  - Align with Reference Guide skills
-  - Add regional/cultural skills
-- **Add Affinity concept**:
-  - Narrative edge or metaphysical bond
-- **Add Prestige Abilities**:
-  - High-level talents unlocked by mastery
+## Section 02: Core Mechanics (`02_core_mechanics.tex`)
 
-## Phase 4: Character Building (Chapters 6, 7, 11, 15)
+**Current weaknesses:** Core loop clear but initiative options presented as default (should be narrative first). Boon hoarding not discouraged enough. Player‑managed modules mentioned but not emphasised.
 
-### Chapter 6: Experience Paths and Character Building
-- **Revise starting builds**:
-  - Standard: 30 XP
-  - Enhanced: Up to 34 XP with Bonds/Complications
-- **Update advancement paths**:
-  - Solo (70-90% self)
-  - Mixed (50-65% self)
-  - Mastermind (25-40% self)
-- **Add player archetypes**:
-  - The Solo
-  - The Mixed Player
-  - The Mastermind
+**Revisions:**
 
-### Chapter 7: Talents and Special Abilities
-- **Revise talent categories**:
-  - General Talents (2-8 XP)
-  - Cultural/Ancestral Talents (4-10 XP)
-  - High-Tier Prestige Abilities (6+ XP)
-- **Update talent examples**:
-  - Align with Reference Guide examples
-  - Add cultural talents for each race
-- **Add talent building strategies**:
-  - The Specialist
-  - The Generalist
-  - The Combo Builder
+1. **Re‑order subsections** (without changing file structure):
+   - 2.1 The 90‑Second Play Loop (keep)
+   - **2.2 The Core Resolution Cycle** (move earlier, right after loop)
+   - 2.3 Player‑Managed Modules (expand with clear “your job” bullet points)
+   - 2.4 Basic Dice Mechanics (keep)
+   - 2.5 Difficulty Value (keep)
+   - 2.6 Outcome Matrix (keep)
+   - 2.7 Boons – add “Why you should spend Boons” sidebar
+   - 2.8 Position (keep)
+   - 2.9 Story Beats – player‑facing advice (“don’t fear SB – they make the story exciting”)
+   - 2.10 Harm and Fatigue – keep, but add “roller‑coaster” note (taking Harm clears Fatigue)
+   - 2.11 Initiative – move optional systems (popcorn, side, speed) to end, **state first: “Default is narrative initiative”**
+2. **Add a “Golden Rule” call‑out box:** “When in doubt, make the choice that serves the story.”
+3. **Clarify DV 3 as default** and warn against DV inflation (reference GM Guide).
+4. **Add a short example** of a player using a Boon to re‑roll a critical failure (turning a Miss into a Partial).
+5. **Player‑Managed Modules:** Add a clear table of what players track (Obligation, Corruption, Leash, Asset States) with tick triggers – similar to GM Guide but player‑facing.
 
-### Chapter 11: Character Backgrounds
-- **Complete overhaul to match Reference Guide**:
-  - Access Tags
-  - Signature Contacts
-  - Background Boons
-  - Obligation Clocks
-  - Regional backgrounds
-  - World-linked backgrounds
+---
 
-### Chapter 15: Example Character Builds
-- **Complete revision**:
-  - Rebuild all examples with new system
-  - Use 30 XP base with optional +4 XP
-  - Align with Reference Guide archetypes
-  - Include proper Attributes, Skills, and Talents
+## Section 03: Magic and Special Abilities (`04_magic.tex` – note numbering)
 
-## Phase 5: Assets and Followers (Chapters 8, 12, 13)
+**Current weaknesses:** Dense, assumes player knows all Patron rites; no guidance on “active vs passive” Patron presence based on campaign length; Obligation/Corruption tracking explained but not tied to player fun.
 
-### Chapter 8: Assets and Followers
-- **Revise to match Reference Guide**:
-  - On-Screen vs Off-Screen resources
-  - Follower assist rules (+3 dice cap)
-  - Follower risk mechanics
-  - Loyalty & Bonds system
-  - Upkeep requirements
-  - Condition tracks (Maintained/Neglected/Compromised)
+**Revisions:**
 
-### Chapter 12: Followers
-- **Update to match Reference Guide system**:
-  - Capability ratings (1-5)
-  - Cost = Cap² XP
-  - Independent actions
-  - Exposure/Harm tracks
-  - Loyalty states (Wary/Steady/Devoted)
+1. **Add “Patron as Co‑Star” subsection** (after 3.1 The Nature of Magic):
+   - Explain that Patrons can be passive (long campaigns) or active (short campaigns/one‑shots).
+   - Encourage players to lean into Patron demands as story hooks, not punishments.
+2. **Adjudicating Magic (player advice):** Add a quick reference table for DV by spell scope (cantrip, combat, ritual, epic) and another for backlash severity by Position – adapted from GM Guide.
+3. **Story Beats and Backlash:** Add an example of a player accepting a GM’s SB spend to create a *choice* (e.g., “You can succeed, but your Patron will demand a task – accept or let the spell fizzle”).
+4. **Managing Obligation and Corruption:** Add player guidance: *“Track your own Obligation (player‑managed modules). When a Patron intrudes, treat it as a plot hook, not a penalty.”*
+5. **Summoning:** Clarify that the spirit’s independent action on a Miss should be *interesting* – add a d6 table of spirit whims (adapted from GM Guide).
+6. **Cantors and Corruption:** Add a note that neglected chorus cults can become **rival factions** – players should keep an eye on their followers.
+7. **Psionics (optional):** Keep optional, but add a warning: “Psionics generates SB quickly – be prepared for the GM to spend them.”
 
-### Chapter 13: Compendium of Assets
-- **Revise asset types**:
-  - Minor (4 XP)
-  - Standard (8 XP)
-  - Major (12 XP)
-  - Artifact (16+ XP)
-- **Update activation mechanics**:
-  - Free off-screen effect
-  - Boon activation for on-screen effects
-  - XP activation for extra uses
-- **Add condition states**:
-  - Maintained
-  - Neglected
-  - Compromised
+---
 
-## Phase 6: World Interaction (Chapters 9, 14)
+## Section 04: Character Advancement (`03_advancement.tex` – note numbering)
 
-### Chapter 9: World Interaction
-- **Update to match Reference Guide**:
-  - Travel system with deck generators
-  - Supply Clock
-  - Fatigue system
-  - Position states (Dominant/Controlled/Desperate)
-  - Range bands (Close/Near/Far/Absent)
-  - Deck of Consequences integration
+**Current weaknesses:** Good but lacks guidance on spending XP for narrative growth (assets, followers) vs. personal stats; no explicit mention of Legacy Engine yet.
 
-### Chapter 14: Deck Generators
-- **Complete overhaul to match Reference Guide**:
-  - Regional deck generators
-  - Suit meanings
-  - Rank severity and clock sizes
-  - Draw procedures (Quick Hook, Full Seed, Act Builder)
-  - Combo rules (Pairs, Runs, Flushes, Face+Aces)
-  - Specialized generators
+**Revisions:**
 
-## Phase 7: Enhanced Player Play (Chapter 16)
+1. **Add “Philosophy of Growth” box:** “Every XP spent is a choice about who your character becomes – invest in yourself, your network, or your legacy.”
+2. **Clarify Attribute/Skill costs** (already clear) but add a **“When to invest in Assets/Followers”** table (see Section 5.4–5.6).
+3. **Add a cross‑reference to Legacy Engine (Chapter 13)** – “Planning for succession? Consider investing in a Cap 3+ follower early.”
+4. **XP Award guidelines:** Keep but add a note: “Boons convert to XP at 2:1, but spending Boons during play is almost always more fun.”
 
-### Chapter 16: Enhanced Player Play
-- **Update to match Reference Guide concepts**:
-  - Session Investment Tracker
-  - Cultural Immersion Bonus
-  - Collaborative Play mechanics
-  - Faction Awareness
-  - Momentum Banking
-  - Clock Manipulation
-  - Complication Bargaining
-  - Between Sessions Activities Log
+---
 
-## Phase 8: Content Alignment
+## Section 05: Experience Paths and Character Building (`05_xp_paths.tex`)
 
-### Throughout all chapters:
-- **Update terminology**:
-  - "Advancement Points" → "Boons"
-  - "Setback Points" → "Story Beats"
-  - "Harm Clock" → "Harm levels with Fatigue conversion"
-- **Add missing concepts**:
-  - On-Screen vs Off-Screen resources
-  - Prestige Abilities
-  - Affinity
-  - Bond-Driven Resource Generation
-  - Over-Stack rule
-  - Anti-Fishing measures
-- **Remove outdated content**:
-  - d6-based mechanics
-  - Old XP progression
-  - Obsolete character building methods
+**Current weaknesses:** Good conceptual material but could use more explicit links to the three archetypes (Solo, Balanced, Mastermind) from the GM Guide. No guidance on building for group synergy.
 
-## Phase 9: Examples and Quick References
+**Revisions:**
 
-### Throughout:
-- **Update all examples**:
-  - Revise dice mechanics
-  - Update outcomes
-  - Align with new terminology
-- **Add Quick Reference sections**:
-  - Core mechanic quick reference
-  - Position/Effect reference
-  - Boon economy reference
-  - Travel procedure reference
+1. **Add “Player Archetypes” subsection** (after 5.3 Three Career Paths):
+   - Solo, Mixed, Mastermind – describe each and suggest XP splits.
+   - Help players identify their own style.
+2. **Add “Building for Group Synergy”** – advice on ensuring the party covers key roles (combat, social, exploration, magic, assets).
+3. **Enhance the “Start‑to‑Mid‑to‑Late Game” progression tables** with concrete examples of when to take a Follower vs. an Asset vs. a Talent.
 
-## Implementation Priority:
+---
 
-1. **Phase 1** (Core mechanics) - Highest priority
-2. **Phase 4** (Character building) - High priority
-3. **Phase 2** (Magic system) - High priority
-4. **Phase 5** (Assets/Followers) - Medium priority
-5. **Phase 6** (World interaction) - Medium priority
-6. **Phase 3** (Attributes/Skills) - Medium priority
-7. **Phase 7** (Enhanced play) - Low priority
-8. **Phase 8-9** (Content alignment) - Low priority
+## Section 06: Talents and Special Abilities (`06_talents.tex`)
 
-This revision plan ensures the Player's Guide aligns with the newer rules and content in the Reference Guide while maintaining a player-friendly structure and approach.
+**Current weaknesses:** Large talent list, but no guidance on talent synergy (e.g., Backstab + Shadow Dance + Deathblow). Costs are correct but layout is dense.
+
+**Revisions:**
+
+1. **Add a “Talent Synergies” sidebar** – show 2‑3 example chains (e.g., stealth assassin, magic blaster, protective tank).
+2. **Clarify activation types** (Passive / Active / Reactive) with icons or bold labels.
+3. **Add a “When to Take” recommendation** for each talent tier (Early Game: minor talents; Mid Game: major; Late Game: prestige/epic).
+4. **Cross‑reference magic access talents** (Spellcraft, Familiar, Codex, Patron’s Symbol) to Chapter 3.
+
+---
+
+## Section 07: Assets and Followers (`07_assets_follower.tex` and also `13_assets.tex`, `14_followers.tex` – these appear duplicated/separate)
+
+**Current weaknesses:** Asset and follower rules are split across multiple files (`07_assets_follower.tex`, `13_assets.tex`, `14_followers.tex`). Some duplication. No clear “when to invest” guidance.
+
+**Revisions:**
+
+1. **Consolidate into a single logical section** (but preserve file structure by cross‑referencing). In each file, add a note: “For full rules see Section X.”
+2. **Add a “When to Invest” table** based on player archetype (Solo: 0‑10% XP; Mixed: 15‑25%; Mastermind: 35‑55%).
+3. **Clarify upkeep costs** with examples (Efficient vs. Intensive).
+4. **Add a “Succession” note:** “A loyal Follower (Cap 3+) can become your successor – see Legacy Engine, Chapter 13.”
+
+---
+
+## Section 08: World Interaction (`08_world_interaction.tex`)
+
+**Current weaknesses:** Good travel and social rules, but lacks explicit tie to the regional subgenres (from Chapter 11).
+
+**Revisions:**
+
+1. **Add a cross‑reference to Chapter 11 (World Regions and Cultures)** – “Each region has a dominant fantasy subgenre. The travel rules let you blend them.”
+2. **Clarify the travel roles** (Guide, Scout, Quartermaster, Watch) with a quick example.
+3. **Add a “Using Assets and Followers During Travel” subsection** – spend Boons to activate an asset for a dramatic shortcut, etc.
+
+---
+
+## Section 09: Archetypes (`09_archetypes.tex`)
+
+**Current weaknesses:** Example character concepts are fine, but no guidance on how to evolve them over tiers.
+
+**Revisions:**
+
+1. **Add a “Progression Path” paragraph** for each archetype – what to buy at Tier I, Tier II, Tier III.
+2. **Cross‑reference the Legacy Engine** – “This character could be succeeded by their follower.”
+3. **Add a note that these are examples, not restrictions** – encourage reskinning and mixing.
+
+---
+
+## Section 10: World and Cultures (`10_world_and_cultures.tex` and `11_world_powers.tex`)
+
+**Current weaknesses:** Much duplicated from GM Guide. Player‑facing version should be lighter – focus on what players need to know for character creation and roleplay.
+
+**Revisions:**
+
+1. **Trim repetitive lore** – keep only player‑relevant details (cultural attitudes toward magic, common factions, typical dress, customs).
+2. **Add a “How to Use This Section” box:** “Read only the region your character is from or where the campaign starts.”
+3. **For each culture, add a one‑line “Player Hook”** – e.g., “Acasia: you owe a blood‑debt to a free company captain.”
+4. **Remove GM‑only secrets** (hidden agendas, faction clocks) – keep those in GM Guide.
+
+---
+
+## Section 11: World Powers (`11_world_powers.tex`) – likely merged with above
+
+**Revisions:** Keep brief – just major factions and their public reputation. Move detailed faction clocks to GM Guide.
+
+---
+
+## Section 12: Backgrounds (`12_backgrounds.tex`)
+
+**Current weaknesses:** Good system but lacks integration with the Legacy Engine and Bonds.
+
+**Revisions:**
+
+1. **Add a “Backgrounds and Legacy” sidebar** – “Your background’s contact could become your successor.”
+2. **Clarify that the Signature Contact is a free Cap 1 Follower** (cannot take independent actions but can assist).
+3. **Add examples of background‑specific Boons** (already present, but could be expanded).
+4. **Cross‑reference Bonds (Section 12.12)** – how background influences bond creation.
+
+---
+
+## Section 13: Legacy Engine (`13_legacy.tex`)
+
+**Current weaknesses:** Excellent but placed late; players may not read it until end of campaign.
+
+**Revisions:**
+
+1. **Add a note in earlier sections (Advancement, Assets/Followers) pointing to this chapter** – “Thinking long‑term? Read about succession.”
+2. **Clarify that a successor inherits Faction Standing, one Unresolved Burden, and a Legacy Bond** – with an example.
+3. **Add a player‑facing “Legacy Planning” checklist** – what to do before your character retires (name a successor, settle debts, pass on an asset).
+
+---
+
+## Section 14: Enhanced Player Play (`15_enhanced_play.tex` – numbering off)
+
+**Current weaknesses:** Optional systems (Momentum, Information Trading, Complication Bargaining) are great but could be more clearly marked as optional.
+
+**Revisions:**
+
+1. **Add a “Optional Rules” heading** – clearly separate core from optional.
+2. **Add a “When to Use” recommendation** for each advanced technique.
+3. **Cross‑reference the Threat Pool (GM Guide)** – players should know it exists but not rely on it.
+4. **Add a “Player Tips for High‑Tier Play” subsection** – Boon scarcity, Bond transfers, using Assets.
+
+---
+
+## Appendices (`appendix_quick_reference.tex` and `witch_hunter.tex`)
+
+**Current weaknesses:** Appendices X, Y, Z (tools, magic reference, pre‑made spells) are useful but could be better organised.
+
+**Revisions:**
+
+1. **Standardise appendix labels** (A, B, C, D) – not X, Y, Z.
+2. **Add a “Quick Reference” one‑page summary** similar to GM screen but player‑facing (Outcome Matrix, Boon spending, Position, Fatigue/Harm, Magic DV).
+3. **Witch Hunter appendix** – keep as optional expansion, but add a note that it’s GM‑dependent.
+
+---
+
+## Cross‑Sectional Consistency Fixes
+
+- **Indexing:** Ensure every term in the index appears; run `makeindex`.
+- **Cross‑references:** Use `\ref` and `\pageref` liberally (e.g., from Advancement to Legacy Engine).
+- **Box styling:** Use `\begin{infobox}{Title}` for examples, `\begin{warningbox}` for common pitfalls, `\begin{fatebox}{Fate's Edge}` for philosophical asides.
+- **Numbering:** Keep subsection numbers as they are but reorder content within subsections as described.
+
+---
+
+## Implementation Order (Player’s Guide)
+
+1. **Start with Section 01** – add Session Zero and philosophy clarification.
+2. **Section 02** – reorder core mechanics, add Boon spending encouragement.
+3. **Section 03 (Magic)** – add Patron as co‑star, player advice for Obligation.
+4. **Section 05 (XP Paths)** – add player archetypes and group synergy.
+5. **Section 13 (Legacy Engine)** – add early pointers from other sections.
+6. **Section 07/13/14 (Assets/Followers)** – consolidate and add investment guidance.
+7. **Remaining sections** (04, 06, 08, 09, 10, 11, 12, 15, appendices) – apply targeted tweaks.
+8. **Final pass:** Update all cross‑references and index entries.
+
+This plan respects the existing file structure while making the Player’s Guide more actionable, player‑friendly, and better integrated with the GM Guide and SRD.

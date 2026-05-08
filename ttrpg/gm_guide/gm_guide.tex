@@ -10,6 +10,17 @@
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, positioning}
+
+% ===== Mathematics =====
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ===== Tables =====
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}      % For multi‑page tables in appendices
+
 % ===== Paragraphs and spacing =====
 \usepackage{parskip}
 \setlength{\parskip}{0.5\baselineskip}
@@ -22,8 +33,7 @@
 \usepackage{enumitem}
 \setlist{nosep, topsep=2pt, partopsep=0pt}
 
-% ===== Tables and figures =====
-\usepackage{booktabs}
+% ===== Figures and captions =====
 \usepackage{graphicx}
 \usepackage{caption}
 \captionsetup{font=small, labelfont=bf}
@@ -35,18 +45,21 @@
   linkcolor=blue!60!black,
   urlcolor=blue!60!black,
   citecolor=gray,
-  pdfborder={0 0 0}
+  pdfborder={0 0 0},
+  pdftitle={Fate's Edge: Game Master's Guide},
+  pdfauthor={Nicholas A. Gasper},
+  pdfsubject={Tabletop Roleplaying Game},
+  pdfkeywords={Fate's Edge, RPG, narrative, dice pool, patrons, clocks}
 }
 \usepackage{bookmark}       % Improved PDF bookmarks
 
-% ===== Indexing (run makeindex after pdflatex) =====
+% ===== Indexing =====
 \usepackage{imakeidx}
-\makeindex[columns=3, title=Index, options=-s index_style.if % optional style file
-           ]
+\makeindex[columns=3, title=Index]
 \indexsetup{level=\section*, toclevel=section}
 
 % ===== Optional glossary (uncomment if needed) =====
-%\usepackage[ acronym, nonumberlist, nopostdot ]{glossaries}
+%\usepackage[acronym, nonumberlist, nopostdot]{glossaries}
 %\makeglossaries
 %\loadglsentries{glossary_entries}   % external file
 
@@ -63,7 +76,7 @@
 \definecolor{red75}{RGB}{180,0,0}
 \definecolor{red5}{RGB}{255,235,235}
 
-% ===== Consistent infobox for examples, warnings, asides =====
+% ===== Consistent infoboxes =====
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable}
 \newtcolorbox{infobox}[1]{
@@ -122,15 +135,26 @@ This work is licensed under the Creative Commons Attribution 4.0 International L
 To view a copy of this license, visit:
 \url{http://creativecommons.org/licenses/by/4.0/}
 \end{center}
-\cleardoublepage
 
+% Dedication (optional)
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{2in}
+\begin{center}
+\emph{For the GMs who dare to let the world push back.}
+\end{center}
+
+\cleardoublepage
 \tableofcontents
+
+% Optional lists (uncomment if you have many tables/figures)
+%\listoftables
+%\listoffigures
 
 \mainmatter
 
 % ============================================================
 %  Section files – each chapter is a separate .tex file
-%  (user will provide the content of these files)
 % ============================================================
 
 \include{sections/01_intro}                % GM Introduction
