@@ -48,10 +48,18 @@
 \definecolor{blue5}{RGB}{235,245,255}
 \definecolor{gray75}{RGB}{100,100,100}
 \definecolor{gray5}{RGB}{245,245,245}
+\definecolor{green75}{RGB}{0,100,0}
+\definecolor{green5}{RGB}{235,255,235}
+\definecolor{red75}{RGB}{150,0,0}
+\definecolor{red5}{RGB}{255,235,235}
+\definecolor{yellow75}{RGB}{150,150,0}
+\definecolor{yellow5}{RGB}{255,255,235}
+\definecolor{parchment}{RGB}{253,245,220}
+\definecolor{bronze}{RGB}{205,127,50}
 
 % ===== tcolorbox setups =====
 \usepackage{tcolorbox}
-\tcbuselibrary{breakable}
+\tcbuselibrary{breakable, skins}
 
 % Standard infobox (used for sidebars, tips)
 \newtcolorbox{infobox}[1]{%
@@ -76,6 +84,19 @@
     attach boxed title to top center={yshift=-2mm},
     boxed title style={size=small, colframe=blue75},
     drop shadow,
+    #1
+}
+
+% Fate's Edge special box (philosophical asides)
+\newtcolorbox{fatebox}[2][]{%
+    enhanced,
+    breakable,
+    colback=#2!5!white,
+    colframe=#2!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    attach boxed title to top left={yshift=-2mm,xshift=4mm},
+    boxed title style={colback=#2!75!black, colframe=#2!75!black, sharp corners, rounded corners=north},
     #1
 }
 
@@ -109,23 +130,28 @@
 
 \mainmatter
 
-% -------- Include your chapters (adjust filenames as needed) --------
-\include{sections/01_intro}
-\include{sections/02_core_mechanics}
-\include{sections/04_magic}
-\include{patrons/index}
-\include{sections/03_advancement}
-\include{sections/05_xp_paths}
-\include{sections/06_talents}
-\include{sections/09_archetypes}
-\include{sections/07_assets_follower}
-\include{sections/08_world_interaction}
-\include{sections/10_world_and_cultures}
-\include{sections/11_divine_powers}
-\include{sections/12_backgrounds}
-\include{sections/13_legacy}
-\include{sections/15_enhanced_play}
-\include{sections/appendix_quick_reference}
+% -------- Include chapters in logical order --------
+\include{sections/intro}                 % Welcome & philosophy
+\include{sections/core_mechanics}        % Core resolution, dice, Boons, position
+\include{sections/magic}                 % Magic system, patrons, rites
+\include{sections/advancement}           % Attributes, skills, XP, tiers
+\include{sections/xp_paths}              % Career paths, archetypes, builds
+\include{sections/talents}               % Talent list, synergies
+\include{sections/archetypes}            % Example character concepts
+\include{sections/assets_follower}       % Assets and followers overview
+\include{sections/world_interaction}     % Travel, time, social interaction
+\include{sections/world_and_cultures}    % Regions, peoples, cultural mechanics
+\include{sections/world_powers}          % Terrestrial patrons, obligation
+\include{sections/backgrounds}           % Backgrounds, bonds
+\include{sections/legacy}                % Legacy Engine, succession
+\include{sections/enhanced_play}         % Advanced player techniques
+\include{sections/appendix_quick_reference}  % Tables, trackers, spells
+
+% -------- Optional expansion: Witch Hunter --------
+% If the file exists, include it as an additional appendix.
+\IfFileExists{sections/witch_hunter.tex}{%
+  \include{sections/witch_hunter}
+}{}
 
 \backmatter
 \printindex

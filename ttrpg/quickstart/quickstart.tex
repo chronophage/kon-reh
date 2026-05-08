@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 
-% --- Basic setup (no fontspec) ---
+% --- Basic setup ---
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -16,7 +16,9 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tcolorbox}
-\tcbset{colback=black!3!white, colframe=black!60, arc=2pt, boxrule=0.5pt}
+\tcbuselibrary{breakable}
+
+\tcbset{colback=black!3!white, colframe=black!60, arc=2pt, boxrule=0.5pt, breakable}
 
 % --- Quick box environments ---
 \newtcolorbox{fatebox}[1][]{title=#1, enhanced, left=6pt, right=6pt, top=6pt, bottom=6pt}
@@ -27,31 +29,29 @@
 \titleformat{\subsection}{\bfseries}{}{0em}{}
 \titleformat{\subsubsection}{\itshape}{}{0em}{}
 
-% --- Small helpers ---
-\newcommand{\dvline}{\midrule}
+% --- Helpers ---
 \newcommand{\key}[1]{\textbf{#1}}
-
-% =====================================================
-%               QUICKSTART: REVISED TEXT
-% =====================================================
 
 \begin{document}
 
 \section{Welcome to Fate's Edge}
 
 \noindent
-Fate's Edge is a narrative-first tabletop RPG where every action has a cost, the fiction leads the rules, and tension is managed with \emph{Position}, \emph{Effect}, and \emph{Story Beats (SB)}. This quickstart gives you the complete table loop and ready-to-run tools.
+Fate's Edge is a narrative-first TTRPG where every action has a cost, the fiction leads the rules, and tension flows from \emph{Position}, \emph{Effect}, and \emph{Story Beats (SB)}. This quickstart gives you the complete table loop.
 
-% -----------------------------------------------------
+\begin{fatebox}[Golden Rule]
+  When in doubt, make the choice that serves the story. The dice help decide which path you take.
+\end{fatebox}
+
 \section{Core Resolution}
 
 \subsection{The Art of Consequence}
-All significant actions follow three steps:
+Every meaningful action follows three steps:
 \begin{enumerate}[leftmargin=*]
-  \item \key{Approach}: Player states intent and method in the fiction.
+  \item \key{Approach}: Player declares intent and method in the fiction.
   \item \key{Execution}: Roll a pool = \emph{Attribute + Skill} (d10s).\\
         Each 6–10 = 1 success. Each die showing 1 = 1 \emph{SB} to the GM.
-  \item \key{Outcome}: Compare successes vs \emph{DV} (Difficulty Value).\\
+  \item \key{Outcome}: Compare successes to \emph{DV} (Difficulty Value).\\
         GM resolves using \emph{Position \& Effect} and spends SB for complications.
 \end{enumerate}
 
@@ -68,10 +68,10 @@ All significant actions follow three steps:
   \item \key{Melee}, \key{Ranged}, \key{Athletics}
   \item \key{Sway}, \key{Subterfuge}, \key{Insight}
   \item \key{Stealth}, \key{Survival}, \key{Command}
-  \item \key{Arcana}, \key{Lore}, \key{Craft} (Tinker)
+  \item \key{Arcana}, \key{Lore}, \key{Craft (Tinker)}
 \end{itemize}
 
-\begin{fatebox}[Subterfuge, Stealth, and Craft (Tinker)]
+\begin{fatebox}[Subterfuge, Stealth, Craft (Tinker)]
 \key{Subterfuge} = disguise, forgery, cons, planted evidence, social camouflage.\\
 \key{Stealth} = not being seen or heard while moving or waiting.\\
 \key{Craft (Tinker)} = devices, locks, traps, seals, wards, and tools.\\[3pt]
@@ -126,7 +126,7 @@ Successes $=$ 0 & Miss: no progress (gain 2 Boons) \\
 \end{longtable}
 \end{center}
 
-\begin{fatebox}[Story Beats (SB): A Simple Spend Menu]
+\begin{fatebox}[Story Beats (SB): Simple Spend Menu]
 \begin{itemize}[leftmargin=*]
   \item \key{1 SB} — Minor pressure: noise, trace, drop a tool, tick a 4/6 clock +1.
   \item \key{2 SB} — Moderate setback: lose Position, raise alarm, harsher terms.
@@ -135,19 +135,19 @@ Successes $=$ 0 & Miss: no progress (gain 2 Boons) \\
 \end{itemize}
 \end{fatebox}
 
-% -----------------------------------------------------
 \section{Description Ladder}
-
-How you act matters:
+How you describe your action adds optional re‑rolls (all 1s still generate SB):
 \begin{itemize}[leftmargin=*]
-  \item \key{Basic}: roll as-is (all 1s generate SB).
-  \item \key{Detailed}: re-roll one die showing 1 (both the original 1 and any new 1s generate SB).
-  \item \key{Intricate}: re-roll all 1s; add a flourish on success (all 1s still count for SB).
+  \item \key{Basic}: roll as‑is.
+  \item \key{Detailed}: re‑roll one die showing 1.
+  \item \key{Intricate}: re‑roll all 1s; add a flourish on success.
 \end{itemize}
 
-% -----------------------------------------------------
-\section{Boons: Reward for Risk}
+\begin{fatebox}[Flavor is Free]
+Add descriptive details, cultural elements, and atmospheric touches without spending resources. Describe the flourish, the scar, the whistle. Mechanics determine success or failure; flavor determines the story we tell about it.
+\end{fatebox}
 
+\section{Boons: Reward for Risk}
 \begin{itemize}[leftmargin=*]
   \item \key{On Miss (0 successes)}: gain \textbf{2 Boons}.
   \item \key{On Partial}: gain \textbf{1 Boon}.
@@ -155,8 +155,8 @@ How you act matters:
 
 \subsection*{Spending Boons}
 \begin{itemize}[leftmargin=*]
-  \item Re-roll one die in any pool
-  \item Activate an on-screen Asset
+  \item Re‑roll one die in any pool
+  \item Activate an on‑screen Asset
   \item Improve Position by 1 step
   \item Convert 2 Boons $\rightarrow$ 1 XP (max 2 XP/session)
 \end{itemize}
@@ -167,19 +167,15 @@ How you act matters:
   \item Max 2 Boons from failure per scene
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Action Economy}
-
 Each turn:
 \begin{itemize}[leftmargin=*]
   \item \key{1 Action}: attack, cast, use a skill, or similar task.
   \item \key{1 Move}: shift one Range Band (Close$\leftrightarrow$Near or Near$\leftrightarrow$Far). \emph{Dash} (spend the Action) = move two bands.
 \end{itemize}
-Talents may grant bonus actions or reactions. Channeled magic may require multiple actions. Fatigue or harm can restrict options.
+Talents may grant bonus actions or reactions. Fatigue or harm can restrict options.
 
-% -----------------------------------------------------
 \section{Combat System}
-
 Same core loop, now framed for danger.
 
 \subsection{Procedure}
@@ -205,7 +201,7 @@ No fixed initiative. Spotlight follows fiction:
   \item GM shifts spotlight to maintain tension and clarity.
 \end{itemize}
 
-\subsection{Fatigue}\label{subsec:fatigue}
+\subsection{Fatigue}
 \key{Track}: Fatigue = \emph{Body}. Mark for exertion, strain, backlash.\\
 \key{Effect}: Each Fatigue step worsens Position by one level (Dominant $\to$ Controlled $\to$ Desperate). If already \emph{Desperate}, take \emph{--1 die} per additional Fatigue.\\
 \key{Overflow}: When full, increase \emph{Harm} by 1 step and clear all Fatigue.\\
@@ -226,28 +222,25 @@ No fixed initiative. Spotlight follows fiction:
   \item \key{Environmental Collapse [8]}
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Magic System}
-
 \subsection{Three Paths}
 \begin{itemize}[leftmargin=*]
   \item \key{Caster (Freeform)}: \emph{Weave} elements + \emph{Channel} power. (Requires \emph{Spellcraft}.)
-  \item \key{Runekeeper (Rites)}: Patron-bound rites with \emph{Obligation}. (Requires \emph{Codex}; \emph{Thaisos} shapes practice.)
+  \item \key{Runekeeper (Rites)}: Patron‑bound rites with \emph{Obligation}. (Requires \emph{Codex}; \emph{Thaisos} shapes practice.)
   \item \key{Invoker (Symbols)}: Patron \emph{Seals} and rituals with time or risk.
 \end{itemize}
 
 \subsection{TAGS System}
-\key{TAGS} are narrative shorthand for magical effects. Each TAG describes a discrete effect that modifies the spell's outcome.
+\key{TAGS} are narrative shorthand for magical effects.
 \begin{itemize}[leftmargin=*]
   \item \key{DV Calculation}: DV = 1 + number of TAGS (max 6)
   \item \key{Dangerous TAGS}: [TELEPORT], [TRANSFORM], [DOMINATE] add +2 DV instead of +1
-  \item \key{Example}: "Burning • Area • Force" = DV 4 (1 + 3 TAGS)
+  \item \key{Example}: “Burning • Area • Force” = DV 4
 \end{itemize}
 
 \subsection{Casting At a Glance}
 \begin{itemize}[leftmargin=*]
-  \item \key{Caster}: \emph{Channel + Weave} = 2 actions (or \emph{Push} to compress with cost).\\
-        \textbf{[TAGS]}: Describe effect with 1-6 TAGS to set DV
+  \item \key{Caster}: \emph{Channel + Weave} = 2 actions (or \emph{Push} to compress with cost).
   \item \key{Runekeeper}: 1 action to \emph{Invoke}; may \emph{Push} for +1 Obligation.
   \item \key{Invoker}: Rituals take turns; \emph{Crack the Seal} for instant cast at \emph{Desperate}.
 \end{itemize}
@@ -256,41 +249,37 @@ No fixed initiative. Spotlight follows fiction:
 \begin{itemize}[leftmargin=*]
   \item \key{Interrupted}: If harmed/silenced before resolution, spell/rite fails.
   \item \key{Push}: Resolve now, mark +1 Fatigue or +1 Obligation/Corruption.
-  \item \key{TAGS Backlash}: On mixed results, Backlash is colored by the TAGS used
+  \item \key{TAGS Backlash}: On mixed results, Backlash is colored by the TAGS used.
 \end{itemize}
 
 \begin{examplebox}[On-the-Fly Adjudication]
-\emph{Barrier} for a hallway? \textbf{[WARD]} $\Rightarrow$ DV 2; scene-wide $\Rightarrow$ DV 3; sweeping area $\Rightarrow$ DV 4+. Casting under fire $\Rightarrow$ Controlled or Desperate.\\
-\emph{Example:} "I create a [WARD] [BARRIER] [FIRE] wall" = DV 4 (1+3)
+\emph{Barrier} for a hallway? \textbf{[WARD]} $\Rightarrow$ DV 2; scene‑wide $\Rightarrow$ DV 3; sweeping area $\Rightarrow$ DV 4+. Casting under fire $\Rightarrow$ Controlled or Desperate.\\
+\emph{Example:} “I create a [WARD] [BARRIER] [FIRE] wall” = DV 4 (1+3)
 \end{examplebox}
 
-% -----------------------------------------------------
 \section{Character Creation}
-
 \subsection{Starting Build}
 \begin{itemize}[leftmargin=*]
   \item \key{30 XP} to spend
   \item Attributes 1–3; Skills 0–2
-  \item Bonds (+2 XP) and Complications (+4 XP) optional
+  \item Bonds (+2 XP) and Complications (+4 XP) optional (max start 34 XP)
 \end{itemize}
 
 \subsection{Key Talents}
 \begin{itemize}[leftmargin=*]
   \item \key{Spellcraft (6 XP) [FIRE] [WATER]}: access to freeform magic
   \item \key{Familiar (2 XP) [SPIRIT] [BOND]}: Patron features access
-  \item \key{Codex (4 XP) [FATE] [RITUAL]}: Runekeeper rites \& Obligation (\emph{Thaisos} defines style)
-  \item \key{Patron's Symbol (4 XP) [WARD] [SIGIL]}: Invoker seals/rituals
+  \item \key{Codex (4 XP) [FATE] [RITUAL]}: Runekeeper rites \& Obligation
+  \item \key{Patron’s Symbol (4 XP) [WARD] [SIGIL]}: Invoker seals/rituals
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Range Bands \& Movement}
-
 \subsection{Range Bands}
 \begin{itemize}[leftmargin=*]
-  \item \key{Close}: arm's reach
+  \item \key{Close}: arm’s reach
   \item \key{Near}: same room/space
-  \item \key{Far}: line-of-sight distance
-  \item \key{Absent}: off-screen (requires travel)
+  \item \key{Far}: line‑of‑sight distance
+  \item \key{Absent}: off‑screen (requires travel)
 \end{itemize}
 
 \subsection{Movement}
@@ -300,9 +289,7 @@ No fixed initiative. Spotlight follows fiction:
   \item Melee Flag: mark engaged foes in \emph{Near} range
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Travel Framework}
-
 \subsection{Procedure}
 \begin{enumerate}[leftmargin=*]
   \item Break journey into legs with \key{Travel Clock [4]}
@@ -319,16 +306,13 @@ No fixed initiative. Spotlight follows fiction:
   \item \key{Watch}: on success, start next scene at \emph{Dominant}
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Deck of Consequences (Optional)}
-
 \begin{itemize}[leftmargin=*]
   \item \key{Hearts} — Social/emotional fallout
   \item \key{Spades} — Physical harm/danger
   \item \key{Clubs} — Resource/fatigue pressure
   \item \key{Diamonds} — Arcane/supernatural turns
 \end{itemize}
-
 \subsection*{Triggers (Draw 1; max 3/scene)}
 \begin{itemize}[leftmargin=*]
   \item A \emph{Desperate} roll succeeds with cost
@@ -336,9 +320,7 @@ No fixed initiative. Spotlight follows fiction:
   \item A major clock fills (scene pivot)
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Advancement}
-
 \subsection{XP Awards}
 \begin{itemize}[leftmargin=*]
   \item Standard: 6–10 XP / session
@@ -356,9 +338,7 @@ No fixed initiative. Spotlight follows fiction:
   \item Followers: Cap$^{2}$ XP
 \end{itemize}
 
-% -----------------------------------------------------
 \section{GM Quick Reference}
-
 \subsection{Adjudication Loop}
 \begin{enumerate}[leftmargin=*]
   \item Set Position and DV
@@ -375,23 +355,21 @@ No fixed initiative. Spotlight follows fiction:
 \key{4+ SB}: scene transformation, authority arrival, collapse/eruption.
 \end{fatebox}
 
-\subsection{Five-Second Position \& Effect}
+\subsection{Five‑Second Position \& Effect}
 Ask two questions: \emph{What is the risk?} (Dominant/Controlled/Desperate). \emph{What is the impact?} (Limited/Standard/Great). Decide, roll.
 
 \subsection{Lazy DV Table}
 If in doubt: \key{DV = 3}. Raise/lower by 1 based on pressure or precision.
 
-\subsection{Clocks: The Three-Clock Rule}
+\subsection{Clocks: The Three‑Clock Rule}
 Keep at most three active:
 \begin{itemize}[leftmargin=*]
   \item \key{Scene} (e.g., Guards Alerted [4])
   \item \key{Journey} (e.g., Mist Encroaches [6])
-  \item \key{Campaign} (e.g., Baron's Suspicion [8])
+  \item \key{Campaign} (e.g., Baron’s Suspicion [8])
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Worked Examples}
-
 \begin{examplebox}[Lockpick Under Pressure]
 \key{Situation}: Picking a warded lock while guards patrol nearby.\\
 \key{Roll}: Wits 2 + Craft (Tinker) 2 = 4d10 $\rightarrow$ 8, 6, 3, 1.\\
@@ -404,7 +382,7 @@ Keep at most three active:
 \key{Roll}: Wits 3 + Subterfuge 2 = 5d10.\\
 \key{On Success}: Patrol peels off; Effect improves if you also present matching seals (\emph{Craft} assist).\\
 \key{On Partial}: Rumor [2] starts against you; you gain 1 Boon.\\
-\key{On Miss}: The captain cross-checks—GM spends SB to tighten security.
+\key{On Miss}: The captain cross‑checks—GM spends SB to tighten security.
 \end{examplebox}
 
 \begin{examplebox}[From Dominant to Desperate]
@@ -415,16 +393,14 @@ Keep at most three active:
 
 \begin{examplebox}[TAGS in Action]
 \key{Situation}: Wielder of the Fire and Water paths attempts to create a wall of flame.\\
-\key{Declaration}: "I unleash [Burning] [Area] [Force] against the marauders."\\
+\key{Declaration}: “I unleash [Burning] [Area] [Force] against the marauders.”\\
 \key{DV}: 1 + 3 TAGS = 4\\
 \key{Roll}: Arcana 3 + Lore 2 = 5d10 $\rightarrow$ 10, 8, 5, 4, 1\\
 \key{Result}: 4 successes (DV 4), 1 SB (Clean Success)\\
 \key{Outcome}: Wall of flame erupts; GM spends SB to have the fire spread to nearby tents.
 \end{examplebox}
 
-% -----------------------------------------------------
 \section{Starter Scenario: The Lantern at Dusk}
-
 \subsection*{Premise}
 Escort a relic lantern across the haunted Duskway. When lit, forgotten souls stir. Patrons may contest the route.
 
@@ -454,9 +430,7 @@ Escort a relic lantern across the haunted Duskway. When lit, forgotten souls sti
   \item \key{Failure}: lost; +2 XP; introduce a Patron foe next session
 \end{itemize}
 
-% -----------------------------------------------------
 \section{Session One Agenda (60–120 minutes)}
-
 \begin{enumerate}[leftmargin=*,label=\arabic*.]
   \item Cold open: concrete stakes (5–10m).
   \item Teach core loop with a short obstacle (10–15m).
@@ -465,9 +439,7 @@ Escort a relic lantern across the haunted Duskway. When lit, forgotten souls sti
   \item Debrief: XP, Boons, next hook (5–10m).
 \end{enumerate}
 
-% -----------------------------------------------------
 \section{Designer’s Notes}
-
 \begin{enumerate}[leftmargin=*]
   \item \key{Fail Forward}: failure is story fuel, not a stall.
   \item \key{Fiction First}: description sets DV, Position, and Effect.
