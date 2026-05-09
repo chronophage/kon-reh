@@ -126,8 +126,9 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f knights_tale.tex -n "Fate's Edge Expansion - Viterra, The Knight's Confession.pdf" > /dev/null 2>&1|| echo "#49. Did not build"
 
 ../../../tools/compile_latex.sh -f air_mist_alder_thorn_mirror.tex -n "Fate's Edge Expansion - The Book of Air, Mist, Alder, Thorn, and Mirror.pdf" > /dev/null 2>&1|| echo "#50. Did not build"
+ ../../../tools/compile_latex.sh -f tam_moira_wilds.tex -n "Fate's Edge Expansion - Moira's Journels of the Wilds.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
 cd saikou_compendium/
-../../../../tools/compile_latex.sh -f main.tex -n "Fate's Edge Expansion - Saikou Ira's Compendium of the Veil.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
+../../../../tools/compile_latex.sh -f main.tex -n "Fate's Edge Expansion - Saikou Ira's Compendium of the Veil.pdf" > /dev/null 2>&1|| echo "#52. Did not build"
 cd -
 
 echo "Committing and pushing to git"
