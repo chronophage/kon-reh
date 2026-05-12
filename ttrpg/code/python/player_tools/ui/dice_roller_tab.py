@@ -124,7 +124,7 @@ class FateEdgeDiceRoller:
         if successes >= difficulty and complications == 0:
             outcome = "Clean Success"
         elif successes >= difficulty and complications > 0:
-            outcome = "Success with Cost"
+            outcome = "Success with SB"
         elif 0 < successes < difficulty:
             outcome = "Partial Success"
         elif successes == 0:

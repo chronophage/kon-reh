@@ -224,7 +224,7 @@ These are organized by theme and power level.
 
 ### Harbor Whisper (Kahfagia, 6 XP)
 **Requirements:** Presence 3+, Sway 2+
-**Effect:** Once per session, treat a failed harbor negotiation as a success with cost. Gain +1 die to all port-related social rolls
+**Effect:** Once per session, treat a failed harbor negotiation as a success with sb. Gain +1 die to all port-related social rolls
 
 ### Salt-Blood (Mistlands, 7 XP)
 **Requirements:** Spirit 3+, Survival 2+
@@ -232,7 +232,7 @@ These are organized by theme and power level.
 
 ### Oath-Keeper's Resolve (Aeler, 9 XP)
 **Requirements:** Spirit 4+, Resolve 3+
-**Effect:** Once per session, treat a failed "Oath-Magnet" or "Spoken Geas" complication as a success with cost. Gain +1 die to all oath-related social rolls
+**Effect:** Once per session, treat a failed "Oath-Magnet" or "Spoken Geas" complication as a success with sb. Gain +1 die to all oath-related social rolls
 
 ## Specialized Talents
 

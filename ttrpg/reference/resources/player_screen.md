@@ -28,7 +28,7 @@
 
 ## 🎯 Outcomes
 - S ≥ DV, C=0: Clean success (Standard Effect)
-- S ≥ DV, C>0: Success with Cost (SB spent)
+- S ≥ DV, C>0: Success with SB (SB spent)
 - S < DV, C=0: Partial (Limited Effect + SB)
 - S = 0: Failure (No Effect + SB)
 

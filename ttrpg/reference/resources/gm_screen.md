@@ -93,7 +93,7 @@
 - Diamonds: Arcane / Mystical  
 
 **When to Draw:**  
-- Desperate success with cost  
+- Desperate success with sb  
 - GM spends 2+ SB in a single move  
 - End of round with unresolved tension  
 

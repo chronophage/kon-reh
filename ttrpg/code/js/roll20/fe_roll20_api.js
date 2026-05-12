@@ -58,7 +58,7 @@ const FateEdgeComplete = (() => {
         determineOutcome: (successes, sbGenerated, position) => {
             if (successes === 0) return "Miss - No progress";
             if (sbGenerated === 0 && successes > 0) return "Clean Success";
-            if (sbGenerated > 0 && successes > 0) return "Success with Cost";
+            if (sbGenerated > 0 && successes > 0) return "Success with SB";
             if (successes > 0) return "Partial Success";
             return "Complication";
         },

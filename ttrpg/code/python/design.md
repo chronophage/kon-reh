@@ -15,7 +15,7 @@ A Discord bot to facilitate Fate's Edge gameplay directly within Discord, focusi
 # 💡 Re-rolling 1s for Intricate description...
 # Final: [9, 7, 5, 2, 6, 3] 
 # Successes: 4 | Story Beats: 0
-# ✅ Success with Cost - You sneak past but make some noise
+# ✅ Success with SB - You sneak past but make some noise
 ```
 
 ### 2. Character Management
