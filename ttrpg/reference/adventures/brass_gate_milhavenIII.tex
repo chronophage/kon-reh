@@ -23,6 +23,7 @@
 \definecolor{parchment}{RGB}{245,240,225}
 \definecolor{blood}{RGB}{120,30,30}
 \definecolor{deepblue}{RGB}{20,45,80}
+\definecolor{recap}{RGB}{230,220,180}
 
 % Page style
 \pagestyle{fancy}
@@ -40,6 +41,10 @@
 
 % Tcolorbox for sidebars
 \newtcolorbox{sidebar}[1][]{colback=parchment, colframe=bronze, sharp corners, breakable, enhanced, fonttitle=\bfseries, title=#1}
+\newtcolorbox{recapbox}[1][]{colback=recap, colframe=bronze!70, sharp corners, breakable, enhanced, fonttitle=\bfseries, title=#1}
+\newtcolorbox{mechanicbox}[1][]{colback=gray!10, colframe=iron!70, sharp corners, breakable, enhanced, fonttitle=\bfseries, title=#1}
+\newtcolorbox{tipsbox}[1][]{colback=green!5, colframe=green!70, sharp corners, breakable, enhanced, fonttitle=\bfseries, title=#1}
+\newtcolorbox{clocksidebar}[1][]{colback=red!5, colframe=red!70, sharp corners, breakable, enhanced, fonttitle=\bfseries, title=#1}
 
 % Custom commands for mechanics
 \newcommand{\tag}[1]{\textsc{[#1]}}
@@ -62,6 +67,10 @@
 
 \chapter{How to Run This Adventure}
 \setcounter{page}{1}
+
+\begin{recapbox}[Previously in Fate’s Edge]
+Your players have survived the bandit attack on Millhaven (\textit{Blood and Silk}) and brokered peace at the Valvano Ford (\textit{Beyond Millhaven}). They have earned the trust of the Vilikari merchant Tema and may have met Khatun Sarnai (Ykrul chieftain) and Captain Rusk (Black Banner mercenary). They carry a Letter of Introduction to a Vilikari lord and have begun to build a reputation. Now they are drawn into the politics of Castra Ferrum, where old grudges and cursed relics threaten to ignite a new war.
+\end{recapbox}
 
 The Bronze Gate is a Tier I–II adventure, suitable for characters who have earned 30–60 \xp. It assumes familiarity with the core resolution loop, Position, \dv, Boons, \sb, and clocks. The adventure introduces terrestrial patronage, Roman‑style wards, and the weight of military honor.
 
@@ -191,9 +200,24 @@ The party should choose at least one patron by the end of the session.
 
 \section{Opening Scene – The Night Before}
 
-The party stakes out the tribunal. They can bribe a guard (Presence+Streetwise \dv 3, cost 1 Boon or 10 silver), steal a patrol schedule (Wits+Stealth \dv 4), get a map from Cassia (requires her favor), or wait for a storm (the guards are distracted, but the storm wakes the curse.
+The party stakes out the tribunal. They can bribe a guard (Presence+Streetwise \dv 3, cost 1 Boon or 10 silver), steal a patrol schedule (Wits+Stealth \dv 4), get a map from Cassia (requires her favor), or wait for a storm (the guards are distracted, but the storm wakes the curse).
 
 Start a \textbf{Watch Patrol Clock [4]}. Each failed Stealth roll ticks it. When full, the alarm is raised.
+
+\begin{clocksidebar}[Clock Triggers]
+\textbf{Watch Patrol Clock advances +1 when:}
+\begin{itemize}
+\item A Stealth roll fails.
+\item A trap’s \tag{ALARM} triggers.
+\item A guard is not silenced before they can shout.
+\end{itemize}
+\textbf{Heist Clock advances +1 when:}
+\begin{itemize}
+\item A downtime scene ends.
+\item The party spends a full hour debating without action (GM’s call).
+\item A partial success on a critical roll creates a delay (e.g., the lockpick breaks).
+\end{itemize}
+\end{clocksidebar}
 
 \section{Chamber One – The Armory}
 
@@ -225,9 +249,19 @@ Lena is not a fighter. She will negotiate: split the reward, or she will walk aw
 
 If the party fights, Lena has Harm 2, Stealth 3, Subterfuge 2. She uses \textit{Light Fingers} to steal a weapon mid‑combat (Wits+Subterfuge vs PC’s Wits+Notice). At Harm 2 she surrenders.
 
-\section{Escape}
+\section{Escape – Skill Challenge}
 
-The party must exit before the Watch Patrol clock fills. For each remaining open segment, they can attempt a skill roll to evade guards. If the clock fills, run a brief chase. On failure, they are arrested – Cassia may bail them out in exchange for the seal, or Marcellus may offer a deal.
+The party must exit before the Watch Patrol clock fills. Run this as a \textbf{skill challenge}: the players need \textbf{3 successes before 2 failures}. Each PC describes how they contribute (Stealth to avoid patrols, Command to give orders, Deception to bluff past a guard, Athletics to climb a wall). The GM sets \dv based on the approach (typically 3).
+
+Complications on failure:
+
+\begin{itemize}
+\item A guard spots the party – tick Watch Patrol +1. The PC may spend 1 Boon to create a distraction and avoid the tick.
+\item A door is locked that wasn’t before – the party must find another route (adds 1 segment to the challenge).
+\item Rusk’s mercenaries arrive (if the Heist Clock is at 4+ segments). The party must fight or bribe them.
+\end{itemize}
+
+If the clock fills, run a brief chase. On failure, they are arrested – Cassia may bail them out in exchange for the seal, or Marcellus may offer a deal.
 
 \chapter{Session Three – The Curse Unsealed}
 
@@ -250,17 +284,27 @@ The location depends on the party’s chosen patron:
 \section{Breaking the Curse – Three Ways}
 
 \subsection{Return the Seal to the Ykrul}
-Give it to Sarnai. She buries it under a cairn with a steppe ritual. The curse ends. Sarnai opens the trade route. Marcellus becomes a permanent enemy.
+Give it to Sarnai. She buries it under a cairn with a steppe ritual. The curse ends. Sarnai opens the trade route. Marcellus becomes a permanent enemy. \textbf{Cost:} The party loses any favor with Marcellus; his Debt Clock becomes a Hunt Clock [6].
 
 \subsection{Destroy the Seal with Fire}
-A ritual (Spirit+Arcana \dv 6). On success, the seal shatters. On a partial, it shatters but the curse transfers to the one who strikes it – that PC gains \textit{Varus’s Scourge} (1 Fatigue each dawn until they atone). Cassia rewards a \textbf{Censor’s Seal} (one free legal pardon).
+A ritual (Spirit+Arcana \dv 6). On success, the seal shatters. On a partial, it shatters but the curse transfers to the one who strikes it – that PC gains \textit{Varus’s Scourge} (1 Fatigue each dawn until they atone). Cassia rewards a \textbf{Censor’s Seal} (one free legal pardon). \textbf{Cost:} Marcellus becomes a permanent enemy; Rusk may demand compensation.
 
 \subsection{Bind the Seal with a New Oath}
-Swear a treaty between Marcellus, Sarnai, and Tema. Requires a \textbf{Persuasion Clock [6]} for each faction. On success, the curse transforms into a blessing – the gate harms no one. The party gains a String with all three factions. Marcellus still owes them a debt.
+Swear a treaty between Marcellus, Sarnai, and Tema. Requires a \textbf{Persuasion Clock [6]} for each faction. On success, the curse transforms into a blessing – the gate harms no one. The party gains a String with all three factions. Marcellus still owes them a debt (his Debt Clock remains, but now it’s a favor they can call). \textbf{Cost:} The party must mediate a tense ceremony; any failed roll during the oath‑swearing triggers a complication (e.g., a Ykrul warrior challenges the prefect to a duel).
 
 \section{Ending – The Gate Opens}
 
 At dawn, the portcullis rises. Describe the scene: the Ykrul riders waiting, the merchants with their carts, the legionaries saluting. Then ask each player: \textit{“What does your character want now? And what are you willing to owe to get it?”}
+
+\begin{tipsbox}[Continuing the Campaign]
+The party now has enemies (Marcellus, perhaps Rusk) and allies (Sarnai, Cassia, Tema). Their reputation precedes them. Future adventures could involve:
+\begin{itemize}
+\item Marcellus seeking revenge through legal or military means.
+\item A Ykrul uprising sparked by the broken curse.
+\item Rusk’s debt to Kaelen coming due – and the party being dragged into Sidhi smuggling politics.
+\item The Censor calling in her favor to expose a larger conspiracy.
+\end{itemize}
+\end{tipsbox}
 
 \chapter{Advancement and Rewards}
 

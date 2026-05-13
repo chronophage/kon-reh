@@ -1,0 +1,676 @@
+% ============================================================
+% Fate's Edge — Amaranthine Worldbook
+% ============================================================
+\documentclass[11pt,letterpaper,twoside]{book}
+% ---------- Encoding, fonts, micro-typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[final]{microtype}
+
+% ---------- Page geometry ----------
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% ---------- Math & symbols ----------
+\usepackage{amsmath,amssymb,mathtools}
+
+% ---------- Colors, graphics, layout ----------
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
+
+% ---------- Tables ----------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{longtable}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
+
+% ---------- Hyperlinks & references ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[rgb]{0.10,0.25,0.55},
+  citecolor=[rgb]{0.10,0.45,0.25},
+  urlcolor=[rgb]{0.55,0.10,0.10},
+  pdfauthor={Fate's Edge},
+  pdftitle={Fate's Edge — Amaranthine Worldbook},
+  pdfcreator={LaTeX}
+}
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+% ---------- Indexing ----------
+\usepackage{imakeidx}
+\makeindex
+
+% Inline “print + index” helper
+\newcommand{\indexterm}[2][]{%
+  \textit{#2}%
+  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi%
+}
+
+% ---------- Table helpers & house style ----------
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\definecolor{FeRow}{HTML}{F5F7FA}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+
+% ---------- Small conveniences ----------
+\newcommand{\textrarr}{\ensuremath{\rightarrow}}
+\newcommand{\textlarr}{\ensuremath{\leftarrow}}
+\newcommand{\textdarr}{\ensuremath{\downarrow}}
+\newcommand{\beat}{\ensuremath{\triangleright}\,}
+\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
+\newcommand{\Tag}[1]{\texttt{[#1]}}
+
+% ---------- Suit symbols (used in generators) ----------
+\newcommand{\SuitSpade}{\ensuremath{\spadesuit}}
+\newcommand{\SuitHeart}{\ensuremath{\heartsuit}}
+\newcommand{\SuitClub}{\ensuremath{\clubsuit}}
+\newcommand{\SuitDiamond}{\ensuremath{\diamondsuit}}
+
+% ---------- Leg environment for itineraries ----------
+\newenvironment{Leg}[1]{\textbf{#1:}\begin{itemize}}{\end{itemize}}
+
+% ============================================================
+% Branding & Metadata
+% ============================================================
+\usepackage{etoolbox}
+
+\definecolor{fePrimary}{HTML}{0D1B2A}
+\definecolor{feAccent}{HTML}{6FFFE9}
+\definecolor{feInk}{HTML}{101418}
+\definecolor{fePaper}{HTML}{F7F7F7}
+
+\newcommand\feTitle{Fate's Edge}
+\newcommand\feSubtitle{Amaranthine Worldbook}
+\newcommand\feTagline{}
+\newcommand\feVersion{}
+\newcommand\fePublisher{}
+\newcommand\feCoverArt{}
+
+\newcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
+\newcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
+\newcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
+\newcommand{\feSetVersion}[1]{\renewcommand\feVersion{#1}}
+\newcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
+\newcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
+
+\newcommand{\textshadow}[4]{%
+  \begingroup
+    \rlap{\raisebox{#2}{\hspace*{#1}\textcolor{#3}{#4}}}#4%
+  \endgroup
+}
+\newcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
+
+\newcommand{\feTitlePage}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge\bfseries Fate's Edge \par}
+    \vspace{1cm}
+    {\LARGE Amaranthine Worldbook \par}
+    \vspace{0.5cm}
+    {\large \itshape The Northern Shores and the Lands Beyond\par}
+    \vfill
+    {\large Version 1.0 \par}
+    \vspace{0.2cm}
+    {\large \today \par}
+    \vspace{1cm}
+    {\large \textsc{Nicholas A. Gasper}\par}
+  \end{titlepage}
+}
+
+\begin{document}
+
+\feTitlePage
+\tableofcontents
+
+\part{The World \& Its Ways}
+
+\chapter{The Amaranthine Sea}
+
+The Amaranthine Sea lies at the heart of the known world, a salt expanse ringed by marble quays, vineyard hills, and smoke‑blue mountains. For millennia it has served as the circulatory system of trade, faith, and conquest. Tides are subtle, but seasonal winds and river‑feeds set the rhythm of commerce, pilgrimage, and war.
+
+Unlike the dry southern coasts of distant lands, the wind patterns here reverse: the hot, arid air of the Sahel belt is pushed south, leaving the northern and eastern shores with ample rainfall and the southern shores as temperate grasslands. Thus the lands around the Amaranthine are lush and productive—olive groves in Ecktoria, wheat fields in Acasia, horse pastures on the Vilikari steppe.
+
+North of the Amaranthine rise the Aelerian mountains, a spine of stone that separates the mild coastal lowlands from the colder northern reaches. Beyond those peaks lie the Violet Steppe and the Mistlands, where the Direwood presses against the fog‑hung border. To the east, the Dolmis Sea (a dark inland basin) connects to the Amaranthine through the Astroegro Straits, guarded by the towers of Thepyrgos. The Aberderrin Sea, farther north, is a cold, wave‑lashed expanse that borders both the Linn homelands and the Valewood.
+
+A people without a single homeland, the Sidhi are a diaspora born from the ancient cities of Ashaan and Galanina. Their ships carry spice, silk, and secrets across every sea, and their enclaves thrive in Zakov, Kahfagia, and the port‑towns of the Dolmis. Feared as pirates and respected as intermediaries, the Sidhi speak a dozen tongues and honor bargains with a blade if necessary. They are the frame through which many distant shores are glimpsed, though those shores lie beyond the scope of this book.
+
+\chapter{Travel \& Navigation}
+
+\section{Core Travel Procedure}
+
+For each leg of a journey, draw 3–4 cards using the decks for your destination and controlling authority.
+
+\begin{itemize}
+\item \SuitSpade{} from the destination deck: sets the scene (place).
+\item \SuitHeart{} from the destination deck: introduces the local actor or faction.
+\item \SuitClub{} from the Wilds (general hazards) or destination (if strongly policed): brings pressure.
+\item \SuitDiamond{} from the authority that gates the route: papers, escorts, rights, or exceptions.
+\end{itemize}
+
+Set a travel clock by the highest rank:
+\begin{itemize}
+\item 2–5 $\Rightarrow$ 4 segments
+\item 6–10 $\Rightarrow$ 6 segments
+\item J/Q/K $\Rightarrow$ 8 segments
+\item A $\Rightarrow$ 10 segments
+\end{itemize}
+
+On success, advance to the next leg; on failure, mark delay, debt, or diversion and resolve a consequence in the fiction.
+
+\section{Mode Rules}
+
+\subsection{Sea Legs}
+(Amaranthine/Dolmis/Aberderrin). If Theona or Valewood 9s show up anywhere in the seed, add an omission or taboo to the leg (a missing step, an unsaid name).
+
+\subsection{Passes \& Underways}
+(Aeler). Any A may convert a surface route to an under‑route. \SuitDiamond{} from Aeler always codifies outcomes—no roll—for sealed doors, breath time, and escorted segments.
+
+\subsection{Rivers}
+Bridges, booms, and law in Ecktoria/Viterra; reed‑mazes and bell‑lines in Mistlands/Linn waters.
+
+\subsection{Frontier Blends}
+When origin and destination disagree on law, draw two \SuitDiamond{} (one from each law) and choose which you will be judged by at the end of the leg.
+
+\section{Regional Routes}
+
+\subsection{Amaranthine Coastway}
+Kahfagia $\rightarrow$ Ecktoria $\rightarrow$ Acasia $\rightarrow$ Marcott (Vhasia) $\rightarrow$ Fairport (Viterra).
+
+\begin{itemize}
+\item Draw \SuitSpade{}+\SuitHeart{} from the port you are entering.
+\item Draw \SuitClub{} from the Wilds (gales, quarantine, harbor booms).
+\item Draw \SuitDiamond{} from the port's deck (permits, berths), or Kahfagia if convoy/lantern law applies.
+\end{itemize}
+
+\textit{Silkstrand} is Acasia's sole metropolis and a major trading hub; even land caravans risk the marches to reach it.
+
+\subsection{Astroegro Straits}
+Thepyrgos controls the hinge between seas via sentinel islands in the straits.
+
+\begin{itemize}
+\item Draw \SuitSpade{}+\SuitHeart{} and \SuitClub{} from Thepyrgos (stairs, boom, synod).
+\item Draw \SuitDiamond{} from Thepyrgos (harbor pass, crane allotment).
+\item Switch to Dolmis/Amaranthine modules once the boom is lowered.
+\end{itemize}
+
+\subsection{Dolmis Circuits}
+Fairport (Viterra) $\rightarrow$ Theona (Three Greens) $\rightarrow$ Ubral fjords $\rightarrow$ Aelinnel west shore $\rightarrow$ Zakov (north coast).
+
+\begin{itemize}
+\item \SuitSpade{}+\SuitHeart{} from destination; \SuitClub{} from Linn or the Wilds; \SuitDiamond{} from Theona when island custom matters.
+\item Zakov: Draw \SuitSpade{}+\SuitHeart{} from Zakov deck; \SuitClub{} from Zakov or Linn; \SuitDiamond{} from Zakov (harbor‑green, corsair charter).
+\end{itemize}
+
+\subsection{Aelerian Passes \& Underways}
+Vhasia/Viterra/Ubral south slopes $\rightarrow$ Aeler gates $\rightarrow$ Mistlands.
+
+\begin{itemize}
+\item \SuitSpade{}+\SuitHeart{} and \SuitClub{} from Aeler; \SuitDiamond{} from Aeler (Underway pass, Key‑Writ, Breath time).
+\end{itemize}
+
+\subsection{Shadow Corridors}
+\textbf{Thin Shore (Valewood east coast):} risky misted corridor north–south toward Zakov.
+
+\begin{itemize}
+\item \SuitSpade{} from Valewood, \SuitHeart{} from Mistlands (or Valewood), \SuitClub{} from Mistlands (wraiths, bell‑line failures), \SuitDiamond{} from either Mistlands (Ward‑salt, Lantern Writ) or Valewood (Way‑cord, Truce‑bough) depending on which law you invoke.
+\item \textit{Rule of 9s:} any 9 in the seed adds an omission.
+\end{itemize}
+
+\textbf{Green Gate hops (Aelinnel):} tide‑timed arches.
+\begin{itemize}
+\item \SuitSpade{}+\SuitClub{} from Aelinnel (tides, geasa), \SuitDiamond{} from Aelinnel (Tide‑path Key, Host‑rights).
+\end{itemize}
+
+\subsection{River Roads}
+\textbf{Belworth:} forms the boundary between Vhasia and Viterra. Twin ports at the mouth (Marcott and Fairport); at mid‑reach Tarlington Falls requires lift/portage up to the plateau town. The Lence joins here from Vhasia. Use Viterra for east‑bank audits/bridges, Vhasia for west‑bank politics.
+
+\textbf{Yloka:} raids run down from the north into the Aberderrin and Dolmis—overlay Linn \SuitClub{} and draw destination for \SuitSpade{}+\SuitHeart{}.
+
+\textbf{Acasian rivers:} hazardous but profitable approaches to Silkstrand; use Acasia \SuitClub{} (feuds/levies/curse) and \SuitDiamond{} (condotta, bridge rights).
+
+\subsection{Steppe Frontiers}
+Ykrul $\leftrightarrow$ Vilikari $\leftrightarrow$ Ecktoria/Acasia borders $\leftrightarrow$ Black Banner territories.
+
+\begin{itemize}
+\item \SuitSpade{} from the road you ride (Wolf Road or Foedus Stone), \SuitHeart{} from the counterpart (envoys, comitatus), \SuitClub{} from Wilds or frontier decks (rasputitsa, hostage protocol, foedus recall), \SuitDiamond{} from either Ykrul (paiza, remounts) or Vilikari (foedus seal, bench‑right).
+\item Black Banner: Draw \SuitSpade{} from Ykrul/Vilikari decks (shared territory), \SuitHeart{} from Black Banner, \SuitClub{} from Wilds or frontier decks, \SuitDiamond{} from Ykrul/Vilikari/Black Banner.
+\end{itemize}
+
+\section{Gateways \& Control Points}
+
+\begin{table}[htbp]
+\centering
+\feTableStart
+\begin{tabular}{llll}
+\toprule
+\textbf{Gate} & \textbf{Deck} & \textbf{Diamond Source} & \textbf{Typical Leverage} \\
+\midrule
+Kassamira (Kahfagia) & Kahfagia & Kahfagia & Convoy letter; lantern‑law warrant; pilotage token \\
+Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority; coin‑house credit; procession permit \\
+Silkstrand & Acasia & Acasia & Exchange floor; condotta; watergate priority \\
+Marcott & Vhasia & Vhasia & Letters patent; safeconduct; fairground precedence \\
+Fairport & Viterra & Viterra & Customs seal; ferry priority; Dawn escort \\
+Tarlington Falls & Viterra & Viterra & Lift priority; bridge/portage pass; County Thing ruling \\
+Thepyrgos (boom) & Thepyrgos & Thepyrgos & Harbor pass; crane allotment; Synod indulgence \\
+High‑Mist Pass & Aeler & Aeler & Underway pass; Key‑Writ; Breath time allotment \\
+Payden's Port & Mistlands & Mistlands & Lantern writ; ward‑salt; wraith indemnity \\
+Thin Shore (Valewood) & Valewood & Valewood/Mistlands & Way‑cord; dew‑mirror; lantern writ \\
+Green Gate (Aelinnel) & Aelinnel & Aelinnel & Tide‑path key; host‑right bough; salt license \\
+Ubral Passes & Ubral & Aeler/Ubral & Vurim pass‑ring; hill‑fort shelter writ; guide's braid \\
+Thing‑holm (Linn) & Linn & Linn & Thing ruling; harbor‑green; escort writ \\
+Foedus Stone (March) & Vilikari & Vilikari/Ykrul & Foedus renewal; remount allotment; hostage treaty \\
+Zakov Roadstead & Zakov & Zakov & Harbor‑green chit; corsair charter; pilot token \\
+Black Banner Camps & Black Banner & Black Banner/Ykrul/Vilikari & Safe‑conduct; remount chit; clan truce \\
+\bottomrule
+\end{tabular}
+\feTableEnd
+\caption{Gateway Control Points}
+\end{table}
+
+\section{Overlay: Gatekeepers (Zakov Roadstead \& Harbour Quarters)}
+Draw \textbf{one} micro‑card each time you \emph{enter}, \emph{shift wharfs}, or \emph{depart} Zakov. Combine with the normal seed.
+
+\begin{tcolorbox}[enhanced,breakable,sharp corners,boxrule=.6pt,title={Zakov Gatekeepers Micro-Cards (draw 1)}]
+\begin{enumerate}[label=\arabic*.]
+  \item \textbf{Bureaucrat Quirk} — stamps only at \emph{eighth bell}; night filings need a \emph{Night Magistrate} countersign.
+  \item \textbf{Required Stamp} — \emph{Harbor‑Green} chit for boom passage this tide; without it, DV +1 on all port checks.
+  \item \textbf{Preferred Gratuity} — figs or lamp oil; wrong gift offends, marking 1 \emph{Exposure} on your port reputation.
+  \item \textbf{Audit Trap} — ``contraband tallies''; if carrying \emph{bell‑metal} or \emph{dyestuffs}, start a 4‑seg \emph{Inspection} clock.
+  \item \textbf{Local Courtesy} — speak the \emph{Dock Oath} (short pledge not to knife on planks) or suffer \emph{Desperate} position in brawls.
+  \item \textbf{Shortcut Rumor} — \emph{Smuggler's Ladder} on the sea wall; spend a \SuitDiamond{} (\emph{Ladder Map}) to skip one queue.
+  \item \textbf{Pilot's Privilege} — a \emph{Pilot Token} bumps you ahead on boom lift; otherwise pay tow or lose 1 segment.
+  \item \textbf{Silent Court} — the \emph{Black Bishop} is sitting tonight; legal \SuitClub{} escalate by +1 SB if you contest a ruling.
+\end{enumerate}
+\end{tcolorbox}
+
+\section{Special Rules \& Taboos}
+
+\subsection{Theona / Valewood 9s}
+Whenever a 9 appears in a seed involving Theona or Valewood, add an omission: a missing step, an unsaid name, an unseen guest. If the 9 is a \SuitDiamond{}, you may break the taboo once—someone will come to collect.
+
+\subsection{Aeler Aces}
+An A can rewire routes beneath the mountains. You may swap your \SuitSpade{} to Aeler (keeping the other seed cards) and continue under‑vault procedures.
+
+\subsection{Echoing Omens}
+Any A adds a motif you can echo later (ash on the wind, a bell heard underground, a landmark that returns elsewhere). Make the world feel like it remembers.
+
+\section{Worked Itineraries}
+
+\subsection{West‑to‑East Coastal Haul (Kahfagia $\rightarrow$ Viterra)}
+
+\textbf{Leg 1: Kassamira $\rightarrow$ Ecktoria}
+\begin{Leg}{Seed}
+Ecktoria \SuitSpade{} (Aqueduct arcades), Ecktoria \SuitHeart{} (Coin‑house factor), Wilds \SuitClub{} (gale), Kahfagia \SuitDiamond{} (convoy letter).
+\end{Leg}
+Clock: 6. Read: cross under coin‑house eyes with convoy priority; bad weather strains schedules.
+
+\textbf{Leg 2: Ecktoria $\rightarrow$ Silkstrand}
+\begin{Leg}{Seed}
+Acasia \SuitSpade{} (Three‑Queens Bridge), Acasia \SuitHeart{} (Dyers' Guildmistress), Acasia \SuitClub{} (loom strike), Acasia \SuitDiamond{} (Exchange pass).
+\end{Leg}
+Clock: 6–8 depending on unrest.
+
+\textbf{Leg 3: Silkstrand $\rightarrow$ Marcott}
+\begin{Leg}{Seed}
+Vhasia \SuitSpade{} (Pont‑du‑Tithe), Vhasia \SuitHeart{} (Parlement clerk), Vhasia \SuitClub{} (coin rumor), Vhasia \SuitDiamond{} (letters patent).
+\end{Leg}
+
+\textbf{Leg 4: Marcott $\rightarrow$ Fairport}
+\begin{Leg}{Seed}
+Viterra \SuitSpade{} (Fairport tideworks), Viterra \SuitHeart{} (shipwright), Linn \SuitClub{} (boom lifts), Viterra \SuitDiamond{} (customs seal).
+\end{Leg}
+Clock: 6.
+
+\subsection{Acasia $\rightarrow$ Mistlands (Forgotten Pass + Under‑Gate)}
+
+\textbf{Leg 1: Silkstrand $\rightarrow$ Aeler Gate}
+\begin{Leg}{Seed}
+Aeler \SuitSpade{} (Avalanche gallery), Aeler \SuitHeart{} (Geometer), Aeler \SuitClub{} (Engineer requisition), Aeler \SuitDiamond{} (Underway Pass).
+\end{Leg}
+
+\textbf{Leg 2: Gate $\rightarrow$ Mistlands}
+\begin{Leg}{Seed}
+Mistlands \SuitSpade{} (Bell‑Line levee), Mistlands \SuitHeart{} (Bell‑warden), Mistlands \SuitClub{} (wraith crossing), Mistlands \SuitDiamond{} (Ward‑salt).
+\end{Leg}
+
+\subsection{Thin Shore $\rightarrow$ Zakov Corridor}
+
+\textbf{Leg 1: Payden's Port $\rightarrow$ Thin Shore}
+\begin{Leg}{Seed}
+Valewood \SuitSpade{} (Green lane), Mistlands \SuitHeart{} (Protectorate clerk), Mistlands \SuitClub{} (bell failure), Mistlands \SuitDiamond{} (Lantern writ).
+\end{Leg}
+
+\textbf{Leg 2: Thin Shore transit}
+\begin{Leg}{Seed}
+Valewood \SuitSpade{} (Unfound stile), Valewood \SuitHeart{} (Path‑warden), Valewood \SuitClub{} (Sweet wind), Valewood \SuitDiamond{} (Way‑cord).
+\end{Leg}
+Rule of 9s applies.
+
+\subsection{Frontier Mediation (Ykrul $\leftrightarrow$ Vilikari)}
+
+\textbf{Leg: Foedus Stone parley}
+\begin{Leg}{Seed}
+Vilikari \SuitSpade{} (Foedus Stone), Ykrul \SuitHeart{} (Noyan envoy), Wilds \SuitClub{} (rasputitsa), Vilikari \SuitDiamond{} (Foedus Renewal).
+\end{Leg}
+Blend: also draw a Ykrul \SuitDiamond{} (Paiza). Choose which law saves your schedule.
+
+\subsection{Worked Itinerary: Thin Shore $\rightarrow$ Zakov $\rightarrow$ Theona (Corsair Jobs)}
+
+\textbf{Leg 1: Payden's Port $\rightarrow$ Thin Shore (Shadow Corridor)}
+\begin{Leg}{Seed}
+Valewood \SuitSpade{} (Green lane / Unfound stile); Mistlands \SuitHeart{} (Protectorate clerk); Mistlands \SuitClub{} (bell‑line failure); Mistlands \SuitDiamond{} (Lantern Writ).
+\end{Leg}
+Clock: 6. \textit{Rule of 9s:} any 9 adds an omission.
+
+\textbf{Leg 2: Thin Shore Transit (Skirting toward Zakov)}
+\begin{Leg}{Seed}
+Valewood \SuitSpade{} (Sea‑mist arcade); Valewood \SuitHeart{} (Path‑warden); Valewood \SuitClub{} (Sweet wind); Valewood \SuitDiamond{} (Way‑cord).
+\end{Leg}
+Clock: 6. \textit{Note:} spending \emph{Way‑cord} negates one \emph{Sweet wind} lie.
+
+\textbf{Leg 3: Approach to Zakov (Roadstead \& Booms)}
+\begin{Leg}{Seed}
+Zakov \SuitSpade{} (Boomhouse or Red Wharf); Zakov \SuitHeart{} (Pilot‑Matron or Night Magistrate); Zakov \SuitClub{} (Boom Drop or Customs Sweep); Zakov \SuitDiamond{} (Harbor‑Green Chit or Pilot Token).
+\end{Leg}
+Clock: 6–8 (apply the Gatekeepers overlay draw on arrival). If a 9 shows: \emph{Missing Ninth}—remove one critical step/name until paid in favors.
+
+\textbf{Leg 4: Corsair Job Inside Zakov (Pick 1)}
+\begin{Leg}{A) Lift a Hull from Drydock Four}
+Zakov \SuitSpade{} (Drydock Four); Zakov \SuitHeart{} (Corsair Quartermaster); Zakov \SuitClub{} (Admiralty Audit); Zakov \SuitDiamond{} (Shipwright's Lien Release).
+\end{Leg}
+Goal: tow a seized hull at night; \emph{Lien Release} avoids bond but flips a debt later.
+
+\begin{Leg}{B) Court the Black Bishop for Indulgence}
+Zakov \SuitSpade{} (Black Bell Tower); Zakov \SuitHeart{} (Black Bishop); Zakov \SuitClub{} (Bounty Proclamation); Zakov \SuitDiamond{} (Magistrate's Hush).
+\end{Leg}
+Goal: seal a case/docket so a rival can't use it. Hook: rumor must be paid (coin or gossip).
+
+\begin{Leg}{C) Smuggler's Ladder Run}
+Zakov \SuitSpade{} (Lantern Ladder); Zakov \SuitHeart{} (Lampman); Zakov \SuitClub{} (Informant Flip); Zakov \SuitDiamond{} (Smuggler's Ladder Map).
+\end{Leg}
+Goal: bypass boom eyes with a wall‑stair. Complication: your tip was sold twice.
+
+\textbf{Leg 5: Zakov $\rightarrow$ Theona (Isles \& Moot)}
+\begin{Leg}{Seed}
+Theona \SuitSpade{} (Uncounted Bridge); Theona \SuitHeart{} (Matron of Wells or Moot Envoy); Linn \SuitClub{} (fogfall raids); Theona \SuitDiamond{} (Moot Token).
+\end{Leg}
+Clock: 6–8. Taboo: do \emph{not} count the steps aloud; breaking it imposes \emph{Controlled} on all isle bargains this scene.
+
+\textbf{Leg 6: Theona Contract (Pick 1)}
+\begin{Leg}{A) Raid‑Truce at the Skerries}
+Theona \SuitSpade{} (Tide caves); Theona \SuitHeart{} (Isle Moot Envoy); Theona \SuitClub{} (Muster drum); Theona \SuitDiamond{} (Raid‑truce Ribbon).
+\end{Leg}
+Goal: secure safe passage window; failure triggers a Linn muster clock.
+
+\begin{Leg}{B) Deliver the Ledger Shard}
+Theona \SuitSpade{} (Well‑yard); Theona \SuitHeart{} (Matron of Wells); Zakov \SuitClub{} (Debt Call follows you); Theona \SuitDiamond{} (Sanctuary Night).
+\end{Leg}
+Goal: hide a Zakov debt long enough to copy data; sanctuary buys time.
+
+\subsection{Steppe Passage: Black Banner Territory}
+
+\textbf{Leg: Foedus Stone $\rightarrow$ Black Banner Camp}
+\begin{Leg}{Seed}
+Ykrul/Vilikari \SuitSpade{} (Wolf Road milepost or Foedus Stone); Black Banner \SuitHeart{} (Clan Elder or War Captain); Wilds \SuitClub{} (Rasputitsa or Remount Sickness); Black Banner \SuitDiamond{} (Safe‑conduct or Remount Chit).
+\end{Leg}
+Clock: 6–8. Complication: Foedus recall may invalidate your papers.
+
+\textbf{Leg: Black Banner Camp $\rightarrow$ Ykrul Territory}
+\begin{Leg}{Seed}
+Ykrul \SuitSpade{} (Winter camp ring or Khagan's way‑station); Ykrul \SuitHeart{} (Khatun of the Ring or Noyan envoy); Frontier \SuitClub{} (Hostage protocol or Feud spark); Ykrul \SuitDiamond{} (Paiza tablet or Foedus seal).
+\end{Leg}
+Clock: 6–8. Note: Choose which law applies—Black Banner customs or Ykrul traditions.
+
+\section{Pace, Clocks, and Consequences}
+
+\begin{itemize}
+\item Road/river leg: 6‑segment clock; +2 segments if crossing a law boundary (new passports, new prayers).
+\item Sea strait/mountain pass: 8‑segment clock; –2 segments if you spend a \SuitDiamond{} that codifies priority (pilotage, pass, convoy).
+\item Shadow corridor: 6‑segment clock; on any A, add a free omen to echo later.
+\item Failure defaults: delay (lose time; an enemy advances), diversion (alternate route; new \SuitClub{}), or debt (promise, fine, or favor owed to the authority that controls the gate).
+\end{itemize}
+
+\noindent\textbf{SB Note.} Re‑rolling 1s does \emph{not} erase their SB; any new 1s on the re‑roll add more SB.
+
+\section{Story Beat (SB) Menus}
+
+\subsection{Universal SB Spend Menu}
+\begin{itemize}
+  \item \textbf{1 SB} — Shave time/position: add +1 segment to the current clock \emph{or} drop Position one step \emph{or} impose a small fee/toll \emph{or} mark 1 step of \emph{Asset Exposure}.
+  \item \textbf{2 SB} — Escalate the pressure: upgrade the active \SuitClub{} (e.g., ``inspection'' → ``seizure attempt'') \emph{or} force a \emph{choice of Diamonds} (pick which law you'll be judged by) \emph{or} tick a relevant \emph{Front} by 1.
+  \item \textbf{3 SB} — Lock a gate/taboo: close a route (boom drops; pass closes) until a named \SuitDiamond{} is spent \emph{or} invoke a regional taboo (Theona/Valewood 9s; oath backlash) with teeth \emph{or} auto‑trigger a \emph{Debt Flip} on a Diamond already in play.
+  \item \textbf{4+ SB} — Reshape the leg: rewrite the route (Aeler under‑way reroute; sea lane reversal), start a \emph{new} 4–6 segment complication clock \emph{and} tick a \emph{Front} by +1; demand immediate payment on a Patron/Asset Exposure (lose it if refused).
+\end{itemize}
+\textit{End‑of‑leg conversion (optional):} Unspent SB convert to \emph{world motion} at a rate of \textbf{3 SB → tick 1 Front} (GM choice).
+
+\subsection{Sea (Amaranthine/Dolmis/Aberderrin)}
+\begin{itemize}
+  \item \textbf{1 SB:} Fogfall nips visibility; DV +1 for the next pilotage check.
+  \item \textbf{2 SB:} Boom shifts; pilot required (spend a \emph{pilotage} \SuitDiamond{} or delay +2 segments).
+  \item \textbf{3 SB:} Lantern‑law change mid‑leg; choose: pay fine \emph{or} reroute clock +2 \emph{or} spend \emph{Convoy Letter}.
+  \item \textbf{4 SB:} Squall wall: split the convoy; lose an escort unless \emph{Moot token} or \emph{Escort} Diamond is spent.
+\end{itemize}
+
+\subsection{Passes \& Underways (Aeler)}
+\begin{itemize}
+  \item \textbf{1 SB:} White wind; breath‑time check (mark Fatigue or slow +1 segment).
+  \item \textbf{2 SB:} Engineer requisition; surrender cargo slot \emph{or} coin \emph{or} DV +1 until the gate.
+  \item \textbf{3 SB:} Under‑audit; must go below (swap \SuitSpade{} to Aeler) unless you spend \emph{Key‑Writ}.
+  \item \textbf{4 SB:} Cave‑in detour adds a fresh 4‑segment clock unless \emph{Underway Pass} is spent.
+\end{itemize}
+
+\subsection{Rivers (Belworth \& friends)}
+\begin{itemize}
+  \item \textbf{1 SB:} Sandbar drift; portage a beat or pay for a tow.
+  \item \textbf{2 SB:} Lift strike at Tarlington; need \emph{Bridge/Portage Pass} or delay +2 segments.
+  \item \textbf{3 SB:} Cross‑mouth embargo (Marcott/Fairport); choose which harbor's law applies (draw/commit its \SuitDiamond{}).
+  \item \textbf{4 SB:} Ice‑break or flood surge; split cargo (random item at risk) unless an \emph{Escort} Diamond is spent.
+\end{itemize}
+
+\subsection{Shadow Corridors (Valewood/Mistlands)}
+\begin{itemize}
+  \item \textbf{1 SB:} Bell‑line stutter; next guidance roll at Disadvantage (or DV +1).
+  \item \textbf{2 SB:} Omission manifests; something necessary is ``missing'' until \emph{Ward‑salt} or \emph{Way‑cord} is spent.
+  \item \textbf{3 SB:} Host‑law claims you as \emph{host/guest}; accept a service clock or pay with a memory (lose a minor Contact until end of leg).
+  \item \textbf{4 SB:} Wraith procession crosses your path; create a 6‑segment \emph{Don't Look Back} clock; spending \emph{Lantern Writ} downgrades it to 4.
+\end{itemize}
+
+\subsection{Steppe Frontiers (Ykrul/Vilikari/Black Banner)}
+\begin{itemize}
+  \item \textbf{1 SB:} Remount fatigue; lose 1 ``fresh mount'' use or slow +1 segment.
+  \item \textbf{2 SB:} Hostage protocol; must place/accept a token‑kin until the next gate (or spend \emph{Safe‑hostage}).
+  \item \textbf{3 SB:} Foedus recall; your papers conflict—pick Ykrul \emph{Paiza} or Vilikari \emph{Foedus Seal} and offend the other.
+  \item \textbf{4 SB:} Muster checkpoint; disarm unless traveling under \emph{Standard Protection} or \emph{Khagan's Writ}.
+  \item \textbf{Black Banner Specific:} Clan feud erupts; choose sides or pay double tolls.
+\end{itemize}
+
+\subsection{Ports \& Forums (Marcott, Fairport, Silkstrand, Thepyrgos, Zakov)}
+\begin{itemize}
+  \item \textbf{1 SB:} Clerk error; pay a ``stamp'' fee or answer questions (DV +1).
+  \item \textbf{2 SB:} Rival petition; they jump the queue unless you spend a Warrant/Letters \SuitDiamond{}.
+  \item \textbf{3 SB:} Audit cascade; open a new 4‑segment \emph{Inspection} clock tied to cargo/ledger.
+  \item \textbf{4 SB:} Edict flare; convert today's \SuitClub{} into a temporary ``law'' everyone must obey or take on a \emph{Debt Flip}.
+  \item \textbf{Zakov Specific:} Silent Court ruling; legal \SuitClub{} escalate by +1 SB.
+\end{itemize}
+
+\subsection{Diamond \& Exposure Interactions}
+\begin{itemize}
+  \item \textbf{2 SB:} Flip any \SuitDiamond{} spent this leg: its \emph{Debt Flip} is collected now (not later).
+  \item \textbf{2 SB:} Mark 1 step on a named Asset/Patron's \emph{Exposure} track.
+  \item \textbf{3 SB:} Downgrade an \emph{Intricate} success to \emph{Detailed} (remove the flourish or DV −1 benefit).
+  \item \textbf{4 SB:} Seize or suspend a visible Diamond's benefit until another is played (e.g., convoy letter overridden by emergency edict).
+\end{itemize}
+
+% ============================================================
+% REGION CHAPTERS – NORTHERN SHORE
+% ============================================================
+
+\part{The Northern Shore}
+
+\chapter{Kahfagia}
+\emph{The Empire of Wakes and Storm‑Flags.} Kahfagia is a maritime power whose strength lies not in territory but in control of the sea lanes. The Lantern‑Law, administered by the Admiral of Lantern‑Law, governs every beacon, boom, and berth. Pilots carry mirrors that speak in code, and the spice auctions of Kassamira set prices across the Amaranthine. To sail under Kahfagia’s protection is to move with the tide; to defy it is to find the beacons turned against you.
+
+\input{../generators/kahfagia.tex}
+
+\chapter{Ecktoria}
+\emph{Marble \& Fire.} Once the furnace of the Utaran Imperium, Ecktoria remains a palimpsest of power—old stones bearing new banners, old laws written under fresh seals. Its marble forums and coin‑houses still echo with imperial precedent, yet the Black Banners march on its purse, and rival dukes stage processions that collide at every bridge. The Everflame burns in every basilica, judging truth and debt alike.
+
+\input{../generators/ecktoria.tex}
+
+\chapter{Acasia}
+\emph{The Broken Province.} Acasia is a land of petty kingdoms, free companies, and border lords. The Curse of the Blackwood haunts its crossroads, and every hill‑fort flies a different banner. Silkstrand, its sole metropolis, sits at the mouth of the Acasian rivers, a city of bridges and dyewater where merchants and mercenaries mingle.
+
+\input{../generators/acasia.tex}
+
+\chapter{Vhasia}
+\emph{The Fractured Sun.} A kingdom split between rival crowns, Vhasia’s chevauchée raids and parlement intrigues echo the twilight of empire. The Pont‑du‑Tithe is blessed by competing bishops, and the Last Dauphin is a rumor with a birthmark. Here legitimacy is a weapon, and every seal can be forged—or denied.
+
+\input{../generators/vhasia.tex}
+
+\chapter{Viterra}
+\emph{The Hedge‑Law Realm.} Viterra breathes with the careful rhythm of precedent and petition. The Warrior Queen rules through legal precision as much as military might. Every hedge‑row, every parish stone, every ferry crossing carries the weight of custom older than memory. In Viterra, a well‑placed document can open doors that armies cannot breach.
+
+\input{../generators/viterra.tex}
+
+\chapter{Thepyrgos}
+\emph{City of a Thousand Stairs.} Thepyrgos rises in tiers of towers, terraces, and endless stairs. Its universities and synods debate philosophy and precedent, while the Chain‑Lanterns patrol the countryside, hunting unsanctioned magic. The Library of Keys holds forbidden knowledge, and the Harbor Boom answers only to the Archon’s seal.
+
+\input{../generators/thepyrgos.tex}
+
+% ============================================================
+% NORTHERN REACHES
+% ============================================================
+
+\part{The Northern Reaches}
+
+\chapter{Aeler}
+\emph{Crowns \& Under‑Vaults.} The Aeler hold the mountains by breath, bell, and bargain. Their cities open in thunderous caverns where bridges leap between ribs of stone. Survival is the first law: air is counted, water is barred, light is rationed by wick and prayer. Tradition is the second: seals are kept, measures remain true, and the dead keep their offices as carefully as the living.
+
+\input{../generators/aeler.tex}
+
+\chapter{The Mistlands}
+\emph{Bells, Salt, and Breath.} A protectorate of the Aeler, the Mistlands belong to fog and bells. Every levee hums with ward‑notes, every ferry takes salt as tithe, and every shadow is measured against the Direwood’s endless breath. The people here live by the weight of salt, the echo of bells, and the hope that their names will not be spoken by the mists.
+
+\input{../generators/mistlands.tex}
+
+\chapter{Ykrul}
+\emph{Wolf Standards, Winter Camps.} The Ykrul ride the Violet Steppe where horizon meets sky and law rides in saddlebags. Hosts gather by the thousand yet break into fragments at a word. Their banners are wolves’ teeth, their treaties braided strings, their memory longer than the rivers that cross their roads. Midh‑Akhaz, the war‑camp turned city, marks the eastern edge of their grazing grounds.
+
+\input{../generators/ykrul.tex}
+\input{../generators/midh-akhaz.tex}
+
+\chapter{Vilikari}
+\emph{Laurels \& Longhouses.} The Vilikari straddle the frontier between empire and steppe. They are tillers and treaty‑makers who balance survival between Ecktoria, the Ykrul, and the Black Banners. Their halls are longhouses raised over ruined forums; their laws carved on both oak and marble; their loyalties braided like the braids of their war‑maidens’ hair.
+
+\input{../generators/vilikari.tex}
+
+\chapter{Black Banners}
+\emph{Condotta \& Crowns.} Mercenary leagues born from ex‑Utaran legionaries, second sons, debt‑dodgers, and exiles. The Black Banners sell steel to the highest bidder, today’s ally becoming tomorrow’s quarry. Between them move the Ykrul steppe‑clans and the Vilikari hill tribes, while Ecktorian ministers call it “pressure management.” The companies call it a season.
+
+\input{../generators/black_banner.tex}
+
+\chapter{The Linns}
+\emph{Skerries \& Storm‑Oaths.} North of the Aberderrin Sea, where fjords split the coast and skerries break the tide, dwell the Linn. They are traders and raiders in equal breath, their longships crowding the whale‑road and river mouths. Their oaths are sworn to storm and sea, and their skalds compose law as easily as they compose satire.
+
+\input{../generators/linns.tex}
+
+% ============================================================
+% EASTERN DOLMIS & THE VALEWOOD
+% ============================================================
+
+\part{The Eastern Dolmis \& The Valewood}
+
+\chapter{Theona}
+\emph{Three Greens, No Ninth.} The isles of Theona rise green and jagged from the Dolmis, their basalt cliffs wrapped in mists and moorland song. The greatest law is the silence of Nine: no bell tolls a ninth, no bridge counts that span, no oath dares its syllable. Those who break the ban invite the Green Host, and debts of nine can never be paid in coin.
+
+\input{../generators/theona.tex}
+
+\chapter{Zakov}
+\emph{Salt \& Serpent.} Zakov is the pirate‑city of the Dolmis coast, where tides trade secrets and knives settle debts. Its streets are piers, its courts are taverns, and its rulers are whoever the Syndicates fear most this season. The Salt Prince claims the throne, but the real power ebbs and flows with the tide—and the tide remembers everything.
+
+\input{../generators/zakov.tex}
+
+\chapter{Aelinnel (Aevrossa)}
+\emph{Stone, Bough, and Bright Things.} The gnomish homeland of Aevrossa clings to the Dolmis coast beneath the shadow of the Valewood, its halls threaded through granite and hawthorn. Promises have weight and numbers have manners. Even steps are safe, odd words are careful, and truths are traded like copper nails—bright, useful, slightly dangerous in the wrong pocket.
+
+\input{../generators/aelinnel.tex}
+
+\chapter{Aelaerem}
+\emph{Hearth \& Hollow.} The halfling downs of Aelaerem hide deep barrows and darker hungers. Hospitality is a sacred law—and a trap. Red doors promise bread and salt, but the Neighbors walk the hedge‑lanes, and the Pale Shepherd appears at every stillbirth and funeral. Their homeland’s true name is hushed, spoken only in euphemisms.
+
+\input{../generators/aelaerem.tex}
+
+\chapter{The Valewood}
+\emph{Empire Under Leaves.} Beneath the canopy of the Valewood lie the bones of a Lethai empire whose name is forgotten. Star‑roads crack and phase between worlds, and the air hums with half‑remembered songs of magic. Fae courts linger in clearings that shift with moonlight, beast‑kin patrol moss‑choked cairns, and echoes of imperial shades still march on vanished streets.
+
+\input{../generators/valewood.tex}
+
+% ============================================================
+% THE SPACES BETWEEN
+% ============================================================
+
+\part{The Spaces Between}
+
+\chapter{Ubral}
+\emph{The Stone Between Spears.} Ubral is a land of upland mists, stone cairns, and clan oaths held tighter than iron. Law is written not in charters but in cattle, wergild, and songs. A guest’s word can buy more than a sword, but one broken vow can spark a feud lasting generations. The dwarves of Khaz‑Vurim guard their mountain steps with tolls and grim patience.
+
+\input{../generators/ubral.tex}
+
+\chapter{Silkstrand}
+\emph{City of Bridges \& Dyewater.} Silkstrand is strung across canals and arches, a place where every bridge is a ledger line and every current carries rumor. The dyes that stain its waters never wash out, and neither do the bargains struck in shadow. Merchants rise and fall with the Exchange, bravos carve reputations on the planks of Three‑Queens Bridge, and curses cling to the very cloth that leaves the looms.
+
+\input{../generators/silkstrand.tex}
+
+\chapter{The Ways Between}
+\emph{Spiritways \& Veilways.} Between Death and Dreams lies a country of crossings. Roads remember promises; milestones remember names you never spoke. The Ways Between do not measure miles—they measure choices. Walk softly, pay what the path asks, and mind which version of you arrives.
+
+\input{../generators/ways_between.tex}
+
+\chapter{The Wilds}
+\emph{Roads, Ruins, and Weather.} Between towns and treaties lies the patience of the land. Old roads remember armies; cairns remember names no book keeps. Law thins to trail‑marks and favors, and the weather keeps its own counsel. Walk soft, read the wind, and bargain with whatever still listens.
+
+\input{../generators/wilderness.tex}
+
+\chapter{Dungeons}
+\emph{Living Infrastructure.} Beneath the surface, ancient places breathe with mechanical lungs and dream electric dreams. Dungeons are not merely ruins but living systems—vascular networks of stone and shadow where every corridor hums with purpose. The walls remember every footfall, the air carries whispers of forgotten conversations, and the very architecture shifts like a sleeper turning in bed.
+
+\input{../generators/dungeons.tex}
+
+% ============================================================
+% APPENDICES
+% ============================================================
+
+\part{Appendices}
+
+\chapter{Quick Reference Cards}
+\textit{To be printed and kept at the table.}
+
+\noindent\textbf{Core Travel Procedure (1 card)} \\
+Draw \SuitSpade{}+\SuitHeart{}+\SuitClub{}+\SuitDiamond{} from destination/authority decks. Highest rank sets clock (2–5=4, 6–10=6, J/Q/K=8, A=10). On success advance, on failure mark delay/debt/diversion.
+
+\noindent\textbf{Story Beat Menus} \\
+See the full tables in the Travel \& Navigation chapter. The GM may choose complications by region or use the universal menu.
+
+\noindent\textbf{Gateways \& Control Points} \\
+Refer to the table in \textit{Travel \& Navigation}. Each gate requires a specific \SuitDiamond{} for lawful priority.
+
+\noindent\textbf{Weather Engine (Wilds)} \\
+Roll d12: 1 Glass‑Clear, 2 Haze, 3 Trickle Rain, 4 Downpour, 5 Thunderhead, 6 Cold Snap, 7 Heat Snap, 8 Ground Fog, 9 Spindrift/Dust, 10 Shifting Wind, 11 Front Line, 12 Catspaw Omen.
+
+\end{document}

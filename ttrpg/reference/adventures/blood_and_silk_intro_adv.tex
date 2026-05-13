@@ -48,6 +48,7 @@
 \definecolor{encountercolor}{RGB}{173, 216, 230}
 \definecolor{villagegreen}{RGB}{34, 139, 34}
 \definecolor{banditred}{RGB}{139, 0, 0}
+\definecolor{seedcolor}{RGB}{100, 70, 30}
 
 % ---------- Headers ----------
 \pagestyle{fancy}
@@ -85,6 +86,13 @@
 
 \newenvironment{encounterbox}[1]{%
   \begin{mdframed}[backgroundcolor=encountercolor!30, linewidth=1pt, linecolor=accentcolor]%
+  \subsubsection*{#1}%
+}{%
+  \end{mdframed}%
+}
+
+\newenvironment{seedbox}[1]{%
+  \begin{mdframed}[backgroundcolor=seedcolor!10, linewidth=1pt, linecolor=seedcolor]%
   \subsubsection*{#1}%
 }{%
   \end{mdframed}%
@@ -203,6 +211,22 @@ The village is currently under threat from:
 \item \textbf{Political Pressure:} Local nobles who want the village to choose sides in their conflicts
 \item \textbf{Economic Hardship:} Poor harvests and bandit raids have left the village struggling
 \end{itemize}
+
+\subsection{Rumours from the Road (Seeds for the Future)}
+
+While the party is in Millhaven, they overhear fragments of news from travellers and merchants. These are not adventure hooks yet – just the quiet hum of a living world.
+
+\begin{seedbox}{Rumour Table (d6)}
+Roll or choose one to mention during downtime:
+\begin{enumerate}
+\item A Vilikari merchant named \textbf{Tema} is looking for reliable escorts for a grain caravan heading west. \textit{(Seeds Beyond Millhaven.)}
+\item The Ykrul chieftain \textbf{Khatun Sarnai} has been seen riding the eastern steppe with her wolf‑banners. \textit{(Appears in later adventures.)}
+\item A Black Banner mercenary captain called \textbf{Rusk} is hiring swords for a “special job” near the Bronze Gate. \textit{(Seeds The Bronze Gate.)}
+\item The old ford at Valvano is said to be locked shut – Ykrul, Aeler, and Vilikari all claim it. \textit{(Direct hook for Beyond Millhaven.)}
+\item A cursed relic, the \textit{Iron Seal of Varus}, has been dug up somewhere in the mountains. \textit{(Seeds The Bronze Gate.)}
+\item The road to the west leads to the \textbf{Bronze Gate}, the only pass through the mountains for three weeks' march – but it’s heavily guarded. \textit{(Future location.)}
+\end{enumerate}
+\end{seedbox}
 
 \section{Pre-Generated Characters}
 
@@ -769,48 +793,6 @@ If the PCs successfully defend the village:
 \item PCs may be offered a permanent place in the village
 \end{itemize}
 
-\section{Core Mechanics Quick Reference}
-
-\subsection{Making Rolls}
-
-In Fate's Edge, you resolve important actions by rolling dice:
-\begin{enumerate}
-\item \textbf{Determine the Approach:} Choose an Attribute + Skill combination
-\item \textbf{Set Position:} GM sets Position (Dominant/Dominant/Desperate)
-\item \textbf{Roll Dice:} Roll a number of d10s equal to Attribute + Skill
-\item \textbf{Count Results:}
-   \begin{itemize}
-   \item Each 6+ = 1 Success
-   \item Each 1 = 1 Story Beat (SB)
-   \end{itemize}
-\item \textbf{Apply Outcome:} Compare successes to DV (2-5+)
-\end{enumerate}
-
-\subsection{Outcome Matrix}
-
-\begin{center}
-\begin{longtable}{|l|l|l|}
-\hline
-\textbf{Result} & \textbf{Successes vs DV} & \textbf{Effect} \\
-\hline
-Clean Success & S $\geq$ DV, 0 SB & Intent achieved crisply \\
-Success \& Cost & S $\geq$ DV, 1+ SB & Intent achieved, GM spends SB \\
-Partial & 0 $<$ S $<$ DV & Proportional progresss \\
-Miss & S = 0 & No progress, GM spends SB \\
-\hline
-\end{longtable}
-\end{center}
-
-\subsection{Story Beats (SB)}
-
-SB are narrative fuel that the GM spends to add complications:
-\begin{itemize}
-\item \textbf{1 SB:} Minor pressure (noise, trace, +1 Supply segment)
-\item \textbf{2 SB:} Moderate setback (alarm, lose position, lesser foe)
-\item \textbf{3 SB:} Serious trouble (reinforcements, gear breaks, rail tick)
-\item \textbf{4+ SB:} Major turn (trap springs, authority arrives, scene shifts)
-\end{itemize}
-
 \section{Resource Management}
 
 \subsection{Boons}
@@ -1240,126 +1222,24 @@ The survivors look to the PCs for leadership. Present the group with a clear cho
 \item \textbf{Political Pressure (6):} (If choosing paths 1 or 2) Represents external forces trying to manipulate or eliminate the group.
 \end{itemize}
 
-\section{Quick Reference Cards}
+\subsection{The Road Ahead (Seeds for the Next Adventure)}
 
-\subsection{Character Sheet Summary}
+If the party successfully defended Millhaven, they may hear new rumours as they recover:
+
+\begin{seedbox}{Continuing the Journey}
+\begin{itemize}
+\item \textbf{Tema's Offer:} A Vilikari merchant named Tema arrives in Millhaven with a caravan of grain. She is impressed by the party's courage and offers them honest work – escorting a cargo to a monastery beyond the Valvano Ford. (Leads directly into \textit{Beyond Millhaven}.)
+
+\item \textbf{The Bronze Gate:} A wounded soldier speaks of a mountain pass called the Bronze Gate, where a cursed seal has been unearthed. He mutters about a Prefect Marcellus and a thief called Quick Lena. (Seeds \textit{The Bronze Gate}.)
+
+\item \textbf{Sarnai's Name:} A Ykrul trader mentions that Khatun Sarnai is looking for outsiders who can negotiate without drawing a blade. (Another hook to \textit{Beyond Millhaven}.)
+\end{itemize}
+
+The road does not end here. The choices you made in Millhaven will echo in the valleys beyond.  
+\textit{“The Traveler does not promise a safe journey – only a true one.”}
+\end{seedbox}
 
 \begin{center}
-\begin{longtable}{|l|l|l|l|}
-\hline
-\textbf{Character} & \textbf{Primary Attr/Skill} & \textbf{Key Talent} & \textbf{Starting Asset} \\
-\hline
-Kestra (Scholar) & Wits 3 + Arcana 2 & Lorekeeper & Scholar's Satchel \\
-Marcus (Blade) & Body 3 + Melee 3 & Battle Instincts & Trusted Blade \\
-Sariel (Shadow) & Wits 3 + Stealth 2 & Silver Tongue & Shadow's Cloak \\
-Elena (Healer) & Spirit 3 + Medicine 2 & Iron Stomach & Healer's Kit \\
-Thane (Artisan) & Body 2 + Wits 3 & Exceptional Coordination & Artisan's Tools \\
-Lyra (Diplomat) & Presence 3 + Diplomacy 2 & Backlash Soothing & Diplomatic Papers \\
-Finn (Beastmaster) & Body 2 + Spirit 3 & Beast-Tongue & Wolf Companion \\
-Zara (Merchant) & Presence 2 + Wits 3 & Resourceful & Merchant's Network \\
-\hline
-\end{longtable}
-\end{center}
-
-\subsection{Clock Management}
-
-\textbf{Village Safety Clock (6 segments):}
-\begin{itemize}
-\item \checkmark Protect villagers: -1 segment
-\item \checkmark Fail to protect: +2 segments
-\item \checkmark Intimidate Ursillo: -1 segment
-\item When filled: Village falls to bandits
-\end{itemize}
-
-\textbf{Ursillo Threat Clock (8 segments):}
-\begin{itemize}
-\item \checkmark Defeat Ursillo: +1 segment
-\item \checkmark Gain information: -1 segment
-\item \checkmark Intimidate enemies: -2 segments
-\item When filled: Ursillo retreat or seek reinforcements
-\end{itemize}
-
-\subsection{Resource Spending Guide}
-
-\begin{center}
-\begin{longtable}{|l|l|l|}
-\hline
-\textbf{Resource} & \textbf{Cost} & \textbf{When to Use} \\
-\hline
-Re-roll die & 1 Boon & When success is critical \\
-Activate Asset & 1 Boon & To gain advantage in scene \\
-Convert to XP & 2 Boons & When you want to improve \\
-Minor Asset & 4 XP & For basic off-screen help \\
-Standard Asset & 8 XP & For significant influence \\
-Major Asset & 12 XP & For major world impact \\
-\hline
-\end{longtable}
-\end{center}
-
-\subsection{Sample Dice Pools}
-
-\textbf{Common Actions:}
-\begin{itemize}
-\item Negotiate with villagers: Presence 2 + Sway 2 = 4d10
-\item Fight Ursillo bandit: Body 3 + Melee 3 = 6d10
-\item Sneak past guards: Wits 3 + Stealth 2 = 5d10
-\item Heal wounded villager: Spirit 3 + Medicine 2 = 5d10
-\item Research ancient texts: Wits 3 + Lore 2 = 5d10
-\item Craft weapons: Body 2 + Craft 2 = 4d10
-\item Diplomacy with nobles: Presence 3 + Diplomacy 2 = 5d10
-\item Track enemies: Spirit 3 + Survival 2 = 5d10
-\end{itemize}
-
-\subsection{Complication Guidelines}
-
-\textbf{When to Spend SB:}
-\begin{itemize}
-\item Add tension to successful rolls
-\item Escalate failed rolls into interesting failures
-\item Introduce new story elements
-\item Create meaningful choices for players
-\end{itemize}
-
-\textbf{Good SB Spends:}
-\begin{itemize}
-\item 1 SB: Add a minor obstacle or complication
-\item 2 SB: Introduce a new threat or NPC
-\item 3 SB: Change the tactical situation significantly
-\item 4+ SB: Alter the story direction entirely
-\end{itemize}
-
-\section{Conclusion}
-
-"Blood and Silk" is designed to be your first step into the world of Fate's Edge. It introduces the core mechanics through a straightforward story of redemption and community while giving players meaningful choices that affect the outcome.
-
-The adventure emphasizes:
-\begin{itemize}
-\item \textbf{Character Growth:} From exiles to heroes through player choices
-\item \textbf{Resource Management:} Boons, Assets, and XP as meaningful currencies
-\item \textbf{Narrative Consequences:} Every action affects the story's direction
-\item \textbf{Collaborative Storytelling:} Players and GM work together to create the tale
-\end{itemize}
-
-\textbf{Key Learning Objectives:}
-\begin{itemize}
-\item Understanding the core dice mechanic and outcome matrix
-\item Managing Boons and converting them to XP
-\item Building and using Assets to extend character influence
-\item Working with campaign clocks to track story progression
-\item Making meaningful choices that shape the narrative
-\item Collaborating with other players through mutual bonds
-\end{itemize}
-
-Remember that Fate's Edge is about the story, not just the dice rolls. Encourage players to describe their actions vividly, embrace the complications that arise, and let the world react to their choices in meaningful ways.
-
-Whether the PCs become beloved protectors of Millhaven or tragic figures who couldn't save the day, their story will be one worth telling. The dice will guide you, but it's your choices that write the legend.
-
-\begin{center}
-\textbf{What are you willing to risk to reshape the world around you?}
-\end{center}
-
-In Millhaven, that question might just have a simple answer: everything.
-
 \begin{tikzpicture}[scale=0.8]
 \draw[villagegreen, line width=2pt] (0,0) rectangle (4,3);
 \draw[banditred, line width=2pt] (6,0) rectangle (10,3);
@@ -1368,9 +1248,11 @@ In Millhaven, that question might just have a simple answer: everything.
 \draw[->, thick] (4,1.5) -- (6,1.5);
 \node[above] at (5,1.5) {\Huge ?};
 \end{tikzpicture}
+\end{center}
 
 \vspace{1cm}
 
+\begin{center}
 \textbf{The choice is yours. Will you stand and fight, or will you fall back and regroup?}
 \end{center}
 
@@ -1394,7 +1276,6 @@ The Traveler is the eternal guide of roads, thresholds, and journeys – the pre
 Those who bond with the Traveler gain subtle powers over movement, paths, and safe passage. Its low rites are forgiving, rarely causing dangerous backlash, making it ideal for beginners.
 
 \textbf{Low Rites of the Traveler (Basic)}
-
 
 \begin{encounterbox}{Road-Sense (Low Rite)}
 \textbf{Cost:} 1 action, mark +1 Obligation. \\

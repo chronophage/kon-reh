@@ -27,6 +27,7 @@
 \newtcolorbox{clocksidebar}[1][]{colback=red!5,colframe=red!70,fonttitle=\bfseries,title=#1}
 \newtcolorbox{tipsbox}[1][]{colback=green!5,colframe=green!50,fonttitle=\bfseries,title=#1}
 \newtcolorbox{advancementbox}[1][]{colback=purple!5,colframe=purple!50,fonttitle=\bfseries,title=#1}
+\newtcolorbox{recapbox}[1][]{colback=yellow!10,colframe=orange!70,fonttitle=\bfseries,title=#1}
 
 % Title formatting
 \titleformat{\chapter}{\Huge\bfseries}{\thechapter}{20pt}{}
@@ -66,6 +67,10 @@
 \chapter*{How to Run This Adventure}
 \addcontentsline{toc}{chapter}{How to Run This Adventure}
 
+\begin{recapbox}[Previously in Blood and Silk]
+Your players defeated the Ursillo Gang and saved Millhaven. They earned the trust of the villagers and gained their first Assets (e.g., Village Militia, Elder's Trust). They met \textbf{Tema}, a Vilikari merchant, and may have encountered \textbf{Khatun Sarnai} (Ykrul chieftain) or \textbf{Captain Rusk} (Black Banner mercenary) if you used the optional hooks. Now they carry a \textbf{Letter of Introduction} to a Vilikari lord—their ticket out of exile.
+\end{recapbox}
+
 This adventure assumes your players have completed \textit{Blood and Silk} or have reached approximately 30–40 XP. They are no longer desperate exiles—they have proven themselves in Millhaven. Now they face a different kind of challenge: one that cannot be solved with a sword.
 
 \section*{The GM's Mindset}
@@ -88,21 +93,25 @@ Total: 2.5–3.5 hours. If players are deeply engaged in negotiation, let it bre
 
 \section*{Handling the Clocks}
 
-The \textbf{Ford Standoff} clock (8 segments) is your primary pacing tool. Advance it when:
+The \textbf{Ford Standoff} clock (8 segments) is your primary pacing tool. 
 
+\begin{clocksidebar}[Ford Standoff Triggers]
+\textbf{Advance +2 segments:}
 \begin{itemize}
-\item A negotiation fails outright (any faction walks away). \textit{+2 segments}
-\item A partial success creates new tension (a faction learns of the salt cache). \textit{+1 segment}
-\item The PCs take too long to act (two scenes without progress). \textit{+1 segment}
+\item A negotiation fails outright (any faction walks away).
 \end{itemize}
-
-Retreat the clock when:
-
+\textbf{Advance +1 segment:}
 \begin{itemize}
-\item The PCs broker a partial agreement (two factions agree on one point). \textit{-1 segment}
-\item The PCs uncover a hidden need and address it. \textit{-1 segment}
-\item The PCs propose a creative solution that genuinely surprises you. \textit{-1 segment}
+\item A partial success creates new tension (a faction learns of the salt cache).
+\item The PCs take too long to act (two scenes without progress).
 \end{itemize}
+\textbf{Retreat -1 segment:}
+\begin{itemize}
+\item The PCs broker a partial agreement (two factions agree on one point).
+\item The PCs uncover a hidden need and address it.
+\item The PCs propose a creative solution that genuinely surprises you.
+\end{itemize}
+\end{clocksidebar}
 
 If the clock fills before a resolution, the standoff collapses. Roll once on the table below to determine who strikes first—then run a desperate escape, not a full battle.
 
@@ -142,9 +151,10 @@ This adventure is designed to bridge Rookie (30–40 XP) and Seasoned (41–90 X
 The most common stall is analysis paralysis—too many options, no clear path. If the negotiation stalls for more than ten minutes:
 
 \begin{enumerate}
-\item Advance the Ford Standoff clock by 1. \textit{``The Ykrul grow restless. A rider spurs her horse in a tight circle.''}
-\item Have an NPC make an offer. \textit{``Tema pulls you aside. 'I can pay Rusk with the salt cache—but I'll need your word you'll protect the seeds.'''}
-\item Introduce Morvain early. The Ecktorian prefect is a catalyst; his arrival forces factions to choose sides.
+\item \textbf{Advance the clock.} \textit{``The Ykrul grow restless. A rider spurs her horse in a tight circle.''} (Advance Ford Standoff +1)
+\item \textbf{Have an NPC make an offer.} \textit{``Tema pulls you aside. 'I can pay Rusk with the salt cache—but I'll need your word you'll protect the seeds.'''}
+\item \textbf{Introduce Morvain early.} The Ecktorian prefect is a catalyst; his arrival forces factions to choose sides (see \ref{sec:morvain}).
+\item \textbf{Ask a leading question.} \textit{``Which faction seems most likely to compromise? What are you willing to offer them?''}
 \end{enumerate}
 
 \section*{When to Roll (and When Not To)}
@@ -218,18 +228,18 @@ On the west bank, Aeler engineers have locked the bridge's winch with a rune-sea
 
 Between them, the Vilikari factor Tema and a Black Banner captain named Rusk argue over a ledger. Tema's caravan carries grain seed for a famine-relief monastery—and a hidden cache of untaxed salt. Rusk cares only about payment.
 
-\section{Factions at a Glance}
+\subsection*{Faction Cheat Sheet}
 
 \begin{center}
-\begin{tabular}{@{}l l l@{}}
+\begin{tabular}{@{}l l l p{3cm}@{}}
 \toprule
-\textbf{Faction} & \textbf{Leader} & \textbf{Key Demand} \\
+\textbf{Faction} & \textbf{Leader} & \textbf{Public Demand} & \textbf{Hidden Need} \\
 \midrule
-Ykrul Grey Ash & Khatun Sarnai & Remove iron spikes; blood-price for her nephew \\
-Aeler Guild & Factor Voss & Recognize charter; stop salt smuggling \\
-Vilikari & Tema (merchant) & Open ford; preserve cargo secret \\
-Black Banner & Captain Rusk & Get paid (loyalty to highest bidder) \\
-Ecktorian (wild card) & Prefect Morvain & Impose imperial tariff; undermine locals \\
+Ykrul Grey Ash & Khatun Sarnai & Remove iron spikes; blood-price & Restore clan honor (public apology) \\
+Aeler Guild & Factor Voss & Recognize charter; stop salt smuggling & Show revenue (face-saving audit) \\
+Vilikari & Tema (merchant) & Open ford; protect cargo & Hide untaxed salt cache \\
+Black Banner & Captain Rusk & Get paid & Any payment (no loyalty) \\
+Ecktorian (wild card) & Prefect Morvain & Impose imperial tariff & Legitimacy (bluffing) \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -376,6 +386,7 @@ Rusk's Debt clock (4 segments) is an obligation the party can call in later. Whe
 \end{advancementbox}
 
 \section{The Wild Card: Prefect Morvain (Optional)}
+\label{sec:morvain}
 
 If the GM wishes to add a fourth pressure—or if the negotiation stalls—Morvain arrives on a lean horse, wearing Ecktorian blue.
 
@@ -405,7 +416,11 @@ The players must propose terms that satisfy at least two factions. Possible reso
 \end{itemize}
 
 \begin{mechanicbox}[Running the Moot]
-This is a structured social encounter. Each faction's representative speaks, then the PCs respond. Use a simple 3-success system: the players need 3 successful social rolls (using any combination of Sway, Command, Insight, or Lore) before 2 failures to broker a deal. Partial successes count as successes but generate a Story Beat you can spend to add a complication (e.g., ``Tema agrees to the wergild, but Rusk demands his payment now, not later.'').
+This is a structured social encounter. Each faction's representative speaks, then the PCs respond. 
+
+\textbf{Negotiation Tracker:} Use a simple 3-success system. The players need \textbf{3 successful social rolls} (using any combination of Sway, Command, Insight, or Lore) before \textbf{2 failures} to broker a deal. Partial successes count as successes but generate a Story Beat you can spend to add a complication (e.g., ``Tema agrees to the wergild, but Rusk demands his payment now, not later.'').
+
+\textit{Visual aid:} Draw two columns on scratch paper: Successes ( ) and Failures ( ). Mark each roll result.
 \end{mechanicbox}
 
 \section{The Crossing}
@@ -431,11 +446,17 @@ Complications on failure:
 
 \section{Outcomes}
 
-\begin{itemize}
-\item \textbf{Clean Success:} The caravan crosses without violence. Each PC gains 2 Strings (one from two factions they aided). All three factions remain neutral or friendly.
-\item \textbf{Costly Success:} The caravan crosses, but one faction is left unsatisfied. That faction becomes a recurring antagonist. PCs gain 1 String each.
-\item \textbf{Failure:} The ford remains closed. Sorian's caravan turns back. The party must choose a new route (through Ironbound, with Ecktorian scrutiny) or abandon the mission. The GM may offer a rescue by one faction in exchange for a future obligation.
-\end{itemize}
+\begin{center}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Outcome} & \textbf{Result} & \textbf{Rewards} \\
+\midrule
+Clean Success & Caravan crosses without violence & Each PC gains 2 Strings; all factions neutral/friendly \\
+Costly Success & Caravan crosses, one faction unsatisfied & Each PC gains 1 String; unsatisfied faction becomes antagonist \\
+Failure & Ford remains closed; caravan turns back & Alternate route or rescue by a faction (with future obligation) \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \section{Gaining Strings}
 
