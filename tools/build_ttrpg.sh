@@ -76,10 +76,11 @@ cd $git_root/ttrpg/reference/adventures/
 	../../../tools/compile_latex.sh -f truth-that-cannot-be-told.tex -n "Fate's Edge - The Truth That Cannot Be Told.pdf" > /dev/null 2>&1|| echo "#37. Did not build"
 	../../../tools/compile_latex.sh -f iron-crucible.tex -n "Fate's Edge - The Iron Crucible.pdf" > /dev/null 2>&1|| echo "#38. Did not build"
 	../../../tools/compile_latex.sh -f gilded-chain.tex -n "Fate's Edge - The Gilded Chain.pdf" > /dev/null 2>&1|| echo "#39. Did not build"
-	../../../tools/compile_latex.sh -f brass_gate_milhavenIII.tex -n "Fate's Edge - The Brass Gate.pdf" > /dev/null 2>&1|| echo "#40. Did not build"
-	../../../tools/compile_latex.sh -f grumbling_vault.tex -n "Fate's Edge - The Grumbling Vault.pdf" > /dev/null 2>&1|| echo "#40. Did not build"
-	../../../tools/compile_latex.sh -f tithe_forgotten_faces.tex -n "Fate's Edge - The Tithe of Forgotten Faces.pdf" > /dev/null 2>&1|| echo "#41. Did not build"
-	../../../tools/compile_latex.sh -f vow_of_broken_glass.tex -n "Fate's Edge - The Vow of Broken Glass.pdf" > /dev/null 2>&1|| echo "#42. Did not build"
+	../../../tools/compile_latex.sh -f beyond-millhaven.tes -n "Fate's Edge - The Blood and Silk II, Beyond Millhaven Gate.pdf" > /dev/null 2>&1|| echo "#40. Did not build"
+	../../../tools/compile_latex.sh -f brass_gate_milhavenIII.tex -n "Fate's Edge - Blood and Silk III, The Brass Gate.pdf" > /dev/null 2>&1|| echo "#41. Did not build"
+	../../../tools/compile_latex.sh -f grumbling_vault.tex -n "Fate's Edge - The Grumbling Vault.pdf" > /dev/null 2>&1|| echo "#42. Did not build"
+	../../../tools/compile_latex.sh -f tithe_forgotten_faces.tex -n "Fate's Edge - The Tithe of Forgotten Faces.pdf" > /dev/null 2>&1|| echo "#43. Did not build"
+	../../../tools/compile_latex.sh -f vow_of_broken_glass.tex -n "Fate's Edge - The Vow of Broken Glass.pdf" > /dev/null 2>&1|| echo "#44. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/

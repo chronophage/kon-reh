@@ -1,180 +1,72 @@
-\documentclass[11pt]{book}
+% Fate's Edge — System Reference Document (SRD)
+\documentclass[11pt]{article}
 
-% ===== Core typesetting =====
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}        % Vector fonts
-\usepackage{microtype}      % Better spacing and kerning
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
 \usepackage{geometry}
-\geometry{margin=1in}       % Comfortable reading margins
-
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta, positioning}
-
-% ===== Mathematics =====
-\usepackage{amsmath}
-\usepackage{amssymb}
-
-% ===== Tables =====
 \usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{array}
-\usepackage{longtable}      % For multi‑page tables in appendices
-
-% ===== Paragraphs and spacing =====
-\usepackage{parskip}
-\setlength{\parskip}{0.5\baselineskip}
-\usepackage{titlesec}
-\titlespacing{\section}{0pt}{12pt}{4pt}
-\titlespacing{\subsection}{0pt}{8pt}{4pt}
-\titlespacing{\subsubsection}{0pt}{6pt}{3pt}
-
-% ===== Lists =====
+\usepackage{multicol}
 \usepackage{enumitem}
-\setlist{nosep, topsep=2pt, partopsep=0pt}
-
-% ===== Figures and captions =====
+\usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\usepackage{caption}
-\captionsetup{font=small, labelfont=bf}
-
-% ===== Links, bookmarks, and cross‑referencing =====
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue!60!black,
-  urlcolor=blue!60!black,
-  citecolor=gray,
-  pdfborder={0 0 0},
-  pdftitle={Fate's Edge: Game Master's Guide},
-  pdfauthor={Nicholas A. Gasper},
-  pdfsubject={Tabletop Roleplaying Game},
-  pdfkeywords={Fate's Edge, RPG, narrative, dice pool, patrons, clocks}
-}
-\usepackage{bookmark}       % Improved PDF bookmarks
-
-% ===== Indexing =====
-\usepackage{imakeidx}
-\makeindex[columns=3, title=Index]
-\indexsetup{level=\section*, toclevel=section}
-
-% ===== Optional glossary (uncomment if needed) =====
-%\usepackage[acronym, nonumberlist, nopostdot]{glossaries}
-%\makeglossaries
-%\loadglsentries{glossary_entries}   % external file
-
-% ===== Colours (muted, accessible) =====
 \usepackage{xcolor}
-\definecolor{blue75}{RGB}{0,85,150}
-\definecolor{blue5}{RGB}{235,245,255}
-\definecolor{green75}{RGB}{0,100,0}
-\definecolor{green5}{RGB}{235,255,235}
-\definecolor{gray75}{RGB}{80,80,80}
-\definecolor{gray5}{RGB}{245,245,245}
-\definecolor{yellow75}{RGB}{200,150,0}
-\definecolor{yellow5}{RGB}{255,245,225}
-\definecolor{red75}{RGB}{180,0,0}
-\definecolor{red5}{RGB}{255,235,235}
 
-% ===== Consistent infoboxes =====
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable}
-\newtcolorbox{infobox}[1]{
-  colback=blue5,
-  colframe=blue75,
-  fonttitle=\bfseries,
-  title=#1,
-  breakable,
-  arc=0pt
-}
-\newtcolorbox{notebox}{
-  colback=gray5,
-  colframe=gray75,
-  breakable,
-  arc=0pt
-}
-\newtcolorbox{warningbox}{
-  colback=red5,
-  colframe=red75,
-  breakable,
-  arc=0pt
-}
-\newtcolorbox{fatebox}[1]{
-  colback=yellow5,
-  colframe=yellow75,
-  fonttitle=\bfseries,
-  title=#1,
-  breakable,
-  arc=0pt
-}
+\geometry{letterpaper,margin=1in}
 
-% ===== Document structure =====
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{3}
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{topsep=0.2em,itemsep=0.2em}
+\setlist[description]{style=nextline}
 
-\title{Fate's Edge: Game Master's Guide}
-\author{Nicholas A. Gasper}
+\title{\vspace{-1.5em}Fate's Edge\\\large System Reference Document}
+\author{}
 \date{\today}
 
 \begin{document}
-
-\frontmatter
 \maketitle
-
-% Copyright page
-\cleardoublepage
-\thispagestyle{empty}
-\begin{center}
-\vspace*{2in}
-\textbf{Fate's Edge: Game Master's Guide}
-
-\vspace{0.2in}
-Copyright \copyright\ Nicholas A. Gasper \\
-\vspace{0.2in}
-This work is licensed under the Creative Commons Attribution 4.0 International License.\\
-To view a copy of this license, visit:
-\url{http://creativecommons.org/licenses/by/4.0/}
-\end{center}
-
-% Dedication (optional)
-\cleardoublepage
-\thispagestyle{empty}
-\vspace*{2in}
-\begin{center}
-\emph{For the GMs who dare to let the world push back.}
-\end{center}
-
-\cleardoublepage
 \tableofcontents
-
-% Optional lists (uncomment if you have many tables/figures)
-%\listoftables
-%\listoffigures
-
-\mainmatter
+\newpage
 
 % ============================================================
-%  Section files – each chapter is a separate .tex file
+% PART I – FOUNDATIONS
 % ============================================================
+\input{intro}                   % overview, philosophy, safety tools
+\clearpage
+\input{core_procedures}         % dice, Position, DV, outcomes, Boons, SB
+\clearpage
+\input{managing_resources}      % Fatigue, Harm, Supply, Boons, Assets, Followers
+\clearpage
+\input{gm-currency-free}        % abstract currency, XP as coin, Trusts
+\clearpage
 
-\include{sections/01_intro}                % GM Introduction
-\include{sections/02_core_procedures}      % Core Procedures & GM Mindset
-\include{sections/03_managing_resources}   % Resources: Supply, Fatigue, Boons, XP
-\include{sections/04_magic}               % Magic and Backlash (adjudication)
-\include{sections/05_campaign_design}      % Campaigns, Clocks, Consequences
-\include{sections/06_advanced_gm_tools}    % Advanced Techniques (SB, deck, factions)
-\include{sections/07_enhanced_gm_play}     % Enhanced GM Play & Threat Pool
-\include{sections/08_epic_tier}           % Tier IV–V Epic Adventures
-\include{sections/09_lore}                % The Known World (Lore Compendium)
-\include{sections/10_running_scenarios}   % Example Play & GM Survival Guide
-\include{sections/11_appendix}            % Appendices (tables, optional rules, etc.)
+% ============================================================
+% PART II – MAGIC & SCENARIOS
+% ============================================================
+\input{magic}                   % magic systems, rites, invokers, summoning, backlash
+\clearpage
+\input{running_scenarios}       % encounter design, clocks, story structure
+\clearpage
 
-\backmatter
+% ============================================================
+% PART III – CAMPAIGN & ADVANCED PLAY
+% ============================================================
+\input{campaign_design}         % fronts, factions, travel, Crown Spread, finale
+\clearpage
+\input{epic_tier}               % Tier IV–V play, scaling, mythic threats
+\clearpage
+\input{advanced_gm_tools}       % advanced clocks, factions, custom content
+\clearpage
+\input{enhanced_gm_play}        % pacing, player engagement, spotlight management
+\clearpage
 
-% Print index
-\printindex
-
-% Optional glossary print (if used)
-%\printglossaries
+% ============================================================
+% PART IV – LORE & REFERENCE
+% ============================================================
+\input{lore}                    % world regions, cultures, factions
+\clearpage
+\input{appendix}                % quick reference tables, generators, index
+\clearpage
 
 \end{document}
