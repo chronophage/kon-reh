@@ -1,5 +1,5 @@
 % Fate's Edge — System Reference Document (SRD)
-\documentclass[11pt]{article}
+\documentclass[11pt]{book}  % ← CHANGED: article → book (for \chapter)
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -12,6 +12,10 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage[most]{tcolorbox}  % ← CHANGED: added [most]
+\usepackage{tabularx}         % ← ADDED: for tabularx tables
+\usepackage{index}            % ← ADDED: for \index commands
+\makeindex                    % ← ADDED: enable indexing
 
 \geometry{letterpaper,margin=1in}
 
@@ -20,53 +24,75 @@
 \setlist[itemize]{topsep=0.2em,itemsep=0.2em}
 \setlist[description]{style=nextline}
 
+% ============================================================
+% CUSTOM BOX DEFINITIONS
+% ============================================================
+\newtcolorbox{fatebox}[1][]{
+    colback=white,
+    colframe=black!75,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.5pt,
+    arc=3pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt
+}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
 \title{\vspace{-1.5em}Fate's Edge\\\large System Reference Document}
 \author{}
 \date{\today}
 
 \begin{document}
 \maketitle
+\newpage
 \tableofcontents
 \newpage
 
 % ============================================================
 % PART I – FOUNDATIONS
 % ============================================================
-\input{intro}                   % overview, philosophy, safety tools
+\input{sections/intro}
 \clearpage
-\input{core_procedures}         % dice, Position, DV, outcomes, Boons, SB
+\input{sections/core_procedures}
 \clearpage
-\input{managing_resources}      % Fatigue, Harm, Supply, Boons, Assets, Followers
+\input{sections/managing_resources}
 \clearpage
-\input{gm-currency-free}        % abstract currency, XP as coin, Trusts
+\input{sections/gm-currency-free}
 \clearpage
 
 % ============================================================
 % PART II – MAGIC & SCENARIOS
 % ============================================================
-\input{magic}                   % magic systems, rites, invokers, summoning, backlash
+\input{sections/magic}
 \clearpage
-\input{running_scenarios}       % encounter design, clocks, story structure
+\input{sections/running_scenarios}
 \clearpage
 
 % ============================================================
 % PART III – CAMPAIGN & ADVANCED PLAY
 % ============================================================
-\input{campaign_design}         % fronts, factions, travel, Crown Spread, finale
+\input{sections/campaign_design}
 \clearpage
-\input{epic_tier}               % Tier IV–V play, scaling, mythic threats
+\input{sections/epic_tier}
 \clearpage
-\input{advanced_gm_tools}       % advanced clocks, factions, custom content
+\input{sections/advanced_gm_tools}
 \clearpage
-\input{enhanced_gm_play}        % pacing, player engagement, spotlight management
+\input{sections/enhanced_gm_play}
 \clearpage
 
 % ============================================================
 % PART IV – LORE & REFERENCE
 % ============================================================
-\input{lore}                    % world regions, cultures, factions
+\input{sections/lore}
 \clearpage
-\input{appendix}                % quick reference tables, generators, index
+\input{sections/appendix}
 \clearpage
+
+% ============================================================
+% INDEX (must be at end)
+% ============================================================
+\printindex  % ← ADDED: prints the index
 
 \end{document}
