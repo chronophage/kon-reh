@@ -1,4 +1,4 @@
-% Fate's Edge — System Reference Document (SRD)
+% Fate's Edge --- System Reference Document (SRD)
 \documentclass[11pt]{book}  % ← CHANGED: article → book (for \chapter)
 
 \usepackage[T1]{fontenc}
@@ -12,8 +12,13 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage[most]{tcolorbox}  % ← CHANGED: added [most]
-\usepackage{tabularx}         % ← ADDED: for tabularx tables
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}  % For >{\bfseries} column specs
+        % ← ADDED: for tabularx tables
 \usepackage{index}            % ← ADDED: for \index commands
 \makeindex                    % ← ADDED: enable indexing
 
@@ -23,6 +28,10 @@
 \setlength{\parindent}{0pt}
 \setlist[itemize]{topsep=0.2em,itemsep=0.2em}
 \setlist[description]{style=nextline}
+
+% Add to preamble after \usepackage{xcolor}
+\definecolor{parchment}{RGB}{248, 240, 226}
+\definecolor{bronze}{RGB}{205, 127, 50}
 
 % ============================================================
 % CUSTOM BOX DEFINITIONS
@@ -51,7 +60,7 @@
 \newpage
 
 % ============================================================
-% PART I – FOUNDATIONS
+% PART I -- FOUNDATIONS
 % ============================================================
 \input{sections/intro}
 \clearpage
@@ -63,7 +72,7 @@
 \clearpage
 
 % ============================================================
-% PART II – MAGIC & SCENARIOS
+% PART II -- MAGIC & SCENARIOS
 % ============================================================
 \input{sections/magic}
 \clearpage
@@ -71,7 +80,7 @@
 \clearpage
 
 % ============================================================
-% PART III – CAMPAIGN & ADVANCED PLAY
+% PART III -- CAMPAIGN & ADVANCED PLAY
 % ============================================================
 \input{sections/campaign_design}
 \clearpage
@@ -83,7 +92,7 @@
 \clearpage
 
 % ============================================================
-% PART IV – LORE & REFERENCE
+% PART IV -- LORE & REFERENCE
 % ============================================================
 \input{sections/lore}
 \clearpage
