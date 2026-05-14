@@ -141,13 +141,13 @@ Backlash: Knees buckle; –1 Mobility for a scene.
 HEALING & PROTECTION
 	21.	Blessed Mending
 
-	•	Mend — DV 2
+	•	HEAL — DV 2
 Heal Harm 1 and stabilize.
 Backlash: You feel their injury; +1 Fatigue.
 
 	22.	Purify the Vessel
 
-	•	Purify • Mend — DV 3
+	•	Purify • HEAL — DV 3
 Cleanse poison, disease, corruption.
 Backlash: Painful purge; caster takes Stress.
 
@@ -165,19 +165,19 @@ Backlash: Splinters under your skin; Harm 1 (non-lethal).
 
 	25.	Breath Restored
 
-	•	Waken • Mend — DV 3
+	•	Waken • HEAL — DV 3
 Revive a fallen ally; stabilize and return to 1 HP equivalent.
 Backlash: Caster blacks out for a beat.
 
 	26.	Blood to Flame
 
-	•	Mend • Burning — DV 3
+	•	HEAL • Burning — DV 3
 Heal Harm 1 and lash nearby foe with heat.
 Backlash: Your veins burn; +2 Fatigue.
 
 	27.	Light of Mercy
 
-	•	Mend • Area — DV 3
+	•	HEAL • Area — DV 3
 Allies in reach recover Harm 1 (or remove Fatigue).
 Backlash: Head swims; –1 die next spell.
 
@@ -195,7 +195,7 @@ Backlash: Feet lift uncontrollably (minor levitation mishap).
 
 	30.	Lifeblood Bond
 
-	•	Mend • Bind — DV 3
+	•	HEAL • Bind — DV 3
 Transfer Harm 1 from an ally to yourself.
 Backlash: Twice if mixed result.
 
@@ -365,7 +365,7 @@ You can drop these straight into the SRD or a magic supplement.
 ⸻
 
 4. Feast of Silent Spirit
-	•	Summon • Veil • Mend — DV 5
+	•	Summon • Veil • HEAL — DV 5
 	•	Requires: A set table, 8 candles, no speech
 	•	Effect: Spirits arrive; each ally removes Fatigue & Stress and gains a boon for the next day.
 	•	Backlash: One spirit lingers and whispers secrets at night.
@@ -397,7 +397,7 @@ You can drop these straight into the SRD or a magic supplement.
 ⸻
 
 8. Unblooding
-	•	Purify • Dispel • Mend — DV 6
+	•	Purify • Dispel • HEAL — DV 6
 	•	Requires: A clean bowl, running water
 	•	Effect: Removes curses, hereditary afflictions, or generational trauma.
 	•	Backlash: The affliction transfers briefly to the caster.
@@ -485,7 +485,7 @@ You can drop these straight into the SRD or a magic supplement.
 ⸻
 
 19. Star-Glass Vessel
-	•	Create • Veil • Mend — DV 7
+	•	Create • Veil • HEAL — DV 7
 	•	Requires: A glass container left beneath moonlight
 	•	Effect: Stores one memory, fear, or secret—remove from the mind entirely.
 	•	Backlash: A painful new memory fills the gap.

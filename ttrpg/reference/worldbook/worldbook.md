@@ -766,7 +766,7 @@ Utar-descended yeomanry blended with Thepyrgosi stock, later salted with Acasi t
 #### Manners & look
 * Speech: Dry as peat, barbed as gorse; compliments wear boots.
 * Dress: Oiled cloaks, knit caps, marble-dust aprons, tide charms on string.
-* Ethic: "Mind your ditch, mend your neighbor's fence, and pay the pilot."
+* Ethic: "Mind your ditch, HEAL your neighbor's fence, and pay the pilot."
 
 #### Adventure hooks
 * The Surveyor's Map: The only complete parcel map (and its marginalia) vanishes; fences follow knives unless it's found.

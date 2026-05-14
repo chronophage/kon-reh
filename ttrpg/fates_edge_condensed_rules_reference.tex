@@ -1,0 +1,562 @@
+\documentclass[12pt, oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+}
+\usepackage{makeidx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+
+% Index generation
+\makeindex
+
+% Custom commands
+\newcommand{\gameterm}[1]{\textbf{#1}\index{#1}}
+\newcommand{\sbs}{\gameterm{Story Beat}}
+\newcommand{\boons}{\gameterm{Boons}}
+\newcommand{\position}{\gameterm{Position}}
+\newcommand{\dv}{\gameterm{Difficulty Value (DV)}}
+\newcommand{\clock}{\gameterm{Clock}}
+\newcommand{\bond}{\gameterm{Bond}}
+\newcommand{\obligation}{\gameterm{Obligation}}
+\newcommand{\corruption}{\gameterm{Corruption}}
+\newcommand{\asset}{\gameterm{Asset}}
+\newcommand{\follower}{\gameterm{Follower}}
+
+% Section formatting
+\titleformat{\chapter}{\Large\bfseries}{\thechapter}{1em}{}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\huge\bfseries Fate's Edge\par}
+    {\Large Condensed Rules Reference\par}
+    \vspace{0.5cm}
+    {\large A short digest for players and GMs\par}
+    \vspace{2cm}
+    {\normalsize Core rules only. Advanced options (Patrons, assets, travel decks, high-tier play) are in the full guides.\par}
+    \vfill
+    {\copyright \ 2026. Free to share under CC BY 4.0.\par}
+    \vspace{0.5cm}
+    {\today\par}
+\end{titlepage}
+
+% Table of contents
+\tableofcontents
+\clearpage
+
+\chapter{Introduction}
+\label{ch:intro}
+
+\section{Core Philosophy \& Safety}
+\label{sec:philosophy}
+
+\subsection{Narrative First}
+Mechanics serve the story. Describe what you do; the dice decide how it goes wrong or right.
+
+\subsection{Golden Rule}
+\label{sec:goldenrule}
+When in doubt, make a ruling that keeps the story moving. Default: \dv\ 3, \position\ Controlled (see section~\ref{sec:position}).
+
+\subsection{Safety Tools}
+Use \textbf{Lines} (content that never appears), \textbf{Veils} (content that happens off-screen), and \textbf{X-Card} (stop and rewind any moment). The GM is also a player.
+
+\section{The 90-Second Play Loop}
+\label{sec:playloop}
+
+\begin{enumerate}[label=\textbf{Step \arabic*:}]
+    \item \textbf{Player declares intent} – “I want to X by doing Y.”
+    \item \textbf{GM sets \position\ and \dv} – Risk (Dominant/Controlled/Desperate) and Difficulty (2–5+).
+    \item \textbf{Player rolls} – Attribute + Skill d10s.
+    \item \textbf{Count successes} (6+) and \sbs\ (1s).
+    \item \textbf{Apply Outcome} – see section~\ref{sec:outcome}.
+    \item \textbf{GM spends \sbs} – complications, clocks, scene shifts (see section~\ref{sec:sbmenu}).
+    \item \textbf{Pass the spotlight} – next player acts.
+\end{enumerate}
+
+\chapter{Dice, Outcomes, and Resources}
+\label{ch:core}
+
+\section{Dice Pool}
+\label{sec:dicepool}
+Dice pool = Attribute + Skill (both 1–5, starting max 3).  
+Success = die showing 6–10. A \textbf{10} counts as two successes.  
+\sbs = die showing 1. The GM gains one SB for each 1 rolled.
+
+\section{Outcome Matrix}
+\label{sec:outcome}
+
+\begin{longtable}{|p{3cm}|p{3cm}|p{4cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{Result} & \textbf{Criteria} & \textbf{What Happens} & \textbf{Player Gains} & \textbf{GM Gains} \\
+\hline
+Clean Success & Successes $\ge$ \dv, SB = 0 & Intent achieved, no complication & – & – \\
+\hline
+Success with SB & Successes $\ge$ \dv, SB $>$ 0 & Intent achieved, GM adds twist & – & SB as rolled \\
+\hline
+Partial & $0 <$ Successes $<$ \dv & Progress made, situation unresolved & 1 \boons & SB as rolled \\
+\hline
+Miss & Successes = 0 & No progress, situation escalates & 2 \boons & SB as rolled \\
+\hline
+\end{longtable}
+
+\noindent \textbf{Important:} \sbs are generated on the roll, not after re-rolls. Re-rolling a 1 does not remove the SB.
+
+\section{\boons (Player Resource)}
+\label{sec:boons}
+
+\begin{itemize}
+    \item Hold up to 5 \boons. At scene end, reduce to 2 (excess lost).
+    \item \textbf{Spend 1 \boons\ to:} re-roll a die (after seeing pool); improve \position\ by one step (before rolling); activate an \asset; or power certain abilities.
+    \item \textbf{Earn \boons:} Partial (1), Miss (2), \bond-driven action (once per \bond\ per session), GM award.
+    \item \textbf{Convert to XP:} 2 \boons $\rightarrow$ 1 XP, once per session, max 2 XP.
+\end{itemize}
+
+\section{\sbs (GM Resource)}
+\label{sec:sbmenu}
+
+\begin{longtable}{|p{2cm}|p{10cm}|}
+\hline
+\textbf{SB Cost} & \textbf{Effect} \\
+\hline
+1 & Minor: noise, trace, +1 segment on a \clock \\
+\hline
+2 & Moderate: alarm raised, lose advantage, lesser foe appears \\
+\hline
+3 & Serious: reinforcements, key gear breaks, tick a front \clock \\
+\hline
+4+ & Major: trap springs, authority arrives, scene shifts \\
+\hline
+\end{longtable}
+
+\section{\position\ and \dv}
+\label{sec:position}
+
+\subsection{\position}
+Position = risk. Set by fiction (cover, surprise, danger).
+
+\begin{longtable}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Position} & \textbf{Mechanical Effect} \\
+\hline
+Dominant & May re-roll one failure \\
+\hline
+Controlled & No re-rolls (default) \\
+\hline
+Desperate & Must re-roll one success (keep second result) \\
+\hline
+\end{longtable}
+
+\subsection{\dv}
+How hard the task is. Default = 3.
+
+\begin{longtable}{|p{2cm}|p{10cm}|}
+\hline
+\textbf{DV} & \textbf{When to Use} \\
+\hline
+2 & Routine, no pressure \\
+\hline
+3 & Pressured, mild opposition \\
+\hline
+4 & Difficult, active resistance \\
+\hline
+5+ & Extreme, high stakes \\
+\hline
+\end{longtable}
+
+\noindent \textbf{GM advice:} Do not inflate \dv\ to challenge players. Use \position, \clock s, and SB instead.
+
+\chapter{Combat, Harm, and Healing}
+\label{ch:combat}
+
+\section{Combat in Brief}
+\label{sec:combat}
+
+\begin{itemize}
+    \item \textbf{Initiative:} Narrative – GM spotlights based on fiction. Ambushes act first.
+    \item \textbf{Turn:} Move (one range band) + Action (attack, cast, defend, etc.). No fixed rounds.
+    \item \textbf{Range Bands:} Close $\rightarrow$ Near $\rightarrow$ Far $\rightarrow$ Absent.
+    \item \textbf{Opportunity Attack:} Leaving Close range without using Disengage provokes one free melee attack.
+\end{itemize}
+
+\subsection{Actions}
+
+\begin{longtable}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Action} & \textbf{Effect} \\
+\hline
+Attack & Melee/ranged attack \\
+\hline
+Disengage & Move without provoking opportunity attacks \\
+\hline
+Charge (full turn) & Move two bands + melee attack; costs 1 Fatigue; next defense Desperate \\
+\hline
+Defend & Improve Position by one step for defense; protect allies \\
+\hline
+Assist & Spend 1 \boons\ to give +1 die to ally (max +3 from all assists) \\
+\hline
+\end{longtable}
+
+\subsection{Combat Clocks}
+Use visible \clock s for enemy morale [6], environmental danger [4], boss phases.
+
+\section{Harm and Fatigue}
+\label{sec:harmfatigue}
+
+\subsection{Fatigue Track}
+\begin{itemize}
+    \item Each character has Fatigue = Body rating.
+    \item Each Fatigue worsens \position: Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate.
+    \item If already Desperate, each Fatigue gives –1 die instead.
+    \item \textbf{Full track:} Increase Harm by 1 step, clear all Fatigue.
+\end{itemize}
+
+\subsection{Harm Levels}
+\begin{longtable}{|p{2cm}|p{10cm}|}
+\hline
+\textbf{Harm Level} & \textbf{Effect} \\
+\hline
+Harm 1 & –1 die on related actions \\
+\hline
+Harm 2 & –1 die on most actions until treated \\
+\hline
+Harm 3 & Incapacitated or dying \\
+\hline
+\end{longtable}
+
+\subsection{Taking Harm (Procedure)}
+\label{sec:takingharm}
+\begin{enumerate}
+    \item Convert incoming Harm to Fatigue using armor (see table~\ref{tab:armor}).
+    \item Apply remaining Harm – if any Harm remains, increase Harm level and clear all existing Fatigue (the shock resets exhaustion).
+    \item Add converted Fatigue; if track fills, overflow triggers Harm increase.
+\end{enumerate}
+
+\subsection{Armor Conversion}
+\label{tab:armor}
+
+\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{Armor} & \textbf{Harm 1} & \textbf{Harm 2} & \textbf{Harm 3} \\
+\hline
+Light & Fatigue 1 & Harm 1 + Fatigue 1 & Harm 2 + Fatigue 1 \\
+\hline
+Medium & Fatigue 1 & Fatigue 1 & Harm 2 + Fatigue 1 \\
+\hline
+Heavy & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
+\hline
+\end{longtable}
+
+\subsection{Recovery}
+\begin{itemize}
+    \item \textbf{Fatigue:} Short rest (1 hour) clears 2; full night's rest clears all.
+    \item \textbf{Harm:} Requires medical care and time (downtime). Magical healing exists but has costs (see section~\ref{sec:magic}).
+\end{itemize}
+
+\chapter{Player-Managed Resources}
+\label{ch:playertools}
+
+Players track their own:
+\begin{itemize}
+    \item \obligation (per Patron or Symbol) – Capacity = Spirit + Presence. Exceeding capacity causes 1 Fatigue per segment over.
+    \item \corruption\ clock (Cantors)
+    \item Leash clock (Summoners)
+    \item \asset\ states (Maintained / Neglected / Compromised)
+    \item \follower\ conditions (Exposure, Harm)
+    \item Fatigue and Harm
+    \item \boons
+\end{itemize}
+
+\textbf{Player duties:} Mark immediately when a rule says “mark +X”. Declare thresholds (“My \obligation\ is full!”). Keep trackers visible to the table.
+
+\textbf{GM duties:} Spot-check occasionally. Enforce thresholds (e.g., \obligation\ overflow $\rightarrow$ Fatigue). Own the fallout (Patron intrusions, faction reactions).
+
+\chapter{Magic in One Page}
+\label{ch:magic}
+
+\section{Free Caster (Spellcraft)}
+\label{sec:magic}
+
+Requires \textbf{Spellcraft} talent (6 XP). No Patron.
+
+\begin{itemize}
+    \item \textbf{Casting:} Describe spell using \textbf{TAGS}. \dv = 1 + number of tags. Dangerous tags (Teleport, Transform, Dominate) add +2 \dv.
+    \item \textbf{Roll:} Wits + Arcana.
+    \item \textbf{Backlash (on Miss or GM spending SB):} Choose one: Harm 2 (arcane), +2 Fatigue, \corruption\ +1, or catastrophic side effect (GM describes).
+\end{itemize}
+
+\subsection{Sample Spells}
+\begin{longtable}{|p{5cm}|p{3cm}|p{2cm}|}
+\hline
+\textbf{Spell} & \textbf{TAGS} & \textbf{DV} \\
+\hline
+Light a candle & [ILLUMINATE] & 2 \\
+\hline
+HEAL Fatigue & [HEAL] & 2 \\
+\hline
+Shield of Air & [WARD] [DEFEND] & 3 \\
+\hline
+Flame Cloak & [BURNING] [AREA] & 3 \\
+\hline
+Wall of Stone & [BARRIER] [FORTIFY] & 3 (or 4 if dangerous) \\
+\hline
+\end{longtable}
+
+\subsection{Elemental Backlash (Minor)}
+\label{sec:backlash}
+
+\begin{longtable}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Element} & \textbf{Minor (1–2 SB)} \\
+\hline
+Fire & Smoke, sparks \\
+\hline
+Water & Slick floor, damp \\
+\hline
+Earth & Dust, tremor \\
+\hline
+Air & Gust, ringing ears \\
+\hline
+Fate & Option closes \\
+\hline
+Luck & Small misfortune \\
+\hline
+Life & Overgrowth \\
+\hline
+Death & Chill whispers \\
+\hline
+\end{longtable}
+
+(Major backlash tables in full guide.)
+
+\chapter{Clocks and Pressure}
+\label{ch:clocks}
+
+\clock s are visible trackers for threats, progress, and looming changes.
+
+\textbf{Size:} 4 (short scene), 6 (standard), 8 (arc), 10 (epic).  
+\textbf{Name them clearly:} “Alarm Raised [4]” not “Bad Stuff”.  
+\textbf{Advance a \clock:} on a Miss, certain Partials, or when GM spends SB.
+
+\section{Three-Clock Guideline (per scene)}
+\begin{itemize}
+    \item \textbf{Immediate \clock} – what's about to go wrong (e.g., Collapsing Bridge [4])
+    \item \textbf{Situational \clock} – pressure shaping decisions (e.g., Crowd Turns Hostile [6])
+    \item \textbf{Long-term \clock} – echoes forward (e.g., Faction Retaliation [8])
+\end{itemize}
+
+\section{Mandate \& Crisis (Campaign Clocks)}
+\label{sec:mandatecrisis}
+\begin{itemize}
+    \item \textbf{Mandate (0–6)} – party's public legitimacy. High = doors open; low = suspicion.
+    \item \textbf{Crisis (0–6)} – opposition's growing strength. High = enemies strike boldly.
+\end{itemize}
+
+\chapter{GM Quick Reference}
+\label{ch:gmref}
+
+\section{Default Settings}
+\begin{itemize}
+    \item \dv = 3
+    \item \position = Controlled
+    \item One short \clock\ per scene
+\end{itemize}
+
+\section{SB Spend Menu}
+(see section~\ref{sec:sbmenu})
+
+\section{Outcome Reminders}
+(see section~\ref{sec:outcome})
+
+\section{Combat Quick Ref}
+(see section~\ref{sec:combat} and \ref{sec:harmfatigue})
+
+\section{Travel Clocks (optional)}
+\begin{itemize}
+    \item 4 segments: short leg
+    \item 6 segments: standard leg
+    \item 8 segments: extended journey
+    \item 10 segments: epic passage
+\end{itemize}
+
+\chapter{Player Reference}
+\label{ch:playerref}
+
+\section{Your Turn}
+\label{sec:playerturn}
+\begin{enumerate}
+    \item Declare intent and approach (Attribute + Skill)
+    \item GM tells you \position\ and \dv
+    \item Roll dice, count successes (6+) and 1s (SB for GM)
+    \item Apply outcome (GM will tell you Clean/Success with SB/Partial/Miss)
+    \item Mark \boons\ (1 on Partial, 2 on Miss) and any Fatigue/Harm
+    \item If you rolled 1s, GM may spend SB immediately
+\end{enumerate}
+
+\section{Spending \boons}
+(see section~\ref{sec:boons})
+
+\section{Bonded Actions}
+\label{sec:bonds}
+\begin{itemize}
+    \item Once per \bond\ per session: when you help a bonded ally with an intricate description, both gain 1 \boons\ after the action.
+    \item At Tier II+ (41+ XP), you may transfer up to 2 \boons\ to a bonded ally as a free action (once per scene).
+\end{itemize}
+
+\section{Healing Yourself}
+(see section~\ref{sec:harmfatigue})
+
+\chapter{Example Play (Condensed)}
+\label{ch:example}
+
+\emph{From Blood and Silk – negotiation scene.}
+
+\textbf{Marcus:} “I step forward, hand on sword. ‘Garrick, name a price that doesn't starve children.’ Presence + Command.”  
+
+\textbf{GM:} “Controlled, \dv\ 3.”  
+
+\textbf{Marcus rolls:} 6,8,3,1,1 $\rightarrow$ 2 successes, 2 SB $\rightarrow$ Partial (2 $<$ 3). Gains 1 \boons.  
+
+\textbf{GM:} “Garrick listens. ‘500 silver and a wagon of seed grain.’ I spend 1 SB: a farmer shouts ‘Kill them!’ \textbf{Tick Village Panic +1}. I spend the other SB: Vex whispers to Garrick and eyes Elena – her next action is Desperate.”  
+
+\textbf{Sariel:} “I slip behind Vex. Wits + Stealth.”  
+
+\textbf{GM:} “Controlled, \dv\ 3.”  
+
+\textbf{Sariel rolls:} 2,4,5,6,10 $\rightarrow$ 3 successes (10 = 2) $\rightarrow$ Clean Success.  
+
+\textbf{GM:} “You tap her elbow. ‘Don't.’ She freezes. Your next action against her is Dominant.”  
+
+... and so on.
+
+\chapter{Quick Build \& Advancement}
+\label{ch:advancement}
+
+\section{Starting Characters (30 XP)}
+\begin{itemize}
+    \item \textbf{Attributes:} each starts at 1. Raise to 2 (6 XP), 3 (9 XP), etc. (new rating $\times$3 XP)
+    \item \textbf{Skills:} start at 0. Raise to 1 (2 XP), 2 (4 XP), etc. (new level $\times$2 XP)
+    \item \textbf{Minor \asset\ (4 XP):} safehouse, contact, special tool
+    \item \textbf{Minor Talent (2–3 XP):} Keen Senses, Second Wind, etc.
+    \item \textbf{\bond s (up to 2, +2 XP each)}
+    \item \textbf{Complications (up to 2, +2 XP each)} – each unresolved adds +1 banked SB to early scenes.
+\end{itemize}
+
+\section{Advancement per Session (typical)}
+\begin{itemize}
+    \item Attendance: +2 XP
+    \item Major objectives: +2–4 XP
+    \item Discoveries: +1–2 XP
+    \item Hard choices: +1–2 XP
+    \item Personal goals: +1–2 XP
+\end{itemize}
+
+\section{Spending XP}
+\begin{longtable}{|p{5cm}|p{5cm}|p{4cm}|}
+\hline
+\textbf{Improvement} & \textbf{Cost} & \textbf{Downtime} \\
+\hline
+Attribute & new rating $\times$3 XP & new rating days \\
+\hline
+Skill & new level $\times$2 XP & new level days \\
+\hline
+Minor \asset & 4 XP & 1 day \\
+\hline
+Standard \asset & 8 XP & 1 week \\
+\hline
+Major \asset & 12 XP & 1 month \\
+\hline
+Minor Talent & 2–3 XP & — \\
+\hline
+Major Talent & 4–6 XP & scene of training \\
+\hline
+Prestige Talent & 7–10 XP & Tier II+ \& narrative \\
+\hline
+\end{longtable}
+
+\section{Rush Rule}
+Skip downtime by accepting a Haste \clock\ [4]. If it fills before you finish, the new ability has a flaw.
+
+\chapter{Common Rolls \& Synergies}
+\label{ch:commonrolls}
+
+\section{Default Pairs}
+\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Action} & \textbf{Standard Pair} & \textbf{Alternative} \\
+\hline
+Climb a wall & Body + Athletics & Wits + Athletics (route-finding) \\
+\hline
+Persuade a guard & Presence + Sway & Wits + Sway (logical argument) \\
+\hline
+Investigate a crime & Wits + Investigation & Spirit + Investigation (intuition) \\
+\hline
+Cast a spell & Wits + Arcana & Spirit + Arcana (willpower) \\
+\hline
+\end{longtable}
+
+\section{Assist Limit}
+Max +3 dice from all assists per roll. One \follower\ may assist (adds min(Cap, relevant skill) dice).
+
+\section{Selling the Action (GM may grant +1 Position or bank a Boon)}
+\begin{itemize}
+    \item \textbf{Counts:} stating a clear stake, invoking a \bond, revealing a fear, making a hard choice visible.
+    \item \textbf{Does not count:} piling on adjectives, passive sensory lists, repeated descriptions.
+\end{itemize}
+
+\chapter{Core Tables}
+\label{ch:tables}
+
+(Repeated for easy reference – see sections~\ref{sec:outcome}, \ref{sec:position}, \ref{sec:boons}, \ref{sec:harmfatigue}, \ref{tab:armor}.)
+
+\chapter{Glossary}
+\label{ch:glossary}
+
+\begin{itemize}
+    \item \textbf{\gameterm{Asset}} – Off-screen resource (safehouse, spy network, workshop). Costs XP. Can be activated with 1 \boons.
+    \item \textbf{\gameterm{Bond}} – Mutual connection between two PCs. Once per session, when you help your bonded ally with intricate description, both gain 1 \boons.
+    \item \textbf{\gameterm{Boons}} – Player resource earned on Partials and Misses. Spend to re-roll, improve Position, activate Assets.
+    \item \textbf{\gameterm{Cap}} – Follower capability rating (1–5). Adds min(Cap, skill) dice when assisting.
+    \item \textbf{\gameterm{Clock}} – Visible progress tracker (4/6/8/10 segments). Advances on Misses, Partials, or SB spends.
+    \item \textbf{\gameterm{Compromised}} – State of an Asset or Symbol: unusable until repaired.
+    \item \textbf{\gameterm{Corruption}} – Cantor resource. Clock fills $\rightarrow$ gain Patron's burden/benefit, reset to Tier minimum.
+    \item \textbf{\gameterm{Crisis}} – Campaign clock (0–6). High = enemies stronger.
+    \item \textbf{\gameterm{Difficulty Value (DV)}} – Target number of successes. Default 3.
+    \item \textbf{\gameterm{Exposure}} – Follower stress track. Leads to Neglected/Compromised.
+    \item \textbf{\gameterm{Fatigue}} – Exhaustion track. Worsens Position; full track $\rightarrow$ Harm+1, clear Fatigue.
+    \item \textbf{\gameterm{Follower}} – Named NPC ally. Costs Cap$^2$ XP. Can assist or take independent actions.
+    \item \textbf{\gameterm{Harm}} – Injury track (1–3). Imposes die penalties.
+    \item \textbf{\gameterm{Leash}} – Summoner's control track. When full, spirit acts independently.
+    \item \textbf{\gameterm{Mandate}} – Campaign clock (0–6). High = party is respected.
+    \item \textbf{\gameterm{Miss}} – 0 successes. Player gains 2 \boons; GM gains SB and escalates.
+    \item \textbf{\gameterm{Neglected}} – State of Asset or Follower: –1 die until attention given.
+    \item \textbf{\gameterm{Obligation}} – Debt to Patron (or terrestrial patron). Capacity = Spirit + Presence. Over capacity $\rightarrow$ Fatigue.
+    \item \textbf{\gameterm{Partial}} – $0 <$ successes $<$ DV. Player gains 1 \boons; GM gains SB.
+    \item \textbf{\gameterm{Patron}} – Cosmic entity granting Rites. Runkeeper = Obligation; Invoker = Symbol; Cantor = Corruption.
+    \item \textbf{\gameterm{Position}} – Risk level: Dominant (safe), Controlled (normal), Desperate (dangerous).
+    \item \textbf{\gameterm{Story Beat (SB)}} – GM resource. Earned on any 1. Spent to create complications.
+    \item \textbf{\gameterm{String}} – Narrative leverage (favor owed, secret known). Can be spent like currency.
+    \item \textbf{\gameterm{TAGS}} – Keywords for freeform magic (e.g., [FIRE], [AREA], [HEAL]). DV = 1 + number of tags.
+    \item \textbf{\gameterm{Terrestrial Patron}} – Mortal faction offering aid in exchange for Debt Clock.
+    \item \textbf{\gameterm{Thiasos}} – Familiar/token for Runekeepers (2 XP). Required for Patron's Gift.
+    \item \textbf{\gameterm{XP}} – Experience Points. Earned at session end. Spent on Attributes, Skills, Assets, Talents.
+\end{itemize}
+
+\printindex
+
+\end{document}
