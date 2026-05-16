@@ -128,7 +128,7 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f house_fenwood_ii_reckoning_bridge.tex -n "Fate's Edge Chronicles - The Fenwoods, The Reckoning Bridge.pdf" > /dev/null 2>&1|| echo "#45. Did not build"
 ../../../tools/compile_latex.sh -f house_fenwood_iii_old_dukes_wars.tex -n "Fate's Edge Chronicles - The Fenwoods, The Old Duke's Wars.pdf" > /dev/null 2>&1|| echo "#46. Did not build"
 ../../../tools/compile_latex.sh -f knaves_regret.tex -n "Fate's Edge Expansion - Vhasia, The Knave's Regret.pdf" > /dev/null 2>&1|| echo "#47. Did not build"
-../../../tools/compile_latex.sh -f knights_tale.tex -n "Fate's Edge Expansion - Viterra, The Knight's Confession.pdf" > /dev/null 2>&1|| echo "#48. Did not build"
+../../../tools/compile_latex.sh -f justicars-judgement.tex -n "Fate's Edge Expansion - Viterra, The Knight's Confession.pdf" > /dev/null 2>&1|| echo "#48. Did not build"
 ../../../tools/compile_latex.sh -f knights_tale.tex -n "Fate's Edge Expansion - Viterra, The Knight's Confession.pdf" > /dev/null 2>&1|| echo "#49. Did not build"
 
 ../../../tools/compile_latex.sh -f air_mist_alder_thorn_mirror.tex -n "Fate's Edge Expansion - The Book of Air, Mist, Alder, Thorn, and Mirror.pdf" > /dev/null 2>&1|| echo "#50. Did not build"
