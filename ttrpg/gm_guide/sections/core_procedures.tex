@@ -63,6 +63,15 @@ Set DV=3, Position=Controlled, ask for the roll, and resolve with the Outcome Ma
 
 \end{tcolorbox}
 
+\begin{effectbox}
+  \textbf{Position} (Dominant/Controlled/Desperate) = How risky is this action? – determines severity of failure and re-rolls.\\
+  \textbf{Effect} (Limited/Standard/Great) = How much do you achieve on a success? – determines scope, scale, or quality.
+  
+  \vspace{4pt}
+  \small
+  \textit{Example:} Disarming a trap – Limited Effect lets one person cross, Standard lets two, Great lets all four.
+  \end{effectbox}
+
 % =========================================================
 % SELLING THE ACTION BOX (FIXED: No \subsection inside)
 % =========================================================
@@ -385,6 +394,66 @@ Successes $\geq$ DV, SB > 0 & \textbf{Success with SB} -- intent achieved; GM sp
 Successes = 0 & \textbf{Miss} -- no progress; GM escalates with SB; player gains 2 Boons. \\
 \bottomrule
 \end{tabularx}
+\end{tcolorbox}
+
+\begin{tipbox}
+  Remind players that they can spend 1 \textbf{Boon} before a roll to increase Effect by one step.
+\end{tipbox}
+
+\documentclass{article}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+
+% Define block styles
+\tikzset{
+    process/.style = {rectangle, rounded corners, draw=blue!75!black, fill=blue!5,
+                      text width=7cm, align=center, font=\small},
+    decision/.style = {diamond, draw=red!75!black, fill=red!5,
+                      text width=4cm, align=center, font=\small},
+    arrow/.style = {thick, -stealth, draw=gray},
+    startstop/.style = {rectangle, rounded corners, draw=black!75, fill=gray!10,
+                        text width=5cm, align=center, font=\small\bfseries},
+}
+
+\begin{tcolorbox}[
+    colback=white,
+    colframe=blue!75!black,
+    title={\textbf{Armor Conversion \& Fatigue Clearing Flowchart}},
+    fonttitle=\bfseries\large,
+    sharp corners,
+    before skip=10pt,
+    after skip=10pt,
+]
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm]
+\node (start) [startstop] {Incoming Harm};
+\node (conv) [process, below of=start] {Convert Harm using\\\textbf{Armor Conversion Table}\\ → (Fatigue amount, remaining Harm)};
+\node (dec) [decision, below of=conv, yshift=-0.5cm] {Did Harm increase?\\\small(remaining Harm > 0)};
+\node (clear) [process, left of=dec, xshift=-4.5cm] {Clear all existing Fatigue};
+\node (addfat) [process, below of=dec, yshift=-0.5cm] {Add Fatigue (from conversion) to Fatigue track};
+\node (dec2) [decision, below of=addfat, yshift=-0.5cm] {Fatigue $\geq$ Body?};
+\node (overflow) [process, right of=dec2, xshift=4.5cm] {Increase Harm by 1\\Clear all Fatigue};
+\node (end) [startstop, below of=dec2, yshift=-0.5cm] {End};
+
+% Arrows
+\draw[arrow] (start) -- (conv);
+\draw[arrow] (conv) -- (dec);
+\draw[arrow] (dec) -- node[anchor=east] {Yes} (clear);
+\draw[arrow] (clear) |- (addfat);
+\draw[arrow] (dec) -- node[anchor=west] {No} (addfat);
+\draw[arrow] (addfat) -- (dec2);
+\draw[arrow] (dec2) -- node[anchor=south] {Yes} (overflow);
+\draw[arrow] (overflow) |- (end);
+\draw[arrow] (dec2) -- node[anchor=west] {No} (end);
+\end{tikzpicture}
+\end{center}
+
+\vspace{4pt}
+\textbf{The “Roller‑Coaster” Effect:}  
+When your Harm increases (the armor didn’t soak the whole blow), the shock of the wound clears all your existing Fatigue – you get a second wind just when you’re near collapse. This creates dramatic swings in combat.
+
+\small\textit{Example:} Kael (Body 3, Fatigue 3, Harm 0) takes Harm 1 in Heavy Armor. Conversion → Fatigue 1, remaining Harm 0 → Harm does not increase → Fatigue not cleared. Add Fatigue 1 → Fatigue = 4 (≥ Body 3) → Overflow: Harm 0→1, clear all Fatigue. Final: Harm 1, Fatigue 0.
 \end{tcolorbox}
 
 \subsection{Story Beats: The Engine of Drama}
