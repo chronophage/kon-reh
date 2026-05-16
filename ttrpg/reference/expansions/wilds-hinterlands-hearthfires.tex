@@ -1,5 +1,3 @@
-% Wilderness: Hinterlands & Hearthfires --- Fate's Edge Module (v0.1)
-% Single-file LaTeX source, print-ready
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{enumitem}
@@ -8,7 +6,6 @@
 \usepackage{titlesec}
 \usepackage{array}
 \usepackage{setspace}
-\usepackage{graphicx}
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
 \setlist{noitemsep, topsep=4pt, leftmargin=1.2em}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
@@ -19,7 +16,7 @@
 \begin{center}
 {\LARGE \textbf{Wilderness: Hinterlands \& Hearthfires}}\\[3pt]
 {\large A Fate's Edge module for expeditions, survival, hunts, and camps}\\[2pt]
-\textit{Version 0.1 (Playtest)}
+\textit{Version 0.2 (Playtest)}
 \end{center}
 \vspace{0.25em}
 \hrule\vspace{0.75em}
@@ -30,14 +27,15 @@
   \item \textbf{From trail to hearth:} Each day's push ends with a camp where choices ripple forward.
   \item \textbf{Low bookkeeping:} A handful of party tracks and a simple day/leg structure.
   \item \textbf{Integrates cleanly:} Works with urban, caravan, political, asset, and psionic play.
+  \item \textbf{Ranger talents:} See Appendix A for wilderness-focused talent chains.
 \end{itemize}
 
 \section*{Quickstart (2 minutes)}
 \begin{enumerate}
   \item Pick a \textbf{Region Kit} (\S\ref{sec:region}) and mark \textbf{Distance [4--8]}, \textbf{Danger [4--6]}, \textbf{Weather [4--6]}.
-  \item Start party tracks: \textbf{Supplies [6]}, \textbf{Weariness [6]} (fatigue), \textbf{Sign [6]} (traceability).
+  \item Start party tracks: \textbf{Supplies [6]}, \textbf{Weariness [6]}, \textbf{Sign [6]}.
   \item Choose a daily \textbf{Intent Dial}: \textbf{Traverse / Scout / Hunt / Hide / Endure} (\S\ref{sec:intents}).
-  \item Play 2--3 scenes (Navigate, Forage, Cross, Track, Parley). On any 1, GM spends SB with \textbf{Wilderness SB} (\S\ref{sec:sb}).
+  \item Play 2--3 scenes (Navigate, Forage, Cross, Track, Parley). On any 1, GM spends SB with \textbf{Wilderness SB} (\S\ref{sec:sb}), including biome-specific options.
   \item \textbf{Camp Phase}: build camp $\to$ watches $\to$ hearthfire rite $\to$ repair/recap $\to$ adjust tracks (\S\ref{sec:camp}).
 \end{enumerate}
 
@@ -63,37 +61,61 @@ Notes: seasons, taboos, native trails, friendly outposts
 \subsection{Biome Tags \& Effects}
 Pick two tags per biome in play.
 
-\paragraph{Forest} canopy; deadfalls; spoor; sap.\\
+\paragraph{Forest}
 \textbf{Effect:} \emph{Stalk/Hunt} DV --1 with \emph{Track} or \emph{Herbalist} tags; \emph{Navigate} Position --1 without a trail.\\
-\textbf{Hazards:} widowmakers; boggy pockets; parasite swarms.
+\textbf{Forage DV:} 2--3 (berries, mushrooms, roots).\\
+\textbf{Hazards:} widowmakers; boggy pockets; parasite swarms.\\
+\textbf{SB options:} tangled path (Delay), hidden nest (start \emph{Beast Pressure} +1), spore burst (Weariness +1).
 
-\paragraph{Steppe} wind-bands; wide sky; mirage; remounts.\\
+\paragraph{Steppe}
 \textbf{Effect:} \emph{Chase (horse)} DV --1; \emph{Hide Sign} Position --1 (you leave tracks).\\
-\textbf{Hazards:} grassfire; stampede; dust whiteout.
+\textbf{Forage DV:} 3--4 (edible roots, small game).\\
+\textbf{Hazards:} grassfire; stampede; dust whiteout.\\
+\textbf{SB options:} dust plume (Sign +1), distant riders (Danger +1), spooked herd (Weariness +1).
 
-\paragraph{Desert} dunes; salt; night cold; scarce wells.\\
+\paragraph{Desert}
 \textbf{Effect:} \emph{Forage} Position --1; \emph{Endure} DV --1 with \emph{Water-wise}.\\
-\textbf{Hazards:} heat stroke; dune slip; salt glare.
+\textbf{Forage DV:} 4--5 (cactus water, insects, rare herbs).\\
+\textbf{Hazards:} heat stroke; dune slip; salt glare.\\
+\textbf{SB options:} mirage (Navigate Position --1), scorpion nest (minor Harm), sandstorm threat (Weather +1).
 
-\paragraph{Marsh} reeds; sucking mud; gnats; leeches.\\
+\paragraph{Marsh}
 \textbf{Effect:} \emph{Infiltrate} Position +1; \emph{Drive} Position --1.\\
-\textbf{Hazards:} miasma; hidden channels; rot.
+\textbf{Forage DV:} 3--4 (cattails, frogs, medicinal mud).\\
+\textbf{Hazards:} miasma; hidden channels; rot.\\
+\textbf{SB options:} sucking mud (Cross DV +1), leech cloud (Weariness +1), will-o'-wisp (Sign +1).
 
-\paragraph{Mountain} scree; ledges; avalanches; switchbacks.\\
+\paragraph{Mountain}
 \textbf{Effect:} \emph{Navigate/Climb} DV +1 unless \emph{Sure-footed}; \emph{Ambush} Position +1 from above.\\
-\textbf{Hazards:} fall; rockfall; thin air.
+\textbf{Forage DV:} 3--4 (mountain herbs, small game).\\
+\textbf{Hazards:} fall; rockfall; thin air.\\
+\textbf{SB options:} scree slide (Delay), thin air (Weariness +1), avalanche threat (Danger +1).
 
-\paragraph{Coast} cliffs; tides; riptides; sea fog.\\
+\paragraph{Coast}
 \textbf{Effect:} \emph{Chase (boat)} DV --1 with \emph{Riverwise}; \emph{Camp} Position --1 in exposure.\\
-\textbf{Hazards:} surf; slick kelp; storm surge.
+\textbf{Forage DV:} 2--3 (shellfish, seaweed, fish).\\
+\textbf{Hazards:} surf; slick kelp; storm surge.\\
+\textbf{SB options:} rising tide (Camp Quality --1), sea fog (Navigate Position --1), kingfisher omen (Weather +1).
 
-\paragraph{Tundra} permafrost; whiteout; brittle cold.\\
+\paragraph{Tundra}
 \textbf{Effect:} \emph{Endure} DV --1 with \emph{Shelter}; \emph{Forage} Position --1.\\
-\textbf{Hazards:} frostbite; thin ice; drift.
+\textbf{Forage DV:} 4--5 (lichens, frozen berries, small game).\\
+\textbf{Hazards:} frostbite; thin ice; drift.\\
+\textbf{SB options:} whiteout (Navigate DV +1), frostbite (minor Harm), crack ice (Weariness +1).
 
-\paragraph{Badlands} ravines; hoodoos; echo.\\
+\paragraph{Badlands}
 \textbf{Effect:} \emph{Hide/Ambush} Position +1; \emph{Navigate} DV +1 without sun or waystone.\\
-\textbf{Hazards:} collapses; blind turns; flash floods.
+\textbf{Forage DV:} 4--5 (cactus, insects, rare salts).\\
+\textbf{Hazards:} collapses; blind turns; flash floods.\\
+\textbf{SB options:} false trail (Sign +1), collapse (Delay), heat shimmer (Navigate Position --1).
+
+\subsection{Follower Integration}
+Animal companions or hired guides may assist in wilderness actions:
+\begin{itemize}
+  \item A \textbf{tracker} (e.g., wolf, hawk) grants +1 die to \emph{Hunt/Track} if it can act independently.
+  \item A \textbf{pack animal} reduces \textbf{Supplies} consumption by 1 per day (minimum 1).
+  \item A \textbf{guide} (NPC follower) may take one wilderness action per day on the party's behalf, using their own skills. The party still marks normal tracks on failure.
+\end{itemize}
 
 \section{Expedition Procedures}
 \subsection{Scales \& Party Tracks}
@@ -101,9 +123,10 @@ Pick two tags per biome in play.
   \item \textbf{Distance [4--8]} to the next haven or objective. Tick on strong travel hits.
   \item \textbf{Danger [4--6]} advances on 1s or loud moves; on fill, trigger a set-piece (raid, beast strike, stormfront).
   \item \textbf{Weather [4--6]} seasonal pressure; see the Weather Matrix (\S\ref{sec:weather}).
-  \item \textbf{Supplies [6]} food/fuel/repair stock. At 0, \textbf{Weariness +1} per day until replenished.
-  \item \textbf{Weariness [6]} party fatigue/morale. At 6, someone balks or collapses; clear via Camp rest.
+  \item \textbf{Supplies [6]} food/fuel/repair stock. At 0, \textbf{each PC marks 1 Fatigue} per day until replenished.
+  \item \textbf{Weariness [6]} party fatigue and morale. When this clock fills, \textbf{each PC marks 1 Fatigue} (or a Condition, GM's choice). Then reset Weariness to 0. Clear Weariness via camp rest (\S\ref{sec:camp}).
   \item \textbf{Sign [6]} spoor, smoke, rumor. At fill, you're found by a threat or rival.
+  \item \textbf{Beast Pressure [4--6]} (optional). Advances when you kill prey, leave fresh kills, or fail \emph{Hide Sign} rolls. At fill, an apex predator confronts the party (treat as a major threat).
 \end{itemize}
 
 \subsection{Intent Dials}\label{sec:intents}
@@ -119,16 +142,16 @@ Choose one each day.
 \subsection{Day Flow}
 Morning scene $\to$ Mid-day trek $\to$ \textbf{Camp Phase}. On long pushes, insert a \textbf{Mid-day Review}: change Intent, check \textbf{Weather}, remind \textbf{Projects}.
 
-\section{Wilderness Actions (Common)}
+\section{Wilderness Actions (Common)}\label{sec:actions}
 \begin{itemize}
-  \item \textbf{Navigate (Wits+Survey):} set course/avoid hazard. DV 2--4 by biome/Weather.
-  \item \textbf{Forage (Wits+Survival/Craft):} gather food, water, fuel, or herbs. DV 2--5 by biome.
+  \item \textbf{Navigate (Wits+Survey):} set course/avoid hazard. DV per biome (2--4) adjusted by Weather.
+  \item \textbf{Forage (Wits+Survival/Craft):} gather food, water, fuel, or herbs. DV by biome (see §\ref{sec:region}).
   \item \textbf{Hunt/Track (Wits+Track):} stalk prey or follow spoor. DV 2--5; Forest/Badlands help; Steppe/Desert hinder.
   \item \textbf{Cross Hazard (Body+Tactics/Craft):} ford, ledge, dune. DV 2--5; failure ticks \textbf{Weariness +1} or \textbf{Supplies --1}.
   \item \textbf{Hide Sign (Wits+Subterfuge):} erase spoor, control smoke, false trails. DV 2--4; on hit reduce \textbf{Sign --1}.
   \item \textbf{Blaze Trail (Wits+Craft):} leave discrete waymarks; on hit, create \emph{Trail} tag for your party; rivals can notice on 1s.
   \item \textbf{Parley with Wardens/Spirits (Presence+Sway/Rites):} claim rites or hospitality; on miss start \textbf{Oath/Offense [4]}.
-  \item \textbf{Harvest Components (Wits+Craft/Herbal):} gain one-use tags: \emph{Hardy Rations}, \emph{Bitter Tincture} (clear minor Harm), \emph{Sap-Resin} (firestarter), \emph{Smoke-Blend} (Hide Sign +1).
+  \item \textbf{Harvest Components (Wits+Craft/Herbal):} gain one-use tags: \emph{Hardy Rations}, \emph{Bitter Tincture}, \emph{Sap-Resin}, \emph{Smoke-Blend}.
 \end{itemize}
 \emph{DV Cheats:} using a relevant \textbf{String} (ford rights, shrine hospitality, grazing compact) is DV --1 or Position +1 once/scene.
 
@@ -148,32 +171,32 @@ How well you settle (shelter, heat, dryness, watch). Improves Position next day 
 Poor break (rush, storm) $\to$ \textbf{Sign +1}; careful break $\to$ \textbf{Sign --1} with time.
 
 \section{Hazards \& Pressures}
-\subsection{Terrain Hazards}
-\begin{description}[leftmargin=1.2em]
-  \item[Forest] deadfall (Cross DV 3--4), widowmaker (Defense), parasite swarm (\textbf{Weariness +1} unless protected).
-  \item[Steppe] grassfire (Outrun DV 3--4), stampede (Shield/Drive DV 3--5), dust whiteout (Navigate DV 3--4; \textbf{Sign +1}).
-  \item[Desert] heat stroke (Endure DV 3--4 or \textbf{Supplies --1} water), dune slip (Cross DV 3--4; wagon \textbf{Condition +1}), night cold (\textbf{Weariness +1} if no fire).
-  \item[Marsh] sucking mud (Cross DV 3--5; drop gear), miasma (\textbf{Weariness +1} + start \textbf{Sickness [4]}), hidden channel (Swim/Boat).
-  \item[Mountain] rockfall (Defense), ledge gap (Cross DV 4--5), thin air (\textbf{Weariness +1} on failures).
-  \item[Coast] rip (\emph{Chase (boat)}), surge (Cross), sea fog (Navigate).
-  \item[Tundra] whiteout (Navigate DV 3--4), thin ice (Cross DV 3--5; \textbf{Harm} risk), frostbite (\textbf{Weariness +1}).
-\end{description}
+\subsection{Terrain Hazards (by biome)}
+See biome entries for typical hazards; use \emph{Cross Hazard} action.
 
 \subsection{Weather Matrix}\label{sec:weather}
-Advance \textbf{Weather [4--6]} on 1s or fiction.
-\begin{itemize}
-  \item \textbf{Rain/Monsoon:} fords impassable; \textbf{Distance} only on strong hits; on any 1, \textbf{Condition +1} (soak/rot).
-  \item \textbf{Snow/Whiteout:} sight/aim Position --1; \textbf{Weariness +1} at day end unless \emph{Shelter}.
-  \item \textbf{Heat/Dry:} \emph{Forage} Position --1; at camp spend \textbf{Supplies} or \textbf{Weariness +1}.
-  \item \textbf{Dust/Sand:} \emph{Hide Sign} Position --1; on any 1, \textbf{Condition +1} (abrasion) and \textbf{Supplies --1} (waste).
-  \item \textbf{Ward-Storm:} supernatural; scenes start \textbf{Desperate} unless rites/wards; strong hit clears \textbf{Weariness --1}; 1 $\to$ \textbf{Sign +1}.
-\end{itemize}
+Advance \textbf{Weather [4--6]} when a PC rolls a 1 on a wilderness action (Navigate, Forage, Hunt, Cross, Hide Sign, Blaze Trail, Parley). On fill, trigger a weather event.
 
-\subsection{Predation \& Territorial Response (optional)}
-Track \textbf{Beast Pressure [4--6]} when apex threats notice. On fill, they test your camp or claim the trail. Reduce by \emph{Hide Sign}, tribute rites, or relocating.
+\begin{description}[leftmargin=1.2em]
+  \item[Rain/Monsoon] fords impassable; \textbf{Distance} only on strong hits; on any 1, \textbf{Condition +1} (soak/rot).
+  \item[Snow/Whiteout] sight/aim Position --1; \textbf{Weariness +1} at day end unless \emph{Shelter}.
+  \item[Heat/Dry] \emph{Forage} Position --1; at camp spend extra \textbf{Supplies} or \textbf{Weariness +1}.
+  \item[Dust/Sand] \emph{Hide Sign} Position --1; on any 1, \textbf{Condition +1} (abrasion) and \textbf{Supplies --1} (waste).
+  \item[Ward-Storm] supernatural; scenes start \textbf{Desperate} unless rites/wards; strong hit clears \textbf{Weariness --1}; 1 $\to$ \textbf{Sign +1}.
+\end{description}
+
+\subsection{Beast Pressure (Optional)}
+Track \textbf{Beast Pressure [4--6]}. Advance when: you kill prey and leave the carcass, fail a \emph{Hide Sign} roll, or the GM spends 2 SB to mark a tick. When the clock fills, an apex predator confronts the party (treat as a Cap 3--4 threat). Reduce Beast Pressure by: feeding the predator (lose 1 Supply), performing a successful \emph{Hunt} on it, or leaving the area completely.
 
 \subsection{Wilderness SB (GM menu)}\label{sec:sb}
-Spook the Team (\textbf{Weariness +1} or \textbf{Supplies --1}) \textbullet{} Unwelcome Smoke (\textbf{Sign +1}; start \textbf{Watcher [4]}) \textbullet{} Bad Footing (minor \textbf{Harm} or wagon \textbf{Condition +1}) \textbullet{} Rumor on the Wind (rivals gain 1 \textbf{Clue}) \textbullet{} Foul Water (start \textbf{Sickness [4]}).
+In addition to biome-specific options, use these universal complications:
+\begin{itemize}
+  \item \textbf{Spook the Team:} \textbf{Weariness +1} or \textbf{Supplies --1}.
+  \item \textbf{Unwelcome Smoke:} \textbf{Sign +1}; start \textbf{Watcher [4]}.
+  \item \textbf{Bad Footing:} minor \textbf{Harm} or wagon \textbf{Condition +1}.
+  \item \textbf{Rumor on the Wind:} rivals gain 1 \textbf{Clue}.
+  \item \textbf{Foul Water:} start \textbf{Sickness [4]}.
+\end{itemize}
 
 \section{Hunts, Chases \& Stalks}
 \subsection{Pursuit Ladders}
@@ -185,7 +208,7 @@ Spook the Team (\textbf{Weariness +1} or \textbf{Supplies --1}) \textbullet{} Un
 Create \emph{Concealment} (Stalk DV 2--4); spend for Position +1 or DV --1 on the strike. On a 1 while stalking, the prey gains \emph{Wind of You} (tag).
 
 \subsection{Prey \& Harvest}
-Small game (DV 2--3) \textbullet{} Herd beasts (DV 3--4) \textbullet{} Apex (DV 4--5). On hit, take \textbf{Supplies +1} and 1 \textbf{Component} tag; on strong hit choose +1 extra or a \textbf{Clue}. On 1s, start \textbf{Retaliation [4]}.
+Small game (DV 2--3) \textbullet{} Herd beasts (DV 3--4) \textbullet{} Apex (DV 4--5). On hit, take \textbf{Supplies +1} and 1 \textbf{Component} tag; on strong hit choose +1 extra or a \textbf{Clue}. On 1s, start \textbf{Beast Pressure +1}.
 
 \section{Outposts \& Strongholds (Asset tie-ins)}
 Treat semi-permanent bases as \textbf{Assets}: \emph{Outpost}, \emph{Hunting Lodge}, \emph{Ranger Tower}, \emph{Shrine Hermitage}.\\
@@ -214,6 +237,7 @@ Ranger Orders (Strings: watchtowers, trail codes) \textbullet{} Shrine Keepers (
   \item \textbf{Assets/Patrons:} Outposts as assets; hunting/ford rights as \textbf{Patron Strings}.
   \item \textbf{Psionics:} \emph{Dream Weather}---psions may read omens for \textbf{Clue} or reduce \textbf{Weather}; \emph{Mind Beacon}---telepathic whistles once/day at \textbf{Sign +1}.
   \item \textbf{Dragon's Lair:} Landmarks (kurgans, storm beacons, saint's anchors) can map to lairs/hoards; \emph{Ward-Storms} hide wyrm traffic.
+  \item \textbf{Ranger Talents:} See Appendix A for tracker, guide, and warden talent chains that interact with intents, tracks, and camp.
 \end{itemize}
 
 \section{Example of Play (short)}
@@ -227,17 +251,155 @@ Ranger Orders (Strings: watchtowers, trail codes) \textbullet{} Shrine Keepers (
 \begin{itemize}
   \item \textbf{Daily Intent:} Traverse \textbullet{} Scout \textbullet{} Hunt \textbullet{} Hide \textbullet{} Endure.
   \item \textbf{Tracks:} Distance [4--8] \textbullet{} Danger [4--6] \textbullet{} Weather [4--6] \textbullet{} Supplies [6] \textbullet{} Weariness [6] \textbullet{} Sign [6] (opt: Beast Pressure [4--6]).
-  \item \textbf{Common Actions:} Navigate \textbullet{} Forage \textbullet{} Hunt/Track \textbullet{} Cross \textbullet{} Hide Sign \textbullet{} Blaze Trail \textbullet{} Parley (wardens/spirits) \textbullet{} Harvest.
-  \item \textbf{Camp:} Build \textbullet{} Watches \textbullet{} Hearthfire Rite \textbullet{} Repair/Recuperate \textbullet{} Break.
-  \item \textbf{Weather Matrix:} Rain/Monsoon (Distance hard; Condition +1 on 1) \textbullet{} Snow/Whiteout (Position --1; Weariness +1 without Shelter) \textbullet{} Heat/Dry (Forage --1; Weariness +1 without extra water) \textbullet{} Dust/Sand (Hide Sign --1; Condition +1; Supplies --1) \textbullet{} Ward-Storm (Desperate w/o wards).
-  \item \textbf{SB Menu:} Spook the Team \textbullet{} Unwelcome Smoke \textbullet{} Bad Footing \textbullet{} Rumor on the Wind \textbullet{} Foul Water.
-  \item \textbf{Integration Hooks:} Outposts as assets \textbullet{} Warrants/rites as Strings \textbullet{} Psionic omens \textbullet{} Dragon landmarks.
+  \item \textbf{Common Actions:} Navigate \textbullet{} Forage \textbullet{} Hunt/Track \textbullet{} Cross \textbullet{} Hide Sign \textbullet{} Blaze Trail \textbullet{} Parley \textbullet{} Harvest.
+  \item \textbf{Camp:} Build \textbullet{} Watches \textbullet{} Hearthfire Rite \textbullet{} Repair \textbullet{} Break.
+  \item \textbf{Weather Matrix:} Rain (Distance hard; Condition +1 on 1) \textbullet{} Snow (Position --1; Weariness +1 without Shelter) \textbullet{} Heat (Forage --1; Weariness +1) \textbullet{} Dust (Hide Sign --1; Supplies --1) \textbullet{} Ward-Storm (Desperate without wards).
+  \item \textbf{Biome Forage DV:} Forest 2–3, Steppe 3–4, Desert 4–5, Marsh 3–4, Mountain 3–4, Coast 2–3, Tundra 4–5, Badlands 4–5.
+  \item \textbf{SB Menu:} Spook the Team \textbullet{} Unwelcome Smoke \textbullet{} Bad Footing \textbullet{} Rumor on the Wind \textbullet{} Foul Water (plus biome-specific options).
+  \item \textbf{Weariness:} When clock fills, each PC marks 1 Fatigue. Then reset.
+  \item \textbf{Integration:} Assets as outposts; Strings as warrants; psionic omens; ranger talents (Appendix A).
 \end{itemize}
 
 \vfill
+\appendix
+\section{Ranger Talents}
+\label{app:ranger-talents}
+See the companion document \textit{Ranger Talents and Talent Chains} for wilderness-focused talents. The following summaries are for quick reference.
+
+\subsection{Tracker Chain}
+\textbf{Blood Scent (2 XP):} +1 die to Hunt/Track; once per scene, learn a creature's weakness.\\
+\textbf{Persistence Hunter (3 XP):} Hunt intent reduces Distance on strong hit; reroll one failed Hunt die.\\
+\textbf{Harvest the Kill (4 XP):} gain +1 Supply and free component on successful hunt.\\
+\textbf{Apex Stalker (6 XP):} ignore first Beast Pressure tick; apex prey DV –1; spend 1 Boon to learn its intention.
+
+\subsection{Guide Chain}
+\textbf{Trail Sense (2 XP):} +1 die to Navigate/Blaze Trail; ignore Parley penalty on Traverse intent.\\
+\textbf{Blaze the Path (3 XP):} create \emph{Trail} tag; strong hit reduces Sign.\\
+\textbf{Shortcut Master (4 XP):} reduce Distance by extra 1 on Navigate success; avoid one hazard.\\
+\textbf{Road-Singer (6 XP):} Navigate with Scout benefit while advancing Distance; ignore first Weather penalty; spend 1 Boon for lasting \emph{Trail}.
+
+\subsection{Warden Chain}
+\textbf{Woods Warden (2 XP):} +1 die to Build Camp and Hearthfire Rite; ignore first Weather penalty on Endure intent.\\
+\textbf{Sheltercraft (3 XP):} Camp Quality +1 on success; strong hit reduces Weariness; spend Supply for watch bonus.\\
+\textbf{Staunch Vigil (4 XP):} extra watch slot; pre-empt one SB per night; reduce Sign after watch.\\
+\textbf{Hearth-Keeper (6 XP):} Hearthfire Rite grants extra boon (extra Weariness clear, Danger –1, or \emph{Audience: Warm}); allies heal 1 Fatigue.
+
+\subsection{Standalone}
+\textbf{Camouflage (2 XP):} Hide intent improves first Hide Sign Position.\\
+\textbf{One With the Land (3 XP):} invoke one biome tag per day; auto-forage in home biome.\\
+\textbf{Verdant Ward (4 XP):} consecrate camp against supernatural; ward lasts until broken.\\
+\textbf{Herbal Remedy (3 XP):} create Bitter Tincture without roll; spend Supply for instant dose.
+
+\vfill
 \section*{Changelog}
-\textbf{v0.1} --- First pass: region sheet, biome tags, intent dials, party tracks (Supplies/Weariness/Sign), camp phase, hazards \& weather, hunts \& chases, outposts tie-in, denizens, generators, integration, example, and GM one-pager.
+\textbf{v0.2} --- Revised based on playtest feedback:
+\begin{itemize}
+  \item \textbf{Weariness} now triggers individual Fatigue when full, not a separate condition.
+  \item Added \textbf{biome-specific Forage DV} and \textbf{SB options}.
+  \item Clarified \textbf{Weather clock triggers} (on 1s from wilderness actions).
+  - Integrated \textbf{Beast Pressure} with clearer triggers and reduction.
+  - Added \textbf{follower integration} sidebar.
+  - Added cross-reference to \textbf{Ranger Talents} appendix.
+  - Tightened DV ranges and added quick reference tables.
+\end{itemize}
+\textbf{v0.1} --- First pass.
 
 \begin{center}\small This module adds procedures only; defer to the core SRD for roll math and adjudication.\end{center}
+
+\appendix
+\section{Tracker Chain}
+
+\subsubsection{Blood Scent}
+\textbf{2 XP} \hfill \textit{Tags: Track, Hunt}\\
+Passive. You gain \textbf{+1 die} to all \emph{Hunt/Track} rolls. Once per scene, when you successfully track a creature, you may also learn one of its \textit{weaknesses} (armor bypass, elemental susceptibility, or a Condition it carries).
+
+\subsubsection{Persistence Hunter}
+\textbf{3 XP} \hfill \textit{Prerequisite: Blood Scent}\\
+When you choose the \textbf{Hunt} intent, you may reduce \textbf{Distance} by 1 on a strong \emph{Hunt/Track} hit (in addition to normal progress). If you fail a \emph{Hunt} roll, you may mark 1 \textbf{Fatigue} to reroll one die.
+
+\subsubsection{Harvest the Kill}
+\textbf{4 XP} \hfill \textit{Prerequisite: Blood Scent}\\
+When you successfully hunt a creature, you gain \textbf{+1 Supply} (in addition to normal yield) and may harvest one \textbf{Component} (e.g., \emph{Hardy Rations}, \emph{Bitter Tincture}, \emph{Sap-Resin}) without a separate \emph{Harvest} roll. On a strong hit, gain an extra component of your choice.
+
+\subsubsection{Apex Stalker (Capstone)}
+\textbf{6 XP} \hfill \textit{Prerequisite: Persistence Hunter, Harvest the Kill}\\
+Once per session, you may ignore the first \textbf{Beast Pressure} tick caused by your party. When you \emph{Hunt} an apex threat (e.g., wyrm, dire bear), you treat its DV as 1 lower and may spend 1 Boon to learn its \textit{intention} (what it will do next exchange). Additionally, you may reduce \textbf{Beast Pressure} by 1 after a successful hunt.
+
+\section{Guide Chain}
+
+\subsubsection{Trail Sense}
+\textbf{2 XP} \hfill \textit{Tags: Navigate, Survey}\\
+Passive. You gain \textbf{+1 die} to all \emph{Navigate} and \emph{Blaze Trail} rolls. When you choose the \textbf{Traverse} intent, you may ignore the Position penalty for \emph{Parley} (you still appear hurried, but your route knowledge offsets it).
+
+\subsubsection{Blaze the Path}
+\textbf{3 XP} \hfill \textit{Prerequisite: Trail Sense}\\
+When you \emph{Blaze Trail}, a success creates a \emph{Trail} tag that benefits your entire party for the rest of the journey (others following your marks gain +1 die to Navigate). On a strong hit, you also reduce \textbf{Sign} by 1 (your marks are subtle). You may spend 1 Boon to extend the Trail tag to one additional leg.
+
+\subsubsection{Shortcut Master}
+\textbf{4 XP} \hfill \textit{Prerequisite: Trail Sense}\\
+Once per day, when you \emph{Navigate} and succeed, you may reduce \textbf{Distance} by an extra 1 segment (in addition to normal progress). On a strong hit, you may also avoid one Terrain Hazard without a roll. This talent works with any intent except \textbf{Hide}.
+
+\subsubsection{Road-Singer (Capstone)}
+\textbf{6 XP} \hfill \textit{Prerequisite: Blaze the Path, Shortcut Master}\\
+Once per leg, when you \emph{Navigate}, you may treat the roll as if you had chosen the \textbf{Scout} intent (avoid Danger) while still advancing \textbf{Distance} as \textbf{Traverse}. In addition, you and your party ignore the first Weather penalty each day. You may also spend 1 Boon to create a \emph{Trail} tag that lasts for the entire expedition.
+
+\section{Warden Chain}
+
+\subsubsection{Woods Warden}
+\textbf{2 XP} \hfill \textit{Tags: Camp, Defend, Survival}\\
+Passive. You gain \textbf{+1 die} to \emph{Build Camp} and \emph{Hearthfire Rite} rolls. When you choose the \textbf{Endure} intent, you may ignore the first Weather penalty of the day.
+
+\subsubsection{Sheltercraft}
+\textbf{3 XP} \hfill \textit{Prerequisite: Woods Warden}\\
+When you \emph{Build Camp}, a success grants \textbf{Camp Quality +1} (to a maximum of 3). On a strong hit, you also reduce \textbf{Weariness} by 1. In addition, you may spend 1 Supply to improve the camp’s defence against predators, granting the party \textbf{+1 Position} on the first watch roll.
+
+\subsubsection{Staunch Vigil}
+\textbf{4 XP} \hfill \textit{Prerequisite: Woods Warden}\\
+During the \textbf{Camp Phase}, you may assign yourself to watch without counting against the party’s watch limit (you cover an extra shift). While on watch, you may pre-empt one \textbf{Wilderness SB} spend per night (e.g., \emph{Spook the Team}, \emph{Unwelcome Smoke}) by describing how you avert it. After a successful watch, you may reduce \textbf{Sign} by 1.
+
+\subsubsection{Hearth-Keeper (Capstone)}
+\textbf{6 XP} \hfill \textit{Prerequisite: Sheltercraft, Staunch Vigil}\\
+Once per day, when you perform the \emph{Hearthfire Rite}, you may choose one additional boon from the following list: clear an extra \textbf{Weariness}, reduce \textbf{Danger} by 1, or create an \emph{Audience: Warm} tag that benefits the party’s next social roll with a local faction. In addition, you and your allies heal 1 Fatigue (in addition to normal camp recovery) when the rite succeeds.
+
+\section{Standalone Ranger Talents (Unchained)}
+
+These talents do not belong to a chain but are useful for any wilderness-focused character.
+
+\subsubsection{Camouflage}
+\textbf{2 XP} \hfill \textit{Tags: Hide, Stealth}\\
+When you take the \textbf{Hide} intent, you may improve your first \emph{Hide Sign} roll by one Position step (e.g., Controlled $\to$ Dominant). You also gain +1 die to any roll to avoid being spotted by non-magical sentries while in natural terrain.
+
+\subsubsection{One With the Land}
+\textbf{3 XP} \hfill \textit{Prerequisite: any two Ranger talents}\\
+You learn one \textbf{Biome Tag} effect from your current region (e.g., Forest’s \emph{Stalk/Hunt DV –1}). You may invoke that effect without spending a string, once per day. Additionally, you can always find food and water in your home biome (no roll required) as long as it is not magically blighted or seasonally barren.
+
+\subsubsection{Verdant Ward}
+\textbf{4 XP} \hfill \textit{Tags: Warden, Nature}\\
+When you \emph{Consecrate} a camp or shrine (using a ritual or a \emph{Hearthfire Rite}), you may add the \emph{Ward} tag to the area. Any supernatural creature crossing the ward must test Spirit+Resolve (DV 4) or suffer –1 die to all actions for the scene. This lasts until the camp is broken. You may maintain only one Verdant Ward at a time.
+
+\subsubsection{Herbal Remedy}
+\textbf{3 XP} \hfill \textit{Tags: Heal, Harvest}\\
+When you \emph{Harvest Components}, you may choose to create a \emph{Bitter Tincture} (clears 1 Fatigue or downgrades a minor Condition) without a roll. Once per day, you may spend 1 Supply to instantly produce a dose that can be applied to yourself or an adjacent ally as an action.
+
+\section{Using Ranger Talents with the Wilderness Module}
+
+\begin{itemize}
+  \item \textbf{Intent Dials:} Many talents offer bonuses when a specific intent is chosen (\emph{Traverse}, \emph{Scout}, \emph{Hunt}, \emph{Hide}, \emph{Endure}). This encourages tactical daily planning.
+  \item \textbf{Party Tracks:} Talents that reduce \textbf{Distance}, \textbf{Danger}, \textbf{Sign}, or \textbf{Weariness} help the whole party survive longer expeditions.
+  \item \textbf{Camp Phase:} The Warden chain directly improves camp quality, watches, and hearthfire rites, making night scenes less punishing.
+  \item \textbf{Hunts \& Chases:} The Tracker chain interacts with \emph{Beast Pressure} and the \emph{Hunt/Track} action, rewarding players who focus on stalking prey.
+  \item \textbf{Guide Chain:} Helps with navigation and reducing \textbf{Weather} penalties, making long treks faster and safer.
+\end{itemize}
+
+\section*{Example: A Seasoned Ranger Build (60 XP)}
+\begin{itemize}
+  \item \textbf{Attributes:} Wits 4, Body 3, Spirit 2, Presence 2.
+  \item \textbf{Skills:} Survival 4, Stealth 3, Track 3, Craft 2, Navigate 2.
+  \item \textbf{Core Talents:} Blood Scent (2), Persistence Hunter (3), Trail Sense (2), Blaze the Path (3), Woods Warden (2), Sheltercraft (3).
+  \item \textbf{Standalone:} Camouflage (2).
+  \item \textbf{Playstyle:} Choose \textbf{Hunt} or \textbf{Traverse} intent. Track prey with Blood Scent, reduce Distance with Persistence Hunter and Trail Sense, and keep the party safe with Woods Warden and Sheltercraft during camp. Use Camouflage when stealth is required. A versatile ranger who can both hunt and guide.
+\end{itemize}
+
+\begin{center}\small These talents are designed to be used with the \textit{Wilderness: Hinterlands \& Hearthfires} module. See that document for full rules on tracks, intents, and wilderness actions.\end{center}
 
 \end{document}

@@ -114,7 +114,7 @@ cd $git_root/ttrpg/reference/expansions/
 	../../../tools/compile_latex.sh -f hearth_ledger.tex -n "Fate's Edge Expansion - The Hearth Ledger.pdf" > /dev/null 2>&1|| echo "#30. Did not build"
 	../../../tools/compile_latex.sh -f unbroken-cord.tex -n "Fate's Edge Expansion - The Daughters of the Unbroken Cord.pdf" > /dev/null 2>&1|| echo "#31. Did not build"
 	../../../tools/compile_latex.sh -f malachai.tex -n "Fate's Edge Expansion - Malachai, The Unchained Angel.pdf" > /dev/null 2>&1|| echo "#31. Did not build"
-	../../../tools/compile_latex.sh -f velvet_touch.tex -n "Fate's Edge Expansion - Fate's Edge Expansion - The Velvet Touch, A Thief's Guide to Silk and Shadow.pdf" > /dev/null 2>&1|| echo "#33. Did not build"
+	../../../tools/compile_latex.sh -f velvet_touch.tex -n "Fate's Edge Expansion - The Velvet Touch, A Thief's Guide to Silk and Shadow.pdf" > /dev/null 2>&1|| echo "#33. Did not build"
 	../../../tools/compile_latex.sh -f dhahara.tex -n "Fate's Edge Expansion - Dhahara, Kingdom of Brass.pdf" > /dev/null 2>&1|| echo "#34. Did not build"
 	../../../tools/compile_latex.sh -f eastern_realms.tex -n "Fate's Edge Expansion - The Eastern Realms.pdf" > /dev/null 2>&1|| echo "#36. Did not build"
 	../../../tools/compile_latex.sh -f road_beast.tex -n "Fate's Edge Expansion - The Road Bestiary.pdf" > /dev/null 2>&1|| echo "#37. Did not build"

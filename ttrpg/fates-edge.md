@@ -249,7 +249,7 @@ Core systems:
 
 ### Psionics
 Mental power module featuring:
-- **Mental Fatigue Track**: 2 × Spirit (minimum 4, maximum 10)
+- **Mental Strain Track**: 2 × Spirit (minimum 4, maximum 10)
 - **Psionics Skill**: Learned Art requiring XP investment (0-5)
 - **Psionic Arts**: Telekinesis, Telepathy, Clairvoyance, Biofeedback, Astral Projection, Psychic Assault, Mind Shield, Empathic Manipulation, Precognition
 - **Consequence System**: Psionic Fatigue with escalating effects

@@ -62,13 +62,16 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins}
 
+% Make every tcolorbox breakable by default (unless overridden)
+\tcbset{breakable=true}
+
 % Standard infobox (used for sidebars, tips)
 \newtcolorbox{infobox}[1]{%
   colback=gray5,
   colframe=gray75,
   fonttitle=\bfseries,
   title=#1,
-  breakable,
+  breakable,   % explicit; redundant but safe
   arc=0pt
 }
 
@@ -166,13 +169,14 @@
 % ============================================================
 % PART IV -- WORLD & INTERACTION
 % ============================================================
-\include{sections/world_interaction}     % Travel, time, social interaction
-\clearpage
-\include{sections/currency-free-economy} % XP as coin, barter, trusts
-\clearpage
+
 \include{sections/world_and_cultures}    % Regions, peoples, cultural mechanics
 \clearpage
 \include{sections/world_powers}          % Terrestrial patrons, obligation
+\clearpage
+\include{sections/world_interaction}     % Travel, time, social interaction
+\clearpage
+\include{sections/currency-free-economy} % XP as coin, barter, trusts
 \clearpage
 \include{sections/backgrounds}           % Backgrounds, signature contacts, bonds
 \clearpage

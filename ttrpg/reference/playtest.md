@@ -132,7 +132,7 @@ This document provides a comprehensive party setup that can playtest all availab
 **Starting Point:** Academic institution or psionic order
 **Key Elements:**
 - Seris as primary psionic character with others potentially developing abilities
-- Mental Fatigue tracks established
+- Mental Strain tracks established
 - Psionic Arts available for advancement
 
 ### Dragon's Lair
