@@ -137,6 +137,9 @@ cd $git_root/ttrpg/reference/expansions/
 cd saikou_compendium/
 ../../../../tools/compile_latex.sh -f main.tex -n "Fate's Edge Expansion - Saikou Ira's Compendium of the Veil.pdf" > /dev/null 2>&1|| echo "#52. Did not build"
 cd -
+cd threadweavers_spellbook/
+../../../../tools/compile_latex.sh -f threadweavers_spellbook.tex -n "Fate's Edge Expansion - The Threadweavers Spellbook.pdf" > /dev/null 2>&1 || echo "#53. Did not build"
+cd -
 
 echo "Committing and pushing to git"
 cd $git_root/ttrpg/build/
