@@ -33,6 +33,10 @@ cd $git_root/ttrpg/reference
  cd $git_root/ttrpg/quickstart
  ../../tools/compile_latex.sh -f quickstart.tex -n "Fate's Edge - Quickstart Guide.pdf" > /dev/null 2>&1|| echo "Quickstart Guide did not build"
 
+ echo "Building Worldbook"
+ cd $git_root/ttrpg/reference/travel/
+ ../../../tools/compile_latex.sh -f fates_edge_amaranthine.tex -n "Fates Edge - The Amaranthine Worldbook.pdf" > /dev/null 2>&1|| echo "Worldbook did not build"
+
 echo "Building Adventures"
 cd $git_root/ttrpg/reference/adventures/
 ../../../tools/compile_latex.sh -f  ashes_of_infernal_accord.tex -n "Fate's Edge - Ashes of the Infernal Accord.pdf" > /dev/null 2>&1|| echo "#1. Did not build"
