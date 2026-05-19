@@ -98,7 +98,7 @@ Each floor below lists: Memory, Environment, Clock, Handles, SB Spends, and Choi
 	•	Environment: Tea-house murmurs; lacquered masks tilt toward you.
 	•	Clock: [4]. Handles: Deception (cover story), Sway (reframe as lesser betrayal), Streetwise (flip the informant chain), Skirmish (mask-enforcers).
 	•	SB Spends: (1) Friend-echo recognizes you; (3) A sealed writ lands—law binds choices.
-	•	Choices: Confess (gain Forgiveness token; spend later to ease a social DV), Double Down (gain leverage; group marks Stain), Cut the Chain (burn the writ; Diamond omen tracks you).
+	•	Choices: Confess (gain Forgiveness token; spend later to ease a social DV), Double Down (gain leverage; group marks Stain), Cut the Cord (burn the writ; Diamond omen tracks you).
 
 8) The Oath of the Doorwarden
 	•	Memory: He failed a sacred watch.
@@ -1346,7 +1346,7 @@ Speak her name while returning her friendship token; mispronunciations cause the
 
 Mercy: Confess (gain Forgiveness token; spend later to ease a social DV)
 Restitution: Double Down (gain leverage; group marks Stain)
-Renunciation: Cut the Chain (burn the writ; Diamond omen tracks you)
+Renunciation: Cut the Cord (burn the writ; Diamond omen tracks you)
 
 **Outcomes & Carry-Forward**
 
