@@ -5,21 +5,53 @@
 % Saikou Ira, and Dusana of the Raven Road.
 
 \documentclass[10pt, twoside]{book}
+
+%-------------------- Packages --------------------%
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{geometry}
-\geometry{a5paper, margin=1.2cm, inner=1.5cm, outer=1cm, top=1.5cm, bottom=1.5cm}
+\usepackage{xcolor}               % For colored blockquotes
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-\usepackage{xcolor}
 \usepackage{parskip}
 \usepackage{caption}
 \usepackage{epigraph}
 
-% Set up headers and footers
+%-------------------- Page Geometry (Main Text Only) --------------------%
+\usepackage[%
+  a5paper,
+  inner=2cm,      % Binding margin
+  outer=1.5cm,    % Outer margin
+  top=1.8cm,
+  bottom=1.8cm
+]{geometry}
+
+%-------------------- Colored Blockquote Commands --------------------%
+% Define blockquote styles for each voice (no margin needed)
+\newcommand{\greyblock}[1]{%
+  \begin{quote}
+    \textcolor{gray}{\textit{—The Gray Wanderer: #1}}%
+  \end{quote}%
+}
+\newcommand{\saikoublock}[1]{%
+  \begin{quote}
+    \textcolor{teal}{\textit{—Saikou Ira: #1}}%
+  \end{quote}%
+}
+\newcommand{\dusanablock}[1]{%
+  \begin{quote}
+    \textcolor{orange}{\textit{—Dusana: #1}}%
+  \end{quote}%
+}
+\newcommand{\lerrisblock}[1]{%
+  \begin{quote}
+    \textcolor{brown}{\textit{—L. Fenwood: #1}}%
+  \end{quote}%
+}
+
+%-------------------- Page Style --------------------%
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE, RO]{\thepage}
@@ -27,7 +59,7 @@
 \fancyhead[LO]{\textit{Lerris Fenwood}}
 \renewcommand{\headrulewidth}{0.4pt}
 
-% Chapter styling: unnumbered, large caps, with optional quote
+%-------------------- Chapter / Section Styling --------------------%
 \titleformat{\chapter}[display]
   {\normalfont\Huge\bfseries\filcenter}
   {}
@@ -35,26 +67,20 @@
   {\Huge}
 \titlespacing*{\chapter}{0pt}{-20pt}{20pt}
 
-% Section styling
 \titleformat{\section}
   {\normalfont\Large\bfseries}
   {\thesection}{1em}{}
 \titlespacing*{\section}{0pt}{12pt}{6pt}
 
-% Epigraph formatting
+%-------------------- Epigraph Styling --------------------%
 \setlength{\epigraphwidth}{0.7\textwidth}
 \renewcommand{\epigraphflush}{center}
 \renewcommand{\epigraphsize}{\small\itshape}
 
-% Custom command for marginal notes (narrative voices)
-\newcommand{\grey}[1]{\marginpar{\small\textcolor{gray}{\textit{—The Gray Wanderer: #1}}}}
-\newcommand{\saikou}[1]{\marginpar{\small\textcolor{teal}{\textit{—Saikou Ira: #1}}}}
-\newcommand{\dusana}[1]{\marginpar{\small\textcolor{orange}{\textit{—Dusana: #1}}}}
-\newcommand{\lerris}[1]{\marginpar{\small\textcolor{brown}{\textit{—L. Fenwood: #1}}}}
-
+%-------------------- Document --------------------%
 \begin{document}
 
-% Front matter
+%-------------------- Front matter --------------------%
 \frontmatter
 \thispagestyle{empty}
 \vspace*{\fill}
@@ -66,7 +92,7 @@ Compiled by Lerris Fenwood\\[0.3cm]
 \small Fifth Son of Duke Braedon Fenwood, Scholar of Thepyrgos,\\
 Secret Member of the Congregation of the Unmasking\\
 \vfill
-%\includegraphics[width=0.3\textwidth]{placeholder.png}\\[1cm]
+% \includegraphics[width=0.3\textwidth]{placeholder.png}\\[1cm]
 {\small Under the lamp, bread and salt – the ink is witness and ash.}
 \end{center}
 \vspace*{\fill}
@@ -86,20 +112,20 @@ If you are reading this, you are now a witness. The creatures within are real. T
 —Lerris Fenwood\\
 Thepyrgos, under the Ninth Bell (which did not ring)
 
-\grey{A fine beginning, scholar. But you forgot to mention that the ninth bell never rings for the living. I’ve heard it twice. Trust me, you don’t want to be the third.}
+\greyblock{A fine beginning, scholar. But you forgot to mention that the ninth bell never rings for the living. I’ve heard it twice. Trust me, you don’t want to be the third.}
 
-\saikou{The first creature you should catalogue is your own certainty. I lost mine in a Sidhi lighthouse, and I’ve been sharper for it ever since.}
+\saikoublock{The first creature you should catalogue is your own certainty. I lost mine in a Sidhi lighthouse, and I’ve been sharper for it ever since.}
 
-\dusana{A ledger of stories is a ledger of hope. This one is full of teeth. I’ll add a few of my own.}
+\dusanablock{A ledger of stories is a ledger of hope. This one is full of teeth. I’ll add a few of my own.}
 
-\lerris{Let them talk. The work remains.}
+\lerrisblock{Let them talk. The work remains.}
 
 \clearpage
 
 \tableofcontents
 \clearpage
 
-% Main matter – unnumbered chapters included from the chapter/ directory
+%-------------------- Main matter --------------------%
 \mainmatter
 
 % Chapter 1: Mortal Adversaries
@@ -144,7 +170,7 @@ Thepyrgos, under the Ninth Bell (which did not ring)
 
 \clearpage
 
-% Colophon
+%-------------------- Colophon --------------------%
 \chapter*{Colophon}
 \epigraph{“The ink is ash. The mirror is clean. The debt is never closed.”}{—Saikou Ira}
 
@@ -159,12 +185,12 @@ Until then, the road is south. The ink is fresh. The lamp is borrowed.
 —Lerris Fenwood\\
 Thepyrgos, in the hour before dawn
 
-\grey{You forgot to mention the bread. Always leave bread for the threshold.}
+\greyblock{You forgot to mention the bread. Always leave bread for the threshold.}
 
-\saikou{And a coin for the ferryman, just in case.}
+\saikoublock{And a coin for the ferryman, just in case.}
 
-\dusana{And a story for the fire. The rest will take care of itself.}
+\dusanablock{And a story for the fire. The rest will take care of itself.}
 
-\lerris{Paid in full.}
+\lerrisblock{Paid in full.}
 
 \end{document}

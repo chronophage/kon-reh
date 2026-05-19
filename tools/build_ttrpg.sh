@@ -36,6 +36,10 @@ cd $git_root/ttrpg/reference
  echo "Building Worldbook"
  cd $git_root/ttrpg/reference/travel/
  ../../../tools/compile_latex.sh -f fates_edge_amaranthine.tex -n "Fates Edge - The Amaranthine Worldbook.pdf" > /dev/null 2>&1|| echo "Worldbook did not build"
+ 
+ echo "Building Complete Worldbook"
+ cd $git_root/ttrpg/reference/travel/
+ ../../../tools/compile_latex.sh -f complete_worldbook.tex -n "Fates Edge - The Complete Worldbook.pdf" > /dev/null 2>&1|| echo "Worldbook did not build"
 
 echo "Building Adventures"
 cd $git_root/ttrpg/reference/adventures/
@@ -133,7 +137,9 @@ cd $git_root/ttrpg/reference/expansions/
 ../../../tools/compile_latex.sh -f house_fenwood_iii_old_dukes_wars.tex -n "Fate's Edge Chronicles - The Fenwoods, The Old Duke's Wars.pdf" > /dev/null 2>&1|| echo "#46. Did not build"
 ../../../tools/compile_latex.sh -f knaves_regret.tex -n "Fate's Edge Expansion - Vhasia, The Knave's Regret.pdf" > /dev/null 2>&1|| echo "#47. Did not build"
 ../../../tools/compile_latex.sh -f viterra_justicars_judgement.tex -n "Fate's Edge Expansion - Viterra, The Justicar's Judgement.pdf" > /dev/null 2>&1|| echo "#48. Did not build"
-
+cd witnessed_prey
+../../../../tools/compile_latex.sh -f witnessed_prey.tex -n "Fate's Edge Expansion - The Witnessed Prey, a Hunter's Guide.pdf" > /dev/null 2>&1|| echo "#49. Did not build"
+cd -
 ../../../tools/compile_latex.sh -f air_mist_alder_thorn_mirror.tex -n "Fate's Edge Expansion - The Book of Air, Mist, Alder, Thorn, and Mirror.pdf" > /dev/null 2>&1|| echo "#50. Did not build"
  ../../../tools/compile_latex.sh -f tam_moira_wilds.tex -n "Fate's Edge Expansion - Moira's Journels of the Wilds.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
  ../../../tools/compile_latex.sh -f mistlands.tex -n "Fate's Edge Expansion - Into the Mistlands.pdf" > /dev/null 2>&1|| echo "#51. Did not build"

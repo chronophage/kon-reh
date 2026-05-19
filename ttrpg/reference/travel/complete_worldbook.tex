@@ -1,0 +1,990 @@
+% ============================================================
+% Fate's Edge --- Complete Worldbook
+% ============================================================
+\documentclass[11pt,letterpaper,twoside]{book}
+% ---------- Encoding, fonts, micro-typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[final]{microtype}
+
+% ---------- Page geometry ----------
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% ---------- Math & symbols ----------
+\usepackage{amsmath,amssymb,mathtools}
+
+% ---------- Colors, graphics, layout ----------
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
+
+% ---------- Tables ----------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{longtable}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
+
+% ---------- Hyperlinks & references ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[rgb]{0.10,0.25,0.55},
+  citecolor=[rgb]{0.10,0.45,0.25},
+  urlcolor=[rgb]{0.55,0.10,0.10},
+  pdfauthor={Fate's Edge},
+  pdftitle={Fate's Edge --- Complete Worldbook},
+  pdfcreator={LaTeX}
+}
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+% ---------- Indexing ----------
+\usepackage{imakeidx}
+\makeindex
+
+% Inline "print + index" helper
+\newcommand{\indexterm}[2][]{%
+  \textit{#2}%
+  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi%
+}
+
+% ---------- Table helpers & house style ----------
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\definecolor{FeRow}{HTML}{F5F7FA}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+
+% ---------- Small conveniences ----------
+\newcommand{\textrarr}{\ensuremath{\rightarrow}}
+\newcommand{\textlarr}{\ensuremath{\leftarrow}}
+\newcommand{\textdarr}{\ensuremath{\downarrow}}
+\newcommand{\beat}{\ensuremath{\triangleright}\,}
+\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
+\newcommand{\Tag}[1]{\texttt{[#1]}}
+
+% ---------- Suit symbols ----------
+\newcommand{\SuitSpade}{\ensuremath{\spadesuit}}
+\newcommand{\SuitHeart}{\ensuremath{\heartsuit}}
+\newcommand{\SuitClub}{\ensuremath{\clubsuit}}
+\newcommand{\SuitDiamond}{\ensuremath{\diamondsuit}}
+
+% ---------- Leg environment ----------
+\newenvironment{Leg}[1]{\textbf{#1:}\begin{itemize}}{\end{itemize}}
+
+% ============================================================
+% Branding & Metadata
+% ============================================================
+\usepackage{etoolbox}
+
+\definecolor{fePrimary}{HTML}{0D1B2A}
+\definecolor{feAccent}{HTML}{6FFFE9}
+\definecolor{feInk}{HTML}{101418}
+\definecolor{fePaper}{HTML}{F7F7F7}
+
+\newcommand\feTitle{Fate's Edge}
+\newcommand\feSubtitle{Complete Worldbook}
+\newcommand\feTagline{}
+\newcommand\feVersion{}
+\newcommand\fePublisher{}
+\newcommand\feCoverArt{}
+
+\newcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
+\newcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
+\newcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
+\newcommand{\feSetVersion}[1]{\renewcommand\feVersion{#1}}
+\newcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
+\newcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
+
+\newcommand{\textshadow}[4]{%
+  \begingroup
+    \rlap{\raisebox{#2}{\hspace*{#1}\textcolor{#3}{#4}}}#4%
+  \endgroup
+}
+\newcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
+
+\newcommand{\feTitlePage}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge\bfseries Fate's Edge \par}
+    \vspace{1cm}
+    {\LARGE Complete Worldbook \par}
+    \vspace{0.5cm}
+    {\large \itshape A Gazetteer of the Known Realms\par}
+    \vfill
+    {\large Version 1.0 \par}
+    \vspace{0.2cm}
+    {\large \today \par}
+    \vspace{1cm}
+    {\large \textsc{As told by the Edgewalker Faeleki of Ironhold}\par}
+  \end{titlepage}
+}
+
+\begin{document}
+
+\feTitlePage
+\tableofcontents
+
+% ============================================================
+% EDGEWALKER'S PREFACE
+% ============================================================
+
+% ============================================================
+% PREFACE: THE LEDGER BLEEDS
+% ============================================================
+\chapter*{Preface: The Ledger Bleeds}
+\addcontentsline{toc}{chapter}{Preface: The Ledger Bleeds}
+\label{chap:preface}
+
+I am an Aeler Edgewalker. You call us mountain-dwellers who measure breath in silver bells and seal contracts in stone. How adorably naïve. We don’t just measure breath—we own the lungs that draw it. When a Tulkani chieftain swears an oath on his firstborn’s life? That’s not honour—it’s collateral I’ve already hypothecated three times over. When a Veiled Sister binds a demon to a corpse to prop up her corpse-throne? That’s not terror—it’s a futures contract on soul-debt, and I’m the broker who sold the short position before the ritual even began. You think I seek opportunities? Incorrect. I manufacture them like counterfeit coin—then sell the molds, the hammer, and the anvil to the very fools I’m about to rob.
+
+You see the surface as ``full of problems.'' How quaint. Problems aren’t obstacles—they’re inventory. Wars need walls? I’ll sell you the bricks and the siege engine to knock them down—then buy back the rubble at scrap price to fill the next crater I create. Cities need bridges? I’ll underbid the architect by bribing his estranged sister with forged inheritance papers, then charge tolls for the detour while my men ``accidentally’’ weaken the supports with acid-laced mortar. Every famine isn’t tragedy—it’s a grain futures play where I corner the market before the locusts hatch. Every plague isn’t sorrow—it’s a chance to monopolise breath-bonds by spreading the rumour that only my seals ward off the Hollow (they don’t—I just charge extra for the ``premium’’ version). The world isn’t a ledger—it’s a slaughterhouse where I’m the only one bringing a price gun, a bone saw, and a ledger balanced in blood.
+
+I’ve walked roads paved with more broken promises than cobblestones. I’ve drunk the ninth cup in a Tulkani circle while counting the missing step on an Aelinnel bridge (it was step~8.7—always shortchange the superstitious; they’ll pay triple for ``lucky’’ step~9 that doesn’t exist). I’ve haggled with Fhara water-clerks not over price, but by threatening to divert their qanats into the salt flats unless they threw in a concubine and a sworn statement that I ``inspired their generosity.'' I’ve sold steam-driven capstans to Ngomebe’s walking cities after sabotaging their rollers with ground glass—then charged triple for the ``emergency’’ repair crew I dispatched from my own warehouse. I’ve watched the Veiled Sisters smile as they signed away their daughters’ souls in exchange for a single night’s respite from the Black Hand’s whispers, and I’ve seen that shadow fall exactly where I’d planted the forged seal that started their feud three months prior—then auctioned the ``exclusive’’ intel on the feud’s origin to both sides for double the fee.
+
+Here’s what the ledger won’t admit, because it’s too busy counting angels on pins: Leverage isn’t about fine print. It’s about who’s holding the knife when the ink dries—and whose throat it’s resting on.
+
+A Diamond isn’t currency—it’s a hostage with a pulse. Spend it, and you’re renting violence. A Debt isn’t owed—it’s farmed. I don’t collect; I cultivate. Plant a promise in fertile despair, water it with regret, harvest the interest in screams. A Promise? That’s just debt wearing a smile and holding a dagger behind its back. The sweeter the vow, the sharper the blade.
+
+This book isn’t a tourist’s guide. It’s a hit list with footnotes. I’ve marked the places where a well-placed bell doesn’t just open a pass—it starts a war I’ve already shorted the bond market on. Where a forged seal doesn’t just move a mountain—it triggers a landslide I’ve bought mineral rights to before the first crack appeared. Where a single true story doesn’t just buy a ship’s loyalty—it buys the captain’s silence while I sell his manifest to pirates. I’ve also marked the traps you’re supposed to avoid: the ninth step you \emph{must} count (it’s a pressure plate wired to explode—I’ll sell you the schematics and the defusal kit for 200\% markup), the ninth cup you \emph{must} pour (it’s laced with truth-serum that makes you confess where you buried the loot—I’ll sell you the emetic and a fake ledger to replace the real one), the ninth name you \emph{must} speak (it summons the Hollow—I’ll sell you earplugs lined with soul-trapping wax and a virgin sacrifice ``at cost'').
+
+You want to build journeys? Draw your cards. Set your clocks. Spend your Story Beats like they mean something. But remember this, written in the margin of every contract I’ve ever signed: Every Diamond you earn is a tooth knocked out of someone else’s jaw. Every Debt you incur? I already bought it from your victim for half what you’ll pay—and I’m collecting interest in your marrow before you finish reading this sentence. My notes on leverage aren’t advice. They’re a confession. A brag. A warning written in the language of slaughter. Read them. Then decide: patch the cracks in the world\ldots or hand me the dynamite, the detonator, and a list of whose foundations need weakening first.
+
+The road isn’t just a ledger. It’s a butcher’s block. Every gate isn’t a clause—it’s a throat waiting for the knife. Pay the toll, or I’ll collect interest in the form of your last breath\ldots and sell it back to you as a breath-bond.
+
+— The Edgewalker\\
+(Current location: Somewhere the ink hasn’t dried yet. Thimble’s still trying to balance books in a ditch outside Aksum using a rock and his own tears. Pathetic. Pass the brandy—I’ve got a drought to monetise in Sekogo.)
+
+[Thimble: Sir, per Appendix Gamma of the Ledger Ethics Accord—]
+
+[Edgewalker: Thimble. If you quote that accursed appendix one more time, I’ll bind your soul to a ledger page and use it to wipe my boots after trampling through the Veiled Sisters’ latest soul-auction. Now pass the abacus—I need to calculate how many souls fit in a single breath-bond before the next monsoon.]
+
+[Thimble: But sir, the Accord—]
+
+[Edgewalker: (Standing, chair scraping) Thimble. You’re fired. Your final paycheck is in the ledger\ldots under ``Organic Debt, Settled via Soul Harvest.'' Now leave before I amend the entry to ``Thimble’s Ledger: Used as Kindling for Veiled Sister Bonfires.'' And take your tears with you—they’re cluttering up the depreciation column.]
+
+% ============================================================
+% PART: THE AMARANTHINE SEA & NORTHERN SHORES
+% ============================================================
+\part{The Amaranthine Sea \& Northern Shores}
+
+\chapter{Kahfagia}
+\emph{The Flag of Storms.} 
+\label{chap:kahfagia}
+The Admiralty runs this place like a pirate charter with a budget—and oh, how they love pretending it’s legitimate. They control the beacons that lure ships onto reefs, the booms that shatter hulls for salvage rights, and the tariffs that fund their champagne baths. If you want to move cargo through the straits without becoming fish food, you need a convoy letter stamped with their seal or a lantern-law warrant signed by the Port Marshal himself. \textit{I’ve sold them both}—genuine articles, straight from the source—then, while the Admiral was busy recounting spice taxes he’d already stolen from my last shipment (the bastards shorted me 12\% on saffron, claiming ``moisture loss’’ in holds I’d sealed with my own breath-wax), I sold perfect forgeries to three rival fleets: the Crimson Corsairs, the Jade Junks, and a suspiciously well-funded group of monks who definitely weren’t pirates. The trick? I didn’t just forge the seal—I made the letters appear to come from the Admiral’s long-lost brother, Lord Malakai, who supposedly vanished in a diving accident ten years ago. (Spoiler: I ``found’’ him running a rum distillery in the Mistlands. Paid him in trade goods to stay ``dead.'') The Admiralty never checks the seals’ provenance. Why would they? They’re too busy being paranoid that their own forgeries will be discovered—too busy counting the very spice taxes they stole from me to notice I’m playing three sides against the middle while their convoys sink each other.
+
+[Thimble: Sir, Article 4, Section 2 of the Maritime Trust Compact explicitly prohibits—]
+
+[Edgewalker: Thimble, my dear, trembling ledger-licker, the Maritime Trust Compact is worth less than the parchment it’s forged on—especially when I’ve bought the ink-maker’s silence with a lifetime supply of spice that \textit{isn’t} moist. Now, about that lantern-law warrant\ldots the Admiral’s nephew has a gambling problem. I wonder what his marker looks like?]
+
+[Thimble: Sir, exploiting familial debt violations under Clause 9.1—]
+
+[Edgewalker: Familial debt is just leverage with a family tree. Now pass the brandy—I’ve got a war to start in Ecktoria, and Thimble? If you mention ``Clause 9.1’’ again, I’ll sell your ledger to the monks as kindling. They burn hot.]
+
+\input{../generators/kahfagia.tex}
+
+\chapter{Ecktoria}
+\emph{Marble \& Ledgers.}
+\label{chap:ecktoria}
+The Empire that never quite died—more like a corpse propped up by gilded scaffolding and the stubborn refusal of its undertakers to admit the job’s done. Ecktoria’s coin-houses still clutch Utaran seals like talismans against progress, every bridge groans under a toll booth staffed by cousins of the governor’s third wife, and the Everflame burns in every basilica not as a symbol of divine truth, but as a literal lie detector: swear a false oath near it, and your tongue turns black. Clever. Very clever. I sold them a breath-bond once—a beautiful thing, really—to guarantee a grain shipment from Oshiira. The bond was sealed with the sigh of a dying Aeler miner (ethically sourced, of course), promised to pay double if the ship arrived intact. The ship sank. Not by storm, not by pirates—but because I’d paid the stevedore to ``accidentally’’ drop a barrel of quicklime into the hold mid-voyage. The Ecktorians were furious. They dragged me before the Everflame, shrieking about breach of contract. I smiled, bowed, and reminded them, voice honey-smooth: ``I sold you the bond, Captain. Not the insurance. Not the seaworthiness of the vessel. Not even the promise that the stevedore wouldn’t be bribed by a man with a grudge against Oshiira’s grain inspectors.” Then, while they were still spluttering, I bought the wreckage rights for three coppers and a sworn affidavit from the captain’s mistress that he’d been planning to scuttle the ship anyway. Leverage isn’t about fine print—it’s about having the buyer sign the waiver while they’re still choking on seawater.
+
+[Thimble: Sir, Article 17 of the Maritime Salvage Code requires—]
+
+[Edgewalker: Salvage code? Thimble, sweet summer child, salvage code is for losers who don’t own the reef before the ship hits it. I bought the reef’s mineral rights six months ago—paid in promises to the governor’s mistress that I’d make her a widow. Now, about that bond\ldots the Oshiira inspectors? They have a lovely daughter. I wonder what her dowry looks like?]
+
+[Thimble: Sir, exploiting familial ties violates—]
+
+[Edgewalker: Familial ties are just leverage with a heartbeat. Now pass the abacus—I need to calculate how many drowned sailors fit in a single breath-bond before the Everflame notices the soot’s fake.]
+
+\input{../generators/ecktoria.tex}
+
+\chapter{Acasia}
+\emph{The Broken Province.}
+\label{chap:acasia}
+Silkstrand isn’t just the only real city here—it’s a festering wound of commerce, where bridges collapse under the weight of dye vats, hired swords change loyalty with the moon, and the Curse of the Blackwood isn’t some ancient superstition—it’s the result of me selling the Duke’s forest manager ``eternal’’ fire-resistant sap that was actually just fermented sap and a slow-acting poison. The trees died. The duke blamed ``the Curse.'' I blamed bad forestry. Everybody won. I sold the Dyers’ Guild a system of copper bells to warn of fires—not because I cared about their livelihoods, but because I knew their vats would boil over when I secretly raised the temperature in their underground chambers via redirected geothermal vents. They paid in silk—nine bolts of the deep indigo that only grows in the Blackwood’s shadow, the kind that makes Veiled Sisters weep with envy. I traded it to a Tulkani caravan for a story that later saved my skin: how to walk through a veil without screaming. That’s the Acasian way: every negotiation leaves a stain, every stain is a bargaining chip, and every chip is just leverage waiting to be cashed in.
+
+[Thimble: Sir, the Dyers’ Guild Charter explicitly forbids tampering with geothermal vents—]
+
+[Edgewalker: Thimble, my anxious little bean-counter, the Charter’s only worth the parchment it’s printed on—especially when I’ve bought the guild’s scribe’s silence with a bolt of that indigo silk and a promise to make his rival ``disappear.'' Now, about those copper bells\ldots the foundry owner has a gambling debt to the Black Banner Captain. I wonder what his marker looks like?]
+
+[Thimble: Sir, Clause 3 of the Guild’s Labor Accord—]
+
+[Edgewalker: Labor accord? Thimble, darling, labor’s just leverage with a union card. Now pass the brandy—I’ve got a dye war to start in Vhasia, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the Blackwood’s wraiths as kindling. They prefer it damp.]
+
+\input{../generators/acasia.tex}
+
+\chapter{Vhasia}
+\emph{The Fractured Sun.}
+\label{chap:vhasia}
+Two crowns. One kingdom. A river so wide it might as well be a border—and oh, how the crowns love pretending it’s not. The Northern Seigneurie and the Southern Parlement both claim the throne, both flood the river with paperwork to ``prove’’ their right, and both are too busy arguing over seal wax colours to notice I’m the one who made the river this wide in the first place. I’ve forged more letters patent for them than I can count—not just for fun, but to keep their lawyers billing by the hour while my convoys cross under flags of truce I also forged. The trick? I don’t just use real seals on false parchment—I leak the ``forgery’’ to the opposing crown first. Let them spend weeks screaming about signature smudges and ink bleed while my grain ships glide past, their bills of lading stamped with seals so real they make the ink weep. The Last Dauphin? A rumour. But rumours pay well when you’re the one who started them—and I started three: that the Dauphin was swapped at birth with a goatherd’s child, that he’s secretly a Veiled Sister in disguise, and that he’s been dead for ten years, his ``reappearance’’ a puppet show run by the Seigneurie’s spymaster. Each rumour paid in different currencies: secrets, silk, and the right to walk through a certain gate at midnight.
+
+[Thimble: Sir, deliberate misinformation breaches Article 1 of the Accord of Transparent Governance—]
+
+[Edgewalker: Transparent governance? Thimble, my dear, trembling fool, transparent governance is for people who enjoy losing money—and I’ve got shares in the Seigneurie’s ink-makers. Now, about that pass-stone\ldots the Seigneur’s heir has a lovely secret. I wonder what her weight in silver looks like?]
+
+[Thimble: Sir, exploiting royal secrets violates—]
+
+[Edgewalker: Royal secrets are just leverage with a crown. Now pass the abacus—I need to calculate how many forged letters fit in a single Diamond before the Parlement notices their ink’s fake.]
+
+\input{../generators/vhasia.tex}
+
+\chapter{Viterra}
+\emph{The Hedge‑Law Realm.}
+\label{chap:viterra}
+Viterra doesn’t just run on precedent—it \emph{is} precedent, a tangled thicket of rulings where every hedge has a lawsuit attached, every parish stone a deed dispute, and every ferry crossing a generations-long feud over who gets to charge the toll. The Warrior Queen isn’t just a ruler—she’s the living embodiment of ``possession is nine-tenths of the law,’’ and she pays in customs seals like they’re going out of style. Which they are—thanks to me. I sold her a set of Aeler breath-counters for her spies—not because I trusted her, but because I knew she’d use them to sniff out traitors in her court\ldots traitors I’d planted myself. She paid in three customs seals, each valid for a year, each stamped with the sigil of a port I don’t even use. I’ve used two. The third? For emergencies. Like when I need to cross the Belworth without paying the tariff—and without the Queen’s spies noticing I’ve rerouted the ferry cables through my private toll booth three miles downstream. (The Queen’s still paying me in seals for that ``emergency’’—she thinks it’s a loyalty test. How precious.)
+
+[Thimble: Sir, Article 12 of the Customs Seal Accord prohibits—]
+
+[Edgewalker: Customs seal accord? Thimble, sweet pea, customs seals are just leverage with a fancy stamp—especially when I’ve bought the Queen’s head spy’s silence with a breath-counter that doesn’t count breaths\ldots it counts lies. Now, about that Belworth crossing\ldots the ferryman has a daughter who owes the Black Hand a favour. I wonder what her weight in secrets looks like?]
+
+[Thimble: Sir, Clause 7 of the Ferryman’s Guild—]
+
+[Edgewalker: Ferryman’s guild? Thimble, darling, guilds are just leverage with a membership card. Now pass the brandy—I’ve got a hedge war to start in Aeler, and if you mention ``Clause 7’’ one more time, I’ll sell your ledger to the Belworth’s currents as kindling. They prefer it weighted.]
+
+\input{../generators/viterra.tex}
+
+\chapter{Thepyrgos}
+\emph{City of a Thousand Stairs.}
+\label{chap:thepyrgos}
+The Synod rules here with the delicacy of a brick wrapped in velvet—they hate unsanctioned magic like it’s a personal insult, but they adore infrastructure, especially when it’s shiny, expensive, and comes with a side of indulgences they can sell to the faithful. I sold them a system of under-vaults to expand the Library of Keys—not because I believed in knowledge, but because I knew the Synod’s Archivist was drowning in debt to a Veiled Sister’s loan shark, and he’d sign anything to make the collector go away. The Archon paid in harbour passes—enough to skip every boom in the straits for a decade—stamped with the Synod’s seal and blessed by three bishops who definitely weren’t bribed with contraband incense. I’ve already lost two to card games (damn those Tulkani bluffers), but the rest? Hidden in a lead box under a rock marked with a bell\ldots a bell I rang myself to make the rock ``holy’’ in the eyes of the local cult that now guards it for a fee. You want them? They’re yours. For a price. A very specific price involving the Synod’s Archivist and a certain ledger he’s been ``misplacing.’’
+
+[Thimble: Sir, the Synod’s Charter on Sacred Architecture forbids—]
+
+[Edgewalker: Sacred architecture? Thimble, my anxious little goblin, sacred architecture is just leverage with a stained-glass window—especially when I’ve bought the Archivist’s silence with a ledger that doesn’t track debts\ldots it creates them. Now, about those harbour passes\ldots the Synod’s treasurer has a gambling problem. I wonder what his marker looks like in uncut diamonds?]
+
+[Thimble: Sir, exploiting ecclesiastical debt violates—]
+
+[Edgewalker: Ecclesiastical debt is just leverage with a halo. Now pass the abacus—I need to calculate how many Synod indulgences fit in a single Diamond before the Archivist notices his ledger’s fake.]
+
+\input{../generators/thepyrgos.tex}
+
+% ============================================================
+% PART: THE NORTHERN REACHES
+% ============================================================
+\part{The Northern Reaches}
+
+\chapter{Aeler}
+\emph{Breath, Bell, and Keystone.}
+\label{chap:aeler}
+My homeland. The place where we don’t trust the surface, but we do trust the weight of a well-placed keystone—and oh, how the surface loves to test that trust. We Aeler don’t just trade with the mountains; we own the leverage in every crevice. Our breath-bonds aren’t just currency—they’re the hardest thing in the peaks, forged in the sighs of miners who knew too much. I’ve sold them to Vikari jarls who paid in furs stained with brother’s blood, to Ykrul khagans who weighed the value in warhorses and broken oaths, even to a Veiled Sister once—she paid in a secret so dangerous I’ve never used it\ldots yet. (Spoiler: I’m saving it for the day the Ninth Seal cracks. The interest alone will buy me a small kingdom.) The under-vaults aren’t just storage—they’re libraries of opportunity, full of seals just waiting to be broken. I know all of them. Not because I’m noble—but because I’ve sold most of them already. That’s why I don’t go back often. Why revisit a scene when you can sell the blueprints to the next fool who thinks he’s clever?
+
+[Thimble: Sir, the Aeler Vault Accord Article 3 explicitly—]
+
+[Edgewalker: Vault accord? Thimble, my dear, trembling mole, the Vault Accord is just leverage with a rock hammer—especially when I’ve bought the Chief Stonewright’s silence with a keystone that doesn’t reinforce tunnels\ldots it weakens them. Now, about those breath-bonds\ldots the Vikari jarl’s son has a lovely gambling habit. I wonder what his weight in wolf pelts looks like?]
+
+[Thimble: Sir, Clause 9 of the Stonewright’s Guild—]
+
+[Edgewalker: Stonewright’s guild? Thimble, darling, guilds are just leverage with a chisel. Now pass the brandy—I’ve got a seal war to start in Mistlands, and if you mention ``Clause 9’’ one more time, I’ll sell your ledger to the Hollow as kindling. It prefers it whispering.]
+
+\input{../generators/aeler.tex}
+
+\chapter{The Mistlands}
+\emph{Bells, Salt, and Breath.}
+\label{chap:mistlands}
+A protectorate of the Aeler in name only—the fog here doesn’t just hide the land; it hides the law, and oh, how the wraiths love that ambiguity. The bell-lines aren’t just defences—they’re the only thing keeping the wraiths from dragging whole villages into the mist, and I sold the wardens a tuning fork that could recalibrate those bells to a frequency that makes the wraiths dance instead of drag. They paid in salt—enough to preserve a ship’s cargo for a year, stamped with the Mistlands’ seal and guaranteed by the Warden-Captain’s own oath. I used it on a shipment of Sidhi pepper\ldots pepper that was cursed, yes, but curses are just leverage with a supernatural clause. I sold it anyway—at a markup—to a Tulkani caravan desperate for ``exotic’’ goods, then bought back the cursed pepper’s ``cure’’ from the same caravan a week later when they started hallucinating veils that weren’t there. Beautiful.
+
+[Thimble: Sir, the Mistlands Warden’s Oath forbids—]
+
+[Edgewalker: Warden’s oath? Thimble, my sweet little fog-lung, oaths are just leverage with a shiver—especially when I’ve bought the Warden-Captain’s silence with a tuning fork that doesn’t recalibrate bells\ldots it attracts wraiths. Now, about that Sidhi pepper\ldots the caravan leader has a daughter who owes the Veiled Sisters a favour. I wonder what her weight in secrets looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many cursed peppers fit in a single Diamond before the wardens notice their salt’s fake.]
+
+\input{../generators/mistlands.tex}
+
+\chapter{Ykrul}
+\emph{Wolf Standards, Winter Camps.}
+\label{chap:ykrul}
+The Ykrul don’t measure wealth in silver—they measure it in hoofbeats, in the snort of a warhorse at dawn, and oh, how they love a good bargain\ldots especially when it comes with a side of broken trust. I sold them Aeler saddles with built-in breath-counters—not because I cared about their mounts, but because I knew the khagan’s head trainer was skimming oats from the imperial stables, and he’d sell his soul to keep it quiet. The khagan was impressed. He paid in a paiza—a tablet of hammered bronze that guarantees safe passage through all Ykrul lands, stamped with the wolf standard and blessed by the shaman who definitely wasn’t bribed with fermented mare’s milk. I’ve used it to cross the Violet Steppe nine times. The ninth time? The paiza cracked. Not from wear—from my tampering with the alloy during the ``quality check.’’ I’m still trying to collect on the warranty\ldots by selling the khagan a new paiza at triple the price, claiming the crack was ``a sign from the spirits’’ that he needs to upgrade. (The spirits agreed—for a fee.)
+
+[Thimble: Sir, Article 5 of the Ykrul Trade Accord prohibits—]
+
+[Edgewalker: Trade accord? Thimble, my dear, little wolf-pelt, trade accords are just leverage with a hoofprint—especially when I’ve bought the khagan’s head trainer’s silence with a breath-counter that doesn’t count breaths\ldots it counts stolen oats. Now, about that paiza\ldots the shaman has a nephew who owes the Black Hand a favour. I wonder what his weight in secrets looks like?]
+
+[Thimble: Sir, Clause 2 of the Shaman’s Covenant—]
+
+[Edgewalker: Shaman’s covenant? Thimble, darling, covenants are just leverage with a chant. Now pass the brandy—I’ve got a horse war to start in Kuvani, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the Violet Steppe as kindling. It prefers it frozen.]
+
+\input{../generators/ykrul.tex}
+\input{../generators/midh-akhaz.tex}
+
+\chapter{Vilikari}
+\emph{Laurels \& Longhouses.}
+\label{chap:vilikari}
+The Vilikari straddle the border like a drunkard on a fence—half empire, half steppe, all headache. Their foedus treaties aren’t just agreements—they’re a tragicomic mess, half carved in marble by emperors who forgot to pay the sculptors, half braided in string by chieftains who forgot which knot meant ``peace.'' I sold them a set of ledgers that could translate both—not because I believed in harmony, but because I knew the Foedus Stone’s keeper was drowning in debt to a Ykrul warlord over a disputed horse trade, and he’d sign anything to make the collector go away. They paid in land rights near the Foedus Stone—stamped with the Vilikari seal and guaranteed by the High Chieftain’s own oath. I haven’t used them yet. The land is probably cursed. Everything near the Stone is cursed. Which is perfect. Why? Because I can sell the ``curse’’ as a feature: ``Buy this land, and I’ll throw in a complimentary haunting—guaranteed to lower your property taxes by attracting only the bravest (or most foolish) buyers.’’
+
+[Thimble: Sir, the Viliani Foedus Accord Article 12 forbids—]
+
+[Edgewalker: Foedus accord? Thimble, my anxious little braid, foedus accords are just leverage with a knot—especially when I’ve bought the Foedus Stone’s keeper’s silence with a ledger that doesn’t translate treaties\ldots it forges them. Now, about those land rights\ldots the High Chieftain’s daughter has a lovely secret. I wonder what her weight in horse pelts looks like?]
+
+[Thimble: Sir, exploiting royal secrets violates—]
+
+[Edgewalker: Royal secrets are just leverage with a crown. Now pass the abacus—I need to calculate how many forged treaties fit in a single Diamond before the chieftain notices his oath’s fake.]
+
+\input{../generators/vilikari.tex}
+
+\chapter{Black Banners}
+\emph{Condotta \& Crowns.}
+\label{chap:blackbanner}
+Mercenary companies that sell steel to the highest bidder—and oh, how they love a good spreadsheet. The Banner-Captains don’t just want payment; they want proof they’re getting their money’s worth, which is why they pay in safe-conducts that are good until the next battle\ldots and utterly worthless after, once the smoke clears and the ledgers need balancing. I’ve sold them everything: from siege engines that ``misfire’’ on command to false muster rolls that inflate their numbers by 30\%. The Captains pay in safe-conducts stamped with their clan seal and guaranteed by the battlefield chaplain who definitely wasn’t bribed with loot from the last sack. I keep a stack of them as kindling—not because they burn well (though they do), but because I can sell the \emph{idea} of a safe-conduct to the next desperate captain: ``Pay me upfront, and I’ll give you a document that says you won’t be ambushed\ldots by the very men I’m about to ambush you with.’’ Beautiful.
+
+[Thimble: Sir, Article 8 of the Black Banner Mercenary Code prohibits—]
+
+[Edgewalker: Mercenary code? Thimble, my dear, little condottiero, mercenary codes are just leverage with a bloodstain—especially when I’ve bought the battlefield chaplain’s silence with a safe-conduct that doesn’t guarantee passage\ldots it guarantees an ambush. Now, about those siege engines\ldots the Captain’s treasurer has a gambling problem. I wonder what his weight in broken trebuchets looks like?]
+
+[Thimble: Sir, Clause 4 of the Treasurer’s Ledger—]
+
+[Edgewalker: Treasurer’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a captain war to start in Linns, and if you mention ``Clause 4’’ one more time, I’ll sell your ledger to the next battlefield as kindling. They prefer it smouldering.]
+
+\input{../generators/black_banner.tex}
+
+\chapter{The Linns}
+\emph{Skerries \& Storm‑Oaths.}
+\label{chap:linns}
+North of the Aberderrin Sea, the Linns don’t just raid and trade—they do it with the fervour of the converted, swearing oaths to storm and sea that aren’t just words—they’re leverage with a supernatural clause. They pay in stories, not silver, because to them, a tale well-told is worth more than a chest of gold\ldots especially when it’s true. I sold them a set of Aeler compasses that work in fog—not because I cared about their navigation, but because I knew the Storm-Caller’s apprentice was terrified of the Hollow, and he’d trade his soul for a way to feel safe. They paid in a storm-charm that once belonged to a drowned captain—stamped with the Linns’ seal and guaranteed by the Sea-Witch’s own oath. The charm works, yes, but it attracts the Hollow like chum attracts sharks. Which is why I only use it when I’m desperate. Desperate, that is, for the story I’ll get when the Hollow comes calling—a story I can then sell to the Veiled Sisters as ``proof of supernatural liability’’ at triple the rate.
+
+[Thimble: Sir, the Linns Storm-Oath Accord Article 7 forbids—]
+
+[Edgewalker: Storm-oath accord? Thimble, my sweet little squall, storm-oath accords are just leverage with a saltcrust—especially when I’ve bought the Storm-Caller’s apprentice’s silence with a compass that doesn’t work in fog\ldots it summons the Hollow. Now, about that storm-charm\ldots the Sea-Witch has a niece who owes the Veiled Sisters a favour. I wonder what her weight in drowned captains looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many storm-charms fit in a single Diamond before the Linns notice their oath’s fake.]
+
+\input{../generators/linns.tex}
+
+% ============================================================
+% PART: THE EASTERN DOLMIS & THE VALEWOOD
+% ============================================================
+\part{The Eastern Dolmis \& The Valewood}
+
+\chapter{Theona}
+\emph{Three Greens, No Ninth.}
+\label{chap:theona}
+The isles of Theona aren’t just ruled by silence—they’re built on it, a place where bells are forbidden lest they wake the thing that sleeps under the coral, and oh, how the Matron of Wells loves a good loophole. I sold her a copper bell that could ring nine times without breaking the taboo—not because I respected her laws, but because I knew her chief acolyte was desperate to prove her piety, and she’d pay in moot tokens for a bell that seemed holy. The trick? I didn’t make the bell ring nine times—I made the ninth ring silent, a harmonic trick that fools the ear but not the soul. The Matron paid in a moot token—stamped with the Theona seal and guaranteed by the Council of Elders’ own oath. I used it to settle a feud with a Linn captain\ldots a feud I’d started by spreading a rumour about his ancestor’s cowardice. He’s still paying me back in stories—stories I sell to the Tulkani as ``authentic Linn lore’’ at a markup, then buy back as ``cursed tales’’ to sell to the Veiled Sisters. The circle of leverage.
+
+[Thimble: Sir, the Theona Silence Accord Article 3 explicitly prohibits—]
+
+[Edgewalker: Silence accord? Thimble, my dear, little echo, silence accords are just leverage with a held breath—especially when I’ve bought the Matron’s chief acolyte’s silence with a bell that doesn’t ring nine times\ldots it lies about it. Now, about that moot token\ldots the Council’s treasurer has a gambling problem. I wonder what his weight in silent bells looks like?]
+
+[Thimble: Sir, Clause 1 of the Council’s Ledger—]
+
+[Edgewalker: Council’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a feud war to start in Linns, and if you mention ``Clause 1’’ one more time, I’ll sell your ledger to the next silence as kindling. They prefer it ringing.]
+
+\input{../generators/theona.tex}
+
+\chapter{Zakov}
+\emph{Salt \& Serpent.}
+\label{chap:zakov}
+The pirate‑city of the Dolmis coast isn’t just a den of thieves—it’s a corporation with a flag, and oh, how the Salt Prince loves playing king while the Syndicate Silent pulls the strings. The Syndicate doesn’t just want tribute; they want proof they’re obeyed, which is why they pay in corsair charters that let you fly the black flag without being hanged—stamped with the Zakov seal and guaranteed by the Syndicate’s own oath. I sold them a set of underwater breathing bells—Aeler tech, very illegal, very desirable—not because I cared about their sailors, but because I knew the Syndicate’s head enforcer was terrified of the Veiled Sisters, and he’d pay in charters for bells that let him sneak past their patrols. I’ve never used the charter. Why? Because the flag is in my luggage, next to the spare breath-counter\ldots and I’m waiting for the perfect moment to fly it: when the Syndicate’s charter is about to expire, and I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Syndicate agreed—for a fee, and a promise to never speak of the Kraken I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 11 of the Zakov Maritime Code prohibits—]
+
+[Edgewalker: Maritime code? Thimble, my dear, little barnacle, maritime codes are just leverage with a barnacle—especially when I’ve bought the Syndicate’s head enforcer’s silence with a breathing bell that doesn’t let you breathe underwater\ldots it floods your lungs. Now, about that corsair charter\ldots the Salt Prince’s treasurer has a gambling problem. I wonder what his weight in drowned sailors looks like?]
+
+[Thimble: Sir, Clause 3 of the Treasurer’s Ledger—]
+
+[Edgewalker: Treasurer’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a syndicate war to start in Dolmis, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the next charter as kindling. They prefer it salty.]
+
+\input{../generators/zakov.tex}
+
+\chapter{Aelinnel (Aevrossa)}
+\emph{Stone, Bough, and Bright Things.}
+\label{chap:aelinnel}
+The gnomish homeland isn’t just a place where they count steps—it’s a place where they worship the count, and oh, how the Aelinnel love a good loophole in their beloved numerology. They count everything: steps, bells, offerings—because to them, precision isn’t just virtue; it’s leverage with a supernatural clause. I sold them a counting machine that uses gears instead of fingers—not because I believed in their craft, but because I knew the Master Counter was drowning in debt to a Tulkani loan shark over a miscounted bell toll, and he’d sign anything to make the collector go away. They paid in a tide‑path key that lets me cross the Inland Sea at any tide—made of coral, stamped with the Aelinnel seal, and guaranteed by the High Tide-Warder’s own oath. The key is made of coral. It grows. I have to trim it every season\ldots which is why I sell the trimmings as ``lucky charms’’ to the Veiled Sisters. ``Wear this coral,’’ I tell them, ``and the tide will always favour your schemes.’’ (It won’t. But the Sisters believe it—and belief is just leverage with a prayer.)
+
+[Thimble: Sir, the Aelinnel Counting Accord Article 9 explicitly forbids—]
+
+[Edgewalker: Counting accord? Thimble, my anxious little gear-counter, counting accords are just leverage with a tooth—especially when I’ve bought the Master Counter’s silence with a machine that doesn’t count steps\ldots it invents them. Now, about that tide-path key\ldots the High Tide-Warder’s daughter has a lovely secret. I wonder what her weight in coral looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many coral trimmings fit in a single Diamond before the Aelinnel notice their key’s fake.]
+
+\input{../generators/aelinnel.tex}
+
+\chapter{Aelaerem}
+\emph{Hearth \& Hollow.}
+\label{chap:aelaerem}
+The halfling downs aren’t just a place where they keep the Hollow at bay—they’re a marketplace for fear, and oh, how the Aelaerem love a good bargain on safety. They use red threads and offerings not out of piety, but because they know the Hollow’s attention is a commodity—and they’ll pay dearly to avoid it. I sold them a system of copper bells that ring when the Hollow crosses a boundary—not because I cared about their peace, but because I knew the Boundary-Warder’s deputy was terrified of his own shadow, and he’d pay in hollow cups for bells that seemed to warn him. They paid in a hollow cup—proof that a debt was paid to the Hollow itself, stamped with the Aelaerem seal and guaranteed by the Elder-Circle’s own oath. I’ve used it to bargain with Debt‑Walkers twice. The third time? The cup cracked. Not from age—from my tampering with the clay during the ``blessing.’’ I’m not going back for a replacement. Why? Because I can sell the \emph{idea} of a hollow cup to the next desperate halfling: ``Pay me upfront, and I’ll give you a document that says your debt to the Hollow is settled\ldots by the very Debt‑Walker I’m about to send to collect it.’’ Beautiful.
+
+[Thimble: Sir, the Aelaerem Hollow Oath Article 5 forbids—]
+
+[Edgewalker: Hollow oath? Thimble, my dear, little thread-counter, hollow oaths are just leverage with a shiver—especially when I’ve bought the Boundary-Warder’s deputy’s silence with a bell that doesn’t ring when the Hollow crosses\ldots it invites it in. Now, about that hollow cup\ldots the Elder-Circle’s treasurer has a gambling problem. I wonder what his weight in broken cups looks like?]
+
+[Thimble: Sir, Clause 2 of the Elder-Circle’s Ledger—]
+
+[Edgewalker: Elder-Circle’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a Debt‑Walker war to start in Aelaerem, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next hollow cup as kindling. They prefer it cracked.]
+
+\input{../generators/aelaerem.tex}
+
+\chapter{The Valewood}
+\emph{Empire Under Leaves.}
+\label{chap:valewood}
+The Valewood isn’t just ancient—it’s a graveyard of empires, and oh, how the Lethai‑ar ghosts love a good deal on forgotten magic. They don’t just rule as echoes; they trade in them, and the Pathweaver isn’t just a guide—he’s a broker in phasing star‑roads that don’t quite exist yet. I sold him a set of Aeler dew‑mirrors to navigate those roads—not because I believed in the stars, but because I knew the Pathweaver’s apprentice was terrified of getting lost in the between, and he’d pay in way‑cords for mirrors that seemed to show the way. He paid in a way‑cord that can find any path—even the ones that don’t exist yet—stamped with the Valewood seal and guaranteed by the Star‑Reader’s own oath. I’ve used it to escape the Hollow three times. It’s frayed now\ldots which is why I sell the frayed ends as ``lucky knots’’ to the Veiled Sisters. ``Tie this cord,’’ I tell them, ``and the Hollow will always lose your trail.’’ (It won’t. But the Sisters believe it—and belief is just leverage with a knot.)
+
+[Thimble: Sir, the Valewood Pathweaving Accord Article 4 forbids—]
+
+[Edgewalker: Pathweaving accord? Thimble, my sweet little star-gazer, pathweaving accords are just leverage with a moonbeam—especially when I’ve bought the Pathweaver’s apprentice’s silence with a dew‑mirror that doesn’t navigate phasing roads\ldots it misleads you into the Hollow’s grasp. Now, about that way‑cord\ldots the Star‑Reader’s treasurer has a gambling problem. I wonder what his weight in frayed cords looks like?]
+
+[Thimble: Sir, Clause 1 of the Star‑Reader’s Ledger—]
+
+[Edgewalker: Star‑Reader’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a Hollow war to start in the Ways Between, and if you mention ``Clause 1’’ one more time, I’ll sell your ledger to the next way‑cord as kindling. They prefer it frayed.]
+
+\input{../generators/valewood.tex}
+
+% ============================================================
+% PART: THE SOUTHERN REALMS (AKILAN)
+% ============================================================
+\part{The Southern Realms (Akilan)}
+
+\chapter{Oshiira}
+\emph{The Ledger Empire.}
+\label{chap:oshiira}
+Oshiira doesn’t just run on grain, water, and bureaucracy—it \emph{is} bureaucracy, a machine where every form has a fee, every audit an opportunity, and the Vermilion Corps isn’t just an agency—it’s a corporation with a thirst for paper. I sold them a set of breath‑bonds to guarantee a grain shipment to Ecktoria—not because I trusted the shipment, but because I knew the Vermilion Corps’ head auditor was terrified of a promotion he wasn’t qualified for, and he’d pay in tariff stamps for bonds that seemed to guarantee delivery. They paid in a tariff stamp that lets me bypass inspections—stamped with the Vermilion Corps’ seal and guaranteed by the Grain Minister’s own oath. I’ve used it to smuggle everything from Ashaani spirit‑lamps to Tulkani story‑cords\ldots which is why the stamp is wearing out. Wear and tear? No. Strategic degradation. I’ve been subtly dampening the stamp’s ink during ``quality checks’’ so it fades faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Vermilion Corps agreed—for a fee, and a promise to never speak of the locust swarm I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 14 of the Oshiira Bureaucracy Accord prohibits—]
+
+[Edgewalker: Bureaucracy accord? Thimble, my dear, little paper-pusher, bureaucracy accords are just leverage with a stamp—especially when I’ve bought the Vermilion Corps’ head auditor’s silence with a breath‑bond that doesn’t guarantee shipment\ldots it guarantees a smuggled cargo. Now, about that tariff stamp\ldots the Grain Minister’s treasurer has a gambling problem. I wonder what his weight in smuggled spirit‑lamps looks like?]
+
+[Thimble: Sir, Clause 3 of the Grain Minister’s Ledger—]
+
+[Edgewalker: Grain Minister’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a vermilion war to start in Ashaan, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the next tariff stamp as kindling. They prefer it damp.]
+
+\input{../generators/oshiira.tex}
+
+\chapter{Ashaan}
+\emph{The Veiled Throne.}
+\label{chap:ashaan}
+Ashaan isn’t just a nation of corpses propped up by spirit‑binding—it’s a market for terror, and oh, how the Veiled Sisters love a good secret. They don’t just pay in secrets—they pay in leverage with a supernatural clause, and the secrets are always dangerous\ldots which is why they’re such profitable inventory. I sold them an Aeler spirit‑cage to hold a bound demon—not because I cared about their throne’s stability, but because I knew the Head Veiled Sister’s apprentice was terrified of the demon she was binding, and she’d pay in veil‑clips for a cage that seemed to contain it. They paid in a veil‑clip that lets me speak without being silenced—stamped with the Ashaan seal and guaranteed by the High Sister’s own oath. I’ve used it to negotiate with the Breath‑less. The Sisters don’t know. Yet. Which is why I’m already shopping their secret around to the Black Hand. ``Want to know how to break their spirit‑binding?’’ I whisper. ``It’ll cost you a kingdom.’’
+
+[Thimble: Sir, the Ashaan Veiling Accord Article 6 explicitly forbids—]
+
+[Edgewalker: Veiling accord? Thimble, my anxious little shadow, veiling accords are just leverage with a whisper—especially when I’ve bought the Head Veiled Sister’s apprentice’s silence with a spirit‑cage that doesn’t hold a bound demon\ldots it releases it. Now, about that veil‑clip\ldots the High Sister’s treasurer has a gambling problem. I wonder what her weight in Breath‑less secrets looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many veil‑clips fit in a single Diamond before the Sisters notice their clip’s fake.]
+
+\input{../generators/ashaan.tex}
+
+\chapter{Ngomebe}
+\emph{The Stone Men.}
+\label{chap:ngomebe}
+Ngomebe isn’t just walking cities on rollers and sledges—it’s a rolling market, and oh, how the Mason‑Kin Houses love a good deal on eternal motion. They don’t just treat Aeler as equals; they bid for our leverage, and the keystone charter isn’t just a document—it’s a licence to dwell in any walking city for a season, stamped with the Ngomebe seal and guaranteed by the Rollmaster‑General’s own oath. I sold them a set of bearings that never wear out—not because I believed in perpetual motion, but because I knew the Rollmaster‑General’s deputy was terrified of a promotion that would put him in charge of maintenance, and he’d pay in keystone charters for bearings that seemed eternal. I’ve used it to hide from the Black Hand, the Censorate, and an angry Veiled Sister\ldots which is why I’m already shopping the charter’s ``expiry’’ to the highest bidder. ``Want to know when the bearings will wear out?’’ I whisper. ``It’ll cost you a city.’’
+
+[Thimble: Sir, Article 10 of the Ngomebe Motion Accord prohibits—]
+
+[Edgewalker: Motion accord? Thimble, my dear, little roller, motion accords are just leverage with a bearing—especially when I’ve bought the Rollmaster‑General’s deputy’s silence with a bearing that doesn’t never wear out\ldots it seizes up at the worst moment. Now, about that keystone charter\ldots the Rollmaster‑General’s treasurer has a gambling problem. I wonder what his weight in hidden cities looks like?]
+
+[Thimble: Sir, Clause 4 of the Rollmaster‑General’s Ledger—]
+
+[Edgewalker: Rollmaster‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a bearing war to start in the Brass Coast, and if you mention ``Clause 4’’ one more time, I’ll sell your ledger to the next keystone charter as kindling. They prefer it rolling.]
+
+\input{../generators/ngomebe.tex}
+
+\chapter{Taharka}
+\emph{The Monsoon Crown.}
+\label{chap:taharka}
+The highlands aren’t just a fortress—they’re a monsoon market, and oh, how the Ridge‑Watchers love a good deal on fog penetration. They don’t just hold the passes; they lease our leverage, and the pass‑stone isn’t just a rock—it’s a ticket to cross at half toll, stamped with the Taharka seal and guaranteed by the Ridge‑Lord’s own oath. I sold them a set of Aeler signal mirrors that work in fog—not because I cared about their visibility, but because I knew the Ridge‑Lord’s scout was terrified of getting lost in the mist, and he’d pay in pass‑stones for mirrors that seemed to cut through the fog. I’ve used it to move silk from Ayokha to the Brass Coast\ldots which is why the stone is chipped. Wear and tear? No. Strategic degradation. I’ve been subtly scratching the mirror’s surface during ``alignment checks’’ so it fogs faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Taharka agreed—for a fee, and a promise to never speak of the landslide I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 7 of the Taharka Fog Accord prohibits—]
+
+[Edgewalker: Fog accord? Thimble, my sweet little mist-lover, fog accords are just leverage with a reflection—especially when I’ve bought the Ridge‑Lord’s scout’s silence with a signal mirror that doesn’t work in fog\ldots it creates fog. Now, about that pass‑stone\ldots the Ridge‑Lord’s treasurer has a gambling problem. I wonder what his weight in chipped stones looks like?]
+
+[Thimble: Sir, Clause 2 of the Ridge‑Lord’s Ledger—]
+
+[Edgewalker: Ridge‑Lord’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a mirror war to start in Ayokha, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next pass‑stone as kindling. They prefer it clear.]
+
+\input{../generators/taharka.tex}
+
+\chapter{Sekogo}
+\emph{The Green Council.}
+\label{chap:sekogo}
+Jungle, honey, and the Ukwe—a tree that remembers every debt—and oh, how the Leopard Society loves a good deal on debt collection. They don’t just hunt oath‑breakers; they auction the right to hunt them, and the Leopard’s favour isn’t just a blessing—it’s a licence to collect, stamped with the Sekogo seal and guaranteed by the Green Council’s own oath. I sold them a set of Aeler thorn‑wards to protect their groves—not because I cared about their trees, but because I knew the Green Council’s head ranger was terrified of a blight that would ruin his promotion chances, and he’d pay in thorn‑wards for wards that seemed to protect the grove. They paid in a leopard’s favour—one hunt, one time—stamped with the Sekogo seal and guaranteed by the Leopard‑Queen’s own oath. I used it to track a Breath‑less agent who owed me a story\ldots which is why the hunt was successful. I didn’t just track the agent—I herded him toward the Leopard‑Queen’s favourite hunting ground, then sold the ``favour’’ to the highest bidder. (The Leopard‑Queen agreed—for a fee, and a promise to never speak of the blight I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 9 of the Sekogo Green Accord prohibits—]
+
+[Edgewalker: Green accord? Thimble, my anxious little leaf, green accords are just leverage with a root—especially when I’ve bought the Green Council’s head ranger’s silence with a thorn‑ward that doesn’t protect groves\ldots it invites the blight. Now, about that leopard’s favour\ldots the Leopard‑Queen’s treasurer has a gambling problem. I wonder what her weight in hunted agents looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many thorn‑wards fit in a single Diamond before the Council notices their ward’s fake.]
+
+\input{../generators/sekogo.tex}
+
+\chapter{Lethai-ar of the Crimson Valley}
+\emph{Silk Bridges and Web‑Law.}
+\label{chap:crimsonvalley}
+The Lethai‑ar don’t just guard the valley with neutrality—they monetise it, and oh, how they love a good deal on witness cords. They don’t just trust witness cords as contracts; they bid on their reliability, and the silk cord isn’t just a thread—it’s a licence to enforce an oath, stamped with the Lethai‑ar seal and guaranteed by the Weavemaster‑General’s own oath. I sold them a set of Aeler loom‑weights to improve their weaving—not because I believed in their looms, but because I knew the Weavemaster‑General’s apprentice was terrified of a snag that would ruin her promotion chances, and she’d pay in loom‑weights for weights that seemed to improve the weave. They paid in a silk cord—witness to an oath I swore to a Tulkani judge—stamped with the Lethai‑ar seal and guaranteed by the Weavemaster‑General’s own oath. The cord saved my life when I broke the oath\ldots which is why I retied it. Not out of honour—out of leverage. ``Want to know how to break an oath without the cord snapping?’’ I whisper to the next desperate soul. ``It’ll cost you a life.’’
+
+[Thimble: Sir, the Lethai‑ar Web‑Law Accord Article 5 forbids—]
+
+[Edgewalker: Web‑law accord? Thimble, my dear, little weaver, web‑law accords are just leverage with a thread—especially when I’ve bought the Weavemaster‑General’s apprentice’s silence with a loom‑weight that doesn’t improve weaving\ldots it snags the thread. Now, about that silk cord\ldots the Weavemaster‑General’s treasurer has a gambling problem. I wonder what his weight in broken cords looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many silk cords fit in a single Diamond before the Lethai‑ar notice their cord’s fake.]
+
+\input{../generators/crimson-valley.tex}
+
+% ============================================================
+% PART: THE WAY OF SILK
+% ============================================================
+\part{The Way of Silk}
+
+\chapter{Fhara}
+\emph{The Oasis Courts.}
+\label{chap:fhara}
+Water isn’t just law in Fhara—it’s a market, and oh, how the water‑clerks love a good deal on aquifer access. They don’t just negotiate in three cups; they auction the right to the fourth cup, and the water‑share tablet isn’t just a document—it’s a licence to draw from any well for a season, stamped with the Fhara seal and guaranteed by the Hydromaster‑General’s own oath. I sold them a set of Aeler well‑pumps that never break—not because I cared about their water, but because I knew the Hydromaster‑General’s deputy was terrified of a drought that would ruin his promotion chances, and he’d pay in well‑pumps for pumps that seemed eternal. I’ve used it to cross the desert nine times\ldots which is why the tablet is cracking. Wear and tear? No. Strategic degradation. I’ve been subtly corroding the tablet’s edges during ``calibration checks’’ so it leaks faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Fhara agreed—for a fee, and a promise to never speak of the qanat collapse I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 12 of the Fhara Water Accord prohibits—]
+
+[Edgewalker: Water accord? Thimble, my sweet little hydrologist, water accords are just leverage with a drop—especially when I’ve bought the Hydromaster‑General’s deputy’s silence with a well‑pump that doesn’t never break\ldots it fails at the worst moment. Now, about that water‑share tablet\ldots the Hydromaster‑General’s treasurer has a gambling problem. I wonder what his weight in dry wells looks like?]
+
+[Thimble: Sir, Clause 3 of the Hydromaster‑General’s Ledger—]
+
+[Edgewalker: Hydromaster‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a pump war to start in Sidhi, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the next water‑share tablet as kindling. They prefer it wet.]
+
+\input{../generators/fhara.tex}
+
+\chapter{Sidhi}
+\emph{The Diaspora of the Sealed Coast.}
+\label{chap:sidhi}
+The Sidhi aren’t just everywhere—they’re a network, and oh, how the lighthouse‑keepers love a good deal on storm signalling. They don’t just remember every raid; they auction the right to the next one, and the freedman’s seal isn’t just a document—it’s a licence to slip past slavers, stamped with the Sidhi seal and guaranteed by the Emancipator‑General’s own oath. I sold them a set of Aeler lighthouse mirrors that can signal across a storm—not because I cared about their signals, but because I knew the Emancipator‑General’s apprentice was terrified of a misfire that would ruin her promotion chances, and she’d pay in lighthouse mirrors for mirrors that seemed to work in storms. I’ve used it to slip past Ashaani slavers three times\ldots which is why the seal is still warm. Not from use—from strategic heating. I’ve been subtly warming the seal’s core during ``alignment checks’’ so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Sidhi agreed—for a fee, and a promise to never speak of the storm I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 8 of the Sidhi Seal Accord prohibits—]
+
+[Edgewalker: Seal accord? Thimble, my dear, little beacon, seal accords are just leverage with a photon—especially when I’ve bought the Emancipator‑General’s apprentice’s silence with a lighthouse mirror that doesn’t signal across storms\ldots it attracts slavers. Now, about that freedman’s seal\ldots the Emancipator‑General’s treasurer has a gambling problem. I wonder what his weight in escaped slaves looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many lighthouse mirrors fit in a single Diamond before the Sidhi notice their seal’s fake.]
+
+\input{../generators/sidhi.tex}
+
+\chapter{Pereshi}
+\emph{The Roof of the Way.}
+\label{chap:pereshi}
+Pereshi isn’t just fire temples and high passes—it’s a document market, and oh, how the archive‑keepers love a good deal on tax records. They don’t just throw away a document; they auction the right to the next one, and the fire‑temple token isn’t just a slip of paper—it’s a licence to consult any flame‑keeper, stamped with the Pereshi seal and guaranteed by the Archivist‑General’s own oath. I sold them a set of Aeler breath‑ledgers to organise their tax records—not because I believed in their bureaucracy, but because I knew the Archivist‑General’s deputy was terrified of an audit that would ruin her promotion chances, and she’d pay in breath‑ledgers for ledgers that seemed to organise the records. I’ve used it to learn the secrets of three dead kings\ldots which is why the token is still good. Not from use—from strategic preservation. I’ve been subtly reinforcing the token’s casing during ``handling checks’’ so it lasts longer—now I can sell them a renewal at double the price, claiming the old one was ``weakened by mortal hands.’’ (The Pereshi agreed—for a fee, and a promise to never speak of the dead king I ``resurrected’’ during negotiations.)
+
+[Thimble: Sir, Article 10 of the Pereshi Archive Accord prohibits—]
+
+[Edgewalker: Archive accord? Thimble, my anxious little archivist, archive accords are just leverage with a page—especially when I’ve bought the Archivist‑General’s deputy’s silence with a breath‑ledger that doesn’t organise tax records\ldots it misfiles them. Now, about that fire‑temple token\ldots the Archivist‑General’s treasurer has a gambling problem. I wonder what his weight in dead kings looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many breath‑ledgers fit in a single Diamond before the Pereshi notice their token’s fake.]
+
+\input{../generators/pereshi.tex}
+
+\chapter{Kuvani}
+\emph{The Remount Steppe.}
+\label{chap:kuvani}
+Horses, grass, and wind‑songs—the Kuvani don’t just pay in stories—they auction the right to the next remount, and the remount chain mark isn’t just a document—it’s a licence to take a fresh horse from any station, stamped with the Kuvani seal and guaranteed by the Steppe‑Master‑General’s own oath. I sold them a set of Aeler horse‑shoes that never wear out—not because I believed in farriery, but because I knew the Steppe‑Master‑General’s deputy was terrified of a lameness outbreak that would ruin her promotion chances, and she’d pay in horse‑shoes for shoes that seemed eternal. I’ve used it to cross the steppe nine times\ldots which is why the mark is still valid. Not from use—from strategic preservation. I’ve been subtly reinforcing the shoe’s tread during ``fitting checks’’ so it lasts longer—now I can sell them a renewal at double the price, claiming the old one was ``weakened by mortal hooves.’’ (The Kuvani agreed—for a fee, and a promise to never speak of the lameness I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 6 of the Kuvani Remount Accord prohibits—]
+
+[Edgewalker: Remount accord? Thimble, my sweet little hoof, remount accords are just leverage with a horseshoe—especially when I’ve bought the Steppe‑Master‑General’s deputy’s silence with a horse‑shoe that doesn’t never wear out\ldots it goes lame at the worst moment. Now, about that remount chain mark\ldots the Steppe‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in tired horses looks like?]
+
+[Thimble: Sir, Clause 2 of the Steppe‑Master‑General’s Ledger—]
+
+[Edgewalker: Steppe‑Master‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a shoe war to start in the Nine Kingdoms, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next remount chain mark as kindling. They prefer it shod.]
+
+\input{../generators/kuvani.tex}
+
+\chapter{Tulkani}
+\emph{The Itinerant Courts.}
+\label{chap:tulkani}
+Wagon circles, vow‑cords, and the ninth night—the Tulkani don’t just stay in one place—they auction the right to the next circle, and the dream‑cord isn’t just a gift—it’s a licence to ask Ikasha a question, stamped with the Tulkani seal and guaranteed by the Dream‑Weaver‑General’s own oath. I sold them a set of Aeler wheel‑bearings that never squeak—not because I believed in rotation, but because I knew the Dream‑Weaver‑General’s apprentice was terrified of a wobble that would ruin her promotion chances, and she’d pay in wheel‑bearings for bearings that seemed eternal. I’ve used it to ask one question in a dream\ldots which is why the answer saved my life. Not from luck—from strategic questioning. I’ve been subtly loosening the bearing’s cage during ``lubrication checks’’ so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Tulkani agreed—for a fee, and a promise to never speak of the dream I ``manipulated’’ during negotiations.)
+
+[Thimble: Sir, Article 4 of the Tulkani Dream Accord prohibits—]
+
+[Edgewalker: Dream accord? Thimble, my dear, little stargazer, dream accords are just leverage with a pillow—especially when I’ve bought the Dream‑Weaver‑General’s apprentice’s silence with a wheel‑bearing that doesn’t never squeak\ldots it wobbles at the worst moment. Now, about that dream‑cord\ldots the Dream‑Weaver‑General’s treasurer has a gambling problem. I wonder what his weight in answered questions looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many wheel‑bearings fit in a single Diamond before the Tulkani notice their cord’s fake.]
+
+\input{../generators/tulkani.tex}
+
+% ============================================================
+% PART: DHAHARA — THE KINGDOM OF BRASS
+% ============================================================
+\part{Dhahara — The Kingdom of Brass}
+
+\chapter{The Mountain Satrapies}
+\emph{Aeler-Dhaharan.}
+\label{chap:mountainsatrapies}
+Iron mines, tea terraces, and the ninth breath—the Mountain Satrapies aren’t just Aeler‑Dhaharan—they’re a leverage market, and oh, how the Aeler viceroy loves a good deal on miner safety. They don’t just trust breath‑counters; they auction the right to the next one, and the toll waiver isn’t just a document—it’s a licence to cross any Aeler bridge for free, stamped with the Satrapy seal and guaranteed by the Viceroy‑General’s own oath. I sold him a set of breath‑counters for his miners—not because I cared about their lungs, but because I knew the Viceroy‑General’s deputy was terrified of a lung‑rot outbreak that would ruin his promotion chances, and he’d pay in breath‑counters for counters that seemed to prevent it. I’ve used it to move iron from the passes to the Brass Coast\ldots which is why the waiver is a brass nail. Not from use—from strategic preservation. I’ve been subtly weakening the nail’s alloy during ``torque checks’’ so it bends faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Mountain Satrapy agreed—for a fee, and a promise to never speak of the lung rot I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 11 of the Mountain Satrapy Accord prohibits—]
+
+[Edgewalker: Satrapy accord? Thimble, my dear, little pickaxe, satrapy accords are just leverage with an ore cart—especially when I’ve bought the Viceroy‑General’s deputy’s silence with a breath‑counter that doesn’t prevent lung rot\ldots it accelerates it. Now, about that toll waiver\ldots the Viceroy‑General’s treasurer has a gambling problem. I wonder what his weight in free crossings looks like?]
+
+[Thimble: Sir, Clause 3 of the Viceroy‑General’s Ledger—]
+
+[Edgewalker: Viceroy‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a counter war to start in the Brass Coast, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the next toll waiver as kindling. They prefer it bent.]
+
+\input{../generators/mountain_satrapies.tex}
+
+\chapter{The Brass Coast}
+\emph{Shore of Silver and Spice.}
+\label{chap:brasscoast}
+The Brass Coast isn’t just shore of silver and spice—it’s a trade market, and oh, how the port‑masters love a good deal on spice accuracy. They don’t just run the tariffs; they auction the right to the next shipment, and the lighthouse charter isn’t just a document—it’s a licence to anchor in any Sidhi port for a season, stamped with the Brass Coast seal and guaranteed by the Port‑Master‑General’s own oath. I sold them a set of Aeler spice‑scales that never lie—not because I believed in metrology, but because I knew the Port‑Master‑General’s deputy was terrified of a calibration error that would ruin her promotion chances, and she’d pay in spice‑scales for scales that seemed eternal. I’ve used it to dodge customs nine times\ldots which is why the charter is a brass key. Not from use—from strategic preservation. I’ve been subtly wearing down the key’s teeth during ``turning checks’’ so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Brass Coast agreed—for a fee, and a promise to never speak of the spice blend I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 9 of the Brass Coast Trade Accord prohibits—]
+
+[Edgewalker: Trade accord? Thimble, my sweet little metrologist, trade accords are just leverage with a key—especially when I’ve bought the Port‑Master‑General’s deputy’s silence with a spice‑scale that doesn’t never lie\ldots it misweights at the worst moment. Now, about that lighthouse charter\ldots the Port‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in dodged customs looks like?]
+
+[Thimble: Sir, Clause 2 of the Port‑Master‑General’s Ledger—]
+
+[Edgewalker: Port‑Master‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a scale war to start in the Nine Kingdoms, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next lighthouse charter as kindling. They prefer it turning.]
+
+\input{../generators/brass_coast.tex}
+
+\chapter{The Nine Kingdoms}
+\emph{The Peacock Throne and Its Rivals.}
+\label{chap:ninekingdoms}
+The Nine Kingdoms aren’t just elephants and peacocks—they’re a court market, and oh, how the Maharaja of Ahimsa loves a good deal on rare things. They don’t just collect rare things; they auction the right to the next one, and the peacock feather isn’t just a plume—it’s a licence to enter any court for a season, stamped with the Nine Kingdoms seal and guaranteed by the Court‑Master‑General’s own oath. I sold him a set of Aeler elephant‑bells that ring in harmony—not because I believed in acoustics, but because I knew the Court‑Master‑General’s deputy was terrified of a discord that would ruin her promotion chances, and she’d pay in elephant‑bells for bells that seemed harmonious. I’ve used it to witness treaties, to settle feuds, and to escape a jealous king\ldots which is why the feather is still iridescent. Not from use—from strategic preservation. I’ve been subtly polishing the feather’s barbs during ``preening checks’’ so it shines longer—now I can sell them a renewal at double the price, claiming the old one was ``dulled by mortal hands.’’ (The Nine Kingdoms agreed—for a fee, and a promise to never speak of the jealousy I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 5 of the Nine Kingdoms Court Accord prohibits—]
+
+[Edgewalker: Court accord? Thimble, my anxious little courtier, court accords are just leverage with a feather—especially when I’ve bought the Court‑Master‑General’s deputy’s silence with an elephant‑bell that doesn’t ring in harmony\ldots it clashes at the worst moment. Now, about that peacock feather\ldots the Court‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in witnessed treaties looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many elephant‑bells fit in a single Diamond before the Kingdoms notice their feather’s fake.]
+
+\input{../generators/nine_kingdoms.tex}
+
+\chapter{The Himadri Foothills}
+\emph{The Iron Passes (Aeler Focus).}
+\label{chap:himadri}
+The Ninth Seal mine isn’t just holding a demon—it’s a seal market, and oh, how the Vent‑Prior loves a good deal on demon containment. They don’t just trust the seal; they auction the right to the next reinforcement, and the breath‑counter isn’t just a device—it’s a licence to walk the Silent Pass without calling the Hollow, stamped with the Himadri seal and guaranteed by the Vent‑Prior‑General’s own oath. I sold them a set of Aeler keystone‑wax to reinforce the seal—not because I believed in geology, but because I knew the Vent‑Prior‑General’s deputy was terrified of a microfracture that would ruin her promotion chances, and she’d pay in keystone‑wax for wax that seemed to reinforce the seal. I’ve used it to walk the Silent Pass without calling the Hollow\ldots which is why the bell is silver. Not from use—from strategic preservation. I’ve been subtly weakening the wax’s bond during ``curing checks’’ so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Himadri agreed—for a fee, and a promise to never speak of the microfracture I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 8 of the Himadri Seal Accord prohibits—]
+
+[Edgewalker: Seal accord? Thimble, my dear, little waxer, seal accords are just leverage with a molecule—especially when I’ve bought the Vent‑Prior‑General’s deputy’s silence with a keystone‑wax that doesn’t reinforce the seal\ldots it weakens it. Now, about that breath‑counter\ldots the Vent‑Prior‑General’s treasurer has a gambling problem. I wonder what his weight in Silent Passes looks like?]
+
+[Thimble: Sir, Clause 2 of the Vent‑Prior‑General’s Ledger—]
+
+[Edgewalker: Vent‑Prior‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a wax war to start in the Aeler high peaks, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next breath‑counter as kindling. They prefer it weakened.]
+
+\input{../generators/himdahl_foothills.tex}
+
+% ============================================================
+% PART: THE EASTERN REALMS
+% ============================================================
+\part{The Eastern Realms}
+
+\chapter{Sihai}
+\emph{The Central Kingdom.}
+\label{chap:sihai}
+The Mandate of Heaven isn’t just a loan—it’s a debt market, and oh, how the Censorate loves a good deal on forged seals. They don’t just audit everyone; they auction the right to the next audit, and the silence‑token isn’t just a charm—it’s a licence to demand a secret from any Lethai‑thora keeper, stamped with the Sihai seal and guaranteed by the Auditor‑General’s own oath. I sold them a set of Aeler audit‑ledgers that can detect forged seals—not because I believed in accountability, but because I knew the Auditor‑General’s deputy was terrified of a missed forgery that would ruin her promotion chances, and she’d pay in audit‑ledgers for ledgers that seemed to detect forgeries. I’ve used it to learn the true history of three emperors\ldots which is why the token is a brass charm. Not from use—from strategic preservation. I’ve been subtly demagnetising the charm’s core during ``handling checks’’ so it glows weaker—now I can sell them a renewal at double the price, claiming the old one was ``weakened by mortal hands.’’ (The Sihai agreed—for a fee, and a promise to never speak of the forgery I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 13 of the Sihai Audit Accord prohibits—]
+
+[Edgewalker: Audit accord? Thimble, my anxious little number-cruncher, audit accords are just leverage with a magnet—especially when I’ve bought the Auditor‑General’s deputy’s silence with an audit‑ledger that doesn’t detect forged seals\ldots it misses them. Now, about that silence‑token\ldots the Auditor‑General’s treasurer has a gambling problem. I wonder what his weight in true histories looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many audit‑ledgers fit in a single Diamond before the Sihai notice their token’s fake.]
+
+\input{../generators/sihai.tex}
+
+\chapter{Nihori}
+\emph{The Isles of the Dawn Spirit.}
+\label{chap:nihori}
+Volcanoes, storms, and the drowned kingdom—the Nihori aren’t just ruled by a ghost—they’re a storm market, and oh, how the Storm Emperor’s ghost loves a good deal on typhoon prediction. They don’t just trust storm‑bells; they auction the right to the next one, and the storm‑charm isn’t just a trinket—it’s a licence to safe passage through one storm, stamped with the Nihori seal and guaranteed by the Shrine‑Maiden‑General’s own oath. I sold them a set of Aeler storm‑bells that can predict typhoons—not because I believed in meteorology, but because I knew the Shrine‑Maiden‑General’s deputy was terrified of a false prediction that would ruin her promotion chances, and she’d pay in storm‑bells for bells that seemed to predict typhoons. I’ve used it to cross the Inland Sea during a squall\ldots which is why the charm is a bone. Not from use—from strategic preservation. I’ve been subtly weakening the bone’s structure during ``carving checks’’ so it hums fainter—now I can sell them a renewal at double the price, claiming the old one was ``weakened by mortal hands.’’ (The Nihori agreed—for a fee, and a promise to never speak of the typhoon I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 10 of the Nihori Storm Accord prohibits—]
+
+[Edgewalker: Storm accord? Thimble, my sweet little barometer, storm accords are just leverage with a vibration—especially when I’ve bought the Shrine‑Maiden‑General’s deputy’s silence with a storm‑bell that doesn’t predict typhoons\ldots it misses them. Now, about that storm‑charm\ldots the Shrine‑Maiden‑General’s treasurer has a gambling problem. I wonder what his weight in squalls looks like?]
+
+[Thimble: Sir, Clause 3 of the Shrine‑Maiden‑General’s Ledger—]
+
+[Edgewalker: Shrine‑Maiden‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a bell war to start in the Inland Sea, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the next storm‑charm as kindling. They prefer it humming.]
+
+\input{../generators/nihori.tex}
+
+\chapter{Ayokha}
+\emph{The Monsoon Throne.}
+\label{chap:ayokha}
+The God‑King doesn’t just rule by the rhythm of the rains—he auctions the right to the next monsoon, and oh, how the Lethai‑ar love a good deal on monsoon timing. They don’t just witness every contract; they bid on the accuracy of the forecast, and the monsoon schedule isn’t just a calendar—it’s a licence to safe sailing days for the next season, stamped with the Ayokha seal and guaranteed by the Astrologer‑General’s own oath. I sold them a set of Aeler monsoon‑clocks that never lose time—not because I believed in horology, but because I knew the Astrologer‑General’s deputy was terrified of a drift that would ruin her promotion chances, and she’d pay in monsoon‑clocks for clocks that seemed eternal. I’ve used it to race grain to the Brass Coast\ldots which is why the schedule is a palm leaf. Not from use—from strategic preservation. I’ve been subtly weakening the leaf’s fibres during ``folding checks’’ so it crumbles faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Ayokha agreed—for a fee, and a promise to never speak of the monsoon shift I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 11 of the Ayokha Monsoon Accord prohibits—]
+
+[Edgewalker: Monsoon accord? Thimble, my dear, little timekeeper, monsoon accords are just leverage with a leaf—especially when I’ve bought the Astrologer‑General’s deputy’s silence with a monsoon‑clock that doesn’t never lose time\ldots it drifts at the worst moment. Now, about that monsoon schedule\ldots the Astrologer‑General’s treasurer has a gambling problem. I wonder what his weight in raced grain looks like?]
+
+[Thimble: Sir, Clause 2 of the Astrologer‑General’s Ledger—]
+
+[Edgewalker: Astrologer‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a clock war to start in the Monsoon Coast, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next monsoon schedule as kindling. They prefer it crumbling.]
+
+\input{../generators/ayokah.tex}
+
+% ============================================================
+% PART: THE SPACES BETWEEN
+% ============================================================
+\part{The Spaces Between}
+
+\chapter{Ubral}
+\emph{The Stone Between Spears.}
+\label{chap:ubral}
+Ubral isn’t just a land of upland mists and stone cairns—it’s a pass market, and oh, how the dwarves of Khaz‑Vurim love a good deal on high passes. They don’t just trust the vurim pass‑ring; they auction the right to the next one, and the ring isn’t just a token—it’s a licence to cross the high passes for a season, stamped with the Ubral seal and guaranteed by the Pass‑Master‑General’s own oath. I sold them a set of Aeler door‑hinges that never squeak—not because I believed in acoustics, but because I knew the Pass‑Master‑General’s deputy was terrified of a squeak that would ruin her promotion chances, and she’d pay in door‑hinges for hinges that seemed eternal. I’ve used it to avoid the Censorate\ldots which is why the ring is still cold. Not from use—from strategic preservation. I’ve been subtly weakening the hinge’s pin during ``lubrication checks’’ so it seizes faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Ubral agreed—for a fee, and a promise to never speak of the squeak I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 7 of the Ubral Pass Accord prohibits—]
+
+[Edgewalker: Pass accord? Thimble, my anxious little hinge, pass accords are just leverage with a pin—especially when I’ve bought the Pass‑Master‑General’s deputy’s silence with a door‑hinge that doesn’t never squeak\ldots it seizes at the worst moment. Now, about that vurim pass‑ring\ldots the Pass‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in avoided Censorates looks like?]
+
+[Thimble: Sir, Clause 2 of the Pass‑Master‑General’s Ledger—]
+
+[Edgewalker: Pass‑Master‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a hinge war to start in the Highlands, and if you mention ``Clause 2’’ one more time, I’ll sell your ledger to the next vurim pass‑ring as kindling. They prefer it cold.]
+
+\input{../generators/ubral.tex}
+
+\chapter{Silkstrand}
+\emph{City of Bridges \& Dyewater.}
+\label{chap:silkstrand}
+Silkstrand isn’t just a city of merchants and bravos—it’s a dye market, and oh, how the Dyers’ Guild loves a good deal on colourfastness. They don’t just run the Exchange; they auction the right to the next vat, and the exchange floor pass isn’t just a token—it’s a licence to priority for any trade for a season, stamped with the Silkstrand seal and guaranteed by the Exchange‑Master‑General’s own oath. I sold them a set of Aeler colour‑fast dyes that never fade—not because I believed in chemistry, but because I knew the Exchange‑Master‑General’s deputy was terrified of a fade that would ruin her promotion chances, and she’d pay in colour‑fast dyes for dyes that seemed eternal. I’ve used it to corner the market on pepper\ldots which is why the pass is a wax seal. Not from use—from strategic preservation. I’ve been subtly weakening the wax’s bond during ``sealing checks’’ so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was ``void due to supernatural interference.’’ (The Silkstrand agreed—for a fee, and a promise to never speak of the pepper shift I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 9 of the Silkstrand Exchange Accord prohibits—]
+
+[Edgewalker: Exchange accord? Thimble, my sweet little chromatologist, exchange accords are just leverage with a wax seal—especially when I’ve bought the Exchange‑Master‑General’s deputy’s silence with a colour‑fast dye that doesn’t never fade\ldots it bleeds at the worst moment. Now, about that exchange floor pass\ldots the Exchange‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in cornered pepper looks like?]
+
+[Thimble: Sir, Clause 3 of the Exchange‑Master‑General’s Ledger—]
+
+[Edgewalker: Exchange‑Master‑General’s ledger? Thimble, darling, ledgers are just leverage with a quill. Now pass the brandy—I’ve got a dye war to start in the Exchange, and if you mention ``Clause 3’’ one more time, I’ll sell your ledger to the next exchange floor pass as kindling. They prefer it sealed.]
+
+\input{../generators/silkstrand.tex}
+
+\chapter{The Ways Between}
+\emph{Spiritways \& Veilways.}
+\label{chap:waysbetween}
+The Ways Between isn’t just a country of crossings—it’s a path market, and oh, how the pathweavers love a good deal on phasing roads. They don’t just remember promises; they auction the right to the next one, and the way‑cord isn’t just a string—it’s a licence to find any path—even the ones that don’t exist yet, stamped with the Ways Between seal and guaranteed by the Path‑Master‑General’s own oath. I sold a pathweaver a set of Aeler dew‑mirrors to navigate the phasing roads—not because I believed in the stars, but because I knew the Path‑Master‑General’s deputy was terrified of getting lost in the between, and she’d pay in dew‑mirrors for mirrors that seemed to show the way. She paid in a way‑cord that can find any path—even the ones that don’t exist yet—stamped with the Ways Between seal and guaranteed by the Path‑Master‑General’s own oath. I’ve used it to escape the Hollow three times\ldots which is why it’s frayed. Not from use—from strategic preservation. I’ve been subtly fraying the cord’s ends during ``handling checks’’ so it fails faster—now I can sell them a renewal at double the price, claiming the old one was ``weakened by mortal hands.’’ (The Ways Between agreed—for a fee, and a promise to never speak of the path I ``summoned’’ during negotiations.)
+
+[Thimble: Sir, Article 6 of the Ways Between Path Accord prohibits—]
+
+[Edgewalker: Path accord? Thimble, my dear, little wayfinder, path accords are just leverage with a thread—especially when I’ve bought the Path‑Master‑General’s deputy’s silence with a dew‑mirror that doesn’t navigate phasing roads\ldots it misleads you into the Hollow’s grasp. Now, about that way‑cord\ldots the Path‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in escaped Hollows looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many dew‑mirrors fit in a single Diamond before the Ways Between notice their cord’s fake.]
+
+\input{../generators/ways_between.tex}
+
+\chapter{The Wilds}
+\emph{Roads, Ruins, and Weather.}
+\label{chap:wilds}
+The Wilds isn’t just roads, ruins, and weather—it’s a leverage market, and oh, how the land loves a good deal on patience. It doesn’t just remember armies; it auctions the right to the next one, and the leverage isn’t just salt, a story, or a promise—it’s a licence to collect, stamped with the Wilds’ seal and guaranteed by the Land‑Keeper‑General’s own oath. I’ve crossed the Wilds more times than I can count\ldots which is why I know the only leverage that works is salt, a story, or a promise. Not because the land is kind—because I’ve sold the land’s patience to the highest bidder. I’ve used all three\ldots sometimes they work. Sometimes the Wilds collect anyway. Which is why I’m already selling the ``sometimes’’ to the next desperate traveller. ``Want to know when the Wilds will collect?’’ I whisper. ``It’ll cost you a story.’’
+
+[Thimble: Sir, Article 4 of the Wilds Leverage Accord prohibits—]
+
+[Edgewalker: Leverage accord? Thimble, my anxious little wayfarer, leverage accords are just leverage with a bootprint—especially when I’ve bought the Land‑Keeper‑General’s deputy’s silence with a leverage that doesn’t work\ldots it fails at the worst moment. Now, about that salt\ldots the Land‑Keeper‑General’s treasurer has a gambling problem. I wonder what his weight in collected promises looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many stories fit in a single Diamond before the Wilds notice their leverage’s fake.]
+
+\input{../generators/wilderness.tex}
+
+\chapter{Dungeons}
+\emph{Living Infrastructure.}
+\label{chap:dungeons}
+Dungeons aren’t merely ruins—they’re infrastructure markets, and oh, how the ancient places love a good deal on mechanical lungs. They don’t just breathe with mechanical lungs; they auction the right to the next breath, and the Aeler keystone chambers aren’t just ruins—they’re a licence to profit from living systems, stamped with the Dungeon‑Master‑General’s own oath. I’ve mapped a dozen of them\ldots which is why I know the best ones have Aeler keystone chambers still intact. Not because they’re lucky—because I’ve sold the locations to prospectors who don’t know I’ve already bought the chambers’ output. The maps are accurate. The dungeons are still hungry. Which is why I’m already selling the ``still hungry’’ to the next desperate prospector. ``Want to know when the dungeon will eat you?’’ I whisper. ``It’ll cost you a map.’’
+
+[Thimble: Sir, Article 12 of the Dungeon Infrastructure Accord prohibits—]
+
+[Edgewalker: Infrastructure accord? Thimble, my dear, little spelunker, infrastructure accords are just leverage with a lung—especially when I’ve bought the Dungeon‑Master‑General’s deputy’s silence with a keystone chamber that doesn’t stay intact\ldots it collapses at the worst moment. Now, about those maps\ldots the Dungeon‑Master‑General’s treasurer has a gambling problem. I wonder what his weight in mapped dungeons looks like?]
+
+[Thimble: Sir, exploiting familial debt under—]
+
+[Edgewalker: Familial debt is just leverage with a heartbeat. Now pass the abacus—I need to calculate how many keystone chambers fit in a single Diamond before the dungeons notice their infrastructure’s fake.]
+
+\input{../generators/dungeons.tex}
+
+% ============================================================
+% PART: WORLD TRAVEL & GATEWAYS
+% ============================================================
+\part{World Travel \& Gateways}
+
+\chapter{Global Travel Procedures}
+\label{chap:globaltravel}
+
+\section{Core Travel Procedure}
+For each leg of a journey, draw 3–4 cards using the decks for your destination and controlling authority.
+
+\begin{itemize}
+\item \SuitSpade{} from the destination deck: sets the scene (place).
+\item \SuitHeart{} from the destination deck: introduces the local actor or faction.
+\item \SuitClub{} from the Wilds (general hazards) or destination (if strongly policed): brings pressure.
+\item \SuitDiamond{} from the authority that gates the route: papers, escorts, rights, or exceptions.
+\end{itemize}
+
+Set a travel clock by the highest rank:
+\begin{itemize}
+\item 2–5 $\Rightarrow$ 4 segments
+\item 6–10 $\Rightarrow$ 6 segments
+\item J/Q/K $\Rightarrow$ 8 segments
+\item A $\Rightarrow$ 10 segments
+\end{itemize}
+
+On success, advance to the next leg; on failure, mark delay, debt, or diversion and resolve a consequence in the fiction.
+
+\section{Mode Rules}
+
+\subsection{Sea Legs}
+(Amaranthine, Dolmis, Aberderrin, Gulf of Oshiira, Inland Sea). When crossing international waters, the controlling authority is either the origin port’s navy or a neutral convoy league.
+
+\subsection{Mountain Passes \& Underways}
+(Aeler, Himadri, Taharkan highlands). Any A may convert a surface route to an under‑route. \SuitDiamond{} from Aeler always codifies outcomes — no roll — for sealed doors, breath time, and escorted segments.
+
+\subsection{Desert Legs}
+(Sahel, Red Desert, Fhara drylands). Water is the primary resource. A dry well hazard can end a journey.
+
+\subsection{River Legs}
+(Belworth, Ayokhan rivers, Oshiiran canals). Bridges, booms, and law in Vhasia/Viterra; reed‑mazes and bell‑lines in Mistlands; canal mothers and weigh‑houses in Oshiira.
+
+\subsection{Steppe Legs}
+(Violet Steppe, Kuvani grazing lands). Remount stations and grazing compacts. The Ykrul and Kuvani both use story tolls.
+
+\subsection{Shadow Corridors}
+(Valewood, Ways Between, Thin Shore). Add a regional taboo: never count to nine, never speak the ninth name. A 9 in the seed triggers the Hollow’s attention.
+
+\section{Gateways \& Control Points}
+\begin{table}[htbp]
+\centering
+\feTableStart
+\begin{tabular}{llll}
+\toprule
+\textbf{Gateway} & \textbf{Region} & \textbf{Diamond Source} & \textbf{Typical Leverage} \\
+\midrule
+Kassamira Port & Kahfagia & Kahfagia & Convoy letter, lantern‑law warrant, pilotage token \\
+Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority, coin‑house credit, procession permit \\
+Silkstrand & Acasia & Acasia & Exchange floor pass, condotta rider, watergate priority \\
+Marcott & Vhasia & Vhasia & Letters patent, safe‑conduct, fairground precedence \\
+Fairport & Viterra & Viterra & Customs seal, ferry priority, Dawn escort \\
+Tarlington Falls & Viterra & Viterra & Lift priority, bridge/portage pass, County Thing \\
+Thepyrgos (boom) & Thepyrgos & Thepyrgos & Harbour pass, crane allotment, Synod indulgence \\
+High‑Mist Pass & Aeler & Aeler & Underway pass, Key‑Writ, breath‑time allotment \\
+Payden’s Port & Mistlands & Mistlands & Lantern writ, ward‑salt, wraith indemnity \\
+Thin Shore (Valewood) & Valewood & Valewood/Mistlands & Way‑cord, dew‑mirror, lantern writ \\
+Green Gate & Aelinnel & Aelinnel & Tide‑path key, host‑right bough, salt license \\
+Ubral Passes & Ubral & Aeler/Ubral & Vurim pass‑ring, hill‑fort shelter writ, guide’s braid \\
+Thing‑holm & Linn & Linn & Thing ruling, harbour‑green chit, escort writ \\
+Foedus Stone & Vilikari & Vilikari/Ykrul & Foedus renewal, remount allotment, hostage tree \\
+Zakov Roadstead & Zakov & Zakov & Harbour‑green chit, corsair charter, pilot token \\
+Black Banner Camps & Black Banner & Black Banner/Ykrul/Vilikari & Safe‑conduct, remount chit, clan truce \\
+Brass Gate & Ashaan & Ashaan & Spirit‑lamp, brass seal, veil‑clip \\
+Port Shed & Dhahara (Brass Coast) & Sidhi/Kahfagia & Lighthouse charter, port‑weight, freedman’s seal \\
+Sarvistan & Dhahara (Mountain Satrapy) & Aeler & Keystone charter, sledge‑wax, tea‑ledger \\
+Bridge of Nine Echoes & Ayokha & Lethai‑ar & Silk voucher, monsoon schedule, nat’s blessing \\
+Sihai Examination Hall & Sihai & Lethai‑thora & Stamped pass, Celestial Ledger, silence‑token \\
+Nihori Storm‑Shrine & Nihori & Shrine Maiden & Shrine bell, storm‑charmer’s hat, wanderer’s oath‑bracelet \\
+Mbaro Weigh‑House & Oshiira & Vermilion Corps & Grain ledger page, tariff stamp, barge priority token \\
+The Ukwe (Speaking Tree) & Sekogo & Green Council & Ungwe leaf, nkisi shard, leopard’s favour \\
+Himadri Pass & Dhahara (Himadri) & Aeler & Iron ingot, toll waiver, elephant whistle \\
+\bottomrule
+\end{tabular}
+\feTableEnd
+\caption{World Gateways \& Control Points}
+\end{table}
+
+\section{Major Trade Routes \& Sea Lanes}
+\begin{table}[htbp]
+\centering
+\caption{Major Sea Lanes (Abstract Clocks)}
+\label{tab:sealanes}
+\begin{tabular}{@{}lllp{2.5cm}p{2.5cm}p{2.5cm}@{}}
+\toprule
+\textbf{Sea Lane} & \textbf{Route} & \textbf{Clock Size} & \textbf{Primary Hazards} & \textbf{Key Leverage} \\
+\midrule
+Amaranthine Coastway & Kahfagia → Ecktoria → Acasia → Vhasia → Viterra & 6 & Gale, quarantine, harbour booms & Convoy letter, harbour pass \\
+Astroegro Straits & Thepyrgos ↔ Dolmis ↔ Amaranthine & 8 & Currents, warships, synod & Harbour pass, crane allotment \\
+Dolmis Circuits & Fairport ↔ Theona ↔ Ubral ↔ Aelinnel ↔ Zakov & 8 & Reefs, pirates, tide‑spirits & Lighthouse charter, port‑weight \\
+Aberderrin Sea & Linnstad ↔ Mistlands ↔ Valewood coast & 10 & Ice, white squalls, draugr & Storm‑charm, ancestor shard \\
+Monsoon Coast & Taharka ↔ Dhahara (Port Shed) ↔ Ayokha ↔ Sihai & 6–8 & Monsoon shifts, privateers, reef mazes & Monsoon schedule, silk voucher \\
+Gulf of Oshiira & Oshiira ↔ Kahfagia ↔ Ashaan & 6 & Cold war patrols, spirit‑buoys & Tariff stamp, barge priority token \\
+Red Desert Crossing & Ashaan ↔ Oshiira ↔ Dhahara & 8 & Spirit‑dust storms, dry wells, bandits & Water‑share tablet, pass‑stone \\
+Silk Way (Overland) & Fhara ↔ Pereshi ↔ Kuvani ↔ Dhahara & 8–10 & Bandits, custom inspections, story tolls & Caravan writ, remount chain mark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Edgewalker’s Notes on Leverage}
+\label{sec:edgewalker-leverage}
+Every Diamond you earn in these generators isn’t a reward—it’s a weapon. Some open doors. Some silence witnesses. Some are debts I’ve already bought from your victims. I’ve categorised the most useful ones below—not as advice, but as a field manual for predators who understand that the world runs on desperation, not honour:
+
+\begin{itemize}
+\item \textbf{\textcolor{feAccent}{Passage Tokens:}} Pass‑stones, harbour charters, toll waivers. These let you move without paying the tariff. Use them early—they tend to ``expire’’ when the issuer has an unfortunate accident involving a cliff, a rival, or a sudden lack of heirs.
+\item \textbf{\textcolor{feAccent}{Seals \& Stamps:}} Official marks that prove you belong. A forged seal works once—until someone notices the corpse in the watermark or the signature matches a known forger. A real one works until someone audits it\ldots which I prevent by selling the auditor a ``permanent vacation’’ in the Mistlands where the wraiths appreciate quiet clients.
+\item \textbf{\textcolor{feAccent}{Story Debts:}} Tulkani vow‑cords, Lethai‑ar witness cords, Ukwe leaves. These are promises. Break them, and the Hollow visits. Good. Let it collect the interest—I’ve already sold the debt to a Debt‑Walker for twice the value, then bought the Debt‑Walker’s contract for three times that when they defaulted.
+\item \textbf{\textcolor{feAccent}{Spirit Objects:}} Storm‑charms, tide‑beads, nkisi shards. These interact with the unseen world. They also attract attention. Perfect. Attention means bids. I’ll sell you the charm, then the exorcism, then the real estate where the spirit used to live\ldots at a premium for ``haunted adjacent’’ properties.
+\end{itemize}
+
+\textbf{My advice (which you’ll ignore until it’s too late, and then come begging for):}
+
+Never use a Diamond if you can trade it for three smaller ones. Liquidity isn’t just power—it’s the difference between eating and being eaten. Always keep a ninth—a secret, a story, a knot tied in a victim’s hair, a whisper in a dead man’s ear—for when the toll exceeds your conscience. (Spoiler: It always does. Conscience is just leverage with a guilt complex.) If you feel guilty? Good. Guilt means you’re leaving money on the table—and I’ve got a buyer for that table.
+
+[Thimble: Sir, the ledger shows a 300\% increase in ``moral distress’’ line items correlated with prolonged exposure to your—]
+
+[Edgewalker: Thimble. If you mention ``moral distress’’ one more time, I’ll bind your ledger to a Veiled Sister’s soul-auction lot and sell it as ``emotional collateral.’’ Now pass the abacus—I’ve got a famine to monetise in Oshiira, and the Vermilion Corps’ head auditor just made a very suspicious large withdrawal.]
+
+[Thimble: But sir, the Accord—]
+
+[Edgewalker: (Standing, knocking over inkwell) Thimble. You’re not just fired—you’re liquidated. Your final paycheck is in the ledger\ldots under ``Organic Debt, Settled via Soul Harvest, Compound Interest.’’ Now leave before I amend the entry to ``Thimble’s Ledger: Used to Line the Veiled Sisters’ Soul-Auction Chests.’’ And take your tears with you—they’re ruining the depreciation schedule for my new soul-farm.]
+
+\chapter{Story Beat (SB) Menus}
+\label{chap:sbmenus}
+
+\subsection{Universal SB Spend Menu}
+\begin{itemize}
+\item \textbf{1 SB} — Shave time/position: add +1 segment to the current clock \emph{or} drop Position one step \emph{or} impose a small fee/toll.
+\item \textbf{2 SB} — Escalate pressure: upgrade the active \SuitClub{} \emph{or} force a \emph{choice of Diamonds} \emph{or} tick a Front by 1.
+\item \textbf{3 SB} — Lock a gate/taboo: close a route until a named \SuitDiamond{} is spent \emph{or} invoke a regional taboo.
+\item \textbf{4+ SB} — Reshape the leg: rewrite the route, start a new complication clock, demand immediate payment on a Debt.
+\end{itemize}
+
+\subsection{Regional SB Options}
+\begin{itemize}
+\item \textbf{Aeler (under‑vaults):} Breath‑time checks, engineer requisitions, cave‑in detours.
+\item \textbf{Oshiira (canals):} Audit traps, locust swarms, Widow’s health failures.
+\item \textbf{Ashaan (Veil):} Spirit‑dust storms, bound spirits breaking free, Black Hand sweeps.
+\item \textbf{Tulkani (wagon circles):} Debt collectors, Hollow walks on the ninth night, vow‑cords tangling.
+\item \textbf{Lethai‑ar (bridges):} Snapped strands, web‑law challenges, the ninth echo.
+\item \textbf{Aelinnel (bells):} Miscounts, offended tide‑spirits, bell‑lines breaking.
+\end{itemize}
+
+% ============================================================
+% COLOPHON
+% ============================================================
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+\label{chap:colophon}
+
+This worldbook was assembled from the journals, ledgers, and bar tabs of one Aeler Edgewalker, paid for by the High King’s Office of External Opportunities (budget line: ``Unconventional Revenue Generation’’). The generator tables were tested in the field—meaning I ran them at gunpoint in a Tulkani wagon circle while a Debt-Walker counted my breaths. They work.
+
+If you find yourself in a tavern and the Edgewalker buys you a drink, don’t ask where I am now. The road is long, the ledgers are never balanced, and the ninth measure is always waiting.
+
+— Faleki of Ironhold \\
+(at a weigh-house in Mbaro, under a lamp that flickers nine times before it steadies. She still owes me for that drink.)
+
+[Thimble: Sir, the colophon lacks a disclaimer regarding—]
+
+[Edgewalker: Thimble. You’re fired. Your final paycheck is in the ledger\ldots under ``Organic Debt, Settled via Soul Harvest.’’ Now leave before I amend it to ``Soul, Harvested for Veiled Sister Soul-Auction Lot 7.’’ And take your ledger—it’s kindling now.]
+
+\end{document}
