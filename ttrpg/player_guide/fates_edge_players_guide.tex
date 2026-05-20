@@ -17,6 +17,7 @@
 \titlespacing{\section}{0pt}{12pt}{4pt}
 \titlespacing{\subsection}{0pt}{8pt}{4pt}
 \titlespacing{\subsubsection}{0pt}{6pt}{3pt}
+\raggedbottom  % prevents ugly vertical stretching
 
 \usepackage{etoolbox}
 \AtBeginEnvironment{quote}{\par\singlespacing\small}
@@ -66,13 +67,13 @@
 \tcbuselibrary{breakable, skins}
 \tcbset{breakable=true}
 
-% Load the package (add to preamble)
-\usepackage{fontawesome5} % optional, for icons
+% Optional icons; comment out if fontawesome5 not available
+\usepackage{fontawesome5}
 
 % ----- Effect Sidebar (main) -----
 \newtcolorbox{effectbox}{
-    colback=blue!5,            % very light blue background
-    colframe=blue!75!black,    % dark blue border
+    colback=blue!5,
+    colframe=blue!75!black,
     coltitle=white,
     title={\faRulerCombined\quad Position \& Effect: Risk vs. Reward},
     fonttitle=\bfseries\large,
@@ -82,7 +83,7 @@
     outer arc=4pt,
     titlerule=0pt,
     boxrule=1.5pt,
-    leftrule=6pt,              % thicker left rule for emphasis
+    leftrule=6pt,
     drop shadow=blue!25,
     attach boxed title to top left={yshift=-3mm, xshift=5mm},
     boxed title style={colback=blue!75!black, rounded corners},
@@ -103,19 +104,17 @@
     before skip=8pt,
     after skip=8pt,
 }
-% Make every tcolorbox breakable by default (unless overridden)
 
-% Standard infobox (used for sidebars, tips)
+% ----- Standard infobox (optional) -----
 \newtcolorbox{infobox}[1]{%
   colback=gray5,
   colframe=gray75,
   fonttitle=\bfseries,
   title=#1,
-  breakable,   % explicit; redundant but safe
   arc=0pt
 }
 
-% Player‑managed resources box (philosophy statement)
+% ----- Player‑managed resources box (philosophy) -----
 \newtcolorbox{playermanaged}[1][]{%
     enhanced,
     breakable,
@@ -131,7 +130,7 @@
     #1
 }
 
-% Fate's Edge special box (philosophical asides)
+% ----- General purpose fate box (philosophical asides) -----
 \newtcolorbox{fatebox}[2][]{%
     enhanced,
     breakable,
@@ -172,10 +171,11 @@
 
 \tableofcontents
 
-\include{sections/preface}                 % Welcome, philosophy, safety tools
+% Preface (front matter)
+\include{sections/preface}
 \cleardoublepage
-\mainmatter
 
+\mainmatter
 
 % ============================================================
 % PART I -- FOUNDATIONS
@@ -184,16 +184,19 @@
 \clearpage
 \include{sections/core_mechanics}        % Dice, Position, DV, Boons, Story Beats
 \clearpage
-\include{sections/character_creation}
+\include{sections/character_creation}    % Step‑by‑step character creation
 \clearpage
-\include{sections/items.tex}     % Travel, time, social interaction
+\include{sections/items}                 % Gear, magic items, crafting
 \clearpage
+
 % ============================================================
 % PART II -- MAGIC & HEALING
 % ============================================================
 \include{sections/magic}                 % Magic systems, patrons, rites, free casting
 \clearpage
 \include{sections/healing}               % Healing Fatigue, Harm, magic vs mundane
+\clearpage
+
 % ============================================================
 % PART III -- ADVANCEMENT
 % ============================================================
@@ -207,15 +210,14 @@
 \clearpage
 \include{sections/archetypes}            % Example character concepts (pre‑gens)
 \clearpage
-\include{sections/assets_follower}       % Assets and followers (combined)
+\include{sections/assets_follower}       % Assets and followers
 \clearpage
-\include{sections/downtime.tex}               % Healing Fatigue, Harm, magic vs mundane
-% ============================================================
+\include{sections/downtime}              % What you do between adventures
+\clearpage
 
 % ============================================================
 % PART IV -- WORLD & INTERACTION
 % ============================================================
-
 \include{sections/world_and_cultures}    % Regions, peoples, cultural mechanics
 \clearpage
 \include{sections/world_powers}          % Terrestrial patrons, obligation
@@ -235,13 +237,14 @@
 \include{sections/enhanced_play}         % Advanced player tactics, teamwork, resources
 \clearpage
 
-% Optional: Witch Hunter (expansion material)
+% Optional character sheet (if file exists)
 \IfFileExists{sections/player_ledger.tex}{%
   \include{sections/player_ledger}
   \clearpage
 }{}
+
 \appendix
-\include{sections/appendix}  % Tables, trackers, spell examples
+\include{sections/appendix}              % Tables, trackers, spell examples
 \clearpage
 
 % ============================================================

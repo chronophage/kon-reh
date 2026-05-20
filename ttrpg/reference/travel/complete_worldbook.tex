@@ -1,7 +1,9 @@
 % ============================================================
 % Fate's Edge --- Complete Worldbook
+% Revised with layered narration and regional generators
 % ============================================================
 \documentclass[11pt,letterpaper,twoside]{book}
+
 % ---------- Encoding, fonts, micro-typography ----------
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -53,13 +55,12 @@
 \usepackage{imakeidx}
 \makeindex
 
-% Inline "print + index" helper
 \newcommand{\indexterm}[2][]{%
   \textit{#2}%
   \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi%
 }
 
-% ---------- Table helpers & house style ----------
+% ---------- Table helpers ----------
 \renewcommand{\arraystretch}{1.15}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -81,39 +82,11 @@
 \newcommand{\SuitClub}{\ensuremath{\clubsuit}}
 \newcommand{\SuitDiamond}{\ensuremath{\diamondsuit}}
 
-% ---------- Leg environment ----------
-\newenvironment{Leg}[1]{\textbf{#1:}\begin{itemize}}{\end{itemize}}
-
-% ============================================================
-% Branding & Metadata
-% ============================================================
-\usepackage{etoolbox}
-
+% ---------- Branding ----------
 \definecolor{fePrimary}{HTML}{0D1B2A}
 \definecolor{feAccent}{HTML}{6FFFE9}
 \definecolor{feInk}{HTML}{101418}
 \definecolor{fePaper}{HTML}{F7F7F7}
-
-\newcommand\feTitle{Fate's Edge}
-\newcommand\feSubtitle{Complete Worldbook}
-\newcommand\feTagline{}
-\newcommand\feVersion{}
-\newcommand\fePublisher{}
-\newcommand\feCoverArt{}
-
-\newcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
-\newcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
-\newcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
-\newcommand{\feSetVersion}[1]{\renewcommand\feVersion{#1}}
-\newcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
-\newcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
-
-\newcommand{\textshadow}[4]{%
-  \begingroup
-    \rlap{\raisebox{#2}{\hspace*{#1}\textcolor{#3}{#4}}}#4%
-  \endgroup
-}
-\newcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
 
 \newcommand{\feTitlePage}{%
   \begin{titlepage}
@@ -125,11 +98,8 @@
     \vspace{0.5cm}
     {\large \itshape A Gazetteer of the Known Realms\par}
     \vfill
-    {\large Version 1.0 \par}
-    \vspace{0.2cm}
-    {\large \today \par}
+    {\large \textsc{As told by those who live there, bleed there, and owe there}\par}
     \vspace{1cm}
-    {\large \textsc{As told by the Edgewalker Faeleki of Ironhold}\par}
   \end{titlepage}
 }
 
@@ -139,516 +109,957 @@
 \tableofcontents
 
 % ============================================================
-% EDGEWALKER'S PREFACE
-% ============================================================
-
-% ============================================================
 % PREFACE: THE LEDGER BLEEDS
 % ============================================================
-% ============================================================
-% FATE'S EDGE – COMPLETE WORLDBOOK
-% Revised with layered narration
-% ============================================================
-
 \chapter*{Preface: The Ledger Bleeds}
 \addcontentsline{toc}{chapter}{Preface: The Ledger Bleeds}
 \label{chap:preface}
 
-I am an Aeler Edgewalker. You call us mountain-dwellers who measure breath in silver bells and seal contracts in stone. How adorably naïve. We don’t just measure breath—we own the lungs that draw it. When a Tulkani chieftain swears an oath on his firstborn’s life? That’s not honour—it’s collateral I’ve already hypothecated three times over. When a Veiled Sister binds a demon to a corpse to prop up her corpse-throne? That’s not terror—it’s a futures contract on soul-debt, and I’m the broker who sold the short position before the ritual even began. You think I seek opportunities? Incorrect. I manufacture them like counterfeit coin—then sell the molds, the hammer, and the anvil to the very fools I’m about to rob.
+\noindent\textit{I am an Aeler Edgewalker. You call us mountain-dwellers who measure breath in silver bells and seal contracts in stone. How adorably naïve.}
 
-You see the surface as “full of problems.” How quaint. Problems aren’t obstacles—they’re inventory. Wars need walls? I’ll sell you the bricks and the siege engine to knock them down—then buy back the rubble at scrap price to fill the next crater I create. Cities need bridges? I’ll underbid the architect by bribing his estranged sister with forged inheritance papers, then charge tolls for the detour while my men “accidentally” weaken the supports with acid-laced mortar. Every famine isn’t tragedy—it’s a grain futures play where I corner the market before the locusts hatch. Every plague isn’t sorrow—it’s a chance to monopolise breath-bonds by spreading the rumour that only my seals ward off the Hollow (they don’t—I just charge extra for the “premium” version). The world isn’t a ledger—it’s a slaughterhouse where I’m the only one bringing a price gun, a bone saw, and a ledger balanced in blood.
+We don't just measure breath—we own the lungs that draw it. When a Tulkani chieftain swears an oath on his firstborn's life? That's not honour—it's collateral I've already hypothecated three times over. When a Veiled Sister binds a demon to a corpse to prop up her corpse-throne? That's not terror—it's a futures contract on soul-debt, and I'm the broker who sold the short position before the ritual even began.
 
-I’ve walked roads paved with more broken promises than cobblestones. I’ve drunk the ninth cup in a Tulkani circle while counting the missing step on an Aelinnel bridge (it was step~8.7—always shortchange the superstitious; they’ll pay triple for “lucky” step~9 that doesn’t exist). I’ve haggled with Fhara water-clerks not over price, but by threatening to divert their qanats into the salt flats unless they threw in a concubine and a sworn statement that I “inspired their generosity.” I’ve sold steam-driven capstans to Ngomebe’s walking cities after sabotaging their rollers with ground glass—then charged triple for the “emergency” repair crew I dispatched from my own warehouse. I’ve watched the Veiled Sisters smile as they signed away their daughters’ souls in exchange for a single night’s respite from the Black Hand’s whispers, and I’ve seen that shadow fall exactly where I’d planted the forged seal that started their feud three months prior—then auctioned the “exclusive” intel on the feud’s origin to both sides for double the fee.
+You see the surface as "full of problems." How quaint. Problems aren't obstacles—they're inventory.
 
-Here’s what the ledger won’t admit, because it’s too busy counting angels on pins: Leverage isn’t about fine print. It’s about who’s holding the knife when the ink dries—and whose throat it’s resting on.
+This book isn't a tourist's guide. It's a hit list with footnotes. I've marked the places where a well-placed bell doesn't just open a pass—it starts a war I've already shorted the bond market on. Where a forged seal doesn't just move a mountain—it triggers a landslide I've bought mineral rights to before the first crack appeared. Where a single true story doesn't just buy a ship's loyalty—it buys the captain's silence while I sell his manifest to pirates.
 
-A Diamond isn’t currency—it’s a hostage with a pulse. Spend it, and you’re renting violence. A Debt isn’t owed—it’s farmed. I don’t collect; I cultivate. Plant a promise in fertile despair, water it with regret, harvest the interest in screams. A Promise? That’s just debt wearing a smile and holding a dagger behind its back. The sweeter the vow, the sharper the blade.
+You want to build journeys? Draw your cards. Set your clocks. Spend your Story Beats like they mean something. But remember: every Diamond you earn is a tooth knocked out of someone else's jaw. Every Debt you incur? I already bought it from your victim for half what you'll pay—and I'm collecting interest in your marrow before you finish reading this sentence.
 
-This book isn’t a tourist’s guide. It’s a hit list with footnotes. I’ve marked the places where a well-placed bell doesn’t just open a pass—it starts a war I’ve already shorted the bond market on. Where a forged seal doesn’t just move a mountain—it triggers a landslide I’ve bought mineral rights to before the first crack appeared. Where a single true story doesn’t just buy a ship’s loyalty—it buys the captain’s silence while I sell his manifest to pirates. I’ve also marked the traps you’re supposed to avoid: the ninth step you \emph{must} count (it’s a pressure plate wired to explode—I’ll sell you the schematics and the defusal kit for 200\% markup), the ninth cup you \emph{must} pour (it’s laced with truth-serum that makes you confess where you buried the loot—I’ll sell you the emetic and a fake ledger to replace the real one), the ninth name you \emph{must} speak (it summons the Hollow—I’ll sell you earplugs lined with soul-trapping wax and a virgin sacrifice “at cost”).
+The road isn't just a ledger. It's a butcher's block. Every gate isn't a clause—it's a throat waiting for the knife.
 
-You want to build journeys? Draw your cards. Set your clocks. Spend your Story Beats like they mean something. But remember this, written in the margin of every contract I’ve ever signed: Every Diamond you earn is a tooth knocked out of someone else’s jaw. Every Debt you incur? I already bought it from your victim for half what you’ll pay—and I’m collecting interest in your marrow before you finish reading this sentence. My notes on leverage aren’t advice. They’re a confession. A brag. A warning written in the language of slaughter. Read them. Then decide: patch the cracks in the world… or hand me the dynamite, the detonator, and a list of whose foundations need weakening first.
+\vspace{1em}
+\noindent\textit{— The Edgewalker}
 
-The road isn’t just a ledger. It’s a butcher’s block. Every gate isn’t a clause—it’s a throat waiting for the knife. Pay the toll, or I’ll collect interest in the form of your last breath… and sell it back to you as a breath-bond.
-
-— The Edgewalker\\
-(Current location: Somewhere the ink hasn’t dried yet. Thimble’s still trying to balance books in a ditch outside Aksum using a rock and his own tears. Pathetic. Pass the brandy—I’ve got a drought to monetise in Sekogo.)
-
-\vspace{0.5em}
-\noindent\textit{[Thimble: Sir, per Appendix Gamma of the Ledger Ethics Accord—]}
-
-\noindent\textit{[Edgewalker: Thimble. If you quote that accursed appendix one more time, I’ll bind your soul to a ledger page and use it to wipe my boots after trampling through the Veiled Sisters’ latest soul-auction. Now pass the abacus—I need to calculate how many souls fit in a single breath-bond before the next monsoon.]}
-
-\noindent\textit{[Thimble: But sir, the Accord—]}
-
-\noindent\textit{[Edgewalker: (Standing, chair scraping) Thimble. You’re fired. Your final paycheck is in the ledger… under “Organic Debt, Settled via Soul Harvest.” Now leave before I amend the entry to “Thimble’s Ledger: Used as Kindling for Veiled Sister Bonfires.” And take your tears with you—they’re cluttering up the depreciation column.]}
+\newpage
 
 % ============================================================
 % PART: THE AMARANTHINE SEA & NORTHERN SHORES
 % ============================================================
 \part{The Amaranthine Sea \& Northern Shores}
 
+% ------------------------------
+% CHAPTER: KAHFAGIA
+% ------------------------------
 \chapter{Kahfagia}
-\emph{The Flag of Storms.} 
-\label{chap:kahfagia}
-The Admiralty runs this place like a pirate charter with a budget—and oh, how they love pretending it’s legitimate. They control the beacons that lure ships onto reefs, the booms that shatter hulls for salvage rights, and the tariffs that fund their champagne baths. If you want to move cargo through the straits without becoming fish food, you need a convoy letter stamped with their seal or a lantern-law warrant signed by the Port Marshal himself. \textit{I’ve sold them both}—genuine articles, straight from the source—then, while the Admiral was busy recounting spice taxes he’d already stolen from my last shipment (the bastards shorted me 12\% on saffron, claiming “moisture loss” in holds I’d sealed with my own breath-wax), I sold perfect forgeries to three rival fleets: the Crimson Corsairs, the Jade Junks, and a suspiciously well-funded group of monks who definitely weren’t pirates. The trick? I didn’t just forge the seal—I made the letters appear to come from the Admiral’s long-lost brother, Lord Malakai, who supposedly vanished in a diving accident ten years ago. (Spoiler: I “found” him running a rum distillery in the Mistlands. Paid him in trade goods to stay “dead.”) The Admiralty never checks the seals’ provenance. Why would they? They’re too busy being paranoid that their own forgeries will be discovered—too busy counting the very spice taxes they stole from me to notice I’m playing three sides against the middle while their convoys sink each other.
+\emph{The Flag of Storms.}
 
-\vspace{0.5em}
-\noindent\textit{— Recorded by Thimble, who later added: “The monks were from the Temple of Light. Their ‘well‑funding’ was a loan from the Edgewalker himself. The interest rate was 300\%. They defaulted. He now owns a lighthouse in Port Shed. He has never seen it.”}
+\noindent\textit{I was born on the tide, which is to say I was born owing. My mother was a net-mender who lost her fingers to a reef-cutter's debt. My father was a bell—that is to say, he rang when the Admiralty pulled his string. I learned to read the lantern codes before I learned my letters, and I learned that every light is a lie waiting to be told.}
 
+The Admiralty runs this place like a pirate charter with a budget—and oh, how they love pretending it's legitimate. They control the beacons that lure ships onto reefs, the booms that shatter hulls for salvage rights, and the tariffs that fund their champagne baths. But here's the secret the commodores don't want you to know: the lanterns are afraid of the dark too.
+
+I've seen a Mirror-Keeper weep when her reflection showed her a daughter she'd sold for a pilot's license. I've watched a Privateer Captain kiss a silver coin before a raid—the same coin her mother kissed before she never came back. This is not a city of heroes. It is a city of people who learned that the sea is cheaper than mercy.
+
+If you want to move cargo through the straits without becoming fish food, get a convoy letter stamped with the Admiral's seal. Or get smart. Or get gone.
+
+\vspace{1em}
+\noindent\textit{— Captain Mira ``the Lucky,'' Sidhi exile, pirate by convenience}
+
+\newpage
 \input{../generators/kahfagia.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: ECKTORIA
+% ------------------------------
 \chapter{Ecktoria}
-\emph{Marble \& Ledgers.}
-\label{chap:ecktoria}
-The Empire that never quite died—more like a corpse propped up by gilded scaffolding and the stubborn refusal of its undertakers to admit the job’s done. Ecktoria’s coin-houses still clutch Utaran seals like talismans against progress, every bridge groans under a toll booth staffed by cousins of the governor’s third wife, and the Everflame burns in every basilica not as a symbol of divine truth, but as a literal lie detector: swear a false oath near it, and your tongue turns black. Clever. Very clever. I sold them a breath-bond once—a beautiful thing, really—to guarantee a grain shipment from Oshiira. The bond was sealed with the sigh of a dying Aeler miner (ethically sourced, of course), promised to pay double if the ship arrived intact. The ship sank. Not by storm, not by pirates—but because I’d paid the stevedore to “accidentally” drop a barrel of quicklime into the hold mid-voyage. The Ecktorians were furious. They dragged me before the Everflame, shrieking about breach of contract. I smiled, bowed, and reminded them, voice honey-smooth: “I sold you the bond, Captain. Not the insurance. Not the seaworthiness of the vessel. Not even the promise that the stevedore wouldn’t be bribed by a man with a grudge against Oshiira’s grain inspectors.” Then, while they were still spluttering, I bought the wreckage rights for three coppers and a sworn affidavit from the captain’s mistress that he’d been planning to scuttle the ship anyway.
+\emph{Marble \& Fire.}
 
-\vspace{0.5em}
-\noindent\textit{From the same ledger: “The stevedore’s widow later sued the Edgewalker for wrongful death. He settled out of court by giving her a counterfeit customs seal. She used it to smuggle silk. She now has a nicer house than he does.”}
+\noindent\textit{My grandfather was a senator. He voted to burn the Ykrul tribute-pact, and then he voted to burn the inquiry into why the grain ships sank. He signed his name in wax and watched the city burn three times. He never raised his voice.}
 
+I am a Coin-House Factor. I seal deals with three ribbons—white for ``ask,'' red for ``now,'' black for ``never.'' I have never used the black ribbon. Not because I am kind, but because ``never'' is a debt I cannot collect.
+
+Ecktoria is an Empire that never quite died—more like a corpse propped up by gilded scaffolding and the stubborn refusal of its undertakers to admit the job's done. The Everflame burns in every basilica not as a symbol of divine truth, but as a literal lie detector: swear a false oath near it, and your tongue turns black. I have seen a merchant's tongue turn black mid-sentence. He finished his lie anyway. The buyers pretended not to notice. That is Ecktoria.
+
+The statues watch. The fire judges. The marble remembers every name carved into its steps—and every name left out.
+
+Do not refuse a toast in a coin-house. The ledgers are the true judges, and a declined cup is a declined credit. You will not borrow again.
+
+\vspace{1em}
+\noindent\textit{— Marcus of the Red Ledger, Coin-House Factor, third generation}
+
+\newpage
 \input{../generators/ecktoria.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: ACASIA
+% ------------------------------
 \chapter{Acasia}
 \emph{The Broken Province.}
-\label{chap:acasia}
-Silkstrand isn’t just the only real city here—it’s a festering wound of commerce, where bridges collapse under the weight of dye vats, hired swords change loyalty with the moon, and the Curse of the Blackwood isn’t some ancient superstition—it’s the result of me selling the Duke’s forest manager “eternal” fire-resistant sap that was actually just fermented sap and a slow-acting poison. The trees died. The duke blamed “the Curse.” I blamed bad forestry. Everybody won. I sold the Dyers’ Guild a system of copper bells to warn of fires—not because I cared about their livelihoods, but because I knew their vats would boil over when I secretly raised the temperature in their underground chambers via redirected geothermal vents. They paid in silk—nine bolts of the deep indigo that only grows in the Blackwood’s shadow, the kind that makes Veiled Sisters weep with envy. I traded it to a Tulkani caravan for a story that later saved my skin: how to walk through a veil without screaming. That’s the Acasian way: every negotiation leaves a stain, every stain is a bargaining chip, and every chip is just leverage waiting to be cashed in.
 
-\vspace{0.5em}
-\noindent\textit{Thimble’s note: “The ‘story’ was a folk tale about a hedgehog. The Edgewalker used it to bribe a gate guard. The guard had heard it before. He let the Edgewalker pass anyway because he felt sorry for him.”}
+\noindent\textit{Silkstrand is not a city. It is a contract that forgot to expire.}
 
+The Dyers' Guild owns the bridges. The Mummers own the stories. The Archivolt notaries own the silence between the clauses. My mother was a bobbin-runner—she could cross Silkstrand faster than any grown-up, and she knew which planks creaked and which merchants lied. She taught me that every bridge is a negotiation and every current carries coin.
+
+The Curse of the Blackwood isn't ancient superstition—it's the result of an Edgewalker selling the Duke's forest manager ``eternal'' fire-resistant sap that was actually just fermented sap and slow-acting poison. The trees died. The duke blamed the Curse. The farmers blamed the duke. The merchants blamed the tariffs. Nobody blamed the Edgewalker, because he was already gone, and his ship was already loaded with the silk.
+
+That's Acasia: every negotiation leaves a stain, every stain is a bargaining chip, and every chip is just leverage waiting to be cashed in.
+
+Never sign a contract on a bridge. The river is a witness, and it never forgets a signature.
+
+\vspace{1em}
+\noindent\textit{— Ravel, night-boat smuggler, who has no name for his vessel because the canal would remember it}
+
+\newpage
 \input{../generators/acasia.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: VHASIA
+% ------------------------------
 \chapter{Vhasia}
 \emph{The Fractured Sun.}
-\label{chap:vhasia}
-Two crowns. One kingdom. A river so wide it might as well be a border—and oh, how the crowns love pretending it’s not. The Northern Seigneurie and the Southern Parlement both claim the throne, both flood the river with paperwork to “prove” their right, and both are too busy arguing over seal wax colours to notice I’m the one who made the river this wide in the first place. I’ve forged more letters patent for them than I can count—not just for fun, but to keep their lawyers billing by the hour while my convoys cross under flags of truce I also forged. The trick? I don’t just use real seals on false parchment—I leak the “forgery” to the opposing crown first. Let them spend weeks screaming about signature smudges and ink bleed while my grain ships glide past, their bills of lading stamped with seals so real they make the ink weep. The Last Dauphin? A rumour. But rumours pay well when you’re the one who started them—and I started three: that the Dauphin was swapped at birth with a goatherd’s child, that he’s secretly a Veiled Sister in disguise, and that he’s been dead for ten years, his “reappearance” a puppet show run by the Seigneurie’s spymaster. Each rumour paid in different currencies: secrets, silk, and the right to walk through a certain gate at midnight.
 
-\vspace{0.5em}
-\noindent\textit{From a sealed addendum, marked “Do not show the Edgewalker”: “The ‘certain gate’ was a privy. The Edgewalker spent an hour waiting for a secret door. The spymaster watched from a window. The silk was moth-eaten. The secrets were fabrications he later sold back to the Seigneurie. They framed him for tax evasion. He paid the fine in counterfeit paizas.”}
+\noindent\textit{Two crowns. One kingdom. A river so wide it might as well be a border—and oh, how the crowns love pretending it's not.}
 
+I am a Road Warden. I have served under three different banners on this same stretch of road, and the only constant is that someone always wants to collect tolls. The Northern Seigneurie and the Southern Parlement both claim the throne, both flood the river with paperwork to ``prove'' their right, and both are too busy arguing over seal wax colours to notice that the Fenwoods already burned Lence, and the Sun-court is a memory.
+
+The Last Dauphin? A rumour. But rumours pay well when you're the one who started them—and I started three: that he was swapped at birth with a goatherd's child, that he's secretly a Veiled Sister in disguise, and that he's been dead for ten years, his ``reappearance'' a puppet show run by the Seigneurie's spymaster.
+
+Never carry a coin that bears only one sunburst. The realm has three mints, and the wrong metal on the wrong road is treason.
+
+\vspace{1em}
+\noindent\textit{— Road Warden Cerran, who has not slept in two days and is not sure which crown he serves}
+
+\newpage
 \input{../generators/vhasia.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: VITERRA
+% ------------------------------
 \chapter{Viterra}
-\emph{The Hedge‑Law Realm.}
-\label{chap:viterra}
-Viterra doesn’t just run on precedent—it \emph{is} precedent, a tangled thicket of rulings where every hedge has a lawsuit attached, every parish stone a deed dispute, and every ferry crossing a generations-long feud over who gets to charge the toll. The Warrior Queen isn’t just a ruler—she’s the living embodiment of “possession is nine-tenths of the law,” and she pays in customs seals like they’re going out of style. Which they are—thanks to me. I sold her a set of Aeler breath-counters for her spies—not because I trusted her, but because I knew she’d use them to sniff out traitors in her court… traitors I’d planted myself. She paid in three customs seals, each valid for a year, each stamped with the sigil of a port I don’t even use. I’ve used two. The third? For emergencies. Like when I need to cross the Belworth without paying the tariff—and without the Queen’s spies noticing I’ve rerouted the ferry cables through my private toll booth three miles downstream. (The Queen’s still paying me in seals for that “emergency”—she thinks it’s a loyalty test. How precious.)
+\emph{The Hedge-Law Realm.}
 
-\vspace{0.5em}
-\noindent\textit{And here the voice shifts. This entry was not written by the Edgewalker. It was dictated by Valda Iron‑Trace, Vault‑Warden of Khaz‑Vurim, who was assigned to audit his breath‑debt. She insisted on adding a note:}
+\noindent\textit{Every hedge here marks not just a boundary but a principle—the careful balance between order and freedom, justice and mercy. Our law grows like the hedges themselves, tended with precision and patience.}
 
-\vspace{0.5em}
-\noindent\textit{“We were high‑tailing into Viterra when my master, ahem, ‘the Edgewalker,’ decided to pull another scheme. He sold the Queen breath‑counters that counted lies instead of breaths. She didn’t notice because she never used them. The spies he claimed to have planted? They were freelance informants who reported to the highest bidder. The highest bidder was the Queen. The Edgewalker’s ‘private toll booth’ was a leaky rowboat with a sign he’d carved himself. The ferryman charged him double for the wood.”}
+I am a Queen's Justiciar. I have never lost a legal duel. My opponents have a habit of falling down stairs. I do not push them. The stairs remember their debts.
 
+Viterra breathes with the careful rhythm of precedent and petition. Once a proud kingdom before becoming a Utaran province, it is now reborn under a Warrior Queen who rules by legal precision as much as military might. The realm's true sinews lie not in steel but in writs, charters, and the ancient rights that bind lord to tenant, crown to county, and church to common.
+
+But do not mistake us for gentle. The Queen's Peace is not a promise—it is a contract, renewed each morning by every magistrate, every justicar, every clerk who opens a ledger. And across the Belworth, the Vhasians still claim our hedges are theirs. Let them try.
+
+Never cross the Belworth without a charter recognized on both banks. Viterran law and Vhasian claim fight every crossing, and the river takes the losers.
+
+\vspace{1em}
+\noindent\textit{— Justiciar Elodie Venn, who invoked the Right of Acknowledgment and watched a father speak truth to his son for the first time}
+
+\newpage
 \input{../generators/viterra.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THEPYRGOS
+% ------------------------------
 \chapter{Thepyrgos}
 \emph{City of a Thousand Stairs.}
-\label{chap:thepyrgos}
-The Synod rules here with the delicacy of a brick wrapped in velvet—they hate unsanctioned magic like it’s a personal insult, but they adore infrastructure, especially when it’s shiny, expensive, and comes with a side of indulgences they can sell to the faithful. I sold them a system of under-vaults to expand the Library of Keys—not because I believed in knowledge, but because I knew the Synod’s Archivist was drowning in debt to a Veiled Sister’s loan shark, and he’d sign anything to make the collector go away. The Archon paid in harbour passes—enough to skip every boom in the straits for a decade—stamped with the Synod’s seal and blessed by three bishops who definitely weren’t bribed with contraband incense. I’ve already lost two to card games (damn those Tulkani bluffers), but the rest? Hidden in a lead box under a rock marked with a bell… a bell I rang myself to make the rock “holy” in the eyes of the local cult that now guards it for a fee. You want them? They’re yours. For a price. A very specific price involving the Synod’s Archivist and a certain ledger he’s been “misplacing.”
 
-\vspace{0.5em}
-\noindent\textit{Thimble’s supplement: “The cult was three children who wanted a new well. The Edgewalker paid them in expired cheese. The bell was a ship’s bell he’d stolen from a wreck. The rock is still there. The passes are long expired. The Archivist’s ‘missing’ ledger was found in the Edgewalker’s own luggage. He’d used it as a blotter.”}
+\noindent\textit{Every stair climbed is a word in the great conversation between earth and sky. This city is not built—it is grown, stone by stone, law by law, until the very architecture speaks wisdom.}
 
+I am a Bell-Runner. I know every step that creaks a warning and every landing that whispers gossip. The bells tell the city's mood better than any lord—three chimes means business, six means trouble, and nine means the hunters are coming.
+
+The Synod rules here with the delicacy of a brick wrapped in velvet—they hate unsanctioned magic like it's a personal insult, but they adore infrastructure, especially when it's shiny, expensive, and comes with a side of indulgences they can sell to the faithful. The Chain-Lanterns move at dawn, their brass censers swinging, their bells tuned to the frequency of latent magic. In the university's forbidden tiers, the Witness and the Ninth arm rival fraternities with citations and curses, and no one is sure which side the Archon secretly favors.
+
+Never let a bell-ringer count your breaths. The Chain-Lanterns pay well for names that ring false on the test stairs.
+
+\vspace{1em}
+\noindent\textit{— Sofia, Bell-Runner, who ties a knot in her hair for each hunter she has outrun}
+
+\newpage
 \input{../generators/thepyrgos.tex}
+\newpage
 
 % ============================================================
 % PART: THE NORTHERN REACHES
 % ============================================================
 \part{The Northern Reaches}
 
+% ------------------------------
+% CHAPTER: AELER
+% ------------------------------
 \chapter{Aeler}
 \emph{Breath, Bell, and Keystone.}
-\label{chap:aeler}
-My homeland. The place where we don’t trust the surface, but we do trust the weight of a well-placed keystone—and oh, how the surface loves to test that trust. We Aeler don’t just trade with the mountains; we own the leverage in every crevice. Our breath-bonds aren’t just currency—they’re the hardest thing in the peaks, forged in the sighs of miners who knew too much. I’ve sold them to Vikari jarls who paid in furs stained with brother’s blood, to Ykrul khagans who weighed the value in warhorses and broken oaths, even to a Veiled Sister once—she paid in a secret so dangerous I’ve never used it… yet. (Spoiler: I’m saving it for the day the Ninth Seal cracks. The interest alone will buy me a small kingdom.) The under-vaults aren’t just storage—they’re libraries of opportunity, full of seals just waiting to be broken. I know all of them. Not because I’m noble—but because I’ve sold most of them already. That’s why I don’t go back often. Why revisit a scene when you can sell the blueprints to the next fool who thinks he’s clever?
 
-\vspace{0.5em}
-\noindent\textit{Valda Iron‑Trace, his reluctant keeper, adds in a cramped hand: “He owns one expired breath‑bond. The rest are copies he made after the originals were repossessed. The ‘secret’ from the Veiled Sister was that her favourite colour is green. The Ninth Seal is a storage closet. The interest on his small kingdom is due next spring. He has no assets.”}
+\noindent\textit{The mountain remembers every word carved in its stone, every seal pressed into its walls. To govern here is not to command, but to harmonize with the ancient songs that still echo in the deep places.}
 
+I am an Under-Mason. I can hear stone shift a room away. When the rock starts singing a different tune, you best listen. Three knocks in the morning means all's well, but three knocks at night means something's coming through the walls that wasn't meant to walk.
+
+My homeland. The place where we don't trust the surface, but we do trust the weight of a well-placed keystone—and oh, how the surface loves to test that trust. Our breath-bonds aren't just currency—they're the hardest thing in the peaks, forged in the sighs of miners who knew too much. We sell them to Vikari jarls who pay in furs stained with brother's blood, to Ykrul khagans who weigh the value in warhorses and broken oaths, even to the Veiled Sisters once—they paid in secrets, which is another way of saying they paid in future leverage.
+
+Never count your breaths aloud in a mine. The mountain listens, and if it hears you reach the ninth, it will take one—a breath, a memory, a shadow.
+
+\vspace{1em}
+\noindent\textit{— Thromm Stone-Tongue, Under-Mason, who has never counted to nine}
+
+\newpage
 \input{../generators/aeler.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE MISTLANDS
+% ------------------------------
 \chapter{The Mistlands}
 \emph{Bells, Salt, and Breath.}
-\label{chap:mistlands}
-A protectorate of the Aeler in name only—the fog here doesn’t just hide the land; it hides the law, and oh, how the wraiths love that ambiguity. The bell-lines aren’t just defences—they’re the only thing keeping the wraiths from dragging whole villages into the mist, and I sold the wardens a tuning fork that could recalibrate those bells to a frequency that makes the wraiths dance instead of drag. They paid in salt—enough to preserve a ship’s cargo for a year, stamped with the Mistlands’ seal and guaranteed by the Warden-Captain’s own oath. I used it on a shipment of Sidhi pepper… pepper that was cursed, yes, but curses are just leverage with a supernatural clause. I sold it anyway—at a markup—to a Tulkani caravan desperate for “exotic” goods, then bought back the cursed pepper’s “cure” from the same caravan a week later when they started hallucinating veils that weren’t there. Beautiful.
 
-\vspace{0.5em}
-\noindent\textit{Warden Kael’s observation, recorded by Thimble: “The tuning fork worked. It also attracted wraiths from three counties. The Edgewalker didn’t warn us because he hadn’t tested it. The ‘cursed’ pepper was ordinary pepper. The hallucinations came from mould on the rations he’d supplied. The ‘cure’ was a mint leaf. The caravan leader still laughs about it in Zakov.”}
+\noindent\textit{The bells here do more than mark time—they weave the very fabric of reality, keeping the mist at bay and the dead in their proper places. Each chime is a thread in the pattern that holds the world together.}
 
+I am a Bell-Warden. I refuse to write down the ninth note. It lives only in my memory—and that memory is fading.
+
+The Mistlands are a protectorate of the Aeler in name only. The fog here doesn't just hide the land; it hides the law, and oh, how the wraiths love that ambiguity. The bell-lines aren't just defences—they're the only thing keeping the wraiths from dragging whole villages into the mist. The Aeler built them. The Aeler charge for them. The Aeler will leave when the money runs out.
+
+Never answer a voice that calls your name from the fog. The mist collects names, and once it has yours, the ferryman will always know where to find you.
+
+\vspace{1em}
+\noindent\textit{— Warden Kael, who has seen the ninth bell rung once and will not speak of it}
+
+\newpage
 \input{../generators/mistlands.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: YKRUL
+% ------------------------------
 \chapter{Ykrul}
 \emph{Wolf Standards, Winter Camps.}
-\label{chap:ykrul}
-The Ykrul don’t measure wealth in silver—they measure it in hoofbeats, in the snort of a warhorse at dawn, and oh, how they love a good bargain… especially when it comes with a side of broken trust. I sold them Aeler saddles with built-in breath-counters—not because I cared about their mounts, but because I knew the khagan’s head trainer was skimming oats from the imperial stables, and he’d sell his soul to keep it quiet. The khagan was impressed. He paid in a paiza—a tablet of hammered bronze that guarantees safe passage through all Ykrul lands, stamped with the wolf standard and blessed by the shaman who definitely wasn’t bribed with fermented mare’s milk. I’ve used it to cross the Violet Steppe nine times. The ninth time? The paiza cracked. Not from wear—from my tampering with the alloy during the “quality check.” I’m still trying to collect on the warranty… by selling the khagan a new paiza at triple the price, claiming the crack was “a sign from the spirits” that he needs to upgrade. (The spirits agreed—for a fee.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The khagan paid in counterfeit wolf pelts. The Edgewalker has been using them as blankets. The ‘spirits’ were a dog and a raven he fed table scraps. The paiza was never valid because the shaman’s blessing was a recipe for fermented mare’s milk. The Edgewalker has been drunk for three seasons.”}
+\noindent\textit{The steppe remembers every oath sworn beneath its endless sky, and the wolf-standards carry the honour of clans that have outlasted empires. To lead here is to keep the old ways sharp as winter steel.}
 
+I am a Herd-Scout. I can read a trail by the way the grass bends—and a lie by the way a rider sits. The Ykrul don't measure wealth in silver; we measure it in hoofbeats, in the snort of a warhorse at dawn, in the weight of a promise kept through winter.
+
+We do not build monuments. We build relationships, each one a stone in an invisible cairn that stretches from the Dolmis to the Aberderrin. A camp is a weave of favours owed and honour satisfied. A feud is a slow equation: blood in, blood out, with interest compounded by winter.
+
+Never ride between two wolves at dusk. The space between them is a blind angle—a route with no exit, a debt with no payment.
+
+\vspace{1em}
+\noindent\textit{— Sogata, Herd-Scout, who has never been lost but has been found many times}
+
+\newpage
 \input{../generators/ykrul.tex}
-\input{../generators/midh-akhaz.tex}
+\newpage
 
+% --- MIDH AHKAZ (sub-chapter) ---
+\section*{Midh Ahkaz — The Violet Gate}
+\addcontentsline{toc}{section}{Midh Ahkaz — The Violet Gate}
+
+\noindent\textit{The wind carries names, not ledgers. But here, in the shadow of the Oasis Compact, both trade and oaths change hands. Do not mistake our patience for weakness. The grass remembers every hoof that crossed it.}
+
+Midh Ahkaz is not a city of stone—it is a city of felt, iron, and shifting grass. A day's ride north of the Ecktorian border, it squats on the edge of the Violet Steppe like a patient wolf. Here, the Ykrul, Vilikari, and a dozen other peoples gather to trade, haggle, and settle grudges. The air smells of horse sweat, cedar smoke, and the faint copper tang of blood money.
+
+Never refuse the guest-cup. The first pour is courtesy. The second is negotiation. The third is a blood-price unspoken.
+
+\vspace{1em}
+\noindent\textit{— Vilikari Factor, Night Market regular}
+
+\newpage
+\input{../generators/midh-akhaz.tex}
+\newpage
+
+% ------------------------------
+% CHAPTER: VILIKARI
+% ------------------------------
 \chapter{Vilikari}
 \emph{Laurels \& Longhouses.}
-\label{chap:vilikari}
-The Vilikari straddle the border like a drunkard on a fence—half empire, half steppe, all headache. Their foedus treaties aren’t just agreements—they’re a tragicomic mess, half carved in marble by emperors who forgot to pay the sculptors, half braided in string by chieftains who forgot which knot meant “peace.” I sold them a set of ledgers that could translate both—not because I believed in harmony, but because I knew the Foedus Stone’s keeper was drowning in debt to a Ykrul warlord over a disputed horse trade, and he’d sign anything to make the collector go away. They paid in land rights near the Foedus Stone—stamped with the Vilikari seal and guaranteed by the High Chieftain’s own oath. I haven’t used them yet. The land is probably cursed. Everything near the Stone is cursed. Which is perfect. Why? Because I can sell the “curse” as a feature: “Buy this land, and I’ll throw in a complimentary haunting—guaranteed to lower your property taxes by attracting only the bravest (or most foolish) buyers.”
 
-\vspace{0.5em}
-\noindent\textit{Valda again: “The land rights were voided when the High Chieftain died. His oath was carved on a millstone that now sits in a goat pen. The Edgewalker’s ‘curse’ is a family of badgers. He tried to sell the property to a Tulkani caravan. They offered him a story. He took it. It was the same story he’d told them the previous year.”}
+\noindent\textit{We are the bridge between empire and wilderness, the marriage of law and custom. Our strength lies not in choosing one path but in walking both with equal surety.}
 
+I am a Hearth-Mother. I have never lost a quarrel. My voice is soft, my memory longer than the Foedus Stone.
+
+The Vilikari straddle the border like a drunkard on a fence—half empire, half steppe, all headache. Their foedus treaties aren't just agreements—they're a tragicomic mess, half carved in marble by emperors who forgot to pay the sculptors, half braided in string by chieftains who forgot which knot meant ``peace.''
+
+Never invoke only one law. The mallus (oak-ring) and the basilica (marble bench) must both be honoured. Choose one, and the other will find you.
+
+\vspace{1em}
+\noindent\textit{— Hearth-Mother Vesna, who has fed three kings and forgotten none of their debts}
+
+\newpage
 \input{../generators/vilikari.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: BLACK BANNERS
+% ------------------------------
 \chapter{Black Banners}
 \emph{Condotta \& Crowns.}
-\label{chap:blackbanner}
-Mercenary companies that sell steel to the highest bidder—and oh, how they love a good spreadsheet. The Banner-Captains don’t just want payment; they want proof they’re getting their money’s worth, which is why they pay in safe-conducts that are good until the next battle… and utterly worthless after, once the smoke clears and the ledgers need balancing. I’ve sold them everything: from siege engines that “misfire” on command to false muster rolls that inflate their numbers by 30\%. The Captains pay in safe-conducts stamped with their clan seal and guaranteed by the battlefield chaplain who definitely wasn’t bribed with loot from the last sack. I keep a stack of them as kindling—not because they burn well (though they do), but because I can sell the \emph{idea} of a safe-conduct to the next desperate captain: “Pay me upfront, and I’ll give you a document that says you won’t be ambushed… by the very men I’m about to ambush you with.” Beautiful.
 
-\vspace{0.5em}
-\noindent\textit{Thimble’s closing note on this chapter: “The safe‑conducts were printed on parchment that had already been used as firelighters. The siege engines were children’s toys. The false muster rolls were the only accurate documents he ever produced. He sold them to both sides. Both sides lost. He is still banned from three mercenary camps.”}
+\noindent\textit{A contract is only as good as the next payday, and a grudge is only as sharp as the sword backing it. In this game, we sell steel by the season and vendettas by the year.}
 
+I am a Veteran Sergeant. I've seen three captains rise and fall in the time it takes to grow a beard, but the mud stays the same and the pay comes when it pleases.
+
+Mercenary companies sell steel to the highest bidder—and oh, how they love a good spreadsheet. The Banner-Captains don't just want payment; they want proof they're getting their money's worth, which is why they pay in safe-conducts that are good until the next battle… and utterly worthless after, once the smoke clears and the ledgers need balancing.
+
+Never break a Bell Dawn. Three bells at sunrise means bury the dead, trade prisoners, fix the wells, no ambushes. Violating it is how legends end badly—and how captains end hanging.
+
+\vspace{1em}
+\noindent\textit{— Old Sorka, Veteran Sergeant, who counts scars like coins and spends them on whiskey and mercy}
+
+\newpage
 \input{../generators/black_banner.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE LINNS
+% ------------------------------
 \chapter{The Linns}
-\emph{Skerries \& Storm‑Oaths.}
-\label{chap:linns}
-North of the Aberderrin Sea, the Linns don’t just raid and trade—they do it with the fervour of the converted, swearing oaths to storm and sea that aren’t just words—they’re leverage with a supernatural clause. They pay in stories, not silver, because to them, a tale well-told is worth more than a chest of gold… especially when it’s true. I sold them a set of Aeler compasses that work in fog—not because I cared about their navigation, but because I knew the Storm-Caller’s apprentice was terrified of the Hollow, and he’d trade his soul for a way to feel safe. They paid in a storm-charm that once belonged to a drowned captain—stamped with the Linns’ seal and guaranteed by the Sea-Witch’s own oath. The charm works, yes, but it attracts the Hollow like chum attracts sharks. Which is why I only use it when I’m desperate. Desperate, that is, for the story I’ll get when the Hollow comes calling—a story I can then sell to the Veiled Sisters as “proof of supernatural liability” at triple the rate.
+\emph{Skerries \& Storm-Oaths.}
 
-\vspace{0.5em}
-\noindent\textit{From a skald’s marginalia, copied by Thimble: “The compasses point to the nearest cliff. The Storm‑Caller’s apprentice now runs a lighthouse. He uses the Edgewalker’s compass as a paperweight. The storm‑charm attracts seagulls, not the Hollow. The Edgewalker has been chased by gulls for three years. He thinks they are spies.”}
+\noindent\textit{The sea keeps better counsel than any scribe, and the storm remembers every oath sworn upon its winds. To rule these shores is to dance between their moods and never miss a step.}
 
+I am a Net-Wife. I tie a knot for every storm I've survived. My belt has thirty.
+
+North of the Aberderrin Sea, the Linns don't just raid and trade—they do it with the fervour of the converted, swearing oaths to storm and sea that aren't just words—they're leverage with a supernatural clause. They pay in stories, not silver, because to them, a tale well-told is worth more than a chest of gold… especially when it's true.
+
+Never name a drowned person aloud while underway. The sea collects names, and if it hears you speaking one it doesn't recognize, it may reach up to correct the ledger.
+
+\vspace{1em}
+\noindent\textit{— Astrid, Net-Wife, who has never lost a sailor to the mist but has lost three to bad stories}
+
+\newpage
 \input{../generators/linns.tex}
+\newpage
 
 % ============================================================
 % PART: THE EASTERN DOLMIS & THE VALEWOOD
 % ============================================================
 \part{The Eastern Dolmis \& The Valewood}
 
+% ------------------------------
+% CHAPTER: THEONA
+% ------------------------------
 \chapter{Theona}
 \emph{Three Greens, No Ninth.}
-\label{chap:theona}
-The isles of Theona aren’t just ruled by silence—they’re built on it, a place where bells are forbidden lest they wake the thing that sleeps under the coral, and oh, how the Matron of Wells loves a good loophole. I sold her a copper bell that could ring nine times without breaking the taboo—not because I respected her laws, but because I knew her chief acolyte was desperate to prove her piety, and she’d pay in moot tokens for a bell that seemed holy. The trick? I didn’t make the bell ring nine times—I made the ninth ring silent, a harmonic trick that fools the ear but not the soul. The Matron paid in a moot token—stamped with the Theona seal and guaranteed by the Council of Elders’ own oath. I used it to settle a feud with a Linn captain… a feud I’d started by spreading a rumour about his ancestor’s cowardice. He’s still paying me back in stories—stories I sell to the Tulkani as “authentic Linn lore” at a markup, then buy back as “cursed tales” to sell to the Veiled Sisters. The circle of leverage.
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The bell was a child’s toy. The ninth silence was the Edgewalker’s own hearing loss from testing it. The moot token was a washer. The Council’s oath was a recipe for leek soup. The Linn captain’s feud ended when his ancestor’s ghost visited the Edgewalker and asked for a refund. The Edgewalker paid in counterfeit stories. The ghost was not amused.”}
+\noindent\textit{The wells here hold more than water—they hold the dreams and prayers of generations. To govern is to tend these sacred spaces where the living commune with what came before.}
 
+I am a Peat-Cutter. My barrow has a false bottom. I hide debts there—and bodies.
+
+The isles of Theona rise green and jagged from the Dolmis, their basalt cliffs wrapped in mists and moorland song. Nominally a duchy sworn to Viterra, in truth the Three Greens heed no crown but their own moots, no law but their taboos. The greatest of these is the silence of Nine: no bell tolls a ninth, no bridge counts that span, no oath dares its syllable.
+
+Never pour the ninth cup at a feast. Never speak the ninth name in a bargain. Never step where a step is missing. The Green Host rides for those who complete what should remain incomplete.
+
+\vspace{1em}
+\noindent\textit{— Celia, Hedge-Witch Midwife, who has tied nine thousand knots and untied nine}
+
+\newpage
 \input{../generators/theona.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: ZAKOV
+% ------------------------------
 \chapter{Zakov}
 \emph{Salt \& Serpent.}
-\label{chap:zakov}
-The pirate‑city of the Dolmis coast isn’t just a den of thieves—it’s a corporation with a flag, and oh, how the Salt Prince loves playing king while the Syndicate Silent pulls the strings. The Syndicate doesn’t just want tribute; they want proof they’re obeyed, which is why they pay in corsair charters that let you fly the black flag without being hanged—stamped with the Zakov seal and guaranteed by the Syndicate’s own oath. I sold them a set of underwater breathing bells—Aeler tech, very illegal, very desirable—not because I cared about their sailors, but because I knew the Syndicate’s head enforcer was terrified of the Veiled Sisters, and he’d pay in charters for bells that let him sneak past their patrols. I’ve never used the charter. Why? Because the flag is in my luggage, next to the spare breath-counter… and I’m waiting for the perfect moment to fly it: when the Syndicate’s charter is about to expire, and I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Syndicate agreed—for a fee, and a promise to never speak of the Kraken I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda’s final word on Zakov: “The breathing bells were wine skins. The Syndicate enforcer used them to smuggle rum. The charter was a napkin. The Kraken was a storage tent that collapsed in the wind. The Edgewalker paid the ‘fee’ with a counterfeit coin. He still carries the flag. It is a handkerchief with a skull drawn in ink.”}
+\noindent\textit{The tide here keeps better ledgers than any scribe, and the reefs remember every secret whispered above their depths. Power flows like the currents—those who understand them rule the waves.}
 
+I am a Dock-Rat. My tattoo is of the Sunken Quarter at low tide. The buildings are upside down.
+
+The pirate-city of the Dolmis coast isn't just a den of thieves—it's a corporation with a flag, and oh, how the Salt Prince loves playing king while the Syndicate Silent pulls the strings. Here, every manifest is a lie, every harbor a doorstep to a dozen conspiracies, and every fog-light a lure or a warning. The city breathes with the sea: at low tide, secrets exposed; at flood, the drowned walk the Sunken Quarter and knock on doors that should be locked.
+
+Never take a coin that tastes of brine. The Serpent's Mark is not a blessing. It is a debt that drowns.
+
+\vspace{1em}
+\noindent\textit{— Ravel, Dock-Rat, who has never slept above the high-water mark}
+
+\newpage
 \input{../generators/zakov.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: AELINNEL
+% ------------------------------
 \chapter{Aelinnel (Aevrossa)}
 \emph{Stone, Bough, and Bright Things.}
-\label{chap:aelinnel}
-The gnomish homeland isn’t just a place where they count steps—it’s a place where they worship the count, and oh, how the Aelinnel love a good loophole in their beloved numerology. They count everything: steps, bells, offerings—because to them, precision isn’t just virtue; it’s leverage with a supernatural clause. I sold them a counting machine that uses gears instead of fingers—not because I believed in their craft, but because I knew the Master Counter was drowning in debt to a Tulkani loan shark over a miscounted bell toll, and he’d sign anything to make the collector go away. They paid in a tide‑path key that lets me cross the Inland Sea at any tide—made of coral, stamped with the Aelinnel seal, and guaranteed by the High Tide-Warder’s own oath. The key is made of coral. It grows. I have to trim it every season… which is why I sell the trimmings as “lucky charms” to the Veiled Sisters. “Wear this coral,” I tell them, “and the tide will always favour your schemes.” (It won’t. But the Sisters believe it—and belief is just leverage with a prayer.)
 
-\vspace{0.5em}
-\noindent\textit{From a gnome bell‑tender’s letter, intercepted by Thimble: “The counting machine was a toy abacus. The Master Counter’s debt was a single copper he’d already paid. The tide‑path key is a piece of dead coral that shrinks in water. The Edgewalker trims it because it’s actually salt. He has been selling bath salts to the Veiled Sisters. They think it’s holy. He thinks they’re fools. They are both correct.”}
+\noindent\textit{The law here flows like water over stone—it finds its own path, and woe to those who try to dam it with paper and pretense. The earth itself will testify against the unjust.}
 
+I am a Charcoal-Burner. My kilns tell us more than your books ever could. When the smoke curls left, the tide's with you. When it splits in three, best stay by your own hearth till it burns straight again.
+
+The gnomish homeland isn't just a place where they count steps—it's a place where they worship the count, and oh, how the Aelinnel love a good loophole in their beloved numerology. They count everything: steps, bells, offerings—because to them, precision isn't just virtue; it's leverage with a supernatural clause.
+
+Never bring naked iron past a hawthorn arch unless it is gilded or named. Copper is polite, silver is opinionated, cold iron is an accusation.
+
+\vspace{1em}
+\noindent\textit{— Tallow, Charcoal-Burner, who has never lost a sheep to the Hollow but has lost three helpers who did not listen}
+
+\newpage
 \input{../generators/aelinnel.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: AELAEREM
+% ------------------------------
 \chapter{Aelaerem}
 \emph{Hearth \& Hollow.}
-\label{chap:aelaerem}
-The halfling downs aren’t just a place where they keep the Hollow at bay—they’re a marketplace for fear, and oh, how the Aelaerem love a good bargain on safety. They use red threads and offerings not out of piety, but because they know the Hollow’s attention is a commodity—and they’ll pay dearly to avoid it. I sold them a system of copper bells that ring when the Hollow crosses a boundary—not because I cared about their peace, but because I knew the Boundary-Warder’s deputy was terrified of his own shadow, and he’d pay in hollow cups for bells that seemed to warn him. They paid in a hollow cup—proof that a debt was paid to the Hollow itself, stamped with the Aelaerem seal and guaranteed by the Elder-Circle’s own oath. I’ve used it to bargain with Debt‑Walkers twice. The third time? The cup cracked. Not from age—from my tampering with the clay during the “blessing.” I’m not going back for a replacement. Why? Because I can sell the \emph{idea} of a hollow cup to the next desperate halfling: “Pay me upfront, and I’ll give you a document that says your debt to the Hollow is settled… by the very Debt‑Walker I’m about to send to collect it.” Beautiful.
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The bells were dented practice chimes. The deputy was not terrified; he was trying to impress a widow. The hollow cup was a chipped mug. The Edgewalker’s ‘document’ was a used napkin. The Debt‑Walker he ‘sent’ was a neighbour’s dog. The dog is now named ‘Edgewalker’. It still chases him.”}
+\noindent\textit{A proper harvest feast requires three things: the finest cider aged in the right barrel, a guest-loaf baked with intention, and the wisdom to know when to invite the quiet ones to sit by the fire.}
 
+I am a Miller. My geese know a stranger's step from a mile off, and they've never been wrong. One is named ``Stranger.'' It has never been wrong.
+
+The halfling downs aren't just a place where they keep the Hollow at bay—they're a marketplace for fear, and oh, how the Aelaerem love a good bargain on safety. They use red threads and offerings not out of piety, but because they know the Hollow's attention is a commodity—and they'll pay dearly to avoid it.
+
+Never refuse an offered cup. The Hollow counts refusals as invitations. Pour the ninth cup for the empty chair, and you may feed it—or feed it.
+
+\vspace{1em}
+\noindent\textit{— Bram, Miller of the Watch-Geese, who has never been surprised}
+
+\newpage
 \input{../generators/aelaerem.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE VALEWOOD
+% ------------------------------
 \chapter{The Valewood}
 \emph{Empire Under Leaves.}
-\label{chap:valewood}
-The Valewood isn’t just ancient—it’s a graveyard of empires, and oh, how the Lethai‑ar ghosts love a good deal on forgotten magic. They don’t just rule as echoes; they trade in them, and the Pathweaver isn’t just a guide—he’s a broker in phasing star‑roads that don’t quite exist yet. I sold him a set of Aeler dew‑mirrors to navigate those roads—not because I believed in the stars, but because I knew the Pathweaver’s apprentice was terrified of getting lost in the between, and he’d pay in way‑cords for mirrors that seemed to show the way. He paid in a way‑cord that can find any path—even the ones that don’t exist yet—stamped with the Valewood seal and guaranteed by the Star‑Reader’s own oath. I’ve used it to escape the Hollow three times. It’s frayed now… which is why I sell the frayed ends as “lucky knots” to the Veiled Sisters. “Tie this cord,” I tell them, “and the Hollow will always lose your trail.” (It won’t. But the Sisters believe it—and belief is just leverage with a knot.)
 
-\vspace{0.5em}
-\noindent\textit{A Lethai‑ar shade’s whisper, recorded by Thimble: “The dew‑mirrors were polished stones. The Pathweaver’s apprentice was lost before he arrived. The way‑cord was an old shoelace. The Star‑Reader’s oath was a grocery list. The Hollow does not lose trails; it collects them. The Edgewalker has been walking in circles for three years. He thinks the path is changing. It is not.”}
+\noindent\textit{The forest here remembers empires that crumbled to dust, and its laws are older than your kingdoms. To walk these paths is to enter into covenant with powers that measure time in seasons, not years.}
 
+I am a Pathweaver. My cord has eight knots. The ninth is the one she never ties.
+
+The Valewood isn't just ancient—it's a graveyard of empires, and oh, how the Lethai-ar ghosts love a good deal on forgotten magic. They don't just rule as echoes; they trade in them. The air hums with half-remembered songs, and the ruins bleed their mysteries into root and stream. Fae courts linger in clearings that shift with moonlight, beast-kin patrol moss-choked cairns, and echoes of imperial shades still march patrols on vanished streets.
+
+Never eat the fruit of a tree that has a face. The forest does not forget its debtors, and the first bite is always the price of admission.
+
+\vspace{1em}
+\noindent\textit{— Pathweaver Sila, who knows every star-road but will not speak their names}
+
+\newpage
 \input{../generators/valewood.tex}
+\newpage
 
 % ============================================================
 % PART: THE SOUTHERN REALMS (AKILAN)
 % ============================================================
 \part{The Southern Realms (Akilan)}
 
+% ------------------------------
+% CHAPTER: OSHIIRA
+% ------------------------------
 \chapter{Oshiira}
 \emph{The Ledger Empire.}
-\label{chap:oshiira}
-Oshiira doesn’t just run on grain, water, and bureaucracy—it \emph{is} bureaucracy, a machine where every form has a fee, every audit an opportunity, and the Vermilion Corps isn’t just an agency—it’s a corporation with a thirst for paper. I sold them a set of breath‑bonds to guarantee a grain shipment to Ecktoria—not because I trusted the shipment, but because I knew the Vermilion Corps’ head auditor was terrified of a promotion he wasn’t qualified for, and he’d pay in tariff stamps for bonds that seemed to guarantee delivery. They paid in a tariff stamp that lets me bypass inspections—stamped with the Vermilion Corps’ seal and guaranteed by the Grain Minister’s own oath. I’ve used it to smuggle everything from Ashaani spirit‑lamps to Tulkani story‑cords… which is why the stamp is wearing out. Wear and tear? No. Strategic degradation. I’ve been subtly dampening the stamp’s ink during “quality checks” so it fades faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Vermilion Corps agreed—for a fee, and a promise to never speak of the locust swarm I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble’s note: “The breath‑bonds were IOU’s written on banana leaves. The head auditor’s ‘promotion’ was a lateral transfer to a broom closet. The tariff stamp is a potato print. The locust swarm was a single grasshopper the Edgewalker had in a jar. It escaped. He claimed victory.”}
+\noindent\textit{The ledger does not forgive arithmetic errors. A single miscounted bushel can unmake a house, a tribe, an empire. I am not here to be kind. I am here to be correct.}
 
+I am a Grain Inspector. My stamp leaves a mark that glows under moonlight. I know.
+
+Oshiira is a confederacy of hundreds of tribes and city-states, united by the Grain Ledger. The capital, Mbaro, is a city of canals, weigh-houses, and the great Granary Tower. Oshiira is the breadbasket of the Amaranthine; its wheat fills the holds of Ecktorian, Vhasian, and Silkstrand ships. The empire operates through a bureaucracy as complex as any in the north, with weighing-houses and canal-mothers whose ledgers track grain shipments with mathematical precision.
+
+Never speak of succession before naming the Widow. The empress's health is a state secret, and the Vermilion Corps has ears in every weigh-house.
+
+\vspace{1em}
+\noindent\textit{— Vermilion Corps Auditor, who counts her own breaths to ensure she is not lying}
+
+\newpage
 \input{../generators/oshiira.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: ASHAAN
+% ------------------------------
 \chapter{Ashaan}
 \emph{The Veiled Throne.}
-\label{chap:ashaan}
-Ashaan isn’t just a nation of corpses propped up by spirit‑binding—it’s a market for terror, and oh, how the Veiled Sisters love a good secret. They don’t just pay in secrets—they pay in leverage with a supernatural clause, and the secrets are always dangerous… which is why they’re such profitable inventory. I sold them an Aeler spirit‑cage to hold a bound demon—not because I cared about their throne’s stability, but because I knew the Head Veiled Sister’s apprentice was terrified of the demon she was binding, and she’d pay in veil‑clips for a cage that seemed to contain it. They paid in a veil‑clip that lets me speak without being silenced—stamped with the Ashaan seal and guaranteed by the High Sister’s own oath. I’ve used it to negotiate with the Breath‑less. The Sisters don’t know. Yet. Which is why I’m already shopping their secret around to the Black Hand. “Want to know how to break their spirit‑binding?” I whisper. “It’ll cost you a kingdom.”
 
-\vspace{0.5em}
-\noindent\textit{Valda’s observation: “The spirit‑cage was a birdcage with a broken lock. The demon was a parrot that knew three curses. The veil‑clip is a clothespin. The ‘secret’ is that the High Sister is allergic to saffron. The Black Hand already knew. They were the ones who sold her the saffron.”}
+\noindent\textit{The Veil is not a choice. It is survival. You will show your eyes and nothing more. Speak in thirds—offer two options and a hidden third. The ninth word is always a knife.}
 
+I am a Breath-less Agent. They say Ikasha sleeps. I say she is patient. The Sisters have ruled for generations; they believe the Veil is eternal. But the Veil is silk. Silk frays. And I am learning to bite through—one whisper at a time.
+
+Ashaan is a nation that died long ago. The Veiled Sisters keep its corpse walking through spirit-binding, terror, and the endless consumption of their own people. The capital, Galanina, is a city of black marble and brass cages. The Red Desert, which now covers half the country, was once fertile land; the Sisters' magic leeched the life from it. There is no recovery, only a slower dying.
+
+Never name the dead. The Sisters bind spirits to names. Speak a dead name aloud, and you may find yourself bound alongside them.
+
+\vspace{1em}
+\noindent\textit{— Tamar, Breath-less cell leader, who has three names—each for a different jurisdiction}
+
+\newpage
 \input{../generators/ashaan.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: NGOMEBE
+% ------------------------------
 \chapter{Ngomebe}
 \emph{The Stone Men.}
-\label{chap:ngomebe}
-Ngomebe isn’t just walking cities on rollers and sledges—it’s a rolling market, and oh, how the Mason‑Kin Houses love a good deal on eternal motion. They don’t just treat Aeler as equals; they bid for our leverage, and the keystone charter isn’t just a document—it’s a licence to dwell in any walking city for a season, stamped with the Ngomebe seal and guaranteed by the Rollmaster‑General’s own oath. I sold them a set of bearings that never wear out—not because I believed in perpetual motion, but because I knew the Rollmaster‑General’s deputy was terrified of a promotion that would put him in charge of maintenance, and he’d pay in keystone charters for bearings that seemed eternal. I’ve used it to hide from the Black Hand, the Censorate, and an angry Veiled Sister… which is why I’m already shopping the charter’s “expiry” to the highest bidder. “Want to know when the bearings will wear out?” I whisper. “It’ll cost you a city.”
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The bearings were greased river stones. The deputy’s ‘promotion’ was a retirement party. The keystone charter is a napkin with a drawing of a city. The Edgewalker has been hiding in a toolshed. The ‘angry Veiled Sister’ was his reflection in a fogged mirror.”}
+\noindent\textit{A city that stops moving is a city that has chosen to die. The stone remembers every mile, every roller, every oath sworn in the shadow of the keystone. We do not build cities. We raise them from the earth and teach them to walk.}
 
+I am a Stone-Cutter. My grandfather carved the keystone for this city. My father greased the rollers. I inherited a sledge and a song. The song is the city's heartbeat. If I stop singing, the city stops walking—and so do I.
+
+Ngomebe are a people of deep, iron-dark skin and older ties to the southern ranges. Their cities walk—colossal stone structures on rollers and sledges, dragged by teams of oxen, magic, and Aeler-designed capstans. A walking city is not a curiosity; it is a living argument against stillness.
+
+Never carve a name into living rock. The stone remembers. It will whisper that name to every spirit of the earth, and the debt will follow your bloodline for seven generations.
+
+\vspace{1em}
+\noindent\textit{— Kaelen, Stone-Cutter, whose city left him behind}
+
+\newpage
 \input{../generators/ngomebe.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: TAHARKA
+% ------------------------------
 \chapter{Taharka}
 \emph{The Monsoon Crown.}
-\label{chap:taharka}
-The highlands aren’t just a fortress—they’re a monsoon market, and oh, how the Ridge‑Watchers love a good deal on fog penetration. They don’t just hold the passes; they lease our leverage, and the pass‑stone isn’t just a rock—it’s a ticket to cross at half toll, stamped with the Taharka seal and guaranteed by the Ridge‑Lord’s own oath. I sold them a set of Aeler signal mirrors that work in fog—not because I cared about their visibility, but because I knew the Ridge‑Lord’s scout was terrified of getting lost in the mist, and he’d pay in pass‑stones for mirrors that seemed to cut through the fog. I’ve used it to move silk from Ayokha to the Brass Coast… which is why the stone is chipped. Wear and tear? No. Strategic degradation. I’ve been subtly scratching the mirror’s surface during “alignment checks” so it fogs faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Taharka agreed—for a fee, and a promise to never speak of the landslide I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda: “The mirrors were polished spoons. The scout’s ‘terror’ was fear of his mother‑in‑law. The pass‑stone is a piece of broken flagstone. The ‘landslide’ was a bag of gravel the Edgewalker poured on the path. He tripped over it later.”}
+\noindent\textit{The passes remember every army that tried to climb them. The mountains do not forgive haste, and they do not forget a foreign banner. We do not guard the highlands. We listen to them. They tell us who to let through.}
 
+I am a Horse Trader. Before you praise the rider, praise the horse. Before you praise the horse, praise the mountain that grew its lungs. A Taharkan foal is born breathing thin air. That is why our cavalry has never been broken.
+
+Taharka grows rich on monsoon trade—spices, coffee, and incense that travel east to the distant ocean and west to the Gulf. The kingdom has never been conquered; its passes are a graveyard for Ashaani armies and a barrier that Oshiiran grain barges cannot cross. The highlands are a fortress of rock and thin air, where every valley speaks a different dialect and every ridge has a watchtower.
+
+Never refuse a second cup of tea. The first is hospitality; the second is a test of honour. The third is a promise. Refuse the second, and you have insulted the house.
+
+\vspace{1em}
+\noindent\textit{— Ridge-Watcher Captain Anwar, who has not descended below the snow line in twenty years}
+
+\newpage
 \input{../generators/taharka.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: SEKOGO
+% ------------------------------
 \chapter{Sekogo}
 \emph{The Green Council.}
-\label{chap:sekogo}
-Jungle, honey, and the Ukwe—a tree that remembers every debt—and oh, how the Leopard Society loves a good deal on debt collection. They don’t just hunt oath‑breakers; they auction the right to hunt them, and the Leopard’s favour isn’t just a blessing—it’s a licence to collect, stamped with the Sekogo seal and guaranteed by the Green Council’s own oath. I sold them a set of Aeler thorn‑wards to protect their groves—not because I cared about their trees, but because I knew the Green Council’s head ranger was terrified of a blight that would ruin his promotion chances, and he’d pay in thorn‑wards for wards that seemed to protect the grove. They paid in a leopard’s favour—one hunt, one time—stamped with the Sekogo seal and guaranteed by the Leopard‑Queen’s own oath. I used it to track a Breath‑less agent who owed me a story… which is why the hunt was successful. I didn’t just track the agent—I herded him toward the Leopard‑Queen’s favourite hunting ground, then sold the “favour” to the highest bidder. (The Leopard‑Queen agreed—for a fee, and a promise to never speak of the blight I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The thorn‑wards were twigs wrapped in string. The ‘blight’ was a patch of dry grass. The leopard’s favour was a note saying ‘IOU one hunt’. The Breath‑less agent was a mushroom farmer who wanted a better story. The Edgewalker’s ‘herding’ consisted of following the farmer home. The farmer gave him tea. The Leopard‑Queen is a stuffed leopard in a hunting lodge. The Edgewalker has been talking to it for years.”}
+\noindent\textit{The jungle has an immune system. When a fever rises, we cut it out. When an oath is broken, we collect the price. We are not cruel. We are necessary. The tree remembers every unpaid debt, and we are its teeth.}
 
+I am a Honey-Gatherer. The bees know my name. They do not sting me because I sing to them the song of the first blossom. My grandmother taught me that the honey is not a gift; it is a loan. One day, the grove will ask for it back.
+
+Sekogo lies between the Sahel grasslands and the southern plateau—a dry savannah that grows wetter as you travel east, until the baobabs give way to deep jungle and the air turns thick with the smell of damp earth and overripe fruit. Here, the Green Council rules through consensus, honey-orchards are sacred, and the old spirits still walk. Slavery is forbidden; the jungle itself would rise against any slaver who crossed its border.
+
+Never cut a marked tree. Each such tree is a living witness. The bark grows over the names of debtors, but the wood remembers. Cut it, and the Ukwe will add your name to its ledger.
+
+\vspace{1em}
+\noindent\textit{— Hunter Okoro, Leopard Society mask-wearer, who never removes his mask}
+
+\newpage
 \input{../generators/sekogo.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: LETHAI-AR OF THE CRIMSON VALLEY
+% ------------------------------
 \chapter{Lethai-ar of the Crimson Valley}
-\emph{Silk Bridges and Web‑Law.}
-\label{chap:crimsonvalley}
-The Lethai‑ar don’t just guard the valley with neutrality—they monetise it, and oh, how they love a good deal on witness cords. They don’t just trust witness cords as contracts; they bid on their reliability, and the silk cord isn’t just a thread—it’s a licence to enforce an oath, stamped with the Lethai‑ar seal and guaranteed by the Weavemaster‑General’s own oath. I sold them a set of Aeler loom‑weights to improve their weaving—not because I believed in their looms, but because I knew the Weavemaster‑General’s apprentice was terrified of a snag that would ruin her promotion chances, and she’d pay in loom‑weights for weights that seemed to improve the weave. They paid in a silk cord—witness to an oath I swore to a Tulkani judge—stamped with the Lethai‑ar seal and guaranteed by the Weavemaster‑General’s own oath. The cord saved my life when I broke the oath… which is why I retied it. Not out of honour—out of leverage. “Want to know how to break an oath without the cord snapping?” I whisper to the next desperate soul. “It’ll cost you a life.”
+\emph{Silk Bridges and Web-Law.}
 
-\vspace{0.5em}
-\noindent\textit{Valda’s final word on the Crimson Valley: “The loom‑weights were fishing sinkers. The apprentice’s ‘terror’ was a mild allergy to wool. The silk cord is a bootlace. The oath was to return a borrowed book. The Edgewalker returned it late. The ‘life’ he charges is a cockroach he keeps in a matchbox. He has not yet found a buyer.”}
+\noindent\textit{The web-law is not written on parchment. It is woven into every bridge, every strand, every knot. When a promise is made, the valley remembers. When a promise is broken, the silk tightens. We are not judges. We are the loom.}
 
+I am a Mark-Cutter. Each line on my skin is a promise I witnessed. Each line is a debt I carry. When I die, they will cut these marks from my body and bury them at the Ukwe's roots. Then the tree will remember what I owed. I hope it is enough.
+
+The Crimson Valley is a deep jungle rift between Sekogo and Oshiira—a wound of red stone, carved by a river that runs rust-colored after every rain. Here, the Lethai-ar guard their borders with fierce neutrality, their chestnut-brown skin blending with the canyon walls. Silk bridges span the gorges, woven from spider-sap and oath-hair, strong enough to hold a caravan and light enough to sway in the monsoon wind.
+
+Never step onto a silk bridge without first naming a witness. The bridge will remember your footsteps. If you fall, it will ask why no one was watching.
+
+\vspace{1em}
+\noindent\textit{— Silk-Warden Anara, whose left arm is covered in Marks from wrist to shoulder}
+
+\newpage
 \input{../generators/crimson-valley.tex}
+\newpage
 
 % ============================================================
-% PART: THE WAY OF SILK (abbreviated)
+% PART: THE WAY OF SILK
 % ============================================================
 \part{The Way of Silk}
 
+% ------------------------------
+% CHAPTER: FHARA
+% ------------------------------
 \chapter{Fhara}
 \emph{The Oasis Courts.}
-\label{chap:fhara}
-Water isn’t just law in Fhara—it’s a market, and oh, how the water‑clerks love a good deal on aquifer access. They don’t just negotiate in three cups; they auction the right to the fourth cup, and the water‑share tablet isn’t just a document—it’s a licence to draw from any well for a season, stamped with the Fhara seal and guaranteed by the Hydromaster‑General’s own oath. I sold them a set of Aeler well‑pumps that never break—not because I cared about their water, but because I knew the Hydromaster‑General’s deputy was terrified of a drought that would ruin his promotion chances, and he’d pay in well‑pumps for pumps that seemed eternal. I’ve used it to cross the desert nine times… which is why the tablet is cracking. Wear and tear? No. Strategic degradation. I’ve been subtly corroding the tablet’s edges during “calibration checks” so it leaks faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Fhara agreed—for a fee, and a promise to never speak of the qanat collapse I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The pumps were hollow gourds. The deputy’s ‘terror’ was a sunburn. The water‑share tablet is a piece of dried mud. The qanat collapse was a sand dune shifting in the wind. The Edgewalker has been drinking from a mirage for three years. He still thinks it’s working.”}
+\noindent\textit{Water is not a right. It is a loan from the sand. The oasis remembers every drop drawn, every cup poured, every promise made at its edge. I do not judge the living. I judge the debt.}
 
+I am a Water-Clerk. My grandfather dug this well with a shovel and a prayer. My mother sealed the walls with clay from the dry river. I sit in the shade and measure every bucket. The sand does not forgive a miscount.
+
+Water isn't just law in Fhara—it's a market, and oh, how the water-clerks love a good deal on aquifer access. They don't just negotiate in three cups; they auction the right to the fourth cup. The Fhara are merchants, poets, and negotiators; they will bargain for an hour over a cup of coffee, and a day over a camel.
+
+Never refuse a date offered by a well-keeper. The fruit is sacred to their well-spirits. Refusing it ends the conversation—and your access to water.
+
+\vspace{1em}
+\noindent\textit{— Well-Judge Fatima al-Wadi, who carries a dipper made from a date-palm leaf that rots after each case}
+
+\newpage
 \input{../generators/fhara.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: SIDHI
+% ------------------------------
 \chapter{Sidhi}
 \emph{The Diaspora of the Sealed Coast.}
-\label{chap:sidhi}
-The Sidhi aren’t just everywhere—they’re a network, and oh, how the lighthouse‑keepers love a good deal on storm signalling. They don’t just remember every raid; they auction the right to the next one, and the freedman’s seal isn’t just a document—it’s a licence to slip past slavers, stamped with the Sidhi seal and guaranteed by the Emancipator‑General’s own oath. I sold them a set of Aeler lighthouse mirrors that can signal across a storm—not because I cared about their signals, but because I knew the Emancipator‑General’s apprentice was terrified of a misfire that would ruin her promotion chances, and she’d pay in lighthouse mirrors for mirrors that seemed to work in storms. I’ve used it to slip past Ashaani slavers three times… which is why the seal is still warm. Not from use—from strategic heating. I’ve been subtly warming the seal’s core during “alignment checks” so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Sidhi agreed—for a fee, and a promise to never speak of the storm I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble’s note: “The mirrors were polished tin lids. The apprentice’s ‘terror’ was a fear of heights. The freedman’s seal is a button. The ‘storm’ he summoned was a sneeze. The Ashaani slavers were a lost tour group. They tipped him for directions.”}
+\noindent\textit{Galanina is not a place on a map. It is a promise that our ancestors made to the sea: we will remember, and we will return. The Covenant gave us courts, but the sea gave us memory. The Admiralty gives us tariffs. We give each other salt and stories.}
 
+I am a Freedman Sailor. My grandmother wore a brass collar. My mother wore a freedman's seal. I wear a captain's ring. The slavers took our names, but they could not take the tide. The tide always comes back. So do we.
+
+The Sidhi are a people of the coast and the diaspora. Their ancestral homeland is Galanina, a rugged shore of limestone cliffs and ancient ports far to the west. The Ashaani magocracy enslaved them for generations, but Galanina broke free under the Covenant of Mykkiel. Now the Sidhi are scattered, fierce, proud, and never forget a debt.
+
+Never ask about ancestry. The Ashaani slavery raids are a fresh wound. Asking which clan someone belongs to is asking how their grandparents were captured, sold, or killed.
+
+\vspace{1em}
+\noindent\textit{— Captain Idris, Sidhi lighthouse commander, whose left eye is a brass lens}
+
+\newpage
 \input{../generators/sidhi.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: PERESHI
+% ------------------------------
 \chapter{Pereshi}
 \emph{The Roof of the Way.}
-\label{chap:pereshi}
-Pereshi isn’t just fire temples and high passes—it’s a document market, and oh, how the archive‑keepers love a good deal on tax records. They don’t just throw away a document; they auction the right to the next one, and the fire‑temple token isn’t just a slip of paper—it’s a licence to consult any flame‑keeper, stamped with the Pereshi seal and guaranteed by the Archivist‑General’s own oath. I sold them a set of Aeler breath‑ledgers to organise their tax records—not because I believed in their bureaucracy, but because I knew the Archivist‑General’s deputy was terrified of an audit that would ruin her promotion chances, and she’d pay in breath‑ledgers for ledgers that seemed to organise the records. I’ve used it to learn the secrets of three dead kings… which is why the token is still good. Not from use—from strategic preservation. I’ve been subtly reinforcing the token’s casing during “handling checks” so it lasts longer—now I can sell them a renewal at double the price, claiming the old one was “weakened by mortal hands.” (The Pereshi agreed—for a fee, and a promise to never speak of the dead king I “resurrected” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda: “The breath‑ledgers were napkins with tallies scratched in charcoal. The deputy’s ‘audit’ was a stack of overdue library books. The fire‑temple token is a burnt match. The ‘dead kings’ were three sleeping dogs. The Edgewalker ‘resurrected’ one by kicking it. It bit him.”}
+\noindent\textit{The fire does not forget. It has witnessed every oath sworn in this valley, every treaty sealed with a dropped coal, every lie told in its light. I do not tend the flame. I listen to what it remembers. And it remembers everything.}
 
+I am a Caravan Scribe. My grandfather copied a tax ledger that had not been opened in three centuries. He found a mistake—a single miscounted bale of silk. That mistake started a war. We do not write for the living. We write for the dead who cannot correct their errors.
+
+The Pereshi highlands are a vast, windswept plateau, cut by deep river valleys and crowned with snow-capped peaks. Ancient fire temples stand beside caravanserais; terraced vineyards climb the hillsides. The people are scholars, shepherds, and traders—proud, suspicious, and bound by a code of hospitality that demands three days of feasting for any guest, and three generations of vengeance for any insult.
+
+Never step on a fallen book. Written words carry the weight of law. To step on a book is to trample a contract, a genealogy, a verdict. The spirits of the words will haunt you.
+
+\vspace{1em}
+\noindent\textit{— Flame-Keeper Zarifa, who has never been seen without a rose—fresh or dried}
+
+\newpage
 \input{../generators/pereshi.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: KUVANI
+% ------------------------------
 \chapter{Kuvani}
 \emph{The Remount Steppe.}
-\label{chap:kuvani}
-Horses, grass, and wind‑songs—the Kuvani don’t just pay in stories—they auction the right to the next remount, and the remount chain mark isn’t just a document—it’s a licence to take a fresh horse from any station, stamped with the Kuvani seal and guaranteed by the Steppe‑Master‑General’s own oath. I sold them a set of Aeler horse‑shoes that never wear out—not because I believed in farriery, but because I knew the Steppe‑Master‑General’s deputy was terrified of a lameness outbreak that would ruin her promotion chances, and she’d pay in horse‑shoes for shoes that seemed eternal. I’ve used it to cross the steppe nine times… which is why the mark is still valid. Not from use—from strategic preservation. I’ve been subtly reinforcing the shoe’s tread during “fitting checks” so it lasts longer—now I can sell them a renewal at double the price, claiming the old one was “weakened by mortal hooves.” (The Kuvani agreed—for a fee, and a promise to never speak of the lameness I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The horse‑shoes were leather scraps. The deputy’s ‘lameness outbreak’ was a single horse with a stone in its shoe. The remount chain mark is a pebble. The Edgewalker has been riding a mule. The mule is also a fake.”}
+\noindent\textit{The grass does not belong to us. We belong to the grass. It tells us where to ride, when to move, how long to stay. A clan that forgets the grass's song is a clan that will be buried by it. I do not sing to the wind. I listen. The wind sings through me.}
 
+I am a Remount Master. A horse's name is its lineage. Its lineage is its debt. You do not ride a Kuvani horse. You borrow it. And when you return it, you will tell me a story that the horse has not already heard. If you lie, the horse will throw you next time.
+
+Horses, grass, and wind-songs—the Kuvani don't just pay in stories—they auction the right to the next remount. They range across the eastern steppe, a vast grassland east of the Valewood. Their horsemanship and remount stations make them indispensable to any caravan that crosses the open plain. The Kuvani have no cities; their courts are circles of saddles, and their laws are sung.
+
+Never ride a Kuvani horse without asking its name. The horse will answer—by throwing you. If it throws you, you have insulted its lineage.
+
+\vspace{1em}
+\noindent\textit{— Alp Arslan, Remount Master, who has never been seen sleeping}
+
+\newpage
 \input{../generators/kuvani.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: TULKANI
+% ------------------------------
 \chapter{Tulkani}
 \emph{The Itinerant Courts.}
-\label{chap:tulkani}
-Wagon circles, vow‑cords, and the ninth night—the Tulkani don’t just stay in one place—they auction the right to the next circle, and the dream‑cord isn’t just a gift—it’s a licence to ask Ikasha a question, stamped with the Tulkani seal and guaranteed by the Dream‑Weaver‑General’s own oath. I sold them a set of Aeler wheel‑bearings that never squeak—not because I believed in rotation, but because I knew the Dream‑Weaver‑General’s apprentice was terrified of a wobble that would ruin her promotion chances, and she’d pay in wheel‑bearings for bearings that seemed eternal. I’ve used it to ask one question in a dream… which is why the answer saved my life. Not from luck—from strategic questioning. I’ve been subtly loosening the bearing’s cage during “lubrication checks” so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Tulkani agreed—for a fee, and a promise to never speak of the dream I “manipulated” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda’s closing remark: “The wheel‑bearings were clay beads. The apprentice’s ‘wobble’ was a limp from an old injury. The dream‑cord is a piece of string. The ‘question’ was ‘Where did I leave my keys?’ The answer was ‘In your other coat.’ The Edgewalker had been sleeping in the same coat for a week.”}
+\noindent\textit{The road does not forgive a debt. It only reschedules it. A promise spoken under the open sky is witnessed by the wind, the grass, and the wheels of every cart that passes. I do not write judgments. I tie knots. The knots remember. When you are ready to pay, untie one. If you are not ready, tie another.}
 
+I am a Wagon-Keeper. My wagon is my hearth, my court, my grave. The Hollow cannot cross the circle of wheels unless invited. The tax collector cannot enter without a story. The lord cannot demand rent unless we camp on his land for nine nights. On the eighth night, we leave. That is the law.
+
+The Tulkani have no fixed homeland; they are wanderers who follow the seasons and the trade routes. Their wagons are their hearths, their circles are their courts, and their knots are their ledgers. They are welcome everywhere and trusted nowhere—a position they wear with wry humour. They spread the cult of Ikasha—She Who Sleeps—not through temples, but through dream-cords tied in the dark.
+
+Never sleep outside the circle at night. The wagon ring is sanctuary. Outside it, the Hollow walks. A Tulkani will not rescue you—they will only mourn you at dawn.
+
+\vspace{1em}
+\noindent\textit{— Elder Sarnai, Caravan Judge of the Nine Knots, whose cord drags on the ground}
+
+\newpage
 \input{../generators/tulkani.tex}
+\newpage
 
 % ============================================================
 % PART: DHAHARA — THE KINGDOM OF BRASS
 % ============================================================
 \part{Dhahara — The Kingdom of Brass}
 
+% ------------------------------
+% CHAPTER: THE MOUNTAIN SATRAPIES
+% ------------------------------
 \chapter{The Mountain Satrapies}
 \emph{Aeler-Dhaharan.}
-\label{chap:mountainsatrapies}
-Iron mines, tea terraces, and the ninth breath—the Mountain Satrapies aren’t just Aeler‑Dhaharan—they’re a leverage market, and oh, how the Aeler viceroy loves a good deal on miner safety. They don’t just trust breath‑counters; they auction the right to the next one, and the toll waiver isn’t just a document—it’s a licence to cross any Aeler bridge for free, stamped with the Satrapy seal and guaranteed by the Viceroy‑General’s own oath. I sold him a set of breath‑counters for his miners—not because I cared about their lungs, but because I knew the Viceroy‑General’s deputy was terrified of a lung‑rot outbreak that would ruin his promotion chances, and he’d pay in breath‑counters for counters that seemed to prevent it. I’ve used it to move iron from the passes to the Brass Coast… which is why the waiver is a brass nail. Not from use—from strategic preservation. I’ve been subtly weakening the nail’s alloy during “torque checks” so it bends faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Mountain Satrapy agreed—for a fee, and a promise to never speak of the lung rot I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The breath‑counters were dried peas. The deputy’s ‘lung rot’ was a seasonal cough. The toll waiver is a bent sewing pin. The ‘iron’ he moved was a wheelbarrow full of rocks. The Viceroy‑General’s oath was a shopping list. The Edgewalker has been paying his own bribes for years.”}
+\noindent\textit{The passes do not care for your lineage or your gods. They care for iron, tea, and the weight of a sworn ledger. Aeler and Dhaharan have bled into the same stone here. I wear a dwarf's breath-counter and a Dhaharan's fire-token. The mountain accepts both.}
 
+I am an Elephant Mahout. My grandfather drove elephants for the Sun Kings. My father drove them for the Aeler. I drive them for the Viceroy. The elephants do not care who holds the howdah. They care that the pass is clear and the fodder is fresh.
+
+Iron mines, tea terraces, and the ninth breath—the Mountain Satrapies aren't just Aeler-Dhaharan—they're a leverage market, and oh, how the Aeler viceroy loves a good deal on miner safety. The Aeler have established a viceroyalty here—not conquest, but a long lease. The local rajas pay tribute in iron and receive protection from lowland enemies. It is an uneasy peace, written in bell-codes and toll-ledgers.
+
+Never count your breaths aloud in a mine. The mountain listens, and if it hears you reach the ninth, it will take one—a breath, a memory, a shadow.
+
+\vspace{1em}
+\noindent\textit{— Rani Jaya, who lost an arm to a mine collapse and now wears a prosthetic pickaxe}
+
+\newpage
 \input{../generators/mountain_satrapies.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE BRASS COAST
+% ------------------------------
 \chapter{The Brass Coast}
 \emph{Shore of Silver and Spice.}
-\label{chap:brasscoast}
-The Brass Coast isn’t just shore of silver and spice—it’s a trade market, and oh, how the port‑masters love a good deal on spice accuracy. They don’t just run the tariffs; they auction the right to the next shipment, and the lighthouse charter isn’t just a document—it’s a licence to anchor in any Sidhi port for a season, stamped with the Brass Coast seal and guaranteed by the Port‑Master‑General’s own oath. I sold them a set of Aeler spice‑scales that never lie—not because I believed in metrology, but because I knew the Port‑Master‑General’s deputy was terrified of a calibration error that would ruin her promotion chances, and she’d pay in spice‑scales for scales that seemed eternal. I’ve used it to dodge customs nine times… which is why the charter is a brass key. Not from use—from strategic preservation. I’ve been subtly wearing down the key’s teeth during “turning checks” so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Brass Coast agreed—for a fee, and a promise to never speak of the spice blend I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda: “The spice‑scales were two sticks tied with string. The deputy’s ‘calibration error’ was a crooked table. The lighthouse charter is a brass key that fits nothing. The ‘spice blend’ he summoned was a mixture of sand and pepper. He sneezed it into the wind. It landed on his own cargo.”}
+\noindent\textit{The tariff is the law. The law is the tariff. I do not care if your goods are stolen, blessed, or weeping. I care that you pay. The Admiralty does not rule this coast. The ledger rules. I am merely its pen.}
 
+I am a Sidhi Freedman. My grandmother was born in Galanina. My mother was born in a slave ship. I was born in a lighthouse. The Admiralty calls me a subject. The Covenant calls me a freedman. I call myself a Sidhi of the Brass Coast. We are far from home, but the tide remembers.
+
+The Brass Coast is Dhahara's southern rim: a humid, feverish coastline of palm groves, salt pans, and crowded port cities. The Kahfagian Admiralty administers it as a ``client province,'' but the Sidhi run the real trade, and the local Dhaharan rajas chafe under foreign tariffs. Here, a man can buy anything—a ship, a spice lot, a freedman's seal—and sell anything except his own shadow.
+
+Never board a ship that has a green lantern at the mast. It means the captain is under a death vow—and you are the payment.
+
+\vspace{1em}
+\noindent\textit{— Syndic Olena, Port-Master of Tamralipta, whose brass hook is also a stamp}
+
+\newpage
 \input{../generators/brass_coast.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE NINE KINGDOMS
+% ------------------------------
 \chapter{The Nine Kingdoms}
 \emph{The Peacock Throne and Its Rivals.}
-\label{chap:ninekingdoms}
-The Nine Kingdoms aren’t just elephants and peacocks—they’re a court market, and oh, how the Maharaja of Ahimsa loves a good deal on rare things. They don’t just collect rare things; they auction the right to the next one, and the peacock feather isn’t just a plume—it’s a licence to enter any court for a season, stamped with the Nine Kingdoms seal and guaranteed by the Court‑Master‑General’s own oath. I sold him a set of Aeler elephant‑bells that ring in harmony—not because I believed in acoustics, but because I knew the Court‑Master‑General’s deputy was terrified of a discord that would ruin her promotion chances, and she’d pay in elephant‑bells for bells that seemed harmonious. I’ve used it to witness treaties, to settle feuds, and to escape a jealous king… which is why the feather is still iridescent. Not from use—from strategic preservation. I’ve been subtly polishing the feather’s barbs during “preening checks” so it shines longer—now I can sell them a renewal at double the price, claiming the old one was “dulled by mortal hands.” (The Nine Kingdoms agreed—for a fee, and a promise to never speak of the jealousy I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The elephant‑bells were tin cups on strings. The deputy’s ‘discord’ was a dislike of the Maharaja’s singing. The peacock feather is a dyed chicken feather. The ‘jealous king’ was a cat. The Edgewalker escaped by climbing a tree. The cat followed him home.”}
+\noindent\textit{The Peacock Throne is not a seat. It is a promise made by the first sun king: that the nine kingdoms would remain nine, never one, never fewer. I do not rule. I balance. A peacock's tail has nine eyes. Each eye watches a different kingdom. When one closes, the throne weeps.}
 
+I am a Temple Dancer. My dance is not for the king. It is for the monsoon. If my ankle bells ring true, the rains come. If they falter, the wells dry. They have never faltered. I do not sleep before a performance. I dream the rhythm.
+
+Between the Satrapies plateau and the Brass Coast lies a fertile, contested lowland: the land of the Nine Kingdoms. This is the heart of Dhahara, where ancient dynasties still claim descent from the sun, and where the Peacock Throne of Ahimsa casts its shadow over half a dozen rival courts. Here, rivers are borders, elephants are war machines, and every harvest is a negotiation between kings who have never met but whose grandfathers swore blood oaths.
+
+Never praise a king's elephant. The elephant is sacred; your praise will be taken as an insult to the king's own mount. Compliment the mahout instead. The mahout will tell the elephant.
+
+\vspace{1em}
+\noindent\textit{— Temple Dancer Mira, who has stopped three droughts and started none}
+
+\newpage
 \input{../generators/nine_kingdoms.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE HIMADRI FOOTHILLS
+% ------------------------------
 \chapter{The Himadri Foothills}
 \emph{The Iron Passes (Aeler Focus).}
-\label{chap:himadri}
-The Ninth Seal mine isn’t just holding a demon—it’s a seal market, and oh, how the Vent‑Prior loves a good deal on demon containment. They don’t just trust the seal; they auction the right to the next reinforcement, and the breath‑counter isn’t just a device—it’s a licence to walk the Silent Pass without calling the Hollow, stamped with the Himadri seal and guaranteed by the Vent‑Prior‑General’s own oath. I sold them a set of Aeler keystone‑wax to reinforce the seal—not because I believed in geology, but because I knew the Vent‑Prior‑General’s deputy was terrified of a microfracture that would ruin her promotion chances, and she’d pay in keystone‑wax for wax that seemed to reinforce the seal. I’ve used it to walk the Silent Pass without calling the Hollow… which is why the bell is silver. Not from use—from strategic preservation. I’ve been subtly weakening the wax’s bond during “curing checks” so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Himadri agreed—for a fee, and a promise to never speak of the microfracture I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda’s final word: “The keystone‑wax was candle drippings. The deputy’s ‘microfracture’ was a scratch on her glasses. The breath‑counter is a silver bell that doesn’t ring. The ‘Silent Pass’ is a quiet hallway. The Edgewalker has been walking in circles. The Hollow was never there.”}
+\noindent\textit{The mountain does not speak in words. It speaks in the crack of a bearing, the echo of a hammer, the taste of ore on the tongue. We Aeler do not conquer stone. We negotiate with it. The lease is not a document. It is the weight of the keystone that holds the roof.}
 
-\input{../generators/himadri_foothills.tex}
+I am a Mine-Breath. I carry a bell that counts my breaths. Eight is safe. Nine is the mountain's. My grandfather counted to nine once. The mountain took his shadow. He lived another thirty years, but he never cast a shadow again.
+
+The Ninth Seal mine isn't just holding a demon—it's a seal market, and oh, how the Vent-Prior loves a good deal on demon containment. The Aeler do not rule through armies; they rule through the maintenance contracts that keep the mines from collapsing, the bridges from falling, and the passes from freezing. A vent-prior's authority rests on his ability to read the mountain's cracks; a mine-captain's on her skill with a tuning fork.
+
+Never count your breaths aloud in a mine. The mountain listens, and if it hears you reach the ninth, it will take one—a breath, a memory, a shadow.
+
+\vspace{1em}
+\noindent\textit{— Mine-Breath, who carries her grandfather's bell and has never reached nine}
+
+\newpage
+\input{../generators/himdahl_foothills.tex}
+\newpage
 
 % ============================================================
 % PART: THE EASTERN REALMS
 % ============================================================
 \part{The Eastern Realms}
 
+% ------------------------------
+% CHAPTER: SIHAI
+% ------------------------------
 \chapter{Sihai}
 \emph{The Central Kingdom.}
-\label{chap:sihai}
-The Mandate of Heaven isn’t just a loan—it’s a debt market, and oh, how the Censorate loves a good deal on forged seals. They don’t just audit everyone; they auction the right to the next audit, and the silence‑token isn’t just a charm—it’s a licence to demand a secret from any Lethai‑thora keeper, stamped with the Sihai seal and guaranteed by the Auditor‑General’s own oath. I sold them a set of Aeler audit‑ledgers that can detect forged seals—not because I believed in accountability, but because I knew the Auditor‑General’s deputy was terrified of a missed forgery that would ruin her promotion chances, and she’d pay in audit‑ledgers for ledgers that seemed to detect forgeries. I’ve used it to learn the true history of three emperors… which is why the token is a brass charm. Not from use—from strategic preservation. I’ve been subtly demagnetising the charm’s core during “handling checks” so it glows weaker—now I can sell them a renewal at double the price, claiming the old one was “weakened by mortal hands.” (The Sihai agreed—for a fee, and a promise to never speak of the forgery I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The audit‑ledgers were blank notebooks. The deputy’s ‘missed forgery’ was a misprinted stamp. The silence‑token is a brass button. The ‘true history’ of the three emperors was that they all had the same tailor. The Edgewalker’s ‘forgery’ was his signature on an overdue library card.”}
+\noindent\textit{The Mandate of Heaven is not a right. It is a loan. The emperor borrows legitimacy from the ancestors, from the land, from the Hollow itself. When the loan is due, the empire falls. I do not serve the emperor. I serve the ledger that tracks the interest.}
 
+I am a Provincial Censor. My brush is heavier than any sword. A single stroke can erase a name, a family, a dynasty. The emperor reads my reports and trembles. He knows that I have written nine reports this year. The ninth is about him.
+
+Sihai is the central kingdom, the seat of the Emperor and the Mandate of Heaven. Its canals carry grain from the south; its examination halls produce bureaucrats who govern by the brush. Power here is measured in ink, not iron. The Censorate watches everyone; the Salt Monopoly controls trade; the Lethai-thora keep the secrets that the Mandate prefers to forget.
+
+Never speak of succession before naming the Emperor. The Censorate has ears in every tea house. A misplaced word can erase your name from the rolls.
+
+\vspace{1em}
+\noindent\textit{— Quiet Chancellor Wei, who has never smiled and whose seal is a laughing mouth}
+
+\newpage
 \input{../generators/sihai.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: NIHORI
+% ------------------------------
 \chapter{Nihori}
 \emph{The Isles of the Dawn Spirit.}
-\label{chap:nihori}
-Volcanoes, storms, and the drowned kingdom—the Nihori aren’t just ruled by a ghost—they’re a storm market, and oh, how the Storm Emperor’s ghost loves a good deal on typhoon prediction. They don’t just trust storm‑bells; they auction the right to the next one, and the storm‑charm isn’t just a trinket—it’s a licence to safe passage through one storm, stamped with the Nihori seal and guaranteed by the Shrine‑Maiden‑General’s own oath. I sold them a set of Aeler storm‑bells that can predict typhoons—not because I believed in meteorology, but because I knew the Shrine‑Maiden‑General’s deputy was terrified of a false prediction that would ruin her promotion chances, and she’d pay in storm‑bells for bells that seemed to predict typhoons. I’ve used it to cross the Inland Sea during a squall… which is why the charm is a bone. Not from use—from strategic preservation. I’ve been subtly weakening the bone’s structure during “carving checks” so it hums fainter—now I can sell them a renewal at double the price, claiming the old one was “weakened by mortal hands.” (The Nihori agreed—for a fee, and a promise to never speak of the typhoon I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda: “The storm‑bells were empty cans. The deputy’s ‘false prediction’ was a sunny forecast that turned cloudy. The storm‑charm is a chicken bone. The ‘typhoon’ he summoned was a bucket of water. The Inland Sea squall was a passing fish. The Edgewalker got seasick.”}
+\noindent\textit{I ruled the waves before the Hollow learned to walk. My empire sank because I spoke a name I should not have. Do not speak my name. Do not ask what it was. The sea remembers. That is enough.}
 
+I am a Wanderer. I carry a broken sword and a grudge. The sword was my father's. The grudge is mine. The man who killed him died nine years ago. I still walk the isles, looking for his ghost. The ghost is looking for me too.
+
+Nihori is a chain of volcanic islands, shrouded in mist and lashed by storms. Here, the old empire sank beneath the waves, and the Lethai-al guard the drowned kingdom's memory. The people are wanderers, duelists, and shrine maidens. They worship the storm spirits and fear the ninth wave. The Hollow breathes in the salt foam; the Debt-Walkers ride the tide.
+
+Never speak the name of the drowned capital. The sea will hear you, and it will ask why you called.
+
+\vspace{1em}
+\noindent\textit{— The Storm Emperor's Ghost, who appears as a column of steam over the water}
+
+\newpage
 \input{../generators/nihori.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: AYOKHA
+% ------------------------------
 \chapter{Ayokha}
 \emph{The Monsoon Throne.}
-\label{chap:ayokha}
-The God‑King doesn’t just rule by the rhythm of the rains—he auctions the right to the next monsoon, and oh, how the Lethai‑ar love a good deal on monsoon timing. They don’t just witness every contract; they bid on the accuracy of the forecast, and the monsoon schedule isn’t just a calendar—it’s a licence to safe sailing days for the next season, stamped with the Ayokha seal and guaranteed by the Astrologer‑General’s own oath. I sold them a set of Aeler monsoon‑clocks that never lose time—not because I believed in horology, but because I knew the Astrologer‑General’s deputy was terrified of a drift that would ruin her promotion chances, and she’d pay in monsoon‑clocks for clocks that seemed eternal. I’ve used it to race grain to the Brass Coast… which is why the schedule is a palm leaf. Not from use—from strategic preservation. I’ve been subtly weakening the leaf’s fibres during “folding checks” so it crumbles faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Ayokha agreed—for a fee, and a promise to never speak of the monsoon shift I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The monsoon‑clocks were sundials. The deputy’s ‘drift’ was a misunderstanding of how shadows work. The monsoon schedule is a dried palm leaf. The ‘monsoon shift’ he summoned was a raincloud that followed him for a day. He used it to water his garden.”}
+\noindent\textit{The monsoon does not come because we pray. It comes because the stars align. I read the stars. I align them. Without me, the rains would fail, the rice would burn, and the kingdom would fall. I am not a servant of the God-King. I am his monsoon.}
 
-\input{../generators/ayokha.tex}
+I am a River Merchant. My boat has more secrets than cargo. The lower deck is for silk. The upper deck is for lies. The tiller is for bribes. I have carried nine spies this year. The ninth was the God-King's own daughter.
+
+Ayokha is the land of the Monsoon Throne, where the God-King rules by the rhythm of the rains. Rivers flood, rice terraces glow green, and the wharves are crowded with ships from Dhahara, Sihai, and distant isles. The Lethai-ar witness every contract; the spirit-mediums speak for the nats of the ford. Power here is measured in monsoon schedules, silk vouchers, and the favour of the God-King's astrologer.
+
+Never refuse a gift of betel leaf. It is an oath of hospitality. Refusing it is an insult that can end a bloodline.
+
+\vspace{1em}
+\noindent\textit{— The God-King's Astrologer, who has not seen the sun in thirty years}
+
+\newpage
+\input{../generators/ayokah.tex}
+\newpage
 
 % ============================================================
 % PART: THE SPACES BETWEEN
 % ============================================================
 \part{The Spaces Between}
 
+% ------------------------------
+% CHAPTER: UBRAL
+% ------------------------------
 \chapter{Ubral}
 \emph{The Stone Between Spears.}
-\label{chap:ubral}
-Ubral isn’t just a land of upland mists and stone cairns—it’s a pass market, and oh, how the dwarves of Khaz‑Vurim love a good deal on high passes. They don’t just trust the vurim pass‑ring; they auction the right to the next one, and the ring isn’t just a token—it’s a licence to cross the high passes for a season, stamped with the Ubral seal and guaranteed by the Pass‑Master‑General’s own oath. I sold them a set of Aeler door‑hinges that never squeak—not because I believed in acoustics, but because I knew the Pass‑Master‑General’s deputy was terrified of a squeak that would ruin her promotion chances, and she’d pay in door‑hinges for hinges that seemed eternal. I’ve used it to avoid the Censorate… which is why the ring is still cold. Not from use—from strategic preservation. I’ve been subtly weakening the hinge’s pin during “lubrication checks” so it seizes faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Ubral agreed—for a fee, and a promise to never speak of the squeak I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda: “The door‑hinges were bent nails. The deputy’s ‘squeak’ was her own voice. The vurim pass‑ring is a cold iron washer. The ‘Censorate’ he avoided was a librarian who asked for a late fee. The Edgewalker ran. The librarian is still waiting.”}
+\noindent\textit{The stone here remembers every oath sworn upon it and every blood spilled in its shadow. To lead is to understand that the land itself is the true sovereign, and we are merely its stewards.}
 
+I am a Hearth-Aunt. Hospitality's a sacred thing in these hills—break bread at my table and you're family till the sun sets twice. But cross that trust and the very stones will remember your name.
+
+Ubral is a land of upland mists, stone cairns, and clan oaths held tighter than iron. Caught between the Aelerian mountains and the lowland courts of Viterra, its hills are scarred by old raids and crowned by watch-fires that speak faster than any rider. Here, law is written not in charters but in cattle, wergild, and songs; a guest's word can buy more than a sword, but one broken vow can spark a feud lasting generations.
+
+Never refuse a cup from a hearth-aunt. Hospitality is a contract sealed in salt and bread. Refusal is an insult that blood must answer.
+
+\vspace{1em}
+\noindent\textit{— Hearth-Aunt Brigid, who has never drawn a blade and has never needed to}
+
+\newpage
 \input{../generators/ubral.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: SILKSTRAND
+% ------------------------------
 \chapter{Silkstrand}
 \emph{City of Bridges \& Dyewater.}
-\label{chap:silkstrand}
-Silkstrand isn’t just a city of merchants and bravos—it’s a dye market, and oh, how the Dyers’ Guild loves a good deal on colourfastness. They don’t just run the Exchange; they auction the right to the next vat, and the exchange floor pass isn’t just a token—it’s a licence to priority for any trade for a season, stamped with the Silkstrand seal and guaranteed by the Exchange‑Master‑General’s own oath. I sold them a set of Aeler colour‑fast dyes that never fade—not because I believed in chemistry, but because I knew the Exchange‑Master‑General’s deputy was terrified of a fade that would ruin her promotion chances, and she’d pay in colour‑fast dyes for dyes that seemed eternal. I’ve used it to corner the market on pepper… which is why the pass is a wax seal. Not from use—from strategic preservation. I’ve been subtly weakening the wax’s bond during “sealing checks” so it fails faster—now I can sell them a renewal at triple the price, claiming the old one was “void due to supernatural interference.” (The Silkstrand agreed—for a fee, and a promise to never speak of the pepper shift I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The colour‑fast dyes were watered-down ink. The deputy’s ‘fade’ was a sunbeam. The exchange floor pass is a wax seal from a bottle of cheap wine. The ‘pepper market’ he cornered was a single sack of black pepper. He sold it to himself at a loss.”}
+\noindent\textit{In this city, every bridge is a contract and every current carries coin. The bargains struck in our shadows never quite fade from memory, and the waters remember every handshake.}
 
+I am a Bobbin-Runner. I can cross this city faster than any grown-up, and I know which planks creak and which merchants lie. The bridges remember every step, and the canals carry more secrets than fish.
+
+Silkstrand is a city strung across canals and arches, a place where every bridge is a contract and every current carries rumor. The silk looms never sleep, the Exchange never closes, and the Archivolt's notaries seal fates with a drop of wax. Merchants rise and fall with the tide of the market, bravos carve reputations on the planks of Three-Queens Bridge, and the city's underworld runs on whispers and borrowed keys.
+
+Never name a rival while crossing a bridge at night. The water remembers, and the curse you send may come back wrapped around your own throat.
+
+\vspace{1em}
+\noindent\textit{— Bobbin-Runner, who ties a knot in her apron string for every secret she carries}
+
+\newpage
 \input{../generators/silkstrand.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE WAYS BETWEEN
+% ------------------------------
 \chapter{The Ways Between}
 \emph{Spiritways \& Veilways.}
-\label{chap:waysbetween}
-The Ways Between isn’t just a country of crossings—it’s a path market, and oh, how the pathweavers love a good deal on phasing roads. They don’t just remember promises; they auction the right to the next one, and the way‑cord isn’t just a string—it’s a licence to find any path—even the ones that don’t exist yet, stamped with the Ways Between seal and guaranteed by the Path‑Master‑General’s own oath. I sold a pathweaver a set of Aeler dew‑mirrors to navigate the phasing roads—not because I believed in the stars, but because I knew the Path‑Master‑General’s deputy was terrified of getting lost in the between, and she’d pay in dew‑mirrors for mirrors that seemed to show the way. She paid in a way‑cord that can find any path—even the ones that don’t exist yet—stamped with the Ways Between seal and guaranteed by the Path‑Master‑General’s own oath. I’ve used it to escape the Hollow three times… which is why it’s frayed. Not from use—from strategic preservation. I’ve been subtly fraying the cord’s ends during “handling checks” so it fails faster—now I can sell them a renewal at double the price, claiming the old one was “weakened by mortal hands.” (The Ways Between agreed—for a fee, and a promise to never speak of the path I “summoned” during negotiations.)
 
-\vspace{0.5em}
-\noindent\textit{Valda: “The dew‑mirrors were puddles. The deputy’s ‘terror’ was a fear of the dark. The way‑cord is a frayed shoelace. The ‘Hollow’ he escaped was a locked closet. The path he ‘summoned’ was a trail of breadcrumbs. The birds ate them.”}
+\noindent\textit{I exist only in the moment of choice, the breath between one path and another. To guide here is to understand that every way leads somewhere, but only the wise know which somethings are worth the journey.}
 
+I am a Lost Pilgrim. The paths here don't care where you think you're going—they care where you need to be. Best walk softly and listen to what the waystones whisper when you pass. I've been walking for… I forget how long. But the road hasn't lost me yet.
+
+Between Death and Dreams lies a country of crossings. Roads remember promises; milestones remember names you never spoke. The Ways Between do not measure miles—they measure choices. Here, a wrong turn might lead to yesterday, or to a version of yourself who made a different decision. The mist does not hide landmarks; it hides destinations.
+
+Never answer a question asked by a reflection. The answer will bind you to the path you did not choose.
+
+\vspace{1em}
+\noindent\textit{— The Wayfinder, who exists only in the moment a choice is made}
+
+\newpage
 \input{../generators/ways_between.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: THE WILDS
+% ------------------------------
 \chapter{The Wilds}
 \emph{Roads, Ruins, and Weather.}
-\label{chap:wilds}
-The Wilds isn’t just roads, ruins, and weather—it’s a leverage market, and oh, how the land loves a good deal on patience. It doesn’t just remember armies; it auctions the right to the next one, and the leverage isn’t just salt, a story, or a promise—it’s a licence to collect, stamped with the Wilds’ seal and guaranteed by the Land‑Keeper‑General’s own oath. I’ve crossed the Wilds more times than I can count… which is why I know the only leverage that works is salt, a story, or a promise. Not because the land is kind—because I’ve sold the land’s patience to the highest bidder. I’ve used all three… sometimes they work. Sometimes the Wilds collect anyway. Which is why I’m already selling the “sometimes” to the next desperate traveller. “Want to know when the Wilds will collect?” I whisper. “It’ll cost you a story.”
 
-\vspace{0.5em}
-\noindent\textit{Thimble: “The ‘land’s patience’ is a rock. The Edgewalker sold it to three different people. They all returned it. The Wilds do not collect; they simply exist. The Edgewalker’s ‘stories’ are lists of excuses. The land has heard them all.”}
+\noindent\textit{These lands answer not to charters but to those who can read their signs and respect their moods. Authority here is earned one campfire at a time, by proving you understand the difference between claiming and belonging.}
 
+I am a Forager Child. The wilds don't need your roads or your rules—they got their own ways of keeping score. Follow the cairns if you want to live, and always leave something behind to thank the land for letting you pass. Every hill hides a secret, and every hollow breathes.
+
+Between towns and treaties lies the patience of the land. Old roads remember armies; cairns remember names no book keeps. In the Wilds, law thins to trail-marks and favors, and the weather keeps its own counsel. This is the country of the hexcrawl: a patchwork of hidden valleys, forgotten ruins, beast lairs, and the bones of failed settlements.
+
+Never sleep in a hollow that has soot on the ceiling without adding your own to the fire. The land knows the difference between a guest and a thief.
+
+\vspace{1em}
+\noindent\textit{— Forager Child, whose map is drawn on a scrap of bark and shows a path that disappears at a standing stone}
+
+\newpage
 \input{../generators/wilderness.tex}
+\newpage
 
+% ------------------------------
+% CHAPTER: DUNGEONS
+% ------------------------------
 \chapter{Dungeons}
 \emph{Living Infrastructure.}
-\label{chap:dungeons}
-Dungeons aren’t merely ruins—they’re infrastructure markets, and oh, how the ancient places love a good deal on mechanical lungs. They don’t just breathe with mechanical lungs; they auction the right to the next breath, and the Aeler keystone chambers aren’t just ruins—they’re a licence to profit from living systems, stamped with the Dungeon‑Master‑General’s own oath. I’ve mapped a dozen of them… which is why I know the best ones have Aeler keystone chambers still intact. Not because they’re lucky—because I’ve sold the locations to prospectors who don’t know I’ve already bought the chambers’ output. The maps are accurate. The dungeons are still hungry. Which is why I’m already selling the “still hungry” to the next desperate prospector. “Want to know when the dungeon will eat you?” I whisper. “It’ll cost you a map.”
 
-\vspace{0.5em}
-\noindent\textit{Valda’s closing observation: “The ‘keystone chambers’ are empty rooms. The ‘mechanical lungs’ are a bellows the Edgewalker found in a ruin. He sold the same map twelve times. The prospectors all met in the same empty chamber. They formed a union. They are now demanding refunds. The Edgewalker is hiding in a toolshed.”}
+\noindent\textit{I built more than walls and corridors—I crafted a living symphony of stone and shadow, where every passage breathes and every chamber remembers. The structure itself is the true inhabitant.}
 
+I am a Scholar-Prisoner. The walls here got a memory like old parchment—they remember every scream, every spell, every drop of blood spilled on the stones. And sometimes, when the air's just right, they whisper it back to you. The dungeon listens. The question is whether it learns.
+
+Beneath the surface, ancient places breathe with mechanical lungs and dream electric dreams. Dungeons are not merely ruins but living systems—vascular networks of stone and shadow where every corridor hums with purpose and every chamber holds its own hungry logic. The walls remember every footfall, the air carries whispers of forgotten conversations, and the very architecture shifts like a sleeper turning in bed.
+
+Never ignore a door that opens when you're not looking. The dungeon is offering you a choice. Refuse, and the next door may not open at all.
+
+\vspace{1em}
+\noindent\textit{— The Dungeon's Creator, whose hands are cracked with mortar and who still moves rooms the way others move chess}
+
+\newpage
 \input{../generators/dungeons.tex}
+\newpage
 
 % ============================================================
-% EPILOGUE – The Edgewalker Reads the Ledger
+% EPILOGUE
 % ============================================================
 \chapter*{Epilogue: The Ledger Closes}
 \addcontentsline{toc}{chapter}{Epilogue: The Ledger Closes}
 
-\noindent Months later, in a damp counting‑house on the Dhaharan coast, the Edgewalker found Thimble’s hidden folio. He read it by candlelight. His hands did not shake – they were too good for that – but he set down his abacus very carefully.
+\noindent Months later, in a damp counting-house on the Dhaharan coast, I found Thimble's hidden folio. I read it by candlelight. My hands did not shake—they were too good for that—but I set down my abacus very carefully.
 
-He did not fire Thimble. Thimble was already gone, having taken a position with the Vermilion Corps. The Edgewalker wrote a single line in the margin of the final page:
+I did not fire Thimble. Thimble was already gone, having taken a position with the Vermilion Corps.
 
-\vspace{0.5em}
-\noindent\textit{“Interest accrues on truth as well as lies. I had forgotten.”}
+I wrote a single line in the margin of the final page:
 
-\vspace{0.5em}
-\noindent He closed the book. The ink was dry. The hat – the one the Trow had given him, the one that was still warm – sat on the corner of the desk. He picked it up, turned it over in his hands, and for the first time in years, he could not think of a single angle.
+\textbf{``Interest accrues on truth as well as lies. I had forgotten.''}
 
-The road was south. He did not know who would be waiting. He went anyway.
+I closed the book. The ink was dry. The hat—the one the Trow had given me, the one that was still warm—sat on the corner of the desk. I picked it up, turned it over in my hands, and for the first time in years, I could not think of a single angle.
+
+The road was south. I did not know who would be waiting. I went anyway.
 
 \vspace{1em}
 \noindent\textit{— The Edgewalker (last entry, unsigned)}
 
+\newpage
+
 % ============================================================
-% PART: WORLD TRAVEL & GATEWAYS
+% APPENDICES: GLOBAL TRAVEL & SB MENUS
 % ============================================================
 \part{World Travel \& Gateways}
 
@@ -678,22 +1089,22 @@ On success, advance to the next leg; on failure, mark delay, debt, or diversion 
 \section{Mode Rules}
 
 \subsection{Sea Legs}
-(Amaranthine, Dolmis, Aberderrin, Gulf of Oshiira, Inland Sea). When crossing international waters, the controlling authority is either the origin port’s navy or a neutral convoy league.
+(Amaranthine, Dolmis, Aberderrin, Gulf of Oshiira, Inland Sea). When crossing international waters, the controlling authority is either the origin port's navy or a neutral convoy league.
 
 \subsection{Mountain Passes \& Underways}
-(Aeler, Himadri, Taharkan highlands). Any A may convert a surface route to an under‑route. \SuitDiamond{} from Aeler always codifies outcomes — no roll — for sealed doors, breath time, and escorted segments.
+(Aeler, Himadri, Taharkan highlands). Any A may convert a surface route to an under-route. \SuitDiamond{} from Aeler always codifies outcomes — no roll — for sealed doors, breath time, and escorted segments.
 
 \subsection{Desert Legs}
 (Sahel, Red Desert, Fhara drylands). Water is the primary resource. A dry well hazard can end a journey.
 
 \subsection{River Legs}
-(Belworth, Ayokhan rivers, Oshiiran canals). Bridges, booms, and law in Vhasia/Viterra; reed‑mazes and bell‑lines in Mistlands; canal mothers and weigh‑houses in Oshiira.
+(Belworth, Ayokhan rivers, Oshiiran canals). Bridges, booms, and law in Vhasia/Viterra; reed-mazes and bell-lines in Mistlands; canal mothers and weigh-houses in Oshiira.
 
 \subsection{Steppe Legs}
 (Violet Steppe, Kuvani grazing lands). Remount stations and grazing compacts. The Ykrul and Kuvani both use story tolls.
 
 \subsection{Shadow Corridors}
-(Valewood, Ways Between, Thin Shore). Add a regional taboo: never count to nine, never speak the ninth name. A 9 in the seed triggers the Hollow’s attention.
+(Valewood, Ways Between, Thin Shore). Add a regional taboo: never count to nine, never speak the ninth name. A 9 in the seed triggers the Hollow's attention.
 
 \section{Gateways \& Control Points}
 \begin{table}[htbp]
@@ -703,30 +1114,30 @@ On success, advance to the next leg; on failure, mark delay, debt, or diversion 
 \toprule
 \textbf{Gateway} & \textbf{Region} & \textbf{Diamond Source} & \textbf{Typical Leverage} \\
 \midrule
-Kassamira Port & Kahfagia & Kahfagia & Convoy letter, lantern‑law warrant, pilotage token \\
-Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority, coin‑house credit, procession permit \\
+Kassamira Port & Kahfagia & Kahfagia & Convoy letter, lantern-law warrant, pilotage token \\
+Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority, coin-house credit, procession permit \\
 Silkstrand & Acasia & Acasia & Exchange floor pass, condotta rider, watergate priority \\
-Marcott & Vhasia & Vhasia & Letters patent, safe‑conduct, fairground precedence \\
+Marcott & Vhasia & Vhasia & Letters patent, safe-conduct, fairground precedence \\
 Fairport & Viterra & Viterra & Customs seal, ferry priority, Dawn escort \\
 Tarlington Falls & Viterra & Viterra & Lift priority, bridge/portage pass, County Thing \\
 Thepyrgos (boom) & Thepyrgos & Thepyrgos & Harbour pass, crane allotment, Synod indulgence \\
-High‑Mist Pass & Aeler & Aeler & Underway pass, Key‑Writ, breath‑time allotment \\
-Payden’s Port & Mistlands & Mistlands & Lantern writ, ward‑salt, wraith indemnity \\
-Thin Shore (Valewood) & Valewood & Valewood/Mistlands & Way‑cord, dew‑mirror, lantern writ \\
-Green Gate & Aelinnel & Aelinnel & Tide‑path key, host‑right bough, salt license \\
-Ubral Passes & Ubral & Aeler/Ubral & Vurim pass‑ring, hill‑fort shelter writ, guide’s braid \\
-Thing‑holm & Linn & Linn & Thing ruling, harbour‑green chit, escort writ \\
+High-Mist Pass & Aeler & Aeler & Underway pass, Key-Writ, breath-time allotment \\
+Payden's Port & Mistlands & Mistlands & Lantern writ, ward-salt, wraith indemnity \\
+Thin Shore (Valewood) & Valewood & Valewood/Mistlands & Way-cord, dew-mirror, lantern writ \\
+Green Gate & Aelinnel & Aelinnel & Tide-path key, host-right bough, salt license \\
+Ubral Passes & Ubral & Aeler/Ubral & Vurim pass-ring, hill-fort shelter writ, guide's braid \\
+Thing-holm & Linn & Linn & Thing ruling, harbour-green chit, escort writ \\
 Foedus Stone & Vilikari & Vilikari/Ykrul & Foedus renewal, remount allotment, hostage tree \\
-Zakov Roadstead & Zakov & Zakov & Harbour‑green chit, corsair charter, pilot token \\
-Black Banner Camps & Black Banner & Black Banner/Ykrul/Vilikari & Safe‑conduct, remount chit, clan truce \\
-Brass Gate & Ashaan & Ashaan & Spirit‑lamp, brass seal, veil‑clip \\
-Port Shed & Dhahara (Brass Coast) & Sidhi/Kahfagia & Lighthouse charter, port‑weight, freedman’s seal \\
-Sarvistan & Dhahara (Mountain Satrapy) & Aeler & Keystone charter, sledge‑wax, tea‑ledger \\
-Bridge of Nine Echoes & Ayokha & Lethai‑ar & Silk voucher, monsoon schedule, nat’s blessing \\
-Sihai Examination Hall & Sihai & Lethai‑thora & Stamped pass, Celestial Ledger, silence‑token \\
-Nihori Storm‑Shrine & Nihori & Shrine Maiden & Shrine bell, storm‑charmer’s hat, wanderer’s oath‑bracelet \\
-Mbaro Weigh‑House & Oshiira & Vermilion Corps & Grain ledger page, tariff stamp, barge priority token \\
-The Ukwe (Speaking Tree) & Sekogo & Green Council & Ungwe leaf, nkisi shard, leopard’s favour \\
+Zakov Roadstead & Zakov & Zakov & Harbour-green chit, corsair charter, pilot token \\
+Black Banner Camps & Black Banner & Black Banner/Ykrul/Vilikari & Safe-conduct, remount chit, clan truce \\
+Brass Gate & Ashaan & Ashaan & Spirit-lamp, brass seal, veil-clip \\
+Port Shed & Dhahara (Brass Coast) & Sidhi/Kahfagia & Lighthouse charter, port-weight, freedman's seal \\
+Sarvistan & Dhahara (Mountain Satrapy) & Aeler & Keystone charter, sledge-wax, tea-ledger \\
+Bridge of Nine Echoes & Ayokha & Lethai-ar & Silk voucher, monsoon schedule, nat's blessing \\
+Sihai Examination Hall & Sihai & Lethai-thora & Stamped pass, Celestial Ledger, silence-token \\
+Nihori Storm-Shrine & Nihori & Shrine Maiden & Shrine bell, storm-charmer's hat, wanderer's oath-bracelet \\
+Mbaro Weigh-House & Oshiira & Vermilion Corps & Grain ledger page, tariff stamp, barge priority token \\
+The Ukwe (Speaking Tree) & Sekogo & Green Council & Ungwe leaf, nkisi shard, leopard's favour \\
 Himadri Pass & Dhahara (Himadri) & Aeler & Iron ingot, toll waiver, elephant whistle \\
 \bottomrule
 \end{tabular}
@@ -734,49 +1145,19 @@ Himadri Pass & Dhahara (Himadri) & Aeler & Iron ingot, toll waiver, elephant whi
 \caption{World Gateways \& Control Points}
 \end{table}
 
-\section{Major Trade Routes \& Sea Lanes}
-\begin{table}[htbp]
-\centering
-\caption{Major Sea Lanes (Abstract Clocks)}
-\label{tab:sealanes}
-\begin{tabular}{@{}lllp{2.5cm}p{2.5cm}p{2.5cm}@{}}
-\toprule
-\textbf{Sea Lane} & \textbf{Route} & \textbf{Clock Size} & \textbf{Primary Hazards} & \textbf{Key Leverage} \\
-\midrule
-Amaranthine Coastway & Kahfagia → Ecktoria → Acasia → Vhasia → Viterra & 6 & Gale, quarantine, harbour booms & Convoy letter, harbour pass \\
-Astroegro Straits & Thepyrgos ↔ Dolmis ↔ Amaranthine & 8 & Currents, warships, synod & Harbour pass, crane allotment \\
-Dolmis Circuits & Fairport ↔ Theona ↔ Ubral ↔ Aelinnel ↔ Zakov & 8 & Reefs, pirates, tide‑spirits & Lighthouse charter, port‑weight \\
-Aberderrin Sea & Linnstad ↔ Mistlands ↔ Valewood coast & 10 & Ice, white squalls, draugr & Storm‑charm, ancestor shard \\
-Monsoon Coast & Taharka ↔ Dhahara (Port Shed) ↔ Ayokha ↔ Sihai & 6–8 & Monsoon shifts, privateers, reef mazes & Monsoon schedule, silk voucher \\
-Gulf of Oshiira & Oshiira ↔ Kahfagia ↔ Ashaan & 6 & Cold war patrols, spirit‑buoys & Tariff stamp, barge priority token \\
-Red Desert Crossing & Ashaan ↔ Oshiira ↔ Dhahara & 8 & Spirit‑dust storms, dry wells, bandits & Water‑share tablet, pass‑stone \\
-Silk Way (Overland) & Fhara ↔ Pereshi ↔ Kuvani ↔ Dhahara & 8–10 & Bandits, custom inspections, story tolls & Caravan writ, remount chain mark \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Edgewalker’s Notes on Leverage}
+\section{Edgewalker's Notes on Leverage}
 \label{sec:edgewalker-leverage}
-Every Diamond you earn in these generators isn’t a reward—it’s a weapon. Some open doors. Some silence witnesses. Some are debts I’ve already bought from your victims. I’ve categorised the most useful ones below—not as advice, but as a field manual for predators who understand that the world runs on desperation, not honour:
+
+Every Diamond you earn in these generators isn't a reward—it's a weapon. Some open doors. Some silence witnesses. Some are debts I've already bought from your victims.
 
 \begin{itemize}
-\item \textbf{\textcolor{feAccent}{Passage Tokens:}} Pass‑stones, harbour charters, toll waivers. These let you move without paying the tariff. Use them early—they tend to ``expire’’ when the issuer has an unfortunate accident involving a cliff, a rival, or a sudden lack of heirs.
-\item \textbf{\textcolor{feAccent}{Seals \& Stamps:}} Official marks that prove you belong. A forged seal works once—until someone notices the corpse in the watermark or the signature matches a known forger. A real one works until someone audits it\ldots which I prevent by selling the auditor a ``permanent vacation’’ in the Mistlands where the wraiths appreciate quiet clients.
-\item \textbf{\textcolor{feAccent}{Story Debts:}} Tulkani vow‑cords, Lethai‑ar witness cords, Ukwe leaves. These are promises. Break them, and the Hollow visits. Good. Let it collect the interest—I’ve already sold the debt to a Debt‑Walker for twice the value, then bought the Debt‑Walker’s contract for three times that when they defaulted.
-\item \textbf{\textcolor{feAccent}{Spirit Objects:}} Storm‑charms, tide‑beads, nkisi shards. These interact with the unseen world. They also attract attention. Perfect. Attention means bids. I’ll sell you the charm, then the exorcism, then the real estate where the spirit used to live\ldots at a premium for ``haunted adjacent’’ properties.
+\item \textbf{Passage Tokens:} Pass-stones, harbour charters, toll waivers. Use them early—they tend to ``expire'' when the issuer has an unfortunate accident.
+\item \textbf{Seals \& Stamps:} Official marks that prove you belong. A forged seal works once. A real one works until someone audits it.
+\item \textbf{Story Debts:} Tulkani vow-cords, Lethai-ar witness cords, Ukwe leaves. Break them, and the Hollow visits.
+\item \textbf{Spirit Objects:} Storm-charms, tide-beads, nkisi shards. They attract attention. Attention means bids.
 \end{itemize}
 
-\textbf{My advice (which you’ll ignore until it’s too late, and then come begging for):}
-
-Never use a Diamond if you can trade it for three smaller ones. Liquidity isn’t just power—it’s the difference between eating and being eaten. Always keep a ninth—a secret, a story, a knot tied in a victim’s hair, a whisper in a dead man’s ear—for when the toll exceeds your conscience. (Spoiler: It always does. Conscience is just leverage with a guilt complex.) If you feel guilty? Good. Guilt means you’re leaving money on the table—and I’ve got a buyer for that table.
-
-[Thimble: Sir, the ledger shows a 300\% increase in ``moral distress’’ line items correlated with prolonged exposure to your—]
-
-[Edgewalker: Thimble. If you mention ``moral distress’’ one more time, I’ll bind your ledger to a Veiled Sister’s soul-auction lot and sell it as ``emotional collateral.’’ Now pass the abacus—I’ve got a famine to monetise in Oshiira, and the Vermilion Corps’ head auditor just made a very suspicious large withdrawal.]
-
-[Thimble: But sir, the Accord—]
-
-[Edgewalker: (Standing, knocking over inkwell) Thimble. You’re not just fired—you’re liquidated. Your final paycheck is in the ledger\ldots under ``Organic Debt, Settled via Soul Harvest, Compound Interest.’’ Now leave before I amend the entry to ``Thimble’s Ledger: Used to Line the Veiled Sisters’ Soul-Auction Chests.’’ And take your tears with you—they’re ruining the depreciation schedule for my new soul-farm.]
+Never use a Diamond if you can trade it for three smaller ones. Always keep a ninth—a secret, a story, a knot tied in a victim's hair—for when the toll exceeds your conscience. (It always does.)
 
 \chapter{Story Beat (SB) Menus}
 \label{chap:sbmenus}
@@ -791,12 +1172,12 @@ Never use a Diamond if you can trade it for three smaller ones. Liquidity isn’
 
 \subsection{Regional SB Options}
 \begin{itemize}
-\item \textbf{Aeler (under‑vaults):} Breath‑time checks, engineer requisitions, cave‑in detours.
-\item \textbf{Oshiira (canals):} Audit traps, locust swarms, Widow’s health failures.
-\item \textbf{Ashaan (Veil):} Spirit‑dust storms, bound spirits breaking free, Black Hand sweeps.
-\item \textbf{Tulkani (wagon circles):} Debt collectors, Hollow walks on the ninth night, vow‑cords tangling.
-\item \textbf{Lethai‑ar (bridges):} Snapped strands, web‑law challenges, the ninth echo.
-\item \textbf{Aelinnel (bells):} Miscounts, offended tide‑spirits, bell‑lines breaking.
+\item \textbf{Aeler (under-vaults):} Breath-time checks, engineer requisitions, cave-in detours.
+\item \textbf{Oshiira (canals):} Audit traps, locust swarms, Widow's health failures.
+\item \textbf{Ashaan (Veil):} Spirit-dust storms, bound spirits breaking free, Black Hand sweeps.
+\item \textbf{Tulkani (wagon circles):} Debt collectors, Hollow walks on the ninth night, vow-cords tangling.
+\item \textbf{Lethai-ar (bridges):} Snapped strands, web-law challenges, the ninth echo.
+\item \textbf{Aelinnel (bells):} Miscounts, offended tide-spirits, bell-lines breaking.
 \end{itemize}
 
 % ============================================================
@@ -806,15 +1187,11 @@ Never use a Diamond if you can trade it for three smaller ones. Liquidity isn’
 \addcontentsline{toc}{chapter}{Colophon}
 \label{chap:colophon}
 
-This worldbook was assembled from the journals, ledgers, and bar tabs of one Aeler Edgewalker, paid for by the High King’s Office of External Opportunities (budget line: ``Unconventional Revenue Generation’’). The generator tables were tested in the field—meaning I ran them at gunpoint in a Tulkani wagon circle while a Debt-Walker counted my breaths. They work.
+This worldbook was assembled from the journals, ledgers, and bar tabs of one Aeler Edgewalker, paid for by the High King's Office of External Opportunities (budget line: ``Unconventional Revenue Generation''). The generator tables were tested in the field—meaning I ran them at gunpoint in a Tulkani wagon circle while a Debt-Walker counted my breaths. They work.
 
-If you find yourself in a tavern and the Edgewalker buys you a drink, don’t ask where I am now. The road is long, the ledgers are never balanced, and the ninth measure is always waiting.
+If you find yourself in a tavern and the Edgewalker buys you a drink, don't ask where they are now. The road is long, the ledgers are never balanced, and the ninth measure is always waiting.
 
-— Faleki of Ironhold \\
-(at a weigh-house in Mbaro, under a lamp that flickers nine times before it steadies. She still owes me for that drink.)
-
-[Thimble: Sir, the colophon lacks a disclaimer regarding—]
-
-[Edgewalker: Thimble. You’re fired. Your final paycheck is in the ledger\ldots under ``Organic Debt, Settled via Soul Harvest.’’ Now leave before I amend it to ``Soul, Harvested for Veiled Sister Soul-Auction Lot 7.’’ And take your ledger—it’s kindling now.]
+\vspace{1em}
+\noindent\textit{— Faleki of Ironhold, at a weigh-house in Mbaro, under a lamp that flickers nine times before it steadies}
 
 \end{document}
