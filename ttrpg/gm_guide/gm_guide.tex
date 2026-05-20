@@ -1,38 +1,74 @@
 % Fate's Edge --- GM Guide
-\documentclass[11pt]{book}  % ← CHANGED: article → book (for \chapter)
+\documentclass[11pt,letterpaper]{book}
 
+% ============================================================
+% ENCODING & FONTS
+% ============================================================
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
-\usepackage[hidelinks]{hyperref}
-\usepackage{geometry}
-\usepackage{booktabs}
-\usepackage{multicol}
-\usepackage{enumitem}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
+
+% ============================================================
+% GEOMETRY (readable margins, allow wider tables if needed)
+% ============================================================
+\usepackage[letterpaper,margin=1in,headheight=13.6pt]{geometry}
+\setlength{\marginparwidth}{0pt}          % no margin notes
+\setlength{\textwidth}{\paperwidth - 2in} % ensures tables use full text width
+
+% ============================================================
+% PARAGRAPH SPACING (no indents, consistent skip)
+% ============================================================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6\baselineskip}
+\frenchspacing
+
+% ============================================================
+% TABLE & LIST PACKAGES
+% ============================================================
+\usepackage{array}          % advanced column formatting
+\usepackage{booktabs}       % professional rules
+\usepackage{longtable}      % multi-page tables
+\usepackage{tabularx}       % flexible width columns
+\usepackage{multicol}       % multi-column text
+\usepackage{enumitem}       % custom list spacing
+\setlist{topsep=0.2em,itemsep=0.2em,parsep=0pt,partopsep=0pt}
+
+% ============================================================
+% COLOUR, BOXES, AND TIKZ (for flowcharts etc.)
+% ============================================================
 \usepackage{xcolor}
 \usepackage{tcolorbox}
 \tcbuselibrary{skins,breakable}
-\usepackage{tabularx}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage{array}  % For >{\bfseries} column specs
-        % ← ADDED: for tabularx tables
-\usepackage{index}            % ← ADDED: for \index commands
-\makeindex                    % ← ADDED: enable indexing
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
 
-\geometry{letterpaper,margin=1in}
+% ============================================================
+% ICONS (optional, but used in effectbox)
+% ============================================================
+\usepackage{fontawesome5}   % uncomment if icons are desired
 
-\tcbset{breakable=true}
+% ============================================================
+% HYPERLINKS (must be loaded last, before index commands)
+% ============================================================
+\usepackage[hidelinks]{hyperref}   % hides red boxes; links still work
 
-% Load the package (add to preamble)
-\usepackage{fontawesome5} % optional, for icons
+% ============================================================
+% INDEX (generate with `makeindex Fate_sEdge_GM.idx`)
+% ============================================================
+\usepackage{makeidx}
+\makeindex
 
-% ----- Effect Sidebar (main) -----
+% ============================================================
+% CUSTOM BOX DEFINITIONS (matching the chapter files)
+% ============================================================
+\definecolor{parchment}{RGB}{248,240,226}
+\definecolor{bronze}{RGB}{205,127,50}
+
 \newtcolorbox{effectbox}{
-    colback=blue!5,            % very light blue background
-    colframe=blue!75!black,    % dark blue border
+    colback=blue!5,
+    colframe=blue!75!black,
     coltitle=white,
     title={\faRulerCombined\quad Position \& Effect: Risk vs. Reward},
     fonttitle=\bfseries\large,
@@ -42,15 +78,15 @@
     outer arc=4pt,
     titlerule=0pt,
     boxrule=1.5pt,
-    leftrule=6pt,              % thicker left rule for emphasis
+    leftrule=6pt,
     drop shadow=blue!25,
     attach boxed title to top left={yshift=-3mm, xshift=5mm},
     boxed title style={colback=blue!75!black, rounded corners},
     before skip=10pt,
     after skip=10pt,
+    breakable
 }
 
-% ----- Lighter Tip Box (for minor advice) -----
 \newtcolorbox{tipbox}{
     colback=gray!5,
     colframe=gray!50,
@@ -62,19 +98,9 @@
     leftrule=3pt,
     before skip=8pt,
     after skip=8pt,
+    breakable
 }
-\setlength{\parskip}{0.6em}
-\setlength{\parindent}{0pt}
-\setlist[itemize]{topsep=0.2em,itemsep=0.2em}
-\setlist[description]{style=nextline}
 
-% Add to preamble after \usepackage{xcolor}
-\definecolor{parchment}{RGB}{248, 240, 226}
-\definecolor{bronze}{RGB}{205, 127, 50}
-
-% ============================================================
-% CUSTOM BOX DEFINITIONS
-% ============================================================
 \newtcolorbox{fatebox}[1][]{
     colback=white,
     colframe=black!75,
@@ -82,67 +108,78 @@
     title=#1,
     boxrule=0.5pt,
     arc=3pt,
-    left=6pt, right=6pt, top=6pt, bottom=6pt
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
 }
 
 % ============================================================
-% DOCUMENT
+% FLOAT & TABLE PAGE BREAK HANDLING
 % ============================================================
+% Allow longtables to break anywhere with a small penalty
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\setcounter{LTchunksize}{0}   % no forced break before/after
+\renewcommand{\LTcapwidth}{\textwidth}
+
+% ============================================================
+% DOCUMENT START
+% ============================================================
+\begin{document}
+
 \title{\vspace{-1.5em}Fate's Edge\\\large GM Guide}
 \author{}
-%\date{\today}
-
-\begin{document}
+\date{}
 \maketitle
 \newpage
+
 \tableofcontents
 \newpage
 
-\input{sections/preface}
-\cleardoublepage
 % ============================================================
 % PART I -- FOUNDATIONS
 % ============================================================
-\input{sections/intro}
-\clearpage
-\input{sections/core_procedures}
-\clearpage
-\input{sections/managing_resources}
-\clearpage
-\input{sections/gm-currency-free}
-\clearpage
+\include{sections/preface}           % preface (unnumbered)
+\cleardoublepage
+\include{sections/intro}             % Chapter 1
+\cleardoublepage
+\include{sections/core_procedures}   % Chapter 2
+\cleardoublepage
+\include{sections/managing_resources} % Chapter 5
+\cleardoublepage
+\include{sections/gm-currency-free}  % continues Chapter 5
+\cleardoublepage
 
 % ============================================================
 % PART II -- MAGIC & SCENARIOS
 % ============================================================
-\input{sections/magic}
-\clearpage
-\input{sections/running_scenarios}
-\clearpage
+\include{sections/magic}             % Chapter 6
+\cleardoublepage
+\include{sections/running_scenarios} % Chapter 11
+\cleardoublepage
 
 % ============================================================
 % PART III -- CAMPAIGN & ADVANCED PLAY
 % ============================================================
-\input{sections/campaign_design}
-\clearpage
-\input{sections/epic_tier}
-\clearpage
-\input{sections/advanced_gm_tools}
-\clearpage
-\input{sections/enhanced_gm_play}
-\clearpage
+\include{sections/campaign_design}   % Chapter 8
+\cleardoublepage
+\include{sections/epic_tier}         % Chapter 9
+\cleardoublepage
+\include{sections/advanced_gm_tools} % Chapter 10
+\cleardoublepage
+%\include{sections/enhanced_gm_play}  % spread across Ch 1,10,11
+%\cleardoublepage
 
 % ============================================================
 % PART IV -- LORE & REFERENCE
 % ============================================================
-\input{sections/lore}
-\clearpage
-\input{sections/appendix}
-\clearpage
+\include{sections/lore}              % Chapter (unchanged)
+\cleardoublepage
+\include{sections/appendix}          % Chapter 12
+\cleardoublepage
 
 % ============================================================
-% INDEX (must be at end)
+% INDEX
 % ============================================================
-\printindex  % ← ADDED: prints the index
+\printindex
 
 \end{document}
