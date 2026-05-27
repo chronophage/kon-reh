@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
 build_ttrpg.py – Build all Fate's Edge documents from a TOML configuration.
-Calls tools/compile_latex.py for each document, then extracts text and commits.
+Supports parallel builds with -j N flag.
 """
 
 import sys
+import argparse
 import subprocess as sp
 from pathlib import Path
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import tomllib  # Python 3.11+; for older Python install tomli
 
 # ------------------------------------------------------------
@@ -37,6 +39,7 @@ def compile_one(doc, tools_py, git_root, debug=False):
     """
     Compile a single document using compile_latex.py.
     doc is a dict with keys: name, path, tex, output
+    Returns (name, success, error_message)
     """
     name = doc["name"]
     rel_path = Path(doc["path"])
@@ -52,23 +55,33 @@ def compile_one(doc, tools_py, git_root, debug=False):
         "-n", out_name
     ]
     if debug:
-        cmd.append("-d")          # pass debug flag if needed
+        cmd.append("-d")
     # Run the compiler
-    ret, _, _ = run_cmd(cmd, cwd=full_path, capture=True, silent=True)
+    ret, _, stderr = run_cmd(cmd, cwd=full_path, capture=True, silent=False)
     if ret != 0:
         print(f"❌ {name} did not build")
+        if stderr:
+            print(f"   Error: {stderr.strip()}")
+        return (name, False, stderr)
     else:
         print(f"✅ {name} built successfully")
-    return ret
+        return (name, True, None)
 
 # ------------------------------------------------------------
 #  Main
 # ------------------------------------------------------------
 def main():
-    if len(sys.argv) > 1 and sys.argv[1] == "--debug":
-        debug = True
-    else:
-        debug = False
+    parser = argparse.ArgumentParser(description="Build all Fate's Edge documents")
+    parser.add_argument("--debug", action="store_true", help="Pass -d to compile_latex.py")
+    parser.add_argument("-j", "--jobs", type=int, default=1,
+                        help="Number of parallel builds (default: 1, use -j 0 for auto)")
+    args = parser.parse_args()
+
+    debug = args.debug
+    jobs = args.jobs
+    if jobs == 0:
+        import os
+        jobs = os.cpu_count() or 4
 
     git_root = get_git_root()
     tools_py = git_root / "tools" / "compile_latex.py"
@@ -85,14 +98,36 @@ def main():
     documents = config["documents"]
 
     # --------------------------------------------------------
-    # 1. Build all documents in order
+    # 1. Build all documents (parallel if requested)
     # --------------------------------------------------------
-    print("🔨 Starting build process...")
-    for doc in documents:
-        compile_one(doc, tools_py, git_root, debug)
+    print(f"🔨 Starting build process with {jobs} parallel job(s)...")
+    failures = []
+
+    if jobs == 1:
+        # Sequential (original behaviour)
+        for doc in documents:
+            name, success, _ = compile_one(doc, tools_py, git_root, debug)
+            if not success:
+                failures.append(name)
+    else:
+        # Parallel using ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=jobs) as executor:
+            futures = {
+                executor.submit(compile_one, doc, tools_py, git_root, debug): doc
+                for doc in documents
+            }
+            for future in as_completed(futures):
+                name, success, _ = future.result()
+                if not success:
+                    failures.append(name)
+
+    if failures:
+        print(f"\n⚠️  {len(failures)} document(s) failed to build: {', '.join(failures)}")
+    else:
+        print("\n✅ All documents built successfully.")
 
     # --------------------------------------------------------
-    # 2. Clean and extract text (as in original script)
+    # 2. Clean and extract text (must be sequential)
     # --------------------------------------------------------
     print("\n🧹 Cleaning up (git clean -x -f)")
     run_cmd(["git", "clean", "-x", "-f"], cwd=git_root, check=False)
@@ -116,7 +151,7 @@ def main():
                     silent=True, check=False)
 
     # --------------------------------------------------------
-    # 3. Commit and push
+    # 3. Commit and push (sequential)
     # --------------------------------------------------------
     print("📦 Committing and pushing to git...")
     run_cmd(["git", "add", "--all"], cwd=git_root, check=True)

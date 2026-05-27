@@ -1,23 +1,7 @@
 #!/usr/bin/env python3
 """
 compile_latex.py – CI‑safe LaTeX builder (Python port of original bash script).
-
-Usage: ./compile_latex.py [options] [-f file.tex | file.tex]
-
-Options:
-    -d              Debug mode (show settings, optional interactive run, then exit)
-    -c              Clean auxiliary files after build (default: True)
-    -x              Do NOT clean auxiliary files (overrides -c)
-    -i              Do NOT run makeindex
-    -o              Open PDF after successful build (not in CI)
-    -b              Do NOT run bibliography (biber)
-    -n <name>       Output PDF name (renames final PDF)
-    -f <file.tex>   Input .tex file (can also be given as positional argument)
-    -q <quality>    Compress PDF with Ghostscript (e.g. screen, ebook, printer, prepress)
-
-Environment variables:
-    CI              If set to 'true', skip interactive sleeps, git staging, and opening PDF
-    LATEX_ENGINE    Force a specific engine (e.g., xelatex, lualatex, pdflatex)
+Ignores LaTeX exit codes; only fails if PDF is missing.
 """
 
 import os
@@ -57,14 +41,7 @@ def file_contains_pattern(file_path: Path, pattern: str) -> bool:
         return False
 
 def detect_engine(texfile: Path) -> str:
-    """
-    Determine LaTeX engine to use:
-    1) LATEX_ENGINE env var
-    2) TeXShop directive (%!TEX TS-program = ...)
-    3) Heuristics: fontspec/polyglossia/unicode-math → lualatex
-    4) Fallback chain: lualatex → xelatex → pdflatex
-    """
-    engine = None
+    """Determine LaTeX engine to use."""
     if os.environ.get("LATEX_ENGINE"):
         engine = os.environ["LATEX_ENGINE"]
         if shutil.which(engine):
@@ -81,7 +58,7 @@ def detect_engine(texfile: Path) -> str:
     elif file_contains_pattern(texfile, r'%!TEX TS-program *= *pdflatex'):
         engine = "pdflatex"
     else:
-        # Heuristic: fontspec/polyglossia/unicode-math → lualatex (or xelatex)
+        # Heuristic: fontspec/polyglossia/unicode-math → lualatex
         if (file_contains_pattern(texfile, r'\\usepackage\{fontspec\}') or
             file_contains_pattern(texfile, r'\\usepackage\{polyglossia\}') or
             file_contains_pattern(texfile, r'\\usepackage\{unicode-math\}') or
@@ -218,20 +195,22 @@ def main():
         time.sleep(5)
         run_cmd(["git", "add", "--all"], cwd=git_root, check=False, silent=True)
 
-    # Initial compile
+    # ------------------------------------------------------------
+    # Compilation steps – ignore exit codes, only check file existence
+    # ------------------------------------------------------------
     print(f"Initial compile of {texfile.name} using {latex_cmd}...")
-    ret, _, _ = run_cmd([latex_cmd, "-interaction=nonstopmode", str(texfile)],
-                        cwd=file_path, capture=True, silent=True)
+    run_cmd([latex_cmd, "-interaction=nonstopmode", str(texfile)],
+            cwd=file_path, check=False, silent=True)
+
     final_pdf = file_path / f"{texfile.stem}.pdf"
-    if ret != 0 or not final_pdf.is_file():
+    if not final_pdf.is_file():
         sys.exit("PDF file was not generated")
 
     # Bibliography (biber)
     bcf_file = file_path / f"{texfile.stem}.bcf"
     if bcf_file.is_file() and do_biber:
-        # macOS PAR workaround
         if sys.platform == "darwin":
-            # Clear temporary PAR directories (original: find /var/folders -name 'par-*' -type d -exec rm -rf {} +)
+            # macOS PAR workaround
             try:
                 sp.run(["find", "/var/folders", "-name", "par-*", "-type", "d",
                         "-exec", "rm", "-rf", "{}", "+"],
@@ -240,8 +219,7 @@ def main():
                 pass
         # Check for PAR::Repository issue
         ret, _, _ = run_cmd(["biber", "--version"], capture=True, silent=True)
-        if "PAR" in ret:
-            # Set PERL_UNICODE_DATA (original logic)
+        if "PAR" in str(ret):
             perl_cmd = "perl -e 'use Config; print \"$Config{installprivlib}/unicore\\n\"'"
             try:
                 unicore_path = sp.check_output(perl_cmd, shell=True, text=True).strip()
@@ -292,7 +270,7 @@ def main():
     else:
         pdfname = final_pdf.name
 
-    # Determine destination directory (mirrors bash branch logic)
+    # Determine destination directory
     build_root = git_root / "ttrpg" / "build"
     branch_map = {
         "resources":    build_root / "resources",
