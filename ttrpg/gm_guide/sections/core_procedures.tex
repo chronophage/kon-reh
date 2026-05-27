@@ -417,20 +417,19 @@ Successes = 0 & \textbf{Miss} -- no progress; GM escalates with SB; player gains
   Remind players that they can spend 1 \textbf{Boon} before a roll to increase Effect by one step.
 \end{tipbox}
 
-% Armor Conversion Flowchart
 \begin{tcolorbox}[
-    colback=white,
-    colframe=blue!75!black,
-    title={\textbf{Armor Conversion \& Fatigue Clearing Flowchart}},
-    fonttitle=\bfseries\large,
-    sharp corners,
-    before skip=10pt,
-    after skip=10pt,
+  colback=white,
+  colframe=blue!75!black,
+  title={\textbf{Armor Conversion \& Fatigue Clearing Flowchart}},
+  fonttitle=\bfseries\large,
+  sharp corners,
+  before skip=10pt,
+  after skip=10pt,
 ]
 \begin{center}
 \begin{tikzpicture}[node distance=1.2cm]
 \node (start) [startstop] {Incoming Harm};
-\node (conv) [process, below of=start] {Convert Harm using\\\textbf{Armor Conversion Table}\\ → (Fatigue amount, remaining Harm)};
+\node (conv) [process, below of=start] {Convert Harm using\\\textbf{Armor Conversion Table}\\\footnotemark[1]\\ $\rightarrow$ (Fatigue amount, remaining Harm)};
 \node (dec) [decision, below of=conv, yshift=-0.5cm] {Did Harm increase?\\\small(remaining Harm > 0)};
 \node (clear) [process, left of=dec, xshift=-4.5cm] {Clear all existing Fatigue};
 \node (addfat) [process, below of=dec, yshift=-0.5cm] {Add Fatigue (from conversion) to Fatigue track};
@@ -450,6 +449,7 @@ Successes = 0 & \textbf{Miss} -- no progress; GM escalates with SB; player gains
 \draw[arrow] (dec2) -- node[anchor=west] {No} (end);
 \end{tikzpicture}
 \end{center}
+\footnotetext[1]{Minimum 1 Fatigue per hit, even if conversion would give 0.}
 
 \vspace{4pt}
 \textbf{The ``Roller‑Coaster'' Effect:}  

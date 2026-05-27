@@ -104,10 +104,10 @@ detect_engine() {
   local engine="pdflatex"
 
   # 1) Respect TeXShop-style directive if present
-  if grep -q '%!TEX TS-program *= *xelatex' "$TEXFILE"; then
-    engine="xelatex"
-  elif grep -q '%!TEX TS-program *= *lualatex' "$TEXFILE"; then
+  if grep -q '%!TEX TS-program *= *lualatex' "$TEXFILE"; then
     engine="lualatex"
+  elif grep -q '%!TEX TS-program *= *xelatex' "$TEXFILE"; then
+    engine="xelatex"
   elif grep -q '%!TEX TS-program *= *pdflatex' "$TEXFILE"; then
     engine="pdflatex"
   else
@@ -117,7 +117,7 @@ detect_engine() {
        grep -Eq '\\usepackage\{unicode-math\}' "$TEXFILE" || \
        grep -Eq '\\setmainfont\{' "$TEXFILE" || \
        grep -Eq '\\newfontfamily\{' "$TEXFILE"; then
-      engine="xelatex"
+      engine="lualatex"
     fi
   fi
 

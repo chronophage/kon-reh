@@ -168,7 +168,7 @@ Rolling a \textbf{10} on any die indicates a critical tier of success. Each 10 a
 \label{subsec:position}
 \index{Position}
 
-Every action in \indexterm{Fate's Edge} takes place from a \textbf{Position} that reflects the character's advantage or disadvantage in the scene. Position sets the tone for the roll, narratively and mechanically. It comes in three states:
+Every action in Fate's Edge takes place from a \textbf{Position} that reflects the character's advantage or disadvantage in the scene. Position sets the tone for the roll, narratively and mechanically. It comes in three states:
 
 \begin{itemize}
   \item \textbf{Dominant:} You act from a place of control, leverage, or overwhelming advantage.
@@ -212,18 +212,48 @@ Fatigue is capped by \textbf{Body}. It reflects cumulative strain from combat, t
 \end{tabular}
 \end{center}
 
+\paragraph{Harm Levels.}
+\begin{itemize}
+  \item \textbf{Harm 1:} –1 die on actions directly related to the injury (GM's discretion).
+  \item \textbf{Harm 2:} –1 die on most actions until treated.
+  \item \textbf{Harm 3:} Incapacitated or dying.
+\end{itemize}
+
+\paragraph{Taking Harm Clears Fatigue (The Roller‑Coaster Effect).}
+When you take Harm, the shock of the wound temporarily clears your Fatigue. Follow this order:
+\begin{enumerate}
+  \item Convert incoming Harm to Fatigue using the \textbf{Armor Conversion} table (see below).
+  \item Apply any remaining Harm – if Harm remains, clear all existing Fatigue, then increase your Harm level by the amount of Harm taken.
+  \item Add the Fatigue from step 1 to your Fatigue track. If this fills or exceeds your track, resolve overflow (increase Harm by 1, clear Fatigue).
+\end{enumerate}
+
+\paragraph{Armor Conversion.}
+\begin{center}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Armor Type} & \textbf{Harm 1} & \textbf{Harm 2} & \textbf{Harm 3} \\
+\midrule
+Light  & Fatigue 1 & Harm 1 + Fatigue 1 & Harm 2 + Fatigue 1 \\
+Medium & Fatigue 1 & Fatigue 1          & Harm 2 + Fatigue 1 \\
+Heavy  & Fatigue 1 & Fatigue 1          & Fatigue 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textit{Minimum 1 Fatigue per hit, even if conversion would give 0.}
+
 \paragraph{Harm and Casting.}
-Harm not only affects physical capacity, it disrupts magical focus:
+Harm disrupts magical focus:
 
 \begin{center}
 \begin{tabular}{lll}
 \toprule
 \textbf{Harm} & \textbf{Casting Effect} & \textbf{Notes} \\
 \midrule
-Minor & Channel DV +1 & Fatigue of concentration. \\
-Moderate & Maintain channel DV 2 & Focus falters. \\
-Severe & Channel breaks; freeform casting +1 SB & Magic slips dangerous. \\
-Critical & Casting impossible & Patron bargain may intervene. \\
+Minor (Harm 1) & Channel DV +1 & Fatigue of concentration. \\
+Moderate (Harm 2) & Maintain channel DV 2 & Focus falters. \\
+Severe (Harm 2+ with narrative) & Channel breaks; freeform casting +1 SB & Magic slips dangerous. \\
+Critical (Harm 3) & Casting impossible & Patron bargain may intervene. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -319,8 +349,23 @@ You may also use your Move to reposition within the same range band (e.g., from 
   \item \textbf{Dash:} You may \emph{use your Action to gain an extra Move} (see below). Dashing allows you to move two bands total in your turn. Your next defense roll is \textbf{Desperate}.
 \end{itemize}
 
+\paragraph{Sidestep Strike.}
+As part of a melee attack action, you may move one range band (Close $\leftrightarrow$ Near, or Near $\leftrightarrow$ Far) without using your Move action for the turn. If you do so, your Position for that attack worsens by one step (e.g., Controlled becomes Desperate, Dominant becomes Controlled). You cannot also use your regular Move action in the same turn.
+
+\paragraph{Shove.}
+\textbf{Action.} Opposed \textbf{Body + Athletics} vs. target's \textbf{Body + Athletics}. On success, push the target back one range band (Close $\to$ Near). The target suffers –1 Position on their next action.
+
+\paragraph{Grapple.}
+\textbf{Action.} Opposed \textbf{Body + Melee} vs. target's \textbf{Body + Athletics}. On success, both characters are engaged (cannot move apart). The grappled target suffers –1 die on all actions. Breaking free requires a new opposed roll as an action.
+
 \paragraph{Opportunity Attacks.}
 Moving out of an enemy's \textbf{Close} range without using the \textbf{Disengage} action provokes an immediate free melee attack from that enemy. The attack is resolved normally (Position usually Controlled). This attack does not consume the enemy's action for the round.
+
+Additionally, the following actions provoke an opportunity attack if performed while engaged in Close with an enemy:
+\begin{itemize}
+  \item Making a ranged attack (bow, crossbow, thrown weapon).
+  \item Casting a spell that does not have the \texttt{[TOUCH]} or \texttt{[WARD]} tag.
+\end{itemize}
 
 \paragraph{Hiding and Cover.}
 To hide, a character must be behind full cover (e.g., a large tree, a wall) or in heavy concealment (dense fog, darkness). They must take the \textbf{Interact} action to hide, rolling Stealth (or appropriate skill) vs. the Perception of any observers. Once hidden, they are not a valid target for attacks unless an attacker first uses an action to \textbf{Search} (Perception vs. the hidden character's Stealth) or the hidden character reveals themselves by attacking or moving into the open.
@@ -336,7 +381,7 @@ If a hidden character moves out of cover to attack, they are no longer hidden fo
   \item \textbf{Charge.} \emph{Full turn action.} Move up to two range bands (e.g., Far $\rightarrow$ Near $\rightarrow$ Close) and make one melee attack. Costs \textbf{1 Fatigue}. Your next defense is Desperate. Consumes both your Action and Move. Requires open ground (no difficult terrain).  
   \textbf{Important:} If your target is hidden (e.g., behind full cover), you cannot complete the Charge because you have no valid target. You may instead move up to the cover and end your turn there. The attack is lost.
   
-  \item \textbf{Harring Shot / Skirmish.} \emph{Full turn action.} Move up to two range bands away (e.g., Close $\rightarrow$ Near $\rightarrow$ Far) and make one ranged attack. Costs \textbf{1 Fatigue}. Your next defense is Desperate. Consumes both Action and Move. Requires open ground.  
+  \item \textbf{Skirmish.} \emph{Full turn action.} Move up to two range bands away (e.g., Close $\rightarrow$ Near $\rightarrow$ Far) and make one ranged attack. Costs \textbf{1 Fatigue}. Your next defense is Desperate. Consumes both Action and Move. Requires open ground.  
   If you start your turn hidden, you may Skirmish: you leave cover, move, shoot, and may end your turn in new cover if available. You are exposed during the movement and the shot; opportunity attacks apply normally if you leave an enemy's Close range.
   
   \item \textbf{Observe / Change Position.} Take a beat to read the field or set angles; gain \textbf{+1 Position} for one action this turn (e.g., Controlled $\rightarrow$ Dominant). Limit: once/turn; cannot exceed \textbf{Dominant}.
@@ -371,7 +416,7 @@ There is no hard cap at Dominant or Desperate. Instead:
 This allows unlimited stacking of dice modifiers while keeping the three Position tiers meaningful.
 
 \paragraph{Open Ground Requirement.}
-The \textbf{Charge} and \textbf{Skirmish/Harring Shot} actions require \textbf{open ground} (no difficult terrain such as rubble, dense forest, shallow water, or steep slopes). Talents may override this restriction.
+The \textbf{Charge} and \textbf{Skirmish} actions require \textbf{open ground} (no difficult terrain such as rubble, dense forest, shallow water, or steep slopes). Talents may override this restriction.
 
 \paragraph{Example Talents (for reference).}
 \begin{itemize}

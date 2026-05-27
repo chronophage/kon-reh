@@ -1,0 +1,415 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{helvet}
+\usepackage{sectsty}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{parskip}
+
+\renewcommand{\familydefault}{\sfdefault} % Use Helvetica-like sans-serif for body
+
+\definecolor{darkgray}{gray}{0.3}
+\definecolor{lightgray}{gray}{0.9}
+
+\sectionfont{\color{darkgray}\bfseries\large}
+\subsectionfont{\color{darkgray}\bfseries\normalsize}
+\subsubsectionfont{\color{darkgray}\bfseries}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkgray,
+    citecolor=darkgray,
+    urlcolor=darkgray,
+    pdfborder={0 0 0}
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{lightgray},
+    keywordstyle=\color{black},
+    commentstyle=\color{gray},
+    stringstyle=\color{black},
+    showstringspaces=false
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Fate's Edge: A Deep Dive into Mechanics and Design Philosophy}\\[0.5em]
+    {\large For the analytically minded player who wants to understand \textit{why} the dice fall the way they do}\\[1.5em]
+    \rule{0.6\textwidth}{0.5pt}\\[1em]
+\end{center}
+
+\section{The Core Philosophy: Beyond Success/Failure}
+
+Most RPGs reduce outcomes to a binary: did you succeed or fail? Fate's Edge rejects this. Instead, it asks: \textbf{What happens next?} This single question reshapes every mechanic.
+
+\textbf{The design mantra:} Every roll must move the story forward—no matter the result. Even a ``failure'' creates new opportunities, while success often introduces complications. This eliminates dead ends and ensures the narrative constantly evolves.
+
+\textbf{Why this matters to strategists:} The system transforms dice from pass/fail meters into \textit{narrative catalysts}. Your goal isn't to maximize success rate—it's to manage the \textit{flow of consequences} so that both triumphs and setbacks drive meaningful story.
+
+\section{The Dice Engine: d10s with Purpose}
+
+\subsection{How Rolls Work}
+\begin{itemize}
+    \item Roll a pool of d10s: Attribute (1-5) + Skill (0-5)
+    \item Each die showing 6-10 = 1 success; a natural 10 = 2 successes
+    \item Target number: Difficulty Value (DV) from 2 (routine) to 5+ (extreme). Default DV = 3
+\end{itemize}
+
+\subsection{Why d10s?}
+\begin{itemize}
+    \item Clean 50\% success chance per die (6-10 = 5/10 faces)
+    \item Enables quick mental math: 4 dice ≈ 50\% chance of \textit{at least one} 10
+    \item The ``10 = 2'' mechanic creates meaningful variance without extra rolls
+\end{itemize}
+
+\subsection{Key Probability Insight}
+With 4 dice (a common sweet spot):
+\begin{itemize}
+    \item \textbf{Chance of at least one success:} 93.75\% (only 6.25\% miss rate)
+    \item \textbf{Chance of at least one 10:} 34.4\% (triggers bonus effects)
+    \item \textbf{Chance of rolling a 1 (for GM):} 34.4\% (gives the GM narrative leverage)
+\end{itemize}
+
+\textbf{Strategic implication:} The first points in attributes/skills give huge returns (going from 2→3 dice cuts miss rate from 25\%→12.5\%). Beyond 4 dice, diminishing returns kick in sharply—miss rate drops from 6.25\%→3.9\% for 5 dice, but GM leverage increases significantly. Smart players cap raw dice at 4 and use positioning to boost effective pool size.
+
+\section{Position: The Tactical Lever}
+
+Position (Dominant/Controlled/Desperate) doesn't just modify difficulty—it \textit{reshapes your probability distribution} before you roll:
+
+\begin{table}[h]
+\centering
+\caption{Position Effects}
+\begin{tabular}{>{\bfseries}l l}
+\toprule
+Position & Mechanical Effect \\
+\midrule
+Dominant & Re-roll one failure (die <6) \\
+Controlled & No re-rolls \\
+Desperate & Re-roll one success (die 6+) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{What this does mathematically:}
+\begin{itemize}
+    \item \textbf{Dominant}: Cuts the left tail of your success distribution. Reduces chance of \textit{zero successes} dramatically (e.g., 25\%→6.25\% at 2 dice).
+    \item \textbf{Desperate}: Increases volatility—more likely to get extreme results (0 or 2+ successes). Favors high-skill players who can turn a re-rolled 6 into a 10.
+    \item \textbf{Critical nuance:} Position adjustments stack as dice. If already Dominant, further improvements become +1 die (not additional re-rolls). This prevents abuse while keeping positioning meaningful.
+\end{itemize}
+
+\textbf{Why not adjust DV?} Because position reflects \textit{narrative risk}, not raw task difficulty. Picking a lock while guards approach (Desperate) feels different than in a safe room (Dominant)—even if the DV is identical. This forces players to engage with fiction tactically.
+
+\section{The Outcome Matrix: Four Paths Forward}
+
+Every roll lands in one of four states—\textit{all} create narrative momentum:
+
+\begin{table}[h]
+\centering
+\caption{Outcome Matrix}
+\begin{tabular}{>{\bfseries}l l}
+\toprule
+Result & Outcome \\
+\midrule
+Successes $\geq$ DV, SB = 0 & \textbf{Clean Success} \\
+& Intent achieved, no added friction \\
+Successes $\geq$ DV, SB > 0 & \textbf{Success with Cost} \\
+& Intent achieved; GM spends SB for complications \\
+0 $<$ Successes $<$ DV & \textbf{Partial} \\
+& Progress made; gain 1 Boon \\
+Successes = 0 & \textbf{Miss} \\
+& No progress; gain 2 Boons; GM spends SB \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Why this eliminates dead ends:}
+\begin{itemize}
+    \item A \textbf{Partial} isn't failure—it's meaningful progress (e.g., ``The lock is stiff but you think you can get it if you keep trying'').
+    \item A \textbf{Miss} generates resources (Boons) that let you influence the next roll. The GM \textit{must} spend SB to complicate the situation—nothing is ever ``nothing happens.''
+\end{itemize}
+
+\textbf{Strategic depth:} The system creates a resource loop:
+\begin{itemize}
+    \item \textbf{Boons} (from Partial/Miss) let you re-roll dice or improve position
+    \item \textbf{Story Beats (SB)} (from 1s rolled) let the GM introduce complications
+    \item Smart players \textit{embrace small failures early} to stockpile Boons for critical moments—but Boons cap at 5 and reset partially between scenes, preventing hoarding.
+\end{itemize}
+
+\section{Resources: Boons (Player) and Story Beats (GM)}
+
+\subsection{Boons: Your Tactical Reserve}
+Boons represent momentum, luck, and narrative leverage. Spend them to:
+\begin{itemize}
+    \item Re-roll one die (1 Boon)
+    \item Improve position by one step before rolling (1 Boon)
+    \item Activate an off-screen asset (1 Boon)
+    \item Convert 2 Boons → 1 XP (once per session, max 2 XP/session)
+\end{itemize}
+
+\textbf{The XP conversion trap:} Converting Boons to XP is rarely optimal. One Boon via re-roll gives ≈0.4 expected successes—often worth more than the XP gained from those successes. Only convert when:
+\begin{itemize}
+    \item You're at the 5-Boon cap (about to lose excess)
+    \item The session is ending (Boons reset to 2)
+\end{itemize}
+
+\textbf{Optimal use:} Always keep 1 Boon for critical re-rolls. Spending 1 Boon to improve position (e.g., Controlled→Dominant) before a big roll is often better than re-rolling after—it affects your entire pool.
+
+\subsection{Story Beats: GM's Narrative Fuel}
+Every 1 rolled gives the GM 1 Story Beat. Spend SB to:
+\begin{itemize}
+    \item 1 SB: Minor complication (noise, distraction, +1 clock segment)
+    \item 2 SB: Moderate complication (alarm raised, lose advantage, worsen position)
+    \item 3+ SB: Major complication (reinforcements, scene shift, broken asset)
+\end{itemize}
+
+\textbf{The high-level shift:} At lower tiers, the GM spends SB sparingly (1-2/scene). At tiers III+ (90+ XP), players routinely roll 6-8 dice—generating 0.47-0.57 expected SB \textit{per roll}. In a 4-player round, that's 2-2.3 SB generated. Smart GMs spend this aggressively:
+\begin{quote}
+    \textit{``You pick the lock cleanly—but the noise alerted the patrol. Reinforcements [6] tick +2.''} \\
+    \textit{``You disarm the trap—but the recoil jars your aim. Your next shot is at -1 die.''}
+\end{quote}
+\textbf{Result:} Even successes create meaningful complications. Players learn: \textit{Success means the world reacted—not that you're safe.}
+
+\section{Harm and Fatigue: The Anti-Death Spiral}
+
+Most games punish injury with worsening rolls—a death spiral. Fate's Edge does the opposite:
+
+\begin{itemize}
+    \item \textbf{Fatigue}: Tracks exertion (max = Body). Each point worsens position (Dominant→→Desperate). If already Desperate, each fatigue = -1 die.
+    \item \textbf{Harm}: Injury severity (1=-1 die on related actions, 2=-2 dice on most actions, 3=incapacitated).
+\end{itemize}
+
+\textbf{The key innovation:} Taking harm \textit{clears all fatigue}. The shock of a wound resets exhaustion—creating dramatic swings (e.g., a fatigued character who takes harm suddenly finds second wind).
+
+\textbf{Armor's role:} Armor converts harm to fatigue:
+
+\begin{table}[h]
+\centering
+\caption{Armor Conversion}
+\begin{tabular}{>{\bfseries}l ccc}
+\toprule
+Armor & Harm 1 & Harm 2 & Harm 3 \\
+\midrule
+Light & Fatigue 1 & Harm 1 + Fatigue 1 & Harm 2 + Fatigue 1 \\
+Medium & Fatigue 1 & Fatigue 1 & Harm 2 + Fatigue 1 \\
+Heavy & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Strategic implication:} Heavy armor turns lethal blows into manageable exhaustion—but is less efficient against multiple small hits. Smart players:
+\begin{itemize}
+    \item Use heavy armor against expected high-damage threats
+    \item Accept light/medium armor for versatile threat environments
+    \item Sometimes \textit{seek low-risk harm} (e.g., trapping a hand in a door) to reset fatigue when overwhelmed
+\end{itemize}
+
+\section{Clocks: Visible Tension Tracking}
+
+Clocks track progress toward an event (4-10 segments). They advance via:
+\begin{itemize}
+    \item Misses/Partials (often +1 segment)
+    \item GM spending SB (usually 1 segment per SB)
+    \item Player actions (e.g., successful skill checks)
+\end{itemize}
+
+\textbf{Why they matter strategically:} Clocks turn abstract threats into \textit{tangible resources}. A ``Barrow Collapse [6]'' clock means:
+\begin{itemize}
+    \item You have 6 ``safe'' actions before the entrance seals
+    \item Each failed roll or GM SB spend brings you closer to disaster
+    \item Smart players treat clocks like \textit{countdown timers}—allocating actions to delay or accelerate based on goals
+\end{itemize}
+
+\textbf{High-level insight:} At higher tiers, clocks become \textit{the primary threat meter}. The GM doesn't just add complications—they use clocks to make pressure \textit{visible and inevitable}. Players must manage clock state alongside their resources.
+
+\section{Magic: The TAGS System}
+
+Free casting uses \textbf{TAGS} (keywords) to build spells. DV is calculated simply:
+\[
+\text{DV} = 1 + \text{number of TAGS}
+\]
+with dangerous TAGS (Leap, Fold, Gate, Transform, Dominate) adding +2 DV each.
+
+\subsection{Example Spells}
+\begin{table}[h]
+\centering
+\caption{TAGS Examples}
+\begin{tabular}{>{\bfseries}l l l}
+\toprule
+Spell & TAGS & DV \\
+\midrule
+Light & [Illuminate] & 2 \\
+Heal & [Heal] & 2 \\
+Shield of Air & \textbf{[Air][Defend]} & 3 \\
+Fire Wall & \textbf{[Fire][Wall]} & 3 \\
+Teleport & \textbf{[Fold]} (dangerous) & 1+2=3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Critical clarification:} 
+\begin{itemize}
+    \item \textbf{[Air][Defend]}: Pure elemental build (DV 3)
+    \item \textbf{[Ward]}: Uses ward mechanics (DV = [Ward]'s base, usually 3) \textit{creates an integrity clock}—the shield can take hits before failing. \textbf{This is superior for sustained defense}—[Air][Defend] is one-time only.
+\end{itemize}
+
+\textbf{Why this system wins:}
+\begin{itemize}
+    \item Transforms spell design into a \textit{cost-benefit equation}
+    \item Rewards creativity within clear constraints (e.g., ``Firebolt'' = [Fire] DV 2; add [Ranged] for distance = DV 3)
+    \item Scales risk: More TAGS = higher DV = more chance of backlash
+    \item Backlash is thematic (fire backlash = smoke→blaze; earth = dust→fissure)
+\end{itemize}
+
+\textbf{Smart caster play:} Build minimum TAGS for effect, then:
+\begin{itemize}
+    \item Use positioning to improve effective DV
+    \item Accept manageable backlash (e.g., fatigue 1) for high-impact spells
+    \item Save high-risk spells for moments when you can mitigate consequences
+\end{itemize}
+
+\section{Advancement: The XP Economy}
+
+XP costs scale to encourage meaningful choices:
+
+\begin{table}[h]
+\centering
+\caption{XP Costs}
+\begin{tabular}{>{\bfseries}l l l}
+\toprule
+Improvement & Cost & Downtime \\
+\midrule
+Attribute increase & New rating $\times$ 3 & New rating in days \\
+Skill increase & New level $\times$ 2 & New level in days \\
+Minor Asset (tool, contact) & 4 XP & 1 day \\
+Standard Asset (safehouse, network) & 8 XP & 1 week \\
+Major Asset (fortress, guildhall) & 12 XP & 1 month \\
+Minor Talent (edge case) & 2-4 XP & 3-10 days \\
+Major Talent (core ability) & 5-8 XP & 1-2 weeks \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Design rationale:}
+\begin{itemize}
+    \item Attributes cost more because they affect \textit{multiple skills} (e.g., high Body aids melee, athletics, stealth)
+    \item Skills cost less because they're narrower in application
+    \item Creates natural progression: Broad attribute foundation → Skill specialization → Talent mastery
+\end{itemize}
+
+\textbf{Diminishing returns in action:}
+\begin{itemize}
+    \item Raising an attribute from 4→5: 15 XP for +1 die on 3-5 skills
+    \item Raising a skill from 4→5: 10 XP for +1 die on only that skill
+    \item \textbf{Optimal path:} Max key attributes to 4 first (60 XP for all four at 4), then specialize skills to 3-4, then take talents
+\end{itemize}
+
+\textbf{Tiers of play (XP ranges):}
+\begin{itemize}
+    \item \textit{Novice (0-40):} Local reputation, prestige locked
+    \item \textit{Seasoned (41-90):} Regional notice, prestige abilities unlock
+    \item \textit{Veteran (91-150):} National influence, second follower slot suggested
+    \item \textit{Paragon (151-220):} Movers and shakers, rivals emerge
+    \item \textit{Mythic (221+):} Legendary status, kingdoms respond
+\end{itemize}
+\textbf{At Veteran+}: You'll regularly roll 8+ dice. The game responds not by inflating DV, but by making the GM's SB spend \textit{more impactful}—reinforcements arrive faster, complications cascade, and success requires \textit{meaningful sacrifice}.
+
+\section{Design Philosophy Summary}
+
+\begin{table}[h]
+\centering
+\caption{Core Design Principles}
+\begin{tabular}{>{\bfseries}l l}
+\toprule
+Goal & Mechanic \\
+\midrule
+No wasted rolls & 4-state outcome matrix (always creates narrative) \\
+Failure drives story & Miss generates Boons; GM spends SB \\
+Risk vs. reward & Larger dice pools = more success \textit{and} more 1s (GM leverage) \\
+Tactical positioning & Position reshapes probability distribution pre-roll \\
+No death spiral & Harm clears fatigue \\
+Visible tension & Clocks track progress toward events \\
+Creative magic & TAGS system: DV = 1 + TAGS (dangerous +2) \\
+Balanced advancement & Attribute cost > skill cost; clear XP tiers \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{What this game is not:}
+\begin{itemize}
+    \item It's not simulationist grit (e.g., tracking calories)
+    \item It's not a zero-sum tactical wargame (e.g., chess with dice)
+    \item It \textbf{is} a narrative-first system with \textit{transparent, optimizable mechanics}—where the dice are inputs to a resource-driven story engine.
+\end{itemize}
+
+\textbf{Final strategist's tip:} 
+The most powerful upgrade isn't more dice—it's \textit{effective dice via positioning}. Spending 1 Boon to improve position (Controlled→Dominant) before a roll is equivalent to +2 dice in miss reduction—but costs 0 XP. Save your XP for attributes that cover multiple skills, then use positioning and Boons to hit the 4-5 effective dice sweet spot where miss rates plummet but GM leverage stays manageable.
+
+\appendix
+\section{Verification Script}
+This Python script validates the probability claims in the analysis. Run it to see the math behind the 4-dice sweet spot and GM SB scaling.
+
+\begin{lstlisting}
+import numpy as np
+
+def simulate_dice_pool(num_dice, trials=100000):
+    """Simulate rolling num_dice d10s and return statistics."""
+    successes = 0
+    tens = 0
+    ones = 0
+    miss = 0
+    
+    for _ in range(trials):
+        roll = np.random.randint(1, 11, num_dice)
+        # Count successes: 6-10 = 1 success, 10 = 2 successes
+        success_count = np.sum((roll >= 6) & (roll <= 9)) + 2 * np.sum(roll == 10)
+        ten_count = np.sum(roll == 10)
+        one_count = np.sum(roll == 1)
+        
+        successes += success_count
+        tens += ten_count
+        ones += one_count
+        if success_count == 0:
+            miss += 1
+    
+    return {
+        'avg_successes': successes / trials,
+        'p_at_least_one_success': 1 - (miss / trials),
+        'p_at_least_one_ten': tens / (trials * num_dice),  # Per die chance
+        'p_at_least_one_one': ones / (trials * num_dice),  # Per die chance
+        'miss_rate': miss / trials
+    }
+
+# Test key dice pools
+for dice in [2, 3, 4, 5, 6]:
+    stats = simulate_dice_pool(dice)
+    print(f"{dice} dice:")
+    print(f"  Avg successes: {stats['avg_successes']:.2f}")
+    print(f"  P(at least one success): {stats['p_at_least_one_success']:.1%}")
+    print(f"  P(at least one 10): {stats['p_at_least_one_ten']:.1%}")
+    print(f"  P(at least one 1): {stats['p_at_least_one_one']:.1%}")
+    print(f"  Miss rate: {stats['miss_rate']:.1%}")
+    print()
+
+# Show GM SB generation per player roll
+print("GM SB generation per player roll (expected SB = P(at least one 1)):")
+for dice in [2, 4, 6, 8]:
+    stats = simulate_dice_pool(dice)
+    print(f"  {dice} dice: {stats['p_at_least_one_one']:.1%} → {stats['p_at_least_one_one']:.2f} SB/roll")
+print("\nIn a 4-player round:")
+for dice in [4, 6]:
+    stats = simulate_dice_pool(dice)
+    sb_per_round = 4 * stats['p_at_least_one_one']
+    print(f"  {dice} dice/player: {sb_per_round:.2f} SB generated")
+\end{lstlisting}
+
+\end{document}

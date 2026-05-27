@@ -33,13 +33,24 @@ cd $git_root/ttrpg/reference
  cd $git_root/ttrpg/quickstart
  ../../tools/compile_latex.sh -x -f quickstart.tex -n "Fate's Edge - Quickstart Guide.pdf" > /dev/null 2>&1|| echo "Quickstart Guide did not build"
 
- echo "Building Worldbook"
- cd $git_root/ttrpg/reference/travel/
- ../../../tools/compile_latex.sh -x -f fates_edge_amaranthine.tex -n "Fates Edge - The Amaranthine Worldbook.pdf" > /dev/null 2>&1|| echo "Worldbook did not build"
+# Compile the Essential Starter Guide
+ echo "Building Essential Starter Guide"
+ cd $git_root/ttrpg/
+ ../../tools/compile_latex.sh -x -f exsential_starter_guide.tex -n "Fate's Edge - Essential Starter Guide.pdf" > /dev/null 2>&1|| echo "Essential Starter Guide did not build"
+
+#  echo "Building Worldbook"
+# cd $git_root/ttrpg/reference/travel/
+# ../../../tools/compile_latex.sh -x -f fates_edge_amaranthine.tex -n "Fates Edge - The Amaranthine Worldbook.pdf" > /dev/null 2>&1|| echo "Worldbook did not build"
  
  echo "Building Complete Worldbook"
  cd $git_root/ttrpg/reference/travel/
  ../../../tools/compile_latex.sh -x -f complete_worldbook.tex -n "Fates Edge - The Complete Worldbook.pdf" > /dev/null 2>&1|| echo "Worldbook did not build"
+
+
+# Compile the Mechanics Breakdown
+ echo "Building Mechanics Breakdown"
+ cd $git_root/ttrpg/
+ ../../tools/compile_latex.sh -x -f mechanics_breakdown.tex -n "Fate's Edge - Mechanics Breakdown.pdf" > /dev/null 2>&1|| echo "Mechanics Breakdown did not build"
 
 echo "Building Adventures"
 cd $git_root/ttrpg/reference/adventures/
@@ -129,28 +140,28 @@ cd $git_root/ttrpg/reference/expansions/
 	../../../tools/compile_latex.sh -x -f road_beast.tex -n "Fate's Edge Expansion - The Road Bestiary.pdf" > /dev/null 2>&1|| echo "#37. Did not build"
 	../../../tools/compile_latex.sh -x -f saikou_compendium.tex -n "Fate's Edge Expansion - The Road Bestiary.pdf" > /dev/null 2>&1|| echo "#38. Did not build"
 	../../../tools/compile_latex.sh -x -f grey_wanderers_grimoire.tex -n "Fate's Edge Expansion - The Grey Wanderer's Grimoire.pdf" > /dev/null 2>&1|| echo "#39. Did not build"
-../../../tools/compile_latex.sh -x -f way_of_warrior.tex -n "Fate's Edge Expansion - The Way Of The Warrior.pdf" > /dev/null 2>&1|| echo "#40. Did not build"
-../../../tools/compile_latex.sh -x -f frost_ledger.tex -n "Fate's Edge Expansion - The Frost Ledger.pdf" > /dev/null 2>&1|| echo "#41. Did not build"
-../../../tools/compile_latex.sh -x -f akilan.tex -n "Fate's Edge Realms - Akilan, The Southern Realms.pdf" > /dev/null 2>&1|| echo "#42. Did not build"
-../../../tools/compile_latex.sh -x -f bitter_root.tex -n "Fate's Edge Expansion - The Bitter Root.pdf" > /dev/null 2>&1|| echo "#43. Did not build"
-../../../tools/compile_latex.sh -x -f house_fenwood_i_exile_road.tex -n "Fate's Edge Chronicles - The Fenwoods, Exhile Road.pdf" > /dev/null 2>&1|| echo "#44. Did not build"
-../../../tools/compile_latex.sh -x -f house_fenwood_ii_reckoning_bridge.tex -n "Fate's Edge Chronicles - The Fenwoods, The Reckoning Bridge.pdf" > /dev/null 2>&1|| echo "#45. Did not build"
-../../../tools/compile_latex.sh -x -f house_fenwood_iii_old_dukes_wars.tex -n "Fate's Edge Chronicles - The Fenwoods, The Old Duke's Wars.pdf" > /dev/null 2>&1|| echo "#46. Did not build"
-../../../tools/compile_latex.sh -x -f knaves_regret.tex -n "Fate's Edge Expansion - Vhasia, The Knave's Regret.pdf" > /dev/null 2>&1|| echo "#47. Did not build"
-../../../tools/compile_latex.sh -x -f viterra_justicars_judgement.tex -n "Fate's Edge Expansion - Viterra, The Justicar's Judgement.pdf" > /dev/null 2>&1|| echo "#48. Did not build"
-cd witnessed_prey
-../../../../tools/compile_latex.sh -x -f witnessed_prey.tex -n "Fate's Edge Expansion - The Witnessed Prey, a Hunter's Guide.pdf" > /dev/null 2>&1|| echo "#49. Did not build"
-cd -
-../../../tools/compile_latex.sh -x -f air_mist_alder_thorn_mirror.tex -n "Fate's Edge Expansion - The Book of Air, Mist, Alder, Thorn, and Mirror.pdf" > /dev/null 2>&1|| echo "#50. Did not build"
- ../../../tools/compile_latex.sh -x -f tam_moira_wilds.tex -n "Fate's Edge Expansion - Moira's Journels of the Wilds.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
- ../../../tools/compile_latex.sh -x -f mistlands.tex -n "Fate's Edge Expansion - Into the Mistlands.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
-cd saikou_compendium/
-../../../../tools/compile_latex.sh -x -f main.tex -n "Fate's Edge Expansion - Saikou Ira's Compendium of the Veil.pdf" > /dev/null 2>&1|| echo "#52. Did not build"
-cd -
-cd threadweavers_spellbook/
-../../../../tools/compile_latex.sh -x -f threadweavers_spellbook.tex -n "Fate's Edge Expansion - The Threadweavers Spellbook.pdf" > /dev/null 2>&1 || echo "#53. Did not build"
-cd -
-../../../tools/compile_latex.sh -x -f pact-wright.tex -n "Fate's Edge Expansion - The Pact-Wright's Leash.pdf" > /dev/null 2>&1 || echo "#54. Did not build"
+    ../../../tools/compile_latex.sh -x -f way_of_warrior.tex -n "Fate's Edge Expansion - The Way Of The Warrior.pdf" > /dev/null 2>&1|| echo "#40. Did not build"
+    ../../../tools/compile_latex.sh -x -f frost_ledger.tex -n "Fate's Edge Expansion - The Frost Ledger.pdf" > /dev/null 2>&1|| echo "#41. Did not build"
+    ../../../tools/compile_latex.sh -x -f akilan.tex -n "Fate's Edge Realms - Akilan, The Southern Realms.pdf" > /dev/null 2>&1|| echo "#42. Did not build"
+    ../../../tools/compile_latex.sh -x -f bitter_root.tex -n "Fate's Edge Expansion - The Bitter Root.pdf" > /dev/null 2>&1|| echo "#43. Did not build"
+    ../../../tools/compile_latex.sh -x -f house_fenwood_i_exile_road.tex -n "Fate's Edge Chronicles - The Fenwoods, Exhile Road.pdf" > /dev/null 2>&1|| echo "#44. Did not build"
+    ../../../tools/compile_latex.sh -x -f house_fenwood_ii_reckoning_bridge.tex -n "Fate's Edge Chronicles - The Fenwoods, The Reckoning Bridge.pdf" > /dev/null 2>&1|| echo "#45. Did not build"
+    ../../../tools/compile_latex.sh -x -f house_fenwood_iii_old_dukes_wars.tex -n "Fate's Edge Chronicles - The Fenwoods, The Old Duke's Wars.pdf" > /dev/null 2>&1|| echo "#46. Did not build"
+    ../../../tools/compile_latex.sh -x -f knaves_regret.tex -n "Fate's Edge Expansion - Vhasia, The Knave's Regret.pdf" > /dev/null 2>&1|| echo "#47. Did not build"
+    ../../../tools/compile_latex.sh -x -f viterra_justicars_judgement.tex -n "Fate's Edge Expansion - Viterra, The Justicar's Judgement.pdf" > /dev/null 2>&1|| echo "#48. Did not build"
+    cd witnessed_prey
+    ../../../../tools/compile_latex.sh -x -f witnessed_prey.tex -n "Fate's Edge Expansion - The Witnessed Prey, a Hunter's Guide.pdf" > /dev/null 2>&1|| echo "#49. Did not build"
+    cd -
+    ../../../tools/compile_latex.sh -x -f air_mist_alder_thorn_mirror.tex -n "Fate's Edge Expansion - The Book of Air, Mist, Alder, Thorn, and Mirror.pdf" > /dev/null 2>&1|| echo "#50. Did not build"
+     ../../../tools/compile_latex.sh -x -f tam_moira_wilds.tex -n "Fate's Edge Expansion - Moira's Journels of the Wilds.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
+     ../../../tools/compile_latex.sh -x -f mistlands.tex -n "Fate's Edge Expansion - Into the Mistlands.pdf" > /dev/null 2>&1|| echo "#51. Did not build"
+    cd saikou_compendium/
+    ../../../../tools/compile_latex.sh -x -f main.tex -n "Fate's Edge Expansion - Saikou Ira's Compendium of the Veil.pdf" > /dev/null 2>&1|| echo "#52. Did not build"
+    cd -
+    cd threadweavers_spellbook/
+    ../../../../tools/compile_latex.sh -x -f threadweavers_spellbook.tex -n "Fate's Edge Expansion - The Threadweavers Spellbook.pdf" > /dev/null 2>&1 || echo "#53. Did not build"
+    cd -
+    ../../../tools/compile_latex.sh -x -f pact-wright.tex -n "Fate's Edge Expansion - The Pact-Wright's Leash.pdf" > /dev/null 2>&1 || echo "#54. Did not build"
 
 echo "Cleaning up"
 git clean -x -f
