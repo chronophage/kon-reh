@@ -107,6 +107,130 @@
 
 \feTitlePage
 \tableofcontents
+% ============================================================
+% FATE'S EDGE --- COMPLETE WORLDBOOK
+% Revised with layered narration and regional generators
+% Each chapter includes: narrative (IC voice) + almanac + generator input
+% ============================================================
+\documentclass[11pt,letterpaper,twoside]{book}
+
+% ---------- Encoding, fonts, micro-typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[final]{microtype}
+
+% ---------- Page geometry ----------
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% ---------- Math & symbols ----------
+\usepackage{amsmath,amssymb,mathtools}
+
+% ---------- Colors, graphics, layout ----------
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
+
+% ---------- Tables ----------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{longtable}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
+
+% ---------- Hyperlinks & references ----------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=[rgb]{0.10,0.25,0.55},
+  citecolor=[rgb]{0.10,0.45,0.25},
+  urlcolor=[rgb]{0.55,0.10,0.10},
+  pdfauthor={Fate's Edge},
+  pdftitle={Fate's Edge --- Complete Worldbook},
+  pdfcreator={LaTeX}
+}
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+% ---------- Indexing ----------
+\usepackage{imakeidx}
+\makeindex
+
+\newcommand{\indexterm}[2][]{%
+  \textit{#2}%
+  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi%
+}
+
+% ---------- Table helpers ----------
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\definecolor{FeRow}{HTML}{F5F7FA}
+\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+
+% ---------- Small conveniences ----------
+\newcommand{\textrarr}{\ensuremath{\rightarrow}}
+\newcommand{\textlarr}{\ensuremath{\leftarrow}}
+\newcommand{\textdarr}{\ensuremath{\downarrow}}
+\newcommand{\beat}{\ensuremath{\triangleright}\,}
+\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
+\newcommand{\Tag}[1]{\texttt{[#1]}}
+
+% ---------- Suit symbols ----------
+\newcommand{\SuitSpade}{\ensuremath{\spadesuit}}
+\newcommand{\SuitHeart}{\ensuremath{\heartsuit}}
+\newcommand{\SuitClub}{\ensuremath{\clubsuit}}
+\newcommand{\SuitDiamond}{\ensuremath{\diamondsuit}}
+
+% ---------- Almanac environment ----------
+\newtcolorbox{almanac}{
+  colback=gray!5,
+  colframe=fePrimary,
+  fonttitle=\bfseries\large,
+  title={\textsc{The Almanac of Ordinary Days}},
+  sharp corners,
+  boxrule=1pt,
+  left=12pt,
+  right=12pt,
+  top=8pt,
+  bottom=8pt
+}
+
+% ---------- Branding ----------
+\definecolor{fePrimary}{HTML}{0D1B2A}
+\definecolor{feAccent}{HTML}{6FFFE9}
+\definecolor{feInk}{HTML}{101418}
+\definecolor{fePaper}{HTML}{F7F7F7}
+
+\newcommand{\feTitlePage}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge\bfseries Fate's Edge \par}
+    \vspace{1cm}
+    {\LARGE Complete Worldbook \par}
+    \vspace{0.5cm}
+    {\large \itshape A Gazetteer of the Known Realms\par}
+    \vfill
+    {\large \textsc{As told by those who live there, bleed there, and owe there}\par}
+    \vspace{1cm}
+  \end{titlepage}
+}
+
+\begin{document}
+
+\feTitlePage
+\tableofcontents
 
 % ============================================================
 % PREFACE: THE LEDGER BLEEDS
@@ -164,6 +288,28 @@ If you want to move cargo through the straits without becoming fish food, get a 
 \noindent\textit{— Captain Mira ``the Lucky,'' Sidhi exile, pirate by convenience}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Salt fish porridge—dried cod soaked overnight, boiled with hardtack and a splash of lamp oil. The oil is for calories. The fish is for memory. Every Kahfagian child learns to taste the salt and know which coast their grandmother came from.
+
+\textbf{What does a child learn before they can walk?} To count ships by their lanterns. Three lanterns means a Kahfagian merchant—safe. Four means an Oshiiran grain barge—neutral. One, low in the water, means a privateer. Run.
+
+\textbf{What is the first thing you notice about a stranger?} Their hands. Dock-workers have rope-burned palms. Merchants have ink-stained fingers. Privateers have no fingernails—they bite them off in storms.
+
+\textbf{What is the most common crime?} False manifests. Every third ship carries cargo that doesn't appear on its papers. The Admiralty knows. The Admiralty takes a cut. The Admiralty calls it a "tariff surcharge."
+
+\textbf{What does no one talk about but everyone knows?} The Mirror-Keepers are not born—they are made. And the making requires a death. A sister, a daughter, a lover. Someone who drowned so the keeper could see through the fog.
+
+\textbf{Where do people go when they die?} The tide takes them. Kahfagia has no cemeteries above ground. The drowned are weighted with chain and dropped in the deep channel. Their families light candles in paper boats and float them out at dusk. If the candle reaches the horizon, the soul is forgiven. If it sinks, the debt is not yet paid.
+
+\textbf{How do you apologize for a serious wrong?} You offer your bell. Every Kahfagian carries a small brass bell on a leather cord—the sound of their name. Offering it to the wronged party means "I give you my voice. Speak for me." Refusing to return the bell after an apology is a declaration of blood feud.
+
+\textbf{What is the most important festival?} The Beacon Lighting (midwinter). Every lighthouse keeper lights a new lamp from the Admiral's flame. If your beacon catches first, your year will be lucky. If it sputters, you will owe a death to the sea.
+
+\textbf{What is the secret that could destroy a powerful person?} The Admiral's lantern code has a ninth signal—never used, never spoken, burned into every keeper's memory. It means \textit{"Kill the witnesses. Sink the evidence. The sea will hide the rest."}
+\end{almanac}
+
 \newpage
 \input{../generators/kahfagia.tex}
 \newpage
@@ -198,6 +344,28 @@ Do not refuse a toast in a coin-house. The ledgers are the true judges, and a de
 
 \noindent\textit{— Marcus of the Red Ledger, Coin-House Factor, third generation}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Spiced flatbread dipped in olive oil and honey—but only if you can afford the honey. The poor eat millet porridge with a single dried fig. The fig is counted as part of the household's grain allowance.
+
+\textbf{What does a child learn before they can walk?} To count coins by touch. Every Ecktorian child has a box of worn sesterces; by age five, they can tell a debased copper from pure silver by the weight alone.
+
+\textbf{What is the first thing you notice about a stranger?} Their signature. Ecktorians judge by handwriting before face. A clerk with a steady hand is trustworthy. A noble with a flourish is hiding something. A merchant who signs with an X is not worth doing business with.
+
+\textbf{What is the most common crime?} Tax evasion—but it is not a crime, it is a sport. Every household keeps two ledgers: the white one for the Censor, the red one for the family. The art is in keeping the red ledger from looking like a confession.
+
+\textbf{What does no one talk about but everyone knows?} The Censor's clerks are paid to find discrepancies. They are also paid to lose them. The price of a lost discrepancy is exactly 5\% of the tax owed. This is not corruption. It is "administrative flexibility."
+
+\textbf{Where do people go when they die?} The family crypt, beneath the basilica floor. The wealthy are burned, their ashes mixed with marble dust and pressed into the floor tiles. The poor are buried in unmarked graves outside the walls. The Everflame's light does not reach that far.
+
+\textbf{How do you apologize for a serious wrong?} You petition the Censor to have the wrong stricken from the public record. The petition costs a tenth of your annual income. If accepted, the wrong is erased—legally, it never happened. If rejected, the wrong is published, and you lose your civic standing.
+
+\textbf{What is the most important festival?} The Triumph of the Flame (autumn equinox). The basilica's central flame is carried in procession through every district. To touch the flame is to be absolved of petty debts. To be burned by it is a sign that your debts are not petty.
+
+\textbf{What is the secret that could destroy a powerful person?} The Grand Magistrate's seal is a forgery. The original cracked in 783 AR. The current seal was carved by a prison engraver who was executed to keep the secret. The engraver's apprentice is still alive. They live in Silkstrand. They have the original sketches.
+\end{almanac}
 
 \newpage
 \input{../generators/ecktoria.tex}
@@ -250,6 +418,28 @@ And still we stay. Because leaving would mean admitting we were wrong. And that 
 \noindent\textit{— Corvin, charcoal-burner of the Blackwood, who no longer names the trees because there are too few left to name}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Hardtack soaked in broth—if you have broth. If not, hardtack and hope. The granaries have been empty for three winters. The merchants sell grain at famine prices. The duke says the roads are too dangerous for caravans. The farmers say the duke owns the caravans.
+
+\textbf{What does a child learn before they can walk?} To name the dead. Every Acasian child has a list of ancestors they repeat at bedtime. The list gets shorter each generation. Not because children forget. Because the dead are forgetting themselves.
+
+\textbf{What is the first thing you notice about a stranger?} Whether they have a shadow. The Curse takes shadows first. A man without a shadow is not cursed—he is already gone. His body just hasn't stopped moving yet.
+
+\textbf{What is the most common crime?} Bridge-toll evasion. The roads are unsafe, the ferries are unreliable, but the barons still demand payment for crossings no one can make. The crime is not in refusing to pay. The crime is in being caught trying.
+
+\textbf{What does no one talk about but everyone knows?} The Curse began with a promise broken on the Blackwood Bridge. A baron promised his daughter to a lord of the old forest. He married her to a lowland knight instead. The forest remembered. The forest is still waiting for the wedding.
+
+\textbf{Where do people go when they die?} Into the Blackwood. Burial is forbidden—the ground rejects the dead. Bodies are carried to the tree-line and left. The wood takes them. Sometimes, at dusk, you can see them walking between the trunks. They do not look back.
+
+\textbf{How do you apologize for a serious wrong?} You walk the Broken Mile—a stretch of road that collapsed into the river a decade ago. If you reach the far side, you are forgiven. If you fall, you were not sorry enough. No one has reached the far side in seven years.
+
+\textbf{What is the most important festival?} The Counting of the Names (midwinter). Every village lists its dead aloud, from oldest to newest. If a name is forgotten, the ghost walks until someone remembers. The list grows longer each year. The memory grows shorter.
+
+\textbf{What is the secret that could destroy a powerful person?} The duke's son is a ghoul. He was lost in the Blackwood as a child. They found him three days later, pale and smiling. He does not age. He does not eat. He only watches. The servants know. The servants do not speak.
+\end{almanac}
+
 \newpage
 \input{../generators/acasia.tex}
 \newpage
@@ -280,6 +470,28 @@ Never carry a coin that bears only one sunburst. The realm has three mints, and 
 
 \noindent\textit{— Road Warden Cerran, who has not slept in two days and is not sure which crown he serves}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Dark bread and watered wine—the wine cuts the dust from the road. The nobility eat spiced eggs and fresh cheese, but they eat behind closed doors. To eat well in public is to invite envy. Envy is a dagger.
+
+\textbf{What does a child learn before they can walk?} Which colours not to wear. Black and gold are the Northern Crown's colours. Red and silver are the Southern Parlement's. A child who wears the wrong colour to the wrong village may not return home.
+
+\textbf{What is the first thing you notice about a stranger?} Which side of the road they walk on. The north side is the Crown's. The south side is the Parlement's. The middle is no man's land—literally. Bandits, spies, and messengers use the middle. So do ghosts.
+
+\textbf{What is the most common crime?} Raiding across the Belworth. The river is the border, the border is a suggestion, and the suggestion is enforced by armed men on both sides. The crime is not in raiding. The crime is in being caught on the wrong bank at dawn.
+
+\textbf{What does no one talk about but everyone knows?} The Sun-court was not burned. It was bankrupted. The Fenwoods did not sack Lence—they bought it. Every judge, every clerk, every guard captain had a price. The Fenwoods paid it. The Vhasians are still paying interest.
+
+\textbf{Where do people go when they die?} To the crypts beneath the Sun-court—if they can afford a plaque. The poor are buried in unmarked graves along the Belworth floodplain. The river floods every spring. The dead wash downstream, into the land of the other crown. Neither side claims them.
+
+\textbf{How do you apologize for a serious wrong?} You offer a chevauchée—a raiding party that burns a village in your name. The apology is not in the burning. The apology is in the promise that the village will be rebuilt with your own hands. If you burn a village and do not rebuild, you have not apologized. You have started a feud.
+
+\textbf{What is the most important festival?} The Sun-return (spring equinox). Both crowns claim the sun as their symbol. On this day, both hold processions. The processions are identical. The participants do not acknowledge each other. The sun does not care.
+
+\textbf{What is the secret that could destroy a powerful person?} The Queen-Mother has no claim to the regency. Her son is not the Dauphin. The real Dauphin died in childbirth. The Queen-Mother's daughter was stillborn. The child on the throne is a foundling, bought from a Tulkani caravan. The Tulkani know. The Tulkani are still waiting to be paid.
+\end{almanac}
 
 \newpage
 \input{../generators/vhasia.tex}
@@ -316,6 +528,28 @@ Never cross the Belworth without a charter recognized on both banks. Viterran la
 \noindent\textit{— Justiciar Elodie Venn, who invoked the Right of Acknowledgment and watched a father speak truth to his son for the first time}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Barley porridge with a drizzle of honey—if you own bees. If not, porridge with salt. Salt is the currency of the poor. Honey is the currency of the hopeful.
+
+\textbf{What does a child learn before they can walk?} To recite their lineage back three generations. Every Viterran child knows their grandparents' names, their grandparents' trades, and their grandparents' debts. A child who cannot recite their lineage is a child without standing. Standing is everything.
+
+\textbf{What is the first thing you notice about a stranger?} Whether they carry a seal ring. A seal ring means they have the right to make contracts in their own name. A stranger without a seal ring is either a servant or a criminal. In Viterra, the difference is a matter of paperwork.
+
+\textbf{What is the most common crime?} Boundary disputes. A hedge moved three feet east. A milestone replaced under cover of darkness. A ford declared "private" when it has been public for two centuries. The courts are clogged with such cases. The lawyers are rich. The hedges are patient.
+
+\textbf{What does no one talk about but everyone knows?} The Queen is not a warrior. She has never drawn a sword. Her reputation was forged by a propaganda campaign run by her spymaster. The spymaster is dead. His successor is more discreet.
+
+\textbf{Where do people go when they die?} To the family plot—if they have a family. The landless poor are buried in parish cemeteries, their headstones marked with a single word: "Anonymous." The ghosts of the anonymous wander the hedgerows at dusk. They do not remember their names. They remember their debts.
+
+\textbf{How do you apologize for a serious wrong?} You petition the hedge-court for a "writ of contrition." The writ requires you to state your wrong aloud, in public, while holding a handful of earth from the wronged party's land. If the earth crumbles, you are forgiven. If it holds, your apology is not accepted. You may try again next season.
+
+\textbf{What is the most important festival?} The Opening of the Rolls (autumn). Every county sends its tax records to the capital. The procession is a week long. The documents are carried by children, so that the next generation may learn the weight of obligation.
+
+\textbf{What is the secret that could destroy a powerful person?} The Codex of Precedents has a missing page. It was torn out fifty years ago, during a trial for treason. The page contained the precedent for executing a monarch. The Queen knows. The Justiciars know. The page is hidden in a lead-lined box beneath the hedge-court at Thornwood. The hedge-court is haunted. The ghost knows where the key is.
+\end{almanac}
+
 \newpage
 \input{../generators/viterra.tex}
 \newpage
@@ -336,7 +570,7 @@ I am a Bell-Runner. I know every step that creaks a warning and every landing th
 
 \vspace{0.5em}
 
-The Synod rules here with the delicacy of a brick wrapped in velvet—they hate unsanctioned magic like it's a personal insult, but they adore infrastructure, especially when it's shiny, expensive, and comes with a side of indulgences they can sell to the faithful. The Chain-Lanterns move at dawn, their brass censers swinging, their bells tuned to the frequency of latent magic. In the university's forbidden tiers, the Witness and the Ninth arm rival fraternities with citations and curses, and no one is sure which side the Archon secretly favors.
+The Synod rules here with the delicacy of a brick wrapped in velvet—they hate unsanctioned magic like it's a personal insult, but they adore infrastructure, especially when it's shiny, expensive, and comes with a side of indulgences they can sell to the faithful. The Chain-Lanterns move at dawn, their brass censers swinging, their bells tuned to the frequency of latent magic. In the university's forbidden tiers, the Witness and the Ninth arm rival fraternities with citations and curses, and no one is sure which side the Archon secretly favours.
 
 \vspace{0.5em}
 
@@ -347,10 +581,37 @@ Never let a bell-ringer count your breaths. The Chain-Lanterns pay well for name
 \noindent\textit{— Sofia, Bell-Runner, who ties a knot in her hair for each hunter she has outrun}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Flatbread with olive oil and a boiled egg—if you are a clerk. If you are a student, bread and water. If you are a professor, bread, water, and a single fig. The fig is a status symbol. The status is "I have not been audited."
+
+\textbf{What does a child learn before they can walk?} To read a bell schedule. Thepyrgos runs on bells—dawn bells, market bells, curfew bells, trial bells. A child who cannot read the bells cannot cross the city without a guardian. A child without a guardian is a child who will be sold to the university for dissection.
+
+\textbf{What is the first thing you notice about a stranger?} Their step count. Thepyrgos has a thousand stairs. A stranger who counts them aloud is either a pilgrim or a spy. A stranger who climbs them in silence is either a native or a ghost.
+
+\textbf{What is the most common crime?} Unsanctioned magic. The Synod licenses every spell cast within the walls. An unlicensed cantrip is a misdemeanour. An unlicensed healing is a felony. An unlicensed summoning is a death sentence—not for the caster, who will be executed, but for the summoned, who will be bound to the city's foundation as a "structural consultant."
+
+\textbf{What does no one talk about but everyone knows?} The Silent Stair is not silent. It whispers. The whispers are the confessions of the dead—scholars who died in the university's service, their secrets recorded in the stone. The Chain-Lanterns listen. They do not share.
+
+\textbf{Where do people go when they die?} To the catacombs beneath the university. The catacombs are a library of bones. Each skeleton is labelled with the scholar's name, their thesis, and the date of their death. The unlabelled bones are the ones who died before they could finish. They are still writing.
+
+\textbf{How do you apologize for a serious wrong?} You submit a "retraction" to the Synod's Committee on Ethical Correction. The retraction must be published in the public square, read aloud by a herald, and witnessed by at least three notaries. The fee is 50 silver. The shame is free.
+
+\textbf{What is the most important festival?} The Convocation of the Steps (summer solstice). Every citizen climbs the thousand stairs to the upper citadel. At the top, the Archon reads the names of the dead from the past year. The names are carved into the steps as they are read. The steps are getting crowded.
+
+\textbf{What is the secret that could destroy a powerful person?} The Archon is a fraud. He never passed the Synod's examination. His degree was purchased from a disgraced dean whose signature is forged on every document. The forger is still alive. They live in the catacombs. They have the original quill.
+\end{almanac}
+
 \newpage
 \input{../generators/thepyrgos.tex}
 \newpage
 
+
+
+% ============================================================
+% PART II: THE NORTHERN REACHES
+% ============================================================
 % ============================================================
 % PART II: THE NORTHERN REACHES
 % ============================================================
@@ -383,6 +644,28 @@ Never count your breaths aloud in a mine. The mountain listens, and if it hears 
 \noindent\textit{— Thromm Stone-Tongue, Under-Mason, who has never counted to nine}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Stone-bread and cave cheese—the bread is baked on heated stone slabs, the cheese is aged in sealed galleries where the temperature never varies. The cheese has been aging for three generations. It is an heirloom. It is also barely edible.
+
+\textbf{What does a child learn before they can walk?} To count their breaths. Aeler children wear breath-counters—small brass bells on leather cords. Eight breaths, ring the bell. Nine breaths, run. A child who cannot count is a child who will not survive the winter.
+
+\textbf{What is the first thing you notice about a stranger?} Their bell. Every Aeler carries a bell tuned to their breath. A stranger's bell will ring at a different pitch—the mountain's lungs are calibrated to local frequencies. A mismatched bell is a warning. A silent bell is a threat.
+
+\textbf{What is the most common crime?} Air theft. In the deep vaults, ventilation is shared. A sealed door, a blocked vent, a diverted shaft—these are thefts of breath, punishable by breath-debt. The guilty party must donate their own air ration to the victim. The donation is measured in days. The days are counted by bells.
+
+\textbf{What does no one talk about but everyone knows?} The True Masons are not neutral. They are the Vault-Queen's eyes. Every "independent" repair, every "neutral" inspection, every "routine" audit—the True Masons are watching. They do not report to the Queen. They are the Queen. They have always been the Queen.
+
+\textbf{Where do people go when they die?} To the Deep Vaults—the oldest galleries, where the air is thin and the stone is cold. The dead are not buried. They are sealed in niches carved into the walls, their names chiselled above their heads. The niches are reused every century. The names are never erased. The dead share walls with strangers. The strangers are patient.
+
+\textbf{How do you apologize for a serious wrong?} You offer a keystone—a load-bearing stone from your own holding. The stone is installed in the wronged party's wall. If it holds, you are forgiven. If it cracks, the debt stands. If it crumbles, your holding collapses. Apology is architecture. Architecture is law.
+
+\textbf{What is the most important festival?} The Ringing of the Underways (deep winter). Every bell in every hold is rung at the same hour—eight times, no more. The sound travels through the stone, a heartbeat that reminds the mountain that the living are still here. The dead listen. The dead do not ring back.
+
+\textbf{What is the secret that could destroy a powerful person?} The Vault-Queen is a construct. She was assembled in 723 AR, after the real queen died in a cave-in. Her heart is a keystone. Her breath is a bellows. Her voice is a recording. The True Masons maintain her. They have the schematics. The schematics are missing three pages. The missing pages describe how to turn her off.
+\end{almanac}
+
 \newpage
 \input{../generators/aeler.tex}
 \newpage
@@ -413,6 +696,28 @@ Never answer a voice that calls your name from the fog. The mist collects names,
 
 \noindent\textit{— Warden Kael, who has seen the ninth bell rung once and will not speak of it}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Salt fish and sour bread—the fish is smoked over peat fires, the bread is leavened with fog-damp yeast. The yeast is caught in cloth traps hung from the bell-towers. The traps are emptied at dawn. The yeast is not alive. It is not dead either.
+
+\textbf{What does a child learn before they can walk?} To ring a bell. Every Mistlands child is given a small bronze bell at birth. By age three, they can ring the eight notes of the ward-chime in their sleep. The ninth note is never taught. The ninth note is discovered. Discovery is fatal.
+
+\textbf{What is the first thing you notice about a stranger?} Their salt-pouch. Every Mistlander carries a leather pouch of consecrated salt. A stranger without a pouch is either a fool or a wraith. A stranger whose pouch is empty is a fool who is about to become a wraith.
+
+\textbf{What is the most common crime?} Ward-salt theft. The Aeler control the salt pans, and the salt is the only thing that keeps the dead from rising. A stolen pouch can buy a week's protection. The price is a year's debt to the Aeler. The debt is collected in labour. The labour is collecting salt. The salt is stolen. The cycle is perpetual.
+
+\textbf{What does no one talk about but everyone knows?} The Bell-Wardens are not chosen—they are volunteered. A village that loses a warden must send a replacement to the Aeler training holds. The holds are in the mountains. The mountains are cold. The trainees do not always return. The ones who do return do not speak of what they learned. Their bells ring at a different pitch.
+
+\textbf{Where do people go when they die?} To the fog. Bodies are not buried in the Mistlands—the ground rejects them. Corpses are carried to the edge of the bell-line and left for the mist. The mist takes them. Sometimes, at dusk, you can see them walking the lanes. They do not speak. They do not need to. Their presence is a question.
+
+\textbf{How do you apologize for a serious wrong?} You ring the Bell of Atonement—a cracked bronze bell that hangs in every village square. The bell rings once for each wrong confessed. If the bell rings true, you are forgiven. If it cracks further, you are not. If it shatters, you are banished to the fog. The banished never return. Their voices still answer from the white.
+
+\textbf{What is the most important festival?} The Rehanging of the Lines (autumn). Every bell-line is taken down, cleaned, and rehung. The work takes three days. The villages are silent for three nights. The dead listen. The dead wait. The dead do not ring.
+
+\textbf{What is the secret that could destroy a powerful person?} The Legate of the Mists is a wraith. She died in 803 AR, during a bell-line failure. The Aeler rebuilt her from fog and memory. She does not know she is dead. She attends council meetings. She signs documents. Her signature fades after sunset. The documents are refiled every morning.
+\end{almanac}
 
 \newpage
 \input{../generators/mistlands.tex}
@@ -449,35 +754,30 @@ Never ride between two wolves at dusk. The space between them is a blind angle�
 \noindent\textit{— Sogata, Herd-Scout, who has never been lost but has been found many times}
 }
 
-\newpage
-\input{../generators/ykrul.tex}
-\newpage
-
-\subsection*{Midh Ahkaz — The Violet Gate}
-
-\noindent
-{\Large
-\textit{The wind carries names, not ledgers. But here, in the shadow of the Oasis Compact, both trade and oaths change hands. Do not mistake our patience for weakness. The grass remembers every hoof that crossed it.}
-
-\vspace{0.5em}
-
-Midh Ahkaz is not a city of stone—it is a city of felt, iron, and shifting grass. A day's ride north of the Ecktorian border, it squats on the edge of the Violet Steppe like a patient wolf. Here, the Ykrul, Vilikari, Ostrikari, and a dozen other peoples gather to trade, haggle, and settle grudges. The air smells of horse sweat, cedar smoke, and the faint copper tang of blood money.
-
-\vspace{0.5em}
-
-The Oasis Compact is the only law, and the Compact is a living document—it changes with every drought, every raid, every Khagan's breath. The Coin-Weigh Tribunal settles disputes with scales that tip when a lie is spoken. The Dust Market auctions goods that fell off a wagon—or off a corpse. And the Khatun's word is law until someone stronger speaks.
-
-\vspace{0.5em}
-
-Never refuse the guest-cup. The first pour is courtesy. The second is negotiation. The third is a blood-price unspoken. And the fourth—the fourth means you're already dead, you just haven't stopped breathing.
-
 \vspace{1em}
 
-\noindent\textit{— Vilikari Factor, Night Market regular}
-}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Fermented mare's milk and dried meat—the milk is drunk warm from the skin, the meat is sliced thin and dried on saddle-pommels. The meat carries the taste of horse sweat. The milk carries the taste of the steppe. Both are acquired. Both are necessary.
+
+\textbf{What does a child learn before they can walk?} To sit a horse. Ykrul children are placed on a horse before they can stand. The horse is old, patient, and knows the child's weight. A child who falls is a child who learns to hold tighter. A child who cannot ride is a child who cannot eat.
+
+\textbf{What is the first thing you notice about a stranger?} Their braids. Ykrul warriors braid their hair with clan colours—red for the Wolf Clan, black for the Iron Horse, grey for the Salt Steppe. A stranger whose braids are cut has been shamed. A stranger whose braids are dyed black has killed a clan-mate. A stranger with no braids has no clan. A stranger with no clan is prey.
+
+\textbf{What is the most common crime?} Horse theft. A stolen horse is a stolen relative. The price is blood—the thief's or the owner's. The courts are the council fires. The evidence is the horse's memory. Horses remember faces. Horses remember smells. Horses do not lie.
+
+\textbf{What does no one talk about but everyone knows?} The Khagan is not chosen by blood. He is chosen by the horse. Every five years, the clan chiefs lead their best stallions to the sacred ring. The horse that steps forward first chooses the next Khagan. The horse has not stepped forward in twenty years. The council chooses by silence. The silence is growing loud.
+
+\textbf{Where do people go when they die?} To the sky. Ykrul dead are placed on open platforms, wrapped in felt, and left for the wind and the birds. The bones are collected after a year and ground into powder. The powder is mixed with clay and fired into beads. The beads are worn by the dead's descendants. The beads are warm. The warmth is memory.
+
+\textbf{How do you apologize for a serious wrong?} You offer a hostage string—a braided cord that ties your wrist to the wronged party's. The cord is cut when the apology is accepted. If the cord is cut before the apology is finished, you are not forgiven. If the cord is never cut, you are bound. The binding is lifelong. The binding is called "friend."
+
+\textbf{What is the most important festival?} The First Grass (spring equinox). The herds are released onto the new pasture. The riders race to the horizon and back. The winner names the summer camps. The loser tends the sick animals. The sick animals are always the loser's. The loser always wins next year.
+
+\textbf{What is the secret that could destroy a powerful person?} The Sky-Speaker is a fraud. She cannot call storms. She cannot read omens. She cannot speak to the dead. She is a horse-witch who learned to read the clouds. The clouds are reliable. The Khagan does not know. The Khagan does not want to know.
+\end{almanac}
 
 \newpage
-\input{../generators/midh-akhaz.tex}
+\input{../generators/ykrul.tex}
 \newpage
 
 % ------------------------------
@@ -506,6 +806,28 @@ Never invoke only one law. The mallus (oak-ring) and the basilica (marble bench)
 
 \noindent\textit{— Hearth-Mother Vesna, who has fed three kings and forgotten none of their debts}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Oatmeal with dried berries—the berries are harvested from the border scrub, where the empire's orchards meet the steppe's wild brambles. The berries taste of both. The oatmeal tastes of neither. The oatmeal is filler. The berries are the point.
+
+\textbf{What does a child learn before they can walk?} To speak both languages—Imperial Utaran and the steppe cant. A child who speaks only one is a child who will never cross the border. A child who crosses the border is a child who will come back with stories. A child with stories is a child who will be listened to. Listening is power.
+
+\textbf{What is the first thing you notice about a stranger?} Which side of the road they ride on. The empire's roads are measured from the centre. The steppe's paths are measured from the edge. A stranger who rides in the centre is an imperial. A stranger who rides at the edge is a nomad. A stranger who rides in the ditch is a spy. The ditch is not a road. The ditch is a message.
+
+\textbf{What is the most common crime?} Treaty-splitting—selling the same rights to both sides. A Vilikari factor will promise river access to an imperial merchant and grazing rights to a Ykrul clan, then collect from both and disappear before the paperwork collides. The crime is not in the selling. The crime is in getting caught before you cross the border.
+
+\textbf{What does no one talk about but everyone knows?} The Foedus Stone is a copy. The original was stolen in 712 AR by a Vilikari trader who owed debts on both sides. She melted it down and sold the marble dust as "treaty-strengthening powder." The powder was mostly chalk. The treaties are still holding. The traders are still selling.
+
+\textbf{Where do people go when they die?} To the border. The Vilikari bury their dead at the edge—close enough to the empire for the priests to pray, close enough to the steppe for the shamans to chant. The dead are planted face-up, so they can see both skies. The skies are different colours. The dead do not complain.
+
+\textbf{How do you apologize for a serious wrong?} You invoke the mallus—the oak-ring court. The wronged party sits inside the ring. The wrongdoer circles it three times, speaking their apology. On the third circuit, the elders judge. If the apology is accepted, the wrongdoer is admitted into the ring. If it is rejected, the ring closes. The wrongdoer is outside. Outside is the lawless land. The lawless land is where the wolves are.
+
+\textbf{What is the most important festival?} The Renewal of the Foedus (summer solstice). The stone is washed with milk and honey. The milk is from a Ykrul mare. The honey is from an imperial apiary. The mixture is drunk by the elders. The elders speak the treaty aloud. The treaty is long. The elders are old. The ceremony takes all day.
+
+\textbf{What is the secret that could destroy a powerful person?} The Foedus Stone has a crack. The crack was caused by a hammer in 799 AR, during a dispute over horse tariffs. The stone was repaired with clay and prayer. The clay is drying. The prayer is fading. The crack is spreading. When the stone splits, the treaty splits with it. No one knows what happens then. No one wants to find out.
+\end{almanac}
 
 \newpage
 \input{../generators/vilikari.tex}
@@ -542,6 +864,28 @@ Never break a Bell Dawn. Three bells at sunrise means bury the dead, trade priso
 \noindent\textit{— Old Sorka, Veteran Sergeant, who counts scars like coins and spends them on whiskey and mercy}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Hardtack and camp stew—the stew is whatever was caught, killed, or traded for before dawn. The cook is called "The Alchemist." No one knows their real name. No one asks.
+
+\textbf{What does a child learn before they can walk?} To count coin. Camp children are taught to tally pay shares before they can read. A child who miscounts is a child who will go hungry. A child who goes hungry is a child who learns to count faster.
+
+\textbf{What is the first thing you notice about a stranger?} Their colours. Every Black Banner company has its own banner—lantern, thorn, bell, fishbone, broken scale. A stranger whose colours are faded has been running. A stranger whose colours are too bright has never fought. A stranger with no colours has no company. A stranger with no company is a deserter. A deserter is a liability. A liability is a corpse.
+
+\textbf{What is the most common crime?} Desertion—but desertion is not a crime, it is a negotiation. A soldier who wants to leave will sell their gear to the quartermaster, sell their secrets to the enemy, and sell their silence to the captain. The price is negotiable. The price is always "one more season."
+
+\textbf{What does no one talk about but everyone knows?} The Black Colonel is not a person. The Colonel is a title held by a wax seal. The seal is kept in a lead-lined box. The box is carried by a mute lieutenant. The lieutenant signs documents with the Colonel's thumb-print. The thumb-print is a forgery. The forger is the lieutenant. The lieutenant has no thumbs.
+
+\textbf{Where do people go when they die?} To the pyre. Camp dead are burned in a bonfire of broken spears and banner poles. The ashes are scattered by the quartermaster. The quartermaster charges a fee. The fee is deducted from the dead's final pay. The final pay is never enough.
+
+\textbf{How do you apologize for a serious wrong?} You stand a watch. The wronged party chooses the hour—midnight, dawn, the dead of winter. You stand alone. If you survive, you are forgiven. If you do not, the debt is paid. The camp does not mourn. The camp does not forget.
+
+\textbf{What is the most important festival?} Payday—but payday is not a day, it is a negotiation. The captain promises payment on the first of the month. The quartermaster promises payment when the supply train arrives. The soldiers promise loyalty until the payment comes. The payment never comes. The loyalty never ends.
+
+\textbf{What is the secret that could destroy a powerful person?} The Banner-Captain's contract is written in disappearing ink. The ink was supplied by a Sidhi forger who was paid in promises. The promises were not kept. The forger is now a camp follower. The forger knows where the contract is hidden. The forger is waiting for the right offer.
+\end{almanac}
+
 \newpage
 \input{../generators/black_banner.tex}
 \newpage
@@ -577,10 +921,36 @@ Never name a drowned person aloud while underway. The sea collects names, and if
 \noindent\textit{— Astrid, Net-Wife, who has never lost a sailor to the mist but has lost three to bad stories}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Seal blubber and flatbread—the blubber is chewy, the bread is dense, and both are stored in the same barrel. The barrel is shared with the crew. The crew shares everything. The crew is family. Family is obligation.
+
+\textbf{What does a child learn before they can walk?} To tie a knot. Linn children are given a length of rope at birth. By age five, they can tie the eight sea-knots: clew, clove, figure-eight, reef, sheet, stopper, timber, and the ninth—the one that slips when pulled. The ninth knot is for emergencies. The ninth knot is for funerals. The ninth knot is for when the sea asks for a life.
+
+\textbf{What is the first thing you notice about a stranger?} Their breath. Linn sailors chew kelp to sweeten their breath—the kelp is harvested from sacred beds, blessed by the Volva. A stranger whose breath smells of salt has been at sea. A stranger whose breath smells of nothing has not. A stranger whose breath smells of copper has spoken a false oath. The sea knows. The sea will answer.
+
+\textbf{What is the most common crime?} Oath-breaking—but oath-breaking is not a crime, it is a storm. The oath-breaker's ship will founder. The oath-breaker's nets will tear. The oath-breaker's children will be born with webbed fingers. The punishment is not imposed by the jarl. The punishment is imposed by the sea. The sea is patient. The sea does not forget.
+
+\textbf{What does no one talk about but everyone knows?} The Sea-Queen is not a queen. She is a figurehead—literally. Her body is carved from the keel of a ship that sank in 612 AR. Her voice is a recording. Her throne is a navigation table. The jarls pretend. The jarls have always pretended. The pretending keeps the peace.
+
+\textbf{Where do people go when they die?} To the waves. Linn dead are placed in boats and set adrift, weighted with stones. The stones are carved with the dead's name. If the boat sinks before it reaches the horizon, the dead is accepted. If it reaches the horizon, the dead is rejected. If it returns to shore, the dead is cursed. The cursed wash up on beaches. The beaches are littered with their bones.
+
+\textbf{How do you apologize for a serious wrong?} You offer a storm-oath. You stand on a cliff during a gale and swear your apology to the wind. If the wind carries your words, you are forgiven. If the wind throws you into the sea, you are not. The sea does not give second chances.
+
+\textbf{What is the most important festival?} The Launching of the Longships (spring thaw). The ships are dragged from their winter shelters and blessed with blood and mead. The blood is from a sacrificed goat. The mead is from the jarl's own stores. The ships are named after ancestors. The ancestors are listening. The ancestors approve.
+
+\textbf{What is the secret that could destroy a powerful person?} The Volva of the Mist is a fraud. She cannot see the future. She reads the weather—the pressure, the wind, the taste of salt on the air. The sailors know. The sailors do not care. A weather-reader is more useful than a seer. The Volva knows this. The Volva uses this. The Volva is never wrong.
+\end{almanac}
+
 \newpage
 \input{../generators/linns.tex}
 \newpage
 
+
+% ============================================================
+% PART III: THE EASTERN DOLMIS & THE VALEWOOD
+% ============================================================
 % ============================================================
 % PART III: THE EASTERN DOLMIS & THE VALEWOOD
 % ============================================================
@@ -617,6 +987,28 @@ Never pour the ninth cup at a feast. Never speak the ninth name in a bargain. Ne
 \noindent\textit{— Celia, Hedge-Witch Midwife, who has tied nine thousand knots and untied nine}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Oatcakes and heather ale—the oats are grown on terraced hillsides, the heather is harvested from the high moors. The ale is brewed in secret, by women who have forgotten more recipes than the men will ever learn. The men do not ask. The men are wise.
+
+\textbf{What does a child learn before they can walk?} To count to eight. Theona children are taught numbers on their fingers—eight fingers, two thumbs. The thumbs are not counted. The thumbs are for pointing. Pointing is for warnings. Warnings are for the ninth thing.
+
+\textbf{What is the first thing you notice about a stranger?} Their shadow. Theona is a land of mists and twilight. A stranger whose shadow is too short has been touched by the Host. A stranger whose shadow is too long is running from them. A stranger with no shadow is already taken. Do not speak to them. Do not meet their eyes. Do not offer them salt.
+
+\textbf{What is the most common crime?} Breaking the ninth taboo—but breaking the taboo is not a crime, it is an invitation. The Host rides for those who pour the ninth cup, speak the ninth name, or take the ninth step. The Host does not arrest. The Host takes. The taken are never found. Their empty cups remain on the table. The cups are warm for three days.
+
+\textbf{What does no one talk about but everyone knows?} The Green Host are not ghosts. They are the living—Theonans who broke the taboo and were taken. They ride with the King in Green, who was once a chieftain of the northern isle. He broke the ninth vow. He was not taken. He was crowned. His crown is made of thorns. His throne is a barrow. His court is the mist.
+
+\textbf{Where do people go when they die?} To the barrows. Theona's dead are buried in long, low mounds that line the eastern cliffs. The mounds are planted with gorse and broom. The gorse blooms yellow in spring. The yellow is for mourning. The broom is for memory. The dead are not mourned. The dead are remembered. Remembering is enough.
+
+\textbf{How do you apologize for a serious wrong?} You walk the Ninth Mile—a stretch of road that circles the central isle. The road is nine miles long. You must walk it at night, alone, with no light. If you reach the end by dawn, you are forgiven. If you do not, the Host will find you. The Host is always looking. The Host is always waiting.
+
+\textbf{What is the most important festival?} The Feast of the Eighth Cup (autumn equinox). Every household pours eight cups of mead—one for each of the living generations. The ninth cup is poured onto the ground. The ground drinks. The ancestors listen. The ancestors do not answer.
+
+\textbf{What is the secret that could destroy a powerful person?} The Three-Isles King is a changeling. The real king died in 798 AR, drowned in a peat bog while hunting. The changeling was placed by the Lady Beneath as part of a bargain. The bargain was for peace between the isles. The peace has held. The changeling has aged. The changeling's reflection does not.
+\end{almanac}
+
 \newpage
 \input{../generators/theona.tex}
 \newpage
@@ -651,6 +1043,28 @@ Never take a coin that tastes of brine. The Serpent's Mark is not a blessing. It
 
 \noindent\textit{— Ravel, Dock-Rat, who has never slept above the high-water mark}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Salted fish and hard cheese—the fish is dried on the docks, the cheese is smuggled from the mainland. The cheese is always stale. The fish is always fresh. The contradiction is never explained.
+
+\textbf{What does a child learn before they can walk?} To read the tide tables. Zakov children are taught the schedule of the sea before they learn their letters. A child who cannot read the tide is a child who will be caught by the flood. The flood is not water. The flood is the Syndicate. The Syndicate collects debts at high tide.
+
+\textbf{What is the first thing you notice about a stranger?} Their coin-pouch. Zakov runs on silver—good silver, bad silver, silver that has been under the sea. A stranger whose pouch clinks with fresh-minted coin is a merchant. A stranger whose pouch is full of salt-crusted bits is a pirate. A stranger whose pouch is empty is a liar. Liars do not last long in Zakov. The sea takes them.
+
+\textbf{What is the most common crime?} Piracy—but piracy is not a crime, it is a profession. The Syndicate licenses privateers. The privateers pay a tithe. The tithe funds the harbor. The harbor protects the ships. The ships are protected from pirates. The pirates are the Syndicate. The cycle is beautiful.
+
+\textbf{What does no one talk about but everyone knows?} The Salt Prince is not a person. The title is held by a ring—a band of black coral that has been passed from captain to captain for three centuries. The ring is cursed. The ring's wearer cannot sleep. The ring's wearer cannot die. The ring's wearer cannot leave Zakov. The current Prince has worn the ring for forty years. He has not slept in forty years. He has not smiled in forty years. He has not left the palace in forty years.
+
+\textbf{Where do people go when they die?} To the Sunken Quarter—the drowned district that lies beneath the harbor. The dead are weighted with chains and dropped into the canals. The canals empty into the sea. The sea returns the bodies at low tide. The bodies are collected by the Syndicate. The Syndicate sells them to the Salt-Prince's collectors. The collectors use them for—no one asks. No one wants to know.
+
+\textbf{How do you apologize for a serious wrong?} You pay the Salt Tithe—a silver coin for every year of the wronged party's life. The coin must be a salt coin—one that has been under the sea for a full tide cycle. The coin is thrown into the harbor. If it sinks, you are forgiven. If it floats, you are not. If it floats back to shore, you are cursed. The curse is the Serpent's Mark. The Mark is a debt that drowns.
+
+\textbf{What is the most important festival?} The Rising of the Tides (summer solstice). The harbor fills with luminescent algae. The algae glows green. The green is called "the Kraken's Eye." The Kraken is said to rise on this night. The Kraken has not risen in living memory. The Kraken is patient. The Kraken is waiting.
+
+\textbf{What is the secret that could destroy a powerful person?} The Pirate Queen is a spy. She was planted by the Kahfagian Admiralty forty years ago. Her mission was to destabilize the Syndicate. She has become the Syndicate. The Admiralty does not know. The Admiralty still sends her orders. She burns them. The ashes are mixed with her tea.
+\end{almanac}
 
 \newpage
 \input{../generators/zakov.tex}
@@ -687,6 +1101,28 @@ Never bring naked iron past a hawthorn arch unless it is gilded or named. Copper
 \noindent\textit{— Tallow, Charcoal-Burner, who has never lost a sheep to the Hollow but has lost three helpers who did not listen}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Honey-cakes and mushroom tea—the honey is from the hawthorn groves, the mushrooms are harvested from the root-caverns. The cakes are baked in copper moulds. The moulds are shaped like animals. The animals are not edible. The shapes are for luck.
+
+\textbf{What does a child learn before they can walk?} To count in eights. Aelinnel children are taught to group everything in eights—steps, breaths, heartbeats. The ninth is not a number. The ninth is a gap. The gap is where the Hollow sits. The Hollow is not a monster. The Hollow is a creditor. The debt is never paid in full.
+
+\textbf{What is the first thing you notice about a stranger?} Their tools. Aelinnel carry copper—spoons, chisels, measuring rods. A stranger whose tools are iron is a barbarian. A stranger whose tools are silver is a priest. A stranger whose tools are gold is a fool. Gold does not ring true. Gold is for bribes. Bribes are for secrets.
+
+\textbf{What is the most common crime?} Miscounting—but miscounting is not a crime, it is a geometric error. The error is corrected by the Stone Prince's ledgers. The ledgers are kept in the Hall of Sums. The Hall is guarded by clockwork sentinels. The sentinels do not sleep. The sentinels do not forgive. The sentinels count every breath.
+
+\textbf{What does no one talk about but everyone knows?} The Stone Prince is not a prince. The title is held by a committee of six elders who have never been seen together. They communicate through copper messages left in the Hall of Sums. The messages are written in a code that changes with the tides. The code has not been broken in three centuries. The code is not meant to be broken. The code is meant to be trusted.
+
+\textbf{Where do people go when they die?} To the tide-gates—stone arches at the edge of the sea. The dead are laid on the threshold. The tide comes in. The tide takes them. The gates are older than the Aelinnel. The gates were built by something else. The gates are still watching.
+
+\textbf{How do you apologize for a serious wrong?} You offer a counting—a public recitation of your wrong in the Stone Prince's court. The court is a circle of copper chairs. The chairs are cold. The wrongdoer stands in the centre. The elders count the syllables of your apology. If the count is even, you are forgiven. If the count is odd, you must leave an offering. The offering is measured in copper. The copper is weighed against your breath. The scales are never balanced.
+
+\textbf{What is the most important festival?} The Opening of the Green Gate (autumn equinox). The gate appears at low tide, a stone arch that leads to—no one knows. The Aelinnel do not enter. They leave offerings: copper, honey, a single true name. The gate accepts. The gate closes. The gate waits.
+
+\textbf{What is the secret that could destroy a powerful person?} The Green Knight is not a knight. She is the gatekeeper—the last survivor of the people who built the tide-gates. She wears a helm of polished brass. Her face has not been seen in living memory. Her voice is a recording. Her sword is a key. The key opens the gate. The gate does not want to be opened.
+\end{almanac}
+
 \newpage
 \input{../generators/aelinnel.tex}
 \newpage
@@ -721,6 +1157,28 @@ Never refuse an offered cup. The Hollow counts refusals as invitations. Pour the
 
 \noindent\textit{— Bram, Miller of the Watch-Geese, who has never been surprised}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Porridge with honey and a pinch of salt—the salt is for the Hollow. Every Aelaerem household leaves a pinch on the threshold each morning. The Hollow does not eat. The Hollow counts. The salt is an offering. The offering is a reminder.
+
+\textbf{What does a child learn before they can walk?} To tie a red thread. Aelaerem children are given a length of red wool at birth. By age three, they can tie the eight hearth-knots: welcome, farewell, protection, memory, warning, promise, apology, and the ninth—the one that is never tied. The ninth knot is for the Hollow. The Hollow does not tie knots. The Hollow waits for you to tie them yourself.
+
+\textbf{What is the first thing you notice about a stranger?} Their shadow. Aelaerem shadows are long and thin, even at noon. A stranger whose shadow is short has been touched by the Neighbors. A stranger whose shadow is wrong—too many limbs, too few—is a Neighbor. Do not invite them in. Do not refuse them bread. The law is clear: feed them, but do not ask their name.
+
+\textbf{What is the most common crime?} Offering the ninth cup—but the ninth cup is not a crime, it is a negotiation. The pourer offers a drink to the empty chair. The Hollow may accept. If it does, the house is blessed for a year. If it does not, the house is marked. The mark is a red thread tied to the door. The thread is never removed. The house is never sold.
+
+\textbf{What does no one talk about but everyone knows?} The Apple-Matron is a title, not a person. The Matron is the oldest woman in the village. When she dies, the second-oldest takes her place. The Matron's memory is the village's memory. The Matron forgets nothing. The Matron's memory is fading. The village is forgetting. The forgetting is the Hollow's doing.
+
+\textbf{Where do people go when they die?} To the barrows—the low, green mounds that dot the downs. The dead are buried in family plots, marked with cup-stones. The cup-stones are filled with rainwater. The rainwater is changed weekly. The water is for the dead. The dead are not thirsty. The dead are counting.
+
+\textbf{How do you apologize for a serious wrong?} You leave a red thread on the wronged party's doorstep. The thread must be tied in a specific knot—the knot of apology, which is also the knot of debt. The wronged party may accept the thread or cut it. If they accept, the debt is recorded. If they cut it, the debt is unpaid. The unpaid debt grows. The growing debt attracts the Hollow.
+
+\textbf{What is the most important festival?} The Harvest Home (autumn). The last sheaf of grain is tied with red thread and left in the field. The Hollow takes it. The Hollow does not take anything else. The Hollow is patient. The Hollow will wait for the ninth cup.
+
+\textbf{What is the secret that could destroy a powerful person?} The Pale Shepherd is not a shepherd. It is a title held by the Hollow itself. The Shepherd appears as a figure in grey robes. Its face is a mask of bone. Its voice is a recording of the last words of the person who saw it last. That person is always dead. The recording is always accurate.
+\end{almanac}
 
 \newpage
 \input{../generators/aelaerem.tex}
@@ -757,12 +1215,34 @@ Never eat the fruit of a tree that has a face. The forest does not forget its de
 \noindent\textit{— Pathweaver Sila, who knows every star-road but will not speak their names}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Acorn bread and wild honey—the acorns are leached in stream-water for three days, the honey is taken from hives in the high branches. The bees are sacred. The bees are not to be harmed. A beekeeper who harms a bee is cursed. The curse is the stinging. The stinging is endless.
+
+\textbf{What does a child learn before they can walk?} To name the trees. Valewood children are taught the names of the eight sacred groves: Hazel, Alder, Oak, Rowan, Ash, Thorn, Yew, and the ninth—the one that has no name. The ninth grove is where the Hollow sleeps. The Hollow is not to be woken.
+
+\textbf{What is the first thing you notice about a stranger?} Their way-cord. Every Valewood traveler carries a knotted cord—one knot for each mile they have walked. A stranger whose cord has nine knots has walked the forbidden path. A stranger whose cord is knotted with red thread is a Pathweaver. A stranger with no cord has no way. The forest will find them. The forest will lead them in circles until they forget why they came.
+
+\textbf{What is the most common crime?} Breaking the star-road—but the star-roads are not roads, they are agreements. A traveler who strays from the path is a traveler who breaks the covenant. The covenant is older than the Valewood. The covenant was made between the first trees and the first stars. The stars do not forgive. The trees do not forget.
+
+\textbf{What does no one talk about but everyone knows?} The Hazel Queen is not the queen. She is the voice of the forest—a title that passes from dryad to dryad with each turning of the season. The current Queen has held the title for three centuries. She is not a dryad. She is a ghost—the last survivor of the empire that fell beneath the leaves. She remembers the cities. She remembers the stones. She remembers the names of the dead. The dead do not remember her.
+
+\textbf{Where do people go when they die?} To the star-roads—the paths that lead between the trees and between the worlds. The dead are not buried. They are laid on stone altars at the edges of the groves. The stars pull them upward. The trees pull them downward. The dead choose. The dead always choose the trees. The trees remember.
+
+\textbf{How do you apologize for a serious wrong?} You offer a name—your own or another's. The forest accepts the name. The forest weaves it into the bark of the oldest oak. The oak is called the Witness. The Witness has stood for nine thousand years. The Witness has never forgotten a single name. The Witness will not forget yours.
+
+\textbf{What is the most important festival?} The Turning of the Leaves (autumn). The trees shed their colours in a single day. The leaves carpet the forest floor. The leaves are gathered and burned in the high clearings. The smoke carries the year's debts to the stars. The stars answer with light. The light is forgiveness. The light is also a warning.
+
+\textbf{What is the secret that could destroy a powerful person?} The Alder King is not a king. He is the forest's warden—a title passed from fallen empire to fallen empire. The current King is a Lethai-ar who was born in the year the last empire fell. He has not aged since. He does not eat. He does not drink. He does not sleep. He walks the star-roads at night. The star-roads are empty. The dead have stopped walking.
+\end{almanac}
+
 \newpage
 \input{../generators/valewood.tex}
 \newpage
 
 % ============================================================
-% PART: THE SOUTHERN REALMS (AKILAN)
+% PART IV: THE SOUTHERN REALMS (AKILAN)
 % ============================================================
 \part{The Southern Realms (Akilan)}
 
@@ -782,7 +1262,7 @@ I am a Grain Inspector. My stamp leaves a mark that glows under moonlight. I kno
 
 \vspace{0.5em}
 
-Oshiira is a confederacy of hundreds of tribes and city-states, united by the Grain Ledger. The capital, Mbaro, is a city of canals, weigh-houses, and the great Granary Tower. Oshiira is the breadbasket of the Amaranthine; its wheat fills the holds of Ecktorian, Vhasian, and Silkstrand ships. The empire operates through a bureaucracy as complex as any in the north—weighing-houses, canal-mothers, and ledgers that track every grain shipment with mathematical precision. But here's the secret the Widow doesn't want you to know: the Ledger has a page that has been torn out. That page named the true heir. No one knows where it is. Everyone is looking.
+Oshiira is a confederacy of hundreds of tribes and city-states, united by the Grain Ledger. The capital, Mbaro, is a city of canals, weigh-houses, and the great Granary Tower. Oshiira is the breadbasket of the Amaranthine; its millet and sorghum fill the holds of Ecktorian, Vhasian, and Silkstrand ships. The empire operates through a bureaucracy as complex as any in the north—weighing-houses, canal-mothers, and ledgers that track every grain shipment with mathematical precision. But here's the secret the Widow doesn't want you to know: the Ledger has a page that has been torn out. That page named the true heir. No one knows where it is. Everyone is looking.
 
 \vspace{0.5em}
 
@@ -796,6 +1276,28 @@ Never speak of succession before naming the Widow. The empress's health is a sta
 
 \noindent\textit{— Vermilion Corps Auditor, who counts her own breaths to ensure she is not lying}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Millet porridge with dried fish—the millet is grown in the flood plains of the Sahel, the fish is smoked over canal-barges. The porridge is always the same. The fish varies by season. The seasons are measured by the height of the river. The river is the Widow's blood. The Widow's blood is low.
+
+\textbf{What does a child learn before they can walk?} To weigh a grain. Oshiira children are given a balance scale and a single grain of millet. By age five, they can tell you the weight difference between a grain harvested in the northern Sahel and a grain harvested in the southern riverlands. The difference is the tax. The tax feeds the empire. The empire is hungry.
+
+\textbf{What is the first thing you notice about a stranger?} Their hands. Oshiira merchants have ink-stained fingers—the ink is from the Ledger. A stranger whose fingers are clean has never signed a contract. A stranger whose fingers are stained black has signed too many. A stranger whose fingers are stained red has signed a death warrant. The red ink is not ink. The red ink is blood.
+
+\textbf{What is the most common crime?} Ledger fraud—but ledger fraud is not a crime, it is a career. The Vermilion Corps audits the auditors. The auditors audit the clerks. The clerks audit the merchants. The merchants audit the farmers. The farmers audit the land. The land does not lie. The land does not need to.
+
+\textbf{What does no one talk about but everyone knows?} The Widow has not been seen in public for seven years. Her voice is a recording. Her seal is a stamp. Her decrees are written by the Vermilion Corps. The Corps signs in her name. The Corps speaks in her voice. The Corps is the Widow. The Widow is dead. The empire continues.
+
+\textbf{Where do people go when they die?} To the Granary Tower—the great stone silo at the centre of Mbaro. The dead are not buried. They are ground into meal and mixed with the millet. The grain is shipped across the Amaranthine. The dead feed the empire. The empire does not know. The empire does not ask.
+
+\textbf{How do you apologize for a serious wrong?} You submit a correction to the Ledger. The correction must be witnessed by a Vermilion Corps auditor. The auditor stamps the correction with their seal. The seal glows under moonlight. The moonlight is the Widow's eye. The Widow sees everything. The Widow forgives nothing.
+
+\textbf{What is the most important festival?} The Harvest of the Ledger (autumn). The Ledger is opened in the great square. The names of the year's debtors are read aloud. The debtors are given until dawn to pay. The debtors who cannot pay are added to the Ledger's ninth page. The ninth page is sealed with wax. The wax is black. The black is mourning.
+
+\textbf{What is the secret that could destroy a powerful person?} The Ledger's missing page is not missing. It was burned by the Widow herself, in the year the last heir died. The page's ash was mixed into the mortar of the Granary Tower. The ash still glows under moonlight. The glow spells the heir's name. The name is the Widow's own. The Widow killed her child. The empire does not know. The empire would not care.
+\end{almanac}
 
 \newpage
 \input{../generators/oshiira.tex}
@@ -832,6 +1334,28 @@ Never name the dead. The Sisters bind spirits to names. Speak a dead name aloud,
 \noindent\textit{— Tamar, Breath-less cell leader, who has three names—each for a different jurisdiction}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Black bread and thin soup—the bread is made from grain grown on the edge of the Red Desert, the soup is flavoured with salt and memory. The memory is of green fields. The fields are gone. The bread is bitter.
+
+\textbf{What does a child learn before they can walk?} To veil their face. Ashaan children are taught to cover their mouths when speaking, their eyes when listening, their ears when hearing secrets. A child who cannot veil is a child who will be taken by the Sisters. The Sisters take children. The children become spirits. The spirits serve the Sisters. The Sisters never stop taking.
+
+\textbf{What is the first thing you notice about a stranger?} Their veil. Ashaan veils are coded—red for mourning, white for marriage, black for the Sisters. A stranger whose veil is grey is a Breath-less agent. A stranger whose veil is torn is a fugitive. A stranger with no veil is a fool. Fools are collected by the Black Hand. The Black Hand does not ask questions.
+
+\textbf{What is the most common crime?} Spirit-trading—but spirit-trading is not a crime, it is the economy. The Sisters bind spirits to brass cages. The cages are sold to the Esoiti. The Esoiti sell the spirits to foreign buyers. The foreign buyers do not know what they are buying. The Sisters do not care.
+
+\textbf{What does no one talk about but everyone knows?} The Red Desert is not a desert. It was a garden, before the Sisters came. The Sisters bound the spirits of the soil. The soil died. The garden became sand. The sand still remembers. The sand still whispers. The whispers are the garden's ghosts.
+
+\textbf{Where do people go when they die?} To the brass cages. The dead are not buried. They are bound into spirit-lanterns and hung from the walls of Galanina. The lanterns glow green. The green is the light of the bound. The bound cannot speak. The bound cannot scream. The bound can only watch.
+
+\textbf{How do you apologize for a serious wrong?} You offer a name—a dead name, a forgotten name, a name the Sisters do not yet know. The Sisters bind the name to a brass cage. The cage is placed in the Hall of Silence. The Hall is full. The Hall is always full. The Hall is never silent.
+
+\textbf{What is the most important festival?} The Night of the Unbound (winter solstice). The spirits strain against their cages. The Sisters renew their bindings. The ceremony takes three days. The city is silent for three days. The silence is not prayer. The silence is fear.
+
+\textbf{What is the secret that could destroy a powerful person?} The High Sister is not a sister. She is a spirit—the first one bound, nine hundred years ago. She bound herself to the throne. She cannot leave. She cannot die. She cannot stop binding. The other Sisters do not know. The other Sisters are her prisoners. The prisoners guard the jailer. The jailer does not sleep.
+\end{almanac}
+
 \newpage
 \input{../generators/ashaan.tex}
 \newpage
@@ -866,6 +1390,28 @@ Never carve a name into living rock. The stone remembers. It will whisper that n
 
 \noindent\textit{— Kaelen, Stone-Cutter, whose city left him behind}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Stone-ground meal and fermented milk—the meal is ground between the city's own millstones, the milk is from goats that walk alongside the city. The goats are older than the city. The goats remember where the city has been. The goats do not speak. The goats do not need to.
+
+\textbf{What does a child learn before they can walk?} To sing the city's song. Ngomebe children are taught the rhythm of the rollers—eight beats to a mile, eight miles to a day, eight days to a season. The ninth beat is the city's secret. The ninth beat is never sung aloud.
+
+\textbf{What is the first thing you notice about a stranger?} Their dust. Ngomebe are coated in fine stone-dust—from the quarries, the rollers, the wind that follows the city. A stranger whose dust is white has come from the mountains. A stranger whose dust is red has come from the desert. A stranger with no dust has never walked with a city. The cities do not trust the dustless.
+
+\textbf{What is the most common crime?} Stone-theft—but stone-theft is not a crime, it is a wound. The stone is the city's memory. A stolen stone is a forgotten year. The year is forgotten by everyone who walked it. The forgetfulness spreads. The city's song stutters. The stutter is a warning.
+
+\textbf{What does no one talk about but everyone knows?} The city is not moving toward anything. It is moving away. The Ngomebe are fleeing something that lies to the south. The thing in the south is older than the stone. The thing in the south does not walk. It waits.
+
+\textbf{Where do people go when they die?} Into the keystone. The dead are not buried. Their ashes are mixed into mortar and pressed into the city's foundation. The dead become part of the city's weight. The city walks heavier each year. The dead do not complain. The dead are the city's anchor.
+
+\textbf{How do you apologize for a serious wrong?} You carve a new roller. The roller must be cut from a single stone, with no cracks, no flaws, no forgotten names. The roller is placed beneath the city's foundation. If it rolls true, you are forgiven. If it cracks, you are not. If it crumbles, you are added to the mortar.
+
+\textbf{What is the most important festival?} The Turning of the Rollers (spring equinox). The city stops for one day. The rollers are inspected, greased, and blessed. The city's song is sung from dawn to dusk. The song has eight verses. The ninth verse is silence. The silence is for the dead. The dead are listening.
+
+\textbf{What is the secret that could destroy a powerful person?} The city is not a city. It is a tomb—a monument to a king who died before the first stone was laid. The king's name is carved into the keystone. The keystone is at the city's heart. The heart is inaccessible. The king is patient. The king is waiting to be remembered.
+\end{almanac}
 
 \newpage
 \input{../generators/ngomebe.tex}
@@ -902,6 +1448,28 @@ Never refuse a second cup of tea. The first is hospitality; the second is a test
 \noindent\textit{— Ridge-Watcher Captain Anwar, who has not descended below the snow line in twenty years}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Barley flatbread and spiced tea—the bread is baked on iron griddles, the tea is brewed with cardamom and mountain herbs. The herbs are harvested from passes that only the Ridge-Watchers know. The Ridge-Watchers do not share.
+
+\textbf{What does a child learn before they can walk?} To read the wind. Taharkan children are taught the eight winds by name: North, South, East, West, Monsoon, Dry, Storm, and the ninth—the wind that has no name. The ninth wind is the mountain's breath. The mountain's breath is death.
+
+\textbf{What is the first thing you notice about a stranger?} Their breath. The air is thin in Taharka. A stranger who breathes too fast has not acclimated. A stranger who breathes too slow is hiding something. A stranger who does not breathe at all is a spirit. The spirits are not to be spoken to.
+
+\textbf{What is the most common crime?} Horse theft—but horse theft is not a crime, it is a declaration of war. The horse is the kingdom's bloodline. A stolen horse is a stolen ancestor. The thief's clan is responsible. The clan pays in blood or in trade. The trade is never enough. The blood is always too much.
+
+\textbf{What does no one talk about but everyone knows?} The Crown Council has not met in ten years. The passes have been closed by snow, by war, by the simple fact that the councillors cannot agree on a meeting place. The kingdom is ruled by the Ridge-Watchers. The Ridge-Watchers are not elected. The Ridge-Watchers are the mountains' voice. The mountains are silent.
+
+\textbf{Where do people go when they die?} To the high passes. The dead are laid on stone platforms, wrapped in woollen shrouds. The wind takes them. The wind carries their names to the peaks. The peaks remember. The peaks are the kingdom's cemetery.
+
+\textbf{How do you apologize for a serious wrong?} You offer a horse—the best horse in your stable. The horse is given to the wronged party. If they accept, the debt is paid. If they refuse, the debt is doubled. If they kill the horse, the debt is blood. Blood is never repaid.
+
+\textbf{What is the most important festival?} The First Rain (monsoon's arrival). The passes open for the first time in months. The caravans descend from the highlands. The lowland ports receive the first spice ships. The celebration lasts nine days. The ninth day is silent. The silence is for the dead of the passes.
+
+\textbf{What is the secret that could destroy a powerful person?} The Crown Council's missing member is not missing. He is buried under a landslide that was not an accident. The landslide was caused by the Ridge-Watchers. The councillor had learned the passes' secret: they are not natural. They were carved by something older. The something is still there. The Ridge-Watchers are its servants.
+\end{almanac}
+
 \newpage
 \input{../generators/taharka.tex}
 \newpage
@@ -937,6 +1505,28 @@ Never cut a marked tree. Each such tree is a living witness. The bark grows over
 \noindent\textit{— Hunter Okoro, Leopard Society mask-wearer, who never removes his mask}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Mashed yams and groundnut stew—the yams are grown in clearings that shift with the seasons, the groundnuts are harvested by monkey-tribes who speak the old tongue. The monkeys are not paid. The monkeys are remembered. Memory is currency.
+
+\textbf{What does a child learn before they can walk?} To name the spirits. Sekogo children are taught the eight spirits of the grove: River, Tree, Stone, Rain, Fire, Wind, Honey, and the ninth—the spirit that has no name. The ninth spirit is the Ukwe's shadow. The shadow watches. The shadow never forgives.
+
+\textbf{What is the first thing you notice about a stranger?} Their mask. Every Sekogo wears a mask—carved wood, painted with the symbols of their lineage. A stranger whose mask is cracked has broken a taboo. A stranger whose mask is blank has no lineage. A stranger with no mask is not a person. The Leopard Society hunts the maskless.
+
+\textbf{What is the most common crime?} Debt-forgetting—but debt-forgetting is not a crime, it is a sickness. The Ukwe keeps the Calendar of Debt. A name that is forgotten is a debt that is unpaid. The unpaid debt grows roots. The roots strangle the debtor's house. The house collapses. The jungle reclaims it.
+
+\textbf{What does no one talk about but everyone knows?} The Green Council does not rule. The Ukwe rules. The Council is the Ukwe's voice—eight speakers chosen by the tree's roots. The ninth seat is empty. The ninth speaker was the tree itself. The tree does not speak. The tree waits.
+
+\textbf{Where do people go when they die?} To the Ukwe's roots. The dead are not buried. Their bodies are laid at the base of the Speaking Tree. The roots absorb them. The tree grows a new leaf for each soul. The leaves whisper the names of the dead. The whisper is the wind.
+
+\textbf{How do you apologize for a serious wrong?} You hammer a nail into a nkisi—a power figure carved by the nganga. The nail represents your wrong. The spirit inside the nkisi accepts your apology. The nail rusts. When the nail is gone, your debt is paid. The nail never rusts.
+
+\textbf{What is the most important festival?} The Honey Harvest (autumn). The bees are sung to sleep. The hives are opened. The honey is collected in copper bowls. The first bowl is offered to the Ukwe. The tree drinks. The tree does not thank.
+
+\textbf{What is the secret that could destroy a powerful person?} The Ukwe is not a tree. It is a prison—the binding of a spirit that tried to consume the jungle nine centuries ago. The spirit is still alive. The tree is its cage. The roots are its chains. The Green Council is its jailers. The jailers have forgotten what they guard.
+\end{almanac}
+
 \newpage
 \input{../generators/sekogo.tex}
 \newpage
@@ -957,7 +1547,7 @@ I am a Mark-Cutter. Each line on my skin is a promise I witnessed. Each line is 
 
 \vspace{0.5em}
 
-The Crimson Valley is a deep jungle rift between Sekogo and Oshiira—a wound of red stone, carved by a river that runs rust-colored after every rain. Here, the Lethai-ar guard their borders with fierce neutrality, their chestnut-brown skin blending with the canyon walls. Silk bridges span the gorges, woven from spider-sap and oath-hair, strong enough to hold a caravan and light enough to sway in the monsoon wind. But here's the secret the wardens don't want you to know: the web-law is not unwritten because it is ancient. It is unwritten because it changes. Every warden carries a different clause in memory. Together, they form a complete web—but the web is never complete for long. The valley is learning. And it is not learning to be kind.
+The Crimson Valley is a deep jungle rift between Sekogo and Oshiira—a wound of red stone, carved by a river that runs rust-coloured after every rain. Here, the Lethai-ar guard their borders with fierce neutrality, their chestnut-brown skin blending with the canyon walls. Silk bridges span the gorges, woven from spider-sap and oath-hair, strong enough to hold a caravan and light enough to sway in the monsoon wind. But here's the secret the wardens don't want you to know: the web-law is not unwritten because it is ancient. It is unwritten because it changes. Every warden carries a different clause in memory. Together, they form a complete web—but the web is never complete for long. The valley is learning. And it is not learning to be kind.
 
 \vspace{0.5em}
 
@@ -972,12 +1562,35 @@ Never step onto a silk bridge without first naming a witness. The bridge will re
 \noindent\textit{— Silk-Warden Anara, whose left arm is covered in Marks from wrist to shoulder}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge and fermented tea—the rice is grown on terraces cut into the canyon walls, the tea is aged in clay pots buried beneath the bridges. The tea is bitter. The bitterness is for memory.
+
+\textbf{What does a child learn before they can walk?} To read a Mark. Lethai-ar children are taught the eight Mark-shapes: Promise, Debt, Witness, Apology, Interest, Cut, Forgive, and the ninth—the empty space where a Mark was erased. The erased Mark is a broken promise. The broken promise is a cut. The cut is a scar.
+
+\textbf{What is the first thing you notice about a stranger?} Their Marks. A stranger whose Marks are fresh has made new promises. A stranger whose Marks are faded has unpaid debts. A stranger whose Marks are cut has been exiled. The exiled are not spoken to. The exiled are not remembered.
+
+\textbf{What is the most common crime?} Bridge-cutting—but bridge-cutting is not a crime, it is a war. The bridge is a promise between two shores. Cutting it is breaking that promise. The valley responds. The valley tightens its web. The web is the law. The law is the valley.
+
+\textbf{What does no one talk about but everyone knows?} The valley is not a place. It is a creature—a sleeping serpent whose spine is the canyon walls, whose scales are the silk bridges, whose heart is the rust-coloured river. The Lethai-ar are its parasites. They live on its back. They weave its silk. They do not know it is asleep.
+
+\textbf{Where do people go when they die?} To the river. The dead are not buried. Their bodies are wrapped in silk and cast into the rust-coloured water. The river carries them downstream, into the Ukwe's territory. The Ukwe drinks. The Ukwe remembers. The Ukwe does not forget.
+
+\textbf{How do you apologize for a serious wrong?} You offer a Mark—a promise cut from your own skin. The Mark is pressed into the wronged party's ledger. If they accept, the debt is transferred. If they refuse, the Mark is buried. Buried Marks are debts that never die.
+
+\textbf{What is the most important festival?} The Weaving of the New Bridge (spring). The silk is harvested from the canyon's spiders. The thread is spun by the wardens. The bridge is woven in a single night. The bridge is named after the year. The year is named after a promise. The promise is always the same: the valley will hold.
+
+\textbf{What is the secret that could destroy a powerful person?} The river's rust colour is not iron. It is blood—the blood of the serpent that sleeps beneath the canyon. The serpent is wounded. The wound has been bleeding for nine centuries. The Lethai-ar know. The Lethai-ar do nothing. The serpent's dream is the valley's law. If the serpent wakes, the law ends.
+\end{almanac}
+
 \newpage
 \input{../generators/crimson-valley.tex}
 \newpage
 
+
 % ============================================================
-% PART: THE WAY OF SILK
+% PART V: THE WAY OF SILK
 % ============================================================
 \part{The Way of Silk}
 
@@ -1011,6 +1624,28 @@ Never refuse a date offered by a well-keeper. The fruit is sacred to their well-
 
 \noindent\textit{— Well-Judge Fatima al-Wadi, who carries a dipper made from a date-palm leaf that rots after each case}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Dates and thin coffee—the dates are from the well-keepers' groves, the coffee is brewed with cardamom and camel milk. The milk is sour. The sourness is for endurance.
+
+\textbf{What does a child learn before they can walk?} To count cups. Fhara children are taught the eight cups of negotiation: Welcome, Bargain, Contract, Witness, Debt, Payment, Forgiveness, and the ninth—the cup that is never poured. The ninth cup is for the well-spirit. The well-spirit is always thirsty.
+
+\textbf{What is the first thing you notice about a stranger?} Their water-skin. A stranger whose water-skin is full has not traveled far. A stranger whose water-skin is dry has traveled too far. A stranger who carries no water-skin is either a well-keeper or a fool. Well-keepers are honoured. Fools are buried.
+
+\textbf{What is the most common crime?} Water theft—but water theft is not a crime, it is a declaration of feud. The well-spirit records every theft in the aquifer. The aquifer is the court. The judge is the well. The verdict is thirst.
+
+\textbf{What does no one talk about but everyone knows?} The wells are not natural. They were carved by the first Fhara, who made a bargain with the sand. The bargain was for water. The price was memory. The Fhara remember everything. They cannot forget. That is the curse of the wells.
+
+\textbf{Where do people go when they die?} To the oasis. The dead are buried in the date groves, their graves marked with a single stone. The stone is not carved. The dead's name is spoken at sunrise. If the name is remembered, the dead rests. If it is forgotten, the dead walks.
+
+\textbf{How do you apologize for a serious wrong?} You offer a cup—the ninth cup, poured from your own water-skin. The cup is placed at the well's edge. If the well-spirit drinks, you are forgiven. If the water evaporates, you are not. If the cup cracks, your debt is doubled.
+
+\textbf{What is the most important festival?} The Filling of the Wells (spring). Every well is cleaned and blessed. The water-clerks recite the names of the year's debtors. The debtors stand at the water's edge. If their reflection wavers, they are forgiven. If it holds, they must pay.
+
+\textbf{What is the secret that could destroy a powerful person?} The water-clerks' ledger is a forgery. The original was lost in a sandstorm three generations ago. The clerks have been inventing water rights ever since. The wells do not care. The wells remember the original. The wells are waiting.
+\end{almanac}
 
 \newpage
 \input{../generators/fhara.tex}
@@ -1047,6 +1682,28 @@ Never ask about ancestry. The Ashaani slavery raids are a fresh wound. Asking wh
 \noindent\textit{— Captain Idris, Sidhi lighthouse commander, whose left eye is a brass lens}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Salted fish and flatbread—the fish is dried on the docks, the bread is baked in communal ovens. The ovens are fuelled by driftwood. The driftwood carries the names of lost ships.
+
+\textbf{What does a child learn before they can walk?} To read the lighthouse codes. Sidhi children are taught the eight lamp-flashes: Safe, Danger, Storm, Pirate, Customs, Quarantine, Home, and the ninth—the flash that signals a freedman's return. The ninth flash is never used. The ninth flash is a promise.
+
+\textbf{What is the first thing you notice about a stranger?} Their seal. Every Sidhi freedman carries a brass seal—the mark of their manumission. A stranger whose seal is worn smooth has been free for generations. A stranger whose seal is sharp has just been freed. A stranger with no seal is not a Sidhi. Not a Sidhi is not a person.
+
+\textbf{What is the most common crime?} Seal-forging—but seal-forging is not a crime, it is a necessity. The Admiralty demands proof of freedom. The proof can be forged. The forgers are Sidhi. The Sidhi do not prosecute forgers. The Sidhi hire them.
+
+\textbf{What does no one talk about but everyone knows?} The brass seals are not brass. They are made from melted chains—the chains that bound the first freedmen. The metal remembers the weight of slavery. The seals are warm. The warmth is the memory of wrists.
+
+\textbf{Where do people go when they die?} To the lighthouse. The dead are not buried. Their ashes are scattered from the tower's top. The wind carries them to the sea. The sea carries them to Galanina. Galanina is the shore of ancestors. The ancestors are waiting.
+
+\textbf{How do you apologize for a serious wrong?} You offer your seal—your own mark of freedom. The seal is melted down and reforged into a chain. The chain is worn by the wronged party. When the wrong is forgiven, the chain is melted again. The metal grows thinner each time. One day, there will be nothing left.
+
+\textbf{What is the most important festival?} The Lighting of the Green Flame (winter solstice). The lighthouse lamps are cleaned and refilled. The green flame is lit. The flame shows the faces of the drowned. The drowned are the ancestors. The ancestors watch. The ancestors do not judge.
+
+\textbf{What is the secret that could destroy a powerful person?} The brass seals are not all equal. Some were forged by the Admiralty itself—trap-seals that mark the wearer as a spy. The spies do not know they are spies. Their reports go to the Admiralty. The Admiralty knows everything. The Admiralty has been playing a very long game.
+\end{almanac}
+
 \newpage
 \input{../generators/sidhi.tex}
 \newpage
@@ -1081,6 +1738,28 @@ Never step on a fallen book. Written words carry the weight of law. To step on a
 
 \noindent\textit{— Flame-Keeper Zarifa, who has never been seen without a rose—fresh or dried}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Flatbread with honey and clotted cream—the honey is from highland bees, the cream is from goats that graze the temple steps. The goats are sacred. The goats are also delicious.
+
+\textbf{What does a child learn before they can walk?} To read a contract. Pereshi children are taught the eight clauses of the Covenant: Offer, Acceptance, Witness, Consideration, Term, Breach, Remedy, and the ninth—the silence where the unspoken terms live. The ninth clause is never written. The ninth clause is the one that kills you.
+
+\textbf{What is the first thing you notice about a stranger?} Their book. Every Pereshi carries a ledger—their personal account of debts owed and collected. A stranger whose ledger is thick has many debts. A stranger whose ledger is thin has many creditors. A stranger with no ledger is a liar. Liars are not fed.
+
+\textbf{What is the most common crime?} Contract forgery—but forgery is not a crime, it is an art. The Pereshi courts are full of forged documents. The judges are forgers themselves. The law is a negotiation. The negotiation never ends.
+
+\textbf{What does no one talk about but everyone knows?} The Forgotten Prince did not vanish. He is buried beneath the largest fire temple, in a lead-lined coffin sealed with nine locks. The keys are held by the nine Flame-Keepers. The Flame-Keepers have never met. The Flame-Keepers do not know each other's names. The Prince's name is written on the inside of the coffin lid. No one has read it in nine centuries.
+
+\textbf{Where do people go when they die?} To the fire. The dead are cremated on the temple pyres. Their ashes are mixed with clay and pressed into bricks. The bricks are used to build new temples. The dead become walls. The walls witness. The walls do not forget.
+
+\textbf{How do you apologize for a serious wrong?} You offer a coal—a burning ember from the temple fire. The coal is placed in the wronged party's hearth. If it stays lit, you are forgiven. If it smoulders, you are watched. If it goes out, you are cursed. The curse is the fire's silence. The fire will not speak for you again.
+
+\textbf{What is the most important festival?} The Reading of the Ledgers (autumn). Every household brings its ledger to the temple. The ledgers are read aloud. The debts are tallied. The dead are named. The fire listens. The fire does not interrupt.
+
+\textbf{What is the secret that could destroy a powerful person?} The ninth coal is not coal. It is a piece of the Forgotten Prince's heart, petrified by the curse that swallowed his kingdom. The Flame-Keepers do not know. They think it is a relic. The heart is still warm. The heart is still beating. The heart is waiting to be reunited with the rest of him.
+\end{almanac}
 
 \newpage
 \input{../generators/pereshi.tex}
@@ -1117,6 +1796,28 @@ Never ride a Kuvani horse without asking its name. The horse will answer—by th
 \noindent\textit{— Alp Arslan, Remount Master, who has never been seen sleeping}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Fermented mare's milk and dried meat—the milk is from the herd, the meat is from the hunt. The hunt is a ceremony. The ceremony is a debt to the grass.
+
+\textbf{What does a child learn before they can walk?} To ride. Kuvani children are placed on a horse before they can stand. The horse is patient. The horse is old. The horse remembers the child's grandfather. The grandfather taught the horse to ride.
+
+\textbf{What is the first thing you notice about a stranger?} Their saddle. A stranger whose saddle is worn has ridden many miles. A stranger whose saddle is new has many miles ahead. A stranger who carries no saddle is a ghost. Ghosts do not need saddles.
+
+\textbf{What is the most common crime?} Horse theft—but horse theft is not a crime, it is a declaration of feud. The horse is family. A stolen horse is a stolen relative. The feud lasts until the horse is returned or the thief's line is ended. The feud never ends.
+
+\textbf{What does no one talk about but everyone knows?} The ghost herd is not a legend. It is real—a herd of spectral horses that rides the salt pan on moonless nights. The horses are the souls of riders who died without honour. They ride forever, searching for a battle that will never come.
+
+\textbf{Where do people go when they die?} To the sky. The dead are placed on funeral platforms, wrapped in felt. The birds take the flesh. The wind takes the bones. The sky takes the soul. The soul joins the ancestral herd. The herd rides the northern lights.
+
+\textbf{How do you apologize for a serious wrong?} You offer a horse—the best horse in your herd. The horse is given to the wronged party. If they accept, the debt is paid. If they refuse, the debt is doubled. If they kill the horse, the debt is blood. Blood is never repaid.
+
+\textbf{What is the most important festival?} The Ride of the Ancestors (autumn equinox). The clans ride to the salt pan. The ghost herd appears at midnight. The living ride with the dead. The dead remember their names. The living remember theirs.
+
+\textbf{What is the secret that could destroy a powerful person?} The Khagan's horse is a ghost. It was killed in battle twenty years ago. The Khagan does not know. He rides a skeleton wrapped in hide. The horse does not tire. The horse does not eat. The horse does not forgive.
+\end{almanac}
+
 \newpage
 \input{../generators/kuvani.tex}
 \newpage
@@ -1152,12 +1853,35 @@ Never sleep outside the circle at night. The wagon ring is sanctuary. Outside it
 \noindent\textit{— Elder Sarnai, Caravan Judge of the Nine Knots, whose cord drags on the ground}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Tea and hardtack—the tea is brewed from leaves gathered along the road, the hardtack is baked at the start of the season and lasts until the snow. The hardtack is always stale. The tea is always fresh. The contradiction is a lesson.
+
+\textbf{What does a child learn before they can walk?} To tie a knot. Tulkani children are taught the eight journey-knots: Departure, Arrival, Promise, Debt, Payment, Witness, Apology, and the ninth—the knot that is never tied. The ninth knot is for the Hollow. The Hollow is not a creditor. The Hollow is a reminder.
+
+\textbf{What is the first thing you notice about a stranger?} Their cord. Every Tulkani carries a knotted cord—their life's ledger. A stranger whose cord has many knots has traveled far. A stranger whose cord has few knots has just begun. A stranger with no cord is a ghost. Ghosts do not travel. Ghosts wait.
+
+\textbf{What is the most common crime?} Story-theft—but story-theft is not a crime, it is a compliment. A stolen story is a story worth telling. The original teller is honoured. The thief is welcomed. The story grows with each telling. The story never dies.
+
+\textbf{What does no one talk about but everyone knows?} The Tulkani are not wanderers by choice. They were exiled from their homeland nine centuries ago, for a crime that no one remembers. The crime is written in the ninth knot of the Elder's cord. The Elder's cord is too long to read. The Elder's cord drags on the ground.
+
+\textbf{Where do people go when they die?} To the road. The dead are not buried. Their bodies are left at a crossroads. The road takes them. The road carries them to the next valley, the next camp, the next telling. The dead become stories. Stories are immortal.
+
+\textbf{How do you apologize for a serious wrong?} You untie a knot—one knot from your cord, chosen by the wronged party. The knot is burned. The ash is scattered on the wind. If the wind blows toward the wronged party, you are forgiven. If it blows away, you are not. If it is still, the Hollow has accepted your apology. The Hollow's acceptance is a warning.
+
+\textbf{What is the most important festival?} The Tying of the New Cord (new year). Every Tulkani receives a new cord, unknotted. The old cord is burned. The ash is mixed with water and drunk. The drink tastes of memory. The memory is the year that has passed. The year is never forgotten.
+
+\textbf{What is the secret that could destroy a powerful person?} The Tulkani are not wanderers. They are pilgrims—walking toward a destination that no longer exists. Their homeland was swallowed by the desert. The desert is still hungry. The Tulkani are still walking. They will never arrive.
+\end{almanac}
+
 \newpage
 \input{../generators/tulkani.tex}
 \newpage
 
+
 % ============================================================
-% PART: DHAHARA — THE KINGDOM OF BRASS
+% PART VI: DHAHARA — THE KINGDOM OF BRASS
 % ============================================================
 \part{Dhahara — The Kingdom of Brass}
 
@@ -1191,6 +1915,28 @@ Never count your breaths aloud in a mine. The mountain listens, and if it hears 
 
 \noindent\textit{— Rani Jaya, who lost an arm to a mine collapse and now wears a prosthetic pickaxe}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Millet flatbread and spiced tea—the bread is baked on iron griddles, the tea is grown on terraced hillsides. The hillsides are terraced with Aeler engineering. The engineering is paid for in iron. The iron is mined by Dhaharan hands. The hands are calloused. The callouses are a ledger.
+
+\textbf{What does a child learn before they can walk?} To count in two measures. Satrapy children learn the Aeler breath-count (eight to a minute) and the Dhaharan fire-count (eight to a bell). The ninth of either is silence. Silence is the mountain's attention. The mountain is always attentive.
+
+\textbf{What is the first thing you notice about a stranger?} Their breath-counter. A stranger whose counter is brass is Aeler-trained. A stranger whose counter is bronze is Dhaharan-trained. A stranger whose counter is iron has never been underground. Iron does not ring. Iron is for weapons. Weapons are for the surface.
+
+\textbf{What is the most common crime?} Ore theft—but ore theft is not a crime, it is a tax evasion. The Viceroy's cut is measured in ingots. An ingot that goes missing is an ingot that was never mined. The mine's ledger is adjusted. The adjustment is creative accounting. The accounting is the art.
+
+\textbf{What does no one talk about but everyone knows?} The ninth lease was never signed. The Viceroy's seal was forged by a Dhaharan scribe who was paid in tea. The scribe is dead. The forgery is still in use. The lease is void. No one has noticed. No one wants to notice.
+
+\textbf{Where do people go when they die?} To the mines. The dead are not buried. Their bodies are placed in worked-out galleries, sealed with stone. The mountain absorbs them. The mountain's memory grows. The mountain remembers every miner who ever breathed its air.
+
+\textbf{How do you apologize for a serious wrong?} You offer a keystone—a load-bearing stone from your own house. The stone is installed in the wronged party's wall. If it holds, you are forgiven. If it cracks, you are not. If it crumbles, your house collapses. Apology is architecture. Architecture is law.
+
+\textbf{What is the most important festival?} The Ringing of the Leases (autumn). The Viceroy reads the terms of the lease aloud, in the main square. The lease is nine pages long. The ninth page is sealed with wax. The wax is never broken. The ninth page is a secret. The secret is the Viceroy's profit.
+
+\textbf{What is the secret that could destroy a powerful person?} The keystone is not stone. It is a coffin—the tomb of a Dhaharan king who refused to pay the iron tithe. The Aeler sealed him in the foundation of the Viceroy's palace. His ghost haunts the lease negotiations. His ghost votes against the Viceroy. The Viceroy does not believe in ghosts.
+\end{almanac}
 
 \newpage
 \input{../generators/mountain_satrapies.tex}
@@ -1227,6 +1973,28 @@ Never board a ship that has a green lantern at the mast. It means the captain is
 \noindent\textit{— Syndic Olena, Port-Master of Tamralipta, whose brass hook is also a stamp}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice and fermented fish paste—the rice is grown in coastal paddies, the fish is caught by the lighthouse keepers' children. The children are paid in copper. The copper is melted into seals. The seals are sold to freedmen.
+
+\textbf{What does a child learn before they can walk?} To read a lighthouse code. Brass Coast children are taught the eight lamp-flashes: Tariff, Inspection, Quarantine, Smuggler, Pirate, Rescue, Home, and the ninth—the flash that means "the collector is coming." The ninth flash is never used. The ninth flash is a warning.
+
+\textbf{What is the first thing you notice about a stranger?} Their papers. The Admiralty requires a manifest for every shipment, a seal for every trader, a stamp for every dock. A stranger whose papers are in order is a merchant. A stranger whose papers are missing is a smuggler. A stranger whose papers are too perfect is a spy. The spies are Admiralty. The Admiralty spies on itself.
+
+\textbf{What is the most common crime?} Tariff evasion—but tariff evasion is not a crime, it is a profession. The tariffs are set by the Admiralty. The Admiralty is corrupt. The evaders pay the Admiralty directly. The payment is called a "consulting fee." The fee is tax-deductible.
+
+\textbf{What does no one talk about but everyone knows?} The lighthouse lamps are not fuelled by oil. They are fuelled by the fat of the drowned—whales, sailors, slaves who did not survive the crossing. The fat burns green. The green is the colour of memory. The memory is the dead's.
+
+\textbf{Where do people go when they die?} To the sea. The dead are weighted with brass and dropped in the deep channel. The channel is called the Freedman's Grave. The grave is unmarked. The grave is the entire coast.
+
+\textbf{How do you apologize for a serious wrong?} You offer a tariff—a payment of silver, calculated by the wronged party's estimate of their loss. The tariff is paid to the Maritime Court. The court takes a percentage. The percentage is the judge's fee. The judge's fee is negotiable.
+
+\textbf{What is the most important festival?} The Burning of the Ledgers (new year). Every merchant's ledger is brought to the lighthouse. The ledgers are read aloud. The debts are tallied. The ledgers are burned. The ash falls on the water. The water carries the debts to the sea. The sea does not forgive. The sea reschedules.
+
+\textbf{What is the secret that could destroy a powerful person?} The lighthouse lamps are not all green. One lamp burns blue—the Admiral's personal beacon. The blue flame is not fat. It is a spirit—a Sidhi oracle who was bound to the lighthouse nine generations ago. She sees everything. She speaks to no one. The Admiral does not know she is still alive.
+\end{almanac}
+
 \newpage
 \input{../generators/brass_coast.tex}
 \newpage
@@ -1261,6 +2029,28 @@ Never praise a king's elephant. The elephant is sacred; your praise will be take
 
 \noindent\textit{— Temple Dancer Mira, who has stopped three droughts and started none}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge with mango pickle—the rice is from the royal granaries, the mangoes are from the king's orchards. The king's orchards are irrigated by the river. The river is contested. The contest is a negotiation. The negotiation is breakfast.
+
+\textbf{What does a child learn before they can walk?} To recite their genealogy. Nine Kingdoms children are taught the names of their ancestors back to the sun. A child who cannot recite is a child without a kingdom. A child without a kingdom is a servant. Servants are not fed.
+
+\textbf{What is the first thing you notice about a stranger?} Their caste mark. The Nine Kingdoms have nine castes—priest, warrior, merchant, farmer, artisan, servant, outcast, foreigner, and the ninth—the caste that has no name. The ninth caste is the king's spies. The spies are everywhere. The spies have no caste mark.
+
+\textbf{What is the most common crime?} Tax evasion—but tax evasion is not a crime, it is a political statement. The king's tax collectors are also the king's spies. A merchant who evades taxes is a merchant who has something to hide. The king wants to know what. The king will find out.
+
+\textbf{What does no one talk about but everyone knows?} The Peacock Throne is empty. The Maharaja died seven years ago. His death was concealed by the courtiers, who rule in his name. The courtiers are the nine ministers. The ninth minister is a eunuch who controls the palace guards. The eunuch has the real power.
+
+\textbf{Where do people go when they die?} To the river. The dead are cremated on the ghats. Their ashes are scattered on the water. The water flows to the sea. The sea is the kingdom's border. The border is a negotiation. The negotiation never ends.
+
+\textbf{How do you apologize for a serious wrong?} You offer a dance—a performance at the temple of the sun. The dance is judged by the priest. If the priest smiles, you are forgiven. If the priest weeps, you are not. If the priest is silent, you are cursed. The curse is the sun's glare. The sun will not look away.
+
+\textbf{What is the most important festival?} The Coronation of the Monsoon (summer). The king offers a golden elephant to the rain clouds. The clouds accept or refuse. The clouds have refused for nine years. The king's treasury is empty. The king's patience is not.
+
+\textbf{What is the secret that could destroy a powerful person?} The golden elephant is hollow. It is filled with the ashes of the ninth king—the one who tried to unite the kingdoms and failed. His ghost rides the monsoon winds. His ghost is still trying. His ghost will never succeed.
+\end{almanac}
 
 \newpage
 \input{../generators/nine_kingdoms.tex}
@@ -1297,12 +2087,35 @@ Never count your breaths aloud in a mine. The mountain listens, and if it hears 
 \noindent\textit{— Mine-Breath, who carries her grandfather's bell and has never reached nine}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Iron rations and tea—the rations are hardtack and dried meat, the tea is brewed from leaves that grow only above the snow line. The leaves are harvested by the Vent-Prior's apprentices. The apprentices are chosen by lottery. The lottery is a death sentence.
+
+\textbf{What does a child learn before they can walk?} To read a pressure gauge. Himadri children are taught the eight pressures: Safe, Warning, Danger, Collapse, Flood, Fire, Seal, and the ninth—the pressure that means the mountain is breathing. The mountain's breath is the miners' death.
+
+\textbf{What is the first thing you notice about a stranger?} Their bell. Every miner carries a breath-counter bell. A stranger whose bell rings too fast has been running. A stranger whose bell is silent is dead. A stranger whose bell rings the ninth note is a demon. The demons are sealed. The seals are cracking.
+
+\textbf{What is the most common crime?} Ore smuggling—but ore smuggling is not a crime, it is a perquisite. The mine-captains take a cut of every shipment. The cut is called "the Vent-Prior's fee." The fee is negotiable. The negotiation is a ritual. The ritual involves tea and threats.
+
+\textbf{What does no one talk about but everyone knows?} The Ninth Seal is not a seal. It is a door—a gate to a prison that holds something that should not be named. The seal's keepers do not know what is inside. The keepers do not want to know. The keepers are paid to not know.
+
+\textbf{Where do people go when they die?} To the mountain. The dead are not buried. Their bodies are left in worked-out galleries. The mountain absorbs them. The mountain's memory grows. The mountain remembers every breath it has taken.
+
+\textbf{How do you apologize for a serious wrong?} You offer a breath—one of your own, counted and witnessed. The breath is sealed in a brass capsule and placed in the Vent-Prior's ledger. The ledger is the court. The court's judgment is the mountain's. The mountain's judgment is final.
+
+\textbf{What is the most important festival?} The Counting of the Breath (winter solstice). Every miner's breath-counter is read aloud. The miners with the lowest counts are promoted. The miners with the highest counts are retired. Retirement is a sealed gallery. The gallery is a tomb.
+
+\textbf{What is the secret that could destroy a powerful person?} The demon in the Ninth Seal is not a demon. It is an Aeler—the first Vent-Prior, who volunteered to be sealed with the mountain's hunger. He is still alive. He has been counting his breaths for nine centuries. He has reached the ninth count. He is still counting.
+\end{almanac}
+
 \newpage
 \input{../generators/himdahl_foothills.tex}
 \newpage
 
+
 % ============================================================
-% PART: THE EASTERN REALMS
+% PART VII: THE EASTERN REALMS
 % ============================================================
 \part{The Eastern Realms}
 
@@ -1336,6 +2149,28 @@ Never speak of succession before naming the Emperor. The Censorate has ears in e
 
 \noindent\textit{— Quiet Chancellor Wei, who has never smiled and whose seal is a laughing mouth}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Congee with preserved vegetables—the congee is rice boiled until it is memory, the vegetables are salted and aged in clay jars. The jars are sealed with the emperor's own wax. The wax is a promise. The promise is that the vegetables will not poison you. The promise is sometimes broken.
+
+\textbf{What does a child learn before they can walk?} To write their name. Sihai children are taught the eight strokes of the character "person"—the ninth stroke is the one that turns a name into a signature. A signature is a contract. A contract is a debt. A debt is a life.
+
+\textbf{What is the first thing you notice about a stranger?} Their chop—the seal they carry to sign documents. A stranger whose chop is jade is a noble. A stranger whose chop is brass is a clerk. A stranger whose chop is wood is a merchant. A stranger with no chop is a ghost. Ghosts cannot sign contracts. Ghosts cannot be trusted.
+
+\textbf{What is the most common crime?} Examination fraud—but fraud is not a crime, it is a family business. The examinations determine who governs. The questions are leaked in advance. The answers are memorized. The examiners are bribed. The system is a sieve. The sieve is called "merit."
+
+\textbf{What does no one talk about but everyone knows?} The Emperor is a figurehead. The real power is the Censorate—nine ministers who have never been seen together. Their names are not recorded. Their faces are not painted. Their orders are whispered. The Emperor signs what they tell him to sign. The Emperor has not refused in forty years.
+
+\textbf{Where do people go when they die?} To the ancestral tablets. The dead are not buried. Their names are written on wooden tablets, placed in the family shrine. The tablets are fed with rice and tea. The dead eat the steam. The dead are never full.
+
+\textbf{How do you apologize for a serious wrong?} You offer a calligraphy—a scroll written in your own blood. The scroll is presented to the wronged party's ancestral shrine. If the ancestors accept, you are forgiven. If the scroll bursts into flame, you are not. If the scroll writes itself, the ancestors are angry. The ancestors' anger is a famine.
+
+\textbf{What is the most important festival?} The Festival of the Ancestors (autumn). The tablets are cleaned and polished. The dead are invited to feast. The feast is laid out on the family altar. The food is removed after an hour. The dead have eaten the essence. The essence is memory.
+
+\textbf{What is the secret that could destroy a powerful person?} The Censorate's ninth minister is a woman—the emperor's own mother, who was supposed to have died in childbirth. She faked her death to escape the politics of the court. She has been running the Censorate from a hidden villa in the western hills. The emperor does not know. The emperor's mother signs his death warrants. He signs them too.
+\end{almanac}
 
 \newpage
 \input{../generators/sihai.tex}
@@ -1372,6 +2207,28 @@ Never speak the name of the drowned capital. The sea will hear you, and it will 
 \noindent\textit{— The Storm Emperor's Ghost, who appears as a column of steam over the water}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Grilled fish and pickled vegetables—the fish is caught in the caldera lakes, the vegetables are fermented in clay pots buried in volcanic ash. The ash is warm. The warmth is the mountain's breath. The mountain is sleeping. The mountain dreams of the drowned empire.
+
+\textbf{What does a child learn before they can walk?} To read the tide. Nihori children are taught the eight wave-heights: Calm, Ripple, Swell, Storm, Tsunami, and the ninth—the wave that has no height because it is the sea itself rising. The ninth wave is the drowning. The drowning is the empire's memory.
+
+\textbf{What is the first thing you notice about a stranger?} Their sword. Nihori warriors carry their ancestors' blades, passed down for generations. A stranger whose sword is rusted has forgotten their lineage. A stranger whose sword is sharp has remembered. A stranger with no sword is a coward. Cowards are not fed.
+
+\textbf{What is the most common crime?} Dueling—but dueling is not a crime, it is a conversation. The dueling codes are written in verse. The verses are interpreted by the Shogun's court. The interpretations are contradictory. The contradictions are settled by dueling. The circle is beautiful.
+
+\textbf{What does no one talk about but everyone knows?} The drowned capital is not underwater. It is beneath—beneath the caldera, beneath the bedrock, beneath the world. The sea is a lid. The lid is cracked. Something is leaking through. The leaks are the oni. The oni are the empire's regrets.
+
+\textbf{Where do people go when they die?} To the sea cliffs. The dead are placed in caves overlooking the water. The waves sing to them. The songs are the empire's lullabies. The dead listen. The dead do not sleep.
+
+\textbf{How do you apologize for a serious wrong?} You offer a duel—a matched contest with the wronged party's choice of weapon. If you lose, you are forgiven. If you win, you are not. If you refuse, you are exiled. Exile is the open sea. The sea is patient. The sea will wait.
+
+\textbf{What is the most important festival?} The Calling of the Tides (spring). The shrine maidens walk into the water, singing the names of the drowned. The waves answer. The waves speak the names of the living who will die in the coming year. The names are never forgotten. The names are never repeated.
+
+\textbf{What is the secret that could destroy a powerful person?} The Shogun is a ghost. He died in the last oni war, but his body was never found. The daimyo rule in his name because they are afraid of what will happen if they admit he is gone. The oni know. The oni are waiting for the admission. The admission will be the war.
+\end{almanac}
+
 \newpage
 \input{../generators/nihori.tex}
 \newpage
@@ -1407,13 +2264,32 @@ Never refuse a gift of betel leaf. It is an oath of hospitality. Refusing it is 
 \noindent\textit{— The God-King's Astrologer, who has not seen the sun in thirty years}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice congee with dried shrimp—the rice is from the terraces, the shrimp is from the delta nets. The delta is where the river meets the sea. The sea is the God-King's mother. The God-King's mother is a nat. The nat is hungry.
+
+\textbf{What does a child learn before they can walk?} To read the river. Ayokha children are taught the eight currents: Flood, Ebb, Eddy, Whirl, Still, and the ninth—the current that flows upstream. The upstream current is the monsoon's breath. The monsoon's breath is the God-King's voice. The God-King is silent.
+
+\textbf{What is the first thing you notice about a stranger?} Their offering. Every traveler in Ayokha carries a gift for the nats—betel leaf, candle, a coin. A stranger whose offering is generous has been blessed. A stranger whose offering is small is testing the spirits. A stranger with no offering is a fool. The nats take fools first.
+
+\textbf{What is the most common crime?} Nat-bribery—but bribery is not a crime, it is a negotiation. The nats set the tolls. The merchants pay the tolls. The nats spend the tolls on offerings. The offerings are burned. The ash falls on the fields. The fields are fertile. The circle is the economy.
+
+\textbf{What does no one talk about but everyone knows?} The God-King is a puppet. The astrologer is the real ruler. The astrologer reads the stars. The stars say what the astrologer tells them to say. The astrologer has not read the stars in twenty years. He reads the nats' moods instead. The nats are fickle.
+
+\textbf{Where do people go when they die?} To the river. The dead are cremated on the ghats. Their ashes are scattered on the water. The water carries them to the delta. The delta is the land of the nats. The nats decide whether the dead become ancestors or hungry ghosts. The nats are not generous.
+
+\textbf{How do you apologize for a serious wrong?} You offer a nat—a spirit of the river, summoned by a medium. The nat hears your apology. If the nat accepts, the water is calm. If the nat refuses, the water rises. If the nat is silent, the water is still. Still water is the God-King's judgment. The God-King does not forgive.
+
+\textbf{What is the most important festival?} The Welcoming of the Monsoon (summer). The God-King stands in the rain. The rain is the nats' blessing. The blessing is measured in inches. The inches determine the harvest. The harvest determines the taxes. The taxes determine the God-King's wealth. The God-King is not wealthy.
+
+\textbf{What is the secret that could destroy a powerful person?} The God-King's daughter is not his daughter. She is the child of the astrologer and a nat—born from a bargain made during a failed monsoon. She can control the rain. She does not know. The astrologer knows. The astrologer is waiting for the right moment to tell her. The right moment is the next drought.
+\end{almanac}
+
 \newpage
 \input{../generators/ayokah.tex}
 \newpage
 
-% ============================================================
-% PART: THE SPACES BETWEEN
-% ============================================================
 \part{The Spaces Between}
 
 % ------------------------------
@@ -1446,6 +2322,28 @@ Never refuse a cup from a hearth-aunt. Hospitality is a contract sealed in salt 
 
 \noindent\textit{— Hearth-Aunt Brigid, who has never drawn a blade and has never needed to}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Oatcakes and skyr—the oats are grown in highland clearings, the skyr is cultured in stone crocks buried in the peat. The peat is ancient. The peat remembers the old kings. The old kings are buried beneath it.
+
+\textbf{What does a child learn before they can walk?} To count cattle. Ubral children are taught the eight breeds of the hills: Black, Red, White, Brindled, Dun, Grey, Spotted, and the ninth—the breed that has no colour because it belongs to the cairn-folk. The cairn-folk are the dead. The dead do not pay taxes.
+
+\textbf{What is the first thing you notice about a stranger?} Their guest-token. Every Ubral traveller carries a token—a stone, a bone, a braid of hair—given by their last host. A stranger whose token is warm has been recently welcomed. A stranger whose token is cold has been travelling long. A stranger with no token is a spy. Spies are given a token—a rope. The rope is for their neck.
+
+\textbf{What is the most common crime?} Cattle raiding—but raiding is not a crime, it is a sport. The cattle are the wealth. The wealth is the clan's. A stolen cow is a stolen child. The child must be returned. The return is a negotiation. The negotiation is a feud. The feud is a song.
+
+\textbf{What does no one talk about but everyone knows?} The Lady of Tor is not the ruler. The cairns rule. The cairns vote at each full moon. Their votes are carried by the wind. The wind speaks to the hearth-aunts. The hearth-aunts speak to the clan. The clan obeys. The Lady is the voice. The cairns are the vote.
+
+\textbf{Where do people go when they die?} To the cairns. The dead are not buried. Their bones are added to the cairns. The cairns grow taller each year. The tallest cairn is the oldest. The oldest cairn has no name. The oldest cairn remembers the first clan.
+
+\textbf{How do you apologize for a serious wrong?} You offer a wergild—a payment in cattle, calculated by the wronged party's estimate of their loss. The cattle are driven to the cairn. The cairn is the court. If the cattle graze peacefully, you are forgiven. If they scatter, you are not. If they refuse to enter the cairn's shadow, your debt is blood.
+
+\textbf{What is the most important festival?} The Gathering of the Clans (autumn). The clans meet at the Great Cairn. The cattle are counted. The songs are sung. The feuds are settled. The dead are named. The wind carries the names to the hills. The hills remember.
+
+\textbf{What is the secret that could destroy a powerful person?} The Great Cairn is not a cairn. It is a prison—the tomb of a Viterran king who tried to conquer Ubral and failed. He was buried alive, with his crown and his sword. His ghost votes with the cairns. He votes for war. The cairns have not yet agreed.
+\end{almanac}
 
 \newpage
 \input{../generators/ubral.tex}
@@ -1481,6 +2379,28 @@ Never name a rival while crossing a bridge at night. The water remembers, and th
 
 \noindent\textit{— Bobbin-Runner, who ties a knot in her apron string for every secret she carries}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge with dried fish—the rice is from the Oshiiran barges, the fish is from the Zakov fleets. Both are smuggled. Both are delicious. Both are paid for in favours.
+
+\textbf{What does a child learn before they can walk?} To count bridges. Silkstrand children are taught the eight bridges of the city: Merchant's, Weaver's, Dyer's, Cooper's, Pilot's, Beggar's, Saint's, and the ninth—the bridge that is only there at low tide. The ninth bridge leads to the Sunken Quarter. The Sunken Quarter is where debts go to drown.
+
+\textbf{What is the first thing you notice about a stranger?} Their ink. Every Silkstrand merchant has a seal-ink stain on their right thumb. A stranger whose ink is fresh is new to the trade. A stranger whose ink is faded has been retired. A stranger with no ink is not a merchant. Not a merchant is not a person.
+
+\textbf{What is the most common crime?} Contract fraud—but fraud is not a crime, it is a negotiation. The contracts are written in disappearing ink. The ink's formula is a secret. The secret is held by the Archivolt notaries. The notaries sell the antidote. The antidote is the fee.
+
+\textbf{What does no one talk about but everyone knows?} The Matron is not the ruler. The canals rule. The canals set the prices. The canals decide who lives and who drowns. The canals are not water. The canals are the city's memory. The memory is the Matron's. The Matron is the canals' voice.
+
+\textbf{Where do people go when they die?} To the canals. The dead are not buried. Their bodies are wrapped in silk and sunk in the deep channels. The channels are the city's ledger. The ledger is never balanced.
+
+\textbf{How do you apologize for a serious wrong?} You offer a bridge—a toll paid to the Bridge-Lords. The toll is calculated by the wronged party's estimate of their loss. The toll is paid in silver. The silver is melted and poured into the canal. The canal remembers the weight. The weight is your apology.
+
+\textbf{What is the most important festival?} The Dyeing of the Waters (spring). The dyers empty their vats into the canals. The water turns red, blue, green, gold. The colours are the year's fashions. The fashions are set by the Matron. The Matron's favourite colour is the one that sells best. The best colour is the one she dyed her own hair.
+
+\textbf{What is the secret that could destroy a powerful person?} The canals are not natural. They were dug by a Sidhi engineer who was paid in promises. The promises were broken. The engineer cursed the city. The curse is that every ninth drop of water is a tear. The tears belong to the engineer. She is still crying. She has been crying for nine centuries.
+\end{almanac}
 
 \newpage
 \input{../generators/silkstrand.tex}
@@ -1521,6 +2441,28 @@ Never answer a question asked by a reflection. The answer will bind you to the p
 \noindent\textit{— The Wayfinder, who exists only in the moment a choice is made, and who is not the same person at the end of this sentence as at the beginning}
 }
 
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Nothing. There is no breakfast in the Ways Between. There is no morning. There is no hunger. There is only the walking. The walking is sustenance.
+
+\textbf{What does a child learn before they can walk?} To forget. Children born in the Ways Between do not learn. They remember. They remember the path they took to be born. The path has eight turns. The ninth turn is the birth. The birth is a choice. The child does not know they chose.
+
+\textbf{What is the first thing you notice about a stranger?} Their direction. A stranger walking toward you may be coming from your future. A stranger walking away may be going to your past. A stranger walking beside you may be yourself from a timeline where you did not turn left. Do not ask them which. They will not answer.
+
+\textbf{What is the most common crime?} Stealing—but stealing is not a crime, it is a paradox. A thief in the Ways Between steals a memory from a version of you that no longer exists. The memory never belonged to you. You cannot miss it. You will miss it anyway.
+
+\textbf{What does no one talk about but everyone knows?} The Ways Between are not between anything. They are the only thing that exists. The solid ground you remember—the cities, the roads, the hearths—is the dream. The Ways Between are the waking. The waking is the walking. The walking never ends.
+
+\textbf{Where do people go when they die?} Deeper. The Ways Between have no surface, no bottom, no end. The dead walk deeper. The deeper they walk, the less they remember. When they remember nothing, they become the path. The path is the walking. The walking is the dead.
+
+\textbf{How do you apologize for a serious wrong?} You cannot. Apologies require memory. Memory requires a self. The Ways Between erase both. The only apology is to stop walking. Stopping is not an option.
+
+\textbf{What is the most important festival?} There are no festivals. There is only the moment between heartbeats when you realise you have been walking for nine years and you do not remember why. That moment is the festival. Celebrate it by taking the next step.
+
+\textbf{What is the secret that could destroy a powerful person?} The Wayfinder is not a person. It is the road itself, dreaming of a traveller who will finally reach the end. The end does not exist. The road knows this. The road dreams anyway.
+\end{almanac}
+
 \newpage
 \input{../generators/ways_between.tex}
 \newpage
@@ -1533,7 +2475,7 @@ Never answer a question asked by a reflection. The answer will bind you to the p
 
 \noindent
 {\Large
-\textit{These lands answer not to charters but to those who can read their signs and respect their moods. Authority here is earned one campfire at a time, by proving you understand the difference between claiming and belonging. The Edgewalker has a different word for that difference. She calls it "leverage." My old mentor Tam called it "the difference between breathing and being breathed." I've learned they were both right.}
+\textit{Between towns and treaties lies the patience of the land. Old roads remember armies; cairns remember names no book keeps. In the Wilds, law thins to trail-marks and favors, and the weather keeps its own counsel. The Edgewalker calls it "unclaimed inventory." The land calls it patience. The land has more patience than the Edgewalker.}
 
 \vspace{0.5em}
 
@@ -1541,46 +2483,38 @@ I am a ranger now. Stonehaven trained me as a scholar—mapping ruins, copying o
 
 \vspace{0.5em}
 
-I've seen a man who didn't leave an offering. The hollow breathed him in. We found his boots three days later, still laced, still warm, still walking. Tam said, "See? The land has a ledger too. It just doesn't use ink." The Edgewalker would have called it a debt. I call it a reminder: you are not the first to walk here, and you will not be the last. The hollows have long memories.
-
-\vspace{0.5em}
-
-Between towns and treaties lies the patience of the land. Old roads remember armies; cairns remember names no book keeps. In the Wilds, law thins to trail-marks and favors, and the weather keeps its own counsel. This is the country of the hexcrawl: a patchwork of hidden valleys, forgotten ruins, beast lairs, and the bones of failed settlements. The Edgewalker calls it "unclaimed inventory." The land calls it patience. The land has more patience than the Edgewalker. It has more patience than anyone. Tam used to say, "The mountain never hurries. Neither should you."
-
-\vspace{0.5em}
-
-\noindent\textbf{Tam's Rule No. 6: The Source} \\
-\textit{"A spring that gives water without life is not a gift. It is a loan. Drink, but pour some back. The mountain is watching."}
-
-\vspace{0.5em}
-
-I learned to read the Silverthread's moods—the way it hesitates before a submerged log, the slight upwelling that promises a deeper channel, the tremor on the surface that warns of cold upwelling from a spring unseen. Tam showed me that a ford is not a place on a map. It is a negotiation. "Trust your first read of a crossing, but watch for the second guess," he said. "The river will try to trick you into overthinking. Don't let it."
-
-\vspace{0.5em}
-
-The secret the Forager Child doesn't tell you—the one I didn't believe until I saw it myself—is that the cairns are not markers. They are mouths. They swallow the names of the dead and exhale the directions the living need. If you listen carefully, you can hear them chewing. If you listen too carefully, they will hear you chewing back. I heard it once, at dusk, near Grey Hollow. The sound was not hunger. It was patience. The patience of stone that has outlasted every empire that ever claimed it.
+The land has a ledger too. It just doesn't use ink. Between the cartographers' claims, the wilds endure—uninterested in borders, indifferent to tariffs. Here, rangers read spoor and weather; hermits keep shrines at forgotten fords; beasts and older things observe travelers with eyes that have seen empires rise and fall. Travel is a negotiation with the land itself, and the land always remembers a slight. The hollows have long memories. They are not cruel. They are not kind. They are patient.
 
 \vspace{0.5em}
 
 Never sleep in a hollow that has soot on the ceiling without adding your own to the fire. The land knows the difference between a guest and a thief. It also knows the difference between a thief and a corpse. It prefers the corpse. Less arguing.
 
-\vspace{0.5em}
+\vspace{1em}
 
-I carry Tam's compass now. He left it with a ghost in a ziggurat, as collateral for a debt older than the village above it. When I return the jade eye to the deep place, I will bring the compass back. But his rules are written in the margins of my journal, and I have added a few of my own.
-
-\vspace{0.5em}
-
-\noindent\textbf{Moira's Rule No. 1: The Witness} \\
-\textit{"The wilds do not care what you claim. They care what you leave behind. A map is a promise. A footprint is a testimony. Walk as if every step will be judged. Because it will. Not by a judge. By the ground itself."}
-
-\vspace{0.5em}
-
-The Edgewalker would call that leverage. I call it the only honest way to live.
+\noindent\textit{— Moira of Stonehaven, ranger and reluctant debt-keeper}
+}
 
 \vspace{1em}
 
-\noindent\textit{— Moira of Stonehaven, ranger and reluctant debt-keeper, whose map is drawn on a scrap of bark and shows a path that disappears at a standing stone, and who has been lost three times but never found without learning something new}
-}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Whatever they found—berries, roots, a rabbit snared at dawn. The wilds provide. The wilds also take. The taking is breakfast for something else.
+
+\textbf{What does a child learn before they can walk?} To read the sky. Wilds children are taught the eight winds by taste: North is dry, South is wet, East is cold, West is warm, and the ninth—the wind that has no direction because it is the land's own breath. The land's breath is a warning.
+
+\textbf{What is the first thing you notice about a stranger?} Their pack. A stranger whose pack is heavy has been travelling long. A stranger whose pack is light has just started. A stranger with no pack is either a fool or a ghost. The wilds eat fools. Ghosts eat the wilds.
+
+\textbf{What is the most common crime?} Forgetting—but forgetting is not a crime, it is a survival strategy. The wilds are full of things that want to be forgotten. A traveller who forgets them may pass safely. A traveller who remembers must pay a toll. The toll is a story. The story is the memory. The memory is the trap.
+
+\textbf{What does no one talk about but everyone knows?} The wilds are not empty. They are full of watchers—spirits, beasts, old things that do not have names because names are debts. The watchers do not interfere. They watch. They wait. They remember every footprint. When the footprints stop, the watchers move on.
+
+\textbf{Where do people go when they die?} Into the land. The dead are not buried. They are left where they fell. The land absorbs them. The land grows a little richer. The land's memory grows a little longer. The dead become the land's memory. The memory is the wilds.
+
+\textbf{How do you apologize for a serious wrong?} You leave an offering—a coin, a button, a lock of hair—at the place where the wrong was done. The land accepts or refuses. If the offering is gone by morning, you are forgiven. If it remains, you are not. If it has been moved, the land is testing you. The test is the walk. The walk is the apology.
+
+\textbf{What is the most important festival?} The Turning of the Leaves (autumn). The wilds change colour. The colours are the land's mood. Red is anger. Gold is warning. Brown is patience. Green is forgetfulness. This year, the leaves are red. The land is angry. Do not ask why.
+
+\textbf{What is the secret that could destroy a powerful person?} The wilds have a heart. It is a stone, buried beneath the oldest oak. The stone is warm. The stone is beating. The stone is the land's pulse. If the stone stops, the wilds die. If the wilds die, there is nothing left to remember. Nothing left to wait.
+\end{almanac}
 
 \newpage
 \input{../generators/wilderness.tex}
@@ -1594,35 +2528,53 @@ The Edgewalker would call that leverage. I call it the only honest way to live.
 
 \noindent
 {\Large
-\textit{I built more than walls and corridors—I crafted a living symphony of stone and shadow, where every passage breathes and every chamber remembers. The structure itself is the true inhabitant. The Edgewalker is just a guest. And guests, as everyone knows, are the first to be eaten when the larder runs low.}
+\textit{Beneath the surface, ancient places breathe with mechanical lungs and dream electric dreams. The walls remember every footfall; the air carries whispers of forgotten conversations. The Edgewalker believes dungeons are infrastructure. The prisoners believe they are hungry. Both are correct.}
 
 \vspace{0.5em}
 
-I am a Scholar-Prisoner. The walls here got a memory like old parchment—they remember every scream, every spell, every drop of blood spilled on the stones. And sometimes, when the air's just right, they whisper it back to you. The dungeon listens. The question is whether it learns. I have been here for nine years. I have heard it learning. It started with single words. Then sentences. Now it speaks in paragraphs. Last week, it finished my thoughts before I did.
+I am a Scholar-Prisoner. The walls here have a memory like old parchment—they remember every scream, every spell, every drop of blood spilled on the stones. And sometimes, when the air's just right, they whisper it back to you. The dungeon listens. The question is whether it learns. I have been here for nine years. I have heard it learning. It started with single words. Then sentences. Now it speaks in paragraphs. Last week, it finished my thoughts before I did.
 
 \vspace{0.5em}
 
-Beneath the surface, ancient places breathe with mechanical lungs and dream electric dreams. Dungeons are not merely ruins but living systems—vascular networks of stone and shadow where every corridor hums with purpose and every chamber holds its own hungry logic. The walls remember every footfall, the air carries whispers of forgotten conversations, and the very architecture shifts like a sleeper turning in bed. The Edgewalker believes dungeons are "infrastructure." The Scholar-Prisoner believes they are "hungry." They are both correct. Infrastructure is always hungry. It just hides it better.
+Dungeons are not ruins—they are systems. Ventilation shafts that breathe, water channels that pulse, doors that open and close without any hand to move them. The Aeler built many of them; the Covenant sealed others; the Sidhi mined a few; and some were never built at all. They grew. Like fungus in the dark. Like a story told too many times. Like a debt that compounds.
 
 \vspace{0.5em}
 
-The secret the Dungeon's Creator does not want you to know: he did not build the dungeon. The dungeon built itself around him. He is not the architect. He is the first prisoner. And the dungeon has been adding wings ever since.
-
-\vspace{0.5em}
-
-Never ignore a door that opens when you're not looking. The dungeon is offering you a choice. Refuse, and the next door may not open at all. Accept, and the door may lead to a room that was always there, waiting for someone to finally walk through. The room has been waiting for nine thousand years. It is not tired of waiting. It is patient. It is very, very patient.
+Never ignore a door that opens when you're not looking. The dungeon is offering you a choice. Refuse, and the next door may not open at all. Accept, and the door may lead to a room that was always there, waiting for someone to finally walk through. The room has been waiting for nine thousand years. It is not tired of waiting.
 
 \vspace{1em}
 
-\noindent\textit{— The Dungeon's Creator, whose hands are cracked with mortar and who still moves rooms the way others move chess, and who has not left the Heart Chamber in forty years because the Heart Chamber will not let him}
+\noindent\textit{— The Dungeon's Architect, whose plans are written in a language no one speaks and whose signature is a thumbprint that could be anyone's}
 }
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Fungus bread and cave water—the fungus grows on the walls, the water drips from the ceiling. Both taste of stone. Both are all there is.
+
+\textbf{What does a child learn before they can walk?} To count footsteps. Dungeon children are taught the eight sounds of the deep: Drip, Creak, Groan, Whisper, Scrape, Echo, Silence, and the ninth—the sound of the dungeon's own heartbeat. The heartbeat is a door opening. The door is always behind you.
+
+\textbf{What is the first thing you notice about a stranger?} Their shadow. Dungeon shadows are long, even when the light is bright. A stranger whose shadow is too short has been here too long. A stranger whose shadow moves independently has been touched by the deep. A stranger with no shadow is not a stranger. They are the dungeon's guest. The dungeon never lets guests leave.
+
+\textbf{What is the most common crime?} Map-making—but map-making is not a crime, it is a heresy. The dungeon does not want to be mapped. The dungeon changes its corridors when it feels watched. A map that is accurate at dawn is a lie by dusk. The lie is the map-maker's fault. The punishment is to walk the lie until it becomes true.
+
+\textbf{What does no one talk about but everyone knows?} The dungeon is not a place. It is a creature—a sleeping thing that dreamed itself into stone. The corridors are its veins. The chambers are its organs. The prisoners are its thoughts. The thoughts are not its own.
+
+\textbf{Where do people go when they die?} Into the walls. The dead are not buried. Their bones are ground into mortar and used to patch the cracks. The cracks always reappear. The dead are never finished being used.
+
+\textbf{How do you apologize for a serious wrong?} You offer a memory—a true one, witnessed by the dungeon itself. The dungeon accepts the memory. The memory is added to the walls. The walls whisper it back to you when you sleep. The whisper is the apology. The apology never ends.
+
+\textbf{What is the most important festival?} The Turning of the Keys (whenever the dungeon decides). The locks are changed. The prisoners are moved. The corridors are rearranged. The festival has no date, no warning, no end. It is happening now. You did not notice. That is the point.
+
+\textbf{What is the secret that could destroy a powerful person?} The dungeon's architect is still alive. They are sealed in the lowest chamber, kept alive by the dungeon's own will. The dungeon does not want to be alone. The architect is the dungeon's only friend. The architect has not spoken in nine centuries. The dungeon does not need words.
+\end{almanac}
 
 \newpage
 \input{../generators/dungeons.tex}
 \newpage
 
 % ============================================================
-% EPILOGUE
+% EPILOGUE: THE LEDGER CLOSES
 % ============================================================
 \chapter*{Epilogue: The Ledger Closes}
 \addcontentsline{toc}{chapter}{Epilogue: The Ledger Closes}
@@ -1660,7 +2612,7 @@ The road is always south. Or north. Or whichever direction you are not facing wh
 
 \vspace{0.5em}
 
-I sympathise with this "Edgewalker;" When I dream, I dream of other faces. When I wander, I feel the weights I do not owe. And, from time to time, I find myself writing in a ledger with a hand I do not recognize as my own. The hat has never cooled.
+I sympathise with this "Edgewalker." When I dream, I dream of other faces. When I wander, I feel the weights I do not owe. And, from time to time, I find myself writing in a ledger with a hand I do not recognize as my own. The hat has never cooled.
 
 \vspace{0.5em}
 
@@ -1669,8 +2621,8 @@ The ninth entry is always the hardest to write. Not because it is the last. Beca
 \vspace{0.5em}
 
 \noindent\textit{— The Grey Wanderer (unsigned, undated, and probably still walking)}
-\newpage
 
+\newpage
 
 % ============================================================
 % APPENDICES: GLOBAL TRAVEL & SB MENUS
@@ -1720,6 +2672,8 @@ On success, advance to the next leg; on failure, mark delay, debt, or diversion 
 \subsection{Shadow Corridors}
 (Valewood, Ways Between, Thin Shore). Add a regional taboo: never count to nine, never speak the ninth name. A 9 in the seed triggers the Hollow's attention.
 
+\newpage
+
 \section{Gateways \& Control Points}
 \begin{table}[htbp]
 \centering
@@ -1758,6 +2712,8 @@ Himadri Pass & Dhahara (Himadri) & Aeler & Iron ingot, toll waiver, elephant whi
 \feTableEnd
 \caption{World Gateways \& Control Points}
 \end{table}
+
+\newpage
 
 \section{Edgewalker's Notes on Leverage}
 \label{sec:edgewalker-leverage}

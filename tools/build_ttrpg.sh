@@ -89,6 +89,7 @@ cd $git_root/ttrpg/reference/adventures/
 	../../../tools/compile_latex.sh -x -f grumbling_vault.tex -n "Fate's Edge - The Grumbling Vault.pdf" > /dev/null 2>&1|| echo "#42. Did not build"
 	../../../tools/compile_latex.sh -x -f tithe_forgotten_faces.tex -n "Fate's Edge - The Tithe of Forgotten Faces.pdf" > /dev/null 2>&1|| echo "#43. Did not build"
 	../../../tools/compile_latex.sh -x -f vow_of_broken_glass.tex -n "Fate's Edge - The Vow of Broken Glass.pdf" > /dev/null 2>&1|| echo "#44. Did not build"
+    ../../../tools/compile_latex.sh -x -f black_barrow_keep.tex -n "Fate's Edge - The Fall of Black Barrow Keep.pdf" > /dev/null 2>&1|| echo "#45. Did not build"
 
 echo "Building Expansions"
 cd $git_root/ttrpg/reference/expansions/
@@ -149,10 +150,11 @@ cd -
 cd threadweavers_spellbook/
 ../../../../tools/compile_latex.sh -x -f threadweavers_spellbook.tex -n "Fate's Edge Expansion - The Threadweavers Spellbook.pdf" > /dev/null 2>&1 || echo "#53. Did not build"
 cd -
+../../../tools/compile_latex.sh -x -f pact-wright.tex -n "Fate's Edge Expansion - The Pact-Wright's Leash.pdf" > /dev/null 2>&1 || echo "#54. Did not build"
 
 echo "Cleaning up"
 git clean -x -f
-echo "Committing and pushing to git"
+echo "Committing and pushing to git" > /dev/null 2>&1
 cd $git_root/ttrpg/build/
 IFS=$'\n';for i in $(ls *.pdf | sed -e 's/\.pdf//g'); do pdftotext -nopgbrk $i.pdf ~/fe_work/$i.txt
 done

@@ -417,6 +417,47 @@ When you are hit, follow these steps \textbf{in order}:
   \item \textbf{Add the Fatigue} from step 1 to your Fatigue track. If this fills or exceeds your track, resolve \textbf{Overflow} (see \ref{sec:fatigue}).
 \end{enumerate}
 
+\tikzset{
+    process/.style = {rectangle, rounded corners, draw=black, thick, 
+                      minimum width=3cm, minimum height=0.8cm, align=center},
+    decision/.style = {diamond, draw=black, thick, aspect=2, 
+                       minimum width=3cm, minimum height=0.8cm, align=center},
+    arrow/.style = {thick, -{Stealth}},
+    startstop/.style = {rectangle, rounded corners, draw=black, thick, 
+                        fill=black!10, minimum width=3cm, minimum height=0.8cm, align=center}
+}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=1.2cm and 1.5cm]
+
+% Nodes
+\node (start) [startstop] {\textbf{GM: ``Harm X''}};
+\node (armor) [process, below=of start] {Check armor type \\ (Light/Medium/Heavy)};
+\node (convert) [process, below=of armor] {Convert Harm to Fatigue \\ (per Armor Conversion Table)};
+\node (applyharm) [process, below=of convert] {Apply remaining Harm \\ (increase Harm level)};
+\node (clear) [process, below=of applyharm] {Clear all existing Fatigue \\ (the shock of the wound)};
+\node (addfatigue) [process, below=of clear] {Add new Fatigue \\ (from conversion)};
+\node (check) [decision, below=of addfatigue, yshift=-0.5cm] {Fatigue track \\ full?};
+\node (overflow) [process, right=of check, xshift=2.5cm] {Overflow: \\ Harm +1, clear Fatigue};
+\node (announce) [startstop, below=of check, yshift=-0.8cm] {\textbf{Announce:} \\ ``I'm at Harm Y, Fatigue Z''};
+
+% Arrows
+\draw [arrow] (start) -- (armor);
+\draw [arrow] (armor) -- (convert);
+\draw [arrow] (convert) -- (applyharm);
+\draw [arrow] (applyharm) -- (clear);
+\draw [arrow] (clear) -- (addfatigue);
+\draw [arrow] (addfatigue) -- (check);
+\draw [arrow] (check) -- node[above, near start] {Yes} (overflow);
+\draw [arrow] (overflow) |- (announce);
+\draw [arrow] (check) -- node[right, near start] {No} (announce);
+
+\end{tikzpicture}
+\caption{Taking Harm and Fatigue – The Procedure (see \ref{sec:take-harm-fatigue})}
+\label{fig:harm-fatigue-procedure}
+\end{figure}
+
 \paragraph{Armor Conversion Table}
 \label{sec:armor}
 \begin{center}
@@ -485,6 +526,10 @@ Attack & Make melee or ranged attack against a target. & Ranged in Close is \tex
 \hline
 Disengage & Enable safe movement. & Your Move does not provoke opportunity attacks; you cannot Attack this turn. \\
 \hline
+Shove & Push a target back one range band (Close $\rightarrow$ Near). & Opposed Body + Athletics vs. Body + Athletics. On success, target moves back and suffers --1 Position on their next action. \\
+\hline
+Grapple & Seize a target to restrain or control. & Opposed Body + Melee vs. Body + Athletics. On success, both are Engaged (cannot move apart). Grappled target suffers --1 die on all actions. Breaking free requires a new opposed roll as an action. \\
+\hline
 Charge (Full turn) & Move two bands toward an enemy + make one melee attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \textbf{Leaving Close range during a Charge provokes opportunity attacks as normal.} \\
 \hline
 Skirmish (Full turn) & Move two bands away from an enemy + make one ranged attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \textbf{Leaving Close range during a Skirmish provokes opportunity attacks as normal.} \\
@@ -507,19 +552,18 @@ Free Items & Short shouts, dropping an item. & Longer actions require proper act
 \hline
 \end{tabular}
 
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Helping Others -- Assistance}]
-  You can help an ally on their roll:
-  \begin{itemize}
-    \item \textbf{Assist (Spend 1 Boon):} Give the ally +1 die on their roll.  
-          You must describe how you help (distract, flank, steady, etc.).  
-          Only one character may provide an Assist on a given action.
-    \item \textbf{Setup (Take an Action):} Roll an appropriate skill (DV set by GM).  
-          On success, the ally gains +1 Position or +1 Effect on their next action.  
-          Multiple characters may use Setup on the same ally, each contributing separately.
-  \end{itemize}
-  \medskip
-  \textbf{Total bonus limit:} The total number of extra dice granted to a single roll from all sources (Assist, Setup, talents, etc.) cannot exceed \textbf{+3}.
-\end{tcolorbox}
+\paragraph{Sidestep Strike (Closing or Stepping Back)}
+\label{sec:sidestep-strike}
+\index{Sidestep Strike}\index{Movement during attack}
+
+As part of a melee attack action, you may move \textbf{one range band} (Close $\leftrightarrow$ Near, or Near $\leftrightarrow$ Far) without using your Move action for the turn. If you do so, your Position for that attack worsens by one step (e.g., Controlled becomes Desperate, Dominant becomes Controlled). You cannot also use your regular Move action in the same turn.
+
+\noindent This represents a daring lunge to close distance or a quick step back to create space, sacrificing safety for tactical positioning.
+
+\begin{itemize}
+  \item \textbf{Example (Rogue):} Lyra is at Near range with a knife (light weapon). She declares a Sidestep Strike, moving into Close range as she attacks. Her Position drops from Controlled to Desperate, but she now benefits from the knife's Close bonus (+2d). She rolls with the Desperate re-roll (successes are re-rolled once) but gets +2 dice from her weapon.
+  \item \textbf{Example (Spear Fighter):} Kael is at Close range with a spear (medium weapon, +1d at Close, +2d at Near). He steps back to Near as part of his attack, worsening his Position from Controlled to Desperate, but gains +2d instead of +1d.
+\end{itemize}
 
 \paragraph{Opportunity Attacks}
 \label{sec:opportunity-attacks}
@@ -528,7 +572,7 @@ Leaving an enemy's \textbf{Close} range without using \textit{Disengage} provoke
   \item Making a ranged attack (bow, crossbow, thrown weapon).
   \item Casting a spell that does not have the \texttt{[TOUCH]} or \texttt{[WARD]} attribute.
 \end{itemize}
-A \textbf{Charge} or \textbf{Skirmish} that takes you out of an enemy's Close range provokes an opportunity attack as usual (unless you used Disengage beforehand).
+A \textbf{Charge} or \textbf{Skirmish} that takes you out of an enemy's Close range provokes an opportunity attack as usual (unless you used Disengage beforehand). Using \textbf{Sidestep Strike} to leave Close range also provokes an opportunity attack unless you also used Disengage.
 
 \paragraph{Position and Dice Modifiers}
 \label{sec:position-dice}
@@ -552,6 +596,9 @@ A \textbf{Charge} or \textbf{Skirmish} that takes you out of an enemy's Close ra
     \item \textbf{Move:} Close $\leftrightarrow$ Near $\leftrightarrow$ Far.
     \item \textbf{Attack:} Roll Attribute + Skill vs. DV (enemy's defense).  
           Ranged attack while in Close range $\rightarrow$ Desperate.
+    \item \textbf{Shove:} Opposed Body + Athletics vs. Body + Athletics. Push target one band.
+    \item \textbf{Grapple:} Opposed Body + Melee vs. Body + Athletics. Both Engaged; target suffers --1 die.
+    \item \textbf{Sidestep Strike:} Move one band as part of a melee attack; worsen Position by one step.
     \item \textbf{Harm:} When you hit, the target marks Harm (see \ref{sec:take-harm-fatigue}).  
           Enemies use the same Harm levels as players.
     \item \textbf{Fatigue:} Each point worsens your Position (or --1 die if already Desperate).  
@@ -811,6 +858,9 @@ Growth & Can become PCs & Can expand or collapse \\
   Fatigue & Worsens Position (or --1 die if Desperate). Full track $\rightarrow$ Harm+1, clear Fatigue. \\
   Harm & 1 (--1 die), 2 (--2 dice), 3 (incapacitated). Taking Harm clears Fatigue first. \\
   Armor & Converts Harm to Fatigue; minimum 1 Fatigue per hit. \\
+  Sidestep Strike & Move one band as part of melee attack; worsen Position by one step. \\
+  Shove & Opposed Body + Athletics. Push target one band. \\
+  Grapple & Opposed Body + Melee. Both Engaged; target suffers --1 die. \\
   \bottomrule
   \end{tabular}
   \end{center}

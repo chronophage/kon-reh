@@ -1,0 +1,775 @@
+\documentclass[11pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{paper=6in x 9in, inner=0.75in, outer=0.5in, top=0.75in, bottom=0.75in}
+\usepackage{ebgaramond}
+\usepackage[osf]{mathpazo}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{epigraph}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{lettrine}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes,decorations.pathmorphing,calc}
+
+% Warm paper, dark ink
+\definecolor{papercolor}{RGB}{248, 242, 230}
+\definecolor{inkcolor}{RGB}{28, 22, 16}
+\definecolor{sealcolor}{RGB}{160, 40, 40}
+\definecolor{fadecolor}{RGB}{140, 120, 100}
+\definecolor{spiritcolor}{RGB}{40, 60, 100}
+\definecolor{leashcolor}{RGB}{100, 40, 60}
+
+\pagecolor{papercolor}
+\color{inkcolor}
+
+% Header/footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\itshape\leftmark}
+\fancyhead[LO]{\itshape\rightmark}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section formatting
+\titleformat{\chapter}[display]
+{\normalfont\Huge\itshape}
+{\vspace{-1.5cm}\large\scshape THE LEASH THAT TIGHTENS\\[0.2cm]\rule{0.7\textwidth}{0.3pt}\\[0.5cm]}
+{0pt}
+{\thispagestyle{empty}\filcenter}
+\titlespacing*{\chapter}{0pt}{-1cm}{1cm}
+
+\titleformat{\section}
+{\normalfont\Large\itshape}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{0.5cm}{0.3cm}
+
+\titleformat{\subsection}
+{\normalfont\itshape}{\thesubsection}{1em}{}
+
+% Marginal notes for mechanics
+\newcommand{\mechnote}[1]{\marginpar{\small\color{leashcolor}\itshape #1}[-0.2cm]}
+
+% Decorative elements
+\newcommand{\sealdecor}{\begin{center}\textcolor{sealcolor}{\faStamp}\end{center}}
+\newcommand{\knotdecor}{\begin{center}\textcolor{sealcolor}{\faLink}\quad\faLink\quad\faLink\end{center}}
+\newcommand{\spiritdecor}{\begin{center}\textcolor{spiritcolor}{\faGhost}\end{center}}
+
+% Letter environment
+\newenvironment{letterenv}[4]
+{\begin{center}
+\itshape
+\textcolor{sealcolor}{\faEnvelope}\\[0.2cm]
+\small #1\\[0.1cm]
+\small #2\\[0.1cm]
+\textcolor{sealcolor}{\faStamp}\\[0.3cm]
+\scshape #3\\[0.1cm]
+\itshape #4\\[0.5cm]
+\end{center}
+\noindent\rule{\textwidth}{0.3pt}\\[0.3cm]
+}
+{\vspace{0.3cm}\noindent\rule{\textwidth}{0.3pt}\\[0.5cm]}
+
+% Mechanics box
+\newtcolorbox{mechbox}[1]{colback=spiritcolor!5!white,colframe=spiritcolor!80!black,title={\textcolor{spiritcolor}{\faCogs}\quad #1},fonttitle=\small\scshape}
+
+% Table formatting
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\begin{document}
+
+\frontmatter
+
+\thispagestyle{empty}
+\vspace*{2cm}
+\begin{center}
+{\Huge\itshape THE LEASH THAT\\[0.3cm] TIGHTENS}\\[0.5cm]
+{\large Letters Between a Summoner and a Runekeeper}\\[0.8cm]
+{\scshape Kaelen of Varnek Karn\\ and Mira of the Violet Steppe}\\[0.5cm]
+\vfill
+{\small Transcribed from the Archivolt's Unfinished Index}\\[0.2cm]
+{\small The seal on the strongbox was cracked. The ninth knot was already cut.}
+\end{center}
+\newpage
+
+\thispagestyle{empty}
+\vspace*{3cm}
+\begin{flushright}
+\itshape
+The dead do not speak unless you tie a knot.\\[0.2cm]
+The knot does not hold unless you mean it.\\[0.2cm]
+The leash has two ends.\\[0.2cm]
+I hold one.\\[0.2cm]
+The wolf holds the other.\\[0.2cm]
+We are both waiting.
+\end{flushright}
+\newpage
+
+\tableofcontents
+\newpage
+
+\mainmatter
+
+% ============================================================
+% LETTER ONE: THE FIRST QUESTION
+% ============================================================
+
+\chapter{Letter One: The First Question}
+
+\begin{letterenv}
+{Undated. No seal.}
+{Written on vellum pressed between funerary pages.}
+{Kaelen}{Scholar-Monk of Varnek Karn, Runekeeper of the Witness}
+\end{letterenv}
+
+Mira---
+
+You will not remember me. We met at the dust market outside Midh Ahkaz, seven years ago. You were summoning—something small, a bell-wight from the Aeler tunnels. I watched from behind a spice stall. You did not see me.
+
+I am a Runekeeper of the Witness. I have bound oaths, witnessed contracts, sealed confessions in wax and iron. I have never bound a soul.
+
+The summoner's art troubles me. When you call a spirit, when you tie that leash, when you command it to serve—is that not enslavement? The Veiled Sisters bind spirits in brass cages. They call it necessity. The Chain-Lanterns conscript children with talent. They call it protection. You call a wolf-ancestor from the steppe, you tie a knot in the leash, you send it to scout. What do you call that?
+
+I do not write to accuse. I write to understand.
+
+\mechnote{Pact-Whisperer (2 XP) – Required to call spirits. Without this talent, you cannot summon at all.}
+
+The Witness teaches that every witness must be willing. A confession forced is not truth. A vow coerced is not binding. When I invoke a Rite, the Patron answers because I have sworn an oath—freely, with full knowledge of the cost. The Obligation I carry is my own.
+
+\mechnote{Runekeeper – Invokes Rites (1 action, mark +1 Obligation). Power comes with debt freely accepted.}
+
+What does a spirit owe you? Did it choose to answer?
+
+\vspace{0.5em}
+\noindent\hfill --- Kaelen
+
+\sealdecor
+
+\begin{mechbox}{The Pact-Whisperer}
+The Summoner's path requires two talents:
+
+\begin{itemize}
+\item \textbf{Pact-Whisperer (2 XP)} – Grants the ability to \textit{Call} spirits. Without this, no summoning is possible.
+\item \textbf{Lesser Pactwright (2 XP)} – Allows binding Cap 1 spirits. The starting point for most summoners.
+\item \textbf{Greater Pactwright (4 XP)} – Required for Cap 3 spirits. A major investment that signals serious commitment to the path.
+\end{itemize}
+
+\noindent These talents are the leash. They do not command—they negotiate.
+\end{mechbox}
+
+% ============================================================
+% LETTER TWO: THE WOLF'S ANSWER
+% ============================================================
+
+\chapter{Letter Two: The Wolf's Answer}
+
+\begin{letterenv}
+{Written on scrap leather. No date.}
+{Ink is lamp-black and something darker.}
+{Mira}{Summoner of the Violet Steppe, Pact-Whisperer}
+\end{letterenv}
+
+Kaelen---
+
+I remember you. You were the one who did not flinch when the bell-wight appeared. The spice merchant dropped his cardamom. The Aeler factor crossed himself. You just watched.
+
+You ask if the spirits choose. Yes. And no.
+
+\mechnote{Call (1 action) – Manifest a spirit at Near range. The spirit appears. Whether it stays is another question.}
+
+When I beat the drum, the wolf-ancestor does not come because I command it. It comes because it has been waiting for someone to ask. The dead are patient. They have all the time in the world to consider their offers, and no need to rush to agreement. They know what the living forgot, and remember every slight with perfect clarity.
+
+\mechnote{Bind – Spend 1 Boon or mark 1 Fatigue. The spirit accepts the leash. Or it does not. A spirit that refuses simply vanishes.}
+
+The leash is not a chain. It is a promise. I promise the wolf that I will honour its lineage. I promise the drowned mutineer that I will speak its name. I promise the bell-wight that I will keep a lamp lit. The spirit promises service in return.
+
+\mechnote{Leash Capacity = Cap + Spirit. A Cap 2 spirit bound by a summoner with Spirit 3 has Leash Capacity 5. Each service ticks the Leash.}
+
+The Veiled Sisters bind spirits in brass cages. They do not ask. They do not promise. They take. That is slavery. What I do is different. The wolf can leave at any time—by refusing service, by breaking the leash, by acting its nature when the Leash fills. It stays because the bargain is fair.
+
+\mechnote{Tick Leash – Spirit takes harm, commanded against nature, crosses a [WARD], or you split focus. The leash tightens with each transgression.}
+
+I hold one end of the leash. The wolf holds the other. We are both waiting to see who pulls first.
+
+\vspace{0.5em}
+\noindent\hfill --- Mira
+
+\sealdecor
+
+\begin{mechbox}{The Leash Clock}
+Each bound spirit has a \textbf{Leash Clock} (segments = Cap + Spirit). The clock ticks when:
+
+\begin{itemize}
+\item The spirit takes Harm (+1)
+\item You command it against its nature (+1)
+\item It crosses a [WARD] (+1)
+\item You split focus between multiple spirits (+1 per extra spirit)
+\item You push it beyond its agreed service (+1)
+\end{itemize}
+
+When the Leash fills (6 segments), the spirit acts once according to its nature—then departs (or turns hostile at GM discretion). The summoner gains 1 Corruption.
+
+\noindent \textbf{Boon Finesse:} Once per round, spend 1 Boon to clear 1 Leash tick.
+\end{mechbox}
+
+% ============================================================
+% LETTER THREE: THE SPIRIT WHIMS TABLE
+% ============================================================
+
+\chapter{Letter Three: The Spirit Whims Table}
+
+\begin{letterenv}
+{Written on a torn funerary page. Ink smeared.}
+{Kaelen}{Scholar-Monk of Varnek Karn}
+\end{letterenv}
+
+Mira---
+
+You say the spirit can leave "by acting its nature." What does that mean? I have seen a Veiled Sister's bound spirit break free. It did not act according to its nature. It acted according to its hunger—which was to kill, to consume, to destroy.
+
+\mechnote{When the Leash fills, roll on the Spirit Whims Table (§5.2.5). The GM chooses or rolls d6.}
+
+What does a wolf-ancestor hunger for? What does a drowned mutineer want? When your leash breaks, what comes for you?
+
+\vspace{0.5em}
+\noindent\hfill --- Kaelen
+
+\sealdecor
+
+\begin{mechbox}{Spirit Whims Table (from §5.2.5)}
+When the Leash fills or the spirit acts independently, the GM may choose (or roll d6):
+
+\begin{longtable}{C{0.5cm} L{13cm}}
+\toprule
+\textbf{d6} & \textbf{Spirit's Independent Action} \\
+\midrule
+1 & \textbf{Reveal a Secret} – The spirit blurts out a hidden fact about a PC or NPC – true, embarrassing, or dangerous. \\
+2 & \textbf{Break Something} – The spirit shatters a mundane object (a lantern, a rope bridge, a crucial tool). \\
+3 & \textbf{Lead Astray} – The spirit moves a short distance and creates a false trail, forcing the party to waste time. \\
+4 & \textbf{Call for Help} – The spirit summons a minor ally (a rat swarm, a will-o'-wisp, a lesser elemental). \\
+5 & \textbf{Curse a PC} – The spirit leaves a lingering mark (–1 die on one skill until the next sunrise). \\
+6 & \textbf{Bargain} – The spirit offers a deal: "Release me now, and I'll tell you where the treasure is hidden." \\
+\bottomrule
+\end{longtable}
+\end{mechbox}
+
+% ============================================================
+% LETTER FOUR: WHAT THE WOLF HUNGERS FOR
+% ============================================================
+
+\chapter{Letter Four: What the Wolf Hungers For}
+
+\begin{letterenv}
+{Written on bark. Ink is red.}
+{Mira}{Summoner of the Violet Steppe}
+\end{letterenv}
+
+Kaelen---
+
+You want to know what the wolf hungers for? Honour.
+
+\mechnote{Each spirit has a Nature. Acting against it ticks the Leash. Acting \textit{with} it may clear ticks—but the GM decides.}
+
+The wolf-ancestor does not want blood. It wants respect. When the Leash fills, it may challenge a coward. It may refuse to fight an honourable foe. It may howl, alerting enemies, because stealth is not honourable. It will not kill innocents. It will not break an oath. It will not run from a fight it agreed to join.
+
+\mechnote{Spirit Link (10 XP) – Spirits act on your turn; commands are free actions. A major investment for serious summoners.}
+
+The drowned mutineer wants vengeance. When its leash breaks, it may try to drown a crew member. It may sabotage a ship. It may whisper a secret to an enemy. It will not help you escape—it wants you to stay and fight.
+
+\mechnote{True Name Keeper (15 XP) – Call any previously encountered spirit by its true name; reduce Leash Capacity by 2. The spirit cannot refuse—but it will remember.}
+
+The bell-wight wants to count. When its leash breaks, it may count your breaths aloud. It may stop counting when you need it most. It may ring its bell, summoning attention. It will not lie—but it will not tell you the whole truth.
+
+\mechnote{Spirit Synergy (4 XP) – When commanding two spirits, reduce each Leash tick by 1. Essential for summoners who want a small host.}
+
+The Veiled Sisters bind spirits against their nature. That is why their spirits hunger for destruction. When you force a wolf to be a coward, it becomes a monster. When you force a mutineer to forgive, it becomes a demon.
+
+I do not force. I negotiate. The wolf chooses to serve. That is the difference.
+
+\vspace{0.5em}
+\noindent\hfill --- Mira
+
+\sealdecor
+
+% ============================================================
+% LETTER FIVE: THE TALENT TREE
+% ============================================================
+
+\chapter{Letter Five: The Talent Tree}
+
+\begin{letterenv}
+{Written on vellum, dampened and dried repeatedly.}
+{Kaelen}{Scholar-Monk of Varnek Karn}
+\end{letterenv}
+
+Mira---
+
+You speak of negotiation. But you also speak of Capabilities, Leash Clocks, Boon Finesse. These are not the terms of diplomacy. These are the terms of control.
+
+\mechnote{Lesser Pactwright (2 XP) – Cap 1 spirits. A horse, not a stallion.}
+
+You have invested Experience Points in talents that let you bind stronger spirits, command more of them, hold them longer. A wolf that chooses to serve does not need a Leash Clock. A spirit that is free does not need a True Name Keeper.
+
+\mechnote{Greater Pactwright (4 XP) – Cap 3 spirits. A stallion. It will throw you if you are not worthy.}
+
+Show me the talent tree. Show me what you have bought with your XP. I want to understand the shape of the leash.
+
+\vspace{0.5em}
+\noindent\hfill --- Kaelen
+
+\sealdecor
+
+\begin{mechbox}{Summoner Talent Tree (from §5.2.5 \& §9)}
+The Summoner's path is a tree. You start small. You grow.
+
+\vspace{0.3cm}
+\noindent \textbf{Core Talents:}
+\begin{itemize}
+\item \textbf{Pact-Whisperer (2 XP)} – Required. You can \textit{Call} spirits. Without this, nothing.
+\item \textbf{Lesser Pactwright (2 XP)} – Bind Cap 1 spirits. The first step.
+\item \textbf{Greater Pactwright (4 XP)} – Bind Cap 3 spirits. Requires \textit{Lesser Pactwright}.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent \textbf{Advanced Talents:}
+\begin{itemize}
+\item \textbf{Spirit Synergy (4 XP)} – When commanding two spirits, reduce each Leash tick by 1. Essential for dual summoners.
+\item \textbf{Spirit Link (10 XP)} – Spirits act on your turn; commands are free actions. \textit{Requires: Tier II, Spirit 3+.}
+\item \textbf{True Name Keeper (15 XP)} – Call any previously encountered spirit by its true name; reduce Leash Capacity by 2. The spirit cannot refuse. \textit{Requires: Tier III, Lore 3+.}
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent \textbf{The Leash (Core Mechanic, not a talent):}
+\begin{itemize}
+\item \textbf{Boon Finesse} – Once per round, spend 1 Boon to clear 1 Leash tick. Your most important tool.
+\item \textbf{Capacity = Cap + Spirit} – A Cap 2 spirit bound by Spirit 3 has Capacity 5.
+\end{itemize}
+\end{mechbox}
+
+% ============================================================
+% LETTER SIX: THE TALENTS I BOUGHT
+% ============================================================
+
+\chapter{Letter Six: The Talents I Bought}
+
+\begin{letterenv}
+{Written on scrap leather. Ink is lamp-black and blood.}
+{Mira}{Summoner of the Violet Steppe}
+\end{letterenv}
+
+Kaelen---
+
+You want to see the shape of the leash? Here.
+
+\mechnote{Total XP for a competent summoner (Tier II): Pact-Whisperer (2) + Lesser (2) + Greater (4) + Spirit Synergy (4) = 12 XP. Spirit Link (10) is the next milestone.}
+
+I started with \textbf{Pact-Whisperer} and \textbf{Lesser Pactwright}. Four XP. I could call a Cap 1 spirit—a bell-wight, a hearth-bound, a dust-djanni. Nothing dangerous. Nothing that could hurt me if it broke free.
+
+\mechnote{Spirit Link (10 XP) – When you take this, the spirit stops being a separate actor and becomes an extension of your will. The leash tightens—or loosens?}
+
+Then I bought \textbf{Greater Pactwright}. Four more XP. Eight total. Now I could call a Cap 3 spirit—a wolf-ancestor, a drowned mutineer, a thorn-courtier. Dangerous. If the leash broke, I could die.
+
+\mechnote{True Name Keeper (15 XP) – A major investment. The spirit cannot refuse the call. But it will remember every command, every indignity.}
+
+I bought \textbf{Spirit Synergy} next. Four more. Twelve XP. Now I could command two spirits at once, the Leash ticking slower. But two spirits mean two hungers. Two chances for the leash to break.
+
+\mechnote{Boon Finesse – Your best defence. Keep 2-3 Boons in reserve. Spend them to clear ticks before the Leash fills.}
+
+I have not bought \textbf{Spirit Link} yet. Ten XP. It would let the spirits act on my turn. Make them faster. More dangerous. But also more \textit{mine}. Less theirs.
+
+\mechnote{When the Leash fills, the spirit acts once according to its nature. Not your nature. Its nature.}
+
+You asked if the leash is control. Yes. That is what I bought with my XP. Control. But control is not slavery. It is the ability to negotiate from a position of strength. The wolf knows I can hold the leash. It respects that. It also knows I will let go when the bargain is done.
+
+\vspace{0.5em}
+\noindent\hfill --- Mira
+
+\sealdecor
+
+% ============================================================
+% LETTER SEVEN: THE HUNGER
+% ============================================================
+
+\chapter{Letter Seven: The Hunger}
+
+\begin{letterenv}
+{Written on a torn funerary page. Ink smeared. Hand shaking.}
+{Kaelen}{Scholar-Monk of Varnek Karn}
+\end{letterenv}
+
+Mira---
+
+I called a spirit.
+
+\mechnote{Call (1 action) – The spirit appears. You have one exchange to bind it before it vanishes or acts.}
+
+I did not use your method. I used a Rite of Varnek Karn—the Death's Negotiator. I thought I was summoning an ancestor. A witness. Someone who would answer a question about a broken oath.
+
+\mechnote{Bind – Spend 1 Boon or mark 1 Fatigue. I had no Boons. I was tired. I spent Fatigue.}
+
+Something else answered.
+
+\mechnote{Tick Leash – Commanding against nature: +1. I commanded it to speak. It did not want to speak.}
+
+It was not an ancestor. It was not a wolf or a wight or a courtier. It was \textit{hunger}. That is the only word I have for it. It did not have a face. It did not have a name. It just wanted.
+
+\mechnote{Spirit Whims Table – On a whim, it could have revealed a secret, broken something, led me astray. Instead, it wanted.}
+
+I tied the leash. I felt it tighten. I commanded it to leave. It did not leave. It \textit{waited}.
+
+\mechnote{Leash Capacity = Cap + Spirit. My Spirit is 3. The thing's Cap was higher than I could hold.}
+
+I spent Boons. I cleared ticks. I pushed it back. But it is still there. I can feel it. At the edge of my thoughts. Waiting for me to make a mistake. Waiting for the leash to loosen.
+
+\mechnote{True Name Keeper (15 XP) – I did not know its true name. If I had, I might have sent it back.}
+
+You asked what the wolf hungers for. Honour. You asked what the mutineer hungers for. Vengeance. You did not tell me what the leash hungers for.
+
+\mechnote{The leash has two ends. The summoner holds one. The spirit holds the other. But something else holds both.}
+
+What is on the other end of your leash, Mira? Not the spirit. The \textit{leash itself}.
+
+\vspace{0.5em}
+\noindent\hfill --- Kaelen
+
+\sealdecor
+
+\begin{mechbox}{What the Leash Hungers For}
+The leash is not a neutral tool. It is a promise with teeth.
+
+\vspace{0.3cm}
+\noindent \textbf{When you bind a spirit, you also bind yourself.} Every command that ticks the Leash is a small erosion of your own will. Every Boon spent to clear a tick is a debt paid to... something.
+
+\vspace{0.3cm}
+\noindent \textbf{The Ninth Knot:} The leash has nine segments. The ninth is never ticked—it is the space where the Hollow sits. When a spirit acts according to its nature, the Hollow watches. When the Leash fills, the Hollow tastes the release.
+
+\vspace{0.3cm}
+\noindent \textbf{The Summoner's Burden:} Each spirit bound adds a weight. Two spirits, two hungers. The summoner does not command—they balance. A summoner who binds too many spirits becomes a crossroads, and all roads lead through them.
+
+\vspace{0.3cm}
+\noindent \textbf{The Witness:} The Hollow is not a spirit. It is the attention that fills the gap when a debt is forgotten. The leash creates debt. The Hollow watches. When the leash breaks, the Hollow collects.
+\end{mechbox}
+
+% ============================================================
+% LETTER EIGHT: THE NINTH KNOT
+% ============================================================
+
+\chapter{Letter Eight: The Ninth Knot}
+
+\begin{letterenv}
+{Written on bark. Ink is red. The handwriting is different—calmer, older.}
+{Mira}{Summoner of the Violet Steppe}
+\end{letterenv}
+
+Kaelen---
+
+You called something you should not have called. That is not the leash's fault. That is your fault.
+
+\mechnote{Call – The spirit appears. But some spirits are always listening. They do not need to be called. They are already there.}
+
+The thing you summoned—the hunger—it was not an ancestor. It was not a spirit at all. It was the Hollow's shadow. The part of the Hollow that \textit{wants}. The leash does not hunger, Kaelen. The leash is just a rope. The Hollow hungers. And you tied a knot in its rope.
+
+\mechnote{The Ninth Knot – The knot that is never tied. It is left loose. It is the space where the Hollow sits when we negotiate.}
+
+You ask what is on the other end of my leash. The wolf? Yes. The mutineer? Sometimes. But always, behind them, the Hollow. The Hollow is the witness. The Hollow is the creditor. The Hollow is the silence when the knot tightens and the spirit screams.
+
+\mechnote{When the Leash fills, the spirit acts according to its nature. But the Hollow also acts. It collects.}
+
+I did not tell you this before because I did not want you to be afraid. But you have already summoned the hunger. You are already afraid. So now I will tell you the truth.
+
+\mechnote{The leash has two ends. The summoner holds one. The spirit holds the other. The Hollow holds both.}
+
+The ninth knot is not tied. It is left loose. It is the space where the Hollow sits when we negotiate. When you bind a spirit, you are not just negotiating with the spirit. You are negotiating with the Hollow. The Hollow is the reason the leash holds. The Hollow is the reason the spirit answers. The Hollow is the reason you can clear ticks with Boons—because the Hollow accepts the Boon as payment.
+
+\mechnote{Boon Finesse – Spend 1 Boon to clear 1 Leash tick. The Hollow accepts the Boon. It does not forget. It just waits.}
+
+You asked what the leash hungers for. The leash does not hunger. The leash is the hunger.
+
+\vspace{0.5em}
+\noindent\hfill --- Mira
+
+\sealdecor
+
+% ============================================================
+% AFTERWORD: THE ARCHIVIST'S NOTE
+% ============================================================
+
+\chapter{Afterword: The Archivist's Note}
+
+\lettrine{T}{he} strongbox was found in the sub-basement of the Synod's Archivolt. No seal. Only a single red thread knotted eight times. The ninth knot was cut.
+
+Kaelen of Varnek Karn was reported missing in 861 AR. No body was found. Mira of the Violet Steppe appears in no census, no customs ledger, no Inquisition record.
+
+The ninth knot is not cut. It was always loose. The Hollow does not release debtors. It only changes their interest rate.
+
+The strongbox was resealed with a new red thread—eight knots, the ninth left loose. The Archivolt has no record of who requested the resealing. The thread is still warm.
+
+\vspace{0.5cm}
+\noindent \textit{The summonser's art is not command. It is negotiation. But every negotiation is witnessed. And the witness always collects.}
+
+\sealdecor
+
+% ============================================================
+% APPENDIX: SPIRIT COMPENDIUM
+% ============================================================
+
+\part{Spirit Compendium}
+
+\chapter{Spirits of the Leash}
+
+\lettrine{T}{his} compendium catalogs spirits suitable for binding by Pact-Whisperers. Each entry includes Nature, Appearance, Services, Price, and Acting Its Nature. The entries are drawn from Mira's scattered notes and Kaelen's unfinished commentary.
+
+\section{Ancestral Spirits}
+
+\subsection{Wolf-Ancestor (Ykrul)}
+\textbf{Nature:} Ancestral, protective, prideful.
+
+\textbf{Appearance:} Grey wolf the size of a pony, eyes reflecting scenes from the summoner's childhood. Fur smells of dry grass and iron.
+
+\textbf{Services:} Tracking, guarding, teaching forgotten battle-songs, sensing oath-breakers.
+
+\textbf{Price:} The summoner must uphold the honour of the clan.
+
+\textbf{Acting Its Nature:} On a whim, it challenges a weak or cowardly act. May refuse to assist if honour is besmirched, or demand a public apology.
+
+\mechnote{Cap 2. Requires Lesser Pactwright.}
+
+\subsection{Hearth-Bound (Aelaerem)}
+\textbf{Nature:} Ancestral, domestic, protective.
+
+\textbf{Appearance:} Faint figure in apron or smock, smelling of bread and woodsmoke. Leaves no footprints.
+
+\textbf{Services:} Protecting a household, warding against nightmares, finding lost objects.
+
+\textbf{Price:} A cup of milk left on the hearth each night.
+
+\textbf{Acting Its Nature:} May refuse to leave a protected threshold, or grow jealous of other spirits in the same home.
+
+\mechnote{Cap 1. Requires Lesser Pactwright.}
+
+\subsection{Gallows-Shade (Ecktoria)}
+\textbf{Nature:} Wrongful execution, seeking justice or vengeance.
+
+\textbf{Appearance:} Figure in rope-burned grey, neck bent at an unnatural angle. Carries a noose that tightens when lies are spoken.
+
+\textbf{Services:} Revealing lies, frightening the guilty, witnessing confessions.
+
+\textbf{Price:} Speak the name of its accuser aloud, in public, with witnesses.
+
+\textbf{Acting Its Nature:} May attempt to hang a liar (metaphorically or literally) or force a confession before the agreed time.
+
+\mechnote{Cap 3. Requires Greater Pactwright.}
+
+\section{Elemental and Indigenous Spirits}
+
+\subsection{Vein-Serpent (Aeler)}
+\textbf{Nature:} Indigenous, mineral, slow-witted.
+
+\textbf{Appearance:} Serpent of polished copper and malachite, slithering through stone as if it were water.
+
+\textbf{Services:} Locating ore, stabilizing tunnels, warning of earthquakes (hums through bedrock three days in advance).
+
+\textbf{Price:} For every ounce of ore taken, an ounce of mortar laid. The stone must be maintained.
+
+\textbf{Acting Its Nature:} May seal a tunnel prematurely or "forget" a vein it showed you, demanding more mortar.
+
+\mechnote{Cap 2. Requires Lesser Pactwright.}
+
+\subsection{Frost-Wight (Linn)}
+\textbf{Nature:} Drowned sailor, preserved in ice. Bound to a ship or a stretch of coast.
+
+\textbf{Appearance:} Figure of frost and brine, breath visible in warm rooms. Clothes frozen solid.
+
+\textbf{Services:} Calming storms, finding safe passage through ice, preserving food from rot.
+
+\textbf{Price:} A libation of fresh water poured into the sea at each new moon.
+
+\textbf{Acting Its Nature:} May freeze a lock, a rope, or a companion's breath (1 Fatigue).
+
+\mechnote{Cap 2. Requires Lesser Pactwright.}
+
+\subsection{Dust-Djanni (Fhara)}
+\textbf{Nature:} Desert spirit, old as the erg. Not hostile, but never generous.
+
+\textbf{Appearance:} Column of dust shaped like a robed figure, eyes of polished amber.
+
+\textbf{Services:} Finding water, hiding tracks, creating sandstorms, revealing oases.
+
+\textbf{Price:} A song sung at noon, with no audience but the sun.
+
+\textbf{Acting Its Nature:} May veil a path you need, or demand a second song before revealing a well.
+
+\mechnote{Cap 2. Requires Lesser Pactwright.}
+
+\section{The Violent and the Vengeful}
+
+\subsection{Drowned Mutineer (Zakov)}
+\textbf{Nature:} Vengeful dead, confused, bitter. Died by betrayal, now seeks the betrayer's bloodline.
+
+\textbf{Appearance:} Bloated figure in rotting finery, surrounded by a halo of salt-crusted coins.
+
+\textbf{Services:} Sabotage of ships, whispering secrets into sleeping ears, cursing cargo to spoil.
+
+\textbf{Price:} A promise of vengeance against the living. The summoner must carry the mutineer's grudge as their own.
+
+\textbf{Acting Its Nature:} May try to drown a crew member or sink a boat it deems "guilty."
+
+\mechnote{Cap 3. Requires Greater Pactwright.}
+
+\subsection{Red Jester (Silkstrand)}
+\textbf{Nature:} A hanged fool who laughs at oaths. Dangerous and unpredictable.
+
+\textbf{Appearance:} Masked figure in motley, bells on every limb. The bells ring when a promise is broken nearby.
+
+\textbf{Services:} Causing distractions, sabotaging contracts, making guards forget their orders.
+
+\textbf{Price:} A genuine laugh—not forced, not performative.
+
+\textbf{Acting Its Nature:} May betray you for a better joke, or cut a promise you meant to keep.
+
+\mechnote{Cap 3. Requires Greater Pactwright.}
+
+\subsection{Broken-Knight (Vhasia)}
+\textbf{Nature:} A knight who broke an oath of fealty and was executed. Seeks to restore honour.
+
+\textbf{Appearance:} Armour rusted shut, visor down. Cannot open it. Speaks through the rust.
+
+\textbf{Services:} Fighting as a spectral ally, holding a threshold, testing the honour of others.
+
+\textbf{Price:} A witness to its deathbed confession.
+
+\textbf{Acting Its Nature:} May challenge a companion to a duel of honour, or refuse to fight an "honourable" foe.
+
+\mechnote{Cap 3. Requires Greater Pactwright.}
+
+\section{Threshold and Fae Spirits}
+
+\subsection{Lamp-Wight (Thepyrgos)}
+\textbf{Nature:} Tower ghost, bound to a lighthouse or beacon. Dutiful, lonely, precise.
+
+\textbf{Appearance:} Translucent keeper's uniform, carrying a lantern that casts no light.
+
+\textbf{Services:} Reading coded signals, warning of incoming ships, revealing lies told in its presence.
+
+\textbf{Price:} Keep a lamp lit in its tower one night each year. The lamp must be lit by your hand.
+
+\textbf{Acting Its Nature:} May extinguish a light you need, or blind a guard with a sudden flare.
+
+\mechnote{Cap 2. Requires Lesser Pactwright.}
+
+\subsection{Thorn-Courtier (Aelinnel)}
+\textbf{Nature:} Fae bound by broken courtesy. A courtier of the Lady of Thorns, exiled for a misstep.
+
+\textbf{Appearance:} Masked figure in leaves and law, voice like rustling paper. Never shows its face.
+
+\textbf{Services:} Negotiating with other fae, revealing omissions in contracts, opening threshold doors.
+
+\textbf{Price:} Never speak its name aloud.
+
+\textbf{Acting Its Nature:} May twist your words in a negotiation, or demand a new courtesy before helping.
+
+\mechnote{Cap 3. Requires Greater Pactwright.}
+
+\subsection{Silent Step (Ikasha)}
+\textbf{Nature:} A shadow that learned to walk. Not dead, not alive—simply unnoticed.
+
+\textbf{Appearance:} A patch of darkness that moves against the light. No features, no sound.
+
+\textbf{Services:} Carrying whispers, hiding objects, walking through locked doors.
+
+\textbf{Price:} A secret you have never told anyone.
+
+\textbf{Acting Its Nature:} May hide something you need, or forget which secret you paid with.
+
+\mechnote{Cap 2. Requires Lesser Pactwright.}
+
+\section{Aeler Stone-Sleepers}
+
+\subsection{Bell-Wight}
+\textbf{Nature:} A miner who died counting breaths. Now counts everything.
+
+\textbf{Appearance:} Dwarven figure in miner's gear, carrying a bell that never rings.
+
+\textbf{Services:} Counting inventory, detecting structural flaws, warning of bad air.
+
+\textbf{Price:} Never count to nine in its presence.
+
+\textbf{Acting Its Nature:} May count your breaths aloud, or stop counting when you need it most.
+
+\mechnote{Cap 1. Requires Lesser Pactwright.}
+
+\subsection{Keystone-Keeper}
+\textbf{Nature:} An engineer who sealed a tunnel and was sealed inside.
+
+\textbf{Appearance:} Spectral figure in mason's apron, hands covered in stone-dust that does not wash off.
+
+\textbf{Services:} Sealing doors, reading keystone clauses, detecting forgeries.
+
+\textbf{Price:} A repair year—one year of maintaining the tunnel where it died.
+
+\textbf{Acting Its Nature:} May seal a door you need open, or demand a maintenance vow before assisting.
+
+\mechnote{Cap 3. Requires Greater Pactwright.}
+
+% ============================================================
+% COLOPHON
+% ============================================================
+
+\part{Colophon}
+
+\chapter{The Leash Closes}
+
+\vspace*{2cm}
+
+\begin{center}
+\itshape
+These letters were returned to the lead-lined strongbox \\
+and resealed with a new red thread— \\
+eight knots, the ninth left loose. \\[0.3cm]
+
+The box was returned to the Archivolt's sub-basement. \\
+No one knows who requested the resealing. \\
+The thread is still warm. \\[0.3cm]
+
+Kaelen of Varnek Karn was not found. \\
+Mira of the Violet Steppe appears in no record— \\
+except this one, and the one that was whispered at a crossroads, \\
+under a lamp that should have gone out but did not. \\[0.3cm]
+
+The leash has two ends. \\
+The Hollow holds both.
+\end{center}
+
+\vspace*{1cm}
+
+\begin{flushright}
+\itshape
+--- The Grey Wanderer \\
+at the Dusty Page, \\
+under the ninth bell (which did not ring)
+\end{flushright}
+
+\knotdecor
+
+\vspace*{1cm}
+
+\begin{center}
+\tiny
+\textcolor{fadecolor}{The ink is ash and blood. The ninth page is blank.} \\
+\tiny
+\textcolor{fadecolor}{The knot is not cut. The debt is not closed. The wolf is still waiting.}
+\end{center}
+
+\end{document}

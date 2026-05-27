@@ -163,3 +163,31 @@ Spend all XP; you cannot bank starting XP.
 \begin{tcolorbox}[colback=green!5!white,colframe=green!70!black,title=The Grey Wanderer's Advice]
 ``Do not try to build a `perfect' character. Build one who owes a debt, carries a scar, and has a name that someone will remember. The numbers will follow the story -- not the other way around.''
 \end{tcolorbox}
+
+\begin{tikzpicture}[node distance=1.5cm]
+
+  \node (start) [startstop] {Start with a\\concept (1 sentence)};
+  \node (attr) [process, below of=start] {Spend XP on Attributes\\ (Body, Wits, Spirit, Presence)};
+  \node (skills) [process, below of=attr] {Spend XP on Skills\\ (pick 2‑3 key skills)};
+  \node (talents) [process, below of=skills] {Spend XP on Talents\\ (1‑3, minor/magic access)};
+  \node (patron) [decision, below of=talents, yshift=-0.5cm] {Magic via\\Patron?};
+  \node (noPatron) [process, below left of=patron, xshift=-2cm] {Free Caster / Psion\\ (no Patron)};
+  \node (yesPatron) [process, below right of=patron, xshift=2cm] {Choose a Patron\\ (e.g. Traveler)};
+  \node (assets) [process, below of=yesPatron] {Assets / Followers\\ (optional)};
+  \node (bonds) [process, below of=assets] {Bonds and Complications\\ (up to +4 XP)};
+  \node (gear) [process, below of=bonds] {Gear and final touches};
+  \node (end) [startstop, below of=gear] {Ready to play!};
+  
+  \draw [arrow] (start) -- (attr);
+  \draw [arrow] (attr) -- (skills);
+  \draw [arrow] (skills) -- (talents);
+  \draw [arrow] (talents) -- (patron);
+  \draw [arrow] (patron) -- node[anchor=east] {no} (noPatron);
+  \draw [arrow] (patron) -- node[anchor=west] {yes} (yesPatron);
+  \draw [arrow] (noPatron) |- (bonds);
+  \draw [arrow] (yesPatron) -- (assets);
+  \draw [arrow] (assets) -- (bonds);
+  \draw [arrow] (bonds) -- (gear);
+  \draw [arrow] (gear) -- (end);
+  
+  \end{tikzpicture}

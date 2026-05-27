@@ -1257,6 +1257,48 @@ The road does not end here. The choices you made in Millhaven will echo in the v
 \end{center}
 
 \appendix
+
+\section{Running Your First Game, Flowchart:}
+
+\tikzset{
+    startstop/.style = {rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20},
+    process/.style = {rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!20},
+    decision/.style = {diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!20},
+    arrow/.style = {thick, -{Stealth}},
+}
+
+\begin{tikzpicture}[node distance=1.5cm]
+
+\node (start) [startstop] {Frame the scene\\ (what’s at stake?)};
+\node (player) [process, below of=start] {Player declares intent\\ (Attribute + Skill)};
+\node (position) [process, below of=player] {GM sets Position\\ (Dominant/Controlled/Desperate)};
+\node (dv) [process, below of=position] {GM sets DV\\ (default 3)};
+\node (roll) [process, below of=dv] {Player rolls dice pool\\ count successes (6+) and 1s (SB)};
+\node (outcome) [decision, below of=roll, yshift=-0.5cm] {Compare successes\\ to DV};
+\node (clean) [process, below left of=outcome, xshift=-2.5cm] {Clean Success\\ (no SB)};
+\node (cost) [process, below of=outcome] {Success with SB};
+\node (partial) [process, below right of=outcome, xshift=2.5cm] {Partial\\ (gain 1 Boon)};
+\node (miss) [process, below of=partial] {Miss\\ (gain 2 Boons)};
+\node (sb) [process, below of=cost] {GM spends SB\\ (complications, clocks)};
+\node (next) [startstop, below of=sb] {Pass spotlight\\ to next player};
+
+\draw [arrow] (start) -- (player);
+\draw [arrow] (player) -- (position);
+\draw [arrow] (position) -- (dv);
+\draw [arrow] (dv) -- (roll);
+\draw [arrow] (roll) -- (outcome);
+\draw [arrow] (outcome) -- node[anchor=east] {S ≥ DV,\ SB = 0} (clean);
+\draw [arrow] (outcome) -- node[anchor=east] {S ≥ DV,\ SB > 0} (cost);
+\draw [arrow] (outcome) -- node[anchor=west] {0 < S < DV} (partial);
+\draw [arrow] (outcome) -- node[anchor=west] {S = 0} (miss);
+\draw [arrow] (clean) |- (next);
+\draw [arrow] (cost) -- (sb);
+\draw [arrow] (partial) -- (sb);
+\draw [arrow] (miss) -- (sb);
+\draw [arrow] (sb) -- (next);
+
+\end{tikzpicture}
+
 \section{Whispers on the Road: An Introduction to Magic}
 
 \subsection{A Stranger at the Hearth}

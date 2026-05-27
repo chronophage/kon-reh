@@ -544,64 +544,34 @@ GM: ``You all make it across, but the last step collapses behind you. I spend 1 
 \textbf{Lesson:} Even on a success, SB let you bend the fiction toward drama without erasing the player's win.
 \end{tcolorbox}
 
-% =========================================================
-% The following sections are MOVED to other chapters as per the master plan.
-% They are commented out here to keep this file as Chapter 2 only.
-% =========================================================
+\begin{tikzpicture}[node distance=1.5cm]
 
-% MOVED TO Chapter 7 (Combat) - Optional Initiative Procedures
-% \section{Optional Initiative Procedures}
-% \label{sec:optional-initiative}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 4 (Cognitive Load) - Player-Managed Modules
-% \section{Standard Rule: Player-Managed Modules}
-% \label{sec:player-managed-modules-gm}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 3 (First Session) - Beginner Pathway Sidebar
-% \begin{tcolorbox}[title=\textbf{The Core Loop: Your First 10 Games},...]
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 3 (First Session) - First Game Scenario: The Sunstone Tower
-% \section*{First Game Scenario: The Sunstone Tower}
-% \label{sec:sunstone-tower}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 4 (Cognitive Load) - Clocks & Fronts
-% \section{Clocks \& Fronts}
-% \label{sec:clocks-fronts}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 3 (First Session) - Ready for More? Add These Systems
-% \section{Ready for More? Add These Systems}
-% \label{sec:modular-systems}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 5 (Resource Management) - Abstracting Time and Currency
-% \section{Abstracting Time and Currency}
-% \label{sec:abstraction}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 11 (Example Play & Survival Guide) - Session Flow
-% \section{Session Flow: A GM Cognitive Checklist}
-% \label{sec:session-flow}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 11 (Example Play & Survival Guide) - The GM Mindset box
-% \begin{tcolorbox}[colback=blue!5!white,...]
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 11 (Example Play & Survival Guide) - Ambush Example
-% \begin{tcolorbox}[colback=black!3!white,...]
-% \label{box:ambush-example}
-% ... (content preserved but commented)
-
-% MOVED TO Chapter 10 (Advanced Techniques) - Threshold Effects Reference
-% \section{Threshold Effects Reference}
-% \label{sec:threshold-effects}
-% ... (content preserved but commented)
-
-% =========================================================
-% END OF MOVED SECTIONS
-% =========================================================
+  \node (start) [startstop] {Frame the scene\\ (what’s at stake?)};
+  \node (player) [process, below of=start] {Player declares intent\\ (Attribute + Skill)};
+  \node (position) [process, below of=player] {GM sets Position\\ (Dominant/Controlled/Desperate)};
+  \node (dv) [process, below of=position] {GM sets DV\\ (default 3)};
+  \node (roll) [process, below of=dv] {Player rolls dice pool\\ count successes (6+) and 1s (SB)};
+  \node (outcome) [decision, below of=roll, yshift=-0.5cm] {Compare successes\\ to DV};
+  \node (clean) [process, below left of=outcome, xshift=-2.5cm] {Clean Success\\ (no SB)};
+  \node (cost) [process, below of=outcome] {Success with SB};
+  \node (partial) [process, below right of=outcome, xshift=2.5cm] {Partial\\ (gain 1 Boon)};
+  \node (miss) [process, below of=partial] {Miss\\ (gain 2 Boons)};
+  \node (sb) [process, below of=cost] {GM spends SB\\ (complications, clocks)};
+  \node (next) [startstop, below of=sb] {Pass spotlight\\ to next player};
+  
+  \draw [arrow] (start) -- (player);
+  \draw [arrow] (player) -- (position);
+  \draw [arrow] (position) -- (dv);
+  \draw [arrow] (dv) -- (roll);
+  \draw [arrow] (roll) -- (outcome);
+  \draw [arrow] (outcome) -- node[anchor=east] {S ≥ DV,\ SB = 0} (clean);
+  \draw [arrow] (outcome) -- node[anchor=east] {S ≥ DV,\ SB > 0} (cost);
+  \draw [arrow] (outcome) -- node[anchor=west] {0 < S < DV} (partial);
+  \draw [arrow] (outcome) -- node[anchor=west] {S = 0} (miss);
+  \draw [arrow] (clean) |- (next);
+  \draw [arrow] (cost) -- (sb);
+  \draw [arrow] (partial) -- (sb);
+  \draw [arrow] (miss) -- (sb);
+  \draw [arrow] (sb) -- (next);
+  
+  \end{tikzpicture}
