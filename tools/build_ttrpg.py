@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 build_ttrpg.py – Build Fate's Edge documents from a TOML configuration.
-Supports live two‑column table output using 'rich' (falls back gracefully).
+Supports parallel builds with clean, spaced output.
 """
 
 import sys
@@ -10,16 +10,7 @@ import subprocess as sp
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import tomllib  # Python 3.11+; for older: pip install tomli
-
-# Try to import rich for live table; fallback to simple prints
-try:
-    from rich.live import Live
-    from rich.table import Table
-    from rich.progress import Progress, BarColumn, TextColumn
-    RICH_AVAILABLE = True
-except ImportError:
-    RICH_AVAILABLE = False
+import tomllib
 
 # ------------------------------------------------------------
 #  Helper functions
@@ -102,85 +93,37 @@ def main():
 
     print(f"🔨 Building sections: {', '.join(selected_sections)} with {jobs} parallel job(s)\n")
 
-    # --------------------------------------------------------
-    #  Build and display live table
-    # --------------------------------------------------------
     failures = []
     success_count = 0
-    # We'll use a dict to store status of each document
-    status = {doc["name"]: "⏳ Pending" for doc in docs}
-    # We need to keep the order for the table
-    ordered_names = [doc["name"] for doc in docs]
 
-    if RICH_AVAILABLE and jobs == 1 and sys.stdout.isatty():
-        # Live table display – only works well with sequential jobs
-        table = Table(title="Building Fate's Edge Documents")
-        table.add_column("Document", style="cyan", no_wrap=True)
-        table.add_column("Status", style="green", no_wrap=True)
+    # Collect futures and their document names
+    with ThreadPoolExecutor(max_workers=jobs) as executor:
+        future_to_doc = {}
+        for doc in docs:
+            name = doc["name"]
+            # Print "Building X" immediately (no extra blank line before it)
+            print(f"Building {name}")
+            sys.stdout.flush()
+            future = executor.submit(compile_one, doc, tools_py, git_root, debug)
+            future_to_doc[future] = name
 
-        # Initial table with all pending
-        for name in ordered_names:
-            table.add_row(name, "⏳ Pending")
+        # Process completions as they come
+        for future in as_completed(future_to_doc):
+            name, success, _ = future.result()
+            # Print blank line, then status line
+            print()
+            if success:
+                print(f"✅ {name} built successfully")
+                success_count += 1
+            else:
+                print(f"❌ {name} did not build")
+                failures.append(name)
 
-        with Live(table, refresh_per_second=4, screen=False) as live:
-            for doc in docs:
-                name, success, _ = compile_one(doc, tools_py, git_root, debug)
-                if success:
-                    status[name] = "✅ Completed"
-                    success_count += 1
-                else:
-                    status[name] = "❌ Failed"
-                    failures.append(name)
-                # Rebuild table rows
-                table.rows = []
-                for n in ordered_names:
-                    table.add_row(n, status[n])
-                live.update(table)
-
-        # Final summary
-        print("\n" + "=" * 60)
-        print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
-        if failures:
-            print(f"   Failed: {', '.join(failures)}")
-    else:
-        # Fallback when rich not available or parallel builds
-        if not RICH_AVAILABLE:
-            print("⚠️  'rich' not installed – falling back to simple output.")
-        if jobs > 1:
-            print("ℹ️  Parallel builds – live table disabled; showing per‑job results.\n")
-
-        if jobs == 1:
-            # Simple two‑column table printed once at end
-            print(f"{'Document':<50} {'Status':<10}")
-            print("-" * 60)
-            for doc in docs:
-                name, success, _ = compile_one(doc, tools_py, git_root, debug)
-                status_str = "✅ Completed" if success else "❌ Failed"
-                print(f"{name:<50} {status_str}")
-                if not success:
-                    failures.append(name)
-                else:
-                    success_count += 1
-            print("\n" + "=" * 60)
-            print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
-            if failures:
-                print(f"   Failed: {', '.join(failures)}")
-        else:
-            # Parallel – simple one‑line per result as they finish
-            with ThreadPoolExecutor(max_workers=jobs) as executor:
-                futures = {executor.submit(compile_one, doc, tools_py, git_root, debug): doc for doc in docs}
-                for future in as_completed(futures):
-                    name, success, _ = future.result()
-                    if success:
-                        print(f"✅ {name}")
-                        success_count += 1
-                    else:
-                        print(f"❌ {name}")
-                        failures.append(name)
-            print("\n" + "=" * 60)
-            print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
-            if failures:
-                print(f"   Failed: {', '.join(failures)}")
+    # Summary
+    print("\n" + "=" * 60)
+    print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
+    if failures:
+        print(f"   Failed: {', '.join(failures)}")
 
     # --------------------------------------------------------
     #  Clean, extract text, commit, push (only if some succeeded)
