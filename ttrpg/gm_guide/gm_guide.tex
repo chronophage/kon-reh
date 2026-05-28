@@ -9,13 +9,19 @@
 \usepackage{microtype}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{array}
 
 % ============================================================
 % GEOMETRY (readable margins, allow wider tables if needed)
 % ============================================================
 \usepackage[letterpaper,margin=1in,headheight=13.6pt]{geometry}
-\setlength{\marginparwidth}{0pt}          % no margin notes
-\setlength{\textwidth}{\paperwidth - 2in} % ensures tables use full text width
+\setlength{\marginparwidth}{0pt}
+\setlength{\textwidth}{\dimexpr\paperwidth-2in\relax}  % exactly 6.5in for letter
 \setlength{\hoffset}{0pt}
 \setlength{\voffset}{0pt}
 
@@ -29,10 +35,7 @@
 % ============================================================
 % TABLE & LIST PACKAGES
 % ============================================================
-\usepackage{array}          % advanced column formatting
-\usepackage{booktabs}       % professional rules
 \usepackage{longtable}      % multi-page tables
-\usepackage{tabularx}       % flexible width columns
 \usepackage{multicol}       % multi-column text
 \usepackage{enumitem}       % custom list spacing
 \setlist{topsep=0.2em,itemsep=0.2em,parsep=0pt,partopsep=0pt}
@@ -47,28 +50,44 @@
 % ============================================================
 % COLOUR, BOXES, AND TIKZ (for flowcharts etc.)
 % ============================================================
-\usepackage{xcolor}
-\usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 
+% TikZ styles used in chapter files
+\tikzset{
+    process/.style = {rectangle, rounded corners, draw=blue!75!black, fill=blue!5,
+                      text width=7cm, align=center, font=\small},
+    decision/.style = {diamond, draw=red!75!black, fill=red!5,
+                      text width=4cm, align=center, font=\small},
+    arrow/.style = {thick, -stealth, draw=gray},
+    startstop/.style = {rectangle, rounded corners, draw=black!75, fill=gray!10,
+                        text width=5cm, align=center, font=\small\bfseries},
+}
+
 % ============================================================
-% HYPERLINKS (must be loaded last, before index commands)
+% FOOTNOTES INSIDE TCOLORBOX
+% ============================================================
+\usepackage{footnote}      % allows \footnotetext inside boxes
+\makesavenoteenv{tcolorbox}
+
+% ============================================================
+% HYPERLINKS (loaded near end)
 % ============================================================
 \usepackage[hidelinks]{hyperref}   % hides red boxes; links still work
 
 % ============================================================
-% INDEX (generate with `makeindex Fate_sEdge_GM.idx`)
+% INDEX
 % ============================================================
 \usepackage{makeidx}
 \makeindex
 
 % ============================================================
-% CUSTOM BOX DEFINITIONS (matching the chapter files)
+% CUSTOM BOX DEFINITIONS
 % ============================================================
 \definecolor{parchment}{RGB}{248,240,226}
 \definecolor{bronze}{RGB}{205,127,50}
+
+\tcbuselibrary{skins,breakable}
 
 \newtcolorbox{effectbox}{
     colback=blue!5,
@@ -117,15 +136,25 @@
 }
 
 % ============================================================
-% FLOAT & TABLE PAGE BREAK HANDLING
+% CARD SUIT SYMBOLS (already standard in LaTeX; no extra defs needed)
 % ============================================================
-% Allow longtables to break anywhere with a small penalty
+% $\spadesuit$, $\heartsuit$, $\clubsuit$, $\diamondsuit$ are provided by
+% the standard TeX fonts (or amssymb). No additional definitions required.
+
+% ============================================================
+% LONGTABLE SETTINGS (allow page breaks, no forced chunks)
+% ============================================================
 \setlength{\LTpre}{0pt}
 \setlength{\LTpost}{0pt}
-\setcounter{LTchunksize}{0}   % no forced break before/after
+\setcounter{LTchunksize}{0}
 \renewcommand{\LTcapwidth}{\textwidth}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
+
+% ============================================================
+% REMOVE EMPTY DATE
+% ============================================================
+\date{}
 
 % ============================================================
 % DOCUMENT START
@@ -134,7 +163,6 @@
 
 \title{\vspace{-1.5em}Fate's Edge\\\large GM Guide}
 \author{}
-\date{}
 \maketitle
 \newpage
 
@@ -144,43 +172,42 @@
 % ============================================================
 % PART I -- FOUNDATIONS
 % ============================================================
-\include{sections/preface}           % preface (unnumbered)
+\include{sections/preface}           % unnumbered preface
 \cleardoublepage
-\include{sections/intro}             % Chapter 1
+\include{sections/intro}             % Chapter 1: Introduction
 \cleardoublepage
-\include{sections/core_procedures}   % Chapter 2
+\include{sections/core_procedures}   % Chapter 2: Core Procedures
 \cleardoublepage
-\include{sections/managing_resources} % Chapter 5
+\include{sections/managing_resources} % Chapter 5: Managing Resources
 \cleardoublepage
-\include{sections/gm-currency-free}  % continues Chapter 5
+\include{sections/gm-currency-free}  % Chapter ?: Running a Currency-Free Game
 \cleardoublepage
 
 % ============================================================
 % PART II -- MAGIC & SCENARIOS
 % ============================================================
-\include{sections/magic}             % Chapter 6
+\include{sections/magic}             % Chapter 6: Magic and Backlash
 \cleardoublepage
-\include{sections/running_scenarios} % Chapter 11
+\include{sections/running_scenarios} % Chapter 11: Example Play & GM Survival
 \cleardoublepage
 
 % ============================================================
 % PART III -- CAMPAIGN & ADVANCED PLAY
 % ============================================================
-\include{sections/campaign_design}   % Chapter 8
+\include{sections/campaign_design}   % Chapter 8: Campaigns, Clocks, Consequences
 \cleardoublepage
-\include{sections/epic_tier}         % Chapter 9
+\include{sections/epic_tier}         % Chapter 9: Tier IV & V Epic Adventures
 \cleardoublepage
-\include{sections/advanced_gm_tools} % Chapter 10
+\include{sections/advanced_gm_tools} % Chapter 10: Advanced GM Techniques
 \cleardoublepage
-%\include{sections/enhanced_gm_play}  % spread across Ch 1,10,11
-%\cleardoublepage
+% \include{sections/enhanced_gm_play} % (merged into other chapters)
 
 % ============================================================
 % PART IV -- LORE & REFERENCE
 % ============================================================
-\include{sections/lore}              % Chapter (unchanged)
+\include{sections/lore}              % Chapter ?: Lore Compendium
 \cleardoublepage
-\include{sections/appendix}          % Chapter 12
+\include{sections/appendix}          % Chapter 12: GM Reference & Appendices
 \cleardoublepage
 
 % ============================================================
