@@ -83,9 +83,9 @@ Set DV=3, Position=Controlled, ask for the roll, and resolve with the Outcome Ma
   sharp corners,
   drop shadow,
   before skip=10pt,
-  after skip=10pt
+  after skip=10pt,
+  breakable   % <-- Add this line
 ]
-
 \textit{``Don't just tell me you swing your sword. Show me the dust in your eyes, the tremble in your arm, the desperate prayer you whisper to the Traveler.''}
 \textit{``And don't just paint a pretty picture -- show me what your character risks, fears, or loves in this moment.''}
 
@@ -525,34 +525,54 @@ GM: ``You all make it across, but the last step collapses behind you. I spend 1 
 \textbf{Lesson:} Even on a success, SB let you bend the fiction toward drama without erasing the player's win.
 \end{tcolorbox}
 
-\begin{tikzpicture}[node distance=1.5cm]
-
-  \node (start) [startstop] {Frame the scene\\ (what's at stake?)};
-  \node (player) [process, below of=start] {Player declares intent\\ (Attribute + Skill)};
-  \node (position) [process, below of=player] {GM sets Position\\ (Dominant/Controlled/Desperate)};
-  \node (dv) [process, below of=position] {GM sets DV\\ (default 3)};
-  \node (roll) [process, below of=dv] {Player rolls dice pool\\ count successes (6+) and 1s (SB)};
-  \node (outcome) [decision, below of=roll, yshift=-0.5cm] {Compare successes\\ to DV};
-  \node (clean) [process, below left of=outcome, xshift=-2.5cm] {Clean Success\\ (no SB)};
-  \node (cost) [process, below of=outcome] {Success with SB};
-  \node (partial) [process, below right of=outcome, xshift=2.5cm] {Partial\\ (gain 1 Boon)};
-  \node (miss) [process, below of=partial] {Miss\\ (gain 2 Boons)};
-  \node (sb) [process, below of=cost] {GM spends SB\\ (complications, clocks)};
-  \node (next) [startstop, below of=sb] {Pass spotlight\\ to next player};
+\begin{center}
+  \begin{tikzpicture}[
+      node distance=1.5cm and 2.5cm,
+      startstop/.style={
+          rectangle, rounded corners, draw=black!75, fill=gray!10,
+          text width=5.5cm, align=center, font=\small\bfseries
+      },
+      process/.style={
+          rectangle, rounded corners, draw=blue!75!black, fill=blue!5,
+          text width=5.5cm, align=center, font=\small
+      },
+      decision/.style={
+          diamond, draw=red!75!black, fill=red!5,
+          text width=4.2cm, align=center, font=\small
+      },
+      arrow/.style={thick, -stealth, draw=gray}
+  ]
   
-  \draw [arrow] (start) -- (player);
-  \draw [arrow] (player) -- (position);
-  \draw [arrow] (position) -- (dv);
-  \draw [arrow] (dv) -- (roll);
-  \draw [arrow] (roll) -- (outcome);
-  \draw [arrow] (outcome) -- node[anchor=east] {S ≥ DV,\ SB = 0} (clean);
-  \draw [arrow] (outcome) -- node[anchor=east] {S ≥ DV,\ SB > 0} (cost);
-  \draw [arrow] (outcome) -- node[anchor=west] {0 < S < DV} (partial);
-  \draw [arrow] (outcome) -- node[anchor=west] {S = 0} (miss);
-  \draw [arrow] (clean) |- (next);
-  \draw [arrow] (cost) -- (sb);
-  \draw [arrow] (partial) -- (sb);
-  \draw [arrow] (miss) -- (sb);
-  \draw [arrow] (sb) -- (next);
-  
-\end{tikzpicture}
+    \node (start) [startstop] {Frame the scene\\ (what's at stake?)};
+    \node (player) [process, below=of start] {Player declares intent\\ (Attribute + Skill)};
+    \node (position) [process, below=of player] {GM sets Position\\ (Dominant/Controlled/Desperate)};
+    \node (dv) [process, below=of position] {GM sets DV\\ (default 3)};
+    \node (roll) [process, below=of dv] {Player rolls dice pool\\ count successes (6+) and 1s (SB)};
+    \node (outcome) [decision, below=of roll] {Compare successes\\ to DV};
+    
+    \node (clean) [process, below left=of outcome, xshift=-1.2cm] {Clean Success\\ (no SB)};
+    \node (cost) [process, below=of outcome] {Success with SB};
+    \node (partial) [process, below right=of outcome, xshift=1.2cm] {Partial\\ (gain 1 Boon)};
+    \node (miss) [process, below=of partial] {Miss\\ (gain 2 Boons)};
+    
+    \node (sb) [process, below=of cost] {GM spends SB\\ (complications, clocks)};
+    \node (next) [startstop, below=of sb] {Pass spotlight\\ to next player};
+    
+    \draw [arrow] (start) -- (player);
+    \draw [arrow] (player) -- (position);
+    \draw [arrow] (position) -- (dv);
+    \draw [arrow] (dv) -- (roll);
+    \draw [arrow] (roll) -- (outcome);
+    
+    \draw [arrow] (outcome) -- node[anchor=east, align=center] {S ≥ DV\\ SB = 0} (clean);
+    \draw [arrow] (outcome) -- node[anchor=east, align=center] {S ≥ DV\\ SB > 0} (cost);
+    \draw [arrow] (outcome) -- node[anchor=west, align=center] {0 < S < DV} (partial);
+    \draw [arrow] (outcome) -- node[anchor=west, align=center] {S = 0} (miss);
+    
+    \draw [arrow] (clean) |- (next);
+    \draw [arrow] (cost) -- (sb);
+    \draw [arrow] (partial) -- (sb);
+    \draw [arrow] (miss) -- (sb);
+    \draw [arrow] (sb) -- (next);
+  \end{tikzpicture}
+  \end{center}
