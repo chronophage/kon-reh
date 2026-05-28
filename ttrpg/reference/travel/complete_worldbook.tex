@@ -82,116 +82,6 @@
 \newcommand{\SuitClub}{\ensuremath{\clubsuit}}
 \newcommand{\SuitDiamond}{\ensuremath{\diamondsuit}}
 
-% ---------- Branding ----------
-\definecolor{fePrimary}{HTML}{0D1B2A}
-\definecolor{feAccent}{HTML}{6FFFE9}
-\definecolor{feInk}{HTML}{101418}
-\definecolor{fePaper}{HTML}{F7F7F7}
-
-\newcommand{\feTitlePage}{%
-  \begin{titlepage}
-    \centering
-    \vspace*{3cm}
-    {\Huge\bfseries Fate's Edge \par}
-    \vspace{1cm}
-    {\LARGE Complete Worldbook \par}
-    \vspace{0.5cm}
-    {\large \itshape A Gazetteer of the Known Realms\par}
-    \vfill
-    {\large \textsc{As told by those who live there, bleed there, and owe there}\par}
-    \vspace{1cm}
-  \end{titlepage}
-}
-
-\begin{document}
-
-\feTitlePage
-\tableofcontents
-% ============================================================
-% FATE'S EDGE --- COMPLETE WORLDBOOK
-% Revised with layered narration and regional generators
-% Each chapter includes: narrative (IC voice) + almanac + generator input
-% ============================================================
-\documentclass[11pt,letterpaper,twoside]{book}
-
-% ---------- Encoding, fonts, micro-typography ----------
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[final]{microtype}
-
-% ---------- Page geometry ----------
-\usepackage[letterpaper,margin=1in]{geometry}
-
-% ---------- Math & symbols ----------
-\usepackage{amsmath,amssymb,mathtools}
-
-% ---------- Colors, graphics, layout ----------
-\usepackage[table]{xcolor}
-\usepackage{graphicx}
-\usepackage{tcolorbox}
-\usepackage{tikz}
-\usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
-
-% ---------- Tables ----------
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{colortbl}
-\usepackage{multirow}
-\usepackage{makecell}
-\usepackage{longtable}
-
-% ---------- Lists ----------
-\usepackage{enumitem}
-\setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
-\setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
-
-% ---------- Hyperlinks & references ----------
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=[rgb]{0.10,0.25,0.55},
-  citecolor=[rgb]{0.10,0.45,0.25},
-  urlcolor=[rgb]{0.55,0.10,0.10},
-  pdfauthor={Fate's Edge},
-  pdftitle={Fate's Edge --- Complete Worldbook},
-  pdfcreator={LaTeX}
-}
-\usepackage{bookmark}
-\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
-
-% ---------- Indexing ----------
-\usepackage{imakeidx}
-\makeindex
-
-\newcommand{\indexterm}[2][]{%
-  \textit{#2}%
-  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi%
-}
-
-% ---------- Table helpers ----------
-\renewcommand{\arraystretch}{1.15}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\definecolor{FeRow}{HTML}{F5F7FA}
-\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
-\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
-
-% ---------- Small conveniences ----------
-\newcommand{\textrarr}{\ensuremath{\rightarrow}}
-\newcommand{\textlarr}{\ensuremath{\leftarrow}}
-\newcommand{\textdarr}{\ensuremath{\downarrow}}
-\newcommand{\beat}{\ensuremath{\triangleright}\,}
-\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
-\newcommand{\Tag}[1]{\texttt{[#1]}}
-
-% ---------- Suit symbols ----------
-\newcommand{\SuitSpade}{\ensuremath{\spadesuit}}
-\newcommand{\SuitHeart}{\ensuremath{\heartsuit}}
-\newcommand{\SuitClub}{\ensuremath{\clubsuit}}
-\newcommand{\SuitDiamond}{\ensuremath{\diamondsuit}}
-
 % ---------- Almanac environment ----------
 \newtcolorbox{almanac}{
   colback=gray!5,
@@ -260,6 +150,13 @@ The road isn't just a ledger. It's a butcher's block. Every gate isn't a clause�
 % PART I: THE AMARANTHINE SEA & NORTHERN SHORES
 % ============================================================
 \part{The Amaranthine Sea \& Northern Shores}
+
+% After \part{The Amaranthine Sea & Northern Shores}
+\begin{quote}
+  \small
+  \textit{``The sea keeps a better ledger than any scribe. The reef remembers every secret whispered above its depths. Do not ask which flag flies highest – ask which hull leaks slowest.''}
+  \noindent — Dusana of the Raven Road
+  \end{quote}
 
 % ------------------------------
 % CHAPTER: KAHFAGIA
@@ -607,16 +504,16 @@ Never let a bell-ringer count your breaths. The Chain-Lanterns pay well for name
 \input{../generators/thepyrgos.tex}
 \newpage
 
-
-
-% ============================================================
-% PART II: THE NORTHERN REACHES
-% ============================================================
 % ============================================================
 % PART II: THE NORTHERN REACHES
 % ============================================================
 \part{The Northern Reaches}
-
+% After \part{The Northern Reaches}
+\begin{quote}
+\small
+\textit{``The mountain counts your breaths. The frost writes your name in ice. In the north, the dead do not wait – they walk, and they remember every promise you made to keep warm.''}
+\noindent — Dusana of the Raven Road
+\end{quote}
 % ------------------------------
 % CHAPTER: AELER
 % ------------------------------
@@ -947,15 +844,17 @@ Never name a drowned person aloud while underway. The sea collects names, and if
 \input{../generators/linns.tex}
 \newpage
 
-
-% ============================================================
-% PART III: THE EASTERN DOLMIS & THE VALEWOOD
-% ============================================================
 % ============================================================
 % PART III: THE EASTERN DOLMIS & THE VALEWOOD
 % ============================================================
 \part{The Eastern Dolmis \& The Valewood}
 
+% After \part{The Eastern Dolmis & The Valewood}
+\begin{quote}
+  \small
+  \textit{``Every threshold has a keeper. Some keepers ask for salt. Some ask for silence. The Green Host asks for a name – and it does not mean yours.''}
+  \noindent — Dusana of the Raven Road
+  \end{quote}
 % ------------------------------
 % CHAPTER: THEONA
 % ------------------------------
@@ -1245,6 +1144,12 @@ Never eat the fruit of a tree that has a face. The forest does not forget its de
 % PART IV: THE SOUTHERN REALMS (AKILAN)
 % ============================================================
 \part{The Southern Realms (Akilan)}
+% After \part{The Southern Realms (Akilan)}
+\begin{quote}
+  \small
+  \textit{``The ledger does not forgive arithmetic errors. A single miscounted bushel can unmake a house, a tribe, an empire. I am not here to be kind. I am here to be correct. But even the Widow's ink runs when the monsoon weeps.''}
+  \noindent — Dusana of the Raven Road, at the weigh‑house of Mbaro
+  \end{quote}
 
 % ------------------------------
 % CHAPTER: OSHIIRA
@@ -1588,12 +1493,17 @@ Never step onto a silk bridge without first naming a witness. The bridge will re
 \input{../generators/crimson-valley.tex}
 \newpage
 
-
 % ============================================================
 % PART V: THE WAY OF SILK
 % ============================================================
 \part{The Way of Silk}
 
+% After \part{The Way of Silk}
+\begin{quote}
+  \small
+  \textit{``The road is a ledger. Every oasis is a credit, every broken wheel a debt. The Tulkani tie knots to remember who owes whom. The Fhara weigh water before they weigh silver. The Pereshi recite verses to keep the bridges open. And the Sidhi keep lighthouse lamps burning for the dead who still have not reached the shore.''}
+  \noindent — Dusana of the Raven Road, at a caravanserai whose name she refused to give
+  \end{quote}
 % ------------------------------
 % CHAPTER: FHARA
 % ------------------------------
@@ -1879,12 +1789,16 @@ Never sleep outside the circle at night. The wagon ring is sanctuary. Outside it
 \input{../generators/tulkani.tex}
 \newpage
 
-
 % ============================================================
 % PART VI: DHAHARA — THE KINGDOM OF BRASS
 % ============================================================
 \part{Dhahara — The Kingdom of Brass}
-
+% After \part{Dhahara — The Kingdom of Brass}
+\begin{quote}
+  \small
+  \textit{``The mountain weighs every breath, every ingot, every oath. Pay in iron, pay in silence, or pay in blood. And when the ninth lease cracks, even the elephants will remember who fed them during the famine.''}
+  \noindent — Dusana of the Raven Road, at the Viceroy's Hall in Sarvistan
+  \end{quote}
 % ------------------------------
 % CHAPTER: THE MOUNTAIN SATRAPIES
 % ------------------------------
@@ -2113,12 +2027,16 @@ Never count your breaths aloud in a mine. The mountain listens, and if it hears 
 \input{../generators/himdahl_foothills.tex}
 \newpage
 
-
 % ============================================================
 % PART VII: THE EASTERN REALMS
 % ============================================================
 \part{The Eastern Realms}
-
+% After \part{The Eastern Realms}
+\begin{quote}
+  \small
+  \textit{``The maps of the empire draw the East as a single sweep – Sihai, Nihori, Ayokha – all pressed together like tiles on a game board. The roads know better. Sihai measures time in dynasties; Nihori counts it in storms. Ayokha negotiates between them with the patience of the monsoon. And beneath them all, the older peoples keep their own thresholds, their own debts, their own ways of not being seen.''}
+  \noindent — Dusana of the Raven Road, at the edge of the Inland Sea
+  \end{quote}
 % ------------------------------
 % CHAPTER: SIHAI
 % ------------------------------
@@ -2291,7 +2209,12 @@ Never refuse a gift of betel leaf. It is an oath of hospitality. Refusing it is 
 \newpage
 
 \part{The Spaces Between}
-
+% After \part{The Spaces Between}
+\begin{quote}
+  \small
+  \textit{``The Ways Between do not measure miles. They measure choices. A wrong turn might lead to yesterday. A right turn might lead to a version of yourself who made a different decision – and is still alive to regret it. The mist does not hide landmarks. It hides destinations.''}
+  \noindent — Dusana of the Raven Road, at a crossroads that did not exist on any map
+  \end{quote}
 % ------------------------------
 % CHAPTER: UBRAL
 % ------------------------------
@@ -2404,6 +2327,64 @@ Never name a rival while crossing a bridge at night. The water remembers, and th
 
 \newpage
 \input{../generators/silkstrand.tex}
+\newpage
+
+\chapter{Midh-Akhaz}
+\emph{The Violet Gate.}
+
+\noindent
+{\Large
+\textit{Coin talks. Grass walks. Blood settles the rest.}
+
+\vspace{0.5em}
+
+I am a Horse-Braid Apprentice. I tie a new knot for every paying passenger. My hair is a map of debts — and grudges. The wind carries names, not ledgers, but here, in the shadow of the Oasis Compact, both trade and oaths change hands. Do not mistake our patience for weakness. The grass remembers every hoof that crossed it.
+
+\vspace{0.5em}
+
+Midh Ahkaz is not a city. It is a wound that learned to trade. A day's ride north of the Ecktorian border, it squats on the edge of the Violet Steppe like a patient wolf. No walls. No gates. Just rings of felt tents, latrine trenches, and the smell of horse sweat, cedar smoke, and the faint copper tang of blood money.
+
+\vspace{0.5em}
+
+The grass grows tall enough to hide a body. The locals cut it back at dawn — but never at dusk, because the things that crawl through it at night have sharp teeth and no patience for property lines. Ecktorian emissaries call this place ``the Brink.'' Caravan guards call it home. Thieves call it paradise.
+
+\vspace{0.5em}
+
+Every morning, the Coin-Weigh Tribunal opens its scales under a canvas dome. Every night, the Dust Market auctions goods that fell off a wagon — or off a corpse. The Khatun's word is law until someone stronger speaks. And in the Silver Stall Stable, a horse thief can buy a fresh mount with a story and a knife.
+
+\vspace{0.5em}
+
+Never refuse the guest‑cup. The first pour is courtesy. The second is negotiation. The third is a blood‑price unspoken. And the fourth — the fourth means you're already dead, you just haven't stopped breathing.
+
+\vspace{1em}
+
+\noindent\textit{— Horse-Braid Apprentice, who ties a knot for every secret she carries}
+}
+
+\vspace{1em}
+
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Curd cheese and flatbread — the cheese is from the Ykrul herds, the bread is baked in the embers of a dung fire. It tastes of smoke and the open sky. The poor dip it in salt; the rich dip it in honey stolen from a border hive.
+
+\textbf{What does a child learn before they can walk?} To count horses. Midh Ahkaz children are taught the eight gaits of a healthy mount: walk, trot, canter, gallop, pace, amble, rack, and the ninth — the death‑sprint that only a stolen horse knows. The ninth gait is never taught; it is discovered when the rider's life depends on it.
+
+\textbf{What is the first thing you notice about a stranger?} Their braids. Ykrul warriors braid their hair with clan colours; Vilikari traders wear oiled braids with silver beads. A stranger whose braids are loose has just fought. A stranger whose braids are cut has lost a blood‑price. A stranger with no braids is either a slave or a ghost. Neither stays long.
+
+\textbf{What is the most common crime?} Grass‑right forgery — but forgery is not a crime, it is a negotiation. The Oasis Compact issues branded sticks for grazing rights. A clever carver can duplicate the brand. The penalty is exile into the tall grass at dusk. The grass does not have a court of appeals.
+
+\textbf{What does no one talk about but everyone knows?} The Khatun is not the only ruler. The Silver Stall Stable master knows where every stolen horse sleeps. The Dust Market auctioneer knows the price of every sin. And the Iron Well keeper knows the name of everyone who will die before the next grass moon. The three of them meet once a season. No one records what they say. The grass records it.
+
+\textbf{Where do people go when they die?} To the grass. The dead are not buried. Their bodies are carried beyond the caravan rings and left for the wolves and the wind. The grass grows tall and green where a body falls. A patch of deep violet is a sign that the dead were not properly mourned. The locals avoid those patches.
+
+\textbf{How do you apologize for a serious wrong?} You offer a blood‑price in silver, weighed on the Coin‑Weigh Tribunal's scales. If the scale tips in your favour, you are forgiven. If it tips against you, you owe a horse. If the scale balances, you owe a story — and the story must be true, and the true story must make the wronged party weep. If it does not, you owe a finger.
+
+\textbf{What is the most important festival?} The Grass Moon (autumn equinox). The violet seed‑heads glow under moonlight. The tribes ride in a great circle, singing the names of the dead. At midnight, the Khatun pours a cup of water onto the earth. If the water sinks, the winter will be mild. If it pools, the winter will be hungry. If it steams, the Hollow is walking. The festival ends at dawn. No one sleeps.
+
+\textbf{What is the secret that could destroy a powerful person?} The Oasis Compact's original seal was not lost. It was stolen by a Vilikari factor who wanted to control water rights. The factor is still alive, living in the Foreign Quarter under a false name. The seal is hidden in a hollow horse skull buried under the Grass Ring. The skull belonged to the Khatun's favourite stallion. The stallion did not die of old age.
+\end{almanac}
+
+\newpage
+\input{../generators/midh-akhaz.tex}
 \newpage
 
 % ------------------------------
@@ -2606,21 +2587,15 @@ The road was south. I did not know who would be waiting. I went anyway.
 
 \vspace{1em}
 
-\noindent\textbf{Postscript}
+% After the Edgewalker's final line, add this:
 
-The road is always south. Or north. Or whichever direction you are not facing when you read this sentence. The road does not care about cardinal points. The road cares about movement. And I am still moving.
+\vspace{2em}
+\begin{quote}
+\small
+\textit{``The road is a ledger. Every oasis is a credit, every broken wheel a debt. The Tulkani tie knots to remember who owes whom. The Fhara weigh water before they weigh silver. The Pereshi recite verses to keep the bridges open. And the Sidhi keep lighthouse lamps burning for the dead who still have not reached the shore.''}
 
-\vspace{0.5em}
-
-I sympathise with this "Edgewalker." When I dream, I dream of other faces. When I wander, I feel the weights I do not owe. And, from time to time, I find myself writing in a ledger with a hand I do not recognize as my own. The hat has never cooled.
-
-\vspace{0.5em}
-
-The ninth entry is always the hardest to write. Not because it is the last. Because it is the one you have to mean.
-
-\vspace{0.5em}
-
-\noindent\textit{— The Grey Wanderer (unsigned, undated, and probably still walking)}
+\noindent — Dusana of the Raven Road, at a caravanserai whose name she refused to give
+\end{quote}
 
 \newpage
 
@@ -2628,6 +2603,12 @@ The ninth entry is always the hardest to write. Not because it is the last. Beca
 % APPENDICES: GLOBAL TRAVEL & SB MENUS
 % ============================================================
 \part{World Travel \& Gateways}
+% After \part{World Travel & Gateways}
+\begin{quote}
+  \small
+  \textit{``Every Diamond you earn is a tooth knocked out of someone else's jaw. Every Debt you incur? I already bought it from your victim for half what you'll pay – and I'm collecting interest in your marrow before you finish reading this sentence. The road is not just a ledger. It's a butcher's block.''}
+  \noindent — The Edgewalker (as recorded by Dusana)
+  \end{quote}
 
 \chapter{Global Travel Procedures}
 \label{chap:globaltravel}
@@ -2674,14 +2655,56 @@ On success, advance to the next leg; on failure, mark delay, debt, or diversion 
 
 \newpage
 
+\subsection{Universal Travel Hazards (d18)}
+When drawing a Club from the Wilds deck or from a region’s own hazard table, you may roll on this expanded table for additional flavour. These hazards integrate elements from the \emph{Eastern Realms}, \emph{Dhahara}, and the \emph{Way of Silk} expansions.
+
+\begin{longtable}{|p{1.5cm}|p{10cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{d18} & \textbf{Hazard} \\
+\hline
+1 & \textbf{Bell-Line Failure (Mistlands)} – A ward‑bell cracks. Wraiths cross the levee. Test Spirit + Resolve (DV 4) or gain \textsc{Marked by Mist} (next spirit encounter starts Desperate). \\
+2 & \textbf{Star-Road Phasing (Valewood)} – An ancient Lethai road flickers. Navigation DV +2; on failure, emerge in a different hex (GM chooses). \\
+3 & \textbf{Spirit-Dust Storm (Ashaan)} – Red sand whispers. All actions Desperate for the scene. On any 1, a bound spirit breaks free (Cap 2). \\
+4 & \textbf{Ninth Night (Tulkani Circle)} – The Hollow walks. A Debt‑Walker demands a story, memory, or name. Refusal starts a Hollow Attention clock [4]. \\
+5 & \textbf{Well-Spirit Offended (Fhara)} – A dry well flows bitter water. Spirit demands apology (dates or a true story). Failure poisons the party’s water supply. \\
+6 & \textbf{Tariff Shift (Silkstrand/Brass Coast)} – Customs official declares new duties. All trade goods cost +1 Measure until next port. Bribe (Presence+Sway, DV 4) avoids the hike. \\
+7 & \textbf{Dry Well} – The oasis keeper is dead. Lose 1 Supply. (Original entry) \\
+8 & \textbf{Ghost Caravan} – Spectral camels pass at midnight. One of your beasts becomes a spirit for an hour. \\
+9 & \textbf{Debt Collector} – Someone recognises a Tulkani vow‑cord you carry. Pay in story or a favour to be named later. \\
+10 & \textbf{Sandstorm} – Navigation DV +1; mark Fatigue. \\
+11 & \textbf{Customs Inspection} – Roll Papers or start a 4‑clock \emph{Audit}. \\
+12 & \textbf{Oasis Court} – A dispute over water rights. Mediate or be delayed. \\
+13 & \textbf{Elephant Stampede} – Test Stealth or take Harm 1. \\
+14 & \textbf{Mirage} – False well; lose 1 Supply and mark Fatigue. \\
+15 & \textbf{Ashfall} – Distant volcano; all actions Desperate. \\
+16 & \textbf{Singing Dunes} – Sand hums. A spirit offers a riddle; solve for a Clue. \\
+17 & \textbf{The Ninth Hour} – Sunset lasts twice as long. GM gains 1 SB to spend in the next scene. \\
+18 & \textbf{Widow's Omen} – Distant thunder; the party dreams of ledgers and death. \\
+\hline
+\end{longtable}
+
+\newpage
 \section{Gateways \& Control Points}
-\begin{table}[htbp]
-\centering
+
 \feTableStart
-\begin{tabular}{llll}
+\begin{longtable}{llll}
+\caption{World Gateways \& Control Points} \\
 \toprule
 \textbf{Gateway} & \textbf{Region} & \textbf{Diamond Source} & \textbf{Typical Leverage} \\
 \midrule
+\endfirsthead
+\multicolumn{4}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\toprule
+\textbf{Gateway} & \textbf{Region} & \textbf{Diamond Source} & \textbf{Typical Leverage} \\
+\midrule
+\endhead
+\bottomrule
+\multicolumn{4}{r}{\small\textit{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
 Kassamira Port & Kahfagia & Kahfagia & Convoy letter, lantern-law warrant, pilotage token \\
 Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority, coin-house credit, procession permit \\
 Silkstrand & Acasia & Acasia & Exchange floor pass, condotta rider, watergate priority \\
@@ -2707,11 +2730,24 @@ Nihori Storm-Shrine & Nihori & Shrine Maiden & Shrine bell, storm-charmer's hat,
 Mbaro Weigh-House & Oshiira & Vermilion Corps & Grain ledger page, tariff stamp, barge priority token \\
 The Ukwe (Speaking Tree) & Sekogo & Green Council & Ungwe leaf, nkisi shard, leopard's favour \\
 Himadri Pass & Dhahara (Himadri) & Aeler & Iron ingot, toll waiver, elephant whistle \\
-\bottomrule
-\end{tabular}
+\addlinespace
+\multicolumn{4}{c}{\textbf{--- Added Gateways ---}} \\
+\midrule
+Amaria (Dual Customs Post) & Kahfagia/Amaria & Kahfagia/Oshiira & Dual customs stamp, two‑ledger receipt, fog keeper's log \\
+Midh-Akhaz (Violet Bazaar) & Midh-Akhaz & Ykrul/Vilikari & Grass right, oath‑bead, water share, dust market cut \\
+Narrow of Sorrows (Strait) & Oshiira/Kahfagia (Disputed) & Vermilion Corps/Admiralty & Cipher book half‑key, false flag papers, deniable asset contract \\
+\addlinespace
+Roller Gate of Khomani & Ngomebe (Stone Men) & Mason-Kin & Keystone shard, sledge-wax, stone-song fragment \\
+Silver Pass & Taharka (Highlands) & Ridge-Watchers & Pass-stone, horse-bond, coffee measure \\
+Crimson Silk Bridge & Lethai-ar (Crimson Valley) & Silk-Warden & Witness cord, warden's mask, Ukwe root shard \\
+Moot Hill of Three Greens & Theona (Eastern Dolmis) & Green Council & Well-blessing, moot token, hawthorn pass \\
+Well-Court of the Three Wells & Fhara (Oasis Courts) & Well-Judge & Water-share tablet, caravan court writ, well-judge's dipper \\
+Lighthouse of the Brass Flame & Sidhi (Brass Coast diaspora) & Lighthouse Judge & Lighthouse charter, freedman's seal, archive key \\
+Fire-Temple Pass & Pereshi (Highlands) & Flame-Keeper & Fire-temple token, caravan tariff receipt, royal seal \\
+White Mane Remount Station & Kuvani (Steppe) & Wind-Singer & Remount chain mark, grazing compact, sky-road song \\
+Ninth Cord Wagon Circle & Tulkani (Itinerant) & Caravan Judge & Vow-bead, safe-haven oath, dream-cord \\
+\end{longtable}
 \feTableEnd
-\caption{World Gateways \& Control Points}
-\end{table}
 
 \newpage
 
@@ -2740,15 +2776,85 @@ Never use a Diamond if you can trade it for three smaller ones. Always keep a ni
 \item \textbf{4+ SB} — Reshape the leg: rewrite the route, start a new complication clock, demand immediate payment on a Debt.
 \end{itemize}
 
-\subsection{Regional SB Options}
-\begin{itemize}
-\item \textbf{Aeler (under-vaults):} Breath-time checks, engineer requisitions, cave-in detours.
-\item \textbf{Oshiira (canals):} Audit traps, locust swarms, Widow's health failures.
-\item \textbf{Ashaan (Veil):} Spirit-dust storms, bound spirits breaking free, Black Hand sweeps.
-\item \textbf{Tulkani (wagon circles):} Debt collectors, Hollow walks on the ninth night, vow-cords tangling.
-\item \textbf{Lethai-ar (bridges):} Snapped strands, web-law challenges, the ninth echo.
-\item \textbf{Aelinnel (bells):} Miscounts, offended tide-spirits, bell-lines breaking.
-\end{itemize}
+\subsection{Regional SB Options (Expanded)}
+When a Story Beat is generated in a specific region, the GM may choose a complication that fits that region’s flavour. Below are options for all major regions, including those from the expansions.
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Region} & \textbf{SB Options (1–3 SB)} \\
+\hline
+\textbf{Kahfagia} & Lantern code changes (1 SB); mirror‑keeper demands a toll (2 SB); privateer flotilla appears (3 SB) \\
+\hline
+\textbf{Ecktoria} & Statue turns its head (1 SB); Everflame burns blue (2 SB); Censor’s seal cracks (3 SB) \\
+\hline
+\textbf{Acasia} & Peat‑fog rolls in (1 SB); a bridge leads back to where you started (2 SB); the Curse stirs (3 SB) \\
+\hline
+\textbf{Vhasia} & Seal breaks mid‑signing (1 SB); legal papers rewrite themselves (2 SB); chevauchée burns a village (3 SB) \\
+\hline
+\textbf{Viterra} & Hedge shifts overnight (1 SB); charter contradicts itself (2 SB); duel challenge declared (3 SB) \\
+\hline
+\textbf{Thepyrgos} & Bell rings false (1 SB); The Unfinished Stair appears (2 SB); Chain‑Lanterns conduct a sweep (3 SB) \\
+\hline
+\textbf{Aeler (under‑vaults)} & Breath‑time check fails (1 SB); engineer demands requisition (2 SB); cave‑in detour (3 SB) \\
+\hline
+\textbf{Mistlands} & Fog hides landmarks (1 SB); a wraith asks for a name (2 SB); the ninth bell rings (3 SB) \\
+\hline
+\textbf{Ykrul} & White squall (1 SB); horse sickness spreads (2 SB); feud spark escalates (3 SB) \\
+\hline
+\textbf{Vilikari} & Annona late (1 SB); law tangle (2 SB); Foedus Stone crack widens (3 SB) \\
+\hline
+\textbf{Black Banners} & Payday delayed (1 SB); false orders (2 SB); condotta flip (3 SB) \\
+\hline
+\textbf{Linns} & Black squall drops (1 SB); fogfall (2 SB); thing injunction (3 SB) \\
+\hline
+\textbf{Sihai} & Ancestor demands accounting (2 SB); Censorate audit triggered (3 SB); canal lock sabotaged (1 SB) \\
+\hline
+\textbf{Nihori} & Ninth wave warning (2 SB); oni cult initiation (3 SB); duel challenge issued (1 SB) \\
+\hline
+\textbf{Ayokha} & Monsoon bell rings false (1 SB); witness cord cut (2 SB); nat demands a story (2 SB) \\
+\hline
+\textbf{Dhahara (Satrapies)} & Breath shortage (1 SB); toll dispute escalates (2 SB); Ninth Seal whispers (3 SB) \\
+\hline
+\textbf{Dhahara (Brass Coast)} & Tariff hike (1 SB); green lantern lit (2 SB); smuggler’s betrayal (2 SB) \\
+\hline
+\textbf{Fhara} & Dry well discovered (1 SB); coffee ritual interrupted (2 SB); well‑spirit offended (2 SB) \\
+\hline
+\textbf{Sidhi} & Lighthouse out of phase (1 SB); freedman’s seal forged (2 SB); Ashaani raid sighted (3 SB) \\
+\hline
+\textbf{Pereshi} & Flame gutters (1 SB); forged scroll (2 SB); bridge recitation fails (2 SB) \\
+\hline
+\textbf{Kuvani} & Horse sickness curse (2 SB); wind‑singer falls silent (2 SB); ghost herd charges (3 SB) \\
+\hline
+\textbf{Tulkani} & Vow‑cord recognised (1 SB); lord demands rent (2 SB); ninth night triggered (3 SB) \\
+\hline
+\textbf{Oshiira} & Desert dust coats grain (1 SB); locust swarm (2 SB); Widow’s health fails (3 SB) \\
+\hline
+\textbf{Ashaan} & Spirit‑dust storm (1 SB); Brass Gate closed (2 SB); bound spirit breaks free (3 SB) \\
+\hline
+\textbf{Ngomebe} & Keystone cracks (1 SB); Root‑binder sabotage (2 SB); earth tremor (3 SB) \\
+\hline
+\textbf{Taharka} & Landslide blocks pass (1 SB); horse sickness (2 SB); king assassinated (3 SB) \\
+\hline
+\textbf{Sekogo} & Thorn‑spirit blocks path (1 SB); Ukwe demands a name (2 SB); Leopard Society hunt (3 SB) \\
+\hline
+\textbf{Lethai-ar (Crimson Valley)} & Snapped strand (1 SB); web‑law challenge (2 SB); bridge collapses (3 SB) \\
+\hline
+\textbf{Theona} & Ground‑mist (1 SB); spoken geas (2 SB); Green Host rides (3 SB) \\
+\hline
+\textbf{Zakov} & Tide shift (1 SB); warehouse fire (2 SB); cursed cargo (3 SB) \\
+\hline
+\textbf{Aelinnel} & Glamour fog (1 SB); iron offence (2 SB); green gate yawns (3 SB) \\
+\hline
+\textbf{Aelaerem} & Unseasonal fog (1 SB); scarecrow turns (2 SB); Hollow opens (3 SB) \\
+\hline
+\textbf{Valewood} & Sweet wind (1 SB); path reversal (2 SB); empire wakes (3 SB) \\
+\hline
+\textbf{Ways Between (Obishaal)} & Funeral loop (1 SB); reality thins (2 SB); convergence (3 SB) \\
+\hline
+\textbf{Dungeons (living infrastructure)} & Breath‑bond snaps (1 SB); demon whispers (2 SB); keystone cracks (3 SB) \\
+\hline
+\end{longtable}
 
 % ============================================================
 % COLOPHON
