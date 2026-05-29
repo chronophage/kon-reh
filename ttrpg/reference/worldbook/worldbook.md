@@ -1490,8 +1490,8 @@ A layered syncretic blend:
 Sihai is the oldest continuous civilization in the known world, a behemoth of culture, military power, and bureaucratic tradition. To its people, it is not merely a nation but the center of the civilized universe, surrounded by progressively less-ordered "barbarian" states. Its influence is felt through trade, its cultural exports, and its relentless, patient expansion. Sihai projects power not through frantic conquest, but through the inevitable, grinding pressure of its superior system and population.
 
 #### Geography
-* The Heartland: The vast, fertile plains of the Sihon River basin, fed by snowmelt from the Himdahl Mountains. This incredibly productive land supports the empire's massive population.
-* The Himdahl Mountains: The "Sky-Spine" to the west and north, a towering range that separates Sihai from the deserts and steppes beyond. Source of minerals and jade.
+* The Heartland: The vast, fertile plains of the Sihon River basin, fed by snowmelt from the Himadri Mountains. This incredibly productive land supports the empire's massive population.
+* The Himadri Mountains: The "Sky-Spine" to the west and north, a towering range that separates Sihai from the deserts and steppes beyond. Source of minerals and jade.
 * The Hintara Ocean Coast: A long coastline with deep harbors, home to its massive navy and multicultural trading colonies.
 * The Altan Plains: The western grasslands, a contested region of expansion and conflict with the Kuvani and other nomadic peoples.
 
@@ -1529,7 +1529,7 @@ No single state religion, but a complex blend of three intertwined philosophical
 
 #### Adventure Hooks
 1. The Failed Exam: A brilliant scholar fails the imperial exams due to corruption and is exiled in disgrace. Now, they seek to uncover the conspiracy that ruined them, operating from the shadowy underworld.
-2. The Lost Legion: A entire imperial legion sent to secure a pass in the Himdahl Mountains vanished centuries ago. Their standard, a powerful artifact, is said to still be there, guarded by their vengeful spirits.
+2. The Lost Legion: A entire imperial legion sent to secure a pass in the Himadri Mountains vanished centuries ago. Their standard, a powerful artifact, is said to still be there, guarded by their vengeful spirits.
 3. Tea and Poison: The player characters must escort a diplomatic mission to negotiate a tea trade agreement, navigating deadly court intrigue where a misplaced word or a poisoned cup could shatter the peace.
 4. The Monkey King's Tomb: An infamous heretic and rebel, known as the Monkey King, was buried in an unmarked grave. His tomb is said to contain philosophies that could undermine the entire imperial system, and both the government and underground rebels race to find it.
 5. The Colony's Cry: A multicultural trading colony on the coast is threatened by a Nihoriese warlord. The colonists plea for help from the distant Imperial Navy, forcing the PCs to hold the line against impossible odds.
