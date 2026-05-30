@@ -1,30 +1,47 @@
-% -*- coding: utf-8 -*-
-% Section 2: Core Mechanics (Revised)
-% Comprehensive Resource Guide for Fate's Edge
-
 \chapter{Core Mechanics}\label{chap:core_mechanics}
+
+This chapter distils the essential rules of Fate’s Edge into a compact, look‑up
+reference. It assumes you have already read the narrative‑first philosophy
+(\autoref{chap:introduction}) and are comfortable with the basic flow of play.
+Here you will find the precise procedures for resolution, advancement, and
+resource management that power the game.
 
 \section{The Core Resolution Cycle}\label{sec:resolution_cycle}
 
-When a player rolls dice, they engage the world through risk, consequence, and discovery.
+Every meaningful action follows the same simple loop. The GM states Position and
+Difficulty, the player rolls, and the table interprets the result through the
+lens of the fiction.
 
 \subsection{Step‑by‑Step Resolution}\label{subsec:steps}
 
 \begin{enumerate}
-    \item \textbf{Declare Action \& Approach:} Intent + Attribute + Skill.
-    \item \textbf{Set Difficulty Value (DV):} GM sets DV (2--7+) based on stakes.
-    \item \textbf{Roll Dice Pool:} Attribute + Skill d10s (max 10 dice; extras = auto-successes).
-    \item \textbf{Count Results:}
+    \item \textbf{Declare action \& approach.} The player states intent, the
+        Attribute (Body, Wits, Spirit, Presence) and Skill they will use.
+    \item \textbf{Set Difficulty Value (DV).} The GM sets a target number of
+        successes based on the narrative stakes (see \autoref{subsec:difficulty_value}).
+    \item \textbf{Set Position.} The GM declares whether the action is
+        Dominant, Controlled, or Desperate (see \autoref{subsec:position_effect}).
+    \item \textbf{Roll the dice pool.} Roll a number of d10s equal to
+        Attribute + Skill.
+    \item \textbf{Count successes and Story Beats (SB).}
         \begin{itemize}
-            \item 6--9 = 1 success
+            \item 6–9 = 1 success
             \item 10 = 2 successes
-            \item 1 = 1 Story Beat (SB) for GM
+            \item 1 = 1 SB for the GM
         \end{itemize}
-    \item \textbf{Compare to DV} → Outcome Matrix (see \autoref{tab:outcome_matrix}).
-    \item \textbf{Spend SB:} GM introduces complications (see \autoref{sec:sb_spend_menu}).
+    \item \textbf{Compare successes to DV} using the Outcome Matrix
+        (\autoref{tab:outcome_matrix}).
+    \item \textbf{Apply the outcome.} The GM may spend any SB generated to
+        introduce complications (see \autoref{sec:sb_spend_menu}).
+    \item \textbf{Manage resources.} The player marks Boons, Fatigue, or
+        Obligation as indicated by the outcome.
 \end{enumerate}
 
 \subsection{Difficulty Value (DV)}\label{subsec:difficulty_value}
+
+The DV is the number of successes needed to achieve the character’s intent
+without a cost. The GM sets it based on the difficulty of the task, not the
+drama of the scene.
 
 \begin{tcolorbox}[title=Default DV Ladder, colback=white!97!gray, colframe=black!80!gray, sharp corners]
 \begin{center}
@@ -32,24 +49,41 @@ When a player rolls dice, they engage the world through risk, consequence, and d
 \toprule
 \textbf{DV} & \textbf{Typical Case} \\
 \midrule
-2 & Routine: clear intent, modest stakes, controlled environment \\
-3 & Pressured: time limits, mild resistance, partial information \\
-4 & Hard: hostile conditions, active opposition, precision required \\
-5+ & Extreme: stacked constraints, dangerous failure, high drama \\
+2 & Routine: clear path, no pressure, almost guaranteed. \\
+3 & Pressured: mild opposition, time limit, partial information. \\
+4 & Hard: active resistance, precision required, serious consequences. \\
+5+ & Extreme: stacked constraints, high drama, nearly impossible. \\
 \bottomrule
 \end{tabular}
 \end{center}
 \end{tcolorbox}
-Default DV = 3.
 
-\subsection{Position \& Effect}\label{subsec:position_effect}
-\begin{description}
-    \item[Position (risk)] Dominant (safe), Controlled (balanced), Desperate (high stakes).
-    \item[Effect (reward)] Limited, Standard, Great.
-\end{description}
-GM sets both based on fiction.
+\noindent \textbf{Default DV = 3.} Do not inflate DV to “challenge” players; use
+Position, clocks, and SB spends instead.
+
+\subsection{Position and Effect}\label{subsec:position_effect}
+
+Position answers “How risky is this attempt?” Effect answers “How much do I
+achieve on a success?” Both are set by the GM based on the fiction.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Position} & \textbf{Narrative Frame} & \textbf{Mechanical Effect} \\
+\midrule
+Dominant   & You press your advantage. & Re‑roll one failure. \\
+Controlled & Balanced, normal risk.   & No re‑rolls. \\
+Desperate  & You act under duress.    & Re‑roll one success (keep second). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Effect:} Limited, Standard, or Great. It describes scope,
+scale, or quality (e.g., disarming a trap: Limited = one person crosses,
+Standard = two, Great = all four).
 
 \subsection{Outcome Matrix}\label{subsec:outcome_matrix}
+
 \begin{longtable}{p{2.5cm} p{10cm}}
 \caption{Outcome Matrix}\label{tab:outcome_matrix}\\
 \toprule
@@ -63,276 +97,439 @@ GM sets both based on fiction.
 \endhead
 \bottomrule
 \endfoot
-Successes $\geq$ DV, SB $=0$ & Clean Success -- achieve intent without complication. \\
-Successes $\geq$ DV, SB $>0$ & Success \& Cost -- achieve intent; GM spends SB for complication. \\
-$0 <$ Successes $<$ DV & Partial -- progress with complication; player gains 1 Boon. \\
-Successes $=0$ & Miss -- no progress; GM escalates with SB; player gains 2 Boons. \\
+Successes $\geq$ DV, SB $=0$ & \textbf{Clean Success.} Achieve intent without complication. \\
+Successes $\geq$ DV, SB $>0$ & \textbf{Success with SB.} Achieve intent; GM spends SB for a twist. \\
+$0 <$ Successes $<$ DV & \textbf{Partial.} Make progress; player gains 1 Boon. \\
+Successes $=0$ & \textbf{Miss.} No progress; player gains 2 Boons; GM escalates with SB. \\
 \end{longtable}
 
 \subsection{Critical Success (10s)}\label{subsec:critical_success}
-If roll succeeds, each 10 adds narrative weight. Effects apply only on success.
+
+A die that shows 10 counts as two successes. If the overall roll succeeds, each
+10 adds narrative weight:
+
 \begin{itemize}
-    \item \textbf{1 ten:} Strong success -- improved Position or minor advantage.
-    \item \textbf{2 tens:} Exceptional -- choose two benefits (e.g., increased Effect + free Boon).
-    \item \textbf{3 tens:} Legendary -- decisive victory; clear 1 clock segment.
-    \item \textbf{4+ tens:} Mythic -- reshape scene; clear 1--2 clock segments.
+    \item \textbf{One 10:} Strong success – improve Position by one step on your
+        next action, or gain a minor advantage.
+    \item \textbf{Two 10s:} Exceptional – choose two benefits (e.g., increased
+        Effect + a free Boon).
+    \item \textbf{Three 10s:} Legendary – decisive victory; clear 1 segment from
+        a relevant clock.
+    \item \textbf{Four+ 10s:} Mythic – reshape the scene; clear 1–2 segments
+        from a relevant clock.
 \end{itemize}
-Tens are never rerolled by Position effects.
 
-\subsection{Dice Pool Limit \& Auto‑Successes}\label{sec:dice_pool_cap}
-Max dice = 10d10. Extra dice become auto-successes (no SB generated).
+\noindent Tens are never re‑rolled by Position effects.
 
-\subsection{Boons}\label{subsec:boon_economy}
+\subsection{Dice Pool Limit and Auto‑Successes}\label{subsec:dice_pool_limit}
+
+The maximum number of dice rolled is 10. Any additional dice beyond 10 become
+automatic successes (each extra die counts as one success, but no SB is
+generated). This keeps high‑tier characters from rolling more than a handful of
+physical dice while still rewarding their expertise.
+
+\subsection{Boons}\label{subsec:boons}
+
+Boons represent momentum and narrative leverage. You may hold up to 5.
+
 \paragraph{Earning Boons}
 \begin{itemize}
-    \item Partial (0 < successes < DV): 1 Boon
-    \item Miss (successes = 0): 2 Boons (meaningful roll only)
-    \item Bond‑driven action (once per bond/session): 1 Boon
-    \item GM award
+    \item \textbf{Partial:} Gain 1 Boon.
+    \item \textbf{Miss:} Gain 2 Boons (on a meaningful roll).
+    \item \textbf{Bond‑driven action:} Once per bond per session, gain 1 Boon
+        when you take a significant action that explicitly references your bond.
+    \item \textbf{GM award:} For creativity, sacrifice, or strong narrative play.
 \end{itemize}
 \noindent \textbf{Limit:} Max 2 Boons from failures per character per scene.
+Repetition of the same approach does not award extra Boons.
 
 \paragraph{Spending Boons (1 Boon)}
 \begin{itemize}
-    \item Reroll one die (after result)
-    \item Activate an on‑screen Asset
-    \item Improve Position by one step before roll
-    \item Power certain Rites/abilities
-    \item Convert 2 Boons $\rightarrow$ 1 XP (once/session downtime, max 2 XP)
+    \item Reroll a single die after seeing the pool.
+    \item Activate an on‑screen Asset.
+    \item Improve Position by one step before a roll.
+    \item Power certain Rites or abilities.
+    \item Convert 2 Boons $\rightarrow$ 1 XP (once per session during downtime,
+        max 2 XP per session via conversion).
 \end{itemize}
-\paragraph{Carryover:} Max 5 Boons; at scene end, reduce to 2.
+
+\paragraph{Carryover Limit} At the end of each scene, reduce held Boons to a
+maximum of 2. Excess are lost.
 
 \subsection{Story Beats (SB)}\label{subsec:story_beats}
-Each die showing 1 = 1 SB for GM. Rerolling a 1 does not erase its SB; another 1 adds extra.
+
+Every time a player rolls a 1, the GM gains one Story Beat. These are narrative
+tools to introduce complications, escalate tension, or advance clocks.
 
 \paragraph{SB Spend Menu}\label{sec:sb_spend_menu}
+\begin{center}
 \begin{tabular}{ll}
 \toprule
 \textbf{Cost} & \textbf{Effect} \\
 \midrule
-1 SB & Minor: noise, trace, tick clock +1, worsen Position \\
-2 SB & Moderate: alarm raised, lose cover/Position, lesser foe appears \\
-3 SB & Serious: reinforcements, key gear breaks, major twist, advance front clock +1 \\
-4+ SB & Major: trap springs, authority arrives, scene shift, Patron intervenes \\
+1 SB & Minor: noise, trace, tick a clock +1, worsen Position by one step. \\
+2 SB & Moderate: alarm raised, lose advantage/cover, lesser foe appears. \\
+3 SB & Serious: reinforcements, key gear breaks, major twist, advance a front clock +1. \\
+4+ SB & Major: trap springs, authority arrives, scene shift, Patron intervenes. \\
 \bottomrule
 \end{tabular}
+\end{center}
 
 \section{Player‑Managed Modules}\label{sec:player_managed_modules}
-Players track their own: Obligation, Corruption, Leash, Asset States.
 
-\begin{tcolorbox}[title=What Players Track, colback=black!3, colframe=black!40!white]
-\begin{tabular}{lll}
-\toprule
-\textbf{Module} & \textbf{Owner} & \textbf{Tick Triggers (examples)} \\
-\midrule
-Obligation (per Patron) & Player & Invoke Rite, Push, Crack the Seal \\
-Corruption Clock & Player & Cantor Push, Resonant Rite, GM SB on occult actions \\
-Leash (Summoning) & Player & Spirit takes Harm, acts against nature, crosses [WARD] \\
-Asset State (Symbol) & Player & Neglect, Crack the Seal $\rightarrow$ Compromised \\
-\bottomrule
-\end{tabular}
-\end{tcolorbox}
+In Fate’s Edge, you are the primary manager of your character’s mechanical state.
+This reduces GM overhead and keeps you engaged.
 
-\paragraph{Obligation Capacity} = Spirit + Presence.
+\paragraph{What you track:}
 \begin{itemize}
-    \item Over capacity: +1 Fatigue per segment.
-    \item Double capacity: Clear Fatigue, +1 Harm, Patron Intrusion.
+    \item Obligation tracks (per Patron or Symbol)
+    \item Corruption clocks (Cantors, Pact‑Whisperers)
+    \item Leash clocks (summoned spirits)
+    \item Asset states (Maintained, Neglected, Compromised)
+    \item Follower conditions (Exposure, Harm)
+    \item Progression clocks (Repertoire, Spirit Bond)
+    \item Boons, Favour, Leverage
 \end{itemize}
-\paragraph{Corruption Full} Apply last Patron's boon & burden, reset to 0.
-\paragraph{Leash Full} Spirit acts once to its nature then departs/turns hostile.
-\paragraph{Symbol State} Compromised -- repair downtime (DV 3) or 1 XP.
+
+\paragraph{Your responsibilities:}
+\begin{enumerate}
+    \item Mark immediately when a rule says “mark +X”.
+    \item Declare thresholds (“My Obligation is full!”).
+    \item Keep it visible (use trackers everyone can see).
+    \item Maintain ownership – you know your state best.
+\end{enumerate}
+
+The GM spot‑checks and provides consequences, but you drive your character’s
+mechanical narrative.
+
+\subsection{Obligation Capacity}\label{subsec:obligation_capacity}
+
+Obligation Capacity = Spirit + Presence. When you exceed capacity, mark 1 Fatigue
+per extra segment. When you reach double capacity, clear all Fatigue, increase
+Harm by 1, and the Patron intrudes (a demand, omen, or task).
+
+\subsection{Corruption Clock (Cantors)}\label{subsec:corruption_clock}
+
+Clock size = Spirit. When it fills, gain the last Patron’s benefit and burden,
+then reset the clock to your Tier (minimum 1). You are never completely free of
+Corruption.
+
+\subsection{Leash Clock (Summoners)}\label{subsec:leash_clock}
+
+Capacity = Cap + Spirit. Tick when the spirit takes Harm, acts against its
+nature, crosses a [WARD], or you split focus. Once per round, spend 1 Boon to
+clear 1 tick. When the Leash fills, the spirit acts once to its nature, then
+departs (or turns hostile).
+
+\subsection{Asset and Symbol Condition}\label{subsec:asset_condition}
+
+\begin{itemize}
+    \item \textbf{Maintained:} Full capability.
+    \item \textbf{Neglected:} –1 die when used; requires attention.
+    \item \textbf{Compromised:} Unavailable until repaired/recovered (downtime,
+        DV 3 roll, or 1 XP).
+\end{itemize}
 
 \section{Turn Economy}\label{sec:turn_economy}
-Each turn: \textbf{1 Action + 1 Move}.
+
+Each character takes \textbf{1 Action and 1 Move} on their turn. Actions and
+Moves may be taken in any order; repeating the same Action is not allowed unless
+noted.
 
 \subsection{Movement}
 \begin{itemize}
-    \item \textbf{Move:} Shift one band (Close $\leftrightarrow$ Near $\leftrightarrow$ Far) or stand from prone.
-    \item \textbf{Dash (Action):} Move two bands; next defense Desperate.
-    \item \textbf{Disengage (Action):} Then Move does not provoke opportunity attacks; cannot Attack this turn.
+    \item \textbf{Move:} Shift one range band (Close $\leftrightarrow$ Near $\leftrightarrow$ Far) or stand from prone.
+    \item \textbf{Dash (Action):} Shift two bands; your next defense is Desperate.
+    \item \textbf{Disengage (Action):} Then your Move does not provoke
+        opportunity attacks; you cannot Attack this turn.
 \end{itemize}
 
 \subsection{Action Options}
-\begin{itemize}
-    \item \textbf{Attack} (melee/ranged)
-    \item \textbf{Disengage} (as above)
-    \item \textbf{Charge (full turn):} Move two bands toward enemy + melee attack. Costs 1 Fatigue. Next defense Desperate. Requires open ground.
-    \item \textbf{Skirmish (full turn):} Move two bands away + ranged attack. Costs 1 Fatigue. Next defense Desperate. Requires open ground.
-    \item \textbf{Observe / Change Position:} +1 Position once per turn.
-    \item \textbf{Setup:} Grant ally +1 Position or step up Effect.
-    \item \textbf{Assist:} Spend 1 Boon for +1 die (max +3 from all assists).
-    \item \textbf{Defend, Channel/Weave, Cast Rite/Song, Interact,} etc.
-\end{itemize}
-Talents (Effortless Charge, Relentless, etc.) modify these.
+\begin{description}
+    \item[Attack] Make a melee or ranged attack.
+    \item[Disengage] See above.
+    \item[Shove] Opposed Body + Athletics. Push target one band.
+    \item[Grapple] Opposed Body + Melee vs. Body + Athletics. Both Engaged;
+        target suffers –1 die.
+    \item[Charge (full turn)] Move two bands toward an enemy + make one melee
+        attack. Cost 1 Fatigue, next defense Desperate, requires open ground.
+    \item[Skirmish (full turn)] Move two bands away from an enemy + make one
+        ranged attack. Cost 1 Fatigue, next defense Desperate, requires open
+        ground.
+    \item[Observe / Change Position] Gain +1 Position once.
+    \item[Setup] Grant an ally +1 Position or step up Effect (requires a roll).
+    \item[Assist] Spend 1 Boon to give an ally +1 die (max +3 from all assists).
+    \item[Defend, Channel/Weave, Cast Rite/Song, Interact, etc.]
+\end{description}
 
 \subsection{Initiative}
-No fixed order. GM spotlights based on fiction; ambushers act first.
+There is no fixed initiative order. The GM frames spotlight order based on the
+fiction. Ambushers act first; the spotlight may shift mid‑scene if narratively
+appropriate.
 
 \subsection{Opportunity Attacks}
-Leaving an enemy's Close without Disengage provokes one free melee attack (Controlled Position, no action cost).
+Leaving an enemy’s Close range without using Disengage provokes one free melee
+attack (Controlled Position, no action cost).
 
-\section{Fatigue \& Harm}\label{sec:fatigue_harm}
+\section{Fatigue and Harm}\label{sec:fatigue_harm}
 
 \subsection{Fatigue Track}
-Size = Body. Mark from exertion, magic, stress.
+Your Fatigue track size equals your Body attribute. Mark Fatigue for physical
+exertion, magical strain, stress, or harsh conditions.
 
 \paragraph{Effects}
 \begin{itemize}
-    \item Each Fatigue worsens Position: Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate.
-    \item If already Desperate, each Fatigue → --1 die.
-    \item \textbf{Overflow:} When track fills, increase Harm by 1 level, clear all Fatigue.
+    \item Each point of Fatigue worsens your Position by one step
+        (Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate).
+    \item If already Desperate, each additional Fatigue instead imposes a –1 die
+        penalty on all rolls.
+    \item \textbf{Overflow:} When the track fills, increase Harm by one level and
+        clear all Fatigue.
 \end{itemize}
-\paragraph{Recovery:} Short rest removes 2 Fatigue; full night removes all. Requires adequate Supply.
+
+\paragraph{Recovery}
+\begin{itemize}
+    \item Short rest (one hour, quiet): remove 2 Fatigue.
+    \item Full night’s rest in safety: remove all Fatigue.
+    \item Fatigue cannot be removed while the party is at Dangerous or Empty
+        Supply (see \autoref{sec:supply_clock}).
+\end{itemize}
 
 \subsection{Harm Levels}
+\begin{center}
 \begin{tabular}{ll}
 \toprule
-\textbf{Harm} & \textbf{Effect} \\
+\textbf{Harm Level} & \textbf{Effect} \\
 \midrule
-Harm 1 & --1 die on related actions \\
-Harm 2 & --1 die on most actions until treated \\
-Harm 3 & Incapacitated or dying \\
+Harm 1 & –1 die on related actions. \\
+Harm 2 & –1 die on most actions until treated. \\
+Harm 3 & Incapacitated or dying. \\
 \bottomrule
 \end{tabular}
-Recovery: medical or magical care.
+\end{center}
 
-\subsection{Taking Harm \& Fatigue -- The Procedure}
-When hit:
+\subsection{Taking Harm and Fatigue – The Procedure}
+When you are hit, follow these steps in order:
+
 \begin{enumerate}
-    \item \textbf{Convert} Harm to Fatigue using armor (see \autoref{sec:armor_conversion}). Minimum 1 Fatigue per hit.
-    \item \textbf{Apply remaining Harm:} If any, increase Harm level and clear all existing Fatigue.
-    \item \textbf{Add Fatigue} from step 1. If track fills, resolve overflow (Harm +1, clear Fatigue).
+    \item \textbf{Convert} incoming Harm to Fatigue using the Armor Conversion
+        Table (see \autoref{tab:armor_conversion}). Minimum 1 Fatigue per hit,
+        even if conversion would give 0.
+    \item \textbf{Apply remaining Harm} – if any Harm remains after conversion,
+        increase your Harm level by that amount, and clear all existing Fatigue
+        (the shock of a wound resets your exhaustion).
+    \item \textbf{Add the Fatigue} from step 1 to your Fatigue track. If this
+        fills or exceeds your track, resolve Overflow (Harm +1, clear all Fatigue).
 \end{enumerate}
 
-\subsection{Armor Conversion Table}\label{sec:armor_conversion}
-\begin{tabular}{lll}
+\subsection{Armor Conversion Table}\label{tab:armor_conversion}
+\begin{center}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Armor Type} & \textbf{Conversion (Harm → Fatigue)} & \textbf{Minimum Fatigue} \\
+\textbf{Armor Type} & \multicolumn{3}{c}{\textbf{Incoming Harm}} \\
+\cmidrule(lr){2-4}
+                   & Harm 1 & Harm 2 & Harm 3 \\
 \midrule
-Light  & 1 → 1 & 1 \\
-Medium & 2 → 1 & 1 \\
-Heavy  & 3 → 2 & 1 \\
+Light  & Fatigue 1 & Harm 1 + Fatigue 1 & Harm 2 + Fatigue 1 \\
+Medium & Fatigue 1 & Fatigue 1           & Harm 2 + Fatigue 1 \\
+Heavy  & Fatigue 1 & Fatigue 1           & Fatigue 2 \\
 \bottomrule
 \end{tabular}
-\emph{Example:} Light armor hit with Harm 2 → convert 1→1 Fatigue, remaining Harm 1 → increase Harm 1, clear Fatigue, then add 1 Fatigue. Result: Harm 1, Fatigue 1.
+\end{center}
+Minimum 1 Fatigue per hit.
 
-\subsection{Fear Effects}
-When Fear Track escalates (Shaken → Frightened → Panicked), roll d10 or choose:
+\subsection{Fear Effects (Optional)}
+When a Fear Track escalates (Shaken $\rightarrow$ Frightened $\rightarrow$ Panicked),
+the GM may roll a d10 or choose an effect appropriate to the fiction.
+
 \begin{center}
 \begin{tabular}{cl}
 \toprule
 d10 & Effect \\
 \midrule
-1 & Freeze (cannot act) \\
-2 & Flee \\
-3 & Drop held item \\
-4 & Beg/bargain \\
-5 & Hide \\
-6 & Panic attack (nearest target) \\
-7 & Blunder into danger \\
-8 & Obey simple command \\
-9 & Break down (useless until aided) \\
-10 & Catatonia \\
+1 & Freeze (cannot act). \\
+2 & Flee. \\
+3 & Drop held item. \\
+4 & Beg or bargain. \\
+5 & Hide. \\
+6 & Panic attack (target nearest creature). \\
+7 & Blunder into danger. \\
+8 & Obey a simple command. \\
+9 & Break down (useless until aided). \\
+10 & Catatonia. \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \section{Skills}\label{sec:skills}
-Action roll = Attribute (Body, Wits, Spirit, Presence) + Skill. GM sets Position and DV.
+
+Your dice pool for any action is \textbf{Attribute + Skill}. The GM sets
+Position and DV based on your approach.
 
 \subsection{Core Skills (Abridged)}
 \begin{longtable}{p{3cm} p{10cm}}
 \toprule
 \textbf{Skill} & \textbf{What It Covers} \\
 \midrule
-Arcana & Magic theory, wards, rituals \\
-Athletics & Running, climbing, swimming, balance \\
-Brawl & Unarmed combat, grappling \\
-Command & Leadership, morale \\
-Craft & Making, mending \\
-Deception & Lying, bluffing \\
-Insight & Reading emotions, detecting lies \\
-Investigation & Research, deduction \\
-Lore & History, cultures, general knowledge \\
-Medicine & Healing, first aid \\
-Melee & Close combat with weapons \\
-Notice & Perception, spotting ambushes \\
-Performance & Acting, music, oration \\
-Ranged & Bows, thrown weapons \\
-Stealth & Moving unseen \\
-Subterfuge & Casing, forgery, sleight of hand \\
-Survival & Wilderness navigation, foraging \\
-Sway & Persuasion, charm \\
-Tinker & Lockpicking, traps, devices \\
+Arcana & Magic theory, wards, rituals, free casting. \\
+Athletics & Running, climbing, jumping, swimming. \\
+Brawl & Unarmed combat, grappling. \\
+Command & Leadership, intimidation, morale. \\
+Craft & Building, repairing, creating tools or art. \\
+Deception & Lying, bluffing, misdirection. \\
+Insight & Reading emotions, detecting lies, understanding motives. \\
+Investigation & Research, deduction, analysing clues. \\
+Lore & History, culture, religion, general knowledge. \\
+Medicine & Healing, anatomy, first aid. \\
+Melee & Close combat with weapons. \\
+Notice & Perception, spotting ambushes, hidden details. \\
+Performance & Entertainment, oration, musical display. \\
+Ranged & Bows, crossbows, thrown weapons. \\
+Stealth & Moving unseen, hiding, blending in. \\
+Subterfuge & Casing, forgery, sleight of hand, social infiltration. \\
+Survival & Tracking, foraging, navigation, animal handling. \\
+Sway & Persuasion, negotiation, charm. \\
+Tinker & Lockpicking, traps, devices. \\
 \bottomrule
 \end{longtable}
 
-\subsection{Attribute + Skill Combos}
-Same action can use different pairs. Example: Persuading a guard: Presence+Sway (charm), Wits+Sway (logic), Spirit+Sway (conviction).
+\subsection{Alternative Attribute + Skill Pairs}
+The same fictional action can often use different Attributes. For example:
+
+\begin{itemize}
+    \item \textbf{Climbing:} Body + Athletics (strength) or Wits + Athletics
+        (routefinding) or Spirit + Athletics (determination).
+    \item \textbf{Persuading a guard:} Presence + Sway (charm) or Wits + Sway
+        (logic) or Spirit + Sway (conviction).
+\end{itemize}
+The GM has final say; creative alternatives are encouraged when they fit the
+fiction.
 
 \section{Experience Points (XP)}\label{sec:xp}
 
+XP is earned by engaging meaningfully with the world: overcoming challenges,
+taking risks, making hard choices, and leaning into your character’s story.
+
 \subsection{Awarding XP (per session)}
 \begin{itemize}
-    \item Attendance: +2
-    \item Major objective: +2--4
-    \item Discoveries: +1--2
-    \item Hard choices: +1--2
-    \item Complication spotlight: +1--3
-    \item Bond/flag driven: +1--2
-    \item GM curveball: +0--3
+    \item Base participation: +2 XP.
+    \item Major objective: +2–4 XP.
+    \item Discoveries (lore, locations, secrets): +1–2 XP.
+    \item Hard choices (moral or strategic): +1–2 XP.
+    \item Story engagement (embracing complications): +1–3 XP.
+    \item Personal goals: +1–2 XP.
 \end{itemize}
-\noindent End of major arc: +8--12 XP to all.
+At the end of a major story arc, everyone gains an additional +8–12 XP.
 
 \subsection{Spending XP}
 \begin{itemize}
-    \item \textbf{Attribute:} new rating ×3 XP, downtime = new rating days.
-    \item \textbf{Skill:} new level ×2 XP, downtime = new level days.
-    \item \textbf{Talents:} 2--12+ XP per tier.
-    \item \textbf{Follower:} Cap² XP, downtime 1--3 days.
-    \item \textbf{Asset:} Minor (4 XP, 1d), Standard (8 XP, 1w), Major (12 XP, 1 month).
+    \item \textbf{Attribute increase:} new rating ×3 XP; downtime = new rating days.
+    \item \textbf{Skill increase:} new level ×2 XP; downtime = new level days.
+    \item \textbf{Talents:} 2 XP (minor) to 12+ XP (epic).
+    \item \textbf{Follower (Capability):} Cap² XP; downtime 1–3 days.
+    \item \textbf{Asset:}
+        \begin{itemize}
+            \item Minor (4 XP, 1 day)
+            \item Standard (8 XP, 1 week)
+            \item Major (12 XP, 1 month)
+        \end{itemize}
 \end{itemize}
-\paragraph{Rush Rule:} Skip downtime → start Haste [4] clock. On fill, ability gains flaw/hitch.
+
+\paragraph{Rush Rule}
+You may attempt to train faster. The GM starts a Risk Clock [4]. Each segment
+you roll Spirit + Resolve (DV 3). When the clock fills, the new capability gains
+a flaw (e.g., –1 die penalty, unreliability, hidden problem).
 
 \subsection{Reputation Tiers}
 \begin{description}
-    \item[Novice (0--40 XP)] Local, prestige locked.
-    \item[Seasoned (41--90 XP)] Regional, some prestige unlock.
-    \item[Veteran (91--150 XP)] National, second follower slot.
-    \item[Paragon (151--220 XP)] Continental, rivals emerge.
+    \item[Novice (0–40 XP)] Local reputation, prestige locked.
+    \item[Seasoned (41–90 XP)] Regional influence, some prestige unlock.
+    \item[Veteran (91–150 XP)] National reputation, second follower slot.
+    \item[Paragon (151–220 XP)] Continental influence, rivals emerge.
     \item[Mythic (221+ XP)] Legendary, kingdoms react.
 \end{description}
 
 \section{Game Structure}\label{sec:game_structure}
+
 \subsection{Narrative Time}
-\textbf{A Moment} (heartbeat), \textbf{Some Time} (minutes), \textbf{Significant Time} (hours), \textbf{Days}.
+\begin{itemize}
+    \item \textbf{A Moment:} a heartbeat, a single action.
+    \item \textbf{Some Time:} a few minutes (skirmish, negotiation).
+    \item \textbf{Significant Time:} hours (march, ritual, stakeout).
+    \item \textbf{Days:} extended effort, travel, research.
+\end{itemize}
 
 \subsection{Game Units}
-\textbf{Scene} (conflict/question), \textbf{Session} (3--6 hrs, 2--4 scenes), \textbf{Campaign} (6--20+ sessions).
+\begin{itemize}
+    \item \textbf{Scene:} basic narrative unit, covers a specific conflict or
+        question.
+    \item \textbf{Session:} 3–6 hours, contains 2–4 major scenes.
+    \item \textbf{Campaign:} entire story arc (6–20+ sessions).
+\end{itemize}
 
-\section{Assets \& Followers (Quick Reference)}\label{sec:assets_followers}
+\section{Assets and Followers (Quick Reference)}\label{sec:assets_followers}
 
 \subsection{Assets (Off‑Screen)}
-Costs: Minor (4 XP, 1d), Standard (8 XP, 1w), Major (12 XP, 1m).
+Cost: Minor (4 XP, 1d), Standard (8 XP, 1w), Major (12 XP, 1m).
+
 \begin{itemize}
-    \item \textbf{Free off‑screen use:} once/session.
-    \item \textbf{Boon activation:} 1 Boon for on‑screen scene.
+    \item \textbf{Free off‑screen use:} once per session.
+    \item \textbf{Boon activation:} spend 1 Boon for on‑scene effect.
     \item \textbf{Conditions:} Maintained $\rightarrow$ Neglected $\rightarrow$ Compromised.
 \end{itemize}
 
 \subsection{Followers (On‑Screen)}
-Cost: Cap² XP, downtime 1--3d.
+Cost: Cap² XP (e.g., Cap 3 = 9 XP), downtime 1–3 days.
+
 \begin{itemize}
-    \item \textbf{Assistance:} +min(Cap, relevant skill) dice, capped at +3 total.
-    \item \textbf{Independent action:} once/scene (party‑wide). Cost: 1 Exposure or 1 Harm.
-    \item \textbf{Conditions:} Exposure, Harm tracks.
+    \item \textbf{Assistance:} add dice = min(Cap, relevant skill), max +3 from
+        all sources.
+    \item \textbf{Independent action:} once per scene (party‑wide). Mark +1
+        Exposure or Harm 1 on the follower.
+    \item \textbf{Conditions:} Exposure (attention) and Harm (injury) tracks.
+        State: Maintained $\rightarrow$ Neglected $\rightarrow$ Compromised.
 \end{itemize}
 
 \subsection{Upkeep (per downtime)}
 \begin{itemize}
-    \item \textbf{Efficient:} XP = max(1, acquisition/3).
-    \item \textbf{Intensive:} 1 XP + dedicated downtime action.
+    \item \textbf{Efficient:} XP = max(1, acquisition XP / 3). Minimal effort.
+    \item \textbf{Intensive:} 1 XP + a dedicated downtime action.
 \end{itemize}
-Failure to pay: follower → Wary → Seized; asset → Neglected → Compromised.
+Failure to pay: follower becomes Wary (or Seized), asset becomes Neglected (or
+Compromised).
 
-% End of Section 2
+\section{Supply Clock}\label{sec:supply_clock}
+
+The Supply Clock (0–3 segments) tracks the party’s access to essentials: food,
+water, gear, and logistical support.
+
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+\textbf{Segments} & \textbf{Narrative Effects} \\
+\midrule
+0 (Full) & Well‑provisioned; no penalty. \\
+1 (Low)  & Minor complications (bland rations, damaged arrows). \\
+2 (Dangerous) & Each character gains Fatigue 1. \\
+3 (Empty) & Severe penalties (starvation, dehydration, equipment failure). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{When to advance the Supply Clock}
+\begin{itemize}
+    \item Extended travel through hostile lands without proper provisioning.
+    \item GM spends 2+ SB on logistics failures or environmental hardships.
+    \item The party chooses to travel light for speed or stealth.
+    \item Failed Survival or Craft rolls related to hunting, foraging, or repair.
+\end{itemize}
+
+\paragraph{Clearing Supply segments}
+\begin{itemize}
+    \item Reaching civilisation resets the clock to Full.
+    \item A group Survival check (Wits + Survival, DV 2) in favourable
+        conditions clears 1 segment.
+    \item Downtime spent in relative safety removes 1 segment.
+    \item Successful provisioning (a good hunt, a discovered cache) can reduce
+        segments.
+\end{itemize}
