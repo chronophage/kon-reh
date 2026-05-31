@@ -1,116 +1,174 @@
-% Fate's Edge Supplement: The Road's Bestiary
-% A Lazy GM's Reference for Monsters, Adversaries, and Character Inspiration
-% No goblinoids. No ledgers. Just the tooth and claw of the road.
-
+%=====================================================================
+%  Fate's Edge Supplement: The Road's Bestiary
+%  A Lazy GM's Reference for Monsters, Adversaries, and Character Inspiration
+%  No goblinoids. No ledgers. Just the tooth and claw of the road.
+%=====================================================================
 \documentclass[10pt,twocolumn]{article}
+
+%------------------- Packages ---------------------------------------
 \usepackage[margin=1in]{geometry}
-\usepackage{booktabs, multicol, array, xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}      % tighter lists
+\usepackage{parskip}       % space between paragraphs, no indent
+\usepackage{microtype}     % better spacing
+\usepackage{hyperref}      % clickable links (optional)
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+
+% If you want to use a custom font with XeLaTeX/LuaLaTeX, uncomment the
+% next two lines and set your favourite font.
+%\ifluatex\or\ifxetex
+%   \usepackage{fontspec}
+%   \setmainfont{Libertinus Serif}[Ligatures=TeX]
+%\fi
+
+%------------------- Layout -----------------------------------------
 \setlength{\columnsep}{0.5in}
 \pagestyle{empty}
+\setlist{nosep}               % remove extra vertical space in itemize/enumerate
+
+%------------------- Commands ---------------------------------------
+\newcommand{\term}[1]{\textit{#1}}   % emphasis for game terms
+\newcommand{\kw}[1]{\textbf{#1}}     % bold keywords
+\newcommand{\dice}[2]{\ensuremath{\displaystyle #1\!\!+\!\!#2}} % dice pool macro
+\newcommand{\pos}[1]{\textbf{#1}}    % position (e.g. \pos{Controlled})
+\newcommand{\effect}[1]{\textit{#1}} % effect tag (e.g. \effect{Great})
 
 \begin{document}
 
-\title{\Huge\textbf{The Road's Bestiary}}
-\author{A Lazy GM's Reference \\ for Fate's Edge}
-\date{\small \textit{Ink cut with ash and rain. No ninth entry.}}
-\maketitle
+%------------------- Title -----------------------------------------
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries The Road's Bestiary}\\[2mm]
+    {\large A Lazy GM's Reference \\ for Fate's Edge}\\[2mm]
+    {\small \textit{Ink cut with ash and rain. No ninth entry.}}
+\end{center}
+\vspace{1cm}
+\hrule
+\vspace{0.5cm}
 
+%------------------- How to Use ------------------------------------
 \section*{How to Use This Manual}
 \begin{itemize}
-    \item \textbf{Monsters} are built from \textbf{Harm levels} (1--3) and optional \textbf{clocks} (4--8 segments). No HP math.
-    \item Each entry includes \textbf{Danger}, \textbf{Harm}, \textbf{Clocks}, \textbf{Tags}, and a \textbf{Fate's Edge twist}.
-    \item \textbf{Lazy GM Table} (p.4) lets you roll any adversary in 10 seconds.
-    \item \textbf{Character Inspiration} (p.5): draw two playing cards to generate a random concept + complication.
+    \item Monsters are built from \kw{Harm levels} (1--3) and optional \kw{clocks} (4--8 segments). No HP math.
+    \item Each entry includes \kw{Danger}, \kw{Harm}, \kw{Clocks}, \kw{Tags}, and a \kw{Fate's Edge twist}.
+    \item The \kw{Lazy GM Table} (p.~4) lets you roll any adversary in 10 seconds.
+    \item \kw{Character Inspiration} (p.~5): draw two playing cards to generate a random concept + complication.
 \end{itemize}
 
+%------------------- Monsters & Adversaries ------------------------
 \section*{Monsters \& Adversaries}
+
 \subsection*{The Hollowed Stag (Forest Omen)}
 \emph{A stag with antlers of bleached bone, ribs visible through translucent hide. It never eats. It only walks.}
 \begin{tabular}{@{}ll}
-Danger & 2 (lone) \\
-Harm & 3 \\
-Clocks & \textit{Silent Approach [4]} -- when ticks, the stag appears behind someone. \\
-Tags & [BEAST] [SPIRIT] [DREAD] \\
-Twist & It does not attack first. It \emph{watches}. If you flee, the clock advances. If you stand still, it passes. If you offer a memory, it leaves a single acorn that cures one poison. \\
+\toprule
+\kw{Danger} & 2 (lone) \\
+\kw{Harm}   & 3 \\
+\kw{Clocks} & \textit{Silent Approach [4]} -- when ticks, the stag appears behind someone. \\
+\kw{Tags}   & [BEAST] [SPIRIT] [DREAD] \\
+\kw{Twist}  & It does not attack first. It \emph{watches}. If you flee, the clock advances. If you stand still, it passes. If you offer a memory, it leaves a single acorn that cures one poison. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Ragged Piper (Fen Spirit)}
 \emph{A drowned man in patched wool, playing a reed pipe that sounds like children laughing.}
 \begin{tabular}{@{}ll}
-Danger & 3 (with swarm) \\
-Harm & 2 \\
-Clocks & \textit{The Dance [6]} -- when full, all in earshot must follow the piper for one scene. \\
-Tags & [SPIRIT] [CONTROL] [AUDIO] \\
-Twist & Immune to steel. To banish, offer a truth the piper has forgotten -- or cut the pipe with a copper knife. \\
+\toprule
+\kw{Danger} & 3 (with swarm) \\
+\kw{Harm}   & 2 \\
+\kw{Clocks} & \textit{The Dance [6]} -- when full, all in earshot must follow the piper for one scene. \\
+\kw{Tags}   & [SPIRIT] [CONTROL] [AUDIO] \\
+\kw{Twist}  & Immune to steel. To banish, offer a truth the piper has forgotten -- or cut the pipe with a copper knife. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Boiler-Wight (Aeler Ruin Guardian)}
 \emph{A brass-and-copper construct, furnace heart, steam for breath. Hisses the names of intruders.}
 \begin{tabular}{@{}ll}
-Danger & 4 (ambush) \\
-Harm & 3 \\
-Clocks & \textit{Overpressure [4]} -- each tick adds +1 Harm to its next attack; at 4 it vents steam on all in Near. \\
-Tags & [CONSTRUCT] [FIRE] [WARDEN] \\
-Twist & Ignores anyone carrying a stamped Aeler work order. Can be reprogrammed by inserting a new brass key (found nearby). \\
+\toprule
+\kw{Danger} & 4 (ambush) \\
+\kw{Harm}   & 3 \\
+\kw{Clocks} & \textit{Overpressure [4]} -- each tick adds +1 Harm to its next attack; at 4 it vents steam on all in Near. \\
+\kw{Tags}   & [CONSTRUCT] [FIRE] [WARDEN] \\
+\kw{Twist}  & Ignores anyone carrying a stamped Aeler work order. Can be reprogrammed by inserting a new brass key (found nearby). \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Silt-Fisher (Coastal Horror)}
 \emph{A long pale arm emerging from tidal mud, fingers webbed, dragging things below.}
 \begin{tabular}{@{}ll}
-Danger & 2 \\
-Harm & 2 \\
-Clocks & \textit{Tug [3]} -- each tick pulls a victim one step closer to the silt. At 3, submerged. \\
-Tags & [AQUATIC] [GRAB] \\
-Twist & Can be reasoned with if offered a drowned coin or a song about the sea. Will trade a salvaged item for release. \\
+\toprule
+\kw{Danger} & 2 \\
+\kw{Harm}   & 2 \\
+\kw{Clocks} & \textit{Tug [3]} -- each tick pulls a victim one step closer to the silt. At 3, submerged. \\
+\kw{Tags}   & [AQUATIC] [GRAB] \\
+\kw{Twist}  & Can be reasoned with if offered a drowned coin or a song about the sea. Will trade a salvaged item for release. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Star-Masked (High Pass Cultist)}
 \emph{Face obscured by a tarnished silver mask etched with constellations that change.}
 \begin{tabular}{@{}ll}
-Danger & 3 (with 2 followers) \\
-Harm & 2 \\
-Clocks & \textit{Omen [6]} -- each tick, a star falls. At 6, the cultist knows one secret about a PC. \\
-Tags & [HUMANOID] [OCCULT] \\
-Twist & Cannot be harmed by the same weapon twice. Worships \emph{the Ninth} (but never names it). Defeat by breaking the mask -- reveals a terrified, ordinary face. \\
+\toprule
+\kw{Danger} & 3 (with 2 followers) \\
+\kw{Harm}   & 2 \\
+\kw{Clocks} & \textit{Omen [6]} -- each tick, a star falls. At 6, the cultist knows one secret about a PC. \\
+\kw{Tags}   & [HUMANOID] [OCCULT] \\
+\kw{Twist}  & Cannot be harmed by the same weapon twice. Worships \emph{the Ninth} (but never names it). Defeat by breaking the mask -- reveals a terrified, ordinary face. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Mourner's Candle (Haunting)}
 \emph{A single wax candle burning with a blue flame. No wick. No smoke. It whispers.}
 \begin{tabular}{@{}ll}
-Danger & 1 (environmental) \\
-Harm & 1 (chill) \\
-Clocks & \textit{Wax Tear [4]} -- when full, the candle cries hot wax, igniting a small area. \\
-Tags & [UNDEAD] [FIRE] [TRAP] \\
-Twist & Extinguishing it requires a spoken apology to the dead. Relighting it calls the ghost of the nearest corpse to answer one question. \\
+\toprule
+\kw{Danger} & 1 (environmental) \\
+\kw{Harm}   & 1 (chill) \\
+\kw{Clocks} & \textit{Wax Tear [4]} -- when full, the candle cries hot wax, igniting a small area. \\
+\kw{Tags}   & [UNDEAD] [FIRE] [TRAP] \\
+\kw{Twist}  & Extinguishing it requires a spoken apology to the dead. Relighting it calls the ghost of the nearest corpse to answer one question. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Brick-King (Street-Tough's Bane)}
 \emph{A seven-foot figure of crumbling mortar and cobblestones, crowned with a rusted signpost.}
 \begin{tabular}{@{}ll}
-Danger & 4 \\
-Harm & 3 \\
-Clocks & \textit{Collapse [6]} -- each time it takes Harm, tick once. At 6, it crumbles into difficult terrain. \\
-Tags & [CONSTRUCT] [IMMOBILE] \\
-Twist & Cannot enter a building without an invitation. Will parley if you offer a new signpost crown (any metal pole). \\
+\toprule
+\kw{Danger} & 4 \\
+\kw{Harm}   & 3 \\
+\kw{Clocks} & \textit{Collapse [6]} -- each time it takes Harm, tick once. At 6, it crumbles into difficult terrain. \\
+\kw{Tags}   & [CONSTRUCT] [IMMOBILE] \\
+\kw{Twist}  & Cannot enter a building without an invitation. Will parley if you offer a new signpost crown (any metal pole). \\
+\bottomrule
 \end{tabular}
 
 \subsection*{The Umbral Hound (Shadow Wolf)}
 \emph{A sleek black canine with no eyes, only star-shaped voids. Its growl silences all sound.}
 \begin{tabular}{@{}ll}
-Danger & 3 (pack: +1 per extra hound) \\
-Harm & 2 \\
-Clocks & \textit{Night Hunt [3]} -- at full, the hound phases through walls to attack from an unexpected direction. \\
-Tags & [BEAST] [SPIRIT] [STEALTH] \\
-Twist & Cannot abide direct sunlight. In darkness, it gains +1 die. To drive off, light three candles at once -- the hound will flee to extinguish the middle one. \\
+\toprule
+\kw{Danger} & 3 (pack: +1 per extra hound) \\
+\kw{Harm}   & 2 \\
+\kw{Clocks} & \textit{Night Hunt [3]} -- at full, the hound phases through walls to attack from an unexpected direction. \\
+\kw{Tags}   & [BEAST] [SPIRIT] [STEALTH] \\
+\kw{Twist}  & Cannot abide direct sunlight. In darkness, it gains +1 die. To drive off, light three candles at once -- the hound will flee to extinguish the middle one. \\
+\bottomrule
 \end{tabular}
 
+%------------------- Lazy GM Table ---------------------------------
 \section*{Lazy GM Adversary Table}
 \textit{Roll 2d6 or pick. All stats are Cap-based. Harm = 3 unless noted.}
 
 \vspace{0.2in}
 \begin{tabular}{@{}cllll}
 \toprule
-2d6 & Type & Body & Key Skill & Twist \\
+2d6 & \kw{Type} & \kw{Body} & \kw{Key Skill} & \kw{Twist} \\
 \midrule
 2 & \textbf{Starving Scavenger} & 2 & Brawl 2 & Fights only for food; flees if fed \\
 3 & \textbf{Deserting Soldier} & 2 & Melee 2 & Carries a sealed letter (story hook) \\
@@ -120,20 +178,22 @@ Twist & Cannot abide direct sunlight. In darkness, it gains +1 die. To drive off
 7 & \textbf{Mad Prophet} & 1 & Command 2 & Shouts true omens; Harm = 2 \\
 8 & \textbf{Poacher} & 2 & Ranged 2 & Carries a rare animal (value 1 Boon) \\
 9 & \textbf{River Pirate} & 2 & Athletics 2 & Has a map to a sunken wreck \\
-10& \textbf{Corrupt Cleric} & 2 & Resolve 2 & Wears a stolen relic (use once) \\
-11& \textbf{Fae-Touched Rider} & 3 & Ride 2 & Mount has [PHASE] tag; Harm = 2 \\
-12& \textbf{Guardian Statue} & 3 & Melee 3 & Harm = 4; activates only at night \\
+10 & \textbf{Corrupt Cleric} & 2 & Resolve 2 & Wears a stolen relic (use once) \\
+11 & \textbf{Fae-Touched Rider} & 3 & Ride 2 & Mount has [PHASE] tag; Harm = 2 \\
+12 & \textbf{Guardian Statue} & 3 & Melee 3 & Harm = 4; activates only at night \\
 \bottomrule
 \end{tabular}
 
 \textit{To use:} Add the adversary to the scene. Set Position and DV per core rules. Use Cap for assist dice if they have followers.
 
+%------------------- Character Inspiration -------------------------
 \section*{Character Inspiration: Two Cards}
 \textit{At character creation or when introducing a new NPC, draw two playing cards (suit + rank). Combine a \textbf{Concept} (Heart/Diamond) with a \textbf{Complication} (Spade/Club). No jokers.}
 
 \begin{tabular}{@{}p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}}
 \toprule
-\multicolumn{2}{c}{\textbf{Concepts (Heart or Diamond)}} & \multicolumn{2}{c}{\textbf{Complications (Spade or Club)}} \\
+\multicolumn{2}{c}{\textbf{Concepts (Heart or Diamond)}} &
+\multicolumn{2}{c}{\textbf{Complications (Spade or Club)}} \\
 \midrule
 \emph{Rank} & \emph{Concept} & \emph{Rank} & \emph{Complication} \\
 2--3 & Exiled noble & 2--3 & Hunted by a rival \\
@@ -155,11 +215,13 @@ A & Last of a bloodline & A & Marked by a spirit (visible) \\
 
 \textit{Example:} 6♦ (Grizzled scout) + 8♣ (Secretly ill) + Q♠ (avenge an insult) = a sick tracker who wants revenge on the poacher who killed her mentor.
 
+%------------------- Quick Clocks ----------------------------------
 \section*{Quick Clocks for Monster Encounters}
 Use these clocks as secondary objectives during fights.
 
 \begin{tabular}{@{}ll}
-Clock & Trigger / Effect \\
+\toprule
+\kw{Clock} & \kw{Trigger / Effect} \\
 \midrule
 \textit{Rumor Spreads (4)} & Each shouted word ticks. At 4, reinforcements arrive \\
 \textit{Sacrifice Complete (6)} & Monster stops fighting to drain a victim; interrupt to cancel \\
@@ -167,14 +229,16 @@ Clock & Trigger / Effect \\
 \textit{Panic (4)} & Ticks when an ally falls. At 4, all enemies test Resolve or flee \\
 \textit{Structural Collapse (6)} & Ticks on heavy hits. At 6, terrain becomes hazardous \\
 \textit{Dawn (8)} & Vampiric / shadow creatures weaken each tick. At 8, they flee or die \\
+\bottomrule
 \end{tabular}
 
+%------------------- Final Notes -----------------------------------
 \section*{Final Notes for the Lazy GM}
 \begin{itemize}
     \item You never need to invent a monster from scratch. Use the table above and rename.
     \item For a \textbf{leader-type}, add a clock that summons minions. For a \textbf{swarm}, treat as a zone hazard (test to avoid Harm each turn).
     \item Fate's Edge monsters are not sacks of HP. They have \textbf{twists} -- use them to create choices, not just fights.
-    \item When a player says "I know this creature," let them roll Lore. On success, they invent one of its tags (subject to your veto).
+    \item When a player says ``I know this creature,'' let them roll Lore. On success, they invent one of its tags (subject to your veto).
 \end{itemize}
 
 \vspace{0.5in}
@@ -183,133 +247,159 @@ Clock & Trigger / Effect \\
 --- Dusana of the Raven Road (apocryphal)
 \end{center}
 
+%------------------- Additional NPCs -------------------------------
 \section*{Aeler -- Tunnel Brigand}
 \textit{A dust-caked dwarf with a pick-handle and a grudge against under-market assessors.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Melee 1, Athletics 1) \\
-Harm & 2 \\
-Clocks & \textit{Alarm Bell [4]} -- ticks if fight lasts more than 2 rounds. At 4, a patrol arrives. \\
-Tags & [HUMANOID] [UNDERGROUND] \\
-Twist & Will parley if offered a better paying job. Knows one shortcut through the Underways. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Melee 1, Athletics 1) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Alarm Bell [4]} -- ticks if fight lasts more than 2 rounds. At 4, a patrol arrives. \\
+\kw{Tags} & [HUMANOID] [UNDERGROUND] \\
+\kw{Twist} & Will parley if offered a better paying job. Knows one shortcut through the Underways. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Aelinnel -- Thorn Hedge-Snatcher}
 \textit{A gnome with copper-tipped fingers, hiding in hawthorn, stealing way-cords.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Wits 2, Stealth 2) \\
-Harm & 1 (nonlethal -- just wants your beads) \\
-Clocks & \textit{Knot Unravel [3]} -- each tick, loses one of your non-essential items. \\
-Tags & [HUMANOID] [FAE-TOUCHED] \\
-Twist & Cannot be struck with iron. Apologize in couplets and they"ll return your way-cord. \\
+\toprule
+\kw{Cap} & 2 (Wits 2, Stealth 2) \\
+\kw{Harm} & 1 (nonlethal -- just wants your beads) \\
+\kw{Clocks} & \textit{Knot Unravel [3]} -- each tick, loses one of your non-essential items. \\
+\kw{Tags} & [HUMANOID] [FAE-TOUCHED] \\
+\kw{Twist} & Cannot be struck with iron. Apologize in couplets and they'll return your way-cord. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Aelaerem -- Hollow-Fond Redcap}
 \textit{A halfling in a bloodstained smock, crouching at a cup-mark stone, demanding butter or breath.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Brawl 2) \\
-Harm & 2 \\
-Clocks & \textit{Hollow Tithe [4]} -- each demand refused ticks. At 4, the Neighbors notice. \\
-Tags & [HUMANOID] [THRESHOLD] \\
-Twist & Instantly defeated by a hot loaf of bread or a lit lantern. Will serve as a guide for one night if fed. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Brawl 2) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Hollow Tithe [4]} -- each demand refused ticks. At 4, the Neighbors notice. \\
+\kw{Tags} & [HUMANOID] [THRESHOLD] \\
+\kw{Twist} & Instantly defeated by a hot loaf of bread or a lit lantern. Will serve as a guide for one night if fed. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Lethai-al -- Root-Warden Poacher}
 \textit{A wood elf with moss-tattooed hands, illegally harvesting moon-sap.}
 \begin{tabular}{@{}ll}
-Cap & 3 (Wits 3, Stealth 2, Survival 1) \\
-Harm & 2 \\
-Clocks & \textit{Called Hunt [6]} -- ticks when he wounds. At 6, a Lethai-al warden arrives. \\
-Tags & [HUMANOID] [FOREST] \\
-Twist & Will trade stolen moon-sap (heals 1 Fatigue, but causes visions) for safe passage out of the wood. \\
+\toprule
+\kw{Cap} & 3 (Wits 3, Stealth 2, Survival 1) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Called Hunt [6]} -- ticks when he wounds. At 6, a Lethai-al warden arrives. \\
+\kw{Tags} & [HUMANOID] [FOREST] \\
+\kw{Twist} & Will trade stolen moon-sap (heals 1 Fatigue, but causes visions) for safe passage out of the wood. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Lethai-thora -- Scriptorium Cutpurse}
 \textit{A high elf with ink-stained sleeves, lifting scrolls from the Archive of Keys.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Wits 2, Deception 2) \\
-Harm & 1 (flees if blood drawn) \\
-Clocks & \textit{Seal Broken [4]} -- ticks if he fails a theft. At 4, the archivist seals all exits. \\
-Tags & [HUMANOID] [URBAN] \\
-Twist & Carries a stolen page that holds a forgotten spell (Free Caster can learn one tag for free). \\
+\toprule
+\kw{Cap} & 2 (Wits 2, Deception 2) \\
+\kw{Harm} & 1 (flees if blood drawn) \\
+\kw{Clocks} & \textit{Seal Broken [4]} -- ticks if he fails a theft. At 4, the archivist seals all exits. \\
+\kw{Tags} & [HUMANOID] [URBAN] \\
+\kw{Twist} & Carries a stolen page that holds a forgotten spell (Free Caster can learn one tag for free). \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Lethai-ar -- Masked Enforcer}
 \textit{A dark elf wearing a blank porcelain mask, carrying a silk cord.}
 \begin{tabular}{@{}ll}
-Cap & 3 (Spirit 3, Command 2, Melee 1) \\
-Harm & 2 \\
-Clocks & \textit{Oath Binding [4]} -- ticks when she speaks. At 4, one PC must obey a single command or mark 1 Fatigue. \\
-Tags & [HUMANOID] [OCCULT] \\
-Twist & Her mask is her witness. Smash it and she loses all social leverage. \\
+\toprule
+\kw{Cap} & 3 (Spirit 3, Command 2, Melee 1) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Oath Binding [4]} -- ticks when she speaks. At 4, one PC must obey a single command or mark 1 Fatigue. \\
+\kw{Tags} & [HUMANOID] [OCCULT] \\
+\kw{Twist} & Her mask is her witness. Smash it and she loses all social leverage. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Ykrul -- Horse-Thief of the Violet Steppe}
 \textit{An orc with braided beard, leading a string of ponies with altered brands.}
 \begin{tabular}{@{}ll}
-Cap & 3 (Body 3, Ride 2, Survival 1) \\
-Harm & 3 \\
-Clocks & \textit{Remount Call [5]} -- ticks each round. At 5, he whistles and 1d3 fresh ponies trample through. \\
-Tags & [HUMANOID] [MOUNTED] \\
-Twist & Will abandon the fight if you offer a better horse. Knows a hidden ford that cuts a day's travel. \\
+\toprule
+\kw{Cap} & 3 (Body 3, Ride 2, Survival 1) \\
+\kw{Harm} & 3 \\
+\kw{Clocks} & \textit{Remount Call [5]} -- ticks each round. At 5, he whistles and 1d3 fresh ponies trample through. \\
+\kw{Tags} & [HUMANOID] [MOUNTED] \\
+\kw{Twist} & Will abandon the fight if you offer a better horse. Knows a hidden ford that cuts a day's travel. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Vilikari -- Foedus Road Levyman}
 \textit{A gruff marcher in patched chainmail, demanding an illegal toll at a stone bridge.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Melee 2) \\
-Harm & 2 \\
-Clocks & \textit{Patrol Recall [4]} -- ticks if toll refused. At 4, a mounted sergeant arrives. \\
-Tags & [HUMANOID] [LAW-ADJACENT] \\
-Twist & Actually has a genuine but expired writ. If you help him forge a new one, he becomes a contact. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Melee 2) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Patrol Recall [4]} -- ticks if toll refused. At 4, a mounted sergeant arrives. \\
+\kw{Tags} & [HUMANOID] [LAW-ADJACENT] \\
+\kw{Twist} & Actually has a genuine but expired writ. If you help him forge a new one, he becomes a contact. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Fhara -- Oasis Water-Sharper}
 \textit{A sun-baked trader who sells you the same waterskin twice, with a smile like cracked leather.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Presence 2, Sway 2) \\
-Harm & 1 (nonlethal -- he runs) \\
-Clocks & \textit{Well Poisoning Rumor [6]} -- ticks each time he lies. At 6, the local well-keeper refuses you water. \\
-Tags & [HUMANOID] [DESERT] \\
-Twist & Actually knows where a true cistern is -- will trade the location for a cup of coffee and a story. \\
+\toprule
+\kw{Cap} & 2 (Presence 2, Sway 2) \\
+\kw{Harm} & 1 (nonlethal -- he runs) \\
+\kw{Clocks} & \textit{Well Poisoning Rumor [6]} -- ticks each time he lies. At 6, the local well-keeper refuses you water. \\
+\kw{Tags} & [HUMANOID] [DESERT] \\
+\kw{Twist} & Actually knows where a true cistern is -- will trade the location for a cup of coffee and a story. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Sidhi -- Coastal Quay-Bruiser}
 \textit{A tanned, rope-calloused woman with a knotted club, protecting a smuggler's cache.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Brawl 2) \\
-Harm & 2 \\
-Clocks & \textit{Tide Returns [4]} -- ticks each round. At 4, water rises, making the footing unstable. \\
-Tags & [HUMANOID] [COASTAL] \\
-Twist & Loyal to a lighthouse keeper's daughter. Mention her name and the bruiser steps aside. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Brawl 2) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Tide Returns [4]} -- ticks each round. At 4, water rises, making the footing unstable. \\
+\kw{Tags} & [HUMANOID] [COASTAL] \\
+\kw{Twist} & Loyal to a lighthouse keeper's daughter. Mention her name and the bruiser steps aside. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Pereshi -- High Pass Toll-Jumper}
 \textit{A hooded figure with a notched staff, demanding a "breath tax" at a windy col.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Spirit 2, Lore 1) \\
-Harm & 1 (curses, not cuts) \\
-Clocks & \textit{Wind Remembers [5]} -- ticks each time you refuse. At 5, the pass closes for 1d3 days. \\
-Tags & [HUMANOID] [MOUNTAIN] \\
-Twist & Actually a harmless pilgrim seeking alms. Recite a verse correctly and he"ll guide you for free. \\
+\toprule
+\kw{Cap} & 2 (Spirit 2, Lore 1) \\
+\kw{Harm} & 1 (curses, not cuts) \\
+\kw{Clocks} & \textit{Wind Remembers [5]} -- ticks each time you refuse. At 5, the pass closes for 1d3 days. \\
+\kw{Tags} & [HUMANOID] [MOUNTAIN] \\
+\kw{Twist} & Actually a harmless pilgrim seeking alms. Recite a verse correctly and he'll guide you for free. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Dhaharan -- Monsoon Footpad}
 \textit{A rain-soaked bandit with a stitched eye, lurking near jade caravans.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Stealth 2) \\
-Harm & 2 \\
-Clocks & \textit{Storm Front [4]} -- ticks each time he attacks. At 4, a sudden downpour gives him cover. \\
-Tags & [HUMANOID] [JUNGLE] \\
-Twist & Carries a jade charm that absorbs one Fatigue (once). Will trade for a dry cloak. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Stealth 2) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Storm Front [4]} -- ticks each time he attacks. At 4, a sudden downpour gives him cover. \\
+\kw{Tags} & [HUMANOID] [JUNGLE] \\
+\kw{Twist} & Carries a jade charm that absorbs one Fatigue (once). Will trade for a dry cloak. \\
+\bottomrule
 \end{tabular}
 
+%------------------- Random Cultural Table -------------------------
 \section*{Lazy GM Table: Random Cultural Adversary}
 \textit{Roll d12 for culture, then d6 for a generic foe. All use Cap 2--3, Harm 2, and a twist.}
 
 \vspace{0.2in}
 \begin{tabular}{@{}cll}
 \toprule
-d12 & Culture & Typical Foe \\
+d12 & \kw{Culture} & \kw{Typical Foe} \\
 \midrule
 1 & Aeler & Tunnel Brigand (pickaxe) \\
 2 & Aelinnel & Thorn Hedge-Snatcher (knot thief) \\
@@ -317,75 +407,88 @@ d12 & Culture & Typical Foe \\
 4 & Lethai-al & Root-Warden Poacher (moon-sap) \\
 5 & Lethai-thora & Scriptorium Cutpurse (scrolls) \\
 6 & Lethai-ar & Masked Enforcer (silk cord) \\
-7 & Ykrul & Horse-Thief &\\& (altered brands) \\
+7 & Ykrul & Horse-Thief (altered brands) \\
 8 & Vilikari & Foedus Road Levyman (illegal toll) \\
 9 & Fhara & Oasis Water-Sharper (false waterskin) \\
-10& Sidhi & Coastal Quay-Bruiser (knotted club) \\
-11& Pereshi & High Pass Toll-Jumper (breath tax) \\
-12& Dhaharan & Monsoon Footpad (jade charm) \\
+10 & Sidhi & Coastal Quay-Bruiser (knotted club) \\
+11 & Pereshi & High Pass Toll-Jumper (breath tax) \\
+12 & Dhaharan & Monsoon Footpad (jade charm) \\
 \bottomrule
 \end{tabular}
 
+%------------------- Generic Mundane Monsters ----------------------
 \section*{Generic Mundane Monsters (Culture-Neutral)}
-\textit{No folklore, just the common beast you"d find anywhere -- with a Fate's Edge twist.}
+\textit{No folklore, just the common beast you'd find anywhere -- with a Fate's Edge twist.}
 
 \subsection*{Cave Lurker (Aeler / Ubral)}
 \textit{A pale, eyeless, long-limbed thing that clicks to see.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Melee 2) \\
-Harm & 2 \\
-Clocks & \textit{Echolocation Lock [3]} -- ticks when you make noise. At 3, it knows exactly where you are. \\
-Tags & [BEAST] [CAVE] \\
-Twist & Deafened by ringing a bell. Will not pursue beyond the cave mouth. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Melee 2) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Echolocation Lock [3]} -- ticks when you make noise. At 3, it knows exactly where you are. \\
+\kw{Tags} & [BEAST] [CAVE] \\
+\kw{Twist} & Deafened by ringing a bell. Will not pursue beyond the cave mouth. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Marsh Stilt-Walker (Mistlands / Theona)}
 \textit{A heron-like creature with a too-long neck that watches from the reeds.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Wits 2, Stealth 2) \\
-Harm & 1 (sharp beak) \\
-Clocks & \textit{Stolen Reflection [4]} -- each time it strikes, it steals a minor memory (forget a face). \\
-Tags & [BEAST] [AQUATIC] \\
-Twist & If you toss a copper coin into the water, it will retrieve a lost item from the marsh floor. \\
+\toprule
+\kw{Cap} & 2 (Wits 2, Stealth 2) \\
+\kw{Harm} & 1 (sharp beak) \\
+\kw{Clocks} & \textit{Stolen Reflection [4]} -- each time it strikes, it steals a minor memory (forget a face). \\
+\kw{Tags} & [BEAST] [AQUATIC] \\
+\kw{Twist} & If you toss a copper coin into the water, it will retrieve a lost item from the marsh floor. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Steppe Bone-Wolf (Ykrul / Vilikari)}
 \textit{A gaunt, grey wolf with ribs showing, running in silent packs.}
 \begin{tabular}{@{}ll}
-Cap & 3 (pack of 3, each Body 2, Brawl 1) \\
-Harm & 2 \\
-Clocks & \textit{Surround [4]} -- ticks each round. At 4, pack gains +1 die to attack from flank. \\
-Tags & [BEAST] [PACK] \\
-Twist & Will not attack a rider who carries a foal's tail. Can be befriended with raw meat and a low whistle. \\
+\toprule
+\kw{Cap} & 3 (pack of 3, each Body 2, Brawl 1) \\
+\kw{Harm} & 2 \\
+\kw{Clocks} & \textit{Surround [4]} -- ticks each round. At 4, pack gains +1 die to attack from flank. \\
+\kw{Tags} & [BEAST] [PACK] \\
+\kw{Twist} & Will not attack a rider who carries a foal's tail. Can be befriended with raw meat and a low whistle. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Ruins Scrabbler (Valewood / Acasia)}
 \textit{A six-legged lizard with chitinous plates, nesting in fallen statues.}
 \begin{tabular}{@{}ll}
-Cap & 2 (Body 2, Climb 2) \\
-Harm & 1 (claw) \\
-Clocks & \textit{Egg Cache [5]} -- ticks when it flees. At 5, it returns with 1d4 hatchling swarms. \\
-Tags & [BEAST] [RUIN] \\
-Twist & Afraid of fire. Also afraid of anything that speaks in proper Lethai. Will flee if you recite imperial lineage. \\
+\toprule
+\kw{Cap} & 2 (Body 2, Climb 2) \\
+\kw{Harm} & 1 (claw) \\
+\kw{Clocks} & \textit{Egg Cache [5]} -- ticks when it flees. At 5, it returns with 1d4 hatchling swarms. \\
+\kw{Tags} & [BEAST] [RUIN] \\
+\kw{Twist} & Afraid of fire. Also afraid of anything that speaks in proper Lethai. Will flee if you recite imperial lineage. \\
+\bottomrule
 \end{tabular}
 
 \subsection*{Night Bait (Any Rural Area)}
 \textit{A pale, child-sized figure that stands at the edge of lamplight. Never blinks.}
 \begin{tabular}{@{}ll}
-Cap & 1 (no combat) \\
-Harm & 0 -- it lures, not harms \\
-Clocks & \textit{Follow [6]} -- ticks each time someone looks away. At 6, a PC walks toward it (test Resolve DV 4). \\
-Tags & [SPIRIT] [TRAP] \\
-Twist & It is not malicious -- it is lost. Speak your true name to it and it will lead you to a forgotten well, then vanish. \\
+\toprule
+\kw{Cap} & 1 (no combat) \\
+\kw{Harm} & 0 -- it lures, not harms \\
+\kw{Clocks} & \textit{Follow [6]} -- ticks each time someone looks away. At 6, a PC walks toward it (test Resolve DV 4). \\
+\kw{Tags} & [SPIRIT] [TRAP] \\
+\kw{Twist} & It is not malicious -- it is lost. Speak your true name to it and it will lead you to a forgotten well, then vanish. \\
+\bottomrule
 \end{tabular}
 
+%------------------- Cultural Character Inspiration ----------------
 \section*{Quick Character Inspiration by Culture (Two Cards)}
 \textit{Extending the previous table -- draw two cards, add cultural flavor.}
 
 \vspace{0.1in}
 \begin{tabular}{@{}p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}}
 \toprule
-\multicolumn{2}{c}{\textbf{Concept (Heart/Diamond)}} & \multicolumn{2}{c}{\textbf{Complication (Spade/Club)}} \\
+\multicolumn{2}{c}{\textbf{Concept (Heart/Diamond)}} &
+\multicolumn{2}{c}{\textbf{Complication (Spade/Club)}} \\
 \midrule
 \emph{Rank} & \emph{Concept} & \emph{Rank} & \emph{Complication} \\
 2-3 & Escaped bond-servant & 2-3 & Branded by an old master \\
@@ -398,6 +501,6 @@ A & Last heir of a fallen house & A & A mirror shows your face as someone else \
 \bottomrule
 \end{tabular}
 
-\emph{Then add culture:} Roll or choose a culture from the Lazy GM table. That culture shapes the adversary's appearance, tools, and the name of their faction.
+\textit{Then add culture:} Roll or choose a culture from the Lazy GM table. That culture shapes the adversary's appearance, tools, and the name of their faction.
 
 \end{document}

@@ -1,3 +1,4 @@
+% !TeX program = lualatex
 %=============================================================
 %  Fate's Edge -- Tactical Combat Module (Revised)
 %  Optional grid-based skirmish rules
@@ -18,6 +19,7 @@
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{caption}
+\usepackage{amsmath}        % <‑‑ for \displaystyle in \dice
 \captionsetup{font=small,labelfont=bf}
 
 %--- Fonts ---------------------------------------------------
@@ -32,9 +34,9 @@
 %--- Commands ------------------------------------------------
 \newcommand{\feat}[1]{\textbf{#1}}
 \newcommand{\term}[1]{\textit{#1}}
-\newcommand{\dice}[2]{\(\displaystyle #1\!\!+\!\!#2\)}
+\newcommand{\dice}[2]{\ensuremath{\displaystyle #1\!\!+\!\!#2}}   % robust inline dice macro
 \newcommand{\boon}{\textbf{Boons}}
-\newcommand{\sb}{\textbf{Story Beats (SB)}}
+\newcommand{\storybeats}{\textbf{Story Beats (SB)}}   % renamed from \sb
 \newcommand{\pos}[1]{\textbf{#1}}
 \newcommand{\effect}[1]{\textit{#1}}
 
@@ -54,7 +56,7 @@
 \begin{itemize}[leftmargin=*,noitemsep]
     \item Adds a \term{grid} (square or hex, 5 ft cells) to measure distance, line of sight, and reach.
     \item Introduces \term{movement rates}, \term{terrain costs}, \term{zones of control (ZoC)}, and \term{flanking} – all converted directly into the existing \term{Position} ladder.
-    \item All actions resolved with standard \dice{Attribute}{Skill} pools, \sb, \boon, and Position/Effect outcomes.
+    \item All actions resolved with standard \dice{Attribute}{Skill} pools, \storybeats, \boon, and Position/Effect outcomes.
     \item \textbf{No HP, no new damage tracks.} Harm and Fatigue work exactly as in the core rules.
     \item Completely optional – use for one encounter, a whole campaign, or never.
 \end{itemize}
@@ -65,7 +67,7 @@
 \section{Core Principles}
 \begin{enumerate}[label=\arabic*. , leftmargin=*]
     \item \textbf{Narrative first.} The grid is a storytelling tool. Every move must be described in fiction.
-    \item \textbf{No mechanics changes.} Dice pools, \sb, \boon, Position and Effect work as written.
+    \item \textbf{No mechanics changes.} Dice pools, \storybeats, \boon, Position and Effect work as written.
     \item \textbf{Predictable tactics.} Cover, flanking, reach and facing give players concrete ways to gain Position before rolling.
 \end{enumerate}
 \vspace{0.2cm}
@@ -102,7 +104,9 @@
     \item \textbf{Entering} enemy ZoC ends your movement and places you in melee (\pos{Controlled} with that enemy).
     \item \textbf{Leaving} ZoC requires a \term{Disengage} test: DV 4 (plus any modifiers). Failure leaves you \pos{Desperate} for your next action.
     \item \textbf{Stacked ZoC:} +1 to Disengage DV per extra enemy.
+    \item \textbf{Pushing Through ZoC:} To move through an enemy's Zone of Control without ending movement, make a Skill test (Athletics or Acrobatics) vs DV $4 + (N-1)$, where $N$ is the number of enemies exerting ZoC in the target path. On success, you may continue your movement through the ZoC. On failure, movement ends as normal (entering ZoC places you in melee). \textit{Regardless of outcome, pushing through incurs one cost:} \begin{itemize}[noitemsep] \item \textbf{Gain 1 Fatigue}, \\ \textit{or} \item \textbf{GM gains 1 \storybeats}, \\ \textit{or} \item \textbf{Your next action suffers \pos{Risky} (if currently \pos{Controlled}) or \pos{Desperate} (if currently \pos{Risky})}. \end{itemize} \hfill \textit{(Higher skill ranks improve success chance—veterans thread through chaos where novices falter.)}
 \end{itemize}
+
 
 \section{Cover \& Position}
 \begin{tabular}{>{\bfseries}l l}
@@ -111,7 +115,7 @@ Partial cover (low wall)     & Defender gains \pos{Controlled} against ranged at
 Full cover (solid wall)      & Defender gains \pos{Controlled} against all attacks; attacker gains \pos{Dominant} when defending against that target. \\
 \hline
 \end{tabular}
-\noindent Cover can be destroyed (GM spends \sb).
+\noindent Cover can be destroyed (GM spends \storybeats).
 
 \section{Flanking \& Rear Attacks}
 \begin{itemize}[noitemsep]
@@ -126,7 +130,7 @@ Full cover (solid wall)      & Defender gains \pos{Controlled} against all attac
 \midrule
 \term{[Reach]} & Can attack up to 2 cells away (Near). Enemies without Reach suffer –1 Position when trying to close.\\
 \term{[Fast]} & After a successful melee hit, shift 1 cell (no ZoC trigger).\\
-\term{[Set]} & Plant weapon as an action. Any enemy that charges into that cell (≥4 cells straight) triggers an automatic attack at +1 Effect.\\
+\term{[Set]} & Plant weapon as an action. Any enemy that charges into that cell ($\ge4$ cells straight) triggers an automatic attack at +1 Effect.\\
 \term{[Brutal]} & On a hit, push target 1 cell orthogonally. Target’s next defensive Position drops one step.\\
 \bottomrule
 \end{tabular}
@@ -179,7 +183,7 @@ Spend a Boon before roll     & Shift Position up one step\\
 \begin{enumerate}[label=\arabic*. , leftmargin=*]
     \item Draw the grid early – dry‑erase board or VTT.
     \item Read Position first: “What is the attacker’s Position? What can the defender do to change it?”
-    \item Spend \sb\ on dramatic consequences (cover collapse, reinforcements, etc.).
+    \item Spend \storybeats\ on dramatic consequences (cover collapse, reinforcements, etc.).
     \item Use Boons to upgrade Position – a powerful tactical choice.
 \end{enumerate}
 
