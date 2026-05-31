@@ -1,13 +1,22 @@
+% !TeX program = lualatex
 \documentclass[11pt,twoside]{book}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{geometry}
-\geometry{paper=6in x 9in, inner=0.75in, outer=0.5in, top=0.75in, bottom=0.75in}
-\usepackage{ebgaramond}
-\usepackage[osf]{mathpazo}
+
+%------------------------------------------------------------------------------
+% Packages
+%------------------------------------------------------------------------------
+\usepackage{fontspec}          % font selection for LuaLaTeX
+\usepackage{unicode-math}      % for math fonts
 \usepackage{microtype}
 \usepackage{setspace}
 \onehalfspacing
+
+\usepackage{geometry}
+\geometry{paper=6in x 9in,
+          inner=0.75in,
+          outer=0.5in,
+          top=0.75in,
+          bottom=0.75in}
+
 \usepackage{epigraph}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -21,24 +30,33 @@
 \usepackage{lettrine}
 \usepackage{fontawesome5}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning}
 \usetikzlibrary{shapes,decorations.pathmorphing,calc}
 \usepackage[most]{tcolorbox}
-\tcbuselibrary{breakable}
 \tcbset{breakable}
 
-% Warm paper, dark ink
-\definecolor{papercolor}{RGB}{248, 242, 230}
-\definecolor{inkcolor}{RGB}{28, 22, 16}
-\definecolor{sealcolor}{RGB}{160, 40, 40}
-\definecolor{fadecolor}{RGB}{140, 120, 100}
-\definecolor{spiritcolor}{RGB}{40, 60, 100}
-\definecolor{leashcolor}{RGB}{100, 40, 60}
+%------------------------------------------------------------------------------
+% Fonts
+%------------------------------------------------------------------------------
+\setmainfont{EB Garamond}[Ligatures=TeX,Numbers=OldStyle]
+\setmathfont{TeX Gyre Pagella Math}
+
+%------------------------------------------------------------------------------
+% Colours (warm paper, dark ink)
+%------------------------------------------------------------------------------
+\definecolor{papercolor}{RGB}{248,242,230}
+\definecolor{inkcolor}{RGB}{28,22,16}
+\definecolor{sealcolor}{RGB}{160,40,40}
+\definecolor{fadecolor}{RGB}{140,120,100}
+\definecolor{spiritcolor}{RGB}{40,60,100}
+\definecolor{leashcolor}{RGB}{100,40,60}
 
 \pagecolor{papercolor}
 \color{inkcolor}
 
-% Header/footer
+%------------------------------------------------------------------------------
+% Header / Footer
+%------------------------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE,RO]{\thepage}
@@ -46,52 +64,78 @@
 \fancyhead[LO]{\itshape\rightmark}
 \renewcommand{\headrulewidth}{0.2pt}
 \renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{14pt}   % fix fancyhdr warning
 
+%------------------------------------------------------------------------------
 % Section formatting
+%------------------------------------------------------------------------------
 \titleformat{\chapter}[display]
-{\normalfont\Huge\itshape}
-{\vspace{-1.5cm}\large\scshape THE LEASH THAT TIGHTENS\\[0.2cm]\rule{0.7\textwidth}{0.3pt}\\[0.5cm]}
-{0pt}
-{\thispagestyle{empty}\filcenter}
+  {\normalfont\Huge\itshape}
+  {\vspace{-1.5cm}\large\scshape THE LEASH THAT TIGHTENS\\[0.2cm]\rule{0.7\textwidth}{0.3pt}\\[0.5cm]}
+  {0pt}
+  {\thispagestyle{empty}\filcenter}
 \titlespacing*{\chapter}{0pt}{-1cm}{1cm}
 
 \titleformat{\section}
-{\normalfont\Large\itshape}{\thesection}{1em}{}
+  {\normalfont\Large\itshape}{\thesection}{1em}{}
 \titlespacing*{\section}{0pt}{0.5cm}{0.3cm}
 
 \titleformat{\subsection}
-{\normalfont\itshape}{\thesubsection}{1em}{}
+  {\normalfont\itshape}{\thesubsection}{1em}{}
 
-% Marginal notes for mechanics (now purely illustrative)
-\newcommand{\mechnote}[1]{\marginpar{\small\color{leashcolor}\itshape #1}[-0.2cm]}
-
-% Decorative elements
-\newcommand{\sealdecor}{\begin{center}\textcolor{sealcolor}{\faStamp}\end{center}}
-\newcommand{\knotdecor}{\begin{center}\textcolor{sealcolor}{\faLink}\quad\faLink\quad\faLink\end{center}}
-\newcommand{\spiritdecor}{\begin{center}\textcolor{spiritcolor}{\faGhost}\end{center}}
-
-% Letter environment (purely narrative)
-\newenvironment{letterenv}[4]
-{\begin{center}
-\itshape
-\textcolor{sealcolor}{\faEnvelope}\\[0.2cm]
-\small #1\\[0.1cm]
-\small #2\\[0.1cm]
-\textcolor{sealcolor}{\faStamp}\\[0.3cm]
-\scshape #3\\[0.1cm]
-\itshape #4\\[0.5cm]
-\end{center}
-\noindent\rule{\textwidth}{0.3pt}\\[0.3cm]
+%------------------------------------------------------------------------------
+% Marginal notes for mechanics (illustrative only)
+%------------------------------------------------------------------------------
+\newcommand{\mechnote}[1]{%
+  \marginpar{\small\color{leashcolor}\itshape #1}%
 }
-{\vspace{0.3cm}\noindent\rule{\textwidth}{0.3pt}\\[0.5cm]}
 
-% Mechanics box (clean, reference-only)
-\newtcolorbox{mechbox}[1]{colback=spiritcolor!5!white,colframe=spiritcolor!80!black,title={\textcolor{spiritcolor}{\faCogs}\quad #1},fonttitle=\small\scshape,left=2mm,right=2mm,top=2mm,bottom=2mm}
+%------------------------------------------------------------------------------
+% Decorative elements
+%------------------------------------------------------------------------------
+\newcommand{\sealdecor}{%
+  \begin{center}\textcolor{sealcolor}{\faStamp}\end{center}}
+\newcommand{\knotdecor}{%
+  \begin{center}\textcolor{sealcolor}{\faLink}\quad\faLink\quad\faLink\end{center}}
+\newcommand{\spiritdecor}{%
+  \begin{center}\textcolor{spiritcolor}{\faGhost}\end{center}}
 
-% Table formatting
+%------------------------------------------------------------------------------
+% Letter environment replaced by a simple command
+%------------------------------------------------------------------------------
+\newcommand{\letter}[4]{%
+  \begin{center}
+    \itshape
+    \textcolor{sealcolor}{\faEnvelope}\\[0.2cm]
+    \small #1\\[0.1cm]
+    \small #2\\[0.1cm]
+    \textcolor{sealcolor}{\faStamp}\\[0.3cm]
+    \scshape #3\\[0.1cm]
+    \itshape #4\\[0.5cm]
+  \end{center}
+  \noindent\rule{\textwidth}{0.3pt}\\[0.3cm]
+}
+
+%------------------------------------------------------------------------------
+% Mechanics box (clean, reference‑only)
+%------------------------------------------------------------------------------
+\newtcolorbox{mechbox}[1]{%
+  colback=spiritcolor!5!white,
+  colframe=spiritcolor!80!black,
+  title={\textcolor{spiritcolor}{\faCogs}\quad #1},
+  fonttitle=\small\scshape,
+  left=2mm,right=2mm,top=2mm,bottom=2mm
+}
+
+%------------------------------------------------------------------------------
+% Table column types
+%------------------------------------------------------------------------------
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
+%------------------------------------------------------------------------------
+% Document
+%------------------------------------------------------------------------------
 \begin{document}
 
 \frontmatter
@@ -99,27 +143,27 @@
 \thispagestyle{empty}
 \vspace*{2cm}
 \begin{center}
-{\Huge\itshape THE LEASH THAT\\[0.3cm] TIGHTENS}\\[0.5cm]
-{\large Letters Between a Summoner and a Runekeeper}\\[0.8cm]
-{\scshape Kaelen of Varnek Karn\\ and Mira of the Violet Steppe}\\[0.5cm]
-\vfill
-{\small Transcribed from the Archivolt's Unfinished Index}\\[0.2cm]
-{\small The seal on the strongbox was cracked. The ninth knot was already cut.}
+  {\Huge\itshape THE LEASH THAT\\[0.3cm] TIGHTENS}\\[0.5cm]
+  {\large Letters Between a Summoner and a Runekeeper}\\[0.8cm]
+  {\scshape Kaelen of Varnek Karn\\ and Mira of the Violet Steppe}\\[0.5cm]
+  \vfill
+  {\small Transcribed from the Archivolt's Unfinished Index}\\[0.2cm]
+  {\small The seal on the strongbox was cracked. The ninth knot was already cut.}
 \end{center}
 \newpage
 
 \thispagestyle{empty}
 \vspace*{3cm}
 \begin{flushright}
-\itshape
-The dead do not speak unless you tie a knot.\\[0.2cm]
-The knot does not hold unless you mean it.\\[0.2cm]
-The leash has two ends.\\[0.2cm]
-I hold one.\\[0.2cm]
-The wolf holds the other.\\[0.2cm]
-We are both waiting.\\[0.2cm]
-\vspace{0.5cm}
---- Borte, Wolf-Speaker of the Grey Fox Clan
+  \itshape
+  The dead do not speak unless you tie a knot.\\[0.2cm]
+  The knot does not hold unless you mean it.\\[0.2cm]
+  The leash has two ends.\\[0.2cm]
+  I hold one.\\[0.2cm]
+  The wolf holds the other.\\[0.2cm]
+  We are both waiting.\\[0.2cm]
+  \vspace{0.5cm}
+  --- Borte, Wolf‑Speaker of the Grey Fox Clan
 \end{flushright}
 \newpage
 
@@ -133,19 +177,18 @@ We are both waiting.\\[0.2cm]
 % ============================================================
 
 \chapter{The First Question}
-\begin{letterenv}
-{Undated. No seal.}
-{Written on vellum pressed between funerary pages.}
-{Kaelen}{Scholar-Monk of Varnek Karn, Runekeeper of the Witness}
-\end{letterenv}
+\letter
+  {Undated. No seal.}
+  {Written on vellum pressed between funerary pages.}
+  {Kaelen}{Scholar‑Monk of Varnek Karn, Runekeeper of the Witness}
 
 Mira---
 
-You will not remember me. We met at the dust market outside Midh Ahkaz, seven years ago. You were summoning—something small, a bell-wight from the Aeler tunnels. I watched from behind a spice stall. You did not see me.
+You will not remember me. We met at the dust market outside Midh Ahkaz, seven years ago. You were summoning—something small, a bell‑wight from the Aeler tunnels. I watched from behind a spice stall. You did not see me.
 
 I am a Runekeeper of the Witness. I have bound oaths, witnessed contracts, sealed confessions in wax and iron. I have never bound a soul.
 
-The summoner's art troubles me. When you call a spirit, when you tie that leash, when you command it to serve—is that not enslavement? The Veiled Sisters bind spirits in brass cages. They call it necessity. The Chain-Lanterns conscript children with talent. They call it protection. You call a wolf-ancestor from the steppe, you tie a knot in the leash, you send it to scout. What do you call that?
+The summoner's art troubles me. When you call a spirit, when you tie that leash, when you command it to serve—is that not enslavement? The Veiled Sisters bind spirits in brass cages. They call it necessity. The Chain‑Lanterns conscript children with talent. They call it protection. You call a wolf‑ancestor from the steppe, you tie a knot in the leash, you send it to scout. What do you call that?
 
 I do not write to accuse. I write to understand.
 
@@ -159,21 +202,20 @@ What does a spirit owe you? Did it choose to answer?
 \sealdecor
 
 \chapter{The Wolf's Answer}
-\begin{letterenv}
-{Written on scrap leather. No date.}
-{Ink is lamp-black and something darker.}
-{Mira}{Summoner of the Violet Steppe, Pact-Whisperer}
-\end{letterenv}
+\letter
+  {Written on scrap leather. No date.}
+  {Ink is lamp‑black and something darker.}
+  {Mira}{Summoner of the Violet Steppe, Pact‑Whisperer}
 
 Kaelen---
 
-I remember you. You were the one who did not flinch when the bell-wight appeared. The spice merchant dropped his cardamom. The Aeler factor crossed himself. You just watched.
+I remember you. You were the one who did not flinch when the bell‑wight appeared. The spice merchant dropped his cardamom. The Aeler factor crossed himself. You just watched.
 
 You ask if the spirits choose. Yes. And no.
 
-When I beat the drum, the wolf-ancestor does not come because I command it. It comes because it has been waiting for someone to ask. The dead are patient. They have all the time in the world to consider their offers, and no need to rush to agreement. They know what the living forgot, and remember every slight with perfect clarity.
+When I beat the drum, the wolf‑ancestor does not come because I command it. It comes because it has been waiting for someone to ask. The dead are patient. They have all the time in the world to consider their offers, and no need to rush to agreement. They know what the living forgot, and remember every slight with perfect clarity.
 
-The leash is not a chain. It is a promise. I promise the wolf that I will honour its lineage. I promise the drowned mutineer that I will speak its name. I promise the bell-wight that I will keep a lamp lit. The spirit promises service in return.
+The leash is not a chain. It is a promise. I promise the wolf that I will honour its lineage. I promise the drowned mutineer that I will speak its name. I promise the bell‑wight that I will keep a lamp lit. The spirit promises service in return.
 
 I hold one end of the leash. The wolf holds the other. We are both waiting to see who pulls first.
 
@@ -183,33 +225,31 @@ I hold one end of the leash. The wolf holds the other. We are both waiting to se
 \sealdecor
 
 \chapter{Borte's Counsel}
-\begin{letterenv}
-{Written on a scrap of saddle leather.}
-{Borte}{Wolf-Speaker of the Grey Fox Clan, Ykrul Elder}
-\end{letterenv}
+\letter
+  {Written on a scrap of saddle leather.}
+  {Borte}{Wolf‑Speaker of the Grey Fox Clan, Ykrul Elder}
 
 Kaelen of the stone halls---
 
-You write to Mira, but the wind carries your words across the steppe. I am Borte, Wolf-Speaker of the Grey Fox. I taught Mira the first knot when she was a child with a broken drum.
+You write to Mira, but the wind carries your words across the steppe. I am Borte, Wolf‑Speaker of the Grey Fox. I taught Mira the first knot when she was a child with a broken drum.
 
 You ask if the spirits choose. They choose those who listen. The steppe teaches that a horse will not carry a rider it does not trust. A wolf will not follow a hunter who does not respect the pack. Summoning is the same.
 
 Mira learned to beat the drum in rhythm with the wolf's heartbeat. That is not control. That is harmony. The leash is not a chain—it is a shared breath. When you pull, the wolf feels it. When the wolf pulls, you feel it. You cannot command something you do not understand.
 
-You asked what the wolf hungers for. Honour. The wolf-ancestor will challenge you to be brave. It will refuse to fight an honourable foe. It will howl if you try to sneak past a threat—because stealth is not honourable. If you cannot live with that, do not call it.
+You asked what the wolf hungers for. Honour. The wolf‑ancestor will challenge you to be brave. It will refuse to fight an honourable foe. It will howl if you try to sneak past a threat—because stealth is not honourable. If you cannot live with that, do not call it.
 
-Mira is young. She learned the knots, but she has not yet learned when not to tie them. That is why I write to you. Ask her about the winter she called a dust-djanni during a drought. Ask her what it demanded in return.
+Mira is young. She learned the knots, but she has not yet learned when not to tie them. That is why I write to you. Ask her about the winter she called a dust‑djanni during a drought. Ask her what it demanded in return.
 
 \vspace{0.5em}
 \noindent\hfill --- Borte
 
 \sealdecor
 
-\chapter{The Dust-Djanni}
-\begin{letterenv}
-{Written on bark. Ink is faded. The handwriting is shaky.}
-{Mira}{Summoner of the Violet Steppe}
-\end{letterenv}
+\chapter{The Dust‑Djanni}
+\letter
+  {Written on bark. Ink is faded. The handwriting is shaky.}
+  {Mira}{Summoner of the Violet Steppe}
 
 Kaelen---
 
@@ -217,7 +257,7 @@ Borte told you about the drought. I will tell you myself.
 
 I was sixteen. The rains had not come for nine months. The herds were dying. The elders were talking about breaking camp and walking south—three hundred miles with no guarantee of water.
 
-I called a dust-djanni. I had never called anything larger than a bell-wight. But I was desperate. I beat the drum with a rhythm I had heard in a dream. The djanni came.
+I called a dust‑djanni. I had never called anything larger than a bell‑wight. But I was desperate. I beat the drum with a rhythm I had heard in a dream. The djanni came.
 
 It was a column of dust shaped like a robed figure. Its eyes were polished amber. It did not speak. It waited.
 
@@ -229,7 +269,7 @@ The Leash filled. The djanni acted according to its nature: it veiled the path. 
 
 Then Borte came. She did not call the djanni. She did not threaten it. She sat in the dust and sang a song—a song about a well that had been dug by her grandmother. The djanni listened. At the end of the song, it pointed east again. This time, there was water.
 
-Borte taught me that the dust-djanni had not lied. It had shown me the well—the dry well—because I had not offered a price. The price was a song. I did not know the song. The djanni was waiting for someone who did.
+Borte taught me that the dust‑djanni had not lied. It had shown me the well—the dry well—because I had not offered a price. The price was a song. I did not know the song. The djanni was waiting for someone who did.
 
 That is the lesson, Kaelen. The leash does not command. The leash binds. Binding without understanding is slavery. Understanding without binding is storytelling. I am still learning the difference.
 
@@ -239,7 +279,7 @@ That is the lesson, Kaelen. The leash does not command. The leash binds. Binding
 \sealdecor
 
 % ============================================================
-% PART II: MECHANICS (Clear, Reference-Ready Rules)
+% PART II: MECHANICS (Clear, Reference‑Ready Rules)
 % ============================================================
 
 \chapter{The Summoner's Craft}
@@ -248,136 +288,136 @@ This chapter presents the mechanics of summoning as practiced by those who follo
 \section{Foundational Concepts}
 Before mechanics, understand these truths:
 \begin{itemize}
-\item \textbf{The Leash is a Promise}: Binding a spirit creates a mutual obligation. The spirit serves; the summoner honours the spirit's nature and pays its price.
-\item \textbf{Spirits Have Agency}: A spirit may refuse service, act on its nature, or leave if the summoner violates the bargain.
-\item \textbf{Power Requires Balance}: Strength in summoning comes not from domination, but from understanding and reciprocity.
+  \item \textbf{The Leash is a Promise}: Binding a spirit creates a mutual obligation. The spirit serves; the summoner honours the spirit's nature and pays its price.
+  \item \textbf{Spirits Have Agency}: A spirit may refuse service, act on its nature, or leave if the summoner violates the bargain.
+  \item \textbf{Power Requires Balance}: Strength in summoning comes not from domination, but from understanding and reciprocity.
 \end{itemize}
 
 \section{Essential Talents}
 Summoning requires two core talents, representing the minimum investment to engage with spirits meaningfully.
 
 \begin{mechbox}{Core Summoning Talents}
-\begin{itemize}
-\item \textbf{Pact-Whisperer (2 XP)} \\
-\textit{Prerequisite: None.} \\
-Grants the ability to \textbf{Call} spirits (1 action). Without this, no summoning is possible. The spirit appears at Near range but may depart immediately if not bound.
-\item \textbf{Lesser Pactwright (2 XP)} \\
-\textit{Prerequisite: Pact-Whisperer.} \\
-Allows binding of \textbf{Cap 1 spirits}. To bind, spend 1 Boon \textbf{or} mark 1 Fatigue. If the spirit accepts, it is bound; if it refuses, it vanishes.
-\end{itemize}
+  \begin{itemize}
+    \item \textbf{Pact‑Whisperer (2 XP)} \\
+      \textit{Prerequisite: None.} \\
+      Grants the ability to \textbf{Call} spirits (1 action). Without this, no summoning is possible. The spirit appears at Near range but may depart immediately if not bound.
+    \item \textbf{Lesser Pactwright (2 XP)} \\
+      \textit{Prerequisite: Pact‑Whisperer.} \\
+      Allows binding of \textbf{Cap 1 spirits}. To bind, spend 1 Boon \textbf{or} mark 1 Fatigue. If the spirit accepts, it is bound; if it refuses, it vanishes.
+  \end{itemize}
 \end{mechbox}
 
 \section{The Leash: Core Mechanic}
-Every bound spirit has a \textbf{Leash Clock} tracking the strain on the summoner-spirit bargain. Its length reflects the spirit's power and the summoner's resilience.
+Every bound spirit has a \textbf{Leash Clock} tracking the strain on the summoner‑spirit bargain. Its length reflects the spirit's power and the summoner's resilience.
 
 \begin{mechbox}{Leash Clock}
-\begin{itemize}
-\item \textbf{Length} = Spirit's \textbf{Cap} + Summoner's \textbf{Spirit} stat
   \begin{itemize}
-    \item Example: A Cap 2 spirit bound by a summoner with Spirit 3 has a Leash of 5 segments.
+    \item \textbf{Length} = Spirit's \textbf{Cap} + Summoner's \textbf{Spirit} stat
+      \begin{itemize}
+        \item Example: A Cap 2 spirit bound by a summoner with Spirit 3 has a Leash of 5 segments.
+      \end{itemize}
+    \item \textbf{The Leash ticks (+1 segment) when}: \\
+      \begin{itemize}
+        \item The spirit takes Harm
+        \item You command it against its nature (as defined in its entry)
+        \item It crosses a [WARD] threshold
+        \item You split focus between multiple spirits (+1 per extra spirit beyond the first)
+        \item You push it beyond its agreed service (e.g., demanding combat from a healer spirit)
+      \end{itemize}
+    \item \textbf{When the Leash fills}: \\
+      The spirit acts \textbf{once} according to its nature (see Spirit Whims Table), then:
+      \begin{itemize}
+        \item Departs peacefully (if the bargain was honoured), \textbf{or}
+        \item Turns hostile (if the summoner abused the bond; GM discretion)
+      \end{itemize}
+      The summoner gains 1 \textbf{Corruption}.
+    \item \textbf{Boon Finesse}: Once per round, spend 1 Boon to clear 1 Leash tick.
   \end{itemize}
-\item \textbf{The Leash ticks (+1 segment) when}: \\
-  \begin{itemize}
-    \item The spirit takes Harm
-    \item You command it against its nature (as defined in its entry)
-    \item It crosses a [WARD] threshold
-    \item You split focus between multiple spirits (+1 per extra spirit beyond the first)
-    \item You push it beyond its agreed service (e.g., demanding combat from a healer spirit)
-  \end{itemize}
-\item \textbf{When the Leash fills}: \\
-  The spirit acts \textbf{once} according to its nature (see Spirit Whims Table), then:
-  \begin{itemize}
-    \item Departs peacefully (if the bargain was honoured), \textbf{or}
-    \item Turns hostile (if the summoner abused the bond; GM discretion)
-  \end{itemize}
-  The summoner gains 1 \textbf{Corruption}.
-\item \textbf{Boon Finesse}: Once per round, spend 1 Boon to clear 1 Leash tick.
-\end{itemize}
 \end{mechbox}
 
 \section{Spirit Capacity and Advancement}
 As summoners grow, they gain access to more powerful spirits and deeper bonds.
 
 \begin{mechbox}{Advanced Summoning Talents}
-\begin{itemize}
-\item \textbf{Greater Pactwright (4 XP)} \\
-\textit{Prerequisite: Lesser Pactwright.} \\
-Required to bind \textbf{Cap 2 or 3 spirits}. Without this, you cannot bind spirits stronger than Cap 1.
-\item \textbf{Spirit Synergy (4 XP)} \\
-\textit{Prerequisite: Lesser Pactwright.} \\
-When commanding two spirits, reduce each Leash tick by 1 (minimum 0). Essential for dual summoners—prevents the Leash from filling too quickly when managing multiple bonds.
-\item \textbf{Spirit Link (10 XP)} \\
-\textit{Prerequisite: Tier II, Spirit 3+.} \\
-Spirits act on your turn; commands are free actions. The bond is so deep that direction requires no effort—though the Leash still ticks for violations.
-\item \textbf{True Name Keeper (15 XP)} \\
-\textit{Prerequisite: Tier III, Lore 3+.} \\
-Call any previously encountered spirit by its true name; reduce its effective Cap by 2 for Leash calculation (to a minimum of Cap 1). The spirit \textit{cannot refuse} the call—but it remembers every slight, and its nature may turn hostile faster if abused.
-\item \textbf{Soul Anchor (12 XP)} \\
-\textit{Prerequisite: Tier III, Rite of Binding.} \\
-Bind a spirit permanently to a location or object. The Leash Clock does \textit{not} tick unless the spirit is forced to leave its anchor (e.g., by powerful magic or physical destruction of the anchor).
-\item \textbf{Leash-Breaker (8 XP)} \\
-\textit{Prerequisite: Spirit Synergy.} \\
-Once per session, voluntarily release a spirit without triggering its independent action. The spirit departs peacefully, but the summoner gains 1 Fatigue.
-\end{itemize}
+  \begin{itemize}
+    \item \textbf{Greater Pactwright (4 XP)} \\
+      \textit{Prerequisite: Lesser Pactwright.} \\
+      Required to bind \textbf{Cap 2 or 3 spirits}. Without this, you cannot bind spirits stronger than Cap 1.
+    \item \textbf{Spirit Synergy (4 XP)} \\
+      \textit{Prerequisite: Lesser Pactwright.} \\
+      When commanding two spirits, reduce each Leash tick by 1 (minimum 0). Essential for dual summoners—prevents the Leash from filling too quickly when managing multiple bonds.
+    \item \textbf{Spirit Link (10 XP)} \\
+      \textit{Prerequisite: Tier II, Spirit 3+.} \\
+      Spirits act on your turn; commands are free actions. The bond is so deep that direction requires no effort—though the Leash still ticks for violations.
+    \item \textbf{True Name Keeper (15 XP)} \\
+      \textit{Prerequisite: Tier III, Lore 3+.} \\
+      Call any previously encountered spirit by its true name; reduce its effective Cap by 2 for Leash calculation (to a minimum of Cap 1). The spirit \textit{cannot refuse} the call—but it remembers every slight, and its nature may turn hostile faster if abused.
+    \item \textbf{Soul Anchor (12 XP)} \\
+      \textit{Prerequisite: Tier III, Rite of Binding.} \\
+      Bind a spirit permanently to a location or object. The Leash Clock does \textit{not} tick unless the spirit is forced to leave its anchor (e.g., by powerful magic or physical destruction of the anchor).
+    \item \textbf{Leash‑Breaker (8 XP)} \\
+      \textit{Prerequisite: Spirit Synergy.} \\
+      Once per session, voluntarily release a spirit without triggering its independent action. The spirit departs peacefully, but the summoner gains 1 Fatigue.
+  \end{itemize}
 \end{mechbox}
 
 \section{Spirit Interaction: Calling, Binding, and Service}
 This is the flow of a typical summoning encounter.
 
 \begin{mechbox}{The Summoning Sequence}
-\begin{enumerate}
-\item \textbf{Call (1 action)}: Roll Wits + Presence (or relevant skill) vs. the spirit's Resist (typically 3 for minor spirits, 5 for powerful ones). On success, the spirit appears at Near range. On failure, it does not come. On a partial, it appears but is wary—you must succeed on a Bind attempt to keep it.
-\item \textbf{Bind (1 action)}: To secure the spirit's service, spend 1 Boon \textbf{or} mark 1 Fatigue. The spirit then decides:
-  \begin{itemize}
-    \item \textbf{Accepts}: It is bound. Service begins.
-    \item \textbf{Refuses}: It vanishes. You may try again later, but the spirit may demand a higher price or refuse outright.
-    \item \textbf{Acts on Nature}: It immediately performs one action from its Spirit Whims table (see below), then vanishes.
-  \end{itemize}
-\item \textbf{Service}: While bound, the spirit performs tasks as agreed. You may:
-  \begin{itemize}
-    \item Command it to act within its nature (no Leash tick)
-    \item Command it against its nature (Leash ticks +1)
-    \item Ask it to use a special ability (may tick Leash if taxing)
-  \end{itemize}
-  The spirit may also act independently if provoked (e.g., by disrespect to its nature)—roll on Spirit Whims table if the GM deems it appropriate.
-\item \textbf{Release}: To end service peacefully, succeed on a Wits + Presence roll vs. the spirit's Resist. On success, it departs with no Leash tick. On failure, it may act on its nature before leaving.
-\end{enumerate}
+  \begin{enumerate}
+    \item \textbf{Call (1 action)}: Roll Wits + Presence (or relevant skill) vs. the spirit's Resist (typically 3 for minor spirits, 5 for powerful ones). On success, the spirit appears at Near range. On failure, it does not come. On a partial, it appears but is wary—you must succeed on a Bind attempt to keep it.
+    \item \textbf{Bind (1 action)}: To secure the spirit's service, spend 1 Boon \textbf{or} mark 1 Fatigue. The spirit then decides:
+      \begin{itemize}
+        \item \textbf{Accepts}: It is bound. Service begins.
+        \item \textbf{Refuses}: It vanishes. You may try again later, but the spirit may demand a higher price or refuse outright.
+        \item \textbf{Acts on Nature}: It immediately performs one action from its Spirit Whims table (see below), then vanishes.
+      \end{itemize}
+    \item \textbf{Service}: While bound, the spirit performs tasks as agreed. You may:
+      \begin{itemize}
+        \item Command it to act within its nature (no Leash tick)
+        \item Command it against its nature (Leash ticks +1)
+        \item Ask it to use a special ability (may tick Leash if taxing)
+      \end{itemize}
+      The spirit may also act independently if provoked (e.g., by disrespect to its nature)—roll on Spirit Whims table if the GM deems it appropriate.
+    \item \textbf{Release}: To end service peacefully, succeed on a Wits + Presence roll vs. the spirit's Resist. On success, it departs with no Leash tick. On failure, it may act on its nature before leaving.
+  \end{enumerate}
 \end{mechbox}
 
 \section{Spirit Whims Table}
 When a bound spirit acts independently (due to Leash filling, provocation, or GM discretion), consult this table. The GM may choose or roll d8.
 
 \begin{mechbox}{Spirit Whims (d8)}
-\begin{longtable}{C{0.8cm} L{12cm}}
-\toprule
-\textbf{d8} & \textbf{Spirit's Independent Action} \\
-\midrule
-1 & \textbf{Reveal a Secret} – The spirit blurts out a hidden fact about a PC or NPC – true, embarrassing, or dangerous. \\
-2 & \textbf{Break Something} – The spirit shatters a mundane object (a lantern, a rope bridge, a crucial tool). \\
-3 & \textbf{Lead Astray} – The spirit moves a short distance and creates a false trail, forcing the party to waste time. \\
-4 & \textbf{Call for Help} – The spirit summons a minor ally (a rat swarm, a will-o'-wisp, a lesser elemental). \\
-5 & \textbf{Curse a PC} – The spirit leaves a lingering mark (–1 die on one skill until the next sunrise). \\
-6 & \textbf{Bargain} – The spirit offers a deal: "Release me now, and I'll tell you where the treasure is hidden." \\
-7 & \textbf{Demand a Price} – The spirit reminds the summoner of an unpaid debt. Pay now (1 Boon or 1 Fatigue) or the spirit acts again next round. \\
-8 & \textbf{Call the Hollow} – The spirit names a PC. The Hollow's attention shifts to that character for the next scene (all actions Desperate). \\
-\bottomrule
-\end{longtable}
+  \begin{longtable}{C{0.8cm} L{12cm}}
+    \toprule
+    \textbf{d8} & \textbf{Spirit's Independent Action} \\
+    \midrule
+    1 & \textbf{Reveal a Secret} – The spirit blurts out a hidden fact about a PC or NPC – true, embarrassing, or dangerous. \\
+    2 & \textbf{Break Something} – The spirit shatters a mundane object (a lantern, a rope bridge, a crucial tool). \\
+    3 & \textbf{Lead Astray} – The spirit moves a short distance and creates a false trail, forcing the party to waste time. \\
+    4 & \textbf{Call for Help} – The spirit summons a minor ally (a rat swarm, a will‑o'‑wisp, a lesser elemental). \\
+    5 & \textbf{Curse a PC} – The spirit leaves a lingering mark (–1 die on one skill until the next sunrise). \\
+    6 & \textbf{Bargain} – The spirit offers a deal: “Release me now, and I'll tell you where the treasure is hidden.” \\
+    7 & \textbf{Demand a Price} – The spirit reminds the summoner of an unpaid debt. Pay now (1 Boon or 1 Fatigue) or the spirit acts again next round. \\
+    8 & \textbf{Call the Hollow} – The spirit names a PC. The Hollow's attention shifts to that character for the next scene (all actions Desperate). \\
+    \bottomrule
+  \end{longtable}
 \end{mechbox}
 
 \section{The Hollow: The Unseen Witness}
 The Hollow is not a spirit—it is the attention that gathers when promises are broken. It is the reason the Leash has weight.
 
 \begin{mechbox}{The Hollow's Role}
-\begin{itemize}
-\item \textbf{Not a Target}: You cannot summon, bind, or command the Hollow. It is the \textit{context} of all bargains.
-\item \textbf{Debt Collector}: When the Leash fills and the spirit acts on its nature, the Hollow \textit{observes}. If the summoner abused the bond (e.g., commanded against nature repeatedly without offering fair price), the Hollow may:
   \begin{itemize}
-    \item Inflict 1 Corruption on the summoner (beyond the Leash-fill cost)
-    \item Cause the spirit to turn hostile instead of departing
-    \item Mark the summoner with a \textit{Hollow's Attention} tag (–1 to all Spirit checks until they make amends)
+    \item \textbf{Not a Target}: You cannot summon, bind, or command the Hollow. It is the \textit{context} of all bargains.
+    \item \textbf{Debt Collector}: When the Leash fills and the spirit acts on its nature, the Hollow \textit{observes}. If the summoner abused the bond (e.g., commanded against nature repeatedly without offering fair price), the Hollow may:
+      \begin{itemize}
+        \item Inflict 1 Corruption on the summoner (beyond the Leash‑fill cost)
+        \item Cause the spirit to turn hostile instead of departing
+        \item Mark the summoner with a \textit{Hollow's Attention} tag (–1 to all Spirit checks until they make amends)
+      \end{itemize}
+    \item \textbf{The Ninth Knot}: The Leash has nine conceptual segments. The ninth is never ticked—it is the space where the Hollow observes. When a spirit acts according to its nature, the Hollow \textit{assesses} whether the bargain was kept.
   \end{itemize}
-\item \textbf{The Ninth Knot}: The Leash has nine conceptual segments. The ninth is never ticked—it is the space where the Hollow observes. When a spirit acts according to its nature, the Hollow \textit{assesses} whether the bargain was kept.
-\end{itemize}
 \end{mechbox}
 
 % ============================================================
@@ -389,23 +429,23 @@ The Hollow is not a spirit—it is the attention that gathers when promises are 
 \chapter{Spirit Compendium}
 This section details spirits suitable for binding. Each entry includes:
 \begin{itemize}
-\item \textbf{Nature}: Core motivations and personality
-\item \textbf{Appearance}: How the spirit manifests
-\item \textbf{Services}: What it can do for the summoner
-\item \textbf{Price}: What the spirit requires in return (not always material)
-\item \textbf{Acting Its Nature}: How it behaves when the Leash fills or it is provoked
-\item \textbf{Cap}: The spirit's power level (determines Leash length)
+  \item \textbf{Nature}: Core motivations and personality
+  \item \textbf{Appearance}: How the spirit manifests
+  \item \textbf{Services}: What it can do for the summoner
+  \item \textbf{Price}: What the spirit requires in return (not always material)
+  \item \textbf{Acting Its Nature}: How it behaves when the Leash fills or it is provoked
+  \item \textbf{Cap}: The spirit's power level (determines Leash length)
 \end{itemize}
 All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \section{Ancestral Spirits (Ykrul Traditions)}
 
-\subsection{Wolf-Ancestor (Grey Fox Clan)}
+\subsection{Wolf‑Ancestor (Grey Fox Clan)}
 \textbf{Nature:} Ancestral, protective, prideful. Values honesty and courage in battle.
 
 \textbf{Appearance:} Grey wolf the size of a pony, eyes reflecting scenes from the summoner's childhood. Fur smells of dry grass and iron.
 
-\textbf{Services:} Tracking, guarding, teaching forgotten battle-songs, sensing oath-breakers.
+\textbf{Services:} Tracking, guarding, teaching forgotten battle‑songs, sensing oath‑breakers.
 
 \textbf{Price:} The summoner must uphold the honour of the clan (e.g., refuse to fight dishonourably, avenge kinslayings).
 
@@ -413,7 +453,7 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 2. Requires Lesser Pactwright.}
 
-\subsection{Hearth-Bound (Aelaerem)}
+\subsection{Hearth‑Bound (Aelaerem)}
 \textbf{Nature:} Ancestral, domestic, protective. Finds joy in simple acts of care.
 
 \textbf{Appearance:} Faint figure in apron or smock, smelling of bread and woodsmoke. Leaves no footprints.
@@ -426,10 +466,10 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 1. Requires Lesser Pactwright.}
 
-\subsection{Gallows-Shade (Ecktoria)}
+\subsection{Gallows‑Shade (Ecktoria)}
 \textbf{Nature:} Wrongful execution, seeking justice or vengeance. Haunted by the injustice of its death.
 
-\textbf{Appearance:} Figure in rope-burned grey, neck bent at an unnatural angle. Carries a noose that tightens when lies are spoken.
+\textbf{Appearance:} Figure in rope‑burned grey, neck bent at an unnatural angle. Carries a noose that tightens when lies are spoken.
 
 \textbf{Services:} Revealing lies, frightening the guilty, witnessing confessions.
 
@@ -441,8 +481,8 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \section{Elemental and Indigenous Spirits}
 
-\subsection{Vein-Serpent (Aeler)}
-\textbf{Nature:} Indigenous, mineral, slow-witted. Speaks in rumbles through stone.
+\subsection{Vein‑Serpent (Aeler)}
+\textbf{Nature:} Indigenous, mineral, slow‑witted. Speaks in rumbles through stone.
 
 \textbf{Appearance:} Serpent of polished copper and malachite, slithering through stone as if it were water.
 
@@ -450,11 +490,11 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \textbf{Price:} For every ounce of ore taken, an ounce of mortar laid. The stone must be maintained.
 
-\textbf{Acting Its Nature:} May seal a tunnel prematurely or "forget" a vein it showed you, demanding more mortar before revealing new sources.
+\textbf{Acting Its Nature:} May seal a tunnel prematurely or “forget” a vein it showed you, demanding more mortar before revealing new sources.
 
 \mechnote{Cap 2. Requires Lesser Pactwright.}
 
-\subsection{Frost-Wight (Linn)}
+\subsection{Frost‑Wight (Linn)}
 \textbf{Nature:} Drowned sailor, preserved in ice. Grieves for its lost ship and crew.
 
 \textbf{Appearance:} Figure of frost and brine, breath visible in warm rooms. Clothes frozen solid.
@@ -467,7 +507,7 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 2. Requires Lesser Pactwright.}
 
-\subsection{Dust-Djanni (Fhara)}
+\subsection{Dust‑Djanni (Fhara)}
 \textbf{Nature:} Desert spirit, old as the erg. Patient but exacting; values knowledge and tradition.
 
 \textbf{Appearance:} Column of dust shaped like a robed figure, eyes of polished amber.
@@ -485,13 +525,13 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 \subsection{Drowned Mutineer (Zakov)}
 \textbf{Nature:} Vengeful dead, confused, bitter. Obsessed with punishing the betrayer's bloodline.
 
-\textbf{Appearance:} Bloated figure in rotting finery, surrounded by a halo of salt-crusted coins.
+\textbf{Appearance:} Bloated figure in rotting finery, surrounded by a halo of salt‑crusted coins.
 
 \textbf{Services:} Sabotage of ships, whispering secrets into sleeping ears, cursing cargo to spoil.
 
 \textbf{Price:} A promise of vengeance against the living. The summoner must carry the mutineer's grudge as their own (e.g., hunt the betrayer's descendants).
 
-\textbf{Acting Its Nature:} May try to drown a crew member or sink a boat it deems "guilty" (even if innocent by association).
+\textbf{Acting Its Nature:} May try to drown a crew member or sink a boat it deems “guilty” (even if innocent by association).
 
 \mechnote{Cap 3. Requires Greater Pactwright.}
 
@@ -508,22 +548,22 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 3. Requires Greater Pactwright.}
 
-\subsection{Broken-Knight (Vhasia)}
+\subsection{Broken‑Knight (Vhasia)}
 \textbf{Nature:} A knight who broke an oath of fealty and was executed. Seeks to restore honour through perfect service.
 
 \textbf{Appearance:} Armour rusted shut, visor down. Cannot open it. Speaks through the rust.
 
 \textbf{Services:} Fighting as a spectral ally, holding a threshold, testing the honour of others.
 
-\textbf{Price:} A witness to its deathbed confession (e.g., someone who heard it say "I regret my betrayal").
+\textbf{Price:} A witness to its deathbed confession (e.g., someone who heard it say “I regret my betrayal”).
 
-\textbf{Acting Its Nature:} May challenge a companion to a duel of honour, or refuse to fight an "honourable" foe (deeming them unworthy of the test).
+\textbf{Acting Its Nature:} May challenge a companion to a duel of honour, or refuse to fight an “honourable” foe (deeming them unworthy of the test).
 
 \mechnote{Cap 3. Requires Greater Pactwright.}
 
 \section{Threshold and Fae Spirits}
 
-\subsection{Lamp-Wight (Thepyrgos)}
+\subsection{Lamp‑Wight (Thepyrgos)}
 \textbf{Nature:} Tower ghost, bound to a lighthouse or beacon. Dutiful, lonely, precise. Values vigilance and truth.
 
 \textbf{Appearance:} Translucent keeper's uniform, carrying a lantern that casts no light.
@@ -536,7 +576,7 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 2. Requires Lesser Pactwright.}
 
-\subsection{Thorn-Courtier (Aelinnel)}
+\subsection{Thorn‑Courtier (Aelinnel)}
 \textbf{Nature:} Fae bound by broken courtesy. Obsessed with etiquette and the appearance of fairness.
 
 \textbf{Appearance:} Masked figure in leaves and law, voice like rustling paper. Never shows its face.
@@ -562,9 +602,9 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 2. Requires Lesser Pactwright.}
 
-\section{Aeler Stone-Sleepers}
+\section{Aeler Stone‑Sleepers}
 
-\subsection{Bell-Wight (Aeler)}
+\subsection{Bell‑Wight (Aeler)}
 \textbf{Nature:} A miner who died counting breaths. Now counts everything with obsessive precision.
 
 \textbf{Appearance:} Dwarven figure in miner's gear, carrying a bell that never rings.
@@ -577,16 +617,16 @@ All spirits require \textit{Lesser Pactwright} to bind unless noted otherwise.
 
 \mechnote{Cap 1. Requires Lesser Pactwright.}
 
-\subsection{Keystone-Keeper (Aeler)}
-\textbf{Nature:} An engineer who sealed a tunnel and was sealed inside. Values integrity and follow-through.
+\subsection{Keystone‑Keeper (Aeler)}
+\textbf{Nature:} An engineer who sealed a tunnel and was sealed inside. Values integrity and follow‑through.
 
-\textbf{Appearance:} Spectral figure in mason's apron, hands covered in stone-dust that does not wash off.
+\textbf{Appearance:} Spectral figure in mason's apron, hands covered in stone‑dust that does not wash off.
 
 \textbf{Services:} Sealing doors, reading keystone clauses, detecting forgeries.
 
 \textbf{Price:} A repair year—one year of maintaining the tunnel where it died (e.g., patching leaks, reinforcing weak points).
 
-\textbf{Acting Its Nature:} May seal a door you need open (e.g., block an escape route), or demand a maintenance vow (e.g., "I will fix this gate every spring") before assisting.
+\textbf{Acting Its Nature:} May seal a door you need open (e.g., block an escape route), or demand a maintenance vow (e.g., “I will fix this gate every spring”) before assisting.
 
 \mechnote{Cap 3. Requires Greater Pactwright.}
 
@@ -600,37 +640,37 @@ This chapter offers advice for embodying the summoner's role—not just mechanic
 \section{The Summoner's Mindset}
 Remember these principles at the table:
 \begin{itemize}
-\item \textbf{Listen First}: Before calling a spirit, research its nature. A wolf-ancestor won't serve a coward; a Dust-Djanni won't appear for a off-key song.
-\item \textbf{Honour the Price}: The spirit's price is non-negotiable. If you cannot pay it, do not call the spirit.
-\item \textbf{Respect Agency}: A spirit is not a tool. If it acts on its nature, ask why—it may be telling you something important.
-\item \textbf{Balance Bonds}: Binding multiple spirits spreads your attention. Use Spirit Synergy early, and consider whether you truly need that third bond.
-\item \textbf{The Hollow Watches}: Every time you strain the Leash, consider if you're honouring the bargain. Short-term gain may bring long-term scrutiny.
+  \item \textbf{Listen First}: Before calling a spirit, research its nature. A wolf‑ancestor won't serve a coward; a Dust‑Djanni won't appear for an off‑key song.
+  \item \textbf{Honour the Price}: The spirit's price is non‑negotiable. If you cannot pay it, do not call the spirit.
+  \item \textbf{Respect Agency}: A spirit is not a tool. If it acts on its nature, ask why—it may be telling you something important.
+  \item \textbf{Balance Bonds}: Binding multiple spirits spreads your attention. Use Spirit Synergy early, and consider whether you truly need that third bond.
+  \item \textbf{The Hollow Watches}: Every time you strain the Leash, consider if you're honouring the bargain. Short‑term gain may bring long‑term scrutiny.
 \end{itemize}
 
 \section{Common Pitfalls and How to Avoid Them}
 \begin{itemize}
-\item \textbf{"I just need more power!"}: Seeking stronger spirits without understanding their nature leads to broken Leashes and hostile entities. \textit{Solution}: Master Cap 1 spirits first—learn the rhythm of bargaining before moving up.
-\item \textbf{"I'll spend Boons later!"}: Hoarding Boons leaves you vulnerable when the Leash fills. \textit{Solution}: Treat Boons like breath—spend them freely to maintain balance, knowing more will come.
-\item \textbf{"It's just a spirit—I can replace it."}: Spirits remember. Burning a bond with a Dust-Djanni may make all desert spirits wary of you. \textit{Solution}: Treat each spirit as a unique relationship, not a disposable asset.
-\item \textbf{"The GM is being unfair!"}: When a spirit acts on its nature, ask: "Did I violate the bargain?" Often, the answer is yes. \textit{Solution}: Use the moment to deepen the story—not to argue mechanics.
+  \item \textbf{“I just need more power!”}: Seeking stronger spirits without understanding their nature leads to broken Leashes and hostile entities. \textit{Solution}: Master Cap 1 spirits first—learn the rhythm of bargaining before moving up.
+  \item \textbf{“I'll spend Boons later!”}: Hoarding Boons leaves you vulnerable when the Leash fills. \textit{Solution}: Treat Boons like breath—spend them freely to maintain balance, knowing more will come.
+  \item \textbf{“It's just a spirit—I can replace it.”}: Spirits remember. Burning a bond with a Dust‑Djanni may make all desert spirits wary of you. \textit{Solution}: Treat each spirit as a unique relationship, not a disposable asset.
+  \item \textbf{“The GM is being unfair!”}: When a spirit acts on its nature, ask: “Did I violate the bargain?” Often, the answer is yes. \textit{Solution}: Use the moment to deepen the story—not to argue mechanics.
 \end{itemize}
 
 \section{Sample Play: Honouring the Bond}
 \begin{quote}
-\textit{GM: "The Dust-Djanni has pointed east three times. Each time, you've found dry earth. Its amber eyes flicker—it's testing you."} \\
-\textit{Mira: "I dismount and kneel in the sand. I begin the song my grandmother taught me—'Well of the Ancestors, hidden deep'—not perfectly, but with all the respect I can muster."} \\
-\textit{GM: "Roll Presence + Performance. DN 4 for a sincere attempt."} \\
-\textit{Mira: (rolls) "I got a 12—success!"} \\
-\textit{GM: "The dust parts. Before you, water bubbles up from the sand—clear and cool. The djanni inclines its dusty head, then flows westward, vanishing. It found water because you honoured the price."}
+\textit{GM: “The Dust‑Djanni has pointed east three times. Each time, you've found dry earth. Its amber eyes flicker—it's testing you.”} \\
+\textit{Mira: “I dismount and kneel in the sand. I begin the song my grandmother taught me—‘Well of the Ancestors, hidden deep’—not perfectly, but with all the respect I can muster.”} \\
+\textit{GM: “Roll Presence + Performance. DN 4 for a sincere attempt.”} \\
+\textit{Mira: (rolls) “I got a 12—success!”} \\
+\textit{GM: “The dust parts. Before you, water bubbles up from the sand—clear and cool. The djanni inclines its dusty head, then flows westward, vanishing. It found water because you honoured the price.”}
 \end{quote}
 
 \section{Sample Play: When the Leash Breaks}
 \begin{quote}
-\textit{GM: "You've commanded the Gallows-Shade to reveal lies five times today. Each time, it has complied—but each time, you've ignored its price: to name the accuser publicly. Its rope trembles with tension."} \\
-\textit{Kaelen: "I need to know who betrayed the garrison! I command it again—name the traitor!"} \\
-\textit{GM: "Roll Wits + Intimidation. DN 5 to force it against its nature."} \\
-\textit{Kaelen: (rolls) "I got a 14—success!"} \\
-\textit{GM: "The Leash fills. The shade's noose snaps tight—not around its own neck, but around yours. It whispers in your ear: 'You who refuse to name the accuser... now you wear the rope.' You gain 1 Corruption, and the shade vanishes. For the next scene, all your social rolls are Desperate—people flinch from your presence, seeing only the hangman's knot."}
+\textit{GM: “You've commanded the Gallows‑Shade to reveal lies five times today. Each time, it has complied—but each time, you've ignored its price: to name the accuser publicly. Its rope trembles with tension.”} \\
+\textit{Kaelen: “I need to know who betrayed the garrison! I command it again—name the traitor!”} \\
+\textit{GM: “Roll Wits + Intimidation. DN 5 to force it against its nature.”} \\
+\textit{Kaelen: (rolls) “I got a 14—success!”} \\
+\textit{GM: “The Leash fills. The shade's noose snaps tight—not around its own neck, but around yours. It whispers in your ear: ‘You who refuse to name the accuser... now you wear the rope.’ You gain 1 Corruption, and the shade vanishes. For the next scene, all your social rolls are Desperate—people flinch from your presence, seeing only the hangman's knot.”}
 \end{quote}
 
 % ============================================================
@@ -642,39 +682,39 @@ Remember these principles at the table:
 
 \chapter{Quick Reference: Summoner's Tools}
 \begin{mechbox}{Essential Numbers}
-\begin{tabular}{ll}
-\toprule
-\textbf{Action} & \textbf{Cost} \\
-\midrule
-Call Spirit & 1 action (Wits + Presence vs. Resist) \\
-Bind Spirit & 1 Boon \textit{or} 1 Fatigue \\
-Command Within Nature & No cost \\
-Command Against Nature & +1 Leash tick \\
-Split Focus (2+ spirits) & +1 Leash tick per extra spirit \\
-Cross [WARD] & +1 Leash tick \\
-Use Boon Finesse & 1 Boon to clear 1 Leash tick \\
-Release Spirit Peacefully & Wits + Presence vs. Resist \\
-\bottomrule
-\end{tabular}
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Action} & \textbf{Cost} \\
+    \midrule
+    Call Spirit & 1 action (Wits + Presence vs. Resist) \\
+    Bind Spirit & 1 Boon \textit{or} 1 Fatigue \\
+    Command Within Nature & No cost \\
+    Command Against Nature & +1 Leash tick \\
+    Split Focus (2+ spirits) & +1 Leash tick per extra spirit \\
+    Cross [WARD] & +1 Leash tick \\
+    Use Boon Finesse & 1 Boon to clear 1 Leash tick \\
+    Release Spirit Peacefully & Wits + Presence vs. Resist \\
+    \bottomrule
+  \end{tabular}
 \end{mechbox}
 
 \chapter{Sample Spirits for New Summoners}
 \begin{mechbox}{Starter Spirits (Cap 1)}
-\begin{itemize}
-\item \textbf{Bell-Wight}: Counting, structural integrity. Price: Never count to nine. Nature: Precise, anxious.
-\item \textbf{Hearth-Bound}: Home protection, finding lost objects. Price: Nightly milk. Nature: Warm, protective.
-\end{itemize}
+  \begin{itemize}
+    \item \textbf{Bell‑Wight}: Counting, structural integrity. Price: Never count to nine. Nature: Precise, anxious.
+    \item \textbf{Hearth‑Bound}: Home protection, finding lost objects. Price: Nightly milk. Nature: Warm, protective.
+  \end{itemize}
 \end{mechbox}
 
 \chapter{The Hollow's Influence}
 \begin{mechbox}{When the Hollow Intervenes}
-If a summoner repeatedly abuses bonds (e.g., commanding spirits against nature without paying price), the Hollow may:
-\begin{itemize}
-\item \textbf{First Warning}: Mark with \textit{Hollow's Attention} (–1 Spirit checks until amends made)
-\item \textbf{Second Warning}: Cause next bound spirit to be hostile on arrival
-\item \textbf{Third Warning}: Summoner cannot bind spirits for 1 session; all Spirit checks are Desperate
-\end{itemize}
-Amends require: a public act of restitution (e.g., speaking a spirit's accuser's name), a significant sacrifice (e.g., fasting for 3 days), or a service to the spirit's kind (e.g., protecting a wolf den).
+  If a summoner repeatedly abuses bonds (e.g., commanding spirits against nature without paying price), the Hollow may:
+  \begin{itemize}
+    \item \textbf{First Warning}: Mark with \textit{Hollow's Attention} (–1 Spirit checks until amends made)
+    \item \textbf{Second Warning}: Cause next bound spirit to be hostile on arrival
+    \item \textbf{Third Warning}: Summoner cannot bind spirits for 1 session; all Spirit checks are Desperate
+  \end{itemize}
+  Amends require: a public act of restitution (e.g., speaking a spirit's accuser's name), a significant sacrifice (e.g., fasting for 3 days), or a service to the spirit's kind (e.g., protecting a wolf den).
 \end{mechbox}
 
 % ============================================================
@@ -688,35 +728,35 @@ Amends require: a public act of restitution (e.g., speaking a spirit's accuser's
 \vspace*{2cm}
 
 \begin{center}
-\itshape
-These letters were returned to the lead-lined strongbox \\
-and resealed with a new red thread— \\
-eight knots, the ninth left loose. \\[0.3cm]
+  \itshape
+  These letters were returned to the lead‑lined strongbox \\
+  and resealed with a new red thread— \\
+  eight knots, the ninth left loose.\\[0.3cm]
 
-The box was returned to the Archivolt's sub-basement. \\
-No one knows who requested the resealing. \\
-The thread is still warm. \\[0.3cm]
+  The box was returned to the Archivolt's sub‑basement. \\
+  No one knows who requested the resealing. \\
+  The thread is still warm.\\[0.3cm]
 
-Kaelen of Varnek Karn was not found. \\
-Mira of the Violet Steppe appears in no record— \\
-except this one, and the one that was whispered at a crossroads, \\
-under a lamp that should have gone out but did not. \\[0.3cm]
+  Kaelen of Varnek Karn was not found. \\
+  Mira of the Violet Steppe appears in no record— \\
+  except this one, and the one that was whispered at a crossroads, \\
+  under a lamp that should have gone out but did not.\\[0.3cm]
 
-Borte of the Grey Fox Clan continues to be sung in Ykrul winter camps. \\
-The song changes each year. \\
-The wolf does not. \\[0.3cm]
+  Borte of the Grey Fox Clan continues to be sung in Ykrul winter camps. \\
+  The song changes each year. \\
+  The wolf does not.\\[0.3cm]
 
-The leash has two ends. \\
-The Hollow holds both.
+  The leash has two ends. \\
+  The Hollow holds both.
 \end{center}
 
 \vspace*{1cm}
 
 \begin{flushright>
-\itshape
---- The Grey Wanderer \\
-at the Dusty Page, \\
-under the ninth bell (which did not ring)
+  \itshape
+  --- The Grey Wanderer \\
+  at the Dusty Page, \\
+  under the ninth bell (which did not ring)
 \end{flushright}
 
 \knotdecor
@@ -724,10 +764,10 @@ under the ninth bell (which did not ring)
 \vspace*{1cm}
 
 \begin{center}
-\tiny
-\textcolor{fadecolor}{The ink is ash and blood. The ninth page is blank.} \\
-\tiny
-\textcolor{fadecolor}{The knot is not cut. The debt is not closed. The wolf is still waiting.}
+  \tiny
+  \textcolor{fadecolor}{The ink is ash and blood. The ninth page is blank.} \\
+  \tiny
+  \textcolor{fadecolor}{The knot is not cut. The debt is not closed. The wolf is still waiting.}
 \end{center}
 
 \end{document}

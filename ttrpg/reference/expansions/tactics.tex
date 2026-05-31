@@ -1,7 +1,7 @@
 % !TeX program = lualatex
 %=============================================================
-%  Fate's Edge -- Tactical Combat Module (Revised)
-%  Optional grid-based skirmish rules
+%  Fate's Edge -- Tactical Combat Module 
+%  Optional grid‑based skirmish rules
 %  No changes to core mechanics, no HP
 %=============================================================
 \documentclass[12pt]{article}
@@ -19,11 +19,13 @@
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{caption}
-\usepackage{amsmath}        % <‑‑ for \displaystyle in \dice
+\usepackage{amsmath}        % for \displaystyle in \dice
+\usepackage{tabularx}       % for tabularx environments
 \captionsetup{font=small,labelfont=bf}
 
 %--- Fonts ---------------------------------------------------
-\setmainfont{Calibri Light}[Ligatures=Common]
+% Use a widely‑available sans‑serif font; TeX Gyre Heros is part of TeX Live.
+\setmainfont{TeX Gyre Heros}[Ligatures=Common]
 
 %--- Colours -------------------------------------------------
 \definecolor{edgeBlue}{HTML}{003366}
@@ -44,8 +46,8 @@
 \thispagestyle{empty}
 \begin{center}
     {\LARGE\bfseries Fate's Edge}\\[2mm]
-    {\Large\bfseries Tactical Combat Module (Revised)}\\[4mm]
-    {\large Optional grid-based skirmish rules}\\[2mm]
+    {\Large\bfseries Tactical Combat Module }\\[4mm]
+    {\large Optional grid‑based skirmish rules}\\[2mm]
     {\normalsize Version 2.0 \quad \today}
 \end{center}
 \vspace{1cm}
@@ -65,7 +67,7 @@
 \vspace{0.6cm}
 
 \section{Core Principles}
-\begin{enumerate}[label=\arabic*. , leftmargin=*]
+\begin{enumerate}[label=\arabic*., leftmargin=*]
     \item \textbf{Narrative first.} The grid is a storytelling tool. Every move must be described in fiction.
     \item \textbf{No mechanics changes.} Dice pools, \storybeats, \boon, Position and Effect work as written.
     \item \textbf{Predictable tactics.} Cover, flanking, reach and facing give players concrete ways to gain Position before rolling.
@@ -104,9 +106,14 @@
     \item \textbf{Entering} enemy ZoC ends your movement and places you in melee (\pos{Controlled} with that enemy).
     \item \textbf{Leaving} ZoC requires a \term{Disengage} test: DV 4 (plus any modifiers). Failure leaves you \pos{Desperate} for your next action.
     \item \textbf{Stacked ZoC:} +1 to Disengage DV per extra enemy.
-    \item \textbf{Pushing Through ZoC:} To move through an enemy's Zone of Control without ending movement, make a Skill test (Athletics or Acrobatics) vs DV $4 + (N-1)$, where $N$ is the number of enemies exerting ZoC in the target path. On success, you may continue your movement through the ZoC. On failure, movement ends as normal (entering ZoC places you in melee). \textit{Regardless of outcome, pushing through incurs one cost:} \begin{itemize}[noitemsep] \item \textbf{Gain 1 Fatigue}, \\ \textit{or} \item \textbf{GM gains 1 \storybeats}, \\ \textit{or} \item \textbf{Your next action suffers \pos{Risky} (if currently \pos{Controlled}) or \pos{Desperate} (if currently \pos{Risky})}. \end{itemize} \hfill \textit{(Higher skill ranks improve success chance—veterans thread through chaos where novices falter.)}
+    \item \textbf{Pushing Through ZoC:} To move through an enemy's Zone of Control without ending movement, make a Skill test (Athletics or Acrobatics) vs DV $4 + (N-1)$, where $N$ is the number of enemies exerting ZoC in the target path. On success, you may continue your movement through the ZoC. On failure, movement ends as normal (entering ZoC places you in melee). \textit{Regardless of outcome, pushing through incurs one cost:} 
+    \begin{itemize}[noitemsep]
+        \item \textbf{Gain 1 Fatigue},
+        \item \textbf{or GM gains 1 \storybeats},
+        \item \textbf{or your next action suffers \pos{Risky} (if currently \pos{Controlled}) or \pos{Desperate} (if currently \pos{Risky})}.
+    \end{itemize}
+    \hfill\textit{(Higher skill ranks improve success chance—veterans thread through chaos where novices falter.)}
 \end{itemize}
-
 
 \section{Cover \& Position}
 \begin{tabular}{>{\bfseries}l l}
@@ -137,7 +144,7 @@ Full cover (solid wall)      & Defender gains \pos{Controlled} against all attac
 
 \section{Action Economy (Tactical)}
 Each turn:
-\begin{enumerate}[label=\arabic*. , leftmargin=*]
+\begin{enumerate}[label=\arabic*., leftmargin=*]
     \item \textbf{One Action} – attack, cast, use skill, activate talent, etc.
     \item \textbf{One Move} – up to movement rate (can be taken before, after, or split around the action).
 \end{enumerate}
@@ -168,7 +175,7 @@ Spend a Boon before roll     & Shift Position up one step\\
 \end{itemize}
 
 \section{Example Turn}
-\begin{enumerate}[label=\arabic*. , leftmargin=*]
+\begin{enumerate}[label=\arabic*., leftmargin=*]
     \item Kaelen (Body 4, Melee 5) stands 5 cells from a guard behind a low wall (partial cover).
     \item Kaelen dashes 12 cells, ending adjacent (enters guard’s ZoC). Guard now \pos{Controlled}, Kaelen \pos{Dominant} for his attack.
     \item Valeros is already on the opposite side – flanking active.
@@ -180,7 +187,7 @@ Spend a Boon before roll     & Shift Position up one step\\
 \noindent Dice, Boons, and Outcome matrix untouched; only Position derived from the grid.
 
 \section{GM Guidance}
-\begin{enumerate}[label=\arabic*. , leftmargin=*]
+\begin{enumerate}[label=\arabic*., leftmargin=*]
     \item Draw the grid early – dry‑erase board or VTT.
     \item Read Position first: “What is the attacker’s Position? What can the defender do to change it?”
     \item Spend \storybeats\ on dramatic consequences (cover collapse, reinforcements, etc.).
@@ -264,6 +271,6 @@ Use Boon for Position & 1 Boon (before roll)\\
 %=============================================================
 \clearpage
 \section*{License}
-This Tactical Combat Module (Revised) is released under the \textbf{Creative Commons Attribution‑ShareAlike 4.0 International (CC‑BY‑SA 4.0)} license. You may copy, modify and distribute it provided you give appropriate credit and share any modifications under the same terms.
+This Tactical Combat Module is released under the \textbf{Creative Commons Attribution‑ShareAlike 4.0 International (CC‑BY‑SA 4.0)} license. You may copy, modify and distribute it provided you give appropriate credit and share any modifications under the same terms.
 
 \end{document}
