@@ -337,7 +337,7 @@ Clocks are visible trackers for threats, progress, and looming changes.
 
 ## 13. Quick Build & Advancement
 
-### Starting Characters (30 XP)
+### Starting Characters (32 XP)
 - **Attributes:** each starts at 1. Raise to 2 (6 XP), 3 (9 XP), etc. (new rating ×3 XP)
 - **Skills:** start at 0. Raise to 1 (2 XP), 2 (4 XP), etc. (new level ×2 XP)
 - **Minor Asset (4 XP):** safehouse, contact, special tool

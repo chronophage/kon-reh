@@ -113,7 +113,7 @@ class CharacterBuilderTab:
         xp_frame.pack(fill=tk.X, padx=20, pady=10)
         
         ttk.Label(xp_frame, text=f"Starting XP: {self.character_data['xp_total']}").pack(anchor=tk.W)
-        ttk.Label(xp_frame, text="Baseline 30 XP for new characters").pack(anchor=tk.W, pady=(5, 0))
+        ttk.Label(xp_frame, text="Baseline 32 XP for new characters").pack(anchor=tk.W, pady=(5, 0))
         
         # Complication options
         comp_frame = ttk.LabelFrame(frame, text="Optional Starting Complications", padding="10")

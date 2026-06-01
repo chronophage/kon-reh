@@ -412,7 +412,7 @@ How you spend your Experience Points (XP) defines not only your character's capa
 
 **Typical Investment**: 70–90% Personal improvement
 
-**Build Example: The Duelist (Legal Start - 30 XP)**
+**Build Example: The Duelist (Legal Start - 32 XP)**
 - Attributes: Body 3, Wits 2, Spirit 1, Presence 1
 - Skills: Melee 2, Athletics 1
 - With +4 XP (Bonds/Complications): Additional skills or talents
@@ -421,7 +421,7 @@ How you spend your Experience Points (XP) defines not only your character's capa
 
 **Typical Investment**: 50–65% Personal improvement
 
-**Build Example: The Scout (Legal Start - 30 XP)**
+**Build Example: The Scout (Legal Start - 32 XP)**
 - Attributes: Wits 2, Body 2, Spirit 1, Presence 1
 - Skills: Survival 2, Perception 1, Stealth 1
 - Resources: Minor equipment cache (4 XP)
@@ -431,7 +431,7 @@ How you spend your Experience Points (XP) defines not only your character's capa
 
 **Typical Investment**: 25–40% Personal improvement
 
-**Build Example: The Merchant (Legal Start - 30 XP)**
+**Build Example: The Merchant (Legal Start - 32 XP)**
 - Attributes: Presence 2, Wits 2, Spirit 1, Body 1
 - Skills: Sway 2, Deception 1, Lore 1
 - Resources: Standard trading office (8 XP)
@@ -439,7 +439,7 @@ How you spend your Experience Points (XP) defines not only your character's capa
 ### 6.5 Starting Character Guidelines
 
 **Base XP Allocation**: 30 points
-**Bonds and Complications**: Up to +4 XP (max start 34 XP)
+**Bonds and Complications**: Up to +4 XP (max start 36XP)
 
 ---
 
@@ -598,7 +598,7 @@ In Fate's Edge, the world is not a backdrop—it's a partner in the conversation
 
 **Concept**: Protector who stands between danger and those they've sworn to defend.
 
-**Build (30 XP)**:
+**Build (32 XP)**:
 - Attributes: Body 3 (9), Spirit 2 (6), Wits 1 (3), Presence 1 (3)
 - Skills: Melee 2 (4), Athletics 1 (2), Command 1 (2)
 - With Bonds/Complications: Add Combat Reflexes talent
@@ -607,7 +607,7 @@ In Fate's Edge, the world is not a backdrop—it's a partner in the conversation
 
 **Concept**: Seeker of knowledge who uses information as power.
 
-**Build (30 XP)**:
+**Build (32 XP)**:
 - Attributes: Wits 3 (9), Spirit 2 (6), Body 1 (3), Presence 1 (3)
 - Skills: Lore 2 (4), Investigation 1 (2), Arcana 1 (2)
 - With Bonds/Complications: Add Research Mastery talent
@@ -616,7 +616,7 @@ In Fate's Edge, the world is not a backdrop—it's a partner in the conversation
 
 **Concept**: Wilderness expert who navigates dangerous territories.
 
-**Build (30 XP)**:
+**Build (32 XP)**:
 - Attributes: Wits 3 (9), Body 2 (6), Spirit 1 (3), Presence 1 (3)
 - Skills: Survival 2 (4), Stealth 2 (4)
 - With Bonds/Complications: Add Hidden Cache asset
@@ -800,7 +800,7 @@ Spend 1 Momentum to:
 Players may take:
 - Up to 2 Bonds (+2 XP total)
 - Up to 2 Starting Complications (+4 XP total)
-- Cap of 34 XP
+- Cap of 36XP
 - Each unresolved starting Complication adds +1 banked SB to early scenes
 
 ### 14.7 Downtime

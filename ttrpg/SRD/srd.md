@@ -223,7 +223,7 @@ Track persistent combat conditions:
 
 ### 7.1 Starting Build
 
-- 30 XP to spend
+- 32 XP to spend
 - Attributes: 1-3, Skills: 0-2
 - Can take bonds (+2 XP) and complications (+4 XP total)
 
@@ -360,7 +360,7 @@ Outcome: Partial success - deal possible but with harsh terms, gain 1 Boon. GM s
 4. Spotlight combat with clocks and SB spends (25–40 min).
 5. Debrief: XP, Boons, next hook (5–10 min).
 
-1. Create characters with 30 XP
+1. Create characters with 32 XP
 2. GM prepares starting situation using travel framework
 3. Play through scenes using core resolution system
 4. Award XP based on accomplishments and choices

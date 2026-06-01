@@ -118,7 +118,7 @@ class XPTrackerTab:
         
         info_text = """
 XP in Fate's Edge:
-• Starting XP: 30 XP for character creation
+• Starting XP: 32 XP for character creation
 • Session Awards: 4-14 XP depending on campaign pace
 • Spending Paths:
   - Enhance Self: Attributes (new rating × 3 XP), Skills (new level × 2 XP)

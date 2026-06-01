@@ -104,7 +104,7 @@ All significant actions follow this three-step process:
 ## Character Creation
 
 ### Starting Build
-- **30 XP** to spend
+- **32 XP** to spend
 - **Attributes**: 1-3
 - **Skills**: 0-2
 - **Bonds**: +2 XP
