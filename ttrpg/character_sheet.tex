@@ -1,0 +1,314 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{sectsty}
+
+% Page setup
+\geometry{margin=0.75in}
+\pagenumbering{gobble}
+
+% Colors
+\definecolor{headerbg}{HTML}{2c3e50}
+\definecolor{sectionbg}{HTML}{3498db}
+\definecolor{lightbg}{HTML}{ecf0f1}
+\definecolor{accent}{HTML}{e74c3c}
+
+% Background image command
+\newcommand{\backgroundimage}[1]{%
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+      \includegraphics[width=\paperwidth,height=\paperheight]{#1}%
+    }%
+  }%
+}
+
+% Custom column types
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+% Checkmark command
+\newcommand{\skillbox}{\framebox(10,10){}}
+
+% Header
+\newcommand{\sheetheader}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[headerbg] (0,0) rectangle (\paperwidth, 1.5cm);
+    \node[anchor=west, text=white, font=\Huge\bfseries] at (1,0.75) {Fate's Edge Character Sheet};
+    \node[anchor=east, text=white, font=\small] at (\paperwidth-1,0.75) {\textbf{Version 1.0}};
+  \end{tikzpicture}
+  \vspace{2.2cm}
+}
+
+% Section header
+\newcommand{\sectionhead}[1]{
+  \vspace{0.8cm}
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[sectionbg] (0,0) rectangle (\paperwidth, 0.7cm);
+    \node[anchor=west, text=white, font=\large\bfseries] at (0.5,0.35) {#1};
+  \end{tikzpicture}
+  \vspace{1.2cm}
+}
+
+\begin{document}
+
+% Uncomment the next line to add background image
+% \backgroundimage{background-image.jpg}
+
+\sheetheader
+
+\sectionhead{Core Attributes}
+\begin{tabularx}{\textwidth}{|L|C|C|C|C|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Attribute} & \textbf{Body} & \textbf{Wits} & \textbf{Spirit} & \textbf{Presence} \\
+  \hline
+  Rating & \skillbox & \skillbox & \skillbox & \skillbox \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\sectionhead{Skills (0-5)}
+\begin{multicols}{3}
+\begin{itemize}[leftmargin=*]
+  \item Combat: \skillbox
+  \item Stealth: \skillbox
+  \item Survival: \skillbox
+  \item Sway: \skillbox
+  \item Lore: \skillbox
+  \item Tinker: \skillbox
+  \item Arcana: \skillbox
+  \item Medicine: \skillbox
+  \item Command: \skillbox
+  \item Investigate: \skillbox
+  \item Skirmish: \skillbox
+  \item Performance: \skillbox
+  \item Insight: \skillbox
+  \item Deceive: \skillbox
+\end{itemize}
+\end{multicols}
+
+\sectionhead{Affinity \& Background}
+\begin{tabularx}{\textwidth}{|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Ancestry/Culture} & \textbf{Affinity} \\
+  \hline
+  \rule{0pt}{1.2cm} & \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Background} \\
+  \hline
+  \rule{0pt}{1.2cm} \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Talents \& Prestige Abilities}
+\begin{tabularx}{\textwidth}{|L|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Minor Talents (2 XP)} & \textbf{Major Talents (4 XP)} & \textbf{Prestige Abilities (6+ XP)} \\
+  \hline
+  \rule{0pt}{1.5cm} & \rule{0pt}{1.5cm} & \rule{0pt}{1.5cm} \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Resources}
+\begin{tabularx}{\textwidth}{|L|L|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{XP Total} & \textbf{XP Spent} & \textbf{Boons} & \textbf{Story Beats} \\
+  \hline
+  \rule{0pt}{1cm} & & /5 & Base(4)+Tier \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Reputation Tier} \\
+  \hline
+  \begin{itemize}[leftmargin=*]
+    \item I: Rookie (0-40 XP)
+    \item II: Seasoned (41-90 XP)
+    \item III: Veteran (91-150 XP)
+    \item IV: Paragon (151-220 XP)
+    \item V: Mythic (221+ XP)
+  \end{itemize} \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Condition Tracks}
+\begin{tabularx}{\textwidth}{|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Fatigue (/Body)} & \textbf{Harm} \\
+  \hline
+  \begin{itemize}[leftmargin=*]
+    \item[ ] 1 \quad \skillbox
+    \item[ ] 2 \quad \skillbox
+    \item[ ] 3 \quad \skillbox
+    \item[ ] 4 \quad \skillbox (If applicable)
+  \end{itemize} & 
+  \begin{itemize}[leftmargin=*]
+    \item Harm 1: -1 die to related actions
+    \item Harm 2: -1 die to most actions
+    \item Harm 3: Incapacitated/Dying
+  \end{itemize} \\
+  \hline
+\end{tabularx}
+
+\sectionhead{On-Screen Resources (Followers)}
+\begin{tabularx}{\textwidth}{|L|L|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Follower} & \textbf{Name} & \textbf{Cap} & \textbf{Condition} \\
+  \hline
+  1 & \rule{0pt}{1cm} & & Maintained/Neglected/Compromised \\
+  \hline
+  2 & \rule{0pt}{1cm} & & Maintained/Neglected/Compromised \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Off-Screen Resources (Assets)}
+\begin{tabularx}{\textwidth}{|L|L|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Asset} & \textbf{Name} & \textbf{Type} & \textbf{Condition} \\
+  \hline
+  1 & \rule{0pt}{1cm} & Minor(4)/Standard(8)/Major(12) & Maintained/Neglected/Compromised \\
+  \hline
+  2 & \rule{0pt}{1cm} & Minor(4)/Standard(8)/Major(12) & Maintained/Neglected/Compromised \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Magic System (If Applicable)}
+\begin{tabularx}{\textwidth}{|L|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Path} & \textbf{Patron(s)} & \textbf{Obligation} \\
+  \hline
+  Caster/Runekeeper/Invoker/Summoner & & / (Spirit + Presence) \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Rites Known} & \textbf{Codex/Thiasos/Symbols} \\
+  \hline
+  \rule{0pt}{1cm} & \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Backlash SB} & \textbf{Notes} \\
+  \hline
+  & \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Bonds \& Complications}
+\begin{tabularx}{\textwidth}{|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Bonds} & \textbf{Complications} \\
+  \hline
+  \rule{0pt}{2cm} & Initial: \rule{0pt}{0.8cm} \\
+  & Current: \rule{0pt}{0.8cm} \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Gear \& Supply}
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Weapons} \\
+  \hline
+  \rule{0pt}{1.5cm} \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Armor} & \textbf{Other Gear} \\
+  \hline
+  & \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|L|L|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Supply Clock} & \textbf{Full} & \textbf{Low} & \textbf{Dangerous} \\
+  \hline
+  & \skillbox & \skillbox & \skillbox \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Notes}
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Downtime Activities} \\
+  \hline
+  \rule{0pt}{1.5cm} \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Session Goals} \\
+  \hline
+  \rule{0pt}{1.5cm} \\
+  \hline
+\end{tabularx}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Character Arc Themes} \\
+  \hline
+  \rule{0pt}{1.5cm} \\
+  \hline
+\end{tabularx}
+
+\vspace{0.8cm}
+\begin{center}
+\textbf{Remember:} Trim Boons to 2 at scene end. Convert 2 Boons → 1 XP once/session (max 2 XP via conversion).
+\end{center}
+
+\end{document}
