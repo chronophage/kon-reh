@@ -121,9 +121,14 @@ Runekeepers bind themselves to a single Patron, learning structured Rites that p
 \label{sec:invoking-rite}
 \begin{itemize}
   \item \textbf{Action:} 1 action.
-  \item \textbf{Cost:} Mark +1 Obligation to your Patron.
+  \item \textbf{Cost:} Mark the Rite's listed Obligation (e.g., \texttt{Obligation: 6}). This cost is reduced by 1 if you display your Patron's Symbol (Invoker only).
   \item \textbf{Effect:} The Rite works as written.
-  \item \textbf{Push It:} Once per scene, mark +1 Obligation to amplify the effect (+1 die or +1 Effect).
+  \item \textbf{DV for Rites that require a roll:} 
+  \[
+  \text{DV} = \max(\text{Obligation Cost} - \text{Spirit},\; \text{Rite Tier})
+  \]
+  where Rite Tier is 1 for Low, 2 for Standard, 3 for High/Epic.
+  \item \textbf{Push It:} Once per scene, mark +1 additional Obligation to amplify the effect (+1 die or +1 Effect).
 \end{itemize}
 
 \subsubsection*{Patron's Gift (Imbuement)}
@@ -155,16 +160,14 @@ Invokers do not bond permanently. They use consecrated Symbols to borrow a Patro
 \label{sec:ritual-invocation}
 \begin{itemize}
   \item \textbf{Time:} Significant Time (DV in rounds). +1 round per DV.
-  \item \textbf{Cost:} Always mark +1 Obligation to that Patron.
-  \item \textbf{Symbol Benefit:} If the Symbol is openly displayed, reduce DV by 1 (min 1) and Obligation by 1 (min 0).
+  \item \textbf{Cost:} Mark the Rite's listed Obligation.
+  \item \textbf{Symbol Benefit:} If the Symbol is openly displayed, reduce DV by 1 (min 1) and reduce Obligation cost by 1 (min 0).
   \item \textbf{No Symbol:} +1 DV, +1 Obligation, and on a partial/failure, GM gains +1 extra SB.
 \end{itemize}
 
-\textbf{Note:} Obligation cost cannot be reduced below 1.
-
 \subsubsection*{Crack the Seal}
 \label{sec:crack-the-seal}
-Resolve a known Rite instantly as 1 action. Set the Symbol to \textbf{Compromised} and mark +2 Obligation (+3 for High Rites). Restore the Symbol during downtime (Arcana test DV 3) or spend 1 XP.
+Resolve a known Rite instantly as 1 action. Set the Symbol to \textbf{Compromised} and mark double the Rite's base cost (minimum +2, or +3 for High Rites). Restore the Symbol during downtime (Arcana test DV 3) or spend 1 XP.
 
 \subsubsection*{Invoker Talents}
 \label{sec:invoker-talents}
@@ -311,6 +314,15 @@ Track total Obligation segments across all Patrons.
 \end{itemize}
 
 \noindent\textbf{Player guidance:} You track your own Obligation (see Player‑Managed Modules, \ref{sec:player-managed-modules}). When a Patron intrudes (e.g., a demand or omen), treat it as a \textbf{plot hook, not a penalty}. The Patron is offering you a story.
+
+\subsection{Difficulty Value for Rites}
+\label{sec:dv-rites}
+When a Rite (Runekeeper or Invoker) calls for a roll, the GM sets DV using:
+\[
+\text{DV} = \max(\text{Obligation Cost} - \text{Spirit},\; \text{Rite Tier})
+\]
+\noindent\textit{Rite Tier:} Low = 1, Standard = 2, High/Epic = 3.\\
+Example: A Low Rite (Tier 1) with Obligation cost 4, Spirit 2 → DV = max(4−2, 1) = 2.
 
 \begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Components as Devotion]
 \index{rituals!components}\index{Obligation!reduction}
@@ -536,15 +548,17 @@ Witchcraft is magic practiced through patron‑bound Orders. Witches suffer \tex
 \textbf{Runekeeper}
 \begin{itemize}
   \item Thiasos + Codex (6 XP)
-  \item 1 action, mark +1 Obligation
+  \item 1 action, mark Rite's Obligation cost (variable)
   \item Push It: +1 Obligation
+  \item DV = max(Obligation Cost − Spirit, Rite Tier)
 \end{itemize}
 
 \textbf{Invoker}
 \begin{itemize}
   \item Patron's Symbol (4 XP each)
-  \item Ritual: Significant time, +1 Obligation
-  \item Crack the Seal: instant, +2 Obligation
+  \item Ritual: Significant time, mark Rite's Obligation cost
+  \item Symbol displayed: reduce Obligation cost by 1
+  \item Crack the Seal: instant, double cost (min +2)
 \end{itemize}
 
 \textbf{Cantor}
@@ -552,6 +566,7 @@ Witchcraft is magic practiced through patron‑bound Orders. Witches suffer \tex
   \item Cantor's Path (8 XP)
   \item Song: 1 action (resolves next round)
   \item Corruption Clock (size = Spirit)
+  \item Push: Fatigue +1, advance Corruption
 \end{itemize}
 
 \textbf{Summoner}

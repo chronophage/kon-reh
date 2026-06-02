@@ -1,4 +1,6 @@
 % Fate's Edge SRD --- Magic System (Section 10)
+% Revised to reflect variable Obligation costs per rite (not flat +1).
+% DV formula: DV = max(Obligation Cost − Spirit, Tier)
 
 \section{Magic System}
 
@@ -64,8 +66,12 @@ Runekeepers bind structured magic through a Codex and a Thiasos (familiar spirit
 \subsubsection{Invoking a Rite}
 \begin{enumerate}
   \item Declare the Rite (1 action).
-  \item Mark the Rite's listed Obligation (typically +1).
-  \item If the Rite calls for a roll, roll Attribute + Ritual. The GM sets DV by the Rite's Tier and fiction.
+  \item Mark the Rite's Obligation cost (listed in the rite description, e.g., \texttt{Obligation: 6 segments}).
+  \item If the Rite calls for a roll, roll Attribute + Ritual. The GM sets DV using the formula:
+  \[
+  \text{DV} = \max(\text{Obligation Cost} - \text{Spirit},\; \text{Rite Tier})
+  \]
+  where Rite Tier is 1 for Low, 2 for Standard, 3 for High/Epic.
 \end{enumerate}
 
 \textbf{Push It:} Mark +1 additional Obligation to increase duration, range, or potency.
@@ -85,15 +91,15 @@ Invokers channel power through consecrated Symbols. Rituals are slow but safe; C
 \subsubsection{Ritual Invocation}
 \begin{enumerate}
   \item Display the Symbol (must be visible).
-  \item Perform the Rite. Takes \texttt{DV + 1} rounds (Significant Time).
-  \item Mark +1 Obligation.
-  \item If the Symbol is displayed openly during the ritual, DV –1 and Obligation –1 (minimum 0).
+  \item Perform the Rite. Takes \texttt{DV + 1} rounds (Significant Time), where DV is calculated as above.
+  \item Mark the Rite's Obligation cost (listed).
+  \item If the Symbol is displayed openly during the ritual, reduce the Obligation cost by 1 (minimum 0).
 \end{enumerate}
 
 \subsubsection{Crack the Seal (Instant Cast)}
 \begin{enumerate}
   \item Invoke the Rite as 1 action (instead of ritual time).
-  \item Mark +2 Obligation (+3 for High Rites).
+  \item Mark double the Rite's Obligation cost (or +2 minimum, +3 for High Rites if the base cost is unclear).
   \item The Symbol becomes \textbf{Compromised} (inert). Restore it during downtime (Arcana or Lore test, DV 3) or pay 1 XP.
 \end{enumerate}
 
@@ -114,7 +120,7 @@ Cantors perform Low Rites as Songs, channeling power through voice and performan
 \begin{enumerate}
   \item Begin the Song (1 action). It resolves at the start of your next turn.
   \item Roll Lore + Performance vs DV (typically 2–3).
-  \item On success, the Low Rite effect occurs. No Obligation.
+  \item On success, the Low Rite effect occurs. No Obligation cost.
   \item Mark Corruption accumulation (see below).
 \end{enumerate}
 
@@ -129,26 +135,29 @@ Your Corruption Clock has segments equal to your Spirit attribute. Mark a segmen
   \item The GM spends a Story Beat on your occult activities.
 \end{itemize}
 
-When the clock fills, you immediately gain a thematic boon and burden from the last Patron whose Rite you performed. Then reset the clock to zero (cannot go below your current Tier).
+When the clock fills, you immediately gain a thematic boon and burden from the last Patron whose Rite you performed. Then reset the clock to zero (cannot go below cannot go below your current Tier -1 -1).
 
 \subsubsection{Inspire Chorus}
 Once per scene, while actively singing a Song, all allies within Near range shift Position +1 for one exchange (cannot exceed Controlled).
 
 \subsection{Obligation (Runekeepers and Invokers)}
 
-Obligation measures a Patron's claim on a character. Track it per Patron (default capacity = Spirit + Presence).
+Obligation measures a Patron's claim on a character. Track it per Patron. The default Obligation capacity is:
+\[
+\text{Capacity} = \text{Spirit} + \text{Presence}
+\]
 
 \subsubsection{Marking Obligation}
+Obligation is marked according to the specific Rite or action:
 \begin{itemize}
-  \item Invoking a Rite (Runekeeper): mark the Rite's listed Obligation (typically +1).
-  \item Pushing a Rite: mark +1 additional Obligation.
-  \item Ritual Invocation (Invoker): mark +1 Obligation.
-  \item Crack the Seal: mark +2 Obligation (+3 for High Rites).
+  \item Invoking a Rite (Runekeeper or Invoker): mark the Rite's listed Obligation cost (e.g., \texttt{Obligation: 6}).
+  \item Pushing a Rite: mark +1 additional Obligation (added to the Rite's base cost).
+  \item Crack the Seal: mark double the Rite's base cost (or +2 minimum, +3 for High Rites).
   \item Using Rites from two different Patrons in the same scene: mark +1 Obligation to the second Patron.
 \end{itemize}
 
 \subsubsection{Overflow}
-If total Obligation exceeds Capacity:
+If your total Obligation (across all Patrons) exceeds your Capacity:
 \begin{itemize}
   \item Mark 1 Fatigue per segment over Capacity.
   \item You cannot invoke new Rites or perform Patron rituals until Obligation is reduced below Capacity.
@@ -156,7 +165,7 @@ If total Obligation exceeds Capacity:
 
 \subsubsection{Clearing Obligation}
 \begin{itemize}
-  \item \textbf{Off-screen:} Perform an Act of Service aligned with the Patron (provide an Intricate Description). Clear 1 segment.
+  \item \textbf{Off-screen:} Perform an Act of Service aligned with the Patron (provide an Intricate Description). Clear 1 segment of that Patron's Obligation.
   \item \textbf{On-screen (Focused Devotion talent, 3–5 XP):} Once per scene, spend 1 Boon to clear 1 segment (cannot clear segments accrued in the same scene).
 \end{itemize}
 
@@ -173,7 +182,7 @@ Backlash is the unpredictable fallout from shaping raw magic. It occurs on a Par
   \item \textbf{Collateral Spark:} A nearby ally, object, or environmental feature is threatened (GM describes).
 \end{itemize}
 
-All backlash is colored by the dominant element(s) used in the spell. See Section~\ref{sec:tags-effects} for elemental themes.
+All backlash is colored by the dominant element(s) used in the spell. See the Elemental Backlash table in Section~\ref{sec:tags-effects}.
 
 \subsection{Universal Rituals (Any Character)}
 
@@ -225,4 +234,3 @@ Purge & Medium & Cleanse taint or curse one step. Cost: Caster takes a minor ech
   \item Mark a segment when you Push a Song, perform a Resonant Rite, or when the GM spends SB on your occult activities.
   \item When full: gain a thematic boon and burden from your last Patron; reset clock to zero.
 \end{itemize}
-
