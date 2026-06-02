@@ -1,5 +1,5 @@
 % Fate's Edge --- GM Guide
-\documentclass[11pt,letterpaper]{book}
+\documentclass[11pt,letterpaper,oneside]{book}
 
 % ============================================================
 % ENCODING & FONTS
@@ -10,29 +10,39 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage[most]{tcolorbox}
-\tcbuselibrary{breakable}
-\tcbset{breakable}
-\usepackage{xcolor}
-\usepackage{array}
 
 % ============================================================
-% GEOMETRY (readable margins, allow wider tables if needed)
+% GEOMETRY (readable margins, include head/foot space)
 % ============================================================
-\usepackage[letterpaper,margin=1in,headheight=13.6pt]{geometry}
+\usepackage[letterpaper,margin=1in,headheight=14pt,includehead]{geometry}
 \setlength{\marginparwidth}{0pt}
-\setlength{\textwidth}{\dimexpr\paperwidth-2in\relax}  % exactly 6.5in for letter
+\setlength{\textwidth}{\dimexpr\paperwidth-2in\relax}
 \setlength{\hoffset}{0pt}
 \setlength{\voffset}{0pt}
 
 % ============================================================
-% PARAGRAPH SPACING (no indents, consistent skip)
+% HEADERS & FOOTERS
+% ============================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{\leftmark}}
+\fancyhead[LO]{\textit{\rightmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[LE,RO]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+% ============================================================
+% PARAGRAPH SPACING
 % ============================================================
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5\baselineskip}
 \frenchspacing
+\raggedbottom
 
 % ============================================================
 % TABLE & LIST PACKAGES
@@ -41,22 +51,28 @@
 \usepackage{multicol}       % multi-column text
 \usepackage{enumitem}       % custom list spacing
 \setlist{topsep=0.2em,itemsep=0.2em,parsep=0pt,partopsep=0pt}
-\usepackage{float}          % H placement specifier
-\usepackage{caption}        % tweak caption spacing
+\usepackage{float}
+\usepackage{caption}
 \captionsetup{skip=8pt}
 \renewcommand{\arraystretch}{1.2}
 \setlength{\extrarowheight}{2pt}
 \setlength{\tabcolsep}{4pt}
 \setlength{\arrayrulewidth}{0.8pt}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
 
 % ============================================================
-% COLOUR, BOXES, AND TIKZ (for flowcharts etc.)
+% COLOUR, BOXES, AND TIKZ
 % ============================================================
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\tcbset{breakable=true}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
-\usetikzlibrary{shapes.geometric, arrows, positioning}
 
-% TikZ styles used in chapter files
+% TikZ styles
 \tikzset{
     process/.style = {rectangle, rounded corners, draw=blue!75!black, fill=blue!5,
                       text width=7cm, align=center, font=\small},
@@ -70,13 +86,13 @@
 % ============================================================
 % FOOTNOTES INSIDE TCOLORBOX
 % ============================================================
-\usepackage{footnote}      % allows \footnotetext inside boxes
+\usepackage{footnote}
 \makesavenoteenv{tcolorbox}
 
 % ============================================================
 % HYPERLINKS (loaded near end)
 % ============================================================
-\usepackage[hidelinks]{hyperref}   % hides red boxes; links still work
+\usepackage[hidelinks]{hyperref}
 
 % ============================================================
 % INDEX
@@ -89,8 +105,6 @@
 % ============================================================
 \definecolor{parchment}{RGB}{248,240,226}
 \definecolor{bronze}{RGB}{205,127,50}
-
-\tcbuselibrary{skins,breakable}
 
 \newtcolorbox{effectbox}{
     colback=blue!5,
@@ -139,13 +153,13 @@
 }
 
 % ============================================================
-% CARD SUIT SYMBOLS (already standard in LaTeX; no extra defs needed)
+% MISCELLANEOUS
 % ============================================================
-% $\spadesuit$, $\heartsuit$, $\clubsuit$, $\diamondsuit$ are provided by
-% the standard TeX fonts (or amssymb). No additional definitions required.
+\usepackage{emptypage}      % remove page numbers from blank pages
+\usepackage{fontawesome5}   % icons (if used)
 
 % ============================================================
-% LONGTABLE SETTINGS (allow page breaks, no forced chunks)
+% LONGTABLE SETTINGS
 % ============================================================
 \setlength{\LTpre}{0pt}
 \setlength{\LTpost}{0pt}
@@ -155,7 +169,7 @@
 \setlength{\LTright}{0pt}
 
 % ============================================================
-% REMOVE EMPTY DATE
+% REMOVE DEFAULT DATE
 % ============================================================
 \date{}
 
@@ -164,7 +178,8 @@
 % ============================================================
 \begin{document}
 
-\title{\vspace{-1.5em}Fate's Edge\\\large GM Guide}
+% Custom title page
+\title{\vspace{-1.5em}\Huge Fate's Edge\\[0.5em]\large GM Guide}
 \author{}
 \maketitle
 \newpage
@@ -173,48 +188,52 @@
 \newpage
 
 % ============================================================
+% FRONT MATTER (unnumbered)
+% ============================================================
+\include{sections/preface}
+\cleardoublepage
+
+% ============================================================
 % PART I -- FOUNDATIONS
 % ============================================================
-\include{sections/preface}           % unnumbered preface
+\include{sections/intro}                 % Chapter 1: Introduction
 \cleardoublepage
-\include{sections/intro}             % Chapter 1: Introduction
+\include{sections/core_procedures}       % Chapter 2: Core Procedures
 \cleardoublepage
-\include{sections/core_procedures}   % Chapter 2: Core Procedures
+\include{sections/managing_resources}    % Chapter 3: Managing Resources
 \cleardoublepage
-\include{sections/managing_resources} % Chapter 5: Managing Resources
-\cleardoublepage
-\include{sections/gm-currency-free}  % Chapter ?: Running a Currency-Free Game
+\include{sections/gm-currency-free}      % Chapter 4: Running a Currency-Free Game
 \cleardoublepage
 
 % ============================================================
 % PART II -- MAGIC & SCENARIOS
 % ============================================================
-\include{sections/magic}             % Chapter 6: Magic and Backlash
+\include{sections/magic}                 % Chapter 5: Magic and Backlash
 \cleardoublepage
-\include{sections/running_scenarios} % Chapter 11: Example Play & GM Survival
+\include{sections/running_scenarios}     % Chapter 6: Example Play & GM Survival
 \cleardoublepage
 
 % ============================================================
 % PART III -- CAMPAIGN & ADVANCED PLAY
 % ============================================================
-\include{sections/campaign_design}   % Chapter 8: Campaigns, Clocks, Consequences
+\include{sections/campaign_design}       % Chapter 7: Campaigns, Clocks, Consequences
 \cleardoublepage
-\include{sections/epic_tier}         % Chapter 9: Tier IV & V Epic Adventures
+\include{sections/epic_tier}             % Chapter 8: Tier IV & V Epic Adventures
 \cleardoublepage
-\include{sections/advanced_gm_tools} % Chapter 10: Advanced GM Techniques
+\include{sections/advanced_gm_tools}     % Chapter 9: Advanced GM Techniques
 \cleardoublepage
-% \include{sections/enhanced_gm_play} % (merged into other chapters)
 
 % ============================================================
 % PART IV -- LORE & REFERENCE
 % ============================================================
-\include{sections/lore}              % Chapter ?: Lore Compendium
+\include{sections/lore}                  % Chapter 10: Lore Compendium
 \cleardoublepage
-\include{sections/appendix}          % Chapter 12: GM Reference & Appendices
+\appendix
+\include{sections/appendix}              % Chapter 11: Quick Reference and Tables
 \cleardoublepage
 
 % ============================================================
-% INDEX
+% BACK MATTER
 % ============================================================
 \printindex
 
