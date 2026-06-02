@@ -1,858 +1,203 @@
-% --- Fate's Edge SRD --- Section 2: Core Mechanic (Revised) ---
-% Include this file from your main .tex with: \input{02-core-mechanic.tex}
-
 \section{Core Mechanic}
 
-\subsection{The Art of Consequence}
-\paragraph{Adjudicating Rolls: The Core Resolution Cycle}\index{roll adjudication}
+\subsection{The Resolution Loop}
 
-When a player rolls, they are not simply trying to \emph{beat a number}. They are engaging the world through risk, consequence, and discovery. This section walks through the full cycle.
-
-\paragraph{Step-by-Step Roll Resolution}
+Every action that carries risk and uncertainty follows the same five steps.
 
 \begin{enumerate}
-    \item \textbf{Declare Action \& Approach:} Player states intent, Attribute + Skill.
-    \item \textbf{Set Difficulty Value (DV):}\index{Difficulty Value (DV)} Based on narrative stakes, not just mechanics.
-    \item \textbf{Establish Position:}\index{Position} GM sets whether the roll is \textbf{Dominant}, \textbf{Controlled}, or \textbf{Desperate}.
-    \item \textbf{Roll Pool of d10s.}
-    \item \textbf{Count:} \textbf{Successes (6+)} and \textbf{Story Beats (1s)}.\index{Story Beats} 
-    Each \textbf{10 counts as two successes} but does not auto-succeed if total $< DV$.
-    \item \textbf{Check Against DV:} Apply the Outcome Matrix.
-    \item \textbf{Spend SB:} GM spends/banks Story Beats or draws from the Deck of Consequences.\index{Deck of Consequences}
+  \item \textbf{Declare intent and approach.} The player states what they want to accomplish and how.
+  \item \textbf{GM sets Position and Difficulty (DV).}
+  \begin{itemize}
+    \item Position: Dominant (advantage), Controlled (normal), Desperate (high risk).
+    \item DV: 2 (routine) to 5+ (extreme). Default DV = 3.
+  \end{itemize}
+  \item \textbf{Roll dice.} Pool = Attribute + Skill (d10s). Count successes:
+  \begin{itemize}
+    \item 6--9 = 1 success.
+    \item 10 = 2 successes.
+  \end{itemize}
+  \item \textbf{Count Story Beats (SB).} Each die showing a 1 gives the GM 1 SB.
+  \item \textbf{Apply the Outcome Matrix.}
 \end{enumerate}
 
-\begin{fatebox}[Position Effects]\index{Position}
-\begin{tabularx}{\textwidth}{lX}
+\subsection{Critical Success}
+Rolling a \textbf{10} (counting as 2 successes) creates narrative opportunities beyond raw math:
+\begin{itemize}
+  \item \textbf{One 10}: Strong success—grant a \textit{free Boon}, improve Position by one step, or add descriptive flourish (e.g., ``Your arrow splits the bullseye, impressing the archery master'').
+  \item \textbf{Two 10s}: Exceptional success—choose \textit{two benefits} (e.g., +2 effect + free Boon) or one powerful effect (e.g., ignore armor \textit{and} gain tactical advantage).
+  \item \textbf{Three+ 10s}: Legendary success—resolve the conflict dramatically \textit{and} advance a secondary clock (e.g., clear 1 segment on a Rival's Trust Clock) or create significant story development (e.g., uncover a hidden faction motive).
+\end{itemize}
+\textbf{Important:} \textbf{10s are never re-rolled} by Position effects (even in Desperate). Critical success effects apply \textit{only if the roll succeeds} (Successes $\geq$ DV).
+
+\subsection{Difficulty Values (DV)}
+
+\begin{tabular}{@{}ll@{}}
 \toprule
-\textbf{Position} & \textbf{Effect} \\
+\textbf{DV} & \textbf{Situation} \\
 \midrule
-Dominant & May re-roll one \textbf{failure} (die $<6$). \\
-Controlled & Default state; no re-rolls. \\
-Desperate & Must re-roll one \textbf{success} (die $6+$), keeping the second result. \\
+2 & Routine, low stakes, nearly guaranteed success. \\
+3 & Default — pressured or minor opposition. \\
+4 & Hard — hostile conditions, active resistance. \\
+5 & Extreme — multiple constraints, dramatic gambles. \\
+6+ & Nearly impossible — requires exceptional setup or mythic aid. \\
 \bottomrule
-\end{tabularx}
-\end{fatebox}
+\end{tabular}
 
-\noindent
-\textbf{Important:} A roll showing a \textbf{10} is never re-rolled, even by Desperate position.
+When in doubt, start at DV 3.
 
-\begin{fatebox}[Difficulty Ladder (Primary Guidance)]\index{Difficulty Ladder}
-  \begin{tabularx}{\textwidth}{lX}
-  \toprule
-  \textbf{DV} & \textbf{Typical Case} \\
-  \midrule
-  2 & Routine: trivial task, no pressure, almost guaranteed. \\
-  3 & Pressured: time limits, mild opposition, default for most rolls. \\
-  4 & Hard: hostile conditions, active resistance, precision required. \\
-  5 & Extreme: stacked constraints, high stakes, dramatic gambles. \\
-  6+ & Nearly impossible: mythic challenge, requires exceptional setup. \\
-  \bottomrule
-  \end{tabularx}
-\end{fatebox}
+\subsection{Position \& Effect}
 
-\begin{tcolorbox}[title=\textbf{Optional: Opposed and Tier-Based DV},colback=white!97!gray,
-colframe=black!80!gray,sharp corners,boxrule=0.4pt]
-When a character directly opposes another (e.g., resisting a spell, contesting a grapple) or faces a threat whose Tier is known, the GM may use:
-\[
-\boxed{\text{DV} = \text{Defender's Tier} + 2 + \text{Modifiers}}
-\]
-Use the ladder above for all other rolls. The formula helps gauge elite challenges but should not replace the fiction-first ladder.
-\end{tcolorbox}
+Position and Effect are set by the GM based on the fiction and the character's approach.
+
+\subsubsection{Position (Risk)}
+\begin{itemize}
+  \item \textbf{Dominant:} You act from advantage. \textit{Re-roll one failure (die showing 5 or lower).}
+  \item \textbf{Controlled:} Balanced, normal risk. \textit{No re-rolls.}
+  \item \textbf{Desperate:} You act under duress. \textit{Re-roll one success (die showing 6 or higher).}
+\end{itemize}
+
+A die showing 10 is never re-rolled, even by Desperate position.
+
+\subsubsection{Effect (Reward)}
+\begin{itemize}
+  \item \textbf{Limited:} Partial or weak outcome; the intent is achieved minimally.
+  \item \textbf{Standard:} Expected outcome; the intent is achieved fully.
+  \item \textbf{Great:} Strong or sweeping outcome; the intent is achieved with additional benefit.
+\end{itemize}
+
+\subsubsection{Modifying Position and Effect}
+\begin{itemize}
+  \item The player may spend \textbf{1 Boon} before rolling to improve Position by one step.
+  \item The GM may spend \textbf{Story Beats (SB)} to worsen Position or reduce Effect.
+  \item If bonuses would raise Position above Dominant, each additional step becomes +1 die instead.
+  \item If penalties would drop Position below Desperate, each additional step becomes –1 die instead.
+\end{itemize}
 
 \subsection{Outcome Matrix}
 
-\begin{fatebox}[Outcome Matrix]\index{Outcome Matrix}
-\begin{tabularx}{\textwidth}{lX}
+\begin{tabular}{@{}lp{2.2cm}p{7cm}@{}}
 \toprule
-\textbf{Result} & \textbf{GM Guidance} \\
+\textbf{Roll Result} & \textbf{Outcome} & \textbf{What Happens} \\
 \midrule
-$S \geq DV$, $C = 0$ & Clean Success: Grant intent, no added friction. \\
-$S \geq DV$, $C > 0$ & Success \& Cost: Intent achieved; GM spends SB for complications. \\
-$0 < S < DV$ & Partial: Progress \emph{proportional} to hits; intent advances but with gaps or risk. Player gains 1 Boon. \\
-$S = 0$ & Miss: No progress. GM escalates with SB/Clocks. Player gains 2 Boons. \\
-\bottomrule
-\end{tabularx}
-\end{fatebox}
-
-\paragraph{Fail Forward: Every Roll Matters}\index{Fail Forward}
-
-\textbf{Success.} The action succeeds as intended. No Story Beats are generated unless specified by the roll or effect. The fiction advances cleanly in the player's favor.
-
-\textbf{Success with SB.} The action succeeds, but generates \textbf{Story Beats}. The success stands; the cost is represented by the GM spending those Story Beats, ideally applied to the inciting action or its immediate consequences.
-
-\textbf{Miss.} The action fails to achieve its intended effect and generates \textbf{Story Beats}. The GM uses those Story Beats to introduce complications, advance opposition, or shift the situation against the character.
-
-\textbf{\textit{Partial Success} (GM Adjudication).} A Partial indicates that the action makes progress, but does not fully resolve the situation. How that progress manifests is determined by the GM, based on context, scale, and narrative stakes.
-
-Partial results may:
-\begin{itemize}
-  \item Improve the character's \textbf{Position} on a follow-up attempt
-  \item Reduce the effective \textbf{DV} of the next roll
-  \item Achieve the goal at reduced scale or limited duration
-  \item Succeed fully, but generate a \textbf{Story Beat} as cost or complication
-  \item Reveal information or create a new opportunity instead of immediate resolution
-\end{itemize}
-
-\paragraph{Guiding Principle.} Partials represent \emph{meaningful progress}. The GM may convert progress into advantage, resolution, or complication, depending on what best serves the fiction.
-
-\begin{quote}
-\textit{One success on DV 4:} "The lock is stubborn. You think you can get it if you keep trying." \\
-\textit{Three successes on DV 4:} "The lock springs open with a loud clank---you're sure the guards heard." (Upgrade to Success \& Cost; add 2 SB). \\
-\end{quote}
-
-\paragraph{Important Notes}
-\begin{itemize}
-  \item Rolling a 1 always creates SB for the GM. Rerolls do not erase SB.  
-  \item No Boons for rehearsal, trivial probes, or repeating an identical approach without changing fiction.  
-  \item Controlled tests with no bite give positioning/info, not Boons.  
-\end{itemize}
-
-\subsubsection{Anti-Fishing Measures}
-\begin{itemize}
-  \item \textbf{Cap:} At most 2 Boons from failures per character per scene (further misses still make SB).  
-  \item \textbf{Repetition Rule:} Same action + same stakes in the same scene cannot grant another Boon.  
-\end{itemize}
-
-\paragraph{Example}
-Lockpicking under watch (\emph{Desperate}, DV 3).  
-\textbf{Miss:} GM spends 2 SB to start \emph{Guards Incoming [6]}. Player earns 2 Boons.  
-\textbf{Partial (2 successes):} Door opens halfway; guard footsteps approach. Player earns 1 Boon.  
-
-\subsubsection{Boon Sharing}
-Players may gift \textbf{1 Boon per scene} to an ally with a brief narrative justification.  
-A \textbf{bond} is a player‑to‑player agreement about shared history, loyalty, or obligation (see Character Creation). Bonded allies have a specific narrative tie.
-\begin{itemize}
-  \item \textbf{Bonded Allies:} If characters share a bond, they may gift \textbf{2 Boons per scene}.  
-  \item \textbf{Assistance:} Boons may be spent to enhance an ally's roll (counts as assistance).  
-  \item \textbf{Campaign Events:} Major victories or setbacks may generate shared Boons for the party.  
-\end{itemize}
-
-\textbf{Table Use:} Require a short story beat for each gift. Normal Boon limits apply. Track shared Boons openly.  
-\textbf{GM Notes:} Reward generosity with extra opportunities, introduce occasional complications from dependence, and balance group vs.\ individual needs.
-
-\subsection{Story Beats (SB)}
-\index{Story Beats}
-
-Story Beats (SB) are the engine of drama. They are not simple penalties, but narrative levers. The GM spends SB to introduce setbacks appropriate to the context:
-\begin{itemize}
-  \item \textbf{Escalation} --- drawing more enemies, raising the stakes.
-  \item \textbf{Exhaustion} --- draining time, resources, or positioning.
-  \item \textbf{Exposure} --- revealing hidden actions, alerting foes.
-  \item \textbf{Collateral} --- harm or danger spilling over onto allies, innocents, or surroundings.
-\end{itemize}
-
-\subsubsection{SB Spend Menu (guidance)}
-\begin{itemize}
-  \item \textbf{1 SB}: Minor pressure: noise, trace, +1 segment on a relevant \emph{scene clock}.
-  \item \textbf{2 SB}: Moderate setback: alarm raised, lose position/cover, lesser foe appears, or advance a \textbf{faction or front clock} by 1 segment.
-  \item \textbf{3 SB}: Serious trouble: reinforcements, key gear breaks, tick a campaign front.
-  \item \textbf{4+ SB}: Major turn: trap springs, authority arrives, scene shifts dramatically.
-\end{itemize}
-
-\subsection{Critical Success}
-
-Rolling a \textbf{10} on any die indicates a critical tier of success. Each 10 adds weight to the outcome:
-
-\begin{itemize}
-  \item \textbf{One 10:} Strong success with a free boon, improved Position, or other narrative flourish.
-  \item \textbf{Two 10s:} Exceptional success; choose two benefits or a single powerful effect.
-  \item \textbf{Three 10s:} Legendary success; resolve the conflict dramatically and progress or clear 1 segment on a secondary clock (generally, a clock tied to the scene, not the overarching campaign).
-  \item \textbf{Four+ 10s:} Mythic success; progress or clear 1--2 segments from a secondary clock or create a significant story development.
-\end{itemize}
-
-\noindent If no 10s are rolled, resolve the action normally by the highest die result.
-
-\noindent \textbf{10s are never re-rolled by Position effects or other mechanics. Critical hit effects always take place if the roll is successful, despite any SB rolled. Critical successes may reduce Backlash/Obligation/Corruption severity by one tier.}
-
-\subsection{Position}
-\label{subsec:position}
-\index{Position}
-
-Every action in Fate's Edge takes place from a \textbf{Position} that reflects the character's advantage or disadvantage in the scene. Position sets the tone for the roll, narratively and mechanically. It comes in three states:
-
-\begin{itemize}
-  \item \textbf{Dominant:} You act from a place of control, leverage, or overwhelming advantage.
-  \item \textbf{Controlled:} The standard state of play. Outcomes are uncertain but balanced.
-  \item \textbf{Desperate:} You act from dire straits, cornered or overmatched, with everything at stake.
-\end{itemize}
-
-\paragraph{Re-roll Mechanic.}  
-Position modifies the dice pool through simple re-rolls:
-
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-\textbf{Position} & \textbf{Narrative Frame} & \textbf{Mechanical Effect} \\
-\midrule
-Dominant & You press your advantage & Re-roll one \emph{failure} \\
-Controlled    & The balanced norm & No re-rolls \\
-Desperate & You act under duress & Re-roll one \emph{success} \\
+Successes $\ge$ DV, SB = 0 & Clean Success & Intent achieved; no complication. \\
+Successes $\ge$ DV, SB $>$ 0 & Success with SB & Intent achieved; GM spends SB for a complication. \\
+$0 <$ Successes $<$ DV & Partial & Progress made; player gains 1 Boon. \\
+Successes = 0 & Miss & No progress; player gains 2 Boons; GM escalates with SB. \\
 \bottomrule
 \end{tabular}
-\end{center}
 
-\noindent
-\textbf{Important:} A roll showing a \textbf{10} is never re-rolled, even by Desperate position.
+\subsection{Boons (Player Resource)}
 
-\subsubsection{Fatigue and Harm}\index{Fatigue}\index{Harm}
+Boons represent momentum, luck, or a second wind.
 
-\paragraph{Fatigue.}
-Fatigue is capped by \textbf{Body}. It reflects cumulative strain from combat, travel, or channeling. Fatigue never reduces dice directly; it shifts \textbf{Position} to riskier states.
-
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-\textbf{Fatigue} & \textbf{Position Shift} & \textbf{Narrative Effect} \\
-\midrule
-1 (Winded) & Dominant → Controlled & Breathing heavy, off-balance. \\
-2 (Strained) & Controlled rolls create +1 SB on 1s & Mistakes creep in. \\
-3 (Exhausted) & Controlled → Desperate & Desperate exertion. \\
-4 (Collapse) & DV 3 Body test or Severe Harm & Push past limits. \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\paragraph{Harm Levels.}
+\subsubsection{Earning Boons}
 \begin{itemize}
-  \item \textbf{Harm 1:} –1 die on actions directly related to the injury (GM's discretion).
+  \item \textbf{Partial:} gain 1 Boon.
+  \item \textbf{Miss:} gain 2 Boons (if the roll was meaningful and generated at least one SB).
+  \item \textbf{Bond-driven action:} Once per bond per session, act on a Mutual Bond with an Intricate Description, gain 1 Boon.
+  \item \textbf{GM award:} For creative solutions, sacrifices, or outstanding roleplay.
+\end{itemize}
+
+\subsubsection{Spending Boons}
+\begin{itemize}
+  \item \textbf{Re-roll a single die} after seeing the pool (keep the second result; new 1s generate additional SB).
+  \item \textbf{Activate an Asset} (on-screen).
+  \item \textbf{Improve Position} by one step before a roll.
+  \item \textbf{Power certain Rites or abilities} as described.
+  \item \textbf{Convert 2 Boons $\rightarrow$ 1 XP} (during downtime, once per session; max 2 XP per session).
+\end{itemize}
+
+\subsubsection{Limits}
+\begin{itemize}
+  \item Maximum 5 Boons held at any time.
+  \item At the end of each scene, reduce held Boons to a maximum of 2 (excess are lost).
+  \item At most 2 Boons from failures per character per scene (repetition rule: same action + same stakes cannot award another Boon).
+\end{itemize}
+
+\subsection{Story Beats (GM Resource)}
+
+Every die showing a 1 generates 1 Story Beat for the GM.
+
+\subsubsection{Spending SB}
+Use SB to introduce complications, escalate pressure, or shift the fiction. See Section~\ref{sec:complications} for the full SB menu.
+
+\textbf{Guidelines:}
+\begin{itemize}
+  \item 1 SB: minor pressure (noise, trace, tick a 4--6 segment clock +1).
+  \item 2 SB: moderate setback (alarm raised, lose Position, lesser foe appears).
+  \item 3 SB: serious trouble (reinforcements, key gear breaks, advance a campaign clock).
+  \item 4+ SB: major turn (trap springs, authority arrives, environment shifts dramatically).
+\end{itemize}
+
+\subsection{Assistance and Description}
+
+\subsubsection{Assistance}
+\begin{itemize}
+  \item One helper per action.
+  \item Total assist dice across all sources is capped at +3 (unless a talent states otherwise).
+  \item The assistant accepts any risk named by the GM.
+\end{itemize}
+
+\subsubsection{Description Ladder}
+How you describe your action adds optional re-rolls (all 1s still generate SB):
+\begin{itemize}
+  \item \textbf{Basic:} roll as-is.
+  \item \textbf{Detailed:} re-roll one die showing a 1.
+  \item \textbf{Intricate:} re-roll all 1s; add a narrative flourish on success (no extra mechanical benefit).
+\end{itemize}
+
+\subsection{Fatigue and Harm}
+
+\subsubsection{Fatigue}
+\begin{itemize}
+  \item Fatigue track size = Body (minimum 1).
+  \item Mark Fatigue from exertion (Charge/Skirmish, forced marches, magic costs, Obligation overflow).
+  \item Each point of Fatigue worsens Position by one step (Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate).
+  \item If already Desperate, each additional Fatigue instead imposes a –1 die penalty on all rolls.
+\end{itemize}
+
+\subsubsection{Harm}
+\begin{itemize}
+  \item \textbf{Harm 1:} –1 die on actions directly related to the injury (GM discretion).
   \item \textbf{Harm 2:} –1 die on most actions until treated.
-  \item \textbf{Harm 3:} Incapacitated or dying.
+  \item \textbf{Harm 3:} incapacitated or dying.
 \end{itemize}
 
-\paragraph{Taking Harm Clears Fatigue (The Roller‑Coaster Effect).}
-When you take Harm, the shock of the wound temporarily clears your Fatigue. Follow this order:
+\subsubsection{Taking Harm Clears Fatigue (The Roller-Coaster Effect)}
+When you take Harm, follow this order:
 \begin{enumerate}
-  \item Convert incoming Harm to Fatigue using the \textbf{Armor Conversion} table (see below).
-  \item Apply any remaining Harm – if Harm remains, clear all existing Fatigue, then increase your Harm level by the amount of Harm taken.
-  \item Add the Fatigue from step 1 to your Fatigue track. If this fills or exceeds your track, resolve overflow (increase Harm by 1, clear Fatigue).
+  \item Convert incoming Harm to Fatigue using the \textbf{Armor Conversion Table}.
+  \item Apply any remaining Harm. If Harm remains, clear all existing Fatigue, then increase your Harm level by the amount of Harm taken.
+  \item Add the Fatigue from step 1 to your Fatigue track. If this fills or exceeds your track, increase Harm by 1 and clear all Fatigue.
 \end{enumerate}
 
-\paragraph{Armor Conversion.}
-\begin{center}
-\small
-\begin{tabular}{lccc}
+\subsubsection{Armor Conversion Table}
+
+\begin{tabular}{@{}lccc@{}}
 \toprule
 \textbf{Armor Type} & \textbf{Harm 1} & \textbf{Harm 2} & \textbf{Harm 3} \\
 \midrule
 Light  & Fatigue 1 & Harm 1 + Fatigue 1 & Harm 2 + Fatigue 1 \\
-Medium & Fatigue 1 & Fatigue 1          & Harm 2 + Fatigue 1 \\
-Heavy  & Fatigue 1 & Fatigue 1          & Fatigue 2 \\
+Medium & Fatigue 1 & Fatigue 1 & Harm 2 + Fatigue 1 \\
+Heavy  & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
 \bottomrule
 \end{tabular}
-\end{center}
-\textit{Minimum 1 Fatigue per hit, even if conversion would give 0.}
 
-\paragraph{Harm and Casting.}
-Harm disrupts magical focus:
+Minimum 1 Fatigue per hit, even if conversion would give 0.
 
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-\textbf{Harm} & \textbf{Casting Effect} & \textbf{Notes} \\
-\midrule
-Minor (Harm 1) & Channel DV +1 & Fatigue of concentration. \\
-Moderate (Harm 2) & Maintain channel DV 2 & Focus falters. \\
-Severe (Harm 2+ with narrative) & Channel breaks; freeform casting +1 SB & Magic slips dangerous. \\
-Critical (Harm 3) & Casting impossible & Patron bargain may intervene. \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\textbf{GM Note:} Harm and Fatigue push characters toward harsher Positions; casters feel this as \emph{lost control}, warriors as \emph{physical collapse}. Both create escalating drama without trivializing recovery.
-
-\paragraph{Boon Interaction with Fatigue}
-When Fatigue would force one or more success re-rolls:
+\subsubsection{Recovery}
 \begin{itemize}
-  \item Spending \textbf{1 Boon} negates \textbf{one} Fatigue-imposed re-roll.
-  \item Additional Fatigue re-rolls must be resolved normally.
+  \item \textbf{Fatigue:} Short rest (1 hour) removes 2 Fatigue; a full night's rest removes all.
+  \item \textbf{Harm:} Requires medical care (Medicine roll) or magical healing; natural recovery takes one week per level.
 \end{itemize}
 
-\noindent
-\emph{Note:} Boons may be spent \textbf{after seeing} the result of a Fatigue re-roll.
+\subsection{Maximum Dice Pool}
+An individual character's maximum die pool is 10d10. Any additional dice beyond 10 are converted to automatic successes (1 auto-success per extra die).
 
-\subsection{Assistance, Boons, \& Description}
-
+\subsection{Fail Forward: Every Roll Matters}
 \begin{itemize}
-  \item \textbf{Assists:} One helper per action; total Assist dice across sources are capped at +3 (unless a specific Talent states otherwise).
-  \item \textbf{Boons:} A player may re-roll one die after seeing the pool. Once per session, in downtime, you may convert 2 Boons $\rightarrow$ 1 XP (max 2 XP via conversion per session). Hold cap: 5. Trim to 2 at scene end.
-  \item \textbf{Description Ladder:}
-    \begin{itemize}
-      \item \textbf{Basic:} No bonus.
-      \item \textbf{Detailed:} Re-roll one 1.
-      \item \textbf{Intricate:} Re-roll \textbf{up to two} 1s and add one narrative flourish on success (no extra mechanical benefit).
-    \end{itemize}
+  \item No roll should result in ``nothing happens.''
+  \item A Miss does not stop the story — it changes direction.
+  \item Use SB to escalate, not to punish.
+  \item Success with SB is not failure — it is success with interesting complications.
 \end{itemize}
- 
-\paragraph{Maximum die pool}
-An individual can have a max die pool of 10d10. All extra are converted to auto-successes.
-
-\subsection{Time Guidance Framework}
-
-\subsubsection{Narrative Time Scales}
-Time in Fate's Edge is measured by story weight, not by clocks:
-\begin{itemize}
-  \item \textbf{A Moment} --- A heartbeat, a glance, a single strike or word.
-  \item \textbf{Some Time} --- A few minutes: a skirmish, a careful lockpick, a short negotiation.
-  \item \textbf{Significant Time} --- Hours: travel between locations, work a ritual, endure a siege.
-  \item \textbf{Days} --- Large-scale endeavors: marches across countryside, training a cadre, recovery.
-\end{itemize}
-
-\subsubsection{Game Structure Definitions}
-\begin{description}[leftmargin=1.5em, labelindent=0em]
-  \item[Scene] The basic unit of narrative play (Some Time to Significant Time); resolves a specific question or conflict.
-  \item[Player Turn (Beat)] Declare action $\rightarrow$ GM sets position $\rightarrow$ roll $\rightarrow$ resolve outcome $\rightarrow$ manage consequences.
-  \item[Round] Simultaneous or near-simultaneous actions within a scene (primarily for combat), representing a few seconds.
-  \item[Session] One complete game session (typically 3--6 hours), containing 2--4 major scenes and resolving significant narrative progress.
-  \item[Campaign] Entire story arc (6--20+ sessions) with major character development and lasting consequences.
-\end{description}
-
-\subsection{Fatigue}
-\label{subsec:fatigue}
-\index{Fatigue}
-
-\textbf{Track:} Each character has a Fatigue track equal to \textbf{Body}. Mark Fatigue for exertion, strain, or backlash.
-
-\textbf{In Play:} Each Fatigue step worsens your \textbf{Position} by one level 
-(Dominant $\rightarrow$ Controlled $\rightarrow$ Desperate). 
-If you are already \textbf{Desperate}, instead apply a \textbf{--1 die} penalty per Fatigue to that roll.
-
-\textbf{Overflow:} When your Fatigue track fills, immediately increase \textbf{Harm by 1 step} and clear all Fatigue to 0. 
-If this raises Harm to a level that incapacitates you, you fall out of the scene as normal for Harm.
-
-\textbf{Recovery:} Short rest clears 1--2 Fatigue; a full night's rest clears all Fatigue.
-
-\subsection{Initiative and Turn Order}
-
-Fate's Edge does not use fixed initiative. 
-Turn order follows the fiction and the GM's facilitation:
-\begin{itemize}
-    \item \textbf{Narrative Fiat:} The GM frames spotlight order based on circumstances, tension, and narrative flow.
-    \item \textbf{Player Input:} Players may suggest acting when it makes sense in the fiction. 
-    \item \textbf{Surprise:} Ambushers act first; targets respond after the opening exchange.
-    \item \textbf{Flexibility:} Spotlight may shift mid-scene if fictionally appropriate (e.g., reacting to a falling ceiling, seizing a moment).
-\end{itemize}
-
-This ensures pacing and drama guide the sequence of actions, not rigid turn structures.
-
-\subsection{Turn Economy (Quick Rules)}
-\label{subsec:turn-economy-quick}
-
-\paragraph{Two Actions.}
-Each character takes \textbf{1 Action and 1 Move} on their turn. Actions and Moves may be taken in any order; repeating the same Action is not allowed unless noted. A character may use a Boon to re-roll their action at the expense of their move if they still have it available. Some weapon tempos affect whether you can take an attack and a move.
-
-\paragraph{Move.}
-Traverse up to one range band (Close $\rightarrow$ Near $\rightarrow$ Far, or vice versa).  
-You may also use your Move to reposition within the same range band (e.g., from behind one tree to another at the same distance). This does not change your range band but may affect cover or line of sight.
-
-\begin{itemize}
-  \item \textbf{Stand:} Use your Move to stand from prone.
-  \item \textbf{Dash:} You may \emph{use your Action to gain an extra Move} (see below). Dashing allows you to move two bands total in your turn. Your next defense roll is \textbf{Desperate}.
-\end{itemize}
-
-\paragraph{Sidestep Strike.}
-As part of a melee attack action, you may move one range band (Close $\leftrightarrow$ Near, or Near $\leftrightarrow$ Far) without using your Move action for the turn. If you do so, your Position for that attack worsens by one step (e.g., Controlled becomes Desperate, Dominant becomes Controlled). You cannot also use your regular Move action in the same turn.
-
-\paragraph{Shove.}
-\textbf{Action.} Opposed \textbf{Body + Athletics} vs. target's \textbf{Body + Athletics}. On success, push the target back one range band (Close $\to$ Near). The target suffers –1 Position on their next action.
-
-\paragraph{Grapple.}
-\textbf{Action.} Opposed \textbf{Body + Melee} vs. target's \textbf{Body + Athletics}. On success, both characters are engaged (cannot move apart). The grappled target suffers –1 die on all actions. Breaking free requires a new opposed roll as an action.
-
-\paragraph{Opportunity Attacks.}
-Moving out of an enemy's \textbf{Close} range without using the \textbf{Disengage} action provokes an immediate free melee attack from that enemy. The attack is resolved normally (Position usually Controlled). This attack does not consume the enemy's action for the round.
-
-Additionally, the following actions provoke an opportunity attack if performed while engaged in Close with an enemy:
-\begin{itemize}
-  \item Making a ranged attack (bow, crossbow, thrown weapon).
-  \item Casting a spell that does not have the \texttt{[TOUCH]} or \texttt{[WARD]} tag.
-\end{itemize}
-
-\paragraph{Hiding and Cover.}
-To hide, a character must be behind full cover (e.g., a large tree, a wall) or in heavy concealment (dense fog, darkness). They must take the \textbf{Interact} action to hide, rolling Stealth (or appropriate skill) vs. the Perception of any observers. Once hidden, they are not a valid target for attacks unless an attacker first uses an action to \textbf{Search} (Perception vs. the hidden character's Stealth) or the hidden character reveals themselves by attacking or moving into the open.
-
-If a hidden character moves out of cover to attack, they are no longer hidden for the duration of the attack, and may be subject to opportunity attacks if they leave an enemy's Close range.
-
-\paragraph{Action Options.}
-\begin{itemize}
-  \item \textbf{Attack.} Make a melee or ranged attack versus DV set by the GM and fiction. Ranged attacks made while within \textbf{Close} range of an enemy are \textbf{Desperate} (re-roll successes). Teamwork/Assist costs 1 Boon.
-  
-  \item \textbf{Disengage.} \textbf{Action, not a Move.} You prepare to retreat safely. After taking Disengage, your \textbf{Move} this turn does not provoke opportunity attacks. You cannot also Attack this turn.
-  
-  \item \textbf{Charge.} \emph{Full turn action.} Move up to two range bands (e.g., Far $\rightarrow$ Near $\rightarrow$ Close) and make one melee attack. Costs \textbf{1 Fatigue}. Your next defense is Desperate. Consumes both your Action and Move. Requires open ground (no difficult terrain).  
-  \textbf{Important:} If your target is hidden (e.g., behind full cover), you cannot complete the Charge because you have no valid target. You may instead move up to the cover and end your turn there. The attack is lost.
-  
-  \item \textbf{Skirmish.} \emph{Full turn action.} Move up to two range bands away (e.g., Close $\rightarrow$ Near $\rightarrow$ Far) and make one ranged attack. Costs \textbf{1 Fatigue}. Your next defense is Desperate. Consumes both Action and Move. Requires open ground.  
-  If you start your turn hidden, you may Skirmish: you leave cover, move, shoot, and may end your turn in new cover if available. You are exposed during the movement and the shot; opportunity attacks apply normally if you leave an enemy's Close range.
-  
-  \item \textbf{Observe / Change Position.} Take a beat to read the field or set angles; gain \textbf{+1 Position} for one action this turn (e.g., Controlled $\rightarrow$ Dominant). Limit: once/turn; cannot exceed \textbf{Dominant}.
-  
-  \item \textbf{Setup (Teamwork).} Create advantage for an ally; on success, grant their next action \textbf{+1 Position} or step up Effect (GM's call).
-  
-  \item \textbf{Assist (Teamwork).} Spend \emph{1 Boon} to give an ally \emph{+1 die} on their current roll; you share appropriate risk/consequence.
-  
-  \item \textbf{Protect.} Adopt a guarding stance or body-block. Choose a nearby ally; until your next turn you may intercept one hit on them and roll to resist it. On success, reduce/negate Harm; you take any fallout the GM assigns.
-  
-  \item \textbf{Channel / Weave.} Runekeeper/ritual flow: \emph{Channel} (prime power) then \emph{Weave} (shape/release). Disruption or engagement may worsen Position; if \emph{Interrupted}, the casting fails.
-  
-  \item \textbf{Cast Rite / Song (Cantor).} Perform a Rite/Song per its write-up. You may \emph{Push} to accelerate or empower at the cost of Fatigue/Corruption per class rules.
-  
-  \item \textbf{Interact.} Lift, pull, flip a lever, shove a foe, break an object, apply a poultice, reload, draw/stow, or \textbf{hide} / \textbf{search}. GM sets DV/Effect.
-  
-  \item \textbf{Defend.} Spend your Action or Move to enter a defensive stance. Until your next turn, you count as Defending. When resisting any attack or effect, improve your Position by one step (or gain +1 die if already Dominant).
-  
-  \item \textbf{Free Items.} Short shouts, dropping an item, quick glance. Longer or tactical assessments require \emph{Observe / Change Position} or \emph{Interact}.
-  
-  \item \textbf{Reactions (Out of Turn).} \emph{Protection} may trigger when an ally is hit and you are in position. Class/Asset reactions fire as written (e.g., counter-runes, ripostes). Opportunity attacks are a free reaction that any creature can take when an enemy leaves its Close range without Disengaging.
-\end{itemize}
-
-\paragraph{Position and Dice Modifiers.}
-There is no hard cap at Dominant or Desperate. Instead:
-\begin{itemize}
-  \item If bonuses would raise your Position above \textbf{Dominant}, each additional step becomes \textbf{+1 die} instead.
-  \item If penalties would drop your Position below \textbf{Desperate}, each additional step becomes \textbf{-1 die} instead.
-  \item \textbf{Example:} You have two sources of Position improvement. Dominant $\rightarrow$ would be step 1, step 2 would be \textbf{+1 die}. If you are already at Desperate and a penalty would push you lower, you suffer \textbf{-1 die} per step.
-\end{itemize}
-
-This allows unlimited stacking of dice modifiers while keeping the three Position tiers meaningful.
-
-\paragraph{Open Ground Requirement.}
-The \textbf{Charge} and \textbf{Skirmish} actions require \textbf{open ground} (no difficult terrain such as rubble, dense forest, shallow water, or steep slopes). Talents may override this restriction.
-
-\paragraph{Example Talents (for reference).}
-\begin{itemize}
-  \item \textbf{Effortless Charge} (4 XP): Once per scene, you may Charge without marking Fatigue.
-  \item \textbf{Effortless Skirmish} (4 XP): Once per scene, you may Skirmish without marking Fatigue.
-  \item \textbf{Relentless} (6 XP): You may Charge or Skirmish over difficult terrain (Fatigue cost still applies).
-  \item \textbf{Stubborn Pursuer} (6 XP): When an opponent within Close range Disengages, you may use your reaction to move with them, staying in Close range (no opportunity attack provoked).
-\end{itemize}
-
-\subsubsection{Magic and Ritual Time}
-\begin{itemize}
-  \item \textbf{Standard Casting:} Channel and Weave phases each take 1 Player Turn; resolves within a single scene.
-  \item \textbf{Ritual Casting (Optional Rule):} Channel and Weave phases each require 1 Scene (Significant Time).
-  \item \textbf{Rites Invocation:} Invoke takes 1 Player Turn; Weave takes 1 Player Turn. High-Power rites may require extended time by fiction.
-\end{itemize}
-
-\paragraph{Extended Rituals}
-Attach long rituals to clocks:
-\begin{itemize}
-  \item 4-segment clock: Significant Time (hours)
-  \item 6-segment clock: Extended Time (days)
-  \item 8+ segment clock: Campaign Time (weeks/months)
-\end{itemize}
-Advance the clock through player actions, scenes, or set intervals.
-
-\subsection{Worked Micro-Examples}
-\begin{itemize}
-  \item \textbf{Lockpick Under Watch (DV 3):} Roll 6 dice: 10, 8, 5, 4, 1, 1 $\Rightarrow S=2$ (10 counts as two successes), $C=2$. \emph{Success \& Cost.} Door opens; GM spends 1 SB for a squeal (patrol starts moving) and banks 1 SB to bring that patrol around on the next beat.
-  \item \textbf{Charm the Captain (DV 2):} Roll 5 dice: 7, 6, 6, 2, 1 $\Rightarrow S=3, C=1$. \emph{Success \& Cost.} Passage granted; GM spends 1 SB: "He expects a favor on the return leg---he'll collect."
-  \item \textbf{Traverse the Pass (DV 3):} Group pools to net 3 successes but produces $C=3$. \emph{Success \& Cost.} GM spends 2 SB to add Fatigue 1 to all from cold and exposure, banks 1 SB to crack a wagon axle next scene.
-\end{itemize}
-
-\paragraph{Fail Forward: Every Roll Matters}
-When you \textbf{MISS} on a \emph{meaningful action}, you gain 2 \textbf{Boons}. When you have a \textbf{PARTIAL}, you gain 1 \textbf{Boon}. Boons can be spent immediately for re-rolls, Asset activations, Rites, and other abilities. You can hold up to 5 Boons (trim to 2 at scene end).
-
-A miss only awards Boons if all three are true:
-\begin{enumerate}
-  \item Procedure followed: intent and approach declared; DV set; roll resolved.
-  \item Stakes stated: what changes on success; what bites on failure.
-  \item Consequence lands now: the GM spends or banks SB, applies a condition, or advances a thread.
-\end{enumerate}
-Typically, failures reward boons. Rehearsal/null-risk probes and repeated identical attempts in the same scene do not award Boons. Rule of thumb, if it feels like an obvious fishing attempt, do not award a boon.
-
-\subsection{Session Loop}
-
-\textbf{Off-Screen (Downtime).} Clear/mark clocks, pay Upkeep, manage Obligation, craft, gather info, frame intents.
-
-\textbf{On-Screen (Adventure).} Play scenes, make moves, trigger Rites/Casting, advance fronts.
-
-\textbf{Wrap-Up.} Award XP, mark Story Beats (SB), resolve Harm/Fatigue conversion, advance faction clocks, note Patron Largess.
-
-\textbf{Off-Screen Hooks.} Record next Downtime intents (projects, service to Patrons, upkeep needs) and any cliffhangers.
-
-\subsection{Small Folk of the Threshold (Aelaerem \& Aelinnel)}
-\label{subsec:small-folk-threshold}
-
-\index{Aelaerem}\index{Aelinnel}\index{Small Folk}
-
-The Aelaerem and Aelinnel are diminutive peoples attuned to liminal spaces and hidden ways. Their stature grants them agility and subtlety, though at the cost of bearing heavy arms or armor.
-
-\begin{itemize}
-  \item \textbf{Restriction:} Cannot use \emph{Heavy Armor} or \emph{Heavy Weapons}.
-  \item \textbf{Bonus:} Gain \textbf{+1 Position} when avoiding physical harm (e.g., dodging an attack, leaping from an explosion, resisting a shove). Additionally, gain \textbf{+1 die} on \emph{Hide} or \emph{Evasion} rolls made while in cover.
-\end{itemize}
-
-Their presence in the world is often underestimated, but their knack for slipping unseen through thresholds and enduring where others falter has earned them a quiet reverence.
-
-\section{Followers and Assets}
-
-Followers and Assets represent the lasting impact of your character's actions on the world.  
-They are not abstractions or passive bonuses---they are \emph{people, resources, and structures} that exist in the fiction and can act independently of your character.
-
-Together, Followers and Assets allow characters to project influence beyond a single roll or scene, shaping the world through relationships, preparation, and legacy.
-
-\subsection{Followers}
-
-\textbf{Followers} are named NPCs who have a personal relationship with your character.  
-They may be students, allies, retainers, agents, family members, or dependents. Followers act in the fiction and can grow, change, or be lost as the story progresses.
-
-\paragraph{What Followers Do}
-Followers:
-\begin{itemize}
-  \item Assist you during scenes through \textbf{Bonds} and \textbf{Assists}
-  \item Act offscreen to advance goals, gather information, or manage responsibilities
-  \item Accumulate narrative weight and may eventually become player characters
-\end{itemize}
-
-Followers are not disposable tools. They have motives, limitations, and vulnerabilities, and the GM may place them at risk when the fiction demands it.
-
-\paragraph{Using Followers}
-Followers typically influence play in three ways:
-\begin{itemize}
-  \item \textbf{Assists}: Granting +1 die or narrative positioning when they are present and able to help
-  \item \textbf{Bond Activation}: Spending a Boon to draw on trust, loyalty, or shared history for insight or support
-  \item \textbf{Offscreen Action}: Handling tasks that would otherwise demand the PC's time or attention
-\end{itemize}
-
-\paragraph{Limits}
-Followers:
-\begin{itemize}
-  \item Do not replace player actions
-  \item Do not make rolls unless the GM explicitly calls for it
-  \item Cannot solve major conflicts without consequences
-\end{itemize}
-
-When Followers succeed or fail, those outcomes become part of the story.
-
-\subsection{Assets}
-
-\textbf{Assets} are durable resources, positions, or structures under your character's control.  
-They represent \emph{leverage}---things that allow you to influence the world at scale.
-
-Examples include:
-\begin{itemize}
-  \item A safehouse, laboratory, or fortress
-  \item A mercantile network or smuggling route
-  \item A political office or religious authority
-  \item A powerful relic, symbol, or institutional role
-\end{itemize}
-
-\paragraph{What Assets Do}
-Assets:
-\begin{itemize}
-  \item Create advantages that persist beyond a single scene
-  \item Resolve problems that cannot be solved with a single roll
-  \item Shape the direction and scope of the campaign
-\end{itemize}
-
-Assets are not passive bonuses. They matter only when invoked in the fiction.
-
-\paragraph{Activating Assets}
-Most Assets require the expenditure of \textbf{Boons} to activate.
-
-When you spend a Boon on an Asset, you may:
-\begin{itemize}
-  \item Advance or halt a Clock
-  \item Introduce or remove a complication
-  \item Secure resources, protection, or access
-  \item Influence events happening offscreen
-\end{itemize}
-
-The GM determines the exact impact based on the scale of the Asset and the current situation.
-
-\paragraph{Assets and Risk}
-Assets can be threatened, degraded, or lost.
-\begin{itemize}
-  \item Overuse attracts attention
-  \item Failure creates new problems
-  \item Enemies may target your Assets directly
-\end{itemize}
-
-An Asset that never faces risk is not part of the story.
-
-\subsection{Followers vs.\ Assets}
-
-\begin{center}
-\small
-\begin{tabular}{p{3cm}p{5cm}p{5cm}}
-\toprule
- & \textbf{Followers} & \textbf{Assets} \\
-\midrule
-Nature & People & Resources / Structures \\
-Primary Role & Personal support & Strategic leverage \\
-Activation & Assists, Bonds & Boon expenditure \\
-Risk & Emotional and narrative & Structural and political \\
-Growth & Can become PCs & Can expand or collapse \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\paragraph{Design Principle}
-Followers create \emph{depth}.  
-Assets create \emph{reach}.
-
-High-tier play depends less on raw die bonuses and more on how well you manage both.
-
-\subsection{High-Tier Play}
-
-As characters advance, Followers and Assets become increasingly important.  
-Higher-tier Talents and Assets consume Boons, forcing players to choose between immediate success and long-term influence.
-
-Power at high tier is not about having more Boons---it is about deciding where to spend them.
-
-\textit{Victory is no longer just surviving the roll.  
-It is choosing which parts of the world move when you do.}
-
-\paragraph{Mounted Combat (Simplified).}
-If you have a \textbf{War Mount} and the \textbf{Cavalier} talent:
-\begin{itemize}
-\item Charging into melee from \textbf{Far → Near}: \textbf{+2d}
-\item Firing while disengaging \textbf{Near → Far}: \textbf{+2d}
-\end{itemize}
-
-\section{Followers and Assets}
-
-Followers and Assets represent the lasting impact of your character's actions on the world.  
-They are not abstractions or passive bonuses---they are \emph{people, resources, and structures} that exist in the fiction and can act independently of your character.
-
-Together, Followers and Assets allow characters to project influence beyond a single roll or scene, shaping the world through relationships, preparation, and legacy.
-
-\subsection{Followers}
-
-\textbf{Followers} are named NPCs who have a personal relationship with your character.  
-They may be students, allies, retainers, agents, family members, or dependents. Followers act in the fiction and can grow, change, or be lost as the story progresses.
-
-\paragraph{What Followers Do}
-Followers:
-\begin{itemize}
-  \item Assist you during scenes through \textbf{Bonds} and \textbf{Assists}
-  \item Act offscreen to advance goals, gather information, or manage responsibilities
-  \item Accumulate narrative weight and may eventually become player characters
-\end{itemize}
-
-Followers are not disposable tools. They have motives, limitations, and vulnerabilities, and the GM may place them at risk when the fiction demands it.
-
-\paragraph{Using Followers}
-Followers typically influence play in three ways:
-\begin{itemize}
-  \item \textbf{Assists}: Granting +1 die or narrative positioning when they are present and able to help
-  \item \textbf{Bond Activation}: Spending a Boon to draw on trust, loyalty, or shared history for insight or support
-  \item \textbf{Offscreen Action}: Handling tasks that would otherwise demand the PC's time or attention
-\end{itemize}
-
-\paragraph{Follower States}
-Instead of tracking numeric clocks, note a follower's \textbf{Loyalty} and \textbf{Fitness} as one of three states each.
-
-\begin{center}
-\small
-\begin{tabular}{p{2.5cm}p{5cm}p{5cm}}
-\toprule
-\textbf{State} & \textbf{Meaning} & \textbf{Mechanical Effect} \\
-\midrule
-\multicolumn{3}{c}{\textit{Loyalty}} \\
-Faithful & Committed, trustworthy & Normal assist, independent actions available \\
-Strained & Doubtful, pressured & Assist at –1 die; may refuse risky orders \\
-Broken & Betrayed or deserted & Follower leaves or becomes hostile \\
-\midrule
-\multicolumn{3}{c}{\textit{Fitness}} \\
-Ready & Uninjured, rested & Full function \\
-Hurt & Wounded, exhausted & Assist at –1 die; no independent actions \\
-Down & Incapacitated & Requires rescue or medical care \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Change states when the fiction demands it (e.g., after a failed mission, a moral compromise, or taking damage). No rolls required.
-
-\paragraph{Limits}
-Followers:
-\begin{itemize}
-  \item Do not replace player actions
-  \item Do not make rolls unless the GM explicitly calls for it
-  \item Cannot solve major conflicts without consequences
-\end{itemize}
-
-When Followers succeed or fail, those outcomes become part of the story.
-
-\subsection{Assets}
-
-\textbf{Assets} are durable resources, positions, or structures under your character's control.  
-They represent \emph{leverage}---things that allow you to influence the world at scale.
-
-Examples include:
-\begin{itemize}
-  \item A safehouse, laboratory, or fortress
-  \item A mercantile network or smuggling route
-  \item A political office or religious authority
-  \item A powerful relic, symbol, or institutional role
-\end{itemize}
-
-\paragraph{What Assets Do}
-Assets:
-\begin{itemize}
-  \item Create advantages that persist beyond a single scene
-  \item Resolve problems that cannot be solved with a single roll
-  \item Shape the direction and scope of the campaign
-\end{itemize}
-
-Assets are not passive bonuses. They matter only when invoked in the fiction.
-
-\paragraph{Asset Status}
-Assets have a single \textbf{Status} that describes their overall health and usability.
-
-\begin{center}
-\small
-\begin{tabular}{p{2.5cm}p{6cm}p{4cm}}
-\toprule
-\textbf{Status} & \textbf{Meaning} & \textbf{Effect} \\
-\midrule
-Flourishing & Well-maintained, respected & +1 die on rolls involving the asset, +1 Yield \\
-Stable & Normal operation & No modifier \\
-Strained & Problems accumulating & –1 die on asset-related rolls, no Yield \\
-Collapsed & Non-functional & Requires quest or major downtime to restore \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The Status worsens when the asset is neglected, attacked, or suffers a public failure. It improves through dedicated downtime actions or successful missions that benefit the asset.
-
-\paragraph{Activating Assets}
-Most Assets require the expenditure of \textbf{Boons} to activate.
-
-When you spend a Boon on an Asset, you may:
-\begin{itemize}
-  \item Advance or halt a Clock
-  \item Introduce or remove a complication
-  \item Secure resources, protection, or access
-  \item Influence events happening offscreen
-\end{itemize}
-
-The GM determines the exact impact based on the scale of the Asset and the current situation.
-
-\paragraph{Activation Examples}
-\begin{itemize}
-  \item \textbf{Advance or halt a Clock}: ``My spy network delays the patrol—tick the Alarm clock backward by 1.''
-  \item \textbf{Introduce a narrative advantage}: ``The safehouse has a hidden exit—we escape at Controlled Position.''
-  \item \textbf{Secure resources}: ``My trading post provides fresh horses—remove one Supply segment.''
-  \item \textbf{Influence offscreen events}: ``My guild contact suppresses the rumor—cancel an incoming complication.''
-\end{itemize}
-The GM may veto an activation that exceeds the Asset's scope.
-
-\paragraph{Upkeep}
-During downtime, each Asset and Follower you maintain requires one of the following:
-\begin{itemize}
-  \item \textbf{Attention (Intensive)}: Spend a scene interacting with them (repairing, training, socializing).
-  \item \textbf{Resources (Efficient)}: Spend 1 XP (or a relevant String) to cover costs offscreen.
-\end{itemize}
-If you provide neither, the Asset or Follower degrades one step (Flourishing → Stable → Strained → Collapsed for Assets; Faithful → Strained → Broken for Followers). Two consecutive downtimes without upkeep collapses the Asset or loses the Follower entirely.
-
-\subsection{Terrestrial Patrons}
-
-Not all power comes from cosmic entities. \textbf{Terrestrial Patrons} are mortal factions or individuals—nobles, guildmasters, crime lords, generals, merchant princes—who offer tangible aid in exchange for obligation.
-
-\paragraph{How Terrestrial Patrons Work}
-When you accept a favor from a Terrestrial Patron (access, resources, protection, an Asset), you mark \textbf{+1 Obligation} to that patron. Your Obligation Capacity (\textbf{Spirit + Presence}) applies normally, and exceeding it causes Fatigue exactly as with cosmic Patrons (see \ref{sec:obligation}).
-
-Favors are typically \textbf{Diamonds}—leverage, rewards, or Assets that would otherwise cost XP. Examples:
-\begin{itemize}
-  \item A noble grants you a \textbf{safehouse} (Minor Asset) in exchange for a future service.
-  \item A guildmaster provides \textbf{legal immunity} (String) for one heist.
-  \item A crime lord lends you \textbf{enforcers} (Cap 2 followers) for a single mission.
-\end{itemize}
-
-\paragraph{Clearing Obligation}
-Unlike supernatural Patrons, terrestrial obligations are cleared by performing \textbf{tasks} for the patron. The GM sets the scope:
-\begin{itemize}
-  \item \textbf{Minor task} (deliver a message, pay a bribe): clears 1 Obligation.
-  \item \textbf{Significant task} (escort a caravan, break a siege): clears 2 Obligation.
-  \item \textbf{Major task} (assassinate a rival, broker a treaty): clears 3+ Obligation.
-\end{itemize}
-Each task becomes a \textbf{story hook}. Refusing a task when Obligation is full may turn the patron into a rival or enemy.
-
-\paragraph{Benefits of Terrestrial Patrons}
-\begin{itemize}
-  \item No XP cost for favors—only Obligation.
-  \item Access to Assets, Strings, and Followers you couldn't otherwise afford.
-  \item Patrons escalate with your tier: a Tier I patron offers local favors; a Tier III patron offers regional power.
-\end{itemize}
-
-\subsection{Player Trusts}
-
-A \textbf{Trust} is a shared pool of XP that players contribute to, used to acquire and maintain \textbf{party-owned Assets and Followers}. Trusts represent a collective enterprise—a mercenary company, a trading guild, a spy network, a religious order.
-
-\paragraph{Forming a Trust}
-Any player may contribute XP to the Trust pool. Contributions are voluntary and cannot be withdrawn. The Trust has no individual owner; spending from the pool requires majority agreement.
-
-\paragraph{What a Trust Can Buy}
-\begin{center}
-\small
-\begin{tabular}{p{2.5cm}p{9cm}}
-\toprule
-\textbf{Cost} & \textbf{Benefit} \\
-\midrule
-4 XP & Minor Asset (shared safehouse, workshop, contact network) \\
-8 XP & Standard Asset (guild charter, spy ring, fortress lease) \\
-9 XP & Follower (Cap 3, loyal to the Trust, not any single PC) \\
-\bottomrule
-\end{tabular}
-\end{center}
-Assets and Followers acquired through a Trust belong to the \textbf{party as a whole}. Any member may activate them (spending their own Boons).
-
-\paragraph{Upkeep and Delegation}
-Each downtime, the Trust must pay upkeep for its Assets and Followers using the standard rules (1 XP or a scene per asset/follower). Alternatively, the Trust may \textbf{delegate upkeep} to a \textbf{Cap 5 Follower}:
-\begin{itemize}
-  \item The Cap 5 follower can manage up to \textbf{4 Assets} (or any combination of Assets and Followers totaling 4 slots).
-  \item The follower's own upkeep covers the delegated Assets—no separate XP cost.
-  \item \textbf{Risk}: If the follower becomes Compromised (disloyal, captured, or killed), all delegated Assets become \textbf{Neglected} or are lost until the follower is restored.
-\end{itemize}
-
-\paragraph{Dissolving a Trust}
-If the party disbands, remaining XP in the pool is lost. Assets may be transferred to individual characters who pay the XP cost (or accept Obligation to a Terrestrial Patron to cover the difference).
-
-\subsection{Followers vs.\ Assets vs.\ Patrons vs.\ Trusts}
-
-\begin{center}
-\small
-\begin{tabular}{p{3cm}p{4cm}p{4cm}p{4cm}}
-\toprule
- & \textbf{Followers} & \textbf{Assets} & \textbf{Terrestrial Patrons} & \textbf{Trusts} \\
-\midrule
-Nature & People & Resources / Structures & Mortal factions & Shared pool \\
-Primary Role & Personal support & Strategic leverage & Favors for Obligation & Collective ownership \\
-Activation & Assists, Bonds & Boon expenditure & Accepting favors & Majority vote \\
-Risk & Emotional, narrative & Structural, political & Refusal turns hostile & Delegated follower compromise \\
-Growth & Can become PCs & Expand or collapse & Escalate with tier & Assets/Followers persist \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\paragraph{Design Principles}
-\begin{itemize}
-  \item \textbf{Followers} create \emph{depth}.
-  \item \textbf{Assets} create \emph{reach}.
-  \item \textbf{Terrestrial Patrons} convert story hooks into immediate resources.
-  \item \textbf{Trusts} let the party build a shared legacy.
-\end{itemize}
-
-High-tier play depends less on raw die bonuses and more on how well you manage all four.
-
-\subsection{High-Tier Play}
-
-As characters advance, Followers, Assets, Patrons, and Trusts become increasingly important.  
-Higher-tier Talents and Assets consume Boons, forcing players to choose between immediate success and long-term influence.
-
-At Tier III and above, your personal dice pool may be maxed, but a Cap 3 Follower adds +3 to assist rolls, and a Major Asset can shift the outcome of a scene without a roll.
-
-\textit{Victory is no longer just surviving the roll.  
-It is choosing which parts of the world move when you do.}
-
-\paragraph{Mounted Combat (Simplified).}
-If you have a \textbf{War Mount} and the \textbf{Cavalier} talent:
-\begin{itemize}
-\item Charging into melee from \textbf{Far → Near}: \textbf{+2d}
-\item Firing while disengaging \textbf{Near → Far}: \textbf{+2d}
-\end{itemize}
-
-The bonus applies only when movement is part of the action.  
-Misses and Partials often cost mount Fatigue, equipment damage, or narrative complications.
-

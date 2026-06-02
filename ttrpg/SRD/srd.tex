@@ -1,0 +1,86 @@
+% Fate's Edge --- System Reference Document (SRD)
+% Main LaTeX file to compile the full document.
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable}
+\tcbset{breakable}
+\tcbuselibrary{breakable, skins}
+
+\geometry{
+  letterpaper,
+  margin=1in
+}
+
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{topsep=0.2em,itemsep=0.2em}
+\setlist[description]{style=nextline}
+
+\title{\vspace{-1.5em}Fate's Edge\\\large System Reference Document}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+% --- PART 1: FOUNDATION ---
+\input{sections/00-quickstart}           % 2-page quickstart (new)
+\input{sections/01-core-principles}      % safety, tone, central question
+\input{sections/02-core-mechanic}        % resolution loop, DV, Position, Outcome, Boons, SB
+
+% --- PART 2: CHARACTERS ---
+\input{sections/03-character-creation}   % step-by-step, bonds, complications
+\input{sections/04-attributes-skills}    % merged from old 1.2 + 13.1
+\input{sections/05-talents}              % all talents (incl. summoning, cantor)
+\input{sections/06-equipment}            % weapons (Harm by weight), armor, gear, condition
+
+% --- PART 3: ACTION & COMBAT ---
+\input{sections/07-action-economy}       % turn structure, Move/Action, reactions
+\input{sections/08-combat}               % range, cover, stealth, mounted
+\input{sections/09-health-fatigue-harm}  % Fatigue, Harm, armor conversion, recovery
+
+% --- PART 4: MAGIC & SUPERNATURAL ---
+\input{sections/10-magic-system}         % four paths, Obligation, Corruption, Backlash
+\input{sections/11-tags-effects}         % element tags, effect tags, DV calculation
+\input{sections/12-rites-invokers}       % universal rituals, invoker rituals
+\input{sections/13-summons}              % Call → Bind → Leash, spirit templates
+
+% --- PART 5: HOLDINGS & ADVANCEMENT ---
+\input{sections/14-followers-assets}     % merged (was 5 & 6)
+\input{sections/15-advancement-xp}       % XP awards, spending, reputation tiers
+
+% --- PART 6: TRAVEL & ENCOUNTERS ---
+\input{sections/16-travel-framework}     % legs, roles, clocks, supply
+\input{sections/17-encounters}           % social, environmental, magical (merged)
+\input{sections/18-complications-clocks} % SB menu, clocks, hazards
+
+% --- PART 7: OPTIONAL SYSTEMS ---
+\input{sections/19-deck-consequences}    % optional
+\input{sections/20-crown-spread}         % optional campaign frame
+\input{sections/21-player-archetypes}    % optional (Solo/Mixed/Mastermind)
+
+% --- PART 8: GM TOOLKIT (new) ---
+\input{sections/22-gm-guidelines}        % consolidated GM advice, session zero
+\input{sections/23-npc-templates}        % NEW: bandits, guards, spirits, beasts
+
+% --- APPENDICES ---
+\input{sections/appendix-quickref}       % all tables in one place
+\input{sections/appendix-example-spells} % expanded spell/rite examples
+\input{sections/appendix-example-characters} % 2-3 pregens
+
+\end{document}
