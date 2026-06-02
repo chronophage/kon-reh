@@ -68,10 +68,10 @@ def main():
 
     # Section filter
     build_filter = set(args.build.lower())
-    allowed = {'a', 'c', 'e'}
+    allowed = {'a', 'c', 'e','t'}
     if not build_filter.issubset(allowed):
         sys.exit(f"Invalid -b option. Use letters from: {', '.join(sorted(allowed))}")
-    section_map = {'a': 'adventures', 'c': 'core', 'e': 'expansions'}
+    section_map = {'a': 'adventures', 'c': 'core', 'e': 'expansions', 't': 'travel'}
     selected_sections = {section_map[ch] for ch in build_filter}
 
     git_root = get_git_root()

@@ -1,0 +1,477 @@
+% !TeX program = lualatex
+\documentclass[12pt,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Suit symbols – use Unicode
+\newcommand{\spadesuit}{♠}
+\newcommand{\heartsuit}{♥}
+\newcommand{\clubsuit}{♣}
+\newcommand{\diamondsuit}{♦}
+
+% Almanac environment
+\newenvironment{almanac}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+\begin{document}
+
+% ----------------------------------------------------------------------
+% FRONT MATTER
+% ----------------------------------------------------------------------
+\frontmatter
+
+\title{\Huge Fate's Edge\\[0.3\baselineskip]
+\Large The Southern Realms (Akilan)}
+\author{Kofi of the Salt Syndicate \\ \small (stamped, witnessed, and slightly stained)}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+% ----------------------------------------------------------------------
+% PREFACE – Framing device (unreliable trader)
+% ----------------------------------------------------------------------
+\chapter*{Preface: The Salt Trader’s Ledger}
+\addcontentsline{toc}{chapter}{Preface}
+
+\noindent
+{\Large
+\textit{I am a son of Oshiira. My grandfather weighed grain for the Widow; my mother balanced the canal ledgers. I inherited a brass scale and a healthy suspicion of anyone who does not stamp their receipts three times.}
+}
+
+The south is not a mystery. It is a network of trade routes, water rights, and harvest schedules – if you know how to read them. The Oshiiran Ledger Empire keeps the Amaranthine fed. Taharka’s passes guard the monsoon gold. Ngomebe’s walking cities are a wonder, yes, but also a contract: their iron for our grain, renewed every nine years.
+
+And then there are the others. Sekogo’s jungle folk whisper to trees. The Crimson Valley’s silk‑wardens tie promises into cords that tighten when you lie. And Ashaan… Ashaan is a tragedy. A once‑great empire that sold its soul to keep its throne. I do not envy them. I do not forgive them. I simply note their tariffs and move on.
+
+This book is not a tourist’s guide. It is a trader’s inventory. I have marked the places where a misplaced stamp can halt a caravan, where a forgotten water right can start a war, and where a single true story can buy safe passage through a hundred miles of hostile hills.
+
+You want to trade the southern routes? Learn the customs. Respect the spirits. Never refuse the third cup of coffee in Taharka – and never, ever ask a Sidhi freedman about their ancestry.
+
+The ledger is open. The scales are balanced. Let us begin.
+
+\vspace{1em}
+\noindent\textit{— Kofi of the Salt Syndicate, Mbaro weigh‑house, stamped and witnessed}
+
+% ----------------------------------------------------------------------
+% SAFETY & SENSIBILITY
+% ----------------------------------------------------------------------
+\chapter*{Safety \& Sensibility}
+\addcontentsline{toc}{chapter}{Safety \& Sensibility}
+
+Before play, establish how the table handles sensitive content. Fate's Edge uses three standard tools:
+
+\begin{itemize}
+  \item \textbf{Lines}: Content that will not appear at all (e.g., “no on‑screen torture of children”).
+  \item \textbf{Veils}: Content that happens off‑screen or fades to black (e.g., “slavery is referenced but not depicted in graphic detail”).
+  \item \textbf{X‑Card}: Any player may stop a scene at any time by drawing an X on a card or saying “X.” No questions, no explanations.
+\end{itemize}
+
+\subsection*{A Note on Ashaan}
+Ashaan is a setting of systemic cruelty: chattel slavery, state‑sanctioned violence, child sacrifice (secret cults), and the erasure of identity. The Veiled Sisters rule through terror; the Black Hand erases dissent; the Breath‑less resistance struggles in shadows.
+
+These themes are presented as \textbf{horror and injustice}, never glamorised. Before playing in Ashaan, use the standard safety tools with particular care. The GM should adjust or omit elements as needed for the table’s comfort. Your safety matters more than canon.
+
+\textit{“The Veil is not a choice. It is survival.”} – Breath‑less agent Tamar
+
+% ----------------------------------------------------------------------
+% BEYOND THE DARK CONTINENT – Essay on tropes
+% ----------------------------------------------------------------------
+\chapter*{Beyond the Dark Continent: A Note on Inspiration}
+\addcontentsline{toc}{chapter}{Beyond the Dark Continent}
+
+The Southern Realms (Akilan) draw inspiration from the rich and varied cultures of Saharan, Sahelian, West African, East African, and Southern Africa – but they are not a pastiche of any single real‑world culture. This essay explains how Fate’s Edge approaches these inspirations and deliberately avoids harmful tropes.
+
+\subsection*{No Monolithic “Africa”}
+The southern continent is vast, with distinct regions that have little in common. Oshiira’s grain‑ledger bureaucracy owes more to the medieval empires of the Sahel (Ghana, Mali, Songhai) than to any “tribal” stereotype. Ngomebe’s walking cities are technological marvels, not “primitive” structures. Taharka’s highland fortresses echo Ethiopia’s rock‑hewn churches and mountain kingdoms. Sekogo’s jungle societies take cues from the forest kingdoms of West Africa (Benin, Ifẹ, Kongo). Each region has its own economy, religion, and internal conflicts.
+
+\subsection*{Agency, Not Exoticism}
+The people of the Southern Realms are not passive recipients of outside influence. They trade, they raid, they negotiate, they resist. The Oshiiran Vermilion Corps audits foreign merchants; Taharkan passes have never been conquered; Ngomebe’s mason‑kin maintain their own engineering partnerships with Aeler dwarves. When the Kahfagian Admiralty encroaches on the Brass Coast, the Sidhi diaspora and native rajas fight back.
+
+\subsection*{No “Noble Savages”}
+The beast‑kin of the Valewood are refugees of magical experiments, not “one with nature” caricatures. The Lethai‑ar are sophisticated legal scholars, not mystical forest dwellers. The Aelaerem of the Southern Hills are not “pygmies” – they are a distinct culture with their own coffee rites and knot‑magic, and they trade as equals with Taharkan lords.
+
+\subsection*{Avoiding the “Dark Continent” Label}
+The book explicitly names the region “The Southern Realms (Akilan).” \textit{Akilan} is an in‑world term from the old Akilan Empire that preceded the Utaran conquest; it is not a real‑world exonym. No character refers to the south as “dark” or “uncivilised” without that bias being challenged by the text.
+
+\subsection*{Colonialism as Villain}
+The Kahfagian Admiralty’s presence on the Brass Coast is depicted as exploitative. The Ashaani slave trade is unequivocally evil. The Fenwood sack of Lence is a war crime. The party is never encouraged to side with oppressors without consequences.
+
+\subsection*{GM Guidance}
+\begin{itemize}
+  \item Encourage players to create characters from these cultures without relying on stereotypes. Use the almanacs and NPC tables for grounded details.
+  \item When a player repeats a harmful trope (e.g., “the jungle is savage”), pause and ask: “Is that what your character believes, or is that the truth of the world?”
+  \item Use the safety tools liberally, especially in Ashaan.
+\end{itemize}
+
+The Southern Realms are not a dark continent. They are a bright, complicated, and fully human place – and they are ready for your stories.
+
+% ----------------------------------------------------------------------
+% HOW TO USE THIS BOOK
+% ----------------------------------------------------------------------
+\chapter*{How to Use This Book}
+\addcontentsline{toc}{chapter}{How to Use This Book}
+
+This book is a companion to the \textit{Fate’s Edge Core Amaranthine Worldbook} and the \textit{System Reference Document (SRD)}. It provides regional content for the Southern Realms (Akilan) using the same card‑driven generator system.
+
+Each regional chapter contains:
+\begin{itemize}
+  \item A short atmosphere paragraph (in the voice of Kofi, your biased trader – take his opinions with a grain of salt).
+  \item A local quote.
+  \item An \emph{almanac} – a quick Q\&A about daily life.
+  \item Then a full set of generator tables (\spadesuit\ places, \heartsuit\ people, \clubsuit\ complications, \diamondsuit\ rewards), imported from separate files. To use them, draw cards and consult the appropriate rank as described in the Core book’s *Cartomancer’s Compass*.
+\end{itemize}
+
+For the core rules (attributes, skills, actions, magic, summoning, travel, etc.), refer to the \textit{Fate’s Edge SRD}. The generators assume you are familiar with the Position, Effect, and Clock mechanics.
+
+\vspace{1em}
+\noindent\textit{“The road is a ledger. Every oasis is a credit, every broken wheel a debt.”} – Dusana of the Raven Road
+
+% ----------------------------------------------------------------------
+% REGIONAL CHAPTERS
+% ----------------------------------------------------------------------
+\mainmatter
+
+\chapter{Gateways \& Travel}
+\emph{The ledger is open. The scales are balanced. The ninth page is waiting.}
+
+\section*{Travel Modes of the Southern Realms}
+
+\subsection*{River Legs (Oshiira, Crimson Valley)}
+Canals, weigh‑houses, and canal mothers. Travel clocks advance when barges queue at locks. A \textbf{Water‑Share Tablet} or a \textbf{Vermilion Corps Seal} buys priority passage.
+
+\subsection*{Desert Legs (Ashaan, Fhara)}
+Water is the primary resource. A dry well hazard can end a journey. Travel requires a \textbf{Water‑Skin} and a \textbf{Spirit‑Lamp} to ward off the restless dead. The \textbf{Brass Gate} (Ashaan‑Oshiira border) is fortified with spirit‑buoys that scream when crossed.
+
+\subsection*{Jungle Legs (Sekogo, Crimson Valley)}
+Navigation by smell and sound; hidden Leopard Society patrols. A \textbf{Honey‑Jar} or an \textbf{Ukwe Leaf} (witness token) pacifies the spirits of the grove. Never cut a marked tree – the wood remembers.
+
+\subsection*{Highland Legs (Taharka)}
+Thin air; breath‑counting; passes that close for storms. A \textbf{Pass‑Stone} or a \textbf{Horse Bond} grants passage. Never refuse the second cup of coffee – it is a test of honour.
+
+\subsection*{Stone Legs (Ngomebe)}
+Travel with a walking city requires a \textbf{Keystone Charter} and a \textbf{Stone‑Song}. The city’s Migration Clock advances each day; if it stops, the Hollow walks.
+
+\section*{Gateways to Other Expansions}
+
+\begin{itemize}
+  \item \textbf{Amaranthine Core (Kahfagia, Ecktoria, etc.)}: From Oshiira, sail the \textbf{Narrow of Sorrows} north to Kahfagia. From the Brass Coast, the \textbf{Black River} leads to Thepyrgos.
+  \item \textbf{Way of Silk (Fhara, Sidhi, Pereshi, Kuvani, Tulkani)}: From Oshiira, the \textbf{Salt Road} crosses the Sahel to Fhara. From Ashaan, the \textbf{Red Desert} leads to Pereshi highlands.
+  \item \textbf{Eastern Realms (Sihai, Nihori, Ayokha)}: From Ngomebe, the \textbf{Salt Scar} connects to the eastern passes. From Taharka, the monsoon winds carry ships to Ayokha.
+  \item \textbf{Dhahara (Brass Coast, Nine Kingdoms, Himadri)}: The Brass Coast is part of Dhahara – see the Dhahara expansion for details.
+\end{itemize}
+\newpage
+% -------------------- OSHIIRA --------------------
+\chapter{Oshiira}
+\emph{The Ledger Empire.}
+
+\noindent
+Kofi says: \textit{“The Widow’s health is a state secret, and the Vermilion Corps has ears in every weigh‑house. Speak carelessly, and your name may be the next one forgotten – or, worse, audited.”}
+
+\noindent
+Oshiira is a confederacy of hundreds of tribes and city‑states, united by hunger – not famine control, but the Grain Covenant: contribute to the granaries, and you will never starve. The capital, Mbaro, is a city of canals, weigh‑houses, and the great Granary Tower. The Widow rules, but the Vermilion Corps guards the ledgers, and the Narrow Captains provoke Kahfagia just to remind the Admiralty who really controls the straits.
+
+\vspace{0.5em}
+\noindent\textit{“Never speak of succession before naming the Widow. The empress’s health is a state secret, and the Vermilion Corps has ears in every weigh‑house.”} \\
+— Vermilion Corps Auditor
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Millet porridge with dried fish – the millet from the Sahel flood plains, the fish smoked over canal‑barges. The porridge is always the same. The fish varies by season.
+
+\textbf{What does a child learn before they can walk?} To weigh a grain. Every Oshiiran child is given a balance scale and a single grain of millet. By age five, they know the difference between a northern harvest and a southern one – the difference is the tax.
+
+\textbf{What is the first thing you notice about a stranger?} Their hands. Merchants have ink‑stained fingers – the ink from the Ledger. Clean fingers have never signed a contract. Red stains mean a death warrant.
+
+\textbf{What is the most common crime?} Ledger fraud – but fraud is a career. The Vermilion Corps audits the auditors. The land does not lie.
+
+\textbf{What does no one talk about but everyone knows?} The Widow has not been seen in public for seven years. Her voice is a recording. Her seal is a stamp. The Vermilion Corps is the Widow. The Widow is dead. The empire continues.
+
+\textbf{Where do people go when they die?} To the Granary Tower. The dead are ground into meal and mixed with millet. The grain is shipped across the Amaranthine. The empire does not ask.
+
+\textbf{How do you apologize for a serious wrong?} You submit a correction to the Ledger, witnessed by a Vermilion Corps auditor. The seal glows under moonlight – the Widow’s eye.
+
+\textbf{What is the most important festival?} The Harvest of the Ledger (autumn). The names of the year’s debtors are read aloud. Those who cannot pay are added to the Ledger’s ninth page, sealed with black wax.
+
+\textbf{What is the secret that could destroy a powerful person?} The Ledger’s missing page was burned by the Widow herself. The ash was mixed into the mortar of the Granary Tower. It still glows under moonlight – it spells the name of the heir she killed.
+\end{almanac}
+
+\newpage
+\input{../generators/oshiira.tex}
+\newpage
+
+% -------------------- ASHAAN --------------------
+\chapter{Ashaan}
+\emph{The Veiled Throne.}
+
+\noindent
+\textbf{Content Warning:} Ashaan depicts systemic cruelty, slavery, state violence, and child sacrifice (secret cults). Read the \textit{Safety \& Sensibility} section before playing.
+
+\noindent
+Kofi mutters: \textit{“Once, the Ashaani Empire stretched from the Red Desert to the eastern isles. Now it’s a rump state propped up by spirit‑binding and fear. The Veiled Sisters call it order. I call it a slow suicide.”}
+
+\noindent
+Ashaan is a nation that died long ago. The Veiled Sisters keep its corpse walking through spirit‑binding, terror, and the endless consumption of their own people. The capital, Galanina, is a city of black marble and brass cages. The Red Desert grows larger every year. The Breath‑less resistance whispers in root cellars, learning to read ledgers without leaving marks. Do not expect easy answers here – only hard choices and heavier prices.
+
+\vspace{0.5em}
+\noindent\textit{“Never name the dead. The Sisters bind spirits to names. Speak a dead name aloud, and you may find yourself bound alongside them.”} \\
+— Tamar, Breath‑less cell leader
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Black bread and thin soup – the bread from grain grown on the edge of the Red Desert, the soup flavoured with salt and memory. The memory is of green fields. The fields are gone.
+
+\textbf{What does a child learn before they can walk?} To veil their face. Cover the mouth when speaking, the eyes when listening. A child who cannot veil will be taken by the Sisters.
+
+\textbf{What is the first thing you notice about a stranger?} Their veil. Red for mourning, white for marriage, black for the Sisters. Grey means Breath‑less. Torn means fugitive. No veil means a fool – and fools are collected by the Black Hand.
+
+\textbf{What is the most common crime?} Spirit‑trading – the real economy. The Sisters bind spirits to brass cages and sell them. Foreign buyers never know what they are buying.
+
+\textbf{What does no one talk about but everyone knows?} The Red Desert was a garden before the Sisters came. They bound the spirits of the soil. The soil died. The sand still whispers – the garden’s ghosts.
+
+\textbf{Where do people go when they die?} To brass cages. The dead are bound into spirit‑lanterns and hung from the walls of Galanina. They cannot speak, cannot scream. They can only watch.
+
+\textbf{How do you apologize for a serious wrong?} You offer a name – a dead name, a forgotten name. The Sisters bind it to a new cage. The cage is placed in the Hall of Silence. The Hall is always full.
+
+\textbf{What is the most important festival?} The Night of the Unbound (winter solstice). The spirits strain against their cages. The Sisters renew their bindings. The city is silent for three days. The silence is fear.
+
+\textbf{What is the secret that could destroy a powerful person?} The High Sister is not a sister. She is a spirit – the first one bound, nine hundred years ago. She bound herself to the throne. She cannot leave, cannot die, cannot stop binding.
+\end{almanac}
+
+\newpage
+\input{../generators/ashaan.tex}
+\newpage
+
+% -------------------- NGOMEBE --------------------
+\chapter{Ngomebe}
+\emph{The Stone Men.}
+
+\noindent
+Kofi says: \textit{“They call their cities ‘walking’. I call them stubborn. The stone remembers every mile, every roller, every oath. You want to trade with Ngomebe? Learn the stone‑song. And never, ever carve your name into living rock.”}
+
+\noindent
+Ngomebe are a people of deep, iron‑dark skin and older ties to the southern ranges. Their cities walk – colossal stone structures on rollers and sledges, dragged by teams of oxen, magic, and Aeler‑designed capstans. A walking city is a living argument against stillness. The stone remembers every mile, every roller, every oath sworn in the shadow of the keystone. The ancestors speak through cracks; the tokoloshe fouls the bearings at night. Do not mistake their patience for weakness.
+
+\vspace{0.5em}
+\noindent\textit{“Never carve a name into living rock. The stone remembers. It will whisper that name to every spirit of the earth, and the weight will follow your bloodline for seven generations.”} \\
+— Kaelen, Stone‑Cutter
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Stone‑ground meal and fermented milk – the meal ground between the city’s own millstones, the milk from goats that walk alongside. The goats remember where the city has been.
+
+\textbf{What does a child learn before they can walk?} To sing the city’s song. Eight beats to a mile, eight miles to a day, eight days to a season. The ninth beat is the city’s secret – never sung aloud.
+
+\textbf{What is the first thing you notice about a stranger?} Their dust. White dust from the mountains, red dust from the desert. No dust means never walked with a city. The cities do not trust the dustless.
+
+\textbf{What is the most common crime?} Stone‑theft – not a crime but a wound. A stolen stone is a forgotten year. The forgetting spreads. The city’s song stutters.
+
+\textbf{What does no one talk about but everyone knows?} The city is not moving toward anything. It is moving away. The Ngomebe are fleeing something that lies to the south. Something that does not walk. It waits.
+
+\textbf{Where do people go when they die?} Into the keystone. Ashes mixed into mortar and pressed into the foundation. The dead become the city’s weight. It walks heavier each year.
+
+\textbf{How do you apologize for a serious wrong?} You carve a new roller – a single stone with no cracks, no flaws. If it rolls true, you are forgiven. If it crumbles, you are added to the mortar.
+
+\textbf{What is the most important festival?} The Turning of the Rollers (spring equinox). The city stops for one day. The rollers are inspected, greased, blessed. The song has eight verses. The ninth is silence – for the dead.
+
+\textbf{What is the secret that could destroy a powerful person?} The city is not a city. It is a tomb – a monument to a king who died before the first stone was laid. His name is carved into the keystone, at the city’s inaccessible heart. He is waiting to be remembered.
+\end{almanac}
+
+\subsection*{The Aelinnel of the Southern Coast}
+\emph{Copper, bone‑rolls, and the dawn pact.}
+
+\noindent
+Along the southeastern coast, where the savannah meets the mangrove, a handful of fae‑touched gnome enclaves maintain the ancient pact that keeps the walking cities from sinking into soft ground. Every dawn, their bone‑spinners roll carved femurs to determine the day’s safe path. The Ngomebe tolerate them – the gnomes hold a debt older than memory, and their engineers can find a bearing’s true pitch by ear alone.
+
+\vspace{0.5em}
+\noindent\textit{“The bone‑roll never lies. If it says the city will sink, you shore the rollers. If it says the path is clear, you don’t ask why. You just walk.”} \\
+— Vent‑Prior Thrain, Aeler engineer (on the gnomish bone‑roll)
+
+\vspace{0.5em}
+For full generator tables for the Aelinnel of the Inland Sea, see the \textit{Fate’s Edge Core Amaranthine Worldbook}. In the Southern Realms, they appear only as occasional allies or mysterious toll‑keepers at the edge of Ngomebe’s migration routes.
+
+\newpage
+\input{../generators/ngomebe.tex}
+\newpage
+
+% -------------------- TAHARKA --------------------
+\chapter{Taharka}
+\emph{The Monsoon Crown.}
+
+\noindent
+Kofi admits: \textit{“The passes are a graveyard for armies. The horses speak in riddles. The coffee ritual has three cups – and a fourth, silent one, for the spirits. I have never understood it. I just pay my toll and keep my mouth shut.”}
+
+\noindent
+Taharka grows rich on monsoon trade – spices, coffee, incense – and has never been conquered. Its high passes are a graveyard for Ashaani armies, a barrier that Oshiiran grain barges cannot cross. The kingdom is a fortress of rock and thin air, where every valley speaks a different dialect and every ridge has a watchtower. The horse is not a mount; it is a lineage, a treaty, a weapon. And the old spirits – \textit{mizimu}, \textit{kichocheo}, \textit{pepo} – are not legends. They are neighbours. Be polite. Count to eight. Never pour the fourth cup.
+
+\vspace{0.5em}
+\noindent\textit{“Never refuse the second cup of coffee. The first is welcome; the second is a test of honour; the third is a contract. Refuse the second, and you have insulted the house – and the house’s ancestors, who listen through the floorboards.”} \\
+— Ridge‑Watcher Captain Anwar
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Barley flatbread and spiced tea – the bread baked on iron griddles, the tea brewed with cardamom and mountain herbs that only the Ridge‑Watchers know.
+
+\textbf{What does a child learn before they can walk?} To read the wind. The eight winds have names. The ninth wind has no name – it is the mountain’s breath. The mountain’s breath is death.
+
+\textbf{What is the first thing you notice about a stranger?} Their breath. The air is thin. Fast breathers have not acclimated. Slow breathers are hiding something. Those who do not breathe are spirits.
+
+\textbf{What is the most common crime?} Horse theft – a declaration of war. A stolen horse is a stolen ancestor. The thief’s clan pays in blood or trade.
+
+\textbf{What does no one talk about but everyone knows?} The Crown Council has not met in ten years. The passes are closed by snow, by war, by the simple fact that the councillors cannot agree on a meeting place. The Ridge‑Watchers rule by the mountain’s voice.
+
+\textbf{Where do people go when they die?} To the high passes. Bodies laid on stone platforms, wrapped in woollen shrouds. The wind carries their names to the peaks. The peaks remember.
+
+\textbf{How do you apologize for a serious wrong?} You offer a horse – the best in your stable. If the wronged party accepts, the debt is paid. If they kill the horse, the debt is blood. Blood is never repaid.
+
+\textbf{What is the most important festival?} The First Rain (monsoon’s arrival). The passes open, the caravans descend, the lowland ports receive the first spice ships. The celebration lasts nine days. The ninth day is silent – for the dead of the passes.
+
+\textbf{What is the secret that could destroy a powerful person?} The Crown Council’s missing member is not missing. He is buried under a landslide that was not an accident. The Ridge‑Watchers caused it – because he learned the passes’ secret: they are not natural. Something older carved them, and the Ridge‑Watchers are its servants.
+\end{almanac}
+
+\subsection*{The Aelaerem of the Southern Hills}
+The Aelaerem – pygmy halfling coffee‑tenders of the highest passes – are described in full with their own generator tables at the end of this chapter (see the \textbf{Aelaerem of the Southern Hills} subsection). Their red threads, ninth‑cup rites, and mist‑shrouded terraces are a constant reminder that the smallest folk often hold the oldest keys.
+
+\newpage
+\input{../generators/taharka.tex}
+\newpage
+
+% -------------------- SEKOGO --------------------
+\chapter{Sekogo}
+\emph{The Green Council.}
+
+\noindent
+Kofi shrugs: \textit{“The jungle is not a place. It is a council. The Ukwe – the Speaking Tree – decides whose debts are collected and whose are forgiven. I have seen a man lie before the Ukwe. He did not speak again for a year.”}
+
+\noindent
+Sekogo lies between the Sahel grasslands and the southern plateau – a dry savannah that grows wetter as you travel east, until the baobabs give way to deep jungle. The Green Council rules through consensus; honey‑orchards are sacred; old spirits still walk. Slavery is forbidden – the jungle itself would rise against any slaver who crossed its border. The Ukwe, the Speaking Tree, remembers every promise. The Leopard Society hunts those who break the deepest taboos. Honey is a bond. A mask is a law.
+
+\vspace{0.5em}
+\noindent\textit{“Never cut a marked tree. The bark grows over the names of debtors, but the wood remembers. Cut it, and the Ukwe will add your name to its ledger.”} \\
+— Hunter Okoro, Leopard Society mask‑wearer
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Mashed yams and groundnut stew – the yams from clearings that shift with the seasons, the groundnuts harvested by monkey‑tribes who speak the old tongue. The monkeys are not paid. They are remembered.
+
+\textbf{What does a child learn before they can walk?} To name the spirits. River, Tree, Stone, Rain, Fire, Wind, Honey, and the ninth – the spirit that has no name. The ninth spirit is the Ukwe’s shadow. It never forgives.
+
+\textbf{What is the first thing you notice about a stranger?} Their mask. Carved wood, painted with lineage symbols. A cracked mask means a broken taboo. A blank mask means no lineage. No mask means not a person. The Leopard Society hunts the maskless.
+
+\textbf{What is the most common crime?} Debt‑forgetting – a sickness. The Ukwe keeps the Calendar of Debt. A forgotten debt grows roots and strangles the debtor’s house.
+
+\textbf{What does no one talk about but everyone knows?} The Green Council does not rule. The Ukwe rules. The Council is its voice – eight speakers chosen by the tree’s roots. The ninth seat is empty. The ninth speaker is the tree itself. It does not speak. It waits.
+
+\textbf{Where do people go when they die?} To the Ukwe’s roots. Bodies laid at the base of the Speaking Tree. The roots absorb them. A new leaf grows for each soul. The leaves whisper the names of the dead.
+
+\textbf{How do you apologize for a serious wrong?} You hammer a nail into a \textit{nkisi} power figure. The nail is your wrong. The spirit inside accepts it. When the nail rusts away, your debt is paid. The nail never rusts.
+
+\textbf{What is the most important festival?} The Honey Harvest (autumn). The bees are sung to sleep. The first bowl is offered to the Ukwe. The tree drinks. The tree does not thank.
+
+\textbf{What is the secret that could destroy a powerful person?} The Ukwe is not a tree. It is a prison – the binding of a spirit that tried to consume the jungle nine centuries ago. The spirit is still alive. The tree is its cage. The Green Council has forgotten what it guards.
+\end{almanac}
+
+\newpage
+\input{../generators/sekogo.tex}
+\newpage
+
+% -------------------- LETHAI-AR OF THE CRIMSON VALLEY --------------------
+\chapter{Lethai-ar of the Crimson Valley}
+\emph{Silk Bridges and Web‑Law.}
+
+\noindent
+Kofi whispers: \textit{“The Crimson Valley is a wound of red stone, carved by a river that runs rust‑coloured after every rain. The Lethai‑ar guard the bridges. Their web‑law is unwritten. Cross a bridge without a witness, and the silk will remember your weight – and your name.”}
+
+\noindent
+The Crimson Valley is a deep jungle rift between Sekogo and Oshiira – a scar of red stone, carved by a river that runs rust‑coloured after every rain. Here, the Lethai‑ar guard their borders with fierce neutrality, their chestnut‑brown skin blending with the canyon walls. Silk bridges span the gorges, woven from spider‑sap and oath‑hair. The web‑law is unwritten, carried in the memory of each warden; it keeps both empires from using the valley as a shortcut to war. Every promise is a strand. Every broken oath is a tremor through the whole valley.
+
+\vspace{0.5em}
+\noindent\textit{“Never step onto a silk bridge without first naming a witness. The bridge will remember your footsteps. If you fall, it will ask why no one was watching.”} \\
+— Silk‑Warden Anara
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge and fermented tea – the rice from terraces cut into canyon walls, the tea aged in clay pots buried beneath the bridges. The tea is bitter. The bitterness is for memory.
+
+\textbf{What does a child learn before they can walk?} To read a Mark. Promise, Debt, Witness, Apology, Interest, Cut, Forgive, and the ninth – the empty space where a Mark was erased. The erased Mark is a broken promise. The cut is a scar.
+
+\textbf{What is the first thing you notice about a stranger?} Their Marks. Fresh Marks mean new promises. Faded Marks mean unpaid debts. Cut Marks mean exile. The exiled are not spoken to. They are not remembered.
+
+\textbf{What is the most common crime?} Bridge‑cutting – which is war. A bridge is a promise between two shores. Cut it, and the valley tightens its web.
+
+\textbf{What does no one talk about but everyone knows?} The valley is not a place. It is a creature – a sleeping serpent whose spine is the canyon walls, whose scales are the silk bridges, whose heart is the rust‑coloured river. The Lethai‑ar are its parasites. They do not know it is asleep.
+
+\textbf{Where do people go when they die?} To the river. Bodies wrapped in silk and cast into the rust‑coloured water. The river carries them downstream, into the Ukwe’s territory. The Ukwe drinks. The Ukwe remembers.
+
+\textbf{How do you apologize for a serious wrong?} You offer a Mark – a promise cut from your own skin. It is pressed into the wronged party’s ledger. If they accept, the debt is transferred. If they refuse, the Mark is buried. Buried Marks are debts that never die.
+
+\textbf{What is the most important festival?} The Weaving of the New Bridge (spring). The silk is harvested from the canyon’s spiders. The bridge is woven in a single night. It is named after a promise. The promise is always the same: the valley will hold.
+
+\textbf{What is the secret that could destroy a powerful person?} The river’s rust colour is not iron. It is blood – the blood of the serpent that sleeps beneath the canyon. The serpent is wounded. The wound has been bleeding for nine centuries. The Lethai‑ar know. They do nothing. If the serpent wakes, the law ends.
+\end{almanac}
+
+\newpage
+\input{../generators/crimson_valley.tex}
+\newpage
+
+% ----------------------------------------------------------------------
+% APPENDIX: TRAVEL & TRADE IN THE SOUTH
+% ----------------------------------------------------------------------
+\appendix
+\chapter{Travel \& Trade in the South}
+
+This appendix summarises the unique travel modes and trade goods of the Southern Realms. For core travel procedures (legs, clocks, roles), see the \textit{Fate’s Edge SRD}.
+
+\section*{Travel Modes}
+\begin{itemize}
+  \item \textbf{River Legs (Oshiira, Crimson Valley)}: Canals, weigh‑houses, and canal mothers. Travel clocks advance when barges queue at locks.
+  \item \textbf{Desert Legs (Ashaan)}: Water is the primary resource. A dry well hazard can end a journey.
+  \item \textbf{Jungle Legs (Sekogo, Crimson Valley)}: Navigation by smell and sound; hidden Leopard Society patrols.
+  \item \textbf{Highland Legs (Taharka)}: Thin air; breath‑counting; passes that close for storms.
+  \item \textbf{Stone Legs (Ngomebe)}: Travel with a walking city; roller integrity and ancestor favour clocks.
+\end{itemize}
+
+\section*{Trade Goods \& Currencies}
+\begin{itemize}
+  \item \textbf{Oshiira}: Grain ledger receipts, Vermilion Corps stamps. Accepted in all Covenant ports.
+  \item \textbf{Ashaan}: Spirit‑lamps (bound names), brass seals. Illegal in most Covenant jurisdictions.
+  \item \textbf{Ngomebe}: Keystone shards, sledge‑wax. Bartered for iron and Aeler engineering.
+  \item \textbf{Taharka}: Pass‑stones, horse‑bonds, coffee measures. Honour currency in the highlands.
+  \item \textbf{Sekogo}: Honey‑jars, Ukwe leaves (witness tokens). Spirits accept them as offerings.
+  \item \textbf{Crimson Valley}: Witness cords, warden’s masks. Accepted as proof of oath in Covenant courts.
+\end{itemize}
+
+\section*{Regional Hazards (d6)}
+When travelling through the Southern Realms, the GM may roll on this table for a regional hazard:
+\begin{enumerate}
+  \item \textbf{Dust Storm (Ashaan)}: Navigation DV +1; mark Fatigue.
+  \item \textbf{Canal Lock Sabotage (Oshiira)}: Delay 2 segments; bribes required.
+  \item \textbf{Keystone Crack (Ngomebe)}: City stops; ancestor favour clock advances.
+  \item \textbf{Landslide (Taharka)}: Pass blocked; detour adds 3 segments.
+  \item \textbf{Spirit Demands Toll (Sekogo)}: Offer honey or a story; refusal causes spirit attack.
+  \item \textbf{Bridge Web‑Law Challenge (Crimson Valley)}: Recite a clause or pay a promise.
+\end{enumerate}
+
+% ----------------------------------------------------------------------
+% COLOPHON
+% ----------------------------------------------------------------------
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+
+This book was written on paper that had been a cargo manifest, a love letter, and a bandage. The ink is lampblack cut with salt water and the ash of a burnt confession. The binding is grey cord tied with nine knots. The ninth knot is not cut.
+
+Kofi of the Salt Syndicate composed the preface under a borrowed lamp in a Mbaro weigh‑house, though he admits he may have embellished a few tariffs. The almanacs were gathered from traders, spies, and the occasional honest farmer. The generator tables were tested in the field – meaning we ran them while a Oath‑Keeper counted our breaths. They work.
+
+If you find yourself in a market and a salt trader offers you a discount, check his seals. The ledger is open. The scales are balanced. The ninth page is waiting.
+
+\vspace{1em}
+\noindent\textit{“The road is a ledger. Every oasis is a credit, every broken wheel a debt.”} – Dusana of the Raven Road
+
+\end{document}

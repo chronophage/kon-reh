@@ -1,0 +1,595 @@
+% !TeX program = lualatex
+\documentclass[12pt,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Suit symbols – used only in imported generator files
+\newcommand{\spadesuit}{♠}
+\newcommand{\heartsuit}{♥}
+\newcommand{\clubsuit}{♣}
+\newcommand{\diamondsuit}{♦}
+
+% Almanac environment
+\newenvironment{almanac}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+\begin{document}
+
+% ----------------------------------------------------------------------
+% FRONT MATTER
+% ----------------------------------------------------------------------
+\frontmatter
+
+\title{\Huge Fate's Edge\\[0.3\baselineskip]
+\Large The Eastern Realms}
+\author{Chen Wei, Provincial Censor of the Eastern Circuit \\ \small (with marginalia by a tired quill)}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+% ----------------------------------------------------------------------
+% PREFACE – Framing device (Sihai censor)
+% ----------------------------------------------------------------------
+\chapter*{Preface: The Censor’s Report}
+\addcontentsline{toc}{chapter}{Preface}
+
+\noindent
+{\Large
+\textit{My brush is heavier than any sword. A single stroke can erase a name, a family, a dynasty. The emperor reads my reports and trembles. He knows that I have written nine reports this year. The ninth is about him.}
+}
+
+The Eastern Realms are not a mystery. They are a bureaucracy with a coastline. Sihai measures its emperors in centuries, its canals in miles, its failures in erased names. Nihori counts in storms and sword‑strokes. Ayokha negotiates with the monsoon.
+
+I have travelled the length of the Mandate. I have sat in examination halls where candidates wept into their inkstones. I have stood on the Bridge of Three Echoes, where the dead ask for nothing but a story. I have watched a Nihori duelist bow to an opponent he had just killed, because the form was correct.
+
+You will find no ledger here – not in the sense you expect. The East does not deal in interest. It deals in memory, in ritual, in the weight of a name properly recorded. A debt is not a number. It is a crack in a keystone, a missing step on a stair, a scroll that never dries.
+
+This book is a census. I have listed the places, the people, the pressures, and the rewards. The card‑drawing system is explained elsewhere. Here, I only witness.
+
+The ink is dry. The seal is stamped. The ninth scroll remains unfilled – for now.
+
+\vspace{1em}
+\noindent\textit{— Chen Wei, at a weigh‑house in the Sihai capital, under a lamp that flickers nine times before it steadies}
+
+% ----------------------------------------------------------------------
+% HOW TO USE THIS BOOK
+% ----------------------------------------------------------------------
+\chapter*{How to Use This Book}
+\addcontentsline{toc}{chapter}{How to Use This Book}
+
+This book is a companion to the \textit{Fate’s Edge Core Amaranthine Worldbook} and the \textit{System Reference Document (SRD)}. It provides regional content for the Eastern Realms – Sihai, Nihori, Ayokha, and the non‑human peoples of their thresholds – using the same card‑driven generator system.
+
+Each regional chapter contains:
+\begin{itemize}
+  \item A short introduction (in the voice of Chen Wei, who is not always fair but rarely wrong).
+  \item A local quote.
+  \item An \emph{almanac} – a quick Q\&A about daily life in that region.
+  \item Then the full generator tables (\spadesuit\ places, \heartsuit\ people, \clubsuit\ complications, \diamondsuit\ rewards), imported from separate files. To use them, draw cards and consult the appropriate rank as described in the Core book’s \textit{Cartomancer’s Compass}.
+\end{itemize}
+
+For the core rules (attributes, skills, actions, magic, summoning, travel, etc.), refer to the \textit{Fate’s Edge SRD}. The generators assume you are familiar with Position, Effect, and Clocks.
+
+\vspace{1em}
+\noindent\textit{“The road is a ledger – but only if you forget the stories.”} – Dusana of the Raven Road (apocryphal)
+
+% ----------------------------------------------------------------------
+% REGIONAL CHAPTERS
+% ----------------------------------------------------------------------
+\mainmatter
+
+\chapter{Gateways \& Travel}
+\emph{The road is a ledger – but only if you forget the stories.}
+
+\section*{Travel Modes of the Eastern Realms}
+
+\subsection*{Grand Canals (Sihai)}
+The Sihai canal system moves grain, troops, and officials. A \textbf{Stamped Pass} from a provincial governor grants priority. Beware the \textbf{Censorate Audit} – officials may demand to see your papers at any lock.
+
+\subsection*{Storm Seas (Nihori)}
+The Inland Sea is lashed by typhoons and volcanic ash. A \textbf{Storm‑Charm} or a \textbf{Tide‑Charm} from a shrine maiden calms the spirits. Never name a drowned person aloud while underway – the sea collects names.
+
+\subsection*{Monsoon Rivers (Ayokha)}
+The rivers of Ayokha flood and change course with the monsoon. A \textbf{Witness Cord} or a \textbf{Silk Voucher} buys passage from the Lethai‑ar ferrymen. Never pour the ninth cup of tea in a Lethai‑ar’s presence – that cup is for the river.
+
+\subsection*{Threshold Roads (Aelaerem, Aelinnel)}
+Red threads and counting stones mark the boundaries. A \textbf{Red Thread Bundle} or a \textbf{Bell Charter} wards off the Hollow. Never count to nine aloud near a shrine – the spirits count with you.
+
+\subsection*{Processional Ways (Lethai‑al, Lethai‑ar, Lethai‑thora)}
+The Lethai peoples walk ancient roads between shrines. A \textbf{Tide‑Charm} (Nihori), a \textbf{Witness Cord} (Ayokha), or a \textbf{Silence Token} (Sihai) grants safe passage. Never answer a question asked by a reflection – the answer will bind you to the path you did not choose.
+
+\section*{Gateways to Other Expansions}
+
+\begin{itemize}
+  \item \textbf{Amaranthine Core (Kahfagia, Ecktoria, etc.)}: From Sihai, the \textbf{Silk Road} west leads to Ykrul and the Violet Steppe. From Nihori, the \textbf{Aberderrin Sea} connects to the Linns.
+  \item \textbf{Southern Realms (Oshiira, Ashaan, Ngomebe)}: From Ayokha, monsoon winds carry ships to the Brass Coast (Dhahara) and to Oshiira. From Sihai, the southern trade routes pass through the Crimson Valley.
+  \item \textbf{Way of Silk (Fhara, Sidhi, Pereshi, Kuvani, Tulkani)}: From Sihai, the \textbf{Eastern Silk Road} connects to Kuvani. From Nihori, the \textbf{Remount Stations} of Kuvani are a short sea crossing away.
+  \item \textbf{Dhahara (Brass Coast, Nine Kingdoms, Himadri)}: From Ayokha, the \textbf{Monsoon Circuit} carries ships directly to the Brass Coast. From Sihai, the Himadri passes lead to the iron mines.
+\end{itemize}
+\newpage
+% -------------------- SIHAI --------------------
+\chapter{Sihai}
+\emph{The Central Kingdom.}
+
+\noindent
+Chen Wei says: \textit{“The Mandate of Heaven is not a right. It is a loan – but no one remembers the interest rate. The emperor borrows legitimacy from the ancestors. When the ledger falls, the empire follows.”}
+
+\noindent
+Sihai is the central kingdom, the seat of the Emperor and the Mandate of Heaven. Its canals carry grain from the south; its examination halls produce bureaucrats who govern by the brush. Beneath the mortal bureaucracy runs a deeper one: the Celestial Bureaucracy of gods, ghosts, and ancestors, where every official has a heavenly counterpart and every erased name becomes a hungry ghost. The Lethai‑thora – the ancient archivists who taught the first emperors to write – still keep the hidden scrolls, the ones that record what the Censorate burns.
+
+\vspace{0.5em}
+\noindent\textit{“Never speak of succession before naming the Emperor. The Censorate has ears in every tea house. A misplaced word can erase your name from the rolls.”} \\
+— Quiet Chancellor Wei
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Congee with preserved vegetables – the congee is rice boiled until it is memory, the vegetables salted and aged in clay jars sealed with the emperor’s own wax. The wax is a promise. The promise is sometimes broken.
+
+\textbf{What does a child learn before they can walk?} To write their name. Sihai children are taught the eight strokes of the character “person” – the ninth stroke is the one that turns a name into a signature. A signature is a contract. A contract is a life.
+
+\textbf{What is the first thing you notice about a stranger?} Their chop – the seal they carry to sign documents. Jade means noble. Brass means clerk. Wood means merchant. No chop means a ghost. Ghosts cannot sign contracts.
+
+\textbf{What is the most common crime?} Examination fraud – but fraud is a family business. The questions are leaked in advance. The examiners are bribed. The system is a sieve called “merit.”
+
+\textbf{What does no one talk about but everyone knows?} The Emperor is a figurehead. The real power is the Censorate – nine ministers who have never been seen together. Their names are not recorded. Their faces are not painted. The Emperor signs what they tell him to sign.
+
+\textbf{Where do people go when they die?} To the ancestral tablets. The dead are not buried. Their names are written on wooden tablets, placed in the family shrine. The tablets are fed with rice and tea. The dead eat the steam.
+
+\textbf{How do you apologize for a serious wrong?} You offer a calligraphy – a scroll written in your own blood. Presented to the wronged party’s ancestral shrine. If the ancestors accept, you are forgiven. If the scroll bursts into flame, you are not.
+
+\textbf{What is the most important festival?} The Festival of the Ancestors (autumn). The tablets are cleaned and polished. The dead are invited to feast. The food is removed after an hour. The dead have eaten the essence.
+
+\textbf{What is the secret that could destroy a powerful person?} The Censorate’s ninth minister is a woman – the emperor’s own mother, who was supposed to have died in childbirth. She faked her death to escape politics. She has been running the Censorate from a hidden villa. The emperor does not know.
+\end{almanac}
+
+\newpage
+\input{../generators/sihai.tex}
+\newpage
+
+% -------------------- NIHORI --------------------
+\chapter{Nihori}
+\emph{The Isles of the Dawn Spirit.}
+
+\noindent
+Chen Wei frowns: \textit{“The Nihori measure honour in sword‑strokes and storms. Their shogun is a ghost; their daimyo are knives. I admire their poetry. I do not envy their politics.”}
+
+\noindent
+Nihori is a chain of volcanic islands, shrouded in mist and lashed by storms – a shattered shogunate where the old empire sank beneath the waves and the Lethai‑al guard the drowned kingdom’s memory. The people are wanderers, duelists, shrine maidens, and oni‑touched outcasts. They worship the storm spirits (kami of wind, wave, and crater) and fear the ninth wave. The Shogun sits in a half‑ruined castle, his authority challenged by three rival daimyo who sharpen their blades and their treaties. Oni cults whisper in the ash wastes, offering forgotten bargains. The ninth taboo is absolute: never speak the name of the drowned capital. The sea will hear you.
+
+\vspace{0.5em}
+\noindent\textit{“Never draw steel in a shrine. The kami will witness. They may not forgive.”} \\
+— Shrine Maiden Hana
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Grilled fish and pickled vegetables – the fish caught in caldera lakes, the vegetables fermented in clay pots buried in volcanic ash. The ash is warm. The mountain dreams of the drowned empire.
+
+\textbf{What does a child learn before they can walk?} To read the tide. Nihori children are taught the eight wave‑heights: Calm, Ripple, Swell, Storm, Tsunami, and the ninth – the wave that has no height because it is the sea itself rising. The ninth wave is the drowning.
+
+\textbf{What is the first thing you notice about a stranger?} Their sword. Nihori warriors carry their ancestors’ blades, passed down for generations. A rusted sword means forgotten lineage. A sharp sword means remembered. No sword means a coward.
+
+\textbf{What is the most common crime?} Dueling – but dueling is a conversation. The codes are written in verse. The interpretations are contradictory. The contradictions are settled by dueling. The circle is beautiful.
+
+\textbf{What does no one talk about but everyone knows?} The drowned capital is not underwater. It is beneath – beneath the caldera, beneath the bedrock, beneath the world. The sea is a lid. The lid is cracked.
+
+\textbf{Where do people go when they die?} To the sea cliffs. The dead are placed in caves overlooking the water. The waves sing lullabies. The dead listen.
+
+\textbf{How do you apologize for a serious wrong?} You offer a duel – a matched contest with the wronged party’s choice of weapon. If you lose, you are forgiven. If you win, you are not. If you refuse, you are exiled to the open sea.
+
+\textbf{What is the most important festival?} The Calling of the Tides (spring). The shrine maidens walk into the water, singing the names of the drowned. The waves answer with the names of the living who will die in the coming year.
+
+\textbf{What is the secret that could destroy a powerful person?} The Shogun is a ghost. He died in the last oni war, but his body was never found. The daimyo rule in his name because they are afraid of what will happen if they admit he is gone.
+\end{almanac}
+
+\newpage
+\input{../generators/nihori.tex}
+\newpage
+
+% -------------------- AYOKHA --------------------
+\chapter{Ayokha}
+\emph{The Monsoon Throne.}
+
+\noindent
+Chen Wei notes: \textit{“The Ayokhan god‑king does not rule. He balances – between monsoon and drought, between the nats of the river and the astrologer’s charts. The rain is not weather. It is a negotiation.”}
+
+\noindent
+Ayokha is the land of the Monsoon Throne, where the God‑King rules by the rhythm of the rains. Rivers flood, rice terraces glow green, and the wharves are crowded with ships from Dhahara, Sihai, and distant isles. The Lethai‑ar witness every contract; the spirit‑mediums speak for the nats of the ford – hungry spirits who live in eddies and under bridges. Power is measured in monsoon schedules, silk vouchers, and the favour of the God‑King’s astrologer, a man who has not seen the sun in thirty years. The ninth taboo is absolute: never pour the ninth cup, never count the ninth wave, never speak the ninth name. The Hollow watches from the flooded fields.
+
+\vspace{0.5em}
+\noindent\textit{“Never refuse a gift of betel leaf. It is an oath of hospitality. Refusing it is an insult that can end a bloodline.”} \\
+— The God‑King’s Astrologer
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice congee with dried shrimp – the rice from the terraces, the shrimp from delta nets. The delta is where the river meets the sea. The sea is the God‑King’s mother. The mother is a nat. The nat is hungry.
+
+\textbf{What does a child learn before they can walk?} To read the river. Ayokha children are taught the eight currents: Flood, Ebb, Eddy, Whirl, Still, and the ninth – the current that flows upstream. The upstream current is the monsoon’s breath.
+
+\textbf{What is the first thing you notice about a stranger?} Their offering. Every traveller carries a gift for the nats – betel leaf, candle, a coin. A generous offering means blessed. A small offering means testing the spirits. No offering means a fool.
+
+\textbf{What is the most common crime?} Nat‑bribery – but bribery is a negotiation. The nats set the tolls. The merchants pay. The nats spend the offerings. The ash falls on the fields. The circle is the economy.
+
+\textbf{What does no one talk about but everyone knows?} The God‑King is a puppet. The astrologer is the real ruler. He no longer reads the stars. He reads the nats’ moods. The nats are fickle.
+
+\textbf{Where do people go when they die?} To the river. Cremated on the ghats. Ashes scattered on the water. The water carries them to the delta. The delta is the land of the nats. The nats decide if they become ancestors or hungry ghosts.
+
+\textbf{How do you apologize for a serious wrong?} You offer a nat – a spirit of the river, summoned by a medium. The nat hears your apology. If it accepts, the water is calm. If it refuses, the water rises.
+
+\textbf{What is the most important festival?} The Welcoming of the Monsoon (summer). The God‑King stands in the rain. The rain is the nats’ blessing. The blessing is measured in inches. The inches determine the harvest.
+
+\textbf{What is the secret that could destroy a powerful person?} The God‑King’s daughter is not his daughter. She is the child of the astrologer and a nat, born from a bargain made during a failed monsoon. She can control the rain. She does not know.
+\end{almanac}
+
+\newpage
+\input{../generators/ayokah.tex}
+\newpage
+
+% -------------------- AELAEREM (EASTERN) --------------------
+\chapter{Aelaerem of the Eastern Realms}
+\emph{The Hollow’s Neighbors.}
+
+\noindent
+Chen Wei writes: \textit{“The Aelaerem tie red threads at every crossroads. They leave rice for the Hollow. They count to eight and stop. I asked one why. She said, ‘Because the ninth step is not ours.’ I did not ask again.”}
+
+\noindent
+The Aelaerem of the eastern realms have adapted their hedge‑magic to thresholds of a different kind: bamboo groves that whisper in the dark, temple stairs that count your heartbeats, and the silence after a storm bell that has no clapper. Here, the Hollow wears the face of the uncanny – not hunger, but absence. It is the space between two bamboo stalks, the step that is always missing, the name you cannot quite remember. They survive through ritual precision: a red thread tied at a crossroads with exactly eight knots, a bowl of rice left at dusk and never checked until dawn, a single bell rung once and then muffled with cloth washed in salt water.
+
+\vspace{0.5em}
+\noindent\textit{“Never count the steps between your door and the crossroads. The Hollow counts with you. If you reach nine, it will be waiting at the ninth step. It will ask, ‘Where are you going?’ Do not answer.”} \\
+— Hedge‑Keeper Mila
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge with pickled vegetables – the rice from the paddies, the vegetables salted in clay pots buried at the boundary. The salt is blessed by the hedge‑keeper. The vegetables are always a little bitter.
+
+\textbf{What does a child learn before they can walk?} To tie the eight boundary knots. The ninth knot is never tied – it is left loose for the Hollow to find. If a child ties the ninth knot, the Hollow will visit that night.
+
+\textbf{What is the first thing you notice about a stranger?} Their shadow. A shadow too short has been touched by the Hollow. A shadow that moves independently is already lost. No shadow is the Hollow itself, wearing a borrowed face.
+
+\textbf{What is the most common crime?} Thread‑theft – stealing a red thread from a boundary marker. The thread is not valuable, but cutting it breaks a promise. The Hollow becomes restless. The thief’s shadow shrinks one inch each night.
+
+\textbf{What does no one talk about but everyone knows?} The Hollow is not a single thing. It is a place – the space between heartbeats, the pause before a sneeze, the silence after a bell. The Aelaerem guard against the gaps.
+
+\textbf{Where do people go when they die?} To the salt. Cremated, ashes mixed with salt and scattered along the boundary. The salt draws the Hollow’s attention away from the living. The dead become the new boundary.
+
+\textbf{How do you apologize for a serious wrong?} You leave a cup of sake and a lock of hair at the place where the wrong was done. The Hollow will witness. If the sake is gone by dawn and the hair untouched, you are forgiven.
+
+\textbf{What is the most important festival?} The Retting of the Threads (spring). All red threads are taken down, washed in salt water, and re‑tied. The village is silent for one night. The Hollow listens. If a thread is tied wrong, the Hollow corrects it.
+
+\textbf{What is the secret that could destroy a powerful person?} The first red thread was not tied by an Aelaerem. It was tied by the Hollow itself, before it forgot what it was. The thread is still there, at the First Boundary. If it is untied, the Hollow will remember its true name.
+\end{almanac}
+
+\newpage
+\input{../generators/aelaerem_east.tex}
+\newpage
+
+% -------------------- AELINNEL (INLAND SEA) --------------------
+\chapter{Aelinnel of the Inland Sea}
+\emph{The Bell‑Tenders.}
+
+\noindent
+Chen Wei taps his quill: \textit{“The Aelinnel count everything – steps, bells, offerings – because precision is their armour against the tide. They do not fear the sea. They fear a miscount.”}
+
+\noindent
+The Aelinnel of the East do not hide from the spirits; they coexist. Small spirits inhabit every rock, tree, and wave. The Aelinnel have learned to negotiate with them using copper bells, precise counting, and occasional offerings of pickled plums. They are the engineers of shrines, the builders of floating bridges, and the keepers of the bell‑lines that keep tide‑spirits from straying. Some say Kuva, the sky, taught them the first counting song, and that the Hollow is simply the space where the count fails. Unlike their western kin, the Eastern Aelinnel practice a folk mathematics that blends logic and superstition. Every spirit has a number‑name – a frequency that can be rung out of a bell, a sequence of steps that can be walked, a knot that can be tied. To offend a spirit is to miscount.
+
+\vspace{0.5em}
+\noindent\textit{“Never count to nine aloud near a shrine. The spirits count with you. When you reach nine, they will ask: ‘What comes after nine?’ The answer is always the Hollow.”} \\
+— Bell‑Warden Tumble
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge with pickled plums – the plums fermented in salt brine and stored in copper‑lidded barrels. The brine is never poured out; it is passed down through generations.
+
+\textbf{What does a child learn before they can walk?} To count the eight safe numbers. Children count pebbles, footsteps, and bell‑rings – but always stop at eight. A child who says nine aloud is sent to sit by the missing plank until they forget they ever said it.
+
+\textbf{What is the first thing you notice about a stranger?} Their fingers. Tide‑counters often have only eight fingers – the ninth was a miscount they paid for. Nine fingers means never made a mistake. Seven means paid a heavy debt. No fingers means either a spirit or someone who counted to nine and lost everything.
+
+\textbf{What is the most common crime?} Bell‑theft – not for the copper. A stolen bell can be rung at the wrong time, creating a miscount. The thief is given to the tide‑spirit whose count was broken.
+
+\textbf{What does no one talk about but everyone knows?} The First Bell was not cast by an Aelinnel. It was found already ringing, already counting. Its shards are scattered across the Inland Sea. When the ninth shard is found, the First Bell will ring again.
+
+\textbf{Where do people go when they die?} To the bell‑line. Ashes mixed with copper dust and cast into new bells. The bells are hung on the bell‑lines. When the tide‑spirits ring them, the dead speak.
+
+\textbf{How do you apologize for a serious wrong?} You offer a count – a public recitation of the wrong, spoken in eights. Then you wait. If a spirit rings a bell eight times, you are forgiven. If it rings nine times, you are cursed.
+
+\textbf{What is the most important festival?} The Retuning of the Bells (autumn). Every bell is struck once in sequence, from highest tide to lowest. The sound travels for miles. If a bell is out of tune, the spirits will correct it by morning. The correction is always a death.
+
+\textbf{What is the secret that could destroy a powerful person?} The ninth bell was never meant to be cast. It was a mistake – a foundry worker poured one bell too many. It rang once on its own. The tone was the Hollow’s name. The bell still exists, buried under a shrine on a small island.
+\end{almanac}
+
+\newpage
+\input{../generators/aelinnel_inland_sea.tex}
+\newpage
+
+% -------------------- LETHAI-AL OF NIHORI --------------------
+\chapter{Lethai‑al of Nihori}
+\emph{The Storm‑Touched Wanderers.}
+
+\noindent
+Chen Wei says: \textit{“The Lethai‑al carry their dead in tide‑charms. They walk the processional roads and never settle. I asked one why. He said, ‘Because we already drowned once. The land is the sea that forgot to swallow.’”}
+
+\noindent
+The Lethai‑al of Nihori once guarded a drowned kingdom – an archipelago that sank when a forbidden name was spoken. Their blood still carries the salt of that ancient catastrophe. Now they are wanderers in the oldest sense: masterless, landless, bound to no lord but fiercely bound to each other and to the storm spirits that swirl above the waves. They walk from shrine to shrine, from port to port, following the processional roads that circle the island. They do not farm. They do not build. They carry everything on their backs or in wooden carts. Their duels are to first blood – the loser carries the winner’s burden for a season. Their courts are crossroads. Their temples are the road itself. The ninth wave is never the largest; it is the one that remembers your name.
+
+\vspace{0.5em}
+\noindent\textit{“Never walk under a torii gate without making an offering. The gate is a threshold. The road on the other side is not the same road you left.”} \\
+— Procession Elder Kenji
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Dried fish and rice balls – the fish smoked over driftwood fires, the rice pressed into shapes that fit in a pouch. The food is always cold. The road does not wait.
+
+\textbf{What does a child learn before they can walk?} To count the nine waves. Children watch the sea and count: one, two, three, four, five, six, seven, eight – then stop. The ninth wave is the spirit’s wave. It counts you.
+
+\textbf{What is the first thing you notice about a stranger?} Their feet. Calloused soles cracked like dry earth have walked many circuits. Soft feet have not walked far. No feet means a ghost who lost the road.
+
+\textbf{What is the most common crime?} Charm‑theft – stealing a tide‑charm from a sleeping traveller. The thief gains the dead ancestor’s favour for one night. Then the ancestor wakes. The punishment is to carry the victim’s burden for the rest of the circuit.
+
+\textbf{What does no one talk about but everyone knows?} The drowned kingdom did not sink by accident. The forbidden name was spoken by a Lethai‑al – a woman who lost her child to the sea. She wanted the sea to remember. It remembered too well.
+
+\textbf{Where do people go when they die?} Into the tide‑charms. The dead are not buried. Their names are carved onto shells and placed in oiled leather pouches. The living carry them. When the pouch is lost, the dead become the Hollow.
+
+\textbf{How do you apologize for a serious wrong?} You walk a crossroads circuit – nine times around a crossroads shrine, counting your steps in eights. On the ninth circuit, you speak the wrong aloud. If the wind carries your voice away, you are forgiven.
+
+\textbf{What is the most important festival?} The Procession of the Ninth Wave (autumn). All Lethai‑al bands walk to the shore at low tide. When the ninth wave crashes, they wade into the foam and whisper the names of those who drowned that year.
+
+\textbf{What is the secret that could destroy a powerful person?} The Ninth Wave Herald is not a child. She is the first drowned – the woman who spoke the forbidden name. She did not die. She became the ninth wave. She returns every year to point at the horizon – at the day the sea will rise again.
+\end{almanac}
+
+\newpage
+\input{../generators/lethai_al_wanderers.tex}
+\newpage
+
+% -------------------- LETHAI-AR OF AYOKHA --------------------
+\chapter{Lethai‑ar of Ayokha}
+\emph{The River‑Bound Oath‑Keepers.}
+
+\noindent
+Chen Wei observes: \textit{“The Lethai‑ar do not carry swords. They carry witness cords. A knot tightens when the oath is broken. I have seen a merchant’s wrist bleed because he lied about a shipment of silk. The cord does not forgive.”}
+
+\noindent
+The Lethai‑ar of Ayokha are the living bridges between mortals and the river spirits that launder the world’s promises. Their ancestors were river‑folk that ascended to the realm of the fair folk, and they now walk the middle path, a step between water and the world of men. They keep lanterns that never go out, record every contract spoken on the monsoon wharves, and bind their vows with silken cords dyed in river mud. Unlike their northern kin who swore to distant deities, the Lethai‑ar serve Benzaiten (the river of words) or Inari (the fox’s ledger). Their vows are physical cords, braided from their own hair and dyed with river mud. When a vow is fulfilled, the cord is burned. When it is broken, the cord tightens around the oath‑breaker’s wrist until blood is drawn. The ninth cup of tea or sake is never poured – it is for the river spirits, and pouring it is an invitation to the Hollow.
+
+\vspace{0.5em}
+\noindent\textit{“Never pour the ninth cup of tea or sake in a Lethai‑ar’s presence. The ninth cup is for the witness. Pour it, and you have invited the river to judge you. The river is not merciful.”} \\
+— Vigil Lady Suyin
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge with river fish – the fish caught in sacred currents, the bones returned to the water as an offering. The porridge is salted with evaporated river brine. It tastes of memory.
+
+\textbf{What does a child learn before they can walk?} To tie the eight witness knots. Each knot is a clause of a fair contract. The ninth knot is never tied – it is left for the river to judge.
+
+\textbf{What is the first thing you notice about a stranger?} Their lamp. A Lethai‑ar’s lamp is a public record of their witness. A green flame means kept every oath. A flickering lamp means witnessed a broken vow. A dark lamp means cut from the Vigil.
+
+\textbf{What is the most common crime?} Cord‑forging – creating a false witness cord that mimics the dye of a respected Vigil. The forger’s hands are bound with a cord that tightens each time they speak. If they never lie, it loosens. If they lie once, it cuts.
+
+\textbf{What does no one talk about but everyone knows?} The First Cord was not woven by a Lethai‑ar. It was found already knotted, already witnessing – floating down the river on a broken barge. No one knows what oath it witnessed.
+
+\textbf{Where do people go when they die?} To the green flame. Cremated, ashes mixed with lamp oil. The oil is poured into the Vigil lanterns. The dead become the light. The light witnesses.
+
+\textbf{How do you apologize for a serious wrong?} You offer a new cord – woven from your own hair, dyed with your own blood. Tied between you and the wronged party. If the cord tightens, you are not forgiven. If it loosens, you are.
+
+\textbf{What is the most important festival?} The Reckoning of the Cords (spring). All cut or broken witness cords are burned in a barge on the river. If a cord does not burn, the oath is still unpaid. The Hollow comes.
+
+\textbf{What is the secret that could destroy a powerful person?} The God‑King’s own witness cord is a forgery. He swore a vow to protect the Lethai‑ar nine years ago. His cord was cut the next day. The Vigil knows. They have not told anyone because the cord that cut his was their own.
+\end{almanac}
+
+\newpage
+\input{../generators/lethai_ar_river.tex}
+\newpage
+
+% -------------------- LETHAI-THORA OF SIHAI --------------------
+\chapter{Lethai‑thora of Sihai}
+\emph{The Silent Ledgers.}
+
+\noindent
+Chen Wei confesses: \textit{“I have stood in the Lethai‑thora archive. The scrolls do not rustle. They listen. I asked a keeper for a tax ledger from three centuries ago. She handed it to me without looking. The shelf behind me held the true history of my own grandfather’s death. I did not turn around.”}
+
+\noindent
+The Lethai‑thora were once courtiers of a celestial fey realm that spanned the Valewood and the eastern hills. When the old fey courts fell – when the Alder King withdrew and the Hazel Queen sealed her gates – many Lethai‑thora fled east. They crossed the mountains with nothing but armfuls of scrolls and the memory of a civilisation that had forgotten how to die. In the fertile river valleys of what would become Sihai, they taught the scattered tribes to write contracts instead of drawing blood, to measure grain instead of stealing it, to record names instead of nursing grudges. Over generations, the tribes became a kingdom, the kingdom became an empire, and the empire became Sihai. The Lethai‑thora became its memory. Now they dwell in hidden pavilions, preserving forgotten ledgers that record what the Mandate of Heaven prefers to forget. A Lethai‑thora who guards a forbidden truth may find she can no longer recall the colour of her mother’s dress – a small price, she says, for keeping the ledger whole.
+
+\vspace{0.5em}
+\noindent\textit{“Never touch a scroll without announcing your lineage. Even a false lineage is better than silence. The scrolls remember who opened them, and they will whisper your name to the Hollow.”} \\
+— Keeper Lian
+
+\vspace{1em}
+\begin{almanac}
+\textbf{What do people eat for breakfast?} Rice porridge with dried fish – the fish smoked over fires fed with old scrolls. The smoke smells of forgotten contracts. The porridge is always lukewarm.
+
+\textbf{What does a child learn before they can walk?} To read without moving their lips. A child who whispers a secret aloud is sent to sit in the Chamber of the Ninth Scroll until they learn that silence is a shield.
+
+\textbf{What is the first thing you notice about a stranger?} Their ink‑stained fingers. A Lethai‑thora has ink under every fingernail. Clean fingers have never copied a forbidden text. Black‑stained fingers have copied too many. Red‑stained fingers have copied a death warrant – their own.
+
+\textbf{What is the most common crime?} Context key theft – stealing the carved stone that unlocks a scroll’s meaning. The thief is given a blank scroll and told to write their own confession. The scroll fills itself if they lie.
+
+\textbf{What does no one talk about but everyone knows?} The Ninth Scroll is not a scroll. It is a memory so dangerous that nine different keepers each sealed a fragment of it in their own minds. When the ninth keeper dies, the memory will be lost forever – or will escape.
+
+\textbf{Where do people go when they die?} To the Well of Forgotten Names. Bodies are placed in the well. The well swallows them. The water turns black – the ink of their unwritten secrets.
+
+\textbf{How do you apologize for a serious wrong?} You offer a silence – a period of total stillness, no breath, no heartbeat, no word. Timed by a water clock. If you hold the silence for nine drops, you are forgiven. If you break it, you must speak the wrong aloud in the Chamber of the Ninth Scroll.
+
+\textbf{What is the most important festival?} The Unrolling of the Ledgers (winter). Once a year, the keepers unroll a single forbidden scroll and read it aloud to each other – but in a whisper, and only the walls hear. The festival ends with all nine keepers drinking ink from a silver cup. The ink is their own memory.
+
+\textbf{What is the secret that could destroy a powerful person?} The emperor’s true lineage is recorded on a scroll that no living keeper has opened. It is sealed with a cord tied by the first keeper. The cord has nine knots. The ninth knot is a lie – the emperor’s grandfather was not of the blood. The empire was founded by a concubine’s son.
+\end{almanac}
+
+\newpage
+\input{../generators/lethai_thora_east.tex}
+\newpage
+
+% ----------------------------------------------------------------------
+% APPENDICES
+% ----------------------------------------------------------------------
+\appendix
+
+% -------------------- SEVEN BELL COURT --------------------
+\chapter{The Seven Bell Court}
+\emph{Form, Spirit, Intent – the three pillars of honourable contest.}
+
+The Seven Bell Court is a neutral Ayokhan judiciary that evaluates duels, tournaments, ritual competitions, and even legal disputes. Its name comes from the seven bells rung before a contest – each bell representing a virtue. A panel of judges scores each exchange.
+
+\subsection*{Judges’ Scorecard}
+\begin{longtable}{|l|c|c|c|}
+\hline
+\textbf{Category} & \textbf{0 Points} & \textbf{1 Point} & \textbf{2 Points} \\
+\hline
+\textbf{Form} & Sloppy, reckless & Competent & Exemplary technique, discipline \\
+\hline
+\textbf{Spirit} & Cruelty, dishonor & Restraint & Mercy, respect, cultural resonance \\
+\hline
+\textbf{Intent} & Selfish motive & Neutral duty & Protection of others, justice \\
+\hline
+\end{longtable}
+
+A fighter may lose physically yet win socially. PCs may influence one category per scene via ritual, oath, or testimony.
+
+\subsection*{Earning Bells (Court Favour)}
+\begin{itemize}
+  \item Respectful testimony or proper ritual → +1 Bell
+  \item Clear evidence with unbroken custody → +1 Bell
+  \item Public act of mercy or restraint → +1 Bell
+\end{itemize}
+3 Bells allow a PC to overturn any one corrupt decision or expose a falsified verdict.
+
+\subsection*{Using the Seven Bell Court in Play}
+The GM may invoke the Court whenever a contest’s outcome should reflect honour, not just harm. Typical uses:
+\begin{itemize}
+  \item Tournaments and duels of honour.
+  \item Trial by combat with legal stakes.
+  \item Ritual poetry or dance competitions.
+  \item Diplomatic exhibitions where face matters more than victory.
+\end{itemize}
+
+\subsection*{Crowd Mood Track [6]}
+0–2: Curious admiration; cheers, ritual silence.  
+3–4: Partisan chants; thrown petals; accusations of bias.  
+5: Projectiles, panic, scuffles; Position –1 on all social checks in the ring.  
+6: Riot or stampede: duel halted, collateral harm.
+
+\noindent\textit{Influencing the Crowd:}
+\begin{itemize}
+  \item Respectful bow, ritual, poetic challenge → Crowd –1
+  \item Public mercy or restraint → Crowd –1
+  \item Brutality, insults, cheating → Crowd +1
+\end{itemize}
+
+% -------------------- EQUIPMENT OF THE EASTERN REALMS --------------------
+\chapter{Equipment of the Eastern Realms}
+\emph{Tools that carry meaning, not just metal.}
+
+This appendix presents items suitable for contemplative, ritual, or morally weighted adventures. Each is defined by TAGS (keywords) that describe its narrative and mechanical effects.
+
+\subsection*{Bridge‑Walker’s Staff}
+\textit{A walking staff carved from wood that grew on sacred ground.}  
+\textbf{TAGS:} [WARD] [MEMORY] [STABILITY]  
+\textbf{Effects:} +1d to Survival and Insight in spirit realms; [WARD] vs. Cap 2 spirits; once per scene ask one question about a location’s history; +1 Position on precarious crossings.
+
+\subsection*{Truth‑Teller’s Mirror}
+\textit{A polished bronze mirror that reflects intention, not appearance.}  
+\textbf{TAGS:} [REVEAL] [PURIFY] [BIND]  
+\textbf{Effects:} Roll vs. DV 3 to expose deception; remove minor [CURSE] or [CORRUPTION]; two willing parties may swear a truth‑oath – breaking it costs Harm 1.
+
+\subsection*{Mercy‑Bearer’s Bowl}
+\textit{A wooden bowl that never empties when compassion is sincere.}  
+\textbf{TAGS:} [HEAL] [CLEANSE] [SHARE]  
+\textbf{Effects:} Heal minor Harm or one Condition once per scene; remove one level of [FEAR] or [SHAME]; share any beneficial effect among multiple recipients.
+
+\subsection*{The Meteor Hammer of Remembrance}
+\textit{A chain and weight forged from fallen stars; each link bears a name.}  
+\textbf{TAGS:} [BIND] [FORCE] [MEMORY] [AREA]  
+\textbf{Effects:} Sweep attack vs. multiple foes (Harm 1 each). May restrain a target (break DV 3, or 4 if the wielder invokes a named life). After 10 lives are consciously protected, the weapon gains +1 Effect. Breaking an unjust bond causes Harm 1 to the wielder.
+
+\subsection*{The Scholar’s Quill of Truth}
+\textit{Ink flows only for honest words.}  
+\textbf{TAGS:} [SCRIBE] [REVEAL] [BIND] [WARD]  
+\textbf{Effects:} Records gain [WARD] vs. alteration. Hidden clauses or lost text become visible when traced. Contracts written are magically enforceable if witnessed. Cannot write deliberate falsehoods – the nib locks.
+
+\subsection*{The Diplomat’s Fan of Seasons}
+\textit{What was, what is, and what might be.}  
+\textbf{TAGS:} [VEIL] [REVEAL] [SANCTIFY] [COMMAND]  
+\textbf{Effects:} Veils the wielder’s intentions during negotiation. Shows one plausible outcome of the current debate. Creates neutral ground acceptable to all parties present. Once per scene, issue an order consistent with the revealed truth.
+
+\subsection*{Three‑Culture Prayer Beads}
+\textit{One strand in harmony: Sihai, Nihori, Ayokha.}  
+\textbf{TAGS:} [WARD] [HEAL] [GUIDE] [SANCTIFY]  
+\textbf{Effects:} Advantage vs. spiritual threats of the three cultures. Recover 1 Fatigue or minor Harm via meditation. +1d to cross‑cultural understanding or etiquette. Creates neutral ground acceptable to all three traditions.
+
+\subsection*{Memory Keeper’s Robe}
+\textit{Threads woven with emotional weight.}  
+\textbf{TAGS:} [WARD] [MEMORY] [VEIL] [PURIFY]  
+\textbf{Effects:} Protects the wearer from [FEAR] or [DESPAIR]. Recall exact words or emotions from preserved moments. Conceals the wearer’s present emotional state. Remove one level of [CORRUPTION] or [CURSE] by sacrificing a memory woven into the garment.
+
+\subsection*{Compass of Consequences}
+\textit{Points toward choices of greatest moral weight.}  
+\textbf{TAGS:} [GUIDE] [REVEAL] [COMMAND] [BIND]  
+\textbf{Effects:} Always indicates the path with greatest consequence. Shows likely outcomes of following or ignoring guidance. Compels acknowledgement of moral implications. Ignoring the compass knowingly causes [CORRUPTION].
+
+\subsection*{TAG Legend}
+\begin{itemize}
+  \item [WARD] – Protects, deflects, or resists hostile spiritual/mental forces.
+  \item [MEMORY] – Recalls, records, or reveals past intent/context.
+  \item [STABILITY] – Improves footing, balance, composure; grants Position.
+  \item [REVEAL] – Exposes truth, intent, or hidden states.
+  \item [PURIFY] – Removes taint, minor corruption, curses, or emotional toxins.
+  \item [BIND] – Creates oaths, restraints, empathic links, or enforceable contracts.
+  \item [HEAL] – Recovers minor Harm, Conditions, or Fatigue.
+  \item [CLEANSE] – Eases specific afflictions ([Fear], [Shame]).
+  \item [SHARE] – Distributes effects across willing targets.
+  \item [FORCE] – Direct physical impact; adds Harm.
+  \item [AREA] – Affects multiple targets or a zone.
+  \item [VEIL] – Obscures intent, aura, or presence.
+  \item [SANCTIFY] – Establishes neutral/sacred ground.
+  \item [COMMAND] – Issues binding directives aligned with ritual, truth, or mandate.
+  \item [GUIDE] – Points toward destinations, truths, or consequential choices.
+  \item [SCRIBE] – Writes immutable records or reveals textual truth.
+\end{itemize}
+
+% ----------------------------------------------------------------------
+% EPILOGUE
+% ----------------------------------------------------------------------
+\chapter*{Epilogue: The Ninth Scroll}
+\addcontentsline{toc}{chapter}{Epilogue}
+
+I have written eight scrolls for this book. The ninth is still blank.
+
+The Censorate will ask why. I will tell them that the ninth scroll is reserved for a truth I have not yet witnessed. They will not believe me. They will audit my accounts, inspect my seals, and count the strokes of every character.
+
+Let them.
+
+The road is east. The ink is fresh. The Hollow is patient.
+
+\vspace{1em}
+\noindent\textit{— Chen Wei, at a weigh‑house in the Sihai capital, under a lamp that has just flickered for the eighth time}
+
+\vspace{2em}
+\begin{quote}
+  \small
+  \textit{“The ledger is a tool. The story is the truth. Do not confuse them.”} \\
+  — Dusana of the Raven Road (marginal note, found in a Pereshi fire‑temple)
+\end{quote}
+
+% ----------------------------------------------------------------------
+% COLOPHON
+% ----------------------------------------------------------------------
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+
+This book was written on paper that had been a cargo manifest, a love letter, and a bandage. The ink is lampblack cut with salt water and the ash of a burnt confession. The binding is grey cord tied with nine knots. The ninth knot is not cut.
+
+Chen Wei composed the preface in a weigh‑house while an auditor counted his brush‑strokes. The almanacs were gathered from clerks, spirits, and the occasional honest scholar. The generator tables were tested in the field – meaning he ran them while a Censorate spy took notes.
+
+If you find yourself in the Eastern Realms and a provincial censor offers you tea, accept it. If they offer you a quill, decline politely. Some commissions are not worth the seal.
+
+The road is a ledger – but only if you forget the stories.
+
+\end{document}
