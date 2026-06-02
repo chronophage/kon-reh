@@ -91,20 +91,21 @@ When you are hit, follow these steps \textbf{in order}:
 \begin{table}[h]
 \centering
 \caption{Armor Conversion Table}
-\begin{tabular}{lll}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Armor Type} & \textbf{Conversion Rule} & \textbf{Minimum Fatigue} \\
+\textbf{Armor Type} & \textbf{Incoming Harm 1} & \textbf{Incoming Harm 2} & \textbf{Incoming Harm 3} \\
 \midrule
-Light  & Convert 1 Harm $\to$ 1 Fatigue; rest is Harm. & 1 \\
-Medium & Convert 2 Harm $\to$ 1 Fatigue; rest is Harm. & 1 \\
-Heavy  & Convert 3 Harm $\to$ 2 Fatigue; rest is Harm. & 1 \\
+Light  & Fatigue 1             & Harm 1 + Fatigue 1    & Harm 2 + Fatigue 1 \\
+Medium & Fatigue 1             & Fatigue 1             & Harm 2 + Fatigue 1 \\
+Heavy  & Fatigue 1             & Fatigue 1             & Fatigue 2 \\
 \bottomrule
 \end{tabular}
 \end{table}
+\noindent The table shows the result of conversion. For example, Light Armor vs Harm 2 becomes “Harm 1 + Fatigue 1”. Minimum 1 Fatigue always applies.
 
 \paragraph{Overflow (Fatigue Track Fills)}
 \begin{itemize}[leftmargin=*]
-  \item Add Fatigue first; then, if the track is full (or would exceed its size):
+  \item After adding Fatigue from step 3, if your Fatigue total equals or exceeds your Body (track size):
   \begin{enumerate}[nosep]
     \item Increase \textbf{Harm} by one level.
     \item \textbf{Clear all Fatigue}.
@@ -123,8 +124,8 @@ Heavy  & Convert 3 Harm $\to$ 2 Fatigue; rest is Harm. & 1 \\
 
 \paragraph{Recovery}
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Fatigue:} Short rest removes 1--2 Fatigue; full night removes all.
-  \item \textbf{Harm:} Requires medical care (Medicine roll) or magical healing.
+  \item \textbf{Fatigue:} Short rest (1 hour) removes 2 Fatigue; full night's rest removes all.
+  \item \textbf{Harm:} Requires medical care (Medicine roll) or magical healing; natural recovery takes a week per level.
 \end{itemize}
 
 \subsection{Weapons \& Armor (Quick Reference)}
@@ -133,13 +134,13 @@ Heavy  & Convert 3 Harm $\to$ 2 Fatigue; rest is Harm. & 1 \\
 \toprule
 \textbf{Weapon Type} & \textbf{Close} & \textbf{Near} & \textbf{Tempo} \\
 \midrule
-Light  & +2 dice & +1 dice & Fast \\
-Medium & +1 dice & +2 dice & Standard \\
-Heavy  & --1 dice & +3 dice & Slow \\
+Light  & +2 dice & +1 dice & Fast (Move + Shoot) \\
+Medium & +1 dice & +2 dice & Standard (Move or Shoot) \\
+Heavy  & --1 dice & +3 dice & Slow (Load, then Shoot) \\
 \bottomrule
 \end{tabular}
 \end{center}
-Armor uses the conversion table above. Shields and weapon tags (Accurate, Brutal, etc.) are optional.
+Armor uses the conversion table above. Shields and weapon tags (Accurate, Brutal, etc.) are optional (see the full rules).
 
 % ============================================================
 \section{Social Encounters}
@@ -171,6 +172,11 @@ Each distinct argument or lever advances the clock:
 When the Opposition Clock fills, the target hardens -- Position worsens or the ask becomes impossible.  
 When the Persuasion Clock fills, the target agrees as framed.
 
+\paragraph{Example: Persuading a Guard}
+\begin{quote}
+The party wants a guard to let them pass. The GM sets a 6-segment Persuasion Clock (Moderate resolve). Initial Position: Controlled (the guard is suspicious but not hostile). The rogue spends 1 Boon to \textit{Assist} with a whispered lie; the party’s face rolls Presence+Sway (DV 3) and gets a Partial: +1 segment, but the GM spends the generated SB to add a complication – the guard demands a bribe. The party pays (lose a minor asset use) and continues. Three successful arguments later, the clock fills; the guard steps aside.
+\end{quote}
+
 % ============================================================
 \section{Environmental Encounters}
 % ============================================================
@@ -195,29 +201,28 @@ Active hazards (fire, flooding, toxic gas) are represented by \textbf{Threat Clo
 \section{Magical Encounters (Brief)}
 % ============================================================
 
-\subsection{Magic in Combat}
-\paragraph{Caster (Freeform)} Weave then Cast (2 actions). Push (mark Fatigue) to compress to 1 action. Casting while Engaged worsens Position by one step unless spell has \texttt{[TOUCH]} or \texttt{[WARD]}.
-
-\paragraph{Runekeeper} Invoke a Rite as 1 action; mark Obligation. Push It (+1 Obligation).
-
-\paragraph{Invoker} Ritual takes DV+1 rounds. \textit{Crack the Seal} (instant) marks +2 Obligation, Symbol Compromised.
-
-\paragraph{Cantor} Sing a Song (1 action, resolves next turn). Push to resolve immediately (mark Corruption).
+\subsection{Adjudicating Spells in Combat}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Free Caster (Spellcraft):} Weave then Cast (2 actions). Push (mark Fatigue) to compress to 1 action. Casting while \textit{Engaged} worsens Position by one step unless the spell has \texttt{[TOUCH]} or \texttt{[WARD]}.
+  \item \textbf{Runekeeper (Rites):} Invoke a Rite as 1 action; mark Obligation. \textit{Push It} (+1 Obligation) for increased effect.
+  \item \textbf{Invoker (Symbols):} Ritual takes DV+1 rounds. \textit{Crack the Seal} (instant) marks +2 Obligation (or +3 for High Rites), Symbol becomes Compromised.
+  \item \textbf{Cantor (Songs):} Sing a Song (1 action, resolves at start of next turn). Push to resolve immediately (mark Fatigue + advance Corruption).
+\end{itemize}
 
 \subsection{Traps and Wards (Quick Look-up)}
 \begin{itemize}[leftmargin=*]
   \item \textbf{Discover:} Notice vs DV 4--6.
-  \item \textbf{Disable:} Contested roll trap's tick. Clean Success = neutralized; Partial = disable but generate SB; Miss = trap activates.
+  \item \textbf{Disable:} Contested roll vs trap's tick. Clean Success = neutralized; Partial = disable but generate SB; Miss = trap activates.
   \item \textbf{Activation:} GM spends SB to trigger trap (damage, condition, clock advance).
   \item \textbf{Wards:} Magical barriers with a DV (3--6). Crossing without dispelling triggers the effect and ticks any relevant \textbf{Leash} by the ward's DV.
 \end{itemize}
 
 \subsection{Summoning and Spirits (Quick Look-up)}
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Leash:} Cap + Spirit segments.
-  \item \textbf{Ticks:} Spirit takes harm (1 per Harm level); acts against nature (1); crosses a ward without dispelling (ticks = ward's DV).
+  \item \textbf{Leash Capacity:} Cap + Spirit segments.
+  \item \textbf{Ticks:} Spirit takes Harm (1 per Harm level); acts against nature (1); crosses a ward without dispelling (ticks = ward's DV).
   \item \textbf{Leash fills:} Spirit acts once to its nature (potentially hostile) then departs.
-  \item \textbf{Boons:} Summoner may spend 1 Boon to clear 1 tick (once per round).
+  \item \textbf{Boon Finesse:} Summoner may spend 1 Boon to clear 1 tick (once per round).
 \end{itemize}
 
 \subsection{Extended Rituals and Downtime Encounters}
@@ -231,7 +236,7 @@ Use a \textbf{Progress Clock} (4--12 segments). Each segment represents a scene 
 \toprule
 \textbf{Encounter} & \textbf{DV (Default)} & \textbf{Typical Skills} & \textbf{Common Clocks} \\
 \midrule
-Combat & 3 (Controlled) & Melee, Ranged, Athletics, Command & Mob Overwhelm [6], Fatigue Spiral [4] \\
+Combat & 3 (Controlled) & Melee, Ranged, Athletics, Command & Mob Overwhelm [6], Hazard [4-8] \\
 Social  & 3 (Controlled) & Sway, Subterfuge, Insight, Command & Persuasion [4--8], Opposition [4] \\
 Environmental & 3--4 (varies) & Athletics, Survival, Tinker, Stealth & Collapse [6], Flood [6], Chase [4] \\
 Magical & 4--6 (specific) & Arcana, Lore, Spirit+Resolve & Leash [Cap+Spirit], Ritual [6--12] \\

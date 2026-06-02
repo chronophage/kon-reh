@@ -185,8 +185,8 @@ This reduces GM overhead and keeps you engaged.
     \item Obligation tracks (per Patron or Symbol)
     \item Corruption clocks (Cantors, Pact‑Whisperers)
     \item Leash clocks (summoned spirits)
-    \item Asset states (Maintained, Neglected, Compromised)
-    \item Follower conditions (Exposure, Harm)
+    \item Asset state (Flourishing, Stable, Strained, Collapsed)
+    \item Follower states (Loyalty: Faithful/Strained/Broken; Fitness: Ready/Hurt/Down)
     \item Progression clocks (Repertoire, Spirit Bond)
     \item Boons, Favour, Leverage
 \end{itemize}
@@ -221,14 +221,31 @@ nature, crosses a [WARD], or you split focus. Once per round, spend 1 Boon to
 clear 1 tick. When the Leash fills, the spirit acts once to its nature, then
 departs (or turns hostile).
 
-\subsection{Asset and Symbol Condition}\label{subsec:asset_condition}
+\subsection{Asset and Follower States}\label{subsec:asset_follower_states}
 
+\paragraph{Asset Status (unified track)}
 \begin{itemize}
-    \item \textbf{Maintained:} Full capability.
-    \item \textbf{Neglected:} –1 die when used; requires attention.
-    \item \textbf{Compromised:} Unavailable until repaired/recovered (downtime,
-        DV 3 roll, or 1 XP).
+    \item \textbf{Flourishing:} +1 die on asset rolls, +1 Yield.
+    \item \textbf{Stable:} Normal operation.
+    \item \textbf{Strained:} –1 die on asset rolls, no Yield.
+    \item \textbf{Collapsed:} Non‑functional; requires quest or major downtime.
 \end{itemize}
+
+\paragraph{Follower Loyalty}
+\begin{itemize}
+    \item \textbf{Faithful:} Normal assist, independent actions available.
+    \item \textbf{Strained:} Assist at –1 die; may refuse risky orders.
+    \item \textbf{Broken:} Follower leaves or becomes hostile.
+\end{itemize}
+
+\paragraph{Follower Fitness}
+\begin{itemize}
+    \item \textbf{Ready:} Full function.
+    \item \textbf{Hurt:} Assist at –1 die; no independent actions.
+    \item \textbf{Down:} Incapacitated; requires rescue or medical care.
+\end{itemize}
+
+\noindent Change states when the fiction demands it; no numeric clocks required.
 
 \section{Turn Economy}\label{sec:turn_economy}
 
@@ -475,7 +492,7 @@ Cost: Minor (4 XP, 1d), Standard (8 XP, 1w), Major (12 XP, 1m).
 \begin{itemize}
     \item \textbf{Free off‑screen use:} once per session.
     \item \textbf{Boon activation:} spend 1 Boon for on‑scene effect.
-    \item \textbf{Conditions:} Maintained $\rightarrow$ Neglected $\rightarrow$ Compromised.
+    \item \textbf{Status:} Flourishing $\rightarrow$ Stable $\rightarrow$ Strained $\rightarrow$ Collapsed.
 \end{itemize}
 
 \subsection{Followers (On‑Screen)}
@@ -484,10 +501,10 @@ Cost: Cap² XP (e.g., Cap 3 = 9 XP), downtime 1–3 days.
 \begin{itemize}
     \item \textbf{Assistance:} add dice = min(Cap, relevant skill), max +3 from
         all sources.
-    \item \textbf{Independent action:} once per scene (party‑wide). Mark +1
-        Exposure or Harm 1 on the follower.
-    \item \textbf{Conditions:} Exposure (attention) and Harm (injury) tracks.
-        State: Maintained $\rightarrow$ Neglected $\rightarrow$ Compromised.
+    \item \textbf{Independent action:} once per scene (party‑wide). Cost: worsen
+        Loyalty or Fitness one step.
+    \item \textbf{Loyalty:} Faithful $\rightarrow$ Strained $\rightarrow$ Broken.
+    \item \textbf{Fitness:} Ready $\rightarrow$ Hurt $\rightarrow$ Down.
 \end{itemize}
 
 \subsection{Upkeep (per downtime)}
@@ -495,8 +512,7 @@ Cost: Cap² XP (e.g., Cap 3 = 9 XP), downtime 1–3 days.
     \item \textbf{Efficient:} XP = max(1, acquisition XP / 3). Minimal effort.
     \item \textbf{Intensive:} 1 XP + a dedicated downtime action.
 \end{itemize}
-Failure to pay: follower becomes Wary (or Seized), asset becomes Neglected (or
-Compromised).
+Failure to pay: Asset Status worsens one step; Follower Loyalty worsens one step.
 
 \section{Supply Clock}\label{sec:supply_clock}
 

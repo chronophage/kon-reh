@@ -141,26 +141,34 @@ Spend \textbf{2 XP} (see \ref{ch:advancement}) to use an Asset's off‑screen ef
 \end{itemize}
 XP use represents strain, overreach, or long‑term cost.
 
-\section{Asset Conditions}
-\label{sec:asset-conditions}
-\index{assets!conditions}
+\section{Asset Status}
+\label{sec:asset-status}
+\index{assets!status}
 
-Assets have condition states affecting their usefulness.
+Assets have a single unified \textbf{Status} that describes their overall health and usability.
 
-\subsection*{Condition Levels}
-\label{sec:asset-condition-levels}
-\begin{description}
-\item[Maintained] Fully functional, no penalties.
-\item[Neglected] --1 die when used; requires attention.
-\item[Compromised] Unavailable until repaired or recovered.
-\end{description}
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Status} & \textbf{Meaning} & \textbf{Effect} \\
+\midrule
+Flourishing & Well-maintained, respected & +1 die on rolls involving the asset, +1 Yield \\
+Stable & Normal operation & No modifier \\
+Strained & Problems accumulating & –1 die on asset-related rolls, no Yield \\
+Collapsed & Non-functional & Requires quest or major downtime to restore \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Status worsens when the asset is neglected, attacked, or suffers a public failure. It improves through dedicated downtime actions or successful missions that benefit the asset.
 
 \subsection*{Maintenance Requirements}
 \label{sec:asset-maintenance}
 \begin{itemize}
 \item \textbf{Regular Upkeep}: Two options (see \ref{subsec:upkeep-options}).
-\item \textbf{Neglect}: Assets deteriorate if not maintained.
-\item \textbf{Recovery}: Compromised assets require significant effort to restore.
+\item \textbf{Neglect}: Assets deteriorate if not maintained (Status worsens one step).
+\item \textbf{Recovery}: Collapsed assets require significant effort to restore, typically a quest or a full downtime arc.
 \end{itemize}
 
 \section{Followers System}
@@ -205,6 +213,44 @@ Followers are rated by Capability (\textbf{Cap}) from 1 to 5:
 \item[Specialists] Unique capabilities like magic or stealth.
 \end{description}
 
+\subsection*{Follower States}
+\label{sec:follower-states}
+Instead of numeric clocks, track a follower's \textbf{Loyalty} and \textbf{Fitness} as one of three states each.
+
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{State} & \textbf{Meaning} & \textbf{Mechanical Effect} \\
+\midrule
+\multicolumn{3}{c}{\textit{Loyalty}} \\
+Faithful & Committed, trustworthy & Normal assist, independent actions available \\
+Strained & Doubtful, pressured & Assist at –1 die; may refuse risky orders \\
+Broken & Betrayed or deserted & Follower leaves or becomes hostile \\
+\midrule
+\multicolumn{3}{c}{\textit{Fitness}} \\
+Ready & Uninjured, rested & Full function \\
+Hurt & Wounded, exhausted & Assist at –1 die; no independent actions \\
+Down & Incapacitated & Requires rescue or medical care \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Change states when the fiction demands it (e.g., after a failed mission, a moral compromise, or taking damage). No rolls required.
+
+\subsection*{High‑Capability Followers (Cap 4–5)}
+\label{sec:high-cap-followers}
+Followers with Capability 4 or 5 are trusted lieutenants, stewards, or commanders. They can be delegated the management of your Assets, freeing you from direct oversight.
+
+\begin{itemize}
+  \item A \textbf{Cap 4} follower can be delegated \textbf{up to 2 Assets}.
+  \item A \textbf{Cap 5} follower can be delegated \textbf{up to 4 Assets}.
+\end{itemize}
+
+When an Asset is delegated to a follower, the follower's own upkeep (paid in XP or downtime action) \textbf{automatically covers the upkeep of those Assets} — you do not pay separate Asset upkeep. The follower handles the logistics, staff, or political maintenance as part of their role.
+
+If the follower's Loyalty becomes \textbf{Strained} or \textbf{Broken}, all delegated Assets immediately worsen one step (e.g., Flourishing $\rightarrow$ Stable, Stable $\rightarrow$ Strained) until the follower is restored. If a follower becomes \textbf{Broken} (leaves or betrays), those Assets are lost.
+
 \section{Using Followers}
 \label{sec:using-followers}
 \index{followers!usage}
@@ -231,65 +277,17 @@ Once per scene (party‑wide), a follower can take a small action:
 \subsection*{Cost of Independent Actions}
 \label{sec:follower-independent-cost}
 \begin{itemize}
-\item Mark +1 \textbf{Exposure} (attention or stress), \emph{or}
-\item Take \textbf{Harm 1} (injury or trauma).
-\item Cannot be used if the follower is already \textbf{Compromised}.
-\end{itemize}
-
-\section{Follower Conditions}
-\label{sec:follower-conditions}
-\index{followers!conditions}
-
-Followers track two condition types.
-
-\subsection*{Exposure}
-\label{sec:follower-exposure}
-Represents attention, stress, or narrative pressure:
-\begin{itemize}
-\item \textbf{Gains}: From independent actions, dangerous situations, complications.
-\item \textbf{Effects}: Increased risk, reduced effectiveness, attention from enemies.
-\item \textbf{Recovery}: Downtime activities, careful management.
-\end{itemize}
-
-\subsection*{Harm}
-\label{sec:follower-harm}
-Represents injury, trauma, or damage:
-\begin{itemize}
-\item \textbf{Gains}: From combat, accidents, enemy attacks.
-\item \textbf{Effects}: Penalties to assistance, possible incapacity.
-\item \textbf{Recovery}: Medical care, rest, magical healing.
-\end{itemize}
-
-\subsection*{Condition States}
-\label{sec:follower-condition-states}
-\begin{description}
-\item[Maintained] Ready and reliable, full capability.
-\item[Neglected] Needs attention, --1 die to assistance.
-\item[Compromised] Unavailable: captured, defected, lost, or incapacitated.
-\end{description}
-
-\section{Follower Risks}
-\label{sec:follower-risks}
-\index{followers!risks}
-
-Using followers carries significant risks.
-
-\subsection*{Complication Targeting}
-\label{sec:follower-complication}
-When the GM spends \textbf{2+ Story Beats} (see \ref{ch:core-mechanics}) on an action where you have assistance:
-\begin{itemize}
-\item The follower may face consequences instead of you.
-\item Consequences could be injury, capture, betrayal, or other complications.
-\item The outcome must be fictionally appropriate.
+\item Worsen \textbf{Fitness} one step (Ready $\rightarrow$ Hurt $\rightarrow$ Down), \emph{or}
+\item Worsen \textbf{Loyalty} one step (Faithful $\rightarrow$ Strained $\rightarrow$ Broken).
+\item Cannot be used if the follower is already \textbf{Broken} or \textbf{Down}.
 \end{itemize}
 
 \subsection*{Off‑Screen Capability}
 \label{sec:follower-offscreen}
 Once per downtime, a \textbf{Cap 5} follower can solve a significant problem:
 \begin{itemize}
-\item But generates \textbf{1 Story Beat} for the party.
-\item The GM describes how this creates story consequences.
-\item Useful for emergencies, but costly.
+\item Generates \textbf{1 Story Beat} for the GM (the GM describes a resulting complication).
+\item Useful for emergencies, but costly to the story.
 \end{itemize}
 
 \section{Upkeep and Maintenance}
@@ -298,35 +296,26 @@ Once per downtime, a \textbf{Cap 5} follower can solve a significant problem:
 
 Both assets and followers require regular maintenance. Each downtime period, choose one of the two options.
 
-\subsection*{Asset Upkeep}
-\label{sec:asset-upkeep}
-Two options:
+\subsection*{Upkeep Options}
+\label{sec:upkeep-options}
 \begin{itemize}
 \item \textbf{Efficient (Higher XP, Less Time)}:  
-  Pay Upkeep XP = $\max(1, \lceil \text{Acquisition XP} / 3 \rceil)$, minimal effort.
+  Pay Upkeep XP = $\max(1, \lceil \text{Acquisition XP} / 3 \rceil)$, minimal effort.  
+  \emph{Rule of thumb: about one‑third the acquisition cost, minimum 1 XP.}
 \item \textbf{Intensive (Lower XP, More Time)}:  
   Pay 1 XP, use a dedicated downtime action with significant personal involvement.
-\item \textbf{Failure to Pay}: Asset becomes \emph{Neglected} (or \emph{Compromised} if already Neglected).
-\end{itemize}
-
-\subsection*{Follower Upkeep}
-\label{sec:follower-upkeep}
-Two options:
-\begin{itemize}
-\item \textbf{Efficient}:  
-  Pay Upkeep XP = $\max(1, \lceil \text{Cap}^2 / 3 \rceil)$, minimal effort.
-\item \textbf{Intensive}:  
-  Pay 1 XP, use a dedicated downtime action with significant personal involvement.
-\item \textbf{Failure to Pay}: Follower becomes \emph{Wary} (or \emph{Seized} if already Wary).
+\item \textbf{Failure to Pay}:  
+  Asset Status worsens one step (Flourishing $\rightarrow$ Stable $\rightarrow$ Strained $\rightarrow$ Collapsed).  
+  Follower Loyalty worsens one step (Faithful $\rightarrow$ Strained $\rightarrow$ Broken).
 \end{itemize}
 
 \subsection*{Upkeep Examples}
 \label{sec:upkeep-examples}
 \begin{itemize}
-  \item \textbf{Minor Asset (4 XP)}: Efficient = 2 XP (4/3 rounded up); Intensive = 1 XP + action.
-  \item \textbf{Standard Asset (8 XP)}: Efficient = 3 XP (8/3 = 2.66 $\rightarrow$ 3); Intensive = 1 XP + action.
-  \item \textbf{Cap 3 Follower (9 XP)}: Efficient = 3 XP (9/3); Intensive = 1 XP + action.
-  \item \textbf{Cap 2 Follower (4 XP)}: Efficient = 2 XP (4/3 rounded up); Intensive = 1 XP + action.
+  \item \textbf{Minor Asset (4 XP)}: Efficient = 2 XP; Intensive = 1 XP + action.
+  \item \textbf{Standard Asset (8 XP)}: Efficient = 3 XP; Intensive = 1 XP + action.
+  \item \textbf{Cap 3 Follower (9 XP)}: Efficient = 3 XP; Intensive = 1 XP + action.
+  \item \textbf{Cap 2 Follower (4 XP)}: Efficient = 2 XP; Intensive = 1 XP + action.
 \end{itemize}
 
 \section{Strategic Considerations}
@@ -377,172 +366,6 @@ Mastermind & 35--55\% & Networks, informants, multiple Assets; build a faction. 
 \index{succession}\index{legacy engine}
 A loyal Follower (Cap 3+) can become your \textbf{successor} when your character retires or falls -- inheriting your faction standing, one unresolved burden, and a Legacy Bond. See \textbf{Chapter \ref{ch:legacy-engine}: The Legacy Engine} for full rules. If you plan for your character's story to continue beyond them, invest in a follower you would trust to carry your banner.
 \end{tcolorbox}
-
-\section{Loyalty and Relationships}
-\label{sec:follower-loyalty}
-\index{loyalty}\index{relationships}
-
-\subsection*{Loyalty Levels (Optional)}
-\label{sec:loyalty-levels}
-\begin{description}
-\item[Wary] Cautious, may leave if pressured; +1 XP upkeep cost.
-\item[Steady] Reliable, standard performance; normal upkeep.
-\item[Devoted] Loyal, may sacrifice; can convert one major complication to a minor setback per arc.
-\end{description}
-
-\subsection*{Building Loyalty}
-\label{sec:building-loyalty}
-\begin{itemize}
-\item Fair treatment and respect.
-\item Sharing rewards and successes.
-\item Protecting followers from harm.
-\item Honoring agreements and promises.
-\end{itemize}
-
-\subsection*{Losing Loyalty}
-\label{sec:losing-loyalty}
-\begin{itemize}
-\item Mistreatment or disrespect.
-\item Unreasonable demands or risks.
-\item Broken promises or betrayal.
-\item Consistent neglect.
-\end{itemize}
-
-\section{Advanced Follower Management}
-\label{sec:advanced-followers}
-\index{followers!advanced}
-
-\subsection*{Follower Groups}
-\label{sec:follower-groups}
-For multiple similar followers, you can manage them as a group:
-\begin{itemize}
-\item \textbf{Single Rating}: Treat as one entity with combined capability.
-\item \textbf{Condition Tracking}: Group shares exposure and harm.
-\item \textbf{Maintenance}: Single upkeep cost for the group.
-\item \textbf{Risks}: Problems affect the entire group.
-\end{itemize}
-
-\subsection*{Follower Advancement}
-\label{sec:follower-advancement}
-Followers can improve over time:
-\begin{itemize}
-\item \textbf{Experience}: Gain capability through successful assistance.
-\item \textbf{Training}: Spend XP to improve follower capabilities.
-\item \textbf{Equipment}: Better gear can enhance effectiveness.
-\item \textbf{Limits}: Followers typically cap at lower levels than PCs.
-\end{itemize}
-
-\section{Risk Management}
-\label{sec:asset-follower-risk}
-\index{risk management}
-
-\subsection*{Asset Risks}
-\label{sec:asset-risks}
-\begin{itemize}
-\item \textbf{Financial}: Assets can be costly to maintain.
-\item \textbf{Security}: Assets can be attacked or stolen.
-\item \textbf{Attention}: Valuable assets draw unwanted notice.
-\item \textbf{Dependency}: Over‑reliance can be problematic.
-\end{itemize}
-
-\subsection*{Follower Risks}
-\label{sec:follower-risks-list}
-\begin{itemize}
-\item \textbf{Safety}: Followers can be harmed or captured.
-\item \textbf{Loyalty}: Followers may betray or leave.
-\item \textbf{Attention}: Followers can draw enemy interest.
-\item \textbf{Morale}: Followers have needs and limits.
-\end{itemize}
-
-\subsection*{Mitigation Strategies}
-\label{sec:risk-mitigation}
-\begin{itemize}
-\item \textbf{Diversification}: Don't put all resources in one place.
-\item \textbf{Security}: Protect valuable assets and followers.
-\item \textbf{Relationships}: Maintain good terms with your people.
-\item \textbf{Contingencies}: Have backup plans for losses.
-\end{itemize}
-
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title={Assets and Followers Quick Reference},fonttitle=\bfseries]
-\textbf{Assets:}
-\begin{itemize}
-\item Minor: 4 XP \;|\; Standard: 8 XP \;|\; Major: 12 XP
-\item Free off‑screen use: once per session
-\item Boon activation: spend 1 Boon for scene impact
-\item Conditions: \emph{Maintained} $\rightarrow$ \emph{Neglected} $\rightarrow$ \emph{Compromised}
-\end{itemize}
-
-\textbf{Followers:}
-\begin{itemize}
-\item Cost: $\text{Cap}^2$ XP
-\item Assistance: $+\min(\text{Cap},\text{skill})$ dice (max +3 from all sources)
-\item Independent action: once per scene (party‑wide)
-\item Conditions: \emph{Exposure} and \emph{Harm} tracks
-\end{itemize}
-
-\textbf{Upkeep Options:}
-\begin{itemize}
-\item Efficient: $\max(1,\lceil\text{Cost}/3\rceil)$ XP, minimal time
-\item Intensive: 1 XP, dedicated downtime action
-\end{itemize}
-\end{tcolorbox}
-
-\section{Practical Examples}
-\label{sec:asset-follower-examples}
-
-\subsection*{Asset Example: The Safehouse}
-\label{sec:example-safehouse}
-\begin{itemize}
-\item \textbf{Type}: Minor Asset (4 XP)
-\item \textbf{Free Use}: Secure lodging, basic supplies between adventures.
-\item \textbf{Boon Activation}: Reveal a hidden escape route during pursuit.
-\item \textbf{Upkeep}: Efficient: 2 XP (4/3 rounded up); Intensive: 1 XP + downtime action.
-\item \textbf{Risks}: Discovery by enemies, maintenance costs.
-\end{itemize}
-
-\subsection*{Follower Example: The Scout}
-\label{sec:example-scout}
-\begin{itemize}
-\item \textbf{Capability}: 3 (9 XP cost)
-\item \textbf{Assistance}: +3 dice on tracking and survival rolls.
-\item \textbf{Independent Action}: Scout ahead to improve party position.
-\item \textbf{Upkeep}: Efficient: 3 XP (9/3); Intensive: 1 XP + downtime action.
-\item \textbf{Risks}: Injury in dangerous scouting; disloyalty if mistreated.
-\end{itemize}
-
-\subsection*{Combination Example: The Merchant}
-\label{sec:example-merchant}
-\begin{itemize}
-\item \textbf{Assets}: Trading post (8 XP), caravan (4 XP) --- \emph{12 XP total}
-\item \textbf{Followers}: Cap 2 guards (4 XP each = 8 XP), Cap 3 factor (9 XP) --- \emph{17 XP total}
-\item \textbf{Total Investment}: \textbf{29 XP} in assets and followers
-\item \textbf{Upkeep (Efficient)}: Assets 4 XP + Followers 6 XP = \textbf{10 XP} per downtime
-\item \textbf{Benefits}: Trade income, transport, protection, business contacts
-\item \textbf{Risks}: Competition, bandit attacks, employee issues, regulatory attention
-\end{itemize}
-
-\emph{Remember:} Assets and followers can greatly expand your capabilities, but they require careful management and carry significant risks. Invest wisely based on your character concept and the needs of your group.
-
-\section{Narrative‑Heavy Asset and Follower Options}
-\label{sec:narrative-assets}
-
-For groups that prefer strong narrative focus, consider these optional approaches.
-
-\paragraph{Story‑Driven Upkeep}
-\label{sec:story-upkeep}
-Instead of tracking XP costs for upkeep, the GM can introduce narrative complications that require attention. A neglected asset might attract unwanted attention, while a neglected follower might request a favor or special treatment.
-
-\paragraph{Collaborative Management}
-\label{sec:collab-management}
-Players can describe how they maintain their assets and followers through roleplay rather than mechanical upkeep costs. A well‑described scene of tending a workshop or bonding with followers can fulfill maintenance requirements.
-
-\paragraph{Asset and Follower as Character Development}
-\label{sec:asset-character-dev}
-Use asset and follower management as opportunities for character growth and backstory development, allowing players to narrate how their relationships and holdings evolve through significant story moments.
-
-\paragraph{Flexible Condition Tracking}
-\label{sec:flexible-conditions}
-Focus on the narrative implications of asset and follower conditions rather than strict mechanical penalties. A ``Neglected'' asset might still function but with interesting complications, while a ``Compromised'' asset might require creative solutions rather than just XP investment.
 
 \section{Terrestrial Patrons}
 \label{sec:terrestrial-patrons}
@@ -602,7 +425,6 @@ Each Terrestrial Patron offers 2--3 repeatable benefits that require no rolls to
     \item Access to black market goods or specialized services.
     \item Elite followers or hirelings at reduced cost.
     \item Forged documents or identity protection.
-    \item Military backing or private security.
     \item Information networks and rumor access.
     \item Trade advantages or exclusive contracts.
 \end{itemize}
@@ -645,21 +467,6 @@ You may sever a Terrestrial Patron relationship, but doing so has serious fallou
 \end{itemize}
 Some Patrons never forgive betrayal; others can be bought off with significant compensation.
 
-\subsection{Redemption and Favor}
-\label{sec:terrestrial-redemption}
-
-If you perform a monumental service for a Patron---something beyond what was asked---reduce Obligation by 2 and gain a permanent \textbf{Favor}.
-
-\textbf{Favor Benefits:}
-\begin{itemize}
-    \item Noble title or official position.
-    \item Land grant or property rights.
-    \item Permanent access to exclusive resources.
-    \item Unique asset or specialized equipment.
-    \item Political influence or legal immunity.
-    \item Protection from their rivals or enemies.
-\end{itemize}
-
 \subsection{Example: The Black Ledger}
 \label{sec:terrestrial-example}
 
@@ -683,138 +490,108 @@ The Black Ledger is a smuggling syndicate operating in the coastal city of Kahfa
 
 \textbf{Sample Scenario:} Rellan calls on the Ledger for a smuggled border crossing. The GM rules it succeeds automatically, but adds +1 Obligation. Later, the Ledger demands he silence a witness who saw too much. If he refuses, Obligation rises again. If Obligation ever reaches 6, the Ledger collects: accounts frozen, bounty posted, or a rival informant sent after him.
 
-\subsection{Creating Your Own Terrestrial Patrons}
-\label{sec:terrestrial-creating}
-
-When designing a Terrestrial Patron, consider:
-\begin{enumerate}
-    \item \textbf{Nature}: What type of organization are they?
-    \item \textbf{Motivation}: What drives their goals and actions?
-    \item \textbf{Resources}: What can they realistically offer?
-    \item \textbf{Methods}: How do they typically operate?
-    \item \textbf{Enemies}: Who opposes their interests?
-    \item \textbf{Perks}: 2--3 concrete benefits they provide.
-    \item \textbf{Demands}: 3--5 typical requests they make.
-\end{enumerate}
-
-\emph{Remember:} Terrestrial Patrons make the mortal world feel alive and reactive. They represent the complex web of loyalty, debt, and influence that shapes everyday life in Fate's Edge.
-
-\section{Multi-Character Switching System}
+\section{Multi‑Character Switching (Optional)}
 \label{sec:multi-character-switching}
-\index{Echo Character}\index{Downtime Log}
+\index{Echo Character}
 
-This framework allows a player to temporarily move a character offscreen while continuing play with another. The absent character remains active in the fiction and continues shaping the world through \textbf{Downtime Logs}, consequences, and story pressure.
+You may choose to temporarily step away from your current character and play another, while your first character continues to act offscreen. This is called an \textbf{Echo Character}. It allows you to explore different parts of the story without permanently retiring anyone.
 
-\subsection{Core Principles}
-\label{sec:mcs-principles}
+\subsection{How It Works}
+When you switch, you declare:
 \begin{itemize}
-    \item Players \textbf{choose} when their character steps offscreen.
-    \item Offscreen characters still \textbf{matter} to the narrative.
-    \item Absence creates \textbf{opportunity and risk}, not punishment.
-    \item The world reacts to characters \textbf{even when unseen}.
-\end{itemize}
-
-\subsection{Switch Mechanics}
-\label{sec:mcs-switch}
-
-\subsubsection{Declaration}
-When a player chooses to step out, they declare:
-\begin{itemize}
-    \item Which character is going offscreen.
-    \item Where the character is going (fictional location).
+    \item Which character goes offscreen.
+    \item Where they are going (fictional location).
     \item Why they are stepping out (story reason).
-    \item How long they expect to be away (1--3 sessions).
+    \item How long you expect to be away (1--3 sessions).
 \end{itemize}
-The character becomes an \textbf{Echo Character}: present in the world, but offscreen.
-
-\subsubsection{Controlled Status Types}
-Echo Characters take one of three statuses:
+The offscreen character remains active in the fiction. During each session they are away, you complete a simple \textbf{Downtime Log}:
 \begin{itemize}
-    \item \textbf{Supporting} (default): Works to assist active PCs.
-    \item \textbf{Advancing}: Pursues their own agenda or project.
-    \item \textbf{In Peril}: Their absence creates danger or urgency.
+    \item One \textbf{Resource Action} (how they maintain connections).
+    \item One \textbf{Project Action} (a goal advanced).
+    \item One \textbf{Event Response} (how they react to offscreen events).
 \end{itemize}
-The GM and player collaborate to set this status.
+The GM records the outcomes and may introduce a consequence.
 
-\subsection{Downtime Log}
-\label{sec:mcs-downtime-log}
-Each offscreen session, the player completes a simple \textbf{Downtime Log}:
-
-\subsubsection{Structure}
+\subsection{Returning to Play}
+When you bring the character back:
 \begin{itemize}
-    \item \textbf{Resource Action}: How they maintain connections or standing.
-    \item \textbf{Project Action}: One goal or project advanced.
-    \item \textbf{Event Response}: How they react to unseen events or threats.
-\end{itemize}
-
-\subsubsection{Tier-Based Project Limits}
-\begin{itemize}
-    \item Tier I--II: 1 Project.
-    \item Tier III--IV: 2 Projects.
-    \item Tier V: 3 Projects.
-\end{itemize}
-
-\subsubsection{GM Response}
-The GM records:
-\begin{itemize}
-    \item The fictional outcome of each declaration.
-    \item One meaningful \textbf{Consequence} (complication, shift, or new opportunity).
-\end{itemize}
-
-\subsection{Return Mechanics}
-\label{sec:mcs-return}
-
-\subsubsection{Re-Entry Process}
-When returning to play:
-\begin{enumerate}
-    \item The returning character gains \textbf{2 Boons} for narrative re‑entry.
+    \item You gain \textbf{2 Boons} for narrative re‑entry.
     \item Roll \textbf{Wits + Spirit} (DV 3) to reestablish presence.
-    \item Address unresolved plot threads created during absence.
-\end{enumerate}
-
-\subsubsection{Re-Entry Consequences}
-The GM assigns one:
-\begin{itemize}
-    \item \textbf{Ripple Effect} --- your absence reshaped the situation.
-    \item \textbf{Opportunity Missed} --- a door closed without you.
-    \item \textbf{Allies Gained} --- your actions forged new connections.
-    \item \textbf{Rivals Made} --- someone now works against you.
-    \item \textbf{Personal Growth} --- you return wiser or transformed.
-    \item \textbf{Lost Momentum} --- your projects slipped.
+    \item The GM describes one consequence of your absence (e.g., an opportunity missed, a rival gained, a personal change).
 \end{itemize}
 
-\subsection{Advanced Systems}
-\label{sec:mcs-advanced}
+For full mechanical details (Crisis Clocks, Buddy System, etc.), see the GM Guide.
 
-\subsubsection{Buddy System}
-If multiple players are absent:
+\section{Practical Examples}
+\label{sec:asset-follower-examples}
+
+\subsection*{Asset Example: The Safehouse}
+\label{sec:example-safehouse}
 \begin{itemize}
-    \item Nominate a \textbf{Buddy} to help track Downtime Logs.
-    \item The Buddy gains \textbf{+1 additional Boon} for the support role.
+\item \textbf{Type}: Minor Asset (4 XP)
+\item \textbf{Free Use}: Secure lodging, basic supplies between adventures.
+\item \textbf{Boon Activation}: Reveal a hidden escape route during pursuit.
+\item \textbf{Upkeep}: Efficient: 2 XP; Intensive: 1 XP + downtime action.
+\item \textbf{Risks}: Discovery by enemies, maintenance costs.
 \end{itemize}
 
-\subsubsection{Crisis Management}
-Offscreen characters track a \textbf{Crisis Clock [6]}:
+\subsection*{Follower Example: The Scout}
+\label{sec:example-scout}
 \begin{itemize}
-    \item Fills when negative consequences strike.
-    \item At 6: The character faces a major offscreen crisis requiring GM action.
-    \item May be reduced through Downtime Log responses or assistance from active PCs.
+\item \textbf{Capability}: 3 (9 XP)
+\item \textbf{Assistance}: +3 dice on tracking and survival rolls.
+\item \textbf{Independent Action}: Scout ahead to improve party position.
+\item \textbf{Upkeep}: Efficient: 3 XP; Intensive: 1 XP + action.
+\item \textbf{Risks}: Injury in dangerous scouting; disloyalty if mistreated.
 \end{itemize}
 
-\subsection{GM Guidelines}
-\label{sec:mcs-gm}
+\subsection*{Combination Example: The Merchant}
+\label{sec:example-merchant}
 \begin{itemize}
-    \item Spend 5--7 minutes per absent character completing their Downtime Log.
-    \item Focus on narrative change, not bookkeeping pressure.
-    \item Absence should generate hooks and stakes, not penalties.
-    \item Use Echo Characters to keep the world \emph{alive and reactive}.
+\item \textbf{Assets}: Trading post (8 XP), caravan (4 XP) --- \emph{12 XP total}
+\item \textbf{Followers}: Cap 2 guards (4 XP each = 8 XP), Cap 3 factor (9 XP) --- \emph{17 XP total}
+\item \textbf{Total Investment}: \textbf{29 XP} in assets and followers
+\item \textbf{Upkeep (Efficient)}: Assets 4 XP + Followers 6 XP = \textbf{10 XP} per downtime
+\item \textbf{Benefits}: Trade income, transport, protection, business contacts
+\item \textbf{Risks}: Competition, bandit attacks, employee issues, regulatory attention
 \end{itemize}
 
-\subsection{Player Guidelines}
-\label{sec:mcs-player}
+\emph{Remember:} Assets and followers can greatly expand your capabilities, but they require careful management and carry significant risks. Invest wisely based on your character concept and the needs of your group.
+
+\section{Narrative‑Heavy Options}
+\label{sec:narrative-assets}
+
+For groups that prefer strong narrative focus, consider these optional approaches.
+
+\paragraph{Story‑Driven Upkeep}
+Instead of tracking XP costs for upkeep, the GM can introduce narrative complications that require attention. A neglected asset might attract unwanted attention, while a neglected follower might request a favor or special treatment.
+
+\paragraph{Collaborative Management}
+Describe how you maintain your assets and followers through roleplay rather than mechanical upkeep costs. A well‑described scene of tending a workshop or bonding with followers can fulfill maintenance requirements.
+
+\paragraph{Flexible Condition Tracking}
+Focus on the narrative implications of asset and follower conditions rather than strict penalties. A Strained asset might still function but with interesting complications, while a Collapsed asset might require creative solutions rather than just XP investment.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title={Assets and Followers Quick Reference},fonttitle=\bfseries]
+\textbf{Assets:}
 \begin{itemize}
-    \item Declare offscreen goals with clear fictional intent.
-    \item Treat absence as character growth, not disappearance.
-    \item Collaborate with the GM to weave consequences into play.
-    \item Expect absence to create tension, opportunity, and drama.
+\item Minor: 4 XP \;|\; Standard: 8 XP \;|\; Major: 12 XP
+\item Free off‑screen use: once per session
+\item Boon activation: spend 1 Boon for scene impact
+\item Status: Flourishing $\rightarrow$ Stable $\rightarrow$ Strained $\rightarrow$ Collapsed
 \end{itemize}
+
+\textbf{Followers:}
+\begin{itemize}
+\item Cost: $\text{Cap}^2$ XP
+\item Assistance: $+\min(\text{Cap},\text{skill})$ dice (max +3 from all sources)
+\item Independent action: once per scene (party‑wide)
+\item States: Loyalty (Faithful/Strained/Broken); Fitness (Ready/Hurt/Down)
+\end{itemize}
+
+\textbf{Upkeep Options:}
+\begin{itemize}
+\item Efficient: $\max(1,\lceil\text{Cost}/3\rceil)$ XP (about one‑third)
+\item Intensive: 1 XP + dedicated downtime action
+\end{itemize}
+\end{tcolorbox}
