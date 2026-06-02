@@ -1,0 +1,364 @@
+% Fate's Edge SRD --- Tags & Effects Library (Section 11)
+% Revised with [MEND], [REPAIR], loyalty-altering mechanics, and improved table formatting.
+
+\section{Tags \& Effects Library}
+
+Tags are keywords that define the mechanical and narrative behavior of spells, rites, talents, and assets. They do nothing on their own; they only function when granted by a rule (Spell, Rite, Talent, Ability). Unless noted otherwise, the Duration of a tag effect is \textbf{Scene}, and the DV for contests or resistances is set by the fiction (typical range 2–5).
+
+\subsection{The Eight Elements}
+
+Every spell or magical effect is built from one or more of the eight fundamental elements. The first four are physical; the second four are metaphysical.
+
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{5.5cm}@{}}
+\toprule
+\textbf{Element} & \textbf{Domain} & \textbf{Typical Backlash} \\
+\midrule
+Air & Movement, sound, wind, speed & Scatter, vertigo, deafening gusts \\
+Fire & Energy, destruction, light, passion & Burns, smoke, uncontrolled blaze \\
+Earth & Solidity, stone, metal, endurance & Rubble, heavy footing, tremors \\
+Water & Fluidity, healing, cold, emotion & Flood, slippery ground, dampness \\
+Fortune & Chance, luck, unpredictability & Random mishap, fragile success \\
+Life & Vitality, growth, healing, nature & Overgrowth, fever, parasitic plants \\
+Fate & Destiny, inevitability, causality & Options close, fixed outcome \\
+Death/Dreams (Obishaal) & Endings, sleep, thresholds, memory & Whispers, numbness, threshold shifts \\
+\bottomrule
+\end{tabular}
+
+\subsection{Effect Tags}
+
+Effect tags describe what the magic does. They are combined with element tags to form spells.
+
+\textbf{Common Effect Tags:}
+\begin{multicols}{2}
+\begin{itemize}
+  \item [AREA]
+  \item [BANISH]
+  \item [BARRIER]
+  \item [BIND]
+  \item [CLEANSE]
+  \item [COMMAND]
+  \item [CONJURE]
+  \item [COUNTER]
+  \item [CURSE]
+  \item [DEFEND]
+  \item [DISPEL]
+  \item [FORTIFY]
+  \item [HEAL]
+  \item [MARK]
+  \item [MEND]
+  \item [OATH]
+  \item [PASSAGE]
+  \item [REPAIR]
+  \item [REVEAL]
+  \item [SANCTIFY]
+  \item [SEAL] / [UNSEAL]
+  \item [STRIKE]
+  \item [TRANSPORT]
+  \item [VEIL]
+  \item [WARD]
+\end{itemize}
+\end{multicols}
+
+\subsection{Building a Spell}
+
+A spell is a combination of one or more element tags and one or more effect tags. The base Difficulty Value is:
+
+\[
+\text{DV} = 1 + \text{total number of tags (element + effect)}
+\]
+
+\subsubsection{Dangerous Tags}
+Some effects are so powerful that each dangerous tag adds +2 DV instead of +1. Dangerous tags include: \texttt{[GATE]}, \texttt{[FOLD]}, \texttt{[LEAP]}, \texttt{[CREATE]}, \texttt{[SUMMON]}, \texttt{[TRANSMUTE]}, \texttt{[ANIMATE]}, \texttt{[TRANSFORM]}, \texttt{[DOMINATE]}, \texttt{[REWIND]}.
+
+\subsubsection{Stacking Identical Effect Tags}
+You may include the same effect tag multiple times to increase its potency. Each additional copy adds its normal DV cost. Example:
+\begin{itemize}
+  \item \texttt{[AIR][DEFEND]} – 2 tags $\rightarrow$ DV 3. Grants +1 die to one defense roll.
+  \item \texttt{[AIR][DEFEND][DEFEND]} – 3 tags $\rightarrow$ DV 4. Grants +2 dice to one defense roll.
+\end{itemize}
+Stacking is limited by the caster's Tier (max 3 copies per effect at Tier III, 4 at Tier V).
+
+\subsection{Example Spells}
+
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{6cm}@{}}
+\toprule
+\textbf{Name} & \textbf{Tags} & \textbf{Effect} \\
+\midrule
+Light (Cantrip) & [FIRE][ILLUMINATE] & DV 3, one roll. Creates small, sustained light. \\
+Shield of Air & [AIR][DEFEND] & DV 3, one action. +1 die to next defense roll. \\
+Double Shield & [AIR][DEFEND][DEFEND] & DV 4, one action. +2 dice to next defense roll. \\
+Flame Cloak & [FIRE][AREA][DEFEND] & DV 4, two actions. Enemies –1 die to approach; caster +1 die to defend against fire. \\
+Healing Touch & [LIFE][HEAL] & DV 3, one action. Removes 1 Fatigue from touched ally. \\
+Mend Wound & [LIFE][HEAL][HEAL] & DV 4, one action (or scene). Removes 2 Fatigue, or downgrades Harm 1$\rightarrow$0. \\
+Teleport (Self) & [AIR][FOLD] & [FOLD] dangerous (+2). DV = 1+1+2 = 4. Teleport self within Near range. \\
+\bottomrule
+\end{tabular}
+
+\subsection{Repair \& Restoration}
+
+Two tags handle mending objects: \texttt{[MEND]} for quick, temporary fixes in the field, and \texttt{[REPAIR]} for thorough, lasting restoration.
+
+\subsubsection{[MEND] (Quick Fix)}
+Restore a damaged object to functioning order for the duration of the scene.
+
+\begin{itemize}
+  \item \textbf{DV:} by fiction (severity of damage, size, material). Typical DV 2–4.
+  \item \textbf{Hit:} Remove one level of \textit{Neglected} or \textit{Compromised} from a single item for the rest of the scene. The item works normally.
+  \item \textbf{Partial:} The item functions for the scene but becomes \textit{Neglected} (or worsens one step) when the scene ends.
+  \item \textbf{Miss:} No repair; the item may become \textit{Compromised} or break (GM discretion).
+  \item \textbf{Duration:} Scene. After the scene, the damage returns (or worsens) unless followed by a proper [REPAIR] during downtime.
+\end{itemize}
+
+\textit{Example:} A snapped bowstring is magically re-knotted for the remainder of the fight; the next day it frays again.
+
+\subsubsection{[REPAIR] (Permanent Fix)}
+Fully restore a damaged object, tool, or piece of equipment.
+
+\begin{itemize}
+  \item \textbf{DV:} by fiction (severity, material, magical nature). Typical DV 3–5. Magical items add +1 DV.
+  \item \textbf{Time:} One downtime action (a few hours of focused work). Can be used during a scene only if the caster has Significant Time and appropriate tools.
+  \item \textbf{Hit:} Remove all levels of \textit{Neglected} and \textit{Compromised} from a single item. The item is restored to full function.
+  \item \textbf{Partial:} Remove one level of damage (e.g., \textit{Compromised} $\rightarrow$ \textit{Neglected}), or the item becomes \textit{Neglected} but usable.
+  \item \textbf{Miss:} No repair; the item may become \textit{Compromised} or gain a new flaw (GM discretion).
+\end{itemize}
+
+\textit{Example:} A shattered shield is reforged overnight; a rusted lock is cleaned and oiled to working order.
+
+\subsection{Influence Over Mortals}
+
+These tags affect the minds and loyalties of living beings. Using them to alter free will carries narrative and ethical consequences.
+
+\subsubsection{[BOND]}
+Strengthen or create a positive emotional tie between a target and a person, place, or ideal.
+
+\begin{itemize}
+  \item \textbf{DV:} by fiction (target's current loyalty, resistance to magic). Typical DV 3–5.
+  \item \textbf{Hit:} Increase a follower's \textit{Loyalty} state by one step (e.g., \textit{Strained} $\rightarrow$ \textit{Faithful}). The target genuinely feels the bond.
+  \item \textbf{Partial:} The bond forms but is fragile; any subsequent external pressure may break it (GM may downgrade loyalty on a future setback).
+  \item \textbf{Miss:} No effect; the target may become suspicious or resistant to further magical influence.
+  \item \textbf{Ethical note:} Forcing loyalty removes agency. The GM may rule that such magic is taboo, attracts Patron attention, or creates hidden complications (e.g., the follower secretly resents the caster).
+\end{itemize}
+
+\textit{Example:} A Runekeeper of Inaea weaves a [BOND] rite to mend a hireling's shaken trust after a failed mission.
+
+\subsubsection{[SUBVERT]}
+Coerce obedience or twist existing loyalties.
+
+\begin{itemize}
+  \item \textbf{Dangerous tag:} adds +2 DV.
+  \item \textbf{DV:} by fiction (target's will, opposing magic). Typical DV 5–7.
+  \item \textbf{Hit:} The target follows one simple command or shifts loyalty one step in the caster's favor (e.g., \textit{Faithful} $\rightarrow$ \textit{Strained} toward their original master). The effect lasts one scene or until the command is fulfilled.
+  \item \textbf{Partial:} The target hesitates, reveals information, or acts with clear reluctance; the compulsion is visible to observers.
+  \item \textbf{Miss:} The target resists; the caster marks 1 Fatigue and the target's original loyalty increases by one step (they become more devoted to their original cause).
+  \item \textbf{Backlash:} On any roll showing two or more 1s, the GM may impose a \textit{Patron's Disfavor} or a \textit{Scandal} clock (the act becomes known).
+\end{itemize}
+
+\textit{Example:} A desperate Invoker of Maelstraeus uses [SUBVERT] to force a gate guard to look away. The guard later testifies under oath, and a bounty appears.
+
+\subsection{Control \& Countermagic}
+
+\subsubsection{[DISPEL]}
+End an ongoing magical effect or construct.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (usually equal to the effect's Tier or casting DV).
+  \item \textbf{Hit:} Effect ends or is suppressed per source text.
+  \item \textbf{Partial:} Effect suppressed briefly (one exchange) or reduced in scope.
+  \item \textbf{Miss:} No effect; GM may gain SB.
+\end{itemize}
+
+\subsubsection{[COUNTER]}
+Interrupt a spell, rite, or ritual in progress.
+\begin{itemize}
+  \item \textbf{Timing:} During the casting window (declared action or ritual phase).
+  \item \textbf{DV:} by fiction (complexity of the interrupted effect).
+  \item \textbf{Hit:} Cancel the action; resources used are lost.
+  \item \textbf{Partial:} Worsen the caster's Position or impose Fatigue.
+  \item \textbf{Miss:} No interruption; GM may spend SB to escalate.
+\end{itemize}
+
+\subsubsection{[BARRIER]}
+Create cover, obstruction, or a physical wall.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (size, material, duration).
+  \item \textbf{Hit:} Place a barrier with Integrity Clock [2/4/6]; blocks movement/attacks until cracked.
+  \item \textbf{Partial:} Barrier is fragile or has a gap.
+  \item \textbf{Countered by:} [DISPEL], brute force (Athletics), or clever route.
+\end{itemize}
+
+\subsubsection{[SEAL] / [UNSEAL]}
+Magically lock or unlock a container, door, or portal (not spirits).
+\begin{itemize}
+  \item \textbf{DV:} by fiction (quality of lock, magical binding).
+  \item \textbf{Hit:} Locked/unlocked as intended; specify any bypass conditions.
+  \item \textbf{Partial:} Seal is temporary or leaks (can be forced open with +1 DV).
+\end{itemize}
+
+\subsection{Concealment \& Revelation}
+
+\subsubsection{[VEIL]}
+Obscure a person, object, or zone.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (scale, conditions).
+  \item \textbf{Hit:} Impose –1 die to Notice or perception rolls against the veiled subject; specify limits (angle, distance, scent).
+  \item \textbf{Partial:} Works only at a limited range or in dim light.
+  \item \textbf{Countered by:} [REVEAL], strong light, physical proof.
+\end{itemize}
+
+\subsubsection{[REVEAL]}
+Expose illusions, disguises, or hidden clauses.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (complexity of the concealment).
+  \item \textbf{Hit:} Surface the truth; describe how the revelation manifests (brief glow, visible flaw, etc.).
+  \item \textbf{Partial:} A tell or clue, not the full picture.
+\end{itemize}
+
+\subsubsection{[MARK]}
+Tag a target for tracking or leverage.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (resistance, visibility).
+  \item \textbf{Hit:} Place a visible or invisible mark; once per scene, you or an ally gain +1 die when acting directly against the Marked target.
+  \item \textbf{Partial:} Mark is noisy or short-lived.
+  \item \textbf{Countered by:} [CLEANSE], [DISPEL], or listed materials (salt, iron).
+\end{itemize}
+
+\subsection{Boons \& Burdens}
+
+\subsubsection{[CURSE]}
+Inflict a sticky hindrance with a clear release condition.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (severity, target's resilience).
+  \item \textbf{Hit:} Apply a named Condition (e.g., Shaken, Weakened) that persists until the release condition is met.
+  \item \textbf{Partial:} Condition is milder or intermittent.
+  \item \textbf{Countered by:} [CLEANSE] or the listed key (apology, theft return, pilgrimage).
+\end{itemize}
+
+\subsubsection{[CLEANSE]}
+Remove or suppress a Condition (poison, disease, curse, fear).
+\begin{itemize}
+  \item \textbf{DV:} by fiction (potency of the affliction).
+  \item \textbf{Hit:} Remove one named Condition.
+  \item \textbf{Partial:} Suppress or reduce severity for the scene.
+\end{itemize}
+
+\subsubsection{[FORTIFY]}
+Harden a person, place, or object against a specific vector (fire, blades, fear, persuasion).
+\begin{itemize}
+  \item \textbf{DV:} by fiction (scale, strength).
+  \item \textbf{Hit:} Raise Position by one step or reduce consequence severity for attacks of that vector this scene.
+  \item \textbf{Partial:} Limited scope (one ally, one doorway).
+\end{itemize}
+
+\subsection{Influence \& Oaths}
+
+\subsubsection{[COMMAND]}
+Issue a clear order to a sapient target.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (authority, leverage, fear, ritual standing).
+  \item \textbf{Hit:} Target complies now or suffers an immediate cost stated by the GM.
+  \item \textbf{Partial:} Target hesitates, bargains, or partially complies.
+  \item \textbf{Miss:} Refusal or blowback (GM may spend SB).
+\end{itemize}
+
+\subsubsection{[OATH]}
+Bind parties to terms; breaking has teeth.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (witnesses, sanctity, stakes).
+  \item \textbf{Hit:} Enforceable pact with stated boon for keeping and consequence for breaking.
+  \item \textbf{Partial:} A loophole exists in the oath.
+  \item \textbf{Countered by:} Release clause, [CLEANSE] if text allows.
+\end{itemize}
+
+\subsubsection{[SANCTIFY]}
+Consecrate a zone to a code or Patron.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (size, opposition).
+  \item \textbf{Hit:} Specify allowed/prohibited acts; violations start at Controlled Position or impose a soft consequence.
+  \item \textbf{Partial:} Patchy coverage (e.g., only the altar, not the whole room).
+  \item \textbf{Countered by:} Opposing rite, profanation (bloodshed, lies), time.
+\end{itemize}
+
+\subsection{Movement \& Making}
+
+\subsubsection{[PASSAGE]}
+Declare a route as permitted or easy.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (length, danger).
+  \item \textbf{Hit:} Allies on that path gain improved flow (+1 Position or ignore one level of difficult terrain).
+  \item \textbf{Partial:} Only one ally or one segment benefits.
+\end{itemize}
+
+\subsubsection{[TRANSPORT]}
+Move a target across an obstacle (blink, lift, pull).
+\begin{itemize}
+  \item \textbf{DV:} by fiction (mass, range, warding).
+  \item \textbf{Hit:} Relocate within listed range; state any tells or costs (SB, Fatigue).
+  \item \textbf{Partial:} Arrive off-balance, drop gear, or suffer worse Position.
+\end{itemize}
+
+\subsubsection{[CONJURE]}
+Create a useful object, cover, or hazard.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (size, complexity).
+  \item \textbf{Hit:} Conjure an item or zone with Integrity Clock [2/4/6] (if destructible) or a ticking hazard (burn, freeze, haze).
+  \item \textbf{Partial:} Fragile or short-lived (lasts one exchange).
+  \item \textbf{Countered by:} [DISPEL], force, time.
+\end{itemize}
+
+\subsection{Outsider-Specific Tags}
+
+\subsubsection{[WARD]}
+Challenge Outsiders crossing a warded edge or zone.
+\begin{itemize}
+  \item \textbf{DV = target Cap.} (Cap is the Outsider's tier: 1 for Lesser, 3 for Greater.)
+  \item \textbf{Hit:} Crosses; add +DV segments to its Leash.
+  \item \textbf{Partial:} Crosses; add +1 segment.
+  \item \textbf{Miss:} Cannot cross this beat.
+\end{itemize}
+
+\subsubsection{[BANISH]}
+Drive a visible Outsider toward departure.
+\begin{itemize}
+  \item \textbf{DV = target Cap.}
+  \item \textbf{Hit:} Add +DV to its Leash.
+  \item \textbf{Partial:} Add +1.
+  \item \textbf{Miss:} No effect.
+\end{itemize}
+
+\subsubsection{[UNWARD]}
+Unmake or suppress a [WARD] created by a Talent, Ability, or Spell.
+\begin{itemize}
+  \item \textbf{DV:} by fiction (strength of the ward).
+  \item \textbf{Hit:} Dismiss or suppress per source text.
+  \item \textbf{Partial:} Weaken or suppress briefly (one exchange).
+  \item \textbf{Miss:} No effect.
+\end{itemize}
+
+\subsection{Elemental Backlash Coloring (Quick Reference)}
+
+When a magical roll generates SB (1s) or when a Partial/Miss occurs, the GM may apply a thematic backlash based on the dominant element(s).
+
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{9.5cm}@{}}
+\toprule
+\textbf{Element} & \textbf{Minor / Major Backlash Examples} \\
+\midrule
+Earth & Rubble, pin, heavy footing; vs Air: sound carries, exposure \\
+Fire & Burns, flares; vs Water: slick, sputter, dim \\
+Air & Scatter, drop, vertigo; vs Earth: stuck, dust choke \\
+Water & Leak, flood, cold drag; vs Fire: smoke, shorted gear \\
+Fate & Options close, ``only one way''; vs Fortune: mischance hits ally \\
+Fortune & Side-effect elsewhere, fragile success; vs Fate: harsher fixed outcome \\
+Life & Overgrowth, fever; vs Death/Dreams: numbness, sleep-tug \\
+Death/Dreams & Fade, threshold opens/closes; vs Life: pain returns, rot \\
+\bottomrule
+\end{tabular}
+
+\subsection{Stacking \& Duration Rules (Global)}
+
+\begin{itemize}
+  \item \textbf{No Same-Source Stacking:} Multiple scene-long effects from the same source do not stack; take the best instance.
+  \item \textbf{Identical Tag Collision:} If two abilities would grant the same Tag in the same window, use the stronger; the weaker is suppressed while it lasts.
+  \item \textbf{Default Duration:} Scene, unless a source states otherwise (e.g., ``until the end of your next turn'').
+  \item \textbf{DV by Fiction:} Potency, preparation, place, materials, and opposition set DV (typical 2–4; 5+ for set-pieces).
+\end{itemize}
+
+\endinput
