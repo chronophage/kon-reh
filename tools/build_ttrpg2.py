@@ -7,6 +7,7 @@ Supports parallel builds with clean, spaced output.
 import sys
 import argparse
 import subprocess as sp
+import shutil
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -33,6 +34,18 @@ def get_git_root():
         sys.exit("Not inside a git repository.")
     return Path(out.strip())
 
+def find_pdf(start_dir, base_name):
+    """Search for a PDF file with given base name in common locations."""
+    candidates = [
+        start_dir / f"{base_name}.pdf",
+        start_dir / "build" / f"{base_name}.pdf",
+        start_dir.parent / "build" / f"{base_name}.pdf",
+    ]
+    for cand in candidates:
+        if cand.exists():
+            return cand
+    return None
+
 def compile_one(doc, tools_py, git_root, debug=False):
     name = doc["name"]
     section = doc.get("section", "other")
@@ -41,12 +54,38 @@ def compile_one(doc, tools_py, git_root, debug=False):
     out_name = doc["output"]
     full_path = git_root / rel_path
 
+    # Determine output directory for this section
+    section_dir_map = {
+        "core": "core",
+        "adventures": "adventures",
+        "expansions": "expansions",
+        "travel": "travel",
+        "other": "other",
+    }
+    subdir = section_dir_map.get(section, "other")
+    build_root = git_root / "ttrpg" / "build"
+    output_dir = build_root / subdir
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_pdf = output_dir / f"{out_name}.pdf"
+
+    # Build the PDF (original compile command, no changes)
     cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
     if debug:
         cmd.append("-d")
-
     ret, _, _ = run_cmd(cmd, cwd=full_path, capture=True, silent=True)
-    return (name, ret == 0, section)
+    if ret != 0:
+        return (name, False, section)
+
+    # Try to locate the generated PDF
+    source_pdf = find_pdf(full_path, out_name)
+    if source_pdf and source_pdf.exists():
+        # Copy (not move) to the category subdir – preserves original build output
+        shutil.copy2(source_pdf, output_pdf)
+        return (name, True, section)
+    else:
+        # PDF not found – warn but still consider build successful (compile succeeded)
+        print(f"⚠️  {name}: compile succeeded but PDF not found in {full_path} or ./build/")
+        return (name, True, section)
 
 # ------------------------------------------------------------
 #  Main
@@ -57,7 +96,7 @@ def main():
     parser.add_argument("-j", "--jobs", type=int, default=1,
                         help="Number of parallel builds (default: 1, -j 0 for auto)")
     parser.add_argument("-b", "--build", type=str, default="ace",
-                        help="Build sections: a (adventures), c (core), e (expansions). e.g., -b ce")
+                        help="Build sections: a (adventures), c (core), e (expansions), t (travel). e.g., -b cet")
     args = parser.parse_args()
 
     debug = args.debug
@@ -68,7 +107,7 @@ def main():
 
     # Section filter
     build_filter = set(args.build.lower())
-    allowed = {'a', 'c', 'e','t'}
+    allowed = {'a', 'c', 'e', 't'}
     if not build_filter.issubset(allowed):
         sys.exit(f"Invalid -b option. Use letters from: {', '.join(sorted(allowed))}")
     section_map = {'a': 'adventures', 'c': 'core', 'e': 'expansions', 't': 'travel'}
@@ -96,21 +135,17 @@ def main():
     failures = []
     success_count = 0
 
-    # Collect futures and their document names
     with ThreadPoolExecutor(max_workers=jobs) as executor:
         future_to_doc = {}
         for doc in docs:
             name = doc["name"]
-            # Print "Building X" immediately (no extra blank line before it)
             print(f"Building {name}")
             sys.stdout.flush()
             future = executor.submit(compile_one, doc, tools_py, git_root, debug)
             future_to_doc[future] = name
 
-        # Process completions as they come
         for future in as_completed(future_to_doc):
             name, success, _ = future.result()
-            # Print blank line, then status line
             print()
             if success:
                 print(f"✅ {name} built successfully")
@@ -119,15 +154,12 @@ def main():
                 print(f"❌ {name} did not build")
                 failures.append(name)
 
-    # Summary
     print("\n" + "=" * 60)
     print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
     if failures:
         print(f"   Failed: {', '.join(failures)}")
 
-    # --------------------------------------------------------
-    #  Clean, extract text, commit, push (only if some succeeded)
-    # --------------------------------------------------------
+    # Clean, extract text, commit, push (only if some succeeded)
     if success_count > 0:
         print("\n🧹 Cleaning up (git clean -x -f)")
         run_cmd(["git", "clean", "-x", "-f"], cwd=git_root, check=False)

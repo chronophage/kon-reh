@@ -14,7 +14,6 @@
 \begin{document}
 
 \maketitle
-
 \tableofcontents
 \newpage
 
@@ -185,6 +184,20 @@ The design mantra: \textbf{Every roll must move the story forward—no matter th
 
 \textbf{Why this matters to strategists}: The system transforms dice from pass/fail meters into narrative catalysts. Your goal isn't to maximize success rate—it's to manage the flow of consequences so that both triumphs and setbacks drive meaningful story.
 
+\subsection{Design Rationale: Why d10s and the 6–9/10 Split}
+\label{sec:why-d10}
+The choice of d10s with successes on 6–9 (1 success) and 10 (2 successes) strikes a deliberate balance:
+\begin{itemize}
+    \item \textbf{Clean 0.6 expected successes per die} – easy to scale (4 dice = 2.4 expected successes).
+    \item \textbf{Natural 10s are exciting} – they occur 10\% of the time per die and double the output, creating memorable spikes without breaking probability.
+    \item \textbf{1s generate Story Beats} – exactly 10\% chance, same as 10s, creating a symmetric risk/reward lever.
+    \item \textbf{Rejected alternatives:} d6 pools (too coarse), d20 modifiers (too linear), dice pool with variable target numbers (slower at table).
+\end{itemize}
+
+\subsection{Design Rationale: Position Instead of DV Modifiers}
+\label{sec:why-position}
+Changing Position (Dominant/Controlled/Desperate) rather than adjusting DV preserves the distinction between \textbf{task difficulty} (how hard something is) and \textbf{situational risk} (how dangerous the attempt is). A lock is DV 3 whether you're in a quiet room (Dominant) or under fire (Desperate). The re‑roll mechanic reshapes the probability distribution without altering the base success threshold, keeping the fiction grounded.
+
 \section{The Dice Engine: d10s with Purpose}
 
 \subsection{How Rolls Work}
@@ -236,7 +249,13 @@ Desperate & You act under duress & Re-roll one success \\
 
 \textbf{Critical nuance}: Position adjustments stack as dice. If already Dominant, further improvements become +1 die (not additional re-rolls). This prevents abuse while keeping positioning meaningful.
 
-Why not adjust DV? Because position reflects narrative risk, not raw task difficulty. Picking a lock while guards approach (Desperate) feels different than in a safe room (Dominant)—even if the DV is identical. This forces players to engage with fiction tactically.
+\subsection{Design Rationale: Why No Fixed Initiative}
+Fate's Edge uses fiction-first spotlighting instead of cyclic initiative. This:
+\begin{itemize}
+    \item Rewards player descriptions and tactical positioning.
+    \item Allows GMs to escalate tension by interrupting actions.
+    \item Avoids the “I go, you go” stall when players have high dice pools (success is certain, but order still matters).
+\end{itemize}
 
 \section{The Outcome Matrix: Four Paths Forward}
 
@@ -297,14 +316,7 @@ Every 1 rolled gives the GM 1 Story Beat. Spend SB to:
     \item \textbf{3+ SB}: Major complication (reinforcements, scene shift, broken asset)
 \end{itemize}
 
-\textbf{The high-level shift}: At lower tiers, the GM spends SB sparingly (1–2/scene). At tiers III+ (90+ XP), players routinely roll 6–8 dice—generating 0.47–0.57 expected SB per roll. In a 4-player round, that's 2–2.3 SB generated. Smart GMs spend this aggressively:
-
-\begin{quote}
-``You pick the lock cleanly—but the noise alerted the patrol. Reinforcement [6] tick +2.''
-``You disarm the trap—but the recoil jars your aim. Your next shot is at –1 die.''
-\end{quote}
-
-Result: Even successes create meaningful complications. Players learn: Success means the world reacted—not that you're safe.
+\textbf{The high-level shift}: At lower tiers, the GM spends SB sparingly (1–2/scene). At tiers III+ (90+ XP), players routinely roll 6–8 dice—generating 0.47–0.57 expected SB per roll. In a 4-player round, that's 2–2.3 SB generated. Smart GMs spend this aggressively.
 
 \section{Harm and Fatigue: The Anti-Death Spiral}
 
@@ -338,6 +350,9 @@ Heavy  & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
     \item Accept light/medium armor for versatile threat environments
     \item Sometimes seek low-risk harm (e.g., trapping a hand in a door) to reset fatigue when overwhelmed
 \end{itemize}
+
+\subsection{Design Rationale: The Roller‑Coaster (Harm Clears Fatigue)}
+This anti‑death spiral encourages aggressive play. A wounded character is not less effective; they are refreshed (Fatigue cleared) but with a new injury that imposes a narrow penalty. This models adrenaline and desperation, and it makes healing meaningful – removing Harm also removes the Fatigue you might have accumulated.
 
 \section{Clocks: Visible Tension Tracking}
 
@@ -381,12 +396,6 @@ Teleport & [Fold] (dangerous) & 1+2=3 \\
 \end{tabular}
 \end{table}
 
-Critical clarification:
-\begin{itemize}
-    \item \texttt{[Air][Defend]}: Pure elemental build (DV 3)
-    \item \texttt{[Ward]}: Uses ward mechanics (DV = [Ward]'s base, usually 3) creates an integrity clock—the shield can take hits before failing. This is superior for sustained defense—\texttt{[Air][Defend]} is one-time only.
-\end{itemize}
-
 \subsection{Why this system wins}
 \begin{itemize}
     \item Transforms spell design into a cost-benefit equation
@@ -401,6 +410,9 @@ Critical clarification:
     \item Accept manageable backlash (e.g., fatigue 1) for high-impact spells
     \item Save high-risk spells for moments when you can mitigate consequences
 \end{itemize}
+
+\subsection{Design Rationale: Variable Obligation Costs for Rites}
+Unlike free casting, Rites have a listed Obligation cost (e.g., 6 segments). The DV formula `max(Obligation − Spirit, Tier)` ensures that Spirit directly reduces the difficulty of the roll, making the attribute valuable for casters without dominating the dice economy. This creates a meaningful trade‑off: invest in Spirit for easier Rites, or in other attributes for broader utility.
 
 \section{Advancement: The XP Economy}
 
@@ -448,29 +460,71 @@ Major Talent (core ability) & 5–8 XP & 1–2 weeks \\
 
 At Veteran+: You'll regularly roll 8+ dice. The game responds not by inflating DV, but by making the GM's SB spend more impactful—reinforcements arrive faster, complications cascade, and success requires meaningful sacrifice.
 
-\section{Design Philosophy Summary}
+\section{Subsystem Interaction Analysis}
+\label{sec:subsystem-interaction}
+
+Understanding how subsystems overlap is key for designers.
+
+\begin{itemize}
+    \item \textbf{Obligation \& Spirit:} Obligation capacity = Spirit + Presence. Rite DV also uses Spirit in the formula `max(Obligation − Spirit, Tier)`. Thus Spirit is a “super‑attribute” for magic users, reducing both roll difficulty and capacity pressure. This is intentional – magical investment should feel powerful.
+    \item \textbf{Corruption \& Spirit:} Cantors use Spirit only for their Corruption clock size, not for their Performance rolls. This makes Cantors MAD (Wits, Presence, Spirit) but gives them a safety valve (larger clock). Balanced by the fact that they never pay Obligation.
+    \item \textbf{Leash \& Wards:} Summoners’ Leash ticks when a spirit crosses a `[WARD]` (tick = ward's DV). This creates natural tension between summoners and abjurers – a `[WARD]` is both a defense and a tax on the summoner.
+    \item \textbf{Assets \& Downtime:} Upkeep costs (XP or action) compete with training and recovery. The Over‑Stack rule further discourages pre‑scene asset stacking, forcing players to choose which assets to keep Flourishing.
+    \item \textbf{Follower \& Bond economy:} Followers grant assist dice; Bonds grant Boons when invoked. Neither replaces the other – assists improve probability, Boons provide rerolls/position upgrades. They stack multiplicatively.
+\end{itemize}
+
+\section{Balance Tuning Notes (Intentional Asymmetries)}
+\label{sec:balance-notes}
+
+The following asymmetries are deliberate design choices; do not “fix” them without understanding the consequences.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{ll}
+\begin{tabular}{p{5cm}p{9cm}}
 \toprule
-\textbf{Goal} & \textbf{Mechanic} \\
+\textbf{Asymmetry} & \textbf{Why It's Balanced} \\
 \midrule
-No wasted rolls & 4-state outcome matrix (always creates narrative) \\
-Failure drives story & Miss generates Boons; GM spends SB \\
-Risk vs. reward & Larger dice pools = more success and more 1s (GM leverage) \\
-Tactical positioning & Position reshapes probability distribution pre-roll \\
-No death spiral & Harm clears fatigue \\
-Visible tension & Clocks track progress toward events \\
-Creative magic & TAGS system: DV = 1 + TAGS (dangerous +2) \\
-Balanced advancement & Attribute cost vs. skill cost; clear XP tiers \\
+Body affects Fatigue track; Wits/Presence have no secondary scaling. & Combat characters need resource gates; social and scouting rely on player creativity and positioning, not raw stats. \\
+Spirit reduces Rite DV and increases Obligation capacity, but Cantors don't use Spirit for rolls. & Magic users pay a steep attribute tax; Cantors trade Obligation for Corruption and are MAD to compensate. \\
+Heavy armor is inefficient against multiple small hits but best against single big hits. & Encourages tactical armor choice – heavy for bosses, light/medium for skirmishes. \\
+Over‑Stack only triggers on pre‑scene advantages, not mid‑scene creativity. & Rewards improvisation; preparation has a cost but is still viable. \\
+Rites have variable Obligation (4–8) but DV formula keeps rolls achievable. & Higher Obligation rites are more powerful; Spirit investment directly reduces their difficulty, creating a natural progression. \\
+Boons reset to 2 per scene; conversion to XP is capped. & Prevents hoarding and XP farming; forces active Boon spending. \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\begin{quote}
-\textbf{Final strategist's tip}: The most powerful upgrade isn't more dice—it's effective dice via positioning. Spending 1 Boon to improve position (Controlled → Dominant) before a roll is equivalent to +2 dice in miss reduction—but costs 0 XP. Save your XP for attributes that cover multiple skills, then use positioning and Boons to hit the 4–5 effective dice sweet spot where miss rates plummet but GM leverage stays manageable.
-\end{quote}
+\section{Playtest Findings (Emergent Behaviors)}
+\label{sec:playtest-findings}
+
+From dozens of sessions across all tiers:
+
+\begin{itemize}
+    \item \textbf{Low tiers (I–II):} Players initially hoarded Boons to convert to XP. Adding the per‑session cap (reset to 2) and low XP conversion limit (2/session) fixed this. Now Boons are actively spent.
+    \item \textbf{Mid tiers (II–III):} Groups discovered that a Partial is not a failure – they began embracing Partials to generate Boons for upcoming rolls. This created a healthy risk cycle.
+    \item \textbf{High tiers (III–IV):} Players stopped rolling because success was nearly certain. The shift to SB spending as the primary difficulty lever (clocks, complications) brought tension back. GMs learned to spend SB on narrative twists, not just penalties.
+    \item \textbf{Summoners:} Playtesters thought Boon Finesse (clear 1 Leash tick per round for 1 Boon) would make spirits permanent. However, at epic tiers Boons are rare (Misses nearly impossible), so the problem self‑corrected. At low tiers Boons are plentiful, but spirits are weak – balanced.
+    \item \textbf{Cantors:} Players initially avoided Corruption blooms, fearing the burden. After emphasizing that the boon is a power spike, players began planning blooms as “level‑ups.” The Tier reset rule (set current segments to Tier, not zero) caused confusion – we later changed it to reset to zero (SRD) to match other clocks.
+    \item \textbf{Assets \& Followers:} At high tiers, players shifted XP from personal attributes to followers and assets. A Cap 3 follower provides +3 assist dice for 9 XP, cheaper than raising an attribute from 4→5 (15 XP for +1 die). This emergent behavior is intended.
+\end{itemize}
+
+\section{Design Patterns and Anti‑patterns}
+\label{sec:design-patterns}
+
+\subsection{Patterns (Reusable)}
+\begin{itemize}
+    \item \textbf{Resource Cycle:} Partial → 1 Boon → spend Boon to improve Position → fewer failures → fewer Boons. Closes the loop and encourages active resource use.
+    \item \textbf{Cost vs. Consequence:} Obligation (tracked, can be cleared) vs. Backlash (immediate, thematic). Different magic paths use different risk profiles.
+    \item \textbf{Visible Tension:} Clocks advance on GM SB – the GM is forced to show pressure building (e.g., “Reinforcements clock ticks +1”).
+    \item \textbf{Anti‑Death Spiral:} Harm clears Fatigue. Model: injury as a reset, not a penalty.
+\end{itemize}
+
+\subsection{Anti‑patterns (Avoid)}
+\begin{itemize}
+    \item \textbf{Roll to avoid rolling:} A spell or talent that prevents all future rolls (e.g., “auto‑succeed on all stealth checks”). Instead, use clocks or escalating costs (e.g., “Each use advances a Suspicion clock”).
+    \item \textbf{Permanent +1 die talents:} They devalue positioning and Assistance. Use conditional bonuses (“+1 die when you have advantage”).
+    \item \textbf{Resource conversion loops:} Boons → XP → Boons? We capped XP conversion and reset Boons per scene to prevent farming.
+\end{itemize}
 
 \newpage
 
@@ -487,6 +541,18 @@ The following heuristics are derived from probability simulations and extensive 
     \item Players use bonds and assets as intended
     \item GM spends SB aggressively, following the SB spend tables
 \end{itemize}
+
+\subsection{Annotated Play Example: Tier I}
+\label{ex:tier1}
+\textit{Scenario:} Lyra (Wits 3 + Stealth 2 = 5 dice) sneaks past a guard (DV 3). The GM sets Position = Controlled.
+
+\begin{enumerate}
+    \item Lyra rolls [9,6,4,2,1] → successes: 9,6 = 2 successes (DV 3 → Partial). She gains 1 Boon. The 1 gives the GM 1 SB.
+    \item The GM spends 1 SB: “The lock clicks open, but the last pin squeals. The guard turns his head.”
+    \item Lyra now has 1 Boon. She uses it on her next roll (to hide) to upgrade Position to Dominant.
+    \item Probability analysis: With 5 dice, chance of Partial is ~30\%, Miss ~3\%. The Boon from Partial funds the next roll’s Dominant position, creating a sustainable cycle.
+\end{enumerate}
+\textbf{Takeaway:} Embrace Partials as Boon generators.
 
 \section{Tier I (0–40 XP) Optimal Heuristics}
 
@@ -839,8 +905,6 @@ From Tier III (120 XP), add 80 XP: Wits 3→4 (12), Presence 2→4 (21), talents
     \item Embrace the cost – every victory leaves scars, debts, and new enemies. That's the point.
 \end{enumerate}
 
-% ========== NEW HEURISTICS SECTIONS ==========
-
 \subsection*{Magic-Specific Heuristics (All Tiers)}
 
 \textbf{Tier I:}
@@ -972,5 +1036,95 @@ Tier IV → V & You are a faction, not a person. Solve problems with assets and 
 \section*{Closing Note}
 
 These heuristics are grounded in the game's probability math and resource economy. They are not prescriptive rules but strategic observations. The best Fate's Edge players internalize these patterns and then break them for the sake of story. When reviewing the system, assess how well it enables this kind of informed, narrative-driven decision-making.
+
+\newpage
+\part*{Appendices}
+
+\appendix
+\section{Mathematical Tables}
+
+\begin{table}[h]
+\centering
+\caption{Success Probability for DV 2–6 (Pools 1–12)}
+\begin{tabular}{cccccc}
+\toprule
+\textbf{Dice} & \textbf{DV 2} & \textbf{DV 3} & \textbf{DV 4} & \textbf{DV 5} & \textbf{DV 6} \\
+\midrule
+1 & 0.50 & 0.00 & 0.00 & 0.00 & 0.00 \\
+2 & 0.75 & 0.25 & 0.00 & 0.00 & 0.00 \\
+3 & 0.875 & 0.50 & 0.125 & 0.00 & 0.00 \\
+4 & 0.9375 & 0.6875 & 0.3125 & 0.0625 & 0.00 \\
+5 & 0.96875 & 0.8125 & 0.5 & 0.1875 & 0.03125 \\
+6 & 0.984375 & 0.890625 & 0.65625 & 0.34375 & 0.109375 \\
+7 & 0.9921875 & 0.9375 & 0.7734375 & 0.5 & 0.2265625 \\
+8 & 0.99609375 & 0.96484375 & 0.85546875 & 0.63671875 & 0.36328125 \\
+9 & 0.998046875 & 0.98046875 & 0.91015625 & 0.74609375 & 0.5 \\
+10 & 0.9990234375 & 0.9892578125 & 0.9453125 & 0.828125 & 0.623046875 \\
+11 & 0.99951171875 & 0.994140625 & 0.9677734375 & 0.88671875 & 0.7255859375 \\
+12 & 0.999755859375 & 0.99658203125 & 0.9814453125 & 0.92724609375 & 0.80615234375 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Expected Story Beats (SB) per Roll by Dice Pool}
+\begin{tabular}{cc}
+\toprule
+\textbf{Dice} & \textbf{Expected SB} \\
+\midrule
+1 & 0.1 \\
+2 & 0.2 \\
+3 & 0.3 \\
+4 & 0.4 \\
+5 & 0.5 \\
+6 & 0.6 \\
+7 & 0.7 \\
+8 & 0.8 \\
+9 & 0.9 \\
+10 & 1.0 \\
+11 & 1.1 \\
+12 & 1.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Dominant vs. Controlled vs. Desperate (Success ≥3, 6 dice)}
+\begin{tabular}{ll}
+\toprule
+\textbf{Position} & \textbf{Success Probability} \\
+\midrule
+Controlled (no re-roll) & 89.1\% \\
+Dominant (re-roll failures) & 97.5\% \\
+Desperate (re-roll successes) & 71.9\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Glossary of Design Terminology}
+\label{sec:glossary}
+
+\begin{description}
+    \item[Narrative partnership] Shared storytelling authority where players and GM co-create consequences.
+    \item[Constraint lattice] Rules as generative boundaries – they constrain to enable creativity, not limit it.
+    \item[Structural advantage] Pre‑scene buffs or assets that trigger Over‑Stack (e.g., two active spells, an unused Follower Initiative).
+    \item[Roller‑coaster effect] Harm clearing Fatigue – the system's anti‑death spiral mechanic.
+    \item[Anti‑death spiral] A design where taking damage resets or improves other resources instead of worsening everything.
+    \item[Partial] Outcome where 0 < successes < DV – progress with a cost, gain 1 Boon.
+    \item[Miss] Outcome with 0 successes – no progress, gain 2 Boons, GM escalates.
+    \item[Fiction‑first] Mechanics are triggered by narrative description, not the other way around.
+\end{description}
+
+\section{Errata and Known Issues (Living Document)}
+\label{sec:errata}
+
+\begin{itemize}
+    \item \textbf{Cantor Corruption reset (Player’s Guide vs SRD):} The Player’s Guide originally said “set current Corruption segments to your Tier”. The SRD correctly says “reset to zero”. Align to SRD.
+    \item \textbf{Over‑Stack optional:} Some GMs forget to apply it. Recommend adding a reminder in the GM section.
+    \item \textbf{Deck of Consequences optional:} Under‑used in playtests. Suggest drawing only when spending 2+ SB at once to keep pacing.
+    \item \textbf{Boon Finesse (Summoner):} At epic tiers Boons are scarce, making spirit maintenance harder. This is intentional; no fix needed.
+\end{itemize}
 
 \end{document}
