@@ -59,9 +59,9 @@ def compile_one(doc, tools_py, git_root, debug=False):
 def main():
     parser = argparse.ArgumentParser(description="Build Fate's Edge documents")
     parser.add_argument("--debug", action="store_true", help="Pass -d to compile_latex.py")
-    parser.add_argument("-j", "--jobs", type=int, default=1,
-                        help="Number of parallel builds (default: 1, -j 0 for auto)")
-    parser.add_argument("-b", "--build", type=str, default="ace",
+    parser.add_argument("-j", "--jobs", type=int, default=0,
+                        help="Number of parallel builds (default: 0, -j 0 for auto)")
+    parser.add_argument("-b", "--build", type=str, default="acet",
                         help="Build sections: a (adventures), c (core), e (expansions), t (travel). "
                              "e.g., -b act")
     args = parser.parse_args()
@@ -72,7 +72,7 @@ def main():
         import os
         jobs = os.cpu_count() or 4
 
-    # ------------------------------------------------------------------
+    # ------------------------------------------------------------0-----
     #  Section handling – now includes 't' for travel
     # ------------------------------------------------------------------
     build_filter = set(args.build.lower())
@@ -110,7 +110,9 @@ def main():
     # ------------------------------------------------------------------
     build_base = git_root / "ttrpg" / "build"
     for sec in selected_sections:
-        (build_base / sec).mkdir(parents=True, exist_ok=True)
+      if sec == "core":
+          continue
+      (build_base / sec).mkdir(parents=True, exist_ok=True)
 
     print(f"🔨 Building sections: {', '.join(selected_sections)} with {jobs} parallel job(s)\n")
 
