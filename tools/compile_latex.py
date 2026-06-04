@@ -91,14 +91,9 @@ def get_git_root(start_path: Path) -> Path:
     return start_path.resolve()
 
 def get_branch(file_path: Path) -> str:
-    """Determine branch name based on file path (mirrors original logic)."""
     path_str = str(file_path)
-    if "/rules" in path_str:
-        return "rules"
-    if "/concordance" in path_str:
-        return "concordance"
-    if "/ninth" in path_str:
-        return "ninth_rim"
+    if "/strategy_game" in path_str:
+        return "konreh"
     if "/ttrpg" in path_str:
         if "/splat" in path_str:
             return "splatbooks"
@@ -110,6 +105,8 @@ def get_branch(file_path: Path) -> str:
             return "resources"
         if "/worldbook" in path_str:
             return "worldbook"
+        if "/travel" in path_str:          # <-- ADD THIS LINE
+            return "travel"                 # <--
         return "ttrpg"
     return "./"
 
@@ -271,18 +268,17 @@ def main():
         pdfname = final_pdf.name
 
     # Determine destination directory
-    build_root = git_root / "ttrpg" / "build"
+    build_root = git_root / "build"
     branch_map = {
         "resources":    build_root / "resources",
         "splatbooks":   build_root / "splatbooks",
         "expansions":   build_root / "expansions",
         "adventures":   build_root / "adventures",
         "worldbook":    build_root / "worldbook",
+        "travel":       build_root / "travel",
         "ttrpg":        build_root,
+        "konreh":       build_root / "konreh",
         "./":           build_root,
-        "rules":        build_root,
-        "concordance":  build_root,
-        "ninth_rim":    build_root,
     }
     dest_dir = branch_map.get(branch, git_root / branch / "build")
     dest_dir.mkdir(parents=True, exist_ok=True)
