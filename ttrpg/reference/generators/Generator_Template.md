@@ -114,7 +114,7 @@
 
 Now, here's a thematic SB (Story Beats) spend table that can be used across regions:
 
-```latex
+
 \section*{Thematic SB Spend Table}
 \label{sec:thematic-sb}
 
