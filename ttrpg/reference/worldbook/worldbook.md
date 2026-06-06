@@ -1791,7 +1791,7 @@ East of the Dolmis, beyond the Wrentfell River's stony reaches, gnomes keep low 
 * Math-script: Knot-cords, abacus-songs, and crystalline glyphs that model tides, trade, even luck. Outsiders call it "incomprehensible"; gnomes call it useful music.
 
 #### Craft & magic
-* Lapidary & metal: Micro-inlays, spring-staves, pressure latches, timerworks, balance scales that "remember" zero.
+* Lapidary & metal: Micro-inlays, spring-staves, pressure latches, clockworks, balance scales that "remember" zero.
 * Green-work: Terraced fungi, root-cellar orchards, bee-keeping in stone hives; forest kin breed whisper-thorn and lamp-mushroom.
 * Thaumaturgy: Low-glamour, high-precision: ward-etching, tuning enchantments, probability slighting (tilting chance by fractions, never absolutes).
 

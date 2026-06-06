@@ -1,0 +1,2261 @@
+%=====================================================================
+%  Fate's Edge Complete Character Sheets
+%  Compiles with: lualatex filename.tex
+%=====================================================================
+\documentclass[10pt]{article}
+\usepackage[margin=1.5cm,landscape]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{fontawesome5}
+\usepackage{longtable}
+\tcbuselibrary{skins,breakable}
+
+% ---------- COLORS (Parchment-Optimized Palette) ----------
+\definecolor{edgered}{HTML}{8C1E1E}
+\definecolor{edgegold}{HTML}{C8A050}
+\definecolor{edgedark}{HTML}{1E1E28}
+\definecolor{edgepaper}{HTML}{FAF5EB}
+\definecolor{edgegray}{HTML}{E8E0D0}
+\definecolor{edgerust}{HTML}{B85C38}
+\definecolor{edgeink}{HTML}{2C1810}
+
+\pagecolor{edgepaper}
+\color{edgedark}
+
+% ---------- CUSTOM BOXES ----------
+\newtcolorbox{charbox}[2][]{%
+    colback=edgepaper,
+    colframe=edgered,
+    coltitle=white,
+    fonttitle=\bfseries\sffamily,
+    title=#2,
+    sharp corners,
+    boxrule=0.5pt,
+    left=2pt,
+    right=2pt,
+    top=2pt,
+    bottom=2pt,
+    #1
+}
+
+\newtcolorbox{tipbox}[2][]{%
+    colback=edgegray,
+    colframe=edgegold,
+    coltitle=edgedark,
+    fonttitle=\bfseries\sffamily,
+    title=#2,
+    sharp corners,
+    boxrule=0.5pt,
+    left=2pt,
+    right=2pt,
+    top=2pt,
+    bottom=2pt,
+    #1
+}
+
+\newtcolorbox{statblock}{%
+    colback=edgepaper,
+    colframe=edgered,
+    boxrule=0.5pt,
+    sharp corners,
+    left=2pt,
+    right=2pt,
+    top=2pt,
+    bottom=2pt,
+}
+
+% ---------- HEADER/FOOTER ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily Fate's Edge Character Sheets}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\small\itshape — Every choice carries weight — }
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ---------- DOCUMENT SETUP ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+%=====================================================================
+\begin{document}
+%=====================================================================
+
+% ----- TITLE AREA (single column) -----
+\begin{center}
+    {\Huge\bfseries\sffamily\color{edgered} Fate's Edge}\\[0.2em]
+    {\large\sffamily Complete Character Sheets}\\[0.5em]
+    \rule{0.5\textwidth}{0.5pt}\\[0.8em]
+    {\large\sffamily Core + 13 Specialized Builds}\\[1em]
+    \begin{tipbox}{How to Use This Document}
+        Each build includes: a \textbf{build guidance page} (tips, progression, key choices) followed by a \textbf{character sheet page}. Print double-sided or use separate sheets. All sheets share the same visual language for table consistency.
+    \end{tipbox}
+\end{center}
+
+\vspace{1em}
+\newpage
+
+%=====================================================================
+% SECTION: CORE SHEET (Pages 1-2)
+%=====================================================================
+
+\section*{Core Character Sheet — Build Guidance}
+\addcontentsline{toc}{section}{Core Character Sheet — Build Guidance}
+
+\begin{tipbox}{Core Sheet — First Steps}
+    \textbf{Start here.} This sheet works for any character. Fill out Identity, Attributes, Skills, then track resources.
+    
+    \textbf{Key Choices:}
+    \begin{itemize}
+        \item \textbf{Primary Attribute:} Body (melee), Wits (rogue/caster), Spirit (magic), Presence (face)
+        \item \textbf{Key Skills:} Choose 2-3 at level 2, rest at 0-1
+        \item \textbf{Talents:} 1-3 talents (2-6 XP each)
+        \item \textbf{Bonds:} Take 2 bonds with other PCs (+4 XP total)
+    \end{itemize}
+    
+    \textbf{Resource Management:}
+    \begin{itemize}
+        \item \textbf{Boons:} Max 5; trim to 2 at scene end. Spend freely!
+        \item \textbf{Fatigue:} Each point worsens Position. Full track → Harm+1
+        \item \textbf{Obligation:} Track per Patron; Capacity = Spirit + Presence
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+% ----- CORE SHEET (Page 1 of 2) -----
+\section*{Core Character Sheet — Page 1}
+\addcontentsline{toc}{section}{Core Character Sheet — Page 1}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} p{2.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Derived} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue: \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm: \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Obligation Cap: \underline{\hspace{1.5cm}} \\
+            Presence & \underline{\hspace{1.5cm}} & Boons: \underline{\hspace{1.5cm}} / 5 \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{2.5cm}}
+            \toprule
+            \textbf{Combat} & \textbf{Physical} & \textbf{Social} \\
+            \midrule
+            Melee: \underline{\hspace{1.5cm}} & Athletics: \underline{\hspace{1.5cm}} & Sway: \underline{\hspace{1.5cm}} \\
+            Ranged: \underline{\hspace{1.5cm}} & Stealth: \underline{\hspace{1.5cm}} & Command: \underline{\hspace{1.5cm}} \\
+            Brawl: \underline{\hspace{1.5cm}} & Endurance: \underline{\hspace{1.5cm}} & Deception: \underline{\hspace{1.5cm}} \\
+            Tactics: \underline{\hspace{1.5cm}} & Craft: \underline{\hspace{1.5cm}} & Performance: \underline{\hspace{1.5cm}} \\
+            & Survival: \underline{\hspace{1.5cm}} & Insight: \underline{\hspace{1.5cm}} \\
+            \addlinespace
+            \textbf{Knowledge} & \textbf{Magic} & \\
+            Lore: \underline{\hspace{1.5cm}} & Arcana: \underline{\hspace{1.5cm}} & \\
+            Investigation: \underline{\hspace{1.5cm}} & Ritual: \underline{\hspace{1.5cm}} & \\
+            Medicine: \underline{\hspace{1.5cm}} & Psionics: \underline{\hspace{1.5cm}} & \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Talents}
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Equipment}
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Bonds \& Strings}
+        \textbf{Bonds (PCs):}\\
+        \underline{\hspace{7cm}}\\
+        \textbf{Strings (NPCs):}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The ledger is never closed. It is only passed to the next keeper.” — Dusana of the Raven Road}
+\end{center}
+
+\newpage
+
+% ----- CORE SHEET (Page 2 of 2) -----
+\section*{Core Character Sheet — Page 2 (Combat Reference)}
+\addcontentsline{toc}{section}{Core Character Sheet — Page 2 (Combat Reference)}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Weapons}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Weapon} & \textbf{Stats} \\
+            \midrule
+            Primary: & \underline{\hspace{4cm}} \\
+            Secondary: & \underline{\hspace{4cm}} \\
+            Ranged: & \underline{\hspace{4cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Armor \& Defense}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            Armor Type: & \underline{\hspace{4cm}} \\
+            Armor Rating: & \underline{\hspace{4cm}} \\
+            Shield: & \underline{\hspace{4cm}} \\
+            Defense DV: & \underline{\hspace{4cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Combat Quick Reference}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Action} & \textbf{Effect} \\
+            \midrule
+            Attack & Melee/ranged vs DV \\
+            Defend & +1 Position, protect ally \\
+            Disengage & Move without OA \\
+            Charge & Move 2 bands + attack, 1 Fatigue \\
+            Shove & Push target 1 band \\
+            Grapple & Restrain, -1 die to target \\
+            Aid & Spend 1 Boon for +1 die \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Armor Conversion Table}
+        \begin{tabular}{>{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Armor} & \textbf{Harm 1} & \textbf{Harm 2} & \textbf{Harm 3} \\
+            \midrule
+            Light & Fat 1 & Harm1+Fat1 & Harm2+Fat1 \\
+            Medium & Fat 1 & Fat 1 & Harm2+Fat1 \\
+            Heavy & Fat 1 & Fat 1 & Fat 2 \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+
+\begin{charbox}{Notes \& Goals}
+    \vspace{2cm}
+\end{charbox}
+
+\newpage
+
+%=====================================================================
+% SECTION: MELEE COMBAT SPECIALIST
+%=====================================================================
+
+\section*{Melee Combat Specialist — Build Guidance}
+\addcontentsline{toc}{section}{Melee Combat Specialist — Build Guidance}
+
+\begin{tipbox}{The Tank / Striker — Frontline Combat}
+    \textbf{Role:} Stand in the shield wall, absorb harm, deal damage. Primary: Body.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Weapon Mastery (5 XP)} – +2 dice with chosen weapon
+        \item \textbf{Disciplined Body (3 XP)} – Convert 1 Harm to Fatigue, +1 die unarmed
+        \item \textbf{Second Wind (2 XP)} – Clear 1 Fatigue
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I (0-40 XP):} Body 3, Melee 2, Athletics 1. Take Weapon Mastery + Disciplined Body.
+        \item \textbf{Tier II (41-90 XP):} Body 4, take Iron Resilience (+2 Harm boxes). Add Shield Bearer if using shield.
+        \item \textbf{Tier III (91-150 XP):} Take Sentinel chain (Stand Fast → Unmovable → Shield of the Fallen).
+    \end{itemize}
+    
+    \textbf{Tactical Tips:}
+    \begin{itemize}
+        \item Use Defend action when outnumbered; it improves Position and protects allies.
+        \item Spend Boons on re-rolling failed defense rolls, not offense.
+        \item Taking Harm clears Fatigue — sometimes a small wound is worth the reset.
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Melee Combat Specialist — Character Sheet}
+\addcontentsline{toc}{section}{Melee Combat Specialist — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Combat Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 5* \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+        {\small *Iron Resilience gives +2 Harm boxes}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Combat Stats}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Weapon} & \textbf{Damage / Effect} \\
+            \midrule
+            Primary: & \underline{\hspace{4cm}} \\
+            Secondary: & \underline{\hspace{4cm}} \\
+            \midrule
+            \textbf{Armor} & \textbf{Conversion} \\
+            Light: & Harm 1 → Fatigue 1 \\
+            Medium: & Harm 2 → Fatigue 1 \\
+            Heavy: & Harm 3 → Fatigue 2 \\
+            \midrule
+            \textbf{Shield} & \textbf{Effect} \\
+            Buckler: & +1d Defend melee \\
+            Heater: & Convert 1 Harm → Fatigue \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Combat Talents}
+        \textbf{Weapon Mastery (5 XP):} +2 dice with chosen weapon. Once/scene, +1 Effect.\\
+        \textbf{Disciplined Body (3 XP):} +1 die unarmed. Once/scene, convert 1 Harm to Fatigue.\\
+        \textbf{Shield Bearer (4 XP):} +1 Armor with shield. Protect action.\\
+        \textbf{Iron Resilience (6 XP):} +2 Harm boxes; survive 0 Harm once/scene.\\
+        \textbf{Sentinel — Stand Fast (4 XP):} Defensive stance, enemies suffer –1 die to attack you.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Weapon Modifiers}
+        \begin{tabular}{>{\bfseries}p{2cm} >{\bfseries}p{2cm} >{\bfseries}p{2cm} >{\bfseries}p{2cm}}
+            \toprule
+            \textbf{Weight} & \textbf{Close} & \textbf{Near} & \textbf{Notes} \\
+            \midrule
+            Light & +2d & +1d & Fast, concealable \\
+            Medium & +1d & +2d & Set once/scene \\
+            Heavy & -1d & +3d & Set once/scene \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cultural Variant: Dhaharan Elephant Rider}
+        \textbf{Mahout’s Bond (6 XP):} Bond with war elephant; melee reach Near, +1 Armor.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The tank is the anvil. The striker is the hammer. Know which you are before the drum sounds.” — Master Tarian}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: ROGUE / INFILTRATOR
+%=====================================================================
+
+\section*{Rogue / Infiltrator — Build Guidance}
+\addcontentsline{toc}{section}{Rogue / Infiltrator — Build Guidance}
+
+\begin{tipbox}{The Shadow — Stealth and Subterfuge}
+    \textbf{Role:} Infiltrate, steal, strike from darkness. Primary: Wits, Body.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Light Fingers (2 XP)} – First Stealth/Subterfuge roll Position +1
+        \item \textbf{The Unlocked Window (2 XP)} – Ignore one security obstacle per session
+        \item \textbf{Backstab (6 XP)} – +1 Harm from stealth, ignore 1 Armor
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Wits 3, Stealth 2, Subterfuge 2. Take Light Fingers + Unlocked Window.
+        \item \textbf{Tier II:} Add Backstab, then Shadow Dance. Take Crowd Veil.
+        \item \textbf{Tier III:} Deathblow (triple Harm from Dominant Position).
+    \end{itemize}
+    
+    \textbf{Patron Recommendations:}
+    \begin{itemize}
+        \item \textbf{Ikasha (Shadow):} Shadow Meld, The Unobserved. Best for ghost thieves.
+        \item \textbf{Livaea (Social):} Golden Tongue, Velvet Invitation. Best for con artists.
+        \item \textbf{Aveh (Fugitive):} Escape Clause, Forgotten Face. Best for runners.
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Rogue / Infiltrator — Character Sheet}
+\addcontentsline{toc}{section}{Rogue / Infiltrator — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Rogue Talents}
+        \textbf{Light Fingers (2 XP):} First Stealth/Subterfuge roll Position +1.\\
+        \textbf{The Unlocked Window (2 XP):} Ignore one security obstacle per session.\\
+        \textbf{Backstab (6 XP):} +1 Harm from Stealth, ignore 1 Armor. On miss, Exposed.\\
+        \textbf{Crowd Veil (4 XP):} Vanish into crowds. Stealth vs DV 3 to become Hidden.\\
+        \textbf{Shadow Dance (10 XP):} After Backstab, roll Stealth to re-enter Stealth.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Ikasha’s Shadow Arts (Optional)}
+        \textbf{Shadow Meld (6 XP):} Step into shadow, emerge from another within Near.\\
+        \textbf{The Unobserved (8 XP):} When Hidden, cannot be framed; witnesses -2 dice to recall face.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Tools of the Trade}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Item} & \textbf{Effect} \\
+            \midrule
+            Lockpicks: & \underline{\hspace{4cm}} \\
+            Poison: & \underline{\hspace{4cm}} \\
+            Disguise kit: & \underline{\hspace{4cm}} \\
+            Smokebomb: & \underline{\hspace{4cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Signature Gear}
+        \textbf{Light Weapon (4 XP):} +2d Close, +1d Near. Concealable.\\
+        \textbf{Throwing Knives (4 XP):} Ranged, Fast tempo.\\
+        \textbf{Leather Armor (4 XP):} Harm 1 → Fatigue 1.\\
+        \textbf{Silk Rope:} \underline{\hspace{4cm}}
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The coin that never spends is the one you don’t remember taking.” — Madam Serafine}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: FACE / SOCIALITE
+%=====================================================================
+
+\section*{Face / Socialite — Build Guidance}
+\addcontentsline{toc}{section}{Face / Socialite — Build Guidance}
+
+\begin{tipbox}{The Diplomat — Social Combat Specialist}
+    \textbf{Role:} Negotiate, deceive, inspire, command. Primary: Presence, Wits.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Silver Tongue (2 XP)} – +1 die to persuasion
+        \item \textbf{Command Presence (4 XP)} – +1 die to leadership/intimidation
+        \item \textbf{Network Weaver (4 XP)} – Gain minor contact in each new settlement
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Presence 3, Sway 2, Insight 1. Take Silver Tongue + Command Presence.
+        \item \textbf{Tier II:} Add Network Weaver, Trusted Reputation. Raise Wits to 3.
+        \item \textbf{Tier III:} Spymaster (ask one detailed question about faction movements per session).
+    \end{itemize}
+    
+    \textbf{Patron Recommendations:}
+    \begin{itemize}
+        \item \textbf{Livaea (Seduction):} Golden Tongue, Velvet Invitation, The Unrefusable Offer.
+        \item \textbf{The Witness (Truth):} Rite of Uncomfortable Question, Echoing Truth.
+        \item \textbf{Palinode (Performance):} Hymn Against Dread, The Hooked Chorus.
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Face / Socialite — Character Sheet}
+\addcontentsline{toc}{section}{Face / Socialite — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Social Talents}
+        \textbf{Silver Tongue (2 XP):} +1 die to persuasion attempts.\\
+        \textbf{Command Presence (4 XP):} +1 die to leadership and intimidation.\\
+        \textbf{Network Weaver (4 XP):} Gain a minor contact in each new settlement.\\
+        \textbf{Trusted Reputation (4 XP):} Once/session, call in a minor favor from a friendly faction.\\
+        \textbf{Spymaster (8 XP):} Once/session, ask one detailed question about faction movements.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Livaea’s Social Arts (Optional)}
+        \textbf{Golden Tongue (Low Rite, 4 XP):} +2 dice to Sway for one exchange. Costs 1 Fatigue.\\
+        \textbf{The Velvet Invitation (Low Rite, 4 XP):} Automatic entry to any private social function.\\
+        \textbf{The Unrefusable Offer (Standard, 9 XP):} Target must accept offer or suffer -2 dice.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Social Combat Reference}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Action} & \textbf{Effect} \\
+            \midrule
+            Persuade & Presence + Sway vs DV \\
+            Intimidate & Presence + Command vs DV \\
+            Lie & Presence + Deception vs Insight \\
+            Inspire & Presence + Performance, grant +1 die \\
+            Read Person & Wits + Insight, detect lies \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Influence Trackers}
+        \textbf{Velvet Court Reputation:} \underline{\hspace{5cm}}\\
+        \textbf{Faction Standing:} \underline{\hspace{5cm}}
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “A smile can open a door that a key cannot. A secret can close it forever.” — Madam Serafine}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: RUNEKEEPER
+%=====================================================================
+
+\section*{Runekeeper — Build Guidance}
+\addcontentsline{toc}{section}{Runekeeper — Build Guidance}
+
+\begin{tipbox}{The Agent of Covenant — Structured Magic}
+    \textbf{Role:} Reliable magic through Patron covenant. Primary: Spirit, Wits.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Familiar (Thiasos) (2 XP)} – Bond to Patron
+        \item \textbf{Codex (4 XP)} – Book of Rites
+        \item \textbf{Patron’s Gift (free)} – Imbue item for +1 die
+    \end{itemize}
+    
+    \textbf{First Patron Recommendation:} \textbf{The Traveler} (low Obligation, useful Rites)
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Spirit 3, Lore 2. Take Familiar + Codex + two Low Rites (4-5 XP each).
+        \item \textbf{Tier II:} Add Efficient Invocation. Raise Presence for Obligation capacity.
+        \item \textbf{Tier III:} Patron’s Favor (ignore Obligation cost once/session).
+    \end{itemize}
+    
+    \textbf{Obligation Management:}
+    \begin{itemize}
+        \item Capacity = Spirit + Presence
+        \item Exceeding capacity: 1 Fatigue per segment over
+        \item Clear Obligation via Acts of Service to your Patron
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Runekeeper — Character Sheet}
+\addcontentsline{toc}{section}{Runekeeper — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Obligation Tracker}
+        \textbf{Capacity:} Spirit \underline{\hspace{1cm}} + Presence \underline{\hspace{1cm}} = \underline{\hspace{1.5cm}}\\
+        \textbf{Current Obligation:} \underline{\hspace{1cm}} / \underline{\hspace{1.5cm}}\\
+        \textbf{Obligation Overflow:} Each segment over Capacity = 1 Fatigue.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Codex \& Thiasos}
+        \textbf{Codex:} \underline{\hspace{6cm}}\\
+        \textbf{Thiasos (Familiar):} \underline{\hspace{6cm}}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Rites Known}
+        \textbf{Low Rites (Obligation 4-5):}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \textbf{Standard Rites (Obligation 6-8):}\\
+        \underline{\hspace{7cm}}\\
+        \textbf{High Rites (Obligation 7-8):}\\
+        \underline{\hspace{7cm}}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Runekeeper Talents}
+        \textbf{Efficient Invocation (4 XP):} Reduce Obligation of one Low Rite by 1.\\
+        \textbf{Patron’s Favor (8 XP):} Once/session, ignore Obligation cost.\\
+        \textbf{Patron’s Dedication (4 XP):} Bind to single Patron; sing other Patron’s Songs at worse Position.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — The Traveler’s Runkeeper (36XP)}
+        \textbf{Attributes:} Spirit 3 (9), Wits 2 (6) — 15 XP\\
+        \textbf{Skills:} Lore 2 (4), Insight 1 (2), Sway 1 (2) — 8 XP\\
+        \textbf{Talents:} Familiar (2), Codex (4) — 6 XP\\
+        \textbf{Rites:} Road-Sense (4), Traveler’s Boon (5) — 9 XP\\
+        \textbf{Total:} 38 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “I do not beg. I record. And in the recording, I become the hand that writes the law.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: RUNIC WARRIOR (MELEE RUNEKEEPER)
+%=====================================================================
+
+\section*{Runic Warrior — Build Guidance}
+\addcontentsline{toc}{section}{Runic Warrior — Build Guidance}
+
+\begin{tipbox}{The Spell-Sword — Runes and Steel}
+    \textbf{Role:} Frontline caster who writes covenants in flesh and steel. Primary: Body, Spirit.
+    
+    \textbf{Codex Forms:}
+    \begin{itemize}
+        \item \textbf{Flesh Codex (2 XP)} – Rites tattooed on skin. Cannot be stolen. Visible.
+        \item \textbf{Stone Codex (2 XP)} – Rites carved on shield/gorget. Can be lost or broken.
+        \item \textbf{Steel Codex (2 XP)} – Sentient weapon that speaks. Counts as witness.
+    \end{itemize}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Flesh Codex (2 XP)} + \textbf{Living Thiasos (3 XP)}
+        \item \textbf{Weapon Mastery (5 XP)} – +2 dice with chosen weapon
+        \item \textbf{Oath-Bound (4 XP)} – Reroll failed Body roll when serving a sworn oath
+    \end{itemize}
+    
+    \textbf{Patron Recommendations for Warriors:}
+    \begin{itemize}
+        \item \textbf{Oath of Flame \& Light} – Paladin, smiting, healing
+        \item \textbf{Mykkiel} – Law, judgment, binding oaths
+        \item \textbf{Grimmir} – Druid, nature, thorns
+        \item \textbf{Khemesh} – Warlock, crushing pressure, terror
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Runic Warrior — Character Sheet}
+\addcontentsline{toc}{section}{Runic Warrior — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Combat Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Obligation as Physical Scar}
+        \textbf{Minor (1-2):} Small scar, bruise, aching tooth.\\
+        \textbf{Moderate (3-4):} Visible scar on face/hands, limp, brand.\\
+        \textbf{Significant (5-6):} Missing finger, clouded eye, bark-like skin.\\
+        \textbf{Critical (7+):} Numb limb, reflection-avoiding face, forgotten name.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Runic Warrior Talents}
+        \textbf{Flesh Codex (2 XP):} Rites tattooed on body; cannot be stolen.\\
+        \textbf{Living Thiasos (3 XP):} Thiasos gains +1 Cap, acts independently once/scene.\\
+        \textbf{Oath-Bound (4 XP):} Reroll failed Body roll when serving a sworn oath.\\
+        \textbf{Scarred Resilience (3 XP):} Once/scene, ignore 1 Fatigue from physical exertion.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Combat Rites}
+        \textbf{Rite of the Kindled Blade (Low, 4 XP):} Weapon ignites; +1 Harm vs undead/oath-breakers.\\
+        \textbf{Rite of the Unbroken Vow (Standard, 7 XP):} Swear oath before flame; +1 Armour.\\
+        \textbf{Rite of the Sealed Threshold (Standard, 7 XP):} Mark doorway as sealed; crossing tests Resolve.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cultural Traditions}
+        \textbf{Ashaan War-Priest (Mykkiel):} Khopesh Hook — disarm or off-balance.\\
+        \textbf{Oshiira Gilded Lancer (Traveler):} Ride the Wind — ignore difficult terrain.\\
+        \textbf{Pereshi Cataphract (Witness):} Lance of Judgment — ignore Armor, Shaken.\\
+        \textbf{Dhahara Elephant-Rider (Grimmir):} Archer’s Nest — +1 Armor in howdah.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Tier I Dawn Warrior (36XP)}
+        \textbf{Attributes:} Body 3 (9), Spirit 2 (6), Presence 2 (6) — 21 XP\\
+        \textbf{Skills:} Melee 2 (4), Command 1 (2), Athletics 1 (2) — 8 XP\\
+        \textbf{Talents:} Flesh Codex (2), Oath-Bound (4), Scarred Resilience (3) — 9 XP\\
+        \textbf{Rites:} Rite of the Kindled Blade (4) — 4 XP\\
+        \textbf{Total:} 42 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “Carve your vows into your flesh. Let your scars be your scripture.” — Master Tarian}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: INVOKER
+%=====================================================================
+
+\section*{Invoker — Build Guidance}
+\addcontentsline{toc}{section}{Invoker — Build Guidance}
+
+\begin{tipbox}{The Gambler — Power Without Bondage}
+    \textbf{Role:} Borrow power from multiple Patrons; versatile but risky. Primary: Wits, Spirit.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Patron’s Symbol (4 XP each)} – Physical anchor to a Patron. Max 4 Symbols.
+        \item \textbf{Ritual Mastery (4 XP)} – Reduce backlash SB by 1
+    \end{itemize}
+    
+    \textbf{Symbol Management:}
+    \begin{itemize}
+        \item Displaying Symbol reduces DV by 1 and Obligation by 1 (min 0)
+        \item \textbf{Crack the Seal:} Resolve Rite instantly; Symbol becomes Compromised, double Obligation
+        \item \textbf{Cross-Resonance:} Carrying multiple Symbols creates friction. Limit 4.
+    \end{itemize}
+    
+    \textbf{Recommended Patrons for Invokers:}
+    \begin{itemize}
+        \item \textbf{Morag the Hag} – Hidden costs, bargains, Speaking Knot
+        \item \textbf{The Confessor} – Burden sharing, confession magic
+        \item \textbf{The Ninth} – Hyperknowledge, information overflow
+        \item \textbf{Ikasha} – Shadow, stealth, thresholds
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Invoker — Character Sheet}
+\addcontentsline{toc}{section}{Invoker — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Symbols \& Obligation}
+        \begin{tabular}{|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|}
+            \hline
+            \textbf{Patron} & \textbf{Symbol} & \textbf{Oblig} & \textbf{Status} \\
+            \hline
+            1: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+            2: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+            3: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+            4: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+        \end{tabular}\\
+        \textbf{Total Obligation:} \underline{\hspace{1cm}} / \underline{\hspace{1.5cm}} (Spirit + Presence)
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Invoker Talents}
+        \textbf{Borrowed Grace (Free):} Spend 1 Boon or 1 Fatigue for +1 die. Mark +1 Obligation.\\
+        \textbf{Crack Specialist (6 XP):} Reduce Obligation cost of Crack the Seal by 1.\\
+        \textbf{Symbol Resonance (4 XP):} +1 die to ritual roll when using a Symbol.\\
+        \textbf{Ritual Mastery (4 XP):} Reduce backlash SB by 1; first SB each scene becomes your Boon.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Ritual Invocation}
+        \textbf{Time:} Significant Time (DV in rounds)\\
+        \textbf{Cost:} Mark Rite’s Obligation\\
+        \textbf{Symbol Benefit:} If displayed, reduce DV by 1 and Obligation by 1 (min 0)\\
+        \textbf{Crack the Seal:} Resolve instantly. Set Symbol to Compromised, mark double Obligation.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Recommended Invoker Patrons}
+        \textbf{Morag the Hag:} Speaking Knot, Threefold Exchange, Crossroads Court.\\
+        \textbf{The Confessor:} Echo of Sin, Burden Transference, The Cauldron’s Secret.\\
+        \textbf{The Ninth:} Ninth Figure, Hypercognitive Lattice, The Ninth Revelation.\\
+        \textbf{Ikasha:} Touch the Umbral Veil, Umbral Reservoir, Become the Shadow.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “I do not serve. I rent. And when the landlord comes to collect, I had best have the coin ready.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: THREADWEAVER (FREE CASTER)
+%=====================================================================
+
+\section*{Threadweaver (Free Caster) — Build Guidance}
+\addcontentsline{toc}{section}{Threadweaver (Free Caster) — Build Guidance}
+
+\begin{tipbox}{The Weaver of Raw Magic — Improvisational Casting}
+    \textbf{Role:} Improvise spells using the TAGS system. Versatile but risky. Primary: Wits, Spirit.
+    
+    \textbf{TAGS System:} DV = 1 + number of tags. Dangerous tags (Leap, Gate, Transform) add +2 DV.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Spellcraft (6 XP)} – Required for free casting
+        \item \textbf{Practiced Caster (2 XP)} – Reduce cantrip DV by 1 (min 1)
+        \item \textbf{Controlled Burn (4 XP)} – Convert a 1 into a Boon (GM does not gain SB)
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Wits 3, Arcana 2. Take Spellcraft + Practiced Caster.
+        \item \textbf{Tier II:} Add Controlled Burn + Weave Resilience. Choose Elemental Focus.
+        \item \textbf{Tier III:} Spell Echo, Resonance Anchor, Elemental Attunement.
+        \item \textbf{Tier IV-V:} Weave Harmonist (ignore all SB from one cast per session).
+    \end{itemize}
+    
+    \textbf{Backlash Severity:}
+    \begin{itemize}
+        \item \textbf{Minor (1-2 SB):} Fatigue +1, -1 die next roll
+        \item \textbf{Major (3-4 SB):} Harm 1, Condition, ward collapse
+        \item \textbf{Catastrophic (5+ SB):} Harm 2, permanent Scar, reality fracture
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Threadweaver (Free Caster) — Character Sheet}
+\addcontentsline{toc}{section}{Threadweaver (Free Caster) — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Free Casting — The TAGS System}
+        \textbf{DV = 1 + number of TAGS} (Dangerous: +2 DV)\\
+        \textbf{Casting Roll:} Wits + Arcana vs DV. Each 1 = SB for GM.\\
+        \textbf{Backlash (on Miss or GM spending SB):}\\
+        • Harm 2 (Arcane) • +2 Fatigue • Corruption +1 • Catastrophic side effect
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{TAG Library Quick Reference}
+        \begin{tabular}{>{\bfseries}p{2cm} p{2.5cm} >{\bfseries}p{2cm} p{2.5cm}}
+            \toprule
+            \textbf{Tag} & \textbf{Effect} & \textbf{Tag} & \textbf{Effect} \\
+            \midrule
+            Burning & Fire, heat & Freezing & Ice, cold \\
+            Storm & Lightning & Stone & Earth, spikes \\
+            Wave & Water & Wind & Air, gusts \\
+            Force & Kinetic blast & Area & Zone effect \\
+            Strike & Single target & Wall & Barrier \\
+            Bind & Restrain & Dispel & Suppress magic \\
+            Veil & Conceal & Scry & Reveal \\
+            HEAL & Remove Fatigue & Leap & Teleport (dangerous) \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Signature Spells}
+        \textbf{Ember Flick (DV 2):} [Burning][Strike] – Ignite small object, 1 Fatigue.\\
+        \textbf{Reed Walk (DV 3):} [Wind][Leap][Self] – Leap Far, ignore OAs.\\
+        \textbf{Grasping Roots (DV 3):} [Earth][Bind][Area] – Entangle zone.\\
+        \textbf{Shield of Air (DV 3):} [Ward][Defend] – +1 Position on defense.\\
+        \textbf{Fate’s Needle (DV 5):} [Fate][Strike] – Roll 3d10, keep highest for auto-successes.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “Free casting is the mud between the cobbles, the river beneath the bridge. It has no patron to catch you when you fall.” — Lysandra of the Amber Gate}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: CANTOR
+%=====================================================================
+
+\section*{Cantor — Build Guidance}
+\addcontentsline{toc}{section}{Cantor — Build Guidance}
+
+\begin{tipbox}{The Touched Voice — Song as Power}
+    \textbf{Role:} Magic through performance. Corruption is transformation, not punishment. Primary: Presence, Spirit.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Cantor’s Path (8 XP)} – Required for songs
+        \item \textbf{Steady Voice (2 XP)} – Push by marking Fatigue instead of Corruption (once/scene)
+        \item \textbf{Resonant Performance (3 XP)} – +1 die when performing for 5+ audience
+    \end{itemize}
+    
+    \textbf{Corruption Clock:} Size = Spirit. Marks when: Pushing a Song, performing Resonant Rite, or GM spends SB on occult activity.
+    
+    \textbf{When Clock Fills:} Gain boon + burden from last Patron. Reset to Tier (min 1).
+    
+    \textbf{Patrons of the Voice:}
+    \begin{itemize}
+        \item \textbf{Palinode (Queen of Encores)} – Performance, rapture, unfinished art
+        \item \textbf{Thrysos (King of Revels)} – Drunken Master, ecstasy, frenzy
+        \item \textbf{Livaea (Crimson Courtier)} – Seduction, social binding
+        \item \textbf{Ikasha (Shadow)} – Whispers, stealth, forgotten songs
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Cantor — Character Sheet}
+\addcontentsline{toc}{section}{Cantor — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Corruption Clock}
+        \textbf{Clock Size = Spirit} \underline{\hspace{1.5cm}}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Current Corruption:} \underline{\hspace{1cm}} / \underline{\hspace{1.5cm}}\\
+        \textbf{When Clock fills:} Gain boon + burden from last Patron. Reset to Tier.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Repertoire}
+        \textbf{Repertoire Clock [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        At 2: -1 DV to Songs. At 4: +1 die Performance. At 6: Learn one Standard Rite as Song.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Songs \& Performance}
+        \textbf{Sing a Song:} 1 action, resolves next turn. Roll Lore + Performance vs DV.\\
+        \textbf{Push It:} Resolve immediately. Mark 1 Fatigue and mark Corruption. GM gains 1 SB.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cantor Talents}
+        \textbf{Resonant Performance (3 XP):} +1 die when performing for 5+ audience.\\
+        \textbf{Song Weaver (4 XP):} Combine two compatible Songs for +1 Effect.\\
+        \textbf{High Cantor (18 XP):} Learn Standard Rites as Songs; resolve instantly.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Songs by Patron}
+        \textbf{Palinode:} Hymn Against Dread (allies +2 dice resist Fear).\\
+        \textbf{Thrysos:} The Overflowing Cup (allies +1 die social, enemies -1 die).\\
+        \textbf{Livaea:} Golden Tongue (+2 dice to Sway, costs 1 Fatigue).\\
+        \textbf{Ikasha:} Cradle Song (lull target, Resist DV 3).
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Kestra the Traveler’s Cantor}
+        \textbf{Attributes:} Presence 3, Spirit 2, Wits 2 — 21 XP\\
+        \textbf{Skills:} Performance 2, Lore 2, Sway 1 — 10 XP\\
+        \textbf{Talents:} Cantor’s Path (8), Steady Voice (2) — 10 XP\\
+        \textbf{Total:} 41 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “You think you need a lute? My larynx is older than any tree. Hum, and the world will listen.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: WITCH
+%=====================================================================
+
+\section*{Witch — Build Guidance}
+\addcontentsline{toc}{section}{Witch — Build Guidance}
+
+\begin{tipbox}{The Quiet Architect — Threshold Magic}
+    \textbf{Role:} Subtle magic through knots, thresholds, and debts. Primary: Wits, Spirit.
+    
+    \textbf{Hedge Gifts (No Roll):}
+    \begin{itemize}
+        \item \textbf{Steady Hand (2 XP):} Remove 1 Fatigue with touch, once/scene
+        \item \textbf{Salt Line (2 XP):} Pour salt line; spirits test to cross
+        \item \textbf{Hearth-Sense (2 XP):} Ask GM yes/no about threshold or debt
+    \end{itemize}
+    
+    \textbf{The Three Layers:}
+    \begin{itemize}
+        \item \textbf{Echo:} Past memory. Work with knots and cords.
+        \item \textbf{Veil:} Present boundary. Work with salt and chalk.
+        \item \textbf{Flow:} Direction of change. Work with omission and the Ninth.
+    \end{itemize}
+    
+    \textbf{Promise Clocks:} Track debts and obligations. Size 4 or 6. When full, price comes due.
+    
+    \textbf{Recommended Patrons for Witches:}
+    \begin{itemize}
+        \item \textbf{Morag the Hag} – Hidden costs, bargains
+        \item \textbf{Inaea (Angel of the Spider)} – Webs, mercy, connection
+        \item \textbf{Ikasha} – Thresholds, shadows, forgotten things
+        \item \textbf{Isoka} – Transformation, shedding, venom
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Witch — Character Sheet}
+\addcontentsline{toc}{section}{Witch — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Promise Clocks}
+        \textbf{Clock [4]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Clock [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Hedge Gifts (No Roll)}
+        \textbf{Steady Hand:} Remove 1 Fatigue with touch, once/scene.\\
+        \textbf{Warm Hand:} Next physical action +1 die (comfort) or -1 die (warning).\\
+        \textbf{Salt Line:} Pour salt line; spirits test Spirit+Resolve to cross.\\
+        \textbf{The Unlit Candle:} Extinguish light source → dim/dark zone.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Quick Workings (Roll)}
+        Name threshold, choose layer (Echo/Veil/Flow), roll Wits+Lore or Spirit+Insight. Effect: door sticks, candle gutters, pursuer slips.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Witch Patrons}
+        \textbf{Morag:} Hidden costs. The Speaking Knot, Threefold Exchange.\\
+        \textbf{Inaea:} Webs of connection. Hearth-Thread Knot, Strand of Inevitability.\\
+        \textbf{Ikasha:} Thresholds, shadows. Touch the Umbral Veil.\\
+        \textbf{Isoka:} Transformation, venom. Venomous Benediction, The Shedding.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The hedge is what keeps the wolves from the flock. I am the one who tends the hedge.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: PSION
+%=====================================================================
+
+\section*{Psion — Build Guidance}
+\addcontentsline{toc}{section}{Psion — Build Guidance}
+
+\begin{tipbox}{The Isolated Mind — Power Within}
+    \textbf{Role:} No Patron, no Symbol, no Codex. Power is internal. Primary: Spirit, Wits.
+    
+    \textbf{Mental Strain:} Capacity = Spirit. Separate from Fatigue. Does not clear when taking Harm.
+    
+    \textbf{Overflow:} When cannot pay Mental Strain:
+    \begin{itemize}
+        \item Convert to +2 Fatigue, or
+        \item Convert to +1 Harm (Stress)
+    \end{itemize}
+    Exceeding Capacity: +1 Harm, set Mental Strain to max.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Psionics Skill (0-5)} – Gates access to Arts
+        \item \textbf{Mental Fortress (8 XP)} – +2 dice resist psychic intrusion
+        \item \textbf{Psychic Reservoir (4 XP)} – Store 1 Mental Strain per session (max Spirit)
+    \end{itemize}
+    
+    \textbf{The Nine Arts:}
+    \begin{itemize}
+        \item Telekinesis, Telepathy, Clairvoyance, Biofeedback
+        \item Astral Projection, Psychic Assault, Mind Shield
+        \item Empathic Manipulation, Precognition
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Psion — Character Sheet}
+\addcontentsline{toc}{section}{Psion — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Mental Strain & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Mental Strain Tracker}
+        \textbf{Capacity = Spirit} \underline{\hspace{1.5cm}}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{When cannot pay:} Convert to +2 Fatigue or +1 Harm (Stress).\\
+        \textbf{Overflow:} Exceed Capacity → +1 Harm, set Mental Strain to max.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{The Nine Arts}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Art} & \textbf{Key Attribute} \\
+            \midrule
+            Telekinesis & Spirit \\
+            Telepathy & Wits \\
+            Clairvoyance & Wits \\
+            Biofeedback & Spirit \\
+            Astral Projection & Spirit \\
+            Psychic Assault & Spirit \\
+            Mind Shield & Wits \\
+            Empathic Manipulation & Presence \\
+            Precognition & Spirit \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Psionic Talents}
+        \textbf{Psionics Skill:} \underline{\hspace{1.5cm}}\\
+        \textbf{Mental Fortress (8 XP):} +2 dice resist psychic intrusion.\\
+        \textbf{Psychic Reservoir (4 XP):} Store 1 Mental Strain/session (max Spirit).\\
+        \textbf{Thought Thief (6 XP):} +1 die Telepathy; learn one surface thought.\\
+        \textbf{Mind Walker (10 XP):} Astral Project without body risk (Mental Strain doubled).
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Arts by Difficulty}
+        \textbf{Surface Thoughts (DV 2):} Read current focus.\\
+        \textbf{Telekinesis Light (DV 2):} Move small objects.\\
+        \textbf{Biofeedback Minor (DV 2):} Stabilize wounds.\\
+        \textbf{Psychic Assault (DV 3):} Deal Mental Harm.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “I carry no Symbol. My ledger is my skull, and it comes due in headaches, not obligations.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: MONK (UNSTRUCK BELL)
+%=====================================================================
+
+\section*{Monk (Unstruck Bell) — Build Guidance}
+\addcontentsline{toc}{section}{Monk (Unstruck Bell) — Build Guidance}
+
+\begin{tipbox}{The Open Hand — Stillness as Weapon}
+    \textbf{Role:} Unarmored martial artist. Redirect, avoid, strike precisely. Primary: Body, Wits.
+    
+    \textbf{Three Principles:}
+    \begin{itemize}
+        \item \textbf{The Coin That Does Not Move:} Never resist what cannot be stopped. Yield.
+        \item \textbf{The Witness Who Breathes:} Stillness is the greatest disguise.
+        \item \textbf{The Debt That Is Never Incurred:} Do not strike first; create no debt.
+    \end{itemize}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Unarmed Combatant (4 XP)} – Unarmed strikes Harm 1; grapple bonus
+        \item \textbf{Disciplined Body (3 XP)} – +1 die unarmed; convert 1 Harm to Fatigue
+        \item \textbf{Still Point (2 XP)} – When not moving, +1 die to next defense
+        \item \textbf{Monk’s Breath (2 XP)} – Clear 1 Fatigue by meditating 1 minute
+    \end{itemize}
+    
+    \textbf{Monastic Traditions:}
+    \begin{itemize}
+        \item \textbf{Way of the Unstruck Bell (Ikasha)} – Shadow Meld, The Unobserved
+        \item \textbf{Way of the Iron Vow (Mykkiel)} – Sworn Defender, Unyielding Vow
+        \item \textbf{Way of the Endless Cup (Thrysos)} – Stagger Step, Drunken Fist
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Monk (Unstruck Bell) — Character Sheet}
+\addcontentsline{toc}{section}{Monk (Unstruck Bell) — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Monastic Tradition:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Meditation Tracker}
+        \textbf{The Four Breaths:}\\
+        Entering → Holding → Releasing → Empty\\
+        \textbf{Meditation Benefits:}\\
+        Healing: Clear 1 Fatigue, remove minor Condition\\
+        Clarity: +1 die next Wits roll\\
+        Transcendent: Reroll any failed roll (GM gains 1 SB)
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Monk Talents}
+        \textbf{Unarmed Combatant (4 XP):} Harm 1, grapple bonus.\\
+        \textbf{Disciplined Body (3 XP):} +1 die unarmed; convert 1 Harm to Fatigue.\\
+        \textbf{Still Point (2 XP):} Not moving → +1 die next defense.\\
+        \textbf{Monk’s Breath (2 XP):} Clear 1 Fatigue, 1 minute meditation.\\
+        \textbf{Flurry of Blows (6 XP):} Three unarmed attacks in one action.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Monastic Tradition Techniques}
+        \textbf{Way of Unstruck Bell:} Shadow Meld (step through shadows).\\
+        \textbf{Way of Iron Vow:} Sworn Defender (adjacent ally +1 Armor).\\
+        \textbf{Way of Endless Cup:} Stagger Step (move 1 band when enemy misses).
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Tier I Unstruck Bell Monk (36XP)}
+        \textbf{Attributes:} Body 3 (9), Wits 3 (9), Spirit 2 (6) — 24 XP\\
+        \textbf{Skills:} Stealth 2 (4), Melee 1 (2), Meditation 1 (2) — 8 XP\\
+        \textbf{Talents:} Unarmed Combatant (4), Disciplined Body (3), Still Point (2), Monk’s Breath (2) — 11 XP\\
+        \textbf{Total:} 43 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The fist is a weapon. The open hand is a promise. Learn both before you need either.” — Brother Tarn}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: SUMMONER
+%=====================================================================
+
+\section*{Summoner — Build Guidance}
+\addcontentsline{toc}{section}{Summoner — Build Guidance}
+
+\begin{tipbox}{The Door-Opener — Binding Spirits}
+    \textbf{Role:} Call and bind spirits for aid. Negotiation, not command. Primary: Spirit, Wits.
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Pact-Whisperer (2 XP)} – Required for summoning
+        \item \textbf{Lesser Pactwright (2 XP)} – Summon Cap 1 spirits
+        \item \textbf{Greater Pactwright (4 XP)} – Summon Cap 3 spirits
+        \item \textbf{Spirit Synergy (4 XP)} – Reduce each summoned spirit’s Leash by 1
+    \end{itemize}
+    
+    \textbf{Leash Mechanics:}
+    \begin{itemize}
+        \item \textbf{Capacity:} Cap + Spirit segments
+        \item \textbf{Ticks when:} Spirit takes Harm, acts against nature, crosses a [WARD], split focus
+        \item \textbf{Boon Finesse:} Spend 1 Boon to clear 1 Leash tick (once/round)
+        \item \textbf{When full:} Spirit acts once to its nature, then departs (or turns hostile)
+    \end{itemize}
+    
+    \textbf{Spirit Types:}
+    \begin{itemize}
+        \item \textbf{Vein-Serpent (Aeler):} Locates ore, stabilizes tunnels
+        \item \textbf{Wolf-Ancestor (Ykrul):} Tracks, guards, teaches battle-songs
+        \item \textbf{Selkie-Maid (Linn):} Navigation, drowning, retrieving objects
+        \item \textbf{Drowned Mutineer (Zakov):} Sabotage, whispers, curses
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Summoner — Character Sheet}
+\addcontentsline{toc}{section}{Summoner — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Summoning Mechanics}
+        \textbf{Call (1 action):} Manifest spirit at Near range.\\
+        \textbf{Bind:} Spend 1 Boon or mark 1 Fatigue.\\
+        \textbf{Leash Capacity:} Cap + Spirit = \underline{\hspace{3cm}}\\
+        \textbf{Current Leash:} \underline{\hspace{1cm}} / \underline{\hspace{3cm}}\\
+        \textbf{Boon Finesse:} Spend 1 Boon to clear 1 Leash tick (once/round).
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Summoner Talents}
+        \textbf{Pact-Whisperer (2 XP):} Required for summoning.\\
+        \textbf{Lesser Pactwright (2 XP):} Summon Cap 1 spirits.\\
+        \textbf{Greater Pactwright (4 XP):} Summon Cap 3 spirits.\\
+        \textbf{Spirit Synergy (4 XP):} Reduce each spirit’s Leash by 1.\\
+        \textbf{Spirit Link (10 XP):} Spirits act on your turn; commands free.\\
+        \textbf{True Name Keeper (15 XP):} Call any previously encountered spirit.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Bound Spirit}
+        \textbf{Name:} \underline{\hspace{6cm}}\\
+        \textbf{Type:} \underline{\hspace{6cm}}\\
+        \textbf{Cap:} \underline{\hspace{2cm}}\\
+        \textbf{Special Abilities:} \underline{\hspace{6cm}}\\
+        \textbf{Price/Bargain:} \underline{\hspace{6cm}}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Spirit Whims Table (When Leash Fills)}
+        1: Reveal a secret. 2: Break something. 3: Lead astray.\\
+        4: Call for help. 5: Curse a PC. 6: Bargain.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “I asked the drowned captain for directions. He asked for a memory in return. We shook on it.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: RANGER / ARCHER
+%=====================================================================
+
+\section*{Ranger / Archer — Build Guidance}
+\addcontentsline{toc}{section}{Ranger / Archer — Build Guidance}
+
+\begin{tipbox}{The Patient Hunter — Ranged Combat Specialist}
+    \textbf{Role:} Fight from distance, track enemies, survive wilderness. Primary: Wits, Body.
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Weapon Mastery (bows) (5 XP)} – +2 dice with bows
+        \item \textbf{Keen Senses (2 XP)} – +1 die perception
+        \item \textbf{Pathfinder — Trackless Step (4 XP)} – Leave no trail in natural terrain
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Wits 3, Survival 2, Ranged 2. Take Weapon Mastery + Keen Senses.
+        \item \textbf{Tier II:} Add Trackless Step, then Eagle Eye. Take Heightened Senses.
+        \item \textbf{Tier III:} The Patient Hunter (+2 dice first attack after observing target).
+    \end{itemize}
+    
+    \textbf{Cultural Variants:}
+    \begin{itemize}
+        \item \textbf{Sekogo Throw-Knife Hunter:} Kpinga returns to hand; Spiral Throw hits zone.
+        \item \textbf{Ashaan Chariot Archer:} Chariot Volley (two attacks from moving chariot).
+        \item \textbf{Fhara Desert Raider:} Furusiyya Training (lance, saber, bow, horsemanship).
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Ranger / Archer — Character Sheet}
+\addcontentsline{toc}{section}{Ranger / Archer — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Ranger Talents}
+        \textbf{Weapon Mastery (bow) (5 XP):} +2 dice with bows.\\
+        \textbf{Keen Senses (2 XP):} +1 die perception.\\
+        \textbf{Heightened Senses (3 XP):} Cannot be surprised in natural terrain.\\
+        \textbf{Pathfinder — Trackless Step (4 XP):} Leave no trail; pursuers -2 dice.\\
+        \textbf{Pathfinder II — Eagle Eye (6 XP):} Hidden ranged attacks Position +1.\\
+        \textbf{Called Shot (6 XP):} Blind, Disarm, Hamstring, or Vitals.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Ranged Weapon Modifiers}
+        \begin{tabular}{>{\bfseries}p{2cm} >{\bfseries}p{2cm} >{\bfseries}p{2cm} >{\bfseries}p{2cm}}
+            \toprule
+            \textbf{Weight} & \textbf{Close} & \textbf{Near} & \textbf{Far} \\
+            \midrule
+            Light & Controlled & +1d & — \\
+            Medium & Desperate & +2d & +1d \\
+            Heavy & Desperate & +1d & +3d \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cultural Archery Techniques}
+        \textbf{Sekogo Spiral Throw (6 XP):} Throw kpinga hits all in Near zone.\\
+        \textbf{Ashaan Chariot Volley (8 XP):} Two attacks from moving chariot.\\
+        \textbf{Fhara Horse Archery (8 XP):} Fire from horseback without penalty.\\
+        \textbf{Sidhi Javelin Volley (6 XP):} Throw two javelins as one action.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Tier I Ranger (36XP)}
+        \textbf{Attributes:} Wits 3 (9), Body 2 (6), Spirit 2 (6) — 21 XP\\
+        \textbf{Skills:} Ranged 2 (4), Survival 2 (4), Stealth 1 (2) — 10 XP\\
+        \textbf{Talents:} Weapon Mastery (5) — 5 XP\\
+        \textbf{Total:} 36 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The kpinga does not fly. It dances. And the dance always ends with blood.” — Mkara, Sekogo hunter}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: COMMANDER / WARLORD
+%=====================================================================
+
+\section*{Commander / Warlord — Build Guidance}
+\addcontentsline{toc}{section}{Commander / Warlord — Build Guidance}
+
+\begin{tipbox}{The Leader — Force Multiplier}
+    \textbf{Role:} Direct allies, control battlefields, shape conflicts through strategy. Primary: Presence, Wits.
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Command Presence (4 XP)} – +1 die leadership/intimidation
+        \item \textbf{Inspire (3 XP)} – Give ally +1 Boon and +1 die on next roll
+        \item \textbf{Tactical Movement (4 XP)} – Reposition without disengaging
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Presence 3, Command 2, Tactics 1. Take Command Presence + Inspire.
+        \item \textbf{Tier II:} Add Tactical Movement, Network Weaver. Acquire Cap 2-3 follower.
+        \item \textbf{Tier III:} Battlefield Mastery (when outnumbered, +1 Effect, enemies -1 die).
+    \end{itemize}
+    
+    \textbf{Follower Management:}
+    \begin{itemize}
+        \item \textbf{Cap 2-3:} Reliable support, can take independent actions
+        \item \textbf{Cap 4-5:} Trusted lieutenants; can manage Assets
+        \item \textbf{Loyalty states:} Faithful → Strained → Broken
+        \item \textbf{Fitness states:} Ready → Hurt → Down
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Commander / Warlord — Character Sheet}
+\addcontentsline{toc}{section}{Commander / Warlord — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Command Talents}
+        \textbf{Command Presence (4 XP):} +1 die leadership/intimidation.\\
+        \textbf{Inspire (3 XP):} Once/scene, grant ally +1 Boon and +1 die.\\
+        \textbf{Tactical Movement (4 XP):} Reposition without disengaging.\\
+        \textbf{Network Weaver (4 XP):} Gain minor contact in each new settlement.\\
+        \textbf{Battlefield Mastery (6 XP):} When outnumbered, +1 Effect, enemies -1 die.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Followers}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Name} & \textbf{Cap / Role} \\
+            \midrule
+            1: & \underline{\hspace{4cm}} \\
+            2: & \underline{\hspace{4cm}} \\
+            3: & \underline{\hspace{4cm}} \\
+            \bottomrule
+        \end{tabular}
+        \textbf{Loyalty:} Faithful / Strained / Broken\\
+        \textbf{Fitness:} Ready / Hurt / Down
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Unit Tactics Reference}
+        \textbf{Aid Action:} Spend 1 Boon for +1 die to ally.\\
+        \textbf{Setup:} Grant ally +1 Position or step up Effect.\\
+        \textbf{Rally:} Command roll to remove Fear conditions.\\
+        \textbf{Delegated Upkeep (5 XP):} Cap 4+ follower manages Assets.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Tier I Commander (36XP)}
+        \textbf{Attributes:} Presence 3 (9), Wits 2 (6), Body 2 (6) — 21 XP\\
+        \textbf{Skills:} Command 2 (4), Tactics 2 (4), Sway 1 (2) — 10 XP\\
+        \textbf{Talents:} Command Presence (4), Inspire (3) — 7 XP\\
+        \textbf{Total:} 38 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The elephant does not charge. It walks. And everything in its path becomes mud.” — Rajah Anant, Dhaharan mahout}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: FORGER / ARTIFICER
+%=====================================================================
+
+\section*{Forger / Artificer — Build Guidance}
+\addcontentsline{toc}{section}{Forger / Artificer — Build Guidance}
+
+\begin{tipbox}{The Maker — Crafting and Forgery}
+    \textbf{Role:} Create, repair, forge documents, build devices. Primary: Wits, Body.
+    
+    \textbf{Forgery Mini-Game (4 Steps):}
+    \begin{enumerate}
+        \item \textbf{Research (Wits+Investigation, DV 2-4):} Learn document specifics
+        \item \textbf{Materials (Wits+Streetwise, DV 3):} Source matching paper, ink, seal
+        \item \textbf{The Craft (Wits+Craft, DV 3-5):} Create the forgery
+        \item \textbf{Presentation (Presence+Deception):} Pass it off
+    \end{enumerate}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Master Tinker (2 XP)} – +1 die Craft repairs
+        \item \textbf{The Forger’s Eye (4 XP)} – Copy any handwriting, seal, signature
+        \item \textbf{Master Artificer (5 XP)} – +1 die Craft creations; reduce time/cost
+    \end{itemize}
+    
+    \textbf{Forged Diamond Types:}
+    \begin{itemize}
+        \item Cargo Manifest (legal immunity, one voyage)
+        \item Notarial Seal (validates contract, one arbitration)
+        \item Letter of Credit (withdraw funds, one use)
+        \item Identity Papers (false identity, one scene)
+        \item Pardon (commutes minor crime)
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Forger / Artificer — Character Sheet}
+\addcontentsline{toc}{section}{Forger / Artificer — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Forgery Tracker}
+        \textbf{Current Forged Diamonds:}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \textbf{Laundry Clocks:}\\
+        [4] or [6] — \underline{\hspace{5cm}}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Artificer Talents}
+        \textbf{Master Tinker (2 XP):} +1 die Craft repairs.\\
+        \textbf{The Forger’s Eye (4 XP):} Copy handwriting, seals, signatures.\\
+        \textbf{Master Artificer (5 XP):} +1 die Craft creations; reduce time/cost.\\
+        \textbf{Asset Crafter (4 XP):} Reduce Asset XP cost by 1 per tier.\\
+        \textbf{Rapid Construction (4 XP):} Halve Asset construction time.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Workshop Asset}
+        \textbf{Type:} Minor / Standard / Major\\
+        \textbf{Cost:} 4 / 8 / 12 XP\\
+        \textbf{Status:} Flourishing / Stable / Strained / Collapsed\\
+        \textbf{Free Use:} Repair gear, prepare solutions\\
+        \textbf{Surge (1 Boon):} Jury-rig solution, +1 die appropriate roll
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Tier I Forger (36XP)}
+        \textbf{Attributes:} Wits 3 (9), Body 2 (6), Presence 2 (6) — 21 XP\\
+        \textbf{Skills:} Craft 2 (4), Investigation 2 (4), Deception 1 (2) — 10 XP\\
+        \textbf{Talents:} Master Tinker (2), The Forger’s Eye (4) — 6 XP\\
+        \textbf{Total:} 37 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The right seal is worth more than a ship. A stamped manifest can move contraband past the harbor master.” — Madam Serafine}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: HEALER
+%=====================================================================
+
+\section*{Healer — Build Guidance}
+\addcontentsline{toc}{section}{Healer — Build Guidance}
+
+\begin{tipbox}{The Mender — Restoring Flesh and Spirit}
+    \textbf{Role:} Heal wounds, remove conditions, keep party alive. Primary: Spirit, Wits.
+    
+    \textbf{Healing Harm (Magic):}
+    \begin{itemize}
+        \item Requires [HEAL] + another tag (Purify, Strengthen, Cleanse)
+        \item Base DV = 1 + number of tags. Add +2 DV surcharge for healing Harm
+        \item Example: [HEAL][PURIFY] for poison → DV 3 + 2 = 5
+    \end{itemize}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Field Dressing (2 XP)} – Stabilize dying ally once/scene
+        \item \textbf{Triage (4 XP)} – Remove 1 Fatigue, reduce Harm penalty for scene
+        \item \textbf{Knot of Mercy (Hedge Gift, 2 XP)} – Remove a Condition (once/session)
+    \end{itemize}
+    
+    \textbf{Patron Recommendations:}
+    \begin{itemize}
+        \item \textbf{Oath of Flame \& Light} – Lay on Hands, Cleansing Light
+        \item \textbf{Oath of Mercy \& Grace} – Healing, forgiveness, spiral of care
+        \item \textbf{The Carrion-King} – Fertile Death, transformation through decay
+        \item \textbf{Inaea} – Hearth-Thread Knot, shared burden
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Healer — Character Sheet}
+\addcontentsline{toc}{section}{Healer — Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Healing Talents}
+        \textbf{Field Dressing (2 XP):} Stabilize dying ally once/scene.\\
+        \textbf{Triage (4 XP):} Remove 1 Fatigue, reduce Harm penalty for scene.\\
+        \textbf{Knot of Mercy (2 XP):} Remove a Condition once/session (no roll).
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Healing Rites (Oath of Flame \& Light)}
+        \textbf{Lay on Hands (Low, 5 XP):} Cleanse affliction or downgrade Harm by 1.\\
+        \textbf{Cleansing Light (Standard, 8 XP):} Dispel curse, poison, or disease.\\
+        \textbf{Rite of Shared Burden (Standard, 9 XP):} Transfer Condition to willing target.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Healing Reference}
+        \textbf{Fatigue:} Short rest (1 hour) clears 2; full night clears all.\\
+        \textbf{[HEAL] Cantrip (DV 2):} Remove 1 Fatigue.\\
+        \textbf{Mundane Healing:} 1 week rest removes 1 Harm.\\
+        \textbf{Serious Wounds:} Optional rule — lasting debility, needs quest to heal.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build — Tier I Healer (36XP)}
+        \textbf{Attributes:} Spirit 3 (9), Wits 2 (6), Presence 2 (6) — 21 XP\\
+        \textbf{Skills:} Medicine 2 (4), Lore 2 (4), Sway 1 (2) — 10 XP\\
+        \textbf{Talents:} Field Dressing (2), Triage (4) — 6 XP\\
+        \textbf{Total:} 37 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The [HEAL] tag closes small wounds and eases exhaustion. To knit broken bones, you need greater power—and greater risk.” — The Grey Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: VELVET COURT (THIEF FACTION)
+%=====================================================================
+
+\section*{Velvet Court — Faction Sheet}
+\addcontentsline{toc}{section}{Velvet Court — Faction Sheet}
+
+\begin{tipbox}{The Velvet Court — Silkstrand’s Shadow Network}
+    \textbf{Reputation Dial:} Enemy (-3) to Creditor-in-Waiting (+3)
+    
+    \textbf{Creditors (The Velvet Seats):}
+    \begin{itemize}
+        \item Madam Serafine (Information, Forgery, Laundering)
+        \item Old Kes (Fence, Smuggling, Markets)
+        \item The Dockmaster (Movement, Ships, Warehouses)
+        \item Sister Agatha (Cover, Sanctuary, False Identities)
+        \item The Archivist (Legal Precedent, Forged Writs)
+        \item The Grey Eminence (Unknown)
+    \end{itemize}
+    
+    \textbf{Heat Dials:}
+    \begin{itemize}
+        \item \textbf{Watch Interest [6]:} Fills when jobs go loud or evidence left. At 3: Patrol Sweep. At 6: Sting Operation.
+        \item \textbf{Syndicate Pressure [6]:} Fills when rivals notice. At 3: Curfew. At 6: Crackdown.
+    \end{itemize}
+    
+    \textbf{Court Assets:}
+    \begin{itemize}
+        \item The Blue Ledger (bribeable officials)
+        \item The Maze of Whispers (hidden passages)
+        \item The Ghost Crew (urchin spies, Cap 1)
+        \item The Scribe’s Seal (forged notary)
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Velvet Court — Faction Tracker}
+\addcontentsline{toc}{section}{Velvet Court — Faction Tracker}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Velvet Court Standing}
+        \textbf{Velvet Dial:} \underline{\hspace{5cm}}\\
+        -3 (Enemy) — Hunted; no safe houses\\
+        -2 to -1 — Wary; limited access\\
+        0 to +1 — Neutral; standard access\\
+        +2 to +3 (Trusted) — Attend Velvet Moot; request Favors
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Heat Trackers}
+        \textbf{Watch Interest [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Syndicate Pressure [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Creditor Favor Clocks}
+        \begin{tabular}{p{3cm} p{3cm}}
+            Serafine: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+            Old Kes: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+            Dockmaster: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+            Sister Agatha: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+            Archivist: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Heist Planner}
+        \textbf{Heist Clock:} [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ] (6-12)\\
+        \textbf{Threat Clocks:}\\
+        Alarm: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+        Security: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+        Inside Trouble: [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Informant Network}
+        \begin{tabular}{p{3cm} p{3cm}}
+            \textbf{Name} & \textbf{Reliability [4]} \\
+            \hline
+            \underline{\hspace{3cm}} & [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+            \underline{\hspace{3cm}} & [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+            \underline{\hspace{3cm}} & [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Rival Crew}
+        \textbf{Name:} \underline{\hspace{5cm}}\\
+        \textbf{Agenda Clock [6]:}\\
+        [ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ][ \hspace{0.3cm} ]\\
+        \textbf{Goal:} \underline{\hspace{5cm}}
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape “The coin you take is never the one that costs you. The one you leave behind—that is the debt that collects.” — Madam Serafine}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% BACK MATTER
+%=====================================================================
+
+\onecolumn
+\begin{center}
+    \rule{0.5\textwidth}{0.5pt}\\[1em]
+    {\small Fate's Edge Complete Character Sheets — CC BY 4.0 — Nicholas A. Gasper}\\[0.5em]
+    {\tiny \textit{The road is a ledger. Every broken wheel is a debt, every lit lamp a witness.}}
+\end{center}
+
+\end{document}
