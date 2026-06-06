@@ -61,25 +61,25 @@ class TravelCommands(commands.Cog):
     @app_commands.command(name="travel_leg", description="Add a travel leg to the journey")
     @app_commands.describe(
         destination="Destination of this travel leg",
-        clock_size="Size of travel clock (default: 6)"
+        timer_size="Size of travel timer (default: 6)"
     )
     async def travel_leg(self, interaction: discord.Interaction, 
                         destination: str, 
-                        clock_size: int = 6):
+                        timer_size: int = 6):
         """Add a travel leg to the current journey"""
         try:
             travel_manager = self._get_travel_manager()
             result = travel_manager.add_travel_leg(
                 channel_id=str(interaction.channel_id),
                 destination=destination,
-                clock_size=clock_size
+                timer_size=timer_size
             )
             
             if result["status"] == "success":
                 await interaction.response.send_message(
                     f"🛣️ **Travel Leg Added**\n"
                     f"**#{result['leg']['leg_number']}**: {destination}\n"
-                    f"**Clock Size**: {clock_size}-segment\n"
+                    f"**Clock Size**: {timer_size}-segment\n"
                     f"Use `/travel_advance` to make progress!"
                 )
             else:
@@ -188,7 +188,7 @@ class TravelCommands(commands.Cog):
                 # View current supply
                 result = travel_manager.get_party_resources(party_name)
                 if result["status"] == "success":
-                    supply_level = result["resources"].get("supply_clock", 0)
+                    supply_level = result["resources"].get("supply_timer", 0)
                     progress_bar = travel_manager._create_progress_bar(supply_level, 4)
                     
                     supply_status = {

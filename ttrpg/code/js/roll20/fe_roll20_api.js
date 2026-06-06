@@ -511,7 +511,7 @@ const FateEdgeComplete = (() => {
             const cardName = _.sample(cardOptions);
             const rank = _.sample(['2','3','4','5','6','7','8','9','10','J','Q','K','A']);
             
-            const clockSize = DeckSystem.getClockSize(rank);
+            const timerSize = DeckSystem.getClockSize(rank);
             
             return {
                 region: region,
@@ -519,7 +519,7 @@ const FateEdgeComplete = (() => {
                 rank: rank,
                 cardName: cardName,
                 meaning: regionData.suits[chosenSuit],
-                clockSize: clockSize,
+                timerSize: timerSize,
                 isAce: rank === 'A',
                 isFace: ['J','Q','K'].includes(rank)
             };
@@ -592,15 +592,15 @@ const FateEdgeComplete = (() => {
                 },
                 'Fire': {
                     'Minor': 'Spread/Scorch - Heat flares, smoke blinds',
-                    'Major': 'Conflagration - Spreading Fire clock +1'
+                    'Major': 'Conflagration - Spreading Fire timer +1'
                 },
                 'Air': {
                     'Minor': 'Dispersal/Whip - Effect reduced or scattered',
-                    'Major': 'Storm Surge - Environmental Collapse clock +1'
+                    'Major': 'Storm Surge - Environmental Collapse timer +1'
                 },
                 'Water': {
                     'Minor': 'Flood/Contaminate - Area hazard or impurity',
-                    'Major': 'Deluge - Flood clock +1'
+                    'Major': 'Deluge - Flood timer +1'
                 },
                 'Fate': {
                     'Minor': 'Paradox/Closure - Unintended consequence',
@@ -608,7 +608,7 @@ const FateEdgeComplete = (() => {
                 },
                 'Life': {
                     'Minor': 'Overgrowth/Fever - Growth becomes problematic',
-                    'Major': 'Proliferation - Ecosystem Disruption clock +1'
+                    'Major': 'Proliferation - Ecosystem Disruption timer +1'
                 },
                 'Luck': {
                     'Minor': 'Side-coincidence/Irony - Unexpected twist',
@@ -697,14 +697,14 @@ const FateEdgeComplete = (() => {
     
     const TravelSystem = {
         createTravelClock: (destination, rank, partyId) => {
-            const clockSize = DeckSystem.getClockSize(rank);
+            const timerSize = DeckSystem.getClockSize(rank);
             
             const travelId = `${partyId}_${destination}_${Date.now()}`;
             
             state.fateEdge.activeTravels[travelId] = {
                 id: travelId,
                 destination: destination,
-                size: clockSize,
+                size: timerSize,
                 current: 0,
                 partyId: partyId,
                 startDate: new Date().toISOString(),
@@ -843,8 +843,8 @@ const FateEdgeComplete = (() => {
                 requirements: ['Body 5', 'Sway 3'],
                 effects: [
                     'Unify scattered warbands into single host',
-                    'Start Logistics clock',
-                    'Start Grudge clock',
+                    'Start Logistics timer',
+                    'Start Grudge timer',
                     'Season-long effect'
                 ],
                 tracking: 'per_campaign'
@@ -923,10 +923,10 @@ const FateEdgeComplete = (() => {
     
     const CampaignClock = {
         createClock: (name, size, description = '') => {
-            const clockId = name.replace(/\s+/g, '_').toLowerCase();
+            const timerId = name.replace(/\s+/g, '_').toLowerCase();
             
-            state.fateEdge.campaignClocks[clockId] = {
-                id: clockId,
+            state.fateEdge.campaignClocks[timerId] = {
+                id: timerId,
                 name: name,
                 size: size,
                 current: 0,
@@ -935,46 +935,46 @@ const FateEdgeComplete = (() => {
                 createdAt: new Date().toISOString()
             };
             
-            return state.fateEdge.campaignClocks[clockId];
+            return state.fateEdge.campaignClocks[timerId];
         },
         
-        advanceClock: (clockId, segments = 1) => {
-            const clock = state.fateEdge.campaignClocks[clockId];
-            if (!clock || !clock.active) return null;
+        advanceClock: (timerId, segments = 1) => {
+            const timer = state.fateEdge.campaignClocks[timerId];
+            if (!timer || !timer.active) return null;
             
-            clock.current = Math.min(clock.size, clock.current + segments);
+            timer.current = Math.min(timer.size, timer.current + segments);
             
-            const completed = clock.current >= clock.size;
+            const completed = timer.current >= timer.size;
             
             if (completed) {
-                CampaignClock.triggerCompletion(clockId);
+                CampaignClock.triggerCompletion(timerId);
             }
             
             return {
-                clock: clock,
+                timer: timer,
                 completed: completed,
-                remaining: clock.size - clock.current
+                remaining: timer.size - timer.current
             };
         },
         
-        triggerCompletion: (clockId) => {
-            const clock = state.fateEdge.campaignClocks[clockId];
-            if (!clock) return;
+        triggerCompletion: (timerId) => {
+            const timer = state.fateEdge.campaignClocks[timerId];
+            if (!timer) return;
             
-            // Send notification about clock completion
-            sendChat('FateEdge', `/w gm Campaign Clock "${clock.name}" has completed!`);
+            // Send notification about timer completion
+            sendChat('FateEdge', `/w gm Campaign Clock "${timer.name}" has completed!`);
             
             // Here you could trigger specific campaign events
-            // based on the clock name
+            // based on the timer name
         },
         
-        getClock: (clockId) => {
-            return state.fateEdge.campaignClocks[clockId] || null;
+        getClock: (timerId) => {
+            return state.fateEdge.campaignClocks[timerId] || null;
         },
         
         listClocks: () => {
             return Object.values(state.fateEdge.campaignClocks)
-                .filter(clock => clock.active);
+                .filter(timer => timer.active);
         }
     };
     
@@ -1065,11 +1065,11 @@ const FateEdgeComplete = (() => {
                 handlePrestigeUse(args, msg);
                 break;
                 
-            case 'fate-create-clock':
+            case 'fate-create-timer':
                 handleCreateClock(args, msg);
                 break;
                 
-            case 'fate-advance-clock':
+            case 'fate-advance-timer':
                 handleAdvanceClock(args, msg);
                 break;
                 
@@ -1171,7 +1171,7 @@ const FateEdgeComplete = (() => {
             <p><strong>Region:</strong> ${region} (${DeckSystem.regions[region].name})</p>
             <p><strong>Card:</strong> ${card.rank} of ${card.suit}s - ${card.cardName}</p>
             <p><strong>Meaning:</strong> ${card.meaning}</p>
-            <p><strong>Clock Size:</strong> ${card.clockSize} segments</p>
+            <p><strong>Clock Size:</strong> ${card.timerSize} segments</p>
             ${regionalEffect ? `<p><strong>Regional Effect:</strong> ${regionalEffect.special || regionalEffect.effect}</p>` : ''}
             ${card.isAce ? '<p><strong style="color: #d32f2f;">ACE DRAWN - Special regional mechanics may apply!</strong></p>' : ''}
         </div>
@@ -1250,13 +1250,13 @@ const FateEdgeComplete = (() => {
         const size = parseInt(args[2]) || 6;
         const description = args.slice(3).join(' ') || '';
         
-        const clock = CampaignClock.createClock(name, size, description);
+        const timer = CampaignClock.createClock(name, size, description);
         
         const output = `
         <div style="background: #e8f5e8; padding: 10px; border-radius: 5px; border: 1px solid #c8e6c8; border-left: 4px solid #4caf50;">
             <h3>Campaign Clock Created</h3>
-            <p><strong>Name:</strong> ${clock.name}</p>
-            <p><strong>Size:</strong> ${clock.size} segments</p>
+            <p><strong>Name:</strong> ${timer.name}</p>
+            <p><strong>Size:</strong> ${timer.size} segments</p>
             ${description ? `<p><strong>Description:</strong> ${description}</p>` : ''}
         </div>
         `;
@@ -1265,20 +1265,20 @@ const FateEdgeComplete = (() => {
     };
     
     const handleAdvanceClock = (args, msg) => {
-        const clockId = args[1] || 'default';
+        const timerId = args[1] || 'default';
         const segments = parseInt(args[2]) || 1;
         
-        const result = CampaignClock.advanceClock(clockId, segments);
+        const result = CampaignClock.advanceClock(timerId, segments);
         if (!result) {
-            sendChat('FateEdge', `/w ${msg.who} Clock not found: ${clockId}`);
+            sendChat('FateEdge', `/w ${msg.who} Clock not found: ${timerId}`);
             return;
         }
         
         const output = `
         <div style="background: #e8f5e8; padding: 10px; border-radius: 5px; border: 1px solid #c8e6c8; border-left: 4px solid #4caf50;">
             <h3>Clock Advanced</h3>
-            <p><strong>Clock:</strong> ${result.clock.name}</p>
-            <p><strong>Progress:</strong> ${result.clock.current}/${result.clock.size}</p>
+            <p><strong>Clock:</strong> ${result.timer.name}</p>
+            <p><strong>Progress:</strong> ${result.timer.current}/${result.timer.size}</p>
             <p><strong>Remaining:</strong> ${result.remaining} segments</p>
             ${result.completed ? '<p><strong style="color: #d32f2f;">CLOCK COMPLETED!</strong></p>' : ''}
         </div>
@@ -1492,7 +1492,7 @@ on('ready', () => {
       const cardName = _.sample(cardOptions);
       const rank = _.sample(['2','3','4','5','6','7','8','9','10','J','Q','K','A']);
 
-      const clockSize = DeckSystemFixed.getClockSize(rank);
+      const timerSize = DeckSystemFixed.getClockSize(rank);
 
       return {
         region,
@@ -1500,7 +1500,7 @@ on('ready', () => {
         rank,
         cardName,
         meaning: regionData.suits[chosenSuit],
-        clockSize,
+        timerSize,
         isAce: rank === 'A',
         isFace: ['J','Q','K'].includes(rank)
       };
@@ -1560,13 +1560,13 @@ on('ready', () => {
   if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.TravelSystem) {
     const TS = FateEdgeComplete.TravelSystem;
     TS.createTravelClock = (destination, rank, partyId) => {
-      const clockSize = DeckSystemFixed.getClockSize(rank);
+      const timerSize = DeckSystemFixed.getClockSize(rank);
       const travelId = `${partyId}_${destination}_${Date.now()}`;
 
       state.fateEdge.activeTravels[travelId] = {
         id: travelId,
         destination,
-        size: clockSize,
+        size: timerSize,
         current: 0,
         partyId,
         startDate: new Date().toISOString(),
@@ -1610,7 +1610,7 @@ on('ready', () => {
             type: 'routeManipulation',
             underground: true,
             specialAccess: 'Aeler Ace Route Manipulation',
-            effect: 'Create/Reveal an underground shortcut; adjust route clocks by -1 (min 1)'
+            effect: 'Create/Reveal an underground shortcut; adjust route timers by -1 (min 1)'
           };
         }
         return null;
@@ -1707,7 +1707,7 @@ on('ready', () => {
       const cardName = _.sample(cardOptions);
       const rank = _.sample(['2','3','4','5','6','7','8','9','10','J','Q','K','A']);
 
-      const clockSize = DeckSystemFixed.getClockSize(rank);
+      const timerSize = DeckSystemFixed.getClockSize(rank);
 
       return {
         region,
@@ -1715,7 +1715,7 @@ on('ready', () => {
         rank,
         cardName,
         meaning: regionData.suits[chosenSuit],
-        clockSize,
+        timerSize,
         isAce: rank === 'A',
         isFace: ['J','Q','K'].includes(rank)
       };
@@ -1754,10 +1754,10 @@ on('ready', () => {
   if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.TravelSystem) {
     const TS = FateEdgeComplete.TravelSystem;
     TS.createTravelClock = (destination, rank, partyId) => {
-      const clockSize = DeckSystemFixed.getClockSize(rank);
+      const timerSize = DeckSystemFixed.getClockSize(rank);
       const travelId = `${partyId}_${destination}_${Date.now()}`;
       state.fateEdge.activeTravels[travelId] = {
-        id: travelId, destination, size: clockSize, current: 0,
+        id: travelId, destination, size: timerSize, current: 0,
         partyId, startDate: new Date().toISOString(),
         complications: [], rewards: []
       };
@@ -1785,7 +1785,7 @@ on('ready', () => {
   if (typeof FateEdgeComplete !== 'undefined' && FateEdgeComplete.RegionalFeatures && FateEdgeComplete.RegionalFeatures.Aeler) {
     FateEdgeComplete.RegionalFeatures.Aeler.handleAce = (cardDraw) => {
       if (cardDraw.rank === 'A') {
-        return { type:'route_manipulation', underground:true, special:'Aeler Ace Route Manipulation', effect:'Create/Reveal an underground shortcut; adjust route clocks by -1 (min 1)' };
+        return { type:'route_manipulation', underground:true, special:'Aeler Ace Route Manipulation', effect:'Create/Reveal an underground shortcut; adjust route timers by -1 (min 1)' };
       }
       return null;
     };
@@ -1904,7 +1904,7 @@ on('ready', () => {
   const st = state.fateEdge;
   st.__schema = st.__schema || 0;
   st.config = Object.assign({ gmWhispers:true, travelTickAnnounce:true, sheetSync:false, sbAttr:'sb_total', boonAttr:'boons_total', cooldownMs:1000 }, st.config||{});
-  st.clocks = st.clocks || {};      // name -> { id,pageid,size,current,travelId? }
+  st.timers = st.timers || {};      // name -> { id,pageid,size,current,travelId? }
   st._cooldown = st._cooldown || {}; // playerid -> ts
 
   const migrate = () => {
@@ -1957,19 +1957,19 @@ on('ready', () => {
       imgsrc:'https://s3.amazonaws.com/files.d20.io/images/18303508/7w5D8w3vY5z0L5xWzsQGGA/thumb.png?1438573430',
       bar1_value: current, bar1_max: size, showplayers_bar1:true, showname:true
     });
-    st.clocks[name]={id:token.id,pageid:page,size,current,travelId:linkTravelId||null}; return st.clocks[name];
+    st.timers[name]={id:token.id,pageid:page,size,current,travelId:linkTravelId||null}; return st.timers[name];
   };
-  const updClock=(name)=>{ const c=st.clocks[name]; if(!c) return false; const g=getObj('graphic',c.id); if(!g) return false; g.set('bar1_value',c.current); g.set('bar1_max',c.size); g.set('name',`${name} (${c.current}/${c.size})`); return true; };
-  const tickClock=(name,n=1)=>{ const c=st.clocks[name]; if(!c) return false; c.current=Math.min(c.size, Math.max(0,(c.current||0)+n)); return updClock(name); };
-  const setClock=(name,cur)=>{ const c=st.clocks[name]; if(!c) return false; c.current=Math.min(c.size, Math.max(0,cur)); return updClock(name); };
-  const linkClock=(name,travelId)=>{ const c=st.clocks[name]; if(!c) return false; c.travelId=travelId; return true; };
+  const updClock=(name)=>{ const c=st.timers[name]; if(!c) return false; const g=getObj('graphic',c.id); if(!g) return false; g.set('bar1_value',c.current); g.set('bar1_max',c.size); g.set('name',`${name} (${c.current}/${c.size})`); return true; };
+  const tickClock=(name,n=1)=>{ const c=st.timers[name]; if(!c) return false; c.current=Math.min(c.size, Math.max(0,(c.current||0)+n)); return updClock(name); };
+  const setClock=(name,cur)=>{ const c=st.timers[name]; if(!c) return false; c.current=Math.min(c.size, Math.max(0,cur)); return updClock(name); };
+  const linkClock=(name,travelId)=>{ const c=st.timers[name]; if(!c) return false; c.travelId=travelId; return true; };
   on('chat:message',(msg)=>{
     if (msg.type!=='api') return;
     const p=(msg.content||'').trim().split(/\s+/);
     if (p[0].toLowerCase()==='!travel' && (p[1]||'').toLowerCase()==='tick'){
       const id=p[2];
-      Object.keys(st.clocks).forEach(n=>{
-        const c=st.clocks[n];
+      Object.keys(st.timers).forEach(n=>{
+        const c=st.timers[n];
         if (c.travelId===id){
           const t=st.activeTravels && st.activeTravels[id];
           if (t){ c.size=t.size; c.current=t.current; updClock(n); }
@@ -1990,7 +1990,7 @@ on('ready', () => {
     '<h3>Obligation</h3>',
     button('+1 Fate','!obligation selected fate add 1'),' ',button('Clear Fate','!obligation selected fate clear'),
     '<h3>Clocks</h3>',
-    button('Create 6-seg','!clock create ?{Name|Clock} 6'),' ',button('Tick +1','!clock tick ?{Name|Clock} 1'),' ',button('Show','!clock show'),
+    button('Create 6-seg','!timer create ?{Name|Clock} 6'),' ',button('Tick +1','!timer tick ?{Name|Clock} 1'),' ',button('Show','!timer show'),
     '<h3>Travel</h3>',
     button('Tick Travel','!travel tick ?{Travel Id} 1'),
     '</div>'
@@ -2019,20 +2019,20 @@ on('ready', () => {
         return whisperGM('Usage: !fe config cooldown <ms>');
       }
     }
-    if (root==='!clock'){
+    if (root==='!timer'){
       const sub=(p[1]||'').toLowerCase();
       if (sub==='create'){
         const name=p[2]||'Clock'; const size=Math.max(2, parseInt(p[3]||'6',10)); const {x,y}=parseXY(msg.playerid);
-        const c=createClock({name,size,x,y,current:0}); return whisperGM(`Created clock ${html(name)} (${c.current}/${c.size}).`);
+        const c=createClock({name,size,x,y,current:0}); return whisperGM(`Created timer ${html(name)} (${c.current}/${c.size}).`);
       }
-      if (sub==='tick'){ const name=p[2]; const n=parseInt(p[3]||'1',10); return whisperGM(tickClock(name,n)?`Ticked ${html(name)} by ${n}.`:`No clock named ${html(name)}.`); }
-      if (sub==='set'){ const name=p[2]; const cur=parseInt(p[3]||'0',10); return whisperGM(setClock(name,cur)?`Set ${html(name)} to ${cur}.`:`No clock named ${html(name)}.`); }
-      if (sub==='link'){ const name=p[2]; const id=p[3]; return whisperGM(linkClock(name,id)?`Linked ${html(name)} to travel ${html(id)}.`:`No clock named ${html(name)}.`); }
+      if (sub==='tick'){ const name=p[2]; const n=parseInt(p[3]||'1',10); return whisperGM(tickClock(name,n)?`Ticked ${html(name)} by ${n}.`:`No timer named ${html(name)}.`); }
+      if (sub==='set'){ const name=p[2]; const cur=parseInt(p[3]||'0',10); return whisperGM(setClock(name,cur)?`Set ${html(name)} to ${cur}.`:`No timer named ${html(name)}.`); }
+      if (sub==='link'){ const name=p[2]; const id=p[3]; return whisperGM(linkClock(name,id)?`Linked ${html(name)} to travel ${html(id)}.`:`No timer named ${html(name)}.`); }
       if (sub==='show'){
-        const lines=Object.keys(st.clocks).map(n=>{ const c=st.clocks[n]; return `• ${html(n)}: ${c.current}/${c.size}${c.travelId?` (travel ${html(c.travelId)})`:''}`; });
-        return whisperGM(lines.length?lines.join('<br>'):'No clocks yet.');
+        const lines=Object.keys(st.timers).map(n=>{ const c=st.timers[n]; return `• ${html(n)}: ${c.current}/${c.size}${c.travelId?` (travel ${html(c.travelId)})`:''}`; });
+        return whisperGM(lines.length?lines.join('<br>'):'No timers yet.');
       }
-      whisperGM('Usage: !clock create <name> <size> | tick <name> [N] | set <name> <cur> | link <name> <travelId> | show');
+      whisperGM('Usage: !timer create <name> <size> | tick <name> [N] | set <name> <cur> | link <name> <travelId> | show');
     }
   });
 })();

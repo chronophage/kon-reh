@@ -65,14 +65,14 @@ When a player rolls a 1, don't plan. React. Pick ONE thing from this list. One a
 
 ### 4. The "Three-Clock Rule"
 
-You cannot manage ten clocks at once. You just can't. So, don't.
+You cannot manage ten timers at once. You just can't. So, don't.
 
-**Only ever have 3 "active" clocks at a time.**
+**Only ever have 3 "active" timers at a time.**
 *   One for the **Scene** (e.g., Guards Alerted [4])
 *   One for the **Journey** (e.g., Travel to the Keep [6])
 *   One for the **Campaign** (e.g., The Baron's Mistrust [8])
 
-If a new complication arises that needs a clock, see if it can be folded into an existing one. "The bridge is collapsing" can just be a tick on the "Travel" clock. This forces you to be efficient and keeps the game focused.
+If a new complication arises that needs a timer, see if it can be folded into an existing one. "The bridge is collapsing" can just be a tick on the "Travel" timer. This forces you to be efficient and keeps the game focused.
 
 ### 5. The Magic Adjudication Shortcut
 

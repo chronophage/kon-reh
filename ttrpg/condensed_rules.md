@@ -42,7 +42,7 @@
 3. **Player rolls** – Attribute + Skill d10s.
 4. **Count successes** (6+) and **Story Beats** (1s).
 5. **Apply Outcome** – see table below.
-6. **GM spends Story Beats** – complications, clocks, scene shifts.
+6. **GM spends Story Beats** – complications, timers, scene shifts.
 7. **Pass the spotlight** – next player acts.
 
 ---
@@ -77,9 +77,9 @@
 
 | SB Cost | Effect |
 |---------|--------|
-| 1 | Minor: noise, trace, +1 on a clock |
+| 1 | Minor: noise, trace, +1 on a timer |
 | 2 | Moderate: alarm raised, lose advantage, lesser foe appears |
-| 3 | Serious: reinforcements, key gear breaks, tick a front clock |
+| 3 | Serious: reinforcements, key gear breaks, tick a front timer |
 | 4+ | Major: trap springs, authority arrives, scene shifts |
 
 ---
@@ -103,7 +103,7 @@
 | 4 | Difficult, active resistance |
 | 5+ | Extreme, high stakes |
 
-**GM advice:** Do not inflate DV to challenge players. Use Position, clocks, and SB instead.
+**GM advice:** Do not inflate DV to challenge players. Use Position, timers, and SB instead.
 
 ---
 
@@ -127,7 +127,7 @@
 | Defend | Improve Position by one step for defense; protect allies |
 | Assist | Spend 1 Boon to give +1 die to ally (max +3 from all assists) |
 
-**Combat Clocks:** Use visible clocks for enemy morale [6], environmental danger [4], boss phases.
+**Combat Clocks:** Use visible timers for enemy morale [6], environmental danger [4], boss phases.
 
 ---
 
@@ -174,8 +174,8 @@
 Players track their own:
 
 - **Obligation** (per Patron or Symbol) – Capacity = Spirit + Presence. Exceeding capacity causes 1 Fatigue per segment over.
-- **Corruption clock** (Cantors)
-- **Leash clock** (Summoners)
+- **Corruption timer** (Cantors)
+- **Leash timer** (Summoners)
 - **Asset states** (Maintained / Neglected / Compromised)
 - **Follower conditions** (Exposure, Harm)
 - **Fatigue and Harm**
@@ -233,13 +233,13 @@ Clocks are visible trackers for threats, progress, and looming changes.
 
 **Name them clearly:** "Alarm Raised [4]" not "Bad Stuff".
 
-**Advance a clock:** on a Miss, certain Partials, or when GM spends SB.
+**Advance a timer:** on a Miss, certain Partials, or when GM spends SB.
 
 ### Three-Clock Guideline (per scene)
 
-- **Immediate clock** – what's about to go wrong (e.g., Collapsing Bridge [4])
-- **Situational clock** – pressure shaping decisions (e.g., Crowd Turns Hostile [6])
-- **Long-term clock** – echoes forward (e.g., Faction Retaliation [8])
+- **Immediate timer** – what's about to go wrong (e.g., Collapsing Bridge [4])
+- **Situational timer** – pressure shaping decisions (e.g., Crowd Turns Hostile [6])
+- **Long-term timer** – echoes forward (e.g., Faction Retaliation [8])
 
 ### Mandate & Crisis (Campaign Clocks)
 
@@ -253,10 +253,10 @@ Clocks are visible trackers for threats, progress, and looming changes.
 ### Default Settings
 - DV = 3
 - Position = Controlled
-- One short clock per scene
+- One short timer per scene
 
 ### SB Spend Menu
-- 1 SB: noise, tick a clock, minor setback
+- 1 SB: noise, tick a timer, minor setback
 - 2 SB: alarm raised, lose advantage, lesser foe appears
 - 3 SB: reinforcements, key gear breaks, tick a front
 - 4+ SB: trap springs, authority arrives, scene shifts
@@ -363,7 +363,7 @@ Clocks are visible trackers for threats, progress, and looming changes.
 - **Prestige Talent (7-10 XP)** – requires Tier II+ and narrative justification
 
 ### Rush Rule
-Skip downtime by accepting a Haste clock [4]. If it fills before you finish, the new ability has a flaw.
+Skip downtime by accepting a Haste timer [4]. If it fills before you finish, the new ability has a flaw.
 
 ---
 
@@ -464,14 +464,14 @@ Skip downtime by accepting a Haste clock [4]. If it fills before you finish, the
 - **Clock** – Visible progress tracker (4/6/8/10 segments). Advances on Misses, Partials, or SB spends.
 - **Compromised** – State of an Asset or Symbol: unusable until repaired.
 - **Corruption** – Cantor resource. Clock fills → gain Patron's burden/benefit, reset to Tier minimum.
-- **Crisis** – Campaign clock (0-6). High = enemies stronger.
+- **Crisis** – Campaign timer (0-6). High = enemies stronger.
 - **Difficulty Value (DV)** – Target number of successes. Default 3.
 - **Exposure** – Follower stress track. Leads to Neglected/Compromised.
 - **Fatigue** – Exhaustion track. Worsens Position; full track → Harm+1, clear Fatigue.
 - **Follower** – Named NPC ally. Costs Cap² XP. Can assist or take independent actions.
 - **Harm** – Injury track (1-3). Imposes die penalties.
 - **Leash** – Summoner's control track. When full, spirit acts independently.
-- **Mandate** – Campaign clock (0-6). High = party is respected.
+- **Mandate** – Campaign timer (0-6). High = party is respected.
 - **Miss** – 0 successes. Player gains 2 Boons; GM gains SB and escalates.
 - **Neglected** – State of Asset or Follower: -1 die until attention given.
 - **Obligation** – Debt to Patron (or terrestrial patron). Capacity = Spirit + Presence. Over capacity → Fatigue.

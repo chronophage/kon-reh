@@ -52,7 +52,7 @@ class DatabaseManager:
         """Create all required tables"""
         # Clock reference table
         cursor.execute('''
-            CREATE TABLE IF NOT EXISTS clock_reference (
+            CREATE TABLE IF NOT EXISTS timer_reference (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT UNIQUE NOT NULL,
                 description TEXT,
@@ -109,7 +109,7 @@ class DatabaseManager:
     def load_reference_data(self, cursor):
         """Load initial reference data using INSERT OR IGNORE to prevent duplicates"""
         # Clock templates
-        clock_templates = [
+        timer_templates = [
             ('Supply Clock', 'Party resource tracking', 4, 'Resource'),
             ('Peril Clock', 'Escalating danger', 6, 'Threat'),
             ('Doom Clock', 'Catastrophic event timer', 8, 'Threat'),
@@ -121,9 +121,9 @@ class DatabaseManager:
         ]
         
         cursor.executemany('''
-            INSERT OR IGNORE INTO clock_reference (name, description, size, category)
+            INSERT OR IGNORE INTO timer_reference (name, description, size, category)
             VALUES (?, ?, ?, ?)
-        ''', clock_templates)
+        ''', timer_templates)
         
         # Asset templates
         asset_templates = [
@@ -158,11 +158,11 @@ class DatabaseManager:
         ''', consequence_cards)
         
     # Shared query methods
-    def get_clock_templates(self) -> List[Dict[str, Any]]:
-        """Get all clock templates"""
+    def get_timer_templates(self) -> List[Dict[str, Any]]:
+        """Get all timer templates"""
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM clock_reference ORDER BY category, name')
+        cursor.execute('SELECT * FROM timer_reference ORDER BY category, name')
         columns = [description[0] for description in cursor.description]
         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
         conn.close()
@@ -228,9 +228,9 @@ def initialize_shared_database():
     """Initialize the shared database"""
     return get_db_manager()
 
-def get_clock_templates():
-    """Get clock templates from shared database"""
-    return get_db_manager().get_clock_templates()
+def get_timer_templates():
+    """Get timer templates from shared database"""
+    return get_db_manager().get_timer_templates()
 
 def get_asset_templates():
     """Get asset templates from shared database"""

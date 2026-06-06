@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 
 # Import all your tab modules
-from gm_tools.ui.supply_clock_tab import SupplyClockTab
+from gm_tools.ui.supply_timer_tab import SupplyClockTab
 from gm_tools.ui.fatigue_tracker_tab import FatigueTrackerTab
 from gm_tools.ui.boon_tracker_tab import BoonTrackerTab
 from gm_tools.ui.xp_tracker_tab import XPTrackerTab
@@ -12,12 +12,12 @@ from gm_tools.ui.scene_builder_tab import SceneBuilderTab
 from gm_tools.ui.cp_spend_tab import (SB)SpendTab
 from gm_tools.ui.cp_spend_menu_tab import (SB)SpendMenuTab
 from gm_tools.ui.consequence_tab import ConsequenceTab
-from gm_tools.ui.campaign_clock_tab import CampaignClockTab
+from gm_tools.ui.campaign_timer_tab import CampaignClockTab
 from gm_tools.ui.evidence_tracker_tab import EvidenceTrackerTab
 from gm_tools.ui.follower_tracker_tab import FollowerTrackerTab
 from gm_tools.ui.dice_roller_tab import DiceRollerTab
 from gm_tools.ui.npc_tab import NPCTab
-from gm_tools.ui.clocks_tab import ClocksTab
+from gm_tools.ui.timers_tab import ClocksTab
 from gm_tools.ui.adventure_tab import AdventureTab
 from ui.skill_manager_tab import SkillManagerTab
 from gm_tools.ui.settings_tab import SettingsTab
@@ -93,7 +93,7 @@ class MainWindow:
         # Supply Clock
         supply_frame = ttk.Frame(resources_notebook)
         resources_notebook.add(supply_frame, text="Supply")
-        self.supply_clock = SupplyClockTab(supply_frame)
+        self.supply_timer = SupplyClockTab(supply_frame)
         
         # Fatigue
         fatigue_frame = ttk.Frame(resources_notebook)
@@ -153,7 +153,7 @@ class MainWindow:
         # Campaign Clocks
         campaign_frame = ttk.Frame(campaign_notebook)
         campaign_notebook.add(campaign_frame, text="Clocks")
-        self.campaign_clock = CampaignClockTab(campaign_frame)
+        self.campaign_timer = CampaignClockTab(campaign_frame)
         
         # Evidence
         evidence_frame = ttk.Frame(campaign_notebook)
@@ -175,9 +175,9 @@ class MainWindow:
         self.npc_generator = NPCTab(npc_frame)
         
         # Custom Clocks
-        clocks_frame = ttk.Frame(tools_notebook)
-        tools_notebook.add(clocks_frame, text="Clocks")
-        self.clocks_tracker = ClocksTab(clocks_frame)
+        timers_frame = ttk.Frame(tools_notebook)
+        tools_notebook.add(timers_frame, text="Clocks")
+        self.timers_tracker = ClocksTab(timers_frame)
         
         # Adventure Tools
         adventure_frame = ttk.Frame(tools_notebook)

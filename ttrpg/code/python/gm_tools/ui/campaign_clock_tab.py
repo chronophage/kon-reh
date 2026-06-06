@@ -1,4 +1,4 @@
-# ui/campaign_clock_tab.py
+# ui/campaign_timer_tab.py
 import tkinter as tk
 from tkinter import ttk
 
@@ -18,7 +18,7 @@ class CampaignClockTab:
         control_frame = ttk.Frame(self.parent)
         control_frame.pack(fill="x", padx=20, pady=10)
         
-        ttk.Button(control_frame, text="Reset All Clocks", command=self.reset_clocks).pack(side="left", padx=5)
+        ttk.Button(control_frame, text="Reset All Clocks", command=self.reset_timers).pack(side="left", padx=5)
         
         # Mandate Clock
         mandate_frame = ttk.LabelFrame(self.parent, text="Mandate Clock (0-6) - Public Legitimacy", padding="15")
@@ -29,7 +29,7 @@ class CampaignClockTab:
         
         self.mandate_canvas = tk.Canvas(mandate_frame, width=300, height=40)
         self.mandate_canvas.pack(pady=10)
-        self.draw_mandate_clock()
+        self.draw_mandate_timer()
         
         mandate_btn_frame = ttk.Frame(mandate_frame)
         mandate_btn_frame.pack()
@@ -46,7 +46,7 @@ class CampaignClockTab:
         
         self.crisis_canvas = tk.Canvas(crisis_frame, width=300, height=40)
         self.crisis_canvas.pack(pady=10)
-        self.draw_crisis_clock()
+        self.draw_crisis_timer()
         
         crisis_btn_frame = ttk.Frame(crisis_frame)
         crisis_btn_frame.pack()
@@ -84,7 +84,7 @@ Finale Triggers:
         info_label = ttk.Label(info_frame, text=info_text, justify="left")
         info_label.pack()
         
-    def draw_mandate_clock(self):
+    def draw_mandate_timer(self):
         self.mandate_canvas.delete("all")
         
         # Draw empty segments
@@ -102,7 +102,7 @@ Finale Triggers:
                 
             self.mandate_canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="black", width=1)
             
-    def draw_crisis_clock(self):
+    def draw_crisis_timer(self):
         self.crisis_canvas.delete("all")
         
         # Draw empty segments
@@ -148,7 +148,7 @@ Finale Triggers:
         self.crisis = max(0, min(6, value))
         self.update_displays()
             
-    def reset_clocks(self):
+    def reset_timers(self):
         self.mandate = 0
         self.crisis = 0
         self.update_displays()
@@ -156,8 +156,8 @@ Finale Triggers:
     def update_displays(self):
         self.mandate_label.config(text=f"Mandate: {self.mandate}/6")
         self.crisis_label.config(text=f"Crisis: {self.crisis}/6")
-        self.draw_mandate_clock()
-        self.draw_crisis_clock()
+        self.draw_mandate_timer()
+        self.draw_crisis_timer()
         self.update_finale_status()
         
     def update_finale_status(self):

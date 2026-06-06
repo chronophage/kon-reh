@@ -123,7 +123,7 @@ A Discord bot to facilitate playing Fate's Edge RPG directly in Discord.
 
 - **Character Management**: Create and manage Fate's Edge characters
 - **Dice Rolling**: Full Fate's Edge dice mechanics with description ladder
-- **Combat System**: Position, range, harm, and tactical clock tracking
+- **Combat System**: Position, range, harm, and tactical timer tracking
 - **Magic System**: Obligation, fatigue, and summoning management
 - **Travel System**: Journey tracking with supply and waypoint management
 - **Deck Integration**: Travel decks, consequences, and NPC generation

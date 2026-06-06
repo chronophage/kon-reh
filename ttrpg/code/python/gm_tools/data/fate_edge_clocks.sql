@@ -1,12 +1,12 @@
--- Create clock reference table
-CREATE TABLE IF NOT EXISTS clock_reference (
+-- Create timer reference table
+CREATE TABLE IF NOT EXISTS timer_reference (
     id INTEGER PRIMARY KEY,
     name TEXT UNIQUE,
     segments INTEGER
 );
 
--- Insert default clock references
-INSERT OR IGNORE INTO clock_reference (name, segments) VALUES
+-- Insert default timer references
+INSERT OR IGNORE INTO timer_reference (name, segments) VALUES
 ('Action / Task', 4),
 ('Stealth / Alert / Heat', 4),
 ('Recovery / Healing', 4),

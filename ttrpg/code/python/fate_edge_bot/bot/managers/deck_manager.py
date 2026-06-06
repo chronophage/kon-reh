@@ -166,7 +166,7 @@ class DeckManager:
             "card": card,
             "rank": rank,
             "rank_name": self._get_rank_name(rank),
-            "clock_size": self._get_clock_size(rank)
+            "timer_size": self._get_timer_size(rank)
         }
         
     def draw_quick_hook(self, region: str) -> Dict[str, Any]:
@@ -182,17 +182,17 @@ class DeckManager:
         if not spade_card or not heart_card:
             return {"error": "Failed to draw cards"}
             
-        # Determine clock size from highest rank
+        # Determine timer size from highest rank
         highest_rank = max(spade_card["rank"], heart_card["rank"])
-        clock_size = self._get_clock_size(highest_rank)
+        timer_size = self._get_timer_size(highest_rank)
         
         return {
             "type": "Quick Hook",
             "region": region,
             "theme": self.travel_decks[region_key]["theme"],
             "cards": [spade_card, heart_card],
-            "clock_size": clock_size,
-            "clock_description": f"{clock_size}-segment clock",
+            "timer_size": timer_size,
+            "timer_description": f"{timer_size}-segment timer",
             "highest_rank": highest_rank
         }
         
@@ -211,10 +211,10 @@ class DeckManager:
         if not all([spade_card, heart_card, club_card, diamond_card]):
             return {"error": "Failed to draw all cards"}
             
-        # Determine clock size from highest rank
+        # Determine timer size from highest rank
         ranks = [spade_card["rank"], heart_card["rank"], club_card["rank"], diamond_card["rank"]]
         highest_rank = max(ranks)
-        clock_size = self._get_clock_size(highest_rank)
+        timer_size = self._get_timer_size(highest_rank)
         
         # Check for special combinations
         combo_info = self._check_combinations([spade_card, heart_card, club_card, diamond_card])
@@ -224,8 +224,8 @@ class DeckManager:
             "region": region,
             "theme": self.travel_decks[region_key]["theme"],
             "cards": [spade_card, heart_card, club_card, diamond_card],
-            "clock_size": clock_size,
-            "clock_description": f"{clock_size}-segment clock",
+            "timer_size": timer_size,
+            "timer_description": f"{timer_size}-segment timer",
             "highest_rank": highest_rank,
             "combo": combo_info
         }
@@ -386,8 +386,8 @@ class DeckManager:
         }
         return rank_names.get(rank, str(rank))
         
-    def _get_clock_size(self, rank: int) -> int:
-        """Determine clock size based on card rank"""
+    def _get_timer_size(self, rank: int) -> int:
+        """Determine timer size based on card rank"""
         if 2 <= rank <= 5:
             return 4  # Minor
         elif 6 <= rank <= 10:
@@ -438,12 +438,12 @@ class DeckManager:
         result = f"🃏 **{draw_result['type']}** - {draw_result['region']}\n"
         result += f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         result += f"**Theme**: {draw_result['theme']}\n"
-        result += f"**Clock**: {draw_result['clock_description']}\n\n"
+        result += f"**Clock**: {draw_result['timer_description']}\n\n"
         
         for card in draw_result["cards"]:
             suit_symbol = {"Spade": "♠", "Heart": "♥", "Club": "♣", "Diamond": "♦"}[card["suit"]]
             result += f"{suit_symbol} **{card['suit']}**: {card['card']}\n"
-            result += f"   Rank: {card['rank_name']} | Clock: {card['clock_size']}-segment\n\n"
+            result += f"   Rank: {card['rank_name']} | Clock: {card['timer_size']}-segment\n\n"
             
         if "combo" in draw_result and draw_result["combo"]["type"] != "None":
             result += f"✨ **Special Combo**: {draw_result['combo']['type']}\n"

@@ -39,7 +39,7 @@
 ⸻
 
 5. Party Synergy
-	•	Frontliner (Body 4): Interpose, draw fire, anchor clocks.
+	•	Frontliner (Body 4): Interpose, draw fire, anchor timers.
 	•	Support (Inspire/Boons): Keep the engine running; Assist key rolls.
 	•	Runekeeper: Lock down environments, prevent spirals.
 	•	Scout: Mobility = Position control (flank, elevation, setup actions).
@@ -49,7 +49,7 @@
 
 6. Meta-Table Tactics
 	•	Failure farming: A safe Miss = 2 Boons → fuel for later heroics.
-	•	Clocks: Watch GM clocks (Mob Overwhelm, Fatigue Spiral). Target what feeds them.
+	•	Clocks: Watch GM timers (Mob Overwhelm, Fatigue Spiral). Target what feeds them.
 	•	SB Awareness: 1s and Pushes give GM ammo. Sometimes restraint > risk.
 	•	Crits: Don’t just cheer—crit flourishes = free Boon or improved effect. Cash them in.
 
@@ -60,7 +60,7 @@ Quick Priorities
 	2.	Bank & Spend Boons — don’t hoard over 5.
 	3.	Manage Fatigue — pace effort, rest often.
 	4.	Protect Casters during Channel/Weave.
-	5.	Hit GM clocks before they spiral.
+	5.	Hit GM timers before they spiral.
 
 ⸻
 

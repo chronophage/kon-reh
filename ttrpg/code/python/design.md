@@ -68,8 +68,8 @@ Next foraging: DV 2 Survival test
 # /combat start
 # /combat position set="Controlled"
 # /combat range set="Near"
-# /combat clock create name="Mob Overwhelm" size=6
-# /combat clock advance name="Mob Overwhelm" segments=1
+# /combat timer create name="Mob Overwhelm" size=6
+# /combat timer advance name="Mob Overwhelm" segments=1
 # /combat end
 
 # Response for combat status:
@@ -111,12 +111,12 @@ Fatigue: 0 (Safe)
 ```python
 # Commands:
 # /travel start destination="Silkstrand"
-# /travel clock show
-# /travel clock advance segments=1 reason="Storm delay"
+# /travel timer show
+# /travel timer advance segments=1 reason="Storm delay"
 # /travel consequence draw
 # /travel end
 
-# Response for travel clock:
+# Response for travel timer:
 """
 🗺️ Journey to Silkstrand
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -271,14 +271,14 @@ class CharacterManager:
 ```python
 class ResourceManager:
     def __init__(self):
-        self.supply_clock = 0
+        self.supply_timer = 0
         self.fatigue = {}
-        self.tactical_clocks = {}
+        self.tactical_timers = {}
         
     async def advance_supply(self, reason=""):
-        self.supply_clock = min(4, self.supply_clock + 1)
+        self.supply_timer = min(4, self.supply_timer + 1)
         return {
-            'level': self.supply_clock,
+            'level': self.supply_timer,
             'status': self._get_supply_status(),
             'effect': self._get_supply_effect()
         }
@@ -291,7 +291,7 @@ class ResourceManager:
             3: "Dangerously Low",
             4: "Out of Supply"
         }
-        return statuses.get(self.supply_clock, "Unknown")
+        return statuses.get(self.supply_timer, "Unknown")
 ```
 
 ## Implementation Plan

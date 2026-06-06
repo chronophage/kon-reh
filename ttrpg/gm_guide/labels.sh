@@ -1,11 +1,11 @@
-# 1. Fix sec:clocks-fronts → sec:core-resolution-cycle
-sed -i '' 's/sec:clocks-fronts/sec:core-resolution-cycle/g' \
+# 1. Fix sec:timers-fronts → sec:core-resolution-cycle
+sed -i '' 's/sec:timers-fronts/sec:core-resolution-cycle/g' \
   sections/advanced_gm_tools.tex \
   sections/epic_tier.tex \
   sections/preface.tex
 
-# 2. Remove the broken (autoref subsec:three-clock-guideline) from preface
-sed -i '' 's/ (\\autoref{subsec:three-clock-guideline})//g' \
+# 2. Remove the broken (autoref subsec:three-timer-guideline) from preface
+sed -i '' 's/ (\\autoref{subsec:three-timer-guideline})//g' \
   sections/preface.tex
 
 # 3. Remove sec:player-managed-modules-gm references (delete the \ref{...})

@@ -36,8 +36,8 @@ class CoreCommands(commands.Cog):
 
 **Resource Tracking:**
 • `/supply status` - Check party supply status
-• `/supply advance` - Advance supply clock
-• `/supply clear` - Clear supply clock
+• `/supply advance` - Advance supply timer
+• `/supply clear` - Clear supply timer
 
 **Coming Soon:**
 • Combat tracking

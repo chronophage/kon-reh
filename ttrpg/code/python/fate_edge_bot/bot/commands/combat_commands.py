@@ -418,10 +418,10 @@ class CombatCommands(commands.Cog):
                 ephemeral=True
             )
             
-    @app_commands.command(name="combat_clock", description="Manage tactical clocks")
+    @app_commands.command(name="combat_timer", description="Manage tactical timers")
     @app_commands.describe(
         action="Action to perform",
-        clock_name="Clock name",
+        timer_name="Clock name",
         segments="Number of segments to advance/clear (default: 1)"
     )
     @app_commands.choices(action=[
@@ -429,9 +429,9 @@ class CombatCommands(commands.Cog):
         app_commands.Choice(name="Advance", value="advance"),
         app_commands.Choice(name="Clear", value="clear")
     ])
-    async def combat_clock(self, interaction: discord.Interaction, action: app_commands.Choice[str],
-                          clock_name: str, segments: int = 1):
-        """Manage tactical clocks"""
+    async def combat_timer(self, interaction: discord.Interaction, action: app_commands.Choice[str],
+                          timer_name: str, segments: int = 1):
+        """Manage tactical timers"""
         try:
             combat_manager = self._get_combat_manager()
             
@@ -446,11 +446,11 @@ class CombatCommands(commands.Cog):
             result = None
             
             if action_value == "add":
-                result = combat_manager.add_tactical_clock(clock_name, segments)
+                result = combat_manager.add_tactical_timer(timer_name, segments)
             elif action_value == "advance":
-                result = combat_manager.advance_clock(clock_name, segments)
+                result = combat_manager.advance_timer(timer_name, segments)
             elif action_value == "clear":
-                result = combat_manager.clear_clock(clock_name, segments)
+                result = combat_manager.clear_timer(timer_name, segments)
                 
             if result and result["status"] == "success":
                 if action_value == "add":
@@ -476,9 +476,9 @@ class CombatCommands(commands.Cog):
                 )
                 
         except Exception as e:
-            logger.error(f"Error in combat_clock: {e}")
+            logger.error(f"Error in combat_timer: {e}")
             await interaction.response.send_message(
-                "❌ An error occurred while managing combat clock.", 
+                "❌ An error occurred while managing combat timer.", 
                 ephemeral=True
             )
             
@@ -520,7 +520,7 @@ class CombatCommands(commands.Cog):
         """Format combat status for Discord display"""
         journey = status_data["journey"]
         participants = status_data["participants"]
-        clocks = status_data["active_clocks"]
+        timers = status_data["active_timers"]
         
         result = f"⚔️ **{journey['scene_name']}**\n"
         result += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
@@ -541,11 +541,11 @@ class CombatCommands(commands.Cog):
                 result += f"• {pos_icon} **{name}**{range_icon} {harm_str}{fatigue_str}\n"
             result += "\n"
             
-        if clocks:
+        if timers:
             result += "**Active Clocks:**\n"
-            for name, clock in clocks.items():
+            for name, timer in timers.items():
                 progress_bar = self._get_combat_manager()._create_progress_bar(
-                    clock['current'], clock['size']
+                    timer['current'], timer['size']
                 )
                 result += f"• {name}: {progress_bar}\n"
                 

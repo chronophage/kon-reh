@@ -7,8 +7,33 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}   % for coloured suits
+\usepackage{amsfonts, amssymb}    % for suit symbols
 \usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
+\tcbuselibrary{skins, breakable}
+
+% ----- Card suit and rank formatting -----
+% Define suit colours (hearts/diamonds red, spades/clubs black)
+\newcommand{\cardSuit}[1]{%
+  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
+  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
+  \else #1\fi\fi\fi\fi
+}
+
+% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
+\newcommand{\card}[2]{%
+  \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
+    {\cardSuit{#1}\ \textbf{#2}}%
+}
+
+% Optional: shortcut commands for each suit
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
+
 
 % Suit symbols – used only in imported generator files
 \newcommand{\spadesuit}{♠}
@@ -416,7 +441,7 @@ The Lethai‑thora were once courtiers of a celestial fey realm that spanned the
 
 \textbf{Where do people go when they die?} To the Well of Forgotten Names. Bodies are placed in the well. The well swallows them. The water turns black – the ink of their unwritten secrets.
 
-\textbf{How do you apologize for a serious wrong?} You offer a silence – a period of total stillness, no breath, no heartbeat, no word. Timed by a water clock. If you hold the silence for nine drops, you are forgiven. If you break it, you must speak the wrong aloud in the Chamber of the Ninth Scroll.
+\textbf{How do you apologize for a serious wrong?} You offer a silence – a period of total stillness, no breath, no heartbeat, no word. Timed by a water timer. If you hold the silence for nine drops, you are forgiven. If you break it, you must speak the wrong aloud in the Chamber of the Ninth Scroll.
 
 \textbf{What is the most important festival?} The Unrolling of the Ledgers (winter). Once a year, the keepers unroll a single forbidden scroll and read it aloud to each other – but in a whisper, and only the walls hear. The festival ends with all nine keepers drinking ink from a silver cup. The ink is their own memory.
 

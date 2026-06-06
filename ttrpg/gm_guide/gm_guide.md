@@ -77,7 +77,7 @@ Turn & Actions (any scene, including combat)
 Combat = Same Core Game
 	•	Procedure: Set Position → Roll → Apply Outcome → Spend SB / Draw Deck.  ￼
 	•	Position applications: Dominant (advantageous), Controlled (even odds), Desperate (severe consequences).  ￼
-	•	Use tactical clocks (Overwhelm, Morale, Environmental) to track the wider fight.  ￼
+	•	Use tactical timers (Overwhelm, Morale, Environmental) to track the wider fight.  ￼
 
 ⸻
 
@@ -88,7 +88,7 @@ Treat each leg like a scene: frame stakes, set Position, assign DV, roll, spend 
 ⸻
 
 Magic Integration (GM-facing)
-	•	Spellcasting consequences feed the same SB economy; magic can shift Position, create clocks, or trigger Deck-driven fallout.  ￼
+	•	Spellcasting consequences feed the same SB economy; magic can shift Position, create timers, or trigger Deck-driven fallout.  ￼
 	•	Use fatigue/harm hooks to keep risk visible; integrate backlash as consequences rather than a separate subsystem.  ￼
 
 ⸻

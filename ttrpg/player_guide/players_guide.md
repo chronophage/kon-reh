@@ -541,7 +541,7 @@ Your character's influence extends beyond personal capabilities through Assets a
 #### Independent Actions
 Once per scene (party-wide):
 - Scout & Signal: Change ally's next action to Dominant position
-- Distract & Draw: Reduce threat clock by 1 segment
+- Distract & Draw: Reduce threat timer by 1 segment
 - Fetch & Carry: Move object through danger safely
 
 ---
@@ -578,7 +578,7 @@ In Fate's Edge, the world is not a backdrop—it's a partner in the conversation
 1. Set the Leg: Name origin and destination
 2. Draw Prompts: Regional cards for terrain/people/pressures
 3. Assign Roles: Players take travel roles
-4. Play the Leg: Advance clock, mitigate complications
+4. Play the Leg: Advance timer, mitigate complications
 5. Resolve: Arrive—changed by journey
 
 ### 9.4 Narrative Time

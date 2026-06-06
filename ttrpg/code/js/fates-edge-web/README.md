@@ -365,7 +365,7 @@ fates-edge/
   "updatedat": "2023-01-01T00:00:00Z",
   "players": [...],
   "sessions": [...],
-  "clocks": [...]
+  "timers": [...]
 }
 ```
 
@@ -861,15 +861,15 @@ socket.on('error', (error) => {
 ```
 
 ### Campaign Macros
-- `/clock tick <name> [amount]` - Tick a campaign clock
-- `/clock reset <name>` - Reset a campaign clock
+- `/timer tick <name> [amount]` - Tick a campaign timer
+- `/timer reset <name>` - Reset a campaign timer
 - `/session start [details]` - Start a new session
 - `/session end [details]` - End current session
 
 **Examples:**
 ```
-/clock tick investigation 2
-/clock reset conspiracy
+/timer tick investigation 2
+/timer reset conspiracy
 /session start Investigating the haunted mansion
 /session end Great session everyone!
 ```

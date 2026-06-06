@@ -6,7 +6,7 @@ class Database:
     def __init__(self):
         self.db_path = "../shared/data/fate_edge_decks.db"
         self.sql_path = "data/fate_edge_data_clean.sql"
-        self.clocks_sql_path = "data/fate_edge_clocks.sql"
+        self.timers_sql_path = "data/fate_edge_timers.sql"
         self.log_path = "../shared/data/fate_edge_debug.log"
         self.init_database()
         
@@ -31,7 +31,7 @@ class Database:
         else:
             self.log_debug("Using existing database")
             
-        self.load_clock_reference_data()
+        self.load_timer_reference_data()
         
     def load_from_sql_file(self):
         try:
@@ -90,24 +90,24 @@ class Database:
         except Exception as e:
             self.log_debug(f"Error creating default database: {e}")
             
-    def load_clock_reference_data(self):
+    def load_timer_reference_data(self):
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS clock_reference (
+                CREATE TABLE IF NOT EXISTS timer_reference (
                     id INTEGER PRIMARY KEY,
                     name TEXT UNIQUE,
                     segments INTEGER
                 )
             """)
             
-            cursor.execute("SELECT COUNT(*) FROM clock_reference")
+            cursor.execute("SELECT COUNT(*) FROM timer_reference")
             count = cursor.fetchone()[0]
             
             if count == 0:
-                default_clocks = [
+                default_timers = [
                     ("Action / Task", 4),
                     ("Stealth / Alert / Heat", 4),
                     ("Recovery / Healing", 4),
@@ -129,15 +129,15 @@ class Database:
                 ]
                 
                 cursor.executemany(
-                    "INSERT INTO clock_reference (name, segments) VALUES (?, ?)",
-                    default_clocks
+                    "INSERT INTO timer_reference (name, segments) VALUES (?, ?)",
+                    default_timers
                 )
             
             conn.commit()
             conn.close()
             self.log_debug("Clock reference data loaded successfully")
         except Exception as e:
-            self.log_debug(f"Error loading clock reference data: {e}")
+            self.log_debug(f"Error loading timer reference data: {e}")
             
     def get_consequence_meaning(self, suit, rank):
         try:

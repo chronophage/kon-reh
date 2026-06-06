@@ -1,6 +1,6 @@
-# utils/clock_utils.py
-def calculate_clock_size(rank):
-    """Calculate clock size based on card rank"""
+# utils/timer_utils.py
+def calculate_timer_size(rank):
+    """Calculate timer size based on card rank"""
     if 2 <= rank <= 5:
         return 4  # Minor
     elif 6 <= rank <= 10:

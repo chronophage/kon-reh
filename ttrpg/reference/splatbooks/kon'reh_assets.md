@@ -16,7 +16,7 @@ These powerful abilities represent significant personal development or the maste
 *   **Cost:** 7 XP
 *   **Requirements:** Wits 3+, any two social or mental skills at level 2+.
 *   **Effect:** Once per session, when you are in a **Controlled** or **Desperate** Position in a conflict (social, physical, or mental), you can spend 1 XP (instead of a Boon) to immediately shift your Position one step *up* the ladder (e.g., Desperate -> Controlled, Controlled -> Controlled). This represents breaking the expected flow or finding an asymmetric advantage. Narratively, you "break the mirror" of the conflict.
-*   **Narrative Hook:** This talent embodies the Cartwright School's focus on winning clocks, not just pieces. It's a way to turn a tactical disadvantage into a narrative pivot.
+*   **Narrative Hook:** This talent embodies the Cartwright School's focus on winning timers, not just pieces. It's a way to turn a tactical disadvantage into a narrative pivot.
 
 **2. Talent (Mid-Tier): Dhaharan Tollmaster**
 *   **Cost:** 6 XP

@@ -97,8 +97,8 @@ class FateDeckSimulator:
         drawn = random.sample(deck, count)
         return drawn
     
-    def get_clock_size(self, cards: List[Dict]) -> int:
-        """Determine clock size based on highest rank"""
+    def get_timer_size(self, cards: List[Dict]) -> int:
+        """Determine timer size based on highest rank"""
         rank_values = {
             '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
             'J': 11, 'Q': 12, 'K': 13, 'A': 14
@@ -110,7 +110,7 @@ class FateDeckSimulator:
             if rank_val > max_rank_value:
                 max_rank_value = rank_val
         
-        # Convert to clock size
+        # Convert to timer size
         if max_rank_value <= 5:
             return 4  # Minor
         elif max_rank_value <= 10:
@@ -805,11 +805,11 @@ class FateDeckGUI:
             self.cards_text.insert(tk.END, "\n")
         
         # Simple seed for quick hook
-        clock_size = self.simulator.get_clock_size(drawn)
+        timer_size = self.simulator.get_timer_size(drawn)
         self.seed_text.delete(1.0, tk.END)
         self.seed_text.insert(tk.END, "QUICK SEED\n")
         self.seed_text.insert(tk.END, "=" * 20 + "\n\n")
-        self.seed_text.insert(tk.END, f"Clock Size: {clock_size} segments\n\n")
+        self.seed_text.insert(tk.END, f"Clock Size: {timer_size} segments\n\n")
         self.seed_text.insert(tk.END, "Elements:\n")
         for card in drawn:
             suit_name = card['suit'].lower()
@@ -827,7 +827,7 @@ class FateDeckGUI:
         self.seed_text.delete(1.0, tk.END)
         
         # Clock size
-        clock_size = self.simulator.get_clock_size(cards)
+        timer_size = self.simulator.get_timer_size(cards)
         
         # Organize cards by suit
         suit_cards = {'spades': [], 'hearts': [], 'clubs': [], 'diamonds': []}
@@ -837,7 +837,7 @@ class FateDeckGUI:
         
         self.seed_text.insert(tk.END, "FULL SEED GENERATION\n")
         self.seed_text.insert(tk.END, "=" * 30 + "\n\n")
-        self.seed_text.insert(tk.END, f"Primary Clock: {clock_size} segments\n\n")
+        self.seed_text.insert(tk.END, f"Primary Clock: {timer_size} segments\n\n")
         
         # Elements
         self.seed_text.insert(tk.END, "SCENE ELEMENTS:\n")
@@ -919,7 +919,7 @@ Create, edit, and simulate deck draws for campaign generation.
 Features:
 • Load and simulate any Fate's Edge generator
 • Create custom generators with the built-in editor
-• Generate full seeds with clock sizes
+• Generate full seeds with timer sizes
 • Detect combo effects and special rules
 • Integrated die roller with consequence management
 • Player resource tracking (Boons)

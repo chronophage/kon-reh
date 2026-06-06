@@ -66,7 +66,7 @@ class DeckCommands(commands.Cog):
                     formatted_result += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                     suit_symbol = {"spade": "♠", "heart": "♥", "club": "♣", "diamond": "♦"}[suit_value]
                     formatted_result += f"{suit_symbol} **{result['suit']}**: {result['card']}\n"
-                    formatted_result += f"**Rank**: {result['rank_name']} | **Clock**: {result['clock_size']}-segment"
+                    formatted_result += f"**Rank**: {result['rank_name']} | **Clock**: {result['timer_size']}-segment"
                 else:
                     await interaction.response.send_message(
                         f"❌ Failed to draw card from {region} {suit_value}", 

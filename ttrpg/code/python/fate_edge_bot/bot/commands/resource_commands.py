@@ -38,13 +38,13 @@ class ResourceCommands(commands.Cog):
                 ephemeral=True
             )
             
-    @app_commands.command(name="supply_advance", description="Advance supply clock")
-    @app_commands.describe(reason="Reason for advancing supply clock")
+    @app_commands.command(name="supply_advance", description="Advance supply timer")
+    @app_commands.describe(reason="Reason for advancing supply timer")
     async def supply_advance(self, interaction: discord.Interaction, reason: str = "General depletion"):
-        """Advance the party supply clock"""
+        """Advance the party supply timer"""
         try:
             resource_manager = self._get_resource_manager()
-            result = resource_manager.advance_supply_clock(reason)
+            result = resource_manager.advance_supply_timer(reason)
             
             progress_bar = result.get('progress_bar', '')
             supply_info = result.get('status', {})
@@ -64,21 +64,21 @@ class ResourceCommands(commands.Cog):
                 await interaction.response.send_message(message)
             else:
                 await interaction.response.send_message(
-                    f"{message}\n\n🔔 Supply clock is already at maximum!", 
+                    f"{message}\n\n🔔 Supply timer is already at maximum!", 
                     ephemeral=True
                 )
                 
         except Exception as e:
             logger.error(f"Error in supply_advance: {e}")
             await interaction.response.send_message(
-                "❌ An error occurred while advancing supply clock.", 
+                "❌ An error occurred while advancing supply timer.", 
                 ephemeral=True
             )
             
-    @app_commands.command(name="supply_clear", description="Clear segments from supply clock")
+    @app_commands.command(name="supply_clear", description="Clear segments from supply timer")
     @app_commands.describe(segments="Number of segments to clear (default: 1)")
     async def supply_clear(self, interaction: discord.Interaction, segments: int = 1):
-        """Clear segments from the party supply clock"""
+        """Clear segments from the party supply timer"""
         try:
             if segments <= 0:
                 await interaction.response.send_message(
@@ -88,7 +88,7 @@ class ResourceCommands(commands.Cog):
                 return
                 
             resource_manager = self._get_resource_manager()
-            result = resource_manager.clear_supply_clock(segments)
+            result = resource_manager.clear_supply_timer(segments)
             
             new_status = result.get('status', {})
             progress_bar = new_status.get('progress_bar', '')
@@ -107,16 +107,16 @@ class ResourceCommands(commands.Cog):
         except Exception as e:
             logger.error(f"Error in supply_clear: {e}")
             await interaction.response.send_message(
-                "❌ An error occurred while clearing supply clock.", 
+                "❌ An error occurred while clearing supply timer.", 
                 ephemeral=True
             )
             
-    @app_commands.command(name="supply_reset", description="Reset supply clock to full")
+    @app_commands.command(name="supply_reset", description="Reset supply timer to full")
     async def supply_reset(self, interaction: discord.Interaction):
-        """Reset the party supply clock to full"""
+        """Reset the party supply timer to full"""
         try:
             resource_manager = self._get_resource_manager()
-            result = resource_manager.reset_supply_clock()
+            result = resource_manager.reset_supply_timer()
             
             new_status = result.get('status', {})
             progress_bar = new_status.get('progress_bar', '')
@@ -133,7 +133,7 @@ class ResourceCommands(commands.Cog):
         except Exception as e:
             logger.error(f"Error in supply_reset: {e}")
             await interaction.response.send_message(
-                "❌ An error occurred while resetting supply clock.", 
+                "❌ An error occurred while resetting supply timer.", 
                 ephemeral=True
             )
             
@@ -212,10 +212,10 @@ class ResourceCommands(commands.Cog):
                 ephemeral=True
             )
             
-    @app_commands.command(name="clock_manage", description="Manage tactical clocks")
+    @app_commands.command(name="timer_manage", description="Manage tactical timers")
     @app_commands.describe(
         action="Action to perform",
-        clock_name="Name of the clock",
+        timer_name="Name of the timer",
         segments="Number of segments to advance/clear (default: 1)"
     )
     @app_commands.choices(action=[
@@ -225,17 +225,17 @@ class ResourceCommands(commands.Cog):
         app_commands.Choice(name="Create", value="create"),
         app_commands.Choice(name="Remove", value="remove")
     ])
-    async def clock_manage(self, interaction: discord.Interaction, 
+    async def timer_manage(self, interaction: discord.Interaction, 
                           action: app_commands.Choice[str],
-                          clock_name: str = None,
+                          timer_name: str = None,
                           segments: int = 1):
-        """Manage tactical clocks"""
+        """Manage tactical timers"""
         try:
             resource_manager = self._get_resource_manager()
             action_value = action.value if hasattr(action, 'value') else action
             
-            # Validate clock name for actions that need it
-            if action_value in ["advance", "clear", "remove"] and not clock_name:
+            # Validate timer name for actions that need it
+            if action_value in ["advance", "clear", "remove"] and not timer_name:
                 await interaction.response.send_message(
                     "❌ Clock name required for this action", 
                     ephemeral=True
@@ -252,60 +252,60 @@ class ResourceCommands(commands.Cog):
                 
             result = None
             if action_value == "advance":
-                result = resource_manager.advance_tactical_clock(clock_name, segments)
+                result = resource_manager.advance_tactical_timer(timer_name, segments)
             elif action_value == "clear":
-                result = resource_manager.clear_tactical_clock(clock_name, segments)
+                result = resource_manager.clear_tactical_timer(timer_name, segments)
             elif action_value == "status":
-                clocks = resource_manager.get_tactical_clocks()
-                if clocks:
+                timers = resource_manager.get_tactical_timers()
+                if timers:
                     message = "⏱️ **Active Tactical Clocks**\n"
                     message += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                    for name, clock in clocks.items():
-                        if clock["current"] > 0:  # Only show active clocks
+                    for name, timer in timers.items():
+                        if timer["current"] > 0:  # Only show active timers
                             progress_bar = resource_manager._create_progress_bar(
-                                clock["current"], clock["size"]
+                                timer["current"], timer["size"]
                             )
                             message += f"• **{name}**: {progress_bar}\n"
-                    if not any(clock["current"] > 0 for clock in clocks.values()):
-                        message += "No active clocks at the moment."
+                    if not any(timer["current"] > 0 for timer in timers.values()):
+                        message += "No active timers at the moment."
                     await interaction.response.send_message(message)
                 else:
                     await interaction.response.send_message(
-                        "⏱️ No tactical clocks currently active."
+                        "⏱️ No tactical timers currently active."
                     )
                 return
             elif action_value == "create":
-                if not clock_name:
+                if not timer_name:
                     await interaction.response.send_message(
-                        "❌ Clock name required to create a clock", 
+                        "❌ Clock name required to create a timer", 
                         ephemeral=True
                     )
                     return
                 if segments < 2:
                     segments = 6  # Default size
-                result = resource_manager.create_custom_clock(clock_name, segments)
+                result = resource_manager.create_custom_timer(timer_name, segments)
                 if result:
                     await interaction.response.send_message(
                         f"⏱️ **Clock Created**\n"
-                        f"**Name**: {clock_name}\n"
+                        f"**Name**: {timer_name}\n"
                         f"**Size**: {segments}-segment"
                     )
                 else:
                     await interaction.response.send_message(
-                        f"❌ Failed to create clock '{clock_name}'", 
+                        f"❌ Failed to create timer '{timer_name}'", 
                         ephemeral=True
                     )
                 return
             elif action_value == "remove":
-                result = resource_manager.remove_custom_clock(clock_name)
+                result = resource_manager.remove_custom_timer(timer_name)
                 if result:
                     await interaction.response.send_message(
                         f"⏱️ **Clock Removed**\n"
-                        f"**Name**: {clock_name}"
+                        f"**Name**: {timer_name}"
                     )
                 else:
                     await interaction.response.send_message(
-                        f"❌ Failed to remove clock '{clock_name}'", 
+                        f"❌ Failed to remove timer '{timer_name}'", 
                         ephemeral=True
                     )
                 return
@@ -342,9 +342,9 @@ class ResourceCommands(commands.Cog):
                 )
                 
         except Exception as e:
-            logger.error(f"Error in clock_manage: {e}")
+            logger.error(f"Error in timer_manage: {e}")
             await interaction.response.send_message(
-                "❌ An error occurred while managing clocks.", 
+                "❌ An error occurred while managing timers.", 
                 ephemeral=True
             )
             
@@ -360,7 +360,7 @@ class ResourceCommands(commands.Cog):
             supply_info = supply_status.get('status', {})
             
             sb_budget = status.get('story_beat_budget', 0)
-            active_clocks = status.get('active_clocks', {})
+            active_timers = status.get('active_timers', {})
             conditions = status.get('character_conditions', {})
             
             message = "📊 **Party Resource Status**\n"
@@ -376,11 +376,11 @@ class ResourceCommands(commands.Cog):
             message += f"Available: {sb_budget}\n\n"
             
             # Active Clocks
-            if active_clocks:
+            if active_timers:
                 message += f"**⏱️ Active Clocks**\n"
-                for name, clock in active_clocks.items():
+                for name, timer in active_timers.items():
                     progress_bar = resource_manager._create_progress_bar(
-                        clock['current'], clock['size']
+                        timer['current'], timer['size']
                     )
                     message += f"• {name}: {progress_bar}\n"
                 message += "\n"

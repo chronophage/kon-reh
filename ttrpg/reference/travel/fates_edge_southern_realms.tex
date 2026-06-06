@@ -7,8 +7,33 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}   % for coloured suits
+\usepackage{amsfonts, amssymb}    % for suit symbols
 \usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
+\tcbuselibrary{skins, breakable}
+
+% ----- Card suit and rank formatting -----
+% Define suit colours (hearts/diamonds red, spades/clubs black)
+\newcommand{\cardSuit}[1]{%
+  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
+  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
+  \else #1\fi\fi\fi\fi
+}
+
+% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
+\newcommand{\card}[2]{%
+  \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
+    {\cardSuit{#1}\ \textbf{#2}}%
+}
+
+% Optional: shortcut commands for each suit
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
+
 
 % Suit symbols – use Unicode
 \newcommand{\spadesuit}{♠}
@@ -145,7 +170,7 @@ For the core rules (attributes, skills, actions, magic, summoning, travel, etc.)
 \section*{Travel Modes of the Southern Realms}
 
 \subsection*{River Legs (Oshiira, Crimson Valley)}
-Canals, weigh‑houses, and canal mothers. Travel clocks advance when barges queue at locks. A \textbf{Water‑Share Tablet} or a \textbf{Vermilion Corps Seal} buys priority passage.
+Canals, weigh‑houses, and canal mothers. Travel timers advance when barges queue at locks. A \textbf{Water‑Share Tablet} or a \textbf{Vermilion Corps Seal} buys priority passage.
 
 \subsection*{Desert Legs (Ashaan, Fhara)}
 Water is the primary resource. A dry well hazard can end a journey. Travel requires a \textbf{Water‑Skin} and a \textbf{Spirit‑Lamp} to ward off the restless dead. The \textbf{Brass Gate} (Ashaan‑Oshiira border) is fortified with spirit‑buoys that scream when crossed.
@@ -442,15 +467,15 @@ The Crimson Valley is a deep jungle rift between Sekogo and Oshiira – a scar o
 \appendix
 \chapter{Travel \& Trade in the South}
 
-This appendix summarises the unique travel modes and trade goods of the Southern Realms. For core travel procedures (legs, clocks, roles), see the \textit{Fate’s Edge SRD or Player/GM Guides}.
+This appendix summarises the unique travel modes and trade goods of the Southern Realms. For core travel procedures (legs, timers, roles), see the \textit{Fate’s Edge SRD or Player/GM Guides}.
 
 \section*{Travel Modes}
 \begin{itemize}
-  \item \textbf{River Legs (Oshiira, Crimson Valley)}: Canals, weigh‑houses, and canal mothers. Travel clocks advance when barges queue at locks.
+  \item \textbf{River Legs (Oshiira, Crimson Valley)}: Canals, weigh‑houses, and canal mothers. Travel timers advance when barges queue at locks.
   \item \textbf{Desert Legs (Ashaan)}: Water is the primary resource. A dry well hazard can end a journey.
   \item \textbf{Jungle Legs (Sekogo, Crimson Valley)}: Navigation by smell and sound; hidden Leopard Society patrols.
   \item \textbf{Highland Legs (Taharka)}: Thin air; breath‑counting; passes that close for storms.
-  \item \textbf{Stone Legs (Ngomebe)}: Travel with a walking city; roller integrity and ancestor favour clocks.
+  \item \textbf{Stone Legs (Ngomebe)}: Travel with a walking city; roller integrity and ancestor favour timers.
 \end{itemize}
 
 \section*{Trade Goods \& Currencies}
@@ -468,7 +493,7 @@ When travelling through the Southern Realms, the GM may roll on this table for a
 \begin{enumerate}
   \item \textbf{Dust Storm (Ashaan)}: Navigation DV +1; mark Fatigue.
   \item \textbf{Canal Lock Sabotage (Oshiira)}: Delay 2 segments; bribes required.
-  \item \textbf{Keystone Crack (Ngomebe)}: City stops; ancestor favour clock advances.
+  \item \textbf{Keystone Crack (Ngomebe)}: City stops; ancestor favour timer advances.
   \item \textbf{Landslide (Taharka)}: Pass blocked; detour adds 3 segments.
   \item \textbf{Spirit Demands Toll (Sekogo)}: Offer honey or a story; refusal causes spirit attack.
   \item \textbf{Bridge Web‑Law Challenge (Crimson Valley)}: Recite a clause or pay a promise.

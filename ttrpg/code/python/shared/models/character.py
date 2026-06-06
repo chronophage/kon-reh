@@ -69,7 +69,7 @@ class Follower:
         effects = {
             "Scout & Signal": "Change ally's next action position to Controlled or grant +1 effect",
             "Distract & Draw": "Reduce a kinetic rail (Hunt/Escape/Hazard) by -1 tick",
-            "Fetch & Carry": "Move small object; on recipient's next success, advance +1 tick on target clock"
+            "Fetch & Carry": "Move small object; on recipient's next success, advance +1 tick on target timer"
         }
         
         return {

@@ -59,7 +59,7 @@ class TravelManager:
         
         # Initialize party resources
         self.travel_data["party_resources"][party_name] = {
-            "supply_clock": 0,
+            "supply_timer": 0,
             "fatigue": {},
             "conditions": {},
             "waypoints": []
@@ -102,7 +102,7 @@ class TravelManager:
         
     # Leg Management
     def add_travel_leg(self, channel_id: str, destination: str, 
-                      clock_size: int = 6) -> Dict[str, Any]:
+                      timer_size: int = 6) -> Dict[str, Any]:
         """Add a travel leg to the current journey"""
         if channel_id not in self.travel_data["active_journeys"]:
             return {"status": "error", "message": "No active journey in this channel"}
@@ -113,7 +113,7 @@ class TravelManager:
         leg = {
             "leg_number": leg_number,
             "destination": destination,
-            "clock_size": clock_size,
+            "timer_size": timer_size,
             "current_progress": 0,
             "complications": [],
             "waypoints": [],
@@ -142,10 +142,10 @@ class TravelManager:
             
         current_leg = journey["legs"][-1]  # Last leg is current
         current_progress = current_leg["current_progress"]
-        clock_size = current_leg["clock_size"]
+        timer_size = current_leg["timer_size"]
         
         # Advance progress
-        new_progress = min(clock_size, current_progress + segments)
+        new_progress = min(timer_size, current_progress + segments)
         current_leg["current_progress"] = new_progress
         current_leg["status"] = "in_progress"
         
@@ -157,7 +157,7 @@ class TravelManager:
             })
             
         # Check if leg is completed
-        leg_completed = new_progress >= clock_size
+        leg_completed = new_progress >= timer_size
         
         if leg_completed:
             current_leg["status"] = "completed"
@@ -171,8 +171,8 @@ class TravelManager:
             "leg_number": current_leg["leg_number"],
             "destination": current_leg["destination"],
             "progress": new_progress,
-            "clock_size": clock_size,
-            "progress_bar": self._create_progress_bar(new_progress, clock_size),
+            "timer_size": timer_size,
+            "progress_bar": self._create_progress_bar(new_progress, timer_size),
             "completed": leg_completed,
             "complication": complication
         }
@@ -194,7 +194,7 @@ class TravelManager:
             "leg": current_leg,
             "progress_bar": self._create_progress_bar(
                 current_leg["current_progress"], 
-                current_leg["clock_size"]
+                current_leg["timer_size"]
             ),
             "party_name": journey["party_name"]
         }
@@ -212,20 +212,20 @@ class TravelManager:
         }
         
     def update_supply(self, party_name: str, change: int) -> Dict[str, Any]:
-        """Update supply clock for a party"""
+        """Update supply timer for a party"""
         if party_name not in self.travel_data["party_resources"]:
             # Initialize if not exists
             self.travel_data["party_resources"][party_name] = {
-                "supply_clock": 0,
+                "supply_timer": 0,
                 "fatigue": {},
                 "conditions": {},
                 "waypoints": []
             }
             
         resources = self.travel_data["party_resources"][party_name]
-        current_supply = resources["supply_clock"]
+        current_supply = resources["supply_timer"]
         new_supply = max(0, min(4, current_supply + change))  # 0-4 range
-        resources["supply_clock"] = new_supply
+        resources["supply_timer"] = new_supply
         
         self.save_travel_data()
         
@@ -301,7 +301,7 @@ class TravelManager:
         """Add a waypoint for a party"""
         if party_name not in self.travel_data["party_resources"]:
             self.travel_data["party_resources"][party_name] = {
-                "supply_clock": 0,
+                "supply_timer": 0,
                 "fatigue": {},
                 "conditions": {},
                 "waypoints": []
@@ -384,10 +384,10 @@ class TravelManager:
                 "start_time": journey["start_time"]
             },
             "party_resources": party_resources,
-            "supply_status": self._get_supply_status(party_resources.get("supply_clock", 0)),
+            "supply_status": self._get_supply_status(party_resources.get("supply_timer", 0)),
             "progress_bar": self._create_progress_bar(
                 current_leg["current_progress"] if current_leg else 0,
-                current_leg["clock_size"] if current_leg else 6
+                current_leg["timer_size"] if current_leg else 6
             ) if current_leg else "[□□□□□□]"
         }
         

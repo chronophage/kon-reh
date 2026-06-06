@@ -108,7 +108,7 @@
 3. **Roll:** Attribute + Skill pool  
 4. **Count:** 6+ successes, 10s double, 1s = SB  
 5. **Resolve:** Apply Outcome Matrix  
-6. **Spend SB:** Complications, Deck draws, clock ticks  
+6. **Spend SB:** Complications, Deck draws, timer ticks  
 7. **Shift Position:** Fictional consequences or Boons  
 
 **[TAGS Note]:** For magic, note relevant TAGS when setting DV
@@ -123,7 +123,7 @@
 *10 segments: Epic / high risk*  
 
 **Use to track:** enemy waves, collapsing ruins, social resistance, supply, corruption.  
-**[TAGS Note]:** Certain TAGS (like [WARD] or [BANISH]) can advance or hold clocks
+**[TAGS Note]:** Certain TAGS (like [WARD] or [BANISH]) can advance or hold timers
 
 ---
 

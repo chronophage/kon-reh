@@ -7,8 +7,33 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}   % for coloured suits
+\usepackage{amsfonts, amssymb}    % for suit symbols
 \usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
+\tcbuselibrary{skins, breakable}
+
+% ----- Card suit and rank formatting -----
+% Define suit colours (hearts/diamonds red, spades/clubs black)
+\newcommand{\cardSuit}[1]{%
+  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
+  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
+  \else #1\fi\fi\fi\fi
+}
+
+% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
+\newcommand{\card}[2]{%
+  \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
+    {\cardSuit{#1}\ \textbf{#2}}%
+}
+
+% Optional: shortcut commands for each suit
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
+
 
 % Suit symbols – used only in imported generator files, kept for compatibility
 \newcommand{\spadesuit}{♠}

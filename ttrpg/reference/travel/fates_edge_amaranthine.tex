@@ -7,8 +7,33 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
+
+\usepackage[dvipsnames]{xcolor}   % for coloured suits
+\usepackage{amsfonts, amssymb}    % for suit symbols
 \usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
+\tcbuselibrary{skins, breakable}
+
+% ----- Card suit and rank formatting -----
+% Define suit colours (hearts/diamonds red, spades/clubs black)
+\newcommand{\cardSuit}[1]{%
+  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
+  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
+  \else #1\fi\fi\fi\fi
+}
+
+% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
+\newcommand{\card}[2]{%
+  \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
+    {\cardSuit{#1}\ \textbf{#2}}%
+}
+
+% Optional: shortcut commands for each suit
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
 
 % Almanac environment – adjust as needed
 \newenvironment{almanac}
@@ -193,14 +218,14 @@ King/Queen/Jack & Major, faction-level, lasting consequences \\
 \end{tabular}
 \end{center}
 
-When a generator instructs you to set a clock by the highest rank, use this
+When a generator instructs you to set a timer by the highest rank, use this
 conversion:
 
 \begin{itemize}
-    \item \textbf{2–5}: 4-segment clock (short, local problem)
-    \item \textbf{6–10}: 6-segment clock (standard, journey-length)
-    \item \textbf{J, Q, K}: 8-segment clock (extended, regional problem)
-    \item \textbf{A}: 10-segment clock (epic, campaign-length)
+    \item \textbf{2–5}: 4-segment timer (short, local problem)
+    \item \textbf{6–10}: 6-segment timer (standard, journey-length)
+    \item \textbf{J, Q, K}: 8-segment timer (extended, regional problem)
+    \item \textbf{A}: 10-segment timer (epic, campaign-length)
 \end{itemize}
 
 \section*{Card Faces: The Court as Character}
@@ -269,8 +294,8 @@ procedure:
     What just went wrong, or what is about to?
     \item \textbf{Read the \diamondsuit}. This is your leverage. What can the
     players gain if they succeed? Be specific.
-    \item \textbf{Set the clock}. Use the highest rank among the four cards to
-    determine the size of the scene’s primary clock (see \autoref{sec:rank-severity}).
+    \item \textbf{Set the timer}. Use the highest rank among the four cards to
+    determine the size of the scene’s primary timer (see \autoref{sec:rank-severity}).
     \item \textbf{Interpret faces and Aces}. Give names to face cards. Apply
     regional Ace effects.
     \item \textbf{Play to find out}. Use the generated elements as prompts, not
@@ -313,13 +338,13 @@ draw:
     \item \textbf{\diamondsuit\ Q}: You consult \autoref{sec:acasia-rewards}. A Queen
     of Diamonds is “Marriage Proxy — From the Margravine; bind a hillking to your cause.”
     \item \textbf{Highest rank}: Queen (rank equivalent to King/J/Q at 8). The scene’s
-    primary clock is 8 segments: \textit{The Feud Escalates [8]}.
+    primary timer is 8 segments: \textit{The Feud Escalates [8]}.
     \item \textbf{Interpretation}: The party arrives at a hill-fort (Hill-Motte) on
     the eve of a wedding. The bride (Bride with No Dowry) is caught between two
     feuding bloodlines. The wedding turns to violence (Wedding Turns Ambush). If
     the party can survive the ambush and broker peace, the Margravine will grant
     them a Marriage Proxy — a powerful tool to bind a hill-king to their cause.
-    The 8-segment clock tracks how quickly the feud spirals into open war.
+    The 8-segment timer tracks how quickly the feud spirals into open war.
 \end{enumerate}
 
 This is the generator at work: four cards, one scene, immediate fiction.
@@ -342,7 +367,7 @@ question:
     \item \textbf{No \clubsuit}: The scene is calm, peaceful, or mercifully
     straightforward. This is rare in Fate’s Edge. Treasure it.
     \item \textbf{No \diamondsuit}: The reward is not a token but an outcome. The
-    players gain Position, information, or a cleared clock rather than a physical
+    players gain Position, information, or a cleared timer rather than a physical
     asset.
 \end{itemize}
 

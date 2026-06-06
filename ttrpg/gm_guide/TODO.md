@@ -65,7 +65,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
 
 5. **Followers and Assets (3.4):** Clarify that followers are on‑screen allies and can be **successors** (cross‑reference Legacy Engine). Add a short “when to invest” table.
 
-6. **Terrestrial Patrons (3.5):** Add a note: “Use debt clocks aggressively – they are story fuel.” Provide 2‑3 more example patron demands.
+6. **Terrestrial Patrons (3.5):** Add a note: “Use debt timers aggressively – they are story fuel.” Provide 2‑3 more example patron demands.
 
 7. **Mandate/Crisis (3.7):** Good as is.
 
@@ -98,19 +98,19 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
 
 ### Section 05: Campaign Design (`05_campaign_design.tex`)
 
-**Current weaknesses:** The chapter is a mix of clocks, faction dynamics, Crown Spread, and tier‑appropriate design. The “Position as Narrative Leverage” section is excellent but buried. No guidance on **rival parties**.
+**Current weaknesses:** The chapter is a mix of timers, faction dynamics, Crown Spread, and tier‑appropriate design. The “Position as Narrative Leverage” section is excellent but buried. No guidance on **rival parties**.
 
 **Revisions:**
 
 1. **Add “Rival Parties” subsection** (after 5.1 Scaling Threats). Include:
    - Why rivals work: they multiply Patron presence, create shifting alliances, and generate SB from both sides.
    - Template for creating a rival party (name, composition, Patrons, goals, relationship to PCs).
-   - Guidance on rival advancement (they can succeed off‑screen, tick clocks, and appear later).
+   - Guidance on rival advancement (they can succeed off‑screen, tick timers, and appear later).
    - Example: The Ashen Cord from simulations.
 
 2. **Clocks and Fronts (5.0):** Clarify the “Three‑Clock Guideline” with a concrete example.
 
-3. **Position as Narrative Leverage (5.0.5):** Move this earlier (right after clocks) – it’s critical. Emphasize that Position scales with tier (life/death → regional → world‑shaping).
+3. **Position as Narrative Leverage (5.0.5):** Move this earlier (right after timers) – it’s critical. Emphasize that Position scales with tier (life/death → regional → world‑shaping).
 
 4. **Crown Spread (5.0.5):** Good as is – keep.
 
@@ -166,7 +166,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
    - *“At high tiers, your power comes from skill, not luck. Fewer Boons mean every roll matters. This is intentional – embrace the tension.”*
    - Reference the simulation: chaos players thrived at high tier because they understood this.
 
-2. **Do Not Inflate Difficulty Values (8.3):** Add a **warning box**: *“Raising DV starves players of Boons. Use clocks, Position, and rivals instead.”*
+2. **Do Not Inflate Difficulty Values (8.3):** Add a **warning box**: *“Raising DV starves players of Boons. Use timers, Position, and rivals instead.”*
 
 3. **Using Bonds as Primary Boon Engine (8.5):** Expand with an example of bonded allies transferring Boons at high tier (from Player’s Guide).
 
@@ -190,7 +190,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
 
 3. **Remove redundant lore** that is duplicated in Player’s Guide – keep only GM‑facing information (faction secrets, hidden agendas, patron networks).
 
-4. **Add a “Faction Standing” tracking suggestion** (simple -3 to +3 scale) for each major region – tie to Mandate/Crisis clocks.
+4. **Add a “Faction Standing” tracking suggestion** (simple -3 to +3 scale) for each major region – tie to Mandate/Crisis timers.
 
 ---
 
@@ -210,7 +210,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
    - **“When players go off the rails”** – use leading questions, don’t panic.
    - **“When players hoard Boons”** – remind them of the Session 0 contract, or introduce a time pressure that forces spending.
    - **“How to make Patrons feel present without overwhelming”** – use omens, dreams, and small favors.
-   - **“Handling rival parties”** – keep them active off‑screen, advance their clocks, and bring them back when players least expect it.
+   - **“Handling rival parties”** – keep them active off‑screen, advance their timers, and bring them back when players least expect it.
 
 3. **Add a “Session 0 Checklist”** (referenced from Section 01) here as a practical handout.
 

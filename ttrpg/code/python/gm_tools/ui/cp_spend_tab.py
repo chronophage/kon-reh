@@ -124,8 +124,8 @@ class (SB)SpendTab:
         info_text = """
 (SB) Spend Options (Default Costs):
 1 (SB): Noise, trace, +1 Supply segment, tool Compromised, time passes, bystander notices
-2 (SB): Alarmed attention, lose position/cover, add lesser foe, advance Threat clock, Fatigue 1
-3 (SB): Reinforcements, Out of Supply, gear breaks, split party options, escalate faction clock
+2 (SB): Alarmed attention, lose position/cover, add lesser foe, advance Threat timer, Fatigue 1
+3 (SB): Reinforcements, Out of Supply, gear breaks, split party options, escalate faction timer
 4+ (SB): Major turns - trap springs, rival claims prize, authority arrives, scene-defining twists
 
 Combat (SB):

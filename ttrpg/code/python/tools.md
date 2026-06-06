@@ -27,7 +27,7 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
 - Activation tracking (Boons/XP spent)
 
 ### 5. **Supply Clock Tracker**
-- Visual 4-segment clock
+- Visual 4-segment timer
 - Track Full → Low → Dangerously Low → Out of Supply
 - Automatic Fatigue application
 - Foraging/Recovery actions
@@ -50,7 +50,7 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
   - Followers (Cap²)
   - Assets (Tier-based)
 - Downtime tracking
-- Haste clock tracking
+- Haste timer tracking
 
 ### 9. **Talent/Prestige Ability Browser**
 - Searchable database of Talents
@@ -67,7 +67,7 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
 ### 11. **Campaign Clock Manager**
 - Mandate/Crisis dials (0-6)
 - Crown Spread tracking
-- Campaign-specific clocks
+- Campaign-specific timers
 - Finale preparation
 
 ### 12. **Familiar Manager**
@@ -96,19 +96,19 @@ Based on the Fate's Edge SRD and the existing tools you're building, here's a li
 
 ### 16. **Opposition Tracker**
 - NPC/Monster stat tracking
-- Threat clock management
+- Threat timer management
 - Complication spending for GM
 - Scaling difficulty tools
 
 ### 17. **Faction/Relationship Tracker**
-- Relationship clocks
+- Relationship timers
 - Faction influence tracking
 - Loyalty metrics
 - Political maneuvering tools
 
 ### 18. **Downtime Activity Planner**
 - Training/mentorship tracking
-- Research/crafting project clocks
+- Research/crafting project timers
 - Asset maintenance scheduling
 - Character growth planning
 
@@ -144,7 +144,7 @@ ui/backlash_generator_tab.py
 ui/ritual_planner_tab.py
 
 
-ui/campaign_clock_tab.py  # For Mandate/Crisis clocks
+ui/campaign_timer_tab.py  # For Mandate/Crisis timers
 ui/crown_spread_tab.py    # For the finale system
 ui/evidence_tracker_tab.py # For Immaculate/Scorched evidence
 
@@ -158,7 +158,7 @@ ui/player_dashboard_tab.py  # Overview for all player resources
 ├── data
 │   ├── __init__.py
 │   ├── database.py
-│   ├── fate_edge_clocks.sql
+│   ├── fate_edge_timers.sql
 │   └── fate_edge_data_clean.sql
 ├── gm_tools
 │   ├── __init__.py
@@ -167,7 +167,7 @@ ui/player_dashboard_tab.py  # Overview for all player resources
 │   ├── ui
 │   │   ├── __init__.py
 │   │   ├── main_window.py
-│   │   ├── supply_clock_tab.py
+│   │   ├── supply_timer_tab.py
 │   │   ├── fatigue_tracker_tab.py
 │   │   ├── boon_tracker_tab.py
 │   │   ├── xp_tracker_tab.py
@@ -175,18 +175,18 @@ ui/player_dashboard_tab.py  # Overview for all player resources
 │   │   ├── scene_builder_tab.py
 │   │   ├── cp_spend_tab.py
 │   │   ├── consequence_tab.py
-│   │   ├── campaign_clock_tab.py
+│   │   ├── campaign_timer_tab.py
 │   │   ├── evidence_tracker_tab.py
 │   │   ├── follower_tracker_tab.py
 │   │   ├── dice_roller_tab.py
 │   │   ├── npc_tab.py
-│   │   ├── clocks_tab.py
+│   │   ├── timers_tab.py
 │   │   ├── adventure_tab.py
 │   │   └── settings_tab.py
 │   └── utils
 │       ├── __init__.py
 │       ├── card_utils.py
-│       ├── clock_utils.py
+│       ├── timer_utils.py
 │       └── styles.py
 ├── player_tools
 │   ├── __init__.py
@@ -218,6 +218,6 @@ ui/player_dashboard_tab.py  # Overview for all player resources
     │   ├── __init__.py
     │   ├── character.py
     │   ├── asset.py
-    │   └── clock.py
+    │   └── timer.py
     └── constants.py
 

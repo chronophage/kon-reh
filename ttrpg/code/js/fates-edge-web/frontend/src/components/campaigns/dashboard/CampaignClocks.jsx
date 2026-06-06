@@ -2,49 +2,49 @@
 import React, { useState } from 'react';
 import { useCampaignStore } from '../../../store/campaignStore';
 
-const CampaignClocks = ({ clocks, isGM }) => {
+const CampaignClocks = ({ timers, isGM }) => {
   const { updateCampaign, currentCampaign } = useCampaignStore();
   const [editingClock, setEditingClock] = useState(null);
   const [editForm, setEditForm] = useState({ name: '', segments: 8, progress: 0 });
 
-  const handleTickClock = async (clockId) => {
+  const handleTickClock = async (timerId) => {
     if (!isGM || !currentCampaign) return;
     
     try {
-      const clock = clocks.find(c => c.clockid === clockId);
-      if (!clock) return;
+      const timer = timers.find(c => c.timerid === timerId);
+      if (!timer) return;
       
-      const newProgress = Math.min(clock.progress + 1, clock.segments);
-      const updatedClocks = clocks.map(c => 
-        c.clockid === clockId ? { ...c, progress: newProgress } : c
+      const newProgress = Math.min(timer.progress + 1, timer.segments);
+      const updatedClocks = timers.map(c => 
+        c.timerid === timerId ? { ...c, progress: newProgress } : c
       );
       
-      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+      await updateCampaign(currentCampaign.campaignid, { timers: updatedClocks });
     } catch (error) {
-      console.error('Failed to tick clock:', error);
+      console.error('Failed to tick timer:', error);
     }
   };
 
-  const handleResetClock = async (clockId) => {
+  const handleResetClock = async (timerId) => {
     if (!isGM || !currentCampaign) return;
     
     try {
-      const updatedClocks = clocks.map(c => 
-        c.clockid === clockId ? { ...c, progress: 0 } : c
+      const updatedClocks = timers.map(c => 
+        c.timerid === timerId ? { ...c, progress: 0 } : c
       );
       
-      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+      await updateCampaign(currentCampaign.campaignid, { timers: updatedClocks });
     } catch (error) {
-      console.error('Failed to reset clock:', error);
+      console.error('Failed to reset timer:', error);
     }
   };
 
-  const handleEditClock = (clock) => {
-    setEditingClock(clock.clockid);
+  const handleEditClock = (timer) => {
+    setEditingClock(timer.timerid);
     setEditForm({
-      name: clock.name,
-      segments: clock.segments,
-      progress: clock.progress
+      name: timer.name,
+      segments: timer.segments,
+      progress: timer.progress
     });
   };
 
@@ -52,25 +52,25 @@ const CampaignClocks = ({ clocks, isGM }) => {
     if (!isGM || !currentCampaign || !editingClock) return;
     
     try {
-      const updatedClocks = clocks.map(c => 
-        c.clockid === editingClock ? { ...c, ...editForm } : c
+      const updatedClocks = timers.map(c => 
+        c.timerid === editingClock ? { ...c, ...editForm } : c
       );
       
-      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+      await updateCampaign(currentCampaign.campaignid, { timers: updatedClocks });
       setEditingClock(null);
     } catch (error) {
-      console.error('Failed to update clock:', error);
+      console.error('Failed to update timer:', error);
     }
   };
 
-  const handleDeleteClock = async (clockId) => {
+  const handleDeleteClock = async (timerId) => {
     if (!isGM || !currentCampaign) return;
     
     try {
-      const updatedClocks = clocks.filter(c => c.clockid !== clockId);
-      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+      const updatedClocks = timers.filter(c => c.timerid !== timerId);
+      await updateCampaign(currentCampaign.campaignid, { timers: updatedClocks });
     } catch (error) {
-      console.error('Failed to delete clock:', error);
+      console.error('Failed to delete timer:', error);
     }
   };
 
@@ -84,15 +84,15 @@ const CampaignClocks = ({ clocks, isGM }) => {
         progress: 0
       };
       
-      const updatedClocks = [...clocks, newClock];
-      await updateCampaign(currentCampaign.campaignid, { clocks: updatedClocks });
+      const updatedClocks = [...timers, newClock];
+      await updateCampaign(currentCampaign.campaignid, { timers: updatedClocks });
     } catch (error) {
-      console.error('Failed to add clock:', error);
+      console.error('Failed to add timer:', error);
     }
   };
 
-  const renderClock = (clock) => {
-    if (editingClock === clock.clockid) {
+  const renderClock = (timer) => {
+    if (editingClock === timer.timerid) {
       return (
         <div className="bg-fate-dark rounded-lg p-4">
           <input
@@ -146,17 +146,17 @@ const CampaignClocks = ({ clocks, isGM }) => {
     return (
       <div className="bg-fate-dark rounded-lg p-4">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="font-medium text-fate-accent">{clock.name}</h3>
+          <h3 className="font-medium text-fate-accent">{timer.name}</h3>
           {isGM && (
             <div className="flex space-x-1">
               <button
-                onClick={() => handleEditClock(clock)}
+                onClick={() => handleEditClock(timer)}
                 className="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 px-2 py-1 rounded"
               >
                 Edit
               </button>
               <button
-                onClick={() => handleDeleteClock(clock.clockid)}
+                onClick={() => handleDeleteClock(timer.timerid)}
                 className="text-xs bg-red-900 hover:bg-red-800 text-red-200 px-2 py-1 rounded"
               >
                 Delete
@@ -168,12 +168,12 @@ const CampaignClocks = ({ clocks, isGM }) => {
         <div className="mb-3">
           <div className="flex justify-between text-sm text-gray-400 mb-1">
             <span>Progress</span>
-            <span>{clock.progress}/{clock.segments}</span>
+            <span>{timer.progress}/{timer.segments}</span>
           </div>
           <div className="w-full bg-gray-700 rounded-full h-2">
             <div 
               className="bg-fate-accent h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(clock.progress / clock.segments) * 100}%` }}
+              style={{ width: `${(timer.progress / timer.segments) * 100}%` }}
             ></div>
           </div>
         </div>
@@ -181,15 +181,15 @@ const CampaignClocks = ({ clocks, isGM }) => {
         {isGM && (
           <div className="flex space-x-2">
             <button
-              onClick={() => handleTickClock(clock.clockid)}
-              disabled={clock.progress >= clock.segments}
+              onClick={() => handleTickClock(timer.timerid)}
+              disabled={timer.progress >= timer.segments}
               className="btn-primary text-sm px-3 py-1 disabled:opacity-50"
             >
               Tick
             </button>
             <button
-              onClick={() => handleResetClock(clock.clockid)}
-              disabled={clock.progress === 0}
+              onClick={() => handleResetClock(timer.timerid)}
+              disabled={timer.progress === 0}
               className="btn-secondary text-sm px-3 py-1 disabled:opacity-50"
             >
               Reset
@@ -214,17 +214,17 @@ const CampaignClocks = ({ clocks, isGM }) => {
         )}
       </div>
       
-      {clocks && clocks.length > 0 ? (
+      {timers && timers.length > 0 ? (
         <div className="space-y-4">
-          {clocks.map((clock) => (
-            <div key={clock.clockid || `${clock.name}-${clock.segments}`}>
-              {renderClock(clock)}
+          {timers.map((timer) => (
+            <div key={timer.timerid || `${timer.name}-${timer.segments}`}>
+              {renderClock(timer)}
             </div>
           ))}
         </div>
       ) : (
         <div className="bg-fate-dark rounded-lg p-6 text-center">
-          <p className="text-gray-400 mb-3">No campaign clocks yet</p>
+          <p className="text-gray-400 mb-3">No campaign timers yet</p>
           {isGM && (
             <button
               onClick={handleAddClock}

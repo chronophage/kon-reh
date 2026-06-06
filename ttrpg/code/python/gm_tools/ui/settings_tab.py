@@ -44,8 +44,8 @@ class SettingsTab:
             cursor.execute("SELECT COUNT(*) FROM adventure_descriptors")
             adv_count = cursor.fetchone()[0]
             
-            cursor.execute("SELECT COUNT(*) FROM clock_reference")
-            clock_count = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(*) FROM timer_reference")
+            timer_count = cursor.fetchone()[0]
             
             conn.close()
             
@@ -53,7 +53,7 @@ class SettingsTab:
             message += f"Consequence Descriptors: {cons_count}\n"
             message += f"NPC Descriptors: {npc_count}\n"
             message += f"Adventure Descriptors: {adv_count}\n"
-            message += f"Clock References: {clock_count}\n"
+            message += f"Clock References: {timer_count}\n"
             
             messagebox.showinfo("Database Test", message)
         except Exception as e:
@@ -84,7 +84,7 @@ class SettingsTab:
         db_info = ttk.Label(self.parent, 
                            text=f"Database File: {self.db.db_path}\n" +
                                 f"SQL File: {self.db.sql_path if hasattr(self.db, 'sql_path') and self.db.sql_path else 'Not found'}\n" +
-                                f"Clocks SQL File: {self.db.clocks_sql_path if hasattr(self.db, 'clocks_sql_path') and self.db.clocks_sql_path else 'Not found'}",
+                                f"Clocks SQL File: {self.db.timers_sql_path if hasattr(self.db, 'timers_sql_path') and self.db.timers_sql_path else 'Not found'}",
                            font=("Arial", 14), wraplength=800)
         db_info.pack(pady=20)
         

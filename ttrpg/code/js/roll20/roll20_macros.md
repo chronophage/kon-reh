@@ -100,7 +100,7 @@
 
 ### 17. Draw Travel Card
 ```javascript
-&{template:default} {{name=Travel Card Draw}} {{region=?{Region|Acasia|Aeler|Valewood|Mistlands|Silkstrand}}} {{suit=?{Suit|Spade - Place|Heart - Actor|Club - Pressure|Diamond - Reward}}} {{rank=?{Rank|2|3|4|5|6|7|8|9|10|J|Q|K|A}}} {{clock=[[?{Rank|2|3|4|5} = 4, ?{Rank|6|7|8|9|10} = 6, ?{Rank|J|Q|K} = 8, ?{Rank|A} = 10]] segments}}
+&{template:default} {{name=Travel Card Draw}} {{region=?{Region|Acasia|Aeler|Valewood|Mistlands|Silkstrand}}} {{suit=?{Suit|Spade - Place|Heart - Actor|Club - Pressure|Diamond - Reward}}} {{rank=?{Rank|2|3|4|5|6|7|8|9|10|J|Q|K|A}}} {{timer=[[?{Rank|2|3|4|5} = 4, ?{Rank|6|7|8|9|10} = 6, ?{Rank|J|Q|K} = 8, ?{Rank|A} = 10]] segments}}
 ```
 
 ### 18. Draw Consequence Card
@@ -117,7 +117,7 @@
 
 ### 20. Start Travel Leg
 ```javascript
-&{template:default} {{name=Travel Leg Started}} {{destination=?{Destination}}} {{clock_size=?{Clock Size|4|6|8|10} segments}} {{mode=?{Travel Mode|Road|River|Sea|Mountain|Underground|Shadow}}}
+&{template:default} {{name=Travel Leg Started}} {{destination=?{Destination}}} {{timer_size=?{Clock Size|4|6|8|10} segments}} {{mode=?{Travel Mode|Road|River|Sea|Mountain|Underground|Shadow}}}
 ```
 
 ### 21. Advance Travel Clock

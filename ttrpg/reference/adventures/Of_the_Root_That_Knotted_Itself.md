@@ -128,8 +128,8 @@ The grove was hers. Truly hers. Not because the Hazel Queen had granted it, nor 
 
 **Tags / Mechanics:**
 
-- A character who omits a promised gift or deliberately forgets a debt begins a **Name-Eater** clock [6].
-- Each scene they fail to speak the forgotten name, the clock ticks +1.
+- A character who omits a promised gift or deliberately forgets a debt begins a **Name-Eater** timer [6].
+- Each scene they fail to speak the forgotten name, the timer ticks +1.
 - When full, the ghost of the wronged party appears. It does not attack. It *watches*. All social rolls and memory-based tests in its presence suffer –1 die.
 - To banish the ghost, the character must speak the name aloud. If forgotten, they must reconstruct it through three specific memories (scars, shared objects, a laugh, a stone in a stream). Each memory requires a successful Wits + Lore test (DV 3). On a failure, the ghost takes the memory instead, and the character forgets it permanently.
 - **Clock: The Ghost's Patience [8]** — ticks each scene the ghost is present but ignored. When full, the ghost speaks one word: the character's own true name. That name becomes *owed* to the next person they wrong in silence. The debt transfers. The ghost rests. The character does not.

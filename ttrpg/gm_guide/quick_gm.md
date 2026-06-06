@@ -20,7 +20,7 @@ s a cultist across open ground. Risk = standard danger (⇒ Controlled). Impact 
 When players roll 1s, react instantly. Pick one option and move on:
 
 #### 1 SB - Minor Complication
-Noise, track left behind, small loss of gear, or tick a clock +1
+Noise, track left behind, small loss of gear, or tick a timer +1
 
 #### 2 SB - Moderate Complication
 Alarm raised, lose Position, broken tool, # Fate's Edge GM Quick-Kit
@@ -53,10 +53,10 @@ Ask: What is the Impact?
 - **Standard (default):** Normal success
 - **Great:** Powerful, overwhelming, high-impact
 
-**Example:** A player chargetougher foe, or tick a clock +2
+**Example:** A player chargetougher foe, or tick a timer +2
 
 #### 3+ SB - Major Complication
-Reinforcements, collapsing terrain, ally endangered, or fill 3+ clock segments
+Reinforcements, collapsing terrain, ally endangered, or fill 3+ timer segments
 
 **Never overthink it. One spend is enough.**
 
@@ -64,12 +64,12 @@ Reinforcements, collapsing terrain, ally endangered, or fill 3+ clock segments
 
 ## 4. The Three-Clock Rule
 
-Only three active clocks at once:
+Only three active timers at once:
 - **Scene Clock:** e.g., Guards Alerted [4]
 - **Journey Clock:** e.g., Mist Encroaches [6]  
 - **Campaign Clock:** e.g., Baron's Suspicion [8]
 
-If a new complication appears, fold it into an existing clock. This keeps the table focused and the fiction tight.
+If a new complication appears, fold it into an existing timer. This keeps the table focused and the fiction tight.
 
 ---
 
@@ -100,7 +100,7 @@ If a player invents a spell on the fly:
 ### Session Management
 - Keep mechanical resolution under 10 seconds
 - Always spend SB immediately, don't hoard
-- Never exceed three active clocks
+- Never exceed three active timers
 - Reassess Position every major beat
 
 ---
@@ -118,10 +118,10 @@ Based on the extensive Fate's Edge materials provided, I'll create a comprehensi
 
 ### 1. Adventure Scale & Scope
 **Tier-Based Parameters:**
-- **Tier II (Seasoned)**: 2-3 sessions, local scope, 4-6 active clocks
-- **Tier III (Veteran)**: 3-5 sessions, regional scope, 6-8 active clocks  
-- **Tier IV (Paragon)**: 5-8 sessions, kingdom-wide scope, 8-12 active clocks
-- **Tier V (Mythic)**: 8+ sessions, realm-spanning scope, 12+ active clocks
+- **Tier II (Seasoned)**: 2-3 sessions, local scope, 4-6 active timers
+- **Tier III (Veteran)**: 3-5 sessions, regional scope, 6-8 active timers  
+- **Tier IV (Paragon)**: 5-8 sessions, kingdom-wide scope, 8-12 active timers
+- **Tier V (Mythic)**: 8+ sessions, realm-spanning scope, 12+ active timers
 
 ### 2. Multi-Domain Adventure Structure
 
@@ -239,19 +239,19 @@ For each PC, create one:
 
 **Early Game (Sessions 1-2):**
 - Establish setting and factions
-- Introduce 2-3 supporting clocks
+- Introduce 2-3 supporting timers
 - Reveal primary conflict through investigation
 - Test party capabilities in domain-appropriate challenges
 
 **Mid Game (Sessions 3-5):**
-- Primary clock advances significantly (50%+)
+- Primary timer advances significantly (50%+)
 - Faction conflicts intensify
 - Party choices create meaningful consequences
 - Introduction of major NPC allies/enemies
 
 **Late Game (Sessions 6+):**
-- Primary clock approaches resolution
-- Multiple supporting clocks converge
+- Primary timer approaches resolution
+- Multiple supporting timers converge
 - Party must make critical choices with lasting impact
 - Climactic confrontation with clear stakes
 

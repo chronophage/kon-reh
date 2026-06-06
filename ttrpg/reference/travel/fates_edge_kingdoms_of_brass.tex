@@ -7,8 +7,33 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}   % for coloured suits
+\usepackage{amsfonts, amssymb}    % for suit symbols
 \usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
+\tcbuselibrary{skins, breakable}
+
+% ----- Card suit and rank formatting -----
+% Define suit colours (hearts/diamonds red, spades/clubs black)
+\newcommand{\cardSuit}[1]{%
+  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
+  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
+  \else #1\fi\fi\fi\fi
+}
+
+% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
+\newcommand{\card}[2]{%
+  \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
+    {\cardSuit{#1}\ \textbf{#2}}%
+}
+
+% Optional: shortcut commands for each suit
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
+
 
 % Suit symbols – used only in imported generator files
 \newcommand{\spadesuit}{♠}
@@ -320,7 +345,7 @@ When the party approaches the Ninth Seal or a fragment of the amulet, roll or ch
 A shard of green glass set in a brass frame. It is said to grant a wish – but the wish always has a hidden clause. The Veiled Sisters want it to control the demon. The Breath‑less want to destroy it. The Covenant wants to seal it again. And the rajas of the Nine Kingdomss want to use it to settle old feuds.
 
 \subsubsection*{Mechanics (GM only)}
-The amulet is not a combat item. It is a plot device. Possessing it advances a \textbf{Kalrantha’s Attention} clock [8]. When the clock fills, the demon manifests as a Tier IV adversary – not to fight, but to bargain. The price is always a memory, a name, or a promise.
+The amulet is not a combat item. It is a plot device. Possessing it advances a \textbf{Kalrantha’s Attention} timer [8]. When the timer fills, the demon manifests as a Tier IV adversary – not to fight, but to bargain. The price is always a memory, a name, or a promise.
 
 \subsection*{Integration with the Way of Silk and Eastern Realms}
 \begin{itemize}

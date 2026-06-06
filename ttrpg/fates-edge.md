@@ -133,8 +133,8 @@ All significant actions follow this three-step process:
 ### Travel Procedure
 1. Break journey into legs with Travel Clock [4]
 2. Assign roles: Guide, Scout, Quartermaster, Watch
-3. Advance clock through actions/encounters
-4. Resolve complications when clock fills
+3. Advance timer through actions/encounters
+4. Resolve complications when timer fills
 
 ## Deck of Consequences
 
@@ -175,8 +175,8 @@ Key mechanics include:
 
 ### Violets & Stone (Urban Expansion)
 A plug-and-play urban module featuring:
-- **City as Character**: Districts and institutions carry tags and clocks
-- **Three-Clock Rule**: Only track Situation, Counter, and Campaign clocks
+- **City as Character**: Districts and institutions carry tags and timers
+- **Three-Clock Rule**: Only track Situation, Counter, and Campaign timers
 - **Urban Actions**: Invoke Rite, Grease Palms, Audit Ledger, Call the Watch
 - **City Kits**: Mid Ahkaz, Ecktoria, Silkstrand, Thepyrgos, Zakov
 
@@ -194,12 +194,12 @@ Criminal campaign module with:
 
 Core mechanics:
 - **Crew Types**: Smugglers, Thieves, Enforcers, Grifters, Fixers, Ward-Breakers
-- **Turf Control**: Claim [6] clocks, Territory War [8] mechanics
+- **Turf Control**: Claim [6] timers, Territory War [8] mechanics
 - **Informant Webs**: Reliability [4] tracks, Cross-Check abilities
 
 ### Wilderness: Hinterlands & Hearthfires
 Expedition module for:
-- **Wilds as Character**: Biomes with tags, strings, hazards, clocks
+- **Wilds as Character**: Biomes with tags, strings, hazards, timers
 - **Party Tracks**: Supplies [6], Weariness [6], Sign [6]
 - **Intent Dials**: Traverse, Scout, Hunt, Hide, Endure
 - **Camp Phase**: Build camp, watches, hearthfire rite, repair/recap
@@ -236,7 +236,7 @@ Key mechanics:
 
 ### Political Intrigue
 Campaign framework for:
-- **Faction Play**: Influence [6], Stability [6-8], Exposure [6] clocks
+- **Faction Play**: Influence [6], Stability [6-8], Exposure [6] timers
 - **Campaign Dials**: Mandate (0-6) and Crisis (0-6) tracks
 - **Social Conflict**: Petition, Bribe, Blackmail, Broker, Expose actions
 - **Relationship Maps**: Volatile stakes between faction pairs
@@ -374,8 +374,8 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 ### Travel Procedure
 1. **Break journey** into legs with Travel Clock [4]
 2. **Assign roles**: Guide, Scout, Quartermaster, Watch
-3. **Advance clock** through actions/encounters
-4. **Resolve complications** when clock fills
+3. **Advance timer** through actions/encounters
+4. **Resolve complications** when timer fills
 
 ### Travel Roles
 - **Guide**: Sets course; on success, DV -1 for movement challenges
@@ -434,13 +434,13 @@ Session 0 campaign-framing tool:
 | 5+ | Extreme, dramatic risk | Pick magical lock underwater |
 
 ### No-Thinking SB Spending
-- **1 SB**: Minor pressure (noise, trace, clock +1)
+- **1 SB**: Minor pressure (noise, trace, timer +1)
 - **2 SB**: Moderate setback (alarm, lose cover, lesser foe)
 - **3 SB**: Serious trouble (reinforcements, broken gear)
 - **4+ SB**: Major turn (trap springs, authority arrives)
 
 ### The Three-Clock Rule
-Only three active clocks at once:
+Only three active timers at once:
 1. **Scene Clock**: e.g., Guards Alerted [4]
 2. **Journey Clock**: e.g., Mist Encroaches [6]
 3. **Campaign Clock**: e.g., Baron's Suspicion [8]

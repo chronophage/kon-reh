@@ -62,7 +62,7 @@ class AdventureTab:
         if len(cards) == 4:
             self.display_adventure_info(cards)
             
-    def determine_clock(self, cards):
+    def determine_timer(self, cards):
         if self.encounter_mode.get():
             return "4-segment Clock (Encounter)"
             
@@ -106,11 +106,11 @@ class AdventureTab:
         self.complication_var.set(f"{complication_unicode} Complication: {complication_desc}")
         self.reward_var.set(f"{reward_unicode} Reward: {reward_desc}")
         
-        clock_size = self.determine_clock(cards)
-        self.clock_var.set(f"Clock Size: {clock_size}")
+        timer_size = self.determine_timer(cards)
+        self.timer_var.set(f"Clock Size: {timer_size}")
         
         # Store for import
-        self.last_adventure = (place_desc, people_desc, complication_desc, reward_desc, clock_size)
+        self.last_adventure = (place_desc, people_desc, complication_desc, reward_desc, timer_size)
         
     def create_ui(self):
         # Title
@@ -121,7 +121,7 @@ class AdventureTab:
         mode_frame = ttk.Frame(self.parent)
         mode_frame.pack(pady=10)
         
-        encounter_check = ttk.Checkbutton(mode_frame, text="Encounter Mode (4-segment clocks)", 
+        encounter_check = ttk.Checkbutton(mode_frame, text="Encounter Mode (4-segment timers)", 
                                          variable=self.encounter_mode, style="Large.TCheckbutton")
         encounter_check.pack()
         
@@ -148,9 +148,9 @@ class AdventureTab:
         reward_label.pack(pady=12, anchor="w", padx=40)
         
         # Clock size
-        self.clock_var = tk.StringVar()
-        clock_label = ttk.Label(self.parent, textvariable=self.clock_var, font=("Arial", 20, "bold"))
-        clock_label.pack(pady=25)
+        self.timer_var = tk.StringVar()
+        timer_label = ttk.Label(self.parent, textvariable=self.timer_var, font=("Arial", 20, "bold"))
+        timer_label.pack(pady=25)
         
         # Instructions
         instructions = ttk.Label(self.parent, 

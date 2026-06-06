@@ -27,7 +27,7 @@ Every adventure should begin with a clear identity statement that answers:
 **Establishment Beats (2-3 scenes)**
 - Character integration with setting
 - First major encounter (social/combat/investigation)
-- Introduction of primary campaign clocks
+- Introduction of primary campaign timers
 - Seed first hard choice or moral dilemma
 
 ### Act II: Complications & Choices
@@ -35,7 +35,7 @@ Every adventure should begin with a clear identity statement that answers:
 - Escalate core conflict
 - Introduce secondary threats/allies
 - Present meaningful player choices
-- Advance campaign clocks through player actions
+- Advance campaign timers through player actions
 
 **Midpoint Crisis**
 - Major revelation or setback
@@ -93,8 +93,8 @@ Signature System: [Name] - [Brief description]
 - How they handle partial success/failure
 
 **Clock Architecture:**
-- Primary campaign clock (6-12 segments)
-- 2-3 supporting clocks (4-8 segments each)
+- Primary campaign timer (6-12 segments)
+- 2-3 supporting timers (4-8 segments each)
 - Clear advancement triggers tied to player actions
 - Meaningful consequences when filled
 
@@ -172,7 +172,7 @@ Signature System: [Name] - [Brief description]
 
 ### Tier Adaptation
 **Lower Tiers:**
-- Reduce clock sizes by 2-4 segments
+- Reduce timer sizes by 2-4 segments
 - Simplify custom mechanics
 - Focus on 1-2 domains
 - Reduce scope of political elements
@@ -193,7 +193,7 @@ Signature System: [Name] - [Brief description]
 
 ### Player-Facing Materials
 - Clear, concise handouts
-- Visual clock representations
+- Visual timer representations
 - Quick reference cards for custom mechanics
 - Safety/toolkit reminders
 

@@ -12,14 +12,14 @@ class ResourceManager:
         self.resources_file = os.path.join(data_dir, "resources.json")
         self.resources = {
             "party": {
-                "supply_clock": 0,  # 0-4 segments
+                "supply_timer": 0,  # 0-4 segments
                 "story_beats": 4,   # Starting budget
-                "active_clocks": {}, # Tactical clocks
+                "active_timers": {}, # Tactical timers
                 "conditions": {}    # Party-wide conditions
             },
             "sessions": [],
             "campaign": {
-                "tactical_clocks": {
+                "tactical_timers": {
                     "Mob Overwhelm": {"size": 6, "current": 0},
                     "Fatigue Spiral": {"size": 4, "current": 0},
                     "Morale Collapse": {"size": 6, "current": 0},
@@ -65,8 +65,8 @@ class ResourceManager:
         # Ensure campaign structure exists
         if "campaign" not in loaded_data:
             loaded_data["campaign"] = self.resources["campaign"]
-        elif "tactical_clocks" not in loaded_data["campaign"]:
-            loaded_data["campaign"]["tactical_clocks"] = self.resources["campaign"]["tactical_clocks"]
+        elif "tactical_timers" not in loaded_data["campaign"]:
+            loaded_data["campaign"]["tactical_timers"] = self.resources["campaign"]["tactical_timers"]
             
     def save_resources(self):
         """Save resources to JSON file"""
@@ -80,7 +80,7 @@ class ResourceManager:
     # Supply Clock Management
     def get_supply_status(self) -> Dict[str, Any]:
         """Get current supply status"""
-        supply = self.resources["party"]["supply_clock"]
+        supply = self.resources["party"]["supply_timer"]
         statuses = {
             0: {"name": "Full Supply", "effect": "No penalties or complications"},
             1: {"name": "Low Supply", "effect": "Minor narrative complications"},
@@ -96,11 +96,11 @@ class ResourceManager:
             "progress_bar": self._create_progress_bar(supply, 4)
         }
         
-    def advance_supply_clock(self, reason: str = "") -> Dict[str, Any]:
-        """Advance supply clock"""
-        current = self.resources["party"]["supply_clock"]
+    def advance_supply_timer(self, reason: str = "") -> Dict[str, Any]:
+        """Advance supply timer"""
+        current = self.resources["party"]["supply_timer"]
         if current < 4:
-            self.resources["party"]["supply_clock"] = current + 1
+            self.resources["party"]["supply_timer"] = current + 1
             self.save_resources()
             
         status = self.get_supply_status()
@@ -114,11 +114,11 @@ class ResourceManager:
             
         return status
         
-    def clear_supply_clock(self, segments: int = 1) -> Dict[str, Any]:
-        """Clear segments from supply clock"""
-        current = self.resources["party"]["supply_clock"]
+    def clear_supply_timer(self, segments: int = 1) -> Dict[str, Any]:
+        """Clear segments from supply timer"""
+        current = self.resources["party"]["supply_timer"]
         new_value = max(0, current - segments)
-        self.resources["party"]["supply_clock"] = new_value
+        self.resources["party"]["supply_timer"] = new_value
         self.save_resources()
         
         return {
@@ -128,16 +128,16 @@ class ResourceManager:
             "status": self.get_supply_status()
         }
         
-    def reset_supply_clock(self) -> Dict[str, Any]:
-        """Reset supply clock to full"""
-        self.resources["party"]["supply_clock"] = 0
+    def reset_supply_timer(self) -> Dict[str, Any]:
+        """Reset supply timer to full"""
+        self.resources["party"]["supply_timer"] = 0
         self.save_resources()
         
         return {
             "previous": "Unknown",
             "current": 0,
             "status": self.get_supply_status(),
-            "message": "Supply clock reset to Full Supply"
+            "message": "Supply timer reset to Full Supply"
         }
         
     # Story Beat Management
@@ -238,28 +238,28 @@ class ResourceManager:
         return True
         
     # Tactical Clocks
-    def get_tactical_clocks(self) -> Dict[str, Any]:
-        """Get all tactical clocks"""
-        return self.resources["campaign"]["tactical_clocks"]
+    def get_tactical_timers(self) -> Dict[str, Any]:
+        """Get all tactical timers"""
+        return self.resources["campaign"]["tactical_timers"]
         
-    def get_tactical_clock(self, clock_name: str) -> Optional[Dict[str, Any]]:
-        """Get a specific tactical clock"""
-        return self.resources["campaign"]["tactical_clocks"].get(clock_name)
+    def get_tactical_timer(self, timer_name: str) -> Optional[Dict[str, Any]]:
+        """Get a specific tactical timer"""
+        return self.resources["campaign"]["tactical_timers"].get(timer_name)
         
-    def advance_tactical_clock(self, clock_name: str, segments: int = 1) -> Dict[str, Any]:
-        """Advance a tactical clock"""
-        if clock_name not in self.resources["campaign"]["tactical_clocks"]:
-            return {"error": f"Clock '{clock_name}' not found"}
+    def advance_tactical_timer(self, timer_name: str, segments: int = 1) -> Dict[str, Any]:
+        """Advance a tactical timer"""
+        if timer_name not in self.resources["campaign"]["tactical_timers"]:
+            return {"error": f"Clock '{timer_name}' not found"}
             
-        clock = self.resources["campaign"]["tactical_clocks"][clock_name]
-        current = clock["current"]
-        size = clock["size"]
+        timer = self.resources["campaign"]["tactical_timers"][timer_name]
+        current = timer["current"]
+        size = timer["size"]
         new_value = min(size, current + segments)
-        clock["current"] = new_value
+        timer["current"] = new_value
         self.save_resources()
         
         return {
-            "name": clock_name,
+            "name": timer_name,
             "previous": current,
             "current": new_value,
             "size": size,
@@ -268,58 +268,58 @@ class ResourceManager:
             "segments_advanced": segments
         }
         
-    def clear_tactical_clock(self, clock_name: str, segments: int = 1) -> Dict[str, Any]:
-        """Clear segments from a tactical clock"""
-        if clock_name not in self.resources["campaign"]["tactical_clocks"]:
-            return {"error": f"Clock '{clock_name}' not found"}
+    def clear_tactical_timer(self, timer_name: str, segments: int = 1) -> Dict[str, Any]:
+        """Clear segments from a tactical timer"""
+        if timer_name not in self.resources["campaign"]["tactical_timers"]:
+            return {"error": f"Clock '{timer_name}' not found"}
             
-        clock = self.resources["campaign"]["tactical_clocks"][clock_name]
-        current = clock["current"]
+        timer = self.resources["campaign"]["tactical_timers"][timer_name]
+        current = timer["current"]
         new_value = max(0, current - segments)
-        clock["current"] = new_value
+        timer["current"] = new_value
         self.save_resources()
         
         return {
-            "name": clock_name,
+            "name": timer_name,
             "previous": current,
             "current": new_value,
-            "size": clock["size"],
-            "progress_bar": self._create_progress_bar(new_value, clock["size"]),
+            "size": timer["size"],
+            "progress_bar": self._create_progress_bar(new_value, timer["size"]),
             "segments_cleared": segments
         }
         
-    def reset_tactical_clock(self, clock_name: str) -> Dict[str, Any]:
-        """Reset a tactical clock to 0"""
-        if clock_name not in self.resources["campaign"]["tactical_clocks"]:
-            return {"error": f"Clock '{clock_name}' not found"}
+    def reset_tactical_timer(self, timer_name: str) -> Dict[str, Any]:
+        """Reset a tactical timer to 0"""
+        if timer_name not in self.resources["campaign"]["tactical_timers"]:
+            return {"error": f"Clock '{timer_name}' not found"}
             
-        clock = self.resources["campaign"]["tactical_clocks"][clock_name]
-        previous = clock["current"]
-        clock["current"] = 0
+        timer = self.resources["campaign"]["tactical_timers"][timer_name]
+        previous = timer["current"]
+        timer["current"] = 0
         self.save_resources()
         
         return {
-            "name": clock_name,
+            "name": timer_name,
             "previous": previous,
             "current": 0,
-            "size": clock["size"],
-            "progress_bar": self._create_progress_bar(0, clock["size"]),
-            "message": f"{clock_name} reset"
+            "size": timer["size"],
+            "progress_bar": self._create_progress_bar(0, timer["size"]),
+            "message": f"{timer_name} reset"
         }
         
-    def create_custom_clock(self, clock_name: str, size: int) -> bool:
-        """Create a custom tactical clock"""
-        self.resources["campaign"]["tactical_clocks"][clock_name] = {
+    def create_custom_timer(self, timer_name: str, size: int) -> bool:
+        """Create a custom tactical timer"""
+        self.resources["campaign"]["tactical_timers"][timer_name] = {
             "size": size,
             "current": 0
         }
         self.save_resources()
         return True
         
-    def remove_custom_clock(self, clock_name: str) -> bool:
-        """Remove a custom tactical clock"""
-        if clock_name in self.resources["campaign"]["tactical_clocks"]:
-            del self.resources["campaign"]["tactical_clocks"][clock_name]
+    def remove_custom_timer(self, timer_name: str) -> bool:
+        """Remove a custom tactical timer"""
+        if timer_name in self.resources["campaign"]["tactical_timers"]:
+            del self.resources["campaign"]["tactical_timers"][timer_name]
             self.save_resources()
             return True
         return False
@@ -336,7 +336,7 @@ class ResourceManager:
             "end_time": None,
             "events": [],
             "story_beats_generated": 0,
-            "supply_start": self.resources["party"]["supply_clock"]
+            "supply_start": self.resources["party"]["supply_timer"]
         }
         
         self.resources["sessions"].append(session)
@@ -362,7 +362,7 @@ class ResourceManager:
         return {
             "session_name": current_session["name"],
             "duration": "Calculated from start/end times",
-            "supply_change": self.resources["party"]["supply_clock"] - current_session["supply_start"],
+            "supply_change": self.resources["party"]["supply_timer"] - current_session["supply_start"],
             "message": f"Session '{current_session['name']}' ended"
         }
         
@@ -393,15 +393,15 @@ class ResourceManager:
         """Get overall party status"""
         supply = self.get_supply_status()
         sb_budget = self.get_story_beat_budget()
-        clocks = self.get_tactical_clocks()
+        timers = self.get_tactical_timers()
         
-        # Get active clocks (those with progress)
-        active_clocks = {name: clock for name, clock in clocks.items() if clock["current"] > 0}
+        # Get active timers (those with progress)
+        active_timers = {name: timer for name, timer in timers.items() if timer["current"] > 0}
         
         return {
             "supply": supply,
             "story_beat_budget": sb_budget,
-            "active_clocks": active_clocks,
+            "active_timers": active_timers,
             "character_conditions": self.resources["party"]["conditions"]
         }
 

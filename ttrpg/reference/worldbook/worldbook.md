@@ -811,7 +811,7 @@ Small freeholders and chartered villages ringed by hedges and hornbeams; stout b
 
 #### Coin & cargo
 * Exports: Grain, flax, cheese, peat, seasoned willow, rope, wax, river fish.
-* Imports: Mountain iron, tools, salt, slate, and the rare dwarven clock that never loses time even when the road does.
+* Imports: Mountain iron, tools, salt, slate, and the rare dwarven timer that never loses time even when the road does.
 * Markets: Tulkani caravans bring spice, dyes, and stories that buy two rounds before the reeve asks for permits.
 
 #### Arms & order
@@ -1333,7 +1333,7 @@ Far southeast of Galanina, past Sidhi marches and salt flats, the Dhaharan penin
 #### Law & custom
 * Oath-Law: a man is his vow; perjury is a sacrament violated. Oaths sworn "under open sky" bind witnesses and guarantors alike.
 * Guest-Right: three nights without question; after that, host and guest must speak terms.
-* Vendetta Codes: bounded by seasons and elders' clocks; compensation scales published in market squares.
+* Vendetta Codes: bounded by seasons and elders' timers; compensation scales published in market squares.
 * Seal-Taboos: ruin-digging and tomb trade are illegal inland; coastal courts look the other way unless a sealed precinct is named.
 
 #### Arms & musters
@@ -1679,7 +1679,7 @@ Hidden upland vales, cloud-forests, and secluded citadels; largest human-known e
 * Others: Comfortable with scholars, prickly with zealots, unfailingly formal with spirits and saints.
 
 #### Culture & Aesthetics
-* Arts: Polyphonic choral math, mirrored calligraphy, kinetic gardens, water clocks that play scales.
+* Arts: Polyphonic choral math, mirrored calligraphy, kinetic gardens, water timers that play scales.
 * Dress: Layered fabrics with refractive weaves; memory-brooches that carry vows; muted palettes sparked by one exact color.
 * Leisure: Pattern games, argument salons, promenade duels (wit before steel), sky-terrace festivals.
 
@@ -1791,7 +1791,7 @@ East of the Dolmis, beyond the Wrentfell River's stony reaches, gnomes keep low 
 * Math-script: Knot-cords, abacus-songs, and crystalline glyphs that model tides, trade, even luck. Outsiders call it "incomprehensible"; gnomes call it useful music.
 
 #### Craft & magic
-* Lapidary & metal: Micro-inlays, spring-staves, pressure latches, clockworks, balance scales that "remember" zero.
+* Lapidary & metal: Micro-inlays, spring-staves, pressure latches, timerworks, balance scales that "remember" zero.
 * Green-work: Terraced fungi, root-cellar orchards, bee-keeping in stone hives; forest kin breed whisper-thorn and lamp-mushroom.
 * Thaumaturgy: Low-glamour, high-precision: ward-etching, tuning enchantments, probability slighting (tilting chance by fractions, never absolutes).
 
@@ -1869,7 +1869,7 @@ Every hamlet keeps a secret: the hollow places where their dead walk quiet paths
 * **Shepherds**: With bone whistles that call dogs—and other things that move in the mist between barrows.
 
 ### The Hidden Trade
-* **Exports**: Cider, cheddar, smoked river-fish, fine twine, pocket clocks. But some honey goes to winter churches, and some fruit from Mother's Orchard carries memories not meant for the living.
+* **Exports**: Cider, cheddar, smoked river-fish, fine twine, pocket timers. But some honey goes to winter churches, and some fruit from Mother's Orchard carries memories not meant for the living.
 * **Imports**: Iron, salt, bright dyes, stories worth retelling. But the best stories are those that explain why the road walks you back to your own gate, or why the lanterns burn blue at the ford.
 * **Tokens of Safe Passage**:
   * **Guest-loaf & salt**: One night's safe board anywhere with a red door, but only if you don't count the footsteps under the floorboards.

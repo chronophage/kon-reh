@@ -12,7 +12,7 @@ class MacroService {
       '/boon': this.handleBoon.bind(this),
       
       // Campaign macros
-      '/clock': this.handleClock.bind(this),
+      '/timer': this.handleClock.bind(this),
       '/session': this.handleSession.bind(this),
       
       // Utility macros
@@ -26,7 +26,7 @@ class MacroService {
       roll: /^\/(roll|r)\s+(\d+)(?:\s+(basic|detailed|intricate))?(?:\s+(.*))?$/i,
       xp: /^\/xp\s+([+-]\d+)(?:\s+(.*))?$/i,
       boon: /^\/boon\s+(convert|spend)(?:\s+(.*))?$/i,
-      clock: /^\/clock\s+(tick|reset)\s+(\w+)(?:\s+(\d+))?$/i,
+      timer: /^\/timer\s+(tick|reset)\s+(\w+)(?:\s+(\d+))?$/i,
       session: /^\/session\s+(start|end)(?:\s+(.*))?$/i,
       whisper: /^\/(whisper|w)\s+<@(\w+)> (.*)$/i,
       emote: /^\/me\s+(.*)$/i
@@ -106,12 +106,12 @@ class MacroService {
       };
     }
     
-    if (this.patterns.clock.test(cleanCommand)) {
-      const match = cleanCommand.match(this.patterns.clock);
+    if (this.patterns.timer.test(cleanCommand)) {
+      const match = cleanCommand.match(this.patterns.timer);
       return {
-        command: '/clock',
+        command: '/timer',
         action: match[1].toLowerCase(),
-        clockName: match[2],
+        timerName: match[2],
         amount: match[3] ? parseInt(match[3]) : 1
       };
     }
@@ -243,26 +243,26 @@ class MacroService {
 
   // Handle Clock macros
   async handleClock(params) {
-    const { action, clockName, amount, userId, campaignId, io } = params;
+    const { action, timerName, amount, userId, campaignId, io } = params;
     
     if (action === 'tick') {
-      // In a real implementation, this would update the campaign clock
+      // In a real implementation, this would update the campaign timer
       const ticks = amount || 1;
       return {
-        type: 'clock_tick',
-        clockName,
+        type: 'timer_tick',
+        timerName,
         ticks,
-        message: `${userId} ticked clock "${clockName}" by ${ticks}`
+        message: `${userId} ticked timer "${timerName}" by ${ticks}`
       };
     } else if (action === 'reset') {
       return {
-        type: 'clock_reset',
-        clockName,
-        message: `${userId} reset clock "${clockName}"`
+        type: 'timer_reset',
+        timerName,
+        message: `${userId} reset timer "${timerName}"`
       };
     }
     
-    throw new Error('Invalid clock action');
+    throw new Error('Invalid timer action');
   }
 
   // Handle Session macros

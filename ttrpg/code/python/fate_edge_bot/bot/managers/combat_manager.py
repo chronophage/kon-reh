@@ -25,7 +25,7 @@ class CombatManager:
             "active": False,
             "scene_name": "",
             "participants": {},  # character_name: {position, range, conditions, initiative}
-            "tactical_clocks": {},
+            "tactical_timers": {},
             "round": 0,
             "turn_order": [],
             "current_turn": 0
@@ -65,7 +65,7 @@ class CombatManager:
             "active": True,
             "scene_name": scene_name,
             "participants": {},
-            "tactical_clocks": {},
+            "tactical_timers": {},
             "round": 1,
             "turn_order": [],
             "current_turn": 0
@@ -306,12 +306,12 @@ class CombatManager:
         return self.add_condition(participant_name, "fatigue", new_fatigue)
         
     # Tactical Clocks
-    def add_tactical_clock(self, clock_name: str, size: int = 6) -> Dict[str, Any]:
-        """Add a tactical clock to the combat"""
+    def add_tactical_timer(self, timer_name: str, size: int = 6) -> Dict[str, Any]:
+        """Add a tactical timer to the combat"""
         if not self.combat_state["active"]:
             return {"status": "error", "message": "No active combat session"}
             
-        self.combat_state["tactical_clocks"][clock_name] = {
+        self.combat_state["tactical_timers"][timer_name] = {
             "size": size,
             "current": 0
         }
@@ -319,29 +319,29 @@ class CombatManager:
         
         return {
             "status": "success",
-            "message": f"Added tactical clock '{clock_name}'",
-            "clock": self.combat_state["tactical_clocks"][clock_name]
+            "message": f"Added tactical timer '{timer_name}'",
+            "timer": self.combat_state["tactical_timers"][timer_name]
         }
         
-    def advance_clock(self, clock_name: str, segments: int = 1) -> Dict[str, Any]:
-        """Advance a tactical clock"""
+    def advance_timer(self, timer_name: str, segments: int = 1) -> Dict[str, Any]:
+        """Advance a tactical timer"""
         if not self.combat_state["active"]:
             return {"status": "error", "message": "No active combat session"}
             
-        if clock_name not in self.combat_state["tactical_clocks"]:
-            return {"status": "error", "message": f"Clock '{clock_name}' not found"}
+        if timer_name not in self.combat_state["tactical_timers"]:
+            return {"status": "error", "message": f"Clock '{timer_name}' not found"}
             
-        clock = self.combat_state["tactical_clocks"][clock_name]
-        current = clock["current"]
-        size = clock["size"]
+        timer = self.combat_state["tactical_timers"][timer_name]
+        current = timer["current"]
+        size = timer["size"]
         new_value = min(size, current + segments)
-        clock["current"] = new_value
+        timer["current"] = new_value
         self.save_combat_state()
         
         return {
             "status": "success",
-            "message": f"Advanced '{clock_name}' by {segments} segment(s)",
-            "clock_name": clock_name,
+            "message": f"Advanced '{timer_name}' by {segments} segment(s)",
+            "timer_name": timer_name,
             "previous": current,
             "current": new_value,
             "size": size,
@@ -349,28 +349,28 @@ class CombatManager:
             "completed": new_value >= size
         }
         
-    def clear_clock(self, clock_name: str, segments: int = 1) -> Dict[str, Any]:
-        """Clear segments from a tactical clock"""
+    def clear_timer(self, timer_name: str, segments: int = 1) -> Dict[str, Any]:
+        """Clear segments from a tactical timer"""
         if not self.combat_state["active"]:
             return {"status": "error", "message": "No active combat session"}
             
-        if clock_name not in self.combat_state["tactical_clocks"]:
-            return {"status": "error", "message": f"Clock '{clock_name}' not found"}
+        if timer_name not in self.combat_state["tactical_timers"]:
+            return {"status": "error", "message": f"Clock '{timer_name}' not found"}
             
-        clock = self.combat_state["tactical_clocks"][clock_name]
-        current = clock["current"]
+        timer = self.combat_state["tactical_timers"][timer_name]
+        current = timer["current"]
         new_value = max(0, current - segments)
-        clock["current"] = new_value
+        timer["current"] = new_value
         self.save_combat_state()
         
         return {
             "status": "success",
-            "message": f"Cleared {segments} segment(s) from '{clock_name}'",
-            "clock_name": clock_name,
+            "message": f"Cleared {segments} segment(s) from '{timer_name}'",
+            "timer_name": timer_name,
             "previous": current,
             "current": new_value,
             "size": size,
-            "progress_bar": self._create_progress_bar(new_value, clock["size"])
+            "progress_bar": self._create_progress_bar(new_value, timer["size"])
         }
         
     # Turn Management
@@ -460,10 +460,10 @@ class CombatManager:
             
         turn_status = self.get_turn_status()
         participants = self.get_participants()
-        clocks = self.combat_state["tactical_clocks"]
+        timers = self.combat_state["tactical_timers"]
         
-        # Get active clocks (those with progress)
-        active_clocks = {name: clock for name, clock in clocks.items() if clock["current"] > 0}
+        # Get active timers (those with progress)
+        active_timers = {name: timer for name, timer in timers.items() if timer["current"] > 0}
         
         return {
             "status": "success",
@@ -471,7 +471,7 @@ class CombatManager:
             "round": self.combat_state["round"],
             "turn_status": turn_status,
             "participants": participants["participants"] if participants["status"] == "success" else {},
-            "active_clocks": active_clocks,
+            "active_timers": active_timers,
             "total_participants": len(self.combat_state["participants"])
         }
         

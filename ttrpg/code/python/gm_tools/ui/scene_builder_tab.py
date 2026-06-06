@@ -52,7 +52,7 @@ Position Effects:
 
 Stakes Questions:
 • If this goes right, what changes? (Position, time, access, consent)
-• If this goes wrong, what bites back? (Noise, harm, debt, clocks)
+• If this goes wrong, what bites back? (Noise, harm, debt, timers)
 
 Rail Types:
 • Social: Crowd (mob mentality), Sanctity (ritual pressure), Curfew (time constraints)

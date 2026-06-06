@@ -150,13 +150,13 @@ class SessionCommands(commands.Cog):
             
             message += f"**🌀 Story Beats**: {sb_budget} available\n\n"
             
-            # Active clocks
-            active_clocks = party_status.get('active_clocks', {})
-            if active_clocks:
+            # Active timers
+            active_timers = party_status.get('active_timers', {})
+            if active_timers:
                 message += f"**⏱️ Active Clocks**:\n"
-                for name, clock in active_clocks.items():
+                for name, timer in active_timers.items():
                     progress_bar = resource_manager._create_progress_bar(
-                        clock['current'], clock['size']
+                        timer['current'], timer['size']
                     )
                     message += f"• {name}: {progress_bar}\n"
                     

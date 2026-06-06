@@ -77,7 +77,7 @@ class (SB)SpendMenuTab:
         pentacles_frame.pack(fill=tk.X, pady=(0, 10))
         
         self.create_spend_options(pentacles_frame, [
-            ("1 (SB)", "Noise, tell, or trace left; +1 segment on Supply clock"),
+            ("1 (SB)", "Noise, tell, or trace left; +1 segment on Supply timer"),
             ("2 (SB)", "Alarmed attention (not full alarm); lose position/cover"),
             ("3 (SB)", "Reinforcements en route; Out of Supply"),
             ("4+ (SB)", "Major turn: trap springs, rival claims prize first")

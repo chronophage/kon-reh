@@ -224,7 +224,7 @@ class XPPlannerTab:
                 info_text += "Cost: Mark Exposure +1 or Harm 1\n"
                 info_text += "Pressure: GM may spend 1 (SB) to escalate"
             elif action == "Fetch & Carry":
-                info_text += "Effect: Move small object; on recipient's next success, advance +1 tick on target clock\n"
+                info_text += "Effect: Move small object; on recipient's next success, advance +1 tick on target timer\n"
                 info_text += "Cost: Mark Exposure +1 or Harm 1\n"
                 info_text += "Pressure: GM may spend 1 (SB) to escalate"
                 

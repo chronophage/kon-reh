@@ -67,7 +67,7 @@ Features:
 Features:
 - Player invitation/permission system
 - Session scheduling and notes
-- Campaign clock tracking (Mandate/Crisis)
+- Campaign timer tracking (Mandate/Crisis)
 - Asset/Follower shared database
 - Character roster with status
 ```

@@ -151,13 +151,13 @@ This plan follows the same approach as the GM Guide revision: **clarity, usabili
 1. **Trim repetitive lore** – keep only player‑relevant details (cultural attitudes toward magic, common factions, typical dress, customs).
 2. **Add a “How to Use This Section” box:** “Read only the region your character is from or where the campaign starts.”
 3. **For each culture, add a one‑line “Player Hook”** – e.g., “Acasia: you owe a blood‑debt to a free company captain.”
-4. **Remove GM‑only secrets** (hidden agendas, faction clocks) – keep those in GM Guide.
+4. **Remove GM‑only secrets** (hidden agendas, faction timers) – keep those in GM Guide.
 
 ---
 
 ## Section 11: World Powers (`11_world_powers.tex`) – likely merged with above
 
-**Revisions:** Keep brief – just major factions and their public reputation. Move detailed faction clocks to GM Guide.
+**Revisions:** Keep brief – just major factions and their public reputation. Move detailed faction timers to GM Guide.
 
 ---
 

@@ -178,15 +178,15 @@ INSERT INTO adventure_descriptors (category, suit, rank, description) VALUES
 ('Reward', 'Diamonds', 'King', 'Noble charter or mercantile license (Standard Asset)'),
 ('Reward', 'Diamonds', 'Ace', 'Artifact-grade leverage (4 XP to keep)');
 
--- Create clock reference table
-CREATE TABLE IF NOT EXISTS clock_reference (
+-- Create timer reference table
+CREATE TABLE IF NOT EXISTS timer_reference (
     id INTEGER PRIMARY KEY,
     name TEXT UNIQUE,
     segments INTEGER
 );
 
--- Insert clock reference data
-INSERT INTO clock_reference (name, segments) VALUES
+-- Insert timer reference data
+INSERT INTO timer_reference (name, segments) VALUES
 ('Action / Task', 4),
 ('Stealth / Alert / Heat', 4),
 ('Recovery / Healing', 4),
@@ -216,13 +216,13 @@ CREATE TABLE IF NOT EXISTS cp_spend_menu (
 
 -- Insert the (SB) spend options
 INSERT OR IGNORE INTO cp_spend_menu (cp_cost, category, description) VALUES
-(1, 'Universal', 'Noise, tell, or trace left; +1 segment on the party Supply clock; a tool or item becomes Compromised; +1 round of time passes; a bystander notices something off.'),
+(1, 'Universal', 'Noise, tell, or trace left; +1 segment on the party Supply timer; a tool or item becomes Compromised; +1 round of time passes; a bystander notices something off.'),
 (1, 'Combat', 'Lose footing (next defense -1d).'),
 (1, 'Stealth', 'Footstep/squeak; shadow seen.'),
-(2, 'Universal', 'Alarmed attention (not full alarm); lose position/cover; add a lesser foe or lock; advance a Threat clock by 1; traveler gains Fatigue 1.'),
+(2, 'Universal', 'Alarmed attention (not full alarm); lose position/cover; add a lesser foe or lock; advance a Threat timer by 1; traveler gains Fatigue 1.'),
 (2, 'Combat', 'Weapon or gear becomes Compromised.'),
 (2, 'Stealth', 'Patrol pattern changes; lock resists (extra test).'),
-(3, 'Universal', 'Reinforcements en route; Out of Supply; key gear breaks now; split the party''s options (e.g., fire, flood, collapse); escalate a faction clock by 1.'),
+(3, 'Universal', 'Reinforcements en route; Out of Supply; key gear breaks now; split the party''s options (e.g., fire, flood, collapse); escalate a faction timer by 1.'),
 (3, 'Combat', 'Pinned, disarmed, or separated; battlefield shifts (fireline, cave-in, cavalry arrives).'),
 (3, 'Stealth', 'Partial alarm (search begins).'),
 (4, 'Universal', 'Major turn: trap springs, rival claims the prize first, authority arrives with mandate; convert saved (SB) into a scene-defining twist (one big thing, not many small).'),
@@ -238,11 +238,11 @@ CREATE TABLE characters (
 );
 
 -- Campaign tracking
-CREATE TABLE campaign_clocks (
+CREATE TABLE campaign_timers (
     id INTEGER PRIMARY KEY,
     mandate INTEGER DEFAULT 0,
     crisis INTEGER DEFAULT 0,
-    primary_clock INTEGER DEFAULT 0
+    primary_timer INTEGER DEFAULT 0
 );
 
 -- Evidence tracking

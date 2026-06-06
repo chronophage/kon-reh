@@ -1,4 +1,4 @@
-# supply_clock_tab.py
+# supply_timer_tab.py
 import tkinter as tk
 from tkinter import ttk
 
@@ -14,15 +14,15 @@ class SupplyClockTab:
         title.pack(pady=20)
         
         # Clock Visualization
-        clock_frame = ttk.LabelFrame(self.parent, text="Supply Status", padding="20")
-        clock_frame.pack(fill="x", padx=20, pady=10)
+        timer_frame = ttk.LabelFrame(self.parent, text="Supply Status", padding="20")
+        timer_frame.pack(fill="x", padx=20, pady=10)
         
-        self.clock_canvas = tk.Canvas(clock_frame, width=300, height=100)
-        self.clock_canvas.pack(pady=10)
-        self.draw_clock()
+        self.timer_canvas = tk.Canvas(timer_frame, width=300, height=100)
+        self.timer_canvas.pack(pady=10)
+        self.draw_timer()
         
         # Status Label
-        self.status_label = ttk.Label(clock_frame, text="", font=("Arial", 14, "bold"))
+        self.status_label = ttk.Label(timer_frame, text="", font=("Arial", 14, "bold"))
         self.status_label.pack(pady=10)
         self.update_status()
         
@@ -32,7 +32,7 @@ class SupplyClockTab:
         
         ttk.Button(control_frame, text="Fill Segment", command=self.fill_segment).pack(side="left", padx=5)
         ttk.Button(control_frame, text="Empty Segment", command=self.empty_segment).pack(side="left", padx=5)
-        ttk.Button(control_frame, text="Reset Clock", command=self.reset_clock).pack(side="left", padx=5)
+        ttk.Button(control_frame, text="Reset Clock", command=self.reset_timer).pack(side="left", padx=5)
         
         # Supply Status Information
         info_frame = ttk.LabelFrame(self.parent, text="Supply Status Effects", padding="10")
@@ -48,8 +48,8 @@ Out of Supply (4 filled): Severe penalties; starvation, dehydration, failing gea
         info_label = ttk.Label(info_frame, text=info_text, justify="left")
         info_label.pack()
         
-    def draw_clock(self):
-        self.clock_canvas.delete("all")
+    def draw_timer(self):
+        self.timer_canvas.delete("all")
         
         # Draw empty segments
         for i in range(4):
@@ -64,10 +64,10 @@ Out of Supply (4 filled): Severe penalties; starvation, dehydration, failing gea
             else:
                 color = "lightgray"  # Empty segments
                 
-            self.clock_canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="black", width=2)
+            self.timer_canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="black", width=2)
             
         # Add labels
-        self.clock_canvas.create_text(25, 50, text="Supply", anchor="e")
+        self.timer_canvas.create_text(25, 50, text="Supply", anchor="e")
         
     def update_status(self):
         status_texts = {
@@ -83,18 +83,18 @@ Out of Supply (4 filled): Severe penalties; starvation, dehydration, failing gea
     def fill_segment(self):
         if self.segments < 4:
             self.segments += 1
-            self.draw_clock()
+            self.draw_timer()
             self.update_status()
             
     def empty_segment(self):
         if self.segments > 0:
             self.segments -= 1
-            self.draw_clock()
+            self.draw_timer()
             self.update_status()
             
-    def reset_clock(self):
+    def reset_timer(self):
         self.segments = 0
-        self.draw_clock()
+        self.draw_timer()
         self.update_status()
 
 # Example usage (if running this file directly)
