@@ -1,6 +1,6 @@
 # Welcome to the World of Fate's Edge
 
-**"What are you willing to risk, and what are you willing to pay, to reshape the world around you?"**
+**"What are you willing to risk, and what are you willing to surrender, to reshape the world around you?"**
 
 In the shattered remnants of a fallen empire, where ancient magic wars with emerging nations and every choice echoes across contested borders, Fate's Edge presents a world where power comes at a price and consequences matter. This isn't your typical fantasy setting—it's a narrative-first RPG where the dice don't just determine success or failure, but actively shape the story itself.
 
