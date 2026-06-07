@@ -38,7 +38,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
    - 2.4 Outcome Matrix & Story Beats
    - **2.5 Initiative** – move optional systems (popcorn, side‑based, speed slots) to end, and first state: *“Default is narrative initiative. Use these optional structures only if your table prefers them.”*
    - 2.6 Player‑Managed Modules (good as is)
-   - 2.7 Clocks & Fronts (move from later)
+   - 2.7 Timers & Fronts (move from later)
    - 2.8 First Game Scenario (The Sunstone Tower) – keep as practical example.
 
 2. **Add a “Golden Rule” call‑out box:** *“When in doubt, make a ruling that keeps the story moving.”*
@@ -61,7 +61,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
 
 3. **Fatigue section (3.2):** Add a note on the “roller‑coaster” effect: taking Harm clears Fatigue temporarily (adrenaline surge). Include a small example.
 
-4. **Supply Clock (3.1):** No major changes, but cross‑reference travel rules.
+4. **Supply Timer (3.1):** No major changes, but cross‑reference travel rules.
 
 5. **Followers and Assets (3.4):** Clarify that followers are on‑screen allies and can be **successors** (cross‑reference Legacy Engine). Add a short “when to invest” table.
 
@@ -108,7 +108,7 @@ This plan keeps the existing 11 sections (`01_intro.tex` through `11_appendix.te
    - Guidance on rival advancement (they can succeed off‑screen, tick timers, and appear later).
    - Example: The Ashen Cord from simulations.
 
-2. **Clocks and Fronts (5.0):** Clarify the “Three‑Clock Guideline” with a concrete example.
+2. **Timers and Fronts (5.0):** Clarify the “Three‑Timer Guideline” with a concrete example.
 
 3. **Position as Narrative Leverage (5.0.5):** Move this earlier (right after timers) – it’s critical. Emphasize that Position scales with tier (life/death → regional → world‑shaping).
 

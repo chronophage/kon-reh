@@ -62,7 +62,7 @@ Reinforcements, collapsing terrain, ally endangered, or fill 3+ timer segments
 
 ---
 
-## 4. The Three-Clock Rule
+## 4. The Three-Timer Rule
 
 Only three active timers at once:
 - **Scene Clock:** e.g., Guards Alerted [4]
@@ -93,7 +93,7 @@ If a player invents a spell on the fly:
 ### Pre-Session (15 minutes)
 1. Use Five-Second Position/Effect for major scenes
 2. Apply Lazy DV Table to key challenges
-3. Set up Three-Clock framework
+3. Set up Three-Timer framework
 4. Bank 2-3 SB spends per major scene
 5. Prep 1-2 magic adjudications
 
@@ -173,7 +173,7 @@ Roll 2d8 for each faction:
 - **Power Base**: 1=Street, 2=Guild, 3=City, 4=Crown, 5=Synod, 6=Foreign, 7=Supernatural, 8=Dragon Cult
 - **Motivation**: 1=Power, 2=Revenge, 3=Protection, 4=Profit, 5=Ideology, 6=Survival, 7=Knowledge, 8=Corruption
 
-### Step 4: Create Central Adventure Clock [6-10]
+### Step 4: Create Central Adventure Timer [6-10]
 Based on Core Conflict:
 - **Conspiracy**: [8] - Plot Unraveling
 - **Supernatural**: [10] - Threat Awakening  
@@ -182,7 +182,7 @@ Based on Core Conflict:
 - **Mystical**: [6] - Quest Progression
 - **Social**: [8] - Revolution Brewing
 
-### Step 5: Generate 3-5 Supporting Clocks
+### Step 5: Generate 3-5 Supporting Timers
 Roll 1d10 for each:
 1. **Party Complication** - Internal conflict, resource shortage, moral dilemma
 2. **Faction Maneuver** - Political pressure, alliance shift, betrayal
@@ -216,8 +216,8 @@ Roll 1d10 for each:
 - Add Crew Morale and Maintenance Tracks
 
 **Horror Adventures:**
-- Deploy Dread Clock system with Boon management
-- Use Multi-Clock tension (Reality Fracture, Collective Sanity)
+- Deploy Dread Timer system with Boon management
+- Use Multi-Timer tension (Reality Fracture, Collective Sanity)
 - Include Breaking Points and Corruption Tracks
 - Apply Atmospheric Investigation tools
 
@@ -266,7 +266,7 @@ For each PC, create one:
 4. Imperial Exarchate (Bureaucratic/Crown - Power/Survival)
 
 **Core Clock**: [8] Lost Aqueduct Patent Resurfaces
-**Supporting Clocks**:
+**Supporting Timers**:
 - [6] Guild Conspiracy (Faction Maneuver)
 - [4] Public Unrest (Social Unrest) 
 - [6] Temple Schism (Religious Conflict)
@@ -287,7 +287,7 @@ For each PC, create one:
 4. Mercenary Company (Military/Street - Profit/Survival)
 
 **Core Clock**: [10] Vyrmja the Winter Coil Awakening
-**Supporting Clocks**:
+**Supporting Timers**:
 - [6] Cult Infiltration (External Threat)
 - [4] Supply Shortage (Resource Conflict)
 - [6] Baron's Deadline (Time Pressure)
@@ -309,7 +309,7 @@ For each PC, create one:
 4. Ashaani Corsairs (Military/Foreign - Revenge/Power)
 
 **Core Clock**: [8] Break the Titan - Blockade War
-**Supporting Clocks**:
+**Supporting Timers**:
 - [6] Lantern Dominion (Political Pressure)
 - [4] Crew Morale (Party Complication)
 - [6] Weather Window (Environmental Hazard)

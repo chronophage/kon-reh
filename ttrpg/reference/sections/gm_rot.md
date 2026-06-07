@@ -47,14 +47,14 @@ When a player rolls a 1, don't plan. React. Pick ONE thing from this list. One a
     *   *"You leave behind a clue."*
     *   *"You use up a resource."*
     *   *"A minor enemy arrives."*
-    *   **Tick a Clock +1.**
+    *   **Tick a Timer +1.**
 
 *   **Spend 2 SB:** Introduce a **Moderate Complication**.
     *   *"An alarm is raised."*
     *   *"You lose your advantageous position (Dominant -> Controlled)."*
     *   *"A key piece of gear breaks or is lost."*
     *   *"A more significant enemy appears."*
-    *   **Tick a Clock +2.**
+    *   **Tick a Timer +2.**
 
 *   **Spend 3+ SB:** Introduce a **Major Complication**.
     *   *"Reinforcements swarm the area."*
@@ -63,7 +63,7 @@ When a player rolls a 1, don't plan. React. Pick ONE thing from this list. One a
     *   *"An ally is put in immediate danger."*
     *   **Fill 3+ segments of a Clock.**
 
-### 4. The "Three-Clock Rule"
+### 4. The "Three-Timer Rule"
 
 You cannot manage ten timers at once. You just can't. So, don't.
 

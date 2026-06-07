@@ -131,7 +131,7 @@ All significant actions follow this three-step process:
 ## Travel Framework
 
 ### Travel Procedure
-1. Break journey into legs with Travel Clock [4]
+1. Break journey into legs with Travel Timer [4]
 2. Assign roles: Guide, Scout, Quartermaster, Watch
 3. Advance timer through actions/encounters
 4. Resolve complications when timer fills
@@ -176,7 +176,7 @@ Key mechanics include:
 ### Violets & Stone (Urban Expansion)
 A plug-and-play urban module featuring:
 - **City as Character**: Districts and institutions carry tags and timers
-- **Three-Clock Rule**: Only track Situation, Counter, and Campaign timers
+- **Three-Timer Rule**: Only track Situation, Counter, and Campaign timers
 - **Urban Actions**: Invoke Rite, Grease Palms, Audit Ledger, Call the Watch
 - **City Kits**: Mid Ahkaz, Ecktoria, Silkstrand, Thepyrgos, Zakov
 
@@ -242,7 +242,7 @@ Campaign framework for:
 - **Relationship Maps**: Volatile stakes between faction pairs
 
 Core systems:
-- **Situation Clocks**: 4-8 segment primary objectives
+- **Situation Timers**: 4-8 segment primary objectives
 - **Intrigue Cycle**: Between-session updates, events, off-screen actions
 - **Reputation Tiers**: Gatekeeping effects for higher-tier venues
 - **Scandal Decks**: 52-card system for political complications
@@ -297,7 +297,7 @@ Core mechanics:
 - **Follower Advancement**: Capabilities, Strings, Tags, Costs
 - **Orders Phase**: Bandwidth-limited organizational actions
 - **Entanglements**: Rival poaching, audits, family claims, debtor calls
-- **Conflict Resolution**: Dilemma Clocks [4-6], Compromise outcomes
+- **Conflict Resolution**: Dilemma Timers [4-6], Compromise outcomes
 
 ## Core Principles
 
@@ -372,7 +372,7 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 ## Travel Framework
 
 ### Travel Procedure
-1. **Break journey** into legs with Travel Clock [4]
+1. **Break journey** into legs with Travel Timer [4]
 2. **Assign roles**: Guide, Scout, Quartermaster, Watch
 3. **Advance timer** through actions/encounters
 4. **Resolve complications** when timer fills
@@ -380,7 +380,7 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 ### Travel Roles
 - **Guide**: Sets course; on success, DV -1 for movement challenges
 - **Scout**: Spots hazards; on success, ignore next 1 SB spend
-- **Quartermaster**: Manages supplies; on success, reduce Supplies Clock by 1
+- **Quartermaster**: Manages supplies; on success, reduce Supplies Timer by 1
 - **Watch**: Prevents ambush; on success, improve Position to Controlled at scene start
 
 ## Deck of Consequences
@@ -404,7 +404,7 @@ Fate's Edge is a narrative-first tabletop roleplaying system where every action 
 Session 0 campaign-framing tool:
 1. **Setup**: Lay out 5-7 cards in semicircle
 2. **Positions**: Root, Crest, Crown, Left Hand, Right Hand, Expansions
-3. **Interpretation**: Each card becomes Foreshadow Clock [4]
+3. **Interpretation**: Each card becomes Foreshadow Timer [4]
 4. **Campaign Clock**: [8] track rising stakes
 
 ### Player Archetypes
@@ -439,7 +439,7 @@ Session 0 campaign-framing tool:
 - **3 SB**: Serious trouble (reinforcements, broken gear)
 - **4+ SB**: Major turn (trap springs, authority arrives)
 
-### The Three-Clock Rule
+### The Three-Timer Rule
 Only three active timers at once:
 1. **Scene Clock**: e.g., Guards Alerted [4]
 2. **Journey Clock**: e.g., Mist Encroaches [6]

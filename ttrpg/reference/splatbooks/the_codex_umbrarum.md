@@ -27,7 +27,7 @@ This expansion introduces Runekeepers, where pacts and rites bind practitioners 
 *   **Cost:** 4 XP (Minor) to 8 XP (Standard)
 *   **Effect (Minor):** Contains the knowledge for 1 Rite.
 *   **Effect (Standard):** Contains the knowledge for 2-3 Rites, often related to a specific Patron or theme.
-*   **Upkeep:** Clears 1 segment from *one* of its associated Rites' Patron Obligation Clocks during Downtime (representing study and maintenance).
+*   **Upkeep:** Clears 1 segment from *one* of its associated Rites' Patron Obligation Timers during Downtime (representing study and maintenance).
 
 **3. Rites (Learned Abilities - Cost XP):**
 *   **Learning Cost:** 6-12 XP (Mid to Prestige level).

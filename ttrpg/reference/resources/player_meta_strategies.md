@@ -49,7 +49,7 @@
 
 6. Meta-Table Tactics
 	•	Failure farming: A safe Miss = 2 Boons → fuel for later heroics.
-	•	Clocks: Watch GM timers (Mob Overwhelm, Fatigue Spiral). Target what feeds them.
+	•	Timers: Watch GM timers (Mob Overwhelm, Fatigue Spiral). Target what feeds them.
 	•	SB Awareness: 1s and Pushes give GM ammo. Sometimes restraint > risk.
 	•	Crits: Don’t just cheer—crit flourishes = free Boon or improved effect. Cash them in.
 
@@ -64,5 +64,5 @@ Quick Priorities
 
 ⸻
 
-👉 Fate’s Edge rewards calculated risk + teamwork more than raw luck. Think in terms of Position, Currency, and Clocks.
+👉 Fate’s Edge rewards calculated risk + teamwork more than raw luck. Think in terms of Position, Currency, and Timers.
 

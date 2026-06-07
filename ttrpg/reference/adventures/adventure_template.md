@@ -92,7 +92,7 @@ Signature System: [Name] - [Brief description]
 - What SB spends they enable
 - How they handle partial success/failure
 
-**Clock Architecture:**
+**Timer Architecture:**
 - Primary campaign timer (6-12 segments)
 - 2-3 supporting timers (4-8 segments each)
 - Clear advancement triggers tied to player actions

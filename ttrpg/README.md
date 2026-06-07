@@ -9,7 +9,7 @@ flowchart TD
     %% FIRST RING — PRIMARY SYSTEMS
     %% =========================
     SB[Story Beats]
-    CLOCKS[Clocks System]
+    CLOCKS[Timers System]
     MODULES[Player-Managed Modules]
     BOONS[Boons]
 
@@ -41,7 +41,7 @@ flowchart TD
     MODULES --> LEASH
     MODULES --> FATIGUE
 
-    %% Clocks Cluster
+    %% Timers Cluster
     CLOCKS --> SUPPLY
     CLOCKS --> MANDATE
     CLOCKS --> CRISIS

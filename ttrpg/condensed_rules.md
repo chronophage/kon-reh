@@ -14,7 +14,7 @@
 6. Harm, Fatigue, Healing (p.7)
 7. Player-Managed Resources (p.8)
 8. Magic in One Page (p.9)
-9. Clocks & Pressure (p.10)
+9. Timers & Pressure (p.10)
 10. GM Quick Reference (p.11)
 11. Player Reference (p.12)
 12. Example Play (p.13-16)
@@ -127,7 +127,7 @@
 | Defend | Improve Position by one step for defense; protect allies |
 | Assist | Spend 1 Boon to give +1 die to ally (max +3 from all assists) |
 
-**Combat Clocks:** Use visible timers for enemy morale [6], environmental danger [4], boss phases.
+**Combat Timers:** Use visible timers for enemy morale [6], environmental danger [4], boss phases.
 
 ---
 
@@ -225,9 +225,9 @@ Fate's Edge has five magical paths. Only the simplest (Free Caster) is shown her
 
 ---
 
-## 9. Clocks & Pressure
+## 9. Timers & Pressure
 
-Clocks are visible trackers for threats, progress, and looming changes.
+Timers are visible trackers for threats, progress, and looming changes.
 
 **Size:** 4 (short scene), 6 (standard), 8 (arc), 10 (epic).
 
@@ -235,13 +235,13 @@ Clocks are visible trackers for threats, progress, and looming changes.
 
 **Advance a timer:** on a Miss, certain Partials, or when GM spends SB.
 
-### Three-Clock Guideline (per scene)
+### Three-Timer Guideline (per scene)
 
 - **Immediate timer** – what's about to go wrong (e.g., Collapsing Bridge [4])
 - **Situational timer** – pressure shaping decisions (e.g., Crowd Turns Hostile [6])
 - **Long-term timer** – echoes forward (e.g., Faction Retaliation [8])
 
-### Mandate & Crisis (Campaign Clocks)
+### Mandate & Crisis (Campaign Timers)
 
 - **Mandate (0-6)** – party's public legitimacy. High = doors open; low = suspicion.
 - **Crisis (0-6)** – opposition's growing strength. High = enemies strike boldly.
@@ -276,7 +276,7 @@ Clocks are visible trackers for threats, progress, and looming changes.
 
 ### Armor Conversion (table above)
 
-### Travel Clocks (optional)
+### Travel Timers (optional)
 - 4 segments: short leg
 - 6 segments: standard leg
 - 8 segments: extended journey
@@ -463,7 +463,7 @@ Skip downtime by accepting a Haste timer [4]. If it fills before you finish, the
 - **Cap** – Follower capability rating (1-5). Adds min(Cap, skill) dice when assisting.
 - **Clock** – Visible progress tracker (4/6/8/10 segments). Advances on Misses, Partials, or SB spends.
 - **Compromised** – State of an Asset or Symbol: unusable until repaired.
-- **Corruption** – Cantor resource. Clock fills → gain Patron's burden/benefit, reset to Tier minimum.
+- **Corruption** – Cantor resource. Timer fills → gain Patron's burden/benefit, reset to Tier minimum.
 - **Crisis** – Campaign timer (0-6). High = enemies stronger.
 - **Difficulty Value (DV)** – Target number of successes. Default 3.
 - **Exposure** – Follower stress track. Leads to Neglected/Compromised.

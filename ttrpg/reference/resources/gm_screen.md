@@ -115,7 +115,7 @@
 
 ---
 
-## 🕒 Clocks
+## 🕒 Timers
 
 *4 segments: Quick challenge*  
 *6 segments: Standard scene*  

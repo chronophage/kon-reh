@@ -81,9 +81,9 @@ Copy this section into your document. Fill it out for each weak region.
 \item[\card{\diamondsuit}{4}] (optional) Mechanic 4
 \end{itemize}
 
-\paragraph{Campaign Clocks (GM-facing)}
+\paragraph{Campaign Timers (GM-facing)}
 \begin{itemize}
-\item \textbf{[Clock name \& size]} – \textit{Advances when:} [conditions]. \textit{At full:} [consequence].
+\item \textbf{[Timer name \& size]} – \textit{Advances when:} [conditions]. \textit{At full:} [consequence].
 \item \textbf{[Second timer]} – \textit{Advances when:} ... \textit{At full:} ...
 \end{itemize}
 

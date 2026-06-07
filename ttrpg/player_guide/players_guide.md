@@ -766,7 +766,7 @@ Request & Price options:
 - Accept SB: GM gains +1 SB, you gain strategic clue
 - Spend Boon: Lower DV by 1 on research approach
 
-#### Clock Manipulation
+#### Timer Manipulation
 - Slow Clock: Spend 1 Boon or accept +1 SB
 - Hasten Clock: Spend 1 Momentum or take Devil's Bargain
 - Limit: Once per player per scene
@@ -784,7 +784,7 @@ Spotting cultural combo grants +1d once per scene
 ### 14.5 Advanced Techniques
 
 #### Momentum Banking
-When resolving Clock early, bank 1 Momentum per unused segment (max 2/session)
+When resolving Timer early, bank 1 Momentum per unused segment (max 2/session)
 Spend 1 Momentum to:
 - Gain +1d on future approach tied to victory
 - Telescope travel beat (skip routine obstacle)
@@ -815,7 +815,7 @@ Players may take:
 ### 14.8 Implementation Timeline
 
 **Sessions 1–3**: Investment Tracker, Information Trading, Complication Bargaining
-**Sessions 4–6**: Clock Manipulation, Cultural Immersion, Faction Awareness, Momentum Banking
+**Sessions 4–6**: Timer Manipulation, Cultural Immersion, Faction Awareness, Momentum Banking
 **Sessions 7+**: Cross-Cultural Synergies, Escalation Management, advanced pacing
 
 ### 14.10 The Witch Hunter
