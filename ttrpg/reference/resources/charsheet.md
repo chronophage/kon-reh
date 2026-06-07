@@ -111,7 +111,7 @@
   - 
 - **Armor:** 
 - **Other Gear:** 
-- **Supply Clock:** [ ] [ ] [ ] [ ] (Full → Low → Dangerously Low → Out of Supply)
+- **Supply Timer :** [ ] [ ] [ ] [ ] (Full → Low → Dangerously Low → Out of Supply)
 
 ## Notes
 - **Downtime Activities:** 

@@ -29,7 +29,7 @@ flowchart TD
     OBLIGATION[Obligation]
     CORRUPTION[Corruption]
     LEASH[Leash]
-    SUPPLY[Supply Clock]
+    SUPPLY[Supply Timer ]
     FATIGUE[Fatigue & Harm]
     RESOURCES[Character Resources]
     MANDATE[Mandate]

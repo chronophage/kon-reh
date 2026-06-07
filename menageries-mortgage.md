@@ -33,7 +33,7 @@ Players receive a magical contract from Maelstraeus that:
 - **SB Spends:** 
   - 1 SB: Kobold "accidentally" leads you in circles
   - 2 SB: Dragon shrine activates, kobolds go berserk
-  - 3 SB: Tunnel collapse blocks exit (Environmental Collapse clock +1)
+  - 3 SB: Tunnel collapse blocks exit (Environmental Collapse timer +1)
 
 ### **Enclosure 2: The Mimic Museum**
 **Theme:** Traps disguised as treasure
@@ -164,12 +164,12 @@ Players can earn "tickets" by:
 - Escape from a Desperate situation (1 ticket = improve Position by one step)
 
 ### **Exhibit Condition Tracker**
-Each enclosure has a "Maintenance" clock [4-6]:
+Each enclosure has a "Maintenance" timer [4-6]:
 - Filled by SB spends and player actions
 - When full: Exhibit becomes more dangerous but also more rewarding
 - Players can choose to "repair" exhibits for different benefits
 
-### **Zara's Escalation Clock [8]**
+### **Zara's Escalation Timer  [8]**
 Tracks how close Zara is to escaping the park entirely:
 - Advances when players cause chaos or fail to contain creatures
 - When full: Zara escapes, party fails mission
@@ -206,7 +206,7 @@ Tracks how close Zara is to escaping the park entirely:
 - **Skirmish (DV 2):** Fight through to the backstage area
 - **Insight (DV 2):** Realize the goblins are actually prisoners
 
-**When Clock Fills:** Full circus performance begins - players must either participate or deal with increasingly elaborate pranks
+**When Timer  Fills:** Full circus performance begins - players must either participate or deal with increasingly elaborate pranks
 
 **SB Spends:**
 - 1 SB: Cream pie hits face (Position -1, Limited Effect next social action)
@@ -214,7 +214,7 @@ Tracks how close Zara is to escaping the park entirely:
 - 3 SB: Ringmaster declares "death match" with trained owlbear
 
 **Resolution Options:**
-- Help goblins escape (gain tickets, Zara's clock +1)
+- Help goblins escape (gain tickets, Zara's timer +1)
 - Join the show successfully (gain tickets, information about Zara's location)
 - Fight through (lose tickets, gain Zara's attention as threat)
 - Negotiate goblin alliance (gain follower, mechanical benefit)

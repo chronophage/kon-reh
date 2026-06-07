@@ -713,7 +713,7 @@ Before your character took their first deliberate risk, they belonged somewhere.
 - **Access Tags**: Narrative permissions
 - **Signature Contact**: Named NPC (Cap 1 follower, no XP cost)
 - **Background Boon**: Once/session benefit
-- **Obligation Clock**: 4 segments, creates call-ins
+- **Obligation Timer **: 4 segments, creates call-ins
 
 ### 13.2 Common Background Categories
 
@@ -767,8 +767,8 @@ Request & Price options:
 - Spend Boon: Lower DV by 1 on research approach
 
 #### Timer Manipulation
-- Slow Clock: Spend 1 Boon or accept +1 SB
-- Hasten Clock: Spend 1 Momentum or take Devil's Bargain
+- Slow Timer : Spend 1 Boon or accept +1 SB
+- Hasten Timer : Spend 1 Momentum or take Devil's Bargain
 - Limit: Once per player per scene
 
 ### 14.4 Faction Awareness

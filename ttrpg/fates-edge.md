@@ -405,7 +405,7 @@ Session 0 campaign-framing tool:
 1. **Setup**: Lay out 5-7 cards in semicircle
 2. **Positions**: Root, Crest, Crown, Left Hand, Right Hand, Expansions
 3. **Interpretation**: Each card becomes Foreshadow Timer [4]
-4. **Campaign Clock**: [8] track rising stakes
+4. **Campaign Timer **: [8] track rising stakes
 
 ### Player Archetypes
 - **The Solo**: Mastery of self, independence
@@ -441,9 +441,9 @@ Session 0 campaign-framing tool:
 
 ### The Three-Timer Rule
 Only three active timers at once:
-1. **Scene Clock**: e.g., Guards Alerted [4]
-2. **Journey Clock**: e.g., Mist Encroaches [6]
-3. **Campaign Clock**: e.g., Baron's Suspicion [8]
+1. **Scene Timer **: e.g., Guards Alerted [4]
+2. **Journey Timer **: e.g., Mist Encroaches [6]
+3. **Campaign Timer **: e.g., Baron's Suspicion [8]
 
 ### Magic Adjudication Shortcut
 1. Hear the intent

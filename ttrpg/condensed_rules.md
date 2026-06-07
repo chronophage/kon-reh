@@ -481,7 +481,7 @@ Skip downtime by accepting a Haste timer [4]. If it fills before you finish, the
 - **Story Beat (SB)** – GM resource. Earned on any 1. Spent to create complications.
 - **String** – Narrative leverage (favor owed, secret known). Can be spent like currency.
 - **TAGS** – Keywords for freeform magic (e.g., [FIRE], [AREA], [HEAL]). DV = 1 + number of tags.
-- **Terrestrial Patron** – Mortal faction offering aid in exchange for Debt Clock.
+- **Terrestrial Patron** – Mortal faction offering aid in exchange for Debt Timer .
 - **Thiasos** – Familiar/token for Runekeepers (2 XP). Required for Patron's Gift.
 - **XP** – Experience Points. Earned at session end. Spent on Attributes, Skills, Assets, Talents.
 

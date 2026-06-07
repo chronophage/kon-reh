@@ -61,7 +61,7 @@ When a player rolls a 1, don't plan. React. Pick ONE thing from this list. One a
     *   *"The environment shifts dangerously (fire, collapse)."*
     *   *"A new, major threat is revealed."*
     *   *"An ally is put in immediate danger."*
-    *   **Fill 3+ segments of a Clock.**
+    *   **Fill 3+ segments of a Timer .**
 
 ### 4. The "Three-Timer Rule"
 

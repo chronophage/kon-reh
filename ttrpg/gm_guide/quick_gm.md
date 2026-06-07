@@ -65,9 +65,9 @@ Reinforcements, collapsing terrain, ally endangered, or fill 3+ timer segments
 ## 4. The Three-Timer Rule
 
 Only three active timers at once:
-- **Scene Clock:** e.g., Guards Alerted [4]
-- **Journey Clock:** e.g., Mist Encroaches [6]  
-- **Campaign Clock:** e.g., Baron's Suspicion [8]
+- **Scene Timer :** e.g., Guards Alerted [4]
+- **Journey Timer :** e.g., Mist Encroaches [6]  
+- **Campaign Timer :** e.g., Baron's Suspicion [8]
 
 If a new complication appears, fold it into an existing timer. This keeps the table focused and the fiction tight.
 
@@ -265,7 +265,7 @@ For each PC, create one:
 3. Merchant Courts (Economic/Guild - Profit/Knowledge)
 4. Imperial Exarchate (Bureaucratic/Crown - Power/Survival)
 
-**Core Clock**: [8] Lost Aqueduct Patent Resurfaces
+**Core Timer **: [8] Lost Aqueduct Patent Resurfaces
 **Supporting Timers**:
 - [6] Guild Conspiracy (Faction Maneuver)
 - [4] Public Unrest (Social Unrest) 
@@ -286,7 +286,7 @@ For each PC, create one:
 3. Scholar's Guild (Intellectual/Guild - Knowledge/Survival)
 4. Mercenary Company (Military/Street - Profit/Survival)
 
-**Core Clock**: [10] Vyrmja the Winter Coil Awakening
+**Core Timer **: [10] Vyrmja the Winter Coil Awakening
 **Supporting Timers**:
 - [6] Cult Infiltration (External Threat)
 - [4] Supply Shortage (Resource Conflict)
@@ -308,7 +308,7 @@ For each PC, create one:
 3. Merchant Consortium (Economic/Guild - Profit/Knowledge)
 4. Ashaani Corsairs (Military/Foreign - Revenge/Power)
 
-**Core Clock**: [8] Break the Titan - Blockade War
+**Core Timer **: [8] Break the Titan - Blockade War
 **Supporting Timers**:
 - [6] Lantern Dominion (Political Pressure)
 - [4] Crew Morale (Party Complication)

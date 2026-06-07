@@ -1349,7 +1349,7 @@ Far southeast of Galanina, past Sidhi marches and salt flats, the Dhaharan penin
 
 #### Roads, winds & seasons
 * Way of Silk (Dhaharan leg): three trunks—March Road (north via Hamun Gate), Incense Road (west terraces), and Jade Road (east oases).
-* Monsoon Clock: summer (wet) brings southern inward fleets; winter (dry) sends outward convoys west and north.
+* Monsoon Timer : summer (wet) brings southern inward fleets; winter (dry) sends outward convoys west and north.
 * Hazards: haboobs that erase tracks, salt-fevers at pans, sand-bandits on windward slopes, and "singing vaults" best left undisturbed.
 
 #### Peoples & tone
@@ -2626,7 +2626,7 @@ This **completely recontextualizes everything** and adds layers of tragic depth 
 ## **The Cosmic Refugee Story**
 
 ### **The Original Escape**
-- **Humans as refugees** fleeing the Clockwork Demon from another world
+- **Humans as refugees** fleeing the Timer work Demon from another world
 - **Desperate exodus** across dimensions/worlds
 - **Unwitting carriers** - they brought the very thing they were fleeing
 - **Tragic irony** - their escape vehicle became their Trojan horse
@@ -2660,7 +2660,7 @@ This **completely recontextualizes everything** and adds layers of tragic depth 
 - **Permanent scars** - the war's trauma embedded in the land itself
 
 ### **The Metaphysical Contamination**
-- **The world itself infected** by the Clockwork Demon's presence
+- **The world itself infected** by the Timer work Demon's presence
 - **Infrastructure as trauma** - Aeler stone work carrying the emotional residue of cosmic war
 - **Cultural patterns** shaped by the war's aftermath
 - **Generational PTSD** - not just elves but the land itself remembers the conflict
@@ -2682,7 +2682,7 @@ This **completely recontextualizes everything** and adds layers of tragic depth 
 ## **The Deeper Cosmic Horror**
 
 ### **The Inescapable Nature**
-- **The Clockwork Demon is multidimensional** - it follows refugees across worlds
+- **The Timer work Demon is multidimensional** - it follows refugees across worlds
 - **Victory is temporary** - even defeating it leaves contamination behind
 - **Refugee cycles** - fleeing only spreads the problem to innocent worlds
 - **No clean solution** - every choice creates new victims

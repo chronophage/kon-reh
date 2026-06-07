@@ -144,7 +144,7 @@ Everything in the world has an "Echo" - a metaphysical signature that can be per
 - **Aces**: Represent particularly powerful or anomalous Echo patterns
 
 ### Resource Management Through Echo Degradation
-- **Supply Clock**: The Echo of abundance/survival degrading
+- **Supply Timer **: The Echo of abundance/survival degrading
 - **Fatigue**: Personal Echo becoming "out of tune" with reality
 - **Gear Condition**: Objects' Echoes wearing thin through use
 - **Over-Stack Rule**: Too many favorable Echo manipulations create narrative pushback
@@ -679,7 +679,7 @@ The Lethai-thora's presence in Thepyrgos becomes both **exile and mission** - th
 - **Inaea** (Mercy, Hearth) - The protector of what should continue, the nurturer of civilization
 - **Isoka** (Serpents, Change/Shedding) - The enforcer of necessary transformation, the agent of renewal
 
-### The Clockwork Demon
+### The Timer work Demon
 This entity represents **unchecked technological/civilizational growth**:
 - **Clockwork Monad Patron** and its Iterative Evolution are manifestations of it.
 - A force that, if allowed to fully emerge, would **consume all existence**
