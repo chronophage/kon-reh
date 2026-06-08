@@ -72,9 +72,9 @@ def main():
         import os
         jobs = os.cpu_count() or 4
 
-    # ------------------------------------------------------------0-----
+    # ------------------------------------------------------------
     #  Section handling – now includes 't' for travel
-    # ------------------------------------------------------------------
+    # ------------------------------------------------------------
     build_filter = set(args.build.lower())
     allowed = {'k','a', 'c', 'e', 't'}
     if not build_filter.issubset(allowed):
@@ -84,9 +84,8 @@ def main():
         'a': 'adventures',
         'c': 'core',
         'e': 'expansions',
-        't': 'travel',        
-        'k': 'konreh',  
-
+        't': 'travel',
+        'k': 'konreh',
     }
     selected_sections = {section_map[ch] for ch in build_filter}
 
@@ -96,12 +95,25 @@ def main():
         sys.exit(f"❌ compile_latex.py not found at {tools_py}")
 
     config_path = git_root / "build_config.toml"
-    if not config_path.is_file():
-        sys.exit(f"❌ Configuration file not found: {config_path}")
 
-    with open(config_path, "rb") as f:
-        config = tomllib.load(f)
-    all_docs = config["documents"]
+    # ------------------------------------------------------------
+    #  Gracefully handle missing or invalid TOML configuration
+    # ------------------------------------------------------------
+    try:
+        with open(config_path, "rb") as f:
+            config = tomllib.load(f)
+    except FileNotFoundError:
+        sys.exit(f"❌ Configuration file not found: {config_path}\n"
+                 "Please create build_config.toml in the repository root.")
+    except tomllib.TOMLDecodeError as e:
+        sys.exit(f"❌ Error parsing {config_path}:\n{e}\n"
+                 "Please fix the TOML syntax.")
+    except Exception as e:
+        sys.exit(f"❌ Unexpected error reading {config_path}:\n{e}")
+
+    all_docs = config.get("documents", [])
+    if not all_docs:
+        sys.exit("❌ No 'documents' list found in configuration file.")
 
     docs = [doc for doc in all_docs if doc.get("section", "other") in selected_sections]
     if not docs:
@@ -112,9 +124,9 @@ def main():
     # ------------------------------------------------------------------
     build_base = git_root / "build"
     for sec in selected_sections:
-      if sec == "core":
-          continue
-      (build_base / sec).mkdir(parents=True, exist_ok=True)
+        if sec == "core":
+            continue
+        (build_base / sec).mkdir(parents=True, exist_ok=True)
 
     print(f"🔨 Building sections: {', '.join(selected_sections)} with {jobs} parallel job(s)\n")
 
@@ -194,4 +206,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
