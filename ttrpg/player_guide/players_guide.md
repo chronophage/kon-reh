@@ -482,7 +482,7 @@ Talents are the building blocks of character specialization. They represent lear
 ### 7.4 Melee Combat Talents
 
 #### Minor Talents
-- **Defensive Survival (3 XP)**: +1 die to defense rolls, convert Harm 1 to Fatigue
+- **Defensive Survival (3 XP)**: +1 to defense DV, convert Harm 1 to Fatigue
 - **Tactical Movement (4 XP)**: Move within engagement zone as Move action
 - **Conditioning (4 XP)**: Body counts as +1 for Fatigue track
 - **Weapon Master (5 XP)**: +2 dice with chosen weapon category

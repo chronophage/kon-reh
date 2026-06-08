@@ -1,6 +1,3 @@
-Absolutely. This is the crucial bridge from "understanding the rules" to "running the game fluidly." The SRD provides the tools, but let's boil them down into a **GM's Quick-Kit for On-The-Fly Decisions.**
-
-Here’s what can help, framed as actionable advice and cheat sheets.
 
 ### 1. The 5-Second Position & Effect Decider
 
