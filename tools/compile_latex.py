@@ -106,7 +106,9 @@ def get_branch(file_path: Path) -> str:
         if "/worldbook" in path_str:
             return "worldbook"
         if "/travel" in path_str:          # <-- ADD THIS LINE
-            return "travel"                 # <--
+            return "travel"   
+        if "/design" in path_str:          # <-- ADD THIS LINE
+            return "design"                # <--
         return "ttrpg"
     return "./"
 
@@ -276,6 +278,7 @@ def main():
         "adventures":   build_root / "adventures",
         "worldbook":    build_root / "worldbook",
         "travel":       build_root / "travel",
+        "design":       build_root / "design",
         "ttrpg":        build_root,
         "konreh":       build_root / "konreh",
         "./":           build_root,

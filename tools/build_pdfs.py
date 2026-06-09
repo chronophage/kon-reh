@@ -62,7 +62,7 @@ def main():
     parser.add_argument("-j", "--jobs", type=int, default=0,
                         help="Number of parallel builds (default: 0, -j 0 for auto)")
     parser.add_argument("-b", "--build", type=str, default="kacet",
-                        help="Build sections: a (adventures), c (core), e (expansions), t (travel). "
+                        help="Build sections: a (adventures), c (core), e (expansions), t (travel), d (design). "
                              "e.g., -b act")
     args = parser.parse_args()
 
@@ -86,6 +86,7 @@ def main():
         'e': 'expansions',
         't': 'travel',
         'k': 'konreh',
+        'd': 'design'
     }
     selected_sections = {section_map[ch] for ch in build_filter}
 
@@ -181,6 +182,8 @@ def main():
             build_base / "adventures",
             build_base / "expansions",
             build_base / "travel",
+            build_base / "design",
+
         ]
         for build_dir in build_dirs:
             if not build_dir.is_dir():

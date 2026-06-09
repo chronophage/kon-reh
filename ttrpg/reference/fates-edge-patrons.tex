@@ -22,9 +22,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage[most]{tcolorbox}
-\tcbuselibrary{breakable}
-\tcbset{breakable}
-\tcbuselibrary{skins,breakable,listings}
+\tcbuselibrary{breakable,skins,listings}
 \usepackage{makeidx}
 \usepackage{hyperref}
 \usepackage{cleveref}
@@ -39,6 +37,14 @@
 \usepackage{sectsty}
 \usepackage{setspace}
 \usepackage{tabularray}
+\usepackage{etoolbox}
+
+% =========================
+% FONTS (optional, for a nicer look)
+% =========================
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{inconsolata}
 
 % =========================
 % COLOR DEFINITIONS
@@ -69,21 +75,21 @@
 % CUSTOM COMMANDS
 % =========================
 \newcommand{\FEsc}[1]{\textsc{#1}}
-\newcommand{\fatebox}[2][colback=FeLightBg, colframe=FePrimary]{
+\newcommand{\fatebox}[2][colback=FeLightBg, colframe=FePrimary]{%
   \begin{tcolorbox}[#1, sharp corners, boxrule=0.5pt, arc=0pt, left=6pt, right=6pt, top=6pt, bottom=6pt]
     #2
-  \end{tcolorbox}
+  \end{tcolorbox}%
 }
 \newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
 \newcommand{\feTableEnd}{\rowcolors{2}{}{}}
 
 % Title page commands
-\newcommand{\feSetTitle}[1]{\def\fetitle{#1}}
-\newcommand{\feSetSubtitle}[1]{\def\fesubtitle{#1}}
-\newcommand{\feSetTagline}[1]{\def\fetagline{#1}}
-\newcommand{\feSetVersion}[1]{\def\feversion{#1}}
-\newcommand{\feSetPublisher}[1]{\def\fepublisher{#1}}
-\newcommand{\feSetCoverArt}[1]{\def\fecoverart{#1}}
+\newcommand{\feSetTitle}[1]{\gdef\fetitle{#1}}
+\newcommand{\feSetSubtitle}[1]{\gdef\fesubtitle{#1}}
+\newcommand{\feSetTagline}[1]{\gdef\fetagline{#1}}
+\newcommand{\feSetVersion}[1]{\gdef\feversion{#1}}
+\newcommand{\feSetPublisher}[1]{\gdef\fepublisher{#1}}
+\newcommand{\feSetCoverArt}[1]{\gdef\fecoverart{#1}}
 
 \newcommand{\feTitlePage}{%
   \begin{titlepage}
@@ -103,7 +109,7 @@
       \includegraphics[width=0.6\textwidth]{\fecoverart}
     \fi
     \vspace{1cm}
-  \end{titlepage}
+  \end{titlepage}%
 }
 
 % Index and cross-reference setup
@@ -119,7 +125,7 @@
 \fancyhead[LE,RO]{\slshape \leftmark}
 \fancyhead[RE,LO]{\slshape \rightmark}
 \fancyfoot[CE,CO]{\thepage}
-\fancyfoot[LE,RO]{\footnotesize \textit{Fate's Edge: Comprehensive Resource Guide}}
+\fancyfoot[LE,RO]{\footnotesize \textit{Fate's Edge: Patron's Reference}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
@@ -128,24 +134,35 @@
 \sectionfont{\Large\bfseries\sffamily}
 \subsectionfont{\normalsize\bfseries\sffamily}
 
+% Improve spacing in longtables
+\setlength{\LTpre}{0.5em}
+\setlength{\LTpost}{0.5em}
+
 % =========================
 % BEGIN DOCUMENT
 % =========================
 \begin{document}
 
-% Title info
-\feSetTitle{Fate's Edge: Patron's Reference}
-% \feSetCoverArt{art/cover.jpg} % optional
+% Title info (customise as needed)
+\feSetTitle{Fate's Edge}
+\feSetSubtitle{The Patrons Reference}
+\feSetTagline{``The road remembers. Every broken wheel leaves a mark, every lit lamp bears witness.''}
+\feSetVersion{1.0}
+\feSetPublisher{Nicholas A. Gasper}
+% \feSetCoverArt{art/cover.jpg}  % Uncomment if you have a cover image
 \feTitlePage
 
 % Front matter
 \frontmatter
 \tableofcontents
+\cleardoublepage
 
 % Main matter
 \mainmatter
+
+% All patron content goes into this chapter
 \chapter{The Patrons}\label{chap:patrons}
-\include{patrons/index.tex}
+\include{patrons/index}   % <-- your combined patron content (the large LaTeX block)
 
 % Back matter
 \backmatter
