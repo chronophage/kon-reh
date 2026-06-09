@@ -76,7 +76,7 @@ def main():
     #  Section handling – now includes 't' for travel
     # ------------------------------------------------------------
     build_filter = set(args.build.lower())
-    allowed = {'k','a', 'c', 'e', 't'}
+    allowed = {'k','a', 'c', 'e', 't', 'd'}
     if not build_filter.issubset(allowed):
         sys.exit(f"Invalid -b option. Use letters from: {', '.join(sorted(allowed))}")
 
@@ -86,7 +86,7 @@ def main():
         'e': 'expansions',
         't': 'travel',
         'k': 'konreh',
-        'd': 'design'
+        'd': 'design',
     }
     selected_sections = {section_map[ch] for ch in build_filter}
 
