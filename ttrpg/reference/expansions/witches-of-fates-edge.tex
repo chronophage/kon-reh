@@ -1,19 +1,19 @@
-\documentclass[12pt]{article}
-
-\usepackage[utf8]{inputenc}
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{titlesec}
-\usepackage{sectsty}
-\usepackage{enumitem}
-
-\usepackage[T1]{fontenc}
-\usepackage[margin=1in]{geometry}
-\usepackage[dvipsnames]{xcolor}
 \usepackage[most]{tcolorbox}
-\tcbuselibrary{breakable}
-\tcbset{breakable}
 \usepackage{fancyhdr}
+\usepackage{lettrine}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
 
 % Formatting
 \pagestyle{fancy}
@@ -29,7 +29,7 @@
 \titleformat{\subsubsection}
   {\normalfont\normalsize\bfseries\itshape}{\thesubsubsection}{1em}{}
 
-% Custom boxes for mechanics
+% Custom boxes
 \newtcolorbox{ritestat}{
   colback=gray!5,
   colframe=gray!50!black,
@@ -65,24 +65,31 @@
   bottom=4pt
 }
 
+\newtcolorbox{warning}{
+  colback=red!5,
+  colframe=red!60!black,
+  boxrule=0.5pt,
+  arc=2mm,
+  left=6pt,
+  right=6pt,
+  top=4pt,
+  bottom=4pt
+}
+
 % Game terms
-\newcommand{\obligation}[1]{\textsc{Obligation~#1}}
+\newcommand{\term}[1]{\textbf{#1}}
 \newcommand{\dv}[1]{\textsc{DV}~#1}
 \newcommand{\xp}[1]{#1~\textsc{xp}}
 \newcommand{\sbmark}{\textsc{sb}}
-\usepackage{hyperref}
+\newcommand{\obligation}[1]{\textsc{Obligation}~#1}
+\newcommand{\timer}[2]{\textsc{#1}~[#2]}
 
-% Section formatting
+% Section font adjustments
 \sectionfont{\centering\large\bfseries}
 \subsectionfont{\centering\normalsize\bfseries}
-\subsubsectionfont{\normalsize\bfseries}
 
-% Custom paragraph spacing
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.7em}
-
-% List settings
-\setlist{noitemsep,topsep=0pt}
 
 \title{\textbf{WITCHES OF FATE'S EDGE} \\ \Large Cords, Curses, and the Quiet Work of Names}
 \author{}
@@ -94,1920 +101,349 @@
 
 \section*{What a Witch Is (and Isn't)}
 
-A witch is a \textbf{threshold worker}---one who listens to \textbf{Echo} (what has been), steadies the \textbf{Veil} (what is), and leans into \textbf{Flow} (what wishes to be). Witchcraft is not brute force; it's \textbf{fit}: finding where the world already wants to move and giving it a gentle, precise nudge. Hearth craft, mill craft, and road craft are simply slow, patient forms of the same art practiced by ordinary hands. The most powerful magic is often indistinguishable from \textbf{skilled attention}.
+\lettrine{A}{} witch is a \term{threshold worker}---one who listens to \term{Echo} (what has been), steadies the \term{Veil} (what is), and leans into \term{Flow} (what wishes to be). Witchcraft is not brute force; it is \textit{fit}: finding where the world already wishes to move and giving it the precise nudge that sets it irrevocably in motion.
 
-\section*{I. First Principles}
+Hedge-witches there are in plenty: the Breath-Wardens of Aeler, the Hedge-Wrights of Viterra, the Bone-Singers of Ykrul. These are good folk, mostly. Their craft is folk-craft, learned by rote and grandmother's whisper. The true witch---the \term{threshold worker}---learns by the Cord, by the Thorn, and by the Silent Ninth. They are the ones who know that a doorway is not an absence but a presence, that a promise is a physical weight, and that to erase a name from memory is to rewrite the stone beneath it.
 
-\subsection*{1) The Law of Named Existence}
+\begin{sidebar}
+\textbf{The Grey Wanderer's Note:} \textit{"The hedge is what keeps the wolves from the flock. I am the one who tends the hedge."}
+\end{sidebar}
 
-To name is to anchor. \textbf{True Names} fasten an Echo; forgetting frays it. Words spoken under witness reshape how a place remembers. Every curse, blessing, or bargain is a small act of \textbf{creation through recognition}. \textbf{Un-Naming} (suppression, forgetting) can weaken or banish.
+\section{I. First Principles}
 
-\subsection*{2) The Concordant Layers}
+\subsection{The Law of Named Existence}
+To name is to anchor. \term{True Names} fasten an Echo; forgetting frays it. Words spoken under witness reshape how a place remembers. Every curse, blessing, or bargain is a small act of creation through recognition. \term{Un-Naming} (suppression, forgetting) can weaken or banish.
 
-People, places, and vows exist as chords across \textbf{Echo / Veil / Flow}.
-\begin{itemize}
-    \item \textbf{Echo}: The accumulated memory and intention that shapes reality.
-    \item \textbf{Veil}: The current, perceivable state of things; the boundary between potential and actual.
-    \item \textbf{Flow}: The direction and potential of change, the will of elements and intent.
-\end{itemize}
-Witches feel dissonance within this chord and decide whether to \textbf{harmonize it (benediction)}, \textbf{redirect it (hex)}, or \textbf{lock it in place (binding)}. \textbf{Wise law}: do not sever, do not overrule, do not forget. Work with the existing harmony.
+\subsection{The Concordant Layers}
+People, places, and vows exist as chords across Echo / Veil / Flow.
 
-\subsection*{3) Threshold Mechanics}
-All workings start at \textbf{edges}---doorways, wakes, vows, last breaths, first light, crossroads, riverbanks. Magic is \textbf{boundary-law}: who may pass, what must stay, and what should never meet. Thresholds are points of maximum potential for change.
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.9\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Layer} & \textbf{Domain} & \textbf{Risk} \\
+\midrule
+\textbf{Echo} & Accumulated memory and intention & Recursion (past actions repeat) \\
+\textbf{Veil} & Present state, boundary between potential and actual & Hairline cracks (subtle reality breaks) \\
+\textbf{Flow} & Direction of change, will of elements & Overshoot (change goes too far) \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\subsection*{4) Element-Will}
-Elements are \textbf{wills}, not mere substances. Earth (structure), Air (chance), Fate (order), Luck (opportunity), Fire (life), Water (Obishaal/Death-Dreams), and others. A working "argues" with a chosen will; \textbf{Obligation} is the debt incurred when borrowing strength from a will larger than yours.
+Witches feel dissonance within this chord and decide whether to \textit{harmonize} (benediction), \textit{redirect} (hex), or \textit{lock in place} (binding). Wise law: do not sever, do not overrule, do not forget. Work with the existing harmony.
 
-\subsection*{5) Story Weight}
-Stories have gravity. Meaning accrues; reality leans to fulfill it. When the table marks a complication (Story Beat), the world cashes what the scene has earned through narrative momentum. The universe has a kind of narrative inertia.
+\subsection{Threshold Mechanics}
+All workings start at \term{edges}---doorways, wakes, vows, last breaths, first light, crossroads, riverbanks. Magic is \term{boundary-law}: who may pass, what must stay, and what should never meet. Thresholds are points of maximum potential for change.
 
-\subsection*{6) The Silent Ninth}
-There is a missing step in the scale---acknowledged, never filled. The \textbf{Ninth} is absence with teeth: erasure, gaps, omissions, and the power of what is left unsaid. It represents the space beyond the eight fundamental forces. Manipulating the Ninth is potent and dangerous.
+\subsection{Element-Will}
+Elements are \term{wills}, not mere substances. A working "argues" with a chosen will; \term{Obligation} is the debt incurred when borrowing strength from a will larger than yours.
 
-\section*{II. What Witches Actually Do}
+\subsection{Story Weight}
+Stories have gravity. Meaning accrues; reality leans to fulfill it. When the table marks a complication (Story Beat), the world cashes what the scene has earned through narrative momentum.
 
-\subsection*{Ritual Families (all begin at a threshold)}
-\begin{itemize}
-    \item \textbf{Bell-Rites}: Strike, count, hold the last beat in silence---pin the Veil while you speak the Name. (Tags: \texttt{[WITNESS]}, \texttt{[BIND]}) Engages the Veil.
-    \item \textbf{Knot \& Cord}: Memory braided into order; untie to release a promise. (Tags: \texttt{[ECHO]}, \texttt{[SEAL]}) Engages Echo.
-    \item \textbf{Chalk \& Salt}: Draw a passage or a prison; shape decides which. (Tags: \texttt{[THRESHOLD]}) Manipulates thresholds directly.
-    \item \textbf{Offering \& Omission}: Add or remove---perfect ground for Ninth-work. (Tags: \texttt{[VOID]}) Engages the Ninth.
-\end{itemize}
+\subsection{The Silent Ninth}
+There is a missing step in the scale---acknowledged, never filled. The \term{Ninth} is absence with teeth: erasure, gaps, omissions, and the power of what is left unsaid. Manipulating the Ninth is potent and dangerous. Players never declare the Ninth; GMs may apply it only as consequence.
 
-\subsection*{Choose a Limb: Echo / Veil / Flow}
-\begin{itemize}
-    \item \textbf{Echo}: \(+1\) die to recall/restore; backlash = recursion (loops, past actions repeat).
-    \item \textbf{Veil}: \(+1\) Position to conceal/shape; backlash = hairline cracks (subtle reality breaks).
-    \item \textbf{Flow}: \(+1\) Effect to urge/change; backlash = overshoot (change goes too far).
-\end{itemize}
+\section{II. The Five Weavers}
 
-\section*{III. Blessings, Marks, and Curses}
+Where the Runekeeper swears an oath and the Invoker bargains at arm's length, the witch \textit{incorporates}. Her power is intimate, cellular, corrupting in the old sense---not rotten, but \textit{changed}. The patron's will flows through her like milk through a jug, leaving the vessel altered.
 
-\subsection*{Blessing (benediction)}
-Harmonize a target's chord with local memory---grant advantage where a place already remembers safety. Anchors positive potential.
+\subsection{Morag the Hag --- The Price Unspoken}
 
-\subsection*{Mark (sign)}
-A visible or felt alignment: threaded fate-lines, hearth-warmth, dream-silt in hair. A boon that attracts like to like.
+Morag dwells at the crossroads where the road forks three ways. She is the grandmother who offers exactly what you need with a smile full of iron teeth. Her witches are deal-makers, oath-crafters, the ones who write contracts in milk on slate and know that every gift must be paid for, though the payment may not come due for a generation.
 
-\subsection*{Curse (constraint)}
-Edit the memory rulebook. Insert a habit into how the world recalls a person or object (e.g., "lamps forget to light for him"). Curses, vows, and certain griefs are recursive code that keeps executing until answered or broken.
+\paragraph{Law of Hidden Costs} A witch of Morag can bind a promise with a red thread so fine you cannot see it until it tightens. She can ensure that a bridge stands for a century, but the cost is a child's laugh, taken in the night and kept in a jar. These witches are not evil; they are \textit{precise}. They keep the records of consequence, and they never forget a weight.
 
-\subsection*{Ninth-Work (omission)}
-Weaponized absence: remove the witness, the final word, the ninth cup. Gaps propagate until someone names them and repairs the edge.
+\paragraph{Signature Rite --- The Speaking Knot (Standard, 8 XP)}
+Bind a promise with faerie knots that tighten when broken. Breach forces 2 \sbmark and marks the violator with a visible tell.
 
-\section*{IV. Witches \& Warlocks}
-Most witches ply \textbf{low law} craft---patient resonance that keeps households and roads steady. Those who bind themselves to Patrons (often called warlocks by outsiders) borrow alignment and pay \textbf{Obligation}. The \textbf{Sisters' Covenant} (Inaea, Isoka, Ikasha) shapes much traditional witchwork.
+\subsection{Inaea --- Mercy and the Web}
 
-\section*{The Two Speeds of Witchcraft}
-The \textbf{Long Road} is ritual, threshold, price, and consequence: curses woven, bargains struck, the world's memory rewritten. It takes Significant Time (hours, days, a moon phase).
+Inaea is the hearth-mother, the keeper of continuity, the spider at the center of the web. Where Morag demands payment, Inaea offers connection. Her witches bind families with invisible threads, ensure that oaths hold, and HEAL the cracks in the world's memory.
 
-The \textbf{Short Road} is instinct, residue, and flicker of attention: a suddenly turned tide, a bell rung at the right moment, a thread plucked. It takes Some Time (a few heartbeats, a single action).
+\paragraph{The Thread That Binds} The witch of Inaea knows that the thread that comforts is the same that binds. She can lay a line of sanctuary across a threshold---no violence may cross it while the thread holds, but the thread remembers every blow it deflects. When it snaps, the weight comes due.
 
-\section*{Hedge Gifts}
+\paragraph{Signature Rite --- Hearth-Thread Knot (Low, 4 XP)}
+Bind yourself and one willing ally. Both gain +1 die to Aid each other this scene. If either takes Harm, the other may reduce it by 1 by suffering that same Harm instead.
+
+\subsection{Isoka --- The Serpent's Shedding}
+
+Isoka is change made manifest, the venom that burns away the old self to make room for the new. Her witches are shapeshifters in the original sense: not beasts, but souls who have learned to molt their identities like snakeskin.
+
+\paragraph{The Shedding} A witch of Isoka can walk into a room as a stranger and leave as your sister, the shift so seamless that reality itself accepts the change. She can cure a disease by forcing the patient to \textit{become} someone who never had it, though the former self is lost forever.
+
+\paragraph{Signature Rite --- The Shedding (Standard, 8 XP)}
++2 dice to resist a named Condition; declare a minor contingency retroactively. Mark 1 \obligation{1}.
+
+\subsection{Ikasha --- She Who Sleeps in Silence}
+
+Ikasha is the patron of the threshold itself, of the space between what is said and what is meant, of the shadows that fall where no light cast them. Her witches move unseen, not by bending light but by occupying the \textit{absence}---the Ninth space, the gap between numbers, the forgotten step on the stair.
+
+\paragraph{The Unspoken} To call upon Ikasha is to court erasure. Her witches can remove a name from a record, from a memory, from history itself, leaving only a gap that aches like a missing tooth.
+
+\paragraph{Signature Rite --- Touch the Umbral Veil (Low, 4 XP)}
+Start \term{Controlled} on one Stealth roll. \textbf{Push It:} The effect lasts the full scene; mark +1 Shadow.
+
+\subsection{The Thorns of Malachai --- The Gift That Bites}
+
+Malachai is the Chained Angel, the Cruel Messenger, the one who answers when the desperate call. Her witches do not serve her so much as \textit{survive} her. They are the cursed, the addicted, the broken who learned to weaponize their own fractures.
+
+\paragraph{The Leashed Gift} Every gift remembers how to bite. A Thorn can grant a desperate ally +2 dice on a crucial roll---but the ally will owe a favor to something that collects at midnight. She can curse an enemy with a luck so foul that their own shadow trips them---but the curse will spread to anyone who stands too close.
+
+\begin{warning}
+\textbf{The Thorn's Bargain:} A witch of Malachai does not ask "What will this cost?" She asks "Who will pay the interest?"
+
+\medskip
+\noindent\textbf{Signature Rite --- The Leashed Gift (Standard, 7 XP)} \\
+Grant a target +2 dice on their next roll. They gain a \timer{Debt}{4}. When it fills, Malachai collects: a memory, a name, or a service. The witch cannot refuse the collection---only redirect it to another target.
+\end{warning}
+
+\section{III. The Two Speeds of Witchcraft}
+
+The \term{Long Road} is ritual, threshold, price, and consequence: curses woven, bargains struck, the world's memory rewritten. It takes Significant Time (hours, days, a moon phase).
+
+The \term{Short Road} is instinct, residue, and flicker of attention: a suddenly turned tide, a bell rung at the right moment, a thread plucked. It takes Some Time (a few heartbeats, a single action).
+
+\subsection{Hedge Gifts}
+
 A Hedge Gift is not a spell. It is the world tilting slightly in the witch's favor because she has paid attention to the right thresholds. Hedge Gifts require no dice roll; they simply work within their limited scope.
 
-\subsection*{Learning Hedge Gifts}
-Any character with the \textbf{Craft of the Hedge} talent (4 XP) may learn Hedge Gifts. A witch begins with one Hedge Gift of her choice. Additional Hedge Gifts cost 2 XP each.
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.95\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Gift} & \textbf{Effect} & \textbf{Limit} \\
+\midrule
+Steady Hand & Remove 1 Fatigue from yourself or a touched ally & Once per scene \\
+Salt Line & Pour a line of salt; spirits test Spirit+Resolve \dv{3} to cross & Once per scene \\
+Hearth-Sense & Ask the GM one yes/no question about a threshold, boundary, or debt & Once per scene \\
+The Unlit Candle & Extinguish a light source; create dim light or darkness in Near & Once per session \\
+Knot of Favor & Tie a knot; you and allies gain +1 die to one type of roll for the scene & Once per scene \\
+Warm Hand & Touch someone; their next physical action gains +1 die (comfort) or -1 die (warning) & Once per scene \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\subsubsection*{Knot of Favor}
-Once per scene, tie a small knot in a cord, thread, or cloth within reach. For the rest of the scene, you and allies within Near range gain \(+1\) die to a single type of roll (choose when you tie the knot: stealth, persuasion, defense, or navigation). The knot must remain tied; if undone, the benefit ends.
+\subsection{Quick Workings}
 
-\subsubsection*{Warm Hand}
-Once per scene, touch someone (ally or enemy) and speak a word of comfort or warning. For the next exchange, that person's next physical action either gains \(+1\) die (comfort) or suffers \(-1\) die (warning). No roll required; the effect is subtle and cannot be directly perceived as magic.
-
-\subsubsection*{Hearth-Sense}
-Once per scene, ask the GM one yes/no question about a threshold, a boundary, or a debt in the current scene. The GM must answer truthfully.
-
-\subsubsection*{The Unlit Candle}
-Once per session, declare that a light source you can see (lantern, candle, torch) falters or extinguishes. This creates a zone of dim light or darkness in Near range for one exchange.
-
-\subsubsection*{Counting the Eighth}
-Once per scene, when you or an ally is about to roll a dice pool, whisper a number (1--8). If the GM's current Story Beat count is equal to that number modulo 8, the roll gains \(+2\) dice. If not, nothing happens. You cannot use this again until the GM's SB count changes.
-
-\section*{Quick Workings}
 A Quick Working is a single-action roll that relies on the witch's knowledge of thresholds, elements, and will. Its effects are limited, subtle, and always carry the risk of debt.
 
-\subsection*{Quick Working Procedure}
+\paragraph{Procedure}
 \begin{enumerate}
-    \item Name the Threshold (door, tide line, wound, vow, breath).
-    \item Choose a Layer (Echo, Veil, or Flow) and a single Tag (from the magic tags list).
-    \item Set Position by urgency (Controlled if you have time, Desperate if threatened).
-    \item Roll Attribute + Skill (typically Wits + Lore, Spirit + Insight, or Presence + Sway).
-    \item Apply Outcome (see table).
+    \item Name the Threshold (door, tide line, wound, vow, breath)
+    \item Choose a Layer (Echo, Veil, or Flow) and a single Tag
+    \item GM sets Position (Controlled if you have time, Desperate if threatened)
+    \item Roll Attribute + Skill (typically Wits + Lore, Spirit + Insight, or Presence + Sway)
+    \item Apply Outcome Matrix
 \end{enumerate}
 
-The effect is always minor and scene-limited:
+\paragraph{Example Effects}
 \begin{itemize}
-    \item A door sticks shut (or opens).
-    \item A candle gutters (brief darkness).
-    \item A rope knot tightens (or loosens).
-    \item A pursuer's footing slips (1 Fatigue).
-    \item A whispered name is heard (or forgotten).
+    \item A door sticks shut (or opens)
+    \item A candle gutters (brief darkness)
+    \item A rope knot tightens (or loosens)
+    \item A pursuer's footing slips (1 Fatigue)
+    \item A whispered name is heard (or forgotten)
 \end{itemize}
 
-\subsection*{Quick Working Outcome Matrix}
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.95\linewidth}{@{}lXX@{}}
+\toprule
 \textbf{Roll Result} & \textbf{Effect} & \textbf{Cost} \\
-\hline
-Clean Success (S $\geq$ DV, SB=0) & The effect manifests cleanly. & No cost. \\
-\hline
-Success with SB (S $\geq$ DV, SB>0) & The effect works, but the GM spends SB for a minor complication. & Mark 1 Fatigue or accept a Condition (e.g., "Thread-Burned"). \\
-\hline
-Partial (0 < S < DV) & The effect works partially or briefly. & Gain 1 Boon; the threshold remembers you. \\
-\hline
-Miss (S = 0) & The effect fails. & Gain 2 Boons; start a Promise Timer [4] named "The Threshold Remembers". \\
-\hline
+\midrule
+Clean Success (S $\ge$ DV, SB = 0) & Effect manifests cleanly & No cost \\
+Success with SB (S $\ge$ DV, SB $>$ 0) & Effect works; GM spends SB for complication & Mark 1 Fatigue or accept a Condition \\
+Partial (0 $<$ S $<$ DV) & Effect works partially or briefly & Gain 1 Boon; threshold remembers you \\
+Miss (S = 0) & Effect fails & Gain 2 Boons; start \timer{Promise}{4} \\
+\bottomrule
 \end{tabularx}
+\end{table}
 
-\section*{Full Rituals (The Long Magic)}
+\subsection{Full Rituals}
+
 When a witch has Significant Time (at least an hour), she may perform a Full Ritual using the five-step Threshold Working:
 
 \begin{enumerate}
-    \item Identify the Threshold (name the edge, learn its disposition).
-    \item Choose Your Witness (a person, spirit, or hollowed who watches).
-    \item Name Your Will (what change you intend, using one or more Threshold Tags).
-    \item Set Your Price (memory, name, lock of hair, promise, blood).
-    \item Make the Exchange (roll, resolve, pay the price on success or partial).
+    \item \textbf{Identify the Threshold:} Name the edge, learn its disposition
+    \item \textbf{Choose a Witness:} A person, spirit, or Hollowed who watches
+    \item \textbf{Name the Will:} What change you intend
+    \item \textbf{Set the Price:} Memory, name, lock of hair, promise, blood
+    \item \textbf{Make the Exchange:} Roll (Spirit + Lore typically), resolve, pay the price on success or partial
 \end{enumerate}
 
 Full Rituals can produce permanent or long-lasting effects: curses, blessings, marks, bindings, and unravellings.
 
-\section*{The Craft of the Hedge (New Talent)}
-\textbf{Cost: 4 XP} \quad \textbf{Requirements:} Lore 1+ or Survival 1+; a witch mark (tattoo, scar, or birthmark).
-
-You have learned the small magics of thresholds and edges. You gain:
-\begin{itemize}
-    \item Two Hedge Gifts (choose from the list above).
-    \item The ability to perform Quick Workings.
-    \item Once per session, when you fail a Quick Working roll, you may convert the Miss into a Partial Success by marking 1 Fatigue.
-\end{itemize}
-You may learn additional Hedge Gifts for 2 XP each.
-
-\section*{Hedge Gift of the Patron (Optional Talent)}
-\textbf{Cost: 6 XP} \quad \textbf{Requirements:} Craft of the Hedge, Bond to a Patron.
-
-Once per session, when you would use a Hedge Gift, you may instead invoke your Patron's Imbuement. Gain \(+1\) die to all actions tied to your Patron's domain for the scene, but mark \(+1\) Obligation immediately. No action required.
-
-\section*{Healing: The Art of Unknotting Harm}
-
-\subsection*{Steady Hand (Hedge Gift)}
-Once per scene, touch a wounded person (including yourself) and whisper a word of comfort. Remove 1 Fatigue. No roll. You may not use this on the same person twice in a scene.
-
-\subsection*{Knot of Mercy (Hedge Gift)}
-Once per session, spend Significant Time (a few minutes) to remove one Condition (Fear, Poisoned, Cursed, Marked) from a touched ally. Describe how you unknot the affliction. You must then dispose of the knot (burn it, bury it at a crossroads, pour it into running water) by the end of the session; otherwise you gain the Condition instead.
-
-\subsection*{Stabilize the Dying (Quick Working)}
-\textbf{Threshold:} The wound's edge. \textbf{Layer:} Echo. \textbf{Tag:} [HEAL]. \textbf{Roll:} Spirit + Medicine vs. DV 3--5 (severity).  
-\textbf{Success:} Patient stabilized; will not die from this wound. On a critical, also restores 1 Fatigue.  
-\textbf{Partial:} Stabilized, but witch marks 1 Fatigue.  
-\textbf{Miss:} Wound worsens; patient must test Endurance or take another Harm.
-
-\subsection*{Unravel the Wound (Full Ritual)}
-Requires Significant Time, a threshold (doorway or basin of water), and a witness. Restores 1 level of Harm.  
-\textbf{Price:} A lock of hair, a memory of a childhood injury, a tear in a vial.  
-\textbf{Roll:} Spirit + Lore vs. DV (3 for Harm 1, 4 for Harm 2, 5+ for Harm 3 requires a coven).  
-\textbf{Success:} Harm reduced; witch pays the price.  
-\textbf{Partial:} Harm reduced, but witch gains a minor Condition or a Promise Timer [4].  
-\textbf{Miss:} Wound does not heal; witch gains the Condition she tried to remove.  
-A witch cannot heal herself through this ritual.
-
-\section*{Exorcism: Casting Out the Clinging}
-
-\subsection*{Bell and Breath (Hedge Gift)}
-Once per scene, when a visible spirit (ghost, poltergeist, possessing fragment) is within Near range, ring a small bell and blow across its surface. The spirit tests Spirit + Resolve (DV 3) or loses its next action. Works on possessing spirits; they do not leave the host but hesitate.
-
-\subsection*{Banish Minor Spirit (Quick Working)}
-\textbf{Threshold:} The boundary between spirit and anchor. \textbf{Layer:} Veil. \textbf{Tag:} [BANISH].  
-\textbf{Roll:} Spirit + Lore vs. DV = spirit's Cap +2.  
-\textbf{Success:} Spirit repelled for one scene.  
-\textbf{Partial:} Spirit confused; must test Resolve to act; witch marks 1 Fatigue.  
-\textbf{Miss:} Spirit angered; attacks immediately (or controls host for one action).
-
-\subsection*{Unbind the Anchor (Full Ritual)}
-Requires Significant Time, the spirit's true name or a strong anchor, a threshold (doorway facing east, crossroads, grave), and a witness.  
-\textbf{Steps:}
-\begin{enumerate}
-    \item Discover the anchor (unfinished business, stolen object, broken vow).
-    \item Name the Terms (propose resolution).
-    \item Prepare the threshold (salt, chalk, broken cord).
-    \item Speak the Unbinding (Spirit + Lore vs. DV 4--6).
-    \item Pay the Price (the witch or party must fulfill the terms).
-\end{enumerate}
-\textbf{Success:} Spirit released. Witch gains 1 Boon.  
-\textbf{Partial:} Spirit released but leaves a remnant (echo, cold spot). Witch marks 1 Fatigue and gains a minor Condition.  
-\textbf{Miss:} Spirit refuses, becomes hostile. Start a Promise Timer [4] named "The Spirit's Revenge."
-
-\section*{Consecration: Blessing Hallowed Ground}
-
-\subsection*{Salt Line (Hedge Gift)}
-Once per scene, pour a handful of salt in a continuous line (move action). Any spirit, ghost, or cursed creature attempting to cross must test Spirit + Resolve (DV 3) or be stopped for that exchange. The line must be at least Close length; broken if someone steps through or scatters the salt.
-
-\subsection*{Calm Ground (Quick Working)}
-\textbf{Intention:} Create a Near-radius zone of calm ground for one scene. Fear effects reduced one step; hostile spirits suffer \(-1\) die to attacks.  
-\textbf{Threshold:} Center of zone (hearth, stone, planted staff). \textbf{Layer:} Echo. \textbf{Tag:} [WARD].  
-\textbf{Roll:} Spirit + Lore vs. DV 3.  
-\textbf{Success:} Zone consecrated for the scene.  
-\textbf{Partial:} Zone flickers; once, the GM may declare it fails for one exchange.  
-\textbf{Miss:} A minor spirit is drawn to the disturbance.
-
-\subsection*{Hallow Threshold (Full Ritual)}
-Requires Significant Time, a permanent threshold (door, well, bridge, hearthstone), a witness who will maintain the consecration, and an offering (bread, salt, coin, spoken promise).  
-\textbf{Purpose:} Permanently bless a threshold so harmful supernatural entities cannot cross without permission. The blessing lasts until the threshold is physically broken or the offering removed.  
-\textbf{Components:}
-\begin{itemize}
-    \item Cleansed threshold (ashes swept, water poured).
-    \item Witness holds the memory of the blessing.
-    \item Visible mark (carved rune, painted spiral, red thread).
-\end{itemize}
-\textbf{Roll:} Spirit + Lore vs. DV 4 (home), 5 (village well), or 6 (city gate). Witness may assist.  
-\textbf{Success:} Threshold hallowed. Spirits, undead, and cursed creatures crossing must test Spirit + Resolve (DV 5) or be turned back.  
-\textbf{Partial:} Blessing holds but has a weakness (the witch names one thing that can bypass it).  
-\textbf{Miss:} Blessing fails; threshold becomes cursed for one season (all who cross feel unease, \(-1\) die to first action).  
-A witch may hallow a temporary camp with a shorter ritual (30 minutes, no witness required). The blessing lasts until the camp is broken; DV -1.
-
-\section*{Summary Table}
-
-\begin{tabularx}{\textwidth}{|l|X|X|X|}
-\hline
-\textbf{Purpose} & \textbf{Hedge Gift (No roll, 1/scene)} & \textbf{Quick Working (Roll, 1 action)} & \textbf{Full Ritual (Hours, costly)} \\
-\hline
-Heal & Steady Hand (remove 1 Fatigue) & Stabilize the dying & Unravel the Wound (restore 1 Harm) \\
-\hline
-Exorcise & Bell and Breath (distract spirit) & Banish minor spirit (1 scene) & Unbind the Anchor (permanent release) \\
-\hline
-Consecrate & Salt Line (block spirits, 1 exchange) & Calm Ground (small zone, 1 scene) & Hallow Threshold (permanent ward) \\
-\hline
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.95\linewidth}{@{}lXXX@{}}
+\toprule
+\textbf{Ritual} & \textbf{Effect} & \textbf{DV} & \textbf{Price} \\
+\midrule
+Unravel the Wound & Restore 1 level of Harm & 3-5+ & Lock of hair, memory, a tear in a vial \\
+Hallow Threshold & Permanently ward a door, well, or bridge & 4-6 & Offering (bread, salt, coin, promise) \\
+Unbind the Anchor & Permanently release a spirit & 4-6 & Fulfill the spirit's unfinished business \\
+\bottomrule
 \end{tabularx}
+\end{table}
 
-\section*{V. Trow \& Hags}
+\section{IV. The Three Prices}
 
-\subsection*{Trow --- Shadow Bargainers}
-Enigmatic fey who keep to thresholds and \emph{almost-there} spaces. They favor the \emph{wizard's guise}: wide-brimmed hats that drink lamplight, weathered grey robes stitched in moth-silver, and long clay pipes that smoke without ember. Most hint at an unnamed patron---the \textbf{Grey Benefactor}, the \textbf{Under-Guest}---but never speak that allegiance twice beneath the same roof. Trow trade in \textbf{Names}, \textbf{gaps}, and \textbf{safe-conducts}; they value absence properly witnessed more than gold poorly kept.
+Every working demands a price. Choose \textbf{one} unless a rite specifies otherwise.
 
-\paragraph{Appearance \& Behavior}
-\begin{itemize}[leftmargin=*]
-  \item Faces blur at the edge of notice; laughter drifts from behind you even when they stand before you.
-  \item Grey robes hang like fog; hats cast a perpetual twilight across the eyes.
-  \item Footprints begin mid-floor. Pipe smoke rings drift \emph{against} prevailing drafts.
-\end{itemize}
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.95\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Price} & \textbf{What It Is} & \textbf{Recovery} \\
+\midrule
+\textbf{Shadow} & Spiritual residue; GM gains 1 SB; may introduce tells & Clears when the tell manifests or at session end \\
+\textbf{Shame} & Internal consequence; gain a Condition & Remove by acting against the compulsion or through confession \\
+\textbf{Identity} & Loss of self; mark 1 Identity Strain & Requires downtime or a Full Ritual \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\paragraph{Signs \& Omens}
-\begin{itemize}[leftmargin=*]
-  \item A room grows one step longer than it was measured.
-  \item A familiar name refuses to form until a lamp is raised.
-  \item Cold gathers where a shadow \emph{should} be.
-\end{itemize}
-
-\paragraph{Bargaining Customs}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Bread-and-Salt under a Lifted Lamp}: binds the Trow to guest-right for one night and one truthful answer.
-  \item \textbf{Honest Memory Payment}: they accept lived memories, not pretty lies. False recollection voids courtesy.
-  \item \textbf{Threefold Witness}: one mortal, one fey-adjacent, one liminal token (doorway, ferry-rope, dew-mirror). All three seal a pact.
-  \item \textbf{Copper in the Left, Silver in the Right}: open with left, close with right; never swap mid-parley.
-\end{itemize}
-
-\paragraph{What Trow Trade}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Absences}: a missing line in a charter; a night without patrols.
-  \item \textbf{Safe-Conducts}: duskmarks between paired thresholds (\emph{Night-Guest Writ}).
-  \item \textbf{Borrowed Memories}: held as collateral; returned slightly out of order and a bit more worn, unless paid in full.
-\end{itemize}
-
-\paragraph{Tokens \& Telltales}
-\begin{itemize}[leftmargin=*]
-  \item \emph{Trow Knot}: a single loop that slips any mundane bond once.
-  \item \emph{Grey Pipe-Ash}: dust a document to hide a line until a bell is struck.
-  \item \emph{Hat-Feather}: points at dawn toward the nearest witnessed threshold.
-  \item \emph{Book of Memories}: Trow can often be found in the corner of dusty taverns or forgotten libraries writing the memories of those who can no longer pay.
-
-\end{itemize}
-
-The memory is gone. The wound remains.}
-\paragraph{Methods (Veil • Echo • Flow)}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Veil-Bending}: reverse directions inside a room; quiet a name until dawn.
-  \item \textbf{Echo-Accounting}: make sure a vow "takes" by finding its last true witness.
-  \item \textbf{Flow-Nudges}: open the exit you meant; close the boastful boast.
-\end{itemize}
-
-\paragraph{Trow as Patrons (Witches \& Warlocks)}
-\begin{description}
-  \item[Gift --- \emph{Shadow-Step}] Move through liminal congruences (doorway-to-doorway, bell-shadow to bell-shadow). Treat as instantaneous movement along a witnessed threshold; \emph{Position +1} if the pair shares concept and witness.
-  \item[Gift --- \emph{Night-Guest Writ}] Once per leg, declare dusk-right between two duskmarks; hostile checks to bar passage suffer \emph{DV +1} unless they bring counter-witness.
-  \item[Price --- \emph{Almost-Presence}] Begin to slip the world's grip. Start \textbf{Anonymity [4]} when you overuse Veil gifts; on fill, an ally forgets your face or records omit your name until you anchor with lamp, bread, and a true-name spoken thrice.
-  \item[Taboo] Do not purchase absence for another without that person's witness; the omission recoils as Ninth-work.
-\end{description}
-
-\paragraph{Keeper Hooks (Trow)}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{SB 1}: a direction quietly flips; mapping grows uncertain.
-  \item \textbf{SB 2}: a memory returns altered (swap a detail; hide a motive).
-  \item \textbf{Timer --- Grey Courtesy [4]}: ticks when players skip lamp/bread/salt. On fill: hospitality voids; all bargains turn literal.
-\end{itemize}
-
-\epigraph{"I am not the author. I am the amanuensis. The dead write through me. The indebted pay through me. The road walks through me. I am the ninth page. Always blank. Always waiting.”}
-
-\bigskip
-
-\subsection*{Hags --- Keepers of the Hard Pattern}
-Fey who wear the guise of elder women with storm-weather eyes and hands like nettle and rope. Where Trow deal in omission, \textbf{Hags deal in pain-that-proves}. They oppose whatever mortals prize as easy or beautiful, not from spite alone but to \emph{test the grain underneath}. Their bargains gleam up front and bruise in the keeping.
-
-\paragraph{Covens \& Hierarchy}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Covens of Three}: \emph{Weaver} (sets terms), \emph{Widow} (keeps memory), \emph{Winter} (collects price).
-  \item \textbf{Morag High-Matron}: acknowledged apex; her writ runs along ferry-stones, bride-ways, and moon-tolls.
-  \item \textbf{Strict Steps}: no unpriced gift; no unwitnessed word; no unmarked crossing.
-\end{itemize}
-
-\paragraph{Appearance \& Sign}
-\begin{itemize}[leftmargin=*]
-  \item Shawls pinned with ferry tokens and thorn; hems river-stained.
-  \item Hearths burn lower in their presence; mirrors show last year's face.
-  \item Breath smells of cold iron kettles and moon tea.
-\end{itemize}
-
-\paragraph{Bargain Patterns (examples)}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Sweet Hearth, Bitter Road}: winter-long warmth; thereafter, no guest stays without paying a tear (true grief, witnessed).
-  \item \textbf{Bride's Gold}: dowry prospers; the first child must be named under rain at the ferry stone or the river keeps a season of luck.
-  \item \textbf{Moon's Mercy}: heal without scar; later, your reflection will not answer your name until you repair a stranger's oath.
-\end{itemize}
-
-\paragraph{Etiquette \& Bastions}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Witness First}: bring a bell, a name-bead, or a judge. Hags love law; they hate loopholes they did not write.
-  \item \textbf{Honor the Old Toll}: when hag-runes mark a ford or bride-way, pay in story---speak a truth, not a coin.
-  \item \textbf{Never Mock the Pattern}: insult their craft and they add your name to it.
-\end{itemize}
-
-\paragraph{Tools \& Tokens}
-\begin{itemize}[leftmargin=*]
-  \item \emph{Thorn-Pin}: fixes a bargain to flesh; remove only by finishing the price.
-  \item \emph{Kettle-Mirror}: shows the owed consequence, never the boon received.
-  \item \emph{Winter Thread}: a pale cord that tightens when a promise is evaded.
-\end{itemize}
-
-\paragraph{Hags as Patrons (Witches \& Warlocks)}
-\begin{description}
-  \item[Gift --- \emph{Hearth-Binding}] Sanctify a home-circle: \emph{Position +1} for defense and parley within; create \textbf{Hospitality Toll [4]} that must be paid in courtesy or truth by all who enter.
-  \item[Gift --- \emph{Widow's Measure}] Name the hidden cost in any offer; learn the price that will be collected \emph{and} who will bear it.
-  \item[Price --- \emph{Beauty Unpriced}] Unpaid flourish rots. Start \textbf{Price Due [4]} when you accept comfort without naming its cost; on fill, the gift curdles until you set a repair year or forfeit adornment tied to the boon.
-  \item[Taboo] Never give an unpriced gift; it becomes a curse on the giver.
-\end{description}
-
-\paragraph{Keeper Hooks (Hags)}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{SB 1}: a comfort sours until a truth is spoken.
-  \item \textbf{SB 2}: an old toll reasserts (add moon-fee, ferry-prayer).
-  \item \textbf{SB 3}: \emph{Winter} comes to collect; begin \textbf{Price Due [4]} tied to the scene's boon.
-\end{itemize}
-
-\epigraph{"She gives you the gold, but not the weight it carries. She grants your heart's desire, but not the hunger it awakens. She answers your plea, but not the price that pleases her. In Morag's court, every `yes' is a `yes, but\ldots\,' ''
-"}
-\bigskip
-
-\subsection*{Trow \& Hag Intersections}
-\begin{itemize}[leftmargin=*]
-  \item Trow open exits; Hags price crossings. Use both to pass safely---\emph{if} you keep witness straight.
-  \item Trow strip lacquer; Hags scorn it. Their gifts together reduce a place to grain and oath.
-  \item When a Trow bargain and a Hag pattern contradict, begin \textbf{Omission Bloom [4]}: forgotten steps, skipped vows, doors with miscounted hinges. Clear with lamp, bread, salt, and a true name spoken thrice.
-\end{itemize}
-
-\section*{VI. Witch Hunters \& Containment Orders}
-
-\subsection*{Overview}
-Every culture that lives beside Patrons, rites, and old places develops a way to \emph{contain} what runs wild. Some orders prosecute crimes; others prevent collapses of context; all of them prefer witnesses to wounds. Human Witch Hunters are formally sanctioned in Thepyrgos---where they keep homes and lamp-courts---but they range across all human realms by writ and guest-right. Other peoples keep their own flavors: accountants of breath and stone, proof-keepers of sum, riders who cut bad bindings, and silk-vigils who reset roles before knives are needed.
-
-\bigskip
-
-% ------------------------------------------------------------------------------------------------------------------
-%===============================================================
-\section{Orders of Witch-Hunt, Inquest, and Containment}
-\index{Orders!Witch-Hunters}
-\index{Inquisition}
-
-Witchcraft in the Basin is communal, relational, and indebted.
-Therefore, every culture develops those who fear that power,
-seek to price it, or to enclose it.
-
-These Orders do not simply oppose magic --- they oppose
-\emph{unlicensed} magic, especially that practiced outside patriarchal
-oversight, ancestral ledgers, or property law.
-
-Use them as pressure, contrast, or antagonistic legitimacy.
-Their horror is bureaucratic more than spiritual.
-%===============================================================
-
-\subsection{Chain-Lanterns of Thepyrgos --- Human Witch Inquisitors}
-\begin{creature}[Chain-Lanterns of Thepyrgos --- Human Witch Inquisitors]
-\tag{ORDER} • \tag{CIVIL} • \tag{DOGMA} \\
-\signs{Lanterns hooded with iron mesh; stamped patriarchal writs;
-one bell rung before accusation, three before burning.} \\
-\etiquette{Unmask; kneel; recite your line and father's name.
-They will not speak to the unclaimed or foreign-born without a witness.} \\
-\moves{Mark a \emph{Lantern Line} (women's rites cannot cross without test),
-issue a \emph{Father's Claim} to bind property or children,
-serve a \emph{Stop-Rite} halting a working until patriarchal review.} \\
-\strings{Lamp-Writ (safe question under light), Sanctuary Tag (one hall becomes
-truce-ground), Letters Patent (act across borders once without fee).} \\
-\weaknesses{No witness, no action; false ledgers poison their standing (Repute −1
-until public penance).}
-\end{creature}
-
-\paragraph{Jurisdiction \& Home}
-\textbf{Lamp-Courts of Thepyrgos} maintain archives of accusations,
-inheritance declarations, and patriarchal seals. Abroad they rely on
-guest-right and on local patriarchs willing to sign their papers.
-
-\paragraph{Keeper Hooks}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Timers:} Purity Panic [4], Witch-Naming [6], Patriarchal Overreach [4].
-  \item \textbf{SB:} (1) foreign witness is disqualified,
-          (2) local patriarch asserts supremacy,
-          (3) forged lineage documents appear.
-\end{itemize}
-
-\bigskip
-
-%===============================================================
-\subsection{Spirit-Shield Correctors --- Aeler}
-\begin{creature}[Spirit-Shield Correctors --- Aeler]
-\tag{ORDER} • \tag{STONE} • \tag{ANCESTOR} \\
-\signs{Counting breaths at thresholds; chalked tallies; bells on lintels,
-always rung by fathers.} \\
-\etiquette{Name your father's tools; swear breath-count; offer repair years
-if you break a rite.} \\
-\moves{Seal a vent with \emph{Stone-Witness}, convert unlicensed magic into
-\emph{domestic labor}, bind rogue workings to a \emph{Repair Ledger}.} \\
-\strings{Keystone Courtesy (pass a gate once), Breath-Bond (stabilize a rite
-for a scene), Oath-Swap (trade a lethal term for service).} \\
-\weaknesses{Uncounted crowds; women or children without declared patriarchs
-destabilize their logic.}
-\end{creature}
-
-\paragraph{Notes}
-They fear collapse more than corruption: a rite that holds under
-witness and ledger might be priced rather than smashed.
-
-\bigskip
-
-%===============================================================
-\subsection{Sum-Abjurers --- Aelinnel}
-\begin{creature}[Sum-Abjurers --- Aelinnel]
-\tag{ORDER} • \tag{PROOF} • \tag{NONLETHAL} \\
-\signs{Blue-ink ledgers with Said/Meant columns; knot-proofs; soft shoes in court.} \\
-\etiquette{State intent and scope; present a \emph{Context Key};
-accept a counter-example.} \\
-\moves{Refactor a working by redefining inputs (\emph{DV −1 if context is agreed}),
-quarantine a loop into a \emph{sandbox}, require a \emph{mercy clause}.} \\
-\strings{Two-Ledger Courtesy (parley DV −1 under audit), Proof-Stay (pause a rite
-for review), Mask-Permit (operate as neutral examiners).} \\
-\weaknesses{Bad faith; undefined terms. If meanings slide, their binds fail.}
-\end{creature}
-
-\paragraph{Notes}
-Their horror is misdefinition, not sorcery --- a failed metaphor
-frightens them more than a blood hex.
-
-\bigskip
-
-%===============================================================
-\subsection{Break-Reins Riders --- Ykrul}
-\begin{creature}[Break-Reins Riders --- Ykrul]
-\tag{ORDER} • \tag{FIELD} • \tag{EXITLAW} \\
-\signs{Unknotted bridles on cairns; bells at the saddle; two exits chalked at gates.} \\
-\etiquette{Name the exits you will leave; price the road;
-no rope becomes a leash.} \\
-\moves{Cut coercive bindings (\emph{convert to a public timer}),
-declare a \emph{Blue Moot} for safe withdrawal,
-escort a witch under guest-right across contested ground.} \\
-\strings{Bridle Ring (void one coercive clause), Storm's Favor (Position +1 to break pursuit),
-Road-Writ (travel immunity for one leg).} \\
-\weaknesses{Closed courts; sealed rooms --- without sky and route, they lose leverage.}
-\end{creature}
-
-\bigskip
-
-%===============================================================
-\subsection{Silk Vigil --- Lethai-ar (Inaea and Isoka)}
-\begin{creature}[Silk Vigil --- Lethai-ar (Inaea)]
-\tag{ORDER} • \tag{ROLELAW} • \tag{SILK} \\
-\signs{Three-tone bells; hair-fine lines across thresholds; dew mirrors at corners.} \\
-\etiquette{Mask Right: declare roles; ring once for guesthood;
-never cross a silk unbidden.} \\
-\moves{\emph{Wedding Line} sanctuary, \emph{Context Reset} (restore roles; end duels of pride),
-\emph{Parley Under Bell}.} \\
-\strings{Bride-Line Audience (force truce), Knot-Record (bind terms),
-Dew-Reading (scene truths revealed).} \\
-\weaknesses{Broken context --- if roles are mocked, their silk frays.}
-\end{creature}
-
-\begin{creature}[Shed Vigil --- Lethai-ar (Isoka)]
-\tag{ORDER} • \tag{DECISIONLAW} • \tag{VENOM} \\
-\signs{Bitter herbs; shed-skins pinned as warnings; dawn writs sealed with scale.} \\
-\etiquette{Speak the hard choice; accept the cut;
-no third path after dawn.} \\
-\moves{\emph{Venom Truce}, \emph{Shed-Skin Escape}, \emph{Fang of Decision}
-(compel keystone act).} \\
-\strings{Dawn Seal (one crisis must conclude), Scale Draft (resist fear once),
-Knife of Words (Effect +1 when truth is spoken).} \\
-\weaknesses{Stalemate courts; leaders who refuse to decide.}
-\end{creature}
-
-\bigskip
-
-%===============================================================
-\subsection{Wake-Judges --- Linns of the Salt}
-\begin{creature}[Wake-Judges --- Linns of the Salt]
-\tag{ORDER} • \tag{FERRYLAW} • \tag{UNDER-RIVER} \\
-\signs{Ropes loop gently; coins stacked on pilings;
-twin lanterns over black water.} \\
-\etiquette{Pay said and meant; name your passenger;
-never cut a ferry rope.} \\
-\moves{Hold mid-channel until a truth is spoken,
-drown a curse in running brine (\emph{reset context}),
-declare a \emph{Blue Weather Crossing}.} \\
-\strings{Cold Crossing (Position +1 in storms), Drowned Ledger (who failed to pay),
-Ferry-Pardon (erase one petty offense).} \\
-\weaknesses{Stagnant pools; dry judgment --- without flow, their law thins.}
-\end{creature}
-
-\bigskip
-
-%===============================================================
-\subsection{Inter-Order Etiquette}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Witness First:} Any order yields to the one that can furnish
-        the clearest witness (lamp, stone, silk, or wake).
-  \item \textbf{Spheres:} Stone for collapse; Silk for roles; Chains for due process;
-        Reins for coercion; Wake for passage; Sum for definitions.
-  \item \textbf{Conflict Rule:} If two orders assert jurisdiction,
-        begin \emph{Jurisdiction [4]}. On fill:
-        the scene splits --- half court (parley), half extraction (escort).
-\end{itemize}
-
-\bigskip
-
-%===============================================================
-\subsection{GM Tools: Running a Witch Hunt}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Scene Timers:} Purity Panic [4], Hex Spread [6], Due Process [4],
-        Patriarchal Overreach [4], Collateral Mercy [4].
-  \item \textbf{Easy DVs:} \emph{Reading the Working} DV 3;
-        \emph{Establishing Witness} DV 2--4 (culture);
-        \emph{Humane Containment} DV 4--5.
-  \item \textbf{SB Menu:} (1) rumor spikes crowd temper,
-                          (2) wrong order asserts jurisdiction,
-                          (3) price of a boon comes due publicly.
-  \item \textbf{Fiction First:} Decide \emph{what kind of harm}
-        the rogue magic causes (collapse, coercion, contagion, context),
-        then point the right order at that harm.
-\end{itemize}
-
-\bigskip
-
-%===============================================================
-\subsection{Follower Options}
-\begin{followerbox}{Chain-Lantern Detachment (Human)}
-Cap: 3 \quad Scale: Small \quad Tags: Lawful, Lantern-Line, Neutral Factor \\
-Edges: Writs, safe-conduct, patriarchal legitimacy. \\
-Liabilities: Needs witness; paperwork lag; misogynist assumptions. \\
-Orders/Scene: \emph{Lantern Line}, \emph{Father's Claim}, \emph{Stop-Rite}.
-\end{followerbox}
-
-\begin{followerbox}{Spirit-Shield Triad (Aeler)}
-Cap: 3 \quad Scale: Small \quad Tags: Stone-Witness, Repair Ledger \\
-Edges: Stabilize rites; price violations. \\
-Liabilities: Slow; bound to oath and patriarchal authorization. \\
-Orders/Scene: \emph{Seal Vent}, \emph{Price the Rite}, \emph{Set Repair Years}.
-\end{followerbox}
-
-\begin{followerbox}{Silk Vigil Pair (Lethai-ar)}
-Cap: 4 \quad Scale: Tiny \quad Tags: Wedding Line, Mask Right \\
-Edges: Nonlethal reset; binding audiences. \\
-Liabilities: Fragile context; patriarchal override. \\
-Orders/Scene: \emph{Sanctuary Line}, \emph{Context Reset}, \emph{Dawn Parley}.
-\end{followerbox}
-
-\begin{followerbox}{Sum-Abjurer Cell (Aelinnel)}
-Cap: 3 \quad Scale: Small \quad Tags: Two-Ledgers, Quarantine \\
-Edges: DV −1 where meanings are agreed. \\
-Liabilities: Bad faith; undefined terms or misogynist intrusion. \\
-Orders/Scene: \emph{Proof-Stay}, \emph{Sandbox}, \emph{Mercy Clause}.
-\end{followerbox}
-
-\bigskip
-
-%===============================================================
-\subsection{Adventure Seeds}
-\begin{enumerate}[leftmargin=*]
-  \item \textbf{Three Orders, One Witch:}
-     A coercive charm haunts a bridge market.
-     Chain-Lanterns, Silk Vigil, and Break-Reins all claim lead.
-     Pick a path or braid them before the crowd breaks.
-  \item \textbf{The Lamp Malfunctions:}
-     A Thepyrgian lamp-court's bell ticks without tone.
-     Is it Monad work---or a Hag's price? Fix it without burning due process.
-  \item \textbf{Stone Oath, Soft Heart:}
-     Aeler Correctors price an illegal lifesaving ward as ten repair years.
-     Negotiate a mercy clause before the ward collapses.
-  \item \textbf{Blue Weather Sanctuary:}
-     Linn Wake-Judges promise a storm crossing if Ykrul riders
-     will leave two exits and take one. Negotiate the exits now.
-\end{enumerate}
-
-\section*{VII. Paths by Patron (Field Uses \& Backlash)}
-
-\emph{(Assuming these Patrons embody or are closely aligned with these concepts)}
-
-\subsection*{Hearth-Line (Inaea - Mercy, Continuity)}
+\subsection{Push It}
+Before rolling or after a Partial, you may Push to enhance the working. Choose one:
 \begin{itemize}
-    \item \textbf{Mercy Lines}: Harm stops at a door-thread.
-    \item \textbf{Repair Years}: Time-priced blessings; holds while the household keeps witness.
-    \item \textbf{Backlash}: Mercy without memory hollows; apologies left unsaid become cold rooms.
+    \item Mark \textbf{+1 Shadow} and gain \textbf{+1 die}
+    \item Mark \textbf{+1 Shame} and gain \textbf{+1 Effect}
+    \item Mark \textbf{+1 Identity Strain} and reduce DV by 1 (minimum 2)
 \end{itemize}
 
-\subsection*{Shedding-Line (Isoka - Change, Shedding)}
+\subsection{Identity Strain Track}
+Identity Strain tracks cumulative erosion from self-touching magic.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.9\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Segments} & \textbf{Effect} \\
+\midrule
+1-3 & No mechanical effect; GM may offer a Devil's Bargain tied to identity \\
+4 & \textbf{Threshold reached.} At end of scene, roll Spirit + Resolve vs \dv{4}. On success, clear 1 Strain. On failure, the GM chooses: a memory blurs, a bond becomes conditional, a name becomes \textit{buried}, or an echo-self becomes active. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Identity Strain cannot be healed by ordinary rest. It requires:
 \begin{itemize}
-    \item \textbf{Loosening Skins}: Unhook roles and labels; griefs molt.
-    \item \textbf{Venom Benedictions}: Pain that ends dithering.
-    \item \textbf{Backlash}: Purges; identity slips; loyalties molt too.
+    \item A Full Ritual of restoration (\dv{5}, requires a witness and a personal offering)
+    \item A significant downtime scene (confession, remembrance, or reclaiming a lost name)
+    \item Accepting a permanent change (converting Strain into a Scar or Condition)
 \end{itemize}
 
-\subsection*{Penumbra-Line (Ikasha - Shadows, Possibility)}
-\begin{itemize}
-    \item \textbf{Shadow Courtesy}: Night crossings held safe by role and bell.
-    \item \textbf{Mask-Truth}: Let what is possible stand beside what is.
-    \item \textbf{Backlash}: Too many possible selves peering in.
-\end{itemize}
+\section{V. Promise Timers}
 
-\subsection*{Ninth-Line (Silent Note - The Unspoken, The Witness?)}
-\begin{itemize}
-    \item \textbf{Calculated Absences}: Remove a step in command, a record, a light.
-    \item \textbf{Hollowings}: Strip significance from a token until witnessed anew.
-    \item \textbf{Backlash}: Contagious omission---maps and minds begin to skip a step.
-\end{itemize}
-
-\section*{VIII. Curses as Architecture (Keeper Tools)}
-
-\subsection*{Write it like a rule}:\\
-"Until a bell is rung in your true name, lamps forget to light for you." (Veil-edit, Named anchor)
-
-\subsection*{Give it a timer}: \texttt{Recursion [6]}---ticks when the victim reinforces the story (fumbling, hiding the problem, refusing witness).
-
-\subsection*{Provide a counter}: Add the missing layer---\texttt{Name + Witness + Threshold} (ring the bell at a doorway with kin present).
-
-\subsection*{SB Menu (Curses)}:
-\begin{itemize}
-    \item \textbf{1 SB}: minor echo (old order resurfaces)
-    \item \textbf{2 SB}: warped threshold (wrong door opens)
-    \item \textbf{3 SB}: layer slip (Veil cracks, Flow surges)
-    \item \textbf{4 SB}: Ninth propagation (a second gap appears)
-\end{itemize}
-
-\section*{IX. Witches in Society}
-
-Civil life runs on slow witchcraft: oaths that hold, bridges that do not fall, songs that make grief breathable. People call it "\textbf{just craft}" because the surest workings are gentle enough to be mistaken for good fortune or skill. The danger rises when someone \emph{forces} resonance instead of courting it---overbinding a vow, tightening a name, dragging one rope across many lives. Witches often operate quietly within this ecology, maintainers of subtle order.
-
-\subsection*{Human Realms (at a glance)}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Frontiers welcome:} Market towns, ferries, and border keeps grant \emph{Green Writs} to lane-witches, midwives, ward-singers, and bridge-binders. Payment is in witness, grain, rope, and small silver.
-  \item \textbf{Courts conceal:} Many nobles keep a \emph{Lantern Adviser}---a sworn witch under sealed writ---while publicly deferring to lamp-courts. These advisers read omens of grain and treason, price roads, negotiate with small powers.
-  \item \textbf{Thepyrgos orthodoxy:} Chain-Lanterns license urban practice and prosecute coercive rites. \emph{Street rule:} lift a lamp, name a witness, declare the price---then work.
-\end{itemize}
-
-\subsection*{Why superstition lingers}
-Great songs are dangerous. Too much unity draws collapse; the Sisters taught us to braid small cords, not bind whole valleys in one pull. Memory of old calamities---when a single tune carried too many voices---keeps folk wary of overt magic, even as they depend on its humbler forms.
-
-\subsection*{How other peoples treat witches}
-
-\paragraph{Aeler (Stone Cities).}
-\emph{Role:} Bonded Menders. \\
-\emph{How it works:} Witches are assessed like arches---load, witness, repair years. If a working holds under weight, it is \emph{priced} not banned. Coercive songs are converted to owed labor or sealed under stone-witness. \\
-\emph{Welcome:} High---if you file ledgers, name your tools, and swear breath-count. \\
-\emph{Taboos:} Uncounted rites; names without keystones.
-
-\paragraph{Aelinnel (Sum-Lodges).}
-\emph{Role:} Context Weavers. \\
-\emph{How it works:} Two-ledger licensing (Said/Meant). Witches present proofs for scope, terms, and mercy clauses; rogue workings are quarantined and refactored, not burned. \\
-\emph{Welcome:} High---when definitions are clear. \\
-\emph{Taboos:} Ambiguity, undefined costs, "poetic" contracts.
-
-\paragraph{Ykrul (Violet Steppe).}
-\emph{Role:} Road-Witches. \\
-\emph{How it works:} Leave two exits, take one. Weather-singers, herd-speakers, and ford-binders ride with bands under guest-right. Coercive charmers trigger \emph{Red Weather}---no camp hosts them. \\
-\emph{Welcome:} Seasonal---strong in caravans and moot camps. \\
-\emph{Taboos:} Leashes, locked exits, songs that bind unwilling feet.
-
-\paragraph{Lethai-al (Wood Elves).}
-\emph{Role:} Line Midwives. \\
-\emph{How it works:} Witchcraft is folded into \emph{Mask Right}: roles are fixed with bell and silk; \emph{Wedding Lines} establish sanctuary; dew-mirrors set context keys. Those who refuse roles are escorted to the border at dawn. \\
-\emph{Welcome:} Strong within the line, cold beyond it. \\
-\emph{Taboos:} Breaking guesthood; mocking mask and bell.
-
-\paragraph{Lethai-ar (Shadow Courts).}
-\emph{Role:} Patron-Attendants. \\
-\emph{How it works:} Witches serve Inaea or Isoka; practice is legal so long as \emph{roles} (Inaea) or \emph{decisions} (Isoka) are honored. Unauthorized workings are "rewoven" by Silk or Shed Vigils. \\
-\emph{Welcome:} Conditional---context or cut. \\
-\emph{Taboos:} Roleless power; choices that never resolve.
-
-\paragraph{Lethai-thora (City Elves).}
-\emph{Role:} Grammar Menders. \\
-\emph{How it works:} Cunning folk operate through salons and archives, altering etiquette, precedent, and ceremony---witchcraft as civic rhetoric. \\
-\emph{Welcome:} Polite, competitive. \\
-\emph{Taboos:} Provincial bravado; public spectacle.
-
-\paragraph{Linns (Mist \& Iron).}
-\emph{Role:} Tide Witches. \\
-\emph{How it works:} Licensed by Wake-Judges; rites must pay \emph{said and meant} at the water's edge. Rope, bell, and coin in correct order. \\
-\emph{Welcome:} Strong at harbors and river mouths. \\
-\emph{Taboos:} Cutting ferry ropes; lying on a boat.
-
-\paragraph{Vilikari (Meadow \& Ecktoria).}
-\emph{Role:} Hedge-Wrights and Ledger-Wives. \\
-\emph{How it works:} Quiet bargains in barns and border inns; debts written in the \emph{ledger of small kindnesses}. Villages shelter their own, sell routes to outsiders. \\
-\emph{Welcome:} Communal, protective. \\
-\emph{Taboos:} Selling a neighbor's name.
-
-\subsection*{Frontier Licenses \& Urban Seals (human lands)}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Green Writ (Frontier):} One season; ferries, barns, and bridges honor it by lamp. Grants right to HEAL storms, births, and boundaries; must name a witness.
-  \item \textbf{Lantern Seal (Urban):} Case-by-case; issued by a lamp-court. Authorizes specified workings within walls; requires post-rite audit.
-  \item \textbf{Quiet Seal (Court):} Private; binds an adviser to house interests with secrecy and indemnity. Violations become politics, not trials.
-\end{itemize}
-
-\subsection*{Witch-Hunters and You (table use)}
-If a working causes \emph{coercion}, expect Ykrul Break-Reins riders or Chain-Lanterns.  
-If it causes \emph{collapse}, expect Aeler Spirit-Shields.  
-If it causes \emph{looping harm}, expect Aelinnel Sum-Abjurers.  
-If it breaks \emph{roles}, expect Lethai Silk Vigils; if it stalls \emph{decisions}, expect Shed Vigils.
-
-\bigskip
-
-\section*{X. Play Prompts \& Seeds}
-
-\begin{enumerate}[leftmargin=*]
-  \item \textbf{The Ninth Cup.} At a treaty feast the ninth cup was poured; knives hum. Find who omitted the witness phrase and HEAL the gap before the truce voids. \texttt{[VOID]} \texttt{[WITNESS]}
-  \item \textbf{Bride-Charter Broken.} A hag demands the old price; the village pleads for mercy that remembers. Decide which story the ground will keep. \texttt{[HAG LAW]} \texttt{[SANCTUARY]}
-  \item \textbf{Bell That Ticks.} Shift-bell counts but never rings; workers repeat until fingers bleed. Insert variance, restore the Name, or the mill learns to run without them. \texttt{[LOOP]} \texttt{[CONTAINMENT]}
-  \item \textbf{The Forgotten Door.} A house adds a door nobody uses. Walk the unmapped path and choose what returns when it opens. \texttt{[THRESHOLD]} \texttt{[OMEN]}
-  \item \textbf{Green Writ, Red Weather.} A frontier witch's license is valid, but her storm-song leashes livestock across three farms. Break the leash without breaking the writ. \texttt{[GUEST-RIGHT]} \texttt{[EXIT LAW]}
-  \item \textbf{Lantern Adviser.} A noble's secret witch goes missing; the public lamp-court suspects treason. Keep the house from devouring itself while you follow the quiet seals. \texttt{[COURT]} \texttt{[SECRECY]}
-  \item \textbf{Stone Price.} An Aeler Corrector prices a lifesaving ward as ten repair years; the village cannot pay. Find a mercy clause with an Aelinnel proof or promise the years yourself. \texttt{[LEDGER]} \texttt{[MERCY]}
-  \item \textbf{Blue Weather Crossing.} Wake-Judges offer storm sanctuary for an evacuation if Ykrul riders will leave two exits and take one. Negotiate the exits, then hold the line under rain. \texttt{[FERRY LAW]} \texttt{[KON"REH]}
-\end{enumerate}
-
-\section*{Keeper's Quick Questions}
-\begin{itemize}[leftmargin=*]
-  \item Which layer am I touching---\emph{Echo}, \emph{Veil}, or \emph{Flow}?
-  \item What threshold frames the scene (door, ford, oath, mask, ledger, ferry)?
-  \item Which Name anchors---and which must be loosened?
-  \item Where does the Ninth already bite---and who benefits if it closes?
-  \item Who is the right \emph{order} to call (lantern, stone, sum, reins, silk, wake)?
-\end{itemize}
-
-\paragraph{Remember.} Spend complications (Story Beats) like fate tugging the scene toward the story with the most weight---then let good witness (and player action) change which story that is. In this world, belief, craft, and consequence braid into law; witchcraft is the art of tying knots that hold without choking.
-
-\subsection*{Witch Covens and Traditions}
-
-As witches practice their craft across the diverse lands of Fate's Edge, distinct traditions have emerged that reflect the unique magical properties of each region.
-
-\subsubsection*{The Bone Coven (Aelerian Influence)}
-
-Deep within the stone halls of Aeler, a coven has arisen that draws its power from the memories held in ancient stone. These witches understand that every carved rune, every worn step, and every weathered wall holds echoes of the past.
-
-\paragraph{Focus} Ancestral wisdom and the patient power of stone that remembers.
-
-\paragraph{Signature Rite} \textbf{Stone Memory Communion} - By pressing their hands to ancient stone and entering a meditative state, these witches can witness events that occurred near the stone, going back centuries. The power grows stronger in locations with significant emotional or historical weight.
-
-\paragraph{Patron Elements} Earth and Fate, representing the solid foundation of stone and the inevitable passage of time that stone records.
-
-\paragraph{Coven Practices}
-\begin{itemize}
-    \item Crafting talismans from stone that was present at significant historical events
-    \item Maintaining ancient wards by understanding their original purpose
-    \item Serving as advisors to dwarven holds, providing historical context for current conflicts
-\end{itemize}
-
-\subsubsection*{The Mistwalkers (Mistlands Influence)}
-
-In the perpetual fog of the Mistlands, another tradition has emerged that specializes in navigation between worlds and manipulation of thresholds. These witches are experts in the spaces between spaces.
-
-\paragraph{Focus} Navigation between worlds and threshold magic.
-
-\paragraph{Signature Rite} \textbf{Wayfinding Through the Veil} - By burning specific herbs and chanting in the ancient tongue, Mistwalkers can create temporary passages through the Ways Between, allowing for brief journeys to parallel versions of their current location.
-
-\paragraph{Patron Elements} Water and Obishaal, representing the fluid nature of reality's boundaries and the dreamlike logic of threshold spaces.
-
-\paragraph{Coven Practices}
-\begin{itemize}
-    \item Maintaining safe passage routes through dangerous threshold areas
-    \item Acting as guides for those who must travel between worlds
-    \item Negotiating with the entities that dwell permanently in threshold spaces
-\end{itemize}
-
-\subsubsection*{The Stormweavers (Linn/Ykrul Influence)}
-
-On the windswept steppes and along the coastlines, witches have learned to harness the power of weather itself. These practitioners understand that storms are not just natural phenomena, but expressions of raw magical force.
-
-\paragraph{Focus} Weather magic and storm riding.
-
-\paragraph{Signature Rite} \textbf{Storm Dancing} - Through ritual movement and the use of weather-focused implements, Stormweavers can call forth or calm storms. The most experienced practitioners can ride the winds themselves, traveling great distances in the heart of a storm.
-
-%=========================================================
-\section{Threshold Witchcraft}
-\label{sec:threshold-witchcraft}
-\index{Magic!Threshold Witchcraft}
-\index{Witchcraft}
-
-\noindent
-Threshold magic is communal, relational, and liminal.  
-It operates where one thing becomes another: doorways, crossings, hearth edges,  
-birthbeds, gravesides, and moments between choices.
-
-\medskip
-
-\noindent
-Where Inquisitorial Orders enforce hierarchy, Witness Orders and Threshold Circles  
-bind power through hospitality, reciprocity, and consequence.
-
-%---------------------------------------------------------
-\subsection*{Core Laws of Threshold Magic}
-\label{subsec:threshold-laws}
-
-\paragraph{Law of Hospitality.}
-You cannot take what you will not feed.  
-Every working requires an offering: comfort, labor, memory, or promise.
-
-\paragraph{Law of Reciprocity.}
-Binding another binds yourself to their outcome.  
-All curses create a {\itshape Bond Condition} between caster and target.
-
-\paragraph{Law of Witness.}
-Unseen workings fray.  
-Present witness grants Position +1; casting without witness incurs +1 DV or  
-{\itshape Lone Witch} Condition (GM choice).
-
-%---------------------------------------------------------
-\subsection*{Casting a Threshold Working}
-\label{subsec:threshold-casting}
-
-To use Threshold magic:
-
-\begin{enumerate}[label=\arabic*.]
-    \item \textbf{Name a Threshold:} doorway, river ford, bedside, market gate, crossroads,  
-    graveside, sleep/waking edge, or a moment between decisions.
-    \item \textbf{Identify Witness:} person, beast, ancestor, household, or landscape itself.
-    \item \textbf{Offer Exchange:} pay 1 Fatigue \emph{or} mark a Promise Timer (4).
-    \item \textbf{Build the Working:} choose effects as normal, but add one Threshold TAG:  
-    \texttt{[WELCOME]}, \texttt{[PASSAGE]}, \texttt{[REMEMBER]}, \texttt{[PRICE]},  
-    \texttt{[UNBIND]}, \texttt{[RELEASE]}, \texttt{[SHELTER]}.
-    \item \textbf{Resolve the Casting:} roll Attribute + Skill normally.
-\end{enumerate}
-
-\noindent
-If witness is present, improve Position by one step.  
-If the threshold is contested, increase DV by +1.
-
-%---------------------------------------------------------
-\subsection*{Promise Timers}
-\label{subsec:promise-timers}
-\index{Timers!Promise}
-
-Many workings create obligations.  
-Represent these with a 4--segment \textbf{Promise Timer }:
+Many workings create obligations. Represent these with a \timer{Promise}{4} or \timer{Promise}{6}.
 
 \begin{itemize}
-    \item Mark when the promise is ignored, deferred, or disrespected.
-    \item When filled, the price comes due---socially, spiritually, or narratively.
+    \item Mark the timer when the promise is ignored, deferred, or disrespected
+    \item When filled, the price comes due---socially, spiritually, or narratively
 \end{itemize}
 
 Examples: sharing grief, tending a grave, protecting a hearth, reconciling rivals.
 
-%---------------------------------------------------------
-\subsection*{Household Disposition}
-\label{subsec:house-disposition}
+\section{VI. Threshold Magic (Social \& Interpersonal)}
 
-Communities and dwellings possess temperament.  
-When entering a new settlement or threshold site, choose or roll:
+Threshold magic is communal, relational, and liminal. It operates where one thing becomes another: doorways, crossings, hearth edges, birthbeds, gravesides, and moments between choices.
+
+\subsection{Core Laws}
+
+\paragraph{Law of Hospitality} You cannot take what you will not feed. Every working requires an offering: comfort, labor, memory, or promise.
+
+\paragraph{Law of Reciprocity} Binding another binds yourself to their outcome. All curses create a \textit{Bond Condition} between caster and target.
+
+\paragraph{Law of Witness} Unseen workings fray. Present witness grants Position +1; casting without witness incurs +1 DV or \textit{Lone Witch} Condition (GM choice).
+
+\subsection{Household Disposition}
+
+Communities and dwellings possess temperament. When entering a new settlement or threshold site, choose or roll:
 
 \begin{description}
-    \item[Hungry:] demands offerings; first working costs +1 Fatigue.
-    \item[Grieving:] magic requires memory or loss narrative.
-    \item[Fearful:] first rite is Desperate Position.
-    \item[Watching:] +1 Effect if the house is fed or soothed.
-    \item[Young:] chaotic outcomes on partials.
-    \item[Old:] weak boons but harsh backlash.
+    \item[Hungry:] demands offerings; first working costs +1 Fatigue
+    \item[Grieving:] magic requires memory or loss narrative
+    \item[Fearful:] first rite is Desperate Position
+    \item[Watching:] +1 Effect if the house is fed or soothed
+    \item[Young:] chaotic outcomes on partials
+    \item[Old:] weak boons but harsh backlash
 \end{description}
 
-\noindent
 Household temperament can change through care, ritual, or story.
 
-%---------------------------------------------------------
-\subsection*{Backlash \& Consequence}
-\label{subsec:threshold-backlash}
+\section{VII. The Craft of the Hedge (Talent)}
 
-Threshold backlash is social or spiritual, not elemental:
+\begin{tcolorbox}[colback=black!3,colframe=black!60,title=Talent: Craft of the Hedge]
+\textbf{Cost:} 4 XP
 
+\textbf{Requirements:} Lore 1+ or Survival 1+; a witch mark (tattoo, scar, or birthmark)
+
+You have learned the small magics of thresholds and edges. You gain:
 \begin{itemize}
-    \item a neighbor bears your price
-    \item a house remembers your slight
-    \item a spirit child appears
-    \item a river rescinds your passage
-    \item someone witnesses what they should not have seen
+    \item Two Hedge Gifts of your choice
+    \item The ability to perform Quick Workings
+    \item Once per session, when you fail a Quick Working roll, you may convert the Miss into a Partial Success by marking 1 Fatigue
 \end{itemize}
-
-\noindent
-GM adjudicates backlash using Outcome Matrix and fiction-first interpretation.
-
-%---------------------------------------------------------
-\subsection*{Threshold Spellwheel}
-\label{subsec:threshold-spellwheel}
-\index{Spellwheel!Threshold}
-
-\noindent
-This wheel reflects rites tied to relationships, boundaries, and dwelling.
-
-\paragraph{Tier I (DV 2--3):}  
-\emph{Bless Hearth, Walk Safely, Bind Reflection}
-
-\paragraph{Tier II (DV 3--4):}  
-\emph{Unmake a Quarrel, Name the Unspoken Grief}
-
-\paragraph{Tier III (DV 4--5):}  
-\emph{Carry My Wound, Unbind a Curse at the Door}
-
-\paragraph{Tier IV (DV 5--6):}  
-\emph{Let No Harm Enter Here, Milk and Salt Guest-Rite}
-
-\paragraph{Tier V (DV 6--7):}  
-\emph{Rewrite the Household's Fate}
-
-%---------------------------------------------------------
-\subsection*{Why Use This System?}
-
-Threshold magic:
-
-\begin{itemize}
-    \item creates social stakes instead of flashy damage
-    \item empowers mediators, healers, and unseen caretakers
-    \item gives witch hunters meaningful antagonism
-    \item treats homes, bedsides, and markets as strategic terrain
-    \item frames magic as ethical practice and communal responsibility
-\end{itemize}
-
-\bigskip
-\noindent
-The greatest workings change not the world, but how a community remembers itself.
-
-%=========================================================
-\section{Threshold Witchcraft: Talent Tree}
-\label{sec:threshold-talents}
-\index{Talents!Threshold Witchcraft}
-
-Threshold talents deepen a character's ability to work with  
-hospitality, reciprocity, witness, and community stakes.
-
-Talents progress in three branches:
-\textbf{Hearth}, \textbf{Passage}, and \textbf{Memory}.
-
-Each branch may be advanced independently.
-
-%---------------------------------------------------------
-\subsection*{Talent Structure}
-
-Unless otherwise stated, these are \textbf{2 XP} talents.
-Prerequisites are listed; all Threshold talents require at least
-\emph{one working performed at a notable threshold} in play.
-
-%---------------------------------------------------------
-\subsection{Hearth Branch --- Protection \& Sustaining}
-\label{subsec:talents-hearth}
-
-\paragraph{Warm Hand (2 XP).}
-\index{Talents!Warm Hand}
-When you tend someone in need (food, comfort, shelter),  
-gain \textbf{+1d} to your next Threshold working in that space.
-
-\paragraph{Cup and Salt (2 XP) --- Prereq: Warm Hand.}
-\index{Talents!Cup and Salt}
-Once per session, declare an area under \textbf{Guest-Rite:}  
-violence suffers \(-1\) Effect; negotiation gains \textbf{+1 Position}.
-
-\paragraph{Hearth's Memory (3 XP) --- Prereq: Cup and Salt.}
-\index{Talents!Hearth's Memory}
-A place you have protected will remember you.  
-Once per session when returning, choose one:
-\begin{itemize}
-  \item Position +1 for scene,
-  \item a clue revealed,
-  \item or hidden harm heals 1.
-\end{itemize}
-
-\paragraph{Keeper of Thresholds (4 XP) --- Prereq: Hearth's Memory.}
-\index{Talents!Keeper of Thresholds}
-You may \textbf{name} a dwelling or crossing as your ward.  
-Once per scene you can:
-\begin{itemize}
-  \item reduce a community timer by 1, or
-  \item upgrade Guest-Rite to \emph{Sanctuary:} no initiations of violence.
-\end{itemize}
-
-%---------------------------------------------------------
-\subsection{Passage Branch --- Movement \& Mediation}
-\label{subsec:talents-passage}
-
-\paragraph{Step Between (2 XP).}
-\index{Talents!Step Between}
-Once per scene, ignore a Position penalty due to contested faith, order,  
-or personal misalignment at a threshold.
-
-\paragraph{Bridge-Maker (3 XP) --- Prereq: Step Between.}
-\index{Talents!Bridge-Maker}
-When mediating between sides at a crossing or doorway,  
-you and one ally gain \textbf{+1d} to social rolls for the scene.
-
-\paragraph{Traveler's Favor (3 XP) --- Prereq: Bridge-Maker.}
-\index{Talents!Traveler's Favor}
-Once per journey (or per session for urban play),  
-treat difficult border or bureaucracy as one step easier (DV --1 or Position +1).
-
-\paragraph{Keeper of Crossroads (4 XP) --- Prereq: Traveler's Favor.}
-\index{Talents!Keeper of Crossroads}
-Once per session, declare a \textbf{Crossroads Binding:}  
-until scene end, no party may leave without naming their choice ---  
-and consequences adjust accordingly.
-
-%---------------------------------------------------------
-\subsection{Memory Branch --- Story, Names, \& Reciprocity}
-\label{subsec:talents-memory}
-
-\paragraph{Soft Witness (2 XP).}
-\index{Talents!Soft Witness}
-You count as witness for your own work.  
-When another watches in respect, you and they both gain \textbf{+1d} for the scene.
-
-\paragraph{Name-Keeper (3 XP) --- Prereq: Soft Witness.}
-\index{Talents!Name-Keeper}
-When you learn a true name, bind it to a memento.  
-Once per session, invoke it to:
-\begin{itemize}
-  \item improve Position +1 with that person or their kin,
-  \item or gain a clue about them.
-\end{itemize}
-
-\paragraph{Debt-Binder (3 XP) --- Prereq: Name-Keeper.}
-\index{Talents!Debt-Binder}
-Once per scene, you may mark or clear \textbf{one segment} of a Promise Timer  
-when you resolve or escalate a conflict through story, hospitality, or grief.
-
-\paragraph{Weaver of Remembering (4 XP) --- Prereq: Debt-Binder.}
-\index{Talents!Weaver of Remembering}
-Once per session, you may:
-\begin{itemize}
-  \item rewrite the social consequence of a working,
-  \item convert backlash into obligation,
-  \item or create a \emph{Legacy Blessing} that gives +1d in a future scene tied to this threshold.
-\end{itemize}
-
-%---------------------------------------------------------
-\subsection*{Capstones (Choose One per Tree)}
-\label{subsec:threshold-capstones}
-
-\paragraph{Hearth Capstone --- House-Mother / House-Father (6 XP).}
-\index{Talents!House-Mother}
-You may \textbf{consecrate} a dwelling or camp:
-\begin{itemize}
-  \item Threshold workings gain +1 Effect within it,
-  \item backlash softens into obligation instead of harm,
-  \item and the house becomes a named NPC with disposition.
-\end{itemize}
-
-\paragraph{Passage Capstone --- Road-Saint (6 XP).}
-\index{Talents!Road-Saint}
-You treat boundaries as your domain.
-Once per scene, declare:
-\begin{itemize}
-  \item safe passage,
-  \item stalled pursuit,
-  \item or a turning of fate (reroll one ally or enemy pool).
-\end{itemize}
-
-\paragraph{Memory Capstone --- Saga-Bearer (6 XP).}
-\index{Talents!Saga-Bearer}
-Your words reshape identity.
-When you speak someone's forgotten truth or name:
-\begin{itemize}
-  \item they become NPC ally for scene, or
-  \item if enemy, they hesitate or falter (Downgrade Harm or Condition by 1).
-\end{itemize}
-
-\noindent
-If you die, the story lingers --- invoke it once to create a guest PC or place blessing.
-
-%---------------------------------------------------------
-\bigskip
-\noindent
-This Talent Tree treats witchcraft as negotiation, care, and  
-narrative leverage --- giving players power in the unseen moments between doors.
-
-
-\section{Witch Patrons}
-
-\subsection*{Lunera, The Silver Quiet}
-
-Among the celestial Patrons, Lunera holds a unique position as the patron of reflection, hidden knowledge, and the mysteries that emerge in twilight hours. She represents the introspective and revelatory aspects of witchcraft, guiding those who seek to understand the deeper truths of existence.
-
-\subsubsection*{Domain and Influence}
-
-Lunera dwells in places where light and shadow meet - crossroads at dusk, moonlit groves, and the threshold between sleeping and waking. Her influence is felt most strongly by witches who specialize in divination, dream magic, and the careful observation of subtle signs and omens.
-
-\subsubsection*{Lunera as a Patron for Witches}
-
-Witches who swear oaths to Lunera gain access to her gifts of insight and revelation, but must navigate the perilous path between knowledge and obsession.
-
-\paragraph{Gift: Moonlit Mirror} 
-Allows the witch to peer beyond surfaces and see hidden truths. When gazing into any reflective surface under moonlight, the witch can observe events occurring in distant locations or gain insight into the true nature of people and objects. The reflection shows not just what is, but what could be or what once was.
-
-\paragraph{Corruption: Shadows Cling} 
-The witch's connection to Lunera causes them to cast two shadows - one representing their current self, and another showing their potential future self. In dim light, both shadows are visible, creating an unsettling presence that unnerves mortals and draws the attention of otherworldly entities. Additionally, the witch's eyes take on a faint silver glimmer in darkness.
-
-\subsubsection*{Lunera's Influence on Witch Covens}
-
-Covens influenced by Lunera often serve as keepers of secrets and seekers of hidden knowledge:
-
-\paragraph{Focus} Divination, dream interpretation, and the revelation of hidden truths.
-
-\paragraph{Coven Practices}
-\begin{itemize}
-    \item \textbf{Mirror Scrying Circles}: Gathering under moonlight to share visions and insights gained through reflective surfaces
-    \item \textbf{Dream Harvesting}: Collecting and interpreting dreams from willing participants to gain communal foresight
-    \item \textbf{Twilight Vigils}: Maintaining watch at crossroads and threshold locations to observe the flow of fate
-\end{itemize}
-
-\subsubsection*{Lunera's Covenant}
-
-When dealing with Lunera, witches must understand her preference for subtle exchanges:
-\begin{itemize}
-    \item A cherished memory, carefully preserved and offered back in altered form
-    \item A secret that would change someone's understanding of their past
-    \item A moment of perfect silence, captured and held until needed
-    \item The ability to see clearly in one specific situation where others remain blind
-\end{itemize}
-
-The true value of Lunera's gifts lies not in immediate power, but in the wisdom to know when and how to use that power.
-
-\subsection*{Ikasha, She Who Sleeps}
-
-Ikasha represents the patient, hidden aspects of magic - the power of latency, potential, and the spaces between actions. As a Patron, she appeals to witches who understand that sometimes the greatest magic lies in waiting, in moving unseen, and in striking at the perfect moment.
-
-\subsubsection*{Domain and Influence}
-
-Ikasha dwells in the quiet moments between heartbeats, in the pause before dawn, and in the stillness that precedes transformation. Her influence is strongest for witches who specialize in stealth, patience, and the manipulation of timing and opportunity.
-
-\subsubsection*{Ikasha as a Patron for Witches}
-
-Witches who swear oaths to Ikasha gain mastery over shadow and timing, but must learn to move through the world as a presence rather than a force.
-
-\paragraph{Gift: Umbral Reservoir} 
-Allows the witch to draw upon a reserve of shadow energy that can be used to enhance stealth, deception, or escape. This energy builds up naturally during periods of inactivity and can be spent to gain temporary advantages in social or physical situations where subtlety is required.
-
-\paragraph{Corruption: Secret Burden} 
-The witch must keep one troubling secret per Tier that weighs heavily on their psyche. This secret cannot be easily forgotten or dismissed, and causes 1 Fatigue whenever the witch actively tries to put it out of mind. The secret often relates to a previous use of Ikasha's power or a truth that the witch has hidden from others.
-
-\subsubsection*{Ikasha's Influence on Witch Covens}
-
-Covens influenced by Ikasha often operate as networks of information gatherers and subtle manipulators:
-
-\paragraph{Focus} Espionage, information gathering, and the careful orchestration of events from behind the scenes.
-
-\paragraph{Coven Practices}
-\begin{itemize}
-    \item \textbf{Shadow Passing}: Teaching techniques for moving through populated areas without being noticed or remembered
-    \item \textbf{Crossroads Watching}: Maintaining observation posts at important junctions to track the movement of significant individuals
-    \item \textbf{Silent Aid}: Providing assistance to allies through indirect means that leave no obvious trace
-\end{itemize}
-
-\subsubsection*{Ikasha's Compact}
-
-When dealing with Ikasha, witches must be prepared for her preference for indirect exchanges:
-\begin{itemize}
-    \item A moment of perfect timing, captured and held for future use
-    \item A secret that can be traded for another, more valuable secret
-    \item The ability to remain unnoticed in one specific location or situation
-    \item A small favor that can be called in at a crucial future moment
-\end{itemize}
-
-Ikasha's power grows through patience and the accumulation of small advantages, making her followers masters of the long game rather than seekers of immediate gratification.
-
-\subsection*{Morag the Hag}
-
-Among the many Patrons that witches might encounter, Morag the Hag holds a special place as both a potential ally and a dangerous influence. Known as the patron of Twilight Bargains and Cruel Transformations, Morag represents the darker aspects of witchcraft - the seductive power of deals that seem too good to be true, and the harsh lessons that come with magical shortcuts.
-
-\subsubsection*{Domain and Influence}
-
-Morag dwells at crossroads, hearth-edges, and liminal spaces where the unwary might stumble into her presence. She offers power that comes with hidden costs, teaching witches that every gift has teeth and every kindness a snare. Her influence is particularly strong among those who deal in forbidden knowledge or seek to bend the natural order.
-
-\subsubsection*{Morag as a Patron for Witches}
-
-Witches who swear oaths to Morag gain access to her unique brand of transformation magic, but must always be wary of her true intentions.
-
-\paragraph{Gift: The Crooked Thread} 
-Allows the witch to bind minor promises in red thread that causes psychological discomfort when broken. The thread appears as a simple red cord but grows warm and tight when the oath is tested. This gift is particularly useful for ensuring compliance from reluctant subjects or creating temporary truces with dangerous entities.
-
-\paragraph{Corruption: Compulsive Bargaining}
-The witch develops an overwhelming urge to extract a "price" whenever value changes hands. This manifests as an inability to witness any exchange - whether monetary, emotional, or social - without attempting to insert themselves into the transaction to gain some advantage. This corruption makes it difficult to maintain normal relationships and can lead to isolation as others learn to avoid the witch's presence during negotiations.
-
-\subsubsection*{Morag's Influence on Witch Covens}
-
-Covens influenced by Morag often operate as networks of information brokers and deal-makers. They specialize in:
-\begin{itemize}
-    \item \textbf{Favor Trading}: Creating complex webs of obligation between different practitioners
-    \item \textbf{Transformation Services}: Offering magical changes to clients, always with hidden consequences
-    \item \textbf{Crossroads Diplomacy}: Mediating disputes between rival magical factions through carefully constructed bargains
-\end{itemize}
-
-\subsubsection*{Morag's Price}
-
-When dealing with Morag, witches must be prepared for her signature style of payment:
-\begin{itemize}
-    \item A memory from childhood, carefully chosen to cause maximum psychological impact
-    \item A small piece of their future - perhaps the first-born child of their eventual lineage
-    \item A secret that would destroy their reputation if revealed
-    \item The ability to feel a specific emotion (joy, trust, love) in certain circumstances
-\end{itemize}
-
-The true cost is often not revealed until much later, when the witch finds themselves bound by obligations they never anticipated.
-\appendix
-
-\section{Magic Without Homework (Player One-Pager)}
-\label{sec:magic-onepager}
-
-\begin{fatebox}[Read-Aloud: What Magic Is]
-Magic in Fate's Edge is \textbf{leverage on stories}. You bend places where reality already cares:
-\textbf{Echo} (what happened), \textbf{Veil} (what's happening), \textbf{Flow} (what wants to happen).
-You never cast into a vacuum---you nudge an edge.
-\end{fatebox}
-
-\subsection*{Three Player Moves}
-\begin{enumerate}[leftmargin=*,label=\arabic*.]
-  \item \textbf{Touch a Threshold (DV 2--4)}: Only if a named threshold frames the scene \emph{and} a timer is in play (chase, parley, collapse). On success, choose one: \emph{Position +1}, \emph{Effect +1}, or \emph{DV --1} for this exchange. On 1s, GM banks SB as normal.
-  \item \textbf{Lean on a Layer (DV 3)}:
-    \begin{itemize}
-      \item \textbf{Echo} --- reveal a relevant fact or prior pattern; gain \emph{Effect +1} for repeating or subverting it.
-      \item \textbf{Veil} --- sharpen the present; clear 1 \emph{Obscurity} or gain \emph{DV --1} once.
-      \item \textbf{Flow} --- steer momentum; \emph{create a 2-tick scene tag} (e.g., Rising Wind, Quiet Crowd).
-    \end{itemize}
-  \item \textbf{Call on a Patron (your engine)}:
-    \begin{itemize}
-      \item \textbf{Invoker (Symbols)} --- prepare a ward/sign; safe, slower, anchor space.
-      \item \textbf{Runekeeper (Rites)} --- define a method; fast, powerful; starts a small \emph{Hunger/Attention} timer.
-      \item \textbf{Caster (Weaves)} --- shape an element; flexible, volatile; 1s tend to splash.
-    \end{itemize}
-\end{enumerate}
-
-\subsection*{Element-Will: Predictable Impact}
-Each element has a steady boon, cost, and backlash. Pick one when your weave matters; Keepers enforce the backlash on 1s.
-\begin{center}\small
-\begin{longtable}{lll}
-\toprule
-\textbf{Element} & \textbf{Boon (choose 1)} & \textbf{Backlash on 1s (GM)} \\
-\midrule
-\textbf{Stone} & Effect +1 \emph{or} DV --1 if braced & \emph{Anchors} you (Position cannot rise next exchange) \\
-\textbf{Air} & Position +1 on approach & \emph{Scatter}: timers split attention or targets drift \\
-\textbf{Fire} & Effect +1 and \emph{fear ping} on minors & \emph{Spread}: create \emph{Stray Flame [2]} \\
-\textbf{Water} & DV --1 on move/control & \emph{Carry}: scene flow shifts, both sides slide \\
-\textbf{Shadow} & Gain \emph{Hidden} on success & \emph{Echo hunger}: GM marks \emph{Attention [1]} \\
-\textbf{Light} & Reveal tag; allies +1 die vs illusions & \emph{Expose}: you lose cover or disguise \\
-\bottomrule
-\end{longtable}
-\end{center}
-
-\subsection*{The Silent Ninth (GM-Only)}
-\textbf{Rule:} Players never declare the Ninth. Keepers may apply a \emph{Void} tag \emph{only as consequence}: remove a support (witness, name, rung). Mechanical effect: cancel one chosen boon \emph{or} remove one scene tag. Never used as a raw damage tool.
-
-\subsection*{Patron Stamps (Pocket Format)}
-Each Patron on one line: \textbf{Gift} (what it does), \textbf{Tell} (how it marks you), \textbf{Obligation Trigger} (what starts the favor timer).
-\begin{itemize}[leftmargin=*,itemsep=2pt]
-  \item \textbf{Lunara} --- \emph{Gift:} see the counter-angle; \emph{Tell:} twin shadows; \emph{Trigger:} invoking mirrors or names.
-  \item \textbf{Inaea} --- \emph{Gift:} lines of sanctuary; \emph{Tell:} dew on threads; \emph{Trigger:} hosting parley/guest-right.
-  \item \textbf{Isoka} --- \emph{Gift:} cut through stalemate; \emph{Tell:} forked tongue-shadow; \emph{Trigger:} forcing true choices.
-  \item \textbf{Pale Shepherd} --- \emph{Gift:} ward/guide the passing; \emph{Tell:} cold breath in bells; \emph{Trigger:} naming a crossing.
-  \item \textbf{Raéyn} --- \emph{Gift:} wind-step/route price; \emph{Tell:} hair lifting in still rooms; \emph{Trigger:} altering a route's tempo.
-  \item \textbf{Thrysos} --- \emph{Gift:} shared courage/flow; \emph{Tell:} sweet-ferment on breath; \emph{Trigger:} sanctifying a cup or floor.
-  \item \textbf{Clockwork Monad} --- \emph{Gift:} method boosts; \emph{Tell:} oil rings; \emph{Trigger:} consecrating a process. 
-\end{itemize}
-\textit{Obligation (Simple Mode):} one \textbf{Favor [4]} per Patron. Fill on big asks; clear with witness/offering or by obeying the Patron's ethic at cost.
-
-\subsection*{Trow and Hags (Usable Etiquette)}
-\textbf{Trow Protocol (3):} \emph{Bread-and-salt under a lifted lamp}, \emph{pay with honest memory}, \emph{threefold witness}.\\
-\emph{Moves:} \textbf{Shadow Step} (treat thresholds as Near), \textbf{Name-Bead Bargain} (DV --1 once if you surrender a recorded name).
-\medskip
-
-\textbf{Hag Protocol (3):} \emph{Name your need plainly}, \emph{accept pain in the price}, \emph{bow to senior sister if present}.\\
-\emph{Moves:} \textbf{Briar Clause} (grant boon; attach a future pain-timer), \textbf{Moon-Tithe} (compel payment by old law unless a better story is witnessed).
-
-\subsection*{Witch-Hunters in Three Steps}
-\textbf{Inspect} (locate the resonance): DV 3---identify layer/tag. \textbf{Isolate} (box or bless): create a \emph{Containment [3]}. \textbf{Invert} (mercy clause): swap a harmful tag for a witnessed alternative. If all three land, \emph{clear one 1} from the next magical roll this scene.
-
-\section{The Witch Hunter}
-\index{character concepts!witch hunter}\index{witch hunter}
-
-\textbf{Concept}: A sanctioned tracker of illicit rites and rogue talents. Part detective, part exorcist, part collector of debts owed to the law.
-
-\textbf{Typical Inspiration}: Inquisitors, occult constables, hedge-wardens, contract witch-finders.
-
-\textbf{Mechanical Foundation}:
-\begin{itemize}
-  \item \textbf{Primary}: Wits 4, Spirit 3
-  \item \textbf{Skills}: Investigation 3, Lore (occult) 2, Melee 2, Insight 1 \index{skills!Investigation}\index{skills!Lore}\index{skills!Melee}\index{skills!Insight}
-  \item \textbf{Talents}: \emph{Witch-Sign Reader} (spot residue of workings), \emph{Cold Iron Practice} (gain +1d when disrupting active magic), \emph{Calm Under Oath} (resist panic, intimidation once/scene) \index{talents!Witch-Sign Reader}\index{talents!Cold Iron Practice}\index{talents!Calm Under Oath}
-  \item \textbf{Assets}: Writ of limited authority (opens doors, closes some), temple archive informant
-  \item \textbf{Affiliation}: Choose one order - Chain-Lanterns, Spirit-Shield, Sum-Abjurers, Break-Reins, Silk/Shed Vigil, or Wake-Judges
-\end{itemize}
-
-\textbf{Play Style}:
-\begin{itemize}
-  \item Tracks leads, reads scenes, corners quarry with paperwork and steel
-  \item Uses Position and leverage in social spaces before blades are drawn
-  \item Treats magic as both \emph{evidence} and \emph{hazard} (\S\ref{ch:magic}) \index{magic!forensics}
-\end{itemize}
-
-\textbf{Development Path}:
-\begin{itemize}
-  \item Specialize in \emph{Baneful Techniques} (counter-rites, bindings)
-  \item Build a network of informants and safe cells (\S\ref{ch:assets-followers})
-  \item Learn one tradition deeply to turn it against itself
-\end{itemize}
-
-\textbf{Story Hooks}:
-\begin{itemize}
-  \item A vanished ledger ties a noble salon to forbidden rites
-  \item A \emph{sanction} arrives with no seal---who really wrote it?
-  \item Your oldest informant begs you to burn a file with your name on it
-\end{itemize}
-
-\begin{tcolorbox}[colback=gray!5!white,colframe=gray!70!black,title=Witch Hunter's Eye,fonttitle=\bfseries]
-Once per session when confronting occult evidence, choose one:
-\begin{itemize}
-  \item \textbf{Pattern Recognition}: Reduce DV by 1 on first investigation roll
-  \item \textbf{Measured Response}: Shift Position one step safer when disrupting active magic
-  \item \textbf{Witness Prepared}: Gain +1d on first social roll when presenting authority
-\end{itemize}
+You may learn additional Hedge Gifts for 2 XP each.
 \end{tcolorbox}
 
-\textbf{Sanction Ledger} [4]: Tracks cases where you've used authority beyond scope. When full, local magical communities become wary of your presence.
+\begin{tcolorbox}[colback=black!3,colframe=black!60,title=Talent: Hedge Gift of the Patron (Optional)]
+\textbf{Cost:} 6 XP
 
-%===============================================================
-\section{Counter-Orders of Communal Magic}
-\index{Orders!Counter-Witch Orders}
-\index{Community Magic}
+\textbf{Requirements:} Craft of the Hedge, Bond to a Patron
 
-Where inquisitions centralize patriarchs, witness, and seal,
-these Orders decentralize, braid, and revert violence
-into care obligations.
+Once per session, when you would use a Hedge Gift, you may instead invoke your Patron's Imbuement. Gain +1 die to all actions tied to your Patron's domain for the scene, but mark +1 Obligation immediately. No action required.
+\end{tcolorbox}
 
-They rarely attack first --- but they refuse enclosure.
-Use them as protectors, subversives, or liberationist rivals.
-%===============================================================
+\section{VIII. Curses as Architecture (GM Tool)}
 
-\subsection{The Hearth-Menders}
-\begin{creature}[Hearth-Menders]
-\tag{ORDER} • \tag{COMMUNITY} • \tag{CARELAW} \\
-\signs{Clay bowls; lullabies sung in harmonics; a red thread around the wrist.} \\
-\etiquette{Share your hunger; name your fear; accept a task before a gift.} \\
-\moves{Turn harm into \emph{owed nourishment}, bind cruelty to \emph{public apology},
-stabilize a working through \emph{shared breath}.} \\
-\strings{Warm Bowl (once per scene: convert harm to comfort),
-Task-Bond (gain help from a stranger you fed), \\
-Red Thread (forgive or bind --- your choice).} \\
-\weaknesses{Isolation --- they lose leverage where no hearth
-or shared labor exists.}
-\end{creature}
-
-\paragraph{Notes}
-Their law is mutual aid: injury obligates repair; gifts obligate labor.
-They terrify inquisitions because they build power without lineage or archive.
-
-\bigskip
-
-%===============================================================
-\subsection{The Green-Mothers" Ring}
-\begin{creature}[Green-Mothers' Ring]
-\tag{ORDER} • \tag{HERB} • \tag{CHORUS} \\
-\signs{Hands dyed sap-green; moss-braids; seedlings given freely.} \\
-\etiquette{Touch earth; ask its permission; plant before you take.} \\
-\moves{\emph{Root Sanctuary} (a clearing becomes safe),
-\emph{Quiet Bloom} (silence the violent),
-\emph{Seed Debt} (if you take, you must tend).} \\
-\strings{Bloom Right (position +1 in wild places),
-Chorus Seed (gain aid from plants), \\
-Mother's Quiet (halt a duel while moss grows underfoot).} \\
-\weaknesses{Ash --- fire scours their vows. In cities, they must bargain for soil.}
-\end{creature}
-
-\paragraph{Notes}
-Witch-hunters frame them as subversive matriarchs.  
-They frame witch-hunters as children who fear gardens.
-
-\bigskip
-
-%===============================================================
-\subsection{The Circle of Salt and Milk}
-\begin{creature}[Circle of Salt and Milk]
-\tag{ORDER} • \tag{PROVISIONS} • \tag{THRESHOLD} \\
-\signs{Salt lines under doors; bowls of milk for ancestors; silver hairpins.} \\
-\etiquette{Eat first; state who you feed; drink last.} \\
-\moves{Lay \emph{threshold contracts} that bind hosts and guests,
-transform curses into \emph{burden sharing},
-\emph{milk-peace} to halt violence at tables.} \\
-\strings{Salt-Right (control a doorway),
-Milk-Bond (turn an enemy into a guest for a scene), \\
-Threshold Ledger (choose who is protected under your roof).} \\
-\weaknesses{Starvation or siege --- they require households and food.}
-\end{creature}
-
-\paragraph{Notes}
-Their law is hospitality --- the most subversive law against hierarchy.
-
-\bigskip
-
-%===============================================================
-\subsection{The Hag-Sisters of the Quiet Well}
-\begin{creature}[Hag-Sisters of the Quiet Well]
-\tag{ORDER} • \tag{SPIRIT} • \tag{DEBTWELL} \\
-\signs{Well-chains; teeth as tokens; voices that speak in triads.} \\
-\etiquette{Speak only truth at the well; name what you want taken; \\
-give something of yourself.} \\
-\moves{\emph{Debt-Dive} (take on someone's pain),
-\emph{Echo Braid} (three choices become one path),
-\emph{Well-Price} (mirrors the harm back to the source).} \\
-\strings{Sister-Bond (three women count as one witness),
-Deep Truth (know who owes whom),
-Quiet Terror (reduce a patriarch to silence for one scene).} \\
-\weaknesses{Dry wells --- without grief or brokenness, they disperse.}
-\end{creature}
-
-\paragraph{Notes}
-Patriarchies hate them because they name the price
-of harm and force men to look at it.
-
-\bigskip
-
-%===============================================================
-\subsection{The Weavers of Unnamed Work}
-\begin{creature}[Weavers of Unnamed Work]
-\tag{ORDER} • \tag{UNSEEN} • \tag{MUTUALITY} \\
-\signs{Unmarked labor; women who are everywhere yet "not there."} \\
-\etiquette{Name the burden no one saw; stitch its thread; leave no signature.} \\
-\moves{Transform ignored labor into \emph{binding obligation},
-undo coercive contracts via \emph{unseen dissent},
-and create \emph{Shadow Safehouses}.} \\
-\strings{Invisible Favor (once per act: evade pursuit as "beneath notice"), \\
-Unpaid Debt (force restitution), \\
-Unweaving (删除 harmful spellwork hidden in legal language).} \\
-\weaknesses{Visibility --- if named or centralized, their power fractures.}
-\end{creature}
-
-\paragraph{Notes}
-Their greatest magic is being overlooked --- until the fabric tears and they reveal who held it together.
-
-\bigskip
-
-%===============================================================
-\subsection{Opposition Doctrine: How They Counter Witch-Hunters}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Witness vs. Hospitality:}  
-        Lanterns need witnesses --- Hearth-Menders make the community unwilling to testify.
-  \item \textbf{Property vs. Provision:}  
-        Patriarchal writ claims children --- Salt-and-Milk circles feed them and bind new loyalties.
-  \item \textbf{Sanction vs. Sanctuary:}  
-        Chain-Lanterns freeze rites --- Green-Mothers shift the battlefield into gardens.
-  \item \textbf{Control vs. Debt Wells:}  
-        Inquisitors price sin --- Hag-Sisters price \emph{harm}.
-  \item \textbf{Visibility vs. Unseen Labor:}  
-        Witch-hunters demand confession --- Weavers undo their contracts quietly.
-\end{itemize}
-
-\bigskip
-
-%===============================================================
-\subsection{GM Use}
-Use these Orders when you need:
-\begin{itemize}[leftmargin=*]
-  \item ground-up resistance instead of noble rebellion
-  \item protection without paperwork
-  \item communal magic vs. hierarchical magic
-  \item subversive justice instead of official justice
-\end{itemize}
-
-They make:
-\begin{itemize}[leftmargin=*]
-  \item excellent \textbf{Patrons} for Runekeepers, Cantors, healers, midwives
-  \item subversive \textbf{allies} for PCs accused of witchcraft
-  \item \textbf{moral counterweights} that force inquisitions to justify themselves
-\end{itemize}
-
-When a witch-hunter enters a scene, one of these Orders should already be there ---  
-feeding, planting, mending, or listening.
-
-% --- Patron: Nimorith, the Grey Benefactor (Absence & Threshold) ---
-
-\section{Nimorith, the Grey Benefactor (Absence \& Threshold)}
-\textit{Trow Patron; also answered by threshold-keepers, archivists of omissions, and oathwrights who work in the space between Said \& Meant.}
-
-\paragraph{Lore.}
-Nimorith dwells in places that almost were---thresholds that shift when unobserved, rooms that measure longer than memory, shadows that fall where no lamp was lit. He does not \emph{arrive}, he is simply the pause you finally notice. Those who bargain with him learn that presence is a luxury, absence a currency, and the space between doors a kingdom unto itself. To serve him is to walk at the corner of sight, to speak in the breath held before truth is told.
+A witch does not curse with a word and a gesture. She \textit{edits} the memory of the world, inserting a rule into the operating system of reality.
 
 \begin{quote}
-"Take what is not there, and you shall have what never was. \\
-The gap is the gift; the missing, the mercy."
+\itshape "Until a bell is rung in your true name, lamps forget to light for you."
 \end{quote}
 
-\paragraph*{Epithets \& Signs.}
-Absent Host; Door-Smoke; Keeper of the Unlit Pipe; Master of the Fifth Step. Signs: pipe that smokes without flame; a hat that drinks lamplight; a grey feather that casts no shadow; panes that reflect halls you have not built.
-
-\paragraph*{Etiquette of Absence.}
-Bread-and-salt beneath a lifted lamp binds courtesy; name the price in a whisper to the witness; do not close a door you did not open; return any mark that points the way. Payment in \emph{honest memory} is preferred.
-
-\paragraph*{Symbol.}
-A duskmark---two opposed threshold glyphs cut in grey wax---bound with a single hair.
-
-\medskip
-
-\paragraph*{Marks \& Gifts (optional boons for devotees).}
+\paragraph{Anatomy of a Curse}
 \begin{itemize}
-  \item \textbf{Shadow Lintel Mark.} Once/scene, step from one witnessed threshold to another within Near; on chill or glare, Position --1. \emph{Key:} bread-and-salt shared within the day.
-  \item \textbf{Witness Void Mark.} When you present a silent witness (lamp held but unlit), gain +1 die to erase, omit, or bypass without notice. \emph{Curse if unkeyed:} others forget what you asked \emph{and} what you offered.
+    \item \textbf{The Rule:} What changes (Veil-edit, bound to a Named anchor)
+    \item \textbf{The Timer:} \timer{Recursion}{6} — ticks when the victim reinforces the story (hiding, refusing witness, denying the curse)
+    \item \textbf{The Counter:} What undoes it (the bell, the name, the threshold)
+    \item \textbf{The SB Menu:} Complications the GM can spend SB on (minor echoes, warped thresholds, layer-slips, Ninth propagation)
 \end{itemize}
 
-\paragraph*{Strings \& Tokens.}
-Gap token (named absence); duskmark writ (paired thresholds); witness bead (records one silence given); errata slip (permits a lesser substitution instead of a lie once/scene).
+\section{IX. Quick Reference}
 
-\medskip
-
-\paragraph*{Rites of Nimorith}
-\emph{Unless noted, rites are Scene-scale and produce subtle, deniable results. If your table uses suits for the Deck of Consequences, suit hints are provided; otherwise treat SB marks as normal SB.}
-
-\paragraph{The Unmeasured Room (Low, 4 XP)} \emph{Scene; Self; Sustain by silence.}\\
-\textbf{Materials:} An inward-opening door; a held breath to three.\\
-\textbf{Effect:} Create one \emph{Gap} token---a specific absence that others ignore (a watcher forgets a latch, a ledger skips a line, a patrol overlooks a side door). You gain +1 die when exploiting this gap. An ally may spend 1 Boon to treat one failed roll as "never happened" (retcon of that action only).\\
-\textbf{Push It:} The gap becomes \emph{contagious}: nearby like-absences echo. Mark +1 SB \emph{(Spades)}.
-
-\paragraph{Borrowed Memory (Low, 5 XP)} \emph{Scene; Touch.}\\
-\textbf{Materials:} A silver thread tied fingertip-to-fingertip; a whispered "I was there."\\
-\textbf{Effect:} Hold another's specific memory as collateral. Gain +1 die on actions grounded in that memory's context. Memory returns slightly out of order unless "paid in full" with a truthful account before witnesses.\\
-\textbf{Push It:} Hold two memories simultaneously; mark +1 \textbf{Obligation} as temporal dissonance builds.
-
-\paragraph{The Missing Line (Standard, 8 XP)} \emph{Scene; Near.}\\
-\textbf{Materials:} A document with space for amendment; a shadowless grey feather.\\
-\textbf{Effect:} Cause one clause, name, or line to vanish from a witnessed text. \emph{DV = complexity/scope.} On success, the erasure is seamless and socially "always so."\\
-\textbf{Push It:} The omission propagates to directly-referenced copies; mark +1 SB \emph{(Diamonds)} as reality adjusts.
-
-\paragraph{Duskmark's Passage \textnormal{[PASSAGE]} (Standard, 7 XP)} \emph{Scene; Zone.}\\
-\textbf{Materials:} Two duskmarks set at twilight; an unlit pipe that smokes by itself.\\
-\textbf{Effect:} Declare safe-conduct between the paired thresholds. Allies gain +2 dice to \textbf{Traverse}; enemies suffer -1 die to intercept within the lane. A counter-witness at either end can block.\\
-\textbf{Push It:} Passage becomes bidirectional for the scene; mark +1 \textbf{Obligation}---the path remembers you.
-
-\paragraph{The Almost-Present Guest \textnormal{[OATH]} (Standard, 9 XP)} \emph{Scene; Near.}\\
-\textbf{Materials:} Bread-and-salt beneath a lifted lamp; threefold witness (mortal / fey / liminal).\\
-\textbf{Effect:} Bind Nimorith to guest-right for \emph{one night} and \emph{one truthful answer}. He cannot speak his own name; answers arrive as silence, gesture, or omission all present can understand.\\
-\textbf{Push It:} Extend hospitality to the entire party; mark +2 \textbf{Obligation} as the house begins to forget its owners.
-
-\paragraph{Veil-Bending (High, 12 XP)} \emph{Scene; Zone.}\\
-\textbf{Materials:} A room with four doors; a mirror that reflects only doorways.\\
-\textbf{Effect:} Reverse directions within the space; quiet a name until dawn; align exits with intent rather than map. Zone gains the \textbf{[VEIL]} tag: +2 dice to misdirection; -2 dice to direct confrontation.\\
-\textbf{Push It:} Make it \emph{permanent} for this site; start \textbf{Threshold Drift [6]} as the place migrates from the world.\\
-\textbf{Obligation:} 7-segment timer.
-
-\paragraph{The Grey Inheritance \textnormal{[WARD]} (High, 14 XP)} \emph{Extended; Touch.}\\
-\textbf{Materials:} A will in disappearing ink; a hat that drinks lamplight; a true-name spoken in negative ("what you are not").\\
-\textbf{Effect:} Transfer ownership of an \emph{absence}: void a debt, erase an obligation, negate a presence. Target gains the benefit but suffers -1 die to direct confrontation or plain declaration for the duration of the ward.\\
-\textbf{Push It:} The inheritance binds to bloodline or faction; mark +2 \textbf{Obligation} as ancestral gaps widen.\\
-\textbf{Obligation:} 8-segment timer.
-
-\medskip
-
-\paragraph*{Nimorith's Corruption (Devotion) Track}
-\begin{longtable}{>{\raggedright\arraybackslash}p{1.2cm} p{5.3cm} p{5.3cm}}
+\begin{table}[H]
+\centering
+\begin{tabularx}{0.95\linewidth}{@{}lXXX@{}}
 \toprule
-\textbf{Tier} & \textbf{Benefit} & \textbf{Cost / Quirk}\\
+\textbf{What} & \textbf{When} & \textbf{Roll} & \textbf{Price} \\
 \midrule
-1 & \textbf{Shadow-Step.} Once/scene, move between witnessed thresholds in Near. & \textbf{Almost-Presence.} In crowds you slip notice; begin Position --1 when trying to stand out.\\
+Hedge Gift & Once per scene/session & No roll & None (limited scope) \\
+Quick Working & Single action & Attribute + Skill vs \dv{2-4} & Shadow, Shame, or Identity \\
+Full Ritual & Significant Time (hours) & Spirit + Lore vs \dv{3-6} & Memory, offering, or service \\
+Curse & Scene or longer & GM sets DV & Identity (mandatory for Thorns) \\
 \midrule
-2 & \textbf{Gap-Sense.} +1 die to \textbf{Notice} when something vital is missing or altered. & \textbf{Blind Spot.} You may miss the obvious present while hunting absences.\\
-\midrule
-3 & \textbf{Echo-Accounting.} Once/session, ensure a vow "takes" by finding its last true witness. & \textbf{Witness Weight.} Maintain three active witness tokens or suffer --1 die to social rolls.\\
-\midrule
-4 & \textbf{Flow-Nudge.} Once/scene, open the exit you \emph{meant}; close the boastful boast. & \textbf{Direction Drift.} Maps resist you; --1 die to Navigation without a living guide.\\
-\midrule
-5 & \textbf{Absence Artisan.} Once/session, create a beneficial absence (forgotten debt, skipped patrol, missing line). & \textbf{Obligation Void.} Others forget promises owed to you; --1 die to enforce agreements.\\
-\midrule
-6+ & \textbf{Grey Dominion.} Once/session, declare an area "properly absent": allies +2 dice to stealth/deception; foes --2 dice to detection/truth. & \textbf{Reality Thinning.} Mark +2 \textbf{Obligation}; risk permanent Harm from existing half-out-of-world.\\
+\multicolumn{4}{l}{\textbf{Identity Strain Track:} [~] [~] [~] [~] — at 4, test Spirit+Resolve or lose something.} \\
+\multicolumn{4}{l}{\textbf{Promise Timer:} [~] [~] [~] [~] / [~] [~] [~] [~] [~] [~] — when full, price comes due.} \\
 \bottomrule
-\end{longtable}
+\end{tabularx}
+\end{table}
 
-\paragraph*{GM Moves (tone \& pressure).}
-A door is now where a wall was; a line is gone from the writ everyone \emph{remembers} signing; a silent witness appears and the loudest voice loses breath; the shortest path demands a price left unspoken.
+\section*{Keeper's Quick Questions}
 
-\section{The Unbroken Chord}
-
-\subsection{Overview}
-
-The \textbf{Daughters of the Unspoken}---also called the \textbf{Grey Watchers}, \textbf{Pale Midwens}, or simply \textbf{the Chain}---are a mendicant coven bound to the \textbf{High Mother}, a threshold entity sustained by accumulated debt and subtle sacrifice. They appear as midwives, hospice nurses, and deathbed witnesses, offering the mercy of warm hands and the comfort of final words.
-
-They seem harmless. Mostly.
-
-Their magic requires no codex of vellum or bound spirit. Their flesh is the thread; their blood, the dye; their sisters, the loom. They weave the living---binding them in obligations so fine they are invisible until they pull taut.
-
-\subsection{The High Mother}
-
-The High Mother is not a Hag, though the Hags remember when she sat among them. She was Sister Alva, once---Weaver of the Third Spindle---who bound herself so thoroughly to the work of witnessing wrongs that she became their repository. Now she sits in the \textbf{House Without Doors}, neither alive nor dead, sustained by the sacrifices her Daughters feed into the Cord.
-
-She may be a lich. She may be the current \textbf{Vessel}: a mortal woman elected by the coven's triad, granted godlike power through centuries of accumulated obligation, who will burn out in a decade or three and be replaced. The Daughters smile when asked which is true. The Cord does not distinguish between memory and flesh.
-
-\begin{mechanic}[Patron Features]
-\textbf{Access:} Runekeepers and Daughters of the Cord (requires \textsc{Codex} or \textsc{Grey Thread} talent).
-
-\textbf{Obligation:} Standard capacity (Spirit + Presence). When Obligation fills, the High Mother claims a debt immediately:
-\begin{itemize}[noitemsep]
-\item Mark \textsc{Critical Harm} (Level 3) as your body rejects its own blood
-\item Lose one permanent Attribute point (woven into the Cord)
-\item Surrender your Name: Woven into the Cord; you become \textsc{Unnamed} to all outside the coven
-\end{itemize}
-\end{mechanic}
-
-\begin{sidebar}[\textbf{The Vessel:}]
-Every generation, the coven selects a woman---usually a Widow who has outlived her grief---to become the High Mother's anchor. Through the \textit{Rite of the Unbroken Chord}, accumulated Obligation flows into her. She becomes Tier IV-V in power but carries a \textsc{Death Timer } that ticks each time she grants a miracle. When it fills, she is woven into the Cord, and a new Vessel is elected from among the Daughters.
-\end{sidebar}
-
-\subsection{The Flesh-Weave}
-
-Where other witches require a \textsc{Thiasos} and bound \textsc{Codex}, the Daughters have traded mortality for immediate access. The High Mother grants \textbf{Runekeeper} capabilities without the standard familiar or written tome---their flesh serves as both.
-
-\ssububsection{Flesh-Knots}
-
-Daughters tattoo Rites onto their skin using ink mixed with ash from former Vessels and blood-milk from the Cord. These tattoos writhe when the High Mother speaks through them, moving like stitches tightening beneath the skin.
-
-\begin{itemize}[noitemsep]
-\item \textbf{No Codex Required:} Daughters learn Rites by receiving them as tattoos from a senior sister. The Rite is stored in their \textsc{Body} attribute rather than a book.
-\item \textbf{Activation:} To invoke a Rite, the Daughter traces the tattoo with a Thorn-Pin (drawing blood). This marks \textbf{1 Fatigue} (the pain of opening the skin) and the standard Obligation cost.
-\item \textbf{The Hollowed:} Those who bind themselves to the High Mother do not receive a familiar. Instead, they are given a \textbf{Hollowed}---a child (usually male) or animal that has been sacrificed and returned, lacking a heart, with eyes like spilled milk that gaze into souls. The Hollowed does not speak but witnesses all magic, counting as the required threefold presence. Others somehow don't notice that the Hollowed is different, except for a feeling of \textit{unease} when they are near.
+\begin{itemize}
+    \item Which layer am I touching---Echo, Veil, or Flow?
+    \item What threshold frames the scene (door, ford, oath, mask, ledger, ferry)?
+    \item Which Name anchors---and which must be loosened?
+    \item Where does the Ninth already bite---and who benefits if it closes?
 \end{itemize}
 
-\subsubsection{The Heartless}
-
-Standard Runekeepers may learn these Rites through a \textbf{Flesh-Codex}---a tattooed skin-flog taken from a dead Daughter (treat as a Major Asset [\xp{8}], requires the \textsc{Codex} talent). The skin must be kept moist and warm; if it dries, the Rites scream.
-
-Using a flog requires the caster to press their own blood into the tattoos. On failure, they suffer the \textsc{Price Due} of the original donor---often a sudden compulsion to remove their own fingers or an inability to taste sweetness.
-
-\subsection{The Three Offices}
-
-The coven operates in triads. Unlike Morag's pattern, their offices are functions that rotate or deepen, marked by specific mutilations:
-
-\subsubsection{Keeper of the Door (Weaver)}
-
-Sets the terms. She is the one who knocks, the midwife who enters, the nurse who tends. She specializes in \textsc{Hearth} and \textsc{Passage} magic.
-
-\textit{Sacrifice:} She must never be alone. She must always be witnessed by at least one other, or she begins to fade into the Echo (\textsc{Almost-Presence}), her face slipping from mirrors.
-
-\subsubsection{Keeper of the Name (Widow)}
-
-Remembers. She holds the coven's collective memory in her flesh. She can recall any sacrifice made by any Daughter by tasting her own blood.
-
-\textit{Sacrifice:} She must keep fresh the memory of one dead thing. If she forgets, she loses a finger. The finger is added to the Cord.
-
-\subsubsection{Keeper of the Price (Winter)}
-
-Collects. She determines when debts come due and carries the Thorn-Pins. She is the only one allowed to lie to outsiders.
-
-\textit{Sacrifice:} She cannot feel heat. Fire burns her without her noticing until she is ash.
-
-\begin{mechanic}[Communal Bonds]
-When a Daughter performs a \textsc{Threshold Working} with at least one other Daughter in \textsc{Near} range:
-\begin{itemize}[noitemsep]
-\item \textbf{Share Obligation:} Split the Obligation cost of a Rite between them (round up)
-\item \textbf{Witness Each Other:} Count as having \textsc{Soft Witness} automatically; the Hollowed gaze upon each other with milk-white eyes
-\item \textbf{Communal Fatigue:} Convert \textsc{Harm} $\rightarrow$ \textsc{Fatigue} (Monk ability) and donate that Fatigue to another Daughter, who stores it as a \textbf{Knot} wound into her Cord (appearing as a fresh scar or weeping tattoo)
-\end{itemize}
-\end{mechanic}
-
-\subsection{The Subtle Sacrifice}
-
-The Daughters do not slaughter goats on altars. They require domestic sacrifices---acts of violence so small they are dismissed as accidents or cruelty, yet sufficient to feed the Cord.
-
-\begin{itemize}[noitemsep]
-\item \textbf{The Missing Child:} Taken to the House Without Doors. The child is hollowed out, a heartless familiar created. The parents forget they existed (\textsc{Un-Naming})---the child was never born, the pregnancy ended in stillness, the memory becomes a gap in the wallpaper.
-\item \textbf{The Heartless:} An animal preserved without its heart, kept in salt and shadow. The heart beats in the Kettle, revealing household secrets to the Widow. The creature's eyes remain open, seeing souls.
-\item \textbf{The Unspoken Grief:} At a deathbed, the Daughter convinces the dying to forget their greatest love. The memory is trapped in a \textsc{Name-bead} threaded onto the Cord. The dying smile peacefully, having forgotten why they were sad, while their grief feeds the Weave.
-\item \textbf{The Stolen Shadow:} Collected on moonless nights with a silver needle. The victim becomes \textsc{Almost-Present} over months---unable to hold property, unable to father children, fading from ledgers and memories until they are simply gone.
-\end{itemize}
-
-\textit{Mechanics:} Performing a sacrifice clears \textbf{1 segment} of Obligation or reduces a Rite's cost by 1 (minimum 1). Each requires \textsc{Intricate Description} and leaves physical evidence: a patch of colder air, a bloodspot that will not wash out, a sound of weeping from empty rooms.
-
-\subsection{Rites of the High Mother}
-
-These Rites are available to Runekeepers sworn to the High Mother and to Daughters of the Cord (who use flesh-knots). All involve \textsc{Echo}, \textsc{Veil}, or \textsc{Threshold} tags.
-
-\subsubsection{Rite of the Milk Teeth}
-
-\textbf{Tier:} Low \\
-\textbf{Components:} A child's shed tooth, a drop of milk, whispered promise \\
-\textbf{Obligation:} 1 segment \\
-\textbf{Tags:} [BIND] [ECHO] [VEIL]
-
-\textsc{Bind Reflection.} The target's reflection is trapped in a mirror or pool. For one scene, the target acts at \textsc{Position -1} (disoriented, seeing double) while the reflection (an Echo) reports their movements to the caster. The reflection smiles when the target does not.
-
-\textit{Thematic:} Used to spy on abusive fathers or faithless husbands. The tooth is usually stolen from beneath a pillow, replaced with a bead of compressed ash.
-
-\subsubsection{Rite of the Unseen Midwife}
-
-\textbf{Tier:} Standard \\
-\textbf{Components:} Umbilical cord (any mammal), three knots, a doorway threshold \\
-\textbf{Obligation:} 2 segments \\
-\textbf{Tags:} [PASSAGE] [THRESHOLD] [BIND]
-
-\textsc{Threshold Birth.} Create a temporary passage through a barrier by treating it as a birthing canal. The "door" bleeds when opened, thick and dark. Anyone passing through leaves a \textsc{Red Thread} attached to their shadow that the caster can follow.
-
-\textit{Thematic:} Used to enter sealed rooms, escape prisons, or "deliver" assassins into bedchambers. The bloodstain remains for three days and smells of milk and iron.
-
-\subsubsection{Rite of the Kettle's Memory}
-
-\textbf{Tier:} Standard \\
-\textbf{Components:} Kettle of water, personal item of target, fire \\
-\textbf{Obligation:} 2 segments \\
-\textbf{Tags:} [ECHO] [SCRY] [WITNESS]
-
-\textsc{Echo Communion.} By boiling the item, witness events from the target's past tied to that object. Ask three questions about the target's history. For each question, the target feels a sudden chill and knows someone is watching (though not who). The water turns brackish and must be poured at a crossroads or the caster suffers \textsc{Recursion} (the questions asked are asked of her in dreams, endlessly).
-
-\subsubsection{Rite of the Blood Consecration}
-
-\textbf{Tier:} High \\
-\textbf{Components:} The caster's blood (take 1 Harm), or a preserved heart, guest-right invocation \\
-\textbf{Obligation:} 3 segments \\
-\textbf{Tags:} [Hearth-Binding] [WARD] [CURSE]
-
-\textsc{Corrupted Hospitality.} Sanctify a home: grant \textsc{Position +1} to all inside and create an invisible \textsc{Hospitality Toll [4]}. Guests who accept hospitality without offering a truth or grief begin a \textsc{Price Due [4]} timer. When filled, they suffer a \textsc{Curse} chosen by the caster (e.g., "lamps forget to light for him," "milk curdles in his mouth").
-
-\textit{Note:} The Position bonus applies only to Daughters of the Cord; others merely trigger the trap.
-
-\subsubsection{Rite of the Unnamed}
-
-\textbf{Tier:} High \\
-\textbf{Components:} True name written in the caster's blood (1 Harm), a grey feather, silence for three days \\
-\textbf{Obligation:} 4 segments \\
-\textbf{Tags:} [NINTH] [VOID] [UNBIND]
-
-\textsc{Un-Naming.} Remove the target's name from the Veil (current reality) for one week. They cannot be remembered by anyone who knew them, cannot swear binding oaths, and cannot own property. Records fade. At week's end, the caster may speak their name thrice to return them, or they remain \textsc{Unnamed}---becoming a Trow-like entity who wanders thresholds, hollow-eyed and seeking debts to pay.
-
-\textit{Restriction:} Requires the High Mother's direct permission (manifests as a whisper in dreams, or blood in the morning milk).
-
-\subsection{Daughter of the Cord (Character Option)}
-
-\subsubsection{Requirements}
-
-\begin{itemize}[noitemsep]
-\item \textbf{Attributes:} Spirit 3+, Body 2+
-\item \textbf{Skills:} Lore (Thresholds) 1+, Subterfuge 1+
-\item \textbf{Talent:} \textsc{Disciplined Body} (Monk) [\xp{3}]
-\item \textbf{Talent:} \textsc{Grey Thread} [\xp{4}] (see below)
-\end{itemize}
-
-\subsubsection{Talent: Grey Thread}
-
-\textsc{Minor Talent} (4 XP) \\
-\textit{Requires: Disciplined Body, Spirit 3+}
-
-You are bound to the High Mother's Cord. Your flesh accepts the tattooed Rites; your blood activates them.
-
-You may perform \textbf{Rites} of the High Mother without a Codex or Thiasos. Instead, you receive a \textbf{Hollowed}---a heartless familiar with eyes like spilled milk that gaze into souls. It witnesses your magic and counts as the threefold presence required by Hag Law. The Hollowed never speaks, but sometimes weeps blood when debts are near.
-
-\subsubsection{Advanced Talents}
-
-\textbf{Cord of Flesh} (Major, 8 XP) \\
-\textit{Requires: Grey Thread, Body 3+}
-
-Your body stores memories and debts. When you convert \textsc{Harm} $\rightarrow$ \textsc{Fatigue} (Monk ability), you may store up to \textsc{Body} rating points of Fatigue as \textbf{Chained Knots}, appearing uninjured (as fresh scars, weeping tattoos, or coiled threads beneath the skin). A Daughter has until the sunset after the next to perform a sacrifice or take 2 \textsc{Harm}.
-
-Additionally, you may accept \textbf{Obligation} from another Daughter, storing it in your flesh. While carrying another's debt, you are \textsc{Desperate} in all social situations with outsiders---the weight shows in your eyes.
-
-\textbf{The Open Palm, Closed Cord} (Major, 8 XP) \\
-\textit{Requires: Grey Thread, Melee 2+}
-
-Your unarmed strikes or subtle touch (\textsc{DV +1}) carry \textsc{Widow's Measure}. Instead of dealing Harm, you may mark a \textsc{Promise Timer [4]} on the target---they owe the Cord a truth or grief. If they already owe the coven, you may activate that debt: they suffer \textsc{Position -1} (the weight of obligation) for the scene, or you gain \textsc{Effect +1} against them.
-
-\textbf{Milk and Ashes} (Major, 9 XP) \\
-\textit{Requires: Cord of Flesh}
-
-When you offer hospitality (food, healing, shelter) to an enemy or stranger, create a \textsc{Threshold Contract} without their knowledge. They gain the \textsc{Hospiced} condition: cannot lie to you (\textsc{Veil -2}), and any Harm they deal to you is stored as \textsc{Fatigue} on themselves (the debt turns inward).
-
-\textbf{The Unnamed Strike} (Prestige, 12 XP) \\
-\textit{Requires: Tier III+, Open Palm Closed Cord}
-
-Unarmed attack vs. Spirit+Resolve. On hit: Target loses their \textbf{True Name} for one scene. They cannot be targeted by beneficial magic, cannot speak binding oaths, and are \textsc{Invisible to Fate}. You may record this Name in your flesh (appearing as a fresh scar woven into the Cord) to \textsc{Command} them once (\textsc{DV 4}).
-
-\textbf{The High Mother's Shadow} (Epic, 18 XP) \\
-\textit{Requires: Tier IV+, Unnamed Strike, Cord of Flesh}
-
-You become Cord-blooded. You no longer age. Fatigue converts to Obligation automatically (you are never tired, only indebted). You may spend \textbf{Obligation segments} as if they were \textbf{Boons} (1 segment = 1 Boon) for rolls involving silence, memory, or binding.
-
-When you would die, the High Mother claims your body; you rise as a \textsc{Hollow} under her control for a number of days equal to your current Obligation segments. If you have no Obligation, you die permanently---the Cord has no use for you.
-
-\section{Integration Notes}
-
-\textbf{Witch-Hunter Interaction:} Chain-Lantern Inquisitors cannot easily prosecute Daughters. They possess no \textsc{Codex} to seize, and their flesh-sigils appear as mere tattoos or birthmarks. The Lanterns must use \textsc{Sum-Abjurers} to prove debts exist, or \textsc{Silk Vigil} to untangle the social bonds. Often, they simply disappear---\textit{dealt with} by the coven before they can testify.
-
-\textbf{Patron Rivalry:} The High Mother is opposed by \textbf{The Witness} (truth/revelation) and \textbf{The Oath of Flame}---they hate her because she binds secrets rather than reveals them, and her oaths are unbreakable webs rather than burning vows. When a Daughter and a Witness-binder occupy the same scene, both suffer \textsc{Position -1} to magic---revelation and archival cannot coexist. The Cord also has a tense rivalry with \textbf{Morag} and her covens.
-
-\textbf{The Fear:} She represents the fear that \textit{care is a trap}. The nurse who holds your hand while you die is recording your last words for blackmail. The midwife who delivers your child takes a tooth for her collection. The debt you owe for kindness will be collected by your grandchildren, who will never know why their inheritance is empty.
-
-\section{Rituals of the Cord}
-
-Unlike the \textbf{Rites} granted by the High Mother (which bind reality through obligation), \textbf{Rituals} are secular workings---procedures of blood and breath that manipulate the stored Fatigue of the Cord without divine sanction. They require no Hollowed witness, generate no \textsc{Obligation} for the Patron, and operate through \textbf{Craft (Apothecary)} or \textbf{Lore (Thresholds)}.
-
-\subsection{The Loom of Affliction}
-
-When a Daughter has stored \textbf{Knots} (Fatigue held in her flesh via \textsc{Cord of Flesh}) and cannot---or will not---sacrifice to clear them before sunset, she may perform a \textbf{Spreading}. This ritual unweaves the Knots from her body and translates them into \textbf{disease}, encoding debt as pathology.
-
-\subsubsection{Requirements}
-
-The ritual requires \textbf{Significant Time} (1 hour per Knot) and the presence of four elements:
-
-\begin{itemize}[noitemsep] \item \textbf{Blood:} Drawn from her own Cord-scars or Thorn-Pin punctures \item \textbf{Breath:} Expelled into water or onto cloth as the final seal \item \textbf{Water:} A bowl, rain-collecting cloth, or standing pool to receive the working \item \textbf{Fire:} A candle, hearth-coal, or lamp nearby to "heat" the humors \end{itemize}
-
-The Daughter prepares a \textbf{Vector}: a cloth soaked in blood-milk, a breath-prayer into water, or a length of her hair braided with feverfew and passed through flame. She then unweaves the Knots from her flesh-cord, transferring the stored Fatigue into the Vector. The Knots become a \textbf{Disease Timer } attached to the Vector.
-
-\subsubsection{Disease Progression}
-
-\begin{center} \begin{tabular}{@{}clp{8cm}@{}} \toprule \textbf{Knots} & \textbf{The Affliction} & \textbf{Effect} \ \midrule 1 & \textbf{The Shaking Ague} & Infected gains \textsc{Fatigue} 1 per day; cannot rest fully until cured. Visible tremors, teeth-chattering, milky sweat. \ \addlinespace 2 & \textbf{The Red Sweat} & Infected marks \textsc{Fatigue} 1 per scene; all social rolls at \textsc{Desperate} (fever, delirium, visible distress). Skin flushes with spider-web patterns. \ \addlinespace 3 & \textbf{The Milk-Pox} (or \textbf{Weeping Pox}) & Infected takes \textsc{Harm} 1 per day; skin weeps milky fluid (obvious witch-sign). On death, may rise as \textsc{Hollowed} instead of dying. \ \bottomrule \end{tabular} \end{center}
-
-\textit{Resistance:} Infected may roll \textbf{Spirit + Endurance} vs. \textsc{DV} 3 (1 Knot), 4 (2 Knots), or 5 (3 Knots) to resist initial infection. Once infected, the Disease Timer ticks automatically.
-
-\subsubsection{Transmission Vectors}
-
-The Vector must be introduced to the victim through domestic care:
-
-\begin{itemize}[noitemsep] \item \textbf{The Cloth:} A bandage applied to wounds, or a pillow pressed to the fevered \item \textbf{The Milk:} Blood-milk added to fresh dairy (the classic "poisoned" nourishment) \item \textbf{The Linen:} Sheets washed and returned "fresh" by the Daughter \item \textbf{The Breath:} A healing prayer whispered into the mouth of the sleeping \end{itemize}
-
-\subsubsection{Cure and Extraction}
-
-The disease is \textbf{not} cured by conventional medicine. It is \textbf{Obligation made flesh}, and persists until:
-
-\begin{enumerate}[noitemsep] \item \textbf{Transfer:} The Daughter touches the infected, draws the Knot back into her own flesh (clearing their disease but loading her own track), then spreads it to another host (often a prisoner, animal, or rival).
-
-\item \textbf{Sacrifice:} The infected must perform a \textbf{Subtle Sacrifice}---forgetting a loved one, surrendering a True Name, or surrendering a shadow---sufficient to clear the Knots that fuel the disease. The Daughter "nurses" them through this extraction, appearing to heal them while actually harvesting their debt. \end{enumerate}
-
-\begin{sidebar}[\textbf{The Horror of Care}] Because Daughters are already midwives, nurses, and hospice workers, they are \textit{the only ones who can safely tend the sick they create}. This creates a protection racket: \textit{"The fever burns, yes. I can ease it. But you owe the Cord a truth, and your shadow looks heavy. Let me take your grief, and the fever will break."} \end{sidebar}
-
-\subsubsection{The Risk of Solitude}
-
-If a Daughter performs a Spreading while \textbf{unwitnessed} (alone with the patient, no other Sister or Hollowed present), she risks \textbf{infection herself}. The Knots, unobserved by the coven's witness, fray and enter her own bloodstream.
-
-\textit{Mechanic:} Roll \textbf{Body + Resolve} vs. \textsc{DV} 4. On failure, she immediately contracts the disease she was spreading, and cannot clear it via normal sacrifice---it must be transferred to another or cured by a witness from the Chain.
-
-\subsubsection{Counter-Play}
-
-\begin{itemize}[noitemsep] \item \textbf{Fire:} Burning the Vector destroys the Knot instantly, releasing a \textsc{Miasma} (treat as \textsc{Area} hazard: all present take \textsc{Fatigue} 1). \item \textbf{The Witness:} A character with \textsc{The Witness} patron can "see" the Knot in the blood---diagnosing the disease as supernatural and forcing the Daughter to speak the \textsc{Said and Meant} (revealing she is the source). \item \textbf{Quarantine:} The Cord hates quarantine; it prevents the necessary movement of care. If a town is walled off, the Daughter inside must consume her own Knots or die. \end{itemize}
-
-\subsection*{Sunset Over the Black River}
-\textit{What the confession did not say.}
-
-\begin{quote}\small
-\textit{The ink was fresh. The thread was grey. The river did not wait.}
-\end{quote}
-
-Bryn’s thumb brushed sweat from Aris’ temple. The skin was paper-thin over bone, mapped with old scars like healed cracks in dry earth. “Your time is soon, mother,” Bryn said, voice flat as a stone. “Don’t worry. I’ll do my duty. I’ll take your last breath. Your debt to the Cord will be paid.”
-
-Aris’ eyes flickered—just a shadow crossing water—and she turned her head. Not fear. Sadness. Deep and quiet, like a well long drained. “Help me up,” she whispered. “I want to see the sunset over the Black River.”
-
-Bryn shifted her weight, ready to lift. They moved slow, Aris leaning hard on Bryn’s shoulder, each step a small surrender. The Cord’s path wound through knee-high grass, silent except for the rasp of Aris’ breath and the distant cry of a lone crow. Bryn kept her hands loose at her sides, ready to steady or support. No words came. The Cord’s weight against her collarbone was a familiar pressure—steady, expected.
-
-At the river’s edge, Aris stopped. She didn’t look at Bryn. Her gaze fixed on the water, where the sun bled gold into the valley’s green folds. “I tried,” Aris said, voice thin as old thread. “Several times. To escape. Every time… they brought me back.” A pause. The wind stirred the reeds. “You told them each time.”
-
-Bryn’s throat tightened. She hadn’t meant for Aris to know. Not like this. “The Cord requires honesty,” she said. “Secrets weaken the weave.”
-
-Aris didn’t nod. Just sighed—a sound like fabric tearing—and fell silent. They stood shoulder to shoulder, watching the light thin to amber, then rose. The river whispered over stones, indifferent.
-
-Aris finally spoke, soft as a sigh. “I don’t want to go to the Cord. The House Without Doors. Child… I have no friends there.” Her hand lifted, trembling, to wipe her cheek. Came away wet. “Everything I ever wanted… everything… is right here.”
-
-Bryn’s jaw locked. She’d said those words to dying women a hundred times. Duty was the only warmth left. “You know the rules, Mama. And no tears. They’re… inefficient.” Her voice sounded thin even to her own ears. She kept her hands unclenched at her sides, nails digging into palms.
-
-Aris turned her face fully toward her. The sunset caught the tears tracking through the dust on her cheeks. “You were always a good daughter,” she said. Her thumb brushed Bryn’s knuckle—barely there, gone before Bryn could flinch. “And… more besides. I know the rules. And I have earned my tears.”
-
-Bryn swallowed. The Cord felt tighter, a live thing against her throat. “A breath, or a death, mother. The Cord demands. Nature chooses.”
-
-Aris’ eyes were suddenly sharp, ancient in their weariness. “No, Bryn.” Her voice dropped to a blade’s edge. “No tears. \textit{And I choose}.” Then she wasn’t leaning. She was falling.
-
-Bryn’s arms jerked out—too late, too weak—to catch air. Aris vanished over the edge. The river swallowed the sound of her fall before it could finish.
-
-Bryn crashed to her knees. Stone bit through her robes. She pressed her palms flat to the earth, head down, and tried to break. Tried to let the grief crack her open like rotten wood. Nothing came. No sound. No wet heat on her cheeks. Just the hollow press of her own ribs, and the Cord—tight, insistent—pulsing once, twice, like a second heartbeat where hers should have been.
-
-She stayed there, knuckles white in the dirt, waiting for tears that would not come. The Cord held her silent. The river kept singing. The sun dipped below the hills, and the light went gray.
-
-\begin{flushright}
-\textit{— Lerris: “The river does not speak. The Cord does not weep. I have read this page a hundred times. It does not get easier.”}
-\end{flushright}
+\paragraph{Remember.} Spend complications (Story Beats) like fate tugging the scene toward the story with the most weight---then let good witness (and player action) change which story that is. In this world, belief, craft, and consequence braid into law; witchcraft is the art of tying knots that hold without choking.
+
+\vspace{1em}
+\noindent\textit{"The hedge is what keeps the wolves from the flock. I am the one who tends the hedge."}
+\hfill --- The Grey Wanderer
 
 \end{document}
-
