@@ -42,6 +42,7 @@ def file_contains_pattern(file_path: Path, pattern: str) -> bool:
 
 def detect_engine(texfile: Path) -> str:
     """Determine LaTeX engine to use."""
+    # Check for LATEX_ENGINE environment variable and set default if not present
     if os.environ.get("LATEX_ENGINE"):
         engine = os.environ["LATEX_ENGINE"]
         if shutil.which(engine):
@@ -49,6 +50,10 @@ def detect_engine(texfile: Path) -> str:
             return engine
         else:
             print(f"⚠️ LATEX_ENGINE='{engine}' not found; falling back to auto-detection.")
+    else:
+        # Set LATEX_ENGINE to lualatex if not already set
+        os.environ["LATEX_ENGINE"] = "lualatex"
+        print(f"LATEX_ENGINE not set, defaulting to: lualatex")
 
     # Check for TeXShop directive
     if file_contains_pattern(texfile, r'%!TEX TS-program *= *lualatex'):
