@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 fix_markup.py – Convert Markdown-style formatting to LaTeX commands.
-Converts **bold** to \textbf{bold} and *italic* to \textit{italic}.
-Handles escaped asterisks properly.
+Converts **bold** to \\textbf{bold} and *italic* to \\textit{italic}.
+Handles escaped asterisks properly WITHOUT touching LaTeX command syntax.
 """
 
 import sys
@@ -11,18 +11,18 @@ import argparse
 from pathlib import Path
 
 def convert_markdown_to_latex(text):
-    """Convert Markdown bold/italic to LaTeX commands."""
-    # Protect escaped asterisks
+    """Convert Markdown bold/italic to LaTeX commands while preserving LaTeX syntax."""
+    
+    # Step 1: Protect escaped asterisks
     text = text.replace(r'\*', '__ESCAPED_ASTERISK__')
     
-    # Convert bold **text** (non-greedy, not nested)
-    text = re.sub(r'\*\*([^*]+?)\*\*', r'\\textbf{\1}', text)
+    # Step 2: Convert Markdown bold **text** (not preceded by backslash)
+    text = re.sub(r'(?<!\\)\*\*([^*\n]+?)\*\*', r'\\textbf{\1}', text)
     
-    # Convert italic *text* (non-greedy, not matching bold patterns)
-    # Using lookarounds to avoid matching inside bold
-    text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'\\textit{\1}', text)
+    # Step 3: Convert Markdown italic *text* (not preceded by backslash)
+    text = re.sub(r'(?<!\\)(?<!\*)\*([^*\n]+?)\*(?!\*)', r'\\textit{\1}', text)
     
-    # Restore escaped asterisks
+    # Step 4: Restore escaped asterisks
     text = text.replace('__ESCAPED_ASTERISK__', r'\*')
     
     return text
@@ -41,12 +41,18 @@ def fix_file(input_path, output_path=None, in_place=False, debug=False):
             if debug:
                 print(f"  Wrote to {output_path}")
         elif in_place:
+            if args and hasattr(args, 'backup') and args.backup:
+                backup_path = input_path.with_suffix(input_path.suffix + '.bak')
+                import shutil
+                shutil.copy2(input_path, backup_path)
+                if debug:
+                    print(f"  Created backup: {backup_path}")
+            
             with open(input_path, 'w', encoding='utf-8') as f:
                 f.write(converted)
             if debug:
                 print(f"  Updated {input_path} in place")
         else:
-            # Just print to stdout
             print(converted)
         
         return True
@@ -57,7 +63,13 @@ def fix_file(input_path, output_path=None, in_place=False, debug=False):
         return False
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert Markdown markup to LaTeX")
+    # Use raw string for any string containing backslashes
+    parser = argparse.ArgumentParser(
+        description=(
+            "Convert Markdown markup to LaTeX while preserving LaTeX syntax"
+        ),
+        epilog=r"Preserves: \section*, \begin{itemize}[leftmargin=*], etc."
+    )
     parser.add_argument("input", help="Input .tex file to process")
     parser.add_argument("-o", "--output", help="Output file (default: stdout)")
     parser.add_argument("-i", "--in-place", action="store_true", 
@@ -75,16 +87,45 @@ def main():
         print(f"Error: {input_path} not found", file=sys.stderr)
         sys.exit(1)
     
-    if args.backup and args.in_place:
-        backup_path = input_path.with_suffix(input_path.suffix + '.bak')
-        if args.debug:
-            print(f"  Creating backup: {backup_path}")
-        import shutil
-        shutil.copy2(input_path, backup_path)
-    
     output_path = Path(args.output) if args.output else None
     
-    success = fix_file(input_path, output_path, args.in_place, args.debug)
+    def process_file():
+        try:
+            with open(input_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            converted = convert_markdown_to_latex(content)
+            
+            if output_path:
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write(converted)
+                if args.debug:
+                    print(f"  Wrote to {output_path}")
+            elif args.in_place:
+                if args.backup:
+                    backup_path = input_path.with_suffix(input_path.suffix + '.bak')
+                    import shutil
+                    shutil.copy2(input_path, backup_path)
+                    if args.debug:
+                        print(f"  Created backup: {backup_path}")
+                
+                with open(input_path, 'w', encoding='utf-8') as f:
+                    f.write(converted)
+                if args.debug:
+                    print(f"  Updated {input_path} in place")
+            else:
+                print(converted)
+            
+            return True
+            
+        except Exception as e:
+            if args.debug:
+                print(f"  Error processing {input_path}: {e}", file=sys.stderr)
+                import traceback
+                traceback.print_exc()
+            return False
+    
+    success = process_file()
     sys.exit(0 if success else 1)
 
 if __name__ == "__main__":

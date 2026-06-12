@@ -37,19 +37,59 @@ def get_git_root():
         sys.exit("Not inside a git repository.")
     return Path(out.strip())
 
-def compile_one(doc, tools_py, git_root, debug=False):
-    """Compile a single document; return (name, success, section)."""
+def fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug=False):
+    """
+    Run fix_markup.py on a single .tex file to convert Markdown markup to LaTeX.
+    Returns True if successful, False otherwise.
+    """
+    if not tex_file_path.exists():
+        if debug:
+            print(f"⚠️ Warning: {tex_file_path} not found, skipping fix_markup")
+        return True  # Don't fail if file doesn't exist (compile_latex.py will handle it)
+    
+    cmd = [str(fix_markup_py), str(tex_file_path)]
+    if debug:
+        cmd.append("--debug")  # Assuming fix_markup.py supports --debug flag
+    
+    ret, stdout, stderr = run_cmd(cmd, cwd=tex_file_path.parent, capture=True, silent=not debug)
+    
+    if ret != 0:
+        if debug:
+            print(f"❌ fix_markup.py failed on {tex_file_path.name}")
+            if stderr:
+                print(f"   Error: {stderr}")
+        return False
+    
+    if debug:
+        print(f"✅ Ran fix_markup.py on {tex_file_path.name}")
+    return True
+
+def compile_one(doc, tools_py, fix_markup_py, git_root, debug=False):
+    """
+    Compile a single document; return (name, success, section).
+    First runs fix_markup.py on the .tex file, then compiles.
+    """
     name = doc["name"]
     section = doc.get("section", "other")
     rel_path = Path(doc["path"])
     tex_file = doc["tex"]
     out_name = doc["output"]
     full_path = git_root / rel_path
-
+    tex_file_path = full_path / tex_file
+    
+    # Step 1: Run fix_markup.py on the .tex file
+    if debug:
+        print(f"  🔧 Running fix_markup on {name}: {tex_file}")
+    
+    fix_success = fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug)
+    if not fix_success:
+        return (name, False, section)
+    
+    # Step 2: Compile the LaTeX document
     cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
     if debug:
         cmd.append("-d")
-
+    
     ret, _, _ = run_cmd(cmd, cwd=full_path, capture=True, silent=True)
     return (name, ret == 0, section)
 
@@ -64,6 +104,8 @@ def main():
     parser.add_argument("-b", "--build", type=str, default="kcaetd",
                         help="Build sections: a (adventures), c (core), e (expansions), t (travel), d (design). "
                              "e.g., -b act")
+    parser.add_argument("--skip-fix", action="store_true",
+                        help="Skip running fix_markup.py on .tex files")
     args = parser.parse_args()
 
     debug = args.debug
@@ -71,6 +113,8 @@ def main():
     if jobs == 0:
         import os
         jobs = os.cpu_count() or 4
+    
+    skip_fix = args.skip_fix
 
     # ------------------------------------------------------------
     #  Section handling – now includes 't' for travel
@@ -94,6 +138,12 @@ def main():
     tools_py = git_root / "tools" / "compile_latex.py"
     if not tools_py.is_file():
         sys.exit(f"❌ compile_latex.py not found at {tools_py}")
+    
+    fix_markup_py = git_root / "tools" / "fix_markup.py"
+    if not skip_fix and not fix_markup_py.is_file():
+        print(f"⚠️ Warning: fix_markup.py not found at {fix_markup_py}")
+        print("   Continuing without markup fixing...")
+        skip_fix = True
 
     config_path = git_root / "build_config.toml"
 
@@ -129,7 +179,10 @@ def main():
             continue
         (build_base / sec).mkdir(parents=True, exist_ok=True)
 
-    print(f"🔨 Building sections: {', '.join(selected_sections)} with {jobs} parallel job(s)\n")
+    print(f"🔨 Building sections: {', '.join(selected_sections)} with {jobs} parallel job(s)")
+    if not skip_fix:
+        print(f"📝 Running fix_markup.py on all .tex files before compilation")
+    print()
 
     failures = []
     success_count = 0
@@ -144,7 +197,7 @@ def main():
             # Immediately show that we started this document
             print(f"Building {name}")
             sys.stdout.flush()
-            future = executor.submit(compile_one, doc, tools_py, git_root, debug)
+            future = executor.submit(compile_one, doc, tools_py, fix_markup_py, git_root, debug)
             future_to_name[future] = name
 
         # As each future completes, print a blank line then the result.
@@ -183,7 +236,6 @@ def main():
             build_base / "expansions",
             build_base / "travel",
             build_base / "design",
-
         ]
         for build_dir in build_dirs:
             if not build_dir.is_dir():
