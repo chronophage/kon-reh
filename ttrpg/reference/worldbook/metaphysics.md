@@ -679,7 +679,7 @@ The Lethai-thora's presence in Thepyrgos becomes both **exile and mission** - th
 - **Inaea** (Mercy, Hearth) - The protector of what should continue, the nurturer of civilization
 - **Isoka** (Serpents, Change/Shedding) - The enforcer of necessary transformation, the agent of renewal
 
-### The Clock work Demon
+### The Clock Work Demon
 This entity represents **unchecked technological/civilizational growth**:
 - **Clockwork Monad Patron** and its Iterative Evolution are manifestations of it.
 - A force that, if allowed to fully emerge, would **consume all existence**

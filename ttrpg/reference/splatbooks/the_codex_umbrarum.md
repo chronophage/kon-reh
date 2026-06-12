@@ -131,7 +131,7 @@ This expansion introduces Runekeepers, where pacts and rites bind practitioners 
     *   **Patron Obligation Timer :** 6 Segments. (SB) relate to "Diamonds" (magical disturbance, the sea's full attention) or "Clubs" (resources consumed, the "cost" of the tide turning elsewhere affects allies).
     *   **Patron Attention:** Raéyn's judgment is absolute. Major attention might mean the Warlock becomes a permanent weather anomaly, attracting storms wherever they go, or they must undertake a dangerous journey by sea as penance for disturbing natural balance.
 
-**6. The Clock work Demon (Archetypal Force of Forbidden Technology & Entropy)**
+**6. The Clock Work Demon (Archetypal Force of Forbidden Technology & Entropy)**
 *   **Flavor:** Power over gears, mechanisms, and the inevitable decay of all things, including the flesh. Brings forbidden knowledge at the cost of humanity.
 *   **Rite: "Wind the Gears of the Proscribed" (Cost: 9 XP)**
     *   **Materials:** A broken piece of mundane technology, a gear tooth from the Thiasos (if it's a clockwork familiar) or a drop of the Warlock's blood mixed with oil.
