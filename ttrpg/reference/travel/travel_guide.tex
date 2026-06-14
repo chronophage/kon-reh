@@ -1,21 +1,21 @@
 % ============================================================
-% Fate's Edge --- Clean Preamble (pdflatex safe)
+% Fate's Edge −−− Clean Preamble (pdflatex safe)
 % ============================================================
 
 \documentclass[11pt,letterpaper,twoside]{book}
-% ---------- Encoding, fonts, micro-typography ----------
+% −−−−−−−−−− Encoding, fonts, micro−typography −−−−−−−−−−
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[final]{microtype}
 
-% ---------- Page geometry ----------
+% −−−−−−−−−− Page geometry −−−−−−−−−−
 \usepackage[letterpaper,margin=1in]{geometry}
 
-% ---------- Math & symbols ----------
+% −−−−−−−−−− Math & symbols −−−−−−−−−−
 \usepackage{amsmath,amssymb,mathtools}
 
-% ---------- Colors, graphics, layout ----------
+% −−−−−−−−−− Colors, graphics, layout −−−−−−−−−−
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
 \usepackage[most]{tcolorbox}
@@ -25,7 +25,7 @@
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 \usetikzlibrary{calc,shadows.blur,decorations.pathmorphing}
 
-% ---------- Tables ----------
+% −−−−−−−−−− Tables −−−−−−−−−−
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{array}
@@ -34,107 +34,107 @@
 \usepackage{makecell}
 \usepackage{longtable}
 
-% ---------- Lists ----------
+% −−−−−−−−−− Lists −−−−−−−−−−
 \usepackage{enumitem}
 \setlist{topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
 \setlist[description]{style=nextline,leftmargin=2.2em,labelsep=0.6em}
 
-% ---------- Hyperlinks & references ----------
+% −−−−−−−−−− Hyperlinks & references −−−−−−−−−−
 \usepackage{hyperref}
-\hypersetup{
+ℎypersetup{
   colorlinks=true,
   linkcolor=[rgb]{0.10,0.25,0.55},
   citecolor=[rgb]{0.10,0.45,0.25},
   urlcolor=[rgb]{0.55,0.10,0.10},
   pdfauthor={Fate's Edge},
-  pdftitle={Fate's Edge --- Travel Guide and World Book},
+  pdftitle={Fate's Edge −−− Travel Guide and World Book},
   pdfcreator={LaTeX}
 }
 \usepackage{bookmark}
 \usepackage[nameinlink,noabbrev,capitalise]{cleveref}
 
-% ---------- Indexing ----------
+% −−−−−−−−−− Indexing −−−−−−−−−−
 \usepackage{imakeidx}
 \makeindex
 
 % Inline "print + index" helper
-\newcommand{\indexterm}[2][]{%
+≠wcommand{∈dexterm}[2][]{%
   \textit{#2}%
-  \if\relax\detokenize{#1}\relax\index{#2}\else\index{#1}\fi
+  ℹf↔ax\detokenize{#1}↔ax∈dex{#2}\else∈dex{#1}\fi
 }
 
-% ---------- Table helpers & house style ----------
+% −−−−−−−−−− Table helpers & house style −−−−−−−−−−
 \renewcommand{\arraystretch}{1.15}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
+≠wcolumntype{Y}{>{\raggedright\arraybackslash}X}
+≠wcolumntype{C}{>{¢ering\arraybackslash}X}
 \definecolor{FeRow}{HTML}{F5F7FA}
-\newcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
-\newcommand{\feTableEnd}{\rowcolors{2}{}{}}
+≠wcommand{\feTableStart}{\rowcolors{2}{FeRow}{white}\small}
+≠wcommand{\feTableEnd}{\rowcolors{2}{}{}}
 
-% ---------- Small conveniences ----------
-\newcommand{\textrarr}{\ensuremath{\rightarrow}}
-\newcommand{\textlarr}{\ensuremath{\leftarrow}}
-\newcommand{\textdarr}{\ensuremath{\downarrow}}
-\newcommand{\beat}{\ensuremath{\triangleright}\,}
-\newcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
-\newcommand{\Tag}[1]{\texttt{[#1]}}
+% −−−−−−−−−− Small conveniences −−−−−−−−−−
+≠wcommand{\textrarr}{\ensuremath{→}}
+≠wcommand{\textlarr}{\ensuremath{←}}
+≠wcommand{\textdarr}{\ensuremath{↓}}
+≠wcommand{\beat}{\ensuremath{▹} }
+≠wcommand{\fullsquare}{\raisebox{0.2ex}{\rule{0.9ex}{0.9ex}}}
+≠wcommand{\Tag}[1]{\texttt{[#1]}}
 
 % ============================================================
 % Branding & Metadata (single source of truth)
 % ============================================================
-\usepackage{etoolbox} % for \ifdefempty, \ifdefstring
+\usepackage{etoolbox} % for ℹfdefempty, ℹfdefstring
 
 % Brand palette (define once)
-\definecolor{fePrimary}{HTML}{0D1B2A}   % deep blue-black
+\definecolor{fePrimary}{HTML}{0D1B2A}   % deep blue−black
 \definecolor{feAccent}{HTML}{6FFFE9}    % teal accent
-\definecolor{feInk}{HTML}{101418}       % near-black
+\definecolor{feInk}{HTML}{101418}       % near−black
 \definecolor{fePaper}{HTML}{F7F7F7}     % light paper
 
 % Metadata variables + setters
-\newcommand\feTitle{Fate's Edge}
-\newcommand\feSubtitle{Comprehensive Resource Guide}
-\newcommand\feTagline{}
-\newcommand\feVersion{}
-\newcommand\fePublisher{}
-\newcommand\feCoverArt{} % optional path
+≠wcommand\feTitle{Fate's Edge}
+≠wcommand\feSubtitle{Comprehensive Resource Guide}
+≠wcommand\feTagline{}
+≠wcommand\feVersion{}
+≠wcommand\fePublisher{}
+≠wcommand\feCoverArt{} % optional path
 
-\newcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
-\newcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
-\newcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
-\newcommand{\feSetVersion}[1]{\renewcommand\feVersion and World Book{#1}}
-\newcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
-\newcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
+≠wcommand{\feSetTitle}[1]{\renewcommand\feTitle{#1}}
+≠wcommand{\feSetSubtitle}[1]{\renewcommand\feSubtitle{#1}}
+≠wcommand{\feSetTagline}[1]{\renewcommand\feTagline{#1}}
+≠wcommand{\feSetVersion}[1]{\renewcommand\feVersion and World Book{#1}}
+≠wcommand{\feSetPublisher}[1]{\renewcommand\fePublisher{#1}}
+≠wcommand{\feSetCoverArt}[1]{\renewcommand\feCoverArt{#1}}
 
 % Text shadow helper (4 args: dx, dy, color, text)
-\newcommand{\textshadow}[4]{%
+≠wcommand{\textshadow}[4]{%
   \begingroup
-    \rlap{\raisebox{#2}{\hspace*{#1}\textcolor{#3}{#4}}}#4%
+    \rlap{\raisebox{#2}{ℎspace*{#1}\textcolor{#3}{#4}}}#4%
   \endgroup
 }
-% Light small-caps tracking
-\newcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
+% Light small−caps tracking
+≠wcommand{\FEsc}[1]{\textls[30]{\textsc{#1}}}
 
 % =========================
 % Basic Title Page
 % =========================
-\newcommand{\feTitlePage}{%
+≠wcommand{\feTitlePage}{%
   \begin{titlepage}
-    \centering
+    ¢ering
     \vspace*{3cm}
     
     {\Huge\bfseries Fate's Edge \par}
     \vspace{1cm}
-    {\LARGE Comprehensive Resource Guide \par}
+    {ŁARGE Comprehensive Resource Guide \par}
     \vspace{0.5cm}
-    {\large \itshape Narrative-First Roleplaying System \par}
+    {łarge ℹtshape Narrative−First Roleplaying System \par}
     
     \vfill
     
-    {\large Version 1.0 \par}
+    {łarge Version 1.0 \par}
     \vspace{0.2cm}
-    {\large \today \par}
+    {łarge →day \par}
     \vspace{1cm}
-    {\large \textsc{Nicholas A. Gasper}\par}
+    {łarge \textsc{Nicholas A. Gasper}\par}
     
   \end{titlepage}
 }
@@ -145,21 +145,21 @@
 
 \section{Core Travel Procedure}
 
-For each leg of a journey, draw 3--4 cards using the decks for your destination and controlling authority.
+For each leg of a journey, draw 3−−4 cards using the decks for your destination and controlling authority.
 
 \begin{itemize}
-\item Spade from the destination deck: sets the scene (place).
-\item Heart from the destination deck: introduces the local actor or faction.
-\item Club from the Wilds (general hazards) or destination (if strongly policed): brings pressure.
-\item Diamond from the authority that gates the route: papers, escorts, rights, or exceptions.
+ℹtem Spade from the destination deck: sets the scene (place).
+ℹtem Heart from the destination deck: introduces the local actor or faction.
+ℹtem Club from the Wilds (general hazards) or destination (if strongly policed): brings pressure.
+ℹtem Diamond from the authority that gates the route: papers, escorts, rights, or exceptions.
 \end{itemize}
 
 Set a travel timer by the highest rank:
 \begin{itemize}
-\item 2--5 $\Rightarrow$ 4 segments
-\item 6--10 $\Rightarrow$ 6 segments
-\item J/Q/K $\Rightarrow$ 8 segments
-\item A $\Rightarrow$ 10 segments
+ℹtem 2−−5 $⇒$ 4 segments
+ℹtem 6−−10 $⇒$ 6 segments
+ℹtem J/Q/K $⇒$ 8 segments
+ℹtem A $⇒$ 10 segments
 \end{itemize}
 
 On success, advance to the next leg; on failure, mark delay, debt, or diversion and resolve a consequence in the fiction.
@@ -170,10 +170,10 @@ On success, advance to the next leg; on failure, mark delay, debt, or diversion 
 (Amaranthine/Dolmis/Aberderrin). If Theona or Valewood 9s show up anywhere in the seed, add an omission or taboo to the leg (a missing step, an unsaid name).
 
 \subsection{Passes Underways}
-(Aeler). Any A may convert a surface route to an under-route. Diamond from Aeler always codifies outcomes---no roll---for sealed doors, breath time, and escorted segments.
+(Aeler). Any A may convert a surface route to an under−route. Diamond from Aeler always codifies outcomes−−−no roll−−−for sealed doors, breath time, and escorted segments.
 
 \subsection{Rivers}
-Bridges, booms, and law in Ecktoria/Viterra; reed-mazes and bell-lines in Mistlands/Linn waters.
+Bridges, booms, and law in Ecktoria/Viterra; reed−mazes and bell−lines in Mistlands/Linn waters.
 
 \subsection{Frontier Blends}
 When origin and destination disagree on law, draw two Diamonds (one from each law) and choose which you will be judged by at the end of the leg.
@@ -181,12 +181,12 @@ When origin and destination disagree on law, draw two Diamonds (one from each la
 \section{Regional Routes}
 
 \subsection{Amaranthine Coastway}
-Kahfagia $\rightarrow$ Ecktoria $\rightarrow$ Acasia $\rightarrow$ Marcott (Vhasia) $\rightarrow$ Fairport (Viterra).
+Kahfagia $→$ Ecktoria $→$ Acasia $→$ Marcott (Vhasia) $→$ Fairport (Viterra).
 
 \begin{itemize}
-\item Draw Spade+Heart from the port you are entering.
-\item Draw Club from the Wilds (gales, quarantine, harbor booms).
-\item Draw Diamond from the port's deck (permits, berths), or Kahfagia if convoy/lantern law applies.
+ℹtem Draw Spade+Heart from the port you are entering.
+ℹtem Draw Club from the Wilds (gales, quarantine, harbor booms).
+ℹtem Draw Diamond from the port's deck (permits, berths), or Kahfagia if convoy/lantern law applies.
 \end{itemize}
 
 Note: Silkstrand is Acasia's sole metropolis and a major trading hub; even land caravans risk the marches to reach it.
@@ -195,164 +195,164 @@ Note: Silkstrand is Acasia's sole metropolis and a major trading hub; even land 
 Thepyrgos controls the hinge between seas.
 
 \begin{itemize}
-\item Draw Spade+Heart and Club from Thepyrgos (stairs, boom, synod).
-\item Draw Diamond from Thepyrgos (harbor pass, crane allotment).
-\item Switch to Dolmis/Amaranthine modules once the boom is lowered.
+ℹtem Draw Spade+Heart and Club from Thepyrgos (stairs, boom, synod).
+ℹtem Draw Diamond from Thepyrgos (harbor pass, crane allotment).
+ℹtem Switch to Dolmis/Amaranthine modules once the boom is lowered.
 \end{itemize}
 
 \subsection{Dolmis Circuits}
-Fairport (Viterra) $\rightarrow$ Theona (Three Greens) $\rightarrow$ Ubral fjords $\rightarrow$ Aelinnel west shore $\rightarrow$ Zakov (north coast).
+Fairport (Viterra) $→$ Theona (Three Greens) $→$ Ubral fjords $→$ Aelinnel west shore $→$ Zakov (north coast).
 
 \begin{itemize}
-\item Spade+Heart from destination; Club from Linn or the Wilds; Diamond from Theona when island custom matters.
-\item Zakov: Draw Spade+Heart from Zakov deck; Club from Zakov or Linn; Diamond from Zakov (harbor-green, corsair charter).
+ℹtem Spade+Heart from destination; Club from Linn or the Wilds; Diamond from Theona when island custom matters.
+ℹtem Zakov: Draw Spade+Heart from Zakov deck; Club from Zakov or Linn; Diamond from Zakov (harbor−green, corsair charter).
 \end{itemize}
 
 \subsection{Aelerian Passes Underways}
-Vhasia/Viterra/Ubral south slopes $\rightarrow$ Aeler gates $\rightarrow$ Mistlands.
+Vhasia/Viterra/Ubral south slopes $→$ Aeler gates $→$ Mistlands.
 
 \begin{itemize}
-\item Spade+Heart and Club from Aeler; Diamond from Aeler (Underway pass, Key-Writ, Breath time).
+ℹtem Spade+Heart and Club from Aeler; Diamond from Aeler (Underway pass, Key−Writ, Breath time).
 \end{itemize}
 
 \subsection{Shadow Corridors}
-Thin Shore (Valewood east coast): risky misted corridor north--south toward Zakov.
+Thin Shore (Valewood east coast): risky misted corridor north−−south toward Zakov.
 
 \begin{itemize}
-\item Spade from Valewood, Heart from Mistlands (or Valewood), Club from Mistlands (wraiths, bell-line failures), Diamond from either Mistlands (Ward-salt, Lantern Writ) or Valewood (Way-cord, Truce-bough) depending on which law you invoke.
-\item Rule of 9s: any 9 in the seed adds an omission.
+ℹtem Spade from Valewood, Heart from Mistlands (or Valewood), Club from Mistlands (wraiths, bell−line failures), Diamond from either Mistlands (Ward−salt, Lantern Writ) or Valewood (Way−cord, Truce−bough) depending on which law you invoke.
+ℹtem Rule of 9s: any 9 in the seed adds an omission.
 \end{itemize}
 
-Green Gate hops (Aelinnel): tide-timed arches.
+Green Gate hops (Aelinnel): tide−timed arches.
 
 \begin{itemize}
-\item Spade+Club from Aelinnel (tides, geasa), Diamond from Aelinnel (Tide-path Key, Host-rights).
+ℹtem Spade+Club from Aelinnel (tides, geasa), Diamond from Aelinnel (Tide−path Key, Host−rights).
 \end{itemize}
 
 \subsection{River Roads}
-Belworth: forms the boundary between Vhasia and Viterra. Twin ports at the mouth (Marcott and Fairport); at mid-reach Tarlington Falls requires lift/portage up to the plateau town. The Lence joins here from Vhasia. Use Viterra for east-bank audits/bridges, Vhasia for west-bank politics.
+Belworth: forms the boundary between Vhasia and Viterra. Twin ports at the mouth (Marcott and Fairport); at mid−reach Tarlington Falls requires lift/portage up to the plateau town. The Lence joins here from Vhasia. Use Viterra for east−bank audits/bridges, Vhasia for west−bank politics.
 
-Yloka: raids run down from the north into the Aberderrin and Dolmis---overlay Linn Clubs and draw destination for Spade+Heart.
+Yloka: raids run down from the north into the Aberderrin and Dolmis−−−overlay Linn Clubs and draw destination for Spade+Heart.
 
 Acasian rivers: hazardous but profitable approaches to Silkstrand; use Acasia Clubs (feuds/levies/curse) and Diamonds (condotta, bridge rights).
 
 \subsection{Steppe Frontiers}
-Ykrul $\leftrightarrow$ Vilikari $\leftrightarrow$ Ecktoria/Acasia borders $\leftrightarrow$ Black Banner territories.
+Ykrul $↔$ Vilikari $↔$ Ecktoria/Acasia borders $↔$ Black Banner territories.
 
 \begin{itemize}
-\item Spade from the road you ride (Wolf Road or Foedus Stone), Heart from the counterpart (envoys, comitatus), Club from Wilds or frontier decks (rasputitsa, hostage protocol, foedus recall), Diamond from either Ykrul (paiza, remounts) or Vilikari (foedus seal, bench-right).
-\item Black Banner: Draw Spade from Ykrul/Vilikari decks (shared territory), Heart from Black Banner, Club from Wilds or frontier decks, Diamond from Ykrul/Vilikari/Black Banner.
+ℹtem Spade from the road you ride (Wolf Road or Foedus Stone), Heart from the counterpart (envoys, comitatus), Club from Wilds or frontier decks (rasputitsa, hostage protocol, foedus recall), Diamond from either Ykrul (paiza, remounts) or Vilikari (foedus seal, bench−right).
+ℹtem Black Banner: Draw Spade from Ykrul/Vilikari decks (shared territory), Heart from Black Banner, Club from Wilds or frontier decks, Diamond from Ykrul/Vilikari/Black Banner.
 \end{itemize}
 
 \section{Gateways Control Points}
 
 \begin{table}[htbp]
-\centering
+¢ering
 \begin{tabular}{llll}
-\toprule
+⊤rule
 \textbf{Gate} & \textbf{Deck} & \textbf{Diamond Source} & \textbf{Typical Leverage} \\
-\midrule
-Kassamira (Kahfagia) & Kahfagia & Kahfagia & Convoy letter; lantern-law warrant; pilotage token \\
-Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority; coin-house credit; procession permit \\
+∣rule
+Kassamira (Kahfagia) & Kahfagia & Kahfagia & Convoy letter; lantern−law warrant; pilotage token \\
+Ecktoria Capital Port & Ecktoria & Ecktoria & Berth priority; coin−house credit; procession permit \\
 Silkstrand & Acasia & Acasia & Exchange floor; condotta; watergate priority \\
 Marcott & Vhasia & Vhasia & Letters patent; safeconduct; fairground precedence \\
 Fairport & Viterra & Viterra & Customs seal; ferry priority; Dawn escort \\
 Tarlington (plateau lift) Falls & Viterra & Viterra & Lift priority; bridge/portage pass; County Thing ruling \\
 Thepyrgos (boom) & Thepyrgos & Thepyrgos & Harbor pass; crane allotment; Synod indulgence \\
-High-Mist Pass & Aeler & Aeler & Underway pass; Key-Writ; Breath time allotment \\
-Payden's Port & Mistlands & Mistlands & Lantern writ; ward-salt; wraith indemnity \\
-Thin Shore (Valewood) & Valewood & Valewood/Mistlands & Way-cord; dew-mirror; lantern writ \\
-Green Gate (Aelinnel) & Aelinnel & Aelinnel & Tide-path key; host-right bough; salt license \\
-Ubral Passes & Ubral & Aeler/Ubral & Vurim pass-ring; hill-fort shelter writ; guide's braid \\
-Thing-holm (Linn) & Linn & Linn & Thing ruling; harbor-green; escort writ \\
+High−Mist Pass & Aeler & Aeler & Underway pass; Key−Writ; Breath time allotment \\
+Payden's Port & Mistlands & Mistlands & Lantern writ; ward−salt; wraith indemnity \\
+Thin Shore (Valewood) & Valewood & Valewood/Mistlands & Way−cord; dew−mirror; lantern writ \\
+Green Gate (Aelinnel) & Aelinnel & Aelinnel & Tide−path key; host−right bough; salt license \\
+Ubral Passes & Ubral & Aeler/Ubral & Vurim pass−ring; hill−fort shelter writ; guide's braid \\
+Thing−holm (Linn) & Linn & Linn & Thing ruling; harbor−green; escort writ \\
 Foedus Stone (March) & Vilikari & Vilikari/Ykrul & Foedus renewal; remount allotment; hostage treaty \\
-Zakov Roadstead & Zakov & Zakov & Harbor-green chit; corsair charter; pilot token \\
-Black Banner Camps & Black Banner & Black Banner/Ykrul/Vilikari & Safe-conduct; remount chit; clan truce \\
-\bottomrule
+Zakov Roadstead & Zakov & Zakov & Harbor−green chit; corsair charter; pilot token \\
+Black Banner Camps & Black Banner & Black Banner/Ykrul/Vilikari & Safe−conduct; remount chit; clan truce \\
+⊥tomrule
 \end{tabular}
-\caption{Gateway Control Points}
+∩tion{Gateway Control Points}
 \end{table}
 
 % =======================
 % ZAKOV OVERLAY + ITINERARY
 % =======================
 
-\section{Overlay: Gatekeepers (Zakov Roadstead \& Harbour Quarters)}
-Draw \textbf{one} micro-card each time you \emph{enter}, \emph{shift wharfs}, or \emph{depart} Zakov. Combine with the normal seed.
+\section{Overlay: Gatekeepers (Zakov Roadstead & Harbour Quarters)}
+Draw \textbf{one} micro−card each time you \emph{enter}, \emph{shift wharfs}, or \emph{depart} Zakov. Combine with the normal seed.
 
-\begin{tcolorbox}[enhanced,breakable,sharp corners,boxrule=.6pt,title={Zakov Gatekeepers Micro-Cards (draw 1)}]
+\begin{tcolorbox}[enhanced,breakable,sharp corners,boxrule=.6pt,title={Zakov Gatekeepers Micro−Cards (draw 1)}]
 \begin{enumerate}[label=\arabic*.]
-  \item \textbf{Bureaucrat Quirk} --- stamps only at \emph{eighth bell}; night filings need a \emph{Night Magistrate} countersign.
-  \item \textbf{Required Stamp} --- \emph{Harbor-Green} chit for boom passage this tide; without it, DV +1 on all port checks.
-  \item \textbf{Preferred Gratuity} --- figs or lamp oil; wrong gift offends, marking 1 \emph{Exposure} on your port reputation.
-  \item \textbf{Audit Trap} --- ``contraband tallies''; if carrying \emph{bell-metal} or \emph{dyestuffs}, start a 4-seg \emph{Inspection} timer.
-  \item \textbf{Local Courtesy} --- speak the \emph{Dock Oath} (short pledge not to knife on planks) or suffer \emph{Desperate} position in brawls.
-  \item \textbf{Shortcut Rumor} --- \emph{Smuggler's Ladder} on the sea wall; spend a \SuitDiamond{} (\emph{Ladder Map}) to skip one queue.
-  \item \textbf{Pilot's Privilege} --- a \emph{Pilot Token} bumps you ahead on boom lift; otherwise pay tow or lose 1 segment.
-  \item \textbf{Silent Court} --- the \emph{Black Bishop} is sitting tonight; legal Clubs escalate by +1 SB if you contest a ruling.
+  ℹtem \textbf{Bureaucrat Quirk} −−− stamps only at \emph{eighth bell}; night filings need a \emph{Night Magistrate} countersign.
+  ℹtem \textbf{Required Stamp} −−− \emph{Harbor−Green} chit for boom passage this tide; without it, DV +1 on all port checks.
+  ℹtem \textbf{Preferred Gratuity} −−− figs or lamp oil; wrong gift offends, marking 1 \emph{Exposure} on your port reputation.
+  ℹtem \textbf{Audit Trap} −−− ``contraband tallies''; if carrying \emph{bell−metal} or \emph{dyestuffs}, start a 4−seg \emph{Inspection} timer.
+  ℹtem \textbf{Local Courtesy} −−− speak the \emph{Dock Oath} (short pledge not to knife on planks) or suffer \emph{Desperate} position in brawls.
+  ℹtem \textbf{Shortcut Rumor} −−− \emph{Smuggler's Ladder} on the sea wall; spend a §uitDiamond{} (\emph{Ladder Map}) to skip one queue.
+  ℹtem \textbf{Pilot's Privilege} −−− a \emph{Pilot Token} bumps you ahead on boom lift; otherwise pay tow or lose 1 segment.
+  ℹtem \textbf{Silent Court} −−− the \emph{Black Bishop} is sitting tonight; legal Clubs escalate by +1 SB if you contest a ruling.
 \end{enumerate}
 \end{tcolorbox}
 
-\section{Special Rules \& Taboos}
+\section{Special Rules & Taboos}
 
 \subsection{Theona Valewood 9s}
-Whenever a 9 appears in a seed involving Theona or Valewood, add an omission: a missing step, an unsaid name, an unseen guest. If the 9 is a Diamond, you may break the taboo once---someone will come to collect.
+Whenever a 9 appears in a seed involving Theona or Valewood, add an omission: a missing step, an unsaid name, an unseen guest. If the 9 is a Diamond, you may break the taboo once−−−someone will come to collect.
 
 \subsection{Aeler Aces}
-An A can rewire routes beneath the mountains. You may swap your Spade to Aeler (keeping the other seed cards) and continue under-vault procedures.
+An A can rewire routes beneath the mountains. You may swap your Spade to Aeler (keeping the other seed cards) and continue under−vault procedures.
 
 \subsection{Echoing Omens}
 Any A adds a motif you can echo later (ash on the wind, a bell heard underground, a landmark that returns elsewhere). Make the world feel like it remembers.
 
 \section{Worked Itineraries}
 
-\subsection{West-to-East Coastal Haul (Kahfagia $\rightarrow$ Viterra)}
+\subsection{West−to−East Coastal Haul (Kahfagia $→$ Viterra)}
 
-\textbf{Leg 1: Kassamira $\rightarrow$ Ecktoria}
+\textbf{Leg 1: Kassamira $→$ Ecktoria}
 
-Seed: Ecktoria Spade (Aqueduct arcades), Ecktoria Heart (Coin-house factor), Wilds Club (gale), Kahfagia Diamond (convoy letter).
+Seed: Ecktoria Spade (Aqueduct arcades), Ecktoria Heart (Coin−house factor), Wilds Club (gale), Kahfagia Diamond (convoy letter).
 
-Clock: 6. Read: cross under coin-house eyes with convoy priority; bad weather strains schedules.
+Clock: 6. Read: cross under coin−house eyes with convoy priority; bad weather strains schedules.
 
-\textbf{Leg 2: Ecktoria $\rightarrow$ Silkstrand}
+\textbf{Leg 2: Ecktoria $→$ Silkstrand}
 
-Seed: Acasia Spade (Three-Queens Bridge), Acasia Heart (Dyers' Guildmistress), Acasia Club (loom strike), Acasia Diamond (Exchange pass).
+Seed: Acasia Spade (Three−Queens Bridge), Acasia Heart (Dyers' Guildmistress), Acasia Club (loom strike), Acasia Diamond (Exchange pass).
 
-Clock: 6--8 depending on unrest.
+Clock: 6−−8 depending on unrest.
 
-\textbf{Leg 3: Silkstrand $\rightarrow$ Marcott}
+\textbf{Leg 3: Silkstrand $→$ Marcott}
 
-Seed: Vhasia Spade (Pont-du-Tithe), Vhasia Heart (Parlement clerk), Vhasia Club (coin rumor), Vhasia Diamond (letters patent).
+Seed: Vhasia Spade (Pont−du−Tithe), Vhasia Heart (Parlement clerk), Vhasia Club (coin rumor), Vhasia Diamond (letters patent).
 
-\textbf{Leg 4: Marcott $\rightarrow$ Fairport}
+\textbf{Leg 4: Marcott $→$ Fairport}
 
 Seed: Viterra Spade (Fairport tideworks), Viterra Heart (shipwright), Linn Club (boom lifts), Viterra Diamond (customs seal).
 
 Clock: 6.
 
-\subsection{Acasia $\rightarrow$ Mistlands (Forgotten Pass + Under-Gate)}
+\subsection{Acasia $→$ Mistlands (Forgotten Pass + Under−Gate)}
 
-\textbf{Leg 1: Silkstrand $\rightarrow$ Aeler Gate}
+\textbf{Leg 1: Silkstrand $→$ Aeler Gate}
 
 Seed: Aeler Spade (Avalanche gallery), Aeler Heart (Geometer), Aeler Club (Engineer requisition), Aeler Diamond (Underway Pass).
 
-\textbf{Leg 2: Gate $\rightarrow$ Mistlands}
+\textbf{Leg 2: Gate $→$ Mistlands}
 
-Seed: Mistlands Spade (Bell-Line levee), Mistlands Heart (Bell-warden), Mistlands Club (wraith crossing), Mistlands Diamond (Ward-salt).
+Seed: Mistlands Spade (Bell−Line levee), Mistlands Heart (Bell−warden), Mistlands Club (wraith crossing), Mistlands Diamond (Ward−salt).
 
-\subsection{Thin Shore $\rightarrow$ Zakov Corridor}
+\subsection{Thin Shore $→$ Zakov Corridor}
 
-\textbf{Leg 1: Payden's Port $\rightarrow$ Thin Shore}
+\textbf{Leg 1: Payden's Port $→$ Thin Shore}
 
 Seed: Valewood Spade (Green lane), Mistlands Heart (Protectorate clerk), Mistlands Club (bell failure), Mistlands Diamond (Lantern writ).
 
 \textbf{Leg 2: Thin Shore transit}
 
-Seed: Valewood Spade (Unfound stile), Valewood Heart (Path-warden), Valewood Club (Sweet wind), Valewood Diamond (Way-cord).
+Seed: Valewood Spade (Unfound stile), Valewood Heart (Path−warden), Valewood Club (Sweet wind), Valewood Diamond (Way−cord).
 
 Rule of 9s applies.
 
-\subsection{Frontier Mediation (Ykrul $\leftrightarrow$ Vilikari)}
+\subsection{Frontier Mediation (Ykrul $↔$ Vilikari)}
 
 \textbf{Leg: Foedus Stone parley}
 
@@ -360,231 +360,231 @@ Seed: Vilikari Spade (Foedus Stone), Ykrul Heart (Noyan envoy), Wilds Club (rasp
 
 Blend: also draw a Ykrul Diamond (Paiza). Choose which law saves your schedule.
 
-\subsection{Worked Itinerary: Thin Shore $\rightarrow$ Zakov $\rightarrow$ Theona (Corsair Jobs)}
+\subsection{Worked Itinerary: Thin Shore $→$ Zakov $→$ Theona (Corsair Jobs)}
 A fast arc for crews running the misted coast into pirate politics and back into isle taboos.
 
-\textbf{Leg 1: Payden's Port $\rightarrow$ Thin Shore (Shadow Corridor)}
+\textbf{Leg 1: Payden's Port $→$ Thin Shore (Shadow Corridor)}
 \begin{Leg}{Seed}
-Valewood \SuitSpade{} (Green lane / Unfound stile);
-Mistlands \SuitHeart{} (Protectorate clerk);
-Mistlands \SuitClub{} (bell-line failure);
-Mistlands \SuitDiamond{} (Lantern Writ).
+Valewood §uitSpade{} (Green lane / Unfound stile);
+Mistlands §uitHeart{} (Protectorate clerk);
+Mistlands §uitClub{} (bell−line failure);
+Mistlands §uitDiamond{} (Lantern Writ).
 \end{Leg}
 \textbf{Clock:} 6. \textbf{Rule of 9s:} any 9 adds an omission (missing step/name).
 
 \textbf{Leg 2: Thin Shore Transit (Skirting toward Zakov)}
 \begin{Leg}{Seed}
-Valewood \SuitSpade{} (Sea-mist arcade);
-Valewood \SuitHeart{} (Path-warden);
-Valewood \SuitClub{} (Sweet wind);
-Valewood \SuitDiamond{} (Way-cord).
+Valewood §uitSpade{} (Sea−mist arcade);
+Valewood §uitHeart{} (Path−warden);
+Valewood §uitClub{} (Sweet wind);
+Valewood §uitDiamond{} (Way−cord).
 \end{Leg}
-\textbf{Clock:} 6. \textbf{Note:} spending \emph{Way-cord} negates one \emph{Sweet wind} lie.
+\textbf{Clock:} 6. \textbf{Note:} spending \emph{Way−cord} negates one \emph{Sweet wind} lie.
 
-\textbf{Leg 3: Approach to Zakov (Roadstead \& Booms)}
+\textbf{Leg 3: Approach to Zakov (Roadstead & Booms)}
 \begin{Leg}{Seed}
-Zakov \SuitSpade{} (Boomhouse or Red Wharf);
-Zakov \SuitHeart{} (Pilot-Matron \emph{or} Night Magistrate);
-Zakov \SuitClub{} (Boom Drop \emph{or} Customs Sweep);
-Zakov \SuitDiamond{} (Harbor-Green Chit \emph{or} Pilot Token).
+Zakov §uitSpade{} (Boomhouse or Red Wharf);
+Zakov §uitHeart{} (Pilot−Matron \emph{or} Night Magistrate);
+Zakov §uitClub{} (Boom Drop \emph{or} Customs Sweep);
+Zakov §uitDiamond{} (Harbor−Green Chit \emph{or} Pilot Token).
 \end{Leg}
-\textbf{Clock:} 6--8 (apply the Gatekeepers overlay draw on arrival). \textbf{If a 9 shows:} \emph{Missing Ninth}---remove one critical step/name until paid in favors.
+\textbf{Clock:} 6−−8 (apply the Gatekeepers overlay draw on arrival). \textbf{If a 9 shows:} \emph{Missing Ninth}−−−remove one critical step/name until paid in favors.
 
 \textbf{Leg 4: Corsair Job Inside Zakov (Pick 1)}
 \begin{Leg}{A) Lift a Hull from Drydock Four}
-Zakov \SuitSpade{} (Drydock Four);
-Zakov \SuitHeart{} (Corsair Quartermaster);
-Zakov \SuitClub{} (Admiralty Audit);
-Zakov \SuitDiamond{} (Shipwright's Lien Release).
+Zakov §uitSpade{} (Drydock Four);
+Zakov §uitHeart{} (Corsair Quartermaster);
+Zakov §uitClub{} (Admiralty Audit);
+Zakov §uitDiamond{} (Shipwright's Lien Release).
 \end{Leg}
 \textbf{Goal:} tow a seized hull at night; \emph{Lien Release} avoids bond but flips a debt later.
 
 \begin{Leg}{B) Court the Black Bishop for Indulgence}
-Zakov \SuitSpade{} (Black Bell Tower);
-Zakov \SuitHeart{} (Black Bishop);
-Zakov \SuitClub{} (Bounty Proclamation);
-Zakov \SuitDiamond{} (Magistrate's Hush).
+Zakov §uitSpade{} (Black Bell Tower);
+Zakov §uitHeart{} (Black Bishop);
+Zakov §uitClub{} (Bounty Proclamation);
+Zakov §uitDiamond{} (Magistrate's Hush).
 \end{Leg}
 \textbf{Goal:} seal a case/docket so a rival can't use it. \textbf{Hook:} rumor must be paid (coin or gossip).
 
 \begin{Leg}{C) Smuggler's Ladder Run}
-Zakov \SuitSpade{} (Lantern Ladder);
-Zakov \SuitHeart{} (Lampman);
-Zakov \SuitClub{} (Informant Flip);
-Zakov \SuitDiamond{} (Smuggler's Ladder Map).
+Zakov §uitSpade{} (Lantern Ladder);
+Zakov §uitHeart{} (Lampman);
+Zakov §uitClub{} (Informant Flip);
+Zakov §uitDiamond{} (Smuggler's Ladder Map).
 \end{Leg}
-\textbf{Goal:} bypass boom eyes with a wall-stair. \textbf{Complication:} your tip was sold twice.
+\textbf{Goal:} bypass boom eyes with a wall−stair. \textbf{Complication:} your tip was sold twice.
 
-\textbf{Leg 5: Zakov $\rightarrow$ Theona (Isles \& Moot)}
+\textbf{Leg 5: Zakov $→$ Theona (Isles & Moot)}
 \begin{Leg}{Seed}
-Theona \SuitSpade{} (Uncounted Bridge);
-Theona \SuitHeart{} (Matron of Wells \emph{or} Moot Envoy);
-Linn \SuitClub{} (fogfall raids);
-Theona \SuitDiamond{} (Moot Token).
+Theona §uitSpade{} (Uncounted Bridge);
+Theona §uitHeart{} (Matron of Wells \emph{or} Moot Envoy);
+Linn §uitClub{} (fogfall raids);
+Theona §uitDiamond{} (Moot Token).
 \end{Leg}
-\textbf{Clock:} 6--8. \textbf{Taboo:} do \emph{not} count the steps aloud; breaking it imposes \emph{Controlled} on all isle bargains this scene.
+\textbf{Clock:} 6−−8. \textbf{Taboo:} do \emph{not} count the steps aloud; breaking it imposes \emph{Controlled} on all isle bargains this scene.
 
 \textbf{Leg 6: Theona Contract (Pick 1)}
-\begin{Leg}{A) Raid-Truce at the Skerries}
-Theona \SuitSpade{} (Tide caves);
-Theona \SuitHeart{} (Isle Moot Envoy);
-Theona \SuitClub{} (Muster drum);
-Theona \SuitDiamond{} (Raid-truce Ribbon).
+\begin{Leg}{A) Raid−Truce at the Skerries}
+Theona §uitSpade{} (Tide caves);
+Theona §uitHeart{} (Isle Moot Envoy);
+Theona §uitClub{} (Muster drum);
+Theona §uitDiamond{} (Raid−truce Ribbon).
 \end{Leg}
 \textbf{Goal:} secure safe passage window; failure triggers a Linn muster timer.
 
 \begin{Leg}{B) Deliver the Ledger Shard}
-Theona \SuitSpade{} (Well-yard);
-Theona \SuitHeart{} (Matron of Wells);
-Zakov \SuitClub{} (Debt Call follows you);
-Theona \SuitDiamond{} (Sanctuary Night).
+Theona §uitSpade{} (Well−yard);
+Theona §uitHeart{} (Matron of Wells);
+Zakov §uitClub{} (Debt Call follows you);
+Theona §uitDiamond{} (Sanctuary Night).
 \end{Leg}
 \textbf{Goal:} hide a Zakov debt long enough to copy data; sanctuary buys time.
 
 \subsection{Steppe Passage: Black Banner Territory}
 A dangerous journey through contested lands where three powers vie for control.
 
-\textbf{Leg: Foedus Stone $\rightarrow$ Black Banner Camp}
+\textbf{Leg: Foedus Stone $→$ Black Banner Camp}
 \begin{Leg}{Seed}
-Ykrul/Vilikari \SuitSpade{} (Wolf Road milepost or Foedus Stone);
-Black Banner \SuitHeart{} (Clan Elder or War Captain);
-Wilds \SuitClub{} (Rasputitsa or Remount Sickness);
-Black Banner \SuitDiamond{} (Safe-conduct or Remount Chit).
+Ykrul/Vilikari §uitSpade{} (Wolf Road milepost or Foedus Stone);
+Black Banner §uitHeart{} (Clan Elder or War Captain);
+Wilds §uitClub{} (Rasputitsa or Remount Sickness);
+Black Banner §uitDiamond{} (Safe−conduct or Remount Chit).
 \end{Leg}
-\textbf{Clock:} 6--8. \textbf{Complication:} Foedus recall may invalidate your papers.
+\textbf{Clock:} 6−−8. \textbf{Complication:} Foedus recall may invalidate your papers.
 
-\textbf{Leg: Black Banner Camp $\rightarrow$ Ykrul Territory}
+\textbf{Leg: Black Banner Camp $→$ Ykrul Territory}
 \begin{Leg}{Seed}
-Ykrul \SuitSpade{} (Winter camp ring or Khagan's way-station);
-Ykrul \SuitHeart{} (Khatun of the Ring or Noyan envoy);
-Frontier \SuitClub{} (Hostage protocol or Feud spark);
-Ykrul \SuitDiamond{} (Paiza tablet or Foedus seal).
+Ykrul §uitSpade{} (Winter camp ring or Khagan's way−station);
+Ykrul §uitHeart{} (Khatun of the Ring or Noyan envoy);
+Frontier §uitClub{} (Hostage protocol or Feud spark);
+Ykrul §uitDiamond{} (Paiza tablet or Foedus seal).
 \end{Leg}
-\textbf{Clock:} 6--8. \textbf{Note:} Choose which law applies---Black Banner customs or Ykrul traditions.
+\textbf{Clock:} 6−−8. \textbf{Note:} Choose which law applies−−−Black Banner customs or Ykrul traditions.
 
 \section{Pace, Timers, and Consequences}
 
 \begin{itemize}
-\item Road/river leg: 6-segment timer; +2 segments if crossing a law boundary (new passports, new prayers).
-\item Sea strait/mountain pass: 8-segment timer; --2 segments if you spend a Diamond that codifies priority (pilotage, pass, convoy).
-\item Shadow corridor: 6-segment timer; on any A, add a free omen to echo later.
-\item Failure defaults: delay (lose time; an enemy advances), diversion (alternate route; new Club), or debt (promise, fine, or favor owed to the authority that controls the gate).
+ℹtem Road/river leg: 6−segment timer; +2 segments if crossing a law boundary (new passports, new prayers).
+ℹtem Sea strait/mountain pass: 8−segment timer; −−2 segments if you spend a Diamond that codifies priority (pilotage, pass, convoy).
+ℹtem Shadow corridor: 6−segment timer; on any A, add a free omen to echo later.
+ℹtem Failure defaults: delay (lose time; an enemy advances), diversion (alternate route; new Club), or debt (promise, fine, or favor owed to the authority that controls the gate).
 \end{itemize}
 
-\noindent\textbf{SB Note.} Re-rolling 1s does \emph{not} erase their SB; any new 1s on the re-roll add more SB.
+\noindent\textbf{SB Note.} Re−rolling 1s does \emph{not} erase their SB; any new 1s on the re−roll add more SB.
 
 \section{Story Beat (SB) Menus}
 
 \subsection{Universal SB Spend Menu}
 \begin{itemize}
-  \item \textbf{1 SB} --- Shave time/position: add +1 segment to the current timer \emph{or} drop Position one step \emph{or} impose a small fee/toll \emph{or} mark 1 step of \emph{Asset Exposure}.
-  \item \textbf{2 SB} --- Escalate the pressure: upgrade the active \SuitClub{} (e.g., ``inspection'' → ``seizure attempt'') \emph{or} force a \emph{choice of Diamonds} (pick which law you'll be judged by) \emph{or} tick a relevant \emph{Front} by 1.
-  \item \textbf{3 SB} --- Lock a gate/taboo: close a route (boom drops; pass closes) until a named \SuitDiamond{} is spent \emph{or} invoke a regional taboo (Theona/Valewood 9s; oath backlash) with teeth \emph{or} auto-trigger a \emph{Debt Flip} on a Diamond already in play.
-  \item \textbf{4+ SB} --- Reshape the leg: rewrite the route (Aeler under-way reroute; sea lane reversal), start a \emph{new} 4--6 segment complication timer \emph{and} tick a \emph{Front} by +1; demand immediate payment on a Patron/Asset Exposure (lose it if refused).
+  ℹtem \textbf{1 SB} −−− Shave time/position: add +1 segment to the current timer \emph{or} drop Position one step \emph{or} impose a small fee/toll \emph{or} mark 1 step of \emph{Asset Exposure}.
+  ℹtem \textbf{2 SB} −−− Escalate the pressure: upgrade the active §uitClub{} (e.g., ``inspection'' → ``seizure attempt'') \emph{or} force a \emph{choice of Diamonds} (pick which law you'll be judged by) \emph{or} tick a relevant \emph{Front} by 1.
+  ℹtem \textbf{3 SB} −−− Lock a gate/taboo: close a route (boom drops; pass closes) until a named §uitDiamond{} is spent \emph{or} invoke a regional taboo (Theona/Valewood 9s; oath backlash) with teeth \emph{or} auto−trigger a \emph{Debt Flip} on a Diamond already in play.
+  ℹtem \textbf{4+ SB} −−− Reshape the leg: rewrite the route (Aeler under−way reroute; sea lane reversal), start a \emph{new} 4−−6 segment complication timer \emph{and} tick a \emph{Front} by +1; demand immediate payment on a Patron/Asset Exposure (lose it if refused).
 \end{itemize}
-\textit{End-of-leg conversion (optional):} Unspent SB convert to \emph{world motion} at a rate of \textbf{3 SB → tick 1 Front} (GM choice).
+\textit{End−of−leg conversion (optional):} Unspent SB convert to \emph{world motion} at a rate of \textbf{3 SB → tick 1 Front} (GM choice).
 
 \subsection{Sea (Amaranthine/Dolmis/Aberderrin)}
 \begin{itemize}
-  \item \textbf{1 SB:} Fogfall nips visibility; DV +1 for the next pilotage check.
-  \item \textbf{2 SB:} Boom shifts; pilot required (spend a \emph{pilotage} \SuitDiamond{} or delay +2 segments).
-  \item \textbf{3 SB:} Lantern-law change mid-leg; choose: pay fine \emph{or} reroute timer +2 \emph{or} spend \emph{Convoy Letter}.
-  \item \textbf{4 SB:} Squall wall: split the convoy; lose an escort unless \emph{Moot token} or \emph{Escort} Diamond is spent.
+  ℹtem \textbf{1 SB:} Fogfall nips visibility; DV +1 for the next pilotage check.
+  ℹtem \textbf{2 SB:} Boom shifts; pilot required (spend a \emph{pilotage} §uitDiamond{} or delay +2 segments).
+  ℹtem \textbf{3 SB:} Lantern−law change mid−leg; choose: pay fine \emph{or} reroute timer +2 \emph{or} spend \emph{Convoy Letter}.
+  ℹtem \textbf{4 SB:} Squall wall: split the convoy; lose an escort unless \emph{Moot token} or \emph{Escort} Diamond is spent.
 \end{itemize}
 
-\subsection{Passes \& Underways (Aeler)}
+\subsection{Passes & Underways (Aeler)}
 \begin{itemize}
-  \item \textbf{1 SB:} White wind; breath-time check (mark Fatigue or slow +1 segment).
-  \item \textbf{2 SB:} Engineer requisition; surrender cargo slot \emph{or} coin \emph{or} DV +1 until the gate.
-  \item \textbf{3 SB:} Under-audit; must go below (swap Spade to Aeler) unless you spend \emph{Key-Writ}.
-  \item \textbf{4 SB:} Cave-in detour adds a fresh 4-segment timer unless \emph{Underway Pass} is spent.
+  ℹtem \textbf{1 SB:} White wind; breath−time check (mark Fatigue or slow +1 segment).
+  ℹtem \textbf{2 SB:} Engineer requisition; surrender cargo slot \emph{or} coin \emph{or} DV +1 until the gate.
+  ℹtem \textbf{3 SB:} Under−audit; must go below (swap Spade to Aeler) unless you spend \emph{Key−Writ}.
+  ℹtem \textbf{4 SB:} Cave−in detour adds a fresh 4−segment timer unless \emph{Underway Pass} is spent.
 \end{itemize}
 
-\subsection{Rivers (Belworth \& friends)}
+\subsection{Rivers (Belworth & friends)}
 \begin{itemize}
-  \item \textbf{1 SB:} Sandbar drift; portage a beat or pay for a tow.
-  \item \textbf{2 SB:} Lift strike at Tarlington; need \emph{Bridge/Portage Pass} or delay +2 segments.
-  \item \textbf{3 SB:} Cross-mouth embargo (Marcott/Fairport); choose which harbor's law applies (draw/commit its \SuitDiamond{}).
-  \item \textbf{4 SB:} Ice-break or flood surge; split cargo (random item at risk) unless an \emph{Escort} Diamond is spent.
+  ℹtem \textbf{1 SB:} Sandbar drift; portage a beat or pay for a tow.
+  ℹtem \textbf{2 SB:} Lift strike at Tarlington; need \emph{Bridge/Portage Pass} or delay +2 segments.
+  ℹtem \textbf{3 SB:} Cross−mouth embargo (Marcott/Fairport); choose which harbor's law applies (draw/commit its §uitDiamond{}).
+  ℹtem \textbf{4 SB:} Ice−break or flood surge; split cargo (random item at risk) unless an \emph{Escort} Diamond is spent.
 \end{itemize}
 
 \subsection{Shadow Corridors (Valewood/Mistlands)}
 \begin{itemize}
-  \item \textbf{1 SB:} Bell-line stutter; next guidance roll at Disadvantage (or DV +1).
-  \item \textbf{2 SB:} Omission manifests; something necessary is ``missing'' until \emph{Ward-salt} or \emph{Way-cord} is spent.
-  \item \textbf{3 SB:} Host-law claims you as \emph{host/guest}; accept a service timer or pay with a memory (lose a minor Contact until end of leg).
-  \item \textbf{4 SB:} Wraith procession crosses your path; create a 6-segment \emph{Don't Look Back} timer; spending \emph{Lantern Writ} downgrades it to 4.
+  ℹtem \textbf{1 SB:} Bell−line stutter; next guidance roll at Disadvantage (or DV +1).
+  ℹtem \textbf{2 SB:} Omission manifests; something necessary is ``missing'' until \emph{Ward−salt} or \emph{Way−cord} is spent.
+  ℹtem \textbf{3 SB:} Host−law claims you as \emph{host/guest}; accept a service timer or pay with a memory (lose a minor Contact until end of leg).
+  ℹtem \textbf{4 SB:} Wraith procession crosses your path; create a 6−segment \emph{Don't Look Back} timer; spending \emph{Lantern Writ} downgrades it to 4.
 \end{itemize}
 
 \subsection{Steppe Frontiers (Ykrul/Vilikari/Black Banner)}
 \begin{itemize}
-  \item \textbf{1 SB:} Remount fatigue; lose 1 ``fresh mount'' use or slow +1 segment.
-  \item \textbf{2 SB:} Hostage protocol; must place/accept a token-kin until the next gate (or spend \emph{Safe-hostage}).
-  \item \textbf{3 SB:} Foedus recall; your papers conflict---pick Ykrul \emph{Paiza} or Vilikari \emph{Foedus Seal} and offend the other.
-  \item \textbf{4 SB:} Muster checkpoint; disarm unless traveling under \emph{Standard Protection} or \emph{Khagan's Writ}.
-  \item \textbf{Black Banner Specific:} Clan feud erupts; choose sides or pay double tolls.
+  ℹtem \textbf{1 SB:} Remount fatigue; lose 1 ``fresh mount'' use or slow +1 segment.
+  ℹtem \textbf{2 SB:} Hostage protocol; must place/accept a token−kin until the next gate (or spend \emph{Safe−hostage}).
+  ℹtem \textbf{3 SB:} Foedus recall; your papers conflict−−−pick Ykrul \emph{Paiza} or Vilikari \emph{Foedus Seal} and offend the other.
+  ℹtem \textbf{4 SB:} Muster checkpoint; disarm unless traveling under \emph{Standard Protection} or \emph{Khagan's Writ}.
+  ℹtem \textbf{Black Banner Specific:} Clan feud erupts; choose sides or pay double tolls.
 \end{itemize}
 
-\subsection{Ports \& Forums (Marcott, Fairport, Silkstrand, Thepyrgos, Zakov)}
+\subsection{Ports & Forums (Marcott, Fairport, Silkstrand, Thepyrgos, Zakov)}
 \begin{itemize}
-  \item \textbf{1 SB:} Clerk error; pay a ``stamp'' fee or answer questions (DV +1).
-  \item \textbf{2 SB:} Rival petition; they jump the queue unless you spend a Warrant/Letters \SuitDiamond{}.
-  \item \textbf{3 SB:} Audit cascade; open a new 4-segment \emph{Inspection} timer tied to cargo/ledger.
-  \item \textbf{4 SB:} Edict flare; convert today's \SuitClub{} into a temporary ``law'' everyone must obey or take on a \emph{Debt Flip}.
-  \item \textbf{Zakov Specific:} Silent Court ruling; legal complications escalate by +1 SB.
+  ℹtem \textbf{1 SB:} Clerk error; pay a ``stamp'' fee or answer questions (DV +1).
+  ℹtem \textbf{2 SB:} Rival petition; they jump the queue unless you spend a Warrant/Letters §uitDiamond{}.
+  ℹtem \textbf{3 SB:} Audit cascade; open a new 4−segment \emph{Inspection} timer tied to cargo/ledger.
+  ℹtem \textbf{4 SB:} Edict flare; convert today's §uitClub{} into a temporary ``law'' everyone must obey or take on a \emph{Debt Flip}.
+  ℹtem \textbf{Zakov Specific:} Silent Court ruling; legal complications escalate by +1 SB.
 \end{itemize}
 
-\subsection{Diamond \& Exposure Interactions}
+\subsection{Diamond & Exposure Interactions}
 \begin{itemize}
-  \item \textbf{2 SB:} Flip any \SuitDiamond{} spent this leg: its \emph{Debt Flip} is collected now (not later).
-  \item \textbf{2 SB:} Mark 1 step on a named Asset/Patron's \emph{Exposure} track.
-  \item \textbf{3 SB:} Downgrade an \emph{Intricate} success to \emph{Detailed} (remove the flourish or DV −1 benefit).
-  \item \textbf{4 SB:} Seize or suspend a visible Diamond's benefit until another is played (e.g., convoy letter overridden by emergency edict).
+  ℹtem \textbf{2 SB:} Flip any §uitDiamond{} spent this leg: its \emph{Debt Flip} is collected now (not later).
+  ℹtem \textbf{2 SB:} Mark 1 step on a named Asset/Patron's \emph{Exposure} track.
+  ℹtem \textbf{3 SB:} Downgrade an \emph{Intricate} success to \emph{Detailed} (remove the flourish or DV −1 benefit).
+  ℹtem \textbf{4 SB:} Seize or suspend a visible Diamond's benefit until another is played (e.g., convoy letter overridden by emergency edict).
 \end{itemize}
 \clearpage
 \section{Location Decks for Navigation}
 
-\input{../generators/acasia.tex}
+∈put{../generators/acasia.tex}
 \clearpage
-\input{../generators/aelaerem.tex}
+∈put{../generators/aelaerem.tex}
 \clearpage
-\input{../generators/aeler.tex}
+∈put{../generators/aeler.tex}
 \clearpage
-\input{../generators/aelinnel.tex}
+∈put{../generators/aelinnel.tex}
 \clearpage
-\input{../generators/black_banner.tex}
+∈put{../generators/black_banner.tex}
 \clearpage
-\input{../generators/dungeons.tex}
+∈put{../generators/dungeons.tex}
 \clearpage
-\input{../generators/ecktoria.tex}
+∈put{../generators/ecktoria.tex}
 \clearpage
-\input{../generators/kahfagia.tex}
+∈put{../generators/kahfagia.tex}
 \clearpage
-\input{../generators/linns.tex}
+∈put{../generators/linns.tex}
 \clearpage
-\input{../generators/mistlands.tex}
+∈put{../generators/mistlands.tex}
 \clearpage
-\input{../generators/silkstrand.tex}
+∈put{../generators/silkstrand.tex}
 \clearpage
-\input{../generators/theona.tex}
+∈put{../generators/theona.tex}
 \clearpage
-\input{../generators/thepyrgos.tex}
+∈put{../generators/thepyrgos.tex}
 \clearpage
-\input{../generators/ubral.tex}
+∈put{../generators/ubral.tex}
 \clearpage
-\input{../generators/valewood.tex}
+∈put{../generators/valewood.tex}
 \clearpage
-\input{../generators/vhasia.tex}
+∈put{../generators/vhasia.tex}
 \clearpage
-\input{../generators/vilikari.tex}
+∈put{../generators/vilikari.tex}
 \clearpage
-\input{../generators/viterra.tex}
+∈put{../generators/viterra.tex}
 \clearpage
-\input{../generators/ways_between.tex}
+∈put{../generators/ways_between.tex}
 \clearpage
-\input{../generators/wilderness.tex}
+∈put{../generators/wilderness.tex}
 \clearpage
-\input{../generators/ykrul.tex}
+∈put{../generators/ykrul.tex}
 \clearpage
-\input{../generators/zakov.tex}
+∈put{../generators/zakov.tex}
 \end{document}
