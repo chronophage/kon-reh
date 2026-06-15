@@ -1,5 +1,5 @@
 %=====================================================================
-%  Fate's Edge Essential Guide (macOS−Optimized − PRINT READY)
+%  Fate's Edge Essential Guide (macOS-Optimized - PRINT READY)
 %  HOW TO COMPILE ON macOS:
 %  1. Save this file as 'Fates_Edge_Essential_Guide.tex'
 %  2. Open Terminal and navigate to the folder containing the file.
@@ -8,11 +8,11 @@
 %  5. The output will be 'Fates_Edge_Essential_Guide.pdf'
 %
 %  Tested on: MacTeX 2023, TeX Live 2023 (lualatex), M1/M2 Mac
-%  VERIFIED: Zero overfull/underfull box warnings, optimal contrast, parchment−toned backgrounds
+%  VERIFIED: Zero overfull/underfull box warnings, optimal contrast, parchment-toned backgrounds
 %=====================================================================
 \documentclass[10pt,twocolumn]{article} % ADDED 'twocolumn' option for cleaner layout
 
-% −−−−−−−−−− ESSENTIAL PACKAGES −−−−−−−−−−
+% ---------- ESSENTIAL PACKAGES ----------
 \usepackage[margin=1.5cm]{geometry}
 \usepackage{xcolor}
 \usepackage{booktabs}
@@ -23,7 +23,7 @@
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
 \tcbuselibrary{skins}
-ℎypersetup{
+\hypersetup{
     colorlinks=true,
     linkcolor=black,
     citecolor=black,
@@ -31,17 +31,17 @@
     pdfborder={0 0 0}
 }
 
-% −−−−−−−−−− COLORS (Parchment−Optimized Palette) −−−−−−−−−−
+% ---------- COLORS (Parchment-Optimized Palette) ----------
 \definecolor{edgered}{HTML}{8C1E1E}      % Deep crimson for frames
 \definecolor{edgegold}{HTML}{C8A050}     % Antique gold for accents
-\definecolor{edgedark}{HTML}{1E1E28}     % Near−black for text
+\definecolor{edgedark}{HTML}{1E1E28}     % Near-black for text
 \definecolor{edgepaper}{HTML}{FAF5EB}    % Warm parchment background
 
 % CRITICAL: Text contrast vs parchment = 14.5:1 (exceeds WCAG AAA)
 % Frame contrast vs parchment = 7.2:1 (exceeds WCAG AA)
 
-% −−−−−−−−−− TITLEBOX STYLES (Parchment Backgrounds) −−−−−−−−−−
-≠wtcolorbox{coretable}[1][]{%
+% ---------- TITLEBOX STYLES (Parchment Backgrounds) ----------
+\newtcolorbox{coretable}[1][]{%
     breakable,
     colback=edgepaper,      % parchment background
     colframe=edgered,
@@ -56,10 +56,10 @@
     top=1.5pt,
     bottom=1.5pt,
     boxrule=0.5pt,
-    width=łinewidth
+    width=\linewidth
 }
 
-≠wtcolorbox{sidebar}{%
+\newtcolorbox{sidebar}{%
     breakable,
     colback=edgepaper,      % parchment background
     colframe=edgered,
@@ -69,25 +69,25 @@
     fontupper=\small,
     before skip=0.2em,
     after skip=0.2em,
-    width=łinewidth
+    width=\linewidth
 }
 
-% −−−−−−−−−− SECTION HEADINGS −−−−−−−−−−
+% ---------- SECTION HEADINGS ----------
 \usepackage{sectsty}
-\sectionfont{łarge\bfseries\sffamily\color{edgered}}
+\sectionfont{\large\bfseries\sffamily\color{edgered}}
 \subsectionfont{\normalsize\bfseries\sffamily\color{edgedark}}
 
-% −−−−−−−−−− HEADER/FOOTER −−−−−−−−−−
+% ---------- HEADER/FOOTER ----------
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\sffamily Fate's Edge Essential Guide}
-\fancyhead[R]{þepage}
-\fancyfoot[C]{\smallℹtshape — Every choice carries weight — }
-\renewcommand{ℎeadrulewidth}{0.4pt}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\small\itshape — Every choice carries weight — }
+\renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-% −−−−−−−−−− DOCUMENT SETUP −−−−−−−−−−
+% ---------- DOCUMENT SETUP ----------
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 \pagecolor{edgepaper}   % PAGE = PARCHMENT
@@ -97,22 +97,22 @@
 \begin{document}
 %=====================================================================
 
-% −−−−− TITLE AREA (single column, temporary) −−−−−
+% ----- TITLE AREA (single column, temporary) -----
 \begin{center}
     {\Huge\bfseries\sffamily\color{edgered} Fate's Edge}\\[0.2em]
-    {łarge\sffamily Essential Starting Guide}\\[0.5em]
+    {\large\sffamily Essential Starting Guide}\\[0.5em]
     \rule{0.7\textwidth}{0.5pt}\\[0.8em]
-    {łarge\sffamily GM & Player Reference — One Region, One Road}\\[1em]
+    {\large\sffamily GM \& Player Reference — One Region, One Road}\\[1em]
     \begin{quote}
-        ℹtshape ``The road remembers. Every broken wheel leaves a mark, every lit lamp bears witness. The only question is: what are you willing to owe?''
-        ℎfill — Dusana of the Raven Road
+        \itshape ``The road remembers. Every broken wheel leaves a mark, every lit lamp bears witness. The only question is: what are you willing to owe?''
+        \hfill — Dusana of the Raven Road
     \end{quote}
     \begin{sidebar}
         \textbf{Welcome to Fate's Edge.} This guide contains everything you need to start playing—core rules, character creation, one region (Acasia), GM procedures, and a starter adventure hook. No other books required.
     \end{sidebar}
 \end{center}
 \vspace{1em}
-% The document is now in twocolumn mode from the \documentclass option. The title area is manually kept single−column.
+% The document is now in twocolumn mode from the \documentclass option. The title area is manually kept single-column.
 
 %=====================================================================
 % SECTION 1: THE PHILOSOPHY
@@ -129,9 +129,9 @@
 \subsection{Safety at the Table}
 Fate's Edge explores mature themes. Use these tools to keep play safe:
 \begin{itemize}
-    ℹtem \textbf{X−Card:} Any player may say ``X'' to stop a scene. No questions asked.
-    ℹtem \textbf{Lines:} Content that will not appear (e.g., ``no harm to children'').
-    ℹtem \textbf{Veils:} Content that fades to black (e.g., ``romance is implied, not described'').
+    \item \textbf{X-Card:} Any player may say ``X'' to stop a scene. No questions asked.
+    \item \textbf{Lines:} Content that will not appear (e.g., ``no harm to children'').
+    \item \textbf{Veils:} Content that fades to black (e.g., ``romance is implied, not described'').
 \end{itemize}
 Establish these in Session Zero.
 
@@ -140,28 +140,28 @@ Establish these in Session Zero.
 %=====================================================================
 \section{The Core Resolution}
 
-\subsection{The 90−Second Loop}
+\subsection{The 90-Second Loop}
 Every meaningful action follows this cycle:
 \begin{enumerate}
-    ℹtem \textbf{Declare} your intent and approach (Attribute + Skill).
-    ℹtem \textbf{GM sets DV} (2–5+) and \textbf{Position} (Dominant/Controlled/Desperate).
-    ℹtem \textbf{Roll} dice pool (Attribute + Skill d10s).
-    ℹtem \textbf{Count successes} (6–10 = 1 success). Each 1 = Story Beat (SB) for GM.
-    ℹtem \textbf{Apply outcome} using the Outcome Matrix.
-    ℹtem \textbf{GM spends SB} to introduce complications.
+    \item \textbf{Declare} your intent and approach (Attribute + Skill).
+    \item \textbf{GM sets DV} (2–5+) and \textbf{Position} (Dominant/Controlled/Desperate).
+    \item \textbf{Roll} dice pool (Attribute + Skill d10s).
+    \item \textbf{Count successes} (6–10 = 1 success). Each 1 = Story Beat (SB) for GM.
+    \item \textbf{Apply outcome} using the Outcome Matrix.
+    \item \textbf{GM spends SB} to introduce complications.
 \end{enumerate}
 
 \subsection{Difficulty Value (DV)}
 \begin{coretable}[Difficulty Values]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} p{0.65łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} p{0.65\linewidth}}
+\toprule
 \textbf{DV} & \textbf{When to Use} \\
-∣rule
+\midrule
 2 & Routine – clear path, no pressure \\
 3 & Pressured – mild opposition (default) \\
 4 & Hard – serious resistance \\
 5+ & Extreme – dramatic gamble \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{Default DV is 3.} Do not inflate DVs to ``challenge'' players—use Position instead.
@@ -169,29 +169,29 @@ Every meaningful action follows this cycle:
 \subsection{Position}
 Position tells you how risky the action is and changes how dice behave:
 \begin{coretable}[Position Effects]
-\begin{tabular}{>{\bfseries}p{0.3łinewidth} >{\bfseries}p{0.35łinewidth} >{\bfseries}p{0.25łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.3\linewidth} >{\bfseries}p{0.35\linewidth} >{\bfseries}p{0.25\linewidth}}
+\toprule
 \textbf{Position} & \textbf{Frame} & \textbf{Mechanical Effect} \\
-∣rule
-Dominant & You press advantage & Re−roll one failure \\
-Controlled & Balanced norm & No re−rolls \\
-Desperate & Act under duress & Re−roll one success \\
-⊥tomrule
+\midrule
+Dominant & You press advantage & Re-roll one failure \\
+Controlled & Balanced norm & No re-rolls \\
+Desperate & Act under duress & Re-roll one success \\
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{Pro tip:} Spend 1 Boon to improve Position by one step before rolling.
 
 \subsection{The Outcome Matrix}
 \begin{coretable}[Outcome Matrix]
-\begin{tabular}{>{\bfseries}p{0.3łinewidth} p{0.6łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.3\linewidth} p{0.6\linewidth}}
+\toprule
 \textbf{Roll Result} & \textbf{What Happens} \\
-∣rule
-Successes $≥$ DV, SB = 0 & \textbf{Clean Success –} Intent achieved, no complication. \\
-Successes $≥$ DV, SB > 0 & \textbf{Success with SB –} Intent achieved; GM spends SB. \\
+\midrule
+Successes $\ge$ DV, SB = 0 & \textbf{Clean Success –} Intent achieved, no complication. \\
+Successes $\ge$ DV, SB > 0 & \textbf{Success with SB –} Intent achieved; GM spends SB. \\
 $0 <$ Successes $<$ DV & \textbf{Partial –} Progress; gain 1 Boon. \\
 Successes = 0 & \textbf{Miss –} No progress; gain 2 Boons; GM spends SB. \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
@@ -202,47 +202,47 @@ Successes = 0 & \textbf{Miss –} No progress; gain 2 Boons; GM spends SB. \\
 \subsection{Critical Success (10s)}
 A roll of 10 counts as \textbf{two successes}. If the overall roll succeeds:
 \begin{itemize}
-    ℹtem \textbf{1 ten:} Strong success—improve Position or gain minor advantage.
-    ℹtem \textbf{2 tens:} Exceptional—choose two benefits.
-    ℹtem \textbf{3+ tens:} Legendary—decisive victory; clear 1 segment from a relevant timer.
+    \item \textbf{1 ten:} Strong success—improve Position or gain minor advantage.
+    \item \textbf{2 tens:} Exceptional—choose two benefits.
+    \item \textbf{3+ tens:} Legendary—decisive victory; clear 1 segment from a relevant timer.
 \end{itemize}
 
 %=====================================================================
 % SECTION 3: BOONS AND STORY BEATS
 %=====================================================================
-\section{Resources: Boons & Story Beats}
+\section{Resources: Boons \& Story Beats}
 
 \subsection{Boons—Player Currency}
 Boons represent luck, momentum, and narrative leverage. \textbf{Spend them freely.}
 \begin{coretable}[Boons at a Glance]
-\begin{tabular}{>{\bfseries}p{0.3łinewidth} >{\bfseries}p{0.15łinewidth} p{0.45łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.3\linewidth} >{\bfseries}p{0.15\linewidth} p{0.45\linewidth}}
+\toprule
 \textbf{Earning Boons} & \textbf{Gain} & \textbf{Spending Boons} \\
-∣rule
-Partial success & Gain 1 & Re−roll a die (1 Boon) \\
+\midrule
+Partial success & Gain 1 & Re-roll a die (1 Boon) \\
 Miss & Gain 2 & Improve Position (1 Boon) \\
-Bond−driven action & Gain 1 (once/bond/session) & Activate Asset (1 Boon) \\
-GM award & +1 (rare) & Convert 2 $→$ 1 XP (once/session) \\
-⊥tomrule
+Bond-driven action & Gain 1 (once/bond/session) & Activate Asset (1 Boon) \\
+GM award & +1 (rare) & Convert 2 $\to$ 1 XP (once/session) \\
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{Holding cap:} 5 Boons. At end of scene, reduce to 2 (excess lost).
 
 \begin{sidebar}
-    \textbf{The Math of Fun:} Hoarding Boons for XP conversion starves the table of drama. A re−rolled failure or an improved Position creates a memorable moment. Spend Boons!
+    \textbf{The Math of Fun:} Hoarding Boons for XP conversion starves the table of drama. A re-rolled failure or an improved Position creates a memorable moment. Spend Boons!
 \end{sidebar}
 
 \subsection{Story Beats (SB)—GM Currency}
 Every time a player rolls a 1, the GM gains Story Beats. Spend SB to introduce complications:
 \begin{coretable}[SB Spend Menu]
-\begin{tabular}{>{\bfseries}p{0.2łinewidth} p{0.7łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.2\linewidth} p{0.7\linewidth}}
+\toprule
 \textbf{Cost} & \textbf{Complication} \\
-∣rule
+\midrule
 1 SB & Minor – noise, distraction, tick a timer +1 \\
 2 SB & Moderate – alarm raised, lose advantage, worsen Position \\
 3+ SB & Major – reinforcements, scene shifts, break an asset \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{Be aggressive with SB.} Unused pressure is wasted momentum.
@@ -250,51 +250,51 @@ Every time a player rolls a 1, the GM gains Story Beats. Spend SB to introduce c
 %=====================================================================
 % SECTION 4: HARM AND FATIGUE
 %=====================================================================
-\section{Injury & Exhaustion}
+\section{Injury \& Exhaustion}
 
 \subsection{Fatigue—The Weight of the World}
-Each point of Fatigue worsens your Position. If already Desperate, each Fatigue imposes $−1$ die instead.
+Each point of Fatigue worsens your Position. If already Desperate, each Fatigue imposes $-1$ die instead.
 \begin{coretable}[Fatigue Progression]
-\begin{tabular}{>{\bfseries}p{0.35łinewidth} p{0.55łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.35\linewidth} p{0.55\linewidth}}
+\toprule
 \textbf{Fatigue Level} & \textbf{Effect} \\
-∣rule
+\midrule
 1 & Position worsens one step \\
-2 & If already Desperate, $−1$ die; otherwise Position worsens \\
-3 & $−2$ dice (if already Desperate from Fatigue) \\
+2 & If already Desperate, $-1$ die; otherwise Position worsens \\
+3 & $-2$ dice (if already Desperate from Fatigue) \\
 4+ & Collapse, KO, incapacitated \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{Recovery:} Short rest removes 2 Fatigue; full night's rest removes all.
 
 \subsection{Harm—Serious Injury}
 \begin{coretable}[Harm Levels]
-\begin{tabular}{>{\bfseries}p{0.3łinewidth} p{0.6łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.3\linewidth} p{0.6\linewidth}}
+\toprule
 \textbf{Harm Level} & \textbf{Effect} \\
-∣rule
-Harm 1 & $−1$ die on related actions \\
-Harm 2 & $−1$ dice on most actions \\
+\midrule
+Harm 1 & $-1$ die on related actions \\
+Harm 2 & $-1$ dice on most actions \\
 Harm 3 & Incapacitated or dying \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
-\subsection{The Roller−Coaster Effect}
+\subsection{The Roller-Coaster Effect}
 \textbf{Taking Harm clears Fatigue.} The shock of a wound resets your exhaustion. This creates dramatic swings—a character near collapse who takes a wound and finds a second wind.
 
 \subsection{Armor Conversion}
 When you take Harm, armor converts some to Fatigue:
 \begin{coretable}[Armor Conversion]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth}}
+\toprule
 \textbf{Armor} & \textbf{Harm 1} & \textbf{Harm 2} & \textbf{Harm 3} \\
-∣rule
+\midrule
 Light & Fatigue 1 & Harm 1 + Fatigue 1 & Harm 2 + Fatigue 1 \\
 Medium & Fatigue 1 & Fatigue 1 & Harm 2 + Fatigue 1 \\
 Heavy & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
@@ -303,40 +303,40 @@ Heavy & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
 %=====================================================================
 \section{Building Your Character}
 
-\subsection{10−Minute Checklist}
+\subsection{10-Minute Checklist}
 Start with \textbf{32 XP} (max 36 with Bonds/Complications).
 \begin{enumerate}[leftmargin=*]
-    ℹtem \textbf{Concept:} One sentence (origin, profession, defining trait).
-    ℹtem \textbf{Attributes (1–5):} Spend XP—primary to 3 (9 XP), secondaries to 2 (6 XP each).
-    ℹtem \textbf{Skills (0–5):} Spend 8–12 XP on key skills.
-    ℹtem \textbf{Talents:} 1–3 talents (2–6 XP each).
-    ℹtem \textbf{Patron (optional):} Choose a Patron for magic.
-    ℹtem \textbf{Assets/Followers (optional):} Minor Asset (4 XP) or follower (Cap² XP).
-    ℹtem \textbf{Bonds & Complications:} Up to +4 XP total.
+    \item \textbf{Concept:} One sentence (origin, profession, defining trait).
+    \item \textbf{Attributes (1–5):} Spend XP—primary to 3 (9 XP), secondaries to 2 (6 XP each).
+    \item \textbf{Skills (0–5):} Spend 8–12 XP on key skills.
+    \item \textbf{Talents:} 1–3 talents (2–6 XP each).
+    \item \textbf{Patron (optional):} Choose a Patron for magic.
+    \item \textbf{Assets/Followers (optional):} Minor Asset (4 XP) or follower (Cap² XP).
+    \item \textbf{Bonds \& Complications:} Up to +4 XP total.
 \end{enumerate}
 
 \subsection{Attributes}
 \begin{coretable}[Attributes]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.45łinewidth} >{\bfseries}p{0.2łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.45\linewidth} >{\bfseries}p{0.2\linewidth}}
+\toprule
 \textbf{Attribute} & \textbf{What It Does} & \textbf{Example Skills} \\
-∣rule
+\midrule
 Body & Strength, agility, endurance & Melee, Athletics, Stealth \\
 Wits & Perception, quick thinking & Insight, Lore, Investigation \\
 Spirit & Willpower, intuition & Arcana, Resolve, Survival \\
 Presence & Charisma, leadership & Sway, Command, Deception \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
-\textbf{Cost to raise:} New rating $×$ 3 XP. Downtime = new rating in days.
+\textbf{Cost to raise:} New rating $\times$ 3 XP. Downtime = new rating in days.
 
 \subsection{Skills}
-\textbf{Cost to raise:} New level $×$ 2 XP. Downtime = new level in days.
+\textbf{Cost to raise:} New level $\times$ 2 XP. Downtime = new level in days.
 \begin{coretable}[Core Skills]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.4łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.4\linewidth}}
+\toprule
 \textbf{Combat} & \textbf{Physical} & \textbf{Social} \\
-∣rule
+\midrule
 Melee & Athletics & Sway \\
 Ranged & Stealth & Command \\
 Brawl & Endurance & Deception \\
@@ -347,16 +347,16 @@ Tactics & Craft & Performance \\
 Lore & Arcana & \\
 Investigation & Ritual & \\
 Medicine & & \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
 \subsection{Sample Starting Build—The Duelist (32 XP)}
 \begin{itemize}[leftmargin=*]
-    ℹtem \textbf{Attributes:} Body 3 (15 XP), Wits 2 (6 XP)
-    ℹtem \textbf{Skills:} Melee 2 (6 XP), Athletics 1 (2 XP)
-    ℹtem \textbf{Talent:} Keen Senses (2 XP)
-    ℹtem \textbf{Total:} 31 XP (bank 1)
+    \item \textbf{Attributes:} Body 3 (15 XP), Wits 2 (6 XP)
+    \item \textbf{Skills:} Melee 2 (6 XP), Athletics 1 (2 XP)
+    \item \textbf{Talent:} Keen Senses (2 XP)
+    \item \textbf{Total:} 31 XP (bank 1)
 \end{itemize}
 
 %=====================================================================
@@ -365,7 +365,7 @@ Medicine & & \\
 \section{The Known World: Acasia}
 \textit{``The Broken Province''}
 
-\subsection{Genre & Mood}
+\subsection{Genre \& Mood}
 \textbf{Low fantasy / mercenary realism / border feud.} Acasia festers between the fallen Utaran Empire and the ambitions of petty kings. Every bridge demands a price, and every road curves back to the same cursed crossroads.
 
 \subsection{What You Notice First}
@@ -376,15 +376,15 @@ The smell of mildew on old parchment and wet ash. The way every milestone has be
 
 \subsection{Key Factions}
 \begin{coretable}[Acasia Factions]
-\begin{tabular}{>{\bfseries}p{0.28łinewidth} >{\bfseries}p{0.22łinewidth} >{\bfseries}p{0.4łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.28\linewidth} >{\bfseries}p{0.22\linewidth} >{\bfseries}p{0.4\linewidth}}
+\toprule
 \textbf{Faction} & \textbf{Leader} & \textbf{Goal} \\
-∣rule
+\midrule
 Broken March & Margravine Mira & Keep the province from fracturing \\
 Lame King's Claimants & Oren ``Tin Crown'' & Be recognised as true sovereign \\
 Free Companies & Various captains & Find permanent contracts \\
-Blackwood Matriarchs & Hedge−witches & Survive the Curse \\
-⊥tomrule
+Blackwood Matriarchs & Hedge-witches & Survive the Curse \\
+\bottomrule
 \end{tabular}
 \end{coretable}
 
@@ -392,14 +392,14 @@ Blackwood Matriarchs & Hedge−witches & Survive the Curse \\
 The land remembers what we did—and what we failed to do. Every broken milestone is a forgotten promise.
 \textbf{Mechanical effect:} When you cross a bridge or crossroads, roll Spirit + Resolve (DV 3). On a failure, the Curse stirs—gain 1 Fatigue or a minor complication (GM's choice).
 
-\subsection{Acasia Mini−Generator (d6)}
+\subsection{Acasia Mini-Generator (d6)}
 \begin{enumerate}[leftmargin=*]
-    ℹtem A bridge toll has tripled overnight; the toll−keeper is a deserter from your old company.
-    ℹtem A hedge−witch offers to break your blood‑debt—for the memory of your first kill.
-    ℹtem The Lame King travels with a mute jester who writes prophecies on fallen leaves.
-    ℹtem Bandits stole a Blackwood Matriarch's curse‑box. Recover it before it opens.
-    ℹtem A free company captain wants to hire you—but their last three hires died of ``accidents.''
-    ℹtem The Margravine's seal is missing. Whoever finds it can rewrite border law.
+    \item A bridge toll has tripled overnight; the toll-keeper is a deserter from your old company.
+    \item A hedge-witch offers to break your blood‑debt—for the memory of your first kill.
+    \item The Lame King travels with a mute jester who writes prophecies on fallen leaves.
+    \item Bandits stole a Blackwood Matriarch's curse‑box. Recover it before it opens.
+    \item A free company captain wants to hire you—but their last three hires died of ``accidents.''
+    \item The Margravine's seal is missing. Whoever finds it can rewrite border law.
 \end{enumerate}
 
 %=====================================================================
@@ -408,43 +408,43 @@ The land remembers what we did—and what we failed to do. Every broken mileston
 \section{Running Fate's Edge}
 
 \subsection{The GM Mindset}
-You are not a referee. You are a \textbf{co−creator of drama}. Your tools (SB, timers) are how you play the game.
+You are not a referee. You are a \textbf{co-creator of drama}. Your tools (SB, timers) are how you play the game.
 
 \subsection{Your Defaults}
 When in doubt:
 \begin{itemize}[leftmargin=*]
-    ℹtem \textbf{DV: 3}
-    ℹtem \textbf{Position: Controlled}
-    ℹtem \textbf{Consequence:} Fatigue, time pressure, or exposure
-    ℹtem \textbf{Timers:} One short timer tied to the scene
+    \item \textbf{DV: 3}
+    \item \textbf{Position: Controlled}
+    \item \textbf{Consequence:} Fatigue, time pressure, or exposure
+    \item \textbf{Timers:} One short timer tied to the scene
 \end{itemize}
 
-\subsection{The Three−Timer Guideline}
+\subsection{The Three-Timer Guideline}
 Keep 1–3 active timers per scene:
 \begin{coretable}[Timer Sizes]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} p{0.65łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} p{0.65\linewidth}}
+\toprule
 \textbf{Segments} & \textbf{When to Use} \\
-∣rule
+\midrule
 4 & Short, straightforward challenge \\
 6 & Standard scene or tension \\
 8 & Extended or complex problem \\
-10 & Epic or campaign−long pressure \\
-⊥tomrule
+10 & Epic or campaign-long pressure \\
+\bottomrule
 \end{tabular}
 \end{coretable}
 
 \subsection{GM Survival Tips}
-⫕section{When Players Go Off the Rails}
+\subsubsection{When Players Go Off the Rails}
 Do not panic. Ask: \textit{``What is your goal?''} Name the simplest obstacle—then set Position and DV.
 
-⫕section{When Players Hoard Boons}
+\subsubsection{When Players Hoard Boons}
 Remind them: \textit{``Boons are not XP tokens—they are dramatic fuel.''} Introduce time pressure.
 
-⫕section{When a Scene Stalls}
+\subsubsection{When a Scene Stalls}
 Ask a leading question, tick a timer, or cut to another player.
 
-⫕section{When You Don't Know a Rule}
+\subsubsection{When You Don't Know a Rule}
 Make a ruling that keeps the story moving. Default to DV 3, Controlled Position. Look it up later.
 
 %=====================================================================
@@ -458,35 +458,35 @@ The party is hired by \textbf{Elder Sarai} of Duskwood. A blight is spreading fr
 
 \subsection{What the Party Knows}
 \begin{itemize}[leftmargin=*]
-    ℹtem The lantern is in the central chamber of the barrow.
-    ℹtem The barrow is guarded by restless spirits (the Duskwights).
-    ℹtem A rival treasure hunter, \textbf{Quick Lena}, has also entered the barrow.
-    ℹtem The curse will kill the village's crops in three days.
+    \item The lantern is in the central chamber of the barrow.
+    \item The barrow is guarded by restless spirits (the Duskwights).
+    \item A rival treasure hunter, \textbf{Quick Lena}, has also entered the barrow.
+    \item The curse will kill the village's crops in three days.
 \end{itemize}
 
 \subsection{Timers}
 \begin{coretable}[Adventure Timers]
-\begin{tabular}{>{\bfseries}p{0.3łinewidth} p{0.6łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.3\linewidth} p{0.6\linewidth}}
+\toprule
 \textbf{Clock} & \textbf{Effect} \\
-∣rule
+\midrule
 Barrow Collapse [6] & Ticks on failure inside. At 6, entrance seals. \\
 Lena's Agenda [4] & Ticks each scene inside. At 4, Lena takes the lantern first. \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
 \subsection{Scenes}
-⫕section{Scene 1—The Entry (DV 3, Controlled)}
-Obstacle: Cave−in blocks the way (Body + Athletics). \textbf{Partial:} Tick Barrow Collapse +1. \textbf{Miss:} Mark Harm 1, tick Collapse +1.
+\subsubsection{Scene 1—The Entry (DV 3, Controlled)}
+Obstacle: Cave-in blocks the way (Body + Athletics). \textbf{Partial:} Tick Barrow Collapse +1. \textbf{Miss:} Mark Harm 1, tick Collapse +1.
 
-⫕section{Scene 2—The Spirit Corridor (DV 3, Controlled)}
+\subsubsection{Scene 2—The Spirit Corridor (DV 3, Controlled)}
 Three Duskwights demand an offering (a memory or a secret). Roll Presence + Sway. \textbf{Partial:} They also steal random equipment. \textbf{Miss:} They attack (Cap 2, Harm 1 each).
 
-⫕section{Scene 3—The Lantern Chamber}
+\subsubsection{Scene 3—The Lantern Chamber}
 Quick Lena tries to pry the lantern loose. Confront her: Presence + Sway (DV 3). \textbf{Partial:} She agrees to split the reward but demands a later favor (start Debt Timer [4]).
 
-⫕section{Scene 4—Escape (Skill Challenge)}
+\subsubsection{Scene 4—Escape (Skill Challenge)}
 The party needs \textbf{3 successes before 2 failures} to escape. DV 3, Position Desperate. Each failure ticks Barrow Collapse +1.
 
 \subsection{Resolution}
@@ -502,16 +502,16 @@ Each PC earns \textbf{6–10 XP} at the end.
 
 \subsection{The Five Paths (Quick Reference)}
 \begin{coretable}[Magic Paths]
-\begin{tabular}{>{\bfseries}p{0.3łinewidth} >{\bfseries}p{0.2łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.2łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.3\linewidth} >{\bfseries}p{0.2\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.2\linewidth}}
+\toprule
 \textbf{Path} & \textbf{Complexity} & \textbf{Cost Type} & \textbf{Best For} \\
-∣rule
-Runkeeper & Low & Obligation & First−timers, reliable casters \\
-Cantor & Medium & Corruption & Bards, risk−takers \\
+\midrule
+Runkeeper & Low & Obligation & First-timers, reliable casters \\
+Cantor & Medium & Corruption & Bards, risk-takers \\
 Invoker & Medium & Obligation + time & Ritual specialists \\
-Summoner & High & Leash + Boons & Pet−class fans \\
+Summoner & High & Leash + Boons & Pet-class fans \\
 Free Caster & High & Backlash & Improv players \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{For first magical characters, play a Runkeeper.}
@@ -529,11 +529,11 @@ Free Caster & High & Backlash & Improv players \\
 \begin{sidebar}
     \textbf{Kestra, Traveler's Runkeeper} (36XP)
     \begin{itemize}[leftmargin=*]
-        ℹtem Spirit 3 (9 XP), Wits 2 (6 XP)
-        ℹtem Lore 2 (6 XP), Insight 1 (2 XP), Sway 1 (2 XP)
-        ℹtem Talents: Familiar (2 XP), Codex (4 XP)
-        ℹtem Rites: Road−Sense (4 XP), Traveler's Boon (5 XP)
-        ℹtem Obligation Capacity: 4 (Spirit 3 + Presence 1)
+        \item Spirit 3 (9 XP), Wits 2 (6 XP)
+        \item Lore 2 (6 XP), Insight 1 (2 XP), Sway 1 (2 XP)
+        \item Talents: Familiar (2 XP), Codex (4 XP)
+        \item Rites: Road-Sense (4 XP), Traveler's Boon (5 XP)
+        \item Obligation Capacity: 4 (Spirit 3 + Presence 1)
     \end{itemize}
 \end{sidebar}
 
@@ -544,66 +544,66 @@ For improvisational magic, construct spells using TAGS:
 \]
 Dangerous TAGS (Leap, Fold, Gate, Transform, Dominate) add $+2$ DV.
 
-⫕section{Example Spells}
+\subsubsection{Example Spells}
 \begin{itemize}[leftmargin=*]
-    ℹtem \textbf{Light [Illuminate]} – DV 2. Create small, sustained light.
-    ℹtem \textbf{HEAL [HEAL]} – DV 2. Remove 1 Fatigue from self or touched ally.
-    ℹtem \textbf{Shield of Air [WARD] [DEFEND]} – DV 3. Gain Position +1 on next defense.
-    ℹtem \textbf{Flame Cloak [BURNING] [AREA]} – DV 3. Enemies suffer $−1$ die to approach.
+    \item \textbf{Light [Illuminate]} – DV 2. Create small, sustained light.
+    \item \textbf{HEAL [HEAL]} – DV 2. Remove 1 Fatigue from self or touched ally.
+    \item \textbf{Shield of Air [WARD] [DEFEND]} – DV 3. Gain Position +1 on next defense.
+    \item \textbf{Flame Cloak [BURNING] [AREA]} – DV 3. Enemies suffer $-1$ die to approach.
 \end{itemize}
 \textbf{Backlash:} On a Miss or when GM spends SB, magic backfires—Fatigue 1, Harm 1, or a thematic complication.
 
 %=====================================================================
 % SECTION 10: ADVANCEMENT
 %=====================================================================
-\section{Advancement & XP}
+\section{Advancement \& XP}
 
 \subsection{Earning XP (Per Session)}
 \begin{coretable}[XP Breakdown]
-\begin{tabular}{>{\bfseries}p{0.5łinewidth} >{\bfseries}p{0.4łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.5\linewidth} >{\bfseries}p{0.4\linewidth}}
+\toprule
 \textbf{Achievement} & \textbf{XP} \\
-∣rule
+\midrule
 Attendance & +2 \\
 Major objectives & +2–4 \\
 Discoveries & +1–2 \\
 Hard choices & +1–2 \\
 Story engagement & +1–3 \\
 Personal goals & +1–2 \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 \textbf{Game pace options:} Gritty (4–6 XP/session), Standard (6–10), Epic (10–14).
 
 \subsection{Spending XP}
 \begin{coretable}[XP Costs]
-\begin{tabular}{>{\bfseries}p{0.4łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.4\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth}}
+\toprule
 \textbf{Improvement} & \textbf{XP Cost} & \textbf{Downtime} \\
-∣rule
-Attribute increase & New rating $×$ 3 & New rating in days \\
-Skill increase & New level $×$ 2 & New level in days \\
+\midrule
+Attribute increase & New rating $\times$ 3 & New rating in days \\
+Skill increase & New level $\times$ 2 & New level in days \\
 Minor Asset & 4 XP & 1 day \\
 Standard Asset & 8 XP & 1 week \\
 Major Asset & 12 XP & 1 month \\
 Minor Talent & 2–4 XP & 3–10 days \\
 Major Talent & 5–8 XP & 1–2 weeks \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
 \subsection{Tiers of Play}
 \begin{coretable}[Character Tiers]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.4łinewidth} >{\bfseries}p{0.25łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.4\linewidth} >{\bfseries}p{0.25\linewidth}}
+\toprule
 \textbf{Tier} & \textbf{XP Range} & \textbf{Reputation} \\
-∣rule
+\midrule
 I: Novice & 0–40 & Local \\
 II: Seasoned & 41–90 & Regional \\
 III: Veteran & 91–150 & National \\
 IV: Paragon & 151–220 & Continental \\
 V: Mythic & 221+ & Legendary \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
@@ -614,55 +614,55 @@ V: Mythic & 221+ & Legendary \\
 
 \subsection{Combat in Brief}
 \begin{itemize}[leftmargin=*]
-    ℹtem \textbf{Turn:} 1 Action + 1 Move
-    ℹtem \textbf{Move:} Shift one range band (Close $↔$ Near $↔$ Far)
-    ℹtem \textbf{Opportunity Attack:} Leaving Close range without Disengage provokes one free melee attack.
-    ℹtem \textbf{Sidestep Strike:} Move one band as part of melee attack; worsen Position by one step.
+    \item \textbf{Turn:} 1 Action + 1 Move
+    \item \textbf{Move:} Shift one range band (Close $\leftrightarrow$ Near $\leftrightarrow$ Far)
+    \item \textbf{Opportunity Attack:} Leaving Close range without Disengage provokes one free melee attack.
+    \item \textbf{Sidestep Strike:} Move one band as part of melee attack; worsen Position by one step.
 \end{itemize}
 
 \subsection{Weapon Modifiers}
 \begin{coretable}[Melee Weapons]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.4łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.4\linewidth}}
+\toprule
 \textbf{Weight} & \textbf{Close} & \textbf{Near} \\
-∣rule
+\midrule
 Light & +2d & +1d \\
 Medium & +1d & +2d \\
-Heavy & $−1$d & +3d \\
-⊥tomrule
+Heavy & $-1$d & +3d \\
+\bottomrule
 \end{tabular}
 \end{coretable}
 
 \begin{coretable}[Ranged Weapons]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.25łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.25\linewidth}}
+\toprule
 \textbf{Weight} & \textbf{Close} & \textbf{Near} & \textbf{Far} \\
-∣rule
+\midrule
 Light & Controlled & +1d & — \\
 Medium & Desperate & +2d & +1d \\
 Heavy & Desperate & +1d & +3d \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
 \subsection{Range Bands}
 \begin{itemize}[leftmargin=*]
-    ℹtem \textbf{Close:} Touching distance
-    ℹtem \textbf{Near:} Same room/area—a rush away
-    ℹtem \textbf{Far:} Same site but distant—requires route or time
+    \item \textbf{Close:} Touching distance
+    \item \textbf{Near:} Same room/area—a rush away
+    \item \textbf{Far:} Same site but distant—requires route or time
 \end{itemize}
 
 \subsection{Skill Synergies—Creative Pairs}
 \begin{coretable}[Alternative Skill Pairs]
-\begin{tabular}{>{\bfseries}p{0.25łinewidth} >{\bfseries}p{0.35łinewidth} >{\bfseries}p{0.3łinewidth}}
-⊤rule
+\begin{tabular}{>{\bfseries}p{0.25\linewidth} >{\bfseries}p{0.35\linewidth} >{\bfseries}p{0.3\linewidth}}
+\toprule
 \textbf{Action} & \textbf{Standard Pair} & \textbf{Alternative Pair} \\
-∣rule
+\midrule
 Climbing & Body + Athletics & Wits + Athletics (clever route) \\
 Persuading & Presence + Sway & Wits + Sway (logical argument) \\
 Investigating & Wits + Investigation & Spirit + Investigation (intuitive leap) \\
 Feinting & Wits + Melee & Presence + Melee (intimidation) \\
-⊥tomrule
+\bottomrule
 \end{tabular}
 \end{coretable}
 
@@ -676,28 +676,28 @@ Feinting & Wits + Melee & Presence + Melee (intimidation) \\
 %=====================================================================
 \section{Session Zero Checklist}
 \begin{enumerate}[leftmargin=*]
-    ℹtem \textbf{Lines & Veils} – Off−limits or implied content?
-    ℹtem \textbf{Tone} – Action, survival, intrigue, or horror?
-    ℹtem \textbf{Campaign length} – One−shot, short arc, or long campaign?
-    ℹtem \textbf{Character hooks} – Each player shares one goal and one fear.
-    ℹtem \textbf{Patron interest} – Which Patrons are already watching?
-    ℹtem \textbf{Starting situation} – Where does the story begin?
-    ℹtem \textbf{House rules} – Any optional subsystems?
-    ℹtem \textbf{Scheduling & attendance} – Logistics for your table.
-    ℹtem \textbf{Player−GM contract} – ``We are co−creators, not adversaries.''
-    ℹtem \textbf{Resource mindset} – ``Boons are not XP tokens. Spend them. Embrace failure.''
+    \item \textbf{Lines \& Veils} – Off-limits or implied content?
+    \item \textbf{Tone} – Action, survival, intrigue, or horror?
+    \item \textbf{Campaign length} – One-shot, short arc, or long campaign?
+    \item \textbf{Character hooks} – Each player shares one goal and one fear.
+    \item \textbf{Patron interest} – Which Patrons are already watching?
+    \item \textbf{Starting situation} – Where does the story begin?
+    \item \textbf{House rules} – Any optional subsystems?
+    \item \textbf{Scheduling \& attendance} – Logistics for your table.
+    \item \textbf{Player-GM contract} – ``We are co-creators, not adversaries.''
+    \item \textbf{Resource mindset} – ``Boons are not XP tokens. Spend them. Embrace failure.''
 \end{enumerate}
 \textit{``Now close the book—or keep reading. The road is waiting.''}
 
 %=====================================================================
 % BACK MATTER
 %=====================================================================
-ønecolumn % Switch back to single column for the epilogue
-≠wpage
-þispagestyle{empty}
+\onecolumn % Switch back to single column for the epilogue
+\newpage
+\thispagestyle{empty}
 \vspace*{2cm}
 \begin{center}
-    {ŁARGE\sffamilyℹtshape ``The coin that never spends is the one you don't remember taking.''}\\[1.5em]
+    {\LARGE\sffamily\itshape ``The coin that never spends is the one you don't remember taking.''}\\[1.5em]
     — Serafine of the Velvet Touch\\[2em]
     \rule{0.5\textwidth}{0.5pt}\\[1.5em]
     {\small Fate's Edge Essential Guide — CC BY 4.0 — Nicholas A. Gasper}\\[0.5em]

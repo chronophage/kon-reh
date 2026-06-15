@@ -17,7 +17,7 @@
 \usepackage{mdframed}
 \usepackage{changepage}
 \usepackage{calc}
-\usepackage{eso−pic}
+\usepackage{eso-pic}
 
 % Color definitions
 \definecolor{headercolor}{RGB}{30, 50, 100}
@@ -30,7 +30,7 @@
 \definecolor{sectionbg}{RGB}{230, 240, 250}
 
 % Page setup
-≥ometry{margin=0.5in}
+\geometry{margin=0.5in}
 \pagestyle{empty}
 
 % Font and spacing
@@ -38,48 +38,48 @@
 \setlength{\parskip}{2pt}
 
 % Custom commands
-≠wcommand{\attributebox}[2]{%
-    \begin{tabular}{|>{¢ering\arraybackslash}m{0.7cm}|>{¢ering\arraybackslash}m{0.7cm}|}
-    ℎline
+\newcommand{\attributebox}[2]{%
+    \begin{tabular}{|>{\centering\arraybackslash}m{0.7cm}|>{\centering\arraybackslash}m{0.7cm}|}
+    \hline
     \cellcolor{lightaccent} \textbf{\small #1} & \cellcolor{lightaccent} \textbf{\small #2} \\
-    ℎline
+    \hline
     \end{tabular}
 }
 
-≠wcommand{\skillbox}[3]{%
-    \begin{tabular}{|>{\raggedright\arraybackslash}m{3.2cm}|>{¢ering\arraybackslash}m{0.6cm}|>{¢ering\arraybackslash}m{0.6cm}|}
-    ℎline
+\newcommand{\skillbox}[3]{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}m{3.2cm}|>{\centering\arraybackslash}m{0.6cm}|>{\centering\arraybackslash}m{0.6cm}|}
+    \hline
     \cellcolor{skillbg} \textbf{\small #1} & \cellcolor{skillbg} #2 & \cellcolor{skillbg} #3 \\
-    ℎline
+    \hline
     \end{tabular}
 }
 
-≠wcommand{\resourcebox}[3]{%
-    \begin{tabular}{|>{\raggedright\arraybackslash}m{3.2cm}|>{¢ering\arraybackslash}m{0.6cm}|>{¢ering\arraybackslash}m{0.6cm}|}
-    ℎline
+\newcommand{\resourcebox}[3]{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}m{3.2cm}|>{\centering\arraybackslash}m{0.6cm}|>{\centering\arraybackslash}m{0.6cm}|}
+    \hline
     \cellcolor{resourcebg} \textbf{\small #1} & \cellcolor{resourcebg} #2 & \cellcolor{resourcebg} #3 \\
-    ℎline
+    \hline
     \end{tabular}
 }
 
-≠wcommand{\bondbox}[1]{%
+\newcommand{\bondbox}[1]{%
     \begin{tabular}{|>{\raggedright\arraybackslash}m{4.4cm}|}
-    ℎline
+    \hline
     \cellcolor{bondcolor} \textbf{\small #1} \\
-    ℎline
+    \hline
     \end{tabular}
 }
 
-≠wcommand{\boon}{\textcolor{orange}{\ding{72}}}
-≠wcommand{\asset}{\textcolor{green!60!black}{$▪$}}
+\newcommand{\boon}{\textcolor{orange}{\ding{72}}}
+\newcommand{\asset}{\textcolor{green!60!black}{$\blacksquare$}}
 
 % Header
-≠wcommand{\sheetheader}[4]{
+\newcommand{\sheetheader}[4]{
     \begin{tikzpicture}[remember picture,overlay]
         \fill[headercolor] (0,0) rectangle (\paperwidth,1.2cm);
         \node[anchor=west] at (0.5cm,0.6cm) {\textcolor{white}{\textbf{\Huge #1}}};
-        \node[anchor=east] at (\paperwidth−0.5cm,0.8cm) {\textcolor{white}{\textbf{#2}}};
-        \node[anchor=east] at (\paperwidth−0.5cm,0.3cm) {\textcolor{white}{\textbf{XP: #3   Tier: #4}}};
+        \node[anchor=east] at (\paperwidth-0.5cm,0.8cm) {\textcolor{white}{\textbf{#2}}};
+        \node[anchor=east] at (\paperwidth-0.5cm,0.3cm) {\textcolor{white}{\textbf{XP: #3 \quad Tier: #4}}};
     \end{tikzpicture}
     \vspace{1.5cm}
 }
@@ -95,7 +95,7 @@
 
 % Attributes Section
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Attributes}
+\textbf{\large Attributes}
 \end{mdframed}
 
 \begin{center}
@@ -111,25 +111,25 @@
 
 % Skills Section
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Skills}
+\textbf{\large Skills}
 \end{mdframed}
 
 \begin{center}
 \begin{tabular}{ccc}
-\skillbox{Melee}{1}{ℎspace{0.5cm}} & 
-\skillbox{Athletics}{1}{ℎspace{0.5cm}} & 
-\skillbox{Command}{1}{ℎspace{0.5cm}} \\
-\skillbox{Stealth}{1}{ℎspace{0.5cm}} & 
-\skillbox{Survival}{1}{ℎspace{0.5cm}} & 
-\skillbox{Subterfuge}{1}{ℎspace{0.5cm}} \\
-\skillbox{Arcana}{1}{ℎspace{0.5cm}} & 
-\skillbox{Lore}{1}{ℎspace{0.5cm}} & 
-\skillbox{Insight}{1}{ℎspace{0.5cm}} \\
-\skillbox{Medicine}{1}{ℎspace{0.5cm}} & 
-\skillbox{Diplomacy}{1}{ℎspace{0.5cm}} & 
-\skillbox{Tactics}{1}{ℎspace{0.5cm}} \\
-\skillbox{Craft}{1}{ℎspace{0.5cm}} & 
-\skillbox{Performance}{1}{ℎspace{0.5cm}} & 
+\skillbox{Melee}{1}{\hspace{0.5cm}} & 
+\skillbox{Athletics}{1}{\hspace{0.5cm}} & 
+\skillbox{Command}{1}{\hspace{0.5cm}} \\
+\skillbox{Stealth}{1}{\hspace{0.5cm}} & 
+\skillbox{Survival}{1}{\hspace{0.5cm}} & 
+\skillbox{Subterfuge}{1}{\hspace{0.5cm}} \\
+\skillbox{Arcana}{1}{\hspace{0.5cm}} & 
+\skillbox{Lore}{1}{\hspace{0.5cm}} & 
+\skillbox{Insight}{1}{\hspace{0.5cm}} \\
+\skillbox{Medicine}{1}{\hspace{0.5cm}} & 
+\skillbox{Diplomacy}{1}{\hspace{0.5cm}} & 
+\skillbox{Tactics}{1}{\hspace{0.5cm}} \\
+\skillbox{Craft}{1}{\hspace{0.5cm}} & 
+\skillbox{Performance}{1}{\hspace{0.5cm}} & 
 \end{tabular}
 \end{center}
 
@@ -137,30 +137,30 @@
 
 % Talents Section
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Talents}
+\textbf{\large Talents}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.2cm}
 \textbf{Talent Name:} Description of the talent and its effects...
 \vspace{0.2cm}
 
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.2cm}
 \textbf{Talent Name:} Description of the talent and its effects...
 \vspace{0.2cm}
 
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 \end{adjustwidth}
 
 \vspace{0.3cm}
 
 % Resources Section
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Resources}
+\textbf{\large Resources}
 \end{mdframed}
 
 \begin{center}
@@ -173,28 +173,28 @@
 
 % Assets Detail
 \begin{adjustwidth}{0.2cm}{0.2cm}
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.1cm}
 \textbf{Minor Asset:} Asset Name \\
 Description and effects...
 \vspace{0.1cm}
 
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.1cm}
 \textbf{Standard Asset:} Asset Name \\
 Description and effects...
 \vspace{0.1cm}
 
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 \end{adjustwidth}
 
 \vspace{0.3cm}
 
 % Bonds Section
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Bonds}
+\textbf{\large Bonds}
 \end{mdframed}
 
 \begin{center}
@@ -209,7 +209,7 @@ Description and effects...
 
 % Background Section
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Background}
+\textbf{\large Background}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
@@ -226,12 +226,12 @@ Description and effects...
 
 % Footer with game info
 \begin{tikzpicture}[remember picture,overlay]
-    \fill[headercolor] (0,−1) rectangle (\paperwidth,−0.5);
-    \node[anchor=west] at (0.5cm,−0.75cm) {\textcolor{white}{\textbf{Fate's Edge Character Sheet}}};
-    \node[anchor=east] at (\paperwidth−0.5cm,−0.75cm) {\textcolor{white}{\textbf{Page 1 of 2}}};
+    \fill[headercolor] (0,-1) rectangle (\paperwidth,-0.5);
+    \node[anchor=west] at (0.5cm,-0.75cm) {\textcolor{white}{\textbf{Fate's Edge Character Sheet}}};
+    \node[anchor=east] at (\paperwidth-0.5cm,-0.75cm) {\textcolor{white}{\textbf{Page 1 of 2}}};
 \end{tikzpicture}
 
-≠wpage
+\newpage
 
 % Second Page
 \sheetheader{Character Name}{Profession}{0/40}{Rookie}
@@ -241,69 +241,69 @@ Description and effects...
 
 % Extended Background
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Extended Background}
+\textbf{\large Extended Background}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
 \vspace{0.2cm}
 \textbf{The Final Straw:} What event in Silkstrand led to exile? \\
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.3cm}
 \textbf{Defining Moment:} When was your first bond formed? \\
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.3cm}
 \textbf{A Sliver of Hope:} Why does Millhaven matter to you? \\
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 
 \vspace{0.3cm}
 \textbf{Personal Goals:} What does this character want to achieve? \\
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 \end{adjustwidth}
 
 \vspace{0.3cm}
 
 % Combat Reference
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Combat Reference}
+\textbf{\large Combat Reference}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
 \vspace{0.2cm}
 \textbf{Making Rolls:}
 \begin{itemize}[leftmargin=*]
-ℹtem Choose Attribute + Skill combination
-ℹtem Roll d10s equal to total rating
-ℹtem Count 
+\item Choose Attribute + Skill combination
+\item Roll d10s equal to total rating
+\item Count 
 
-ℹtem Each 6+ = 1 Success
-ℹtem Each 1 = 1 Story Beat (SB)
+\item Each 6+ = 1 Success
+\item Each 1 = 1 Story Beat (SB)
 \end{itemize}
 
 \textbf{Outcome Matrix:}
 \begin{center}
 \begin{tabular}{|l|l|l|}
-ℎline
+\hline
 \cellcolor{lightaccent} \textbf{Result} & \cellcolor{lightaccent} \textbf{Success vs DV} & \cellcolor{lightaccent} \textbf{Effect} \\
-ℎline
-Clean Success & S $≥$ DV, 0 SB & Intent achieved crisply \\
-Success & Cost & S $≥$ DV, 1+ SB & Intent achieved, GM spends SB \\
+\hline
+Clean Success & S $\geq$ DV, 0 SB & Intent achieved crisply \\
+Success \& Cost & S $\geq$ DV, 1+ SB & Intent achieved, GM spends SB \\
 Partial & 0 $<$ S $<$ DV & Progress with fork \\
 Miss & S = 0 & No progress, GM spends SB, Player earns a Boon \\
-ℎline
+\hline
 \end{tabular}
 \end{center}
 
 \textbf{Common Dice Pools:}
 \begin{itemize}[leftmargin=*]
-ℹtem Negotiate: Presence + Diplomacy = \rule{2cm}{0.4pt} d10
-ℹtem Fight: Body + Melee = \rule{2cm}{0.4pt} d10
-ℹtem Sneak: Wits + Stealth = \rule{2cm}{0.4pt} d10
-ℹtem Heal: Spirit + Medicine = \rule{2cm}{0.4pt} d10
-ℹtem Research: Wits + Lore = \rule{2cm}{0.4pt} d10
+\item Negotiate: Presence + Diplomacy = \rule{2cm}{0.4pt} d10
+\item Fight: Body + Melee = \rule{2cm}{0.4pt} d10
+\item Sneak: Wits + Stealth = \rule{2cm}{0.4pt} d10
+\item Heal: Spirit + Medicine = \rule{2cm}{0.4pt} d10
+\item Research: Wits + Lore = \rule{2cm}{0.4pt} d10
 \end{itemize}
 \end{adjustwidth}
 
@@ -311,40 +311,40 @@ Miss & S = 0 & No progress, GM spends SB, Player earns a Boon \\
 
 % Resource Management
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Resource Management}
+\textbf{\large Resource Management}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
 \vspace{0.2cm}
 \textbf{Boons (Max 5):}
 \begin{itemize}[leftmargin=*]
-ℹtem \boon Re−roll one die after seeing the pool
-ℹtem \boon Activate an Off−Screen Asset
-ℹtem \boon Convert 2 Boons → 1 XP (once per session)
+\item \boon Re-roll one die after seeing the pool
+\item \boon Activate an Off-Screen Asset
+\item \boon Convert 2 Boons → 1 XP (once per session)
 \end{itemize}
 
 \textbf{Assets:}
 \begin{itemize}[leftmargin=*]
-ℹtem \asset Minor (4 XP): Safehouse, small shop
-ℹtem \asset Standard (8 XP): Noble title, guild section
-ℹtem \asset Major (12 XP): City license, fortress lease
-ℹtem \asset Free effect once per session
-ℹtem Spend 1 Boon to reshape current scene
+\item \asset Minor (4 XP): Safehouse, small shop
+\item \asset Standard (8 XP): Noble title, guild section
+\item \asset Major (12 XP): City license, fortress lease
+\item \asset Free effect once per session
+\item Spend 1 Boon to reshape current scene
 \end{itemize}
 
 \textbf{Spending Guide:}
 \begin{center}
 \begin{tabular}{|l|c|l|}
-ℎline
+\hline
 \cellcolor{lightaccent} \textbf{Resource} & \cellcolor{lightaccent} \textbf{Cost} & \cellcolor{lightaccent} \textbf{When to Use} \\
-ℎline
-Re−roll die & 1 Boon & Critical success needed \\
+\hline
+Re-roll die & 1 Boon & Critical success needed \\
 Activate Asset & 1 Boon & Advantage in scene \\
 Convert to XP & 2 Boons & Character improvement \\
-Minor Asset & 4 XP & Basic off−screen help \\
+Minor Asset & 4 XP & Basic off-screen help \\
 Standard Asset & 8 XP & Significant influence \\
 Major Asset & 12 XP & Major world impact \\
-ℎline
+\hline
 \end{tabular}
 \end{center}
 \end{adjustwidth}
@@ -353,26 +353,26 @@ Major Asset & 12 XP & Major world impact \\
 
 % Experience Tracking
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Experience Tracking}
+\textbf{\large Experience Tracking}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
 \vspace{0.2cm}
 \textbf{Earning XP:}
 \begin{itemize}[leftmargin=*]
-ℹtem \textbf{Attendance:} +2 XP (just showing up)
-ℹtem \textbf{Objectives Reached:} +2−4 XP (completing major goals)
-ℹtem \textbf{Discoveries:} +1−2 XP (learning new things)
-ℹtem \textbf{Hard Choices:} +1−2 XP (making difficult moral decisions)
-ℹtem \textbf{Complication Spotlight:} +1−3 XP (embracing narrative twists)
-ℹtem \textbf{Bond/Flag Driven Play:} +1−2 XP (engaging personal storylines)
+\item \textbf{Attendance:} +2 XP (just showing up)
+\item \textbf{Objectives Reached:} +2-4 XP (completing major goals)
+\item \textbf{Discoveries:} +1-2 XP (learning new things)
+\item \textbf{Hard Choices:} +1-2 XP (making difficult moral decisions)
+\item \textbf{Complication Spotlight:} +1-3 XP (embracing narrative twists)
+\item \textbf{Bond/Flag Driven Play:} +1-2 XP (engaging personal storylines)
 \end{itemize}
 
 \textbf{Spending XP:}
 \begin{itemize}[leftmargin=*]
-ℹtem \textbf{Enhance Self:} Attributes (New rating × 3 XP), Skills (New level × 2 XP)
-ℹtem \textbf{Acquire Assets:} Minor: 4 XP, Standard: 8 XP, Major: 12 XP
-ℹtem \textbf{Learn Talents:} Early: 3−5 XP, Mid−Tier: 6−10 XP, Prestige: 12+ XP
+\item \textbf{Enhance Self:} Attributes (New rating × 3 XP), Skills (New level × 2 XP)
+\item \textbf{Acquire Assets:} Minor: 4 XP, Standard: 8 XP, Major: 12 XP
+\item \textbf{Learn Talents:} Early: 3-5 XP, Mid-Tier: 6-10 XP, Prestige: 12+ XP
 \end{itemize}
 \end{adjustwidth}
 
@@ -380,26 +380,26 @@ Major Asset & 12 XP & Major world impact \\
 
 % Quick Reference Notes
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Quick Reference Notes}
+\textbf{\large Quick Reference Notes}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
 \vspace{0.2cm}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
-\rule{\textwidth−0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
+\rule{\textwidth-0.4cm}{0.4pt}
 \end{adjustwidth}
 
 \vspace{0.5cm}
 
 % Campaign Timers Reference
 \begin{mdframed}[backgroundcolor=sectionbg, linewidth=1pt, linecolor=accentcolor]
-\textbf{łarge Campaign Timers}
+\textbf{\large Campaign Timers}
 \end{mdframed}
 
 \begin{adjustwidth}{0.2cm}{0.2cm}
@@ -413,9 +413,9 @@ Major Asset & 12 XP & Major world impact \\
 
 % Footer
 \begin{tikzpicture}[remember picture,overlay]
-    \fill[headercolor] (0,−1) rectangle (\paperwidth,−0.5);
-    \node[anchor=west] at (0.5cm,−0.75cm) {\textcolor{white}{\textbf{Fate's Edge Character Sheet}}};
-    \node[anchor=east] at (\paperwidth−0.5cm,−0.75cm) {\textcolor{white}{\textbf{Page 2 of 2}}};
+    \fill[headercolor] (0,-1) rectangle (\paperwidth,-0.5);
+    \node[anchor=west] at (0.5cm,-0.75cm) {\textcolor{white}{\textbf{Fate's Edge Character Sheet}}};
+    \node[anchor=east] at (\paperwidth-0.5cm,-0.75cm) {\textcolor{white}{\textbf{Page 2 of 2}}};
 \end{tikzpicture}
 
 \end{document}

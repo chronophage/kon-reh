@@ -1,6 +1,6 @@
 \documentclass[11pt,oneside]{article}
 
-% −−−−−−−−−−− PACKAGES −−−−−−−−−−−
+% ----------- PACKAGES -----------
 \usepackage[margin=1in]{geometry}
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
@@ -23,18 +23,18 @@
 % tighter item spacing globally
 \setlist[itemize]{nosep}
 
-% section formatting (optional, SRD−style)
-\titleformat{\chapter}{\normalfont\bfseriesŁarge}{}{0pt}{}
-\titleformat{\subsection}{\normalfont\bfseriesłarge}{}{0pt}{}
+% section formatting (optional, SRD-style)
+\titleformat{\chapter}{\normalfont\bfseries\Large}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\bfseries\large}{}{0pt}{}
 
 \begin{document}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% --------------------------------------------------------------------
 % TITLE + INTRO
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% --------------------------------------------------------------------
 \begin{center}
 {\Huge \textbf{The Seven Bell Court}}\\[6pt]
-{łarge Drop−In Adventures & Scenario Toolbox for \\ Fate's Edge}
+{\large Drop-In Adventures \& Scenario Toolbox for \\ Fate's Edge}
 \end{center}
 
 \bigskip
@@ -63,10 +63,10 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 
-≥ometry{margin=1in}
+\geometry{margin=1in}
 \setstretch{1.2}
 
-ℎypersetup{
+\hypersetup{
   colorlinks=true,
   linkcolor=black,
   urlcolor=cyan,
@@ -78,23 +78,23 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{þepage}
-\fancyhead[RE]{≤ftmark}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
 \fancyhead[LO]{\rightmark}
-\renewcommand{ℎeadrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
 \allsectionsfont{\sffamily\bfseries}
 \chapterfont{\sffamily\Huge\bfseries}
-\chapterfont{\sffamilyŁarge\bfseries}
-\subsectionfont{\sffamilyłarge\bfseries}
+\chapterfont{\sffamily\Large\bfseries}
+\subsectionfont{\sffamily\large\bfseries}
 
 \titleformat{\chapter}[display]
   {\normalfont\sffamily\bfseries\Huge}
-  {\chaptertitlename\ þechapter}{20pt}{\Huge}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
-% −−−−−−−−−− Boxes −−−−−−−−−−
-≠wmdenv[
+% ---------- Boxes ----------
+\newmdenv[
   linewidth=2pt,
   linecolor=black,
   backgroundcolor=gray!10,
@@ -105,7 +105,7 @@
   frametitlefont=\sffamily\bfseries
 ]{adventurebox}
 
-≠wmdenv[
+\newmdenv[
   linewidth=1pt,
   linecolor=gray,
   backgroundcolor=gray!5,
@@ -113,93 +113,93 @@
   innerbottommargin=8pt,
   innerrightmargin=8pt,
   innerleftmargin=8pt,
-  frametitlefont=\sffamilyℹtshape
+  frametitlefont=\sffamily\itshape
 ]{mechanicbox}
 
-≠wcommand{\Mechanic}[2]{%
+\newcommand{\Mechanic}[2]{%
   \begin{mechanicbox}[frametitle={#1}]
     #2
   \end{mechanicbox}
 }
 
-% −−−−−−−−−− Title Page −−−−−−−−−−
+% ---------- Title Page ----------
 \begin{document}
 \frontmatter
 \begin{titlepage}
-¢ering
+\centering
 \vspace*{2cm}
 {\Huge\bfseries The Book of the Seven Bell Court\par}
 \vspace{0.6cm}
-{Łarge Twelve Tales, Two Showpieces, and Supporting Systems for \emph{Fate's Edge}\par}
+{\Large Twelve Tales, Two Showpieces, and Supporting Systems for \emph{Fate's Edge}\par}
 \vspace{1.2cm}
-{łarge \textbf{Contents}}\par
+{\large \textbf{Contents}}\par
 \vspace{0.6cm}
 \begin{minipage}{0.9\textwidth}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textbf{Twelve Tales (Minor Adventures):} quick−run scenarios tuned for 3−−5 hours
-  ℹtem \textbf{Two Showpiece Adventures:} multi−session arcs with deeper investigation and set−pieces
-  ℹtem \textbf{Extras:} Seven Bell Court judging system, cultural deep−dives, and TAGS−based equipment
+  \item \textbf{Twelve Tales (Minor Adventures):} quick-run scenarios tuned for 3--5 hours
+  \item \textbf{Two Showpiece Adventures:} multi-session arcs with deeper investigation and set-pieces
+  \item \textbf{Extras:} Seven Bell Court judging system, cultural deep-dives, and TAGS-based equipment
 \end{itemize}
 \end{minipage}
 \vfill
-{\small Version 1.0  |  →day\par}
+{\small Version 1.0 \quad|\quad \today\par}
 \end{titlepage}
 
 \tableofcontents
-≠wpage
+\newpage
 
-% −−−−−−−−−− Intro −−−−−−−−−−
+% ---------- Intro ----------
 \chapter*{Introduction: How to Use This Book}
 \addcontentsline{toc}{chapter}{Introduction: How to Use This Book}
 
 \begin{adventurebox}[frametitle=What This Anthology Contains]
 This anthology is organized into three clearly labeled parts:
 \begin{itemize}[leftmargin=*]
-  ℹtem \textbf{Part I −− Twelve Tales:} 12 modular minor adventures for one session each (3−−5 hours). Each Tale includes a clear premise, 1−−3 signature timers, a mechanical twist, scaling notes, and a cinematic set−piece.
-  ℹtem \textbf{Part II −− Two Showpiece Adventures:} \emph{Duel to the Death} (conspiracy tournament) and \emph{The Bridge of Three Echoes} (contemplative pilgrimage). These are multi−session arcs with deeper NPC development, investigation layers, and culture−forward mechanics.
-  ℹtem \textbf{Part III −− Extras:} the \emph{Seven Bell Court} judging system, regional cultural guidance (Sihai, Nihori, Ayokha), and a curated \emph{Equipment for Contemplative Adventures} section showcasing the TAGS system.
+  \item \textbf{Part I -- Twelve Tales:} 12 modular minor adventures for one session each (3--5 hours). Each Tale includes a clear premise, 1--3 signature timers, a mechanical twist, scaling notes, and a cinematic set-piece.
+  \item \textbf{Part II -- Two Showpiece Adventures:} \emph{Duel to the Death} (conspiracy tournament) and \emph{The Bridge of Three Echoes} (contemplative pilgrimage). These are multi-session arcs with deeper NPC development, investigation layers, and culture-forward mechanics.
+  \item \textbf{Part III -- Extras:} the \emph{Seven Bell Court} judging system, regional cultural guidance (Sihai, Nihori, Ayokha), and a curated \emph{Equipment for Contemplative Adventures} section showcasing the TAGS system.
 \end{itemize}
 \end{adventurebox}
 
-\chapter*{At−a−Glance GM Guidance}
+\chapter*{At-a-Glance GM Guidance}
 \begin{itemize}[leftmargin=*]
-  ℹtem \textbf{Read the Premise box} and set the \emph{stakes} in one sentence.
-  ℹtem \textbf{Pick timers} appropriate to your table's pace (resolve 1−−3 per session).
-  ℹtem \textbf{Spot the mechanical twist} (e.g., Truth Duel, Split−Screen Timer, Lantern Placement) and telegraph it early.
-  ℹtem \textbf{Use Seven Bell Court} when victory should reflect \emph{Form, Spirit, and Intent}, not just harm dealt.
-  ℹtem \textbf{Signal culture respectfully:} use flavor cues as \emph{gifts}, not gates. Reward understanding with \emph{Cultural Edge} tokens.
+  \item \textbf{Read the Premise box} and set the \emph{stakes} in one sentence.
+  \item \textbf{Pick timers} appropriate to your table's pace (resolve 1--3 per session).
+  \item \textbf{Spot the mechanical twist} (e.g., Truth Duel, Split-Screen Timer, Lantern Placement) and telegraph it early.
+  \item \textbf{Use Seven Bell Court} when victory should reflect \emph{Form, Spirit, and Intent}, not just harm dealt.
+  \item \textbf{Signal culture respectfully:} use flavor cues as \emph{gifts}, not gates. Reward understanding with \emph{Cultural Edge} tokens.
 \end{itemize}
 
-\chapter*{Quick−Prep Matrix: The Twelve Tales}
+\chapter*{Quick-Prep Matrix: The Twelve Tales}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabularx}{łinewidth}{@{}p{3.2cm} p{3.4cm} p{5.5cm} p{1.6cm}@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{3.2cm} p{3.4cm} p{5.5cm} p{1.6cm}@{}}
+\toprule
 \textbf{Title} & \textbf{Theme} & \textbf{Mechanical Twist} & \textbf{Sessions}\\
-∣rule
-Silk, Salt, and Shadows & Noir Heist & \emph{Split−Screen Timer} (three parallel advancing timers) & 1 \\
+\midrule
+Silk, Salt, and Shadows & Noir Heist & \emph{Split-Screen Timer} (three parallel advancing timers) & 1 \\
 The Emperor's Quiet & Political Thriller & \emph{Mandate Ledger} (legitimacy vs expediency) & 1 \\
 The Ronin's Winter & Duel Arc (Nihori) & \emph{Seven Bell Court} judging (Form/Spirit/Intent) & 1 \\
 Monsoon of Knives & Navy Caper & \emph{Weather Dice} affect Position/Effect & 1 \\
 The City That Forgets & Mystic Mystery & \emph{Memory Tokens} + dual Truth Tracks (Boon/Bane) & 1 \\
 Festival of Ten Thousand Lanterns & Social Sandbox & \emph{Lantern Placement} drives faction influence & 1 \\
-The Jade Locust & Plague Investigation & \emph{Dual Timers: Civic & Personal} & 1 \\
+The Jade Locust & Plague Investigation & \emph{Dual Timers: Civic \& Personal} & 1 \\
 Ash at Sunrise & Tactical Warfare & \emph{Battlefront Timers} + morale pressure & 1 \\
-The Thousand−Step Court & Paradox Dungeon & \emph{Trial Steps} re−write Position on ascent & 1 \\
+The Thousand-Step Court & Paradox Dungeon & \emph{Trial Steps} re-write Position on ascent & 1 \\
 Black Powder, White Paper & Tech vs Tradition & \emph{Innovation Pressure} vs \emph{Customary Rights} & 1 \\
 Court of Perfumed Knives & Palace Intrigue & \emph{Mask Exchanges} (identity play) & 1 \\
 The House that Eats Oaths & Haunted Law & \emph{Binding Clauses} as geasa & 1 \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
 \chapter*{Visual Organization}
 \begin{itemize}[leftmargin=*]
-  ℹtem \textbf{Part headers} (\emph{Twelve Tales}, \emph{Two Showpieces}, \emph{Extras}) make prep scope obvious.
-  ℹtem \textbf{Minor adventures} use concise boxes (Premise/Timers/Twist/Scaling).
-  ℹtem \textbf{Showpieces} include investigation layers, NPC webs, and end−state matrices.
+  \item \textbf{Part headers} (\emph{Twelve Tales}, \emph{Two Showpieces}, \emph{Extras}) make prep scope obvious.
+  \item \textbf{Minor adventures} use concise boxes (Premise/Timers/Twist/Scaling).
+  \item \textbf{Showpieces} include investigation layers, NPC webs, and end-state matrices.
 \end{itemize}
 
 \chapter*{Session Planning}
-Minor adventures are built for a single night. Showpieces are intended for 2−−4 sessions−−−each contains natural intermissions (rituals, court sessions, travel chapters) to pause cleanly.
+Minor adventures are built for a single night. Showpieces are intended for 2--4 sessions---each contains natural intermissions (rituals, court sessions, travel chapters) to pause cleanly.
 
 \cleardoublepage
 
@@ -215,13 +215,13 @@ To Sihai philosophers, technique without restraint is chaos.
 To Nihori poets, victory without honor is an empty shadow.
 
 Thus, every formal bout is overseen by the \textbf{Seven Bell Court}:
-a neutral panel of masters, scholars, and priest−judges who weigh each clash
+a neutral panel of masters, scholars, and priest-judges who weigh each clash
 by three sacred pillars of excellence:
 
 \begin{itemize}
-  ℹtem \textbf{Form} −− discipline, precision, and mastery of technique.
-  ℹtem \textbf{Spirit} −− composure, respect, and dignity in conflict.
-  ℹtem \textbf{Intent} −− purpose beyond ego: protection, duty, justice, or peace.
+  \item \textbf{Form} -- discipline, precision, and mastery of technique.
+  \item \textbf{Spirit} -- composure, respect, and dignity in conflict.
+  \item \textbf{Intent} -- purpose beyond ego: protection, duty, justice, or peace.
 \end{itemize}
 
 A fighter may fall, yet be honored as victorious.  
@@ -229,13 +229,13 @@ A fighter may stand triumphant, yet be judged disgraced.
 
 The Scorecard system turns every match into a story:
 \begin{itemize}
-  ℹtem A reckless strike might land−−−yet shame the audience.
-  ℹtem A humble bow might calm a volatile crowd.
-  ℹtem A moment of mercy might prevent a war.
+  \item A reckless strike might land---yet shame the audience.
+  \item A humble bow might calm a volatile crowd.
+  \item A moment of mercy might prevent a war.
 \end{itemize}
 
 Use the Judges" Scorecards in tournaments, duels of honor,
-trial−by−combat, diplomatic exhibitions, or ritual tests of skill.
+trial-by-combat, diplomatic exhibitions, or ritual tests of skill.
 When the world watches, a single point of Spirit may be worth more than blood.
 
 \end{tcolorbox}
@@ -248,29 +248,29 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \begin{tcolorbox}[title={Silk, Salt, and Shadows}]
 \textbf{Premise.} Three rival crews target the same customs auction under lanternlight. PCs may steal, expose, or exploit the operation.
 
-\textbf{Setup.} Start in a bustling paper−lantern market. Rumors spread that someone smuggled cursed cargo through Sihai waters.
+\textbf{Setup.} Start in a bustling paper-lantern market. Rumors spread that someone smuggled cursed cargo through Sihai waters.
 
-\textbf{Mechanical Twist.} \emph{Split−Screen Timer}: \textbf{Security}, \textbf{Rival Crews}, and \textbf{Crowd Panic} advance separately; PCs can shift pressure between them.
+\textbf{Mechanical Twist.} \emph{Split-Screen Timer}: \textbf{Security}, \textbf{Rival Crews}, and \textbf{Crowd Panic} advance separately; PCs can shift pressure between them.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Security Alert [6]
-  ℹtem Rival Progress [8]
-  ℹtem Crowd Panic [4]
+  \item Security Alert [6]
+  \item Rival Progress [8]
+  \item Crowd Panic [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Smuggler −− your old rival is bidding.
-  ℹtem Runekeeper −− a sealed ledger pulses with occult wards.
-  ℹtem Noble −− your family's impounded cargo is on the block.
+  \item Smuggler -- your old rival is bidding.
+  \item Runekeeper -- a sealed ledger pulses with occult wards.
+  \item Noble -- your family's impounded cargo is on the block.
 \end{itemize}
 
-\textbf{Scaling.} Add a third inspector for high−tier play; remove one rival crew for low−tier.
+\textbf{Scaling.} Add a third inspector for high-tier play; remove one rival crew for low-tier.
 
 \textbf{Likely Patrons.} Maelstraeus, The Witness, Ikasha.
 
-\textbf{Set−Pieces.} Silk−bale barricades, coded bidding war, bamboo catwalk chase.
+\textbf{Set-Pieces.} Silk-bale barricades, coded bidding war, bamboo catwalk chase.
 \end{tcolorbox}
 
 % =====================================================================
@@ -281,25 +281,25 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \begin{tcolorbox}[title={The Emperor's Quiet}]
 \textbf{Premise.} Seven ritual days of imperial silence. Bureaucrats slip edicts through sleeping offices; PCs decide what becomes law.
 
-\textbf{Setup.} A red−wax proclamation forbids public speech in the capital. Within hours, forged seals appear.
+\textbf{Setup.} A red-wax proclamation forbids public speech in the capital. Within hours, forged seals appear.
 
 \textbf{Mechanical Twist.} \emph{Mandate Ledger}: track \textbf{Legitimacy} vs. \textbf{Expediency}. Whichever fills first becomes legal precedent.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Legitimacy [6]
-  ℹtem Conspiracy [8]
-  ℹtem Public Unrest [6]
+  \item Legitimacy [6]
+  \item Conspiracy [8]
+  \item Public Unrest [6]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Lawkeeper −− protect lawful edicts.
-  ℹtem Diplomat −− prevent riots.
-  ℹtem Monk −− preserve the purity of ritual.
+  \item Lawkeeper -- protect lawful edicts.
+  \item Diplomat -- prevent riots.
+  \item Monk -- preserve the purity of ritual.
 \end{itemize}
 
-\textbf{Scaling.} Collapse factions for smaller parties; add secret police informant for high−tier.
+\textbf{Scaling.} Collapse factions for smaller parties; add secret police informant for high-tier.
 \end{tcolorbox}
 
 % =====================================================================
@@ -310,22 +310,22 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \begin{tcolorbox}[title={The Ronin's Winter}]
 \textbf{Premise.} A legendary duelist refuses battle until someone proves what victory is \emph{for}. Steel alone cannot win this duel.
 
-\textbf{Setup.} Snow−shrouded bridge town. Locals whisper the ronin's name with awe and grief.
+\textbf{Setup.} Snow-shrouded bridge town. Locals whisper the ronin's name with awe and grief.
 
-\textbf{Mechanical Twist.} \emph{Seven Bell Court}: score \textbf{Form}, \textbf{Spirit}, \textbf{Intent} in all major exchanges−−−social and martial.
+\textbf{Mechanical Twist.} \emph{Seven Bell Court}: score \textbf{Form}, \textbf{Spirit}, \textbf{Intent} in all major exchanges---social and martial.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Blood Debt [6]
-  ℹtem Clan Honor [6]
-  ℹtem Snowmelt [8]
+  \item Blood Debt [6]
+  \item Clan Honor [6]
+  \item Snowmelt [8]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Samurai −− clear ancestral shame.
-  ℹtem Cantor −− sing the truth buried beneath the feud.
-  ℹtem Scholar −− prove testimony was falsified.
+  \item Samurai -- clear ancestral shame.
+  \item Cantor -- sing the truth buried beneath the feud.
+  \item Scholar -- prove testimony was falsified.
 \end{itemize}
 
 \textbf{Scaling.} For lethal tone, ronin brings students. For introspective tone, he seeks a successor.
@@ -339,25 +339,25 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \begin{tcolorbox}[title={Monsoon of Knives}]
 \textbf{Premise.} A coastal convoy must outrun both pirates and the incoming monsoon. PCs serve as escorts, saboteurs, or double agents.
 
-\textbf{Setup.} The tide is turning. Markets shutter. A crimson−sailed flotilla waits offshore, knives flashing in stormlight.
+\textbf{Setup.} The tide is turning. Markets shutter. A crimson-sailed flotilla waits offshore, knives flashing in stormlight.
 
 \textbf{Mechanical Twist.} \emph{Weather Dice}: roll at the start of each scene to shift \textbf{Position} and threaten new hazards.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Pirate Pursuit [6]
-  ℹtem Storm Surge [8]
-  ℹtem Crew Morale [4]
+  \item Pirate Pursuit [6]
+  \item Storm Surge [8]
+  \item Crew Morale [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Sailor −− protect friends aboard.
-  ℹtem Merchant −− your cargo is life or death.
-  ℹtem Runekeeper −− sabotage or defend magical rigging.
+  \item Sailor -- protect friends aboard.
+  \item Merchant -- your cargo is life or death.
+  \item Runekeeper -- sabotage or defend magical rigging.
 \end{itemize}
 
-\textbf{Set−Pieces.} Rope−bridge boarding fights, burning sails, leviathan shadow beneath the hull.
+\textbf{Set-Pieces.} Rope-bridge boarding fights, burning sails, leviathan shadow beneath the hull.
 
 \textbf{Scaling.} Smaller parties: reduce pirate elite. Larger parties: add ghost ship or monsoon spirits.
 \end{tcolorbox}
@@ -365,30 +365,30 @@ When the world watches, a single point of Spirit may be worth more than blood.
 % =====================================================================
 %   5. THE CITY THAT FORGETS
 % =====================================================================
-\chapter{The City That Forgets (Sihai−−Ayokha Mystic Mystery)}
+\chapter{The City That Forgets (Sihai--Ayokha Mystic Mystery)}
 
 \begin{tcolorbox}[title={The City That Forgets}]
-\textbf{Premise.} Memories vanish at dawn. Names, faces, debts, and crimes−−−gone. PCs must solve the mystery before they forget themselves.
+\textbf{Premise.} Memories vanish at dawn. Names, faces, debts, and crimes---gone. PCs must solve the mystery before they forget themselves.
 
-\textbf{Setup.} A market square where no one remembers yesterday. Missing posters line the walls−−−blank where faces should be.
+\textbf{Setup.} A market square where no one remembers yesterday. Missing posters line the walls---blank where faces should be.
 
 \textbf{Mechanical Twist.} \emph{Memory Tokens}: spent like narrative currency, but losing them erases learned truths.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Memory Drain [8]
-  ℹtem Hidden Perpetrator [6]
-  ℹtem Identity Collapse (per PC) [4]
+  \item Memory Drain [8]
+  \item Hidden Perpetrator [6]
+  \item Identity Collapse (per PC) [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Detective −− you solved this once before.
-  ℹtem Cantor −− your songs still remember.
-  ℹtem Warrior −− you are certain someone died...but you don"t know who.
+  \item Detective -- you solved this once before.
+  \item Cantor -- your songs still remember.
+  \item Warrior -- you are certain someone died...but you don"t know who.
 \end{itemize}
 
-\textbf{Set−Pieces.} Graffiti that only appears at night, ghost markets, children who remember everything.
+\textbf{Set-Pieces.} Graffiti that only appears at night, ghost markets, children who remember everything.
 
 \textbf{Scaling.} Lower tier: memory loss is mild and reversible. Higher tier: PCs may forget each other's names and bonds.
 \end{tcolorbox}
@@ -399,7 +399,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \chapter{Festival of Ten Thousand Lanterns (Ayokha Social Sandbox)}
 
 \begin{tcolorbox}[title={Festival of Ten Thousand Lanterns}]
-\textbf{Premise.} Lanterns rise into a sacred sky−−−each blessing a god, spirit, or ancestor. But someone plans to poison the winds.
+\textbf{Premise.} Lanterns rise into a sacred sky---each blessing a god, spirit, or ancestor. But someone plans to poison the winds.
 
 \textbf{Setup.} A week of dance, food, and ritual. Foreign guests arrive. Old grudges glow beneath paper and flame.
 
@@ -407,19 +407,19 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Sabotage Plot [6]
-  ℹtem Faction Tension [8]
-  ℹtem Sacred Winds [4]
+  \item Sabotage Plot [6]
+  \item Faction Tension [8]
+  \item Sacred Winds [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Diplomat −− prevent an international insult.
-  ℹtem Priest −− restore the sacred winds.
-  ℹtem Thief −− steal a lantern containing a sealed prayer.
+  \item Diplomat -- prevent an international insult.
+  \item Priest -- restore the sacred winds.
+  \item Thief -- steal a lantern containing a sealed prayer.
 \end{itemize}
 
-\textbf{Set−Pieces.} Lantern parade ambush, blessing boats on moonlit canals, sky−dance duel.
+\textbf{Set-Pieces.} Lantern parade ambush, blessing boats on moonlit canals, sky-dance duel.
 
 \textbf{Scaling.} Add rival foreign delegates for high politics. Reduce factions for smaller parties.
 \end{tcolorbox}
@@ -430,7 +430,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \chapter{The Jade Locust (Sihai Plague Investigation)}
 
 \begin{tcolorbox}[title={The Jade Locust}]
-\textbf{Premise.} A plague devours harvests overnight. Glowing jade locusts burrow into grain stores−−−and into dreams.
+\textbf{Premise.} A plague devours harvests overnight. Glowing jade locusts burrow into grain stores---and into dreams.
 
 \textbf{Setup.} Rice paddies gleam under moonlight. Sick fields whisper. Tunnels pulse with fungal light.
 
@@ -438,19 +438,19 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Crop Collapse [6]
-  ℹtem Locust Swarm [4]
-  ℹtem Fungal Corruption [8]
+  \item Crop Collapse [6]
+  \item Locust Swarm [4]
+  \item Fungal Corruption [8]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Farmer −− your family's land is dying.
-  ℹtem Alchemist −− someone engineered this.
-  ℹtem Monk −− dreams show more than fields.
+  \item Farmer -- your family's land is dying.
+  \item Alchemist -- someone engineered this.
+  \item Monk -- dreams show more than fields.
 \end{itemize}
 
-\textbf{Set−Pieces.} Burning fields, dream−ritual exorcism, fungal shrine beneath a grain silo.
+\textbf{Set-Pieces.} Burning fields, dream-ritual exorcism, fungal shrine beneath a grain silo.
 
 \textbf{Scaling.} Smaller parties: localized outbreak. Larger parties: outbreak spreads to trade routes.
 \end{tcolorbox}
@@ -461,7 +461,7 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \chapter{Ash at Sunrise (Nihori Battlefield Scenario)}
 
 \begin{tcolorbox}[title={Ash at Sunrise}]
-\textbf{Premise.} A fallen village stands between two armies. PCs choose which banners to protect−−−or exploit both.
+\textbf{Premise.} A fallen village stands between two armies. PCs choose which banners to protect---or exploit both.
 
 \textbf{Setup.} Dawn fog. Scorched earth. A shrine bell tolls; the villagers refuse to flee.
 
@@ -469,30 +469,30 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Army Advance [8]
-  ℹtem Villager Defiance [6]
-  ℹtem Shrine Fires [4]
+  \item Army Advance [8]
+  \item Villager Defiance [6]
+  \item Shrine Fires [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Archer −− protect innocents.
-  ℹtem Strategist −− tip the balance.
-  ℹtem Cantor −− negotiate a ceasefire.
+  \item Archer -- protect innocents.
+  \item Strategist -- tip the balance.
+  \item Cantor -- negotiate a ceasefire.
 \end{itemize}
 
-\textbf{Set−Pieces.} Arrow−storm duel, shrine bombardment, civilian shield lines.
+\textbf{Set-Pieces.} Arrow-storm duel, shrine bombardment, civilian shield lines.
 
-\textbf{Scaling.} High−tier: add war machines or oni mercenaries. Low−tier: only foot soldiers and archers.
+\textbf{Scaling.} High-tier: add war machines or oni mercenaries. Low-tier: only foot soldiers and archers.
 \end{tcolorbox}
 
 % =====================================================================
-%   9. THE THOUSAND−STEP COURT
+%   9. THE THOUSAND-STEP COURT
 % =====================================================================
-\chapter{The Thousand−Step Court (Paradox Dungeon)}
+\chapter{The Thousand-Step Court (Paradox Dungeon)}
 
-\begin{tcolorbox}[title={The Thousand−Step Court}]
-\textbf{Premise.} A riddle−court where time loops, mirrors speak, and each misstep rewrites history.
+\begin{tcolorbox}[title={The Thousand-Step Court}]
+\textbf{Premise.} A riddle-court where time loops, mirrors speak, and each misstep rewrites history.
 
 \textbf{Setup.} An impossible staircase rises into the clouds. Every hundred steps, a different reality.
 
@@ -500,19 +500,19 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Paradox Collapse [6]
-  ℹtem Court Judgment [8]
-  ℹtem Memory Fracture (per PC) [4]
+  \item Paradox Collapse [6]
+  \item Court Judgment [8]
+  \item Memory Fracture (per PC) [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Scholar −− unlock ancient truth.
-  ℹtem Duelist −− defeat your mirrored self.
-  ℹtem Outcast −− rewrite your past.
+  \item Scholar -- unlock ancient truth.
+  \item Duelist -- defeat your mirrored self.
+  \item Outcast -- rewrite your past.
 \end{itemize}
 
-\textbf{Set−Pieces.} Mirror duels, time−loop diplomacy, staircase that bites like a serpent.
+\textbf{Set-Pieces.} Mirror duels, time-loop diplomacy, staircase that bites like a serpent.
 
 \textbf{Scaling.} Add guardian spirits for martial groups; increase riddles for social/investigative play.
 \end{tcolorbox}
@@ -525,27 +525,27 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \begin{tcolorbox}[title={Black Powder, White Paper}]
 \textbf{Premise.} A printing guild and gunpowder foundry strike an illegal pact. Revolution whispers on the page and the barrel.
 
-\textbf{Setup.} Pamphlets scatter across market streets. Fireworks burst−−−not celebratory.
+\textbf{Setup.} Pamphlets scatter across market streets. Fireworks burst---not celebratory.
 
 \textbf{Mechanical Twist.} \emph{Tech Track}: PCs choose to accelerate or suppress invention; society reacts.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Public Uprising [6]
-  ℹtem Gunpowder Accidents [4]
-  ℹtem Guild Conspiracy [8]
+  \item Public Uprising [6]
+  \item Gunpowder Accidents [4]
+  \item Guild Conspiracy [8]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Engineer −− protect innovation.
-  ℹtem Magistrate −− quell sedition.
-  ℹtem Journalist −− publish the truth.
+  \item Engineer -- protect innovation.
+  \item Magistrate -- quell sedition.
+  \item Journalist -- publish the truth.
 \end{itemize}
 
-\textbf{Set−Pieces.} Printing press siege, fireworks duel, gunpowder river barge chase.
+\textbf{Set-Pieces.} Printing press siege, fireworks duel, gunpowder river barge chase.
 
-\textbf{Scaling.} Low−tier: pamphlets only. High−tier: cannons and experimental explosives.
+\textbf{Scaling.} Low-tier: pamphlets only. High-tier: cannons and experimental explosives.
 \end{tcolorbox}
 
 % =====================================================================
@@ -556,25 +556,25 @@ When the world watches, a single point of Spirit may be worth more than blood.
 \begin{tcolorbox}[title={Court of Perfumed Knives}]
 \textbf{Premise.} A masked ball where every dance is a duel, every toast a negotiation, every mask a lie.
 
-\textbf{Setup.} At midnight, the palace doors close. No one leaves without losing face−−−or blood.
+\textbf{Setup.} At midnight, the palace doors close. No one leaves without losing face---or blood.
 
 \textbf{Mechanical Twist.} \emph{Mask Exchanges}: trade masks to steal identities, obligations, or secrets.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem Mask Misrule [6]
-  ℹtem Noble Scandal [8]
-  ℹtem Silent Assassins [4]
+  \item Mask Misrule [6]
+  \item Noble Scandal [8]
+  \item Silent Assassins [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Noble −− reclaim stolen legacy.
-  ℹtem Spy −− steal a royal seal.
-  ℹtem Healer −− cure poisoned wines.
+  \item Noble -- reclaim stolen legacy.
+  \item Spy -- steal a royal seal.
+  \item Healer -- cure poisoned wines.
 \end{itemize}
 
-\textbf{Set−Pieces.} Dance−fight duels, silent toast assassinations, balcony chase.
+\textbf{Set-Pieces.} Dance-fight duels, silent toast assassinations, balcony chase.
 
 \textbf{Scaling.} Expand noble families for large parties; narrow to a single feud for small groups.
 \end{tcolorbox}
@@ -593,77 +593,77 @@ When the world watches, a single point of Spirit may be worth more than blood.
 
 \textbf{Timers.}
 \begin{itemize}
-  ℹtem House Hunger [6]
-  ℹtem Oathbinding Spirits [8]
-  ℹtem Structural Collapse [4]
+  \item House Hunger [6]
+  \item Oathbinding Spirits [8]
+  \item Structural Collapse [4]
 \end{itemize}
 
 \textbf{PC Hooks.}
 \begin{itemize}
-  ℹtem Lawyer −− prove the house wrong.
-  ℹtem Thief −− you were paid to seal it.
-  ℹtem Monk −− set the bound spirits free.
+  \item Lawyer -- prove the house wrong.
+  \item Thief -- you were paid to seal it.
+  \item Monk -- set the bound spirits free.
 \end{itemize}
 
-\textbf{Set−Pieces.} Contract−binding spirits, courtroom nightmares, collapsing archive hall.
+\textbf{Set-Pieces.} Contract-binding spirits, courtroom nightmares, collapsing archive hall.
 
-\textbf{Scaling.} High−tier: house begins rewriting reality. Low−tier: simple haunt with legal curses.
+\textbf{Scaling.} High-tier: house begins rewriting reality. Low-tier: simple haunt with legal curses.
 \end{tcolorbox}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% -------------------------------------------------
 % (Your rules, scorecard tables, or generators go here)
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% -------------------------------------------------
 
 % =========================================================
-% DUEL TO THE DEATH: WU−XING vs. NINJA (LaTeX Conversion)
+% DUEL TO THE DEATH: WU-XING vs. NINJA (LaTeX Conversion)
 % Requires: tcolorbox, tabularx, longtable, xcolor, enumitem
 % =========================================================
 \part{Two Showpiece Adventures}
 
-\chapter{Duel to the Death: Wu −Xing vs.\ Ninja}
-łabel{sec:duel−wuxing−ninja}
+\chapter{Duel to the Death: Wu\,-Xing vs.\ Ninja}
+\label{sec:duel-wuxing-ninja}
 \subsection*{Conspiracy of Shadows and Elements}
 
-% −−−−−−−−−− OVERVIEW −−−−−−−−−−
+% ---------- OVERVIEW ----------
 \subsection{Adventure Overview}
 \textbf{Premise.} An ``honorable'' martial arts tournament between Sihai and Nihori masks a joint conspiracy by corrupt merchants from both nations. The real prize is control of the Ayokhan spice routes, not the public trading post. Two legendary champions are being used as pawns, and their duel could trigger war.
 
 \medskip
 \textbf{Stakes.} PCs must uncover the scheme before the finale, prevent an international incident, and decide whether to expose the truth (risking war) or defuse it without igniting hostilities.
 
-% −−−−−−−−−− THE CONSPIRACY −−−−−−−−−−
+% ---------- THE CONSPIRACY ----------
 \subsection{The Conspiracy Unveiled}
 
 \paragraph{The True Players}
 \textbf{The Crimson Merchants' Guild}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textbf{Membership:} Corrupt traders from Sihai and Nihori.
-  ℹtem \textbf{Leadership:} \textbf{Merchant Lord Zhao} (Sihai) and \textbf{Daimyo Kuroda} (Nihori; secretly a merchant in disguise).
-  ℹtem \textbf{Goal:} Monopolize Ayokha's spice trade by eliminating legitimate competition.
+  \item \textbf{Membership:} Corrupt traders from Sihai and Nihori.
+  \item \textbf{Leadership:} \textbf{Merchant Lord Zhao} (Sihai) and \textbf{Daimyo Kuroda} (Nihori; secretly a merchant in disguise).
+  \item \textbf{Goal:} Monopolize Ayokha's spice trade by eliminating legitimate competition.
 \end{itemize}
 
 \paragraph{The Plan}
 \begin{enumerate}[leftmargin=1.25em]
-  ℹtem \textbf{Manufacture Conflict:} Staged incidents inflame Sihai−−Nihori tensions.
-  ℹtem \textbf{Heroic Distraction:} Famous champions become unwitting figureheads.
-  ℹtem \textbf{Economic Warfare:} Corner markets while eyes are on the tournament.
-  ℹtem \textbf{Political Manipulation:} Orchestrate ``outrage'' and sell themselves as the cure.
+  \item \textbf{Manufacture Conflict:} Staged incidents inflame Sihai--Nihori tensions.
+  \item \textbf{Heroic Distraction:} Famous champions become unwitting figureheads.
+  \item \textbf{Economic Warfare:} Corner markets while eyes are on the tournament.
+  \item \textbf{Political Manipulation:} Orchestrate ``outrage'' and sell themselves as the cure.
 \end{enumerate}
 
-% −−−−−−−−−− THE CHAMPIONS −−−−−−−−−−
+% ---------- THE CHAMPIONS ----------
 \subsection{The Champions: Pawns in a Larger Game}
 
-\paragraph{Master Li Wei (Sihai) −−− \textit{The Honorable Warrior, Blind to the Truth}}
-\textbf{Background.} A disciplined warrior−monk convinced he defends Sihai's honor and safeguards trade for common folk.\\
+\paragraph{Master Li Wei (Sihai) --- \textit{The Honorable Warrior, Blind to the Truth}}
+\textbf{Background.} A disciplined warrior-monk convinced he defends Sihai's honor and safeguards trade for common folk.\\
 \textbf{Blind Spot.} Unaware his patrons are manipulating him; holds a personal vendetta against Kage after a humiliating past encounter.\\
 \textbf{Personality.} Noble, doctrinaire, believes in Sihai philosophical rigor; wavers when Kage's unconventional methods blunt his forms.
 
-\paragraph{Shinobi Kage (Nihori) −−− \textit{The Pragmatic Killer with Hidden Honor}}
+\paragraph{Shinobi Kage (Nihori) --- \textit{The Pragmatic Killer with Hidden Honor}}
 \textbf{Background.} A veteran shinobi who believes he serves national interest, though cynically aware of political rot.\\
 \textbf{Blind Spot.} Respects Li Wei despite animosity; underestimates the conspiracy's scope.\\
 \textbf{Personality.} Dry, professionally proud, grudging respect for Li Wei's skill.
 
-% −−−−−−−−−− TOURNAMENT FACADE −−−−−−−−−−
+% ---------- TOURNAMENT FACADE ----------
 \subsection{The Tournament Structure (Facade)}
 
 \paragraph{Phase 1: The Gathering Storm}
@@ -674,51 +674,51 @@ Delegations arrive; tensions and odd incidents mount.\\
 Showcases of styles and traditions; sabotage attempts increase.
 
 \paragraph{Phase 3: The Final Duel}
-Li Wei vs.\ Kage −−− engineered as a flashpoint for staged ``outrage.''
+Li Wei vs.\ Kage --- engineered as a flashpoint for staged ``outrage.''
 
-% −−−−−−−−−− WEB OF DECEPTION −−−−−−−−−−
+% ---------- WEB OF DECEPTION ----------
 \subsection{The Web of Deception}
 
 \paragraph{The Poisoned Chalice}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem Banquet fare laced with truth−serum and loyalty binders.
-  ℹtem Used to extract intel and nudge behavior.
+  \item Banquet fare laced with truth-serum and loyalty binders.
+  \item Used to extract intel and nudge behavior.
 \end{itemize}
 
 \paragraph{The Shadow Network}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem Bribed Ayokhan officials look away.
-  ℹtem Merchant ships rerouted to dodge legitimate tariffs.
+  \item Bribed Ayokhan officials look away.
+  \item Merchant ships rerouted to dodge legitimate tariffs.
 \end{itemize}
 
 \paragraph{The False Evidence}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem Forged documents ``prove'' the losing nation's aggression.
-  ℹtem Timed discovery just after the finals to justify sanctions.
+  \item Forged documents ``prove'' the losing nation's aggression.
+  \item Timed discovery just after the finals to justify sanctions.
 \end{itemize}
 
-% −−−−−−−−−− MECHANICAL FRAMEWORK −−−−−−−−−−
+% ---------- MECHANICAL FRAMEWORK ----------
 \subsection{Mechanical Framework}
 
 \paragraph{Investigation Timers}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textbf{Uncovering the Conspiracy [8]}
-  ℹtem \textbf{Political Tensions [6]}
-  ℹtem \textbf{Tournament Integrity [4]}
-  ℹtem \textbf{Champions' Relationship [6]}
-  ℹtem \textbf{Conspiracy Timer [6]} (advances when PCs fail with cost or the champions' relationship worsens)
+  \item \textbf{Uncovering the Conspiracy [8]}
+  \item \textbf{Political Tensions [6]}
+  \item \textbf{Tournament Integrity [4]}
+  \item \textbf{Champions' Relationship [6]}
+  \item \textbf{Conspiracy Timer [6]} (advances when PCs fail with cost or the champions' relationship worsens)
 \end{itemize}
 
-\paragraph{Key NPCs & Secrets}
-\textbf{Merchant Lord Zhao (Sihai)} −−− Embezzling from the Imperial Treasury; needs spice profits to plug theft; arrogant.\\
-\textbf{Daimyo Kuroda (Nihori; actually a merchant)} −−− Illegitimate lineage; assumes false identity; paranoid about exposure.\\
-\textbf{Governor Priya of Ayokha} −−− Aware of the scheme, blackmailed; values citizens' safety; family held hostage.
+\paragraph{Key NPCs \& Secrets}
+\textbf{Merchant Lord Zhao (Sihai)} --- Embezzling from the Imperial Treasury; needs spice profits to plug theft; arrogant.\\
+\textbf{Daimyo Kuroda (Nihori; actually a merchant)} --- Illegitimate lineage; assumes false identity; paranoid about exposure.\\
+\textbf{Governor Priya of Ayokha} --- Aware of the scheme, blackmailed; values citizens' safety; family held hostage.
 
-% −−−−−−−−−− CHAMPION SHEETS −−−−−−−−−−
+% ---------- CHAMPION SHEETS ----------
 \subsection{Champion Character Sheets}
 
-\begin{tcolorbox}[colback=white,colframe=black!70,title={\textbf{Master Li Wei (Sihai Wu −Xing Master)}}]
-\begin{tabularx}{łinewidth}{@{}lX@{}}
+\begin{tcolorbox}[colback=white,colframe=black!70,title={\textbf{Master Li Wei (Sihai Wu\,-Xing Master)}}]
+\begin{tabularx}{\linewidth}{@{}lX@{}}
 \textbf{Attributes} & Body 3, Wits 2, Spirit 4, Presence 2 \\
 \textbf{Skills} & Melee 3, Arcana 3, Athletics 2, Insight 2 \\
 \textbf{Talents} & Spellcraft; Elemental Harmony; Perfect Timing Way; Transcendent Harmony \\
@@ -727,7 +727,7 @@ Li Wei vs.\ Kage −−− engineered as a flashpoint for staged ``outrage.''
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white,colframe=black!70,title={\textbf{Shinobi Kage (Nihori Shadow Warrior)}}]
-\begin{tabularx}{łinewidth}{@{}lX@{}}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
 \textbf{Attributes} & Body 2, Wits 4, Spirit 3, Presence 2 \\
 \textbf{Skills} & Stealth 4, Melee 3, Deception 3, Survival 2 \\
 \textbf{Talents} & Shadow Dance; Backstab; Deathblow; Conditioning \\
@@ -735,11 +735,11 @@ Li Wei vs.\ Kage −−− engineered as a flashpoint for staged ``outrage.''
 \end{tabularx}
 \end{tcolorbox}
 
-% −−−−−−−−−− ADVENTURE HOOKS BY ROLE −−−−−−−−−−
+% ---------- ADVENTURE HOOKS BY ROLE ----------
 \subsection{Adventure Hooks by PC Type}
 
 \paragraph{Participants}
-Opponents seem pre−briefed; prize money trails to shell accounts; bracket manipulation.\\
+Opponents seem pre-briefed; prize money trails to shell accounts; bracket manipulation.\\
 \textit{Hook Roll (Insight + Notice vs.\ DV 3):} Success reveals patterns; Partial sees ``something off''; Miss leads into a trap.
 
 \paragraph{Support Staff}
@@ -747,7 +747,7 @@ Overhear collusion; restricted shipments; preferential treatment.\\
 \textit{Hook Roll (Stealth + Survival vs.\ DV 4):} Success gains intel; Partial raises suspicion; Miss compromises position.
 
 \paragraph{Journalists}
-Assigned puff piece; conflicting tips; cross−border sources disagree.\\
+Assigned puff piece; conflicting tips; cross-border sources disagree.\\
 \textit{Hook Roll (Sway + Lore vs.\ DV 3):} Success uncovers contradictions; Partial reveals spin; Miss gets discredited.
 
 \paragraph{Diplomats}
@@ -758,101 +758,101 @@ Protocol manipulation; coded dispatches; access to intel networks.\\
 Conflicting orders; ignored breaches; pressure to silence witnesses.\\
 \textit{Hook Roll (Athletics + Survival vs.\ DV 3):} Success exposes sabotage; Partial notes payments; Miss makes you accessories.
 
-% −−−−−−−−−− KEY INVESTIGATION SCENES −−−−−−−−−−
+% ---------- KEY INVESTIGATION SCENES ----------
 \subsection{Key Investigation Scenes}
 
 \paragraph{Scene 1: The Poisoned Banquet}
 \textit{Reconciliation dinner; detect serums, observe odd champion behavior, avoid being dosed.}\\
 \textbf{Investigation (Lore + Insight vs.\ DV 4):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Identify serum ingredients; note odd behavior.
-  ℹtem \textit{Partial:} Detect tampering; not specifics; champions act strangely.
-  ℹtem \textit{Miss:} Dosed; reveal sensitive info; GM spends 2 SB (compromised leverage).
+  \item \textit{Success:} Identify serum ingredients; note odd behavior.
+  \item \textit{Partial:} Detect tampering; not specifics; champions act strangely.
+  \item \textit{Miss:} Dosed; reveal sensitive info; GM spends 2 SB (compromised leverage).
 \end{itemize}
 \textbf{Alternative (Stealth + Survival vs.\ DV 3):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Avoid food; observe reactions.
-  ℹtem \textit{Partial:} Small dose; notice taste, muted effects.
-  ℹtem \textit{Miss:} Fully dosed; act against interests next scene.
+  \item \textit{Success:} Avoid food; observe reactions.
+  \item \textit{Partial:} Small dose; notice taste, muted effects.
+  \item \textit{Miss:} Fully dosed; act against interests next scene.
 \end{itemize}
 
 \paragraph{Scene 2: The Sabotaged Dojo}
 \textit{``Accidental'' facility damage; trace conspirators; prevent repeats.}\\
 \textbf{Investigation (Craft + Investigation vs.\ DV 4):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Trace tools/materials; identify fingerprints.
-  ℹtem \textit{Partial:} Know it's sabotage; source unclear; prevent immediate repeats.
-  ℹtem \textit{Miss:} Blamed; Tournament Integrity +1; GM spends 1 SB (suspicion).
+  \item \textit{Success:} Trace tools/materials; identify fingerprints.
+  \item \textit{Partial:} Know it's sabotage; source unclear; prevent immediate repeats.
+  \item \textit{Miss:} Blamed; Tournament Integrity +1; GM spends 1 SB (suspicion).
 \end{itemize}
 \textbf{Repair (Tinker + Athletics vs.\ DV 3):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Restore facilities; +1 Position for training.
-  ℹtem \textit{Partial:} Temporary fix; risk later collapse.
-  ℹtem \textit{Miss:} Worsen damage; training blocked; GM spends 1 SB (schedule hit).
+  \item \textit{Success:} Restore facilities; +1 Position for training.
+  \item \textit{Partial:} Temporary fix; risk later collapse.
+  \item \textit{Miss:} Worsen damage; training blocked; GM spends 1 SB (schedule hit).
 \end{itemize}
 
 \paragraph{Scene 3: The Midnight Meeting}
 \textit{Eavesdrop leaders" huddle; or survive a honeytrap.}\\
 \textbf{Infiltration (Stealth + Deception vs.\ DV 5):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Full conversation; key players and plans.
-  ℹtem \textit{Partial:} Fragmentary info; suspicion rises.
-  ℹtem \textit{Miss:} Discovered; combat/rout; GM spends 2 SB (capture risk).
+  \item \textit{Success:} Full conversation; key players and plans.
+  \item \textit{Partial:} Fragmentary info; suspicion rises.
+  \item \textit{Miss:} Discovered; combat/rout; GM spends 2 SB (capture risk).
 \end{itemize}
 \textbf{Social (Presence + Sway vs.\ DV 4):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Invitation secured; inner circle access.
-  ℹtem \textit{Partial:} Limited access; curated info.
-  ℹtem \textit{Miss:} Outed as impostor; become target; GM spends 2 SB.
+  \item \textit{Success:} Invitation secured; inner circle access.
+  \item \textit{Partial:} Limited access; curated info.
+  \item \textit{Miss:} Outed as impostor; become target; GM spends 2 SB.
 \end{itemize}
 
 \paragraph{Scene 4: The False Evidence Plant}
 \textit{Catch the forgery room; weigh truth vs.\ protecting innocents.}\\
 \textbf{Detection (Insight + Notice vs.\ DV 4):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Identify operation; gather evidence; find originals.
-  ℹtem \textit{Partial:} See forgeries; originals missing; risk being framed.
-  ℹtem \textit{Miss:} Framed; Political Tensions +2; GM spends 3 SB (arrest now).
+  \item \textit{Success:} Identify operation; gather evidence; find originals.
+  \item \textit{Partial:} See forgeries; originals missing; risk being framed.
+  \item \textit{Miss:} Framed; Political Tensions +2; GM spends 3 SB (arrest now).
 \end{itemize}
 \textbf{Analysis (Lore + Craft vs.\ DV 3):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Prove forgery; ID methods/forger.
-  ℹtem \textit{Partial:} Inconsistencies noted; proof lacking.
-  ℹtem \textit{Miss:} Accept as genuine; investigation misled; GM spends 2 SB.
+  \item \textit{Success:} Prove forgery; ID methods/forger.
+  \item \textit{Partial:} Inconsistencies noted; proof lacking.
+  \item \textit{Miss:} Accept as genuine; investigation misled; GM spends 2 SB.
 \end{itemize}
 
-% −−−−−−−−−− CLIMAX PATHS −−−−−−−−−−
+% ---------- CLIMAX PATHS ----------
 \subsection{Climax: Multiple Paths}
 
 \paragraph{Path 1: Prevent the Final Duel}
 \textit{Sway both champions; handle fallout of a canceled bout.}\\
 \textbf{(Sway + Insight vs.\ DV 5):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Both unite against conspirators.
-  ℹtem \textit{Partial:} One convinced; internal rift.
-  ℹtem \textit{Miss:} Both distrust PCs; GM spends 3 SB (hostility).
+  \item \textit{Success:} Both unite against conspirators.
+  \item \textit{Partial:} One convinced; internal rift.
+  \item \textit{Miss:} Both distrust PCs; GM spends 3 SB (hostility).
 \end{itemize}
 
 \paragraph{Path 2: Let the Duel Proceed, Expose the Truth}
 \textit{Keep honor of the ring; unmask plot at peak.}\\
 \textbf{(Wits + Athletics vs.\ DV 4):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Perfect timing; max impact; minimal collateral.
-  ℹtem \textit{Partial:} Good timing; some bystander risk.
-  ℹtem \textit{Miss:} Poor timing; confusion/casualties; GM spends 2 SB.
+  \item \textit{Success:} Perfect timing; max impact; minimal collateral.
+  \item \textit{Partial:} Good timing; some bystander risk.
+  \item \textit{Miss:} Poor timing; confusion/casualties; GM spends 2 SB.
 \end{itemize}
 
 \paragraph{Path 3: Turn the Tables}
 \textit{Run a sting during the finals; high risk to bystanders if timing slips.}\\
 \textbf{(Command + Tinker vs.\ DV 5):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Flawless execution; conspirators caught.
-  ℹtem \textit{Partial:} Some escape; evidence compromised.
-  ℹtem \textit{Miss:} Plan fails; innocents endangered; GM spends 4 SB.
+  \item \textit{Success:} Flawless execution; conspirators caught.
+  \item \textit{Partial:} Some escape; evidence compromised.
+  \item \textit{Miss:} Plan fails; innocents endangered; GM spends 4 SB.
 \end{itemize}
 
-% −−−−−−−−−− CONSEQUENCES −−−−−−−−−−
-\subsection{Consequences & Endings}
+% ---------- CONSEQUENCES ----------
+\subsection{Consequences \& Endings}
 
 \paragraph{Exposed Early}
 War averted; trade normalizes; reputational damage and personal reckonings.\\
@@ -864,43 +864,43 @@ Some arrests; tensions linger; roots remain.\\
 
 \paragraph{Conspiracy Succeeds}
 War, economic collapse, and civilian suffering.\\
-\textit{Consequence:} −−2 XP each; Patron debt (Failure); new enemies.
+\textit{Consequence:} --2 XP each; Patron debt (Failure); new enemies.
 
 \paragraph{PCs Fail to Act}
-Default catastrophe: inter−nation war; Ayokhan trade implosion.\\
-\textit{Consequence:} −−4 XP each; major Patron debt; campaign−altering fallout.
+Default catastrophe: inter-nation war; Ayokhan trade implosion.\\
+\textit{Consequence:} --4 XP each; major Patron debt; campaign-altering fallout.
 
-% −−−−−−−−−− CHARACTER DEVELOPMENT −−−−−−−−−−
+% ---------- CHARACTER DEVELOPMENT ----------
 \subsection{Character Development}
 
 \paragraph{Li Wei}
 Choose between rigid honor and adaptive pragmatism.\\
 \textit{Growth (Spirit + Insight vs.\ DV 4):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Integrates pragmatism with honor; becomes mentor.
-  ℹtem \textit{Partial:} Temporary compromise; internal conflict lingers.
-  ℹtem \textit{Miss:} Loses faith; redemption arc seed.
+  \item \textit{Success:} Integrates pragmatism with honor; becomes mentor.
+  \item \textit{Partial:} Temporary compromise; internal conflict lingers.
+  \item \textit{Miss:} Loses faith; redemption arc seed.
 \end{itemize}
 
 \paragraph{Kage}
 Decide whether cynicism equals complicity.\\
 \textit{Growth (Presence + Survival vs.\ DV 3):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} Rediscovers purpose; gains honor.
-  ℹtem \textit{Partial:} Selective morality; measured choices.
-  ℹtem \textit{Miss:} Drifts toward antagonist; future redemption hook.
+  \item \textit{Success:} Rediscovers purpose; gains honor.
+  \item \textit{Partial:} Selective morality; measured choices.
+  \item \textit{Miss:} Drifts toward antagonist; future redemption hook.
 \end{itemize}
 
 \paragraph{For PCs}
 Moral calculus; cultural literacy; growth in investigation, diplomacy, or combat.\\
 \textit{Cultural Check (Lore + Insight vs.\ DV 3):}
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem \textit{Success:} +1d to Sihai/Nihori/Ayokhan interactions.
-  ℹtem \textit{Partial:} Basic understanding; modest social edge.
-  ℹtem \textit{Miss:} Faux pas; −−1 Position on related interactions.
+  \item \textit{Success:} +1d to Sihai/Nihori/Ayokhan interactions.
+  \item \textit{Partial:} Basic understanding; modest social edge.
+  \item \textit{Miss:} Faux pas; --1 Position on related interactions.
 \end{itemize}
 
-% −−−−−−−−−− CULTURAL NOTES −−−−−−−−−−
+% ---------- CULTURAL NOTES ----------
 \subsection{Cultural Notes}
 
 \paragraph{Historical Parallels (Fictionalized)}
@@ -914,16 +914,16 @@ Embodies philosophical differences; shows manipulation of noble intent; personal
 \paragraph{Ayokhan Cultural Elements}
 \textbf{Monsoon Timing:} Investigation effectiveness varies with seasonal winds.\\
 \textbf{Spirit World:} Local \emph{nat} may aid (Arcana + Spirit vs.\ DV 4).\\
-\textbf{Mandala Politics:} Multi−faction negotiation with vassal kings and sea−lords.
+\textbf{Mandala Politics:} Multi-faction negotiation with vassal kings and sea-lords.
 
-% −−−−−−−−−− ADVENTURE PACING −−−−−−−−−−
+% ---------- ADVENTURE PACING ----------
 \subsection{Adventure Pacing}
 
-\paragraph{Sessions 1−−2}
+\paragraph{Sessions 1--2}
 Introductions, tensions, first clues.\\
 \textit{Focus:} Establish tournament, champions, first conspiracy hints.
 
-\paragraph{Sessions 3−−4}
+\paragraph{Sessions 3--4}
 Escalation, sabotage, revelations.\\
 \textit{Focus:} Deepen investigation; confront conspirators; champions' relationship deteriorates.
 
@@ -931,7 +931,7 @@ Escalation, sabotage, revelations.\\
 Finale: sting, exposure, or duel; fallout.\\
 \textit{Focus:} Climactic confrontation; resolve threads; apply consequences.
 
-% −−−−−−−−−− GM NOTES −−−−−−−−−−
+% ---------- GM NOTES ----------
 \subsection{GM Notes}
 
 \paragraph{Balance}
@@ -944,21 +944,21 @@ Individuals are culpable, not cultures; showcase virtues across traditions; Ayok
 
 \paragraph{Agency}
 Multiple investigative vectors; flexible alliances; consequences drive story.\\
-\textit{Mechanic:} Allow temporary, goal−focused faction alliances.
+\textit{Mechanic:} Allow temporary, goal-focused faction alliances.
 
 \paragraph{Fate's Edge Integration}
-Use Position/Effect for major challenges; spend SB for conspiracy complications (1−−4 severity); award Boons for clever cultural leverage and moral choices; during downtime, 2 Boons $→$ 1 XP for significant discoveries.
+Use Position/Effect for major challenges; spend SB for conspiracy complications (1--4 severity); award Boons for clever cultural leverage and moral choices; during downtime, 2 Boons $\rightarrow$ 1 XP for significant discoveries.
 
 \paragraph{Monsoon Timer [8]}
 Tracks seasonal changes affecting the investigation:
 \begin{itemize}[leftmargin=1.25em]
-  ℹtem Seg.\ 1−−2: Pre−monsoon −−− dry conditions; easier surveillance.
-  ℹtem Seg.\ 3−−4: Early monsoon −−− activity spikes; shipping disruptions.
-  ℹtem Seg.\ 5−−6: Peak monsoon −−− investigation hindered; indoor focus.
-  ℹtem Seg.\ 7−−8: Late monsoon −−− clearing weather; finale windows open.
+  \item Seg.\ 1--2: Pre-monsoon --- dry conditions; easier surveillance.
+  \item Seg.\ 3--4: Early monsoon --- activity spikes; shipping disruptions.
+  \item Seg.\ 5--6: Peak monsoon --- investigation hindered; indoor focus.
+  \item Seg.\ 7--8: Late monsoon --- clearing weather; finale windows open.
 \end{itemize}
 
-% −−−−−−−−−− SAMPLE INVESTIGATION ENCOUNTERS −−−−−−−−−−
+% ---------- SAMPLE INVESTIGATION ENCOUNTERS ----------
 \subsection{Sample Investigation Encounters}
 
 \paragraph{Document Forgery Detection}
@@ -979,10 +979,10 @@ Tracks seasonal changes affecting the investigation:
 \textit{Partial:} Evidence found; conspirators alerted; time pressure.\\
 \textit{Miss:} False trail; wasted resources; GM spends 2 SB.
 
-% −−−−−−−−−− TOURNAMENT COMBAT GUIDELINES −−−−−−−−−−
+% ---------- TOURNAMENT COMBAT GUIDELINES ----------
 \subsection{Tournament Combat Guidelines}
 
-\paragraph{Phase 1 & 2 Matches}
+\paragraph{Phase 1 \& 2 Matches}
 Position: Dominant/Standard (honorable competition). Effect: Limited/Great (style demonstration). Cultural considerations may tilt judging.
 
 \paragraph{Final Duel}
@@ -991,12 +991,12 @@ Position: Dominant/Desperate (stakes and manipulation). Effect: Standard/Great (
 \paragraph{Conspiracy Intervention}
 Position shifts with timing/approach; Effect modified by evidence presented; cultural honor stakes influence resolution options.
 % =========================================================
-% GAZETTEER GENERATORS −−− NIHON • AYOKHA • SIHAI
-% Balanced presentation and quick−roll tables
+% GAZETTEER GENERATORS --- NIHON • AYOKHA • SIHAI
+% Balanced presentation and quick-roll tables
 % =========================================================
 
 % =====================================================================
-%  THE BRIDGE OF THREE ECHOES −−− TRIPLE−CULTURE CONTEMPLATIVE SHOWPIECE
+%  THE BRIDGE OF THREE ECHOES --- TRIPLE-CULTURE CONTEMPLATIVE SHOWPIECE
 % =====================================================================
 \chapter{The Bridge of Three Echoes (Pilgrimage of Memory and Mercy)}
 
@@ -1012,76 +1012,76 @@ A single night on the bridge can calm wars or spark them anew.
 The adventure favors reflection, diplomacy, vows, compassion, and the verdict of ancestors.
 \end{tcolorbox}
 
-% −−−−−−−−−−−−−−−− SCENE STRUCTURE −−−−−−−−−−−−−−−−
+% ---------------- SCENE STRUCTURE ----------------
 \subsection{Structure of Play}
 The bridge manifests for a single night.  
 Each \textbf{Act} is one crossing:
 \begin{itemize}
-  ℹtem \textbf{Act I: Lanterns of Regret} (Ayokha)
-  ℹtem \textbf{Act II: Blades of Memory} (Nihori)
-  ℹtem \textbf{Act III: Scrolls of Truth} (Sihai)
+  \item \textbf{Act I: Lanterns of Regret} (Ayokha)
+  \item \textbf{Act II: Blades of Memory} (Nihori)
+  \item \textbf{Act III: Scrolls of Truth} (Sihai)
 \end{itemize}
 
 Each act offers:
 \begin{itemize}
-  ℹtem A symbolic ritual
-  ℹtem A moral choice with no easy answer
-  ℹtem A chance to earn or lose \textbf{Echo Tokens}
+  \item A symbolic ritual
+  \item A moral choice with no easy answer
+  \item A chance to earn or lose \textbf{Echo Tokens}
 \end{itemize}
 
 At dawn, the bridge judges the living.
 
-% −−−−−−−−−−−−−−−− UNIQUE MECHANIC −−−−−−−−−−−−−−−−
+% ---------------- UNIQUE MECHANIC ----------------
 \subsection{Echo Tokens (Core Mechanic)}
 \begin{tcolorbox}[title={Echo Tokens}]
 PCs earn or lose \textbf{Echo Tokens} by honoring the dead:
 \begin{itemize}
-  ℹtem Show mercy to a bitter spirit [+1]
-  ℹtem Tell a painful truth [+1]
-  ℹtem Break a vow [−1]
-  ℹtem Spill blood on the bridge [−2]
+  \item Show mercy to a bitter spirit [+1]
+  \item Tell a painful truth [+1]
+  \item Break a vow [-1]
+  \item Spill blood on the bridge [-2]
 \end{itemize}
 
 At dawn:
 \begin{description}
-  ℹtem[3+ Tokens:] Spirits grant a Blessing of Peace
-  ℹtem[1−−2 Tokens:] The bridge leaves the world unchanged
-  ℹtem[0 or less:] The bridge cracks, releasing ancestral wrath
+  \item[3+ Tokens:] Spirits grant a Blessing of Peace
+  \item[1--2 Tokens:] The bridge leaves the world unchanged
+  \item[0 or less:] The bridge cracks, releasing ancestral wrath
 \end{description}
 \end{tcolorbox}
 
-% −−−−−−−−−−−−−−−− CLOCKS −−−−−−−−−−−−−−−−
+% ---------------- CLOCKS ----------------
 \subsection{Timers}
 \begin{itemize}
-  ℹtem \textbf{Bridge Stability [6]} −− grows with violence or lies
-  ℹtem \textbf{Spirit Unrest [8]} −− shrinks with compassion or ritual
-  ℹtem \textbf{Dawn Approaches [10]} −− the night is short
+  \item \textbf{Bridge Stability [6]} -- grows with violence or lies
+  \item \textbf{Spirit Unrest [8]} -- shrinks with compassion or ritual
+  \item \textbf{Dawn Approaches [10]} -- the night is short
 \end{itemize}
 
-% −−−−−−−−−−−−−−−− ACT I −−−−−−−−−−−−−−−−
+% ---------------- ACT I ----------------
 \subsection{Act I: Lanterns of Regret (Ayokha)}
-Floating lanterns hover in ash−filled fog.  
-Each lantern holds a recorded sorrow−−−love unspoken, apology unmade, duty abandoned.
+Floating lanterns hover in ash-filled fog.  
+Each lantern holds a recorded sorrow---love unspoken, apology unmade, duty abandoned.
 
 \textbf{Ritual:} PCs place a lantern into the river of ash.  
 Its flame brightens or dims depending on their sincerity.
 
 \begin{itemize}
-  ℹtem Heal a grieving spirit [+1 Echo Token]
-  ℹtem Sailor begs forgiveness from drowned crew
-  ℹtem Parent apologizes to a forgotten child
-  ℹtem Romantic rival confesses they saved a life instead of taking it
+  \item Heal a grieving spirit [+1 Echo Token]
+  \item Sailor begs forgiveness from drowned crew
+  \item Parent apologizes to a forgotten child
+  \item Romantic rival confesses they saved a life instead of taking it
 \end{itemize}
 
-\textbf{Set−Piece.} A thousand lanterns rise, illuminating spectral tatami pavilions and Ayokhan funeral masks.
+\textbf{Set-Piece.} A thousand lanterns rise, illuminating spectral tatami pavilions and Ayokhan funeral masks.
 
 \textbf{Test.} PCs must speak a sorrow of their own.  
 Silence counts as fear, not respect.
 
-% −−−−−−−−−−−−−−−− ACT II −−−−−−−−−−−−−−−−
+% ---------------- ACT II ----------------
 \subsection{Act II: Blades of Memory (Nihori)}
 A silent battlefield of polished stone.  
-The dead are not hostile−−−they demand \emph{acknowledgment}.
+The dead are not hostile---they demand \emph{acknowledgment}.
 
 \textbf{Ritual: Truth Duel.}  
 No blades strike flesh.  
@@ -1089,73 +1089,73 @@ To "win" is to yield the proud truth you never wished to speak.
 
 Examples:
 \begin{itemize}
-  ℹtem A warrior admits they killed for glory, not justice
-  ℹtem A magistrate admits they saved face instead of saving lives
-  ℹtem A monk admits they fled duty and called it enlightenment
+  \item A warrior admits they killed for glory, not justice
+  \item A magistrate admits they saved face instead of saving lives
+  \item A monk admits they fled duty and called it enlightenment
 \end{itemize}
 
 \textbf{Outcome.}
 \begin{itemize}
-  ℹtem Mutual truth: both sides bow, [+1 Token]
-  ℹtem Refusal to speak: spirits grow restless, [−1 Token]
+  \item Mutual truth: both sides bow, [+1 Token]
+  \item Refusal to speak: spirits grow restless, [-1 Token]
 \end{itemize}
 
-\textbf{Set−Piece.}  
-Rows of ash−blade swords hum in the wind, each engraved with an unspoken name.
+\textbf{Set-Piece.}  
+Rows of ash-blade swords hum in the wind, each engraved with an unspoken name.
 
-% −−−−−−−−−−−−−−−− ACT III −−−−−−−−−−−−−−−−
+% ---------------- ACT III ----------------
 \subsection{Act III: Scrolls of Truth (Sihai)}
 A grand pavilion of drifting parchment and calligraphy that writes itself.  
 The spirits seek \emph{record}, not vengeance.
 
 \textbf{Ritual:} PCs must inscribe a truth on the Eternal Scroll:
 \begin{itemize}
-  ℹtem Confess a lineage secret
-  ℹtem Acknowledge a war crime
-  ℹtem Reveal a corruption
-  ℹtem Forgive a historic enemy
+  \item Confess a lineage secret
+  \item Acknowledge a war crime
+  \item Reveal a corruption
+  \item Forgive a historic enemy
 \end{itemize}
 
-\textbf{Set−Piece.}  
-Ink−spirits coil through the air.  
+\textbf{Set-Piece.}  
+Ink-spirits coil through the air.  
 When a lie is spoken, parchment tears like thunder.
 
 \textbf{Test.}  
 If no one writes truth, the scroll writes \emph{judgment} instead.
 
-% −−−−−−−−−−−−−−−− OPTIONAL FINAL SET−PIECE −−−−−−−−−−−−−−−−
+% ---------------- OPTIONAL FINAL SET-PIECE ----------------
 \subsection{Final Choice: Break or Bless the Bridge}
 At the last step, three ancestral judges manifest:  
 \textbf{Ayokhan Mercy, Nihori Honor, Sihai Memory.}
 
 PCs must choose:
 \begin{itemize}
-  ℹtem \textbf{Bless the Bridge:} swears a binding vow of peace  
-  ℹtem \textbf{Break the Bridge:} spirits rise to punish the living  
-  ℹtem \textbf{Rewrite History:} one truth is erased or rewritten
+  \item \textbf{Bless the Bridge:} swears a binding vow of peace  
+  \item \textbf{Break the Bridge:} spirits rise to punish the living  
+  \item \textbf{Rewrite History:} one truth is erased or rewritten
 \end{itemize}
 
 \textbf{Echo Token Result Table:}
 \begin{itemize}
-  ℹtem 3−−5 Tokens → Dawn Blessing (renewed treaties, ancestral gifts)
-  ℹtem 1−−2 Tokens → Neutral departure, bittersweet memory
-  ℹtem 0 or fewer → Vengeful spirits pursue PCs beyond the bridge
+  \item 3--5 Tokens → Dawn Blessing (renewed treaties, ancestral gifts)
+  \item 1--2 Tokens → Neutral departure, bittersweet memory
+  \item 0 or fewer → Vengeful spirits pursue PCs beyond the bridge
 \end{itemize}
 
-% −−−−−−−−−−−−−−−− PATRON SUGGESTIONS −−−−−−−−−−−−−−−−
+% ---------------- PATRON SUGGESTIONS ----------------
 \subsection{Patron Hooks}
 \begin{itemize}
-  ℹtem \textbf{Mab:} promises peace, demands a price in memory
-  ℹtem \textbf{Inkblade:} offers a rewritten scroll−−−dangerous temptation
-  ℹtem \textbf{Thrysos:} grants mercy to warriors who admit their failures
-  ℹtem \textbf{Black Fox:} the bridge hides a secret worth stealing
+  \item \textbf{Mab:} promises peace, demands a price in memory
+  \item \textbf{Inkblade:} offers a rewritten scroll---dangerous temptation
+  \item \textbf{Thrysos:} grants mercy to warriors who admit their failures
+  \item \textbf{Black Fox:} the bridge hides a secret worth stealing
 \end{itemize}
 
 \begin{tcolorbox}[title={GM Guidance: Tone}]
 This is not a combat showcase.  
 Use silence as a mechanic.  
 Let players sit in discomfort.  
-Reward vulnerability−−−characters who speak truth should be mechanically advantaged.
+Reward vulnerability---characters who speak truth should be mechanically advantaged.
 \end{tcolorbox}
 
 \begin{tcolorbox}[title={Endings}]
@@ -1172,424 +1172,424 @@ History now remembers something that never happened.
 % =====================================================================
 \subsection{NPCs of the Bridge of Three Echoes}
 
-% −−−−−−−−−−−− SIHAI −−−−−−−−−−−−
-⫕section*{Sihai NPCs}
+% ------------ SIHAI ------------
+\subsubsection*{Sihai NPCs}
 
 \paragraph{Magistrate Shen Liang}
-Historian−in−exile, gentle and formal. Carries scrolls spilling endless ink.
+Historian-in-exile, gentle and formal. Carries scrolls spilling endless ink.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} Falsified census records to save a starving village.
-  ℹtem \textbf{If Helped:} \emph{Seal of Lenient Judgment} −−− +1 Position when pleading mercy.
-  ℹtem \textbf{If Silenced:} Spirits mark him with invisible ink; PCs can see ``coward'' across his back.
+  \item \textbf{Truth Feared:} Falsified census records to save a starving village.
+  \item \textbf{If Helped:} \emph{Seal of Lenient Judgment} --- +1 Position when pleading mercy.
+  \item \textbf{If Silenced:} Spirits mark him with invisible ink; PCs can see ``coward'' across his back.
 \end{itemize}
 
 \paragraph{Jade Archivist Lian Xu}
 Keeper of forbidden histories, brilliant and furious.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} A massacre blamed on raiders was ordered internally.
-  ℹtem \textbf{If Helped:} PCs gain a \emph{True Ledger Fragment} to expose corruption later.
-  ℹtem \textbf{If Silenced:} Spirits whisper the forbidden truth to an unwilling PC.
+  \item \textbf{Truth Feared:} A massacre blamed on raiders was ordered internally.
+  \item \textbf{If Helped:} PCs gain a \emph{True Ledger Fragment} to expose corruption later.
+  \item \textbf{If Silenced:} Spirits whisper the forbidden truth to an unwilling PC.
 \end{itemize}
 
 \paragraph{Commander Wei Sun}
 War hero, loved by the empire, hollow with guilt.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} Civilian deaths reported as bandit casualties.
-  ℹtem \textbf{If Forgiven:} \emph{Blessing of Gentle Hands} −−− treat one lethal wound as nonlethal.
-  ℹtem \textbf{If Condemned:} Silent spirits gather; Unrest +1.
+  \item \textbf{Truth Feared:} Civilian deaths reported as bandit casualties.
+  \item \textbf{If Forgiven:} \emph{Blessing of Gentle Hands} --- treat one lethal wound as nonlethal.
+  \item \textbf{If Condemned:} Silent spirits gather; Unrest +1.
 \end{itemize}
 
-% −−−−−−−−−−−− NIHOn −−−−−−−−−−−−
-⫕section*{Nihori NPCs}
+% ------------ NIHOn ------------
+\subsubsection*{Nihori NPCs}
 
-\paragraph{Poet−Swordsman Akiro}
-Duelist−philosopher polishing a perfect blade.
+\paragraph{Poet-Swordsman Akiro}
+Duelist-philosopher polishing a perfect blade.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} Provoked a duel to steal poetry, not for honor.
-  ℹtem \textbf{If Encouraged:} Offers a memory−haiku restoring one spent Echo Token.
-  ℹtem \textbf{If Mocked:} Challenges a PC to a Truth Duel.
+  \item \textbf{Truth Feared:} Provoked a duel to steal poetry, not for honor.
+  \item \textbf{If Encouraged:} Offers a memory-haiku restoring one spent Echo Token.
+  \item \textbf{If Mocked:} Challenges a PC to a Truth Duel.
 \end{itemize}
 
 \paragraph{Sister Hana}
 Temple attendant who stole sacred coins to feed orphans.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} Her mercy violated temple law.
-  ℹtem \textbf{If Defended:} \emph{Hands of Clean Intent} −−− ignore one Corruption tick.
-  ℹtem \textbf{If Condemned:} She vanishes; Stability +1.
+  \item \textbf{Truth Feared:} Her mercy violated temple law.
+  \item \textbf{If Defended:} \emph{Hands of Clean Intent} --- ignore one Corruption tick.
+  \item \textbf{If Condemned:} She vanishes; Stability +1.
 \end{itemize}
 
 \paragraph{Lord Shigure}
-Samurai−turned−traitor, polite and calm as ice.
+Samurai-turned-traitor, polite and calm as ice.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} Betrayed his lord for ambition, not justice.
-  ℹtem \textbf{If Convinced:} \emph{Mask of Honest Silence} −−− reroll one failed Sway per adventure.
-  ℹtem \textbf{If Proud:} Becomes a vengeful spirit later.
+  \item \textbf{Truth Feared:} Betrayed his lord for ambition, not justice.
+  \item \textbf{If Convinced:} \emph{Mask of Honest Silence} --- reroll one failed Sway per adventure.
+  \item \textbf{If Proud:} Becomes a vengeful spirit later.
 \end{itemize}
 
-% −−−−−−−−−−−− AYOKHA −−−−−−−−−−−−
-⫕section*{Ayokha NPCs}
+% ------------ AYOKHA ------------
+\subsubsection*{Ayokha NPCs}
 
 \paragraph{Widow Ishani}
-Merchant−queen carrying three lanterns for lost husbands.
+Merchant-queen carrying three lanterns for lost husbands.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} Bribed a captain to sail early; ship sank.
-  ℹtem \textbf{If Admitted:} \emph{Coin of Clean Trade} −−− advantage when negotiating peace.
-  ℹtem \textbf{If Denied:} Lanterns sink; Stability +2.
+  \item \textbf{Truth Feared:} Bribed a captain to sail early; ship sank.
+  \item \textbf{If Admitted:} \emph{Coin of Clean Trade} --- advantage when negotiating peace.
+  \item \textbf{If Denied:} Lanterns sink; Stability +2.
 \end{itemize}
 
-\paragraph{Child−Keeper Tavin}
+\paragraph{Child-Keeper Tavin}
 Medium holding hands of forgotten children.
 \begin{itemize}
-  ℹtem \textbf{Truth Feared:} One child lives; Tavin hid him to protect him.
-  ℹtem \textbf{If Revealed:} \emph{Promise of Gentle Passage} −−− advantage on death saves.
-  ℹtem \textbf{If Forced:} Children scatter; Unrest +1.
+  \item \textbf{Truth Feared:} One child lives; Tavin hid him to protect him.
+  \item \textbf{If Revealed:} \emph{Promise of Gentle Passage} --- advantage on death saves.
+  \item \textbf{If Forced:} Children scatter; Unrest +1.
 \end{itemize}
 
 \paragraph{The Silent Judge}
 Ancient Ayokhan spirit of law without mercy.
 \begin{itemize}
-  ℹtem \textbf{Demand:} Truth \emph{and} consequence.
-  ℹtem \textbf{If Satisfied:} Stability resets; Echo Token +1.
-  ℹtem \textbf{If Defied:} Condemns PC, NPC, or culture −−− canon impact.
+  \item \textbf{Demand:} Truth \emph{and} consequence.
+  \item \textbf{If Satisfied:} Stability resets; Echo Token +1.
+  \item \textbf{If Defied:} Condemns PC, NPC, or culture --- canon impact.
 \end{itemize}
 
 
-\part{Supporting Systems & Cultural Material}
+\part{Supporting Systems \& Cultural Material}
 
 \chapter{The Isles of the Dawn Spirit (Nihori)}
-łabel{sec:nihon}
+\label{sec:nihon}
 
-\begin{tcolorbox}[title={\textbf{Nihori −−− The Isles of the Dawn Spirit}},colback=white,colframe=black!70]
-\textbf{Tagline.} A storm−wracked archipelago of fierce clans, living spirits, and master artisans. Nihori refines many eastern ideas into forms uniquely its own, standing in creative tension with the continental power of Sihai.
+\begin{tcolorbox}[title={\textbf{Nihori --- The Isles of the Dawn Spirit}},colback=white,colframe=black!70]
+\textbf{Tagline.} A storm-wracked archipelago of fierce clans, living spirits, and master artisans. Nihori refines many eastern ideas into forms uniquely its own, standing in creative tension with the continental power of Sihai.
 \end{tcolorbox}
 
 \subsection*{Overview (Balanced Framing)}
 Nihori is contrast made culture: serene moss temples beneath volcanic rims; disciplined warriors amid fractious lordships. The islands absorb, test, and reforge influences (including Sihai"s), claiming neither imitation nor isolation but \emph{reinterpretation}.
 
-% −−−−−−−−−− Geography −−−−−−−−−−
+% ---------- Geography ----------
 \subsection{Geography Generator (d12)}
 \begin{longtable}{@{}p{0.8cm}p{12.2cm}@{}}
-⊤rule
+\toprule
 \textbf{d12} & \textbf{Feature} \\
-∣rule
-1 & Four great islands ring an \emph{Inland Sea}; trade junks tack between shrine−harbors. \\
-2 & Fire−mountains smolder; ash fertilizes terraced paddies. \\
-3 & Knife−edged coasts with storm−carved arches; hidden coves host clandestine docks. \\
-4 & Cedar−clad ridges with mist stairways and bell−lines for avalanches. \\
+\midrule
+1 & Four great islands ring an \emph{Inland Sea}; trade junks tack between shrine-harbors. \\
+2 & Fire-mountains smolder; ash fertilizes terraced paddies. \\
+3 & Knife-edged coasts with storm-carved arches; hidden coves host clandestine docks. \\
+4 & Cedar-clad ridges with mist stairways and bell-lines for avalanches. \\
 5 & Typhoon corridors marked by stone beacons and wind shrines. \\
 6 & Pearl banks guarded by reef kami; divers trade with temple fleets. \\
 7 & Bamboo valleys echoing with practice blades at dawn. \\
-8 & Black−sand beaches speckled with meteoric iron. \\
-9 & Sky−bridges of rope and lacquer spanning ravines to fortress towns. \\
+8 & Black-sand beaches speckled with meteoric iron. \\
+9 & Sky-bridges of rope and lacquer spanning ravines to fortress towns. \\
 10 & Volcanic hot springs claimed by monasteries and swordsmiths alike. \\
-11 & Cliff−temples where drums speak weather omens. \\
-12 & Lantern−lit fishing villages; storm bells double as invasion alarms. \\
-⊥tomrule
+11 & Cliff-temples where drums speak weather omens. \\
+12 & Lantern-lit fishing villages; storm bells double as invasion alarms. \\
+\bottomrule
 \end{longtable}
 
-% −−−−−−−−−− Polity −−−−−−−−−−
-\subsection{Polity & Power (d10)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Polity ----------
+\subsection{Polity \& Power (d10)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d10} & \textbf{Detail} \\
-∣rule
+\midrule
 1 & \textbf{Heavenly Sovereign} holds ritual primacy; temples legitimize rule. \\
 2 & \textbf{Shōgunate claim} contested; generals court temple backing. \\
-3 & \textbf{Daimyō league} forms non−aggression pact against pirates. \\
+3 & \textbf{Daimyō league} forms non-aggression pact against pirates. \\
 4 & \textbf{Sword Monasteries} arbitrate disputes with trial bouts. \\
 5 & \textbf{Harbor Councils} tax trade; share typhoon shelters. \\
 6 & \textbf{Clanship Oaths} bind ashigaru to rice pledges. \\
 7 & \textbf{Smith Guild Compact}: one masterpiece per year per forge. \\
-8 & \textbf{Spirit−Mediator Shrine} licenses exorcists for pay. \\
+8 & \textbf{Spirit-Mediator Shrine} licenses exorcists for pay. \\
 9 & \textbf{Pirate Amnesty} offered for service against foreign raiders. \\
 10 & \textbf{Isle Diet} convenes; decisions are advisory but symbolically powerful. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Society −−−−−−−−−−
-\subsection{Society & Arts (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Society ----------
+\subsection{Society \& Arts (d8)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Custom / Art} \\
-∣rule
+\midrule
 1 & Swordsmithing houses pass secrets by \emph{failure journals}, not manuals. \\
 2 & Rustic tea pavilions host ceasefires and spies in equal measure. \\
-3 & Noh−style masked dramas teach clan history in allegory. \\
+3 & Noh-style masked dramas teach clan history in allegory. \\
 4 & Pottery kilns revere asymmetry and kiln accident. \\
 5 & Poetry duels settle slights before blades do. \\
 6 & Tide calendars are household shrines. \\
 7 & Tattoo guilds encode loyalty oaths in wave motifs. \\
-8 & Storm−offering floats carry names of the missing. \\
-⊥tomrule
+8 & Storm-offering floats carry names of the missing. \\
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Forces −−−−−−−−−−
-\subsection{Forces & Methods (d10)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Forces ----------
+\subsection{Forces \& Methods (d10)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d10} & \textbf{Military Element} \\
-∣rule
-1 & \textbf{Samurai} combined−arms: bow, spear, blade. \\
+\midrule
+1 & \textbf{Samurai} combined-arms: bow, spear, blade. \\
 2 & \textbf{Ashigaru} spear walls with whistle signals. \\
 3 & \textbf{Shinobi} smoke, peppers, false banners. \\
 4 & \textbf{Matchlocks} adopted in volley lines along levees. \\
 5 & \textbf{Coastal Wokou} raid tariffs; sometimes deputized. \\
 6 & \textbf{Temple Guards} duel to arbitrate feuds. \\
-7 & \textbf{Scout Boats} outrun storms by reading bird−lines. \\
+7 & \textbf{Scout Boats} outrun storms by reading bird-lines. \\
 8 & \textbf{Blade Saints} sworn to refuse coin, accept rice. \\
-9 & \textbf{Armorers} field−test lamellar in rain and ash. \\
+9 & \textbf{Armorers} field-test lamellar in rain and ash. \\
 10 & \textbf{Storm Drummers} time charges between gusts. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Trade −−−−−−−−−−
-\subsection{Trade & Exchange (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Trade ----------
+\subsection{Trade \& Exchange (d8)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Exports / Imports} \\
-∣rule
+\midrule
 1 & \textbf{Exports:} blades, lacquer, ink; \textbf{Imports:} grain, silk, porcelain. \\
 2 & Sulphur and silver fund harbor walls. \\
-3 & Pirate−chased auctions depress prices (great bargains). \\
+3 & Pirate-chased auctions depress prices (great bargains). \\
 4 & Sihai brokers trade jade for sword commissions. \\
 5 & Ayokhan spices traded for shipwright plans. \\
 6 & Storm insurance scrip issued by shrine treasuries. \\
 7 & Gun barrels proofed in temple pits. \\
 8 & Pilgrim tourism to volcano shrines. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Faith −−−−−−−−−−
-\subsection{Spirits & Paths (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Faith ----------
+\subsection{Spirits \& Paths (d8)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Practice} \\
-∣rule
+\midrule
 1 & \textbf{Kannagara}: offerings to rock, tree, and tide kami. \\
-2 & \textbf{Empty Self}: no−mind training in sword halls. \\
+2 & \textbf{Empty Self}: no-mind training in sword halls. \\
 3 & Ancestral boats set adrift at equinox. \\
 4 & Purity rites before duels; salt circles the ring. \\
-5 & Volcano appeasement dances for ash−safe winds. \\
-6 & Sea−kami ordain fishing limits by lot. \\
-7 & Shrine arbiters stamp contracts with wind−ink. \\
+5 & Volcano appeasement dances for ash-safe winds. \\
+6 & Sea-kami ordain fishing limits by lot. \\
+7 & Shrine arbiters stamp contracts with wind-ink. \\
 8 & Zen gardens double as map puzzles for students. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Relations −−−−−−−−−−
+% ---------- Relations ----------
 \subsection{Relations (Parity Lens, d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Current State} \\
-∣rule
+\midrule
 1 & With \textbf{Sihai}: competitive emulation; naval patrol standoffs. \\
 2 & With \textbf{Sihai}: scholar exchanges; tariff disputes. \\
 3 & With \textbf{Ayokha}: monsoon ship swaps; dockside duels. \\
-4 & With \textbf{Ayokha}: joint anti−piracy cruises. \\
+4 & With \textbf{Ayokha}: joint anti-piracy cruises. \\
 5 & Western gun traders under shrine licensing. \\
 6 & Neutral islands serve as truce markets. \\
-7 & Mixed Sihai−−Nihori craft guild in a border port. \\
+7 & Mixed Sihai--Nihori craft guild in a border port. \\
 8 & Disputed lighthouse fees spark legal bout. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Hooks −−−−−−−−−−
+% ---------- Hooks ----------
 \subsection{Adventure Hooks (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Hook} \\
-∣rule
+\midrule
 1 & The Broken Sword: a murdered smith; rival clans claim the masterpiece. \\
-2 & Ronin's Code: master betrayed; walk the ash−road for honor. \\
-3 & Ghost of the Fire−Mountain: appease the waking kami or evacuate the valley. \\
+2 & Ronin's Code: master betrayed; walk the ash-road for honor. \\
+3 & Ghost of the Fire-Mountain: appease the waking kami or evacuate the valley. \\
 4 & The Black Ship: salvage or secrecy? gunpowder bids escalate. \\
 5 & Audience with the Sovereign: covert message through enemy provinces. \\
-6 & Shrine Storm−Bell stolen; typhoon omens unheeded. \\
+6 & Shrine Storm-Bell stolen; typhoon omens unheeded. \\
 7 & Pirate Amnesty debate turns riotous at harbor court. \\
-8 & Trial by Poetry averts war−−−unless someone cheats. \\
-⊥tomrule
+8 & Trial by Poetry averts war---unless someone cheats. \\
+\bottomrule
 \end{tabularx}
 
 % =========================================================
-\chapter{Ayokha −−− The Monsoon Throne}
-łabel{sec:ayokha}
+\chapter{Ayokha --- The Monsoon Throne}
+\label{sec:ayokha}
 
-\begin{tcolorbox}[title={\textbf{Ayokha −−− The Monsoon Throne, River of Heaven}},colback=white,colframe=black!70]
-\textbf{Tagline.} A temple−mandala of river, jungle, and sea−−−Ayokha blends what comes on the monsoon into something unmistakably its own, anchoring trade between Sihai, Nihori, and the West.
+\begin{tcolorbox}[title={\textbf{Ayokha --- The Monsoon Throne, River of Heaven}},colback=white,colframe=black!70]
+\textbf{Tagline.} A temple-mandala of river, jungle, and sea---Ayokha blends what comes on the monsoon into something unmistakably its own, anchoring trade between Sihai, Nihori, and the West.
 \end{tcolorbox}
 
 \subsection*{Overview}
-Ayokha measures borders in loyalty, harbors, and wind. A god−king sits at the center; influence radiates through vassal ports, priest−chieftains, and Sea−Lords who ride the seasonal breath of the world.
+Ayokha measures borders in loyalty, harbors, and wind. A god-king sits at the center; influence radiates through vassal ports, priest-chieftains, and Sea-Lords who ride the seasonal breath of the world.
 
-% −−−−−−−−−− Geography −−−−−−−−−−
-\subsection{Geography & Waterworks (d12)}
+% ---------- Geography ----------
+\subsection{Geography \& Waterworks (d12)}
 \begin{longtable}{@{}p{0.8cm}p{12.2cm}@{}}
-⊤rule
+\toprule
 \textbf{d12} & \textbf{Feature} \\
-∣rule
-1 & Sona River flood−ladders feeding terrace mosaics. \\
+\midrule
+1 & Sona River flood-ladders feeding terrace mosaics. \\
 2 & Jade Coast mangroves hiding stilt markets. \\
 3 & Tide gates carved with celestial calendars. \\
 4 & Delta labyrinths navigated by drum code. \\
-5 & Step−pyramid temples aligned to monsoon stars. \\
+5 & Step-pyramid temples aligned to monsoon stars. \\
 6 & Inland karst spires riddled with spirit caverns. \\
 7 & Bronze gong towers relay harbor warnings. \\
 8 & Batik guild towns with dye canals. \\
 9 & River palaces on barge foundations. \\
 10 & Jungle bridges woven of living roots. \\
-11 & Pearl−silt basins taxed by shell weight. \\
+11 & Pearl-silt basins taxed by shell weight. \\
 12 & Cyclone refuges marked by mirrored tiles. \\
-⊥tomrule
+\bottomrule
 \end{longtable}
 
-% −−−−−−−−−− Mandala −−−−−−−−−−
+% ---------- Mandala ----------
 \subsection{Mandala of Power (d10)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d10} & \textbf{Node} \\
-∣rule
+\midrule
 1 & \textbf{Devaraja} health omens steer policy. \\
 2 & \textbf{Vassal Kings} bid for canal grants. \\
-3 & \textbf{Priest−Chieftains} license jungle rites. \\
-4 & \textbf{Sea−Lords} tithe for storm−writs and letters of marque. \\
+3 & \textbf{Priest-Chieftains} license jungle rites. \\
+4 & \textbf{Sea-Lords} tithe for storm-writs and letters of marque. \\
 5 & \textbf{Celestial Bureaucrats} set auspicious sailing days. \\
 6 & \textbf{Astrologer Courts} arbitrate trade disputes by star. \\
-7 & \textbf{Festival Charters} open tax−free weeks for pilgrims. \\
+7 & \textbf{Festival Charters} open tax-free weeks for pilgrims. \\
 8 & \textbf{Harbor Syndics} standardize weights, seals, and scripts. \\
 9 & \textbf{River Wardens} control floodgates and ferry rights. \\
 10 & \textbf{Temple Auditors} inspect sacred treasuries and relic loans. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Forces −−−−−−−−−−
-\subsection{Forces & Fleet (d10)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Forces ----------
+\subsection{Forces \& Fleet (d10)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d10} & \textbf{Military Element} \\
-∣rule
+\midrule
 1 & Royal Guard in jeweled lamellar (ceremony and steel). \\
 2 & War Elephants break lines; skirmishers screen flanks. \\
 3 & Monsoon Junks with outrigger scouts. \\
-4 & Sea−Lords" boarding crews with javelins and hooks. \\
+4 & Sea-Lords" boarding crews with javelins and hooks. \\
 5 & Jungle archers versed in toxin governance. \\
 6 & River mines disguised as lotus floats. \\
 7 & Temple Engineers staff floodworks and siege ramps. \\
 8 & Harbor Fire Corps drill for ship blazes. \\
-9 & Astrolabe spotters for long−range semaphore. \\
+9 & Astrolabe spotters for long-range semaphore. \\
 10 & Neutral convoy flags sold to foreigners (limited protection). \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Culture −−−−−−−−−−
-\subsection{Culture & Craft (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Culture ----------
+\subsection{Culture \& Craft (d8)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Art / Practice} \\
-∣rule
-1 & Temple bas−reliefs retold with living actors at dusk. \\
-2 & Dance−dramas certify guild oaths before gods and crowds. \\
-3 & Textiles with gold thread denote tide−rights. \\
-4 & Cuisine codified by wind−season: sour for \emph{south}, spice for \emph{west}. \\
+\midrule
+1 & Temple bas-reliefs retold with living actors at dusk. \\
+2 & Dance-dramas certify guild oaths before gods and crowds. \\
+3 & Textiles with gold thread denote tide-rights. \\
+4 & Cuisine codified by wind-season: sour for \emph{south}, spice for \emph{west}. \\
 5 & River weddings consecrate ferry monopolies. \\
 6 & Pilgrim tattoos serve as toll passes. \\
 7 & Merchant astrology almanacs predict price tides. \\
 8 & Spirit ladders of bells appease nat in storm years. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Hooks −−−−−−−−−−
+% ---------- Hooks ----------
 \subsection{Adventure Hooks (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Hook} \\
-∣rule
+\midrule
 1 & The Silent Monsoon: find the rain's offended spirit. \\
 2 & The Sunken Temple: dive a shifting river maze. \\
 3 & The Spice Captain's Gambit: outrun rivals before the wind turns. \\
 4 & Elephant Arsenal: hold a pass with pachyderm tactics. \\
 5 & The Usurper's Whisper: unmask a court poisoner. \\
 6 & Floodgate Saboteurs threaten harvest tithes. \\
-7 & Star−Taxed Market sparks riot over unlucky day. \\
+7 & Star-Taxed Market sparks riot over unlucky day. \\
 8 & Ghost Barge bears unpaid dead to the capital. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
 % =========================================================
-\chapter{Sihai −−− The Central Kingdom}
-łabel{sec:sihai}
+\chapter{Sihai --- The Central Kingdom}
+\label{sec:sihai}
 
-\begin{tcolorbox}[title={\textbf{Sihai −−− The Central Kingdom, The Ordered Land}},colback=white,colframe=black!70]
-\textbf{Tagline.} An ancient, populous empire of law, letters, and logistics. Sihai projects influence by system and scale−−−yet continuously adapts through frontier contact and maritime exchange.
+\begin{tcolorbox}[title={\textbf{Sihai --- The Central Kingdom, The Ordered Land}},colback=white,colframe=black!70]
+\textbf{Tagline.} An ancient, populous empire of law, letters, and logistics. Sihai projects influence by system and scale---yet continuously adapts through frontier contact and maritime exchange.
 \end{tcolorbox}
 
 \subsection*{Overview (Balanced Framing)}
-Sihai is continuity given institution: examinations, canals, and corps that turn harvest into fleets and scrolls into strategy. Its power often persuades before it conquers−−−and learns as it persuades.
+Sihai is continuity given institution: examinations, canals, and corps that turn harvest into fleets and scrolls into strategy. Its power often persuades before it conquers---and learns as it persuades.
 
-% −−−−−−−−−− Geography −−−−−−−−−−
-\subsection{Geography & Works (d12)}
+% ---------- Geography ----------
+\subsection{Geography \& Works (d12)}
 \begin{longtable}{@{}p{0.8cm}p{12.2cm}@{}}
-⊤rule
+\toprule
 \textbf{d12} & \textbf{Feature} \\
-∣rule
-1 & Sihon River basin: levees, fish−ladders, terrace miles. \\
+\midrule
+1 & Sihon River basin: levees, fish-ladders, terrace miles. \\
 2 & Himadri passes with beacon towers and tea hostels. \\
 3 & Grand canals moving rice, troops, and poets. \\
-4 & Deep seaports with foreign quarters and coin−mints. \\
+4 & Deep seaports with foreign quarters and coin-mints. \\
 5 & Altan Plains forts facing steppe cavalry. \\
 6 & Jade quarries sworn to ancestral cults. \\
 7 & Paper towns where mills sing like rain. \\
 8 & Salt pans governed by imperial stewards. \\
-9 & "Sky−Spine" snowmelt reservoirs feeding clockwork gates. \\
+9 & "Sky-Spine" snowmelt reservoirs feeding clockwork gates. \\
 10 & Silk districts with mulberry oaths. \\
 11 & Porcelain kilns planned on geomantic lines. \\
 12 & Maritime colonies ruled by mixed councils. \\
-⊥tomrule
+\bottomrule
 \end{longtable}
 
-% −−−−−−−−−− Mandate −−−−−−−−−−
-\subsection{Mandate & Bureaucracy (d10)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Mandate ----------
+\subsection{Mandate \& Bureaucracy (d10)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d10} & \textbf{Mechanism} \\
-∣rule
+\midrule
 1 & \textbf{Mandate of Heaven}: disasters prompt audits and reforms. \\
 2 & \textbf{Exam Halls}: anonymous scripts, public rankings. \\
-3 & \textbf{Censorate}: roaming inspectors with seal−breaking powers. \\
-4 & \textbf{Salt−Iron Monopolies}: fund fleets and roads. \\
+3 & \textbf{Censorate}: roaming inspectors with seal-breaking powers. \\
+4 & \textbf{Salt-Iron Monopolies}: fund fleets and roads. \\
 5 & \textbf{Canal Corps}: corvée mitigated by meal guarantees. \\
-6 & \textbf{Frontier Commands}: civilian−military joint rule. \\
+6 & \textbf{Frontier Commands}: civilian-military joint rule. \\
 7 & \textbf{Ancestral Temples}: civic rites as tax calendars. \\
 8 & \textbf{Merchant Boards}: issue credit scrip and dispute letters. \\
-9 & \textbf{Scholar−Generals}: strategy treatises guide deployments. \\
+9 & \textbf{Scholar-Generals}: strategy treatises guide deployments. \\
 10 & \textbf{Maritime Code}: convoy law for the Hintara and Nasan. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Forces −−−−−−−−−−
-\subsection{Forces & Methods (d10)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Forces ----------
+\subsection{Forces \& Methods (d10)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d10} & \textbf{Military Element} \\
-∣rule
+\midrule
 1 & Mass infantry with crossbows and shield carts. \\
 2 & Riverine marines trained for lock combat. \\
 3 & Warrior Monks: shock teams and bodyguards. \\
 4 & Siege math schools attached to armies. \\
 5 & Cavalry auxiliaries recruited from steppe allies. \\
-6 & Fire−lance arsenals in coastal forts. \\
+6 & Fire-lance arsenals in coastal forts. \\
 7 & Navy junks as floating bastions with tower rigs. \\
 8 & Intelligence couriers on poetry circuits. \\
 9 & Logistics priests bless storehouses and ration ledgers. \\
-10 & Border scouts mapping by star and water−chant. \\
-⊥tomrule
+10 & Border scouts mapping by star and water-chant. \\
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Culture −−−−−−−−−−
-\subsection{Society, Letters & Table (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Culture ----------
+\subsection{Society, Letters \& Table (d8)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Culture} \\
-∣rule
+\midrule
 1 & \textbf{Way of Harmony}: physicians/astrologers balance humors and seasons. \\
 2 & \textbf{Path of Duty}: etiquette courts arbitrate insults into reparations. \\
 3 & \textbf{Inner Reflection}: quiet halls open to commoners at dusk. \\
@@ -1598,15 +1598,15 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
 6 & Jade carvers hold "silent auctions" by gesture. \\
 7 & Porcelain painters encode border news in patterns. \\
 8 & Canal operas celebrate engineers as folk heroes. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Trade −−−−−−−−−−
-\subsection{Trade & Currency (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+% ---------- Trade ----------
+\subsection{Trade \& Currency (d8)}
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Flow} \\
-∣rule
+\midrule
 1 & Exports: silk, porcelain, tea, paper; Imports: horses, gems, grain. \\
 2 & Silk Route convoys insured by temple bonds. \\
 3 & Coastal colonies mint bilingual coin. \\
@@ -1615,108 +1615,108 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
 6 & Ayokhan spice quotas swap for canal timber rights. \\
 7 & Examination stipends tied to harvest shares. \\
 8 & Merchant \emph{huizi} (notes) accepted across three realms. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Relations −−−−−−−−−−
+% ---------- Relations ----------
 \subsection{Relations (Parity Lens, d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Current State} \\
-∣rule
-1 & With \textbf{Nihori}: naval exercises and joint anti−piracy patrols. \\
+\midrule
+1 & With \textbf{Nihori}: naval exercises and joint anti-piracy patrols. \\
 2 & With \textbf{Nihori}: exam scholars tour sword monasteries. \\
 3 & With \textbf{Ayokha}: convoy calendars aligned to monsoon charts. \\
 4 & With \textbf{Ayokha}: harbor law harmonization talks. \\
 5 & With steppe states: hostage exchange for peace seasons. \\
 6 & With westerners: limited concessions, strict tariff boards. \\
-7 & Tri−realm craft symposium on steel and ceramics. \\
+7 & Tri-realm craft symposium on steel and ceramics. \\
 8 & Lighthouse standardization summit averts wrecks. \\
-⊥tomrule
+\bottomrule
 \end{tabularx}
 
-% −−−−−−−−−− Hooks −−−−−−−−−−
+% ---------- Hooks ----------
 \subsection{Adventure Hooks (d8)}
-\begin{tabularx}{łinewidth}{@{}p{0.8cm}X@{}}
-⊤rule
+\begin{tabularx}{\linewidth}{@{}p{0.8cm}X@{}}
+\toprule
 \textbf{d8} & \textbf{Hook} \\
-∣rule
+\midrule
 1 & Failed Exam conspiracy reaches into the Censorate. \\
 2 & Lost Legion standard haunts a Himadri pass. \\
 3 & Tea and Poison at a coastal etiquette court. \\
 4 & Monkey King's Tomb maps hidden in opera costumes. \\
-5 & Colony's Cry: hold a mixed−port against a warlord's fleet. \\
+5 & Colony's Cry: hold a mixed-port against a warlord's fleet. \\
 6 & Canal breach sabotage during flood season. \\
-7 & Jade tax revolt mediated by ancestor−oracle. \\
-8 & Maritime code forged−−−or broken−−−at a tri−realm summit. \\
-⊥tomrule
+7 & Jade tax revolt mediated by ancestor-oracle. \\
+8 & Maritime code forged---or broken---at a tri-realm summit. \\
+\bottomrule
 \end{tabularx}
 
 \begin{tcolorbox}[title={\textbf{Crowd Mood Track [6]}},colback=white,colframe=black!70]
-  \begin{tabularx}{łinewidth}{@{}lX@{}}
-  \textbf{0−−2} & Curious admiration; cheers, ritual silence, respectful onlookers. \\
-  \textbf{3−−4} & Partisan chants; thrown petals; accusations of bias; reporters swarm. \\
-  \textbf{5} & Projectiles, panic, scuffles; Position −−1 on all social checks in the ring. \\
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+  \textbf{0--2} & Curious admiration; cheers, ritual silence, respectful onlookers. \\
+  \textbf{3--4} & Partisan chants; thrown petals; accusations of bias; reporters swarm. \\
+  \textbf{5} & Projectiles, panic, scuffles; Position --1 on all social checks in the ring. \\
   \textbf{6} & Riot or stampede: duel halted, collateral harm; Political Tensions +2. \\
   \end{tabularx}
   
   \medskip
   \textbf{Influencing the Crowd:}
   \begin{itemize}[leftmargin=1.5em]
-    ℹtem Respectful bow, ritual, poetic challenge: Crowd −−1
-    ℹtem Public mercy or restraint: Crowd −−1
-    ℹtem Brutality, insults, cheating, sacred bloodshed: Crowd +1
+    \item Respectful bow, ritual, poetic challenge: Crowd --1
+    \item Public mercy or restraint: Crowd --1
+    \item Brutality, insults, cheating, sacred bloodshed: Crowd +1
   \end{itemize}
   \end{tcolorbox}
 
-  \begin{tcolorbox}[title={\textbf{Honor & Pragmatism Tokens}},colback=white,colframe=black!70]
+  \begin{tcolorbox}[title={\textbf{Honor \& Pragmatism Tokens}},colback=white,colframe=black!70]
     Characters may earn:
     \begin{itemize}[leftmargin=1.5em]
-      ℹtem \textbf{Honor Tokens} for restraint, mercy, proper etiquette, protecting civilians.
-      ℹtem \textbf{Pragmatism Tokens} for decisive action, clever shortcuts, bold risk−taking.
+      \item \textbf{Honor Tokens} for restraint, mercy, proper etiquette, protecting civilians.
+      \item \textbf{Pragmatism Tokens} for decisive action, clever shortcuts, bold risk-taking.
     \end{itemize}
     
     \textbf{Spend 1 Token to:}
     \begin{itemize}[leftmargin=1.5em]
-      ℹtem Improve Position by +1 \emph{or}
-      ℹtem Cancel a single SB spend
+      \item Improve Position by +1 \emph{or}
+      \item Cancel a single SB spend
     \end{itemize}
     
     If spent in public before the wrong audience, increase \textbf{Crowd Mood +1}.
     \end{tcolorbox}
 
-    \begin{tcolorbox}[title={\textbf{Chain−of−Custody Evidence}},colback=white,colframe=black!70]
+    \begin{tcolorbox}[title={\textbf{Chain-of-Custody Evidence}},colback=white,colframe=black!70]
       Each item of physical evidence has a \textbf{Custody Timer [4]}. Write each handler's name per segment.
       
       \textbf{If all segments filled:} evidence is clean and admissible. \\
       \textbf{If gaps exist:} conspirators challenge legitimacy; \textbf{DV +2} to present in court.
       
-      PCs may seal evidence with shrine−wax. Breaking a seal without a judge present:
+      PCs may seal evidence with shrine-wax. Breaking a seal without a judge present:
       \begin{itemize}
-        ℹtem Evidence becomes inadmissible
-        ℹtem Lose 1 Bell from the Seven Bell Court
+        \item Evidence becomes inadmissible
+        \item Lose 1 Bell from the Seven Bell Court
       \end{itemize}
       \end{tcolorbox}
 
-      \begin{tcolorbox}[title={\textbf{Chain−of−Custody Evidence}},colback=white,colframe=black!70]
+      \begin{tcolorbox}[title={\textbf{Chain-of-Custody Evidence}},colback=white,colframe=black!70]
         Each item of physical evidence has a \textbf{Custody Timer [4]}. Write each handler's name per segment.
         
         \textbf{If all segments filled:} evidence is clean and admissible. \\
         \textbf{If gaps exist:} conspirators challenge legitimacy; \textbf{DV +2} to present in court.
         
-        PCs may seal evidence with shrine−wax. Breaking a seal without a judge present:
+        PCs may seal evidence with shrine-wax. Breaking a seal without a judge present:
         \begin{itemize}
-          ℹtem Evidence becomes inadmissible
-          ℹtem Lose 1 Bell from the Seven Bell Court
+          \item Evidence becomes inadmissible
+          \item Lose 1 Bell from the Seven Bell Court
         \end{itemize}
         \end{tcolorbox}
         \begin{tcolorbox}[title={\textbf{The Seven Bell Court}},colback=white,colframe=black!70]
           A neutral Ayokhan judiciary that evaluates evidence, disputes, and rulings.
           PCs may earn \textbf{Bells} for:
           \begin{itemize}[leftmargin=1.5em]
-            ℹtem Respectful testimony or proper ritual
-            ℹtem Clear evidence with unbroken custody
-            ℹtem Public acts of mercy or restraint
+            \item Respectful testimony or proper ritual
+            \item Clear evidence with unbroken custody
+            \item Public acts of mercy or restraint
           \end{itemize}
           
           \textbf{3 Bells} allows PCs to \emph{overturn} any one corrupt decision or expose a falsified verdict.
@@ -1726,38 +1726,38 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
           \begin{tcolorbox}[title={\textbf{Monsoon Timer [8]}},colback=white,colframe=black!70]
             Tracks seasonal weather affecting investigation and duels.
             
-            \textbf{1−−2:} Dry −−− stealth easier; outdoor surveillance +1d \\
-            \textbf{3−−4:} Squalls −−− ranged attacks −−1d; rooftops provide cover \\
-            \textbf{5−−6:} Peak Monsoon −−− travel DV +1; evidence may wash away \\
-            \textbf{7−−8:} Clearing −−− crowds return; ideal time for public confrontation
+            \textbf{1--2:} Dry --- stealth easier; outdoor surveillance +1d \\
+            \textbf{3--4:} Squalls --- ranged attacks --1d; rooftops provide cover \\
+            \textbf{5--6:} Peak Monsoon --- travel DV +1; evidence may wash away \\
+            \textbf{7--8:} Clearing --- crowds return; ideal time for public confrontation
             \end{tcolorbox}
 
-            \begin{tcolorbox}[title={\textbf{Truth Duel (Non−Lethal Resolution)}} ,colback=white,colframe=black!70]
-              If both champions accept mediation, replace lethal combat with a \textbf{Three−Round Skills Duel}:
+            \begin{tcolorbox}[title={\textbf{Truth Duel (Non-Lethal Resolution)}} ,colback=white,colframe=black!70]
+              If both champions accept mediation, replace lethal combat with a \textbf{Three-Round Skills Duel}:
               
               \begin{itemize}[leftmargin=1.5em]
-                ℹtem \textbf{Form:} Display mastery (Melee, Acrobatics, Discipline)
-                ℹtem \textbf{Spirit:} Withstand insult or provocation (Resolve, Sway, Meditation)
-                ℹtem \textbf{Intent:} Defend one's cause (Speechcraft, Honor, Logic)
+                \item \textbf{Form:} Display mastery (Melee, Acrobatics, Discipline)
+                \item \textbf{Spirit:} Withstand insult or provocation (Resolve, Sway, Meditation)
+                \item \textbf{Intent:} Defend one's cause (Speechcraft, Honor, Logic)
               \end{itemize}
               
               Win \textbf{any 2 of 3} to avert war while preserving face and the legitimacy of the tournament.
               \end{tcolorbox}
 
-              \begin{tcolorbox}[title={\textbf{Riot−Stop Setpiece}},colback=white,colframe=black!70]
+              \begin{tcolorbox}[title={\textbf{Riot-Stop Setpiece}},colback=white,colframe=black!70]
                 When \textbf{Crowd Mood = 5 or 6}, PCs may attempt a culturally resonant display:
                 
                 \begin{itemize}[leftmargin=1.5em]
-                  ℹtem Sihai: Tea ceremony of de−escalation
-                  ℹtem Nihori: Poetry exchange before blades
-                  ℹtem Ayokha: Bell procession invoking peace
+                  \item Sihai: Tea ceremony of de-escalation
+                  \item Nihori: Poetry exchange before blades
+                  \item Ayokha: Bell procession invoking peace
                 \end{itemize}
                 
                 \textbf{Presence + Insight vs. DV 4}:
                 \begin{itemize}[leftmargin=1.5em]
-                  ℹtem \textit{Success:} Crowd Mood −−2, PCs gain 1 Bell
-                  ℹtem \textit{Partial:} Crowd Mood −−1, conspirators exploit distraction
-                  ℹtem \textit{Miss:} Riot worsens; Tournament Integrity +1
+                  \item \textit{Success:} Crowd Mood --2, PCs gain 1 Bell
+                  \item \textit{Partial:} Crowd Mood --1, conspirators exploit distraction
+                  \item \textit{Miss:} Riot worsens; Tournament Integrity +1
                 \end{itemize}
                 \end{tcolorbox}
 
@@ -1765,9 +1765,9 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
                 \begin{tcolorbox}[title={\textbf{Judges" Scorecards}},colback=white,colframe=black!70]
                   Each formal duel is evaluated by an Ayokhan panel. After each major exchange or round:
                   \begin{center}
-                  \begin{tabularx}{0.95łinewidth}{@{}l|c|c|c@{}}
+                  \begin{tabularx}{0.95\linewidth}{@{}l|c|c|c@{}}
                   \textbf{Category} & \textbf{0 Points} & \textbf{1 Point} & \textbf{2 Points} \\
-                  ℎline
+                  \hline
                   \textbf{Form} & Sloppy, reckless & Competent & Exemplary technique, discipline \\
                   \textbf{Spirit} & Cruelty, dishonor & Restraint & Mercy, respect, cultural resonance \\
                   \textbf{Intent} & Selfish motive & Neutral duty & Protection of others, justice \\
@@ -1776,9 +1776,9 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
                   
                   At duel's end:
                   \begin{itemize}[leftmargin=1.5em]
-                    ℹtem Highest total earns the judges" ruling.
-                    ℹtem A fighter may lose physically yet win socially and avert humiliation.
-                    ℹtem PCs may influence \textbf{one category per scene} via ritual, oath, or testimony.
+                    \item Highest total earns the judges" ruling.
+                    \item A fighter may lose physically yet win socially and avert humiliation.
+                    \item PCs may influence \textbf{one category per scene} via ritual, oath, or testimony.
                   \end{itemize}
                   
                   If judges are bribed or pressured, increase \textbf{Tournament Integrity +1}.
@@ -1786,47 +1786,47 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
                   \end{tcolorbox}
                   \begin{center}
                     \begin{tcolorbox}[title={\textbf{Official Tournament Scorecard}},colback=white,colframe=black!70]
-                    \textbf{Match:} ℎfill \textbf{Date:} \\
-                    \textbf{Competitor A:} ℎfill \textbf{Competitor B:} \\[6pt]
+                    \textbf{Match:} \hfill \textbf{Date:} \\
+                    \textbf{Competitor A:} \hfill \textbf{Competitor B:} \\[6pt]
                     
-                    \begin{tabularx}{łinewidth}{@{}l|c|c|c|c|c@{}}
+                    \begin{tabularx}{\linewidth}{@{}l|c|c|c|c|c@{}}
                      & \textbf{Round} & \textbf{Form} & \textbf{Spirit} & \textbf{Intent} & \textbf{Total} \\
-                    ℎline
-                    \textbf{A} & 1 & __ & __ & __ & __ \\
-                    \textbf{B} & 1 & __ & __ & __ & __ \\
-                    ℎline
-                    \textbf{A} & 2 & __ & __ & __ & __ \\
-                    \textbf{B} & 2 & __ & __ & __ & __ \\
-                    ℎline
-                    \textbf{A} & 3 & __ & __ & __ & __ \\
-                    \textbf{B} & 3 & __ & __ & __ & __ \\
+                    \hline
+                    \textbf{A} & 1 & \_\_ & \_\_ & \_\_ & \_\_ \\
+                    \textbf{B} & 1 & \_\_ & \_\_ & \_\_ & \_\_ \\
+                    \hline
+                    \textbf{A} & 2 & \_\_ & \_\_ & \_\_ & \_\_ \\
+                    \textbf{B} & 2 & \_\_ & \_\_ & \_\_ & \_\_ \\
+                    \hline
+                    \textbf{A} & 3 & \_\_ & \_\_ & \_\_ & \_\_ \\
+                    \textbf{B} & 3 & \_\_ & \_\_ & \_\_ & \_\_ \\
                     \end{tabularx}
                     \vspace{6pt}
                     
                     \textbf{Final Totals:} \\
-                    Competitor A: ____ ℎfill Competitor B: ____
+                    Competitor A: \_\_\_\_ \hfill Competitor B: \_\_\_\_
                     
                     \end{tcolorbox}
                     \end{center}
 
-                    \chapter*{Appendix: Cultural Sensitivity & Best Practices}
-                    This adventure is inspired by the philosophies, aesthetics, and martial traditions of East and Southeast Asia. While the cultures presented here are \emph{fictional}, they draw from real−world analogues. This appendix provides guidance for respectful, conscientious presentation at the table.
+                    \chapter*{Appendix: Cultural Sensitivity \& Best Practices}
+                    This adventure is inspired by the philosophies, aesthetics, and martial traditions of East and Southeast Asia. While the cultures presented here are \emph{fictional}, they draw from real-world analogues. This appendix provides guidance for respectful, conscientious presentation at the table.
                     
                     \subsection*{Core Design Principles}
                     \begin{itemize}
-                        ℹtem \textbf{Celebration, not exploitation.} Cultural elements are sources of wisdom, beauty, and complex philosophy−−−not exotic spectacle.
-                        ℹtem \textbf{Individuals act, cultures do not.} Corruption, conspiracy, or villainy are the choices of specific people, not entire nations.
-                        ℹtem \textbf{Multiple truths can coexist.} Sihai, Nihori, and Ayokha each possess internally coherent philosophies worthy of respect; none is presented as inferior or "primitive."
-                        ℹtem \textbf{Differences produce story, not stereotypes.} Philosophical tension drives narrative without reducing cultures to caricature.
+                        \item \textbf{Celebration, not exploitation.} Cultural elements are sources of wisdom, beauty, and complex philosophy---not exotic spectacle.
+                        \item \textbf{Individuals act, cultures do not.} Corruption, conspiracy, or villainy are the choices of specific people, not entire nations.
+                        \item \textbf{Multiple truths can coexist.} Sihai, Nihori, and Ayokha each possess internally coherent philosophies worthy of respect; none is presented as inferior or "primitive."
+                        \item \textbf{Differences produce story, not stereotypes.} Philosophical tension drives narrative without reducing cultures to caricature.
                     \end{itemize}
                     
                     \subsection*{Guidance for GMs}
                     When presenting culturally inspired characters, customs, or beliefs, prioritize:
                     \begin{itemize}
-                        ℹtem \textbf{Respectful tone} −− No mocking accents, no comedic stereotypes.
-                        ℹtem \textbf{Cultural nuance} −− Show internal disagreement: traditionalists, pragmatists, reformers, skeptics.
-                        ℹtem \textbf{Agency} −− Every NPC (even commoners) has opinions, priorities, and personal stakes.
-                        ℹtem \textbf{Avoid monoliths} −− No culture speaks with one voice; factions interpret tradition differently.
+                        \item \textbf{Respectful tone} -- No mocking accents, no comedic stereotypes.
+                        \item \textbf{Cultural nuance} -- Show internal disagreement: traditionalists, pragmatists, reformers, skeptics.
+                        \item \textbf{Agency} -- Every NPC (even commoners) has opinions, priorities, and personal stakes.
+                        \item \textbf{Avoid monoliths} -- No culture speaks with one voice; factions interpret tradition differently.
                     \end{itemize}
                     
                     A simple GM mantra:
@@ -1837,64 +1837,64 @@ Sihai is continuity given institution: examinations, canals, and corps that turn
                     \subsection*{Language, Ritual, and Names}
                     Names, honorifics, and ceremonial acts should be:
                     \begin{itemize}
-                        ℹtem \textbf{Evocative but not appropriated} directly from real−language templates
-                        ℹtem \textbf{Consistent within each culture's logic} (Sihai −> bureaucratic/formal; Nihori −> ritual precision; Ayokha −> syncretic sacred cyclicality)
-                        ℹtem \textbf{Used respectfully} without parody or exaggerated stereotypes
+                        \item \textbf{Evocative but not appropriated} directly from real-language templates
+                        \item \textbf{Consistent within each culture's logic} (Sihai -> bureaucratic/formal; Nihori -> ritual precision; Ayokha -> syncretic sacred cyclicality)
+                        \item \textbf{Used respectfully} without parody or exaggerated stereotypes
                     \end{itemize}
                     
-                    \textbf{Optional Tool:} If players are unfamiliar with honorifics or rituals, treat them as invitations−−−\emph{explain their meaning rather than turning them into obstacles or "gotchas."}
+                    \textbf{Optional Tool:} If players are unfamiliar with honorifics or rituals, treat them as invitations---\emph{explain their meaning rather than turning them into obstacles or "gotchas."}
                     
                     \subsection*{Historical Inspiration}
                     While this adventure draws inspiration from:
                     \begin{itemize}
-                        ℹtem Imperial examination systems and ancestor veneration
-                        ℹtem Samurai ethics and ritualized martial arts
-                        ℹtem Monsoon−driven maritime trade networks
-                        ℹtem Temple cosmology and spirit veneration
+                        \item Imperial examination systems and ancestor veneration
+                        \item Samurai ethics and ritualized martial arts
+                        \item Monsoon-driven maritime trade networks
+                        \item Temple cosmology and spirit veneration
                     \end{itemize}
                     
-                    ...all cultural elements are intentionally fictionalized to avoid misrepresenting any real−world tradition. The goal is homage, not imitation.
+                    ...all cultural elements are intentionally fictionalized to avoid misrepresenting any real-world tradition. The goal is homage, not imitation.
                     
                     \subsection*{Cultural Evolution in Play}
                     Cultures change. To reinforce authenticity:
                     \begin{itemize}
-                        ℹtem Allow characters to challenge tradition from within
-                        ℹtem Show generational differences in belief
-                        ℹtem Let cultural exchange influence customs and technology
+                        \item Allow characters to challenge tradition from within
+                        \item Show generational differences in belief
+                        \item Let cultural exchange influence customs and technology
                     \end{itemize}
                     
                     For example:
                     \begin{itemize}
-                        ℹtem A Sihai scholar fascinated by Ayokhan dance
-                        ℹtem A Nihori ronin studying Sihai philosophy
-                        ℹtem Ayokhan monks debating merchant influence on ritual purity
+                        \item A Sihai scholar fascinated by Ayokhan dance
+                        \item A Nihori ronin studying Sihai philosophy
+                        \item Ayokhan monks debating merchant influence on ritual purity
                     \end{itemize}
                     
                     Small details like these highlight cultural dynamism without disrespect.
                     
-                    \subsection*{Player Engagement & Consent}
+                    \subsection*{Player Engagement \& Consent}
                     If the table is unfamiliar with these cultural spaces:
                     \begin{itemize}
-                        ℹtem Offer a \textbf{Session Zero} to align tone and expectations
-                        ℹtem Use a \textbf{Lines/Veils/X−Card} framework for comfort
-                        ℹtem Allow players to ask cultural questions without embarrassment
+                        \item Offer a \textbf{Session Zero} to align tone and expectations
+                        \item Use a \textbf{Lines/Veils/X-Card} framework for comfort
+                        \item Allow players to ask cultural questions without embarrassment
                     \end{itemize}
                     
                     A respectful table should always feel safe saying:
                     \begin{center}
-                    \emph{"I"m not sure−−−can you explain that part?"}
+                    \emph{"I"m not sure---can you explain that part?"}
                     \end{center}
                     
                     \subsection*{Recommended Reading (Optional)}
                     Not required for play, but helpful for tone and cultural appreciation:
                     \begin{itemize}
-                        ℹtem \textbf{The Book of Five Rings} (strategy, discipline)
-                        ℹtem \textbf{Tao Te Ching} (balance, paradox, non−coercive ethics)
-                        ℹtem \textbf{The Ramayana} and \textbf{Mahabharata} (epic duty, sacred duty)
-                        ℹtem \textbf{The Romance of the Three Kingdoms} (statecraft, loyalty, consequence)
+                        \item \textbf{The Book of Five Rings} (strategy, discipline)
+                        \item \textbf{Tao Te Ching} (balance, paradox, non-coercive ethics)
+                        \item \textbf{The Ramayana} and \textbf{Mahabharata} (epic duty, sacred duty)
+                        \item \textbf{The Romance of the Three Kingdoms} (statecraft, loyalty, consequence)
                     \end{itemize}
                     
-                    These are not canonical to the setting−−−just inspiration for respectful tone.
+                    These are not canonical to the setting---just inspiration for respectful tone.
                     
                     \subsection*{Final Note}
                     This module approaches cultural worldbuilding with humility and admiration. If at any point a player feels uncomfortable, confused, or concerned, the correct response is simple:
@@ -1915,10 +1915,10 @@ practical and symbolic. These tools are ideal for adventures focused on memory,
 mercy, negotiation, or moral choice. Each item is presented with clear TAG
 interactions and narrative intent.
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % ITEM STATBLOCK FORMAT
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-≠wtcolorbox{itemblock}{
+% ---------------------------------------------------------------------
+\newtcolorbox{itemblock}{
   enhanced,
   sharp corners,
   colback=white,
@@ -1932,11 +1932,11 @@ interactions and narrative intent.
 
 \subsection{Signature Items}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-% The Bridge−Walker's Staff
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
+% The Bridge-Walker's Staff
+% ---------------------------------------------------------------------
 \begin{itemblock}
-\textbf{The Bridge−Walker's Staff} \\
+\textbf{The Bridge-Walker's Staff} \\
 \emph{A walking staff carved from wood that grew on sacred ground.}
 
 \textbf{TAGS:} [WARD] [MEMORY] [STABILITY]
@@ -1946,18 +1946,18 @@ and grants confidence to those who cross uncertain paths.
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem +1d to \textbf{Survival} and \textbf{Insight} when navigating spiritual realms.
-  ℹtem [WARD] vs. Cap~2 against malevolent spirits.
-  ℹtem [MEMORY]: Ask one question per scene about a location's history (GM answers honestly).
-  ℹtem [STABILITY]: +1 Position when crossing precarious or shifting terrain.
+  \item +1d to \textbf{Survival} and \textbf{Insight} when navigating spiritual realms.
+  \item [WARD] vs. Cap~2 against malevolent spirits.
+  \item [MEMORY]: Ask one question per scene about a location's history (GM answers honestly).
+  \item [STABILITY]: +1 Position when crossing precarious or shifting terrain.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-% The Truth−Teller's Mirror
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
+% The Truth-Teller's Mirror
+% ---------------------------------------------------------------------
 \begin{itemblock}
-\textbf{The Truth−Teller's Mirror} \\
+\textbf{The Truth-Teller's Mirror} \\
 \emph{A polished bronze mirror that reflects intention rather than appearance.}
 
 \textbf{TAGS:} [REVEAL] [PURIFY] [BIND]
@@ -1966,17 +1966,17 @@ Ancient Ayokhan craftsmanship; in its surface, hearts show more clearly than fac
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [REVEAL]: Truth vs. DV~3 to expose deception or hidden motives.
-  ℹtem [PURIFY]: Remove [CURSE] or [CORRUPTION] from minor objects or afflictions.
-  ℹtem [BIND]: Two willing parties may swear a truth−oath; resisting breaks the binding.
+  \item [REVEAL]: Truth vs. DV~3 to expose deception or hidden motives.
+  \item [PURIFY]: Remove [CURSE] or [CORRUPTION] from minor objects or afflictions.
+  \item [BIND]: Two willing parties may swear a truth-oath; resisting breaks the binding.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-% The Mercy−Bearer's Bowl
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
+% The Mercy-Bearer's Bowl
+% ---------------------------------------------------------------------
 \begin{itemblock}
-\textbf{The Mercy−Bearer's Bowl} \\
+\textbf{The Mercy-Bearer's Bowl} \\
 \emph{A wooden bowl that never empties when compassion is sincere.}
 
 \textbf{TAGS:} [HEAL] [CLEANSE] [SHARE]
@@ -1985,17 +1985,17 @@ Food or drink shared from this bowl eases hunger and burdens of the heart.
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [HEAL]: Recover minor Harm or a light Condition once per scene.
-  ℹtem [CLEANSE]: Remove one level of [FEAR] or [SHAME].
-  ℹtem [SHARE]: Any beneficial effect may be distributed among multiple recipients.
+  \item [HEAL]: Recover minor Harm or a light Condition once per scene.
+  \item [CLEANSE]: Remove one level of [FEAR] or [SHAME].
+  \item [SHARE]: Any beneficial effect may be distributed among multiple recipients.
 \end{itemize}
 \end{itemblock}
 
 \subsection{Weapons of Philosophical Weight}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Meteor Hammer of Remembrance
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Meteor Hammer of Remembrance} \\
 \emph{A chain and weight forged from fallen stars; each link bears a name.}
@@ -2006,18 +2006,18 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [FORCE] + [AREA]: Sweep attack vs. multiple foes (Harm~1 each).
-  ℹtem [BIND]: May restrain a target. Breaking the restraint requires resisting the
+  \item [FORCE] + [AREA]: Sweep attack vs. multiple foes (Harm~1 each).
+  \item [BIND]: May restrain a target. Breaking the restraint requires resisting the
         emotional bond (DV~3, or DV~4 if the wielder invokes a named life).
-  ℹtem [MEMORY]: After 10 lives are consciously protected, the weapon gains +1 Effect.
-  ℹtem \textbf{Backlash:} Breaking an unjust bond causes Harm~1 to the wielder; the chain
+  \item [MEMORY]: After 10 lives are consciously protected, the weapon gains +1 Effect.
+  \item \textbf{Backlash:} Breaking an unjust bond causes Harm~1 to the wielder; the chain
         grows heavier.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Scholar's Quill of Truth
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{The Scholar's Quill of Truth} \\
 \emph{Ink flows only for honest words.}
@@ -2026,16 +2026,16 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [SCRIBE]: Records written with this quill gain [WARD] vs. alteration.
-  ℹtem [REVEAL]: Hidden clauses or lost text become visible when traced.
-  ℹtem [BIND]: Contracts written are magically enforceable if witnessed.
-  ℹtem \textbf{Limitation:} Cannot write deliberate falsehoods; the nib locks.
+  \item [SCRIBE]: Records written with this quill gain [WARD] vs. alteration.
+  \item [REVEAL]: Hidden clauses or lost text become visible when traced.
+  \item [BIND]: Contracts written are magically enforceable if witnessed.
+  \item \textbf{Limitation:} Cannot write deliberate falsehoods; the nib locks.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Diplomat's Fan of Seasons
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{The Diplomat's Fan of Seasons} \\
 \emph{What was, what is, and what might be.}
@@ -2044,18 +2044,18 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [VEIL]: Obscures the wielder's intentions during negotiation.
-  ℹtem [REVEAL]: Shows one plausible outcome of the current debate.
-  ℹtem [SANCTIFY]: Creates neutral ground acceptable to all parties present.
-  ℹtem [COMMAND]: Once per scene, issue an order consistent with the revealed truth.
+  \item [VEIL]: Obscures the wielder's intentions during negotiation.
+  \item [REVEAL]: Shows one plausible outcome of the current debate.
+  \item [SANCTIFY]: Creates neutral ground acceptable to all parties present.
+  \item [COMMAND]: Once per scene, issue an order consistent with the revealed truth.
 \end{itemize}
 \end{itemblock}
 
 \subsection{Ritual Tools}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Bridge Lantern
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{The Bridge Lantern} \\
 \emph{A floating light that guides lost souls home.}
@@ -2064,16 +2064,16 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [GUIDE]: Always points toward a designated destination.
-  ℹtem [PURIFY]: Cleanses minor spiritual corruption in the area.
-  ℹtem [MARK]: Place a beacon visible only to spirits and mediums.
-  ℹtem [WARD]: Protects a small area from malevolent spirits (DV~= user's Spirit).
+  \item [GUIDE]: Always points toward a designated destination.
+  \item [PURIFY]: Cleanses minor spiritual corruption in the area.
+  \item [MARK]: Place a beacon visible only to spirits and mediums.
+  \item [WARD]: Protects a small area from malevolent spirits (DV~= user's Spirit).
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Scroll of Unwritten Truths
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Scroll of Unwritten Truths} \\
 \emph{Records what was never spoken.}
@@ -2082,36 +2082,36 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [SCRIBE]: Records any witnessed event with perfect accuracy.
-  ℹtem [REVEAL]: Shows hidden truth or perspective within the record.
-  ℹtem [BIND]: Truths become immutable within the scope of the scroll.
-  ℹtem [DISPEL]: Counters illusion or false memory tied to the record.
+  \item [SCRIBE]: Records any witnessed event with perfect accuracy.
+  \item [REVEAL]: Shows hidden truth or perspective within the record.
+  \item [BIND]: Truths become immutable within the scope of the scroll.
+  \item [DISPEL]: Counters illusion or false memory tied to the record.
 \end{itemize}
 \end{itemblock}
 
 \subsection{Cultural Adornments}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-% Three−Culture Prayer Beads
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
+% Three-Culture Prayer Beads
+% ---------------------------------------------------------------------
 \begin{itemblock}
-\textbf{Three−Culture Prayer Beads} \\
+\textbf{Three-Culture Prayer Beads} \\
 \emph{One strand in harmony: Sihai, Nihori, Ayokha.}
 
 \textbf{TAGS:} [WARD] [HEAL] [GUIDE] [SANCTIFY]
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [WARD]: Advantage vs. spiritual threats of the three cultures.
-  ℹtem [HEAL]: Recover 1 Fatigue or minor Harm via meditation.
-  ℹtem [GUIDE]: +1d to cross−cultural understanding or etiquette.
-  ℹtem [SANCTIFY]: Creates neutral ground acceptable to all three traditions.
+  \item [WARD]: Advantage vs. spiritual threats of the three cultures.
+  \item [HEAL]: Recover 1 Fatigue or minor Harm via meditation.
+  \item [GUIDE]: +1d to cross-cultural understanding or etiquette.
+  \item [SANCTIFY]: Creates neutral ground acceptable to all three traditions.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Memory Keeper's Robe
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Memory Keeper's Robe} \\
 \emph{Threads woven with emotional weight.}
@@ -2120,19 +2120,19 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [WARD]: Protects the wearer from [FEAR] or [DESPAIR].
-  ℹtem [MEMORY]: Recall exact words or emotions from preserved moments.
-  ℹtem [VEIL]: Conceals the wearer's present emotional state.
-  ℹtem [PURIFY]: Remove one level of [CORRUPTION] or [CURSE]
+  \item [WARD]: Protects the wearer from [FEAR] or [DESPAIR].
+  \item [MEMORY]: Recall exact words or emotions from preserved moments.
+  \item [VEIL]: Conceals the wearer's present emotional state.
+  \item [PURIFY]: Remove one level of [CORRUPTION] or [CURSE]
         by sacrificing a memory woven into the garment.
 \end{itemize}
 \end{itemblock}
 
 \subsection{Utility Items}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Compass of Consequences
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Compass of Consequences} \\
 \emph{Points toward choices of greatest moral weight.}
@@ -2141,16 +2141,16 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [GUIDE]: Always indicates the path with greatest consequence.
-  ℹtem [REVEAL]: Shows likely outcomes of following or ignoring guidance.
-  ℹtem [COMMAND]: Compels acknowledgement of moral implications.
-  ℹtem [BIND]: Ignoring the compass knowingly causes [CORRUPTION].
+  \item [GUIDE]: Always indicates the path with greatest consequence.
+  \item [REVEAL]: Shows likely outcomes of following or ignoring guidance.
+  \item [COMMAND]: Compels acknowledgement of moral implications.
+  \item [BIND]: Ignoring the compass knowingly causes [CORRUPTION].
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % Cup of Shared Burden
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Cup of Shared Burden} \\
 \emph{Suffering shared becomes suffering lessened.}
@@ -2159,16 +2159,16 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [HEAL]: Distribute Harm or Fatigue among willing participants.
-  ℹtem [SHARE]: Beneficial effects spread across those drinking together.
-  ℹtem [BIND]: Creates temporary empathic link (shared emotion or pain).
-  ℹtem [PURIFY]: Remove [CURSE] or [POISON] by sharing it among willing participants.
+  \item [HEAL]: Distribute Harm or Fatigue among willing participants.
+  \item [SHARE]: Beneficial effects spread across those drinking together.
+  \item [BIND]: Creates temporary empathic link (shared emotion or pain).
+  \item [PURIFY]: Remove [CURSE] or [POISON] by sharing it among willing participants.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % (Optional New Item) Talisman of Open Bargains
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Talisman of Open Bargains} \\
 \emph{Negotiation without deception.}
@@ -2177,15 +2177,15 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [REVEAL]: Hidden motives and unfair terms become apparent.
-  ℹtem [WARD]: Protects both parties from manipulation or coercion.
-  ℹtem [BIND]: Agreements made in good faith are honored by spirits of commerce.
+  \item [REVEAL]: Hidden motives and unfair terms become apparent.
+  \item [WARD]: Protects both parties from manipulation or coercion.
+  \item [BIND]: Agreements made in good faith are honored by spirits of commerce.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % (Optional New Item) Knife of Quiet Release
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \begin{itemblock}
 \textbf{Knife of Quiet Release} \\
 \emph{Cuts bonds of suffering, not flesh.}
@@ -2194,48 +2194,48 @@ Each life the wielder protects is engraved into the chain, strengthening its pur
 
 \textbf{Mechanical Effects:}
 \begin{itemize}
-  ℹtem [DISPEL]: Ends unwanted spiritual ties or parasitic spirits.
-  ℹtem [PURIFY]: Removes lingering emotional poison (shame, guilt, obsession).
-  ℹtem [RELEASE]: A person may willingly sever a vow or burden; if unjust, backlash causes Fatigue~1.
+  \item [DISPEL]: Ends unwanted spiritual ties or parasitic spirits.
+  \item [PURIFY]: Removes lingering emotional poison (shame, guilt, obsession).
+  \item [RELEASE]: A person may willingly sever a vow or burden; if unjust, backlash causes Fatigue~1.
 \end{itemize}
 \end{itemblock}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 % TAGS SYSTEM NOTES
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ---------------------------------------------------------------------
 \subsection{TAGS System Notes}
-These items demonstrate the core strengths of TAG−based gear:
+These items demonstrate the core strengths of TAG-based gear:
 \begin{itemize}
-  ℹtem \textbf{Purpose over power:} Items matter because of narrative weight.
-  ℹtem \textbf{Mechanical clarity:} Each TAG defines what the item can do.
-  ℹtem \textbf{Cultural authenticity:} Effects reflect philosophical values.
-  ℹtem \textbf{Elegant limits:} Backlash, corruption, and sacrifice prevent abuse.
+  \item \textbf{Purpose over power:} Items matter because of narrative weight.
+  \item \textbf{Mechanical clarity:} Each TAG defines what the item can do.
+  \item \textbf{Cultural authenticity:} Effects reflect philosophical values.
+  \item \textbf{Elegant limits:} Backlash, corruption, and sacrifice prevent abuse.
 \end{itemize}
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-% TAG LEGEND (drop−in helper)
+% ---------------------------------------------------------------------
+% TAG LEGEND (drop-in helper)
 % Requires: tcolorbox (already in your preamble)
 % Optional: define a visual macro for tags
-≠wcommand{\TAG}[1]{\textsc{[#1]}}
+\newcommand{\TAG}[1]{\textsc{[#1]}}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-% QUICK REFERENCE TABLE (drop−in helper)
+% ---------------------------------------------------------------------
+% QUICK REFERENCE TABLE (drop-in helper)
 % Requires: \usepackage{tabularx}
 \subsection*{Item Quick Reference}
 \renewcommand{\arraystretch}{1.12}
-\begin{tabularx}{łinewidth}{@{}l l X@{}}
-\textbf{Item} & \textbf{TAGS} & \textbf{At−a−Glance Use} \\
-ℎline
-Bridge−Walker's Staff & [WARD][MEMORY][STABILITY] & +1d Survival/Insight in spirit realms; Cap~2 ward vs. spirits; ask 1 true history Q/scene; +1 Position on precarious crossings. \\
-Truth−Teller's Mirror & [REVEAL][PURIFY][BIND] & DV~3 reveal deception/intent; remove minor \textsc{[Curse]/[Corruption]}; forge truth−oath between willing parties. \\
-Mercy−Bearer's Bowl & [HEAL][CLEANSE][SHARE] & Heal minor Harm/Condition 1/scene; remove one level of \textsc{[Fear]} or \textsc{[Shame]}; share any beneficial effect. \\
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\textbf{Item} & \textbf{TAGS} & \textbf{At-a-Glance Use} \\
+\hline
+Bridge-Walker's Staff & [WARD][MEMORY][STABILITY] & +1d Survival/Insight in spirit realms; Cap~2 ward vs. spirits; ask 1 true history Q/scene; +1 Position on precarious crossings. \\
+Truth-Teller's Mirror & [REVEAL][PURIFY][BIND] & DV~3 reveal deception/intent; remove minor \textsc{[Curse]/[Corruption]}; forge truth-oath between willing parties. \\
+Mercy-Bearer's Bowl & [HEAL][CLEANSE][SHARE] & Heal minor Harm/Condition 1/scene; remove one level of \textsc{[Fear]} or \textsc{[Shame]}; share any beneficial effect. \\
 Meteor Hammer of Remembrance & [BIND][FORCE][MEMORY][AREA] & Sweep (Harm~1) vs. many; restrain via bonds (DV~3/4); +1 Effect after 10 lives saved; backlash Harm~1 when breaking unjust bonds. \\
 Scholar's Quill of Truth & [SCRIBE][REVEAL][BIND][WARD] & Records gain [WARD]; reveal hidden/erased text; witnessed contracts become enforceable; refuses falsehoods. \\
 Diplomat's Fan of Seasons & [VEIL][REVEAL][SANCTIFY][COMMAND] & Veil intent; show one plausible outcome; create neutral ground; once/scene issue order consistent with revealed truth. \\
-Bridge Lantern & [GUIDE][PURIFY][MARK][WARD] & Always guides to set destination; cleanse minor spiritual taint; set spirit−visible beacon; ward area (DV = user's Spirit). \\
+Bridge Lantern & [GUIDE][PURIFY][MARK][WARD] & Always guides to set destination; cleanse minor spiritual taint; set spirit-visible beacon; ward area (DV = user's Spirit). \\
 Scroll of Unwritten Truths & [SCRIBE][REVEAL][BIND][DISPEL] & Perfectly record events; reveal hidden truth in the record; fix truths within scope; dispel illusions tied to it. \\
-Three−Culture Prayer Beads & [WARD][HEAL][GUIDE][SANCTIFY] & Edge vs. tri−cultural spirit threats; recover 1 Fatigue/Harm via meditation; +1d cross−cultural rolls; neutral ground for all three. \\
+Three-Culture Prayer Beads & [WARD][HEAL][GUIDE][SANCTIFY] & Edge vs. tri-cultural spirit threats; recover 1 Fatigue/Harm via meditation; +1d cross-cultural rolls; neutral ground for all three. \\
 Memory Keeper's Robe & [WARD][MEMORY][VEIL][PURIFY] & Ward vs. \textsc{[Fear]/[Despair]}; recall words/emotions; veil current affect; purge \textsc{[Corruption]/[Curse]} by sacrificing a stored memory. \\
-Compass of Consequences & [GUIDE][REVEAL][COMMAND][BIND] & Points to highest−consequence path; reveal likely outcomes; force moral acknowledgement; ignoring knowingly inflicts \textsc{[Corruption]}. \\
+Compass of Consequences & [GUIDE][REVEAL][COMMAND][BIND] & Points to highest-consequence path; reveal likely outcomes; force moral acknowledgement; ignoring knowingly inflicts \textsc{[Corruption]}. \\
 Cup of Shared Burden & [HEAL][SHARE][BIND][PURIFY] & Split Harm/Fatigue among the willing; share boons; temporary empathic link; dilute \textsc{[Curse]/[Poison]} among participants. \\
 Talisman of Open Bargains & [REVEAL][WARD][BIND] & Reveal hidden motives/terms; ward against coercion; bind fair agreements by commerce spirits. \\
 Knife of Quiet Release & [DISPEL][PURIFY][RELEASE] & Sever parasitic/spiritual ties; purge emotional toxins; willingly end vows/burdens (unjust release causes Fatigue~1). \\
@@ -2243,25 +2243,25 @@ Knife of Quiet Release & [DISPEL][PURIFY][RELEASE] & Sever parasitic/spiritual t
 
 \begin{tcolorbox}[title=TAG Legend, colframe=black, boxrule=0.7pt]
 \begin{itemize}
-  ℹtem \TAG{WARD} −−− Protects, deflects, or resists hostile spiritual/mental forces. Often sets DV or Cap.
-  ℹtem \TAG{MEMORY} −−− Recalls, records, or reveals past intent/context; may ask setting−true questions.
-  ℹtem \TAG{STABILITY} −−− Improves footing, balance, and composure; commonly grants Position.
-  ℹtem \TAG{REVEAL} −−− Exposes truth, intent, or hidden states; often rolled vs. DV.
-  ℹtem \TAG{PURIFY} −−− Removes taint, minor corruption, curses, or emotional toxins.
-  ℹtem \TAG{BIND} −−− Creates oaths, restraints, empathic links, or enforcible contracts.
-  ℹtem \TAG{HEAL} −−− Recovers minor Harm, Conditions, or Fatigue within scene limits.
-  ℹtem \TAG{CLEANSE} −−− Eases specific afflictions: \textsc{[Fear]}, \textsc{[Shame]}, similar.
-  ℹtem \TAG{SHARE} −−− Distributes effects across willing targets; merges burdens/benefits.
-  ℹtem \TAG{FORCE} −−− Direct physical impact; adds Harm or leverage in contested actions.
-  ℹtem \TAG{AREA} −−− Affects multiple targets or a zone; pair with other tags for scope.
-  ℹtem \TAG{VEIL} −−− Obscures intent, aura, or presence; counters basic detection.
-  ℹtem \TAG{SANCTIFY} −−− Establishes neutral/sacred ground; suspends hostile influence.
-  ℹtem \TAG{COMMAND} −−− Issues binding directives aligned with ritual, truth, or mandate.
-  ℹtem \TAG{GUIDE} −−− Points toward destinations, truths, or consequential choices.
-  ℹtem \TAG{MARK} −−− Creates beacons, traces, or claim−signs seen by specified senses.
-  ℹtem \TAG{SCRIBE} −−− Writes immutable records or reveals/anchors textual truth.
-  ℹtem \TAG{DISPEL} −−− Ends illusions, false memories, or parasitic bonds.
-  ℹtem \TAG{RELEASE} −−− Cleanly severs vows, bindings, or suffering ties (often with cost).
+  \item \TAG{WARD} --- Protects, deflects, or resists hostile spiritual/mental forces. Often sets DV or Cap.
+  \item \TAG{MEMORY} --- Recalls, records, or reveals past intent/context; may ask setting-true questions.
+  \item \TAG{STABILITY} --- Improves footing, balance, and composure; commonly grants Position.
+  \item \TAG{REVEAL} --- Exposes truth, intent, or hidden states; often rolled vs. DV.
+  \item \TAG{PURIFY} --- Removes taint, minor corruption, curses, or emotional toxins.
+  \item \TAG{BIND} --- Creates oaths, restraints, empathic links, or enforcible contracts.
+  \item \TAG{HEAL} --- Recovers minor Harm, Conditions, or Fatigue within scene limits.
+  \item \TAG{CLEANSE} --- Eases specific afflictions: \textsc{[Fear]}, \textsc{[Shame]}, similar.
+  \item \TAG{SHARE} --- Distributes effects across willing targets; merges burdens/benefits.
+  \item \TAG{FORCE} --- Direct physical impact; adds Harm or leverage in contested actions.
+  \item \TAG{AREA} --- Affects multiple targets or a zone; pair with other tags for scope.
+  \item \TAG{VEIL} --- Obscures intent, aura, or presence; counters basic detection.
+  \item \TAG{SANCTIFY} --- Establishes neutral/sacred ground; suspends hostile influence.
+  \item \TAG{COMMAND} --- Issues binding directives aligned with ritual, truth, or mandate.
+  \item \TAG{GUIDE} --- Points toward destinations, truths, or consequential choices.
+  \item \TAG{MARK} --- Creates beacons, traces, or claim-signs seen by specified senses.
+  \item \TAG{SCRIBE} --- Writes immutable records or reveals/anchors textual truth.
+  \item \TAG{DISPEL} --- Ends illusions, false memories, or parasitic bonds.
+  \item \TAG{RELEASE} --- Cleanly severs vows, bindings, or suffering ties (often with cost).
 \end{itemize}
 \end{tcolorbox}
 

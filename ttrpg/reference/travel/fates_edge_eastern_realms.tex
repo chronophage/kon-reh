@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
-≥ometry{margin=1in}
+\geometry{margin=1in}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -12,63 +12,63 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable}
 
-% −−−−− Card suit and rank formatting −−−−−
+% ----- Card suit and rank formatting -----
 % Define suit colours (hearts/diamonds red, spades/clubs black)
-≠wcommand{\cardSuit}[1]{%
-  ℹfnum\pdfstrcmp{#1}{♠}=0 \textcolor{black}{♠}%
-  \elseℹfnum\pdfstrcmp{#1}{♥}=0 \textcolor{red}{♥}%
-  \elseℹfnum\pdfstrcmp{#1}{♦}=0 \textcolor{red}{♦}%
-  \elseℹfnum\pdfstrcmp{#1}{♣}=0 \textcolor{black}{♣}%
+\newcommand{\cardSuit}[1]{%
+  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
+  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
+  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
   \else #1\fi\fi\fi\fi
 }
 
-% Command to print a full card: \card{♠}{A} or \card{♠}{10}
-≠wcommand{\card}[2]{%
+% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
+\newcommand{\card}[2]{%
   \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
     {\cardSuit{#1}\ \textbf{#2}}%
 }
 
 % Optional: shortcut commands for each suit
-≠wcommand{\spadecard}[1]{\card{♠}{#1}}
-≠wcommand{ℎeartcard}[1]{\card{♥}{#1}}
-≠wcommand{\clubcard}[1]{\card{♣}{#1}}
-≠wcommand{⋄card}[1]{\card{♦}{#1}}
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
 
 
 % Suit symbols – used only in imported generator files
-≠wcommand{♠}{♠}
-≠wcommand{♥}{♥}
-≠wcommand{♣}{♣}
-≠wcommand{♦}{♦}
+\newcommand{\spadesuit}{♠}
+\newcommand{\heartsuit}{♥}
+\newcommand{\clubsuit}{♣}
+\newcommand{\diamondsuit}{♦}
 
 % Almanac environment
-≠wenvironment{almanac}
-  {\begin{quote}\smallℹtshape}
+\newenvironment{almanac}
+  {\begin{quote}\small\itshape}
   {\end{quote}}
 
 \begin{document}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % FRONT MATTER
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \frontmatter
 
 \title{\Huge Fate's Edge\\[0.3\baselineskip]
-Łarge The Eastern Realms}
+\Large The Eastern Realms}
 \author{Chen Wei, Provincial Censor of the Eastern Circuit \\ \small (with marginalia by a tired quill)}
-\date{→day}
+\date{\today}
 \maketitle
 
 \tableofcontents
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % PREFACE – Framing device (Sihai censor)
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \chapter*{Preface: The Censor’s Report}
 \addcontentsline{toc}{chapter}{Preface}
 
 \noindent
-{Łarge
+{\Large
 \textit{My brush is heavier than any sword. A single stroke can erase a name, a family, a dynasty. The emperor reads my reports and trembles. He knows that I have written nine reports this year. The ninth is about him.}
 }
 
@@ -85,9 +85,9 @@ The ink is dry. The seal is stamped. The ninth scroll remains unfilled – for n
 \vspace{1em}
 \noindent\textit{— Chen Wei, at a weigh‑house in the Sihai capital, under a lamp that flickers nine times before it steadies}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % HOW TO USE THIS BOOK
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \chapter*{How to Use This Book}
 \addcontentsline{toc}{chapter}{How to Use This Book}
 
@@ -95,10 +95,10 @@ This book is a companion to the \textit{Fate’s Edge Core Amaranthine Worldbook
 
 Each regional chapter contains:
 \begin{itemize}
-  ℹtem A short introduction (in the voice of Chen Wei, who is not always fair but rarely wrong).
-  ℹtem A local quote.
-  ℹtem An \emph{almanac} – a quick Q&A about daily life in that region.
-  ℹtem Then the full generator tables (♠\ places, ♥\ people, ♣\ complications, ♦\ rewards), imported from separate files. To use them, draw cards and consult the appropriate rank as described in the Core book’s \textit{Cartomancer’s Compass}.
+  \item A short introduction (in the voice of Chen Wei, who is not always fair but rarely wrong).
+  \item A local quote.
+  \item An \emph{almanac} – a quick Q\&A about daily life in that region.
+  \item Then the full generator tables (\spadesuit\ places, \heartsuit\ people, \clubsuit\ complications, \diamondsuit\ rewards), imported from separate files. To use them, draw cards and consult the appropriate rank as described in the Core book’s \textit{Cartomancer’s Compass}.
 \end{itemize}
 
 For the core rules (attributes, skills, actions, magic, summoning, travel, etc.), refer to the \textit{Fate’s Edge SRD or Player/GM Guides}. The generators assume you are familiar with Position, Effect, and Timers.
@@ -106,12 +106,12 @@ For the core rules (attributes, skills, actions, magic, summoning, travel, etc.)
 \vspace{1em}
 \noindent\textit{“The road is a ledger – but only if you forget the stories.”} – Dusana of the Raven Road (apocryphal)
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % REGIONAL CHAPTERS
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \mainmatter
 
-\chapter{Gateways & Travel}
+\chapter{Gateways \& Travel}
 \emph{The road is a ledger – but only if you forget the stories.}
 
 \section*{Travel Modes of the Eastern Realms}
@@ -134,13 +134,13 @@ The Lethai peoples walk ancient roads between shrines. A \textbf{Tide‑Charm} (
 \section*{Gateways to Other Expansions}
 
 \begin{itemize}
-  ℹtem \textbf{Amaranthine Core (Kahfagia, Ecktoria, etc.)}: From Sihai, the \textbf{Silk Road} west leads to Ykrul and the Violet Steppe. From Nihori, the \textbf{Aberderrin Sea} connects to the Linns.
-  ℹtem \textbf{Southern Realms (Oshiira, Ashaan, Ngomebe)}: From Ayokha, monsoon winds carry ships to the Brass Coast (Dhahara) and to Oshiira. From Sihai, the southern trade routes pass through the Crimson Valley.
-  ℹtem \textbf{Way of Silk (Fhara, Sidhi, Pereshi, Kuvani, Tulkani)}: From Sihai, the \textbf{Eastern Silk Road} connects to Kuvani. From Nihori, the \textbf{Remount Stations} of Kuvani are a short sea crossing away.
-  ℹtem \textbf{Dhahara (Brass Coast, Nine Kingdoms, Himadri)}: From Ayokha, the \textbf{Monsoon Circuit} carries ships directly to the Brass Coast. From Sihai, the Himadri passes lead to the iron mines.
+  \item \textbf{Amaranthine Core (Kahfagia, Ecktoria, etc.)}: From Sihai, the \textbf{Silk Road} west leads to Ykrul and the Violet Steppe. From Nihori, the \textbf{Aberderrin Sea} connects to the Linns.
+  \item \textbf{Southern Realms (Oshiira, Ashaan, Ngomebe)}: From Ayokha, monsoon winds carry ships to the Brass Coast (Dhahara) and to Oshiira. From Sihai, the southern trade routes pass through the Crimson Valley.
+  \item \textbf{Way of Silk (Fhara, Sidhi, Pereshi, Kuvani, Tulkani)}: From Sihai, the \textbf{Eastern Silk Road} connects to Kuvani. From Nihori, the \textbf{Remount Stations} of Kuvani are a short sea crossing away.
+  \item \textbf{Dhahara (Brass Coast, Nine Kingdoms, Himadri)}: From Ayokha, the \textbf{Monsoon Circuit} carries ships directly to the Brass Coast. From Sihai, the Himadri passes lead to the iron mines.
 \end{itemize}
-≠wpage
-% −−−−−−−−−−−−−−−−−−−− SIHAI −−−−−−−−−−−−−−−−−−−−
+\newpage
+% -------------------- SIHAI --------------------
 \chapter{Sihai}
 \emph{The Central Kingdom.}
 
@@ -175,11 +175,11 @@ Sihai is the central kingdom, the seat of the Emperor and the Mandate of Heaven.
 \textbf{What is the secret that could destroy a powerful person?} The Censorate’s ninth minister is a woman – the emperor’s own mother, who was supposed to have died in childbirth. She faked her death to escape politics. She has been running the Censorate from a hidden villa. The emperor does not know.
 \end{almanac}
 
-≠wpage
-∈put{../generators/sihai.tex}
-≠wpage
+\newpage
+\input{../generators/sihai.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− NIHORI −−−−−−−−−−−−−−−−−−−−
+% -------------------- NIHORI --------------------
 \chapter{Nihori}
 \emph{The Isles of the Dawn Spirit.}
 
@@ -214,11 +214,11 @@ Nihori is a chain of volcanic islands, shrouded in mist and lashed by storms –
 \textbf{What is the secret that could destroy a powerful person?} The Shogun is a ghost. He died in the last oni war, but his body was never found. The daimyo rule in his name because they are afraid of what will happen if they admit he is gone.
 \end{almanac}
 
-≠wpage
-∈put{../generators/nihori.tex}
-≠wpage
+\newpage
+\input{../generators/nihori.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− AYOKHA −−−−−−−−−−−−−−−−−−−−
+% -------------------- AYOKHA --------------------
 \chapter{Ayokha}
 \emph{The Monsoon Throne.}
 
@@ -253,11 +253,11 @@ Ayokha is the land of the Monsoon Throne, where the God‑King rules by the rhyt
 \textbf{What is the secret that could destroy a powerful person?} The God‑King’s daughter is not his daughter. She is the child of the astrologer and a nat, born from a bargain made during a failed monsoon. She can control the rain. She does not know.
 \end{almanac}
 
-≠wpage
-∈put{../generators/ayokah.tex}
-≠wpage
+\newpage
+\input{../generators/ayokah.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− AELAEREM (EASTERN) −−−−−−−−−−−−−−−−−−−−
+% -------------------- AELAEREM (EASTERN) --------------------
 \chapter{Aelaerem of the Eastern Realms}
 \emph{The Hollow’s Neighbors.}
 
@@ -292,11 +292,11 @@ The Aelaerem of the eastern realms have adapted their hedge‑magic to threshold
 \textbf{What is the secret that could destroy a powerful person?} The first red thread was not tied by an Aelaerem. It was tied by the Hollow itself, before it forgot what it was. The thread is still there, at the First Boundary. If it is untied, the Hollow will remember its true name.
 \end{almanac}
 
-≠wpage
-∈put{../generators/aelaeremₑast.tex}
-≠wpage
+\newpage
+\input{../generators/aelaerem_east.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− AELINNEL (INLAND SEA) −−−−−−−−−−−−−−−−−−−−
+% -------------------- AELINNEL (INLAND SEA) --------------------
 \chapter{Aelinnel of the Inland Sea}
 \emph{The Bell‑Tenders.}
 
@@ -331,11 +331,11 @@ The Aelinnel of the East do not hide from the spirits; they coexist. Small spiri
 \textbf{What is the secret that could destroy a powerful person?} The ninth bell was never meant to be cast. It was a mistake – a foundry worker poured one bell too many. It rang once on its own. The tone was the Hollow’s name. The bell still exists, buried under a shrine on a small island.
 \end{almanac}
 
-≠wpage
-∈put{../generators/aelinnelᵢnlandₛea.tex}
-≠wpage
+\newpage
+\input{../generators/aelinnel_inland_sea.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− LETHAI−AL OF NIHORI −−−−−−−−−−−−−−−−−−−−
+% -------------------- LETHAI-AL OF NIHORI --------------------
 \chapter{Lethai‑al of Nihori}
 \emph{The Storm‑Touched Wanderers.}
 
@@ -370,11 +370,11 @@ The Lethai‑al of Nihori once guarded a drowned kingdom – an archipelago that
 \textbf{What is the secret that could destroy a powerful person?} The Ninth Wave Herald is not a child. She is the first drowned – the woman who spoke the forbidden name. She did not die. She became the ninth wave. She returns every year to point at the horizon – at the day the sea will rise again.
 \end{almanac}
 
-≠wpage
-∈put{../generators/lethaiₐl_wanderers.tex}
-≠wpage
+\newpage
+\input{../generators/lethai_al_wanderers.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− LETHAI−AR OF AYOKHA −−−−−−−−−−−−−−−−−−−−
+% -------------------- LETHAI-AR OF AYOKHA --------------------
 \chapter{Lethai‑ar of Ayokha}
 \emph{The River‑Bound Oath‑Keepers.}
 
@@ -409,11 +409,11 @@ The Lethai‑ar of Ayokha are the living bridges between mortals and the river s
 \textbf{What is the secret that could destroy a powerful person?} The God‑King’s own witness cord is a forgery. He swore a vow to protect the Lethai‑ar nine years ago. His cord was cut the next day. The Vigil knows. They have not told anyone because the cord that cut his was their own.
 \end{almanac}
 
-≠wpage
-∈put{../generators/lethaiₐrᵣiver.tex}
-≠wpage
+\newpage
+\input{../generators/lethai_ar_river.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−− LETHAI−THORA OF SIHAI −−−−−−−−−−−−−−−−−−−−
+% -------------------- LETHAI-THORA OF SIHAI --------------------
 \chapter{Lethai‑thora of Sihai}
 \emph{The Silent Ledgers.}
 
@@ -448,16 +448,16 @@ The Lethai‑thora were once courtiers of a celestial fey realm that spanned the
 \textbf{What is the secret that could destroy a powerful person?} The emperor’s true lineage is recorded on a scroll that no living keeper has opened. It is sealed with a cord tied by the first keeper. The cord has nine knots. The ninth knot is a lie – the emperor’s grandfather was not of the blood. The empire was founded by a concubine’s son.
 \end{almanac}
 
-≠wpage
-∈put{../generators/lethaiₜhoraₑast.tex}
-≠wpage
+\newpage
+\input{../generators/lethai_thora_east.tex}
+\newpage
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % APPENDICES
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \appendix
 
-% −−−−−−−−−−−−−−−−−−−− SEVEN BELL COURT −−−−−−−−−−−−−−−−−−−−
+% -------------------- SEVEN BELL COURT --------------------
 \chapter{The Seven Bell Court}
 \emph{Form, Spirit, Intent – the three pillars of honourable contest.}
 
@@ -465,34 +465,34 @@ The Seven Bell Court is a neutral Ayokhan judiciary that evaluates duels, tourna
 
 \subsection*{Judges’ Scorecard}
 \begin{longtable}{|l|c|c|c|}
-ℎline
+\hline
 \textbf{Category} & \textbf{0 Points} & \textbf{1 Point} & \textbf{2 Points} \\
-ℎline
+\hline
 \textbf{Form} & Sloppy, reckless & Competent & Exemplary technique, discipline \\
-ℎline
+\hline
 \textbf{Spirit} & Cruelty, dishonor & Restraint & Mercy, respect, cultural resonance \\
-ℎline
+\hline
 \textbf{Intent} & Selfish motive & Neutral duty & Protection of others, justice \\
-ℎline
+\hline
 \end{longtable}
 
 A fighter may lose physically yet win socially. PCs may influence one category per scene via ritual, oath, or testimony.
 
 \subsection*{Earning Bells (Court Favour)}
 \begin{itemize}
-  ℹtem Respectful testimony or proper ritual → +1 Bell
-  ℹtem Clear evidence with unbroken custody → +1 Bell
-  ℹtem Public act of mercy or restraint → +1 Bell
+  \item Respectful testimony or proper ritual → +1 Bell
+  \item Clear evidence with unbroken custody → +1 Bell
+  \item Public act of mercy or restraint → +1 Bell
 \end{itemize}
 3 Bells allow a PC to overturn any one corrupt decision or expose a falsified verdict.
 
 \subsection*{Using the Seven Bell Court in Play}
 The GM may invoke the Court whenever a contest’s outcome should reflect honour, not just harm. Typical uses:
 \begin{itemize}
-  ℹtem Tournaments and duels of honour.
-  ℹtem Trial by combat with legal stakes.
-  ℹtem Ritual poetry or dance competitions.
-  ℹtem Diplomatic exhibitions where face matters more than victory.
+  \item Tournaments and duels of honour.
+  \item Trial by combat with legal stakes.
+  \item Ritual poetry or dance competitions.
+  \item Diplomatic exhibitions where face matters more than victory.
 \end{itemize}
 
 \subsection*{Crowd Mood Track [6]}
@@ -503,12 +503,12 @@ The GM may invoke the Court whenever a contest’s outcome should reflect honour
 
 \noindent\textit{Influencing the Crowd:}
 \begin{itemize}
-  ℹtem Respectful bow, ritual, poetic challenge → Crowd –1
-  ℹtem Public mercy or restraint → Crowd –1
-  ℹtem Brutality, insults, cheating → Crowd +1
+  \item Respectful bow, ritual, poetic challenge → Crowd –1
+  \item Public mercy or restraint → Crowd –1
+  \item Brutality, insults, cheating → Crowd +1
 \end{itemize}
 
-% −−−−−−−−−−−−−−−−−−−− EQUIPMENT OF THE EASTERN REALMS −−−−−−−−−−−−−−−−−−−−
+% -------------------- EQUIPMENT OF THE EASTERN REALMS --------------------
 \chapter{Equipment of the Eastern Realms}
 \emph{Tools that carry meaning, not just metal.}
 
@@ -561,27 +561,27 @@ This appendix presents items suitable for contemplative, ritual, or morally weig
 
 \subsection*{TAG Legend}
 \begin{itemize}
-  ℹtem [WARD] – Protects, deflects, or resists hostile spiritual/mental forces.
-  ℹtem [MEMORY] – Recalls, records, or reveals past intent/context.
-  ℹtem [STABILITY] – Improves footing, balance, composure; grants Position.
-  ℹtem [REVEAL] – Exposes truth, intent, or hidden states.
-  ℹtem [PURIFY] – Removes taint, minor corruption, curses, or emotional toxins.
-  ℹtem [BIND] – Creates oaths, restraints, empathic links, or enforceable contracts.
-  ℹtem [HEAL] – Recovers minor Harm, Conditions, or Fatigue.
-  ℹtem [CLEANSE] – Eases specific afflictions ([Fear], [Shame]).
-  ℹtem [SHARE] – Distributes effects across willing targets.
-  ℹtem [FORCE] – Direct physical impact; adds Harm.
-  ℹtem [AREA] – Affects multiple targets or a zone.
-  ℹtem [VEIL] – Obscures intent, aura, or presence.
-  ℹtem [SANCTIFY] – Establishes neutral/sacred ground.
-  ℹtem [COMMAND] – Issues binding directives aligned with ritual, truth, or mandate.
-  ℹtem [GUIDE] – Points toward destinations, truths, or consequential choices.
-  ℹtem [SCRIBE] – Writes immutable records or reveals textual truth.
+  \item [WARD] – Protects, deflects, or resists hostile spiritual/mental forces.
+  \item [MEMORY] – Recalls, records, or reveals past intent/context.
+  \item [STABILITY] – Improves footing, balance, composure; grants Position.
+  \item [REVEAL] – Exposes truth, intent, or hidden states.
+  \item [PURIFY] – Removes taint, minor corruption, curses, or emotional toxins.
+  \item [BIND] – Creates oaths, restraints, empathic links, or enforceable contracts.
+  \item [HEAL] – Recovers minor Harm, Conditions, or Fatigue.
+  \item [CLEANSE] – Eases specific afflictions ([Fear], [Shame]).
+  \item [SHARE] – Distributes effects across willing targets.
+  \item [FORCE] – Direct physical impact; adds Harm.
+  \item [AREA] – Affects multiple targets or a zone.
+  \item [VEIL] – Obscures intent, aura, or presence.
+  \item [SANCTIFY] – Establishes neutral/sacred ground.
+  \item [COMMAND] – Issues binding directives aligned with ritual, truth, or mandate.
+  \item [GUIDE] – Points toward destinations, truths, or consequential choices.
+  \item [SCRIBE] – Writes immutable records or reveals textual truth.
 \end{itemize}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % EPILOGUE
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \chapter*{Epilogue: The Ninth Scroll}
 \addcontentsline{toc}{chapter}{Epilogue}
 
@@ -603,9 +603,9 @@ The road is east. The ink is fresh. The Hollow is patient.
   — Dusana of the Raven Road (marginal note, found in a Pereshi fire‑temple)
 \end{quote}
 
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 % COLOPHON
-% −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+% ----------------------------------------------------------------------
 \chapter*{Colophon}
 \addcontentsline{toc}{chapter}{Colophon}
 

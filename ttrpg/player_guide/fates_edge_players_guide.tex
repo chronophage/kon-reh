@@ -9,20 +9,20 @@
 
 % ===== Page geometry =====
 \usepackage{geometry}
-≥ometry{margin=0.75in, headheight=14pt, includehead}
+\geometry{margin=0.75in, headheight=14pt, includehead}
 
 % ===== Headers and footers =====
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{þepage}
-\fancyhead[RE]{\textit{≤ftmark}}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{\leftmark}}
 \fancyhead[LO]{\textit{\rightmark}}
-\renewcommand{ℎeadrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{þepage}%
-  \renewcommand{ℎeadrulewidth}{0pt}%
+  \fancyhead[LE,RO]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
 }
 
 % ===== Paragraphs and spacing =====
@@ -31,7 +31,7 @@
 \usepackage{titlesec}
 \titlespacing{\section}{0pt}{12pt}{4pt}
 \titlespacing{\subsection}{0pt}{8pt}{4pt}
-\titlespacing{⫕section}{0pt}{6pt}{3pt}
+\titlespacing{\subsubsection}{0pt}{6pt}{3pt}
 \raggedbottom
 
 \usepackage{etoolbox}
@@ -48,7 +48,7 @@
 \usepackage{longtable}
 \usepackage{tabularx}
 \usepackage{caption}
-∩tionsetup{font=small, labelfont=bf}
+\captionsetup{font=small, labelfont=bf}
 
 % ===== Multicolumn for appendices =====
 \usepackage{multicol}
@@ -82,13 +82,13 @@
 \tcbuselibrary{breakable, skins}
 \tcbset{breakable=true}
 
-% −−−−− Effect Sidebar (main) −−−−−
-≠wtcolorbox{effectbox}{
+% ----- Effect Sidebar (main) -----
+\newtcolorbox{effectbox}{
     colback=blue!5,
     colframe=blue!75!black,
     coltitle=white,
-    title={\faRulerCombined  Position & Effect: Risk vs. Reward},
-    fonttitle=\bfseriesłarge,
+    title={\faRulerCombined\quad Position \& Effect: Risk vs. Reward},
+    fonttitle=\bfseries\large,
     sharp corners,
     rounded corners=southeast,
     arc=4pt,
@@ -97,18 +97,18 @@
     boxrule=1.5pt,
     leftrule=6pt,
     drop shadow=blue!25,
-    attach boxed title to top left={yshift=−3mm, xshift=5mm},
+    attach boxed title to top left={yshift=-3mm, xshift=5mm},
     boxed title style={colback=blue!75!black, rounded corners},
     before skip=10pt,
     after skip=10pt,
 }
 
-% −−−−− Lighter Tip Box (for minor advice) −−−−−
-≠wtcolorbox{tipbox}{
+% ----- Lighter Tip Box (for minor advice) -----
+\newtcolorbox{tipbox}{
     colback=gray!5,
     colframe=gray!50,
     coltitle=black,
-    title={\faLightbulb  Tip},
+    title={\faLightbulb\quad Tip},
     fonttitle=\bfseries,
     sharp corners,
     boxrule=0.5pt,
@@ -117,8 +117,8 @@
     after skip=8pt,
 }
 
-% −−−−− Standard infobox (optional) −−−−−
-≠wtcolorbox{infobox}[1]{%
+% ----- Standard infobox (optional) -----
+\newtcolorbox{infobox}[1]{%
   colback=gray5,
   colframe=gray75,
   fonttitle=\bfseries,
@@ -126,8 +126,8 @@
   arc=0pt
 }
 
-% −−−−− Player‑managed resources box (philosophy) −−−−−
-≠wtcolorbox{playermanaged}[1][]{%
+% ----- Player‑managed resources box (philosophy) -----
+\newtcolorbox{playermanaged}[1][]{%
     enhanced,
     breakable,
     colback=blue5,
@@ -135,22 +135,22 @@
     colbacktitle=blue75,
     coltitle=white,
     fonttitle=\bfseries,
-    title=Player−Managed Resources Philosophy,
-    attach boxed title to top center={yshift=−2mm},
+    title=Player-Managed Resources Philosophy,
+    attach boxed title to top center={yshift=-2mm},
     boxed title style={size=small, colframe=blue75},
     drop shadow,
     #1
 }
 
-% −−−−− General purpose fate box (philosophical asides) −−−−−
-≠wtcolorbox{fatebox}[2][]{%
+% ----- General purpose fate box (philosophical asides) -----
+\newtcolorbox{fatebox}[2][]{%
     enhanced,
     breakable,
     colback=#2!5!white,
     colframe=#2!75!black,
     fonttitle=\bfseries,
     title=#1,
-    attach boxed title to top left={yshift=−2mm,xshift=4mm},
+    attach boxed title to top left={yshift=-2mm,xshift=4mm},
     boxed title style={colback=#2!75!black, colframe=#2!75!black, sharp corners, rounded corners=north},
     #1
 }
@@ -164,35 +164,35 @@
 
 \title{Fate's Edge: Player's Guide}
 \author{Nicholas A. Gasper}
-\date{→day}
+\date{\today}
 
 \begin{document}
 
-% −−− Custom title page −−−
+% --- Custom title page ---
 \frontmatter
-þispagestyle{empty}
+\thispagestyle{empty}
 \begin{center}
   \vspace*{1in}
-  {ℎuge \textbf{Fate's Edge}}\\[0.5in]
-  {ŁARGE Player's Guide}\\[1in]
-  {Łarge Nicholas A. Gasper}\\[0.2in]
-  {łarge →day}\\[1in]
+  {\huge \textbf{Fate's Edge}}\\[0.5in]
+  {\LARGE Player's Guide}\\[1in]
+  {\Large Nicholas A. Gasper}\\[0.2in]
+  {\large \today}\\[1in]
   \begin{quote}
-    ℹtshape
+    \itshape
     ``The coin that never spends is the one you don't remember taking.''\\
-    −−− Serafine of the Velvet Touch
+    --- Serafine of the Velvet Touch
   \end{quote}
   \vfill
 \end{center}
 \cleardoublepage
 
-% −−−−−−−− Copyright page −−−−−−−−
+% -------- Copyright page --------
 \cleardoublepage
-þispagestyle{empty}
+\thispagestyle{empty}
 \begin{center}
   \vspace*{2in}
   \textbf{Fate's Edge: Player's Guide}\\[0.2in]
-  Copyright ©\ Nicholas A. Gasper\\[0.2in]
+  Copyright \copyright\ Nicholas A. Gasper\\[0.2in]
   This work is licensed under the Creative Commons Attribution 4.0 International License.\\
   To view a copy of this license, visit:\\
   \url{http://creativecommons.org/licenses/by/4.0/}
@@ -203,75 +203,75 @@
 \cleardoublepage
 
 % Optional lists (uncomment if needed)
-% łistoffigures
-% łistoftables
+% \listoffigures
+% \listoftables
 % \cleardoublepage
 
 \mainmatter
 
 % ============================================================
-% PART I −− FOUNDATIONS
+% PART I -- FOUNDATIONS
 % ============================================================
-∈clude{sections/intro}                 % Welcome, philosophy, safety tools
+\include{sections/intro}                 % Welcome, philosophy, safety tools
 \clearpage
-∈clude{sections/coreₘechanics}        % Dice, Position, DV, Boons, Story Beats
+\include{sections/core_mechanics}        % Dice, Position, DV, Boons, Story Beats
 \clearpage
-∈clude{sections/character_creation}    % Step‑by‑step character creation
+\include{sections/character_creation}    % Step‑by‑step character creation
 \clearpage
-∈clude{sections/items}                 % Gear, magic items, crafting
+\include{sections/items}                 % Gear, magic items, crafting
 \clearpage
 
 % ============================================================
-% PART II −− MAGIC & HEALING
+% PART II -- MAGIC & HEALING
 % ============================================================
-∈clude{sections/magic}                 % Magic systems, patrons, rites, free casting
+\include{sections/magic}                 % Magic systems, patrons, rites, free casting
 \clearpage
-∈clude{sections/healing}               % Healing Fatigue, Harm, magic vs mundane
+\include{sections/healing}               % Healing Fatigue, Harm, magic vs mundane
 \clearpage
 
 % ============================================================
-% PART III −− ADVANCEMENT
+% PART III -- ADVANCEMENT
 % ============================================================
-∈clude{sections/advancement}           % Attributes, skills, XP, tiers
+\include{sections/advancement}           % Attributes, skills, XP, tiers
 \clearpage
-∈clude{sections/xpₚaths}              % Career paths, balanced vs solo vs mastermind
+\include{sections/xp_paths}              % Career paths, balanced vs solo vs mastermind
 \clearpage
-∈clude{sections/talents}               % Talent list (minor, major, prestige, epic)
+\include{sections/talents}               % Talent list (minor, major, prestige, epic)
 \clearpage
-∈clude{sections/first−magic−char}      % Guide to building your first magical character
+\include{sections/first-magic-char}      % Guide to building your first magical character
 \clearpage
-∈clude{sections/archetypes}            % Example character concepts (pre‑gens)
+\include{sections/archetypes}            % Example character concepts (pre‑gens)
 \clearpage
-∈clude{sections/assets_follower}       % Assets and followers
+\include{sections/assets_follower}       % Assets and followers
 \clearpage
-∈clude{sections/downtime}              % What you do between adventures
+\include{sections/downtime}              % What you do between adventures
 \clearpage
 
 % ============================================================
-% PART IV −− WORLD & INTERACTION
+% PART IV -- WORLD & INTERACTION
 % ============================================================
-∈clude{sections/world_and_cultures}    % Regions, peoples, cultural mechanics
+\include{sections/world_and_cultures}    % Regions, peoples, cultural mechanics
 \clearpage
-∈clude{sections/world_powers}          % Terrestrial patrons, obligation
+\include{sections/world_powers}          % Terrestrial patrons, obligation
 \clearpage
-∈clude{sections/worldᵢnteraction}     % Travel, time, social interaction
+\include{sections/world_interaction}     % Travel, time, social interaction
 \clearpage
-∈clude{sections/currency−free−economy} % XP as coin, barter, trusts
+\include{sections/currency-free-economy} % XP as coin, barter, trusts
 \clearpage
-∈clude{sections/backgrounds}           % Backgrounds, signature contacts, bonds
+\include{sections/backgrounds}           % Backgrounds, signature contacts, bonds
 \clearpage
-∈clude{sections/legacy}                % Legacy Engine, succession, faction building
+\include{sections/legacy}                % Legacy Engine, succession, faction building
 \clearpage
 
 % ============================================================
-% PART V −− ENHANCED PLAY & APPENDICES
+% PART V -- ENHANCED PLAY & APPENDICES
 % ============================================================
-∈clude{sections/enhancedₚlay}         % Advanced player tactics, teamwork, resources
+\include{sections/enhanced_play}         % Advanced player tactics, teamwork, resources
 \clearpage
 
 % Optional character sheet (if file exists)
 \IfFileExists{sections/player_ledger.tex}{%
-  ∈clude{sections/player_ledger}
+  \include{sections/player_ledger}
   \clearpage
 }{}
 
@@ -279,7 +279,7 @@
 % APPENDICES
 % ============================================================
 \appendix
-∈clude{sections/appendix}              % Tables, trackers, spell examples
+\include{sections/appendix}              % Tables, trackers, spell examples
 \clearpage
 
 % ============================================================
