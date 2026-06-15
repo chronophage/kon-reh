@@ -147,7 +147,6 @@ Everything in the world has an "Echo" - a metaphysical signature that can be per
 - **Supply Timer **: The Echo of abundance/survival degrading
 - **Fatigue**: Personal Echo becoming "out of tune" with reality
 - **Gear Condition**: Objects' Echoes wearing thin through use
-- **Over-Stack Rule**: Too many favorable Echo manipulations create narrative pushback
 
 ## The Metaphysical Spectrum Theory
 
