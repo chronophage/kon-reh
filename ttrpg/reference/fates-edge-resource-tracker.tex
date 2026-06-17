@@ -1,0 +1,459 @@
+% ============================================================
+% FATE'S EDGE - PLAYER RESOURCE TRACKER (DELUXE VERSION)
+% Designed for quick, visible tracking at the table.
+% Print double-sided, one per player.
+% ============================================================
+
+\documentclass[11pt]{article}
+\usepackage[margin=0.5in, landscape]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{fontspec}
+\usepackage{array}
+\usepackage{multicol}
+
+% ----- Color Palette -----
+\definecolor{fe-dawn}{HTML}{F4A460}
+\definecolor{fe-dusk}{HTML}{2C3E50}
+\definecolor{fe-blood}{HTML}{8B0000}
+\definecolor{fe-steel}{HTML}{708090}
+\definecolor{fe-silk}{HTML}{D4C5A9}
+\definecolor{fe-hollow}{HTML}{2C3E50}
+\definecolor{fe-fate}{HTML}{8B4513}
+
+% ----- Page Setup -----
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+% ----- Helper Commands -----
+\newcommand{\trackerbox}[1]{%
+  \begin{tcolorbox}[colback=white, colframe=fe-dusk, sharp corners, boxrule=0.8pt, width=0.9\linewidth, boxsep=2pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+    #1
+  \end{tcolorbox}
+}
+
+\newcommand{\segmenttracker}[3]{%
+  \begin{tikzpicture}
+    \foreach \i in {1,...,#1} {
+      \filldraw[fill=white, draw=#2, thick] (\i*0.75cm,0) circle (0.35cm);
+      \ifnum\i<#1
+        \draw[#2, thick] (\i*0.75cm+0.35cm,0) -- (\i*0.75cm+0.75cm-0.35cm,0);
+      \fi
+    }
+    \node[anchor=west, font=\small\bfseries, color=#2] at (#1*0.75cm+0.5cm,0) {#3};
+  \end{tikzpicture}%
+}
+
+\newcommand{\boontracker}{%
+  \begin{tikzpicture}
+    \foreach \i in {1,...,5} {
+      \filldraw[fill=white, draw=fe-fate, thick] (\i*0.6cm,0) circle (0.3cm);
+    }
+    \node[anchor=west, font=\small\bfseries, color=fe-fate] at (3.5cm,0) {Boons (max 5)};
+  \end{tikzpicture}%
+}
+
+% ============================================================
+% BEGIN DOCUMENT
+% ============================================================
+\begin{document}
+
+% ----- HEADER -----
+\begin{minipage}[t]{0.45\linewidth}
+  {\Large\bfseries\color{fe-dusk} FATE'S EDGE}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+  \raggedleft
+  {\large\bfseries\color{fe-dusk} PLAYER RESOURCE TRACKER}
+\end{minipage}
+\vspace{0.2cm}
+\hrule
+
+\vspace{0.2cm}
+
+% ----- LEFT COLUMN -----
+\begin{minipage}[t]{0.48\linewidth}
+
+% --- IDENTITY ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} CHARACTER IDENTITY}
+  \vspace{2pt}
+  
+  \begin{tabular}{@{}p{3.5cm} p{5cm}@{}}
+    \textbf{Name:} & \underline{\hspace{5cm}} \\
+    \textbf{Heritage:} & \underline{\hspace{5cm}} \\
+    \textbf{Patron:} & \underline{\hspace{5cm}} \\
+    \textbf{Tier / XP:} & \underline{\hspace{5cm}} \\
+  \end{tabular}
+}
+
+% --- ATTRIBUTES ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} ATTRIBUTES}
+  \vspace{2pt}
+  
+  \begin{tabular}{@{}p{2.5cm} p{1.5cm} p{2.5cm} p{1.5cm}@{}}
+    \textbf{Body:} & \underline{\hspace{1.2cm}} &
+    \textbf{Wits:} & \underline{\hspace{1.2cm}} \\
+    \textbf{Spirit:} & \underline{\hspace{1.2cm}} &
+    \textbf{Presence:} & \underline{\hspace{1.2cm}} \\
+  \end{tabular}
+  \vspace{2pt}
+  {\small\em Obligation Capacity: Spirit + Presence = \underline{\hspace{1.5cm}}}
+}
+
+% --- FATIGUE & HARM ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} FATIGUE \& HARM}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.48\linewidth}
+    \textbf{Fatigue:}\\
+    \segmenttracker{6}{fe-dusk}{}
+    {\small\em (max = Body)}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\linewidth}
+    \textbf{Harm:}\\
+    \begin{tikzpicture}
+      \filldraw[fill=white, draw=fe-blood, thick] (0,0) rectangle (0.8cm,0.6cm);
+      \node[anchor=west, font=\tiny, color=fe-blood] at (0.9cm,0.3cm) {Harm 1};
+      \filldraw[fill=white, draw=fe-blood, thick] (3.0cm,0) rectangle (0.8cm,0.6cm);
+      \node[anchor=west, font=\tiny, color=fe-blood] at (3.9cm,0.3cm) {Harm 2};
+      \filldraw[fill=white, draw=fe-blood, thick] (6.0cm,0) rectangle (0.8cm,0.6cm);
+      \node[anchor=west, font=\tiny, color=fe-blood] at (6.9cm,0.3cm) {Harm 3};
+    \end{tikzpicture}\\
+    {\small\em Taking Harm clears Fatigue}
+  \end{minipage}
+}
+
+% --- BOONS ---
+\trackerbox{%
+  {\bfseries\color{fe-fate} BOONS}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.6\linewidth}
+    \boontracker
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.35\linewidth}
+    \raggedleft
+    {\small\em (reset to 2 at scene end)}
+  \end{minipage}
+  \vspace{2pt}
+  {\small\em Spend 1 Boon to: Re-roll a die, improve Position, activate Asset}
+}
+
+% --- MAGIC: OBLIGATION & CORRUPTION ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} MAGIC TRACKERS}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.48\linewidth}
+    \textbf{Obligation (Capacity: \underline{\hspace{0.8cm}})}\\
+    \segmenttracker{8}{fe-steel}{}\\
+    {\small\em Exceed capacity → Fatigue}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\linewidth}
+    \textbf{Corruption (Cantor only)}\\
+    \segmenttracker{6}{fe-blood}{}\\
+    {\small\em (Size = Spirit) Fill → Bloom}
+  \end{minipage}
+}
+
+% --- SUMMONING LEASH ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} SUMMONER LEASH}
+  \vspace{2pt}
+  
+  \segmenttracker{8}{fe-hollow}{}
+  \vspace{2pt}
+  {\small\em Cap + Spirit. Each Harm, command against nature, crosses ward, split focus ticks Leash.}
+  \vspace{2pt}
+  {\small\em Boon Finesse: Spend 1 Boon to clear 1 tick (once/round).}
+}
+
+\end{minipage}
+\hfill
+% ----- RIGHT COLUMN -----
+\begin{minipage}[t]{0.48\linewidth}
+
+% --- ASSETS ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} ASSETS}
+  \vspace{2pt}
+  
+  \begin{tabular}{@{}p{4cm} p{3.5cm}@{}}
+    \textbf{Asset Name} & \textbf{Status} \\
+    \underline{\hspace{4cm}} & \underline{\hspace{3.5cm}} \\
+    \underline{\hspace{4cm}} & \underline{\hspace{3.5cm}} \\
+    \underline{\hspace{4cm}} & \underline{\hspace{3.5cm}} \\
+  \end{tabular}
+  \vspace{2pt}
+  {\small\em Status: Flourishing / Stable / Strained / Collapsed}
+}
+
+% --- FOLLOWERS ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} FOLLOWERS}
+  \vspace{2pt}
+  
+  \begin{tabular}{@{}p{3cm} p{1.8cm} p{3cm}@{}}
+    \textbf{Name} & \textbf{Cap} & \textbf{Loyalty / Fitness} \\
+    \underline{\hspace{3cm}} & \underline{\hspace{1.5cm}} & \underline{\hspace{3cm}} \\
+    \underline{\hspace{3cm}} & \underline{\hspace{1.5cm}} & \underline{\hspace{3cm}} \\
+    \underline{\hspace{3cm}} & \underline{\hspace{1.5cm}} & \underline{\hspace{3cm}} \\
+  \end{tabular}
+  \vspace{2pt}
+  {\small\em Loyalty: Faithful / Strained / Broken \quad Fitness: Ready / Hurt / Down}
+}
+
+% --- DEBT TIMERS ---
+\trackerbox{%
+  {\bfseries\color{fe-blood} DEBT TIMERS}
+  \vspace{2pt}
+  
+  \begin{tabular}{@{}p{3cm} p{4cm}@{}}
+    \textbf{Name} & \textbf{Segments} \\
+    \underline{\hspace{3cm}} & \segmenttracker{4}{fe-blood}{} \\
+    \underline{\hspace{3cm}} & \segmenttracker{4}{fe-blood}{} \\
+    \underline{\hspace{3cm}} & \segmenttracker{4}{fe-blood}{} \\
+  \end{tabular}
+  \vspace{2pt}
+  {\small\em When full, the debt comes due.}
+}
+
+% --- BONDS & STRINGS ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} BONDS \& STRINGS}
+  \vspace{2pt}
+  
+  \textbf{Bonds (PCs):}\\
+  \underline{\hspace{8cm}}\\
+  \underline{\hspace{8cm}}\\
+  \vspace{2pt}
+  \textbf{Strings (NPCs):}\\
+  \underline{\hspace{8cm}}\\
+  \underline{\hspace{8cm}}
+}
+
+% --- PERSONAL NOTES ---
+\trackerbox{%
+  {\bfseries\color{fe-dusk} PERSONAL NOTES}
+  \vspace{2pt}
+  
+  \vspace{2cm}
+}
+
+\end{minipage}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.1cm}
+
+% ----- FOOTER: SCENE & SESSION TRACKERS -----
+\begin{minipage}[t]{0.32\linewidth}
+  {\bfseries\color{fe-dusk} XP / SESSION}\\
+  \begin{tabular}{@{}p{4cm} p{2.5cm}@{}}
+    \textbf{Current XP:} & \underline{\hspace{2.5cm}} \\
+    \textbf{Unspent XP:} & \underline{\hspace{2.5cm}} \\
+    \textbf{Next Tier:} & \underline{\hspace{2.5cm}} \\
+  \end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+  {\bfseries\color{fe-dusk} MOMENTUM}\\
+  \boontracker
+  \vspace{2pt}
+  {\small\em (Banked per session, max 2)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\linewidth}
+  \raggedleft
+  {\bfseries\color{fe-dusk} CONDITIONS}\\
+  \underline{\hspace{4cm}}\\
+  \underline{\hspace{4cm}}
+\end{minipage}
+
+\vspace{0.2cm}
+
+% ----- QUICK REFERENCE (Bottom) -----
+\begin{tcolorbox}[colback=fe-silk!20, colframe=fe-dusk, boxrule=0.5pt, sharp corners, width=\linewidth]
+  \begin{minipage}[t]{0.22\linewidth}
+    {\bfseries\color{fe-dusk} CORE DICE}\\
+    {\small Attribute + Skill d10s}\\
+    {\small 6+ = Success}\\
+    {\small 1 = Story Beat (GM)}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.25\linewidth}
+    {\bfseries\color{fe-dusk} OUTCOMES}\\
+    {\small Clean: S≥DV, SB=0}\\
+    {\small Success with SB: S≥DV, SB>0}\\
+    {\small Partial: 0<S<DV → 1 Boon}\\
+    {\small Miss: S=0 → 2 Boons}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.25\linewidth}
+    {\bfseries\color{fe-dusk} POSITION}\\
+    {\small Dominant: Re-roll failure}\\
+    {\small Controlled: No re-rolls}\\
+    {\small Desperate: Re-roll success}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.22\linewidth}
+    {\bfseries\color{fe-dusk} FATIGUE}\\
+    {\small Each point worsens Position}\\
+    {\small Desperate: -1 die per Fatigue}\\
+    {\small Fill track → Harm+1, clear Fatigue}
+  \end{minipage}
+\end{tcolorbox}
+
+% ============================================================
+% BACK PAGE: STANDARD TIMERS & TRACKERS
+% ============================================================
+\newpage
+
+% ----- HEADER (Back) -----
+\begin{minipage}[t]{0.45\linewidth}
+  {\Large\bfseries\color{fe-dusk} FATE'S EDGE}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+  \raggedleft
+  {\large\bfseries\color{fe-dusk} TIMERS \& TRACKERS}
+\end{minipage}
+\vspace{0.2cm}
+\hrule
+
+\vspace{0.2cm}
+
+% ----- STANDARD TIMERS -----
+\begin{tcolorbox}[colback=white, colframe=fe-dusk, sharp corners, boxrule=0.8pt, width=\linewidth, boxsep=2pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+  {\bfseries\color{fe-dusk} STANDARD TIMERS}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{4-Segment}\\
+    \segmenttracker{4}{fe-dusk}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{6-Segment}\\
+    \segmenttracker{6}{fe-dusk}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{8-Segment}\\
+    \segmenttracker{8}{fe-dusk}{}
+  \end{minipage}
+  \vspace{4pt}
+  
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{10-Segment}\\
+    \segmenttracker{10}{fe-dusk}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{12-Segment}\\
+    \segmenttracker{12}{fe-dusk}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{Active Timer Names:}\\
+    \underline{\hspace{3cm}}\\
+    \underline{\hspace{3cm}}
+  \end{minipage}
+\end{tcolorbox}
+
+% ----- CAMPAIGN TIMERS -----
+\begin{tcolorbox}[colback=white, colframe=fe-blood, sharp corners, boxrule=0.8pt, width=\linewidth, boxsep=2pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+  {\bfseries\color{fe-blood} CAMPAIGN \& FACTION TIMERS}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{Mandate:}\\
+    \segmenttracker{6}{fe-blood}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{Crisis:}\\
+    \segmenttracker{6}{fe-blood}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \textbf{Faction Name:}\\
+    \underline{\hspace{3cm}}
+  \end{minipage}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.45\linewidth}
+    \textbf{Additional Faction Timers}\\
+    \underline{\hspace{5cm}}\ \segmenttracker{6}{fe-blood}{}\\
+    \underline{\hspace{5cm}}\ \segmenttracker{6}{fe-blood}{}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \textbf{Faction Attitude}\\
+    -3 \ -- \ -2 \ -- \ -1 \ -- \ 0 \ -- \ +1 \ -- \ +2 \ -- \ +3\\
+    {\small Enemy \hfill Neutral \hfill Ally}
+  \end{minipage}
+\end{tcolorbox}
+
+% ----- PSIONICS / WITCHCRAFT -----
+\begin{tcolorbox}[colback=white, colframe=fe-silk, sharp corners, boxrule=0.8pt, width=\linewidth, boxsep=2pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+  {\bfseries\color{fe-dusk} OPTIONAL TRACKERS}
+  \vspace{2pt}
+  
+  \begin{minipage}[t]{0.48\linewidth}
+    \textbf{Psionics (Mental Strain)}\\
+    \segmenttracker{6}{fe-hollow}{}\\
+    {\small Capacity = Spirit. Overflow → Fatigue or Harm.}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\linewidth}
+    \textbf{Witchcraft (Promise Timers)}\\
+    \segmenttracker{4}{fe-silk}{}\\
+    {\small When full, price comes due.}
+  \end{minipage}
+\end{tcolorbox}
+
+% ----- LOOT / TREASURE -----
+\begin{tcolorbox}[colback=white, colframe=fe-fate, sharp corners, boxrule=0.8pt, width=\linewidth, boxsep=2pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+  {\bfseries\color{fe-fate} LOOT \& TREASURE (Abstract)}
+  \vspace{2pt}
+  
+  \begin{tabular}{@{}p{3cm} p{5cm}@{}}
+    \textbf{Minor:} & \underline{\hspace{5cm}} \\
+    \textbf{Standard:} & \underline{\hspace{5cm}} \\
+    \textbf{Major:} & \underline{\hspace{5cm}} \\
+    \textbf{Artifacts:} & \underline{\hspace{5cm}} \\
+  \end{tabular}
+  \vspace{2pt}
+  {\small\em Use treasure for +1 Position, auto-success, or scene rewrite.}
+\end{tcolorbox}
+
+% ----- SESSION NOTES -----
+\begin{tcolorbox}[colback=white, colframe=fe-dusk, sharp corners, boxrule=0.8pt, width=\linewidth, boxsep=2pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+  {\bfseries\color{fe-dusk} SESSION NOTES}
+  \vspace{2pt}
+  
+  \underline{\hspace{\linewidth}}\\
+  \underline{\hspace{\linewidth}}\\
+  \underline{\hspace{\linewidth}}\\
+  \underline{\hspace{\linewidth}}\\
+  \underline{\hspace{\linewidth}}
+\end{tcolorbox}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.1cm}
+\begin{center}
+  {\small\em "The coin that never spends is the one you don't remember taking." — Serafine of the Velvet Touch}
+\end{center}
+
+\end{document}
