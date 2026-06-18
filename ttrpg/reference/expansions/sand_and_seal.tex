@@ -1,0 +1,622 @@
+\documentclass[11pt,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{sectsty}
+\usepackage{needspace}
+\usepackage{changepage}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+\geometry{margin=1in}
+
+\setstretch{1.2}
+
+\definecolor{ash}{RGB}{60,60,60}
+\definecolor{sand}{RGB}{210,190,160}
+\definecolor{darkgold}{RGB}{180,140,70}
+\definecolor{blood}{RGB}{140,40,40}
+
+\mdfdefinestyle{adventurebox}{
+    linewidth=2pt,
+    linecolor=black,
+    backgroundcolor=gray!10,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    frametitlefont=\bfseries
+}
+
+\mdfdefinestyle{mechanicbox}{
+    linewidth=1pt,
+    linecolor=gray,
+    backgroundcolor=gray!5,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+    innerrightmargin=8pt,
+    innerleftmargin=8pt,
+    frametitlefont=\bfseries
+}
+
+\mdfdefinestyle{warningbox}{
+    linewidth=1pt,
+    linecolor=red!60!black,
+    backgroundcolor=red!5,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+    innerrightmargin=8pt,
+    innerleftmargin=8pt,
+    frametitlefont=\bfseries
+}
+
+\titleformat{\chapter}{\huge\bfseries}{\thechapter}{20pt}{\huge}
+\titleformat{\section}{\Large\bfseries}{\thesection}{15pt}{\Large}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{12pt}{\large}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyfoot[C]{\textit{The Sand \& The Seal}}
+
+\newenvironment{adventurebox}{\begin{mdframed}[style=adventurebox]}{\end{mdframed}}
+\newenvironment{mechanicbox}{\begin{mdframed}[style=mechanicbox]}{\end{mdframed}}
+\newenvironment{warningbox}{\begin{mdframed}[style=warningbox]}{\end{mdframed}}
+
+\newcommand{\spade}{$\spadesuit$}
+\newcommand{\heart}{$\heartsuit$}
+\newcommand{\club}{$\clubsuit$}
+\newcommand{\diamond}{$\diamondsuit$}
+
+\begin{document}
+
+\title{The Sand \& The Seal}
+\subtitle{An Ashaan Expansion for Fate's Edge}
+\author{Set down by Dusana of the Raven Road}
+\date{Under a borrowed lamp in New Adaran}
+
+\maketitle
+
+\frontmatter
+
+\chapter*{Preface: The Long Shadow}
+
+The south is not a land. It is a wound that has not healed.
+
+My people are the Tulkani. We know the value of a road. But here, in the lands below the Dolmis, the roads are not just routes—they are contracts. The Way of Silk is a promise between empires. The Spice Roads of Fhara are a lattice of oaths, renewed each season at the well-courts. And the canals of Ashaan are a ledger, written in water and enforced by the sun.
+
+The Sidhi call this land Galanina, the Cedared Shore. They build courts of white stone and require exacting courtesy from all who enter. Their ships carry the memory of an empire that once spanned the sea. Their libraries hold the keys to knowledge the north would burn for.
+
+The Fhara call it the Sea of Wells. They trade in water, not gold. Their poets memorize the tides of the desert, and their courts are held under the stars. A broken promise here is not a crime—it is a wound that will not heal, and the well-spirits will remember your face.
+
+And the Ashaani—the heirs of empires who rose and fell under the sand—they measure time in dynasties and land in irrigation rights. Their cities are half-buried, their vaults hum on hot nights, and their bureaucrats can read a man's worth in a single page of his water-ledger.
+
+But the Ashaani are not what they were. They are ruled now by the Maeri Sisters—the Masked, the Veiled, and the Helmed—who feast on sin and fear. They are served by the Black Hand, an order of Cantors who are the secret police of a police state. No one is safe in Ashaan. Not the magistrates, not the merchants, not the slaves, not even the Black Hand themselves.
+
+And beneath it all, hidden in the ruins of a fallen temple, lies the Kalrantha Amulet—a relic of a forgotten age, stolen from the foothills of the Himadri mountains. It contains the essence of Fate itself. It is not a prison, but a magnet. It draws its wielder towards their destiny.
+
+The road is south. The lamp is borrowed. The ink is dry. Let us begin.
+
+\noindent\textit{— Dusana of the Raven Road}
+\newline Galanina, in the year of the broken dhow.
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{The Ashaani Empire}
+
+\section{The Rise and Fall}
+
+The Ashaani Empire was a towering civilization of engineers, sorcerers, and conquerors. It stretched from the coast of Galanina across the Pereshi highlands, reaching all the way to Dhahara—an empire of sand and iron that rivaled Oshiira and the northern powers for centuries.
+
+\textbf{Territory \& Influence:}
+\begin{itemize}
+    \item \textbf{Core:} The Twin Rivers and the irrigated valleys of Ashaan.
+    \item \textbf{Conquests:} Galanina (the Cedared Shore), the Pereshi highlands, and colonies on the edge of Dhahara.
+    \item \textbf{Rivalry with Oshiira:} The two empires were bitter rivals for centuries. Oshiira formed its confederacy in response to Ashaani aggression.
+    \item \textbf{The Invasion of Oshiira:} The final act of the empire. The Ashaani invaded Oshiira and were soundly defeated. This catastrophic loss shattered the empire's confidence and military strength.
+\end{itemize}
+
+\section{The Disappearance of the Last Emperor}
+
+After the defeat, the emperor vanished. Some say he was killed in the chaos. Others whisper he fled or was sealed away. His disappearance created a power vacuum that the Maeri Sisters would soon exploit.
+
+\noindent But there is a darker truth, known only to a few: the last emperor did not flee. He found the Kalrantha Amulet and tried to use it to save his empire. He failed, and he was consumed by its power. The Sisters know this. The Esoti suspect it. The common people have no idea.
+
+\section{The Esoti Magistrates}
+
+The Esoti are the remnants of the old Ashaani government. They are powerful, corrupt, and terrified.
+
+\begin{mechanicbox}
+\textbf{The Esoti:}
+\begin{itemize}
+    \item \textbf{Role:} They maintain the infrastructure of Ashaan: the irrigation systems, the courts, the trade routes.
+    \item \textbf{Corruption:} They are corrupt. They take bribes, hoard grain, and trade in favors. They are scheming against each other.
+    \item \textbf{Fear:} They know they are expendable. The Sisters can replace them at any time. They live in constant fear of the Black Hand.
+\end{itemize}
+\end{mechanicbox}
+
+\section{The Maeri Sisters}
+
+The Maeri Sisters are not the original rulers of Ashaan. They are conquerors who seized power from the Esoti Magistrates.
+
+\begin{mechanicbox}
+\textbf{The Three Sisters:}
+\begin{itemize}
+    \item \textbf{The Masked Sister:} She emits an aura of lust. Her influence drives people to obsession, base desire, and depravity.
+    \item \textbf{The Veiled Sister:} She radiates avarice. Her influence creates greed, hoarding, and the desperate need for more.
+    \item \textbf{The Helmed Sister:} She exudes malice. Her influence creates cruelty, paranoia, and violence.
+\end{itemize}
+\end{mechanicbox}
+
+The Sisters are a form of divine judgment—a curse sent to punish Ashaan for its hubris. They consume the empire from within, feeding on its sins and fears like a cancer. They seek to spread their influence like a disease, a divine judgment that will consume all of Ashaan and beyond.
+
+\section{The Black Hand}
+
+The Sisters needed enforcers. They created the Black Hand—an order of Cantors who serve as their secret police, spies, and assassins.
+
+\begin{mechanicbox}
+\textbf{The Black Hand:}
+\begin{itemize}
+    \item \textbf{Soul-Bound:} They are immune to fear and empathy.
+    \item \textbf{Faceless:} They are indistinguishable from ordinary citizens when not actively pursuing their duties.
+    \item \textbf{Spirit-Binders:} They can summon and bind spirits to do their bidding.
+    \item \textbf{Fear:} They are the most feared people in Ashaan. A Black Hand Cantor might be your neighbor, your spouse, or your friend.
+\end{itemize}
+\end{mechanicbox}
+
+\section{The Society of Fear}
+
+The Sisters thrive on paranoia. They encourage citizens to spy on each other. No one is safe—not the slaves, not the Esoti magistrates, not even the Black Hand themselves. Fear and sin are their food. A paranoid populace is a well-fed populace.
+
+\chapter{The People of Ashaan}
+
+\section{The Ordinary People}
+
+The common people of Ashaan are the ones who suffer the most under the Sisters' rule.
+
+\begin{mechanicbox}
+\textbf{The Farmers:}
+\begin{itemize}
+    \item They work the land, tending the irrigation canals and harvesting the grain.
+    \item They are taxed heavily by the Esoti and the Sisters.
+    \item They live in constant fear of the Black Hand.
+    \item They are the backbone of the Breath-less resistance.
+\end{itemize}
+
+\textbf{The Merchants:}
+\begin{itemize}
+    \item They trade in grain, water-rights, and goods from the north and south.
+    \item They are caught between the Esoti's corruption and the Sisters' greed.
+    \item They are often the source of information and resources for the Breath-less.
+\end{itemize}
+
+\textbf{The Slaves:}
+\begin{itemize}
+    \item They are the most vulnerable people in Ashaan.
+    \item They are bound by the Sisters' contracts, and they can be sold or traded at any time.
+    \item They are the most desperate members of the Breath-less.
+\end{itemize}
+
+\textbf{The Faithful:}
+\begin{itemize}
+    \item Some Ashaani still follow the old gods, the spirits of the land and water.
+    \item They are persecuted by the Sisters, who see them as rivals.
+    \item They are often the source of spiritual resistance.
+\end{itemize}
+
+\textbf{The Refugees:}
+\begin{itemize}
+    \item Many Ashaani have fled to Galanina, Oshiira, or the Fharan oases.
+    \item They are a source of information and resources for the Breath-less.
+\end{itemize}
+\end{mechanicbox}
+
+\section{The Breath-less}
+
+The Breath-less are the primary opposition to the Sisters. They are not a single organization—they are a network of rebels, spies, and sympathizers.
+
+\begin{mechanicbox}
+\textbf{The Breath-less:}
+\begin{itemize}
+    \item \textbf{Structure:} Organized into cells, each operating independently. Led by a figure known only as ``The Wind.''
+    \item \textbf{Methods:} Sabotage, propaganda, smuggling, assassination.
+    \item \textbf{Strings:} Breath-less Mark, A Touch of Oya, A Promise of Freedom, The Wind's Word.
+    \item \textbf{Complications:} The Informant, The Cull, The Cost.
+\end{itemize}
+\end{mechanicbox}
+
+\chapter{The Factions of Ashaan}
+
+\section{The Veiled Sisters}
+
+The Maeri Triumvirate. They seek to spread their influence like a cancer. They bind souls and enslave the masses.
+
+\begin{itemize}
+    \item \textbf{Goal:} To consume all of Ashaan and beyond.
+    \item \textbf{Methods:} Fear, corruption, magical contracts.
+    \item \textbf{Weakness:} They are bound by their own nature. They cannot act against their domains.
+    \item \textbf{Fear:} They fear the Kalrantha Amulet.
+\end{itemize}
+
+\section{The Esoti Magistrates}
+
+The remnants of the old government, now serving the Sisters to maintain a semblance of order.
+
+\begin{itemize}
+    \item \textbf{Goal:} To survive.
+    \item \textbf{Methods:} Administration, bureaucracy, corruption.
+    \item \textbf{Weakness:} They are corrupt and terrified.
+    \item \textbf{Scheme:} They are constantly scheming against each other.
+\end{itemize}
+
+\section{The Black Hand}
+
+The Sisters' enforcers.
+
+\begin{itemize}
+    \item \textbf{Goal:} To enforce the Sisters' will through fear and violence.
+    \item \textbf{Methods:} Spying, assassination, sorcery.
+    \item \textbf{Weakness:} They are bound to the Sisters. They are feared, but also isolated.
+    \item \textbf{Fear:} They are terrified of the Sisters' displeasure.
+\end{itemize}
+
+\section{The Breath-less}
+
+The rebels.
+
+\begin{itemize}
+    \item \textbf{Goal:} To liberate Ashaan.
+    \item \textbf{Methods:} Sabotage, propaganda, assassination.
+    \item \textbf{Weakness:} They are outnumbered and hunted.
+    \item \textbf{Hope:} They believe in a free Ashaan.
+\end{itemize}
+
+\section{The Covenant}
+
+External opposition: Galanina and Oshiira.
+
+\begin{itemize}
+    \item \textbf{Goal:} To contain or destroy the Maeri Sisters.
+    \item \textbf{Methods:} Military force, diplomacy, magical countermeasures.
+    \item \textbf{Weakness:} They are not Ashaani. They do not understand the culture.
+\end{itemize}
+
+\chapter{The Kalrantha Amulet}
+
+\section{Origin}
+
+The amulet is not from Ashaan. It was stolen from a temple in the foothills of the Himadri mountains, in the northern reaches of Dhahara. It is a relic of a forgotten age, from a civilization that no one remembers.
+
+\section{The Essence of Fate}
+
+The power within the amulet is not a demon, a god, or a spirit. It is the essence of Fate itself—the element of anti-magic and the draw towards the inevitable.
+
+\begin{mechanicbox}
+\textbf{The Nature of Fate:}
+\begin{itemize}
+    \item Fate does not master you. It draws you to it.
+    \item It is not the ground—it is the gravity.
+    \item It is the force that pulls events towards their conclusion.
+\end{itemize}
+\end{mechanicbox}
+
+\section{Uniqueness}
+
+Artifacts of this kind do not exist elsewhere in the world. The citizens of Fate's Edge are oblivious to the nature of the amulet. They see it as a relic of a forgotten empire, a tool of power, or a curse. They do not understand what they are dealing with.
+
+\section{Dramatic Irony}
+
+The players (and readers) know what an artifact of doom is. The characters do not. They are walking into a trap they cannot see. This is the source of the expansion's horror and tragedy.
+
+\section{The Amulet's Power}
+
+\begin{itemize}
+    \item It can grant immense power over spirits, shadows, and secrets.
+    \item It can be used to bind and control spiritual entities.
+    \item It is said to be able to unmake the Sisters' contracts.
+    \item It can draw its wielder towards their inevitable fate.
+\end{itemize}
+
+\section{The Amulet's Curse}
+
+The amulet is not a prison. It is a magnet. Wearing it draws the wielder towards their fate—which may be glorious, tragic, or terrible.
+
+\chapter{New Mechanics}
+
+\section{Fear as a Resource}
+
+The Sisters feed on the sins and fears of the people. This is represented mechanically by a new resource: \textbf{Fear}.
+
+\begin{mechanicbox}
+\textbf{Earning Fear:}
+\begin{itemize}
+    \item The GM earns Fear when a character acts out of fear, paranoia, or desperation.
+    \item A character who lies, betrays a friend, or acts out of cowardice generates Fear.
+    \item The GM may also gain Fear by spending Story Beats.
+\end{itemize}
+
+\textbf{Spending Fear:}
+\begin{itemize}
+    \item \textbf{1 Fear:} A Black Hand informant appears.
+    \item \textbf{2 Fear:} The Sisters' influence manifests (a shadow that moves on its own, a whispered suggestion).
+    \item \textbf{3 Fear:} A Sister takes direct notice of the party.
+\end{itemize}
+
+\textbf{The Sisters' Feast Timer [8]:}
+\begin{itemize}
+    \item This timer represents the Sisters' growing power. It ticks when the GM spends Fear.
+    \item When the timer fills, the Sisters' influence spreads. A new district falls under their sway, a powerful figure is corrupted, or the party is hunted by the Black Hand.
+\end{itemize}
+\end{mechanicbox}
+
+\section{The Black Hand Cantors}
+
+Black Hand Cantors are a special type of enemy.
+
+\begin{mechanicbox}
+\textbf{Traits:}
+\begin{itemize}
+    \item \textbf{Soul-Bound:} Immune to fear and empathy.
+    \item \textbf{Faceless:} Indistinguishable from ordinary citizens when not on duty.
+    \item \textbf{Spirit-Binders:} Can summon and bind spirits.
+\end{itemize}
+
+\textbf{Countermeasures:}
+\begin{itemize}
+    \item \textbf{The Sisters' Echo:} Exploit a Cantor's connection to the Sisters (Spirit + Lore, DV 4).
+    \item \textbf{Freedom's Blow:} A Breath-less attack against a Cantor can be resolved with Position, but the Sisters will retaliate.
+\end{itemize}
+\end{mechanicbox}
+
+\section{The Breath-less Network}
+
+\begin{mechanicbox}
+\textbf{Strings:}
+\begin{itemize}
+    \item \textbf{Breath-less Mark:} A hidden symbol that identifies a safe house or contact.
+    \item \textbf{A Touch of Oya:} A one-use charm that allows a character to ignore the Sisters' influence for a scene.
+    \item \textbf{A Promise of Freedom:} A debt owed by the Breath-less. It can be called in to request aid or information.
+\end{itemize}
+
+\textbf{Complications:}
+\begin{itemize}
+    \item \textbf{The Informant:} A contact has been turned by the Black Hand. Represented by a Paranoia Timer [4].
+    \item \textbf{The Cull:} The Sisters purge a district. The party must escape or go underground.
+\end{itemize}
+\end{mechanicbox}
+
+\section{The Esoti's Corruption}
+
+\begin{mechanicbox}
+\textbf{Strings:}
+\begin{itemize}
+    \item \textbf{Esoti Bribe:} Grants +1 die on a social roll with a magistrate.
+    \item \textbf{Esoti Favor:} A debt owed by a magistrate. It can be called in to request a favor.
+\end{itemize}
+
+\textbf{Complications:}
+\begin{itemize}
+    \item \textbf{The Bribe Backfires:} The magistrate is a Black Hand informant.
+    \item \textbf{The Favor is Called In:} The magistrate asks for something dangerous.
+\end{itemize}
+\end{mechanicbox}
+
+\section{Fate's Draw}
+
+The amulet is not a prison. It is a magnet. Wearing it draws the wielder towards their fate.
+
+\begin{mechanicbox}
+\textbf{Fate's Draw Timer [6]:}
+\begin{itemize}
+    \item Ticks whenever the wielder makes a significant decision or faces a dangerous situation.
+    \item When the timer fills, the wielder's fate is sealed. They will face their destiny.
+\end{itemize}
+
+\textbf{Dramatic Irony:}
+\begin{itemize}
+    \item The wielder may not understand what is happening to them.
+    \item They may think they are making their own choices, when in fact they are being drawn towards their fate.
+\end{itemize}
+\end{mechanicbox}
+
+\section{New Timers}
+
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.35\textwidth} >{\raggedright\arraybackslash}p{0.40\textwidth}}
+\toprule
+\textbf{Timer} & \textbf{Purpose} & \textbf{Advance/Retreat} \\
+\midrule
+The Sisters' Feast [8] & The Sisters' growing power & Advance when Fear is spent; retreat when a Sister is thwarted \\
+Paranoia Timer [4] & Risk of betrayal & Advance when a character acts out of fear; retreat when trust is established \\
+Liberation Timer [6] & Breaking a Sister's contract & Advance when a character defies the Sisters; retreat when they submit \\
+The Black Hand's Hunt [6] & Being hunted by the Sisters' agents & Advance when the party is seen; retreat when they go underground \\
+Fate's Draw [6] & The amulet's influence on the wielder & Advance when the wielder makes a significant decision; reset when fate is sealed \\
+\bottomrule
+\end{tabularx}
+
+\chapter{Adventure Seeds}
+
+\begin{adventurebox}
+\textbf{The Water-Right is Poisoned}
+A well-court in Fhara is deadlocked. The water is turning bitter, and the well-spirit is angry. The party is hired to mediate, but they soon discover that a Veiled Sister is poisoning the well to spread fear.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Veiled Sister's Invitation}
+The party is invited to a masked ball hosted by the Veiled Sisters. They must retrieve a document or steal a seal without being detected. The Sisters are known to be hostile to uninvited guests, and their guests are all bound by magical contracts.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Kalrantha Amulet}
+The party is hired by a Pareshi scholar to find the amulet. They must travel across the desert, navigate canals, and descend into the ruins of Orakash. The Sisters and the Black Hand are also looking for it. No one fully understands what they are dealing with.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Breath-less Gambit}
+A Breath-less cell is about to be raided. The party is hired to warn them or protect them. The Sisters have planted a spy among the rebels, and the party must find the traitor.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Price of Cedar}
+A Sidhi merchant is selling cedar to the north. His ships are being attacked by pirates. The party is hired as an escort. The pirates are a Syndicate of former slaves who are trying to reclaim the cedar to build a new fleet.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Breaking}
+A character is bound by a Veiled Sister's contract. They must find a loophole or seek help from the Breath-less. The Sisters will not let go easily.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Black Hand's Hunt}
+The party is being hunted by the Black Hand. They must go underground, find allies, and escape the city.
+\end{adventurebox}
+
+\begin{adventurebox}
+\textbf{The Esoti's Scheme}
+An Esoti magistrate offers the party a fortune to do a small favor—steal a document, assassinate a rival, or frame an innocent person. The favor is a trap.
+\end{adventurebox}
+
+\chapter{Campaign Frame: The Breaking of the Sisters}
+
+\textbf{Premise:} The Veiled Sisters have ruled Ashaan for centuries. They are a cancer on the land. The party is drawn into the conflict between the Sisters and the Breath-less. They must find a way to break the Sisters' power, or die trying.
+
+\section{Acts}
+
+\textbf{Act I: The Seed}
+The party is introduced to Ashaan. They witness the Sisters' cruelty, and they are recruited (willingly or unwillingly) by the Breath-less.
+
+\textbf{Act II: The Hunt}
+The party is hunted by the Black Hand. They must find allies, go underground, and gather resources.
+
+\textbf{Act III: The Amulet}
+The party discovers the legend of the Kalrantha Amulet. They must find it before the Sisters do. The amulet is not what they expect.
+
+\textbf{Act IV: The Breaking}
+The party uses the amulet to confront the Sisters. They must break their power, or be consumed by it.
+
+\section{Endings}
+
+\begin{itemize}
+    \item \textbf{Victory:} The Sisters are destroyed or banished. Ashaan is free. The party has become legends. But they may not like what they have become.
+    \item \textbf{Sacrifice:} The party uses the amulet, but one of them is drawn to their fate—becoming a new prisoner, a new guardian, or a new tyrant.
+    \item \textbf{Failure:} The Sisters consume the party. Ashaan falls deeper into darkness. The cancer spreads.
+\end{itemize}
+
+\chapter{GM Toolkit}
+
+\section{The Sisters' Influence Table}
+
+Use this table when a Sister directly notices the party.
+
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.1\textwidth} >{\raggedright\arraybackslash}p{0.3\textwidth} >{\raggedright\arraybackslash}p{0.3\textwidth} >{\raggedright\arraybackslash}p{0.3\textwidth}}
+\toprule
+\textbf{d6} & \textbf{The Masked Sister} & \textbf{The Veiled Sister} & \textbf{The Helmed Sister} \\
+\midrule
+1 & A character is overwhelmed by a forbidden desire. & A character is offered a deal they cannot refuse. & A character is filled with a sudden, inexplicable rage. \\
+2 & An NPC confesses a deep, shameful secret. & An NPC steals from the party. & An NPC betrays the party. \\
+3 & A character is offered a night of pleasure, but it is a trap. & The party is offered a fortune for a betrayal. & The party is offered a "solution" that involves violence. \\
+4 & A character's true love is threatened. & A character's possession is destroyed or taken. & A character is publicly humiliated. \\
+5 & A character is compelled to act on a base instinct. & A character is compelled to hoard something of value. & A character is compelled to hurt someone. \\
+6 & The Sisters' laughter echoes. The GM gains 2 Story Beats. & The Sisters' laughter echoes. The GM gains 2 Story Beats. & The Sisters' laughter echoes. The GM gains 2 Story Beats. \\
+\bottomrule
+\end{tabularx}
+
+\section{Black Hand Encounter Table}
+
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.1\textwidth} X}
+\toprule
+\textbf{d6} & \textbf{Encounter} \\
+\midrule
+1 & A Black Hand Cantor is interrogating a suspected rebel in the street. \\
+2 & The party is stopped at a checkpoint. The officer is a Black Hand agent. \\
+3 & A friend or ally is replaced by a Black Hand agent. \\
+4 & The party is ambushed by Black Hand thugs. \\
+5 & A Black Hand Cantor attempts to bind a party member's spirit. \\
+6 & The party is offered a deal by a Black Hand agent who is secretly a double agent. \\
+\bottomrule
+\end{tabularx}
+
+\section{The Sisters' Feast Timer}
+
+This timer represents the Sisters' growing power. It ticks when the GM spends Fear.
+
+\begin{itemize}
+    \item \textbf{1-3:} The Sisters are patient. They are watching.
+    \item \textbf{4-6:} The Sisters are growing bolder. Black Hand patrols increase. People become more fearful.
+    \item \textbf{7-8:} The Sisters are feasting. A district is seized. A purge begins.
+\end{itemize}
+
+\section{Fate's Draw Table}
+
+Use this table to determine the nature of the amulet's influence.
+
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.1\textwidth} X}
+\toprule
+\textbf{d6} & \textbf{The Amulet's Whisper} \\
+\midrule
+1 & "There is a path you must walk." (The wielder feels a pull towards a specific location or action.) \\
+2 & "You cannot escape what is coming." (The wielder experiences a vision of a possible future.) \\
+3 & "The Sisters fear you." (The wielder gains +1 die on a roll against the Sisters, but also gains 1 Fear.) \\
+4 & "You are not the first." (The wielder sees a vision of the last emperor, consumed by the amulet.) \\
+5 & "Fate is a thread." (The wielder can see a web of connections between people and events.) \\
+6 & "The amulet is not a prison. It is a magnet." (The wielder realizes the nature of the amulet.) \\
+\bottomrule
+\end{tabularx}
+
+\chapter{Colophon}
+
+This expansion was written in a catacomb beneath New Adaran, by the light of a borrowed lamp. The ink is ash and the blood of a free spirit.
+
+The road is south. The dust is thick. The call for liberation is carried on the wind.
+
+The Sisters are watching. They are always watching.
+
+And the amulet... the amulet is a magnet. It is drawing you towards your fate.
+
+Do you feel it?
+
+\noindent\textit{— Dusana of the Raven Road}
+
+\backmatter
+
+\chapter*{Appendix A: A Glossary of Ashaani Terms}
+
+\begin{itemize}
+    \item \textbf{Ashaan:} The land of the Twin Rivers, the heart of the fallen empire.
+    \item \textbf{Ashaani:} The people of Ashaan, heirs to a fallen empire.
+    \item \textbf{Black Hand:} The Sisters' secret police, composed of bound Cantors.
+    \item \textbf{Breath-less:} The rebel network fighting against the Sisters.
+    \item \textbf{Esoti:} The magistrates and bureaucrats who run Ashaan.
+    \item \textbf{Kalrantha Amulet:} The relic that contains the essence of Fate.
+    \item \textbf{Maeri:} The dynasty of the three Sisters.
+    \item \textbf{Masked Sister:} The sister of lust.
+    \item \textbf{Veiled Sister:} The sister of avarice.
+    \item \textbf{Helmed Sister:} The sister of malice.
+\end{itemize}
+
+\chapter*{Appendix B: Recommended Reading}
+
+\begin{itemize}
+    \item \textit{The Hearth Cycle} — For tales of resistance and community.
+    \item \textit{The Whisper Cycle} — For tales of rebellion and hidden hope.
+    \item \textit{The Salt Cycle} — For tales of the south and its peoples.
+    \item \textit{The Knave's Regret} — For tales of chivalry and consequence.
+\end{itemize}
+
+\end{document}
