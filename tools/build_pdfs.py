@@ -101,7 +101,7 @@ def main():
     parser.add_argument("--debug", action="store_true", help="Pass -d to compile_latex.py")
     parser.add_argument("-j", "--jobs", type=int, default=0,
                         help="Number of parallel builds (default: 0, -j 0 for auto)")
-    parser.add_argument("-b", "--build", type=str, default="kcaetd",
+    parser.add_argument("-b", "--build", type=str, default="kcraetd",
                         help="Build sections: a (adventures), c (core), e (expansions), t (travel), d (design). "
                              "e.g., -b act")
     parser.add_argument("--skip-fix", action="store_true",
@@ -120,7 +120,7 @@ def main():
     #  Section handling – now includes 't' for travel
     # ------------------------------------------------------------
     build_filter = set(args.build.lower())
-    allowed = {'k','a', 'c', 'e', 't', 'd'}
+    allowed = {'k','a', 'c', 'e', 't', 'd', 'r'}
     if not build_filter.issubset(allowed):
         sys.exit(f"Invalid -b option. Use letters from: {', '.join(sorted(allowed))}")
 
@@ -131,6 +131,7 @@ def main():
         't': 'travel',
         'k': 'konreh',
         'd': 'design',
+        'r': 'resources',
     }
     selected_sections = {section_map[ch] for ch in build_filter}
 
