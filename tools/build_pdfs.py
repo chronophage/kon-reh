@@ -247,6 +247,9 @@ def main():
             build_base / "expansions",
             build_base / "travel",
             build_base / "design",
+            build_base / "travel",
+            build_base / "resources",
+            build_base / "konreh",
         ]
         for build_dir in build_dirs:
             if not build_dir.is_dir():
