@@ -114,10 +114,6 @@ def get_branch(file_path: Path) -> str:
             return "travel"   
         if "/design" in path_str:          
             return "design"               
-        if "/resources" in path_str:        
-            return "resources"  
-        if "/resources" in path_str:
-            return "resources"
         return "ttrpg"
     return "./"
 
