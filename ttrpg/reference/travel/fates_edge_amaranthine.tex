@@ -6,20 +6,24 @@
 \geometry{margin=1in}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\usepackage{xcolor}
-
-\usepackage[dvipsnames]{xcolor}   % for colored suits
-\usepackage{amsfonts, amssymb}    % for suit symbols
+\usepackage[dvipsnames]{xcolor}   % single xcolor with dvipsnames
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable}
 
 % ----- Card suit and rank formatting -----
-% Define suit colors (hearts/diamonds red, spades/clubs black)
+
+% Redefine suit symbols to Unicode characters (so they work in text)
+\renewcommand{\spadesuit}{♠}
+\renewcommand{\heartsuit}{♥}
+\renewcommand{\clubsuit}{♣}
+\renewcommand{\diamondsuit}{♦}
+
+% Define suit colors using \ifx (safe for all engines)
 \newcommand{\cardSuit}[1]{%
-  \ifnum\pdfstrcmp{#1}{\spadesuit}=0 \textcolor{black}{\spadesuit}%
-  \else\ifnum\pdfstrcmp{#1}{\heartsuit}=0 \textcolor{red}{\heartsuit}%
-  \else\ifnum\pdfstrcmp{#1}{\diamondsuit}=0 \textcolor{red}{\diamondsuit}%
-  \else\ifnum\pdfstrcmp{#1}{\clubsuit}=0 \textcolor{black}{\clubsuit}%
+  \ifx#1\spadesuit \textcolor{black}{\spadesuit}%
+  \else\ifx#1\heartsuit \textcolor{red}{\heartsuit}%
+  \else\ifx#1\diamondsuit \textcolor{red}{\diamondsuit}%
+  \else\ifx#1\clubsuit \textcolor{black}{\clubsuit}%
   \else #1\fi\fi\fi\fi
 }
 
@@ -29,22 +33,16 @@
     {\cardSuit{#1}\ \textbf{#2}}%
 }
 
-% Optional: shortcut commands for each suit
+% Shortcut commands for each suit
 \newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
 \newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
 \newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
 \newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
 
-% Almanac environment -- adjust as needed
+% Almanac environment
 \newenvironment{almanac}
   {\begin{quote}\small\itshape}
   {\end{quote}}
-
-% Suit symbols -- use Unicode for simplicity
-\newcommand{\spadesuit}{♠}
-\newcommand{\heartsuit}{♥}
-\newcommand{\clubsuit}{♣}
-\newcommand{\diamondsuit}{♦}
 
 \begin{document}
 
