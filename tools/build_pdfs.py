@@ -7,6 +7,7 @@ build/travel/.
 """
 
 import sys
+import os
 import argparse
 import subprocess as sp
 from pathlib import Path
@@ -220,17 +221,26 @@ def main():
     if failures:
         print(f"   Failed: {', '.join(failures)}")
 
+        # ------------------------------------------------------------------
+    #  Summary
     # ------------------------------------------------------------------
-    #  Post‑build clean‑up, text extraction, commit & push
+    print("\n" + "=" * 60)
+    print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
+    if failures:
+        print(f"   Failed: {', '.join(failures)}")
+
+    is_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+
     # ------------------------------------------------------------------
-    if success_count > 0:
+    #  Post‑build clean‑up, text extraction, commit & push (skip in CI)
+    # ------------------------------------------------------------------
+    if success_count > 0 and not is_ci:
         print("\n🧹 Cleaning up (git clean -x -f)")
         run_cmd(["git", "clean", "-x", "-f"], cwd=git_root, check=False)
 
         print("📖 Extracting text from PDFs to ~/fe_work/")
         fe_work = Path.home() / "fe_work"
         fe_work.mkdir(exist_ok=True)
-        # Include the newly‑added travel directory
         build_dirs = [
             build_base,
             build_base / "adventures",
@@ -256,9 +266,10 @@ def main():
         run_cmd(["git", "push"], cwd=git_root, check=True)
         run_cmd(["git", "clean", "-x", "-f"], cwd=git_root, check=False)
         print("\n🎉 Build and commit completed.")
+    elif success_count > 0 and is_ci:
+        print("\n⚠️ Skipping post‑build git commit/push because we are in GitHub Actions.")
     else:
         print("\n⚠️ No documents built successfully – skipping commit and text extraction.")
-
-
+        
 if __name__ == "__main__":
     main()
