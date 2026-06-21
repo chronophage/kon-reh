@@ -88,6 +88,7 @@ Copy this section into your document. Fill it out for each weak region.
 \end{itemize}
 
 \paragraph{Faction Triad}
+Faction in the Realm:
 \begin{tabular}{|p{0.2\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|p{0.2\linewidth}|}
 \hline
 \textbf{Faction} & \textbf{Goal} & \textbf{Method} & \textbf{Why players care} \\
