@@ -1,0 +1,477 @@
+% !TeX program = lualatex
+\documentclass[12pt,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+% ----- Card suit and rank formatting -----
+\renewcommand{\spadesuit}{♠}
+\renewcommand{\heartsuit}{♥}
+\renewcommand{\clubsuit}{♣}
+\renewcommand{\diamondsuit}{♦}
+
+\newcommand{\cardSuit}[1]{%
+  \ifx#1\spadesuit \textcolor{black}{\spadesuit}%
+  \else\ifx#1\heartsuit \textcolor{red}{\heartsuit}%
+  \else\ifx#1\diamondsuit \textcolor{red}{\diamondsuit}%
+  \else\ifx#1\clubsuit \textcolor{black}{\clubsuit}%
+  \else #1\fi\fi\fi\fi
+}
+
+\newcommand{\card}[2]{%
+  \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
+    {\cardSuit{#1}\ \textbf{#2}}%
+}
+
+\newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
+\newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
+\newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
+\newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
+
+% ----- Almanac environment for regional flavor -----
+\newenvironment{almanac}
+  {\begin{quote}\small\itshape}
+  {\end{quote}}
+
+% ----- Cross-reference convenience -----
+\newcommand{\secref}[1]{§\ref{#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{#1}}
+
+\begin{document}
+
+% ======================================================================
+% FRONT MATTER
+% ======================================================================
+\frontmatter
+
+\title{\Huge Fate's Edge\\[0.3\baselineskip]
+\large The Amaranthine Core}
+\author{Three Voices of the Road \\ \small (with apologies to the sea)}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\chapter*{Preface: Three Voices}
+\addcontentsline{toc}{chapter}{Preface}
+
+\noindent
+This book is not a travel guide. It is a collection of thresholds: bridges that remember every toll, fog-bells that count your breaths, stones that warm when you speak a true name. Three travelers have walked these roads before you. They have agreed to lend their voices to the pages that follow. Listen to each; they will disagree, and that is the point.
+
+\vspace{1em}
+\noindent\textbf{Lady Isolde of the Scar, Fifth of Her Name}
+\newline
+\textit{``The sun shattered at Lence. The pieces are still falling. Which shadow will catch you?''}
+
+I am Isolde, and I have worn a gorget to three tournaments, buried two brothers, and learned that chivalry is not a code -- it is a weight. You carry it or it crushes you. There is no third option. My family has held the valley north of Rouen since before the Fenwoods burned Lence. In the high season we joust; in the low season we scheme. The Belworth River is our border and our wound. I speak for Vhasia, for Viterra, for the hedge-law courts and the fractured sun. When I tell you a bridge will hold, I have counted its stones. When I warn you a lord cannot be trusted, I have seen the crack in his seal.
+
+\vspace{1em}
+\noindent\textbf{The Bravo of Silkstrand (no other name, no other need)}
+\newline
+\textit{``Every bridge is a promise. Every canal carries a secret. But the best secrets are the ones you share over wine.''}
+
+I am nobody -- or I was, once. The canals of Silkstrand do not care about your bloodline. They care about your stroke with an oar and your aim with a dagger. I started as a dock-rat, became a duelist, and now I am something else: a witness to the city that never sleeps. The Exchange closes at midnight, but the bargains never end. I have won purses and lost friends, and I still smile. Why? Because the sun rises over the laguna every morning, and there is always another bridge to cross. I speak for Silkstrand, for the Brass Coast, for the Sidhi freedmen who taught me that freedom is a story you tell yourself until it becomes true.
+
+\vspace{1em}
+\noindent\textbf{The Edgewalker (Aeler, name forgotten by design)}
+\newline
+\textit{``The mountain breathes. The stone remembers. I am the crack in both.''}
+
+I am an Aeler Edgewalker. You call us mountain-dwellers who measure breath in silver bells and seal our agreements in keystone. How quaint. We don't just measure breath -- we know the load each lung can bear. When a Tulkani chieftain swears an oath on his firstborn? That's not honor -- it's a keystone I've already wedged into three different seals. The first crack was his. The second was mine. When a Veiled Sister binds a demon? That's not terror -- it's a fault line I've traced in the bedrock. The first tremor was hers. The second is coming. You see the surface as ``full of problems.'' I see the weight in the stone, the strain in the beam. Problems are not obstacles -- they are the pressure that shapes the mountain. I speak for the Aeler, for the Mistlands, for the deep vaults where the Hollow is not a myth but a flaw in the foundation. When I tell you a tunnel is sound, I have walked its stress lines. When I tell you to flee, trust the stone's memory.
+
+\vspace{1em}
+\noindent
+The three of us have walked these roads. We have paid our tolls -- in blood, in silver, in silence. Use the cards to find your own. When you are lost, ask: \emph{What does this place witness? And what does it ask in return?}
+
+Then listen. The road is patient. The Hollow is patient. We are not. But we have left the lamp lit for you.
+
+% ======================================================================
+% MAIN MATTER
+% ======================================================================
+\mainmatter
+
+% ----------------------------------------------------------------------
+% PART 0: REFERENCE AND NAVIGATION
+% ----------------------------------------------------------------------
+\part{Reference and Navigation}
+
+\chapter{Reference and Navigation}
+\label{chap:reference-navigation}
+
+\section*{How to Use This Chapter}
+
+This chapter is a map to the map. It organizes every region, mechanic, and generator in the Amaranthine Core setting book, allowing you to find what you need quickly at the table or during prep.
+
+\medskip
+\noindent
+Each region entry includes:
+\begin{itemize}
+  \item The \textbf{chapter label} for the full region description
+  \item \textbf{Key section labels} for NPCs, places, complications, rewards, mechanics, and more
+  \item \textbf{Cross-references} to related content (cartomancy, travel, lore echoes)
+\end{itemize}
+
+\medskip
+\noindent
+For the cartomancy generator procedure, see \secref{chap:cartomancer-compass}. For travel procedures and the Wilds hexcrawl, see \secref{chap:wilderness}.
+
+% ======================================================================
+% PART I: THE CARTOMANCER'S COMPASS
+% ======================================================================
+
+\chapter*{The Cartomancer's Compass}
+\label{chap:cartomancer-compass}
+\addcontentsline{toc}{chapter}{The Cartomancer's Compass}
+
+\begin{quote}
+\textit{``The world does not speak in words. It speaks in suits, ranks, and the spaces between. Every bridge, every bribe, every broken oath can be laid out on a table of felt and dealt from a worn deck. This is not superstition. It is method.''}\\
+\hfill --- Mira of the Wandering Circle, Tulkani cartomancer
+\end{quote}
+
+\section*{A Tulkani Perspective on the Art}
+
+I was seven when my grandmother first placed a deck in my hands. Not a new deck---a worn one, its edges soft as silk, its faces faded by a hundred thousand shuffles. ``This is your first threshold,'' she said. ``Learn to read it, and you will never be lost.''
+
+The Tulkani do not build temples. We build fires. We do not carve scriptures into stone; we let the cards tell us what the road has seen. Cartomancy is our witch-work, our way of reading the Echo (what has been), steadying the Veil (what is), and leaning into Flow (what wishes to be). It is not fortune-telling. It is witnessing---a conversation with the world's memory, conducted through the language of suits and ranks.
+
+The other peoples of Fate's Edge have their own names for what we do. The Aeler call us ``thread-readers'' and hire us to audit their ledgers. The Ykrul call us ``bone-speakers'' and consult us before every migration. The Ecktorian Inquisition calls us heretics and burns our decks when they find them. We keep shuffling.
+
+This chapter is my gift to the road. It explains how to read the cards as we do---not as a tool for controlling fate, but as a way of listening to what the world has already decided to tell you.
+
+\section*{The Four Suits: A Universal Grammar}
+
+Every card in every generator carries the same four suit-meanings. They are the alphabet of the world's witness. In the Tulkani tradition, we say the suits are the four breaths of the world:
+
+\subsection*{\spadesuit\ Spades: Place --- The Stage}
+
+Where does the scene happen? \spadesuit\ is the threshold, the landmark, the ground beneath the action. It answers: \textit{Where are we?}
+
+\begin{itemize}
+    \item \textbf{High rank (10--A):} A major landmark---a fortress, a capital, a haunted ruin.
+    \item \textbf{Mid rank (6--9):} A functional location---a ford, a market, a shrine.
+    \item \textbf{Low rank (2--5):} A liminal or neglected place---a crossroads, a collapsed bridge, a smuggler's cove.
+\end{itemize}
+
+\subsection*{\heartsuit\ Hearts: Actor --- The Face}
+
+Who drives the scene? \heartsuit\ is the person, the faction, the voice that speaks. It answers: \textit{Who is here?}
+
+\begin{itemize}
+    \item \textbf{High rank (J--A):} An elite, a ruler, a power-broker.
+    \item \textbf{Mid rank (6--10):} A professional, a functionary, a skilled operator.
+    \item \textbf{Low rank (2--5):} A commoner, an outcast, a victim.
+\end{itemize}
+
+\subsection*{\clubsuit\ Clubs: Pressure --- The Complication}
+
+What pushes back? \clubsuit\ is the storm, the burden, the knife in the dark. It answers: \textit{What goes wrong?}
+
+\begin{itemize}
+    \item \textbf{High rank (10--A):} A catastrophe, a betrayal, an invasion.
+    \item \textbf{Mid rank (6--9):} A serious obstacle---a feud, a quarantine, a broken bridge.
+    \item \textbf{Low rank (2--5):} A minor hazard---a sudden squall, a lost token, a raised toll.
+\end{itemize}
+
+\subsection*{\diamondsuit\ Diamonds: Leverage --- The Reward}
+
+What opens the door? \diamondsuit\ is the token, the writ, the secret that changes Position. It answers: \textit{What do you gain?}
+
+\begin{itemize}
+    \item \textbf{High rank (J--A):} A major asset---a noble title, a keystone charter, a general pardon.
+    \item \textbf{Mid rank (6--10):} A significant tool---a pass-stone, a witness cord, a lighthouse charter.
+    \item \textbf{Low rank (2--5):} A minor advantage---a bridge token, a guest-cup, a rumor.
+\end{itemize}
+
+\section*{Rank and Severity: The Weight of the Card}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Rank} & \textbf{Narrative Weight} \\
+\hline
+Ace & Legendary, campaign-altering, mythic \\
+King/Queen/Jack & Major, faction-level, lasting consequences \\
+10--7 & Significant, scene-defining, costly \\
+6--4 & Moderate, manageable, a real cost \\
+3--2 & Minor, a complication but not a crisis \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+\textbf{Timer Conversion:}
+\begin{itemize}
+    \item 2--5: 4-segment timer
+    \item 6--10: 6-segment timer
+    \item J, Q, K: 8-segment timer
+    \item A: 10-segment timer
+\end{itemize}
+
+\section*{Card Faces: The Court as Character}
+
+\begin{itemize}
+    \item \textbf{Jack:} An agent, a functionary, a messenger.
+    \item \textbf{Queen:} A power in their own right.
+    \item \textbf{King:} The ultimate authority in their domain.
+\end{itemize}
+
+\section*{Aces and the Ninth: The Hollow's Attention}
+
+When an Ace appears in any draw, the Hollow takes notice. The GM gains 1 extra Story Beat (beyond any generated by 1s) to spend on a supernatural complication.
+
+\section*{Procedure for Any Generator}
+
+\begin{enumerate}
+    \item \textbf{Name the destination.}
+    \item \textbf{Shuffle and draw.}
+    \item \textbf{Read the \spadesuit.} This is your place.
+    \item \textbf{Read the \heartsuit.} This is your actor.
+    \item \textbf{Read the \clubsuit.} This is your pressure.
+    \item \textbf{Read the \diamondsuit.} This is your leverage.
+    \item \textbf{Set the timer.} Use the highest rank.
+    \item \textbf{Interpret faces and Aces.}
+    \item \textbf{Play to find out.}
+\end{enumerate}
+
+\section*{Example: A Draw in Acasia}
+
+Draw: \spadesuit 7, \heartsuit J, \clubsuit 4, \diamondsuit Q
+
+\begin{enumerate}
+    \item \spadesuit 7: Hill-Motte---fresh palisade; ditch scattered with caltrops.
+    \item \heartsuit J: Bride with No Dowry but a Claim---daggers in the wedding chest.
+    \item \clubsuit 4: Wedding Turns Ambush---caught between two bloodlines.
+    \item \diamondsuit Q: Marriage Proxy---from the Margravine; bind a hill-king to your cause.
+    \item Timer: 8 segments --- \textit{The Feud Escalates [8]}.
+\end{enumerate}
+
+\section*{The Unwritten Suit: When a Draw Is Incomplete}
+
+\begin{itemize}
+    \item \textbf{No \spadesuit:} The place is ambiguous, shifting, or hidden.
+    \item \textbf{No \heartsuit:} The actor is absent, silent, or dead.
+    \item \textbf{No \clubsuit:} The scene is calm, peaceful, or mercifully straightforward.
+    \item \textbf{No \diamondsuit:} The reward is an outcome, not a token.
+\end{itemize}
+
+\section*{Tulkani Cartomancy Traditions}
+
+\subsection*{The Traveler's Spread (Three Cards)}
+\begin{itemize}
+    \item First Card: The road behind.
+    \item Second Card: The road ahead.
+    \item Third Card: The road beneath.
+\end{itemize}
+
+\subsection*{The Hollow's Spread (Five Cards)}
+\begin{itemize}
+    \item First Card: The weight you carry.
+    \item Second Card: The weight you owe.
+    \item Third Card: The weight you have forgotten.
+    \item Fourth Card: The weight that carries you.
+    \item Fifth Card: The weight that will collect.
+\end{itemize}
+
+\begin{quote}
+\textit{``The cards do not lie. But they do not tell the whole truth. The rest is yours to live.''}\\
+\hfill --- Mira of the Wandering Circle
+\end{quote}
+
+% ======================================================================
+% PART I: THE AMARANTHINE SEA & NORTHERN SHORES
+% ======================================================================
+\part{The Amaranthine Sea \& Northern Shores}
+
+\begin{quote}
+  \small
+  \textit{``The sea keeps a better memory than any scribe. The reef remembers every secret whispered above its depths. Do not ask which flag flies highest -- ask which hull leaks slowest.''}
+  \\ --- The Bravo of Silkstrand
+\end{quote}
+
+\newpage
+\input{../generators/kahfagia.tex}
+\newpage
+\input{../generators/ecktoria.tex}
+\newpage
+\input{../generators/acasia.tex}
+\newpage
+\input{../generators/vhasia.tex}
+\newpage
+\input{../generators/viterra.tex}
+\newpage
+\input{../generators/thepyrgos.tex}
+
+% ======================================================================
+% PART II: THE NORTHERN REACHES
+% ======================================================================
+\part{The Northern Reaches}
+
+\begin{quote}
+  \small
+  \textit{``The mountain counts your breaths. The frost writes your name in ice. In the north, the dead do not wait -- they walk, and they remember every promise you made to keep warm.''}
+  \\ --- The Edgewalker
+\end{quote}
+
+\newpage
+\input{../generators/aeler.tex}
+\newpage
+\input{../generators/mistlands.tex}
+\newpage
+\input{../generators/ykrul.tex}
+\newpage
+\input{../generators/vilikari.tex}
+\newpage
+\input{../generators/black_banner.tex}
+\newpage
+\input{../generators/linns.tex}
+
+% ======================================================================
+% PART III: THE SPACES BETWEEN
+% ======================================================================
+\part{The Spaces Between}
+
+\begin{quote}
+  \small
+  \textit{``The Ways Between do not measure miles. They measure choices. A wrong turn might lead to yesterday. A right turn might lead to a version of yourself who made a different decision -- and is still alive to regret it.''}
+  \\ --- The Edgewalker
+\end{quote}
+
+\newpage
+\input{../generators/ubral.tex}
+\newpage
+\input{../generators/silkstrand.tex}
+\newpage
+\input{../generators/midh-akhaz.tex}
+
+% ======================================================================
+% PART IV: THE WILDS, DUNGEONS, AND WAYS BETWEEN
+% ======================================================================
+\part{The Wilds, Dungeons, and Ways Between}
+
+\newpage
+\input{../generators/ways_between.tex}
+\newpage
+\input{../generators/wilderness.tex}
+\newpage
+\input{../generators/dungeons.tex}
+
+% ======================================================================
+% PART V: ADDITIONAL REGIONS (UNDER DEVELOPMENT)
+% ======================================================================
+\part*{Additional Regions}
+\addcontentsline{toc}{part}{Additional Regions}
+
+\begin{quote}
+  \small
+  \textit{``The road is long. The other regions will wait.''}
+  \\ --- The Gray Wanderer
+\end{quote}
+
+\chapter*{Regions Under Development}
+\addcontentsline{toc}{chapter}{Regions Under Development}
+
+The following regions are part of the Amaranthine Core but are currently under development. They will be available in future expansions.
+
+\section*{Theona --- \textit{Three Greens, No Ninth}}
+Celtic folk horror, the Green Host, the Ninth Taboo.
+
+\section*{Aelaerem --- \textit{Hearth \& Hollow}}
+Folk horror, the Neighbors, harvest famine.
+
+\section*{Aelinnel --- \textit{Stone, Bough, and Bright Things}}
+Fae/mathematical horror, the Green Gate, courtesy horror.
+
+\section*{Valewood --- \textit{Empire Under Leaves}}
+Fairy tale dark forest, fey remnant, imperial echoes.
+
+\section*{Zakov --- \textit{Salt \& Serpent}}
+Pirate noir, crime syndicate, cursed cargoes.
+
+\section*{Other Regions}
+\begin{itemize}
+  \item \textbf{Ashaan} --- Eastern desert peninsula, Veiled Throne
+  \item \textbf{Fhara} --- Desert peninsula, oasis courts
+  \item \textbf{Ngomebe} --- Walking cities of the southern plateau
+  \item \textbf{Sekogo} --- Jungle realm, Green Council
+  \item \textbf{Taharka} --- Highland kingdom of the Monsoon Crown
+  \item \textbf{Pereshi} --- Highland fire-temple nation
+  \item \textbf{Kuvani} --- Eastern steppe remount clans
+  \item \textbf{Tulkani} --- Itinerant storytellers and dream-carriers
+  \item \textbf{Sidhi} --- Diaspora people of the Brass Coast
+  \item \textbf{Oshiira} --- Grain confederacy, Vermilion Corps
+  \item \textbf{Nine Kingdoms (Dahara)} --- Elephant kingdoms of the monsoon lowlands
+  \item \textbf{Crimson Valley} --- Lethai-ar homeland
+\end{itemize}
+
+% ======================================================================
+% EPILOGUE
+% ======================================================================
+\chapter*{The Memory Closes}
+\addcontentsline{toc}{chapter}{The Memory Closes}
+
+\noindent
+\textit{``The road is south. The ink is fresh. The lamp is borrowed.''} \\
+\hfill --- Silkstrand Bravo
+
+\vspace{0.5em}
+\noindent
+\textit{``The sea does not forgive, but it does forget -- if you give it a story worth remembering.''} \\
+\hfill --- Lady Isolde
+
+\vspace{0.5em}
+\noindent
+\textit{``The ledger is closed. The knife is still sharp. Your name is next.''} \\
+\hfill --- Aeler Edgewalker
+
+\vspace{2em}
+\begin{quote}
+  \small
+  \textit{``The road is a memory. Every oasis is a story, every broken wheel a lesson. The Tulkani tie knots to remember who shared what. The Fhara weigh water before they weigh silver. The Pereshi recite verses to keep the bridges open. And the Sidhi keep lighthouse lamps burning for the dead who still have not reached the shore.''}
+  \\ --- Dusana of the Raven Road, at a caravanserai whose name she refused to give
+\end{quote}
+
+% ======================================================================
+% CODA
+% ======================================================================
+\begin{chapter*}{Coda: A Random Encounter (Not Really) at the Three-Mugs Inn}
+\addcontentsline{toc}{chapter}{Coda: A Random Encounter (Not Really) at the Three-Mugs Inn}
+
+The night air was just shy of frost, and the Three-Mugs Inn smelled of spiced ale, damp wool, and the faint promise of gossip that had been sitting on the bar for a week. The fire crackled low, casting a wavering amber glow over the handful of patrons who pretended not to be listening to each other's stories.
+
+A soft creak announced the door's opening. In stepped a woman whose scarred cheek caught the firelight like a fresh-drawn blade. She brushed snow from her cloak, set her sword-hand on the hilt of a well-worn blade, and surveyed the room with the practiced eye of someone who had counted the stones of every bridge she'd crossed.
+
+``Evening,'' she said, voice low but carrying. ``I'm Isolde of the Scar. Does anyone know if the road north of the Belworth still has that\dots unsettling gap where the stones whisper?''
+
+A ripple of laughter rose from the corner where a lanky figure leaned back, a grin playing at the corners of his mouth. His cloak was patched with bright dyed patches, and a dagger dangled from his belt like an after-thought. He tipped an imaginary hat.
+
+``Name's\dots well, I don't really need one, but you can call me Bravo. I've been tracing the canals of Silkstrand all day---turns out the ninth bridge only appears when the tide's feeling generous. You looking for a shortcut, or just a story to trade for a mug?''
+
+From the shadows near the hearth emerged a third figure, tall and gaunt, whose breath seemed to fog the air even as the fire licked his boots. He carried no weapon, only a small brass bell that hung from his neck, silent for now. His eyes were the color of stone-wet after a storm, and he spoke in a tone that made the crackling fire sound like a distant rumble.
+
+``Aeler,'' he said, the name barely more than a whisper. ``I've been walking the old tunnels beneath the Aeler holds. The stone remembers every footfall, and it's been\dots restless lately. If you're looking for a place that won't collapse under the weight of your expectations, I know a few shafts that still hold.''
+
+The trio fell into an uneasy silence, each measuring the other not with suspicion but with the quiet respect of strangers who have walked too many roads to be surprised by another traveler's tale.
+
+Isolde glanced at the bravo's dagger, then at the bell at the Aeler's throat. ``You both carry\dots reminders.''
+
+Bravo chuckled, tapping the hilt of his blade. ``A reminder that I still owe someone a drink.''
+
+Aeler lifted the bell just enough for it to give a faint, reluctant chime. ``And a reminder that some debts are measured in breath, not coin.''
+
+The innkeeper, a stout woman with a flour-dusted apron, slid three mugs across the bar without a word. The ale was dark, frothy, and smelled faintly of rosemary---exactly the sort of thing that made a warrior think of home, a rogue think of a clever bargain, and a stone-walker think of the weight of a promise kept.
+
+They clinked mugs, the sound a brief, bright note against the low hum of the tavern. No grand quest was sworn, no ancient prophecy whispered. They simply sat, drank, and let the night settle into the familiar rhythm of strangers who, for a moment, shared the same fire, the same stale bread, and the same unspoken understanding that the road ahead would be just as muddy, just as bright, and just as full of stories as the one they'd just left behind.
+
+When the moon rose high enough to silver the snow outside, each rose, tucked their respective token---sword, dagger, bell---back into their packs, and slipped back into the night. They did not exchange names again; they did not need to. The Three-Mugs Inn would remember them only as the three who came in, shared a drink, and left without making a fuss---exactly the sort of uneventful, perfectly ordinary encounter that makes a tavern worth its name.
+
+\end{chapter*}
+
+\end{document}

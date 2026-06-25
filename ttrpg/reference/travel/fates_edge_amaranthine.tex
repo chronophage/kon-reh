@@ -6,19 +6,18 @@
 \geometry{margin=1in}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\usepackage[dvipsnames]{xcolor}   % single xcolor with dvipsnames
+\usepackage[dvipsnames]{xcolor}
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable}
+\usepackage{makeidx}
+\makeindex
 
 % ----- Card suit and rank formatting -----
-
-% Redefine suit symbols to Unicode characters (so they work in text)
 \renewcommand{\spadesuit}{♠}
 \renewcommand{\heartsuit}{♥}
 \renewcommand{\clubsuit}{♣}
 \renewcommand{\diamondsuit}{♦}
 
-% Define suit colors using \ifx (safe for all engines)
 \newcommand{\cardSuit}[1]{%
   \ifx#1\spadesuit \textcolor{black}{\spadesuit}%
   \else\ifx#1\heartsuit \textcolor{red}{\heartsuit}%
@@ -27,28 +26,30 @@
   \else #1\fi\fi\fi\fi
 }
 
-% Command to print a full card: \card{♠}{A} or \card{\spadesuit}{10}
 \newcommand{\card}[2]{%
   \tcbox[colback=white, colframe=gray!50, sharp corners, boxsep=1pt, left=2pt, right=2pt, top=1pt, bottom=1pt]%
     {\cardSuit{#1}\ \textbf{#2}}%
 }
 
-% Shortcut commands for each suit
 \newcommand{\spadecard}[1]{\card{\spadesuit}{#1}}
 \newcommand{\heartcard}[1]{\card{\heartsuit}{#1}}
 \newcommand{\clubcard}[1]{\card{\clubsuit}{#1}}
 \newcommand{\diamondcard}[1]{\card{\diamondsuit}{#1}}
 
-% Almanac environment
+% ----- Almanac environment for regional flavor -----
 \newenvironment{almanac}
   {\begin{quote}\small\itshape}
   {\end{quote}}
 
+% ----- Cross-reference convenience -----
+\newcommand{\secref}[1]{§\ref{#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{#1}}
+
 \begin{document}
 
-% ----------------------------------------------------------------------
+% ======================================================================
 % FRONT MATTER
-% ----------------------------------------------------------------------
+% ======================================================================
 \frontmatter
 
 \title{\Huge Fate's Edge\\[0.3\baselineskip]
@@ -58,8 +59,6 @@
 \maketitle
 
 \tableofcontents
-
-
 
 \newpage
 
@@ -72,23 +71,23 @@ This book is not a travel guide. It is a collection of thresholds: bridges that 
 \vspace{1em}
 \noindent\textbf{Lady Isolde of the Scar, Fifth of Her Name}
 \newline
-\textit{''The sun shattered at Lence. The pieces are still falling. Which shadow will catch you?``}
+\textit{``The sun shattered at Lence. The pieces are still falling. Which shadow will catch you?''}
 
 I am Isolde, and I have worn a gorget to three tournaments, buried two brothers, and learned that chivalry is not a code -- it is a weight. You carry it or it crushes you. There is no third option. My family has held the valley north of Rouen since before the Fenwoods burned Lence. In the high season we joust; in the low season we scheme. The Belworth River is our border and our wound. I speak for Vhasia, for Viterra, for the hedge-law courts and the fractured sun. When I tell you a bridge will hold, I have counted its stones. When I warn you a lord cannot be trusted, I have seen the crack in his seal.
 
 \vspace{1em}
 \noindent\textbf{The Bravo of Silkstrand (no other name, no other need)}
 \newline
-\textit{''Every bridge is a promise. Every canal carries a secret. But the best secrets are the ones you share over wine.``}
+\textit{``Every bridge is a promise. Every canal carries a secret. But the best secrets are the ones you share over wine.''}
 
 I am nobody -- or I was, once. The canals of Silkstrand do not care about your bloodline. They care about your stroke with an oar and your aim with a dagger. I started as a dock-rat, became a duelist, and now I am something else: a witness to the city that never sleeps. The Exchange closes at midnight, but the bargains never end. I have won purses and lost friends, and I still smile. Why? Because the sun rises over the laguna every morning, and there is always another bridge to cross. I speak for Silkstrand, for the Brass Coast, for the Sidhi freedmen who taught me that freedom is a story you tell yourself until it becomes true.
 
 \vspace{1em}
 \noindent\textbf{The Edgewalker (Aeler, name forgotten by design)}
 \newline
-\textit{''The mountain breathes. The stone remembers. I am the crack in both.``}
+\textit{``The mountain breathes. The stone remembers. I am the crack in both.''}
 
-I am an Aeler Edgewalker. You call us mountain-dwellers who measure breath in silver bells and seal our agreements in keystone. How quaint. We don''t just measure breath -- we know the load each lung can bear. When a Tulkani chieftain swears an oath on his firstborn? That's not honor -- it's a keystone I``ve already wedged into three different seals. The first crack was his. The second was mine. When a Veiled Sister binds a demon? That's not terror -- it's a fault line I''ve traced in the bedrock. The first tremor was hers. The second is coming. You see the surface as ``full of problems.'' I see the weight in the stone, the strain in the beam. Problems are not obstacles -- they are the pressure that shapes the mountain. I speak for the Aeler, for the Mistlands, for the deep vaults where the Hollow is not a myth but a flaw in the foundation. When I tell you a tunnel is sound, I have walked its stress lines. When I tell you to flee, trust the stone's memory.
+I am an Aeler Edgewalker. You call us mountain-dwellers who measure breath in silver bells and seal our agreements in keystone. How quaint. We don't just measure breath -- we know the load each lung can bear. When a Tulkani chieftain swears an oath on his firstborn? That's not honor -- it's a keystone I've already wedged into three different seals. The first crack was his. The second was mine. When a Veiled Sister binds a demon? That's not terror -- it's a fault line I've traced in the bedrock. The first tremor was hers. The second is coming. You see the surface as ``full of problems.'' I see the weight in the stone, the strain in the beam. Problems are not obstacles -- they are the pressure that shapes the mountain. I speak for the Aeler, for the Mistlands, for the deep vaults where the Hollow is not a myth but a flaw in the foundation. When I tell you a tunnel is sound, I have walked its stress lines. When I tell you to flee, trust the stone's memory.
 
 \vspace{1em}
 \noindent
@@ -96,1005 +95,84 @@ The three of us have walked these roads. We have paid our tolls -- in blood, in 
 
 Then listen. The road is patient. The Hollow is patient. We are not. But we have left the lamp lit for you.
 
-\newpage
-
+% ======================================================================
+% MAIN MATTER
+% ======================================================================
 \mainmatter
+
 % ----------------------------------------------------------------------
-% CHAPTER: REFERENCE AND NAVIGATION
+% PART 0: REFERENCE AND NAVIGATION (LEAN)
 % ----------------------------------------------------------------------
-% This chapter provides a structured index and navigation guide to the
-% regions, mechanics, and cartomancy tools of the Amaranthine Core.
-% All labels are keyed to the regions defined in the setting book.
-% ----------------------------------------------------------------------
+\part{Reference and Navigation}
 
 \chapter{Reference and Navigation}
 \label{chap:reference-navigation}
 
 \section*{How to Use This Chapter}
 
-This chapter is a map to the map. It organizes every region, mechanic, and generator in the Amaranthine Core setting book, allowing you to find what you need quickly at the table or during prep.
+This chapter provides a structured index and navigation guide to the regions, mechanics, and cartomancy tools of the Amaranthine Core.
 
 \medskip
 \noindent
-Each region entry includes:
-\begin{itemize}
-  \item The \textbf{chapter label} for the full region description
-  \item \textbf{Key section labels} for NPCs, places, complications, rewards, mechanics, and more
-  \item \textbf{Cross-references} to related content (cartomancy, travel, lore echoes)
-\end{itemize}
+For the cartomancy generator procedure, see \secref{chap:cartomancer-compass}. For travel procedures and the Wilds hexcrawl, see \secref{chap:wilderness}.
 
-\medskip
-\noindent
-For the cartomancy generator procedure, see \S\ref{chap:cartomancer-compass}. For travel procedures and the Wilds hexcrawl, see \S\ref{chap:wilderness}.
+\section{Quick Reference by Region}
 
-% ======================================================================
-% PART I: THE CARTOMANCER'S COMPASS (CORE NAVIGATION TOOL)
-% ======================================================================
-
-\section{The Cartomancer's Compass}
-\label{sec:cartomancer-navigation}
-
-The cartomancy system is the primary GM tool for generating scenes, settlements, and travel legs. Its structure is simple:
-
-\begin{itemize}
-  \item \textbf{\spadesuit Spades:} Place — the setting or landmark
-  \item \textbf{\heartsuit Hearts:} Actor — the people or factions present
-  \item \textbf{\clubsuit Clubs:} Pressure — the complications or threats
-  \item \textbf{\diamondsuit Diamonds:} Leverage — the rewards or advantages
-\end{itemize}
-
-The rank of each card determines its scale; face cards and aces add character and omen. For the full procedure, including the Hollow's attention and the Three Prices, see \S\ref{chap:cartomancer-compass}.
-
-\noindent
-\textbf{Cross-reference:}
-\begin{itemize}
-  \item Cartomancy as witchcraft: \S\ref{chap:cartomancer-compass}
-  \item Tulkani cartomancy traditions: \S\ref{chap:cartomancer-compass}
-  \item The Hollow's Spread (five-card ritual): \S\ref{chap:cartomancer-compass}
-\end{itemize}
-
-% ======================================================================
-% PART II: REGIONS OF THE AMARANTHINE CORE
-% ======================================================================
-
-\section{The Amaranthine Sea \& Northern Shores}
-
-\subsection{Kahfagia — \textit{The Creole Thalassocracy}}
-\label{sec:kahfagia-navigation}
-
-The sea-keeping thalassocracy of signal-lights, oligarchic families, and the Spider's web.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:kahfagia} \\
-\textbf{NPCs}                & \S\ref{sec:kahfagia-npcs} \\
-\textbf{Oligarchic Houses}   & \S\ref{sec:kahfagia-houses} \\
-\textbf{Silk Vigil}          & \S\ref{sec:kahfagia-silk-vigil} \\
-\textbf{Names}               & \S\ref{sec:kahfagia-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:kahfagia-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:kahfagia-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:kahfagia-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:kahfagia-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:kahfagia-quick-use} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:kahfagia-mechanics} \\
-\textbf{SB Spend Table}      & \S\ref{sec:kahfagia-sb} \\
-\textbf{Amaria (Iron Shore)} & \S\ref{sec:kahfagia-amaria} \\
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Region} & \textbf{Subgenre / Key Theme} \\
+\hline
+Kahfagia & Creole thalassocracy, signal-lane politics, Lethai-ar infiltration \\
+Ecktoria & Imperial decay, bureaucratic horror, the Vigil's three faces \\
+Acasia & Mercenary realism, cursed borderlands, the Curse Awakening \\
+Vhasia & Courtly intrigue, fractured legitimacy, the wound of Lence \\
+Viterra & Legal warfare, frontier justice, the Queen's fragile peace \\
+Thepyrgos & Vertical city, synod edicts, war between Witness and Ninth \\
+Aeler & Survival horror underground, breath-counting, the pressure that thinks \\
+Mistlands & Folk horror, bell-lines, salt as law, Direwood encroachment \\
+Ykrul & Nomadic epic, Kon'reh geometry, hostage strings, wolf standards \\
+Vilikari & Legal dualism, hybrid identity, frontier pragmatism \\
+Black Banners & Mercenary realism, logistics-driven violence \\
+Linn & Norse coastal saga, frost-bound oaths, Temple crusade \\
+Ubral & Highland clan honor, wergild, geometry of grudges \\
+Silkstrand & Mercantile intrigue, layered loyalties, the Ragman's threads \\
+The Wilds & Hexcrawl wanderlust, weather as character \\
+Dungeons & Living infrastructure, survival horror, forgotten machinery \\
+The Ways Between & Dream-death metaphysical, virtue and vice, the Thirteenth Stone \\
+\hline
 \end{tabular}
+\end{center}
 
-\medskip
-\noindent
-\textbf{Key Themes:} signal-lane politics, eldritch tide, Lethai-ar infiltration, creole mercantilism.
-
-\subsection{Ecktoria — \textit{Marble \& Fire}}
-\label{sec:ecktoria-navigation}
-
-The fallen imperial heart, where marble remembers and the flame judges.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:ecktoria} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:ecktoria-mechanics} \\
-\textbf{SB Spend Table}      & \S\ref{sec:ecktoria-sb} \\
-\textbf{Extensions}          & \S\ref{sec:ecktoria-extensions} \\
-\textbf{Conspiracies}        & \S\ref{sec:ecktoria-conspiracies} \\
-\textbf{Cults \& Rites}      & \S\ref{sec:ecktoria-cults} \\
-\textbf{Religious Schisms}   & \S\ref{sec:ecktoria-schisms} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} imperial decay, bureaucratic horror, the Vigil's three faces, Renaissance decadence.
-
-\noindent
-\textbf{Note:} Ecktoria's Spades, Hearts, Clubs, and Diamonds tables are embedded in the region text rather than separated into distinct sections; refer to the region chapter directly.
-
-\subsection{Acasia — \textit{The Broken Marches}}
-\label{sec:acasia-navigation}
-
-The cursed borderland where roads loop and the empire's ghost still marches.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:acasia} \\
-\textbf{NPCs}                & \S\ref{sec:acasia-npcs} \\
-\textbf{Names}               & \S\ref{sec:acasia-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:acasia-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:acasia-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:acasia-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:acasia-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:acasia-quick-use} \\
-\textbf{SB Spend Table}      & \S\ref{sec:acasia-sb} \\
-\textbf{Boss Seeds}          & \S\ref{sec:acasia-bosses} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} mercenary realism, cursed borderlands, the Curse Awakening timer, famine and ambition.
-
-\subsection{Vhasia — \textit{The Fractured Sun}}
-\label{sec:vhasia-navigation}
-
-The kingdom of broken coronations, split loyalties, and the wound of Lence.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:vhasia} \\
-\textbf{NPCs}                & \S\ref{sec:vhasia-npcs} \\
-\textbf{Names}               & \S\ref{sec:vhasia-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:vhasia-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:vhasia-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:vhasia-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:vhasia-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:vhasia-quick-use} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:vhasia-mechanics} \\
-\textbf{Lore Echoes}         & \S\ref{sec:vhasia-lore} \\
-\textbf{SB Spend Table}      & \S\ref{sec:vhasia-sb} \\
-\textbf{Campaign Timers}     & \S\ref{sec:vhasia-campaign-timers} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} courtly intrigue, chevauchée warfare, fractured legitimacy, the tragedy of chivalry.
-
-\subsection{Viterra — \textit{The Hedge-Law Realm}}
-\label{sec:viterra-navigation}
-
-The kingdom of legal duels, frontier justice, and the Queen's fragile peace.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:viterra} \\
-\textbf{NPCs}                & \S\ref{sec:viterra-npcs} \\
-\textbf{Names}               & \S\ref{sec:viterra-names} \\
-\textbf{Using the Deck}      & \S\ref{sec:viterra-deck} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:viterra-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:viterra-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:viterra-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:viterra-rewards} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:viterra-mechanics} \\
-\textbf{Lore Echoes}         & \S\ref{sec:viterra-lore} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} legal warfare, border adventure, fragile crown, post-imperial consolidation.
-
-\subsection{Thepyrgos — \textit{The City of Unfinished Proofs}}
-\label{sec:thepyrgos-navigation}
-
-The vertical city of stairs, bells, synod edicts, and the war between Witness and Ninth.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:thepyrgos} \\
-\textbf{NPCs}                & \S\ref{sec:thepyrgos-npcs} \\
-\textbf{Names}               & \S\ref{sec:thepyrgos-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:thepyrgos-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:thepyrgos-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:thepyrgos-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:thepyrgos-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:thepyrgos-quick-use} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:thepyrgos-mechanics} \\
-\textbf{SB Spend Table}      & \S\ref{sec:thepyrgos-sb} \\
-\textbf{Magic Colleges}      & \S\ref{sec:thepyrgos-colleges} \\
-\textbf{Witch-Hunters}       & \S\ref{sec:thepyrgos-hunters} \\
-\textbf{Detection \& Denial} & \S\ref{sec:thepyrgos-detect} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} scholarly vertical city, labyrinthine bureaucracy, coastal folk horror, metaphysical war.
-
-% ======================================================================
-% PART III: THE NORTHERN REACHES
-% ======================================================================
-
-\section{The Northern Reaches}
-
-\subsection{Aeler — \textit{Crowns \& Under-Vaults}}
-\label{sec:aeler-navigation}
-
-The dwarf kingdoms of breath-counting, keystone law, and the pressure that thinks.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:aeler} \\
-\textbf{The Deep Drake}      & \S\ref{sec:aeler-deep-drake} \\
-\textbf{Breath-Counting}     & \S\ref{sec:aeler-breath} \\
-\textbf{NPCs}                & \S\ref{sec:aeler-npcs} \\
-\textbf{Names}               & \S\ref{sec:aeler-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:aeler-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:aeler-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:aeler-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:aeler-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:aeler-quick-use} \\
-\textbf{SB Spend Table}      & \S\ref{sec:aeler-sb} \\
-\textbf{Boss Seeds}          & \S\ref{sec:aeler-bosses} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} survival horror underground, infrastructure as soft power, collectivist mercantilism.
-
-\subsection{Mistlands — \textit{Bells, Salt, and Breath}}
-\label{sec:mistlands-navigation}
-
-The fog-shrouded protectorate where bells keep the dead at bay and salt is the only law.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:mistlands} \\
-\textbf{NPCs}                & \S\ref{sec:mistlands-npcs} \\
-\textbf{Names}               & \S\ref{sec:mistlands-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:mistlands-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:mistlands-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:mistlands-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:mistlands-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:mistlands-quick-use} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:mistlands-mechanics} \\
-\textbf{SB Spend Table}      & \S\ref{sec:mistlands-sb} \\
-\textbf{Black Barrow Keep}   & \S\ref{sec:black-barrow} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} folk horror, bell-lines, Aeler protectorate, Direwood encroachment.
-
-\subsection{Ykrul — \textit{Wolf Standards, Winter Camps}}
-\label{sec:ykrul-navigation}
-
-The steppe nomads of Kon'reh, hostage strings, and the geometry of honor.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:ykrul} \\
-\textbf{NPCs}                & \S\ref{sec:ykrul-npcs} \\
-\textbf{Names}               & \S\ref{sec:ykrul-names} \\
-\textbf{Using the Deck}      & \S\ref{sec:ykrul-deck} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:ykrul-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:ykrul-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:ykrul-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:ykrul-rewards} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:ykrul-mechanics} \\
-\textbf{Thirty-Seven Sayings} & \S\ref{sec:ykrul-sayings} \\
-\textbf{Terrain Stock}       & \S\ref{sec:ykrul-terrain-stock} \\
-\textbf{Lair Seeds}          & \S\ref{sec:ykrul-lair-seeds} \\
-\textbf{Bestiary}            & \S\ref{sec:ykrul-bestiary} \\
-\textbf{Relic Finds}         & \S\ref{sec:ykrul-relic-find} \\
-\textbf{Twists}              & \S\ref{sec:ykrul-twists} \\
-\textbf{Boss Seeds}          & \S\ref{sec:ykrul-bosses} \\
-\textbf{Lore Echoes}         & \S\ref{sec:ykrul-lore} \\
-\textbf{Eastern Ykrul}       & \S\ref{sec:ykrul-east} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} nomadic epic, pragmatic cunning, Kon'reh geometry, wolf standards.
-
-\subsection{Vilikari — \textit{Laurels \& Longhouses}}
-\label{sec:vilikari-navigation}
-
-The people of two laws, caught between marble and felt, oak and basilica.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:vilikari} \\
-\textbf{Names}               & \S\ref{sec:vilikari-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:vilikari-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:vilikari-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:vilikari-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:vilikari-rewards} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:vilikari-mechanics} \\
-\textbf{Lore Echoes}         & \S\ref{sec:vilikari-lore} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} legal dualism, hybrid identity, frontier pragmatism, forgotten treaties.
-
-\subsection{Black Banners — \textit{Condotta \& Crowns}}
-\label{sec:black-banners-navigation}
-
-The mercenary leagues of steel-for-hire, where payday is the only holy day.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:black-banners} \\
-\textbf{Quickstart Setup}    & \S\ref{sec:black-banners-quickstart} \\
-\textbf{Camp Events}         & \S\ref{sec:black-banners-camp-events} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} mercenary realism, winter warfare, logistics-driven violence, loyalty in the mud.
-
-\noindent
-\textbf{Note:} Black Banners is a portable overlay—apply its tables and timers to any region (Acasia, Violet Steppe, Ecktorian borderlands) rather than a fixed geography.
-
-\subsection{Linn — \textit{Skerries \& Storm-Oaths}}
-\label{sec:linn-navigation}
-
-The Norse-inspired coast of longships, frost-bound oaths, and the Temple's crusade.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:linn} \\
-\textbf{NPCs}                & \S\ref{sec:linn-npcs} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:linn-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:linn-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:linn-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:linn-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:linn-quick-use} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} Norse coastal saga, oath-driven honor, the tyranny of seasons, Temple crusade.
-
-% ======================================================================
-% PART IV: THE SPACES BETWEEN
-% ======================================================================
-
-\section{The Spaces Between}
-
-\subsection{Ubral — \textit{The Stone Between Spears}}
-\label{sec:ubral-navigation}
-
-The highland clan lands of cairns, wergild, and the geometry of grudges.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:ubral} \\
-\textbf{Clans}               & \S\ref{subsec:ubral-clans} \\
-\textbf{Faction Timers}      & \S\ref{subsec:ubral-timers} \\
-\textbf{NPCs}                & \S\ref{sec:ubral-npcs} \\
-\textbf{Names}               & \S\ref{sec:ubral-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:ubral-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:ubral-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:ubral-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:ubral-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:ubral-quick-use} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:ubral-mechanics} \\
-\textbf{SB Spend Table}      & \S\ref{sec:ubral-sb} \\
-\textbf{Extensions}          & \S\ref{sec:ubral-extensions} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} highland clan honor, wergild and blood feuds, exiled dwarves, geometry of grudges.
-
-\subsection{Silkstrand — \textit{City of Bridges \& Dyewater}}
-\label{sec:silkstrand-navigation}
-
-The mercantile republic of silk, steel, shadow, and the ninth thread.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:silkstrand} \\
-\textbf{Patrician Families}  & \S\ref{sec:silkstrand-patricians} \\
-\textbf{Underworld Powers}   & \S\ref{sec:silkstrand-underworld} \\
-\textbf{NPCs}                & \S\ref{sec:silkstrand-npcs} \\
-\textbf{Names}               & \S\ref{sec:silkstrand-names} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:silkstrand-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:silkstrand-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:silkstrand-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:silkstrand-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:silkstrand-quick-use} \\
-\textbf{Cultural Mechanics}  & \S\ref{sec:silkstrand-mechanics} \\
-\textbf{SB Spend Table}      & \S\ref{sec:silkstrand-sb} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} mercantile intrigue, Renaissance urban drama, layered loyalties, high stakes.
-
-% ======================================================================
-% PART V: THE WILDS, DUNGEONS, AND WAYS BETWEEN
-% ======================================================================
-
-\section{The Wilds, Dungeons, and Ways Between}
-
-\subsection{The Wilds — \textit{Roads, Ruins, and Weather}}
-\label{sec:wilderness-navigation}
-
-The hexcrawl wilderness of travel, discovery, and the land's patience.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:wilderness} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:wilderness-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:wilderness-people} \\
-\textbf{Extra Denizens}      & \S\ref{sec:wilderness-extra-denizens} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:wilderness-complications} \\
-\textbf{Expanded Hazards}    & \S\ref{sec:wilderness-expanded-hazards} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:wilderness-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:wilderness-quick-use} \\
-\textbf{Travel at a Glance}  & \S\ref{sec:wilderness-travel} \\
-\textbf{Weather Omens}       & \S\ref{sec:wilderness-weather-omens} \\
-\textbf{Ruin Findings}       & \S\ref{sec:wilderness-ruin-findings} \\
-\textbf{Trail Signs}         & \S\ref{sec:wilderness-trail-signs} \\
-\textbf{Terrain Stock}       & \S\ref{sec:wilderness-terrain-stock} \\
-\textbf{Lair Seeds}          & \S\ref{sec:wilderness-lair-seeds} \\
-\textbf{Bestiary}            & \S\ref{sec:wilderness-bestiary} \\
-\textbf{Relic Finds}         & \S\ref{sec:wilderness-relic-find} \\
-\textbf{Omens \& Signs}      & \S\ref{sec:wilderness-omens} \\
-\textbf{SB Spend Table}      & \S\ref{sec:wilderness-sb} \\
-\textbf{Reskin Palette}      & \S\ref{sec:wilderness-reskin-palette} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} hexcrawl wanderlust, ruin-haunted silence, weather as character.
-
-\subsection{Dungeons — \textit{Living Infrastructure}}
-\label{sec:dungeons-navigation}
-
-The semi-sentient systems beneath the surface—breathing, remembering, and hungering.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:dungeons} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} survival horror underground, infrastructure as adversary, eco-horror, forgotten machinery.
-
-\noindent
-\textbf{Note:} The Dungeons chapter includes its own Spades, Hearts, Clubs, and Diamonds tables, boss seeds, loot generators (Strata A--D), and dungeon mechanics (Air, Light, Noise, Attention). Refer directly to \S\ref{chap:dungeons} for full content.
-
-\subsection{The Ways Between — \textit{Spiritways \& Veilways}}
-\label{sec:ways-between-navigation}
-
-The dream-death realm of virtue, vice, and the Thirteenth Stone.
-
-\begin{tabular}{p{2.8cm} p{8cm}}
-\textbf{Region Chapter}      & \S\ref{chap:ways-between} \\
-\textbf{Thin Places}         & \S\ref{sec:ways-between-thin-destinations} \\
-\textbf{Places (\spadesuit)} & \S\ref{sec:ways-between-places} \\
-\textbf{People (\heartsuit)} & \S\ref{sec:ways-between-people} \\
-\textbf{Complications (\clubsuit)} & \S\ref{sec:ways-between-complications} \\
-\textbf{Rewards (\diamondsuit)} & \S\ref{sec:ways-between-rewards} \\
-\textbf{Quick Use Notes}     & \S\ref{sec:ways-between-quick-use} \\
-\textbf{Features}            & \S\ref{sec:ways-between-features} \\
-\textbf{SB Spend Table}      & \S\ref{sec:ways-between-sb} \\
-\textbf{Procedures}          & \S\ref{sec:ways-between-procedures} \\
-\textbf{Extensions}          & \S\ref{sec:ways-between-extensions} \\
-\end{tabular}
-
-\medskip
-\noindent
-\textbf{Key Themes:} dream-death metaphysical, virtue-based ascent, temptation and fall, folk-surrealism.
-
-% ======================================================================
-% PART VI: ADDITIONAL REGIONS (BRIEF)
-% ======================================================================
-
-\section{Additional Regions (Brief)}
-
-The following regions appear in the Amaranthine Core but are presented in abbreviated form. For full generator tables, refer to the region chapters directly.
-
-\begin{description}
-  \item[Theona — \textit{Three Greens, No Ninth}] \hfill \\
-    \S\ref{chap:theona} — Celtic folk horror, taboo-driven, the Green Host.
-    \begin{itemize}
-      \item NPCs: \S\ref{sec:theona-npcs}
-      \item Names: \S\ref{sec:theona-names}
-      \item Places (\spadesuit): \S\ref{sec:theona-places}
-      \item People (\heartsuit): \S\ref{sec:theona-people}
-      \item Complications (\clubsuit): \S\ref{sec:theona-complications}
-      \item Rewards (\diamondsuit): \S\ref{sec:theona-rewards}
-      \item Mechanics: \S\ref{sec:theona-mechanics}
-      \item SB: \S\ref{sec:theona-sb}
-    \end{itemize}
-
-  \item[Aelaerem — \textit{Hearth \& Hollow}] \hfill \\
-    \S\ref{chap:aelaerem} — Folk horror, pastoral dark, the Neighbors, harvest famine.
-    \begin{itemize}
-      \item NPCs: \S\ref{sec:aelaerem-npcs}
-      \item Names: \S\ref{sec:aelaerem-names}
-      \item Places (\spadesuit): \S\ref{sec:aelaerem-places}
-      \item People (\heartsuit): \S\ref{sec:aelaerem-people}
-      \item Complications (\clubsuit): \S\ref{sec:aelaerem-complications}
-      \item Rewards (\diamondsuit): \S\ref{sec:aelaerem-rewards}
-      \item SB: \S\ref{sec:aelaerem-sb}
-      \item Bosses: \S\ref{sec:aelaerem-bosses}
-    \end{itemize}
-
-  \item[Aelinnel — \textit{Stone, Bough, and Bright Things}] \hfill \\
-    \S\ref{chap:aelinnel} (and \S\ref{chap:aelinnel-gnomes}) — Fae/mathematical/courtesy horror, the Green Gate.
-    \begin{itemize}
-      \item NPCs: \S\ref{sec:aelinnel-npcs}
-      \item Names: \S\ref{sec:aelinnel-names}
-      \item Places (\spadesuit): \S\ref{sec:aelinnel-places}
-      \item People (\heartsuit): \S\ref{sec:aelinnel-people}
-      \item Complications (\clubsuit): \S\ref{sec:aelinnel-complications}
-      \item Rewards (\diamondsuit): \S\ref{sec:aelinnel-rewards}
-      \item Mechanics: \S\ref{sec:aelinnel-mechanics}
-      \item SB: \S\ref{sec:aelinnel-sb}
-      \item Bosses: \S\ref{sec:aelinnel-bosses}
-    \end{itemize}
-
-  \item[Valewood — \textit{Empire Under Leaves}] \hfill \\
-    \S\ref{chap:valewood} — Fairy tale, dark forest, fey remnant, phasing ruins.
-    \begin{itemize}
-      \item NPCs: \S\ref{sec:valewood-npcs}
-      \item Names: \S\ref{sec:valewood-names}
-      \item Places (\spadesuit): \S\ref{sec:valewood-places}
-      \item People (\heartsuit): \S\ref{sec:valewood-people}
-      \item Complications (\clubsuit): \S\ref{sec:valewood-complications}
-      \item Rewards (\diamondsuit): \S\ref{sec:valewood-rewards}
-      \item SB: \S\ref{sec:valewood-sb}
-    \end{itemize}
-
-  \item[Zakov — \textit{Salt \& Serpent}] \hfill \\
-    \S\ref{chap:zakov} — Pirate noir, crime syndicate, cursed cargoes.
-    \begin{itemize}
-      \item Reaping: \S\ref{sec:zakov-reaping}
-      \item NPCs: \S\ref{sec:zakov-npcs}
-      \item Names: \S\ref{sec:zakov-names}
-      \item Places (\spadesuit): \S\ref{sec:zakov-places}
-      \item People (\heartsuit): \S\ref{sec:zakov-people}
-      \item Complications (\clubsuit): \S\ref{sec:zakov-complications}
-      \item Rewards (\diamondsuit): \S\ref{sec:zakov-rewards}
-      \item Features: \S\ref{sec:zakov-features}
-      \item SB: \S\ref{sec:zakov-sb}
-    \end{itemize}
-
-  \item[Midh-Akhaz — \textit{The Violet Gate}] \hfill \\
-    \S\ref{chap:midh-ahkaz} — Trade post on the Ykrul frontier.
-    \begin{itemize}
-      \item Places (\spadesuit): \S\ref{sec:midh-ahkaz-places}
-      \item People (\heartsuit): \S\ref{sec:midh-ahkaz-people}
-      \item Complications (\clubsuit): \S\ref{sec:midh-ahkaz-complications}
-      \item Rewards (\diamondsuit): \S\ref{sec:midh-ahkaz-rewards}
-    \end{itemize}
-\end{description}
-
-% ======================================================================
-% PART VII: CROSS-REGION NAVIGATION
-% ======================================================================
-
-\section{Cross-Region Navigation}
-
-\subsection{Travel Between Regions}
-
-The Amaranthine Core is connected by roads, sea lanes, and the Ways Between. For travel procedures, see:
+\section{Mechanics Index}
 
 \begin{itemize}
-  \item \textbf{Overland Travel:} \S\ref{chap:wilderness} (The Wilds) — hexcrawl procedures, weather omens, trail signs
-  \item \textbf{Sea Travel:} \S\ref{chap:kahfagia} and \S\ref{chap:linn} — tide charts, pilotage, storm hazards
-  \item \textbf{Threshold Crossings:} \S\ref{chap:ways-between} — thin places, accidental crossings, dream-logic
-  \item \textbf{Underground Travel:} \S\ref{chap:aeler} and \S\ref{chap:dungeons} — breath-counting, air tracks, pressure hazards
+  \item \textbf{Cultural Mechanics:} See the ``Cultural Mechanics'' section in each region chapter
+  \item \textbf{SB Spend Tables:} See the ``SB Spend Table'' section in each region chapter
+  \item \textbf{Boss Seeds:} See the ``Boss Seeds'' section in each region chapter
+  \item \textbf{Travel:} \secref{chap:wilderness} for overland; \secref{chap:kahfagia} and \secref{chap:linn} for sea travel
+  \item \textbf{Threshold Crossings:} \secref{chap:ways-between}
+  \item \textbf{Underground:} \secref{chap:aeler} and \secref{chap:dungeons}
 \end{itemize}
 
-\subsection{Cross-Region Hooks}
-
-Many regions share borders and tensions. For specific cross-region hooks, refer to the Lore Echoes sections in each region chapter:
+\section{Cross-Region Hooks}
 
 \begin{itemize}
   \item \textbf{Acasia--Ecktoria:} The Curse vs. the Flame; imperial ghosts
-  \item \textbf{Vhasia--Viterra:} The Belworth border; the Fenwood wound; the Queen's dual claim
+  \item \textbf{Vhasia--Viterra:} The Belworth border; the Fenwood wound
   \item \textbf{Aeler--Mistlands:} The Protectorate; bell-lines; salt and iron
   \item \textbf{Ykrul--Vilikari:} The Foedus Stone; hostage strings; grazing rights
   \item \textbf{Kahfagia--Silkstrand:} Sea lanes; the Spider's web; dyewater trade
   \item \textbf{Thepyrgos--Viterra:} Synod law vs. hedge-law; the Black River border
-  \item \textbf{Valewood--Theona:} The Green Host; the Ninth Taboo; star-roads
 \end{itemize}
 
 % ======================================================================
-% PART VIII: SUIT AND RANK NAVIGATION
+% PART I: THE CARTOMANCER'S COMPASS (FULL)
 % ======================================================================
-
-\section{Quick Reference by Suit}
-
-The cartomancy generator draws on regional tables organized by suit. Use this guide to find specific suit tables quickly.
-
-\subsection{\spadesuit Spades — Places}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{Place Tables by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{Place Tables by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-places} \\
-Ecktoria          & Embedded in \S\ref{chap:ecktoria} \\
-Acasia            & \S\ref{sec:acasia-places} \\
-Vhasia            & \S\ref{sec:vhasia-places} \\
-Viterra           & \S\ref{sec:viterra-places} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-places} \\
-Aeler             & \S\ref{sec:aeler-places} \\
-Mistlands         & \S\ref{sec:mistlands-places} \\
-Ykrul             & \S\ref{sec:ykrul-places} \\
-Vilikari          & \S\ref{sec:vilikari-places} \\
-Linn              & \S\ref{sec:linn-places} \\
-Ubral             & \S\ref{sec:ubral-places} \\
-Silkstrand        & \S\ref{sec:silkstrand-places} \\
-The Wilds         & \S\ref{sec:wilderness-places} \\
-The Ways Between  & \S\ref{sec:ways-between-places} \\
-Theona            & \S\ref{sec:theona-places} \\
-Aelaerem          & \S\ref{sec:aelaerem-places} \\
-Aelinnel          & \S\ref{sec:aelinnel-places} \\
-Valewood          & \S\ref{sec:valewood-places} \\
-Zakov             & \S\ref{sec:zakov-places} \\
-Midh-Akhaz        & \S\ref{sec:midh-ahkaz-places} \\
-\end{longtable}
-
-\subsection{\heartsuit Hearts — People \& Factions}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{People Tables by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{People Tables by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-people} \\
-Ecktoria          & Embedded in \S\ref{chap:ecktoria} \\
-Acasia            & \S\ref{sec:acasia-people} \\
-Vhasia            & \S\ref{sec:vhasia-people} \\
-Viterra           & \S\ref{sec:viterra-people} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-people} \\
-Aeler             & \S\ref{sec:aeler-people} \\
-Mistlands         & \S\ref{sec:mistlands-people} \\
-Ykrul             & \S\ref{sec:ykrul-people} \\
-Vilikari          & \S\ref{sec:vilikari-people} \\
-Linn              & \S\ref{sec:linn-people} \\
-Ubral             & \S\ref{sec:ubral-people} \\
-Silkstrand        & \S\ref{sec:silkstrand-people} \\
-The Wilds         & \S\ref{sec:wilderness-people} \\
-The Ways Between  & \S\ref{sec:ways-between-people} \\
-Theona            & \S\ref{sec:theona-people} \\
-Aelaerem          & \S\ref{sec:aelaerem-people} \\
-Aelinnel          & \S\ref{sec:aelinnel-people} \\
-Valewood          & \S\ref{sec:valewood-people} \\
-Zakov             & \S\ref{sec:zakov-people} \\
-Midh-Akhaz        & \S\ref{sec:midh-ahkaz-people} \\
-\end{longtable}
-
-\subsection{\clubsuit Clubs — Complications \& Threats}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{Complication Tables by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{Complication Tables by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-complications} \\
-Ecktoria          & Embedded in \S\ref{chap:ecktoria} \\
-Acasia            & \S\ref{sec:acasia-complications} \\
-Vhasia            & \S\ref{sec:vhasia-complications} \\
-Viterra           & \S\ref{sec:viterra-complications} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-complications} \\
-Aeler             & \S\ref{sec:aeler-complications} \\
-Mistlands         & \S\ref{sec:mistlands-complications} \\
-Ykrul             & \S\ref{sec:ykrul-complications} \\
-Vilikari          & \S\ref{sec:vilikari-complications} \\
-Linn              & \S\ref{sec:linn-complications} \\
-Ubral             & \S\ref{sec:ubral-complications} \\
-Silkstrand        & \S\ref{sec:silkstrand-complications} \\
-The Wilds         & \S\ref{sec:wilderness-complications} \\
-The Ways Between  & \S\ref{sec:ways-between-complications} \\
-Theona            & \S\ref{sec:theona-complications} \\
-Aelaerem          & \S\ref{sec:aelaerem-complications} \\
-Aelinnel          & \S\ref{sec:aelinnel-complications} \\
-Valewood          & \S\ref{sec:valewood-complications} \\
-Zakov             & \S\ref{sec:zakov-complications} \\
-Midh-Akhaz        & \S\ref{sec:midh-ahkaz-complications} \\
-\end{longtable}
-
-\subsection{\diamondsuit Diamonds — Rewards \& Leverage}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{Reward Tables by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{Reward Tables by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-rewards} \\
-Ecktoria          & Embedded in \S\ref{chap:ecktoria} \\
-Acasia            & \S\ref{sec:acasia-rewards} \\
-Vhasia            & \S\ref{sec:vhasia-rewards} \\
-Viterra           & \S\ref{sec:viterra-rewards} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-rewards} \\
-Aeler             & \S\ref{sec:aeler-rewards} \\
-Mistlands         & \S\ref{sec:mistlands-rewards} \\
-Ykrul             & \S\ref{sec:ykrul-rewards} \\
-Vilikari          & \S\ref{sec:vilikari-rewards} \\
-Linn              & \S\ref{sec:linn-rewards} \\
-Ubral             & \S\ref{sec:ubral-rewards} \\
-Silkstrand        & \S\ref{sec:silkstrand-rewards} \\
-The Wilds         & \S\ref{sec:wilderness-rewards} \\
-The Ways Between  & \S\ref{sec:ways-between-rewards} \\
-Theona            & \S\ref{sec:theona-rewards} \\
-Aelaerem          & \S\ref{sec:aelaerem-rewards} \\
-Aelinnel          & \S\ref{sec:aelinnel-rewards} \\
-Valewood          & \S\ref{sec:valewood-rewards} \\
-Zakov             & \S\ref{sec:zakov-rewards} \\
-Midh-Akhaz        & \S\ref{sec:midh-ahkaz-rewards} \\
-\end{longtable}
-
-% ======================================================================
-% PART IX: MECHANICS INDEX
-% ======================================================================
-
-\section{Mechanics Index}
-
-\subsection{Cultural Mechanics by Region}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{Cultural Mechanics Sections} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{Cultural Mechanics Sections (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-mechanics} \\
-Ecktoria          & \S\ref{sec:ecktoria-mechanics} \\
-Vhasia            & \S\ref{sec:vhasia-mechanics} \\
-Viterra           & \S\ref{sec:viterra-mechanics} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-mechanics} \\
-Aeler             & Embedded in \S\ref{chap:aeler} (see Breath-Counting, Faction Spectrum) \\
-Mistlands         & \S\ref{sec:mistlands-mechanics} \\
-Ykrul             & \S\ref{sec:ykrul-mechanics} \\
-Vilikari          & \S\ref{sec:vilikari-mechanics} \\
-Linn              & Embedded in \S\ref{chap:linn} (see Temple Crusade, Frost Mark) \\
-Ubral             & \S\ref{sec:ubral-mechanics} \\
-Silkstrand        & \S\ref{sec:silkstrand-mechanics} \\
-The Wilds         & \S\ref{sec:wilderness-travel} \\
-The Ways Between  & \S\ref{sec:ways-between-features} and \S\ref{sec:ways-between-procedures} \\
-Theona            & \S\ref{sec:theona-mechanics} \\
-Aelinnel          & \S\ref{sec:aelinnel-mechanics} \\
-\end{longtable}
-
-\subsection{SB Spend Tables}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{SB Spend Tables by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{SB Spend Tables by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-sb} \\
-Ecktoria          & \S\ref{sec:ecktoria-sb} \\
-Acasia            & \S\ref{sec:acasia-sb} \\
-Vhasia            & \S\ref{sec:vhasia-sb} \\
-Viterra           & Embedded in \S\ref{sec:viterra-mechanics} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-sb} \\
-Aeler             & \S\ref{sec:aeler-sb} \\
-Mistlands         & \S\ref{sec:mistlands-sb} \\
-Ykrul             & Embedded in \S\ref{sec:ykrul-mechanics} \\
-Vilikari          & Embedded in \S\ref{sec:vilikari-mechanics} \\
-Linn              & Embedded in \S\ref{chap:linn} \\
-Ubral             & \S\ref{sec:ubral-sb} \\
-Silkstrand        & \S\ref{sec:silkstrand-sb} \\
-The Wilds         & \S\ref{sec:wilderness-sb} \\
-The Ways Between  & \S\ref{sec:ways-between-sb} \\
-Theona            & \S\ref{sec:theona-sb} \\
-Aelaerem          & \S\ref{sec:aelaerem-sb} \\
-Aelinnel          & \S\ref{sec:aelinnel-sb} \\
-Valewood          & \S\ref{sec:valewood-sb} \\
-Zakov             & \S\ref{sec:zakov-sb} \\
-\end{longtable}
-
-\subsection{Quick Use Notes}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{Quick Use Notes by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{Quick Use Notes by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Kahfagia          & \S\ref{sec:kahfagia-quick-use} \\
-Acasia            & \S\ref{sec:acasia-quick-use} \\
-Vhasia            & \S\ref{sec:vhasia-quick-use} \\
-Viterra           & \S\ref{sec:viterra-deck} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-quick-use} \\
-Aeler             & \S\ref{sec:aeler-quick-use} \\
-Mistlands         & \S\ref{sec:mistlands-quick-use} \\
-Ykrul             & \S\ref{sec:ykrul-deck} \\
-Vilikari          & Embedded in \S\ref{chap:vilikari} \\
-Linn              & \S\ref{sec:linn-quick-use} \\
-Ubral             & \S\ref{sec:ubral-quick-use} \\
-Silkstrand        & \S\ref{sec:silkstrand-quick-use} \\
-The Wilds         & \S\ref{sec:wilderness-quick-use} \\
-The Ways Between  & \S\ref{sec:ways-between-quick-use} \\
-Theona            & \S\ref{sec:theona-quick-use} \\
-Aelaerem          & \S\ref{sec:aelaerem-quick-use} \\
-Aelinnel          & Embedded in \S\ref{chap:aelinnel} \\
-Valewood          & Embedded in \S\ref{chap:valewood} \\
-Zakov             & \S\ref{sec:zakov-quick-use} \\
-\end{longtable}
-
-\subsection{Boss Seeds}
-
-\begin{longtable}{p{2.8cm} p{8cm}}
-\caption{Boss Seed Sections by Region} \\
-\toprule
-Region & Section \\
-\midrule
-\endfirsthead
-\caption[]{Boss Seed Sections by Region (continued)} \\
-\toprule
-Region & Section \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Acasia            & \S\ref{sec:acasia-bosses} \\
-Aeler             & \S\ref{sec:aeler-bosses} \\
-Aelaerem          & \S\ref{sec:aelaerem-bosses} \\
-Aelinnel          & \S\ref{sec:aelinnel-bosses} \\
-Ykrul             & \S\ref{sec:ykrul-bosses} \\
-Ubral             & Embedded in \S\ref{sec:ubral-mechanics} \\
-The Wilds         & Embedded in \S\ref{chap:wilderness} (Lair Seeds) \\
-The Ways Between  & \S\ref{sec:ways-between-extensions} \\
-Vhasia            & \S\ref{sec:vhasia-mechanics} \\
-Thepyrgos         & \S\ref{sec:thepyrgos-mechanics} \\
-Viterra           & \S\ref{sec:viterra-mechanics} \\
-\end{longtable}
-
-% ======================================================================
-% PART X: QUICK REGION MAP
-% ======================================================================
-
-\section{Quick Region Map}
-
-Use this quick reference to find the right region for your campaign's tone.
-
-\medskip
-\begin{tabular}{p{3.2cm} p{9cm}}
-\multicolumn{2}{l}{\textbf{The Amaranthine Sea \& Northern Shores}} \\
-\hline
-\emph{Kahfagia}          & Signal-lane politics, eldritch tide, Lethai-ar infiltration \\
-\emph{Ecktoria}          & Imperial decay, bureaucratic horror, the Vigil's three faces \\
-\emph{Acasia}            & Mercenary realism, cursed borderlands, the Curse Awakening \\
-\emph{Vhasia}            & Courtly intrigue, fractured legitimacy, the wound of Lence \\
-\emph{Viterra}           & Legal warfare, frontier justice, the Queen's fragile peace \\
-\emph{Thepyrgos}         & Vertical city, synod edicts, the war between Witness and Ninth \\
-\hline
-\multicolumn{2}{l}{\textbf{The Northern Reaches}} \\
-\hline
-\emph{Aeler}             & Survival horror underground, breath-counting, the pressure that thinks \\
-\emph{Mistlands}         & Folk horror, bell-lines, salt as law, Direwood encroachment \\
-\emph{Ykrul}             & Nomadic epic, Kon'reh geometry, hostage strings, wolf standards \\
-\emph{Vilikari}          & Legal dualism, hybrid identity, frontier pragmatism \\
-\emph{Black Banners}     & Mercenary realism, logistics-driven violence, payday as holy day \\
-\emph{Linn}              & Norse coastal saga, frost-bound oaths, Temple crusade \\
-\hline
-\multicolumn{2}{l}{\textbf{The Spaces Between}} \\
-\hline
-\emph{Ubral}             & Highland clan honor, wergild, exiled dwarves, geometry of grudges \\
-\emph{Silkstrand}        & Mercantile intrigue, layered loyalties, the Ragman's threads \\
-\hline
-\multicolumn{2}{l}{\textbf{The Wilds \& Beyond}} \\
-\hline
-\emph{The Wilds}         & Hexcrawl wanderlust, weather as character, ruin-haunted silence \\
-\emph{Dungeons}          & Living infrastructure, survival horror, forgotten machinery \\
-\emph{The Ways Between}  & Dream-death metaphysical, virtue and vice, the Thirteenth Stone \\
-\hline
-\multicolumn{2}{l}{\textbf{Additional Regions}} \\
-\hline
-\emph{Theona}            & Celtic folk horror, the Green Host, the Ninth Taboo \\
-\emph{Aelaerem}          & Folk horror, the Neighbors, harvest famine \\
-\emph{Aelinnel}          & Fae/mathematical horror, the Green Gate, courtesy horror \\
-\emph{Valewood}          & Fairy tale dark forest, fey remnant, imperial echoes \\
-\emph{Zakov}             & Pirate noir, crime syndicate, cursed cargoes \\
-\emph{Midh-Akhaz}        & Trade post on the Ykrul frontier, coin and grass \\
-\end{tabular}
-
-% ======================================================================
-% PART XI: FINAL NAVIGATION NOTES
-% ======================================================================
-
-\section{Final Navigation Notes}
-
-\subsection{The Cartomancer's Compass as Primary Tool}
-
-The cartomancer's compass (\S\ref{chap:cartomancer-compass}) is the primary navigation tool for the Amaranthine Core. Use it to:
-\begin{itemize}
-  \item Generate scenes, settlements, and encounters on the fly
-  \item Set timers based on the highest rank drawn
-  \item Interpret face cards and aces as omens or named NPCs
-  \item Track the Hollow's attention through Ace draws
-\end{itemize}
-
-\subsection{Region Generation Procedure}
-
-When generating content for a specific region:
-\begin{enumerate}
-  \item Identify the region (e.g., Acasia)
-  \item Draw four cards (one for each suit)
-  \item Consult the region's Spades, Hearts, Clubs, and Diamonds tables
-  \item Use the highest rank to set the primary timer (2--5: 4 segments, 6--10: 6 segments, J/Q/K: 8 segments, Ace: 10 segments)
-  \item Interpret face cards as named NPCs or personified forces
-  \item Apply any regional Ace effect (the Ninth Taboo manifestation)
-\end{enumerate}
-
-\subsection{Cross-Referencing}
-
-For content that spans multiple regions (lore echoes, patron networks, travel routes):
-\begin{itemize}
-  \item \textbf{Lore Echoes:} See the Lore Echoes section in each region chapter (e.g., \S\ref{sec:acasia-lore}, \S\ref{sec:vhasia-lore})
-  \item \textbf{Patron Networks:} See the Local Patrons section in each region chapter
-  \item \textbf{Travel Routes:} See \S\ref{chap:wilderness} (The Wilds) for overland travel procedures
-  \item \textbf{Thin Places:} See \S\ref{sec:ways-between-thin-destinations} for known threshold crossings
-\end{itemize}
-
-\subsection{Quick Search}
-
-For quick reference at the table:
-\begin{itemize}
-  \item \textbf{Need an NPC?} → Check the \textbf{Hearts} table for the region
-  \item \textbf{Need a complication?} → Check the \textbf{Clubs} table
-  \item \textbf{Need a reward?} → Check the \textbf{Diamonds} table
-  \item \textbf{Need a place?} → Check the \textbf{Spades} table
-  \item \textbf{Need a boss?} → Check the region's Boss Seeds section
-  \item \textbf{Need a mechanic?} → Check the region's Cultural Mechanics section
-\end{itemize}
-
-% ----------------------------------------------------------------------
-% END OF REFERENCE CHAPTER
-% ----------------------------------------------------------------------
-\clearpage
-% ----------------------------------------------------------------------
-% CARTOMANCER"S COMPASS
-% ----------------------------------------------------------------------
 
 \chapter*{The Cartomancer's Compass}
 \label{chap:cartomancer-compass}
+\addcontentsline{toc}{chapter}{The Cartomancer's Compass}
 
 \begin{quote}
 \textit{``The world does not speak in words. It speaks in suits, ranks, and the spaces between. Every bridge, every bribe, every broken oath can be laid out on a table of felt and dealt from a worn deck. This is not superstition. It is method.''}\\
@@ -1115,9 +193,9 @@ This chapter is my gift to the road. It explains how to read the cards as we do-
 
 Every card in every generator carries the same four suit-meanings. They are the alphabet of the world's witness. In the Tulkani tradition, we say the suits are the four breaths of the world:
 
-\subsection*{$\spadesuit$ Spades: Place --- The Stage}
+\subsection*{\spadesuit\ Spades: Place --- The Stage}
 
-Where does the scene happen? $\spadesuit$ is the threshold, the landmark, the ground beneath the action. It answers: \textit{Where are we?}
+Where does the scene happen? \spadesuit\ is the threshold, the landmark, the ground beneath the action. It answers: \textit{Where are we?}
 
 \begin{itemize}
     \item \textbf{High rank (10--A):} A major landmark---a fortress, a capital, a haunted ruin. The place has a name that echoes in local songs.
@@ -1125,11 +203,11 @@ Where does the scene happen? $\spadesuit$ is the threshold, the landmark, the gr
     \item \textbf{Low rank (2--5):} A liminal or neglected place---a crossroads, a collapsed bridge, a smuggler's cove. The place is defined by what it lacks.
 \end{itemize}
 
-In the regional chapters, $\spadesuit$ entries are always places. See, for example, the bridges and canals of Silkstrand or the cairns and passes of Ubral.
+In the regional chapters, \spadesuit\ entries are always places. See, for example, the bridges and canals of Silkstrand or the cairns and passes of Ubral.
 
-\subsection*{$\heartsuit$ Hearts: Actor --- The Face}
+\subsection*{\heartsuit\ Hearts: Actor --- The Face}
 
-Who drives the scene? $\heartsuit$ is the person, the faction, the voice that speaks. It answers: \textit{Who is here?}
+Who drives the scene? \heartsuit\ is the person, the faction, the voice that speaks. It answers: \textit{Who is here?}
 
 \begin{itemize}
     \item \textbf{High rank (J--A):} An elite, a ruler, a power-broker. The actor has authority and reach beyond the immediate scene.
@@ -1137,11 +215,11 @@ Who drives the scene? $\heartsuit$ is the person, the faction, the voice that sp
     \item \textbf{Low rank (2--5):} A commoner, an outcast, a victim. The actor needs something or has been failed by someone.
 \end{itemize}
 
-In the regional chapters, $\heartsuit$ entries are always people or factions. See the merchants and spies of the Brass Coast or the spirit-wardens of the Mistlands.
+In the regional chapters, \heartsuit\ entries are always people or factions. See the merchants and spies of the Brass Coast or the spirit-wardens of the Mistlands.
 
-\subsection*{$\clubsuit$ Clubs: Pressure --- The Complication}
+\subsection*{\clubsuit\ Clubs: Pressure --- The Complication}
 
-What pushes back? $\clubsuit$ is the storm, the burden, the knife in the dark. It answers: \textit{What goes wrong?}
+What pushes back? \clubsuit\ is the storm, the burden, the knife in the dark. It answers: \textit{What goes wrong?}
 
 \begin{itemize}
     \item \textbf{High rank (10--A):} A catastrophe, a betrayal, an invasion. The complication changes the shape of the journey.
@@ -1149,11 +227,11 @@ What pushes back? $\clubsuit$ is the storm, the burden, the knife in the dark. I
     \item \textbf{Low rank (2--5):} A minor hazard---a sudden squall, a lost token, a raised toll. The complication is a nuisance, not a disaster.
 \end{itemize}
 
-In the regional chapters, $\clubsuit$ entries are always complications or threats. See the river floods and witness-cord cuts of Ayokha or the market riots of Silkstrand.
+In the regional chapters, \clubsuit\ entries are always complications or threats. See the river floods and witness-cord cuts of Ayokha or the market riots of Silkstrand.
 
-\subsection*{$\diamondsuit$ Diamonds: Leverage --- The Reward}
+\subsection*{\diamondsuit\ Diamonds: Leverage --- The Reward}
 
-What opens the door? $\diamondsuit$ is the token, the writ, the secret that changes Position. It answers: \textit{What do you gain?}
+What opens the door? \diamondsuit\ is the token, the writ, the secret that changes Position. It answers: \textit{What do you gain?}
 
 \begin{itemize}
     \item \textbf{High rank (J--A):} A major asset---a noble title, a keystone charter, a general pardon. The reward reshapes the party's standing.
@@ -1161,7 +239,7 @@ What opens the door? $\diamondsuit$ is the token, the writ, the secret that chan
     \item \textbf{Low rank (2--5):} A minor advantage---a bridge token, a guest-cup, a rumor. The reward grants a single use of improved Position.
 \end{itemize}
 
-In the regional chapters, $\diamondsuit$ entries are always rewards or leverage. See the keystone charters of Ngomebe or the water-share tablets of Fhara.
+In the regional chapters, \diamondsuit\ entries are always rewards or leverage. See the keystone charters of Ngomebe or the water-share tablets of Fhara.
 
 \section*{Cartomancy as Witchcraft}
 
@@ -1172,8 +250,8 @@ In the Tulkani tradition, cartomancy is not separate from the craft---it \textit
 Like all witchcraft, cartomancy operates across the three Concordant Layers:
 
 \begin{itemize}
-    \item \textbf{Echo (What Has Been):} The cards reveal the accumulated weight of past decisions. A $\spadesuit$ from Echo shows the history of a place; a $\heartsuit$ from Echo shows a debt that has not yet been paid.
-    \item \textbf{Veil (What Is):} The cards show the present moment, the boundary between potential and actual. A $\clubsuit$ from Veil is a current threat; a $\diamondsuit$ from Veil is an opportunity the party is ignoring.
+    \item \textbf{Echo (What Has Been):} The cards reveal the accumulated weight of past decisions. A \spadesuit\ from Echo shows the history of a place; a \heartsuit\ from Echo shows a debt that has not yet been paid.
+    \item \textbf{Veil (What Is):} The cards show the present moment, the boundary between potential and actual. A \clubsuit\ from Veil is a current threat; a \diamondsuit\ from Veil is an opportunity the party is ignoring.
     \item \textbf{Flow (What Wishes to Be):} The cards reveal the direction of change, the shape of what is coming. A high card from Flow is a promise; a low card is a warning.
 \end{itemize}
 
@@ -1211,13 +289,13 @@ King/Queen/Jack & Major, faction-level, lasting consequences \\
 \end{tabular}
 \end{center}
 
-When a generator instructs you to set a timer by the highest rank, use this conversion:
-
+\noindent
+\textbf{Timer Conversion:}
 \begin{itemize}
-    \item \textbf{2--5:} 4-segment timer (short, local problem)
-    \item \textbf{6--10:} 6-segment timer (standard, journey-length)
-    \item \textbf{J, Q, K:} 8-segment timer (extended, regional problem)
-    \item \textbf{A:} 10-segment timer (epic, campaign-length)
+    \item 2--5: 4-segment timer (short, local problem)
+    \item 6--10: 6-segment timer (standard, journey-length)
+    \item J, Q, K: 8-segment timer (extended, regional problem)
+    \item A: 10-segment timer (epic, campaign-length)
 \end{itemize}
 
 \section*{Card Faces: The Court as Character}
@@ -1230,7 +308,7 @@ Face cards (Jack, Queen, King) are not merely high ranks. They are \textit{perso
     \item \textbf{King:} The ultimate authority in their domain. The King is the source of law, the peak of the hierarchy. To challenge a King is to challenge the order itself.
 \end{itemize}
 
-When a face card appears in a $\heartsuit$ (actor) draw, give the NPC a name, a motive, and a quirk. When it appears in a $\spadesuit$ (place) or $\clubsuit$ (pressure) draw, treat it as a \textit{personified} force: a King of Clubs might be a feud that has lasted generations; a Queen of Spades might be a bridge that remembers every toll.
+When a face card appears in a \heartsuit\ (actor) draw, give the NPC a name, a motive, and a quirk. When it appears in a \spadesuit\ (place) or \clubsuit\ (pressure) draw, treat it as a \textit{personified} force: a King of Clubs might be a feud that has lasted generations; a Queen of Spades might be a bridge that remembers every toll.
 
 \section*{Aces and the Ninth: The Hollow's Attention}
 
@@ -1241,24 +319,25 @@ When an Ace appears in any draw, the Hollow takes notice. The GM gains 1 extra S
 In regions where the Ninth Taboo is strong (Theona, Aelinnel, Ways Between), an Ace may also trigger a specific regional omen. For example:
 
 \begin{itemize}
-    \item In Theona, an Ace of $\spadesuit$ might add a ``missing step'' to a bridge.
-    \item In the Ways Between, an Ace of $\heartsuit$ might cause a reflection to speak.
-    \item In the Mistlands, an Ace of $\clubsuit$ might cause a bell-line to fail.
+    \item In Theona, an Ace of \spadesuit\ might add a ``missing step'' to a bridge.
+    \item In the Ways Between, an Ace of \heartsuit\ might cause a reflection to speak.
+    \item In the Mistlands, an Ace of \clubsuit\ might cause a bell-line to fail.
 \end{itemize}
 
 The GM should always read an Ace as a signal to escalate the uncanny.
 
 \section*{By the Numbers: Procedure for Any Generator}
+\label{sec:generator-procedure}
 
 When you sit down to generate a scene, a journey leg, or a settlement, follow this procedure. The Tulkani say: \textit{``The cards are not a script. They are a conversation. Listen to what they tell you, but do not let them speak for you.''}
 
 \begin{enumerate}
     \item \textbf{Name the destination.} Which region? Which route? Which authority controls the gate?
     \item \textbf{Shuffle and draw.} Draw cards face-up, one for each suit you need. Most generators require all four suits; some (like travel legs) may use only three.
-    \item \textbf{Read the $\spadesuit$.} This is your place. Describe it first. Set the stage.
-    \item \textbf{Read the $\heartsuit$.} This is your actor. Introduce them. What do they want? Why are they here?
-    \item \textbf{Read the $\clubsuit$.} This is your pressure. Complicate the scene. What just went wrong, or what is about to?
-    \item \textbf{Read the $\diamondsuit$.} This is your leverage. What can the players gain if they succeed? Be specific.
+    \item \textbf{Read the \spadesuit.} This is your place. Describe it first. Set the stage.
+    \item \textbf{Read the \heartsuit.} This is your actor. Introduce them. What do they want? Why are they here?
+    \item \textbf{Read the \clubsuit.} This is your pressure. Complicate the scene. What just went wrong, or what is about to?
+    \item \textbf{Read the \diamondsuit.} This is your leverage. What can the players gain if they succeed? Be specific.
     \item \textbf{Set the timer.} Use the highest rank among the four cards to determine the size of the scene's primary timer (see above).
     \item \textbf{Interpret faces and Aces.} Give names to face cards. Apply regional Ace effects.
     \item \textbf{Play to find out.} Use the generated elements as prompts, not scripts. The cards are seeds, not fences.
@@ -1266,7 +345,7 @@ When you sit down to generate a scene, a journey leg, or a settlement, follow th
 
 \section*{Regional Flavors: How Suits Shift Meaning}
 
-While the core suit meanings remain constant, each region inflects them with its own texture. A $\spadesuit$ in Ecktoria is a forum or a coin-house; a $\spadesuit$ in the Valewood is a phasing ruin or a star-road. A $\heartsuit$ in the Black Banners is a mercenary captain or a condotta broker; a $\heartsuit$ in Ykrul is a khatun or a bone-singer.
+While the core suit meanings remain constant, each region inflects them with its own texture. A \spadesuit\ in Ecktoria is a forum or a coin-house; a \spadesuit\ in the Valewood is a phasing ruin or a star-road. A \heartsuit\ in the Black Banners is a mercenary captain or a condotta broker; a \heartsuit\ in Ykrul is a khatun or a bone-singer.
 
 The Tulkani say: \textit{``The same card speaks differently in every land. The fool who reads it the same way twice is a fool twice over.''}
 
@@ -1277,29 +356,29 @@ Use the regional chapters as your lexicon. When you draw a card, consult the rel
 You are running a journey through the Broken Marches. You draw:
 
 \begin{center}
-$\spadesuit$ 7, \quad $\heartsuit$ J, \quad $\clubsuit$ 4, \quad $\diamondsuit$ Q
+\spadesuit 7, \quad \heartsuit J, \quad \clubsuit 4, \quad \diamondsuit Q
 \end{center}
 
 \begin{enumerate}
-    \item \textbf{$\spadesuit$ 7:} Hill-Motte---Fresh palisade; ditch scattered with caltrops.
-    \item \textbf{$\heartsuit$ J:} Bride with No Dowry but a Claim---Daggers in the wedding chest.
-    \item \textbf{$\clubsuit$ 4:} Wedding Turns Ambush---You are caught between two bloodlines.
-    \item \textbf{$\diamondsuit$ Q:} Marriage Proxy---From the Margravine; bind a hill-king to your cause.
+    \item \spadesuit 7: Hill-Motte---Fresh palisade; ditch scattered with caltrops.
+    \item \heartsuit J: Bride with No Dowry but a Claim---Daggers in the wedding chest.
+    \item \clubsuit 4: Wedding Turns Ambush---You are caught between two bloodlines.
+    \item \diamondsuit Q: Marriage Proxy---From the Margravine; bind a hill-king to your cause.
     \item \textbf{Highest rank:} Queen (equivalent to 8). The scene's primary timer is 8 segments: \textit{The Feud Escalates [8]}.
     \item \textbf{Interpretation:} The party arrives at a hill-fort on the eve of a wedding. The bride is caught between two feuding bloodlines. The wedding turns to violence. If the party can survive the ambush and broker peace, the Margravine will grant them a Marriage Proxy---a powerful tool to bind a hill-king to their cause. The 8-segment timer tracks how quickly the feud spirals into open war.
 \end{enumerate}
 
 This is the generator at work: four cards, one scene, immediate fiction.
 
-\section*{The Unwritten Suit: When a Draw is Incomplete}
+\section*{The Unwritten Suit: When a Draw Is Incomplete}
 
-Sometimes, a generator does not require all four suits. A travel leg may only need $\spadesuit$, $\heartsuit$, $\clubsuit$. A social encounter might only need $\heartsuit$ and $\clubsuit$. When a suit is missing, treat its absence as a question:
+Sometimes, a generator does not require all four suits. A travel leg may only need \spadesuit, \heartsuit, \clubsuit. A social encounter might only need \heartsuit\ and \clubsuit. When a suit is missing, treat its absence as a question:
 
 \begin{itemize}
-    \item \textbf{No $\spadesuit$:} The place is ambiguous, shifting, or hidden. The scene occurs in a liminal space---a crossroads, a fog-bank, a threshold.
-    \item \textbf{No $\heartsuit$:} The actor is absent, silent, or dead. The pressure and place act without a face. This can be more frightening than a named NPC.
-    \item \textbf{No $\clubsuit$:} The scene is calm, peaceful, or mercifully straightforward. This is rare in Fate's Edge. Treasure it.
-    \item \textbf{No $\diamondsuit$:} The reward is not a token but an outcome. The players gain Position, information, or a cleared timer rather than a physical asset.
+    \item \textbf{No \spadesuit:} The place is ambiguous, shifting, or hidden. The scene occurs in a liminal space---a crossroads, a fog-bank, a threshold.
+    \item \textbf{No \heartsuit:} The actor is absent, silent, or dead. The pressure and place act without a face. This can be more frightening than a named NPC.
+    \item \textbf{No \clubsuit:} The scene is calm, peaceful, or mercifully straightforward. This is rare in Fate's Edge. Treasure it.
+    \item \textbf{No \diamondsuit:} The reward is not a token but an outcome. The players gain Position, information, or a cleared timer rather than a physical asset.
 \end{itemize}
 
 \section*{Interpreting Any Draw, Any Region}
@@ -1309,10 +388,10 @@ When you need a prompt in a hurry---a random encounter, a rumor at a tavern, a d
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
-$\spadesuit$ & A place or landmark. What is its name? What happened here? \\
-$\heartsuit$ & A person or faction. What do they want? What do they fear? \\
-$\clubsuit$ & A complication or threat. Who or what is the obstacle? \\
-$\diamondsuit$ & A reward, token, or secret. What can be gained? \\
+\spadesuit & A place or landmark. What is its name? What happened here? \\
+\heartsuit & A person or faction. What do they want? What do they fear? \\
+\clubsuit & A complication or threat. Who or what is the obstacle? \\
+\diamondsuit & A reward, token, or secret. What can be gained? \\
 \hline
 \end{tabular}
 \end{center}
@@ -1378,7 +457,7 @@ Shuffle. Draw. Interpret. And let the road unfold.
 
 The cartomancy framework is designed to be used by GMs, not just players. When you need to generate a scene, a complication, or a reward, draw a card and interpret it through the lens of the region and the current fiction.
 
-\textbf{Example:} The party is in Vhasia, negotiating with a border patrol. You draw a $\clubsuit$ 9. The entry says: \textit{``Feud Spark---A name spoken wrong reopens an old debt; blood is the only coin that pays.''} You interpret this as: the patrol captain's family has a blood feud with one of the party's allies. He recognizes the name and demands a price---either a ransom, a duel, or a favor.
+\textbf{Example:} The party is in Vhasia, negotiating with a border patrol. You draw a \clubsuit 9. The entry says: \textit{``Feud Spark---A name spoken wrong reopens an old debt; blood is the only coin that pays.''} You interpret this as: the patrol captain's family has a blood feud with one of the party's allies. He recognizes the name and demands a price---either a ransom, a duel, or a favor.
 
 \subsection*{Players as Cartomancers}
 
@@ -1400,11 +479,9 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 
 \textit{---Mira of the Wandering Circle, in the hour before the ninth bell}
 
-\newpage
-
-% ============================================================
-% PART I: THE AMAARANTHINE SEA & NORTHERN SHORES
-% ============================================================
+% ======================================================================
+% PART II: THE AMARANTHINE SEA & NORTHERN SHORES
+% ======================================================================
 \part{The Amaranthine Sea \& Northern Shores}
 
 \begin{quote}
@@ -1413,14 +490,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
   \\ --- The Bravo of Silkstrand
 \end{quote}
 
-\newpage
-
-% -------------------- Kahfagia --------------------
+% -- Kahfagia --
 \chapter{Kahfagia}
 \emph{The Flag of Storms.}
 
 \noindent
-\textit{``Kahfagia runs on lantern-light and rust, where the lies are as polite as the lanterns that never go out. Every beacon is a promise -- and every reef remembers the ships that broke theirs. Come for the salt fish, stay for the gossip, but never trust a calm tide: the commodores know the lanterns fear the dark, and I''ve seen a Mirror-Keeper weep when her reflection showed her a daughter she``d sold for a pilot's license.''} \\
+\textit{``Kahfagia runs on lantern-light and rust, where the lies are as polite as the lanterns that never go out. Every beacon is a promise -- and every reef remembers the ships that broke theirs. Come for the salt fish, stay for the gossip, but never trust a calm tide: the commodores know the lanterns fear the dark, and I've seen a Mirror-Keeper weep when her reflection showed her a daughter she'd sold for a pilot's license.''} \\
 --- The Bravo of Silkstrand
 
 \vspace{1em}
@@ -1431,29 +506,30 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 
 \textbf{What is the first thing you notice about a stranger?} Their hands. Dock-workers have rope-burned palms. Merchants have ink-stained fingers. Privateers have no fingernails -- they bite them off in storms.
 
-\textbf{What is the most common crime?} False manifests. Every third ship carries cargo that doesn``t appear on its papers. The Admiralty knows. The Admiralty takes a cut. The Admiralty calls it a ''tariff surcharge.``
+\textbf{What is the most common crime?} False manifests. Every third ship carries cargo that doesn't appear on its papers. The Admiralty knows. The Admiralty takes a cut. The Admiralty calls it a ``tariff surcharge.''
 
 \textbf{What does no one talk about but everyone knows?} The Mirror-Keepers are not born -- they are made. And the making requires a death. A sister, a daughter, a lover. Someone who drowned so the keeper could see through the fog.
 
 \textbf{Where do people go when they die?} The tide takes them. Kahfagia has no cemeteries above ground. The drowned are weighted with chain and dropped in the deep channel. Their families light candles in paper boats and float them out at dusk.
 
-\textbf{How do you apologize for a serious wrong?} You offer your bell. Every Kahfagian carries a small brass bell -- the sound of their name. Offering it means ''I give you my voice.`` Refusing to return it is a declaration of blood feud.
+\textbf{How do you apologize for a serious wrong?} You offer your bell. Every Kahfagian carries a small brass bell -- the sound of their name. Offering it means ``I give you my voice.'' Refusing to return it is a declaration of blood feud.
 
 \textbf{What is the most important festival?} The Beacon Lighting (midwinter). Every lighthouse keeper lights a new lamp from the Admiral's flame. If your beacon catches first, your year will be lucky. If it sputters, you will owe a death to the sea.
 
-\textbf{What is the secret that could destroy a powerful person?} The Admiral's lantern code has a ninth signal -- never used, never spoken, burned into every keeper's memory. It means \textit{''Kill the witnesses. Sink the evidence. The sea will hide the rest.``}
+\textbf{What is the secret that could destroy a powerful person?} The Admiral's lantern code has a ninth signal -- never used, never spoken, burned into every keeper's memory. It means \textit{``Kill the witnesses. Sink the evidence. The sea will hide the rest.''}
 \end{almanac}
 
-\newpage
 \input{../generators/kahfagia.tex}
+\index{Kahfagia}
+
 \newpage
 
-% -------------------- Ecktoria --------------------
+% -- Ecktoria --
 \chapter{Ecktoria}
 \emph{Marble \& Fire.}
 
 \noindent
-\textit{''Ecktoria is a marble coffin for a king who never was. The Everflame burns not for light but for weight -- it measures the lie in every breath. The statues are not watchers -- they are the pressure points in the stone. The undertakers know the body is cold, but the pressure remains. The mountain does not forget what the marble tries to hide.``} \\
+\textit{``Ecktoria is a marble coffin for a king who never was. The Everflame burns not for light but for weight -- it measures the lie in every breath. The statues are not watchers -- they are the pressure points in the stone. The undertakers know the body is cold, but the pressure remains. The mountain does not forget what the marble tries to hide.''} \\
 --- Aeler Edgewalker
 
 \vspace{1em}
@@ -1466,7 +542,7 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 
 \textbf{What is the most common crime?} Tax evasion -- but it is not a crime, it is a sport. Every household keeps two ledgers: the white one for the Censor, the red one for the family. The art is in keeping the red ledger from looking like a confession.
 
-\textbf{What does no one talk about but everyone knows?} The Censor's clerks are paid to find discrepancies. They are also paid to lose them. The price of a lost discrepancy is exactly 5\% of the tax owed. This is not corruption. It is ''administrative flexibility.``
+\textbf{What does no one talk about but everyone knows?} The Censor's clerks are paid to find discrepancies. They are also paid to lose them. The price of a lost discrepancy is exactly 5\% of the tax owed. This is not corruption. It is ``administrative flexibility.''
 
 \textbf{Where do people go when they die?} The family crypt, beneath the basilica floor. The wealthy are burned, their ashes mixed with marble dust and pressed into the floor tiles. The poor are buried in unmarked graves outside the walls. The Everflame's light does not reach that far.
 
@@ -1477,16 +553,17 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Grand Magistrate's seal is a forgery. The original cracked in 783 AR. The current seal was carved by a prison engraver who was executed to keep the secret. The engraver's apprentice is still alive. They live in Silkstrand. They have the original sketches.
 \end{almanac}
 
-\newpage
 \input{../generators/ecktoria.tex}
+\index{Ecktoria}
+
 \newpage
 
-% -------------------- Acasia --------------------
+% -- Acasia --
 \chapter{Acasia}
 \emph{The Broken Marches.}
 
 \noindent
-\textit{''Acasia was the first province the Utaran Empire swallowed and the last it spat out. Now it is a wound that will not close -- a place where roads loop back on themselves and bridges lead to the same shore. The Curse is not a spell. It is a memory, and the land has a very long memory. In these marches, memory is the only currency that does not devalue.``} \\
+\textit{``Acasia was the first province the Utaran Empire swallowed and the last it spat out. Now it is a wound that will not close -- a place where roads loop back on themselves and bridges lead to the same shore. The Curse is not a spell. It is a memory, and the land has a very long memory. In these marches, memory is the only currency that does not devalue.''} \\
 --- Lady Isolde of the Scar
 
 \vspace{1em}
@@ -1495,7 +572,7 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 
 \textbf{What does a child learn before they can walk?} To name the dead. Every Acasian child has a list of ancestors they repeat at bedtime. The list gets shorter each generation. Not because children forget. Because the dead are forgetting themselves.
 
-\textbf{What is the first thing you notice about a stranger?} Whether they have a shadow. The Curse takes shadows first. A man without a shadow is not cursed -- he is already gone. His body just hasn''t stopped moving yet.
+\textbf{What is the first thing you notice about a stranger?} Whether they have a shadow. The Curse takes shadows first. A man without a shadow is not cursed -- he is already gone. His body just hasn't stopped moving yet.
 
 \textbf{What is the most common crime?} Bridge-toll evasion. The roads are unsafe, the ferries are unreliable, but the barons still demand payment for crossings no one can make. The crime is not in refusing to pay. The crime is in being caught trying.
 
@@ -1510,11 +587,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The duke's son is a ghoul. He was lost in the Blackwood as a child. They found him three days later, pale and smiling. He does not age. He does not eat. He only watches. The servants know. The servants do not speak.
 \end{almanac}
 
-\newpage
 \input{../generators/acasia.tex}
+\index{Acasia}
+
 \newpage
 
-% -------------------- Vhasia --------------------
+% -- Vhasia --
 \chapter{Vhasia}
 \emph{The Fractured Sun.}
 
@@ -1526,9 +604,9 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \begin{almanac}
 \textbf{What do people eat for breakfast?} Dark bread and watered wine -- the wine cuts the dust from the road. The nobility eat spiced eggs and fresh cheese, but they eat behind closed doors. To eat well in public is to invite envy. Envy is a dagger.
 
-\textbf{What does a child learn before they can walk?} Which colors not to wear. Black and gold are the Northern Crown's colors. Red and silver are the Southern Parlement``s. A child who wears the wrong color to the wrong village may not return home.
+\textbf{What does a child learn before they can walk?} Which colors not to wear. Black and gold are the Northern Crown's colors. Red and silver are the Southern Parlement's. A child who wears the wrong color to the wrong village may not return home.
 
-\textbf{What is the first thing you notice about a stranger?} Which side of the road they walk on. The north side is the Crown''s. The south side is the Parlement``s. The middle is no man's land -- literally. Bandits, spies, and messengers use the middle. So do ghosts.
+\textbf{What is the first thing you notice about a stranger?} Which side of the road they walk on. The north side is the Crown's. The south side is the Parlement's. The middle is no man's land -- literally. Bandits, spies, and messengers use the middle. So do ghosts.
 
 \textbf{What is the most common crime?} Raiding across the Belworth. The river is the border, the border is a suggestion, and the suggestion is enforced by armed men on both sides. The crime is not in raiding. The crime is in being caught on the wrong bank at dawn.
 
@@ -1543,93 +621,94 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Queen-Mother has no claim to the regency. Her son is not the Dauphin. The real Dauphin died in childbirth. The child on the throne is a foundling, bought from a Tulkani caravan. The Tulkani know. The Tulkani are still waiting to be paid.
 \end{almanac}
 
-\newpage
 \input{../generators/vhasia.tex}
+\index{Vhasia}
+
 \newpage
 
-% -------------------- Viterra --------------------
+% -- Viterra --
 \chapter{Viterra}
 \emph{The Hedge-Law Realm.}
 
 \noindent
-\textit{''Viterra hums with the quiet hum of old promises kept. The Queen's Peace is not a word -- it is a wax seal warm from the press, and every seal tells a story. The hedge-courts don``t keep the peace with swords -- they keep it with second chances. And in Viterra, a second chance is always worth the price of a smile.''} \\
+\textit{``Viterra hums with the quiet hum of old promises kept. The Queen's Peace is not a word -- it is a wax seal warm from the press, and every seal tells a story. The hedge-courts don't keep the peace with swords -- they keep it with second chances. And in Viterra, a second chance is always worth the price of a smile.''} \\
 --- The Bravo of Silkstrand
 
 \vspace{1em}
 \begin{almanac}
 \textbf{What do people eat for breakfast?} Barley porridge with a drizzle of honey -- if you own bees. If not, porridge with salt. Salt is the currency of the poor. Honey is the currency of the hopeful.
 
-\textbf{What does a child learn before they can walk?} To recite their lineage back three generations. Every Viterran child knows their grandparents`` names, trades, and debts. A child who cannot recite is a child without standing. Standing is everything.
+\textbf{What does a child learn before they can walk?} To recite their lineage back three generations. Every Viterran child knows their grandparents' names, trades, and debts. A child who cannot recite is a child without standing. Standing is everything.
 
 \textbf{What is the first thing you notice about a stranger?} Whether they carry a seal ring. A seal ring means they have the right to make contracts in their own name. A stranger without a seal ring is either a servant or a criminal. In Viterra, the difference is a matter of paperwork.
 
-\textbf{What is the most common crime?} Boundary disputes. A hedge moved three feet east. A milestone replaced under cover of darkness. A ford declared ''private`` when it has been public for two centuries. The courts are clogged. The lawyers are rich. The hedges are patient.
+\textbf{What is the most common crime?} Boundary disputes. A hedge moved three feet east. A milestone replaced under cover of darkness. A ford declared ``private'' when it has been public for two centuries. The courts are clogged. The lawyers are rich. The hedges are patient.
 
 \textbf{What does no one talk about but everyone knows?} The Queen is not a warrior. She has never drawn a sword. Her reputation was forged by a propaganda campaign run by her spymaster. The spymaster is dead. His successor is more discreet.
 
-\textbf{Where do people go when they die?} To the family plot -- if they have a family. The landless poor are buried in parish cemeteries, their headstones marked with a single word: ''Anonymous.`` The ghosts wander the hedgerows at dusk. They do not remember their names. They remember their debts.
+\textbf{Where do people go when they die?} To the family plot -- if they have a family. The landless poor are buried in parish cemeteries, their headstones marked with a single word: ``Anonymous.'' The ghosts wander the hedgerows at dusk. They do not remember their names. They remember their debts.
 
-\textbf{How do you apologize for a serious wrong?} You petition the hedge-court for a ''writ of contrition.`` You state your wrong aloud while holding a handful of earth from the wronged party's land. If the earth crumbles, you are forgiven. If it holds, you are not.
+\textbf{How do you apologize for a serious wrong?} You petition the hedge-court for a ``writ of contrition.'' You state your wrong aloud while holding a handful of earth from the wronged party's land. If the earth crumbles, you are forgiven. If it holds, you are not.
 
 \textbf{What is the most important festival?} The Opening of the Rolls (autumn). Every county sends its tax records to the capital. The documents are carried by children, so the next generation learns the weight of obligation.
 
 \textbf{What is the secret that could destroy a powerful person?} The Codex of Precedents has a missing page. It was torn out during a trial for treason. The page contained the precedent for executing a monarch. The Queen knows. The Justiciars know. The page is hidden in a lead-lined box beneath the hedge-court at Thornwood.
 \end{almanac}
 
-\newpage
 \input{../generators/viterra.tex}
+\index{Viterra}
+
 \newpage
 
-% -------------------- Thepyrgos --------------------
+% -- Thepyrgos --
 \chapter{Thepyrgos}
 \emph{City of a Thousand Stairs.}
 
 \noindent
-\textit{''Thepyrgos is a vertical labyrinth of stair-rights, rope-guilds, and synod edicts that shift with the tide. The Synod rules with the delicacy of a brick wrapped in velvet -- they hate unsanctioned magic, but they adore infrastructure. Beneath the city, the Unfinished Stair waits for those who ask a question the Synod cannot answer.``} \\
+\textit{``Thepyrgos is a vertical labyrinth of stair-rights, rope-guilds, and synod edicts that shift with the tide. The Synod rules with the delicacy of a brick wrapped in velvet -- they hate unsanctioned magic, but they adore infrastructure. Beneath the city, the Unfinished Stair waits for those who ask a question the Synod cannot answer.''} \\
 --- The Edgewalker
 
 \vspace{1em}
 \begin{almanac}
-\textbf{What do people eat for breakfast?} Flatbread with olive oil and a boiled egg -- if you are a clerk. If you are a student, bread and water. If you are a professor, bread, water, and a single fig. The fig is a status symbol. The status is ''I have not been audited.``
+\textbf{What do people eat for breakfast?} Flatbread with olive oil and a boiled egg -- if you are a clerk. If you are a student, bread and water. If you are a professor, bread, water, and a single fig. The fig is a status symbol. The status is ``I have not been audited.''
 
 \textbf{What does a child learn before they can walk?} To read a bell schedule. Thepyrgos runs on bells -- dawn bells, market bells, curfew bells, trial bells. A child who cannot read the bells cannot cross the city without a guardian. A child without a guardian is a child who will be sold to the university for dissection.
 
 \textbf{What is the first thing you notice about a stranger?} Their step count. Thepyrgos has a thousand stairs. A stranger who counts them aloud is either a pilgrim or a spy. A stranger who climbs them in silence is either a native or a ghost.
 
-\textbf{What is the most common crime?} Unsanctioned magic. The Synod licenses every spell cast within the walls. An unlicensed cantrip is a misdemeanour. An unlicensed healing is a felony. An unlicensed summoning is a death sentence -- not for the caster, who will be executed, but for the summoned, who will be bound to the city's foundation as a ''structural consultant.``
+\textbf{What is the most common crime?} Unsanctioned magic. The Synod licenses every spell cast within the walls. An unlicensed cantrip is a misdemeanour. An unlicensed healing is a felony. An unlicensed summoning is a death sentence -- not for the caster, who will be executed, but for the summoned, who will be bound to the city's foundation as a ``structural consultant.''
 
 \textbf{What does no one talk about but everyone knows?} The Silent Stair is not silent. It whispers the confessions of dead scholars -- their secrets recorded in the stone. The Chain-Lanterns listen. They do not share.
 
 \textbf{Where do people go when they die?} To the catacombs beneath the university. The catacombs are a library of bones. Each skeleton is labeled with the scholar's name, their thesis, and the date of their death. The unlabelled bones are the ones who died before they could finish. They are still writing.
 
-\textbf{How do you apologize for a serious wrong?} You submit a ''retraction`` to the Synod's Committee on Ethical Correction. The retraction is published in the public square, read aloud by a herald, and witnessed by three notaries. The fee is 50 silver. The shame is free.
+\textbf{How do you apologize for a serious wrong?} You submit a ``retraction'' to the Synod's Committee on Ethical Correction. The retraction is published in the public square, read aloud by a herald, and witnessed by three notaries. The fee is 50 silver. The shame is free.
 
 \textbf{What is the most important festival?} The Convocation of the Steps (summer solstice). Every citizen climbs the thousand stairs to the upper citadel. The Archon reads the names of the dead from the past year. The names are carved into the steps as they are read. The steps are getting crowded.
 
 \textbf{What is the secret that could destroy a powerful person?} The Archon is a fraud. He never passed the Synod's examination. His degree was purchased from a disgraced dean whose signature is forged on every document. The forger is still alive. They live in the catacombs. They have the original quill.
 \end{almanac}
 
-\newpage
 \input{../generators/thepyrgos.tex}
-\newpage
+\index{Thepyrgos}
 
-% ----------------------------------------------------------------------
-% PART II -- THE NORTHERN REACHES
-% ----------------------------------------------------------------------
+% ======================================================================
+% PART III: THE NORTHERN REACHES
+% ======================================================================
 \part{The Northern Reaches}
 
 \begin{quote}
   \small
-  \textit{''The mountain counts your breaths. The frost writes your name in ice. In the north, the dead do not wait -- they walk, and they remember every promise you made to keep warm.``}
+  \textit{``The mountain counts your breaths. The frost writes your name in ice. In the north, the dead do not wait -- they walk, and they remember every promise you made to keep warm.''}
   \\ --- The Edgewalker
 \end{quote}
 
-% -------------------- Aeler --------------------
+% -- Aeler --
 \chapter{Aeler}
 \emph{Crowns \& Under-Vaults.}
 
 \noindent
-\textit{''The Aeler hold the mountains by breath, bell, and load-bearing stone. Air is measured, water is bartered, light is rationed -- and every tunnel has a breaking point. I``ve mapped most of them. The ones I haven''t are still settling.``} \\
+\textit{``The Aeler hold the mountains by breath, bell, and load-bearing stone. Air is measured, water is bartered, light is rationed -- and every tunnel has a breaking point. I've mapped most of them. The ones I haven't are still settling.''} \\
 --- The Edgewalker
 
 \vspace{1em}
@@ -1642,7 +721,7 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 
 \textbf{What is the most common crime?} Air theft. In the deep vaults, ventilation is shared. A sealed door, a blocked vent -- these are thefts of breath, punishable by breath-debt. The guilty party donates their own air ration to the victim. The donation is measured in days. The days are counted by bells.
 
-\textbf{What does no one talk about but everyone knows?} The True Masons are not neutral. They are the Vault-Queen's eyes. Every ''independent`` repair, every ''neutral`` inspection -- the True Masons are watching. They do not report to the Queen. They are the Queen.
+\textbf{What does no one talk about but everyone knows?} The True Masons are not neutral. They are the Vault-Queen's eyes. Every ``independent'' repair, every ``neutral'' inspection -- the True Masons are watching. They do not report to the Queen. They are the Queen.
 
 \textbf{Where do people go when they die?} To the Deep Vaults. The dead are sealed in niches carved into the walls, their names chiselled above their heads. The niches are reused every century. The names are never erased. The dead share walls with strangers. The strangers are patient.
 
@@ -1653,16 +732,17 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Vault-Queen is a construct. Assembled after the real queen died in a cave-in. Her heart is a keystone. Her breath is a bellows. The True Masons have the schematics. The schematics are missing three pages -- the pages that describe how to turn her off.
 \end{almanac}
 
-\newpage
 \input{../generators/aeler.tex}
+\index{Aeler}
+
 \newpage
 
-% -------------------- Mistlands --------------------
+% -- Mistlands --
 \chapter{The Mistlands}
 \emph{Bells, Salt, and Breath.}
 
 \noindent
-\textit{''The Mistlands lend their name to the Aeler, but the fog is its own master. It hides not just the land, but the law that should bind us. The bell-lines ring to keep the wraiths back, and the Aeler ask for their due -- but when the coin is gone, they take their bells and leave. Then the fog does not forget; it remembers every name they left behind in the damp and dark.``} \\
+\textit{``The Mistlands lend their name to the Aeler, but the fog is its own master. It hides not just the land, but the law that should bind us. The bell-lines ring to keep the wraiths back, and the Aeler ask for their due -- but when the coin is gone, they take their bells and leave. Then the fog does not forget; it remembers every name they left behind in the damp and dark.''} \\
 --- Lady Isolde of the Scar
 
 \vspace{1em}
@@ -1686,16 +766,17 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Legate of the Mists is a wraith. She died in 803 AR, during a bell-line failure. The Aeler rebuilt her from fog and memory. She does not know she is dead. She signs documents. Her signature fades after sunset.
 \end{almanac}
 
-\newpage
 \input{../generators/mistlands.tex}
+\index{Mistlands}
+
 \newpage
 
-% -------------------- Ykrul --------------------
+% -- Ykrul --
 \chapter{Ykrul}
 \emph{Wolf Standards, Winter Camps.}
 
 \noindent
-\textit{''The Ykrul ride the Violet Steppe, where the sky is a cup and the horizon its lip. Their Kon``reh is not a code but a compass -- it reads the land in steps, in stops, in the weight of a breath. Every crossing has its cost, every ford its toll, every feud its balance in the space between hoof and earth. But the Steppe does not deal in coin; it deals in the weight of a promise and the length of a life.''} \\
+\textit{``The Ykrul ride the Violet Steppe, where the sky is a cup and the horizon its lip. Their Kon'reh is not a code but a compass -- it reads the land in steps, in stops, in the weight of a breath. Every crossing has its cost, every ford its toll, every feud its balance in the space between hoof and earth. But the Steppe does not deal in coin; it deals in the weight of a promise and the length of a life.''} \\
 --- Aeler Edgewalker
 
 \vspace{1em}
@@ -1706,24 +787,25 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 
 \textbf{What is the first thing you notice about a stranger?} Their braids. Red for the Wolf Clan, black for the Iron Horse, gray for the Salt Steppe. A stranger whose braids are cut has been shamed. A stranger with no braids has no clan. A stranger with no clan is prey.
 
-\textbf{What is the most common crime?} Horse theft. A stolen horse is a stolen relative. The price is blood -- the thief's or the owner``s. The evidence is the horse's memory. Horses do not lie.
+\textbf{What is the most common crime?} Horse theft. A stolen horse is a stolen relative. The price is blood -- the thief's or the owner's. The evidence is the horse's memory. Horses do not lie.
 
 \textbf{What does no one talk about but everyone knows?} The Khagan is not chosen by blood. He is chosen by the horse. Every five years, the clan chiefs lead their best stallions to the sacred ring. The horse that steps forward first chooses the next Khagan. The horse has not stepped forward in twenty years.
 
 \textbf{Where do people go when they die?} To the sky. Bodies are placed on open platforms, left for the wind and birds. The bones are ground into powder, mixed with clay, fired into beads. The beads are worn by the dead's descendants. The beads are warm. The warmth is memory.
 
-\textbf{How do you apologize for a serious wrong?} You offer a hostage string -- a braided cord that ties your wrist to the wronged party''s. The cord is cut when the apology is accepted. If the cord is never cut, you are bound. The binding is lifelong. The binding is called ``friend.''
+\textbf{How do you apologize for a serious wrong?} You offer a hostage string -- a braided cord that ties your wrist to the wronged party's. The cord is cut when the apology is accepted. If the cord is never cut, you are bound. The binding is lifelong. The binding is called ``friend.''
 
 \textbf{What is the most important festival?} The First Grass (spring equinox). The herds are released onto new pasture. The riders race to the horizon and back. The winner names the summer camps. The loser tends the sick animals. The loser always wins next year.
 
 \textbf{What is the secret that could destroy a powerful person?} The Sky-Speaker is a fraud. She cannot call storms. She cannot read omens. She is a horse-witch who learned to read the clouds. The clouds are reliable. The Khagan does not want to know.
 \end{almanac}
 
-\newpage
 \input{../generators/ykrul.tex}
+\index{Ykrul}
+
 \newpage
 
-% -------------------- Vilikari --------------------
+% -- Vilikari --
 \chapter{Vilikari}
 \emph{Laurels \& Longhouses.}
 
@@ -1752,11 +834,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Foedus Stone has a crack. It was repaired with clay and prayer. The clay is drying. The prayer is fading. When the stone splits, the treaty splits with it. No one knows what happens then.
 \end{almanac}
 
-\newpage
 \input{../generators/vilikari.tex}
+\index{Vilikari}
+
 \newpage
 
-% -------------------- Black Banners --------------------
+% -- Black Banners --
 \chapter{Black Banners}
 \emph{Condotta \& Crowns.}
 
@@ -1785,11 +868,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Banner-Captain's contract is written in disappearing ink. The ink was supplied by a Sidhi forger paid in promises. The promises were not kept. The forger is now a camp follower. The forger knows where the contract is hidden.
 \end{almanac}
 
-\newpage
 \input{../generators/black_banner.tex}
+\index{Black Banners}
+
 \newpage
 
-% -------------------- Linns --------------------
+% -- Linns --
 \chapter{The Linns}
 \emph{Skerries \& Storm-Oaths.}
 
@@ -1818,13 +902,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Volva of the Mist is a fraud. She cannot see the future. She reads the weather -- pressure, wind, the taste of salt on the air. The sailors know. The sailors do not care. A weather-reader is more useful than a seer.
 \end{almanac}
 
-\newpage
 \input{../generators/linns.tex}
-\newpage
+\index{Linn}
 
-% ----------------------------------------------------------------------
-% PART III -- THE SPACES BETWEEN
-% ----------------------------------------------------------------------
+% ======================================================================
+% PART IV: THE SPACES BETWEEN
+% ======================================================================
 \part{The Spaces Between}
 
 \begin{quote}
@@ -1833,7 +916,7 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
   \\ --- The Edgewalker
 \end{quote}
 
-% -------------------- Ubral --------------------
+% -- Ubral --
 \chapter{Ubral}
 \emph{The Stone Between Spears.}
 
@@ -1862,11 +945,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Great Cairn is a prison -- the tomb of a Vritann king who tried to conquer Ubral and failed. He was buried alive. His ghost votes with the cairns. He votes for war. The cairns have not yet agreed.
 \end{almanac}
 
-\newpage
 \input{../generators/ubral.tex}
+\index{Ubral}
+
 \newpage
 
-% -------------------- Silkstrand --------------------
+% -- Silkstrand --
 \chapter{Silkstrand}
 \emph{City of Bridges \& Dyewater.}
 
@@ -1878,13 +962,13 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \begin{almanac}
 \textbf{What do people eat for breakfast?} Rice porridge with dried fish -- the rice is from Oshiiran barges, the fish from Zakov fleets. Both are smuggled. Both are delicious. Both are paid for in favors.
 
-\textbf{What does a child learn before they can walk?} To count bridges. The eight bridges of the city: Merchant``s, Weaver''s, Dyer``s, Cooper''s, Pilot``s, Beggar''s, Saint``s, and the ninth -- the bridge only there at low tide. The ninth bridge leads to the Sunken Quarter, where promises go to drown.
+\textbf{What does a child learn before they can walk?} To count bridges. The eight bridges of the city: Merchant's, Weaver's, Dyer's, Cooper's, Pilot's, Beggar's, Saint's, and the ninth -- the bridge only there at low tide. The ninth bridge leads to the Sunken Quarter, where promises go to drown.
 
 \textbf{What is the first thing you notice about a stranger?} Their ink. Every Silkstrand merchant has a seal-ink stain on their right thumb. Fresh ink means new to the trade. Faded ink means retired. No ink means not a merchant. Not a merchant is not a person.
 
 \textbf{What is the most common crime?} Contract fraud -- but fraud is a negotiation. Contracts are written in disappearing ink. The notaries sell the antidote. The antidote is the fee.
 
-\textbf{What does no one talk about but everyone knows?} The Matron is not the ruler. The canals rule. The canals set the prices. The canals decide who drowns. The canals are the city's memory. The memory is the Matron''s.
+\textbf{What does no one talk about but everyone knows?} The Matron is not the ruler. The canals rule. The canals set the prices. The canals decide who drowns. The canals are the city's memory. The memory is the Matron's.
 
 \textbf{Where do people go when they die?} To the canals. Bodies are wrapped in silk and sunk in the deep channels. The channels are the city's archive. The archive is never balanced.
 
@@ -1895,16 +979,17 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The canals were dug by a Sidhi engineer paid in promises. The promises were broken. The engineer cursed the city. Every ninth drop of water is a tear. She has been crying for nine centuries.
 \end{almanac}
 
-\newpage
 \input{../generators/silkstrand.tex}
+\index{Silkstrand}
+
 \newpage
 
-% -------------------- Midh-Akhaz --------------------
+% -- Midh-Akhaz --
 \chapter{Midh-Akhaz}
 \emph{The Violet Gate.}
 
 \noindent
-\textit{``Midh-Akhaz is not a city. It is a gap in the world where trade is the only law. No walls, no gates -- just the smell of horse sweat, cedar smoke, and the copper tang of coin paid in blood. The grass grows tall to conceal the fallen, not to honor them. Ecktorian emissaries call it ''the Brink`` -- the edge where coin buys survival. Caravan guards call it home -- a temporary respite from the weight of the road. Thieves call it paradise -- a place where the only law is the weight of a knife in the belt.''} \\
+\textit{``Midh-Akhaz is not a city. It is a gap in the world where trade is the only law. No walls, no gates -- just the smell of horse sweat, cedar smoke, and the copper tang of coin paid in blood. The grass grows tall to conceal the fallen, not to honor them. Ecktorian emissaries call it ``the Brink'' -- the edge where coin buys survival. Caravan guards call it home -- a temporary respite from the weight of the road. Thieves call it paradise -- a place where the only law is the weight of a knife in the belt.''} \\
 --- Aeler Edgewalker
 
 \vspace{1em}
@@ -1928,11 +1013,15 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Oasis Compact's original seal was stolen by a Vilikari factor who wanted to control water rights. The factor still lives in the Foreign Quarter under a false name. The seal is hidden in a hollow horse skull buried under the Grass Ring. The skull belonged to the Khatun's favorite stallion. The stallion did not die of old age.
 \end{almanac}
 
-\newpage
 \input{../generators/midh-akhaz.tex}
-\newpage
+\index{Midh-Akhaz}
 
-% -------------------- Ways Between --------------------
+% ======================================================================
+% PART V: THE WILDS, DUNGEONS, AND WAYS BETWEEN
+% ======================================================================
+\part{The Wilds, Dungeons, and Ways Between}
+
+% -- Ways Between --
 \chapter{The Ways Between}
 \emph{Spiritways \& Veilways.}
 
@@ -1961,11 +1050,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The Wayfinder is not a person. It is the road itself, dreaming of a traveler who will finally reach the end. The end does not exist. The road knows this. The road dreams anyway.
 \end{almanac}
 
-\newpage
 \input{../generators/ways_between.tex}
+\index{Ways Between}
+
 \newpage
 
-% -------------------- The Wilds --------------------
+% -- Wilds --
 \chapter{The Wilds}
 \emph{Roads, Ruins, and Weather.}
 
@@ -1994,11 +1084,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The wilds have a heart. A stone buried beneath the oldest oak. The stone is warm and beating. If it stops, the wilds die. Nothing left to remember. Nothing left to wait.
 \end{almanac}
 
-\newpage
 \input{../generators/wilderness.tex}
+\index{Wilds}
+
 \newpage
 
-% -------------------- Dungeons --------------------
+% -- Dungeons --
 \chapter{Dungeons}
 \emph{Living Infrastructure.}
 
@@ -2027,13 +1118,12 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
 \textbf{What is the secret that could destroy a powerful person?} The dungeon's architect is still alive, sealed in the lowest chamber. The dungeon does not want to be alone. The architect is its only friend. The architect has not spoken in nine centuries. The dungeon does not need words.
 \end{almanac}
 
-\newpage
 \input{../generators/dungeons.tex}
-\newpage
+\index{Dungeons}
 
-% ----------------------------------------------------------------------
+% ======================================================================
 % EPILOGUE
-% ----------------------------------------------------------------------
+% ======================================================================
 \chapter*{The Memory Closes}
 \addcontentsline{toc}{chapter}{The Memory Closes}
 
@@ -2058,39 +1148,45 @@ Remember: every reading is a transaction. The cards lend, and they collect. A pl
   \\ --- Dusana of the Raven Road, at a caravanserai whose name she refused to give
 \end{quote}
 
-\appendix
+% ======================================================================
+% CODA
+% ======================================================================
+\begin{chapter*}{Coda: A Random Encounter (Not Really) at the Three-Mugs Inn}
+\addcontentsline{toc}{chapter}{Coda: A Random Encounter (Not Really) at the Three-Mugs Inn}
 
-\begin{chapter*{Coda: A Random Encounter (Not Really) at the Three-Mugs Inn}}  
-  \addcontentsline{toc}{chapter}{Coda: A Random Encounter (Not Really) at the Three-Mugs Inn}  
-  
-  The night air was just shy of frost, and the Three-Mugs Inn smelled of spiced ale, damp wool, and the faint promise of gossip that had been sitting on the bar for a week. The fire crackled low, casting a wavering amber glow over the handful of patrons who pretended not to be listening to each other's stories.  
-  
-  A soft creak announced the door's opening. In stepped a woman whose scarred cheek caught the firelight like a fresh-drawn blade. She brushed snow from her cloak, set her sword-hand on the hilt of a well-worn blade, and surveyed the room with the practiced eye of someone who had counted the stones of every bridge she``d crossed.  
-  
-  ''Evening,`` she said, voice low but carrying. ''I``m Isolde of the Scar. Does anyone know if the road north of the Belworth still has that\dots unsettling gap where the stones whisper?''  
-  
-  A ripple of laughter rose from the corner where a lanky figure leaned back, a grin playing at the corners of his mouth. His cloak was patched with bright dyed patches, and a dagger dangled from his belt like an after-thought. He tipped an imaginary hat.  
-  
-  ``Name''s\dots well, I don``t really need one, but you can call me Bravo. I''ve been tracing the canals of Silkstrand all day---turns out the ninth bridge only appears when the tide's feeling generous. You looking for a shortcut, or just a story to trade for a mug?``  
-  
-  From the shadows near the hearth emerged a third figure, tall and gaunt, whose breath seemed to fog the air even as the fire licked his boots. He carried no weapon, only a small brass bell that hung from his neck, silent for now. His eyes were the color of stone-wet after a storm, and he spoke in a tone that made the crackling fire sound like a distant rumble.  
-  
-  ''Aeler,`` he said, the name barely more than a whisper. ''I``ve been walking the old tunnels beneath the Aeler holds. The stone remembers every footfall, and it's been\dots restless lately. If you''re looking for a place that won``t collapse under the weight of your expectations, I know a few shafts that still hold.''  
-  
-  The trio fell into an uneasy silence, each measuring the other not with suspicion but with the quiet respect of strangers who have walked too many roads to be surprised by another traveler's tale.  
-  
-  Isolde glanced at the bravo's dagger, then at the bell at the Aeler's throat. ``You both carry\dots reminders.''  
-  
-  Bravo chuckled, tapping the hilt of his blade. ``A reminder that I still owe someone a drink.''  
-  
-  Aeler lifted the bell just enough for it to give a faint, reluctant chime. ``And a reminder that some debts are measured in breath, not coin.''  
-  
-  The innkeeper, a stout woman with a flour-dusted apron, slid three mugs across the bar without a word. The ale was dark, frothy, and smelled faintly of rosemary---exactly the sort of thing that made a warrior think of home, a rogue think of a clever bargain, and a stone-walker think of the weight of a promise kept.  
-  
-  They clinked mugs, the sound a brief, bright note against the low hum of the tavern. No grand quest was sworn, no ancient prophecy whispered. They simply sat, drank, and let the night settle into the familiar rhythm of strangers who, for a moment, shared the same fire, the same stale bread, and the same unspoken understanding that the road ahead would be just as muddy, just as bright, and just as full of stories as the one they``d just left behind.  
-  
-  When the moon rose high enough to silver the snow outside, each rose, tucked their respective token---sword, dagger, bell---back into their packs, and slipped back into the night. They did not exchange names again; they did not need to. The Three-Mugs Inn would remember them only as the three who came in, shared a drink, and left without making a fuss---exactly the sort of uneventful, perfectly ordinary encounter that makes a tavern worth its name.  
-  
-  \end{chapter*}
+The night air was just shy of frost, and the Three-Mugs Inn smelled of spiced ale, damp wool, and the faint promise of gossip that had been sitting on the bar for a week. The fire crackled low, casting a wavering amber glow over the handful of patrons who pretended not to be listening to each other's stories.
+
+A soft creak announced the door's opening. In stepped a woman whose scarred cheek caught the firelight like a fresh-drawn blade. She brushed snow from her cloak, set her sword-hand on the hilt of a well-worn blade, and surveyed the room with the practiced eye of someone who had counted the stones of every bridge she'd crossed.
+
+``Evening,'' she said, voice low but carrying. ``I'm Isolde of the Scar. Does anyone know if the road north of the Belworth still has that\dots unsettling gap where the stones whisper?''
+
+A ripple of laughter rose from the corner where a lanky figure leaned back, a grin playing at the corners of his mouth. His cloak was patched with bright dyed patches, and a dagger dangled from his belt like an after-thought. He tipped an imaginary hat.
+
+``Name's\dots well, I don't really need one, but you can call me Bravo. I've been tracing the canals of Silkstrand all day---turns out the ninth bridge only appears when the tide's feeling generous. You looking for a shortcut, or just a story to trade for a mug?''
+
+From the shadows near the hearth emerged a third figure, tall and gaunt, whose breath seemed to fog the air even as the fire licked his boots. He carried no weapon, only a small brass bell that hung from his neck, silent for now. His eyes were the color of stone-wet after a storm, and he spoke in a tone that made the crackling fire sound like a distant rumble.
+
+``Aeler,'' he said, the name barely more than a whisper. ``I've been walking the old tunnels beneath the Aeler holds. The stone remembers every footfall, and it's been\dots restless lately. If you're looking for a place that won't collapse under the weight of your expectations, I know a few shafts that still hold.''
+
+The trio fell into an uneasy silence, each measuring the other not with suspicion but with the quiet respect of strangers who have walked too many roads to be surprised by another traveler's tale.
+
+Isolde glanced at the bravo's dagger, then at the bell at the Aeler's throat. ``You both carry\dots reminders.''
+
+Bravo chuckled, tapping the hilt of his blade. ``A reminder that I still owe someone a drink.''
+
+Aeler lifted the bell just enough for it to give a faint, reluctant chime. ``And a reminder that some debts are measured in breath, not coin.''
+
+The innkeeper, a stout woman with a flour-dusted apron, slid three mugs across the bar without a word. The ale was dark, frothy, and smelled faintly of rosemary---exactly the sort of thing that made a warrior think of home, a rogue think of a clever bargain, and a stone-walker think of the weight of a promise kept.
+
+They clinked mugs, the sound a brief, bright note against the low hum of the tavern. No grand quest was sworn, no ancient prophecy whispered. They simply sat, drank, and let the night settle into the familiar rhythm of strangers who, for a moment, shared the same fire, the same stale bread, and the same unspoken understanding that the road ahead would be just as muddy, just as bright, and just as full of stories as the one they'd just left behind.
+
+When the moon rose high enough to silver the snow outside, each rose, tucked their respective token---sword, dagger, bell---back into their packs, and slipped back into the night. They did not exchange names again; they did not need to. The Three-Mugs Inn would remember them only as the three who came in, shared a drink, and left without making a fuss---exactly the sort of uneventful, perfectly ordinary encounter that makes a tavern worth its name.
+
+\end{chapter*}
+
+% ======================================================================
+% INDEX
+% ======================================================================
+\printindex
 
 \end{document}
