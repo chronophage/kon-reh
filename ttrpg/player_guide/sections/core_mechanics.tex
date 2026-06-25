@@ -410,59 +410,50 @@ Harm 3 & Incapacitated or dying \\
 \end{tabular}
 \end{center}
 
-\subsection{Taking Harm and Fatigue -- The Procedure}
+\subsection{Taking Harm and Fatigue -- The Procedure (Player Perspective)}
 \label{sec:take-harm-fatigue}
-When you are hit, follow these steps \textbf{in order}:
+\textbf{When you are hit, you report the incoming Harm value and your armor type to the GM. The GM consults the Armor Conversion Table and tells you the result. You then apply the outcome in this order:}
 
 \begin{enumerate}
-  \item \textbf{Convert} incoming Harm to Fatigue using the Armor Conversion Table below.  
-        \textit{Minimum 1 Fatigue per hit, even if conversion would give 0.}
-  \item \textbf{Apply remaining Harm} -- if any Harm remains after conversion, increase your Harm level by that amount, and \textbf{clear all existing Fatigue} (the shock of a wound resets your exhaustion).
-  \item \textbf{Add the Fatigue} from step 1 to your Fatigue track. If this fills or exceeds your track, resolve \textbf{Overflow} (see \ref{sec:fatigue}).
+  \item \textbf{Report to GM:} State the incoming Harm value (e.g., ``I take Harm 2'') and your current armor type (Light/Medium/Heavy).
+        \begin{itemize}
+          \item \textbf{GM converts using the Armor Conversion Table (see \ref{sec:armor}):}
+                \begin{itemize}
+                  \item Returns: \textbf{Fatigue gained} ($\geq$ 1 due to minimum rule) and \textbf{Harm remaining} (0 if armor fully converted; >0 if excess Harm bypasses conversion).
+                \end{itemize}
+          \item \textbf{Example (Player GM Exchange):}
+                \begin{itemize}
+                  \item \textit{You:} ``I'm hit with Harm 2 while wearing Light Armor.''
+                  \item \textit{GM:} ``Consulting table... that's Harm 1 + Fatigue 1.''
+                \end{itemize}
+        \end{itemize}
+  \item \textbf{Apply remaining Harm (if GM says Harm remaining > 0):}
+        \begin{itemize}
+          \item Clear \textbf{all} existing Fatigue (the shock of injury resets exhaustion).
+          \item Increase your Harm level by the Harm remaining value the GM provided.
+        \end{itemize}
+          \item \textbf{Example:} GM says ``Harm remaining = 1'' $\rightarrow$ Clear Fatigue, Harm +=1.
+        \end{itemize}
+  \item \textbf{Add the Fatigue} (from GM's conversion result) to your Fatigue track.
+        \begin{itemize}
+          \item If this fills or exceeds your track (Body value), resolve \textbf{Overflow} (see \ref{sec:fatigue}).
+        \end{itemize}
+          \item \textbf{Example:} GM says ``Fatigue gained = 2'' $\rightarrow$ Add 2 Fatigue, then check if Fatigue $\geq$ Body.
+        \end{itemize}
 \end{enumerate}
 
-\tikzset{
-    process/.style = {rectangle, rounded corners, draw=black, thick, 
-                      minimum width=3cm, minimum height=0.8cm, align=center},
-    decision/.style = {diamond, draw=black, thick, aspect=2, 
-                       minimum width=3cm, minimum height=0.8cm, align=center},
-    arrow/.style = {thick, -{Stealth}},
-    startstop/.style = {rectangle, rounded corners, draw=black, thick, 
-                        fill=black!10, minimum width=3cm, minimum height=0.8cm, align=center}
-}
+\begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!75!black,title=\textbf{Player Tip: Trust the GM's Conversion},breakable]
+\textbf{Never calculate conversion yourself.} Your job is to:
+\begin{itemize}
+  \item Accurately report incoming Harm value and armor type.
+  \item Trust the GM's returned result (Fatigue gained, Harm remaining).
+  \item Mark the resulting Fatigue/Harm changes on your sheet.
+  \item Describe the narrative effect (e.g., ``The blow rattles my bones but leaves no wound'' or ``I feel the cut sting as exhaustion vanishes'').
+\end{itemize}
+\textit{This keeps the pressure engine running: you focus on roleplay, the GM handles mechanics, and the fiction stays vivid.}
+\end{tcolorbox}
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[node distance=1.2cm and 1.5cm]
-
-% Nodes
-\node (start) [startstop] {\textbf{GM: ``Harm X''}};
-\node (armor) [process, below=of start] {Check armor type \\ (Light/Medium/Heavy)};
-\node (convert) [process, below=of armor] {Convert Harm to Fatigue \\ (per Armor Conversion Table)};
-\node (applyharm) [process, below=of convert] {Apply remaining Harm \\ (increase Harm level)};
-\node (clear) [process, below=of applyharm] {Clear all existing Fatigue \\ (the shock of the wound)};
-\node (addfatigue) [process, below=of clear] {Add new Fatigue \\ (from conversion)};
-\node (check) [decision, below=of addfatigue, yshift=-0.5cm] {Fatigue track \\ full?};
-\node (overflow) [process, right=of check, xshift=2.5cm] {Overflow: \\ Harm +1, clear Fatigue};
-\node (announce) [startstop, below=of check, yshift=-0.8cm] {\textbf{Announce:} \\ ``I'm at Harm Y, Fatigue Z''};
-
-% Arrows
-\draw [arrow] (start) -- (armor);
-\draw [arrow] (armor) -- (convert);
-\draw [arrow] (convert) -- (applyharm);
-\draw [arrow] (applyharm) -- (clear);
-\draw [arrow] (clear) -- (addfatigue);
-\draw [arrow] (addfatigue) -- (check);
-\draw [arrow] (check) -- node[above, near start] {Yes} (overflow);
-\draw [arrow] (overflow) |- (announce);
-\draw [arrow] (check) -- node[right, near start] {No} (announce);
-
-\end{tikzpicture}
-\caption{Taking Harm and Fatigue -- The Procedure (see \ref{sec:take-harm-fatigue})}
-\label{fig:harm-fatigue-procedure}
-\end{figure}
-
-\paragraph{Armor Conversion Table}
+\paragraph{Armor Conversion Table (Reference for Player-GM Exchange)}
 \label{sec:armor}
 \begin{center}
 \begin{tabular}{l|ccc}
@@ -479,12 +470,25 @@ Heavy  & Fatigue 1 & Fatigue 1 & Fatigue 2 \\
 \end{center}
 \textit{Minimum 1 Fatigue per hit, even if conversion would give 0.}
 
-\paragraph{Examples}
+\paragraph{Player Examples (Showing GM Interaction)}
 \begin{itemize}
-  \item \textbf{Light Armor, Harm 2:} Result is Harm 1, Fatigue 1. Apply Harm (clears existing Fatigue, Harm 0$\rightarrow$1), then add Fatigue 1. (If you had Fatigue before, it is cleared first.)
-  \item \textbf{Heavy Armor, Harm 3:} Result is Fatigue 2. No Harm taken. Add Fatigue 2.
-  \item \textbf{Heavy Armor, Harm 1:} Result is Fatigue 1. No Harm taken. Add Fatigue 1.
-  \item \textbf{Overflow example:} Body 2, currently 1 Fatigue, Heavy Armor hit with Harm 3 $\rightarrow$ result Fatigue 2. Total Fatigue becomes 1+2=3, which fills the track (max 2). Overflow triggers: Harm 0$\rightarrow$1, clear all Fatigue. Final: Harm 1, Fatigue 0.
+  \item \textbf{You report:} ``Harm 2 in Light Armor.''  
+        \textit{GM returns:} ``Harm 1 + Fatigue 1.''  
+        \textit{You:} Clear existing Fatigue, Harm +=1, then add 1 Fatigue.  
+        \textit{Narrative:} ``The blade slides under your shield -- you feel the sting (1 Harm) as exhaustion fades (1 Fatigue added).''
+  \item \textbf{You report:} ``Harm 3 in Heavy Armor.''  
+        \textit{GM returns:} ``Fatigue 2, Harm remaining 0.''  
+        \textit{You:} Add 2 Fatigue (no Harm applied, no Fatigue cleared).  
+        \textit{Narrative:} ``Your breastplate absorbs the full impact -- the blow rattles your teeth (2 Fatigue) but draws no blood.''
+  \item \textbf{You report:} ``Harm 1 in Heavy Armor.''  
+        \textit{GM returns:} ``Fatigue 1, Harm remaining 0.''  
+        \textit{You:} Add 1 Fatigue.  
+        \textit{Narrative:} ``The glancing blow leaves you winded (1 Fatigue) but unharmed.''
+  \item \textbf{Overflow example (Player perspective):}  
+        \textit{You (Body 2, current Fatigue 1) report:} ``Harm 3 in Heavy Armor.''  
+        \textit{GM returns:} ``Fatigue 2, Harm remaining 0.''  
+        \textit{You:} Add 2 Fatigue $\rightarrow$ Fatigue = 3 ($\geq$ Body 2) $\rightarrow$ Overflow: Harm +=1, clear all Fatigue.  
+        \textit{Narrative:} ``The crushing blow shatters your guard -- pain flares (Harm 1) as exhaustion vanishes.''
 \end{itemize}
 
 \subsection{Recovery}
@@ -535,7 +539,7 @@ Disengage & Enable safe movement. & Your Move does not provoke opportunity attac
 \hline
 Shove & Push a target back one range band (Close $\rightarrow$ Near). & Opposed Body + Athletics vs. Body + Athletics. On success, target moves back and suffers --1 Position on their next action. \\
 \hline
-Grapple & Seize a target to restrain or control. & Opposed Body + Melee vs. Body + Athletics. On success, both are Engaged (cannot move apart). Grappled target suffers --1 die on all actions. Breaking free requires a new opposed roll as an action. \\
+Grapple & Seize a target to restrain or control. & Opposed Body + Melee vs. Body + Athletics. On success, both are Engaged (cannot move apart). Grapple target suffers --1 die on all actions. Breaking free requires a new opposed roll as an action. \\
 \hline
 Charge (Full turn) & Move two bands toward an enemy + make one melee attack. & Costs 1 Fatigue, next defense Desperate, requires open ground. \textbf{Leaving Close range during a Charge provokes opportunity attacks as normal.} \\
 \hline
@@ -721,7 +725,7 @@ Heavy  & 12 & 3$\rightarrow$2 (minimum 1 Fatigue per hit) & --2d physical, no sp
 \bottomrule
 \end{tabular}
 \end{center}
-\textit{Notes:} Conversion is applied per Harm instance before marking Fatigue. See \ref{sec:take-harm-fatigue} for the full step-by-step procedure.
+\textit{Notes:} Conversion is applied per Harm instance via GM consultation (see \ref{sec:take-harm-fatigue}). This table shows what the GM will return when you report Harm value and armor type.
 
 \subsection{Condition \& Upkeep}
 \label{sec:equipment-condition}
@@ -872,11 +876,15 @@ Growth & Can become PCs & Can expand or collapse \\
 
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Quick Reference},fonttitle=\bfseries,breakable]
 \textbf{Dice Pool:} Attribute + Skill d10s \\
-\textbf{Success:} 6+ on each die \\
-\textbf{Story Beat:} 1 on any die gives SB to GM \\
+\textbf{Success:} Die $\geq$ 6 \\
+\textbf{Story Beat (SB):} Die = 1 gives SB to GM \\
 \textbf{DV:} 2 (easy) to 5+ (extreme) -- default 3 \\
-\textbf{Harm:} 3-level system; see \ref{sec:take-harm-fatigue} for the procedure \\
-\textbf{Boons:} 2 on miss, 1 on partial
+\textbf{Harm:} 3-level system; see \ref{sec:take-harm-fatigue} for procedure \\
+\textbf{Boons:} 2 on miss, 1 on partial \\
+\textbf{Armor Conversion:} Report Harm value + armor type to GM; receive Fatigue gained + Harm remaining \\
+\textbf{Position:} Dominant (re-roll failure), Controlled (normal), Desperate (re-roll success) \\
+\textbf{Fatigue:} Worsens Position (or --1 die if Desperate). Full track $\rightarrow$ Harm+1, clear Fatigue. \\
+\textbf{Harm:} 1 (--1 die), 2 (--2 dice), 3 (incapacitated). Taking Harm clears Fatigue first. \\
 \end{tcolorbox}
 
 \section{Narrative Suggestions}
@@ -907,7 +915,7 @@ Growth & Can become PCs & Can expand or collapse \\
   Position & Dominant (re-roll failure), Controlled (normal), Desperate (re-roll success) \\
   Fatigue & Worsens Position (or --1 die if Desperate). Full track $\rightarrow$ Harm+1, clear Fatigue. \\
   Harm & 1 (--1 die), 2 (--2 dice), 3 (incapacitated). Taking Harm clears Fatigue first. \\
-  Armor & Converts Harm to Fatigue; minimum 1 Fatigue per hit. \\
+  Armor Conversion & Report Harm value + armor type to GM; apply returned Fatigue gained/Harm remaining \\
   Sidestep Strike & Move one band as part of melee attack; worsen Position by one step. \\
   Shove & Opposed Body + Athletics. Push target one band. \\
   Grapple & Opposed Body + Melee. Both Engaged; target suffers --1 die. \\

@@ -256,7 +256,7 @@ Let the procedures do the work. Your attention belongs on the fiction.
 % =========================================================
 % NARRATIVE TIME: ROUNDS, TURNS, SCENES, AND ARCS
 % =========================================================
-\section{Narrative Time: Rounds, Turns, Scenes, and Arcs}
+\section{Narrative Time: Rounds, TURNS, SCENES, AND ARCS}
 \label{sec:narrative-time}
 \index{narrative time}\index{round}\index{turn}\index{scene}\index{session}\index{arc}
 
@@ -420,196 +420,69 @@ Successes = 0 & \textbf{Miss} -- no progress; GM escalates with SB; player gains
   Remind players that they can spend 1 \textbf{Boon} before a roll to increase Effect by one step.
 \end{tipbox}
 
-\begin{tcolorbox}[
-  colback=white,
-  colframe=blue!75!black,
-  title={\textbf{Armor Conversion \& Fatigue Clearing Flowchart}},
-  fonttitle=\bfseries\large,
-  sharp corners,
-  before skip=10pt,
-  after skip=10pt,
-,breakable]
-\begin{center}
-\begin{tikzpicture}[node distance=1.2cm]
-\node (start) [startstop] {Incoming Harm};
-\node (conv) [process, below of=start] {Convert Harm using\\\textbf{Armor Conversion Table}\\\footnotemark[1]\\ $\rightarrow$ (Fatigue amount, remaining Harm)};
-\node (dec) [decision, below of=conv, yshift=-0.5cm] {Did Harm increase?\\\small(remaining Harm > 0)};
-\node (clear) [process, left of=dec, xshift=-4.5cm] {Clear all existing Fatigue};
-\node (addfat) [process, below of=dec, yshift=-0.5cm] {Add Fatigue (from conversion) to Fatigue track};
-\node (dec2) [decision, below of=addfat, yshift=-0.5cm] {Fatigue $\geq$ Body?};
-\node (overflow) [process, right of=dec2, xshift=4.5cm] {Increase Harm by 1\\Clear all Fatigue};
-\node (end) [startstop, below of=dec2, yshift=-0.5cm] {End};
-
-% Arrows
-\draw[arrow] (start) -- (conv);
-\draw[arrow] (conv) -- (dec);
-\draw[arrow] (dec) -- node[anchor=east] {Yes} (clear);
-\draw[arrow] (clear) |- (addfat);
-\draw[arrow] (dec) -- node[anchor=west] {No} (addfat);
-\draw[arrow] (addfat) -- (dec2);
-\draw[arrow] (dec2) -- node[anchor=south] {Yes} (overflow);
-\draw[arrow] (overflow) |- (end);
-\draw[arrow] (dec2) -- node[anchor=west] {No} (end);
-\end{tikzpicture}
-\end{center}
-\footnotetext[1]{Minimum 1 Fatigue per hit, even if conversion would give 0.}
-
-\vspace{4pt}
-\textbf{The ``Roller-Coaster'' Effect:}  
-When your Harm increases (the armor didn't soak the whole blow), the shock of the wound clears all your existing Fatigue -- you get a second wind just when you're near collapse. This creates dramatic swings in combat.
-
-\small\textit{Example:} Benjamin (Body 3, Fatigue 3, Harm 0) takes Harm 1 in Heavy Armor. Conversion $\rightarrow$ Fatigue 1, remaining Harm 0 $\rightarrow$ Harm does not increase $\rightarrow$ Fatigue not cleared. Add Fatigue 1 $\rightarrow$ Fatigue = 4 ($\geq$ Body 3) $\rightarrow$ Overflow: Harm 0$\rightarrow$1, clear all Fatigue. Final: Harm 1, Fatigue 0.
-\end{tcolorbox}
-
-\subsection{Story Beats: The Engine of Drama}
-\index{Story Beats (SB)!GM guidance}
-
-Every time a player rolls a 1, you gain Story Beats (SB). These are narrative tools, not punishments.
-
-\begin{tcolorbox}[title=SB Spend Menu, colback=white!97!gray, colframe=black!80!gray,breakable]
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{SB Cost} & \textbf{Simple Complications} \\
-\midrule
-1 SB & Minor: noise, distraction, small setback, lost gear, tick a 4/6 timer +1. \\
-2 SB & Moderate: alarm raised, new threat enters, lose advantage, worsen Position. \\
-3+ SB & Major: reinforcements, scene shifts, stakes escalate, break an asset. \\
-\bottomrule
-\end{tabularx}
-\end{tcolorbox}
-
-\subsection{Failing Forward with SB}
-\begin{itemize}
-\item \textbf{On Clean Success:} Use SB to add texture. The hero wins, but something changes.
-\item \textbf{On Success with SB:} The hero gets what they wanted \emph{and} you spend SB to add further cost or threat.
-\item \textbf{On Partial:} Use SB to make the complication sharper.
-\item \textbf{On Miss:} Spend SB to escalate the situation.
-\end{itemize}
-
-\begin{tcolorbox}[colback=gray!5,colframe=gray!75!black,title=\textbf{Lane Marker: One Complication per Roll},breakable]
-When in doubt, spend SB on \emph{one} clear complication instead of many small ones.  
-Name it plainly -- ``Guard Alerted'', ``Floor Cracked'', ``Oath Owed'' -- and move on.
-
-Be \textbf{aggressive} with Story Beats, but never arbitrary:
-\begin{itemize}[noitemsep]
-\item Do not hoard SB -- unused pressure is wasted momentum.
-\item Do not invent contrived consequences that ignore the fiction.
-\item Spend SB to \emph{sharpen what already matters}, not to add noise.
-\end{itemize}
-A single, well-chosen complication should change the situation, not just decorate it.
-\end{tcolorbox}
-
 % =========================================================
-% NPCs DON'T TRACK FATIGUE OR BOONS
+% ARMOR CONVERSION & FATIGUE CLEARING (GM FOCUS)
 % =========================================================
-\begin{tcolorbox}[
-  colback=green!5!white,
-  colframe=green!75!black,
-  title=\textbf{NPCs Don't Track Fatigue or Boons},
-  fonttitle=\bfseries\large,
-  sharp corners,
-  before skip=10pt,
-  after skip=10pt,
-  breakable
-]
+\subsection{Armor Conversion \& Fatigue Clearing (GM Procedures)}
+\label{subsec:armor-conversion}
+\index{armor!conversion}\index{fatigue!clearing}
 
-\textbf{Reminder:} Non‑player characters (NPCs) do \emph{not} track Fatigue or Boons. These resources are reserved for player characters. 
-If a talent, rite, or ability says it causes an NPC to lose Fatigue or Boons, \textbf{replace that effect with a narrative consequence} appropriate to the fiction.
+When a player character takes Harm, \textbf{you as GM apply armor conversion} using the Armor Conversion Table (Appendix A.5). This determines how much Harm becomes Fatigue versus actual injury. Follow these steps \emph{every time} Harm is dealt:
 
-\medskip
-\noindent\textbf{Examples:}
+\begin{enumerate}
+  \item \textbf{Convert Harm to Fatigue:} 
+        \begin{itemize}
+          \item Cross-reference the incoming Harm value (H) and armor type (Light/Medium/Heavy) in the table.
+          \item The table gives: 
+                \begin{itemize}
+                  \item \textbf{Fatigue gained} (always $\geq$ 1 due to minimum rule)
+                  \item \textbf{Harm remaining} (0 if armor fully converted the blow; >0 if excess Harm bypasses conversion)
+                \end{itemize}
+          \item \textbf{Example (Heavy Armor vs Harm 3):} Table shows \textbf{Fatigue 2, Harm remaining 0}.
+        \end{itemize}
+  \item \textbf{Apply remaining Harm (if any):}
+        \begin{itemize}
+          \item If Harm remaining > 0:
+                \begin{itemize}
+                  \item Clear \textbf{all} existing Fatigue (the shock of injury resets exhaustion).
+                  \item Increase the character's Harm level by the Harm remaining value.
+                \end{itemize}
+          \item \textbf{Example (Light Armor vs Harm 2):} Table shows \textbf{Fatigue 1, Harm remaining 1} $\rightarrow$ Clear Fatigue, Harm +=1.
+        \end{itemize}
+  \item \textbf{Add converted Fatigue:} 
+        Add the Fatigue gained in Step 1 to the Fatigue track.
+  \item \textbf{Check for Fatigue Overflow:}
+        \begin{itemize}
+          \item If Fatigue $\geq$ Body (track size):
+                \begin{itemize}
+                  \item Increase Harm level by 1.
+                  \item Clear all Fatigue.
+                  \item Repeat until Fatigue $<$ Body.
+                \end{itemize}
+          \item \textbf{Example (Body 2, Fatigue 3):} Fatigue $\geq$ 2 $\rightarrow$ Harm +=1, Fatigue cleared $\rightarrow$ Now Fatigue=0, Harm=1 (still $\geq$ 2? No) $\rightarrow$ Stop.
+        \end{itemize}
+\end{enumerate}
 
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!75!black, title={GM Tip: The Roller-Coaster Effect},breakable]
+\index{fatigue!roller-coaster}
+\textbf{This creates dramatic narrative swings:} 
+When Harm increases in Step 2 (meaning the armor didn't fully absorb the blow), \textbf{you clear all existing Fatigue} before adding new Fatigue. 
+This represents the ``second wind'' from injury shock -- a character near collapse (high Fatigue) suddenly avoids further exhaustion when wounded. 
+\emph{Never skip clearing Fatigue here; it's essential for the system's emotional rhythm.}
+
+\small\textit{Your turn as GM:} 
+Benjamin (Body 3, Fatigue 3, Harm 0) takes Harm 1 in Heavy Armor. 
 \begin{itemize}
-  \item Instead of ``target loses 1 Boon'', say: ``The target hesitates --- they lose their next action.''
-  \item Instead of ``target marks 1 Fatigue'', say: ``The target staggers, winded. Their next attack is at \texttt{Desperate Position}.''
-  \item Instead of ``target loses 1 Boon and marks 1 Fatigue'', say: ``The target drops their weapon (disarmed) and stumbles back one range band.''
+  \item Step 1: Heavy Armor vs H=1 $\rightarrow$ \textbf{Fatigue 1, Harm remaining 0} 
+  \item Step 2: Harm remaining = 0 $\rightarrow$ \textbf{Skip clearing Fatigue} 
+  \item Step 3: Add Fatigue $\rightarrow$ Fatigue = 3 + 1 = 4 
+  \item Step 4: Fatigue (4) $\geq$ Body (3) $\rightarrow$ \textbf{Overflow: Harm 0$\rightarrow$1, clear all Fatigue} 
+  \item Repeat: Fatigue (0) $<$ Body (3) $\rightarrow$ \textbf{Stop} 
 \end{itemize}
-
-\medskip
-\noindent\textbf{Why this matters:} 
-Fatigue and Boons are player‑side currencies for tension and momentum. Giving them to NPCs adds bookkeeping without narrative payoff. Convert any such effect into a \textbf{positional shift}, a \textbf{lost action}, a \textbf{disarm}, or a \textbf{new complication} (tick a timer, add a Story Beat).
-
-\medskip
-\noindent\textit{Golden Rule:} When a player uses an ability that would drain an NPC's resource, ask yourself: ``What interesting thing happens instead?'' Then make it happen.
+\textbf{Final state:} Harm Level 1 ($-1$ die on related actions), Fatigue 0. 
+Benjamin avoided exhaustion from the wound -- but now suffers a minor injury. 
+Describe it: ``The axe strikes your pauldron (Heavy Armor) -- the impact rattles your teeth (1 Fatigue added), but the shock clears your exhaustion. You grit your teeth against the new bruise as fatigue vanishes.''
 \end{tcolorbox}
-
-% =========================================================
-% NPC SPECIAL ABILITIES AS SB SPENDS
-% =========================================================
-\begin{tcolorbox}[
-  colback=orange!5!white,
-  colframe=orange!75!black,
-  title=\textbf{NPC Special Abilities: SB as Narrative Events},
-  fonttitle=\bfseries\large,
-  sharp corners,
-  before skip=10pt,
-  after skip=10pt,
-  breakable
-]
-
-Instead of giving NPCs complex abilities with their own dice rolls, \textbf{spend Story Beats (SB) to trigger narrative events}. This keeps the spotlight on player rolls while making NPCs feel dangerous and dynamic.
-
-\medskip
-\noindent\textbf{Example SB Spends for NPC Special Abilities}
-
-\begin{tabularx}{\linewidth}{lX}
-\toprule
-\textbf{SB Cost} & \textbf{Narrative Event (NPC Ability)} \\
-\midrule
-1 SB & \textit{``The cultist's eyes burn. A wave of heat washes over you --- mark 1 Fatigue (fiction: near miss).''} \\
-1 SB & \textit{``The bandit captain roars a challenge. Your next attack against him is at \texttt{Desperate Position}.''} \\
-2 SB & \textit{``The spider skitters up the wall and drops onto your back --- you are \texttt{Grappled} until you break free (Body+Athletics DV 3).''} \\
-2 SB & \textit{``The shaman completes a chant. A zone of darkness swallows the torches --- all attacks inside are \texttt{Desperate}.''} \\
-3 SB & \textit{``The drake breathes a cone of frost. Everyone in Near range, test Body+Athletics (DV 3) or take Harm 2.''} \\
-3 SB & \textit{``The ghost passes through you. You forget one prepared spell or talent until the end of the scene (player's choice).''} \\
-4+ SB & \textit{``The lich raises its hand. A bolt of green light strikes \textbf{[player name]} --- test Spirit+Resolve (DV 5) or be \texttt{Paralyzed} for 1 exchange.''} \\
-4+ SB & \textit{``The siege weapon fires. Everyone in a Far zone must take cover (test Wits+Survival DV 4) or take Harm 3 (crushing).''} \\
-\bottomrule
-\end{tabularx}
-
-\medskip
-\noindent\textbf{How to use this table:}
-\begin{itemize}
-  \item When an NPC would use a special ability, look at its threat level (TL) and the fiction.
-  \item \textbf{Spend SB} from your pool (earned from player 1s) to trigger the effect.
-  \item \textbf{Narrate first} --- describe what the NPC does, then call for a player roll or apply a consequence.
-  \item \textbf{Don't roll for the NPC.} The player always rolls to resist or avoid.
-\end{itemize}
-
-\medskip
-\noindent\textit{Design note:} This keeps NPCs lightweight (no separate ability rolls) and makes SB a direct tool for escalating danger. The players see you spend SB --- they know something bad is happening, and the tension rises.
-\end{tcolorbox}
-
-\subsection{Wards and Traps}
-
-Wards are magical barriers that block passage, teleportation, and shadow-walking. Traps are mundane or magical hazards that trigger on intrusion. Both use the same base resolution structure.
-
-\subsubsection{Wards (Magical Barriers)}
-
-A ward is defined by its \textbf{Base DV} (2--5), chosen by the GM when the ward is placed. The ward's other properties derive from this DV:
-
-\begin{itemize}
-    \item \textbf{Harm:} A creature that triggers the ward suffers Harm equal to \texttt{max(0, Base DV - 2)}.
-    \item \textbf{Spirit Leash:} A spirit (including summoned creatures) attempting to cross the ward suffers Leash ticks equal to the ward's Base DV.
-\end{itemize}
-
-\paragraph{Crossing a Ward}
-A creature cannot teleport, shadow-walk, or use any effect that bypasses intervening space to cross a ward without first overcoming it. To cross, the creature must succeed on a test of the appropriate attribute (usually Wits or Presence) \textbf{+ Spirit} against the ward's Base DV. On a failure, the crossing fails and the creature suffers the ward's Harm (if any). On a success, the creature crosses but may still suffer other consequences (e.g., alerting the ward's creator).
-
-\paragraph{Disabling a Ward}
-A character may attempt to disable a ward with a \textbf{Wits + Arcana} test against the ward's Base DV. Success renders the ward inert for one scene (or permanently, at the GM's discretion for non-recurring wards). Alternatively, a spell with the \textbf{[DISPEL]} or \textbf{[FATE]} tags may suppress or destroy the ward as described in the spell's effect.
-
-\subsubsection{Traps (Mundane or Magical)}
-
-Traps function similarly to wards but do \textbf{not} impede teleportation or shadow-walking, nor do they inflict Leash ticks on spirits. A trap has a Base DV (2--5) and deals Harm equal to \texttt{max(0, Base DV - 2)} when triggered.
-
-\paragraph{Disarming a Trap}
-A trap can be disarmed with a \textbf{Wits + Subterfuge} test against its Base DV. On a success, the trap is neutralised. On a failure, the trap may trigger (GM's discretion).
-
-\paragraph{Example}
-\begin{quote}
-    A \textbf{Lesser Wardstone} (DV 3) bars a doorway. A character attempting to shadow-walk past must roll \textbf{Wits + Spirit} (DV 3). Failure inflicts \textbf{Harm 1} (since 3--2 = 1). A spirit crossing the same ward gains \textbf{3 Leash ticks}. A \textbf{Wits + Arcana} (DV 3) success disables the ward.
-\end{quote}
 
 % =========================================================
 % LEARNING THROUGH EXAMPLES
