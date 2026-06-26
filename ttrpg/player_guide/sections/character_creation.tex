@@ -2,11 +2,101 @@
 \label{ch:character-creation}
 
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Quick Start,breakable]
-This chapter walks you through building a character in about 10--15 minutes. Follow the steps in order. Most choices are guided by your character concept; the numbers come later.
+This chapter walks you through building a character in about 10–15 minutes. Follow the steps in order. Most choices are guided by your character concept; the numbers come later.
 \end{tcolorbox}
 
+\section{How to Think Like a Fate's Edge Player}
+
+Before you assign a single point of XP, take a moment to understand the mindset that makes Fate's Edge sing. This is not a game of optimisation or perfect builds—it is a game of meaningful choices, dramatic risks, and shared storytelling.
+
+\subsection{Embrace the Fiction}
+Your character is not a collection of numbers—they are a living story. When you declare an action, think first about what your character would do in this moment, and only then let the mechanics follow. The dice are not a barrier to your creativity; they are a conversation partner. A roll of 1 is not a failure—it is an invitation for the world to push back, and that pushback is what makes the story memorable.
+
+\subsection{Spend Your Boons}
+Boons are not XP tokens. They are dramatic fuel. Hoarding them for conversion (2 Boons $\to$ 1 XP) starves the table of tension and robs you of your safety net. A Boon spent to re-roll a critical failure or improve Position before a desperate gamble creates a moment everyone at the table will remember. The XP will come from your adventures; the Boons are for the stories you tell right now.
+
+\subsection{Embrace Failure}
+A Miss is never ``nothing happens.'' It is an opportunity for the GM to escalate, for your character to learn, and for the party to adapt. When you fail, you gain 2 Boons—the system rewards you for leaning into risk. Treat every Miss as a gift: it changes the situation, gives you resources, and makes the eventual success sweeter.
+
+\subsection{You Are a Co-Creator}
+The GM frames the pressure; you drive the fiction. You are not trying to ``beat'' the game or outsmart the GM. You are collaborating to tell a compelling story. When you describe your actions with detail—showing the dust in your eyes, the tremble in your arm, the desperate prayer you whisper—you give the GM permission to reward you with Position, Effect, or even a free Boon. Flavor is free, and it is your greatest tool.
+
+\subsection{Know Your Resources}
+You track your own Obligation, Fatigue, Harm, and Boons. Keep your sheet visible and your trackers up to date. When your Obligation is near capacity, that is not a warning—it is a promise of future adventure. When your Fatigue is high, that is not a penalty—it is a chance for a dramatic comeback. Own your resources, and use them as narrative levers.
+
+\subsection{Trust the System}
+The core loop (Attribute + Skill, Position, DV, Outcome Matrix) is robust enough to carry any scene. If you forget a rule, fall back on the Golden Rule: make the choice that serves the story. The rest will follow.
+
+\subsection{Play to Find Out}
+You do not know how the scene will end any more than the GM does. That uncertainty is the game's heartbeat. Lean into it. Ask questions, take risks, and let the dice sing. The most memorable sessions come from characters who act boldly and accept the consequences.
+
+\vspace{1em}
+\begin{quote}
+\textit{``The road does not promise a safe journey—only a true one.''} \\
+--- The Gray Wanderer
+\end{quote}
+
+\section{Player Engagement Flowchart}
+
+Fate's Edge is modular by design. You can play with just the core resolution loop and nothing else—or you can add layers of complexity as your table grows comfortable. The following flowchart helps you navigate that choice. Start at the top and follow the path that matches your preferred play style. Remember: you can always opt in (or out) of subsystems as your character evolves and the campaign demands.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    box/.style={rectangle, draw, minimum width=3cm, minimum height=0.8cm, align=center, rounded corners, fill=blue!10},
+    decision/.style={diamond, draw, minimum width=2.5cm, minimum height=1cm, align=center, fill=yellow!20},
+    arrow/.style={thick, ->, >=stealth}
+]
+\node[box] (start) {Start here: \\ What do you want?};
+\node[decision, below of=start, yshift=-0.5cm] (core) {Just play with \\ core resolution?};
+\node[box, below left of=core, xshift=-2cm] (simple) {Core Loop Only \\ Attributes + Skills \\ No Talents, no assets};
+\node[decision, below right of=core, xshift=2cm] (talent) {Want a \\ signature edge?};
+\node[box, below left of=talent, xshift=-1.5cm] (minor) {Take 1–2 \\ Minor Talents};
+\node[decision, below right of=talent, xshift=1.5cm] (magic) {Want magic?};
+\node[box, below left of=magic, xshift=-1.5cm] (patron) {Choose a Patron \\ + one magic path};
+\node[decision, below right of=magic, xshift=1.5cm] (influence) {Want off-screen \\ influence?};
+\node[box, below left of=influence, xshift=-1.5cm] (asset) {Acquire an \\ Asset or Follower};
+\node[decision, below right of=influence, xshift=1.5cm] (trust) {Want to build \\ a shared legacy?};
+\node[box, below left of=trust, xshift=-1.5cm] (trustbox) {Form a Trust \\ with your party};
+\node[box, below right of=trust, xshift=1.5cm] (master) {Mix and match \\ all layers!};
+%
+\draw[arrow] (start) -- (core);
+\draw[arrow] (core) -- node[above left] {Yes} (simple);
+\draw[arrow] (core) -- node[above right] {No} (talent);
+\draw[arrow] (talent) -- node[above left] {No} (minor);
+\draw[arrow] (talent) -- node[above right] {Yes} (magic);
+\draw[arrow] (magic) -- node[above left] {No} (patron);
+\draw[arrow] (magic) -- node[above right] {Yes} (influence);
+\draw[arrow] (influence) -- node[above left] {No} (asset);
+\draw[arrow] (influence) -- node[above right] {Yes} (trust);
+\draw[arrow] (trust) -- node[above left] {No} (trustbox);
+\draw[arrow] (trust) -- node[above right] {Yes} (master);
+%
+% Optional connections for chaining
+\draw[arrow] (minor.south) -- ++(0,-0.5) -| (magic.west);
+\draw[arrow] (patron.south) -- ++(0,-0.5) -| (influence.west);
+\draw[arrow] (asset.south) -- ++(0,-0.5) -| (trust.west);
+\end{tikzpicture}
+\caption{Complexity Opt-In Flowchart for Fate's Edge Players}
+\label{fig:flowchart}
+\end{figure}
+
+\subsection*{How to Use This Flowchart}
+\begin{itemize}
+    \item \textbf{Core Loop Only:} Perfect for one-shots or players who want a pure narrative experience. You are still fully effective in any scene—Attributes and Skills give you plenty of dice.
+    \item \textbf{Minor Talents:} Add one or two signature moves (e.g., Keen Senses, Second Wind) to give your character a mechanical identity without much overhead.
+    \item \textbf{Patron + Magic:} Choose a Patron and one of the five magic paths (Runkeeper, Invoker, Cantor, Summoner, or Free Caster). This adds resource tracking (Obligation, Corruption, etc.) but opens new narrative and mechanical possibilities.
+    \item \textbf{Assets/Followers:} Extend your influence beyond your character sheet. Assets are off-screen resources; Followers are on-screen allies. Both require upkeep but provide lasting leverage.
+    \item \textbf{Trusts:} Pool XP with your party to build a shared organization—a guild, a merchant company, a spy network. This is for long-term campaigns and collective legacy.
+    \item \textbf{Mix and Match:} You can combine any or all of these layers. The system is modular; you are not locked into a single path. You can start simple and add complexity as your campaign evolves.
+\end{itemize}
+
+\subsection*{A Note on Progression}
+You are never penalised for choosing a simpler path. A character with high Attributes and Skills is as capable as one with many Talents and Patrons—they simply express their power differently. The game balances breadth against depth, and both are valid. Choose what excites you, and change your mind later. The road is long, and the Gray Wanderer walks it with you.
+
 \section{Overview}
-You begin at \textbf{Tier I (Novice)} with \textbf{30 Experience Points (XP)}. You may gain up to \textbf{+4 XP} by taking meaningful \textbf{Bonds} (with other player characters) and \textbf{Complications} (see \ref{sec:bonds-complications}). Maximum starting XP: \textbf{34}.
+With the philosophy and the opt-in framework in mind, you are ready to build your character. You begin at \textbf{Tier I (Novice)} with \textbf{32 Experience Points (XP)}. You may gain up to \textbf{+4 XP} by taking meaningful \textbf{Bonds} (with other player characters) and \textbf{Complications} (see \ref{sec:bonds-complications}). Maximum starting XP: \textbf{36}.
 
 \begin{center}
 \footnotesize
@@ -107,14 +197,10 @@ Ikasha (She Who Sleeps) & shadows, secrets \\
 You do \textbf{not} need a Patron if you are a free caster (Spellcraft) or a psion (optional).
 
 \subsection{Step 6 -- Cultural Affinity}
-
-Choose a cultural affinity from the region where your character was raised 
-(see Chapter 14). This grants a once-per-session benefit.
+Choose a cultural affinity from the region where your character was raised (see Chapter 14). This grants a once-per-session benefit.
 
 \paragraph{Note on Stacking.}
-If your ancestral gift (from your people) and your cultural affinity provide 
-the same benefit (e.g., both improve Position), they do not stack. You may 
-use one per scene. Choose which applies when you need it.
+If your ancestral gift (from your people) and your cultural affinity provide the same benefit (e.g., both improve Position), they do not stack. You may use one per scene. Choose which applies when you need it.
 
 \section{Step 7 -- Assets \& Followers (Optional)}
 You may spend XP on:
@@ -126,7 +212,7 @@ Most starting characters skip these or take one minor asset. See \ref{ch:assets-
 
 \section{Step 8 -- Bonds \& Complications}
 \label{sec:bonds-complications}
-\textbf{Bonds:} Establish \textbf{two bonds} with other player characters. Each bond grants a one-per-session Boon when you act on it with an intricate description. At Tier III (90+ XP) bonds also allow Boon transfers.
+\textbf{Bonds:} Establish \textbf{up to two bonds} with other player characters. Each bond grants a one-per-session Boon when you act on it with an intricate description. At Tier III (90+ XP) bonds also allow Boon transfers.
 
 \textbf{Complications:} You may take up to \textbf{two complications} (e.g., a feud, a cursed item, a debt). Each gives \textbf{+2 XP} but adds \textbf{+1 banked Story Beat} to early scenes. Work with your GM.
 
@@ -156,7 +242,7 @@ Spend all XP; you cannot bank starting XP.
 \paragraph{Example build (36XP):}
 \begin{itemize}
   \item Body 3 (15 XP), Wits 2 (6 XP) \(\rightarrow\) 21 XP
-  \item Melee 2 (6 XP), Athletics 1 (2 XP), Endurance 1 (2 XP) \(\rightarrow\) 10 XP total 31
+  \item Melee 2 (6 XP), Athletics 1 (2 XP), Endurance 1 (2 XP) \(\rightarrow\) 10 XP
   \item Talent: Keen Senses (2 XP) \(\rightarrow\) 33 XP
   \item Bond with another PC \(\rightarrow\) +2 XP (now 35 -- adjust by lowering one skill)
 \end{itemize}
@@ -200,4 +286,4 @@ Spend all XP; you cannot bank starting XP.
   \draw [arrow] (bonds) -- (gear);
   \draw [arrow] (gear) -- (end);
   
-  \end{tikzpicture}
+\end{tikzpicture}
