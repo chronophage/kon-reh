@@ -107,6 +107,11 @@ def main():
                              "e.g., -b act")
     parser.add_argument("--skip-fix", action="store_true",
                         help="Skip running fix_markup.py on .tex files")
+    parser.add_argument("-g", "--git-push", action="store_true",
+                        help="Push built PDFs to git (commit and push) after successful build")
+    # NEW: -m / --message for custom commit message
+    parser.add_argument("-m", "--message", type=str, default=None,
+                        help="Custom commit message (only used with -g). If not given, a default timestamp is used.")
     args = parser.parse_args()
 
     debug = args.debug
@@ -116,6 +121,8 @@ def main():
         jobs = os.cpu_count() or 4
     
     skip_fix = args.skip_fix
+    git_push = args.git_push
+    commit_message = args.message  # may be None
 
     # ------------------------------------------------------------
     #  Section handling – now includes 't' for travel
@@ -221,18 +228,11 @@ def main():
     if failures:
         print(f"   Failed: {', '.join(failures)}")
 
-        # ------------------------------------------------------------------
-    #  Summary
-    # ------------------------------------------------------------------
-    print("\n" + "=" * 60)
-    print(f"📊 Build summary: {success_count} succeeded, {len(failures)} failed.")
-    if failures:
-        print(f"   Failed: {', '.join(failures)}")
-
     is_ci = os.environ.get("GITHUB_ACTIONS") == "true"
 
     # ------------------------------------------------------------------
     #  Post‑build clean‑up, text extraction, commit & push (skip in CI)
+    #  Git commit/push is controlled by -g, commit message by -m
     # ------------------------------------------------------------------
     if success_count > 0 and not is_ci:
         print("\n🧹 Cleaning up (git clean -x -f)")
@@ -247,7 +247,7 @@ def main():
             build_base / "expansions",
             build_base / "travel",
             build_base / "design",
-            build_base / "travel",
+            build_base / "travel",      # duplicate but harmless
             build_base / "resources",
             build_base / "konreh",
         ]
@@ -262,13 +262,19 @@ def main():
                     check=False,
                 )
 
-        print("📦 Committing and pushing to git...")
-        run_cmd(["git", "add", "--all"], cwd=git_root, check=True)
-        commit_msg = f"PDF Build {datetime.now().strftime('%a %b %d %H:%M:%S %Y %z')}"
-        run_cmd(["git", "commit", "-a", "-m", commit_msg], cwd=git_root, check=False)
-        run_cmd(["git", "push"], cwd=git_root, check=True)
-        run_cmd(["git", "clean", "-x", "-f"], cwd=git_root, check=False)
-        print("\n🎉 Build and commit completed.")
+        # Only commit and push if -g was given
+        if git_push:
+            # Determine commit message: use custom if provided, else default
+            if commit_message is None:
+                commit_message = f"PDF Build {datetime.now().strftime('%a %b %d %H:%M:%S %Y %z')}"
+            print(f"📦 Committing and pushing to git with message: '{commit_message}'")
+            run_cmd(["git", "add", "--all"], cwd=git_root, check=True)
+            run_cmd(["git", "commit", "-a", "-m", commit_message], cwd=git_root, check=False)
+            run_cmd(["git", "push"], cwd=git_root, check=True)
+            run_cmd(["git", "clean", "-x", "-f"], cwd=git_root, check=False)
+            print("\n🎉 Build and commit completed.")
+        else:
+            print("\n⏩ Skipping git commit/push (use -g to enable).")
     elif success_count > 0 and is_ci:
         print("\n⚠️ Skipping post‑build git commit/push because we are in GitHub Actions.")
     else:
