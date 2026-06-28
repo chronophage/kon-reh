@@ -12,6 +12,7 @@ import argparse
 import subprocess as sp
 from pathlib import Path
 from typing import Optional, Tuple, List
+import re
 
 # ------------------------------------------------------------
 #  Helper functions
@@ -35,7 +36,6 @@ def file_contains_pattern(file_path: Path, pattern: str) -> bool:
     """Return True if the file contains the given regex pattern."""
     try:
         content = file_path.read_text(encoding='utf-8', errors='ignore')
-        import re
         return bool(re.search(pattern, content))
     except Exception:
         return False
@@ -118,6 +118,40 @@ def get_branch(file_path: Path) -> str:
     return "./"
 
 # ------------------------------------------------------------
+#  Copyright injection helpers
+# ------------------------------------------------------------
+def extract_title_author(texfile: Path) -> Tuple[Optional[str], Optional[str]]:
+    """Parse a .tex file for \\title{...} and \\author{...}."""
+    try:
+        content = texfile.read_text(encoding='utf-8', errors='ignore')
+        title_match = re.search(r'\\title\s*\{([^}]*)\}', content)
+        author_match = re.search(r'\\author\s*\{([^}]*)\}', content)
+        title = title_match.group(1) if title_match else None
+        author = author_match.group(1) if author_match else None
+        return title, author
+    except Exception:
+        return None, None
+
+def generate_copyright(git_root: Path, out_dir: Path, title: Optional[str], author: Optional[str]) -> bool:
+    """
+    Read git_root/copyright.tex, replace <<TITLE>> and <<AUTHOR>>,
+    write to out_dir/copyright.tex.
+    Returns True if generation succeeded, False if template missing.
+    """
+    template_path = git_root / "copyright.tex"
+    if not template_path.is_file():
+        return False
+    try:
+        template = template_path.read_text(encoding='utf-8')
+        content = template.replace("<<TITLE>>", title if title else "Untitled")
+        content = content.replace("<<AUTHOR>>", author if author else "Unknown Author")
+        out_path = out_dir / "copyright.tex"
+        out_path.write_text(content, encoding='utf-8')
+        return True
+    except Exception:
+        return False
+
+# ------------------------------------------------------------
 #  Main
 # ------------------------------------------------------------
 def main():
@@ -198,6 +232,15 @@ def main():
         print("git add --all . in 5s for safety, ^C to abort.")
         time.sleep(5)
         run_cmd(["git", "add", "--all"], cwd=git_root, check=False, silent=True)
+
+    # ------------------------------------------------------------
+    # Generate copyright.tex before compilation
+    # ------------------------------------------------------------
+    title, author = extract_title_author(texfile)
+    if generate_copyright(git_root, file_path, title, author):
+        print("✅ Generated copyright.tex from template.")
+    else:
+        print("ℹ️  No copyright template found; skipping copyright injection.")
 
     # ------------------------------------------------------------
     # Compilation steps – ignore exit codes, only check file existence
@@ -283,7 +326,6 @@ def main():
         "adventures":   build_root / "adventures",
         "worldbook":    build_root / "worldbook",
         "travel":       build_root / "travel",
-        "resources":    build_root / "resources",
         "design":       build_root / "design",
         "ttrpg":        build_root,
         "konreh":       build_root / "konreh",
