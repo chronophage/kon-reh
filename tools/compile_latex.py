@@ -118,38 +118,131 @@ def get_branch(file_path: Path) -> str:
     return "./"
 
 # ------------------------------------------------------------
-#  Copyright injection helpers
+#  Copyright and title page injection helpers
 # ------------------------------------------------------------
-def extract_title_author(texfile: Path) -> Tuple[Optional[str], Optional[str]]:
-    """Parse a .tex file for \\title{...} and \\author{...}."""
+def extract_title_from_tex(texfile: Path) -> Optional[str]:
+    """Parse a .tex file for \\title{...}."""
     try:
         content = texfile.read_text(encoding='utf-8', errors='ignore')
-        title_match = re.search(r'\\title\s*\{([^}]*)\}', content)
-        author_match = re.search(r'\\author\s*\{([^}]*)\}', content)
-        title = title_match.group(1) if title_match else None
-        author = author_match.group(1) if author_match else None
-        return title, author
+        match = re.search(r'\\title\s*\{([^}]*)\}', content)
+        return match.group(1) if match else None
     except Exception:
-        return None, None
+        return None
 
-def generate_copyright(git_root: Path, out_dir: Path, title: Optional[str], author: Optional[str]) -> bool:
+def extract_author_from_tex(texfile: Path) -> Optional[str]:
+    """Parse a .tex file for \\author{...}."""
+    try:
+        content = texfile.read_text(encoding='utf-8', errors='ignore')
+        match = re.search(r'\\author\s*\{([^}]*)\}', content)
+        return match.group(1) if match else None
+    except Exception:
+        return None
+
+def get_document_title(texfile: Path, cli_title: Optional[str]) -> str:
+    """Return the document title from CLI or from .tex file, fallback to 'Untitled'."""
+    if cli_title:
+        return cli_title
+    parsed = extract_title_from_tex(texfile)
+    return parsed if parsed else "Untitled"
+
+def get_document_author(texfile: Path, cli_author: Optional[str]) -> str:
+    """Return the document author from CLI or from .tex file, fallback to 'Unknown Author'."""
+    if cli_author:
+        return cli_author
+    parsed = extract_author_from_tex(texfile)
+    return parsed if parsed else "Unknown Author"
+
+def has_titlepage(content: str) -> bool:
+    """Check if the document already has a title page."""
+    patterns = [
+        r'\\begin\{titlepage\}',
+        r'\\maketitle',
+        r'\\titlepage',
+    ]
+    for pat in patterns:
+        if re.search(pat, content):
+            return True
+    return False
+
+def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str) -> bool:
     """
-    Read git_root/copyright.tex, replace <<TITLE>> and <<AUTHOR>>,
-    write to out_dir/copyright.tex.
+    Read git_root/titlepage_template.tex, replace <<TITLE>> and <<AUTHOR>>,
+    write to out_dir/titlepage.tex.
     Returns True if generation succeeded, False if template missing.
     """
-    template_path = git_root / "copyright.tex"
+    template_path = git_root / "titlepage_template.tex"
     if not template_path.is_file():
         return False
     try:
         template = template_path.read_text(encoding='utf-8')
-        content = template.replace("<<TITLE>>", title if title else "Untitled")
-        content = content.replace("<<AUTHOR>>", author if author else "Unknown Author")
+        content = template.replace("<<TITLE>>", title)
+        content = content.replace("<<AUTHOR>>", author)
+        out_path = out_dir / "titlepage.tex"
+        out_path.write_text(content, encoding='utf-8')
+        return True
+    except Exception:
+        return False
+
+def generate_copyright(git_root: Path, out_dir: Path, title: str, author: str, cc: bool = False) -> bool:
+    """
+    Read git_root/copyright-template.tex or git_root/cc_copyright_template.tex,
+    replace <<TITLE>> and <<AUTHOR>>, write to out_dir/copyright.tex.
+    Returns True if generation succeeded, False if template missing.
+    """
+    template_name = "cc_copyright_template.tex" if cc else "copyright-template.tex"
+    template_path = git_root / template_name
+    if not template_path.is_file():
+        return False
+    try:
+        template = template_path.read_text(encoding='utf-8')
+        content = template.replace("<<TITLE>>", title)
+        content = content.replace("<<AUTHOR>>", author)
         out_path = out_dir / "copyright.tex"
         out_path.write_text(content, encoding='utf-8')
         return True
     except Exception:
         return False
+
+def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, author: str, debug: bool = False) -> bool:
+    """
+    If the .tex file doesn't have a title page, generate titlepage.tex and insert
+    \input{titlepage} after \begin{document}.
+    Returns True if modified, False if already has a title page or error.
+    """
+    content = texfile.read_text(encoding='utf-8', errors='ignore')
+    if has_titlepage(content):
+        if debug:
+            print(f"✅ {texfile.name} already has a title page.")
+        return False
+
+    # Generate the titlepage.tex file
+    if not generate_titlepage(git_root, texfile.parent, title, author):
+        if debug:
+            print(f"⚠️ Could not generate titlepage.tex for {texfile.name}")
+        return False
+
+    # Insert \input{titlepage} after \begin{document}
+    lines = content.splitlines(keepends=True)
+    insert_idx = -1
+    for i, line in enumerate(lines):
+        if re.search(r'\\begin\{document\}', line):
+            insert_idx = i + 1
+            break
+
+    if insert_idx == -1:
+        if debug:
+            print(f"⚠️ No \\begin{document} found in {texfile.name}")
+        return False
+
+    # Check if \input{titlepage} already exists (shouldn't, but just in case)
+    if re.search(r'\\input\{titlepage\}', content):
+        return False
+
+    lines.insert(insert_idx, r'\input{titlepage}' + '\n')
+    texfile.write_text(''.join(lines), encoding='utf-8')
+    if debug:
+        print(f"✅ Inserted title page into {texfile.name}")
+    return True
 
 # ------------------------------------------------------------
 #  Main
@@ -169,6 +262,12 @@ def main():
     parser.add_argument("-n", dest="pdfname", help="Output PDF name")
     parser.add_argument("-f", dest="texfile", help="Input .tex file")
     parser.add_argument("-q", dest="quality", help="Ghostscript quality (screen/ebook/printer/prepress)")
+    parser.add_argument("--cc", action="store_true",
+                        help="Use CC-BY copyright template instead of All Rights Reserved")
+    parser.add_argument("--no-titlepage", action="store_true",
+                        help="Do not insert title page if missing")
+    parser.add_argument("--title", help="Document title (overrides \\title in .tex)")
+    parser.add_argument("--author", help="Document author (overrides \\author in .tex)")
     parser.add_argument("positional", nargs="?", help="Input .tex file (positional)")
     args = parser.parse_args()
 
@@ -198,6 +297,8 @@ def main():
     pdfname = args.pdfname
     quality = args.quality
     ci_mode = os.environ.get("CI", "false").lower() == "true"
+    use_cc_copyright = args.cc
+    no_titlepage = args.no_titlepage
 
     # Determine git root, current path, branch
     git_root = get_git_root(Path.cwd())
@@ -219,6 +320,10 @@ def main():
         print(f"  PDFNAME: {pdfname if pdfname else '<none>'}")
         print(f"  CI_MODE: {ci_mode}")
         print(f"  Engine: {latex_cmd}")
+        print(f"  CC Copyright: {use_cc_copyright}")
+        print(f"  No Titlepage: {no_titlepage}")
+        print(f"  Title (CLI): {args.title if args.title else '<none>'}")
+        print(f"  Author (CLI): {args.author if args.author else '<none>'}")
         resp = input(f"Run {latex_cmd} once interactively? [y/N] ")
         if resp.lower() == "y":
             sp.run([latex_cmd, str(texfile)], cwd=file_path)
@@ -234,11 +339,26 @@ def main():
         run_cmd(["git", "add", "--all"], cwd=git_root, check=False, silent=True)
 
     # ------------------------------------------------------------
+    # Determine document title and author
+    # ------------------------------------------------------------
+    doc_title = get_document_title(texfile, args.title)
+    doc_author = get_document_author(texfile, args.author)
+
+    # ------------------------------------------------------------
+    # Generate titlepage.tex before compilation (if missing)
+    # ------------------------------------------------------------
+    if not no_titlepage:
+        inserted = insert_titlepage_if_missing(texfile, git_root, doc_title, doc_author, debug)
+        if inserted:
+            print(f"✅ Inserted title page into {texfile.name}")
+        elif debug:
+            print(f"ℹ️  No title page needed for {texfile.name}")
+
+    # ------------------------------------------------------------
     # Generate copyright.tex before compilation
     # ------------------------------------------------------------
-    title, author = extract_title_author(texfile)
-    if generate_copyright(git_root, file_path, title, author):
-        print("✅ Generated copyright.tex from template.")
+    if generate_copyright(git_root, file_path, doc_title, doc_author, use_cc_copyright):
+        print(f"✅ Generated copyright.tex from {'CC-BY' if use_cc_copyright else 'All Rights Reserved'} template.")
     else:
         print("ℹ️  No copyright template found; skipping copyright injection.")
 

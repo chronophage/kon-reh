@@ -92,7 +92,27 @@ def add_copyright_in_tex_file(tex_file_path, add_copyright_py, debug=False):
         print(f"✅ Ran add_copyright_include.py on {tex_file_path.name}")
     return True
 
-def compile_one(doc, tools_py, fix_markup_py, add_copyright_py, git_root, debug=False, skip_fix=False, skip_copyright=False):
+def cleanup_copyright_files(root_dirs, debug=False):
+    """Remove all generated copyright.tex and titlepage.tex files after build."""
+    count = 0
+    for base_dir in root_dirs:
+        if not base_dir.is_dir():
+            continue
+        for pattern in ["copyright.tex", "titlepage.tex"]:
+            for f in base_dir.rglob(pattern):
+                try:
+                    f.unlink()
+                    count += 1
+                    if debug:
+                        print(f"  🗑️ Removed: {f}")
+                except Exception:
+                    pass
+    if count > 0:
+        print(f"🧹 Removed {count} generated copyright/titlepage files.")
+    return count
+
+def compile_one(doc, tools_py, fix_markup_py, add_copyright_py, git_root, debug=False,
+                skip_fix=False, skip_copyright=False, cc_copyright=False):
     """
     Compile a single document; return (name, success, section).
     First runs fix_markup.py (unless skipped), then add_copyright_include.py (unless skipped),
@@ -105,6 +125,10 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py, git_root, debug=
     out_name = doc["output"]
     full_path = git_root / rel_path
     tex_file_path = full_path / tex_file
+    
+    # Get title and author from TOML, fallback to name if not provided
+    title = doc.get("title", name)
+    author = doc.get("author", "Unknown Author")
     
     # Step 1: Run fix_markup.py if not skipped
     if not skip_fix:
@@ -126,6 +150,12 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py, git_root, debug=
     cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
     if debug:
         cmd.append("-d")
+    if cc_copyright:
+        cmd.append("--cc")
+    if title:
+        cmd.extend(["--title", title])
+    if author:
+        cmd.extend(["--author", author])
     
     ret, _, _ = run_cmd(cmd, cwd=full_path, capture=True, silent=True)
     return (name, ret == 0, section)
@@ -252,8 +282,9 @@ def main():
             # Immediately show that we started this document
             print(f"Building {name}")
             sys.stdout.flush()
+            cc_copyright = doc.get("cc", False)
             future = executor.submit(compile_one, doc, tools_py, fix_markup_py, add_copyright_py,
-                                     git_root, debug, skip_fix, skip_copyright)
+                                     git_root, debug, skip_fix, skip_copyright, cc_copyright)
             future_to_name[future] = name
 
         # As each future completes, print a blank line then the result.
@@ -276,6 +307,23 @@ def main():
         print(f"   Failed: {', '.join(failures)}")
 
     is_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+
+    # ------------------------------------------------------------------
+    #  Clean up generated copyright.tex and titlepage.tex files
+    # ------------------------------------------------------------------
+    if success_count > 0:
+        # List of directories where copyright files might exist
+        root_dirs = [git_root / "build"]
+        for sec in selected_sections:
+            if sec != "core":
+                root_dirs.append(build_base / sec)
+        # Also include the source directories (where the .tex files live)
+        for doc in docs:
+            rel_path = Path(doc["path"])
+            full_path = git_root / rel_path
+            if full_path.is_dir():
+                root_dirs.append(full_path)
+        cleanup_copyright_files(root_dirs, debug)
 
     # ------------------------------------------------------------------
     #  Post‑build clean‑up, text extraction, commit & push (skip in CI)
