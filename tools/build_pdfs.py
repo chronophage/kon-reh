@@ -65,10 +65,38 @@ def fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug=False):
         print(f"✅ Ran fix_markup.py on {tex_file_path.name}")
     return True
 
-def compile_one(doc, tools_py, fix_markup_py, git_root, debug=False):
+def add_copyright_in_tex_file(tex_file_path, add_copyright_py, debug=False):
+    """
+    Run add_copyright_include.py --file on a single .tex file to insert \input{copyright}.
+    Returns True if successful, False otherwise.
+    """
+    if not tex_file_path.exists():
+        if debug:
+            print(f"⚠️ Warning: {tex_file_path} not found, skipping copyright insertion")
+        return True
+
+    cmd = [str(add_copyright_py), "--file", str(tex_file_path), "--no-backup"]
+    if debug:
+        cmd.append("--dry-run")  # Show what would be done without modifying
+
+    ret, stdout, stderr = run_cmd(cmd, cwd=tex_file_path.parent, capture=True, silent=not debug)
+
+    if ret != 0:
+        if debug:
+            print(f"❌ add_copyright_include.py failed on {tex_file_path.name}")
+            if stderr:
+                print(f"   Error: {stderr}")
+        return False
+
+    if debug:
+        print(f"✅ Ran add_copyright_include.py on {tex_file_path.name}")
+    return True
+
+def compile_one(doc, tools_py, fix_markup_py, add_copyright_py, git_root, debug=False, skip_fix=False, skip_copyright=False):
     """
     Compile a single document; return (name, success, section).
-    First runs fix_markup.py on the .tex file, then compiles.
+    First runs fix_markup.py (unless skipped), then add_copyright_include.py (unless skipped),
+    then compiles.
     """
     name = doc["name"]
     section = doc.get("section", "other")
@@ -78,15 +106,23 @@ def compile_one(doc, tools_py, fix_markup_py, git_root, debug=False):
     full_path = git_root / rel_path
     tex_file_path = full_path / tex_file
     
-    # Step 1: Run fix_markup.py on the .tex file
-    if debug:
-        print(f"  🔧 Running fix_markup on {name}: {tex_file}")
+    # Step 1: Run fix_markup.py if not skipped
+    if not skip_fix:
+        if debug:
+            print(f"  🔧 Running fix_markup on {name}: {tex_file}")
+        fix_success = fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug)
+        if not fix_success:
+            return (name, False, section)
     
-    fix_success = fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug)
-    if not fix_success:
-        return (name, False, section)
+    # Step 2: Run add_copyright_include.py if not skipped
+    if not skip_copyright:
+        if debug:
+            print(f"  📄 Running add_copyright on {name}: {tex_file}")
+        copyright_success = add_copyright_in_tex_file(tex_file_path, add_copyright_py, debug)
+        if not copyright_success:
+            return (name, False, section)
     
-    # Step 2: Compile the LaTeX document
+    # Step 3: Compile the LaTeX document
     cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
     if debug:
         cmd.append("-d")
@@ -107,9 +143,10 @@ def main():
                              "e.g., -b act")
     parser.add_argument("--skip-fix", action="store_true",
                         help="Skip running fix_markup.py on .tex files")
+    parser.add_argument("--skip-copyright", action="store_true",
+                        help="Skip running add_copyright_include.py on .tex files")
     parser.add_argument("-g", "--git-push", action="store_true",
                         help="Push built PDFs to git (commit and push) after successful build")
-    # NEW: -m / --message for custom commit message
     parser.add_argument("-m", "--message", type=str, default=None,
                         help="Custom commit message (only used with -g). If not given, a default timestamp is used.")
     args = parser.parse_args()
@@ -121,8 +158,9 @@ def main():
         jobs = os.cpu_count() or 4
     
     skip_fix = args.skip_fix
+    skip_copyright = args.skip_copyright
     git_push = args.git_push
-    commit_message = args.message  # may be None
+    commit_message = args.message
 
     # ------------------------------------------------------------
     #  Section handling – now includes 't' for travel
@@ -153,6 +191,12 @@ def main():
         print(f"⚠️ Warning: fix_markup.py not found at {fix_markup_py}")
         print("   Continuing without markup fixing...")
         skip_fix = True
+
+    add_copyright_py = git_root / "tools" / "add_copyright_include.py"
+    if not skip_copyright and not add_copyright_py.is_file():
+        print(f"⚠️ Warning: add_copyright_include.py not found at {add_copyright_py}")
+        print("   Continuing without copyright insertion...")
+        skip_copyright = True
 
     config_path = git_root / "build_config.toml"
 
@@ -191,6 +235,8 @@ def main():
     print(f"🔨 Building sections: {', '.join(selected_sections)} with {jobs} parallel job(s)")
     if not skip_fix:
         print(f"📝 Running fix_markup.py on all .tex files before compilation")
+    if not skip_copyright:
+        print(f"📄 Running add_copyright_include.py on all .tex files before compilation")
     print()
 
     failures = []
@@ -206,7 +252,8 @@ def main():
             # Immediately show that we started this document
             print(f"Building {name}")
             sys.stdout.flush()
-            future = executor.submit(compile_one, doc, tools_py, fix_markup_py, git_root, debug)
+            future = executor.submit(compile_one, doc, tools_py, fix_markup_py, add_copyright_py,
+                                     git_root, debug, skip_fix, skip_copyright)
             future_to_name[future] = name
 
         # As each future completes, print a blank line then the result.
