@@ -185,11 +185,11 @@ def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str) -
 
 def generate_copyright(git_root: Path, out_dir: Path, title: str, author: str, cc: bool = False) -> bool:
     """
-    Read git_root/copyright-template.tex or git_root/cc_copyright_template.tex,
+    Read git_root/copyright_template.tex or git_root/cc_copyright_template.tex,
     replace <<TITLE>> and <<AUTHOR>>, write to out_dir/copyright.tex.
     Returns True if generation succeeded, False if template missing.
     """
-    template_name = "cc_copyright_template.tex" if cc else "copyright-template.tex"
+    template_name = "cc_copyright_template.tex" if cc else "copyright_template.tex"
     template_path = git_root / template_name
     if not template_path.is_file():
         return False
