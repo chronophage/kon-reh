@@ -10,6 +10,7 @@
 \usepackage{multicol}
 \usepackage{enumitem}
 \usepackage{sectsty}
+\usepackage{hyperref}
 
 % Page setup
 \geometry{margin=0.75in}
@@ -20,6 +21,21 @@
 \definecolor{sectionbg}{HTML}{3498db}
 \definecolor{lightbg}{HTML}{ecf0f1}
 \definecolor{accent}{HTML}{e74c3c}
+
+% Hyperref setup for forms
+\hypersetup{
+    pdfauthor={Fate's Edge},
+    pdftitle={Character Sheet},
+    pdfsubject={Interactive Character Sheet},
+    pdfkeywords={Fate's Edge, RPG, Character Sheet},
+    pdfpagemode={UseNone},
+    pdfnewwindow=true,
+    colorlinks=false,
+    urlcolor=blue,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=magenta
+}
 
 % Background image command
 \newcommand{\backgroundimage}[1]{%
@@ -35,8 +51,23 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
-% Checkmark command
-\newcommand{\skillbox}{\framebox(10,10){}}
+% Form field styling
+\newcommand{\tf}[2][]{%
+  \TextField[borderwidth=0.5pt, bordercolor=gray!50, height=1.2em, #1]{#2}%
+}
+
+% Dropdown for attributes (1-5)
+\newcommand{\attrdropdown}[1]{%
+  \ChoiceMenu[borderwidth=0.5pt, bordercolor=gray!50, height=1.2em, default=1, name=#1]{}{1,2,3,4,5}%
+}
+
+% Dropdown for skills (0-5)
+\newcommand{\skilldots}[1]{%
+  \ChoiceMenu[borderwidth=0.5pt, bordercolor=gray!50, height=1.2em, default=0, name=#1]{}{0,1,2,3,4,5}%
+}
+
+% Checkbox
+\newcommand{\skillbox}{\CheckBox[borderwidth=0.5pt, bordercolor=gray!50, height=0.7em, width=0.7em]{}}
 
 % Header
 \newcommand{\sheetheader}{
@@ -58,6 +89,48 @@
   \vspace{1.2cm}
 }
 
+% JavaScript for auto-calculation (must be at start of document)
+\begin{Form}[action={% Auto-calculate on load
+    var attrs = ['body','wits','spirit','presence'];
+    var skillNames = ['melee','ranged','brawl','tactics','athletics','stealth','endurance','craft','survival','sway','command','deception','performance','insight','lore','investigation','medicine','arcana','ritual'];
+    var attrFields = {};
+    var skillFields = {};
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateAll() {
+        // Calculate Attributes
+        var total = 0;
+        for (var i = 0; i < attrs.length; i++) {
+            var val = parseInt(this.getField('attr_' + attrs[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_attr_' + attrs[i]).value = cost;
+        }
+        this.getField('attr_total').value = total;
+        
+        // Calculate Skills
+        var skillTotal = 0;
+        for (var j = 0; j < skillNames.length; j++) {
+            var val = parseInt(this.getField('skill_' + skillNames[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_skill_' + skillNames[j]).value = cost;
+        }
+        this.getField('skill_total').value = skillTotal;
+    }
+    
+    this.calculateAll = calculateAll;
+}]}
+
 \begin{document}
 
 % Uncomment the next line to add background image
@@ -65,58 +138,97 @@
 
 \sheetheader
 
-\sectionhead{Core Attributes}
-\begin{tabularx}{\textwidth}{|L|C|C|C|C|}
+% Top: Name, Player, Heritage
+\sectionhead{Character Identity}
+\begin{tabularx}{\textwidth}{|L|L|L|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Attribute} & \textbf{Body} & \textbf{Wits} & \textbf{Spirit} & \textbf{Presence} \\
+  \textbf{Character Name} & \textbf{Player Name} & \textbf{Heritage/Culture} \\
   \hline
-  Rating & \skillbox & \skillbox & \skillbox & \skillbox \\
+  \tf[name=charName, width=0.3\textwidth]{} & 
+  \tf[name=playerName, width=0.3\textwidth]{} & 
+  \tf[name=heritage, width=0.3\textwidth]{} \\
   \hline
 \end{tabularx}
 
 \vspace{0.5cm}
 
-\sectionhead{Skills (0-5)}
-\begin{multicols}{3}
-\begin{itemize}[leftmargin=*]
-  \item Combat: \skillbox
-  \item Stealth: \skillbox
-  \item Survival: \skillbox
-  \item Sway: \skillbox
-  \item Lore: \skillbox
-  \item Tinker: \skillbox
-  \item Arcana: \skillbox
-  \item Medicine: \skillbox
-  \item Command: \skillbox
-  \item Investigate: \skillbox
-  \item Skirmish: \skillbox
-  \item Performance: \skillbox
-  \item Insight: \skillbox
-  \item Deceive: \skillbox
-\end{itemize}
-\end{multicols}
-
-\sectionhead{Affinity \& Background}
 \begin{tabularx}{\textwidth}{|L|L|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Ancestry/Culture} & \textbf{Affinity} \\
+  \textbf{Background} & \textbf{Patron (if any)} \\
   \hline
-  \rule{0pt}{1.2cm} & \\
+  \tf[name=background, width=0.4\textwidth]{} & 
+  \tf[name=patron, width=0.4\textwidth]{} \\
   \hline
 \end{tabularx}
 
-\vspace{0.5cm}
-
-\begin{tabularx}{\textwidth}{|L|}
+\sectionhead{Core Attributes}
+\begin{center}
+\begin{tabularx}{0.9\textwidth}{|C|C|C|C|C|C|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Background} \\
+  \textbf{Attribute} & \textbf{Body} & \textbf{Wits} & \textbf{Spirit} & \textbf{Presence} & \textbf{Cost} \\
   \hline
-  \rule{0pt}{1.2cm} \\
+  Rating & \attrdropdown{attr_body} & \attrdropdown{attr_wits} & \attrdropdown{attr_spirit} & \attrdropdown{attr_presence} & \\
+  \hline
+  Cost & \tf[name=cost_attr_body, width=0.6cm, readonly=true]{} & 
+  \tf[name=cost_attr_wits, width=0.6cm, readonly=true]{} & 
+  \tf[name=cost_attr_spirit, width=0.6cm, readonly=true]{} & 
+  \tf[name=cost_attr_presence, width=0.6cm, readonly=true]{} & 
+  \tf[name=attr_total, width=0.8cm, readonly=true, backgroundcolor=lightbg, bordercolor=blue]{} \\
   \hline
 \end{tabularx}
+\end{center}
+\small\textit{Attribute cost: new rating \texttimes 3 XP (cumulative: 1→2=6, 2→3=9, 3→4=12, 4→5=15).}
+
+\sectionhead{Skills (0-5)}
+\begin{center}
+\begin{tabularx}{0.95\textwidth}{|L|C|C|L|C|C|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+  \hline
+  Melee & \skilldots{skill_melee} & \tf[name=cost_skill_melee, width=0.5cm, readonly=true]{} & 
+  Sway & \skilldots{skill_sway} & \tf[name=cost_skill_sway, width=0.5cm, readonly=true]{} \\
+  \hline
+  Ranged & \skilldots{skill_ranged} & \tf[name=cost_skill_ranged, width=0.5cm, readonly=true]{} & 
+  Command & \skilldots{skill_command} & \tf[name=cost_skill_command, width=0.5cm, readonly=true]{} \\
+  \hline
+  Brawl & \skilldots{skill_brawl} & \tf[name=cost_skill_brawl, width=0.5cm, readonly=true]{} & 
+  Deception & \skilldots{skill_deception} & \tf[name=cost_skill_deception, width=0.5cm, readonly=true]{} \\
+  \hline
+  Tactics & \skilldots{skill_tactics} & \tf[name=cost_skill_tactics, width=0.5cm, readonly=true]{} & 
+  Performance & \skilldots{skill_performance} & \tf[name=cost_skill_performance, width=0.5cm, readonly=true]{} \\
+  \hline
+  Athletics & \skilldots{skill_athletics} & \tf[name=cost_skill_athletics, width=0.5cm, readonly=true]{} & 
+  Insight & \skilldots{skill_insight} & \tf[name=cost_skill_insight, width=0.5cm, readonly=true]{} \\
+  \hline
+  Stealth & \skilldots{skill_stealth} & \tf[name=cost_skill_stealth, width=0.5cm, readonly=true]{} & 
+  Lore & \skilldots{skill_lore} & \tf[name=cost_skill_lore, width=0.5cm, readonly=true]{} \\
+  \hline
+  Endurance & \skilldots{skill_endurance} & \tf[name=cost_skill_endurance, width=0.5cm, readonly=true]{} & 
+  Investigation & \skilldots{skill_investigation} & \tf[name=cost_skill_investigation, width=0.5cm, readonly=true]{} \\
+  \hline
+  Craft & \skilldots{skill_craft} & \tf[name=cost_skill_craft, width=0.5cm, readonly=true]{} & 
+  Medicine & \skilldots{skill_medicine} & \tf[name=cost_skill_medicine, width=0.5cm, readonly=true]{} \\
+  \hline
+  Survival & \skilldots{skill_survival} & \tf[name=cost_skill_survival, width=0.5cm, readonly=true]{} & 
+  Arcana & \skilldots{skill_arcana} & \tf[name=cost_skill_arcana, width=0.5cm, readonly=true]{} \\
+  \hline
+  \multicolumn{4}{|c|}{\textbf{Total Skill XP:}} & 
+  \multicolumn{2}{C|}{\tf[name=skill_total, width=1.2cm, readonly=true, backgroundcolor=lightbg, bordercolor=blue]{}} \\
+  \hline
+\end{tabularx}
+\end{center}
+\small\textit{Skill cost: new level \texttimes 2 XP (cumulative: 0→1=2, 1→2=4, 2→3=6, 3→4=8, 4→5=10).}
+
+\vspace{0.3cm}
+\begin{center}
+\PushButton[name=calcBtn, onclick={this.calculateAll();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+\quad
+\PushButton[name=resetBtn, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
 
 \sectionhead{Talents \& Prestige Abilities}
 \begin{tabularx}{\textwidth}{|L|L|L|}
@@ -124,7 +236,9 @@
   \rowcolor{lightbg}
   \textbf{Minor Talents (2 XP)} & \textbf{Major Talents (4 XP)} & \textbf{Prestige Abilities (6+ XP)} \\
   \hline
-  \rule{0pt}{1.5cm} & \rule{0pt}{1.5cm} & \rule{0pt}{1.5cm} \\
+  \tf[name=talents_minor, width=0.3\textwidth, multiline=true, height=2cm]{} & 
+  \tf[name=talents_major, width=0.3\textwidth, multiline=true, height=2cm]{} & 
+  \tf[name=talents_prestige, width=0.3\textwidth, multiline=true, height=2cm]{} \\
   \hline
 \end{tabularx}
 
@@ -134,26 +248,14 @@
   \rowcolor{lightbg}
   \textbf{XP Total} & \textbf{XP Spent} & \textbf{Boons} & \textbf{Story Beats} \\
   \hline
-  \rule{0pt}{1cm} & & /5 & Base(4)+Tier \\
+  \tf[name=xp_total, width=2cm]{} & 
+  \tf[name=xp_spent, width=2cm]{} & 
+  \tf[name=boons, width=2cm]{\text{/5}} & 
+  \tf[name=story_beats, width=2cm]{\text{Base(4)+Tier}} \\
   \hline
 \end{tabularx}
 
 \vspace{0.5cm}
-
-\begin{tabularx}{\textwidth}{|L|}
-  \hline
-  \rowcolor{lightbg}
-  \textbf{Reputation Tier} \\
-  \hline
-  \begin{itemize}[leftmargin=*]
-    \item I: Rookie (0-40 XP)
-    \item II: Seasoned (41-90 XP)
-    \item III: Veteran (91-150 XP)
-    \item IV: Paragon (151-220 XP)
-    \item V: Mythic (221+ XP)
-  \end{itemize} \\
-  \hline
-\end{tabularx}
 
 \sectionhead{Condition Tracks}
 \begin{tabularx}{\textwidth}{|L|L|}
@@ -161,73 +263,80 @@
   \rowcolor{lightbg}
   \textbf{Fatigue (/Body)} & \textbf{Harm} \\
   \hline
-  \begin{itemize}[leftmargin=*]
-    \item[ ] 1 \quad \skillbox
-    \item[ ] 2 \quad \skillbox
-    \item[ ] 3 \quad \skillbox
-    \item[ ] 4 \quad \skillbox (If applicable)
-  \end{itemize} & 
-  \begin{itemize}[leftmargin=*]
-    \item Harm 1: -1 die to related actions
-    \item Harm 2: -1 die to most actions
-    \item Harm 3: Incapacitated/Dying
-  \end{itemize} \\
+  \begin{minipage}[t]{0.4\textwidth}
+    \begin{itemize}[leftmargin=*, itemsep=0.2cm]
+      \item[$\square$] 1
+      \item[$\square$] 2
+      \item[$\square$] 3
+      \item[$\square$] 4 (If applicable)
+    \end{itemize}
+  \end{minipage} & 
+  \begin{minipage}[t]{0.4\textwidth}
+    \begin{itemize}[leftmargin=*]
+      \item Harm 1: -1 die to related actions
+      \item Harm 2: -1 die to most actions
+      \item Harm 3: Incapacitated/Dying
+    \end{itemize}
+    \vspace{0.3cm}
+    \textbf{Current Harm:} \tf[name=current_harm, width=2cm]{} \\
+  \end{minipage} \\
   \hline
 \end{tabularx}
 
-\sectionhead{On-Screen Resources (Followers)}
+\sectionhead{Followers \& Assets}
 \begin{tabularx}{\textwidth}{|L|L|L|L|}
   \hline
   \rowcolor{lightbg}
   \textbf{Follower} & \textbf{Name} & \textbf{Cap} & \textbf{Condition} \\
   \hline
-  1 & \rule{0pt}{1cm} & & Maintained/Neglected/Compromised \\
+  1 & \tf[name=follower1_name, width=0.2\textwidth]{} & 
+  \ChoiceMenu[name=follower1_cap, default=1]{}{1,2,3,4,5} & 
+  \ChoiceMenu[name=follower1_cond, default=Maintained]{}{Maintained,Neglected,Compromised} \\
   \hline
-  2 & \rule{0pt}{1cm} & & Maintained/Neglected/Compromised \\
+  2 & \tf[name=follower2_name, width=0.2\textwidth]{} & 
+  \ChoiceMenu[name=follower2_cap, default=1]{}{1,2,3,4,5} & 
+  \ChoiceMenu[name=follower2_cond, default=Maintained]{}{Maintained,Neglected,Compromised} \\
   \hline
 \end{tabularx}
 
-\sectionhead{Off-Screen Resources (Assets)}
+\vspace{0.3cm}
+
 \begin{tabularx}{\textwidth}{|L|L|L|L|}
   \hline
   \rowcolor{lightbg}
   \textbf{Asset} & \textbf{Name} & \textbf{Type} & \textbf{Condition} \\
   \hline
-  1 & \rule{0pt}{1cm} & Minor(4)/Standard(8)/Major(12) & Maintained/Neglected/Compromised \\
+  1 & \tf[name=asset1_name, width=0.2\textwidth]{} & 
+  \ChoiceMenu[name=asset1_type, default=Minor]{}{Minor(4),Standard(8),Major(12)} & 
+  \ChoiceMenu[name=asset1_cond, default=Maintained]{}{Maintained,Neglected,Compromised} \\
   \hline
-  2 & \rule{0pt}{1cm} & Minor(4)/Standard(8)/Major(12) & Maintained/Neglected/Compromised \\
+  2 & \tf[name=asset2_name, width=0.2\textwidth]{} & 
+  \ChoiceMenu[name=asset2_type, default=Minor]{}{Minor(4),Standard(8),Major(12)} & 
+  \ChoiceMenu[name=asset2_cond, default=Maintained]{}{Maintained,Neglected,Compromised} \\
   \hline
 \end{tabularx}
 
-\sectionhead{Magic System (If Applicable)}
+\sectionhead{Magic System}
 \begin{tabularx}{\textwidth}{|L|L|L|}
   \hline
   \rowcolor{lightbg}
   \textbf{Path} & \textbf{Patron(s)} & \textbf{Obligation} \\
   \hline
-  Caster/Runekeeper/Invoker/Summoner & & / (Spirit + Presence) \\
+  \ChoiceMenu[name=magic_path, default=Free Caster]{}{Free Caster,Runekeeper,Invoker,Cantor,Summoner,Psion} & 
+  \tf[name=magic_patron, width=0.25\textwidth]{} & 
+  \tf[name=magic_obligation, width=0.2\textwidth]{}\text{ / (Spirit + Presence)} \\
   \hline
 \end{tabularx}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \begin{tabularx}{\textwidth}{|L|L|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Rites Known} & \textbf{Codex/Thiasos/Symbols} \\
+  \textbf{Rites / Spells / Songs} & \textbf{Codex / Thiasos / Symbols} \\
   \hline
-  \rule{0pt}{1cm} & \\
-  \hline
-\end{tabularx}
-
-\vspace{0.5cm}
-
-\begin{tabularx}{\textwidth}{|L|L|}
-  \hline
-  \rowcolor{lightbg}
-  \textbf{Backlash SB} & \textbf{Notes} \\
-  \hline
-  & \\
+  \tf[name=magic_rites, width=0.45\textwidth, multiline=true, height=2cm]{} & 
+  \tf[name=magic_focus, width=0.45\textwidth, multiline=true, height=2cm]{} \\
   \hline
 \end{tabularx}
 
@@ -237,78 +346,75 @@
   \rowcolor{lightbg}
   \textbf{Bonds} & \textbf{Complications} \\
   \hline
-  \rule{0pt}{2cm} & Initial: \rule{0pt}{0.8cm} \\
-  & Current: \rule{0pt}{0.8cm} \\
+  \tf[name=bonds, width=0.45\textwidth, multiline=true, height=2.5cm]{} & 
+  \tf[name=complications, width=0.45\textwidth, multiline=true, height=2.5cm]{} \\
   \hline
 \end{tabularx}
 
 \sectionhead{Gear \& Supply}
-\begin{tabularx}{\textwidth}{|L|}
-  \hline
-  \rowcolor{lightbg}
-  \textbf{Weapons} \\
-  \hline
-  \rule{0pt}{1.5cm} \\
-  \hline
-\end{tabularx}
-
-\vspace{0.5cm}
-
 \begin{tabularx}{\textwidth}{|L|L|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Armor} & \textbf{Other Gear} \\
+  \textbf{Weapons} & \textbf{Armor} \\
   \hline
-  & \\
+  \tf[name=weapons, width=0.45\textwidth, multiline=true, height=1.5cm]{} & 
+  \tf[name=armor, width=0.45\textwidth, multiline=true, height=1.5cm]{} \\
   \hline
 \end{tabularx}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \begin{tabularx}{\textwidth}{|L|L|L|L|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Supply Timer } & \textbf{Full} & \textbf{Low} & \textbf{Dangerous} \\
+  \textbf{Supply Timer} & \textbf{Full} & \textbf{Low} & \textbf{Dangerous} \\
   \hline
-  & \skillbox & \skillbox & \skillbox \\
+  & \CheckBox[name=supply_full, borderwidth=0.5pt]{} & 
+  \CheckBox[name=supply_low, borderwidth=0.5pt]{} & 
+  \CheckBox[name=supply_dangerous, borderwidth=0.5pt]{} \\
   \hline
 \end{tabularx}
 
-\sectionhead{Notes}
+\vspace{0.3cm}
+
+\begin{tabularx}{\textwidth}{|L|}
+  \hline
+  \rowcolor{lightbg}
+  \textbf{Other Gear \& Notes} \\
+  \hline
+  \tf[name=other_gear, width=0.95\textwidth, multiline=true, height=1.5cm]{} \\
+  \hline
+\end{tabularx}
+
+\sectionhead{Notes \& Goals}
 \begin{tabularx}{\textwidth}{|L|}
   \hline
   \rowcolor{lightbg}
   \textbf{Downtime Activities} \\
   \hline
-  \rule{0pt}{1.5cm} \\
+  \tf[name=downtime, width=0.95\textwidth, multiline=true, height=1.5cm]{} \\
   \hline
 \end{tabularx}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \begin{tabularx}{\textwidth}{|L|}
   \hline
   \rowcolor{lightbg}
-  \textbf{Session Goals} \\
+  \textbf{Session Goals \& Character Arc Themes} \\
   \hline
-  \rule{0pt}{1.5cm} \\
-  \hline
-\end{tabularx}
-
-\vspace{0.5cm}
-
-\begin{tabularx}{\textwidth}{|L|}
-  \hline
-  \rowcolor{lightbg}
-  \textbf{Character Arc Themes} \\
-  \hline
-  \rule{0pt}{1.5cm} \\
+  \tf[name=goals, width=0.95\textwidth, multiline=true, height=2cm]{} \\
   \hline
 \end{tabularx}
 
 \vspace{0.8cm}
 \begin{center}
-\textbf{Remember:} Trim Boons to 2 at scene end. Convert 2 Boons → 1 XP once/session (max 2 XP via conversion).
+\textbf{Remember:} Trim Boons to 2 at scene end. Convert 2 Boons $\rightarrow$ 1 XP once/session (max 2 XP via conversion).
 \end{center}
+
+% Hidden fields for JavaScript state (don't display)
+\TextField[name=debug, width=0cm, height=0cm, borderwidth=0pt]{}
+
+\end{Form}
 
 \end{document}

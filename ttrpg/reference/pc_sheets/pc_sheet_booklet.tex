@@ -311,11 +311,11 @@ You may take up to \textbf{two total} from any mix (e.g., 1 Bond + 1 Complicatio
 
 \textbf{Starting Gear (assumed free):}
 \begin{itemize}
-    \item One set of clothing appropriate to your culture
-    \item A melee weapon (Light or Medium) or a ranged weapon with ammunition
-    \item Light armor (or Medium if your concept demands it)
-    \item A backpack, waterskin, 1d6 days of rations, a knife, flint and steel, a small lantern or candle
-    \item Tools for any skill you have at level 1+
+  \item One set of clothing appropriate to your culture
+  \item A Light melee weapon or ranged weapon with ammunition
+  \item Light armor (if your concept demands it)
+  \item A backpack, a waterskin, 1d6 days of rations, a utility knife, flint and steel, a small lantern or candle
+  \item Any tools required for your skills (e.g., lockpicks, healer's kit, writing materials)
 \end{itemize}
 
 \textbf{Buying Better Gear (XP costs):}
@@ -2667,6 +2667,2279 @@ Before your first session:
     {\small Fate's Edge Complete Character Sheets --- CC BY 4.0 --- Nicholas A. Gasper}\\[0.5em]
     {\tiny \textit{The road remembers. Every broken wheel leaves a mark, every lit lamp bears witness.}}
 \end{center}
+
+\newpage
+%=====================================================================
+% SECTION: FACE / SOCIALITE (FILLABLE)
+%=====================================================================
+
+\section*{Face / Socialite --- Build Guidance}
+\addcontentsline{toc}{section}{Face / Socialite --- Build Guidance}
+
+\begin{tipbox}{The Diplomat --- Social Combat Specialist}
+    \textbf{Role:} Negotiate, deceive, inspire, command. Primary: Presence, Wits.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Silver Tongue (2 XP)} -- +1 die to persuasion
+        \item \textbf{Command Presence (4 XP)} -- +1 die to leadership/intimidation
+        \item \textbf{Network Weaver (4 XP)} -- Gain minor contact in each new settlement
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Presence 3, Sway 2, Insight 1. Take Silver Tongue + Command Presence.
+        \item \textbf{Tier II:} Add Network Weaver, Trusted Reputation. Raise Wits to 3.
+        \item \textbf{Tier III:} Spymaster (ask one detailed question about faction movements per session).
+    \end{itemize}
+    
+    \textbf{Patron Recommendations:}
+    \begin{itemize}
+        \item \textbf{Livaea (Seduction):} Golden Tongue, Velvet Invitation, The Unrefusable Offer.
+        \item \textbf{The Witness (Truth):} Rite of Uncomfortable Question, Echoing Truth.
+        \item \textbf{Palinode (Performance):} Hymn Against Dread, The Hooked Chorus.
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Face / Socialite --- Character Sheet}
+\addcontentsline{toc}{section}{Face / Socialite --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_face = ['attr_body_face','attr_wits_face','attr_spirit_face','attr_presence_face'];
+    var skillFields_face = ['skill_melee_face','skill_ranged_face','skill_brawl_face',
+        'skill_tactics_face','skill_athletics_face','skill_stealth_face',
+        'skill_endurance_face','skill_craft_face','skill_survival_face',
+        'skill_sway_face','skill_command_face','skill_deception_face',
+        'skill_performance_face','skill_insight_face','skill_lore_face',
+        'skill_investigation_face','skill_medicine_face','skill_arcana_face','skill_ritual_face'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateFace() {
+        var total = 0;
+        for (var i = 0; i < attrFields_face.length; i++) {
+            var val = parseInt(this.getField(attrFields_face[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_face[i]).value = cost;
+        }
+        this.getField('attr_total_face').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_face.length; j++) {
+            var val = parseInt(this.getField(skillFields_face[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_face[j]).value = cost;
+        }
+        this.getField('skill_total_face').value = skillTotal;
+    }
+    
+    this.calculateFace = calculateFace;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_face, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_face, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_face, width=4cm]{} \\
+            \textbf{Patron:} & \tf[name=patron_face, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_face, width=2cm]{} / \tf[name=xp_face, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_face} & Fatigue & \tf[name=fatigue_face, width=1.5cm]{} / \tf[name=fatigue_max_face, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_face} & Harm & \tf[name=harm_face, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_face} & Boons & \tf[name=boons_face, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_face} & XP & \tf[name=xp_total_face, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_face} & \tf[name=cost_skill_melee_face, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_face} & \tf[name=cost_skill_sway_face, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_face} & \tf[name=cost_skill_ranged_face, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_face} & \tf[name=cost_skill_command_face, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_face} & \tf[name=cost_skill_brawl_face, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_face} & \tf[name=cost_skill_deception_face, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_face} & \tf[name=cost_skill_tactics_face, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_face} & \tf[name=cost_skill_performance_face, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_face} & \tf[name=cost_skill_athletics_face, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_face} & \tf[name=cost_skill_insight_face, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_face} & \tf[name=cost_skill_stealth_face, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_face} & \tf[name=cost_skill_lore_face, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_face} & \tf[name=cost_skill_endurance_face, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_face} & \tf[name=cost_skill_investigation_face, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_face} & \tf[name=cost_skill_craft_face, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_face} & \tf[name=cost_skill_medicine_face, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_face} & \tf[name=cost_skill_survival_face, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_face} & \tf[name=cost_skill_arcana_face, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Social Talents}
+        \tf[name=social_talents, multiline=true, height=4cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Livaea's Social Arts (Optional)}
+        \tf[name=social_arts, multiline=true, height=2.5cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Social Combat Reference}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Action} & \textbf{Effect} \\
+            \midrule
+            Persuade & Presence + Sway vs DV \\
+            Intimidate & Presence + Command vs DV \\
+            Lie & Presence + Deception vs Insight \\
+            Inspire & Presence + Performance, grant +1 die \\
+            Read Person & Wits + Insight, detect lies \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Influence Trackers}
+        \textbf{Velvet Court Reputation:} \tf[name=velvet_reputation_face, width=5cm]{} \\
+        \textbf{Faction Standing:} \tf[name=faction_standing_face, width=5cm]{}
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''A smile can open a door that a key cannot. A secret can close it forever.'' --- Madam Serafine}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnFace, onclick={this.calculateFace();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnFace, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% SECTION: RUNEKEEPER (FILLABLE)
+%=====================================================================
+
+\section*{Runekeeper --- Build Guidance}
+\addcontentsline{toc}{section}{Runekeeper --- Build Guidance}
+
+\begin{tipbox}{The Agent of Covenant --- Structured Magic}
+    \textbf{Role:} Reliable magic through Patron covenant. Primary: Spirit, Wits.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Familiar (Thiasos) (2 XP)} -- Bond to Patron
+        \item \textbf{Codex (4 XP)} -- Book of Rites
+        \item \textbf{Patron's Gift (free)} -- Imbue item for +1 die
+    \end{itemize}
+    
+    \textbf{First Patron Recommendation:} \textbf{The Traveler} (low Obligation, useful Rites)
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Spirit 3, Lore 2. Take Familiar + Codex + two Low Rites (4-5 XP each).
+        \item \textbf{Tier II:} Add Efficient Invocation. Raise Presence for Obligation capacity.
+        \item \textbf{Tier III:} Patron's Favor (ignore Obligation cost once/session).
+    \end{itemize}
+    
+    \textbf{Obligation Management:}
+    \begin{itemize}
+        \item Capacity = Spirit + Presence
+        \item Exceeding capacity: 1 Fatigue per segment over
+        \item Clear Obligation via Acts of Service to your Patron
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Runekeeper --- Character Sheet}
+\addcontentsline{toc}{section}{Runekeeper --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_runekeeper = ['attr_body_runekeeper','attr_wits_runekeeper','attr_spirit_runekeeper','attr_presence_runekeeper'];
+    var skillFields_runekeeper = ['skill_melee_runekeeper','skill_ranged_runekeeper','skill_brawl_runekeeper',
+        'skill_tactics_runekeeper','skill_athletics_runekeeper','skill_stealth_runekeeper',
+        'skill_endurance_runekeeper','skill_craft_runekeeper','skill_survival_runekeeper',
+        'skill_sway_runekeeper','skill_command_runekeeper','skill_deception_runekeeper',
+        'skill_performance_runekeeper','skill_insight_runekeeper','skill_lore_runekeeper',
+        'skill_investigation_runekeeper','skill_medicine_runekeeper','skill_arcana_runekeeper','skill_ritual_runekeeper'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateRunekeeper() {
+        var total = 0;
+        for (var i = 0; i < attrFields_runekeeper.length; i++) {
+            var val = parseInt(this.getField(attrFields_runekeeper[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_runekeeper[i]).value = cost;
+        }
+        this.getField('attr_total_runekeeper').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_runekeeper.length; j++) {
+            var val = parseInt(this.getField(skillFields_runekeeper[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_runekeeper[j]).value = cost;
+        }
+        this.getField('skill_total_runekeeper').value = skillTotal;
+    }
+    
+    this.calculateRunekeeper = calculateRunekeeper;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_runekeeper, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_runekeeper, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_runekeeper, width=4cm]{} \\
+            \textbf{Patron:} & \tf[name=patron_runekeeper, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_runekeeper, width=2cm]{} / \tf[name=xp_runekeeper, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_runekeeper} & Fatigue & \tf[name=fatigue_runekeeper, width=1.5cm]{} / \tf[name=fatigue_max_runekeeper, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_runekeeper} & Harm & \tf[name=harm_runekeeper, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_runekeeper} & Boons & \tf[name=boons_runekeeper, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_runekeeper} & XP & \tf[name=xp_total_runekeeper, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Obligation Tracker}
+        \textbf{Capacity:} Spirit \tf[name=spirit_cap_runekeeper, width=1cm]{} + Presence \tf[name=presence_cap_runekeeper, width=1cm]{} = \tf[name=oblig_capacity_runekeeper, width=1.5cm]{} \\
+        \textbf{Current Obligation:} \tf[name=current_oblig_runekeeper, width=1cm]{} / \tf[name=oblig_capacity_runekeeper, width=1.5cm, readonly=true]{} \\
+        \textbf{Obligation Overflow:} Each segment over Capacity = 1 Fatigue.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Codex \& Thiasos}
+        \textbf{Codex:} \tf[name=codex_runekeeper, width=6cm]{} \\
+        \textbf{Thiasos (Familiar):} \tf[name=thiasos_runekeeper, width=6cm]{}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Rites Known}
+        \textbf{Low Rites (Obligation 4-5):}\\
+        \tf[name=low_rites_runekeeper, multiline=true, height=2cm, width=7cm]{} \\
+        \textbf{Standard Rites (Obligation 6-8):}\\
+        \tf[name=standard_rites_runekeeper, multiline=true, height=2cm, width=7cm]{} \\
+        \textbf{High Rites (Obligation 7-8):}\\
+        \tf[name=high_rites_runekeeper, multiline=true, height=2cm, width=7cm]{}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Runekeeper Talents}
+        \tf[name=runekeeper_talents, multiline=true, height=3cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- The Traveler's Runekeeper (36XP)}
+        \textbf{Attributes:} Spirit 3 (9), Wits 2 (6) --- 15 XP\\
+        \textbf{Skills:} Lore 2 (4), Insight 1 (2), Sway 1 (2) --- 8 XP\\
+        \textbf{Talents:} Familiar (2), Codex (4) --- 6 XP\\
+        \textbf{Rites:} Road-Sense (4), Traveler's Boon (5) --- 9 XP\\
+        \textbf{Total:} 38 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''I do not beg. I record. And in the recording, I become the hand that writes the law.'' --- The Gray Wanderer}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnRunekeeper, onclick={this.calculateRunekeeper();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnRunekeeper, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% SECTION: RUNIC WARRIOR (MELEE RUNEKEEPER)
+%=====================================================================
+
+\section*{Runic Warrior --- Build Guidance}
+\addcontentsline{toc}{section}{Runic Warrior --- Build Guidance}
+
+\begin{tipbox}{The Spell-Sword --- Runes and Steel}
+    \textbf{Role:} Frontline caster who writes covenants in flesh and steel. Primary: Body, Spirit.
+    
+    \textbf{Codex Forms:}
+    \begin{itemize}
+        \item \textbf{Flesh Codex (4 XP)} -- Rites tattooed on skin. Cannot be stolen. Visible.
+        \item \textbf{Stone Codex (4 XP)} -- Rites carved on shield/gorget. Can be lost or broken.
+        \item \textbf{Steel Codex (6 XP)} -- Sentient weapon that speaks. Counts as witness.
+    \end{itemize}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Flesh Codex (4 XP)} + \textbf{Living Thiasos (3 XP)}
+        \item \textbf{Weapon Mastery (5 XP)} -- +2 dice with chosen weapon
+        \item \textbf{Oath-Bound (4 XP)} -- Reroll failed Body roll when serving a sworn oath
+    \end{itemize}
+    
+    \textbf{Patron Recommendations for Warriors:}
+    \begin{itemize}
+        \item \textbf{Oath of Flame \& Light} -- Paladin, smiting, healing
+        \item \textbf{Mykkiel} -- Law, judgment, binding oaths
+        \item \textbf{Grimmir} -- Druid, nature, thorns
+        \item \textbf{Khemesh} -- Warlock, crushing pressure, terror
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Runic Warrior --- Character Sheet}
+\addcontentsline{toc}{section}{Runic Warrior --- Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Combat Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Obligation as Physical Scar}
+        \textbf{Minor (1-2):} Small scar, bruise, aching tooth.\\
+        \textbf{Moderate (3-4):} Visible scar on face/hands, limp, brand.\\
+        \textbf{Significant (5-6):} Missing finger, clouded eye, bark-like skin.\\
+        \textbf{Critical (7+):} Numb limb, reflection-avoiding face, forgotten name.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Runic Warrior Talents}
+        \textbf{Flesh Codex (4 XP):} Rites tattooed on body; cannot be stolen.\\
+        \textbf{Living Thiasos (3 XP):} Thiasos gains +1 Cap, acts independently once/scene.\\
+        \textbf{Oath-Bound (4 XP):} Reroll failed Body roll when serving a sworn oath.\\
+        \textbf{Scarred Resilience (3 XP):} Once/scene, ignore 1 Fatigue from physical exertion.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Combat Rites}
+        \textbf{Rite of the Kindled Blade (Low, 4 XP):} Weapon ignites; +1 Harm vs undead/oath-breakers.\\
+        \textbf{Rite of the Unbroken Vow (Standard, 7 XP):} Swear oath before flame; +1 Armour.\\
+        \textbf{Rite of the Sealed Threshold (Standard, 7 XP):} Mark doorway as sealed; crossing tests Resolve.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cultural Traditions}
+        \textbf{Ashaan War-Priest (Mykkiel):} Khopesh Hook --- disarm or off-balance.\\
+        \textbf{Oshiira Gilded Lancer (Traveler):} Ride the Wind --- ignore difficult terrain.\\
+        \textbf{Pereshi Cataphract (Witness):} Lance of Judgment --- ignore Armor, Shaken.\\
+        \textbf{Dhahara Elephant-Rider (Grimmir):} Archer's Nest --- +1 Armor in howdah.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Tier I Dawn Warrior (36XP)}
+        \textbf{Attributes:} Body 3 (9), Spirit 2 (6), Presence 2 (6) --- 21 XP\\
+        \textbf{Skills:} Melee 2 (4), Command 1 (2), Athletics 1 (2) --- 8 XP\\
+        \textbf{Talents:} Flesh Codex (4), Oath-Bound (4), Scarred Resilience (3) --- 9 XP\\
+        \textbf{Rites:} Rite of the Kindled Blade (4) --- 4 XP\\
+        \textbf{Total:} 42 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''Carve your vows into your flesh. Let your scars be your scripture.`` --- Master Tarian}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: INVOKER
+%=====================================================================
+
+\section*{Invoker --- Build Guidance}
+\addcontentsline{toc}{section}{Invoker --- Build Guidance}
+
+\begin{tipbox}{The Gambler --- Power Without Bondage}
+    \textbf{Role:} Borrow power from multiple Patrons; versatile but risky. Primary: Wits, Spirit.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Patron's Symbol (4 XP each)} -- Physical anchor to a Patron. Max 4 Symbols.
+        \item \textbf{Ritual Mastery (4 XP)} -- Reduce backlash SB by 1
+    \end{itemize}
+    
+    \textbf{Symbol Management:}
+    \begin{itemize}
+        \item Displaying Symbol reduces DV by 1 and Obligation by 1 (min 0)
+        \item \textbf{Crack the Seal:} Resolve Rite instantly; Symbol becomes Compromised, double Obligation
+        \item \textbf{Cross-Resonance:} Carrying multiple Symbols creates friction. Limit 4.
+    \end{itemize}
+    
+    \textbf{Recommended Patrons for Invokers:}
+    \begin{itemize}
+        \item \textbf{Morag the Hag} -- Hidden costs, bargains, Speaking Knot
+        \item \textbf{The Confessor} -- Burden sharing, confession magic
+        \item \textbf{The Ninth} -- Hyperknowledge, information overflow
+        \item \textbf{Ikasha} -- Shadow, stealth, thresholds
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Invoker --- Character Sheet}
+\addcontentsline{toc}{section}{Invoker --- Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Symbols \& Obligation}
+        \begin{tabular}{|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|}
+            \hline
+            \textbf{Patron} & \textbf{Symbol} & \textbf{Oblig} & \textbf{Status} \\
+            \hline
+            1: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+            2: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+            3: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+            4: & \underline{\hspace{1.5cm}} & \underline{\hspace{1cm}} & \underline{\hspace{1.5cm}} \\
+            \hline
+        \end{tabular}\\
+        \textbf{Total Obligation:} \underline{\hspace{1cm}} / \underline{\hspace{1.5cm}} (Spirit + Presence)
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Invoker Talents}
+        \textbf{Borrowed Grace (Free):} Spend 1 Boon or 1 Fatigue for +1 die. Mark +1 Obligation.\\
+        \textbf{Crack Specialist (6 XP):} Reduce Obligation cost of Crack the Seal by 1.\\
+        \textbf{Symbol Resonance (4 XP):} +1 die to ritual roll when using a Symbol.\\
+        \textbf{Ritual Mastery (4 XP):} Reduce backlash SB by 1; first SB each scene becomes your Boon.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Ritual Invocation}
+        \textbf{Time:} Significant Time (DV in rounds)\\
+        \textbf{Cost:} Mark Rite's Obligation\\
+        \textbf{Symbol Benefit:} If displayed, reduce DV by 1 and Obligation by 1 (min 0)\\
+        \textbf{Crack the Seal:} Resolve instantly. Set Symbol to Compromised, mark double Obligation.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Recommended Invoker Patrons}
+        \textbf{Morag the Hag:} Speaking Knot, Threefold Exchange, Crossroads Court.\\
+        \textbf{The Confessor:} Echo of Sin, Burden Transference, The Cauldron's Secret.\\
+        \textbf{The Ninth:} Ninth Figure, Hypercognitive Lattice, The Ninth Revelation.\\
+        \textbf{Ikasha:} Touch the Umbral Veil, Umbral Reservoir, Become the Shadow.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''I do not serve. I rent. And when the landlord comes to collect, I had best have the coin ready.`` --- The Gray Wanderer}
+\end{center}
+
+\newpage
+%=====================================================================
+% SECTION: THREADWEAVER (FREE CASTER)
+%=====================================================================
+
+\section*{Threadweaver (Free Caster) --- Build Guidance}
+\addcontentsline{toc}{section}{Threadweaver (Free Caster) --- Build Guidance}
+
+\begin{tipbox}{The Weaver of Raw Magic --- Improvisational Casting}
+    \textbf{Role:} Improvise spells using the TAGS system. Versatile but risky. Primary: Wits, Spirit.
+    
+    \textbf{TAGS System:} DV = 1 + number of tags. Dangerous tags (Leap, Gate, Transform) add +2 DV.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Spellcraft (6 XP)} -- Required for free casting
+        \item \textbf{Practiced Caster (2 XP)} -- Reduce cantrip DV by 1 (min 1)
+        \item \textbf{Controlled Burn (4 XP)} -- Convert a 1 into a Boon (GM does not gain SB)
+    \end{itemize}
+    
+    \textbf{Progression Path:}
+    \begin{itemize}
+        \item \textbf{Tier I:} Wits 3, Arcana 2. Take Spellcraft + Practiced Caster.
+        \item \textbf{Tier II:} Add Controlled Burn + Weave Resilience. Choose Elemental Focus.
+        \item \textbf{Tier III:} Spell Echo, Resonance Anchor, Elemental Attunement.
+        \item \textbf{Tier IV-V:} Weave Harmonist (ignore all SB from one cast per session).
+    \end{itemize}
+    
+    \textbf{Backlash Severity:}
+    \begin{itemize}
+        \item \textbf{Minor (1-2 SB):} Fatigue +1, -1 die next roll
+        \item \textbf{Major (3-4 SB):} Harm 1, Condition, ward collapse
+        \item \textbf{Catastrophic (5+ SB):} Harm 2, permanent Scar, reality fracture
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Threadweaver (Free Caster) --- Character Sheet}
+\addcontentsline{toc}{section}{Threadweaver (Free Caster) --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_thread = ['attr_body_thread','attr_wits_thread','attr_spirit_thread','attr_presence_thread'];
+    var skillFields_thread = ['skill_melee_thread','skill_ranged_thread','skill_brawl_thread',
+        'skill_tactics_thread','skill_athletics_thread','skill_stealth_thread',
+        'skill_endurance_thread','skill_craft_thread','skill_survival_thread',
+        'skill_sway_thread','skill_command_thread','skill_deception_thread',
+        'skill_performance_thread','skill_insight_thread','skill_lore_thread',
+        'skill_investigation_thread','skill_medicine_thread','skill_arcana_thread','skill_ritual_thread'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateThread() {
+        var total = 0;
+        for (var i = 0; i < attrFields_thread.length; i++) {
+            var val = parseInt(this.getField(attrFields_thread[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_thread[i]).value = cost;
+        }
+        this.getField('attr_total_thread').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_thread.length; j++) {
+            var val = parseInt(this.getField(skillFields_thread[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_thread[j]).value = cost;
+        }
+        this.getField('skill_total_thread').value = skillTotal;
+    }
+    
+    this.calculateThread = calculateThread;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_thread, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_thread, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_thread, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_thread, width=2cm]{} / \tf[name=xp_thread, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_thread} & Fatigue & \tf[name=fatigue_thread, width=1.5cm]{} / \tf[name=fatigue_max_thread, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_thread} & Harm & \tf[name=harm_thread, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_thread} & Boons & \tf[name=boons_thread, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_thread} & XP & \tf[name=xp_total_thread, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Free Casting --- The TAGS System}
+        \textbf{DV = 1 + number of TAGS} (Dangerous: +2 DV)\\
+        \textbf{Casting Roll:} Wits + Arcana vs DV. Each 1 = SB for GM.\\
+        \textbf{Backlash (on Miss or GM spending SB):}\\
+        • Harm 2 (Arcane) • +2 Fatigue • Corruption +1 • Catastrophic side effect
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_thread} & \tf[name=cost_skill_melee_thread, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_thread} & \tf[name=cost_skill_sway_thread, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_thread} & \tf[name=cost_skill_ranged_thread, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_thread} & \tf[name=cost_skill_command_thread, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_thread} & \tf[name=cost_skill_brawl_thread, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_thread} & \tf[name=cost_skill_deception_thread, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_thread} & \tf[name=cost_skill_tactics_thread, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_thread} & \tf[name=cost_skill_performance_thread, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_thread} & \tf[name=cost_skill_athletics_thread, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_thread} & \tf[name=cost_skill_insight_thread, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_thread} & \tf[name=cost_skill_stealth_thread, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_thread} & \tf[name=cost_skill_lore_thread, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_thread} & \tf[name=cost_skill_endurance_thread, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_thread} & \tf[name=cost_skill_investigation_thread, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_thread} & \tf[name=cost_skill_craft_thread, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_thread} & \tf[name=cost_skill_medicine_thread, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_thread} & \tf[name=cost_skill_survival_thread, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_thread} & \tf[name=cost_skill_arcana_thread, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{TAG Library Quick Reference}
+        \begin{tabular}{>{\bfseries}p{2cm} p{2.5cm} >{\bfseries}p{2cm} p{2.5cm}}
+            \toprule
+            \textbf{Tag} & \textbf{Effect} & \textbf{Tag} & \textbf{Effect} \\
+            \midrule
+            Burning & Fire, heat & Freezing & Ice, cold \\
+            Storm & Lightning & Stone & Earth, spikes \\
+            Wave & Water & Wind & Air, gusts \\
+            Force & Kinetic blast & Area & Zone effect \\
+            Strike & Single target & Wall & Barrier \\
+            Bind & Restrain & Dispel & Suppress magic \\
+            Veil & Conceal & Scry & Reveal \\
+            HEAL & Remove Fatigue & Leap & Teleport (dangerous) \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Signature Spells}
+        \tf[name=thread_spells, multiline=true, height=4cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Threadweaver Talents}
+        \tf[name=thread_talents, multiline=true, height=3cm, width=7cm]{}%
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''Free casting is the mud between the cobbles, the river beneath the bridge. It has no patron to catch you when you fall.'' --- Lysandra of the Amber Gate}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnThread, onclick={this.calculateThread();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnThread, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% SECTION: CANTOR
+%=====================================================================
+
+\section*{Cantor --- Build Guidance}
+\addcontentsline{toc}{section}{Cantor --- Build Guidance}
+
+\begin{tipbox}{The Touched Voice --- Song as Power}
+    \textbf{Role:} Magic through performance. Corruption is transformation, not punishment. Primary: Presence, Spirit.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Cantor's Path (8 XP)} -- Required for songs
+        \item \textbf{Steady Voice (2 XP)} -- Push by marking Fatigue instead of Corruption (once/scene)
+        \item \textbf{Resonant Performance (3 XP)} -- +1 die when performing for 5+ audience
+    \end{itemize}
+    
+    \textbf{Corruption Timer :} Size = Spirit. Marks when: Pushing a Song, performing Resonant Rite, or GM spends SB on occult activity.
+    
+    \textbf{When Timer Fills:} Gain boon + burden from last Patron. Reset to Tier (min 1).
+    
+    \textbf{Patrons of the Voice:}
+    \begin{itemize}
+        \item \textbf{Palinode (Queen of Encores)} -- Performance, rapture, unfinished art
+        \item \textbf{Thrysos (King of Revels)} -- Drunken Master, ecstasy, frenzy
+        \item \textbf{Livaea (Crimson Courtier)} -- Seduction, social binding
+        \item \textbf{Ikasha (Shadow)} -- Whispers, stealth, forgotten songs
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Cantor --- Character Sheet}
+\addcontentsline{toc}{section}{Cantor --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_cantor = ['attr_body_cantor','attr_wits_cantor','attr_spirit_cantor','attr_presence_cantor'];
+    var skillFields_cantor = ['skill_melee_cantor','skill_ranged_cantor','skill_brawl_cantor',
+        'skill_tactics_cantor','skill_athletics_cantor','skill_stealth_cantor',
+        'skill_endurance_cantor','skill_craft_cantor','skill_survival_cantor',
+        'skill_sway_cantor','skill_command_cantor','skill_deception_cantor',
+        'skill_performance_cantor','skill_insight_cantor','skill_lore_cantor',
+        'skill_investigation_cantor','skill_medicine_cantor','skill_arcana_cantor','skill_ritual_cantor'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateCantor() {
+        var total = 0;
+        for (var i = 0; i < attrFields_cantor.length; i++) {
+            var val = parseInt(this.getField(attrFields_cantor[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_cantor[i]).value = cost;
+        }
+        this.getField('attr_total_cantor').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_cantor.length; j++) {
+            var val = parseInt(this.getField(skillFields_cantor[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_cantor[j]).value = cost;
+        }
+        this.getField('skill_total_cantor').value = skillTotal;
+    }
+    
+    this.calculateCantor = calculateCantor;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_cantor, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_cantor, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_cantor, width=4cm]{} \\
+            \textbf{Patron:} & \tf[name=patron_cantor, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_cantor, width=2cm]{} / \tf[name=xp_cantor, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_cantor} & Fatigue & \tf[name=fatigue_cantor, width=1.5cm]{} / \tf[name=fatigue_max_cantor, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_cantor} & Harm & \tf[name=harm_cantor, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_cantor} & Boons & \tf[name=boons_cantor, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_cantor} & XP & \tf[name=xp_total_cantor, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Corruption Timer}
+        \textbf{Timer Size = Spirit} \tf[name=spirit_size_cantor, width=1.5cm]{} \\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Current Corruption:} \tf[name=corruption_current_cantor, width=1.5cm]{} / \tf[name=corruption_max_cantor, width=1.5cm]{}\\
+        \textbf{When Timer fills:} Gain boon + burden from last Patron. Reset to Tier.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Repertoire}
+        \textbf{Repertoire Timer [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        At 2: -1 DV to Songs. At 4: +1 die Performance. At 6: Learn one Standard Rite as Song.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_cantor} & \tf[name=cost_skill_melee_cantor, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_cantor} & \tf[name=cost_skill_sway_cantor, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_cantor} & \tf[name=cost_skill_ranged_cantor, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_cantor} & \tf[name=cost_skill_command_cantor, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_cantor} & \tf[name=cost_skill_brawl_cantor, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_cantor} & \tf[name=cost_skill_deception_cantor, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_cantor} & \tf[name=cost_skill_tactics_cantor, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_cantor} & \tf[name=cost_skill_performance_cantor, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_cantor} & \tf[name=cost_skill_athletics_cantor, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_cantor} & \tf[name=cost_skill_insight_cantor, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_cantor} & \tf[name=cost_skill_stealth_cantor, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_cantor} & \tf[name=cost_skill_lore_cantor, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_cantor} & \tf[name=cost_skill_endurance_cantor, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_cantor} & \tf[name=cost_skill_investigation_cantor, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_cantor} & \tf[name=cost_skill_craft_cantor, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_cantor} & \tf[name=cost_skill_medicine_cantor, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_cantor} & \tf[name=cost_skill_survival_cantor, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_cantor} & \tf[name=cost_skill_arcana_cantor, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Songs \& Performance}
+        \textbf{Sing a Song:} 1 action, resolves next turn. Roll Lore + Performance vs DV.\\
+        \textbf{Push It:} Resolve immediately. Mark 1 Fatigue and mark Corruption. GM gains 1 SB.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cantor Talents}
+        \tf[name=cantor_talents, multiline=true, height=4cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Songs Known}
+        \tf[name=cantor_songs, multiline=true, height=4cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Kestra the Traveler's Cantor}
+        \textbf{Attributes:} Presence 3, Spirit 2, Wits 2 --- 21 XP\\
+        \textbf{Skills:} Performance 2, Lore 2, Sway 1 --- 10 XP\\
+        \textbf{Talents:} Cantor's Path (8), Steady Voice (2) --- 10 XP\\
+        \textbf{Total:} 41 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''You think you need a lute? My larynx is older than any tree. Hum, and the world will listen.'' --- The Gray Wanderer}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnCantor, onclick={this.calculateCantor();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnCantor, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% SECTION: WITCH
+%=====================================================================
+
+\section*{Witch --- Build Guidance}
+\addcontentsline{toc}{section}{Witch --- Build Guidance}
+
+\begin{tipbox}{The Quiet Architect --- Threshold Magic}
+    \textbf{Role:} Subtle magic through knots, thresholds, and debts. Primary: Wits, Spirit.
+    
+    \textbf{Hedge Gifts (No Roll):}
+    \begin{itemize}
+        \item \textbf{Steady Hand (2 XP):} Remove 1 Fatigue with touch, once/scene
+        \item \textbf{Salt Line (2 XP):} Pour salt line; spirits test to cross
+        \item \textbf{Hearth-Sense (2 XP):} Ask GM yes/no about threshold or debt
+    \end{itemize}
+    
+    \textbf{The Three Layers:}
+    \begin{itemize}
+        \item \textbf{Echo:} Past memory. Work with knots and cords.
+        \item \textbf{Veil:} Present boundary. Work with salt and chalk.
+        \item \textbf{Flow:} Direction of change. Work with omission and the Ninth.
+    \end{itemize}
+    
+    \textbf{Promise Timers:} Track debts and obligations. Size 4 or 6. When full, price comes due.
+    
+    \textbf{Recommended Patrons for Witches:}
+    \begin{itemize}
+        \item \textbf{Morag the Hag} -- Hidden costs, bargains
+        \item \textbf{Inaea (Angel of the Spider)} -- Webs, mercy, connection
+        \item \textbf{Ikasha} -- Thresholds, shadows, forgotten things
+        \item \textbf{Isoka} -- Transformation, shedding, venom
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Witch --- Character Sheet}
+\addcontentsline{toc}{section}{Witch --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_witch = ['attr_body_witch','attr_wits_witch','attr_spirit_witch','attr_presence_witch'];
+    var skillFields_witch = ['skill_melee_witch','skill_ranged_witch','skill_brawl_witch',
+        'skill_tactics_witch','skill_athletics_witch','skill_stealth_witch',
+        'skill_endurance_witch','skill_craft_witch','skill_survival_witch',
+        'skill_sway_witch','skill_command_witch','skill_deception_witch',
+        'skill_performance_witch','skill_insight_witch','skill_lore_witch',
+        'skill_investigation_witch','skill_medicine_witch','skill_arcana_witch','skill_ritual_witch'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateWitch() {
+        var total = 0;
+        for (var i = 0; i < attrFields_witch.length; i++) {
+            var val = parseInt(this.getField(attrFields_witch[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_witch[i]).value = cost;
+        }
+        this.getField('attr_total_witch').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_witch.length; j++) {
+            var val = parseInt(this.getField(skillFields_witch[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_witch[j]).value = cost;
+        }
+        this.getField('skill_total_witch').value = skillTotal;
+    }
+    
+    this.calculateWitch = calculateWitch;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_witch, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_witch, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_witch, width=4cm]{} \\
+            \textbf{Patron:} & \tf[name=patron_witch, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_witch, width=2cm]{} / \tf[name=xp_witch, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_witch} & Fatigue & \tf[name=fatigue_witch, width=1.5cm]{} / \tf[name=fatigue_max_witch, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_witch} & Harm & \tf[name=harm_witch, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_witch} & Boons & \tf[name=boons_witch, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_witch} & XP & \tf[name=xp_total_witch, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Promise Timers}
+        \textbf{Timer [4]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Timer [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_witch} & \tf[name=cost_skill_melee_witch, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_witch} & \tf[name=cost_skill_sway_witch, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_witch} & \tf[name=cost_skill_ranged_witch, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_witch} & \tf[name=cost_skill_command_witch, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_witch} & \tf[name=cost_skill_brawl_witch, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_witch} & \tf[name=cost_skill_deception_witch, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_witch} & \tf[name=cost_skill_tactics_witch, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_witch} & \tf[name=cost_skill_performance_witch, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_witch} & \tf[name=cost_skill_athletics_witch, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_witch} & \tf[name=cost_skill_insight_witch, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_witch} & \tf[name=cost_skill_stealth_witch, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_witch} & \tf[name=cost_skill_lore_witch, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_witch} & \tf[name=cost_skill_endurance_witch, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_witch} & \tf[name=cost_skill_investigation_witch, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_witch} & \tf[name=cost_skill_craft_witch, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_witch} & \tf[name=cost_skill_medicine_witch, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_witch} & \tf[name=cost_skill_survival_witch, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_witch} & \tf[name=cost_skill_arcana_witch, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Hedge Gifts (No Roll)}
+        \textbf{Steady Hand:} Remove 1 Fatigue with touch, once/scene.\\
+        \textbf{Warm Hand:} Next physical action +1 die (comfort) or -1 die (warning).\\
+        \textbf{Salt Line:} Pour salt line; spirits test Spirit+Resolve to cross.\\
+        \textbf{The Unlit Candle:} Extinguish light source → dim/dark zone.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Quick Workings (Roll)}
+        Name threshold, choose layer (Echo/Veil/Flow), roll Wits+Lore or Spirit+Insight. Effect: door sticks, candle gutters, pursuer slips.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Witch Talents}
+        \tf[name=witch_talents, multiline=true, height=3cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Witch Patrons}
+        \textbf{Morag:} Hidden costs. The Speaking Knot, Threefold Exchange.\\
+        \textbf{Inaea:} Webs of connection. Hearth-Thread Knot, Strand of Inevitability.\\
+        \textbf{Ikasha:} Thresholds, shadows. Touch the Umbral Veil.\\
+        \textbf{Isoka:} Transformation, venom. Venomous Benediction, The Shedding.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Rites \& Workings Known}
+        \tf[name=witch_rites, multiline=true, height=3cm, width=7cm]{}%
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''The hedge is what keeps the wolves from the flock. I am the one who tends the hedge.'' --- The Gray Wanderer}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnWitch, onclick={this.calculateWitch();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnWitch, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+%=====================================================================
+% SECTION: PSION
+%=====================================================================
+
+\section*{Psion --- Build Guidance}
+\addcontentsline{toc}{section}{Psion --- Build Guidance}
+
+\begin{tipbox}{The Isolated Mind --- Power Within}
+    \textbf{Role:} No Patron, no Symbol, no Codex. Power is internal. Primary: Spirit, Wits.
+    
+    \textbf{Mental Strain:} Capacity = Spirit. Separate from Fatigue. Does not clear when taking Harm.
+    
+    \textbf{Overflow:} When cannot pay Mental Strain:
+    \begin{itemize}
+        \item Convert to +2 Fatigue, or
+        \item Convert to +1 Harm (Stress)
+    \end{itemize}
+    Exceeding Capacity: +1 Harm, set Mental Strain to max.
+    
+    \textbf{Core Talents (Must Have):}
+    \begin{itemize}
+        \item \textbf{Psionics Skill (0-5)} -- Gates access to Arts
+        \item \textbf{Mental Fortress (8 XP)} -- +2 dice resist psychic intrusion
+        \item \textbf{Psychic Reservoir (4 XP)} -- Store 1 Mental Strain per session (max Spirit)
+    \end{itemize}
+    
+    \textbf{The Nine Arts:}
+    \begin{itemize}
+        \item Telekinesis, Telepathy, Clairvoyance, Biofeedback
+        \item Astral Projection, Psychic Assault, Mind Shield
+        \item Empathic Manipulation, Precognition
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Psion --- Character Sheet}
+\addcontentsline{toc}{section}{Psion --- Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Mental Strain & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Mental Strain Tracker}
+        \textbf{Capacity = Spirit} \underline{\hspace{1.5cm}}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{When cannot pay:} Convert to +2 Fatigue or +1 Harm (Stress).\\
+        \textbf{Overflow:} Exceed Capacity → +1 Harm, set Mental Strain to max.
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{The Nine Arts}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Art} & \textbf{Key Attribute} \\
+            \midrule
+            Telekinesis & Spirit \\
+            Telepathy & Wits \\
+            Clairvoyance & Wits \\
+            Biofeedback & Spirit \\
+            Astral Projection & Spirit \\
+            Psychic Assault & Spirit \\
+            Mind Shield & Wits \\
+            Empathic Manipulation & Presence \\
+            Precognition & Spirit \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Psionic Talents}
+        \textbf{Psionics Skill:} \underline{\hspace{1.5cm}}\\
+        \textbf{Mental Fortress (8 XP):} +2 dice resist psychic intrusion.\\
+        \textbf{Psychic Reservoir (4 XP):} Store 1 Mental Strain/session (max Spirit).\\
+        \textbf{Thought Thief (6 XP):} +1 die Telepathy; learn one surface thought.\\
+        \textbf{Mind Walker (10 XP):} Astral Project without body risk (Mental Strain doubled).
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Arts by Difficulty}
+        \textbf{Surface Thoughts (DV 2):} Read current focus.\\
+        \textbf{Telekinesis Light (DV 2):} Move small objects.\\
+        \textbf{Biofeedback Minor (DV 2):} Stabilize wounds.\\
+        \textbf{Psychic Assault (DV 3):} Deal Mental Harm.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''I carry no Symbol. My ledger is my skull, and it comes due in headaches, not obligations.`` --- The Gray Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: MONK (UNSTRUCK BELL)
+%=====================================================================
+
+\section*{Monk (Unstruck Bell) --- Build Guidance}
+\addcontentsline{toc}{section}{Monk (Unstruck Bell) --- Build Guidance}
+
+\begin{tipbox}{The Open Hand --- Stillness as Weapon}
+    \textbf{Role:} Unarmored martial artist. Redirect, avoid, strike precisely. Primary: Body, Wits.
+    
+    \textbf{Three Principles:}
+    \begin{itemize}
+        \item \textbf{The Coin That Does Not Move:} Never resist what cannot be stopped. Yield.
+        \item \textbf{The Witness Who Breathes:} Stillness is the greatest disguise.
+        \item \textbf{The Debt That Is Never Incurred:} Do not strike first; create no debt.
+    \end{itemize}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Unarmed Combatant (4 XP)} -- Unarmed strikes Harm 1; grapple bonus
+        \item \textbf{Disciplined Body (3 XP)} -- +1 die unarmed; convert 1 Harm to Fatigue
+        \item \textbf{Still Point (2 XP)} -- When not moving, +1 die to next defense
+        \item \textbf{Monk's Breath (2 XP)} -- Clear 1 Fatigue by meditating 1 minute
+    \end{itemize}
+    
+    \textbf{Monastic Traditions:}
+    \begin{itemize}
+        \item \textbf{Way of the Unstruck Bell (Ikasha)} -- Shadow Meld, The Unobserved
+        \item \textbf{Way of the Iron Vow (Mykkiel)} -- Sworn Defender, Unyielding Vow
+        \item \textbf{Way of the Endless Cup (Thrysos)} -- Stagger Step, Drunken Fist
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Monk (Unstruck Bell) --- Character Sheet}
+\addcontentsline{toc}{section}{Monk (Unstruck Bell) --- Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Monastic Tradition:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Meditation Tracker}
+        \textbf{The Four Breaths:}\\
+        Entering → Holding → Releasing → Empty\\
+        \textbf{Meditation Benefits:}\\
+        Healing: Clear 1 Fatigue, remove minor Condition\\
+        Clarity: +1 die next Wits roll\\
+        Transcendent: Reroll any failed roll (GM gains 1 SB)
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Monk Talents}
+        \textbf{Unarmed Combatant (4 XP):} Harm 1, grapple bonus.\\
+        \textbf{Disciplined Body (3 XP):} +1 die unarmed; convert 1 Harm to Fatigue.\\
+        \textbf{Still Point (2 XP):} Not moving → +1 die next defense.\\
+        \textbf{Monk's Breath (2 XP):} Clear 1 Fatigue, 1 minute meditation.\\
+        \textbf{Flurry of Blows (6 XP):} Three unarmed attacks in one action.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Monastic Tradition Techniques}
+        \textbf{Way of Unstruck Bell:} Shadow Meld (step through shadows).\\
+        \textbf{Way of Iron Vow:} Sworn Defender (adjacent ally +1 Armor).\\
+        \textbf{Way of Endless Cup:} Stagger Step (move 1 band when enemy misses).
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Tier I Unstruck Bell Monk (36XP)}
+        \textbf{Attributes:} Body 3 (9), Wits 3 (9), Spirit 2 (6) --- 24 XP\\
+        \textbf{Skills:} Stealth 2 (4), Melee 1 (2), Meditation 1 (2) --- 8 XP\\
+        \textbf{Talents:} Unarmed Combatant (4), Disciplined Body (3), Still Point (2), Monk's Breath (2) --- 11 XP\\
+        \textbf{Total:} 43 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''The fist is a weapon. The open hand is a promise. Learn both before you need either.`` --- Brother Tarn}
+\end{center}
+
+\newpage%=====================================================================
+% SUMMONER - CHARACTER SHEET (FILLABLE)
+%=====================================================================
+\section*{Summoner --- Character Sheet}
+\addcontentsline{toc}{section}{Summoner --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_summoner = ['attr_body_summoner','attr_wits_summoner','attr_spirit_summoner','attr_presence_summoner'];
+    var skillFields_summoner = ['skill_melee_summoner','skill_ranged_summoner','skill_brawl_summoner',
+        'skill_tactics_summoner','skill_athletics_summoner','skill_stealth_summoner',
+        'skill_endurance_summoner','skill_craft_summoner','skill_survival_summoner',
+        'skill_sway_summoner','skill_command_summoner','skill_deception_summoner',
+        'skill_performance_summoner','skill_insight_summoner','skill_lore_summoner',
+        'skill_investigation_summoner','skill_medicine_summoner','skill_arcana_summoner','skill_ritual_summoner'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateSummoner() {
+        var total = 0;
+        for (var i = 0; i < attrFields_summoner.length; i++) {
+            var val = parseInt(this.getField(attrFields_summoner[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_summoner[i]).value = cost;
+        }
+        this.getField('attr_total_summoner').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_summoner.length; j++) {
+            var val = parseInt(this.getField(skillFields_summoner[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_summoner[j]).value = cost;
+        }
+        this.getField('skill_total_summoner').value = skillTotal;
+    }
+    
+    this.calculateSummoner = calculateSummoner;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_summoner, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_summoner, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_summoner, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_summoner, width=2cm]{} / \tf[name=xp_summoner, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_summoner} & Fatigue & \tf[name=fatigue_summoner, width=1.5cm]{} / \tf[name=fatigue_max_summoner, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_summoner} & Harm & \tf[name=harm_summoner, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_summoner} & Boons & \tf[name=boons_summoner, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_summoner} & XP & \tf[name=xp_total_summoner, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_summoner} & \tf[name=cost_skill_melee_summoner, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_summoner} & \tf[name=cost_skill_sway_summoner, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_summoner} & \tf[name=cost_skill_ranged_summoner, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_summoner} & \tf[name=cost_skill_command_summoner, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_summoner} & \tf[name=cost_skill_brawl_summoner, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_summoner} & \tf[name=cost_skill_deception_summoner, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_summoner} & \tf[name=cost_skill_tactics_summoner, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_summoner} & \tf[name=cost_skill_performance_summoner, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_summoner} & \tf[name=cost_skill_athletics_summoner, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_summoner} & \tf[name=cost_skill_insight_summoner, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_summoner} & \tf[name=cost_skill_stealth_summoner, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_summoner} & \tf[name=cost_skill_lore_summoner, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_summoner} & \tf[name=cost_skill_endurance_summoner, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_summoner} & \tf[name=cost_skill_investigation_summoner, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_summoner} & \tf[name=cost_skill_craft_summoner, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_summoner} & \tf[name=cost_skill_medicine_summoner, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_summoner} & \tf[name=cost_skill_survival_summoner, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_summoner} & \tf[name=cost_skill_arcana_summoner, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+        \vspace{0.3em}
+        \textbf{Total Skill XP:} \tf[name=skill_total_summoner, width=1.5cm, readonly=true, backgroundcolor=lightbg, bordercolor=blue]{}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Summoning Mechanics}
+        \textbf{Call (1 action):} Manifest spirit at Near range.\\
+        \textbf{Bind:} Spend 1 Boon or mark 1 Fatigue.\\
+        \textbf{Leash Capacity:} Cap + Spirit = \tf[name=leash_cap_summoner, width=2cm]{} \\
+        \textbf{Current Leash:} \tf[name=leash_current_summoner, width=1.5cm]{} / \tf[name=leash_max_summoner, width=1.5cm]{} \\
+        \textbf{Boon Finesse:} Spend 1 Boon to clear 1 Leash tick (once/round).
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Summoner Talents}
+        \tf[name=summoner_talents, multiline=true, height=4.5cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Bound Spirit}
+        \textbf{Name:} \tf[name=spirit_name_summoner, width=6cm]{} \\
+        \textbf{Type:} \tf[name=spirit_type_summoner, width=6cm]{} \\
+        \textbf{Cap:} \tf[name=spirit_cap_summoner, width=2cm]{} \\
+        \textbf{Special Abilities:} \tf[name=spirit_abilities_summoner, width=6cm]{} \\
+        \textbf{Price/Bargain:} \tf[name=spirit_price_summoner, width=6cm]{} \\
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Spirit Whims Table (When Leash Fills)}
+        1: Reveal a secret. 2: Break something. 3: Lead astray.\\
+        4: Call for help. 5: Curse a PC. 6: Bargain.
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ``I asked the drowned captain for directions. He asked for a memory in return. We shook on it.'' --- The Gray Wanderer}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnSummoner, onclick={this.calculateSummoner();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnSummoner, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% RANGER / ARCHER - CHARACTER SHEET (FILLABLE)
+%=====================================================================
+\section*{Ranger / Archer --- Character Sheet}
+\addcontentsline{toc}{section}{Ranger / Archer --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_ranger = ['attr_body_ranger','attr_wits_ranger','attr_spirit_ranger','attr_presence_ranger'];
+    var skillFields_ranger = ['skill_melee_ranger','skill_ranged_ranger','skill_brawl_ranger',
+        'skill_tactics_ranger','skill_athletics_ranger','skill_stealth_ranger',
+        'skill_endurance_ranger','skill_craft_ranger','skill_survival_ranger',
+        'skill_sway_ranger','skill_command_ranger','skill_deception_ranger',
+        'skill_performance_ranger','skill_insight_ranger','skill_lore_ranger',
+        'skill_investigation_ranger','skill_medicine_ranger','skill_arcana_ranger','skill_ritual_ranger'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateRanger() {
+        var total = 0;
+        for (var i = 0; i < attrFields_ranger.length; i++) {
+            var val = parseInt(this.getField(attrFields_ranger[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_ranger[i]).value = cost;
+        }
+        this.getField('attr_total_ranger').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_ranger.length; j++) {
+            var val = parseInt(this.getField(skillFields_ranger[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_ranger[j]).value = cost;
+        }
+        this.getField('skill_total_ranger').value = skillTotal;
+    }
+    
+    this.calculateRanger = calculateRanger;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_ranger, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_ranger, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_ranger, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_ranger, width=2cm]{} / \tf[name=xp_ranger, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_ranger} & Fatigue & \tf[name=fatigue_ranger, width=1.5cm]{} / \tf[name=fatigue_max_ranger, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_ranger} & Harm & \tf[name=harm_ranger, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_ranger} & Boons & \tf[name=boons_ranger, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_ranger} & XP & \tf[name=xp_total_ranger, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_ranger} & \tf[name=cost_skill_melee_ranger, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_ranger} & \tf[name=cost_skill_sway_ranger, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_ranger} & \tf[name=cost_skill_ranged_ranger, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_ranger} & \tf[name=cost_skill_command_ranger, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_ranger} & \tf[name=cost_skill_brawl_ranger, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_ranger} & \tf[name=cost_skill_deception_ranger, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_ranger} & \tf[name=cost_skill_tactics_ranger, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_ranger} & \tf[name=cost_skill_performance_ranger, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_ranger} & \tf[name=cost_skill_athletics_ranger, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_ranger} & \tf[name=cost_skill_insight_ranger, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_ranger} & \tf[name=cost_skill_stealth_ranger, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_ranger} & \tf[name=cost_skill_lore_ranger, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_ranger} & \tf[name=cost_skill_endurance_ranger, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_ranger} & \tf[name=cost_skill_investigation_ranger, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_ranger} & \tf[name=cost_skill_craft_ranger, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_ranger} & \tf[name=cost_skill_medicine_ranger, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_ranger} & \tf[name=cost_skill_survival_ranger, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_ranger} & \tf[name=cost_skill_arcana_ranger, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+        \vspace{0.3em}
+        \textbf{Total Skill XP:} \tf[name=skill_total_ranger, width=1.5cm, readonly=true, backgroundcolor=lightbg, bordercolor=blue]{}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Ranger Talents}
+        \tf[name=ranger_talents, multiline=true, height=4cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Ranged Weapon Modifiers}
+        \begin{tabular}{>{\bfseries}p{2cm} >{\bfseries}p{2cm} >{\bfseries}p{2cm} >{\bfseries}p{2cm}}
+            \toprule
+            \textbf{Weight} & \textbf{Close} & \textbf{Near} & \textbf{Far} \\
+            \midrule
+            Light & Controlled & +1d & --- \\
+            Medium & Desperate & +2d & +1d \\
+            Heavy & Desperate & +1d & +3d \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Cultural Archery Techniques}
+        \tf[name=ranger_cultural, multiline=true, height=3cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Tier I Ranger (36XP)}
+        \textbf{Attributes:} Wits 3 (9), Body 2 (6), Spirit 2 (6) --- 21 XP\\
+        \textbf{Skills:} Ranged 2 (4), Survival 2 (4), Stealth 1 (2) --- 10 XP\\
+        \textbf{Talents:} Weapon Mastery (5) --- 5 XP\\
+        \textbf{Total:} 36 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ``The kpinga does not fly. It dances. And the dance always ends with blood.'' --- Mkara, Sekogo hunter}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnRanger, onclick={this.calculateRanger();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnRanger, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% COMMANDER / WARLORD - CHARACTER SHEET (FILLABLE)
+%=====================================================================
+\section*{Commander / Warlord --- Character Sheet}
+\addcontentsline{toc}{section}{Commander / Warlord --- Character Sheet}
+
+\begin{Form}[action={%
+    var attrFields_commander = ['attr_body_commander','attr_wits_commander','attr_spirit_commander','attr_presence_commander'];
+    var skillFields_commander = ['skill_melee_commander','skill_ranged_commander','skill_brawl_commander',
+        'skill_tactics_commander','skill_athletics_commander','skill_stealth_commander',
+        'skill_endurance_commander','skill_craft_commander','skill_survival_commander',
+        'skill_sway_commander','skill_command_commander','skill_deception_commander',
+        'skill_performance_commander','skill_insight_commander','skill_lore_commander',
+        'skill_investigation_commander','skill_medicine_commander','skill_arcana_commander','skill_ritual_commander'];
+    
+    function attrCost(r) {
+        if (r <= 1) return 0;
+        return 3 * (r * (r + 1) / 2 - 1);
+    }
+    
+    function skillCost(l) {
+        if (l <= 0) return 0;
+        return 2 * (l * (l + 1) / 2 - 1);
+    }
+    
+    function calculateCommander() {
+        var total = 0;
+        for (var i = 0; i < attrFields_commander.length; i++) {
+            var val = parseInt(this.getField(attrFields_commander[i]).value);
+            var cost = attrCost(val);
+            total += cost;
+            this.getField('cost_' + attrFields_commander[i]).value = cost;
+        }
+        this.getField('attr_total_commander').value = total;
+        
+        var skillTotal = 0;
+        for (var j = 0; j < skillFields_commander.length; j++) {
+            var val = parseInt(this.getField(skillFields_commander[j]).value);
+            var cost = skillCost(val);
+            skillTotal += cost;
+            this.getField('cost_' + skillFields_commander[j]).value = cost;
+        }
+        this.getField('skill_total_commander').value = skillTotal;
+    }
+    
+    this.calculateCommander = calculateCommander;
+}]}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \tf[name=name_commander, width=4cm]{} \\
+            \textbf{Heritage:} & \tf[name=heritage_commander, width=4cm]{} \\
+            \textbf{Background:} & \tf[name=background_commander, width=4cm]{} \\
+            \textbf{Tier / XP:} & \tf[name=tier_commander, width=2cm]{} / \tf[name=xp_commander, width=2cm]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \attrdropdown{attr_body_commander} & Fatigue & \tf[name=fatigue_commander, width=1.5cm]{} / \tf[name=fatigue_max_commander, width=1.5cm]{} \\
+            Wits & \attrdropdown{attr_wits_commander} & Harm & \tf[name=harm_commander, width=1.5cm]{} / 3 \\
+            Spirit & \attrdropdown{attr_spirit_commander} & Boons & \tf[name=boons_commander, width=1.5cm]{} / 5 \\
+            Presence & \attrdropdown{attr_presence_commander} & XP & \tf[name=xp_total_commander, width=1.5cm]{} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Skills \& Costs}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Skill} & \textbf{Level} & \textbf{Cost} & \textbf{Skill} & \textbf{Level} & \textbf{Cost} \\
+            \midrule
+            Melee & \skilldots{skill_melee_commander} & \tf[name=cost_skill_melee_commander, width=0.8cm, readonly=true]{} & 
+            Sway & \skilldots{skill_sway_commander} & \tf[name=cost_skill_sway_commander, width=0.8cm, readonly=true]{} \\
+            Ranged & \skilldots{skill_ranged_commander} & \tf[name=cost_skill_ranged_commander, width=0.8cm, readonly=true]{} & 
+            Command & \skilldots{skill_command_commander} & \tf[name=cost_skill_command_commander, width=0.8cm, readonly=true]{} \\
+            Brawl & \skilldots{skill_brawl_commander} & \tf[name=cost_skill_brawl_commander, width=0.8cm, readonly=true]{} & 
+            Deception & \skilldots{skill_deception_commander} & \tf[name=cost_skill_deception_commander, width=0.8cm, readonly=true]{} \\
+            Tactics & \skilldots{skill_tactics_commander} & \tf[name=cost_skill_tactics_commander, width=0.8cm, readonly=true]{} & 
+            Performance & \skilldots{skill_performance_commander} & \tf[name=cost_skill_performance_commander, width=0.8cm, readonly=true]{} \\
+            Athletics & \skilldots{skill_athletics_commander} & \tf[name=cost_skill_athletics_commander, width=0.8cm, readonly=true]{} & 
+            Insight & \skilldots{skill_insight_commander} & \tf[name=cost_skill_insight_commander, width=0.8cm, readonly=true]{} \\
+            Stealth & \skilldots{skill_stealth_commander} & \tf[name=cost_skill_stealth_commander, width=0.8cm, readonly=true]{} & 
+            Lore & \skilldots{skill_lore_commander} & \tf[name=cost_skill_lore_commander, width=0.8cm, readonly=true]{} \\
+            Endurance & \skilldots{skill_endurance_commander} & \tf[name=cost_skill_endurance_commander, width=0.8cm, readonly=true]{} & 
+            Investigation & \skilldots{skill_investigation_commander} & \tf[name=cost_skill_investigation_commander, width=0.8cm, readonly=true]{} \\
+            Craft & \skilldots{skill_craft_commander} & \tf[name=cost_skill_craft_commander, width=0.8cm, readonly=true]{} & 
+            Medicine & \skilldots{skill_medicine_commander} & \tf[name=cost_skill_medicine_commander, width=0.8cm, readonly=true]{} \\
+            Survival & \skilldots{skill_survival_commander} & \tf[name=cost_skill_survival_commander, width=0.8cm, readonly=true]{} & 
+            Arcana & \skilldots{skill_arcana_commander} & \tf[name=cost_skill_arcana_commander, width=0.8cm, readonly=true]{} \\
+            \bottomrule
+        \end{tabular}
+        \vspace{0.3em}
+        \textbf{Total Skill XP:} \tf[name=skill_total_commander, width=1.5cm, readonly=true, backgroundcolor=lightbg, bordercolor=blue]{}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Command Talents}
+        \tf[name=commander_talents, multiline=true, height=4cm, width=7cm]{}%
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Followers}
+        \begin{tabular}{>{\bfseries}p{3cm} p{4.5cm}}
+            \toprule
+            \textbf{Name} & \textbf{Cap / Role} \\
+            \midrule
+            1: & \tf[name=follower1_commander, width=4cm]{} \\
+            2: & \tf[name=follower2_commander, width=4cm]{} \\
+            3: & \tf[name=follower3_commander, width=4cm]{} \\
+            \bottomrule
+        \end{tabular}
+        \textbf{Loyalty:} \ChoiceMenu[name=loyalty_commander, default=Faithful]{}{Faithful,Strained,Broken}
+        \quad
+        \textbf{Fitness:} \ChoiceMenu[name=fitness_commander, default=Ready]{}{Ready,Hurt,Down}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Unit Tactics Reference}
+        \textbf{Aid Action:} Spend 1 Boon for +1 die to ally.\\
+        \textbf{Setup:} Grant ally +1 Position or step up Effect.\\
+        \textbf{Rally:} Command roll to remove Fear conditions.\\
+        \textbf{Delegated Upkeep (5 XP):} Cap 4+ follower manages Assets.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Tier I Commander (36XP)}
+        \textbf{Attributes:} Presence 3 (9), Wits 2 (6), Body 2 (6) --- 21 XP\\
+        \textbf{Skills:} Command 2 (4), Tactics 2 (4), Sway 1 (2) --- 10 XP\\
+        \textbf{Talents:} Command Presence (4), Inspire (3) --- 7 XP\\
+        \textbf{Total:} 38 XP (adjust as needed)
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ``The elephant does not charge. It walks. And everything in its path becomes mud.'' --- Rajah Anant, Dhaharan mahout}
+    
+    \vspace{0.3em}
+    \PushButton[name=calcBtnCommander, onclick={this.calculateCommander();}, borderwidth=1pt, bordercolor=blue, backgroundcolor=sectionbg, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Calculate Totals}}}
+    \quad
+    \PushButton[name=resetBtnCommander, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% SECTION: FORGER / ARTIFICER
+%=====================================================================
+
+\section*{Forger / Artificer --- Build Guidance}
+\addcontentsline{toc}{section}{Forger / Artificer --- Build Guidance}
+
+\begin{tipbox}{The Maker --- Crafting and Forgery}
+    \textbf{Role:} Create, repair, forge documents, build devices. Primary: Wits, Body.
+    
+    \textbf{Forgery Mini-Game (4 Steps):}
+    \begin{enumerate}
+        \item \textbf{Research (Wits+Investigation, DV 2-4):} Learn document specifics
+        \item \textbf{Materials (Wits+Streetwise, DV 3):} Source matching paper, ink, seal
+        \item \textbf{The Craft (Wits+Craft, DV 3-5):} Create the forgery
+        \item \textbf{Presentation (Presence+Deception):} Pass it off
+    \end{enumerate}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Master Tinker (2 XP)} -- +1 die Craft repairs
+        \item \textbf{The Forger's Eye (4 XP)} -- Copy any handwriting, seal, signature
+        \item \textbf{Master Artificer (5 XP)} -- +1 die Craft creations; reduce time/cost
+    \end{itemize}
+    
+    \textbf{Forged Diamond Types:}
+    \begin{itemize}
+        \item Cargo Manifest (legal immunity, one voyage)
+        \item Notarial Seal (validates contract, one arbitration)
+        \item Letter of Credit (withdraw funds, one use)
+        \item Identity Papers (false identity, one scene)
+        \item Pardon (commutes minor crime)
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Forger / Artificer --- Character Sheet}
+\addcontentsline{toc}{section}{Forger / Artificer --- Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Forgery Tracker}
+        \textbf{Current Forged Diamonds:}\\
+        \underline{\hspace{7cm}}\\
+        \underline{\hspace{7cm}}\\
+        \textbf{Laundry Timers:}\\
+        [4] or [6] --- \underline{\hspace{5cm}}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Artificer Talents}
+        \textbf{Master Tinker (2 XP):} +1 die Craft repairs.\\
+        \textbf{The Forger's Eye (4 XP):} Copy handwriting, seals, signatures.\\
+        \textbf{Master Artificer (5 XP):} +1 die Craft creations; reduce time/cost.\\
+        \textbf{Asset Crafter (4 XP):} Reduce Asset XP cost by 1 per tier.\\
+        \textbf{Rapid Construction (4 XP):} Halve Asset construction time.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Workshop Asset}
+        \textbf{Type:} Minor / Standard / Major\\
+        \textbf{Cost:} 4 / 8 / 12 XP\\
+        \textbf{Status:} Flourishing / Stable / Strained / Collapsed\\
+        \textbf{Free Use:} Repair gear, prepare solutions\\
+        \textbf{Surge (1 Boon):} Jury-rig solution, +1 die appropriate roll
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Tier I Forger (36XP)}
+        \textbf{Attributes:} Wits 3 (9), Body 2 (6), Presence 2 (6) --- 21 XP\\
+        \textbf{Skills:} Craft 2 (4), Investigation 2 (4), Deception 1 (2) --- 10 XP\\
+        \textbf{Talents:} Master Tinker (2), The Forger's Eye (4) --- 6 XP\\
+        \textbf{Total:} 37 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''The right seal is worth more than a ship. A stamped manifest can move contraband past the harbor master.`` --- Madam Serafine}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: HEALER
+%=====================================================================
+
+\section*{Healer --- Build Guidance}
+\addcontentsline{toc}{section}{Healer --- Build Guidance}
+
+\begin{tipbox}{The Mender --- Restoring Flesh and Spirit}
+    \textbf{Role:} Heal wounds, remove conditions, keep party alive. Primary: Spirit, Wits.
+    
+    \textbf{Healing Harm (Magic):}
+    \begin{itemize}
+        \item Requires [HEAL] + another tag (Purify, Strengthen, Cleanse)
+        \item Base DV = 1 + number of tags. Add +2 DV surcharge for healing Harm
+        \item Example: [HEAL][PURIFY] for poison → DV 3 + 2 = 5
+    \end{itemize}
+    
+    \textbf{Core Talents:}
+    \begin{itemize}
+        \item \textbf{Field Dressing (2 XP)} -- Stabilize dying ally once/scene
+        \item \textbf{Triage (4 XP)} -- Remove 1 Fatigue, reduce Harm penalty for scene
+        \item \textbf{Knot of Mercy (Hedge Gift, 2 XP)} -- Remove a Condition (once/session)
+    \end{itemize}
+    
+    \textbf{Patron Recommendations:}
+    \begin{itemize}
+        \item \textbf{Oath of Flame \& Light} -- Lay on Hands, Cleansing Light
+        \item \textbf{Oath of Mercy \& Grace} -- Healing, forgiveness, spiral of care
+        \item \textbf{The Carrion-King} -- Fertile Death, transformation through decay
+        \item \textbf{Inaea} -- Hearth-Thread Knot, shared burden
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Healer --- Character Sheet}
+\addcontentsline{toc}{section}{Healer --- Character Sheet}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Identity}
+        \begin{tabular}{p{2.5cm} p{5cm}}
+            \textbf{Name:} & \underline{\hspace{4cm}} \\
+            \textbf{Heritage:} & \underline{\hspace{4cm}} \\
+            \textbf{Background:} & \underline{\hspace{4cm}} \\
+            \textbf{Patron:} & \underline{\hspace{4cm}} \\
+            \textbf{Tier / XP:} & \underline{\hspace{2cm}} / \underline{\hspace{2cm}} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Attributes \& Resources}
+        \begin{tabular}{>{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm} >{\bfseries}p{2.5cm} >{\bfseries}p{1.5cm}}
+            \toprule
+            \textbf{Attribute} & \textbf{Rating} & \textbf{Resource} & \textbf{Max/Track} \\
+            \midrule
+            Body & \underline{\hspace{1.5cm}} & Fatigue & \underline{\hspace{1.5cm}} / \underline{\hspace{1.5cm}} \\
+            Wits & \underline{\hspace{1.5cm}} & Harm & \underline{\hspace{1.5cm}} / 3 \\
+            Spirit & \underline{\hspace{1.5cm}} & Boons & \underline{\hspace{1.5cm}} / 5 \\
+            Presence & \underline{\hspace{1.5cm}} & XP & \underline{\hspace{1.5cm}} \\
+            \bottomrule
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Healing Talents}
+        \textbf{Field Dressing (2 XP):} Stabilize dying ally once/scene.\\
+        \textbf{Triage (4 XP):} Remove 1 Fatigue, reduce Harm penalty for scene.\\
+        \textbf{Knot of Mercy (2 XP):} Remove a Condition once/session (no roll).
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Healing Rites (Oath of Flame \& Light)}
+        \textbf{Lay on Hands (Low, 5 XP):} Cleanse affliction or downgrade Harm by 1.\\
+        \textbf{Cleansing Light (Standard, 8 XP):} Dispel curse, poison, or disease.\\
+        \textbf{Rite of Shared Burden (Standard, 9 XP):} Transfer Condition to willing target.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Healing Reference}
+        \textbf{Fatigue:} Short rest (1 hour) clears 2; full night clears all.\\
+        \textbf{[HEAL] Cantrip (DV 2):} Remove 1 Fatigue.\\
+        \textbf{Mundane Healing:} 1 week rest removes 1 Harm.\\
+        \textbf{Serious Wounds:} Optional rule --- lasting debility, needs quest to heal.
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Sample Build --- Tier I Healer (36XP)}
+        \textbf{Attributes:} Spirit 3 (9), Wits 2 (6), Presence 2 (6) --- 21 XP\\
+        \textbf{Skills:} Medicine 2 (4), Lore 2 (4), Sway 1 (2) --- 10 XP\\
+        \textbf{Talents:} Field Dressing (2), Triage (4) --- 6 XP\\
+        \textbf{Total:} 37 XP
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ''The [HEAL] tag closes small wounds and eases exhaustion. To knit broken bones, you need greater power---and greater risk.`` --- The Gray Wanderer}
+\end{center}
+
+\newpage
+
+%=====================================================================
+% SECTION: VELVET COURT (THIEF FACTION)
+%=====================================================================
+
+\section*{Velvet Court --- Faction Sheet}
+\addcontentsline{toc}{section}{Velvet Court --- Faction Sheet}
+
+\begin{tipbox}{The Velvet Court --- Silkstrand's Shadow Network}
+    \textbf{Reputation Dial:} Enemy (-3) to Creditor-in-Waiting (+3)
+    
+    \textbf{Creditors (The Velvet Seats):}
+    \begin{itemize}
+        \item Madam Serafine (Information, Forgery, Laundering)
+        \item Old Kes (Fence, Smuggling, Markets)
+        \item The Dockmaster (Movement, Ships, Warehouses)
+        \item Sister Agatha (Cover, Sanctuary, False Identities)
+        \item The Archivist (Legal Precedent, Forged Writs)
+        \item The Gray Eminence (Unknown)
+    \end{itemize}
+    
+    \textbf{Heat Dials:}
+    \begin{itemize}
+        \item \textbf{Watch Interest [6]:} Fills when jobs go loud or evidence left. At 3: Patrol Sweep. At 6: Sting Operation.
+        \item \textbf{Syndicate Pressure [6]:} Fills when rivals notice. At 3: Curfew. At 6: Crackdown.
+    \end{itemize}
+    
+    \textbf{Court Assets:}
+    \begin{itemize}
+        \item The Blue Ledger (bribeable officials)
+        \item The Maze of Whispers (hidden passages)
+        \item The Ghost Crew (urchin spies, Cap 1)
+        \item The Scribe's Seal (forged notary)
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+%=====================================================================
+% VELVET COURT - FACTION SHEET (FILLABLE)
+%=====================================================================
+\section*{Velvet Court --- Faction Sheet}
+\addcontentsline{toc}{section}{Velvet Court --- Faction Sheet}
+
+\begin{Form}
+
+\begin{tipbox}{The Velvet Court --- Silkstrand's Shadow Network}
+    \textbf{Reputation Dial:} \tf[name=reputation_dial, width=3cm]{} (Enemy -3 to Creditor-in-Waiting +3)
+    
+    \textbf{Creditors (The Velvet Seats):}
+    \begin{itemize}
+        \item Madam Serafine (Information, Forgery, Laundering)
+        \item Old Kes (Fence, Smuggling, Markets)
+        \item The Dockmaster (Movement, Ships, Warehouses)
+        \item Sister Agatha (Cover, Sanctuary, False Identities)
+        \item The Archivist (Legal Precedent, Forged Writs)
+        \item The Gray Eminence (Unknown)
+    \end{itemize}
+    
+    \textbf{Heat Dials:}
+    \begin{itemize}
+        \item \textbf{Watch Interest [6]:} Fills when jobs go loud or evidence left. At 3: Patrol Sweep. At 6: Sting Operation.
+        \item \textbf{Syndicate Pressure [6]:} Fills when rivals notice. At 3: Curfew. At 6: Crackdown.
+    \end{itemize}
+    
+    \textbf{Court Assets:}
+    \begin{itemize}
+        \item The Blue Ledger (bribeable officials)
+        \item The Maze of Whispers (hidden passages)
+        \item The Ghost Crew (urchin spies, Cap 1)
+        \item The Scribe's Seal (forged notary)
+    \end{itemize}
+\end{tipbox}
+
+\newpage
+
+\section*{Velvet Court --- Faction Tracker}
+\addcontentsline{toc}{section}{Velvet Court --- Faction Tracker}
+
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Velvet Court Standing}
+        \textbf{Velvet Dial:} \tf[name=velvet_dial, width=5cm]{} \\
+        \begin{tabular}{p{6cm}}
+            \skillbox -3 (Enemy) --- Hunted; no safe houses \\
+            \skillbox -2 to -1 --- Wary; limited access \\
+            \skillbox 0 to +1 --- Neutral; standard access \\
+            \skillbox +2 to +3 (Trusted) --- Attend Velvet Moot; request Favors \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Heat Trackers}
+        \textbf{Watch Interest [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            \CheckBox[name=watch1]{} & \CheckBox[name=watch2]{} & \CheckBox[name=watch3]{} & \CheckBox[name=watch4]{} & \CheckBox[name=watch5]{} & \CheckBox[name=watch6]{} \\
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Syndicate Pressure [6]}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            \CheckBox[name=syndicate1]{} & \CheckBox[name=syndicate2]{} & \CheckBox[name=syndicate3]{} & \CheckBox[name=syndicate4]{} & \CheckBox[name=syndicate5]{} & \CheckBox[name=syndicate6]{} \\
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Creditor Favor Timers}
+        \begin{tabular}{p{3cm} p{3cm}}
+            Serafine: & \CheckBox[name=serafine1]{} \CheckBox[name=serafine2]{} \CheckBox[name=serafine3]{} \CheckBox[name=serafine4]{} \CheckBox[name=serafine5]{} \CheckBox[name=serafine6]{} \\
+            Old Kes: & \CheckBox[name=oldkes1]{} \CheckBox[name=oldkes2]{} \CheckBox[name=oldkes3]{} \CheckBox[name=oldkes4]{} \CheckBox[name=oldkes5]{} \CheckBox[name=oldkes6]{} \\
+            Dockmaster: & \CheckBox[name=dockmaster1]{} \CheckBox[name=dockmaster2]{} \CheckBox[name=dockmaster3]{} \CheckBox[name=dockmaster4]{} \CheckBox[name=dockmaster5]{} \CheckBox[name=dockmaster6]{} \\
+            Sister Agatha: & \CheckBox[name=agatha1]{} \CheckBox[name=agatha2]{} \CheckBox[name=agatha3]{} \CheckBox[name=agatha4]{} \CheckBox[name=agatha5]{} \CheckBox[name=agatha6]{} \\
+            Archivist: & \CheckBox[name=archivist1]{} \CheckBox[name=archivist2]{} \CheckBox[name=archivist3]{} \CheckBox[name=archivist4]{} \CheckBox[name=archivist5]{} \CheckBox[name=archivist6]{} \\
+        \end{tabular}
+    \end{charbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \begin{charbox}{Heist Planner}
+        \textbf{Heist Timer:}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            \CheckBox[name=heist1]{} & \CheckBox[name=heist2]{} & \CheckBox[name=heist3]{} & \CheckBox[name=heist4]{} & \CheckBox[name=heist5]{} & \CheckBox[name=heist6]{} & \CheckBox[name=heist7]{} & \CheckBox[name=heist8]{} \\
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+            \hline
+        \end{tabular}
+        \textbf{Threat Timers:}\\
+        \textbf{Alarm:} \CheckBox[name=alarm1]{} \CheckBox[name=alarm2]{} \CheckBox[name=alarm3]{} \CheckBox[name=alarm4]{} \\
+        \textbf{Security:} \CheckBox[name=security1]{} \CheckBox[name=security2]{} \CheckBox[name=security3]{} \CheckBox[name=security4]{} \\
+        \textbf{Inside Trouble:} \CheckBox[name=inside1]{} \CheckBox[name=inside2]{} \CheckBox[name=inside3]{} \CheckBox[name=inside4]{} \\
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Informant Network}
+        \begin{tabular}{p{3cm} p{3cm}}
+            \textbf{Name} & \textbf{Reliability [4]} \\
+            \hline
+            \tf[name=informant1, width=3cm]{} & \CheckBox[name=rel1a]{} \CheckBox[name=rel1b]{} \CheckBox[name=rel1c]{} \CheckBox[name=rel1d]{} \\
+            \tf[name=informant2, width=3cm]{} & \CheckBox[name=rel2a]{} \CheckBox[name=rel2b]{} \CheckBox[name=rel2c]{} \CheckBox[name=rel2d]{} \\
+            \tf[name=informant3, width=3cm]{} & \CheckBox[name=rel3a]{} \CheckBox[name=rel3b]{} \CheckBox[name=rel3c]{} \CheckBox[name=rel3d]{} \\
+        \end{tabular}
+    \end{charbox}
+    
+    \vspace{0.5em}
+    
+    \begin{charbox}{Rival Crew}
+        \textbf{Name:} \tf[name=rival_name, width=5cm]{} \\
+        \textbf{Agenda Timer [6]:}\\
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline
+            \CheckBox[name=rival1]{} & \CheckBox[name=rival2]{} & \CheckBox[name=rival3]{} & \CheckBox[name=rival4]{} & \CheckBox[name=rival5]{} & \CheckBox[name=rival6]{} \\
+            \hline
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            \hline
+        \end{tabular}\\
+        \textbf{Goal:} \tf[name=rival_goal, width=5cm]{} 
+    \end{charbox}
+\end{minipage}
+
+\vspace{0.5em}
+\begin{center}
+    {\small\sffamily\itshape ``The coin you take is never the one that costs you. The one you leave behind---that is the debt that collects.'' --- Madam Serafine}
+    
+    \vspace{0.3em}
+    \PushButton[name=resetBtnVelvet, onclick={this.resetForm();}, borderwidth=1pt, bordercolor=red!60, backgroundcolor=red!40, color=white, width=4cm, height=0.6cm]{\textbf{\textcolor{white}{Reset Form}}}
+\end{center}
+
+\end{Form}
+\newpage
+
+%=====================================================================
+% BACK MATTER
+%=====================================================================
+
+\onecolumn
+\begin{center}
+    \rule{0.5\textwidth}{0.5pt}\\[1em]
+    {\small Fate's Edge Complete Character Sheets --- CC BY 4.0 --- Nicholas A. Gasper}\\[0.5em]
+    {\tiny \textit{The road remembers. Every broken wheel leaves a mark, every lit lamp bears witness.}}
+\end{center}
+
 
 \input{copyright}
 \end{document}
