@@ -128,7 +128,7 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py, git_root, debug=
     
     # Get title and author from TOML, fallback to name if not provided
     title = doc.get("title", name)
-    author = doc.get("author", "Unknown Author")
+    author = doc.get("author", "Nicholas A. Gasper")
     
     # Step 1: Run fix_markup.py if not skipped
     if not skip_fix:

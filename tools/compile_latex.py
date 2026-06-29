@@ -146,11 +146,11 @@ def get_document_title(texfile: Path, cli_title: Optional[str]) -> str:
     return parsed if parsed else "Untitled"
 
 def get_document_author(texfile: Path, cli_author: Optional[str]) -> str:
-    """Return the document author from CLI or from .tex file, fallback to 'Unknown Author'."""
+    """Return the document author from CLI or from .tex file, fallback to 'Nicholas A. Gasper'."""
     if cli_author:
         return cli_author
     parsed = extract_author_from_tex(texfile)
-    return parsed if parsed else "Unknown Author"
+    return parsed if parsed else "Nicholas A. Gasper"
 
 def has_titlepage(content: str) -> bool:
     """Check if the document already has a title page."""
