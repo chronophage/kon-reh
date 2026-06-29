@@ -362,7 +362,7 @@ This Python script validates the probability claims in the analysis. Run it to s
 import numpy as np
 
 def simulate_dice_pool(num_dice, trials=100000):
-    """Simulate rolling num_dice d10s and return statistics."""
+    ``''``Simulate rolling num_dice d10s and return statistics.''``''
     successes = 0
     tens = 0
     ones = 0
@@ -392,24 +392,24 @@ def simulate_dice_pool(num_dice, trials=100000):
 # Test key dice pools
 for dice in [2, 3, 4, 5, 6]:
     stats = simulate_dice_pool(dice)
-    print(f"{dice} dice:")
-    print(f"  Avg successes: {stats['avg_successes']:.2f}")
-    print(f"  P(at least one success): {stats['p_at_least_one_success']:.1%}")
-    print(f"  P(at least one 10): {stats['p_at_least_one_ten']:.1%}")
-    print(f"  P(at least one 1): {stats['p_at_least_one_one']:.1%}")
-    print(f"  Miss rate: {stats['miss_rate']:.1%}")
+    print(f``{dice} dice:'')
+    print(f``  Avg successes: {stats['avg_successes']:.2f}'')
+    print(f``  P(at least one success): {stats['p_at_least_one_success']:.1%}")
+    print(f''  P(at least one 10): {stats['p_at_least_one_ten']:.1%}")
+    print(f``  P(at least one 1): {stats['p_at_least_one_one']:.1%}")
+    print(f''  Miss rate: {stats['miss_rate']:.1%}")
     print()
 
 # Show GM SB generation per player roll
-print("GM SB generation per player roll (expected SB = P(at least one 1)):")
+print(``GM SB generation per player roll (expected SB = P(at least one 1)):'')
 for dice in [2, 4, 6, 8]:
     stats = simulate_dice_pool(dice)
-    print(f"  {dice} dice: {stats['p_at_least_one_one']:.1%} → {stats['p_at_least_one_one']:.2f} SB/roll")
-print("\nIn a 4-player round:")
+    print(f``  {dice} dice: {stats['p_at_least_one_one']:.1%} → {stats['p_at_least_one_one']:.2f} SB/roll")
+print(''\nIn a 4-player round:``)
 for dice in [4, 6]:
     stats = simulate_dice_pool(dice)
     sb_per_round = 4 * stats['p_at_least_one_one']
-    print(f"  {dice} dice/player: {sb_per_round:.2f} SB generated")
+    print(f''  {dice} dice/player: {sb_per_round:.2f} SB generated``)
 \end{lstlisting}
 
 \end{document}

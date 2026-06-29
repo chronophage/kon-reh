@@ -19,8 +19,8 @@
 \usepackage{parskip}
 \usepackage{ellipsis} % improves spacing around \dots/\ldots automatically
 \usepackage{tabularx}
-\usepackage{tikz}              % load TikZ first...
-\usetikzlibrary{arrows.meta,calc,positioning}  % ...then libraries
+\usepackage{tikz}              % load TikZ first\dots
+\usetikzlibrary{arrows.meta,calc,positioning}  % \dotsthen libraries
 \usepackage[colorlinks]{hyperref}   % load before cleveref
 \usepackage[nameinlink,capitalize]{cleveref}
 \crefname{theorem}{Theorem}{Theorems}
@@ -105,7 +105,7 @@
 \renewcommand{\arraystretch}{1.15}
 \setlength{\parindent}{0pt}
 
-% --- Status badges (TEXT mode; do not put them in \( ... \)) ---
+% --- Status badges (TEXT mode; do not put them in \( \dots \)) ---
 \newcommand{\CC}[1]{\textcolor{blue!60!black}{\scriptsize\ttfamily[CF:#1]}}
 \newcommand{\SC}[1]{\textcolor{red!60!black}{\scriptsize\ttfamily[S:#1]}}
 \newcommand{\RoC}{\textcolor{teal!60!black}{\scriptsize\ttfamily[Rooted]}}
@@ -136,8 +136,8 @@
 
 % Grid + shading (top-left origin: physical y = BoardN - y)
 \newcommand{\DrawGrid}{%
-  \foreach \x in {1,...,\BoardN}{%
-    \foreach \y in {1,...,\BoardN}{%
+  \foreach \x in {1,\dots,\BoardN}{%
+    \foreach \y in {1,\dots,\BoardN}{%
       \pgfmathtruncatemacro{\yphys}{\BoardN-\y}%
       \pgfmathtruncatemacro{\shade}{mod(\x+\y,2)==0 ? 3 : 0}%
       \fill[black!\shade] ({\x-1},{\yphys}) rectangle ++(1,1);
@@ -145,7 +145,7 @@
     }%
   }%
 }
-\newcommand{\ShadeSquares}[2]{% #1=style, #2="x/y,x/y,..."
+\newcommand{\ShadeSquares}[2]{% #1=style, #2="x/y,x/y,\dots"
   \foreach \x/\y in {#2}{%
     \pgfmathtruncatemacro{\yphys}{\BoardN-\y}%
     \path[#1] ({\x-1},{\yphys}) rectangle ++(1,1);
@@ -160,8 +160,8 @@
   }%
 }
 \newcommand{\RedrawGridLines}{%
-  \foreach \x in {1,...,\BoardN}{%
-    \foreach \y in {1,...,\BoardN}{%
+  \foreach \x in {1,\dots,\BoardN}{%
+    \foreach \y in {1,\dots,\BoardN}{%
       \pgfmathtruncatemacro{\yy}{\BoardN-\y}%
       \draw[sq] ({\x-1},{\yy}) rectangle ++(1,1);
     }%
@@ -213,8 +213,8 @@
 
 % === Faction blurb block (name + one-line desc + optional tagline) ===
 % Usage:
-%   \factionblurb{Ykrul (Kon'reh)}{Control-first pragmatists...}{"Count exits, not victims." --- Kargath}
-%   \factionblurb{Ecktorian}{Engineers of symmetry...}{}   % <- no tagline line
+%   \factionblurb{Ykrul (Kon'reh)}{Control-first pragmatists\dots}{"Count exits, not victims." --- Kargath}
+%   \factionblurb{Ecktorian}{Engineers of symmetry\dots}{}   % <- no tagline line
 \newcommand{\factionblurb}[3]{%
   \par\medskip
   \Needspace{3\baselineskip}% keep label+desc+tagline together when possible
@@ -354,7 +354,7 @@
   % Optional epigraph --- comment out if you prefer a blank footer
 % --- Use anywhere ---
 {\small\itshape
-  \CrackedRimIcon\quad "Count eight. Leave the ninth to open." \hfill --- winter leaf from Dhahara
+  \CrackedRimIcon\quad ``Count eight. Leave the ninth to open.'' \hfill --- winter leaf from Dhahara
 }\par
 
   \vspace{8pt}
@@ -380,7 +380,7 @@
 
 {\small
 \noindent \textbf{KON'REH} and associated setting terms including but not limited to:
-\textit{Canray}, \textit{K"thra}, \textit{Kanry}, \textit{Twin Apex Seed}, \textit{Reforge},
+\textit{Canray}, \textit{K``thra}, \textit{Kanry}, \textit{Twin Apex Seed}, \textit{Reforge},
 the names of cultures (e.g., Ykrul, Ecktorian, Vhasian, Viterran, Aeler, Vilikari, Thepyrgosi (Thepyric), Ubral, Silkstrand),
 proper nouns, places, characters, flavor quotes, worldbuilding lore, diagrams, iconography,
 and the specific textual expression of rules, examples, and notation in this book are
@@ -399,7 +399,7 @@ Use of the marks does not imply endorsement.\\[8pt]
 \noindent \textbf{Fan Content Policy (Non-Commercial).}
 You may reference these rules in reviews, tutorials, and fan aids, and you may create non-commercial
 scenarios and player aids that include brief excerpts, provided you (i) credit
-\textit{"Kon"reh © \the\year\ Nicholas A. Gasper"}, (ii) do not reproduce large portions of this book verbatim,
+\textit{''Kon``reh © \the\year\ Nicholas A. Gasper''}, (ii) do not reproduce large portions of this book verbatim,
 and (iii) do not imply official status. For commercial use, please contact the publisher.\\[8pt]
 
 \noindent \textbf{All Rights Reserved.}
@@ -427,21 +427,21 @@ PLACEHOLDER \\
 
 The road down to \textit{Thepyrgos} is a long, slanting breath across wet country. I came by the river stages first, then by a cart whose canvas remembered every rain it had ever known. Fields wear the color of old copper; the ditches keep their small, stubborn mirrors; along the last rise the wind busied itself with barley while the bells spoke over one another, each to its own hour. It is a city that greets you with \emph{sound} before it shows its face.
 
-At our gate my father pressed his travel copy of the \emph{Concordance} into my hands and said only, "Our \emph{fourth legacy} is yours now." He smiled---as at a family tradition since the Imperial era days when our name was Valvano. We parted on that smile. It has stood between me and poor courage ever since, which is to say it has helped.
+At our gate my father pressed his travel copy of the \emph{Concordance} into my hands and said only, ``Our \emph{fourth legacy} is yours now.'' He smiled---as at a family tradition since the Imperial era days when our name was Valvano. We parted on that smile. It has stood between me and poor courage ever since, which is to say it has helped.
 
 \medskip
 The University keeps two faces. By day: polished and well--kept---the bright stalls with their brass lamps and measured shadows, the refectory with steam and bread, courts paved as smooth as thought. And then the other: glimpsed when a porter's key turns or a lamp gutters---low vaults, patient stairwells, rooms that have learned to keep their breath, shelves that seem to turn themselves if you leave and come back too quickly. Not menacing, industrious; but the stone here keeps \emph{accounts}.
 
 I have met my tutor. He is called \textit{Aqyl, son of Aqyl}.
 
-You will laugh to know I faltered at the name. I have read \emph{Aqyl"s} lectures to tatters---the elder, the measured hand that teaches one to count aloud and copy plainer later---and here stands a man wearing the same name as easily as a linen shirt. He has a Thepyrgosi cast to him, though the eyes are almond and untired; he is thin and wiry, the sort of frame the wind respects, with salt--and--pepper curls that refuse discipline and an age that will not hold still under a guess. I asked---too bluntly---whether he is \emph{of} the elder. He shrugged a little: "I am named for my father, and he for his," and let the matter lie where it fell, like a coin on a ledger line that refuses to roll. He is patient beyond reason and exact without cruelty; he taps a margin once and the fault knows what it is.
+You will laugh to know I faltered at the name. I have read \emph{Aqyl``s} lectures to tatters---the elder, the measured hand that teaches one to count aloud and copy plainer later---and here stands a man wearing the same name as easily as a linen shirt. He has a Thepyrgosi cast to him, though the eyes are almond and untired; he is thin and wiry, the sort of frame the wind respects, with salt--and--pepper curls that refuse discipline and an age that will not hold still under a guess. I asked---too bluntly---whether he is \emph{of} the elder. He shrugged a little: ''I am named for my father, and he for his,`` and let the matter lie where it fell, like a coin on a ledger line that refuses to roll. He is patient beyond reason and exact without cruelty; he taps a margin once and the fault knows what it is.
 
 He says a clear gloss is a moral act, and that cleverness comes after honesty if it comes at all.
 
 \medskip
 My first days have been proper ink: inventories, tallies, the straight work of hands that want to be useful. Yet there are corners where the edges begin to speak to the middle. In the stalls the rain comes down like soft chain and the pages answer; a clerk's circle in an old ledger refuses to be mere ornament; a map set beside a list of tolls begins, inexplicably, to \emph{agree} with it. Small things---nothing for a magistrate---yet I write them to you because you know the difference between superstition and a hunch you can test in daylight.
 
-Do not be anxious for me. The bright rooms are many, and I keep to them. I eat something warm when the bells tell me to, and when the ink runs fast I put it away and count aloud, as my father taught. If I come upon any page that feels \emph{hot}, I lay a sheet over it and copy later with a cooler hand. "You are not required to be clever," \textit{Aqyl} tells me. "You are required to be honest." I am doing my best at the latter and waiting on the former.
+Do not be anxious for me. The bright rooms are many, and I keep to them. I eat something warm when the bells tell me to, and when the ink runs fast I put it away and count aloud, as my father taught. If I come upon any page that feels \emph{hot}, I lay a sheet over it and copy later with a cooler hand. ''You are not required to be clever,`` \textit{Aqyl} tells me. ''You are required to be honest.`` I am doing my best at the latter and waiting on the former.
 
 \medskip
 When you come (and you must), we will walk the outer courts as we used to walk the lanes, naming buildings, counting bells. The lamps mind themselves here; the hours keep their own borders. I think you will like how the light stands up straight in the winter wind and how the old stones approve of ordinary work.
@@ -474,12 +474,12 @@ Markus
 Read \emph{Part I} for context and atmosphere; use \emph{Part II} to run one-shots or to link all seven scenarios into a short campaign. Each Rite is self-contained, clearly labeled, and defaults to \textsc{off}. Turning a Rite \textsc{on} changes the \emph{feel} of play (information, pacing, geography) but never the core rules.
 
 \subsection{Title Gloss}
-"The \emph{Ninth}" names the final Rite; the \emph{Rim} is the perimeter band the Ninth briefly permits you to cross.
+''The \emph{Ninth}`` names the final Rite; the \emph{Rim} is the perimeter band the Ninth briefly permits you to cross.
 
 \subsection{Structure of the Volume}
 \begin{itemize}
   \item \textbf{Part I --- A Most Curious Game (Lore in Facsimile):} curated documents, marginalia, and maps that frame the investigation.
-  \item \textbf{Part II --- Rites \& Scenarios:} seven independent modules (\emph{Salt Stitch}, \emph{Witness at the Ford}, \emph{Veil of Names}, \emph{Candle Count}, \emph{Copper \& Salt}, \emph{Ash--Fenn Rite}, \emph{The Ninth}) with setup, procedure, examples, and a "Why It's Safe" note.
+  \item \textbf{Part II --- Rites \& Scenarios:} seven independent modules (\emph{Salt Stitch}, \emph{Witness at the Ford}, \emph{Veil of Names}, \emph{Candle Count}, \emph{Copper \& Salt}, \emph{Ash--Fenn Rite}, \emph{The Ninth}) with setup, procedure, examples, and a ''Why It's Safe`` note.
   \item \textbf{Part III --- Puzzles \& Scholar's Path:} hint ladders and a sealed appendix for readers who wish to decode embedded ciphers.
   \item \textbf{Part IV --- The Sacred Geometry (Theory Sidebars):} brief, non-binding notes on rings, survey drift, cadence~$\to$~digits, and related curiosities.
   \item \textbf{Part V --- Appendices \& Sealed Solutions:} compatibility matrix, printable props, icon legend, encoded tables, solutions, and essays.
@@ -513,7 +513,7 @@ This volume preserves the game's tournament core. Scenario language is intention
 
 Herewith I set down, so that I may not forget, certain observations taken in the reading--stalls and counting--rooms. This morning I was shown a parcel of leaves attributed to \textit{Aqyl of Thepyrgos}, surnamed in the index \textit{the elder}. They treat of cadence, of clarity, and of the ethics proper to a gloss. Their sentences are so plain and right--fitted to their task that I confess I blushed to see my own drafts beside them.
 
-Being unwilling to labor under a confusion of persons, I asked my mentor, \textit{Master Aqyl}, whether he bore his name from that same hand whose notes I had been admiring. He answered with economy, not unkind: "I am named for my father, and he for his, and he for his; scholars mostly, when we were not frightened. This first Aqyl is of our house---so they say---though it is better to prove a line by its books than by its boasts." The manner of his shrug conserved words while granting permission to proceed.
+Being unwilling to labor under a confusion of persons, I asked my mentor, \textit{Master Aqyl}, whether he bore his name from that same hand whose notes I had been admiring. He answered with economy, not unkind: ''I am named for my father, and he for his, and he for his; scholars mostly, when we were not frightened. This first Aqyl is of our house---so they say---though it is better to prove a line by its books than by its boasts.`` The manner of his shrug conserved words while granting permission to proceed.
 
 From the elder's counsel I adopt at once the habit of counting aloud when the mind runs ahead; it steadies both temper and column when the rain takes the lamps and the bindings smell of wet leather. I will report what profit it yields.
 
@@ -547,15 +547,15 @@ If Providence and the bursar permit, I shall look into the older cupboards for f
 
 Aqyl, son of Aqyl, led me by the long way, down the serpentine stacks where the floor lists like a tired ship and the lamps run together into a narrow river of honey--light. His face was all edges and patience, the sort of calm that has outlived weather. We passed a door stenciled in the University's square hand: \textsc{condemned \textemdash{} closed by order of the wardens}. Aqyl produced a key that was not quite a key---a sliver of dark metal, bone--thin, that seemed to remember other locks---and the notice became only paper.
 
-Inside: chalk on the tongue. The air held the dry asperity of old slate. Cobwebs draped the ceiling like fatigued banners, and the tables wore a fur of dust that remembered every elbow that had ever leaned there. "A private study," Aqyl said, as if declaring a weather report. "Copies and companions to the common shelves. Lexicus left his own here. It is a forbidden place, though no one will name it so. The University has many such unnames."
+Inside: chalk on the tongue. The air held the dry asperity of old slate. Cobwebs draped the ceiling like fatigued banners, and the tables wore a fur of dust that remembered every elbow that had ever leaned there. ''A private study,`` Aqyl said, as if declaring a weather report. ''Copies and companions to the common shelves. Lexicus left his own here. It is a forbidden place, though no one will name it so. The University has many such unnames.``
 
-I asked whether we should be there. He shrugged the way cliffs do. "You asked for the edges. Edges do not keep catalog hours." He set a travel lantern upon a desk; its little flame took hold of the room with a steady, workman's glow. Softer, almost to himself: "Read heresies if you must. Do not let them lead you."
+I asked whether we should be there. He shrugged the way cliffs do. ''You asked for the edges. Edges do not keep catalog hours.`` He set a travel lantern upon a desk; its little flame took hold of the room with a steady, workman's glow. Softer, almost to himself: ''Read heresies if you must. Do not let them lead you.``
 
 A spine caught at me---a ledger--brown volume, the label torn into a crescent. The fore--edge wore a hurried marginal hand that could have been Lexicus after a night without sleep. I opened where the book wanted. There, in the middle margin, a pale ring the color of bone had bled into the paper, as if a damp band had rested there and then been lifted: a halo pressed flat. Salt, I thought, and did not know why. The ring held a faint scatter of grit, and when I breathed upon it, the motes rose like ash and settled again in the shape of a circle, exact as a coin.
 
 Something---only the air, surely---moved past my shoulder with the smallest suggestion of feathers. I turned (of course I turned) and saw only two chairs and their twin long shadows, meeting at the floor like folded wings. The lantern burned on, indifferent. Aqyl had wandered to a far shelf and was reading spines with that almond--lidded, not--young, not--old look of his, as if time had to ask to count him.
 
-"Edges," he said without looking, "will speak like thresholds if you let them. Keep your sums. Keep your breath." Then, quieter: "If something answers, mark what it \emph{took} to answer."
+''Edges,`` he said without looking, ''will speak like thresholds if you let them. Keep your sums. Keep your breath.`` Then, quieter: ''If something answers, mark what it \emph{took} to answer.``
 
 The page under my hand bore a penciled note in a small, precise script: \textit{ford held}. Beside it, three tiny triangles where tallies should have been. The dust along the table had drifted into a narrow crescent, and I could not tell whether my sleeve had done that, or some older, larger shape remembering how to fold itself.
 
@@ -574,7 +574,7 @@ On a middle shelf I found a tract whose outer leaves show a curious stain, as th
 I cannot yet say whether this is superstition or discipline. The Cartwright is elsewhere a practical man. Yet I confess the figure pleases the mind. To bind the outermost ring and thus make the middle honest---do we not do as much in our books when we rule a margin?
 
 \medskip
-\noindent\textit{Present marginal hand (876 AR), M.\ Fenwood:} Same tract, same page; the ring--mark survives. I asked \textit{Aqyl, son of Aqyl} what to call it. He watched me read and said nothing until I closed the book. Then: "Name nothing yet. Learn its weight first." (It is a good line; I am trying to like it less because he knows it.)
+\noindent\textit{Present marginal hand (876 AR), M.\ Fenwood:} Same tract, same page; the ring--mark survives. I asked \textit{Aqyl, son of Aqyl} what to call it. He watched me read and said nothing until I closed the book. Then: ''Name nothing yet. Learn its weight first.`` (It is a good line; I am trying to like it less because he knows it.)
 
 \subsection{Fragment L--3 (648 AR / 876 AR) --- Ash--Fenn, Tolls, and Wagered Dreams}
 \label{frag:l3}
@@ -588,20 +588,20 @@ I cannot yet say whether this is superstition or discipline. The Cartwright is e
 In the north case I found a ledger of border dues, the hand plain as a bricklayer's rule. One entry pricked my eye:
 
 \begin{quote}\small
-"Caravan out of Ash--Fenn: from the east. Twenty--three beasts, seven wagons. Paid in full at Wadi Gate; stamped at the ford. Next gate: ---" \textit{(blank)} "Reason for pass--through: ---" \textit{(blank)}.
+''Caravan out of Ash--Fenn: from the east. Twenty--three beasts, seven wagons. Paid in full at Wadi Gate; stamped at the ford. Next gate: ---`` \textit{(blank)} ''Reason for pass--through: ---`` \textit{(blank)}.
 \end{quote}
 
-Strange that a caravan so noted should vanish between gates; stranger that the clerk left two fields unfilled. I have marked three other leaves where the same name appears, always "from the east," always tidy in its sums, and then silence---as though the road itself declined to witness.
+Strange that a caravan so noted should vanish between gates; stranger that the clerk left two fields unfilled. I have marked three other leaves where the same name appears, always ''from the east,`` always tidy in its sums, and then silence---as though the road itself declined to witness.
 
 I do not yet comprehend Master Aqyl's interest in such mundane books. He maintains that the ordinary page is a faithful mirror if one looks long enough; I am young and wish for brighter glass.
 
 Turning the leaf, a loose scrap fell from the binding---a toll--keeper's own hand, crowded and eager, likely written after hours:
 
 \begin{quote}\small
-"They were cheerful, the Ash--Fenn lot, and asked if I would sit a friendly game of Canray while the beasts drank. We wagered dreams, which I thought a country jest. I am not a superstitious man. I lost and bid them on their way. Curious thing is, I dreamt poorly after---a month's turn of it---and woke as if I had borrowed someone else's night."
+''They were cheerful, the Ash--Fenn lot, and asked if I would sit a friendly game of Canray while the beasts drank. We wagered dreams, which I thought a country jest. I am not a superstitious man. I lost and bid them on their way. Curious thing is, I dreamt poorly after---a month's turn of it---and woke as if I had borrowed someone else's night.``
 \end{quote}
 
-If this be a town humor, it is an odd one; yet the phrase "wagering dreams" reappears in a margin later in the book, in another hand. Perhaps it is a manner of speaking for small stakes without coin. I will ask Master Aqyl whether the phrase has a history, or whether the clerk merely wished to write himself interesting.
+If this be a town humor, it is an odd one; yet the phrase ''wagering dreams`` reappears in a margin later in the book, in another hand. Perhaps it is a manner of speaking for small stakes without coin. I will ask Master Aqyl whether the phrase has a history, or whether the clerk merely wished to write himself interesting.
 
 The ring--stamps are neat; the gaps are neater. I begin to suspect that the absence of a mark can carry as much account as the presence.
 
@@ -609,7 +609,7 @@ The ring--stamps are neat; the gaps are neater. I begin to suspect that the abse
 
 \noindent\textbf{Present hand (876 AR), M.\ Fenwood}
 
-I took the sliver of metal that is not quite a key and went to the door with the Wardens" stencil. The notice was still there; paper does not mind being outranked. I chose the lock. The ward turned with a soft, professional disappointment, and the oak came free on a breath of chalk and old rain.
+I took the sliver of metal that is not quite a key and went to the door with the Wardens'' stencil. The notice was still there; paper does not mind being outranked. I chose the lock. The ward turned with a soft, professional disappointment, and the oak came free on a breath of chalk and old rain.
 
 I crossed the threshold. No one asked me to. I wrote my name, small, on the blotting pad by the lantern to make the act answerable later. Then I shut the door behind me and let the room keep its own weather.
 
@@ -620,7 +620,7 @@ I have gone back to the little study three days running. It is an alluring room-
 
 Aqyl has not asked where I am reading; I have not told him. He warned me to read heresies without letting them read \emph{me}. I do not yet know the test, except this: stop when the ink begins to feel warm in the hand, as if the page were remembering a voice. (Last night it did; I set the book down and waited until the warmth went out of it like breath on a pane.)
 
-The ash keeps turning up. Not a fall you can see, but a taste---chalk, a little iron---and a grit that will not be brushed. \textit{Ash--Fenn} recurs. Always "from the east." Always counted, then---after some neat total---\emph{uncounted}. Accounts that conclude and then tilt, as if something leaned upon the last line and the clerk, to be prudent, looked away. If there is a trick in the books, it is a careful trick. If there is none, then it is only a habit of a careful man and I am lending it more weight than it earns. Either way, absences are a kind of ink.
+The ash keeps turning up. Not a fall you can see, but a taste---chalk, a little iron---and a grit that will not be brushed. \textit{Ash--Fenn} recurs. Always ``from the east.'' Always counted, then---after some neat total---\emph{uncounted}. Accounts that conclude and then tilt, as if something leaned upon the last line and the clerk, to be prudent, looked away. If there is a trick in the books, it is a careful trick. If there is none, then it is only a habit of a careful man and I am lending it more weight than it earns. Either way, absences are a kind of ink.
 
 There is also this, which I do not think I will tell Aqyl: when I read too long the lamp begins to sound like a drum in a room down the hall, and in the corner of my eye a shadow learns to be tall. I look and there is nothing---only the two chairs and their crossed shadows, meeting like folded wings. Perhaps my head is not yet right. Perhaps the University is very old and remembers how to be solemn.
 
@@ -638,15 +638,15 @@ Tomorrow I will copy the three blanks: the clerk's three unprinted cells that fa
 In a pasteboard folder marked only by a tally, I found a narrow leaf, the ink run as if laid under breath. It purports to be an eye--witness account of the \textit{Burning of the Ash--Fenn Caravan}, the writer's name withheld. I copy the opening as it stands, preserving both ornament and hesitation:
 
 \begin{quote}\small
-"We came upon the caravan after the bell. The charge was heresy against the Light. I will not set down the tale of it, for the deeds done and the words spoken by the dying are a weight I will not lend to the world. I write only that ash fell like a fine rain, and that the road kept no prints though many passed.
+``We came upon the caravan after the bell. The charge was heresy against the Light. I will not set down the tale of it, for the deeds done and the words spoken by the dying are a weight I will not lend to the world. I write only that ash fell like a fine rain, and that the road kept no prints though many passed.
 
-As I turned to go, I heard voices speaking in a tongue I do not know, though I know many. A constant choral thrum beneath their words. They were not commands, only \emph{tellings}, as if a steady hand turned a ledger and asked me to read aloud. They said, "Bring it to your mentor, Aqyl." They said, "He will weigh it." It was then I knew the thrum sang "Of ash, Of salt..." over and again. I took fear then and fled for Thepyrgos with this account, meaning to place it in his hands and wash mine."
+As I turned to go, I heard voices speaking in a tongue I do not know, though I know many. A constant choral thrum beneath their words. They were not commands, only \emph{tellings}, as if a steady hand turned a ledger and asked me to read aloud. They said, ''Bring it to your mentor, Aqyl.`` They said, ''He will weigh it.`` It was then I knew the thrum sang ''Of ash, Of salt\dots`` over and again. I took fear then and fled for Thepyrgos with this account, meaning to place it in his hands and wash mine.''
 \end{quote}
 
 The next lines (ink paler; hand appears the same) read as if added on the following day:
 
 \begin{quote}\small
-"I found \textit{Aqyl} much aged and asked leave to lay the leaf before him. He called for his son---also \textit{Aqyl}---to sit and witness. The elder's eye watered but did not wander. He said, "Read what you can, hide what you must." The younger set a lamp between us and did not speak."
+``I found \textit{Aqyl} much aged and asked leave to lay the leaf before him. He called for his son---also \textit{Aqyl}---to sit and witness. The elder's eye watered but did not wander. He said, ''Read what you can, hide what you must.`` The younger set a lamp between us and did not speak.''
 \end{quote}
 
 I suspend judgment, noting only that my breath shortened while copying. The corridor outside the study was quiet; yet beneath the quiet there seemed a soft speech, like cloth moved in the next room. Twice I set down my pen and began again.
@@ -705,7 +705,7 @@ Tomorrow I will take my notes in the public stalls and leave the key where it li
 \label{frag:l6}
 \phantomsection
 
-\noindent\textit{Provenance.} A nocturnal journal leaf by M.\ Fenwood (876 AR), bound with an earlier notebook entry by \textit{Lexicus of Thepyrgos} (648 AR) concerning a stitched slip titled "Sacred Geometry." The later leaf shows graphite pricking in groups of three and eight; the earlier carries stitch--holes at its head.
+\noindent\textit{Provenance.} A nocturnal journal leaf by M.\ Fenwood (876 AR), bound with an earlier notebook entry by \textit{Lexicus of Thepyrgos} (648 AR) concerning a stitched slip titled ``Sacred Geometry.'' The later leaf shows graphite pricking in groups of three and eight; the earlier carries stitch--holes at its head.
 
 \medskip
 \noindent\textbf{Present hand (876 AR), M.\ Fenwood}\\
@@ -719,7 +719,7 @@ The folio bore a faint ring again---a pale halo on the paper, as if a vessel had
 
 There was a second light that did not belong to the lantern, a cold awareness behind my shoulder that made my shadow double for a breath and then agree with itself again. In that same moment the air lifted along my neck with the suggestion---not more than that---of feathers in passage. The rafters kept their cobweb banners; nothing moved that I could name.
 
-The page lay open to a margin in Lexicus's quick pencil. Nothing dramatic---only a question mark set beside a figure and the line, \emph{"Name nothing yet."} The words felt correctly placed, like a hand flattening a wrinkle. I closed the book and listened. The room kept its own breath: a long hush, a soft return. Somewhere, far inside the walls, a slow drum counted to eight and declined to count the next.
+The page lay open to a margin in Lexicus's quick pencil. Nothing dramatic---only a question mark set beside a figure and the line, \emph{``Name nothing yet.''} The words felt correctly placed, like a hand flattening a wrinkle. I closed the book and listened. The room kept its own breath: a long hush, a soft return. Somewhere, far inside the walls, a slow drum counted to eight and declined to count the next.
 
 \medskip
 \noindent\textbf{Earlier hand (648 AR), Lexicus of Thepyrgos, Junior Reader}\\
@@ -727,7 +727,7 @@ The page lay open to a margin in Lexicus's quick pencil. Nothing dramatic---only
 
 Some weeks after my last, I discovered a \emph{very} small tract stitched into the back of a sermon--book---the hand uneasy, the vellum thin, the title in a timid red: \textit{a fragment of Sacred Geometry}. Much of it is crabbed and obscure; yet one sentence pierces: that certain men hold \textit{Canr\'e} to be more than pastime; that its figures are \emph{forms of address}; that a board, rightly attended, is a \emph{prayer laid flat}.
 
-I carried the slip at once to \textit{Aqyl, son of Aqyl}. He read three lines, returned it to my palm, and said---kindly rather than sharp: "Return it where you found it. Fragments torn from their bindings make liars of both sides." He regarded me a moment longer than comfort requires. "Are you sleeping, Lexicus? You have the look of a man who counts when he should be at rest."
+I carried the slip at once to \textit{Aqyl, son of Aqyl}. He read three lines, returned it to my palm, and said---kindly rather than sharp: ``Return it where you found it. Fragments torn from their bindings make liars of both sides.'' He regarded me a moment longer than comfort requires. ``Are you sleeping, Lexicus? You have the look of a man who counts when he should be at rest.''
 
 I answered that I was well (not the truth entire) and promised to replace the fragment. This I have done. The sentence about a prayer laid flat does not release me. I set it here under witness so that I may put it away later, \emph{cf.} fast--day cautions; \emph{viz.} the elder's maxim on plain work before bright theories.
 
@@ -737,7 +737,7 @@ I answered that I was well (not the truth entire) and promised to replace the fr
 
 This room has been too easy to find of late. The corridors that used to wind now come right, as if the stone had learned my steps and meant to be obliging. I am spending more hours here than at my other work and have begun to fall behind in the ordinary reading; the tidy stacks look at me with the patience of scolded cats.
 
-Yesterday I met \textit{Aqyl, son of Aqyl} on the stair. He paused one tread above, the light cutting his cheek into two ages at once, and asked only: "Are you sleeping?" I said I was (which was not the truth entire). He considered me a heartbeat, almond eyes unkind to excuses, and said, "Eat something warm. Read in the public stalls for a night or two, where the lamps are bright and the bells keep time." Then he went on, weighing spines in his head the way other men weigh bread; his thumb touched the rail eight times and declined a ninth without seeming to notice.
+Yesterday I met \textit{Aqyl, son of Aqyl} on the stair. He paused one tread above, the light cutting his cheek into two ages at once, and asked only: ``Are you sleeping?'' I said I was (which was not the truth entire). He considered me a heartbeat, almond eyes unkind to excuses, and said, ``Eat something warm. Read in the public stalls for a night or two, where the lamps are bright and the bells keep time.'' Then he went on, weighing spines in his head the way other men weigh bread; his thumb touched the rail eight times and declined a ninth without seeming to notice.
 
 I write this in the morning to leave a mark I can see from elsewhere. If I do not come back for a day and the dreams return, I will count that as weather and not as instruction. Let the whispering be wind in the flues; let the slow drum belong to the clockworks; let the cold at the nape be only the hall breathing. If it is more, it has yet to learn my name; I will not teach it.
 
@@ -756,7 +756,7 @@ There is a faint grit on the page even now, though I wiped the desk last night--
 This afternoon I translated a small account from \textit{Theona}, the eastern isle. The writer calls his subject a game, but refuses its proper title. He writes:
 
 \begin{quote}\small
-"We will not speak the true name among strangers; in the market we say only \emph{Fairy Stones}. If you would learn it, you must swear to leave one seat empty and one turn uncounted."
+``We will not speak the true name among strangers; in the market we say only \emph{Fairy Stones}. If you would learn it, you must swear to leave one seat empty and one turn uncounted.''
 \end{quote}
 
 The same folio assembles, with little ceremony, several island notions our city delights to mock: giants that eat the flesh of the drowned; doorways that will not open if you name them; the unholiness of the number \textit{nine}. The author notes that fishers count their nets in eights and set aside the ninth rope as \emph{ward}; that at winter feasts the ninth cup is poured and left; that tollmen on the south road strike eight neat notches, then make a faint scratch for the ninth and look away.
@@ -785,7 +785,7 @@ cannot answer your prayer.
 
 I do not recall ever hearing this. Perhaps it is only a trick of tiredness, the mind laying boards across a ditch. Still, the number keeps returning. I write it in the bright part of the day, where I can look at it and decide later whether it is only weather.
 
-Later, on the west stair, I met \textit{Aqyl, son of Aqyl}. He was coming up softly, thumb and forefinger tapping the rail: eight light touches and then a pause that did not quite become a ninth. He said nothing at first, but as we passed I heard him \emph{answer} my tune under his breath---no more than a thread of it, a low second that seemed to know where the line would turn before I did. When he noticed my listening he smiled the way one does at a child's rhyme and said, "Old border thing. Market noise. Eat something warm." His almond eyes had a weight I could not count. He touched the newel once, as if to number it too, and went on.
+Later, on the west stair, I met \textit{Aqyl, son of Aqyl}. He was coming up softly, thumb and forefinger tapping the rail: eight light touches and then a pause that did not quite become a ninth. He said nothing at first, but as we passed I heard him \emph{answer} my tune under his breath---no more than a thread of it, a low second that seemed to know where the line would turn before I did. When he noticed my listening he smiled the way one does at a child's rhyme and said, ``Old border thing. Market noise. Eat something warm.'' His almond eyes had a weight I could not count. He touched the newel once, as if to number it too, and went on.
 
 If the mind makes its own songs, let it make this one. The lamps are bright; the bells keep time; and though the words sit oddly on the page, they sit well in the mouth. Oh well---\emph{it is a pretty ballad}.
 
@@ -822,7 +822,7 @@ Today I will keep to the \emph{bright stalls}, do the ordinary work, and eat som
 \label{frag:l9}
 \phantomsection
 
-\noindent\textit{Provenance: a bundle posted from C.\ Fenwood to M.\ Fenwood, containing family letters and working notes on \emph{Canr\'e}. One leaf bears a penciled header, "Twin--Oases," struck through in a later hand.}
+\noindent\textit{Provenance: a bundle posted from C.\ Fenwood to M.\ Fenwood, containing family letters and working notes on \emph{Canr\'e}. One leaf bears a penciled header, ``Twin--Oases,'' struck through in a later hand.}
 
 \medskip
 \noindent\textbf{Present hand (876 AR), M.\ Fenwood}
@@ -830,16 +830,16 @@ Today I will keep to the \emph{bright stalls}, do the ordinary work, and eat som
 This afternoon a parcel arrived from my brother \textit{Constano}: old correspondence, a sheaf of copies, and two brittle offcuts shaved, by the look, from a larger draft of the \emph{Concordance}. He writes:
 
 \begin{quote}\small
-"Found these in the black trunk from the east room. Mostly letters. Two leaves look like Papa's working pages. One is headed \emph{Twin--Oases}. The header's scored out, but the notes underneath are tidy. If they"re yours by right, keep them. If not, return them to the trunk and pretend I never sent this."
+``Found these in the black trunk from the east room. Mostly letters. Two leaves look like Papa's working pages. One is headed \emph{Twin--Oases}. The header's scored out, but the notes underneath are tidy. If they''re yours by right, keep them. If not, return them to the trunk and pretend I never sent this.``
 \end{quote}
 
 The \emph{Twin--Oases} leaf is not an opening so much as a \emph{shape}: two opposite edges taking the part of wells, the middle kept shallow for a time, the hand taught to move as if water were dear. It is a way of beginning that prices thirst. In the margin, in my father's small pencil:
 
 \begin{quote}\small
-"This feels like a \emph{rite}, not an opening. Disturbing. It teaches the crossing rather than the play."
+''This feels like a \emph{rite}, not an opening. Disturbing. It teaches the crossing rather than the play.``
 \end{quote}
 
-I do not quite understand his unease. The figure reads as sensible to me: two "wets" to balance want, a hush at the start to make the first steps honest, a rim circled not as a wall but as a reminder to step carefully. If a beginning can teach restraint, is that not a lesson worth keeping?
+I do not quite understand his unease. The figure reads as sensible to me: two ''wets`` to balance want, a hush at the start to make the first steps honest, a rim circled not as a wall but as a reminder to step carefully. If a beginning can teach restraint, is that not a lesson worth keeping?
 
 It unsettles me that it does not unsettle me.
 
@@ -888,7 +888,7 @@ The voices are not convinced. I could go into the next room and demand names, bu
 I asked \textit{Aqyl, son of Aqyl} this morning, outright, whether there was ever a \emph{Cult of the Witness}. A new frown gathered---small, exact, like a net drawn tight. He said only:
 
 \begin{quote}\small
-"There are places in this University that are not secrets, and yet they are best left alone. Stay out of that room. Read where the bells can scold you. If a thing is worth keeping, it does not need you to whisper to it."
+''There are places in this University that are not secrets, and yet they are best left alone. Stay out of that room. Read where the bells can scold you. If a thing is worth keeping, it does not need you to whisper to it.``
 \end{quote}
 
 I said I understood. I am not sure I do. I have written the warning here so that I must step over it if I ignore it.
@@ -899,7 +899,7 @@ When we parted at the stair, his thumb tapped the rail---eight light touches and
 \label{frag:l11}
 \phantomsection
 
-\noindent\textit{Provenance: an elated but unsteady note in the hand of Lexicus, dated "\textemdash12 AR" in a later pencil (catalogers dispute the obscured digit); paired with a present-day leaf by M.\ Fenwood (876 AR).}
+\noindent\textit{Provenance: an elated but unsteady note in the hand of Lexicus, dated ''\textemdash12 AR`` in a later pencil (catalogers dispute the obscured digit); paired with a present-day leaf by M.\ Fenwood (876 AR).}
 
 \medskip
 \noindent\textbf{Earlier hand (650 AR), Lexicus of Thepyrgos, Junior Reader}
@@ -918,7 +918,7 @@ I woke with my hand on the wall beside my bed, palm flat as if feeling for the g
 \medskip
 \noindent\textbf{Present hand (876 AR), M.\ Fenwood}
 
-A voice in last night's dream said, very plainly, "Not yet. Do not show what you have. The time is not right." Then, as if offering a kindness: "Do not trust Aqyl, son of Aqyl."
+A voice in last night's dream said, very plainly, ''Not yet. Do not show what you have. The time is not right.`` Then, as if offering a kindness: ''Do not trust Aqyl, son of Aqyl.``
 
 Writing it now, in daylight, I dislike the taste of those sentences. They are not like my thoughts, nor like Aqyl's speech. They sit too cleanly, as if cut from a slate and pressed under my door. I put them here so they must survive the morning to trouble me; that is a higher bar than a dream deserves.
 
@@ -932,7 +932,7 @@ As I closed the notebook a grit came off on my thumb---salt, or ash, or only old
 \label{frag:l12}
 \phantomsection
 
-\noindent\textit{Provenance: two entries in Lexicus's hand (first and "weeks later," 650 AR) concerning a tutor of the Cartwright's discipline; followed by a present--day leaf by M.\ Fenwood (876 AR).}
+\noindent\textit{Provenance: two entries in Lexicus's hand (first and ''weeks later,`` 650 AR) concerning a tutor of the Cartwright's discipline; followed by a present--day leaf by M.\ Fenwood (876 AR).}
 
 \medskip
 \noindent\textbf{Earlier hand (650 AR), Lexicus of Thepyrgos, Junior Reader --- first meeting}
@@ -940,12 +940,12 @@ As I closed the notebook a grit came off on my thumb---salt, or ash, or only old
 I sought out a teacher reputed to keep the Cartwright's strategy in the old, spare way. We sat at a plain table. Before a word, he drew a narrow ring of damp salt about the board's edge and set his hands in his lap. When he finally spoke, it was in \emph{code}, as though discussing tariffs:
 
 \begin{quote}\small
-"Some crossings are \emph{priced}. Some vows are better \emph{kept unnamed}. A watcher keeps his ledger without boasting."
+''Some crossings are \emph{priced}. Some vows are better \emph{kept unnamed}. A watcher keeps his ledger without boasting.``
 \end{quote}
 
 I answered that I knew of the vow he would not name, and (here I confess my rashness) that I had dreamt of a door---oak, rosettes set at each crossing, no handle---behind which men chant not commands but keepings. His eyes changed, not with anger but with a kind of inventory.
 
-"You are before your hour," he said at last. "When you can beat me clean at \textit{Canr\'e}, you will be ready to be shown what cannot be \emph{said}."
+''You are before your hour,`` he said at last. ''When you can beat me clean at \textit{Canr\'e}, you will be ready to be shown what cannot be \emph{said}.``
 
 We began to play.
 
@@ -963,7 +963,7 @@ Count what is taken, count what you spare;\\
 open what answers, and leave the rest bare.}
 \end{quote}
 
-It is only \emph{logical}. Of course it is. Copper to mark what is dear; salt to make the edge honest; silence to value speech. He told me to come at dusk on the third day. "Bring no one," he said. "The door you know will be open for those who have earned its measure."
+It is only \emph{logical}. Of course it is. Copper to mark what is dear; salt to make the edge honest; silence to value speech. He told me to come at dusk on the third day. ''Bring no one,`` he said. ''The door you know will be open for those who have earned its measure.``
 
 I am writing with a fast hand. The page feels too narrow for the hour.
 
@@ -1096,24 +1096,24 @@ The door was open.
 
 I needed no key. The corridor that always looks tired looked merely itself; the oak looked newly rubbed, as before. \textit{Aqyl, son of Aqyl} stood within, beside a table where a \emph{Canr\'e} board was already set. The room was clean---no dust bloom, no cobweb banners---only the faint crust of pale grit brushed to the skirting, and the scent of candles put out with care warmed into the wood.
 
-He said my name in the ordinary way, and then: "Come in."
+He said my name in the ordinary way, and then: ''Come in.``
 
 \medskip
 \noindent\textit{Later (same day), copied with a cool hand.}
 
 Eight candles were lit; a ninth vessel stood unlit---a small cup of oil with a clean wick asleep in it. No flourish. On the floor, only the rumor of a ring, as if a damp cord had once been set down and lifted again before it could confess. A shallow bowl of water stood at the table's end. He did not explain it.
 
-We sat. He placed my hand upon the board as if teaching a child to write. "Count," he said, very quietly. "Not the numbers you know. The ones the room knows." He hummed two notes under his breath; my own hum---uninvited---found a third that did not wish to arrive. We began.
+We sat. He placed my hand upon the board as if teaching a child to write. ''Count,`` he said, very quietly. ''Not the numbers you know. The ones the room knows.`` He hummed two notes under his breath; my own hum---uninvited---found a third that did not wish to arrive. We began.
 
 The pieces---let me call them that---moved as furniture moves in a house long lived in: without thinking, habit to habit. The middle learned to be a shallow river; the edges remembered weight. Each time I paused, the air along my neck lifted with the suggestion of feathers, and the eight flames leaned as if a draft went past them on purpose. When I strayed toward the easy line, Aqyl's thumb tapped the table---eight light touches and then a pause that refused to become the ninth. He did not look at me when he did it. He looked at the unlit cup.
 
-"Name nothing yet," he said once, with the same voice he uses to correct a sum. "When it is time, you will not have to reach for the word; it will arrive already shaped to your mouth."
+''Name nothing yet,`` he said once, with the same voice he uses to correct a sum. ''When it is time, you will not have to reach for the word; it will arrive already shaped to your mouth.``
 
 I do not think we played long, and yet I came away with the sense of a road walked and priced: crossings taught, not taken; chairs left waiting; cups poured and refused. Once---only once---the rules I had brought into the room moved aside as a porter lifts a rope. I set a piece where I knew I should not, and the air accepted it without rebuke, like water learning a new edge for a breath. Then the moment closed as a pupil closes upon light, and the ordinary measure resumed.
 
 When we rose, the eight wicks sat smaller, blue at their bases, and the oil in the ninth cup held a patient chill---like a word that will not yet consent to be spoken. Aqyl pinched each flame out with steadiness and did not look at me until the last thin smoke climbed and made its small rope toward the rafters.
 
-"Eat something warm," he said, as always, and---lightly---"Read where the bells can scold you." Then, softer, not quite a question: "You will come back."
+''Eat something warm,`` he said, as always, and---lightly---''Read where the bells can scold you.`` Then, softer, not quite a question: ''You will come back.``
 
 I am in the bright stalls now. The bells are loud. The page holds still. My hand is steady. I have copied what I saw and will stop there, for now.
 
@@ -1123,7 +1123,7 @@ If there is more to tell, it will knock. If it does not knock, I will hum on the
 \label{frag:l16}
 \phantomsection
 
-\noindent\textit{Provenance: a present--day note by M.\ Fenwood; paper new, hand steady. A sliver of dark metal (the not--key) is pasted to the margin with sealing--wax residue; beneath it, a Wardens" receipt is pinned through.}
+\noindent\textit{Provenance: a present--day note by M.\ Fenwood; paper new, hand steady. A sliver of dark metal (the not--key) is pasted to the margin with sealing--wax residue; beneath it, a Wardens'' receipt is pinned through.}
 
 \medskip
 \noindent\textbf{Present hand (876 AR), M.\ Fenwood}
@@ -1137,7 +1137,7 @@ I thought of the little study, and the cool of the oak, and the way some pages a
 \medskip
 \noindent\textit{Mark what it took to answer.} Warm food. Bells within hearing. A second set of footsteps beside mine---kept for the count. A page to write on.
 
-I have wrapped the sliver--that--is--not--a--key in plain paper and sealed it. At first bell I went to the Wardens" desk and handed it across. The clerk weighed the metal like bread, wrote a number, circled it once and then again, and kept the piece. He sealed the \emph{wrapper} to a narrow finding card "for the file," stamped the same number, and returned it with a stub. I have pasted the stub here so the act does not depend upon my memory.
+I have wrapped the sliver--that--is--not--a--key in plain paper and sealed it. At first bell I went to the Wardens`` desk and handed it across. The clerk weighed the metal like bread, wrote a number, circled it once and then again, and kept the piece. He sealed the \emph{wrapper} to a narrow finding card ''for the file,`` stamped the same number, and returned it with a stub. I have pasted the stub here so the act does not depend upon my memory.
 
 I will write \textit{Alayse} tonight---first line empty, sealed with salt as is proper---and tell her the day's true sum. I will read in the bright rooms, under lamps that scold, and I will not enter the condemned door: not alone, not without a porter's book signed, not without naming what it takes to answer.
 
@@ -1257,7 +1257,7 @@ A Green approaches the rim to cut a lane; the opponent pressures along the edge.
 \label{scen:witness-ford}
 \phantomsection
 
-\noindent\textbf{Hook.} "Stay more than thrice at the ford and the Witness takes you." The center is a crossing, not a seat.
+\noindent\textbf{Hook.} ''Stay more than thrice at the ford and the Witness takes you.`` The center is a crossing, not a seat.
 
 \medskip
 \noindent\textbf{Switch.} \textsc{ON / OFF} (default \textsc{OFF}) \hfill \textbf{Scope.} Scenario-scoped; never alters tournament core.
@@ -1274,11 +1274,11 @@ A Green approaches the rim to cut a lane; the opponent pressures along the edge.
 \medskip
 \noindent\textbf{Clarifications.}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item "Consecutive turns" means turns of that Blue's \emph{controller}. If a Blue remains in the Central Four across an opponent's turn, the count is unaffected until its controller's next turn ends.
-  \item A Blue that is \emph{Rooted} within the Central Four still accumulates counts (it is "staying").
+  \item ''Consecutive turns`` means turns of that Blue's \emph{controller}. If a Blue remains in the Central Four across an opponent's turn, the count is unaffected until its controller's next turn ends.
+  \item A Blue that is \emph{Rooted} within the Central Four still accumulates counts (it is ''staying``).
   \item If a Blue leaves the Central Four (by moving, being displaced, or captured) its count resets to 0. If it later re-enters, start again from 1 the next time it ends its controller's turn there.
   \item Track each Blue separately. If a Blue is captured before reaching four, remove its counter (if any).
-  \item If a pass or skip occurs and the Blue remains in the Central Four, that still counts as having "ended the turn" there.
+  \item If a pass or skip occurs and the Blue remains in the Central Four, that still counts as having ''ended the turn`` there.
 \end{itemize}
 
 \medskip
@@ -1286,7 +1286,7 @@ A Green approaches the rim to cut a lane; the opponent pressures along the edge.
 On Turn A1, Blue\(_\alpha\) ends in the Central Four (count 1). On B1 nothing changes for Blue\(_\alpha\). On A2 it still ends there (count 2); on A3 (count 3). If on A4 it would again end in the Central Four, it is forfeited at end of A4. If instead it steps out on A3 and returns on A4, the count resets---A4 becomes count 1.
 
 \medskip
-\noindent\textbf{Clue beat.} A toll ledger shows three sequential stamps; the fourth is crossed in ash, matching the "three then price" cadence seen in Candle Count.
+\noindent\textbf{Clue beat.} A toll ledger shows three sequential stamps; the fourth is crossed in ash, matching the ''three then price`` cadence seen in Candle Count.
 
 \medskip
 \noindent\textbf{Why it's safe.} Adds a local stay-timer only for \emph{Blues} in the Central Four; no movement rules, costs, specials, or captures elsewhere are changed.
@@ -1301,7 +1301,7 @@ On Turn A1, Blue\(_\alpha\) ends in the Central Four (count 1). On B1 nothing ch
 \label{scen:veil-of-names}
 \phantomsection
 
-\noindent\textbf{Hook.} The cult forbids doctrine-naming: "Names bind exits." Play as if identity were a mask you choose not to lift.
+\noindent\textbf{Hook.} The cult forbids doctrine-naming: ''Names bind exits.`` Play as if identity were a mask you choose not to lift.
 
 \medskip
 \noindent\textbf{Switch.} \textsc{ON / OFF} (default \textsc{OFF}) \hfill \textbf{Scope.} Scenario-scoped; never alters tournament core.
@@ -1310,7 +1310,7 @@ On Turn A1, Blue\(_\alpha\) ends in the Central Four (count 1). On B1 nothing ch
 \noindent\textbf{Components.} Optional: two blank cards or slips for private notes (\emph{face-down school cards}).
 
 \medskip
-\noindent\textbf{Setup.} If desired, each player writes a single word or icon on a slip (their "school" or guiding maxim) and places it face-down near their board edge. Do not reveal it during play.
+\noindent\textbf{Setup.} If desired, each player writes a single word or icon on a slip (their ''school`` or guiding maxim) and places it face-down near their board edge. Do not reveal it during play.
 
 \medskip
 \noindent\textbf{Rite (exact).} While this Rite is \textsc{ON}, \textbf{players do not declare schools or doctrines publicly}. Any thematic school choice is kept private and has \textbf{no mechanical effect}. All rules, moves, costs, specials, scoring, and timers proceed exactly as normal.
@@ -1329,7 +1329,7 @@ On Turn A1, Blue\(_\alpha\) ends in the Central Four (count 1). On B1 nothing ch
 Two players sit without naming doctrine. One leans into cautious exits; the other pressures lanes early. Each is reading the other's \emph{play}, not their banner---tension without rule-changes.
 
 \medskip
-\noindent\textbf{Clue beat.} Two training slates in the dossier mark evaluations that match no known doctrine---scholars nickname it the \emph{Gray Ledger}, which "prices exits rather than blocking them."
+\noindent\textbf{Clue beat.} Two training slates in the dossier mark evaluations that match no known doctrine---scholars nickname it the \emph{Gray Ledger}, which ''prices exits rather than blocking them.``
 
 \medskip
 \noindent\textbf{Why it's safe.} Pure information fog: no move generation, costs, captures, rooting, specials, or scoring are changed.
@@ -1338,7 +1338,7 @@ Two players sit without naming doctrine. One leans into cautious exits; the othe
 \noindent\textbf{If \textsc{OFF}:} Play is unchanged.
 
 \medskip
-\noindent\textit{Diagram cue (optional).} Small icon of a face-down card with a crossed speech bubble; caption: "Theme kept private; rules unchanged."
+\noindent\textit{Diagram cue (optional).} Small icon of a face-down card with a crossed speech bubble; caption: ''Theme kept private; rules unchanged.``
 
 \subsection{Scenario 4 --- Candle Count}
 \label{scen:candle-count}
@@ -1362,7 +1362,7 @@ Two players sit without naming doctrine. One leans into cautious exits; the othe
   \item A \textbf{Blue} becomes \textbf{Rooted}.
   \item Any \textbf{special} is used.
 \end{enumerate}
-When all five beads are lit, announce "\textit{chant complete}," then \textbf{reset} all five beads to the unlit side. No other rules change.
+When all five beads are lit, announce ''\textit{chant complete},`` then \textbf{reset} all five beads to the unlit side. No other rules change.
 
 \medskip
 \noindent\textbf{Clarifications.}
@@ -1440,7 +1440,7 @@ You \emph{Seed} this turn (\(+1\) Copper; total now 1). Before your next turn, y
 \noindent\textbf{If \textsc{OFF}:} Play is unchanged.
 
 \medskip
-\noindent\textit{Diagram cue (optional).} Three coin icons near each player; a \emph{Cleared} dot on one rim square; a small shield icon (\(\small\shield\)) on a patrolled rim square (captioned "opponent may not \emph{end} here until your next turn").
+\noindent\textit{Diagram cue (optional).} Three coin icons near each player; a \emph{Cleared} dot on one rim square; a small shield icon (\(\small\shield\)) on a patrolled rim square (captioned ''opponent may not \emph{end} here until your next turn``).
 
 \subsection{Scenario 6 --- Ash--Fenn Rite}
 \label{scen:ash-fenn-rite}
@@ -1471,7 +1471,7 @@ You \emph{Seed} this turn (\(+1\) Copper; total now 1). Before your next turn, y
 \medskip
 \noindent\textbf{Clarifications.}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textit{Oath of Water}: "first time you would move a Blue" refers to the first Blue move you attempt in the game, regardless of turn number; you cannot "skip" triggering by selecting a different piece---trigger occurs at the first legal Blue move you choose.
+  \item \textit{Oath of Water}: ''first time you would move a Blue`` refers to the first Blue move you attempt in the game, regardless of turn number; you cannot ''skip`` triggering by selecting a different piece---trigger occurs at the first legal Blue move you choose.
   \item \textit{Oath of Salt}: the one-move waiver applies to a \emph{single Blue move} only and does not persist; other Blues and later moves remain bound by the salt-band.
   \item \textit{Oath of Copper}: you cannot exceed a personal Copper capacity of 3; gaining beyond the cap is lost. The delayed Seed has \emph{no interim effects} until it resolves.
   \item You may never benefit from more than one Oath; the unchosen Oaths confer nothing.
@@ -1492,13 +1492,13 @@ Player B takes \textit{Copper}: starts at 2 Copper (\( \to \) cap 3 on early gai
 \noindent\textbf{If \textsc{OFF}:} Play is unchanged.
 
 \medskip
-\noindent\textit{Diagram cue (optional).} Three small oath icons at player edge (\(\lozenge\) Water, \(\triangle\) Salt, \(\circ\) Copper); a \emph{Bound} marker on a pending Seed; a single arrow from sanctum to Cross labeled "once".
+\noindent\textit{Diagram cue (optional).} Three small oath icons at player edge (\(\lozenge\) Water, \(\triangle\) Salt, \(\circ\) Copper); a \emph{Bound} marker on a pending Seed; a single arrow from sanctum to Cross labeled ''once``.
 
 \subsection{Scenario 7 --- The Ninth}
 \label{scen:the-ninth}
 \phantomsection
 
-\noindent\textbf{Hook.} "Count eight before breath; the ninth is a wound." The dossier insists there is a word you do not say until the crossing is priced.
+\noindent\textbf{Hook.} ''Count eight before breath; the ninth is a wound.`` The dossier insists there is a word you do not say until the crossing is priced.
 
 \medskip
 \noindent\textbf{Switch.} \textsc{ON / OFF} (default \textsc{OFF}) \hfill \textbf{Scope.} Scenario-scoped; never alters tournament core.
@@ -1545,7 +1545,7 @@ Midgame with \emph{Salt Stitch} and \emph{Witness at the Ford} both \textsc{ON},
 \noindent\textbf{If \textsc{OFF}:} Play is unchanged.
 
 \medskip
-\noindent\textit{Diagram cue (optional).} A small face-down card icon labeled "Wound Name"; a dashed highlight over one perimeter arc (\emph{cracked}) and a tiny toggle symbol to illustrate a one--turn suspension of a Rite.
+\noindent\textit{Diagram cue (optional).} A small face-down card icon labeled ''Wound Name``; a dashed highlight over one perimeter arc (\emph{cracked}) and a tiny toggle symbol to illustrate a one--turn suspension of a Rite.
 
 \clearpage
 
@@ -1557,7 +1557,7 @@ Midgame with \emph{Salt Stitch} and \emph{Witness at the Ford} both \textsc{ON},
 \phantomsection
 
 \begin{quote}\small
-"Do not be clever first. Be clear first. Then, if the page still asks, be patient."\\
+''Do not be clever first. Be clear first. Then, if the page still asks, be patient.``\\
 \hfill --- \textit{Aqyl}, to a junior reader
 \end{quote}
 
@@ -1580,7 +1580,7 @@ Midgame with \emph{Salt Stitch} and \emph{Witness at the Ford} both \textsc{ON},
 \begin{enumerate}\setlength\itemsep{0.25em}
   \item \textbf{Nudge 1} --- a gentle reframing (no new facts).
   \item \textbf{Nudge 2} --- points at the relevant artifact features.
-  \item \textbf{Nudge 3} --- states the key operation (e.g., "rotate 17°").
+  \item \textbf{Nudge 3} --- states the key operation (e.g., ''rotate 17°``).
   \item \textbf{Reveal} --- the full solution (in the sealed appendix).
 \end{enumerate}
 Hint codes appear as \textsc{[H1] [H2] [H3] [R]} with page references.
@@ -1621,7 +1621,7 @@ Hint codes appear as \textsc{[H1] [H2] [H3] [R]} with page references.
 \end{tabular}
 \end{center}
 
-Write the \textbf{five digits in order} as the events occur during a chant. That 5-digit base--5 "\emph{chant code}" later maps to a letter via the table in the \emph{Sealed Appendix}.
+Write the \textbf{five digits in order} as the events occur during a chant. That 5-digit base--5 ''\emph{chant code}`` later maps to a letter via the table in the \emph{Sealed Appendix}.
 
 \medskip
 \noindent\textbf{Goal.} Convert the three logged chants below into their \textbf{5-digit base--5 codes}. Leave the letter blanks empty for now; you will translate them when you reach the appendix.
@@ -1685,7 +1685,7 @@ C & \hspace{3.5cm} & \hspace{1.2cm} \\
 \(\square\) (blank/box placeholder) & \(\mathbf{4}\) \\
 \end{tabular}
 \end{center}
-\noindent\(^\dagger\) Any small flowered stamp counts as "rosette."
+\noindent\(^\dagger\) Any small flowered stamp counts as ''rosette.``
 
 \medskip
 \noindent\textbf{Goal.} Produce a \textbf{5--digit base--5 code} by locating the five seals in \emph{clockwise order} (starting from the \textbf{northernmost}), then convert that 5--digit code to a \textbf{single letter} using the table in the \emph{Sealed Appendix}.
@@ -1694,7 +1694,7 @@ C & \hspace{3.5cm} & \hspace{1.2cm} \\
 \noindent\textbf{Procedure.}
 \begin{enumerate}\setlength\itemsep{0.2em}
   \item Place the map leaf over the board and rotate it \(\mathbf{17^\circ}\) \textbf{clockwise}. Pinholes should align so that four gatehouses sit on sanctums.
-  \item Find the \textbf{five} tiny seal marks printed near the map rim (they"ll now sit over five perimeter squares).
+  \item Find the \textbf{five} tiny seal marks printed near the map rim (they''ll now sit over five perimeter squares).
   \item Starting from the \textbf{northernmost} of the five, read them in \textbf{clockwise} order, converting each to a digit using the Legend.
   \item Write the resulting \textbf{5--digit base--5} code. Translate to a \textbf{letter} via the appendix's quinary chant/code \(\rightarrow\) letter table.
 \end{enumerate}
@@ -1720,8 +1720,8 @@ Digits: \(0\ 3\ 2\ 1\ 4\) \(\Rightarrow\) code \(03214_{(5)}\) \(\Rightarrow\) l
 \medskip
 \noindent\textbf{Hint ladder.}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textsc{[H1]} Align sanctums to gatehouses by rotating the map \(\,17^\circ\,\) clockwise; don"t worry about exact millimeters---line up the \emph{idea}.
-  \item \textsc{[H2]} Start at the \emph{northernmost} seal and go clockwise; if two are tied for "north," choose the one slightly east.
+  \item \textsc{[H1]} Align sanctums to gatehouses by rotating the map \(\,17^\circ\,\) clockwise; don``t worry about exact millimeters---line up the \emph{idea}.
+  \item \textsc{[H2]} Start at the \emph{northernmost} seal and go clockwise; if two are tied for ''north,`` choose the one slightly east.
   \item \textsc{[H3]} Use the Legend on this page; do \emph{not} invent extra symbols. Treat the result as a single 5--digit base--5 number.
   \item \textsc{[R]} The code resolves to a letter commonly associated with thresholds in this volume.
 \end{itemize}
@@ -1785,7 +1785,7 @@ C & \hspace{3.5cm} & \hspace{1.2cm} \\
 \noindent\textbf{Hint ladder.}
 \begin{itemize}\setlength\itemsep{0.25em}
   \item \textsc{[H1]} Ignore the money. Read only the skinny column of \emph{stamps} at the far left.
-  \item \textsc{[H2]} Each gutter is \emph{five} slots tall; top-to-bottom equals left-to-right in the code you"ll write.
+  \item \textsc{[H2]} Each gutter is \emph{five} slots tall; top-to-bottom equals left-to-right in the code you''ll write.
   \item \textsc{[H3]} Use the same symbol\(\rightarrow\)digit mapping as the Seventeen Map (\S\ref{pz:map-at-seventeen}); treat the result as a single base--5 number.
   \item \textsc{[R]} The three letters, in order, spell something that lives along the edge of things.
 \end{itemize}
@@ -1794,10 +1794,10 @@ C & \hspace{3.5cm} & \hspace{1.2cm} \\
 \label{pz:twin-oases}
 \phantomsection
 
-\noindent\textbf{What you need.} The scraped \emph{Concordance} leaf titled "Twin--Oases" (the one with two well marks at opposite edges and a faint river line) and this page.
+\noindent\textbf{What you need.} The scraped \emph{Concordance} leaf titled ``Twin--Oases'' (the one with two well marks at opposite edges and a faint river line) and this page.
 
 \medskip
-\noindent\textbf{Premise.} The erased "opening" is really an overlay: the leaf's \emph{river axis} is a fold line. When you mirror the east half to the west (no actual folding required), five small \emph{spill-marks} along the rim land over specific perimeter squares. Each spill-mark contains \textbf{0--4 hatch strokes}; the count is a digit in base--5.
+\noindent\textbf{Premise.} The erased ``opening'' is really an overlay: the leaf's \emph{river axis} is a fold line. When you mirror the east half to the west (no actual folding required), five small \emph{spill-marks} along the rim land over specific perimeter squares. Each spill-mark contains \textbf{0--4 hatch strokes}; the count is a digit in base--5.
 
 \medskip
 \noindent\textbf{Goal.} Read the five mirrored spill-marks in \textbf{clockwise order} beginning at the \textbf{northernmost}, counting the hatch strokes in each (0--4) to form a \textbf{5-digit base--5 code}. Convert that code to a \textbf{single letter} via the table in the \emph{Sealed Appendix}.
@@ -1856,10 +1856,10 @@ Digits: \(0\ 2\ 4\ 1\ 2\) \(\Rightarrow\) code \(02412_{(5)}\) \(\Rightarrow\) l
 \label{pz:veil-page}
 \phantomsection
 
-\noindent\textbf{What you need.} The deposition leaf labeled "\textit{Veil of Names}" (the one with black redaction bars in the text) and this page.
+\noindent\textbf{What you need.} The deposition leaf labeled ``\textit{Veil of Names}'' (the one with black redaction bars in the text) and this page.
 
 \medskip
-\noindent\textbf{Premise.} In sworn statements where names are "veiled," scribes leave the \emph{first rubric line empty} and then redact \textbf{0--4} names per line in the next five lines. The \textbf{count of bars on each of those five lines} (top to bottom) forms a \textbf{5--digit base--5 code}. That code maps to a single letter in the \emph{Sealed Appendix}.
+\noindent\textbf{Premise.} In sworn statements where names are ``veiled,'' scribes leave the \emph{first rubric line empty} and then redact \textbf{0--4} names per line in the next five lines. The \textbf{count of bars on each of those five lines} (top to bottom) forms a \textbf{5--digit base--5 code}. That code maps to a single letter in the \emph{Sealed Appendix}.
 
 \medskip
 \noindent\textbf{Goal.} For each stanza on the leaf (\textsc{A} and \textsc{B}), \emph{ignore the deliberately blank opening line}, then read the next \textbf{five} lines top--to--bottom, counting black bars on each line (0--4). Write the resulting 5--digit base--5 code and convert it to a letter via the appendix table.
@@ -1867,7 +1867,7 @@ Digits: \(0\ 2\ 4\ 1\ 2\) \(\Rightarrow\) code \(02412_{(5)}\) \(\Rightarrow\) l
 \medskip
 \noindent\textbf{Procedure.}
 \begin{enumerate}\setlength\itemsep{0.2em}
-  \item Locate stanza \textsc{A}. It begins with a visibly \textbf{blank first line} (Veil rule: "leave the first line empty"). \emph{Do not count} that line.
+  \item Locate stanza \textsc{A}. It begins with a visibly \textbf{blank first line} (Veil rule: ``leave the first line empty''). \emph{Do not count} that line.
   \item For the \textbf{next five lines}, count the number of black redaction bars on each line (each continuous bar counts as 1, even if long).
   \item Record those five counts as digits \(0\)--\(4\) to form your \textbf{5--digit base--5 code}.
   \item Repeat for stanza \textsc{B}.
@@ -1878,7 +1878,7 @@ Digits: \(0\ 2\ 4\ 1\ 2\) \(\Rightarrow\) code \(02412_{(5)}\) \(\Rightarrow\) l
 \noindent\textbf{Clarifications.}
 \begin{itemize}\setlength\itemsep{0.25em}
   \item Treat a broken bar that is clearly a scribal crack as \emph{one} bar.
-  \item Ignore punctuation, marginal notes, or small "x" placeholders; \emph{only} solid black bars count.
+  \item Ignore punctuation, marginal notes, or small ``x'' placeholders; \emph{only} solid black bars count.
   \item Each counted line is guaranteed to have between \(\,0\) and \(4\,\) bars by design---never more.
 \end{itemize}
 
@@ -1900,7 +1900,7 @@ B & \hspace{3.5cm} & \hspace{1.2cm} \\
 \end{center}
 
 \medskip
-\noindent\textbf{Fairness.} The "first line empty" cue is explicit on the leaf; bars are high-contrast and countable; no color needed.
+\noindent\textbf{Fairness.} The ``first line empty'' cue is explicit on the leaf; bars are high-contrast and countable; no color needed.
 
 \medskip
 \noindent\textbf{Hint ladder.}
@@ -1920,7 +1920,7 @@ B & \hspace{3.5cm} & \hspace{1.2cm} \\
 \phantomsection
 
 \begin{quote}\small
-"Keep the sums straight even when the breath runs. What you cannot prove, bracket; what you can, make plain."\\
+``Keep the sums straight even when the breath runs. What you cannot prove, bracket; what you can, make plain.''\\
 \hfill --- \textit{Aqyl}, notation lecture (excerpt)
 \end{quote}
 
@@ -1937,12 +1937,12 @@ B & \hspace{3.5cm} & \hspace{1.2cm} \\
 \medskip
 \noindent\textbf{Contents (sidebars).}
 \begin{description}\setlength\itemsep{0.35em}
-  \item[The Sacred Geometry I: Irregular First-Era Rings.] Early ring spacing drift and why perimeter "wobble" shows up in field copies.
+  \item[The Sacred Geometry I: Irregular First-Era Rings.] Early ring spacing drift and why perimeter ``wobble'' shows up in field copies.
   \item[The Sacred Geometry II: Survey Drift \& Gate Alignment.] Why the map overlays at \(17^\circ\); tolerances for sanctum↔gate matching.
   \item[The Sacred Geometry III: Breath\(\rightarrow\)Quinary.] From public chant events to base-5 digits; a minimal table and worked line.
-  \item[The Sacred Geometry IV: Fords \& Sancta --- A Taxonomy.] When is a crossing a "ford" vs. a "stay"? Notes on language slippage.
-  \item[The Sacred Geometry V: The Gray Ledger (Unpublished).] A scholarly reconstruction of a doctrine that "prices exits"; status: \emph{contested}.
-  \item[The Sacred Geometry VI: Nine Across Traditions.] Theona's avoidance vs. Dhahara's "remaining"; cautions on over-mapping theology.
+  \item[The Sacred Geometry IV: Fords \& Sancta --- A Taxonomy.] When is a crossing a ``ford'' vs. a ``stay''? Notes on language slippage.
+  \item[The Sacred Geometry V: The Gray Ledger (Unpublished).] A scholarly reconstruction of a doctrine that ``prices exits''; status: \emph{contested}.
+  \item[The Sacred Geometry VI: Nine Across Traditions.] Theona's avoidance vs. Dhahara's ``remaining''; cautions on over-mapping theology.
   \item[The Sacred Geometry VII: Ledger Marks \& Substitutions.] Triangle/rosette/bar/dot/blank as stable encodings across Houses.
   \item[The Sacred Geometry VIII: Disputed Fragment --- Lexicus.] Provenance and authenticity checks on L-series leaves; Aqyl's cadence test.
 \end{description}
@@ -1954,13 +1954,13 @@ B & \hspace{3.5cm} & \hspace{1.2cm} \\
 \label{geometry:irregular-rings}
 \phantomsection
 
-\noindent\textbf{Plain claim.} Early field copies show measurable "wobble" in the perimeter ring; this drift is copy--artifact, not doctrine.
+\noindent\textbf{Plain claim.} Early field copies show measurable ``wobble'' in the perimeter ring; this drift is copy--artifact, not doctrine.
 
 \medskip
-\noindent\textbf{Notes.} Hand--ruled boards and roadside tracings (cf. \S\ref{frag:l2}, \S\ref{scen:salt-stitch}) produce slight arc eccentricities---typically \(1\!-\!3\%\) of square width. These irregularities correlate with travel wear (salt, damp) rather than with any stated Rite. Lexicus's "salt--pressed" leaves (\S\ref{frag:l2}) exaggerate the effect where the rim held moisture.
+\noindent\textbf{Notes.} Hand--ruled boards and roadside tracings (cf. \S\ref{frag:l2}, \S\ref{scen:salt-stitch}) produce slight arc eccentricities---typically \(1\!-\!3\%\) of square width. These irregularities correlate with travel wear (salt, damp) rather than with any stated Rite. Lexicus's ``salt--pressed'' leaves (\S\ref{frag:l2}) exaggerate the effect where the rim held moisture.
 
 \medskip
-\noindent\textbf{Use at the table (optional).} If you"ve printed the perimeter ribbon for \S\ref{scen:salt-stitch}, allow a gentle, cosmetic misalignment rather than forcing a perfect circle. \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} If you``ve printed the perimeter ribbon for \S\ref{scen:salt-stitch}, allow a gentle, cosmetic misalignment rather than forcing a perfect circle. \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} L--series fragments \S\ref{frag:l2}, \S\ref{frag:l12}; map overlay \S\ref{pz:map-at-seventeen}. Status: \emph{uncontroversial}.
@@ -1972,10 +1972,10 @@ B & \hspace{3.5cm} & \hspace{1.2cm} \\
 \noindent\textbf{Plain claim.} Rotating the Thepyrgos plan by \(\approx 17^\circ\) aligns four historical gatehouses with board \emph{sancta}; treat the angle as accumulated survey drift, not intent.
 
 \medskip
-\noindent\textbf{Notes.} The pin--holed city leaf (\S\ref{pz:map-at-seventeen}) yields a best--fit rotation of \(16.8^\circ\) within a \(\pm 2^\circ\) tolerance. The "\(17^\circ\)" cue recurs as marginal instruction (\S\ref{scen:salt-stitch}, \emph{Clue beat}). The alignment disappears under modern map--north assumptions and reappears if one adopts older river--north conventions. No metaphysical claim is required; this is a cartographic convenience that happens to surface pleasing correspondences.
+\noindent\textbf{Notes.} The pin--holed city leaf (\S\ref{pz:map-at-seventeen}) yields a best--fit rotation of \(16.8^\circ\) within a \(\pm 2^\circ\) tolerance. The ''\(17^\circ\)`` cue recurs as marginal instruction (\S\ref{scen:salt-stitch}, \emph{Clue beat}). The alignment disappears under modern map--north assumptions and reappears if one adopts older river--north conventions. No metaphysical claim is required; this is a cartographic convenience that happens to surface pleasing correspondences.
 
 \medskip
-\noindent\textbf{Use at the table (optional).} When staging props, allow any rotation in \([15^\circ,19^\circ]\) to "read" visually. Do \emph{not} rotate the actual board or alter legal geometry. \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} When staging props, allow any rotation in \([15^\circ,19^\circ]\) to ''read`` visually. Do \emph{not} rotate the actual board or alter legal geometry. \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} Map leaf \S\ref{pz:map-at-seventeen}; \textit{Salt Stitch} \S\ref{scen:salt-stitch}. \textbf{Status:} \emph{supported}.
@@ -1998,7 +1998,7 @@ Special used & \(\rightarrow 3\)
 Write the \emph{five} digits of a chant in order to form a quinary code; translate via the sealed table (see \S\ref{pz:candle-ledger}). Other tables exist historically, but this volume fixes the above for consistency.
 
 \medskip
-\noindent\textbf{Use at the table (optional).} Announce triggers aloud ("Cross," "Rooted," "Special") while sliding beads. \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} Announce triggers aloud (''Cross,`` ''Rooted,`` ''Special``) while sliding beads. \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} Candle Count \S\ref{scen:candle-count}; Puzzle 1 \S\ref{pz:candle-ledger}. Status: \emph{canonical within this volume}.
@@ -2011,10 +2011,10 @@ Write the \emph{five} digits of a chant in order to form a quinary code; transla
 \noindent\textbf{Plain claim.} A \emph{ford} is a place priced for crossing; a \emph{sanctum} is a place priced for \emph{not} crossing.
 
 \medskip
-\noindent\textbf{Notes.} The dossier uses "ford" for central, transitory pressure (\S\ref{frag:l5}, \S\ref{scen:witness-ford}) and "sanctum" for the fixed, often gate--aligned corners (\S\ref{pz:map-at-seventeen}). Heuristic: if a location's value \emph{increases} the longer one stays, it behaves sanctum--like; if cost escalates when one lingers (e.g., Witness timer), it is ford--like.
+\noindent\textbf{Notes.} The dossier uses ''ford`` for central, transitory pressure (\S\ref{frag:l5}, \S\ref{scen:witness-ford}) and ''sanctum`` for the fixed, often gate--aligned corners (\S\ref{pz:map-at-seventeen}). Heuristic: if a location's value \emph{increases} the longer one stays, it behaves sanctum--like; if cost escalates when one lingers (e.g., Witness timer), it is ford--like.
 
 \medskip
-\noindent\textbf{Use at the table (optional).} Describe your threats using "cross" vs. "keep" language to signal mood. \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} Describe your threats using ''cross`` vs. ''keep`` language to signal mood. \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} L--series \S\ref{frag:l4}, \S\ref{frag:l5}; Scenario 2 \S\ref{scen:witness-ford}. Status: \emph{interpretive}.
@@ -2023,13 +2023,13 @@ Write the \emph{five} digits of a chant in order to form a quinary code; transla
 \label{geometry:gray-ledger}
 \phantomsection
 
-\noindent\textbf{Plain claim.} A reconstructed doctrine that "prices exits" appears in training slates but nowhere formal; provenance is \emph{contested}.
+\noindent\textbf{Plain claim.} A reconstructed doctrine that ''prices exits`` appears in training slates but nowhere formal; provenance is \emph{contested}.
 
 \medskip
-\noindent\textbf{Notes.} Two slates (\S\ref{scen:veil-of-names} \emph{Clue beat}) score lines by deferred exit rather than denial---a style gloss, not a rule. The name "Gray Ledger" is a modern label for these margins. No mechanical text survives beyond suggestive evaluation marks.
+\noindent\textbf{Notes.} Two slates (\S\ref{scen:veil-of-names} \emph{Clue beat}) score lines by deferred exit rather than denial---a style gloss, not a rule. The name ''Gray Ledger`` is a modern label for these margins. No mechanical text survives beyond suggestive evaluation marks.
 
 \medskip
-\noindent\textbf{Use at the table (optional).} In casual play, try phrasing threats as \emph{costs} ("you can exit, but it prices your next") to shift tempo reading. \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} In casual play, try phrasing threats as \emph{costs} (''you can exit, but it prices your next``) to shift tempo reading. \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} Veil of Names \S\ref{scen:veil-of-names}; L--series \S\ref{frag:l10}. Status: \emph{contested}.
@@ -2038,13 +2038,13 @@ Write the \emph{five} digits of a chant in order to form a quinary code; transla
 \label{geometry:nine}
 \phantomsection
 
-\noindent\textbf{Plain claim.} "Nine" functions as \emph{avoidance} in Theona and as \emph{remaining} in Dhahara; neither maps cleanly to rules.
+\noindent\textbf{Plain claim.} ''Nine`` functions as \emph{avoidance} in Theona and as \emph{remaining} in Dhahara; neither maps cleanly to rules.
 
 \medskip
-\noindent\textbf{Notes.} Theonan avoidance---unnamed ninth cup/rope (\S\ref{frag:l7})---contrasts with Dhaharan practice (\S\ref{epilogue:dhahara-ninth}) where the ninth is the seat left open, nearer a contemplative "saint" than an angel. Lexicus's later fervor (\S\ref{frag:l13}) should be read as personal heat, not instruction.
+\noindent\textbf{Notes.} Theonan avoidance---unnamed ninth cup/rope (\S\ref{frag:l7})---contrasts with Dhaharan practice (\S\ref{epilogue:dhahara-ninth}) where the ninth is the seat left open, nearer a contemplative ''saint`` than an angel. Lexicus's later fervor (\S\ref{frag:l13}) should be read as personal heat, not instruction.
 
 \medskip
-\noindent\textbf{Use at the table (optional).} If you observe a "ninth," let it be a \emph{pause} (a breath), not a mechanic. \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} If you observe a ''ninth,`` let it be a \emph{pause} (a breath), not a mechanic. \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} L--series \S\ref{frag:l7}, \S\ref{frag:l13}; Dhaharan leaf \S\ref{epilogue:dhahara-ninth}. Status: \emph{comparative}.
@@ -2071,7 +2071,7 @@ Write the \emph{five} digits of a chant in order to form a quinary code; transla
 Variant house--hands exist but resolve to the same five classes. Use the legend consistently across puzzles (\S\ref{pz:map-at-seventeen}, \S\ref{pz:triangle-ledger}).
 
 \medskip
-\noindent\textbf{Use at the table (optional).} When annotating casual games, you may tag turns with a symbol instead of a word (e.g., \(\bullet\) for "special used"). \emph{No rules change.}
+\noindent\textbf{Use at the table (optional).} When annotating casual games, you may tag turns with a symbol instead of a word (e.g., \(\bullet\) for ''special used``). \emph{No rules change.}
 
 \medskip
 \noindent\textbf{Sources.} Puzzles \S\ref{pz:map-at-seventeen}, \S\ref{pz:triangle-ledger}; ledger leaves \S\ref{frag:l3}. Status: \emph{standardized here}.
@@ -2083,7 +2083,7 @@ Variant house--hands exist but resolve to the same five classes. Use the legend 
 \noindent\textbf{Plain claim.} The L--series shows internal consistency, but late leaves (\S\ref{frag:l15}) are smoke--damaged and ideologically hot; provenance is mixed.
 
 \medskip
-\noindent\textbf{Notes.} Aqyl's cadence test ("count aloud; copy plainer later") supports early L--leaves (\S\ref{frag:l1}, \S\ref{frag:l2}). The ecstatic entries around the Ash--Fenn Rite and "The Ninth" (\S\ref{frag:l14}, \S\ref{frag:l15}) depart from that sobriety, and one day--book is explicitly burned. Hand--comparison suggests the same scribe, overwriting in haste.
+\noindent\textbf{Notes.} Aqyl's cadence test (''count aloud; copy plainer later``) supports early L--leaves (\S\ref{frag:l1}, \S\ref{frag:l2}). The ecstatic entries around the Ash--Fenn Rite and ''The Ninth`` (\S\ref{frag:l14}, \S\ref{frag:l15}) depart from that sobriety, and one day--book is explicitly burned. Hand--comparison suggests the same scribe, overwriting in haste.
 
 \medskip
 \noindent\textbf{Use at the table (optional).} Where two fragments disagree on meaning, prefer the cooler hand for framing mood. \emph{No rules change.}
@@ -2094,7 +2094,7 @@ Variant house--hands exist but resolve to the same five classes. Use the legend 
 \addcontentsline{toc}{section}{Part V --- Appendices \& Sealed Solutions}
 
 \begin{quote}\small
-"Read what you can; hide what you must. The page keeps the order either way."\\
+''Read what you can; hide what you must. The page keeps the order either way.``\\
 \hfill --- \textit{Lexicus}, note to self
 \end{quote}
 \clearpage
@@ -2154,7 +2154,7 @@ Variant house--hands exist but resolve to the same five classes. Use the legend 
 \noindent\textit{Icon key reminder (from \S\ref{app:legend}).} \textit{rim band} = dashed rim arc; \textit{center ford} = shaded 2×2 center; \textit{veil card} = face--down card; \textit{five beads} = five-step track; \textit{coin + salt} = copper token with salt mark; \textit{oath set} = three oath glyphs; \textit{cracked arc} = dashed rim arc with break.
 
 \medskip
-\noindent\textit{Designer whisper (small).} These pairings change what you notice, not what you"re allowed to do.
+\noindent\textit{Designer whisper (small).} These pairings change what you notice, not what you''re allowed to do.
 
 \clearpage
 \section{Printables \& Table Props}
@@ -2180,7 +2180,7 @@ Brass cipher strip & Base--5 reminder (icons→digits) & \S\ref{pz:candle-ledger
 \bottomrule
 \end{tabular}
 \medskip
-\noindent\textit{Printer marks: crop marks 3\,mm outside trim, light--gray hairlines for cut/fold, duplex alignment dots (\(\bullet\)) at mid--short edge, registration bars on the long edge; print at 100\% scale ("Actual size"), no fit-to-page.}
+\noindent\textit{Printer marks: crop marks 3\,mm outside trim, light--gray hairlines for cut/fold, duplex alignment dots (\(\bullet\)) at mid--short edge, registration bars on the long edge; print at 100\% scale (``Actual size''), no fit-to-page.}
 
 \clearpage
 \section{Icons \& Encodings (Quick Legend)}
@@ -2195,7 +2195,7 @@ Brass cipher strip & Base--5 reminder (icons→digits) & \S\ref{pz:candle-ledger
 \([{\small ✚}]\) & A turn \emph{ends} in the Cross (Candle trigger).\\
 \([{\small \raisebox{0.15em}{\(\,\bot\,\)}}]\) & A Blue becomes \emph{Rooted} (Candle trigger).\\
 \([\text{S}]\) & A \emph{special} is used (Candle trigger).\\
-Dashed rim arc & Optional "cracked" arc for \emph{The Ninth}.\\
+Dashed rim arc & Optional ``cracked'' arc for \emph{The Ninth}.\\
 \bottomrule
 \end{tabular}
 
@@ -2369,18 +2369,18 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \label{app:schools}
 \phantomsection
 
-\subsubsection{Theona --- "Fairy Stones"}
+\subsubsection{Theona --- ``Fairy Stones''}
 \label{school:theona}
 \phantomsection
-\addcontentsline{toc}{subsubsection}{Theona --- "Fairy Stones"}
+\addcontentsline{toc}{subsubsection}{Theona --- ``Fairy Stones''}
 
-\noindent\textit{Lore preface.} On the eastern isle they leave one seat empty and one turn uncounted. Fishers speak their nets in eights and set aside a ninth rope as ward. They call the game only \emph{Fairy Stones} among strangers, and if pressed for doctrine they change the subject to weather, thresholds, and the duty of not naming a thing before it has earned its name. Their tables are low; the lanterns are small; the salt is put away when guests arrive. They will teach by showing you what they \emph{didn"t} do.
-
-\medskip
-\noindent\textbf{Concordance profile.} \emph{A restraint school that prices crossings by omission. Theona wins by offering "almost--exits," escorting foes through honest lanes, and arriving one breath later with better measure.}
+\noindent\textit{Lore preface.} On the eastern isle they leave one seat empty and one turn uncounted. Fishers speak their nets in eights and set aside a ninth rope as ward. They call the game only \emph{Fairy Stones} among strangers, and if pressed for doctrine they change the subject to weather, thresholds, and the duty of not naming a thing before it has earned its name. Their tables are low; the lanterns are small; the salt is put away when guests arrive. They will teach by showing you what they \emph{didn``t} do.
 
 \medskip
-\noindent\textbf{Core premise.} \textit{Leave the ninth empty.} In practice: favor sequences that end on the eighth count of a local race, compelling the opponent to "name" the crossing first. Theona converts opponent initiative into priced exits.
+\noindent\textbf{Concordance profile.} \emph{A restraint school that prices crossings by omission. Theona wins by offering ''almost--exits,`` escorting foes through honest lanes, and arriving one breath later with better measure.}
+
+\medskip
+\noindent\textbf{Core premise.} \textit{Leave the ninth empty.} In practice: favor sequences that end on the eighth count of a local race, compelling the opponent to ''name`` the crossing first. Theona converts opponent initiative into priced exits.
 
 \medskip
 \noindent\textbf{Table mood.} Quiet pressure; edges kept clean; center touched and released. Announce little; show much.
@@ -2390,8 +2390,8 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \begin{enumerate}\setlength\itemsep{0.25em}
   \item \textbf{Keep one square unclaimed} in any local three--move plan; use it as a pivot rather than a goal.
   \item \textbf{Offer tidy lanes} that look free but tax tempo two moves later.
-  \item \textbf{Touch the center, don"t sit in it.} Create work there; cash it on the rim.
-  \item \textbf{Finish on "eight."} If a chase resolves in eight plies, prefer to be the one who \emph{declines} the ninth.
+  \item \textbf{Touch the center, don''t sit in it.} Create work there; cash it on the rim.
+  \item \textbf{Finish on ``eight.''} If a chase resolves in eight plies, prefer to be the one who \emph{declines} the ninth.
 \end{enumerate}
 
 \medskip
@@ -2407,8 +2407,8 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \medskip
 \noindent\textbf{Midgame patterns.}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textbf{Near--Ford Escort.} Guide an opposing advance across a ford you"ve priced; recoup on the flank they abandoned.
-  \item \textbf{Eighth--Beat Switch.} Hold a resource until move eight of a local loop, then trade lanes while the opponent "names" the ninth.
+  \item \textbf{Near--Ford Escort.} Guide an opposing advance across a ford you``ve priced; recoup on the flank they abandoned.
+  \item \textbf{Eighth--Beat Switch.} Hold a resource until move eight of a local loop, then trade lanes while the opponent ''names`` the ninth.
 \end{itemize}
 
 \medskip
@@ -2421,7 +2421,7 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \medskip
 \noindent\textbf{Counters (vs. Theona).}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textbf{Name first---cleanly.} Take the "ninth" with a line that doesn"t hand them a priced reply.
+  \item \textbf{Name first---cleanly.} Take the ''ninth`` with a line that doesn''t hand them a priced reply.
   \item \textbf{Refuse escorts.} If offered a tidy lane, ask what purchase it buys them on the opposite edge before walking it.
   \item \textbf{Break symmetry early.} Theona thrives on mirrored patience; asymmetry forces them to \emph{name}.
 \end{itemize}
@@ -2430,26 +2430,26 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \noindent\textbf{Drills.}
 \begin{enumerate}\setlength\itemsep{0.25em}
   \item \textbf{Eight--Count Scrimmage.} Play blitz micro--games where you must \emph{not} be the player who completes the ninth tempo in any localized race.
-  \item \textbf{Empty--Seat Review.} After a game, circle all positions where you could have left one "chair" open; score how often that would have improved your conversion.
+  \item \textbf{Empty--Seat Review.} After a game, circle all positions where you could have left one ``chair'' open; score how often that would have improved your conversion.
 \end{enumerate}
 
 \medskip
-\noindent\textbf{Use with Rites (optional, cosmetic).} \emph{Veil of Names} (\S\ref{scen:veil-of-names}) complements the style's quiet; \emph{Candle Count} (\S\ref{scen:candle-count}) makes the "eighth--beat" decisions visible without changing a rule. Leave both \textsc{OFF} for tournament play.
+\noindent\textbf{Use with Rites (optional, cosmetic).} \emph{Veil of Names} (\S\ref{scen:veil-of-names}) complements the style's quiet; \emph{Candle Count} (\S\ref{scen:candle-count}) makes the ``eighth--beat'' decisions visible without changing a rule. Leave both \textsc{OFF} for tournament play.
 
 \medskip
 \begin{quote}\small
-"Leave one cup poured and unclaimed; leave one chair waiting. The board will tell you which guest has arrived."\\
-\hfill --- \textit{Theonan fishers" saying}
+``Leave one cup poured and unclaimed; leave one chair waiting. The board will tell you which guest has arrived.''\\
+\hfill --- \textit{Theonan fishers`` saying}
 \end{quote}
 
-\subsubsection{The Witness --- "The Remaining Compact"}
+\subsubsection{The Witness --- ''The Remaining Compact``}
 \label{school:witness}
 \phantomsection
 
 \noindent\textit{Lore preface.} They say the circle that calls itself \emph{the Witness} keeps three small vows and two large courtesies. The vows are salt, copper, and silence: \emph{bind the edge}, \emph{price the crossing}, \emph{name nothing until it earns the name}. The courtesies are to the eighth and the ninth: \emph{work to the eighth}, then \emph{leave one thing unclosed} so the room can answer. Their numbers are not spells; they are habits with a taste for thresholds.
 
 \medskip
-\noindent\textbf{Concordance profile.} \emph{A threshold school that taxes crossings and converts pressure into measured exits. The Witness wins by staging "priced invitations," sealing on tempo rather than on spectacle.}
+\noindent\textbf{Concordance profile.} \emph{A threshold school that taxes crossings and converts pressure into measured exits. The Witness wins by staging ''priced invitations,`` sealing on tempo rather than on spectacle.}
 
 \medskip
 \noindent\textbf{Core premise.} \textit{Price first, cross later.} Make each opponent advance carry a delayed cost; step through only when your ledger is favorable.
@@ -2461,7 +2461,7 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \noindent\textbf{Sacred counts (as heuristics, not rules).}
 \begin{description}\setlength\itemsep{0.35em}
   \item[\textbf{3} --- Proof.] Before you take a crossing, demand three proofs: \emph{(i)} you gain a lane, \emph{(ii)} you deny an answer, \emph{(iii)} you keep a recourse.
-  \item[\textbf{5} --- Candles.] Evaluate local fights in five-beat phrases; prefer lines that "light" two of the public triggers while conceding at most one.
+  \item[\textbf{5} --- Candles.] Evaluate local fights in five-beat phrases; prefer lines that ''light`` two of the public triggers while conceding at most one.
   \item[\textbf{8} --- Work.] Resolve races by the eighth ply; if resolution slips to the ninth, make it \emph{their} hand that names it.
   \item[\textbf{9} --- Remaining.] Leave one square, line, or capture \emph{deliberately unclaimed}. That absence is leverage, not loss.
 \end{description}
@@ -2476,12 +2476,12 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \end{enumerate}
 
 \medskip
-\noindent\textbf{Preferred shapes.} Quincunx scaffolds; triads that point at a rim crack; ladder lanes that stop one square short (the "kept step").
+\noindent\textbf{Preferred shapes.} Quincunx scaffolds; triads that point at a rim crack; ladder lanes that stop one square short (the ''kept step``).
 
 \medskip
 \noindent\textbf{Openers (themes, not rules).}
 \begin{description}\setlength\itemsep{0.35em}
-  \item[\textit{Copper Ledger.}] Offer a clean lane; spend tempo elsewhere so that accepting your "gift" walks into a ready denial.
+  \item[\textit{Copper Ledger.}] Offer a clean lane; spend tempo elsewhere so that accepting your ''gift`` walks into a ready denial.
   \item[\textit{Salt Ring.}] Develop two files inward, keeping the outermost squares unattractive; trade edges late when your center refusal has priced their options.
 \end{description}
 
@@ -2502,7 +2502,7 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 \medskip
 \noindent\textbf{Counters (vs. the Witness).}
 \begin{itemize}\setlength\itemsep{0.25em}
-  \item \textbf{Name early.} Commit to a clean, forcing line that denies them the "kept ninth."
+  \item \textbf{Name early.} Commit to a clean, forcing line that denies them the ''kept ninth.``
   \item \textbf{Over-pay nothing.} If a lane looks free, count two moves deeper; refuse if the ledger turns.
   \item \textbf{Pull to open water.} Spread the fight; they prefer priced corridors to broad fronts.
 \end{itemize}
@@ -2519,7 +2519,7 @@ Some players leave one step unspent in profitable lines and seem to win more. I 
 
 \medskip
 \begin{quote}\small
-"Bind the edge, price the water, keep one step unspent. The board remembers who pays and who witnesses."\\
+''Bind the edge, price the water, keep one step unspent. The board remembers who pays and who witnesses.``\\
 \hfill --- \textit{from a House of Wells catechism, unattributed}
 \end{quote}
 
@@ -2552,7 +2552,7 @@ If there is a ninth, it is not a captain and not a judge. It abides. It is the r
 \end{quote}
 
 \medskip
-\noindent\textit{Translator's note.} The Dhaharan term rendered "the remaining" admits readings as "what abides" and "what stays available." The folio hints (without disputation) that the "Messenger" left its place to lie \emph{flat as play}. The leaf commands nothing; it suggests a practice. The board appears as craft, not dogma.
+\noindent\textit{Translator's note.} The Dhaharan term rendered ''the remaining`` admits readings as ''what abides`` and ''what stays available.`` The folio hints (without disputation) that the ''Messenger`` left its place to lie \emph{flat as play}. The leaf commands nothing; it suggests a practice. The board appears as craft, not dogma.
 
 \section*{Epilogue --- A Letter from Alayse}
 \addcontentsline{toc}{section}{Epilogue --- A Letter from Alayse}
@@ -2564,7 +2564,7 @@ If there is a ninth, it is not a captain and not a judge. It abides. It is the r
 \medskip
 \noindent Elyas,
 
-I grow most concerned for Markus of late. I know he loves me and our daughter, yet his soft smile so seldom reaches his eyes. I jest that his years in Thepyrgos scorched his skin and his gaze. I know the truth of it; his Ecktorian blood is truer than his brothers" and he darkens with age. He laughs and calls me a silly thing\ldots{} and yet.
+I grow most concerned for Markus of late. I know he loves me and our daughter, yet his soft smile so seldom reaches his eyes. I jest that his years in Thepyrgos scorched his skin and his gaze. I know the truth of it; his Ecktorian blood is truer than his brothers'' and he darkens with age. He laughs and calls me a silly thing\ldots{} and yet.
 
 And yet I find him often in the yard, staring. Our Ykrul champion says he prays to the eight winds, but Markus always faces south, even when the breeze comes down from the north. Perhaps he misses the warm kiss of the southern air. Sometimes he will stand until the eighth bell and only then come in, as if keeping a small appointment with the hush. Perhaps it is only that he worries after Lerris---still enrolled at the University these twelve, nearly thirteen, years. The stacks keep what they keep.
 

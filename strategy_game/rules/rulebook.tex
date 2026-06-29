@@ -19,8 +19,8 @@
 \usepackage{parskip}
 \usepackage{ellipsis} % improves spacing around \dots/\ldots automatically
 \usepackage{tabularx}
-\usepackage{tikz}              % load TikZ first...
-\usetikzlibrary{arrows.meta,calc,positioning}  % ...then libraries
+\usepackage{tikz}              % load TikZ first\dots
+\usetikzlibrary{arrows.meta,calc,positioning}  % \dotsthen libraries
 
 \usepackage{subcaption}
 \usepackage{needspace}
@@ -85,7 +85,7 @@
 \renewcommand{\arraystretch}{1.15}
 \setlength{\parindent}{0pt}
 
-% --- Status badges (TEXT mode; do not put them in \( ... \)) ---
+% --- Status badges (TEXT mode; do not put them in \( \dots \)) ---
 \newcommand{\CC}[1]{\textcolor{blue!60!black}{\scriptsize\ttfamily[CF:#1]}}
 \newcommand{\SC}[1]{\textcolor{red!60!black}{\scriptsize\ttfamily[S:#1]}}
 \newcommand{\RoC}{\textcolor{teal!60!black}{\scriptsize\ttfamily[Rooted]}}
@@ -116,8 +116,8 @@
 
 % Grid + shading (top-left origin: physical y = BoardN - y)
 \newcommand{\DrawGrid}{%
-  \foreach \x in {1,...,\BoardN}{%
-    \foreach \y in {1,...,\BoardN}{%
+  \foreach \x in {1,\dots,\BoardN}{%
+    \foreach \y in {1,\dots,\BoardN}{%
       \pgfmathtruncatemacro{\yphys}{\BoardN-\y}%
       \pgfmathtruncatemacro{\shade}{mod(\x+\y,2)==0 ? 3 : 0}%
       \fill[black!\shade] ({\x-1},{\yphys}) rectangle ++(1,1);
@@ -125,7 +125,7 @@
     }%
   }%
 }
-\newcommand{\ShadeSquares}[2]{% #1=style, #2="x/y,x/y,..."
+\newcommand{\ShadeSquares}[2]{% #1=style, #2="x/y,x/y,\dots"
   \foreach \x/\y in {#2}{%
     \pgfmathtruncatemacro{\yphys}{\BoardN-\y}%
     \path[#1] ({\x-1},{\yphys}) rectangle ++(1,1);
@@ -140,8 +140,8 @@
   }%
 }
 \newcommand{\RedrawGridLines}{%
-  \foreach \x in {1,...,\BoardN}{%
-    \foreach \y in {1,...,\BoardN}{%
+  \foreach \x in {1,\dots,\BoardN}{%
+    \foreach \y in {1,\dots,\BoardN}{%
       \pgfmathtruncatemacro{\yy}{\BoardN-\y}%
       \draw[sq] ({\x-1},{\yy}) rectangle ++(1,1);
     }%
@@ -183,8 +183,8 @@
 
 % === Faction blurb block (name + one-line desc + optional tagline) ===
 % Usage:
-%   \factionblurb{Ykrul (Kon'reh)}{Control-first pragmatists...}{"Count exits, not victims." --- Kargath}
-%   \factionblurb{Ecktorian}{Engineers of symmetry...}{}   % <- no tagline line
+%   \factionblurb{Ykrul (Kon'reh)}{Control-first pragmatists\dots}{"Count exits, not victims." --- Kargath}
+%   \factionblurb{Ecktorian}{Engineers of symmetry\dots}{}   % <- no tagline line
 \newcommand{\factionblurb}[3]{%
   \par\medskip
   \Needspace{3\baselineskip}% keep label+desc+tagline together when possible
@@ -353,7 +353,7 @@
 
 {\small
 \noindent \textbf{KON'REH} and associated setting terms including but not limited to:
-\textit{Canray}, \textit{K"thra}, \textit{Kanry}, \textit{Twin Apex Seed}, \textit{Reforge},
+\textit{Canray}, \textit{K``thra}, \textit{Kanry}, \textit{Twin Apex Seed}, \textit{Reforge},
 the names of cultures (e.g., Ykrul, Ecktorian, Vhasian, Viterran, Aeler, Vilikari, Thepyrgosi (Thepyric), Ubral, Silkstrand),
 proper nouns, places, characters, flavor quotes, worldbuilding lore, diagrams, iconography,
 and the specific textual expression of rules, examples, and notation in this book are
@@ -372,7 +372,7 @@ Use of the marks does not imply endorsement.\\[8pt]
 \noindent \textbf{Fan Content Policy (Non-Commercial).}
 You may reference these rules in reviews, tutorials, and fan aids, and you may create non-commercial
 scenarios and player aids that include brief excerpts, provided you (i) credit
-\textit{"Kon"reh © \the\year\ Nicholas A. Gasper"}, (ii) do not reproduce large portions of this book verbatim,
+\textit{''Kon``reh © \the\year\ Nicholas A. Gasper''}, (ii) do not reproduce large portions of this book verbatim,
 and (iii) do not imply official status. For commercial use, please contact the publisher.\\[8pt]
 
 \noindent \textbf{All Rights Reserved.}
@@ -405,7 +405,7 @@ PLACEHOLDER \\
 \begin{quote}\small
 Aqyl of Thepyrgos, in 538 A.R., went up and down the Amaranthine collecting every form of the Imperial Game, Canray. He hinted at what those of us who served under Black Banners already knew: the Ykrul set the first board. In Utaran he titled it \emph{On the Imperial Game, Being a Most Complete and Faithful Corpus of Its Laws, Variants, and the Dispositions of the Peoples Who Play It}. In Vhasian rolls it appears simply as \emph{Corpus Canré}. It was banned as contrary to the health of the empire. After the \emph{Edict of Colonia Victrix (Laveus Cordus), On Indecent Letters} in 553 A.R., only a few poor translations circulated. The handful of originals remaining are scattered in private libraries; jealously guarded by aficionados and lords such as myself.
 
-I have made this \emph{Corpus Canré Scholiatum} to serve the present age. I collated what could be found, set the Utaran back in its places, corrected imperial glosses, and regularized the names where the documents agree. I add tables and diagrams fit for students, with notes from banner service and the river houses. If there is error, it is mine. The game is older than our names for it. The Tulughma Host\footnote{Also called the "Encircling" or "Ring" Host; "Kapqan Horde" in other steppe tongues.} taught it to us; the Empire dressed it in roads and law.
+I have made this \emph{Corpus Canré Scholiatum} to serve the present age. I collated what could be found, set the Utaran back in its places, corrected imperial glosses, and regularized the names where the documents agree. I add tables and diagrams fit for students, with notes from banner service and the river houses. If there is error, it is mine. The game is older than our names for it. The Tulughma Host\footnote{Also called the ``Encircling'' or ``Ring'' Host; ``Kapqan Horde'' in other steppe tongues.} taught it to us; the Empire dressed it in roads and law.
 
 \hfill\emph{Duke Braedon Fenwood (in the old hand: B. V. Velvano III), Tarlington, Ashing Year 862 A.R.}
 \end{quote}
@@ -441,11 +441,11 @@ Optional content defaults \textsc{off} unless agreed before timers  start.}
 
 \begin{RosettaTable}{Board \& Pieces}
   \rosrow{Blue (``Arbiter'')}{Your royal piece. It has exactly \textbf{two} one-per-life specials (see below). If Blue is captured, the \emph{Reforge} race begins.}
-  \rosrow{Special --- Displacement}{One-shot special that repositions Blue according to the core rules" constraints. Consumes Blue's action for the turn.}
-  \rosrow{Special --- Hop}{One-shot special that lets Blue hop according to the core rules" constraints. Consumes Blue's action for the turn.}
+  \rosrow{Special --- Displacement}{One-shot special that repositions Blue according to the core rules`` constraints. Consumes Blue's action for the turn.}
+  \rosrow{Special --- Hop}{One-shot special that lets Blue hop according to the core rules'' constraints. Consumes Blue's action for the turn.}
   \rosrow{Rooted (Stagger)}{After Blue's \emph{second} special, Blue becomes \textbf{Rooted} until the start of your next turn (cannot move during that interval).}
-  \rosrow{Greens}{Neutral pieces you create via \emph{Seed}. Subject to a global \textbf{cap} and a mobilization \textbf{delay} (can"t act the turn they appear).}
-  \rosrow{Sanctum}{Your two special squares (home anchors). They gate \emph{Seeding} and are eligible Reforge entry points (see "Reforge").}
+  \rosrow{Greens}{Neutral pieces you create via \emph{Seed}. Subject to a global \textbf{cap} and a mobilization \textbf{delay} (can``t act the turn they appear).}
+  \rosrow{Sanctum}{Your two special squares (home anchors). They gate \emph{Seeding} and are eligible Reforge entry points (see ''Reforge``).}
   \rosrow{Apex / Opposing Apex}{The far end entry lane. Choosing \emph{Opposing Apex} at Reforge costs a Green (OAR).}
 \end{RosettaTable}
 
@@ -472,7 +472,7 @@ Optional content defaults \textsc{off} unless agreed before timers  start.}
 \subsection*{Board}
 An \(8\times 8\) diamond grid. The four corners are the \textbf{Apexes}:
 \begin{itemize}[leftmargin=1.3em,itemsep=0.2em]
-  \item \textbf{Home Apex} (yours) \quad\textit{vs.}\quad \textbf{Opposing Apex} (opponent"s)
+  \item \textbf{Home Apex} (yours) \quad\textit{vs.}\quad \textbf{Opposing Apex} (opponent''s)
   \item Two side apexes: the \textbf{Sanctums} (left/right from your view)
 \end{itemize}
 
@@ -481,7 +481,7 @@ An \(8\times 8\) diamond grid. The four corners are the \textbf{Apexes}:
 \toprule
 \textbf{Piece / Item} & \textbf{Qty} & \textbf{Notes} \\
 \midrule
-Blue (Royal) & 1 & Your "king" piece with two specials per life. \\
+Blue (Royal) & 1 & Your ``king'' piece with two specials per life. \\
 Orange (Officers) & 2 & Long-lane control. \\
 Red (Line) & 6 & Short anchors / bridges. \\
 Green (Runners) & 1 & Each player starts with 1 Green; additional Greens enter via Seed. \\
@@ -499,7 +499,7 @@ Player Aid \& Scoresheet & 1 each & State/timer tracker recommended. \\
 \toprule
 \textbf{Marker} & \textbf{Qty} & \textbf{What it tracks / When to adjust} \\
 \midrule
-Blue special markers "H/D" & 2 per player & Flip when that Blue has used \emph{Hop} or \emph{Displacement} (this life). Refresh on Reforge (and via Buyback if used). \\
+Blue special markers ``H/D'' & 2 per player & Flip when that Blue has used \emph{Hop} or \emph{Displacement} (this life). Refresh on Reforge (and via Buyback if used). \\
 Rooted marker & 1 per player & Place after Seed or after the \emph{second} Blue special (Crown Stagger). Remove at start of owner's next turn. \\
 Cross stay pips (0--3) & 3 per player & Increment when your turn \emph{ends} with Blue in the Central Four; reset to 0 after a turn ends outside. \\
 Cross exclusion pips (0--2) & 2 per player & After leaving the Four, count your next \emph{two} turns before re-entry; decrement each of your turns. \\
@@ -640,7 +640,7 @@ A Blue has two one-use capture specials, refreshed when it returns via Reforge. 
 
 \textbf{Not legal.} You may \emph{not} slide into enemy ZoC and then use a special on the same turn: entering ZoC by sliding immediately ends the move.
 
-\textit{Example.} From adjacency, Blue may hop over an enemy into an empty square that is in ZoC. But "slide one step into ZoC to become adjacent, then hop" is illegal.
+\textit{Example.} From adjacency, Blue may hop over an enemy into an empty square that is in ZoC. But ``slide one step into ZoC to become adjacent, then hop'' is illegal.
 \end{tcolorbox}
 
 \paragraph{Crown Stagger (core).}
@@ -673,7 +673,7 @@ The \textbf{same-Sanctum ban} forbids Seeding only from the exact Sanctum used f
 \end{tcolorbox}
 
 
-\section{Central Four (the "Cross")}
+\section{Central Four (the ``Cross'')}
 \label{sec:bluecross}
 
 The \textbf{Cross} is the 2×2 diamond of squares at board center. Only Blue has special timing there:
@@ -700,7 +700,7 @@ The \textbf{Cross} is the 2×2 diamond of squares at board center. Only Blue has
 
 \noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
 \toprule
-\textbf{Central Four ("Cross") --- Summary} & \textbf{Effect}\\
+\textbf{Central Four (``Cross'') --- Summary} & \textbf{Effect}\\
 \midrule
 Enter Cross & Legal; normal ZoC applies.\\
 Stay timer & Max \textbf{3 of that Blue's turns} inside.\\
@@ -729,7 +729,7 @@ On the turn you occupy the enemy Home Apex:
 % Requires \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
 \begin{tcolorbox}[title={Default Time \& Start-Balance Rule},label={box:default_time_rule},breakable]
-\textbf{Core default.} In all ranked/tournament play, Kon"rēh uses a \emph{10+5} Fischer time control
+\textbf{Core default.} In all ranked/tournament play, Kon``rēh uses a \emph{10+5} Fischer time control
 (10 minutes base with +5 seconds added after each move) and the \emph{P2 double-move} start-balance.
 This default applies unless an event specifies different settings or both players agree otherwise.
 Casual or learning games may disregard it.
@@ -791,7 +791,7 @@ A:\ \SC{H}\ (Hop used);\ B:\ \SC{D}\ (Displacement used).\\
 \CC{in 1/3}/\CC{ex 1/2}\ = Cross counters;\ \RoC{} = Rooted;\ \RC{} = Reforge;\ \CapC{2--1} = Greens on board (A--B).\\
 \end{tabularx}
 
-Lane tags are board-standard on the diamond: "left/right" are relative to your Onward/Homeward facing, not compass points.
+Lane tags are board-standard on the diamond: ''left/right`` are relative to your Onward/Homeward facing, not compass points.
 \end{quote}
 
 \subsection*{ZoC (summary)}
@@ -808,7 +808,7 @@ Each piece projects ZoC to the four \textbf{diagonal-adjacent} squares (one step
 \subsection*{Twin Apex Seed (summary)}
 End Blue's move on a Sanctum $\rightarrow$ spawn a Green on the opposite Sanctum (if empty, cap OK) $\rightarrow$ that Blue is \textbf{Rooted} until your next turn. \textbf{Cannot} Seed on Blue's \emph{first} departure from Home Apex.
 
-\subsection*{Central Four ("Cross") (summary)}
+\subsection*{Central Four (''Cross``) (summary)}
 Max \textbf{3 of that Blue's turns} inside; after exiting, \textbf{cannot re-enter for 2 of its turns}.
 
 \noindent\textbf{Violations.} Rewind to the last legal position before the illegal end-of-turn and enforce a legal move.
@@ -850,7 +850,7 @@ Max \textbf{3 of that Blue's turns} inside; after exiting, \textbf{cannot re-ent
 \label{sec:etiquette}
 
 
-Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blue's specials, and \textbf{six beads} for the global Green cap. Announce "\textit{Seed}" and "\textit{Reforge}" aloud to avoid ambiguity. When in doubt, replay from the last clear position.
+Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blue's specials, and \textbf{six beads} for the global Green cap. Announce ''\textit{Seed}`` and ''\textit{Reforge}`` aloud to avoid ambiguity. When in doubt, replay from the last clear position.
 
 \vfill
 \hrule
@@ -1070,11 +1070,11 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
 % === just after \section{Strategy \& Training Guide} ===
 \vspace{-0.5em}
 \begin{quote}\small
-\textit{"I watched an Oshiiran marshal play not for squares but for \emph{throughput}. He hung two lanterns on the market's edge and called them exits; the crowd did not see the lamps were \emph{certificates}\footnote{The translator glosses Safiya's "lanterns" as the Oshiiran practice of proving \emph{two certain exits} before a central incursion; cf.\ our XS (\emph{Exit Certainty}).}. When his Blue stepped into the desert, he drank once, twice, thrice---and never a fourth\footnote{Safiya's "desert" is the central four. Her "three drinks" aligns with the Cross stay limit of three turns.}. The merchants with drums called this caution. It was geometry.}
+\textit{''I watched an Oshiiran marshal play not for squares but for \emph{throughput}. He hung two lanterns on the market's edge and called them exits; the crowd did not see the lamps were \emph{certificates}\footnote{The translator glosses Safiya's ``lanterns'' as the Oshiiran practice of proving \emph{two certain exits} before a central incursion; cf.\ our XS (\emph{Exit Certainty}).}. When his Blue stepped into the desert, he drank once, twice, thrice---and never a fourth\footnote{Safiya's ``desert'' is the central four. Her ``three drinks'' aligns with the Cross stay limit of three turns.}. The merchants with drums called this caution. It was geometry.}
 
-\textit{He did not harvest material; he priced routes. The first Orange set the levy where feet must fall, the Reds laid bridges \emph{not} to cross but to \emph{close} behind. When a Sanctum answered, his captain rooted himself like a quartermaster with both hands on the ledger\footnote{Safiya's image of the "rooted quartermaster" foreshadows the modern \emph{Rooted} state after Seed and the Crown Stagger consequence of spending both Blue captures in a single life.}, and from the opposite quay a Green packet slid out with the tide.}
+\textit{He did not harvest material; he priced routes. The first Orange set the levy where feet must fall, the Reds laid bridges \emph{not} to cross but to \emph{close} behind. When a Sanctum answered, his captain rooted himself like a quartermaster with both hands on the ledger\footnote{Safiya's image of the ``rooted quartermaster'' foreshadows the modern \emph{Rooted} state after Seed and the Crown Stagger consequence of spending both Blue captures in a single life.}, and from the opposite quay a Green packet slid out with the tide.}
 
-\textit{You will say this is slow. It is only quiet. See how the five dawns were counted before the first strike: a depot planted far; a lane welded late; a Cross touched and left with dignity; a runner shown and then priced away; the banner race forced to end on a bookkeeper's page. The victory was not a blow but a balance: when every profitable road belonged to him, the other player resigned like a caravan turning at a toll."}
+\textit{You will say this is slow. It is only quiet. See how the five dawns were counted before the first strike: a depot planted far; a lane welded late; a Cross touched and left with dignity; a runner shown and then priced away; the banner race forced to end on a bookkeeper's page. The victory was not a blow but a balance: when every profitable road belonged to him, the other player resigned like a caravan turning at a toll.``}
 \end{quote}
 \begin{flushright}\small
 --- rendered by \textit{Damios of Astrogos}, fol.\,212\textit{v}--213\textit{r}\\
@@ -1084,23 +1084,23 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
 \subsection*{Core Mental Models}
 \textbf{ZoC as a graph.} Treat the board as a movement graph along four lanes (two Onward, two Homeward). Enemy ZoC prunes edges. Strong play is about cutting exits \emph{before} you threaten captures.
 
-\textbf{Blue as a finite resource.} Your Blue carries exactly two capture specials per life (one Displacement, one Hop). Track \emph{both sides"} specials; this largely dictates when Sanctum Seed is safe.
+\textbf{Blue as a finite resource.} Your Blue carries exactly two capture specials per life (one Displacement, one Hop). Track \emph{both sides''} specials; this largely dictates when Sanctum Seed is safe.
 
 \textbf{Countdown as a subgame.} After Blue capture, play reduces to a 5-turn shortest-path race to the enemy Home Apex under ZoC constraints. Greens are the premium runners; lane geometry and ZoC matter more than material.
 
-\textbf{Central Four ("Cross") as a timer.} The center grants leverage with a fuse: at most 3 of that Blue's own turns inside, then a 2-turn exclusion after exit. Enter with a precomputed exit.
+\textbf{Central Four (``Cross'') as a timer.} The center grants leverage with a fuse: at most 3 of that Blue's own turns inside, then a 2-turn exclusion after exit. Enter with a precomputed exit.
 
 \bigskip
 
 \subsection*{Opening Principles}
 \begin{enumerate}
   \item \textbf{Second player's double-move} is a real tempo lever: develop a Red lattice \emph{and} an Orange probe, or an Orange plus a safe Blue sidestep.
-  \item \textbf{Mobilize Blue early} (don"t turtle on Home Apex); the first departure cannot Seed, so plan your \emph{second} Sanctum touch to align with an SSI-safe window.
+  \item \textbf{Mobilize Blue early} (don``t turtle on Home Apex); the first departure cannot Seed, so plan your \emph{second} Sanctum touch to align with an SSI-safe window.
   \item \textbf{Build backward bridges} (retreating Reds along Homeward lanes) to pre-wire banner denial later.
 \end{enumerate}
 
 \subsection*{Midgame Patterns}
-\textbf{Seed windows.} Best after you"ve taxed or tracked out an enemy Blue special, \emph{or} when $R\!\ge\!2$ (their Blue needs at least two of \emph{their} turns to reach capture contact). Screen with an Orange fork or a Red bridge.
+\textbf{Seed windows.} Best after you''ve taxed or tracked out an enemy Blue special, \emph{or} when $R\!\ge\!2$ (their Blue needs at least two of \emph{their} turns to reach capture contact). Screen with an Orange fork or a Red bridge.
 
 \textbf{Cross re-entry.} Re-enter only off a prior threat (e.g., forcing their lattice to rotate two of \emph{their} turns away). Otherwise pivot to Sanctum $\rightarrow$ Seed.
 
@@ -1114,7 +1114,7 @@ Keep a \textbf{five-turn counter} for Reforge, \textbf{two markers} to track Blu
 
 \subsection*{Common Traps \& Counters}
 \begin{itemize}
-  \item \textbf{Rooted Punish:} Capturing a freshly Seeded Blue with a saved special. \emph{Counter:} respect SSI; don"t Seed into $R\!\le\!1$ with $S\!\ge\!1$.
+  \item \textbf{Rooted Punish:} Capturing a freshly Seeded Blue with a saved special. \emph{Counter:} respect SSI; don``t Seed into $R\!\le\!1$ with $S\!\ge\!1$.
   \item \textbf{Telegraphed Cross:} Re-entering the Central Four right after exclusion into a pre-built lattice. \emph{Counter:} Sanctum pivot $\rightarrow$ Seed.
   \item \textbf{Apex Overreach:} Aggressive Reforge onto the Opposing Apex with high enemy density. \emph{Counter:} prefer Home/Sanctum unless the EV is proven.
 \end{itemize}
@@ -1127,7 +1127,7 @@ Place your Blue on a Sanctum. Vary opponent Blue range ($R\!=\!1,2,3$ turns to c
 Start at Greens $3$--$2$ with cap at $4$. One side aims to force cap to $6$ before a Blue trade; the other aims to peel one Green first. Swap sides.
 
 \paragraph{D3 --- Cross Re-entry Gauntlet.}
-Attacker's Blue regains Central Four eligibility; defender alternates between "prepared lattice" and "unprepared." Attacker must name XS before entering; play 6 reps.
+Attacker's Blue regains Central Four eligibility; defender alternates between ''prepared lattice`` and ''unprepared.`` Attacker must name XS before entering; play 6 reps.
 
 \paragraph{D4 --- Two-Turn Welds.}
 After suffering a Cross capture, defender gets \emph{two turns} to seal exits (Red cut + Orange fork). Repeat until the defender consistently denies all certified exits.
@@ -1242,7 +1242,7 @@ Do \emph{not} use both at once. Record which toggle was used on the scoresheet.
 \textit{Purpose:} teach lanes, ZoC, and CF timing without combat.
 \begin{itemize}[leftmargin=1.3em]
   \item \textbf{Rule tweak:} For the first 5--8 turns total, \emph{no captures} and \emph{no Blue specials}. Sliding only.
-  \item \textbf{Coach cue:} Each side must (i) enter and exit the Central Four once, and (ii) build one simple "bridge" (one Red behind one Orange).
+  \item \textbf{Coach cue:} Each side must (i) enter and exit the Central Four once, and (ii) build one simple ''bridge`` (one Red behind one Orange).
   \item \textbf{Debrief:} Point out where a capture \emph{would} have ended inside ZoC; name the CF stay/exile counters you burned.
 \end{itemize}
 
@@ -1252,18 +1252,18 @@ Do \emph{not} use both at once. Record which toggle was used on the scoresheet.
   \item \textbf{Replace} the standard P2 double-move with the pie rule.
   \item \textbf{Sequence:} P1 makes exactly one opening move (no Blue special). P2 then chooses:
     \begin{itemize}
-      \item \emph{"As is"} --- keep sides and play a normal single move as P2; or
-      \item \emph{"Swap"} --- exchange sides/colors with P1; the game proceeds with normal single-move turns.
+      \item \emph{''As is``} --- keep sides and play a normal single move as P2; or
+      \item \emph{''Swap``} --- exchange sides/colors with P1; the game proceeds with normal single-move turns.
     \end{itemize}
   \item \textbf{Note:} Do not combine pie rule with the P2 double-move in the same game.
 \end{itemize}
 
 \subsubsection*{5. Seed Tutor (Two Safe Windows)}
-\textit{Purpose:} teach Rooted, Seed windows, and "seed safety" checks.
+\textit{Purpose:} teach Rooted, Seed windows, and ''seed safety`` checks.
 \begin{itemize}[leftmargin=1.3em]
   \item \textbf{Setup:} Standard 8×8. Begin midgame-ish by agreement or after the No-Capture Walkthrough.
   \item \textbf{Rule tweak:} Each side gets exactly \emph{two} opportunities to perform Twin Apex Seed during the session.
-  \item \textbf{Coach cue:} Before a Seed, say aloud: "Opposite Sanctum empty; mobilization delay satisfied; their Blue cannot punish next turn." If any fail, \emph{no Seed}.
+  \item \textbf{Coach cue:} Before a Seed, say aloud: ''Opposite Sanctum empty; mobilization delay satisfied; their Blue cannot punish next turn.`` If any fail, \emph{no Seed}.
   \item \textbf{Debrief:} Mark whether the Seed survived the Rooted turn and why.
 \end{itemize}
 
@@ -1279,17 +1279,17 @@ By the end of the first game, each player should:
 
 \begin{rulevariant}[title={Common New-Player Pitfalls (Spot \& Stop)}]
 \begin{itemize}\itemsep0.2em
-  \item \textbf{Camping the Cross:} Trying to "hold" center beyond three turns. Enter to pivot, not to pose.
+  \item \textbf{Camping the Cross:} Trying to ''hold`` center beyond three turns. Enter to pivot, not to pose.
   \item \textbf{Early Rooted:} Seeding on Blue's first departure (mobilization delay!) or into a live punish.
   \item \textbf{Chasing, not sealing:} Moving toward a runner instead of welding its penultimate and forking the reroute.
-  \item \textbf{Second special for tempo:} Spending both Blue specials in one life to "look active" --- then dying to Crown Stagger.
+  \item \textbf{Second special for tempo:} Spending both Blue specials in one life to ''look active`` --- then dying to Crown Stagger.
 \end{itemize}
 \end{rulevariant}
 
 \subsubsection*{6. Ten-Minute Teach Script (Coach Prompts)}
 \begin{enumerate}\itemsep0.25em
-  \item \textbf{Footwork:} Slide an Orange far; show ZoC ends. Ask: "Where does their next move \emph{stop}?"
-  \item \textbf{Center as Timer:} Enter CF, count "one of three," exit next turn; point at exile "one of two."
+  \item \textbf{Footwork:} Slide an Orange far; show ZoC ends. Ask: ''Where does their next move \emph{stop}?``
+  \item \textbf{Center as Timer:} Enter CF, count ''one of three,`` exit next turn; point at exile ''one of two.``
   \item \textbook{Bridge:} Place Red behind Orange; ask which square now ends in ZoC.
   \item \textbf{Seed Window:} Move Blue to Sanctum; perform the safety mantra. If safe, Seed; if not, explain why.
   \item \textbf{What-if Reforge:} Describe the five-turn race and the three return choices (Home / Sanctum / Opposing Apex).
@@ -1308,7 +1308,7 @@ Let $R$ be the minimum number of \emph{opponent turns} needed for their Blue, vi
 \begin{tcolorbox}[enhanced,breakable,title={Designer Note --- Heuristics Are Handles, Not Handcuffs},
   colback=white,colframe=royal,boxrule=0.8pt]
 \small
-The SSI/XS/CCA "rules of thumb" are \emph{defaults}, not laws. Creativity in \textit{Kon'reh} lives in the justified exception.
+The SSI/XS/CCA ''rules of thumb`` are \emph{defaults}, not laws. Creativity in \textit{Kon'reh} lives in the justified exception.
 We tag each guideline as \textbf{Hard} (rarely break), \textbf{Soft} (often context-dependent), or \textbf{Bait} (profitable to violate when listed triggers occur).
 
 \textbf{Examples.}
@@ -1384,20 +1384,20 @@ A game is drawn by the first of:
   \item \textbf{Mutual agreement.} Players agree to a draw.
   \item \textbf{Stalemate.} The player to move has \emph{no legal move}.%
   \footnote{Passes are not permitted under the core rules.}
-  \item \textbf{Threefold repetition (upon claim).} The same position with the same player to move occurs \emph{three times} (not necessarily consecutively); see the callout below for what "same position" means.
+  \item \textbf{Threefold repetition (upon claim).} The same position with the same player to move occurs \emph{three times} (not necessarily consecutively); see the callout below for what ''same position`` means.
   \item \textbf{50--turn no--progress (tournament option).} If adopted, a director may declare a draw after 50 full turns without \emph{either} a capture \emph{or} a Seed; see §\ref{sec:tourneyoptions}.
 \end{itemize}
 
 \begin{tcolorbox}[enhanced,breakable,title={Threefold Repetition --- Position Equivalence},colback=white,colframe=royal,boxrule=0.8pt]
 \small
-A "same position" requires equality of \emph{all} state that affects legal moves or future claims, not just piece locations. Two positions are identical iff all of the following match:
+A ''same position`` requires equality of \emph{all} state that affects legal moves or future claims, not just piece locations. Two positions are identical iff all of the following match:
 \begin{enumerate}[leftmargin=1.5em,itemsep=0.2em]
   \item \textbf{Side to move.}
   \item \textbf{Board occupancy.} Type and location of every piece.
   \item \textbf{Blue special usage (per side, this life).} Which of \emph{Hop} and \emph{Displacement} remain unused.
   \item \textbf{Rooted flags (per side).} Whether a Blue is Rooted.
   \item \textbf{Central Four counters (per side).} Current \emph{stay} count (0--3) and \emph{exclusion} count (0--2).
-  \item \textbf{Reforge counters (per side).} Current 5\,$\to$\,0 value, or "not running."
+  \item \textbf{Reforge counters (per side).} Current 5\,$\to$\,0 value, or ''not running.``
   \item \textbf{Sanctum restrictions (per Blue, this life).} Whether a Blue is barred from Seeding from a specific Sanctum due to a prior Sanctum Reforge placement.
   \item \textbf{Mobilization status (per Blue, this life).} Whether that Blue has \emph{left Home} at least once (affects Seed eligibility).
   \item \textbf{Global Green count.} Total Greens on the board (0--6).
@@ -1407,13 +1407,13 @@ A "same position" requires equality of \emph{all} state that affects legal moves
 \end{tcolorbox}
 
 \paragraph{Illegal position remedy.}
-If an illegal move is discovered, rewind to the last legal position and require a legal move instead. For the specific "fourth consecutive end--in--Cross" violation and suggested penalties, see §\ref{sec:tourneyoptions}.
+If an illegal move is discovered, rewind to the last legal position and require a legal move instead. For the specific ''fourth consecutive end--in--Cross`` violation and suggested penalties, see §\ref{sec:tourneyoptions}.
 
 \clearpage
 
 \section{Schools, Variants \& Play Styles}\label{sec:variants}
 \begin{quote}\small\itshape
-"A game is a road; every people paves their mile." --- Aqyl of Thepyrgos
+''A game is a road; every people paves their mile.`` --- Aqyl of Thepyrgos
 \end{quote}
 
 % --- Quick Choose-Your-School (Core Only) --- updated with Ykrul & Vhasian ---
@@ -1426,15 +1426,15 @@ If an illegal move is discovered, rewind to the last legal position and require 
 \vspace{0.5em}
 \noindent\begin{tabularx}{\linewidth}{@{}p{0.19\linewidth}p{0.34\linewidth}X@{}}
 \toprule
-\textbf{School} & \textbf{You"ll like this if...} & \textbf{First plan (3--5 turns)} \\
+\textbf{School} & \textbf{You''ll like this if\dots} & \textbf{First plan (3--5 turns)} \\
 \midrule
 Viterran (Canray) & You enjoy \emph{control}---building fences and slow squeezes. & Weld a corridor at home, refuse Central Four early, then Seed midgame when their exits (XS) are low. If Blue falls, Reforge \emph{Home} to reset the structure. \\
-Aeler (K"thra) & You think in ledgers and price every step. & Set sideways "toll posts" with Orange to make bad routes expensive. Seed only when SSI\,$\uparrow$ and cap pressure pays interest; favor \emph{Home} for stability. \\
+Aeler (K``thra) & You think in ledgers and price every step. & Set sideways ''toll posts`` with Orange to make bad routes expensive. Seed only when SSI\,$\uparrow$ and cap pressure pays interest; favor \emph{Home} for stability. \\
 Vilikari (Kanry) & You love tempo theft and misdirection. & Throw an off-beat Orange probe, touch Central Four only with XS$\ge 1$, bank one Blue special, then pivot to a Seed window you created two beats earlier. \\
-Thepyrgosi (Orator"s) & You savor parity binds and zugzwang. & Mirror to freeze parity; use Central Four to force inevitabilities (not trades). Delay Seeding until every reply cedes tempo; prefer \emph{Home} on Reforge. \\
-Ubral (Highland) & You prefer edge weather and hidden routes. & Sell porous edges, feint retreats, then appear "four-exact" from fog. Ignore Central Four unless it opens an edge gate; Seed off an edge pivot; Reforge \emph{Home}. \\
+Thepyrgosi (Orator''s) & You savor parity binds and zugzwang. & Mirror to freeze parity; use Central Four to force inevitabilities (not trades). Delay Seeding until every reply cedes tempo; prefer \emph{Home} on Reforge. \\
+Ubral (Highland) & You prefer edge weather and hidden routes. & Sell porous edges, feint retreats, then appear ``four-exact'' from fog. Ignore Central Four unless it opens an edge gate; Seed off an edge pivot; Reforge \emph{Home}. \\
 Silkstrand (Bravo) & You like flourish into harvest (tactics that look flashy but cash out). & Telegraph a hop, sidestep to Sanctum, then Seed off the pulled screens; keep one special banked. Reforge \emph{Sanctum} to keep pressure. \\
-Lethai ("Single-Stroke") & You want inevitability, not attrition. & Deny Seeds, manage the cap, build twin backward bridges. Treat Central Four as a timer, not a brawl. Capture Blue only when the five timers  already bust their Reforge. \\
+Lethai (``Single-Stroke'') & You want inevitability, not attrition. & Deny Seeds, manage the cap, build twin backward bridges. Treat Central Four as a timer, not a brawl. Capture Blue only when the five timers  already bust their Reforge. \\
 \textbf{Ykrul} (Steppe) & You thrive on \emph{timers, denial, pragmatic trades}. & Track \textbf{[CF in a/3]} strictly, enforce the 2-turn exile, clamp a Sanctum lane, delay a \emph{safe} Seed, and trade toward a failed Reforge on their side. \\
 \textbf{Vhasian} (Imperial) & You like showmanship and clean tempo trades. & Touch Cross to call the duel (only with exits), Seed to the \emph{opposite} Sanctum to start a quiet lane, and reserve one Blue special for the finishing tactic; avoid Stagger traps. \\
 \bottomrule
@@ -1462,9 +1462,9 @@ Ykrul (Kon'reh)      & Warlord        & Shaman        & Picket      & Raider\\
 Ecktorian (Canray)   & Charter        & Bailiff       & Paver       & Writ\\
 Vhasian (Canray)     & Champion       & Herald        & Retainer    & Duelist\\
 Viterran (Canray)    & Gate-Minder    & Warden        & Picket      & Scout\\
-Aeler (K"thra)       & Auditor        & Factor        & Roadwright    & Courier\\
+Aeler (K``thra)       & Auditor        & Factor        & Roadwright    & Courier\\
 Vilikari (Kanry)     & Boss      & Barker        & Stall     & Runner\\
-Thepyrgosi (Orator"s)& Arbiter        & Corollary     & Lemma       & Q.E.D.\\
+Thepyrgosi (Orator''s)& Arbiter        & Corollary     & Lemma       & Q.E.D.\\
 Ubral (Highland)     & Laird          & Shepherd      & Cairn       & Hill-Runner\\
 Silkstrand (Bravo)   & Rapier         & Feint         & Cutpurse    & Finale\\
 Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's Flight\\
@@ -1483,7 +1483,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \playdesc{Convert exits into time. Post Reds to raise runner distance, clamp the penult lids with Oranges, and only cash a Blue capture when the Reforge graph is already closed; otherwise decline the poison and keep counting breaths.}
 \medskip
 \begin{quote}\small\itshape
-"Count exits, not victims." --- Kargath, the Last Blade
+``Count exits, not victims.'' --- Kargath, the Last Blade
 \end{quote}
 
 %----------------------------------------
@@ -1492,9 +1492,9 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Typical lines.} Twin ``roads'' of Red/Orange; Blue stabilizes flank then pivots; Central Four entered only with certified exits (XS$\ge1$) to impose a geometric lock.\\
 \textbf{Seed timing.} Post-lock to convert initiative into material (extra Green).\\
 \textbf{Reforge preference.} Home; Sanctum if it preserves parity; avoids Apex.
-\playdesc{Maintain mirrored "roads" as insurance, then select a single certified rupture and rebuild the lattice behind it. Seed comes after the lock, converting tempo into a lasting material edge.}
+\playdesc{Maintain mirrored ``roads'' as insurance, then select a single certified rupture and rebuild the lattice behind it. Seed comes after the lock, converting tempo into a lasting material edge.}
 \begin{quote}\small\itshape
-"Symmetry is mercy; the single break is law." --- Legate Varro Pellanus
+``Symmetry is mercy; the single break is law.'' --- Legate Varro Pellanus
 \end{quote}
 %----------------------------------------
 \subsection*{Vhasian School (Canray)}
@@ -1504,7 +1504,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Sanctum for counter-duel lanes.
 \playdesc{Use Blue showmanship to pull screens; the quiet file carries the real lane. Opposite-Sanctum Seed starts the sprint while the crowd watches the decoy.}
 \begin{quote}\small\itshape
-"Polish the helm in public; sharpen the knife in private." --- Dame Ysoria, the Blood-Price
+``Polish the helm in public; sharpen the knife in private.'' --- Dame Ysoria, the Blood-Price
 \end{quote}
 %----------------------------------------
 \subsection*{Viterran School (Canray)}
@@ -1515,18 +1515,18 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Home to reset the structure.
 \playdesc{Build fences first and hand down the verdict later. Corridor welds make the race unwinnable before the run begins; Greens travel causeways finished two turns ago.}
 \begin{quote}\small\itshape
-"Control the road, not the man." --- Lady Brigid, Gate-Minder
+``Control the road, not the man.'' --- Lady Brigid, Gate-Minder
 \end{quote}
 
 %----------------------------------------
-\subsection*{Aeler School (K"thra)}
+\subsection*{Aeler School (K``thra)}
 \textbf{Doctrine.} Toll every lane. Win by economics of motion.\\
 \textbf{Typical lines.} Sideways-leaning Orange ``toll stations''; force unprofitable routes; Blue Seeds as investment when specials are spent (SSI-safe) and CCA favors you.\\
 \textbf{Seed timing.} When SSI is favorable \emph{and} cap pressure advantages you (CCA$>$0).\\
 \textbf{Reforge preference.} Home (stability first).
 \playdesc{Turn movement into a ledger: sideways Oranges become toll posts, forcing reroute tax until profitable paths disappear. Seed only when SSI and cap pressure pay interest.}
 \begin{quote}\small\itshape
-"Tolls fund bridges, escorts, and floodgates; price lists are posted publicly and audited." --- Factor--Green Emsdir
+''Tolls fund bridges, escorts, and floodgates; price lists are posted publicly and audited.`` --- Factor--Green Emsdir
 \end{quote}
 
 %----------------------------------------
@@ -1538,18 +1538,18 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Sanctum for continued pressure; occasional Apex stab if density is low.
 \playdesc{Live on tempo spikes and flank swaps. Keep one Blue special banked; raid the Cross only with XS$\geq$1, then pivot to a Seed window you created two beats earlier.}
 \begin{quote}\small\itshape
-"Sell them the moments you stole." --- Onne, Peddler-Queen
+''Sell them the moments you stole.`` --- Onne, Peddler-Queen
 \end{quote}
 
 %----------------------------------------
-\subsection*{Thepyrgosi School (Orator"s)}
+\subsection*{Thepyrgosi School (Orator''s)}
 \textbf{Doctrine.} Parity proofs and zugzwang.\\
 \textbf{Typical lines.} Mirror lattices; Central Four used to force inevitabilities, not material grabs; late Seed to clinch the proof.\\
 \textbf{Seed timing.} Late, once every legal reply concedes tempo.\\
 \textbf{Reforge preference.} Home; Sanctum only if it preserves a parity bind.
 \playdesc{Freeze parity and collect concessions. Delay Seed until every legal reply cedes a breath; the finish is an inevitability, not a chase.}
 \begin{quote}\small\itshape
-"Name the rule you cannot move; the rest is choice." --- Aqyl of Thepyrgos
+``Name the rule you cannot move; the rest is choice.'' --- Aqyl of Thepyrgos
 \end{quote}
 
 %----------------------------------------
@@ -1560,7 +1560,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Home; they plan for the second fight.
 \playdesc{Hide intent at the edges with feigned retreats and porous-looking lattices. The runner appears from fog exactly four when the map has already shrunk.}
 \begin{quote}\small\itshape
-"Walk with the fog; let your route arrive first." --- Laird Cormag
+``Walk with the fog; let your route arrive first.'' --- Laird Cormag
 \end{quote}
 
 %----------------------------------------
@@ -1572,7 +1572,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Sanctum for tempo; Apex only when the crowd is ``off-board'' (local density low).
 \playdesc{Dazzle to dictate. Pull screens with flourish, then harvest with a single clean hop and a Seed pivot while attention is elsewhere.}
 \begin{quote}\small\itshape
-"Applause hides the blade; harvest on the quiet beat." --- Ava "Sable-Edge"
+``Applause hides the blade; harvest on the quiet beat.'' --- Ava ``Sable-Edge''
 \end{quote}
 
 %----------------------------------------
@@ -1583,7 +1583,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Sanctum for counterpressure when field is dispersed; Home in dense melee.\\
 \textbf{Notes.} Reads as ``pragmatic Kon'reh''; no showy Apex reforges.
 \begin{quote}\small\itshape
-"The Truth is admirable... but not profitable. Blood for gold." --- Captain Lathan Bloodgoode
+``The Truth is admirable\dots but not profitable. Blood for gold.'' --- Captain Lathan Bloodgoode
 \end{quote}
 
 %----------------------------------------
@@ -1594,7 +1594,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Table habit.} Quiet count of opponent runner distances every turn.
 \playdesc{Five-turn math before contact. Pre-weld banner lanes and refuse Cross touches without certified exits; each ply is a logistics check.}
 \begin{quote}\small\itshape
-"Every ounce of gold is an ounce of grain... opportunity is always cost." --- Rekedim Many-Scars
+``Every ounce of gold is an ounce of grain\dots opportunity is always cost.'' --- Rekedim Many-Scars
 \end{quote}
 
 %----------------------------------------
@@ -1605,7 +1605,7 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Notes.} Training overlay uses hidden target squares (coaching tool, not a rules change).
 \playdesc{Obscure incentives and sell empty files. Delay Seeds so they resolve early on the timer and make every correction cost a reroute.}
 \begin{quote}\small\itshape
-"The fog conceals threats horrible and mundane; in the dark, all dangers are the same." --- Detective Saikou Ira, esq.
+``The fog conceals threats horrible and mundane; in the dark, all dangers are the same.'' --- Detective Saikou Ira, esq.
 \end{quote}
 
 %----------------------------------------
@@ -1616,36 +1616,36 @@ Lethai (Single-Stroke) & Quiet Stroke & Waiting Lid & Alder's Knot & Sparrow's F
 \textbf{Reforge preference.} Home (bookkeeping resilience).
 \playdesc{Win the book by a copper: side-tolls, gentle trades, and cap management. Avoid center unless it buys two tempos and improves the next Reforge line.}
 \begin{quote}\small\itshape
-"The Aeler dream they are the masters of coin... but we were doing differentials as they were digging in the dirt." ~ Guildmaster Kadennuck Relumbyg
+``The Aeler dream they are the masters of coin\dots but we were doing differentials as they were digging in the dirt.'' ~ Guildmaster Kadennuck Relumbyg
 \end{quote}
 %----------------------------------------
 %----------------------------------------
-\subsection*{Lethai School ("Single-Stroke, Quiet Road")}
+\subsection*{Lethai School (``Single-Stroke, Quiet Road'')}
 \textbf{Doctrine.} Win by inevitability, not attrition. Build the net; deny Seeds; manage the cap; then make \emph{one} decisive Blue capture only when the five timers  already force a failed Reforge. \\
 \textbf{Typical lines.} Twin backward bridges; opposite-Sanctum occupation on Rooted tell; Cross used as a \emph{timer} (lower XS), not a hunting ground; poison-square offers that are EV-proven. \\
 \textbf{Seed timing.} Only at \textbf{SSI $\ge 2$} (their Blue distant \& specials spent). Aim Greens $2$--$1$ without pushing cap to $6$ unless ahead. \\
 \textbf{Pre-build} \emph{root squares}; collect Blue next ply. \\
-\textbf{Reforge preference.} Home (stability; no theatrics). The "stroke" happens \emph{before} capture---on the graph. \\
+\textbf{Reforge preference.} Home (stability; no theatrics). The ``stroke'' happens \emph{before} capture---on the graph. \\
 \textbf{Piece roles.} Reds = breath-posts (penultimate welds); Oranges = lids (Sanctum clamps); Green = ledger runner (rarely used offensively). \\
 \textbf{Table habit.} Count exits, not threats. Save Blue specials until pruning runners; never trade them for tempo. \\
 \textbf{Counters.} Parity schools that refuse bait and demand proof; genuine chaos (fast XS$\geq$2 Cross raids) before the lattice matures. \\
-\textbf{Notes.} "Zero-capture" wins are a flex, not a plan---under tournament no-progress rules, cash the single stroke when RC is dead.
+\textbf{Notes.} ``Zero-capture'' wins are a flex, not a plan---under tournament no-progress rules, cash the single stroke when RC is dead.
 \playdesc{Refuse captures until the net is airtight. The stroke lands only when the Reforge is already impossible; calendar first, blade last.}
 \providecommand{\flavline}[2]{\noindent\textbf{#1.} \textit{#2}\par}
 \begin{quote}\small\itshape
-"The only clean stroke is the last." --- Sereth of the Valewood
+``The only clean stroke is the last.'' --- Sereth of the Valewood
 \end{quote}
 %----------------------------------------
 %----------------------------------------
 % Lore Sidebar: Dhaharan Provenance Claim
 \subsection*{On Provenance: The Dhaharan Claim}
 \begin{quote}\small
-\textbf{Aqyl of Thepyrgos, marginal note}\footnote{Aqyl concedes Dhaharan \emph{influence} while maintaining the Thepyric "perfection" thesis; his habit is to qualify where others proclaim.}:
-``Dhahara keeps the oldest boards I have handled without priestly intercession: lacquered teak from caravanserai vaults, scored for a $9\times9$ diamond with a literal cross incised at center. Local usage names an ancestor \emph{Kanrāy}---``the road's count.'' Of its several customs, two \emph{appear} to persist in our \emph{Kon'reh}: what host-law calls the ``guest's double courtesy"" (the second player's opening double-move), and the paired ``wells"" at the side-apex---our Twin Apex Seed---often marked, where marks survive (and if not later restorations), by water glyphs.
+\textbf{Aqyl of Thepyrgos, marginal note}\footnote{Aqyl concedes Dhaharan \emph{influence} while maintaining the Thepyric ``perfection'' thesis; his habit is to qualify where others proclaim.}:
+``Dhahara keeps the oldest boards I have handled without priestly intercession: lacquered teak from caravanserai vaults, scored for a $9\times9$ diamond with a literal cross incised at center. Local usage names an ancestor \emph{Kanrāy}---``the road's count.'' Of its several customs, two \emph{appear} to persist in our \emph{Kon'reh}: what host-law calls the ``guest's double courtesy``'' (the second player's opening double-move), and the paired ``wells``'' at the side-apex---our Twin Apex Seed---often marked, where marks survive (and if not later restorations), by water glyphs.
 
-Whether influence ran Dhahara $\rightarrow$ steppe, steppe $\rightarrow$ Dhahara, or (as seems likeliest) both by turns, is not demonstrable from the present record. Fhara way-stations along the Way of Silk confound trajectories; Kuvani polities fought and traded with Ykrul and Dhaharans north of the Himdahl"s; scribes copied boards as they copied tariffs. We must not overstate. The Ykrul will say they made the thing a war-art; Ecktorian legates will square it into lattice and law.
+Whether influence ran Dhahara $\rightarrow$ steppe, steppe $\rightarrow$ Dhahara, or (as seems likeliest) both by turns, is not demonstrable from the present record. Fhara way-stations along the Way of Silk confound trajectories; Kuvani polities fought and traded with Ykrul and Dhaharans north of the Himdahl``s; scribes copied boards as they copied tariffs. We must not overstate. The Ykrul will say they made the thing a war-art; Ecktorian legates will square it into lattice and law.
 
-\emph{On the name.} It is sometimes urged (cautiously) that \emph{Kanrāy} and \emph{Kon'reh} mean much the same thing. The lexica permit it: Dhaharan \emph{kan-} (road/way) with \emph{-rāy} (reckoning), and the steppe \emph{kon-} (route) with \emph{-reh} (tally), the apostrophe a later scribal habit. One may call this a cognate pair, or a calque, or merely convergent shop-talk among caravans and camps. If it proves anything, it proves only that players everywhere have counted roads and called that counting a game. I am prepared to write no more than that.""
+\emph{On the name.} It is sometimes urged (cautiously) that \emph{Kanrāy} and \emph{Kon'reh} mean much the same thing. The lexica permit it: Dhaharan \emph{kan-} (road/way) with \emph{-rāy} (reckoning), and the steppe \emph{kon-} (route) with \emph{-reh} (tally), the apostrophe a later scribal habit. One may call this a cognate pair, or a calque, or merely convergent shop-talk among caravans and camps. If it proves anything, it proves only that players everywhere have counted roads and called that counting a game. I am prepared to write no more than that.''``
 \end{quote}
 
 \subsection*{Opening Names (Shared Lexicon)}
@@ -1664,7 +1664,7 @@ Whether influence ran Dhahara $\rightarrow$ steppe, steppe $\rightarrow$ Dhahara
   \item \textbf{False Ford} (cross-school): bait a corridor; invite the poison-capture; win on RC with preposted lids.
   \item \textbf{Sluice Gate} (Aeler/Ecktorian): side-lane toll post; force reroute tax; late Seed as investment.
   \item \textbf{Cross Lantern} (Vilikari/Silkstrand): brief Cross touch to pull screens, immediate exit to Seed window.
-  \item \textbf{Penult Ladder} (Ykrul/Viterran): stack posts up the file to "own" the penultimate; capture only into the ladder.
+  \item \textbf{Penult Ladder} (Ykrul/Viterran): stack posts up the file to ''own`` the penultimate; capture only into the ladder.
 \end{itemize}
 
 % Quick Comparison Table (fits column/letter widths)
@@ -1699,38 +1699,38 @@ Lethai     & Avoids (deny exits) & Late (SSI-max) & Home (rare)     & Slow--Pois
 \endgroup
 
 \begin{quote}\small
-\textit{Aqyl of Thepyrgos, affecting balance, writes:} "Kon'reh's paternity is a crowded tent. The Ykrul monsters parade their scorched steppe sets and firelight maxims; awkward artifacts for later claimants, yes, but artifacts nonetheless. The Aeler, with a straight face, insist they "invented" the game in their stone halls. And---well---despite whatever "evidence" the Ykrul wave about, it is plain the Empire in Ecktoria refined it, and we Thepyrgosi perfected it. If you prefer a neutral crest: the steppe lit the spark, Ecktoria set it in stone, Silkstrand sold tickets, and the orators taught it to argue with itself. Today the same diamond sits in a Longblood keep, a Viterran river tavern, an Aeler under-vault, and a Silk strand salon; provenance matters less than who can read the thesis." 
+\textit{Aqyl of Thepyrgos, affecting balance, writes:} ''Kon'reh's paternity is a crowded tent. The Ykrul monsters parade their scorched steppe sets and firelight maxims; awkward artifacts for later claimants, yes, but artifacts nonetheless. The Aeler, with a straight face, insist they ``invented'' the game in their stone halls. And---well---despite whatever ``evidence'' the Ykrul wave about, it is plain the Empire in Ecktoria refined it, and we Thepyrgosi perfected it. If you prefer a neutral crest: the steppe lit the spark, Ecktoria set it in stone, Silkstrand sold tickets, and the orators taught it to argue with itself. Today the same diamond sits in a Longblood keep, a Viterran river tavern, an Aeler under-vault, and a Silk strand salon; provenance matters less than who can read the thesis.`` 
 \end{quote}
 \medskip
 %----------------------------------------
 \subsection*{Table-Talk Maxims (By School)}
-\noindent\textbf{Ykrul.} \textit{"Count reclaim first; if capture wins in five, it won three turns ago."} --- Kargath, the Last Blade
+\noindent\textbf{Ykrul.} \textit{''Count reclaim first; if capture wins in five, it won three turns ago.``} --- Kargath, the Last Blade
 
-\noindent\textbf{Ecktorian.} \textit{"Lay the lattice square; one cut will settle it."} --- Legate Varro Pellanus
+\noindent\textbf{Ecktorian.} \textit{''Lay the lattice square; one cut will settle it.``} --- Legate Varro Pellanus
 
-\noindent\textbf{Vhasian.} \textit{"Honor is the bait; reputation sets the hook."} --- Dame Ysoria, the Widow
+\noindent\textbf{Vhasian.} \textit{''Honor is the bait; reputation sets the hook.``} --- Dame Ysoria, the Widow
 
-\noindent\textbf{Viterran.} \textit{"Stake the lane early; the march will follow."} --- Lady Brigid, Gate-Minder
+\noindent\textbf{Viterran.} \textit{''Stake the lane early; the march will follow.``} --- Lady Brigid, Gate-Minder
 
-\noindent\textbf{Aeler.} \textit{"Work the vein, pave the pass, pay the toll; if you cannot, the gate stays shut."} --- Factor\textendash Green Emsdir
+\noindent\textbf{Aeler.} \textit{''Work the vein, pave the pass, pay the toll; if you cannot, the gate stays shut.``} --- Factor\textendash Green Emsdir
 
-\noindent\textbf{Vilikari.} \textit{"Steal the minute, bank the turn."} --- Onne, Peddler-Queen
+\noindent\textbf{Vilikari.} \textit{''Steal the minute, bank the turn.``} --- Onne, Peddler-Queen
 
-\noindent\textbf{Thepyrgosi.} \textit{"Name the rule you cannot move; the rest is choice."} --- Aqyl of Thepyrgos
+\noindent\textbf{Thepyrgosi.} \textit{''Name the rule you cannot move; the rest is choice.``} --- Aqyl of Thepyrgos
 
-\noindent\textbf{Ubral.} \textit{"Walk with the fog; let your route arrive first."} --- Laird Cormag
+\noindent\textbf{Ubral.} \textit{''Walk with the fog; let your route arrive first.``} --- Laird Cormag
 
-\noindent\textbf{Silkstrand.} \textit{"Applause hides the blade; harvest on the quiet beat."} --- Ava "Sable-Edge"
+\noindent\textbf{Silkstrand.} \textit{''Applause hides the blade; harvest on the quiet beat.``} --- Ava ''Sable-Edge``
 
-\noindent\textbf{Black Banner Table.} \textit{"If their Blue can punish Seed, you haven"t asked enough questions."} --- Captain \emph{No-Colors}
+\noindent\textbf{Black Banner Table.} \textit{''If their Blue can punish Seed, you haven``t asked enough questions.''} --- Captain \emph{No-Colors}
 
-\noindent\textbf{Rekedim's Convoy.} \textit{"Move for their fifth step, not today's cheer."} --- Rekedim Many-Scars
+\noindent\textbf{Rekedim's Convoy.} \textit{``Move for their fifth step, not today's cheer.''} --- Rekedim Many-Scars
 
-\noindent\textbf{Saikou's Fogbound.} \textit{"Hide the reason, not the piece."} --- Det. Saikou Ira, esq.
+\noindent\textbf{Saikou's Fogbound.} \textit{``Hide the reason, not the piece.''} --- Det. Saikou Ira, esq.
 
-\noindent\textbf{Aelinnel Trade-Ledger.} \textit{"Mind the Green ledger; insolvency is a shape on the board."} --- Guildmaster Pettle "Twelve-Ledgers"
+\noindent\textbf{Aelinnel Trade-Ledger.} \textit{``Mind the Green ledger; insolvency is a shape on the board.''} --- Guildmaster Pettle ``Twelve-Ledgers''
 
-\noindent\textbf{Lethai.} \textit{"Move until the board has only one truth---then show it."} --- Maerin Quiet-Step
+\noindent\textbf{Lethai.} \textit{``Move until the board has only one truth---then show it.''} --- Maerin Quiet-Step
 
 \vspace{0.75em}
 
@@ -1756,9 +1756,9 @@ Lethai     & Avoids (deny exits) & Late (SSI-max) & Home (rare)     & Slow--Pois
 \subsection*{On Schools \& Mastery}
 \noindent\textit{Aqyl of Thepyrgos, marginalia to the Canré corpus:}
 \begin{quote}\small
-"Kon'reh does not reward the indecisive. The board recognizes convictions. A Ykrul who fences exits as if they were laws; a Vilikari who haggles tempo as if it were coin; a Thepyrgosi who refuses every asymmetry until the proof writes itself---these win because they do not betray their grammar when the wind turns. 
+``Kon'reh does not reward the indecisive. The board recognizes convictions. A Ykrul who fences exits as if they were laws; a Vilikari who haggles tempo as if it were coin; a Thepyrgosi who refuses every asymmetry until the proof writes itself---these win because they do not betray their grammar when the wind turns. 
 
-The match is often decided before the first stone moves: style into counter-style, like weather over a road. The art is not to become your predator; it is to out-argue them in your own tongue. Control must learn where parity breaks \emph{from within control}. Tempo must learn to burst through a net \emph{without ceasing to be tempo}. This is mastery: not many blades, but one blade honed so keenly it parries its natural bane." 
+The match is often decided before the first stone moves: style into counter-style, like weather over a road. The art is not to become your predator; it is to out-argue them in your own tongue. Control must learn where parity breaks \emph{from within control}. Tempo must learn to burst through a net \emph{without ceasing to be tempo}. This is mastery: not many blades, but one blade honed so keenly it parries its natural bane.'' 
 \end{quote}
 
 
@@ -1766,14 +1766,14 @@ The match is often decided before the first stone moves: style into counter-styl
 \begin{itemize}
   \item \textbf{Identity before improvisation.} Pick a school; drill its three hallmark patterns (opening shape, Seed window, banner denial) until they are reflexes.
   \item \textbf{Prep the hard counter.} Build a \emph{within-school} anti-line versus your predator (e.g., Ykrul prep vs.\ Thepyrgosi is a lattice that manufactures an asymmetry \emph{without} conceding exits).
-  \item \textbf{Discipline heuristics.} Live by SSI/XS/CCA; they are style-agnostic tests that keep you from "becoming someone else" under pressure.
+  \item \textbf{Discipline heuristics.} Live by SSI/XS/CCA; they are style-agnostic tests that keep you from ``becoming someone else'' under pressure.
 \end{itemize}
 
 
 \begin{coachnotes}{Coach's Notes --- One Minute Before Play}
   \CNRow{School read}{What's \textbf{their} school? What's \textbf{your} anti-line \emph{in your grammar}?}
   \CNRow{Seed windows}{First \textbf{Seed window} where SSI $\ge 2$ if you get it? First \textbf{Rooted punish} if they get it?}
-  \CNRow{Free Blue test}{If a "\textbf{free Blue}" appears, can you plant under ZoC in $\le 4$? If no, it's poison.}
+  \CNRow{Free Blue test}{If a ``\textbf{free Blue}'' appears, can you plant under ZoC in $\le 4$? If no, it's poison.}
 \end{coachnotes}
 
 \clearpage
@@ -1883,7 +1883,7 @@ SSI = Seed Safety Interval;
 \noindent\textbf{Quick tells.}
 \begin{itemize}[leftmargin=*,itemsep=0.25em]
   \item \textbf{Vhasian:} Screens follow your Blue; a quiet file advances behind pressure.
-  \item \textbf{Ykrul:} You"re ahead on \code{[CF]} timing or \code{[RC n/5]}; their banner route is clogged.
+  \item \textbf{Ykrul:} You``re ahead on \code{[CF]} timing or \code{[RC n/5]}; their banner route is clogged.
   \item \textbf{Thepyrgosi:} Exits certified (XS $\ge 1$); specials unspent at decision points.
   \item \textbf{Viterran:} Two exits gated; live \emph{Lane Weld} threat; \code{[RC n/5]} dropping while their \code{[CF]} entries lose tempo.
 \end{itemize}
@@ -1939,12 +1939,12 @@ SSI = Seed Safety Interval;
 \begin{tcolorbox}[enhanced,breakable,title={Worked Example --- Mobilization Delay after Sanctum Reforge},
   colback=white,colframe=royal,boxrule=0.8pt]
 \small
-A Blue that \emph{returns to a Sanctum via Reforge} may Seed on its very next turn, because Mobilization delay gates the \textbf{first departure from Home}, not "first time on Sanctum."
+A Blue that \emph{returns to a Sanctum via Reforge} may Seed on its very next turn, because Mobilization delay gates the \textbf{first departure from Home}, not ''first time on Sanctum.``
 
-\textbf{Timeline.} (i) Blue is captured. (ii) Runner plants; Blue returns on \emph{a Sanctum}. (iii) On its next turn, Blue may Seed (Rooted afterward) if all normal Seed conditions are met. (iv) Much later, when that Blue eventually leaves \emph{Home} for the first time in this life (after later returns), it still "owes" Mobilization delay for that departure.
+\textbf{Timeline.} (i) Blue is captured. (ii) Runner plants; Blue returns on \emph{a Sanctum}. (iii) On its next turn, Blue may Seed (Rooted afterward) if all normal Seed conditions are met. (iv) Much later, when that Blue eventually leaves \emph{Home} for the first time in this life (after later returns), it still ''owes`` Mobilization delay for that departure.
 \end{tcolorbox}
 
-\noindent\textit{Mobilization delay keys off leaving Home (not merely being on a Sanctum). See the worked example in the Player Aid, "Mobilization Delay after Sanctum Reforge."}
+\noindent\textit{Mobilization delay keys off leaving Home (not merely being on a Sanctum). See the worked example in the Player Aid, ''Mobilization Delay after Sanctum Reforge.``}
 
 \subsubsection*{Reforge (after Blue capture)}
 \begin{itemize}[leftmargin=1.1em,itemsep=0.2em]
@@ -2024,7 +2024,7 @@ Notes: \rule{0.9\linewidth}{0.4pt} \\
 \label{sec:edgecases}
 
 \paragraph{Mobilization scope (edge case).}
-If a reforged Blue is \emph{placed} on a Sanctum, it still may not Seed on its \emph{first departure} from its Home Apex for that life; the delay keying event is "leaves Home," not "spawns on/visits Sanctum."
+If a reforged Blue is \emph{placed} on a Sanctum, it still may not Seed on its \emph{first departure} from its Home Apex for that life; the delay keying event is ''leaves Home,`` not ''spawns on/visits Sanctum.``
 
 \paragraph{Blue hop vs.\ ZoC.}
 When hop-capturing, Blue may start in, pass over, and land in enemy ZoC; ZoC on the \emph{jumped} square is ignored. The landing square must be empty (it may be in ZoC), and the move ends there.
@@ -2057,7 +2057,7 @@ If seeding would exceed the global cap (6), the Seed is illegal. Sacrificing a G
 \label{sec:notation}
 
 \begin{quote}\small\itshape
-"In my recent dealings with the Aeler, I was taken aside by a rather ambitious Edgewalker. He knew of my admiration for Canray and wished to show me a most curious artifact: a machine of Aelinnel make, the K"thra Tabulator. A bronze pillar with a Canray board atop it; arrayed with marble pieces carved in the Aeler style. It was fed a scroll of queer marks and strange characters, numbers and letters in odd array. After quite the tumultuous noise, I was shocked to see the marble pieces move of their own accord. However, delighted as I was, the tabulator proved a poor opponent. Fascinating mechanism; poor theory."
+''In my recent dealings with the Aeler, I was taken aside by a rather ambitious Edgewalker. He knew of my admiration for Canray and wished to show me a most curious artifact: a machine of Aelinnel make, the K``thra Tabulator. A bronze pillar with a Canray board atop it; arrayed with marble pieces carved in the Aeler style. It was fed a scroll of queer marks and strange characters, numbers and letters in odd array. After quite the tumultuous noise, I was shocked to see the marble pieces move of their own accord. However, delighted as I was, the tabulator proved a poor opponent. Fascinating mechanism; poor theory.''
 
 \hfill\emph{Duke Braedon Fenwood (in the old hand: B.\,V. Velvano III), Tarlington, Kindling Year 856 A.R.}
 \end{quote}
@@ -2116,7 +2116,7 @@ Tags print as bracketed, monospace badges.
 
 \paragraph{Notes.}
 \begin{itemize}[itemsep=0.25em,leftmargin=*]
-  \item One Blue special may be used per Blue turn. "Slide then special" is legal; "special then slide" is not.
+  \item One Blue special may be used per Blue turn. ``Slide then special'' is legal; ``special then slide'' is not.
   \item Rooted arises from Seed or from spending the second Blue special in a single life (Crown Stagger).
 \end{itemize}
 
@@ -2164,12 +2164,12 @@ A \emph{progress event} is either (i) any capture (of any color) or (ii) a succe
 
 \begin{itemize}[leftmargin=1.3em,itemsep=0.2em]
   \item \textbf{Full turn.} One move by each player (A then B) is one full turn. Track with a shared counter that resets to 0 upon any progress event.
-  \item \textbf{Claim procedure.} On your own turn \emph{before} you move: pause clocks, announce "50--turn no-progress," and call the director. If verified, the game is a draw; if not, restore timers  and continue.
-  \item \textbf{Director adjudication.} Events may use automatic draws at 50, or "claim required." The default here is \textbf{claim required}.
+  \item \textbf{Claim procedure.} On your own turn \emph{before} you move: pause clocks, announce ``50--turn no-progress,'' and call the director. If verified, the game is a draw; if not, restore timers  and continue.
+  \item \textbf{Director adjudication.} Events may use automatic draws at 50, or ``claim required.'' The default here is \textbf{claim required}.
 \end{itemize}
 
 \paragraph{Threefold Repetition.}
-A player may claim a draw when \textbf{the same position} has occurred \textbf{three times} with the \textbf{same player to move}. "Same position" means \emph{board state and all relevant trackers} are identical:
+A player may claim a draw when \textbf{the same position} has occurred \textbf{three times} with the \textbf{same player to move}. ``Same position'' means \emph{board state and all relevant trackers} are identical:
 
 \begin{itemize}[leftmargin=1.3em,itemsep=0.2em]
   \item Piece locations and side to move.
@@ -2178,12 +2178,12 @@ A player may claim a draw when \textbf{the same position} has occurred \textbf{t
   \item Each Blue's \textbf{specials-used} flags (Hop available? Displacement available?).
   \item Each Blue's \textbf{Mobilization owed} flag (whether it still cannot Seed on its \emph{first departure from Home} in this life).
   \item \textbf{Reforge countdown} (value 1--5 or none) and which side is under countdown.
-  \item \textbf{Sanctum restriction} flags (if a Blue reforged onto a Sanctum, that Blue's "no future Seed from this same Sanctum" must match).
+  \item \textbf{Sanctum restriction} flags (if a Blue reforged onto a Sanctum, that Blue's ``no future Seed from this same Sanctum'' must match).
   \item \textbf{Global Green count} on board (cap state); individual Green counts by side.
   \item If the optional \textbf{Crown Buyback} rule is ON: each Blue's \emph{once-per-life buyback availability} must also match.
 \end{itemize}
 
-\textit{Claim procedure.} On your turn \emph{before} you move: pause clocks, announce "threefold repetition," identify the three occurrences (move numbers or log entries), and call the director. If verified, the game is a draw; if not, restore timers  and continue.
+\textit{Claim procedure.} On your turn \emph{before} you move: pause clocks, announce ``threefold repetition,'' identify the three occurrences (move numbers or log entries), and call the director. If verified, the game is a draw; if not, restore timers  and continue.
 
 \medskip
 \subsection{Illegal Move Remedies}
@@ -2198,7 +2198,7 @@ Ending a \textbook{fourth consecutive turn} with your Blue on any Central Four s
 \end{itemize}
 
 \paragraph{B.2 Slide\,$\to$\,Special and ZoC.}
-Reminder for arbiters and players: "slide then special" is legal \emph{unless} the slide \emph{entered enemy ZoC}, because \textbf{entering ZoC ends the move}. Slide-into-ZoC\,$\to$\,special is illegal; apply standard illegal-move remedies.
+Reminder for arbiters and players: ``slide then special'' is legal \emph{unless} the slide \emph{entered enemy ZoC}, because \textbf{entering ZoC ends the move}. Slide-into-ZoC\,$\to$\,special is illegal; apply standard illegal-move remedies.
 
 \medskip
 \subsection{Tracking Aids (Recommended)}
@@ -2247,7 +2247,7 @@ must announce Buyback status (ON/OFF) before play.
 \subsection{Default Time Controls and Start-Balance}
 \label{subsec:time_defaults}
 
-\noindent\textbf{Core rule.} Unless players mutually agree otherwise (or an event specifies different settings), ranked/tournament Kon"rēh uses a \emph{10+5} Fischer time control (10 minutes base with +5 seconds increment per move) and the \emph{P2 double-move} start-balance. Casual or learning games may disregard this default.
+\noindent\textbf{Core rule.} Unless players mutually agree otherwise (or an event specifies different settings), ranked/tournament Kon``rēh uses a \emph{10+5} Fischer time control (10 minutes base with +5 seconds increment per move) and the \emph{P2 double-move} start-balance. Casual or learning games may disregard this default.
 
 \begin{table}[h!]
 \centering
@@ -2279,7 +2279,7 @@ Casual / Learning & Any & Flexible & Players may adapt freely for teaching/exper
 \textbf{War-Sage Khel of the River Steppe}\footnote{Recorded and translated by Aqyl of Thepyrgos; circulation of this transcript was later proscribed.}:
 
 \medskip
-\emph{"You wish to learn the Weave of Five? Then stop counting pieces---start counting \textsc{breaths}\footnote{Aqyl of Thepyrgos originally rendered "breaths" as "clocks" to match the Thepyric understanding..}. The board has five that matter."\ref{tbl:five-clocks}}
+\emph{''You wish to learn the Weave of Five? Then stop counting pieces---start counting \textsc{breaths}\footnote{Aqyl of Thepyrgos originally rendered ``breaths'' as ``clocks'' to match the Thepyric understanding..}. The board has five that matter.``\ref{tbl:five-clocks}}
 
 \begin{itemize}
   \item \textbf{Cross Stay} --- three breaths a Blue may squat in the center (max three of its own turns).
@@ -2301,10 +2301,10 @@ Casual / Learning & Any & Flexible & Players may adapt freely for teaching/exper
 
 \emph{If he hoards both cuts, the Weave reverses: do not Seed---make him choose between Cross suffocation and Sanctum famine, then crown with Green where his ledger is short by one breath. If he spends both cuts early, you Seed for free and let the timer do the murder.}
 
-\emph{Remember: the ignorant play for squares. The proud play for pieces. We play for \textbf{breaths}. Count them aloud in your skull and you will feel when the knot tightens. When he finally sees it, do nothing clever---just close the lid."}
+\emph{Remember: the ignorant play for squares. The proud play for pieces. We play for \textbf{breaths}. Count them aloud in your skull and you will feel when the knot tightens. When he finally sees it, do nothing clever---just close the lid.''}
 \end{quote}
 
-\noindent\textit{Translator's scholium.} The Sage calls all timing windows "breaths." I render them as "clocks" for clarity. Where he occasionally says "stone," he means the \emph{piece committed to that breath}. Typically these are Reds (first, fourth) and an Orange (second), but any piece may be the "stone" that fixes a knot in time. The essence of the Weave is synchronizing (i) Cross timers, (ii) Blue-special depletion, and (iii) Seed rooting, so that a Blue capture yields a \emph{manufactured} five-turn Reforge into a prepared ZoC funnel.
+\noindent\textit{Translator's scholium.} The Sage calls all timing windows ``breaths.'' I render them as ``clocks'' for clarity. Where he occasionally says ``stone,'' he means the \emph{piece committed to that breath}. Typically these are Reds (first, fourth) and an Orange (second), but any piece may be the ``stone'' that fixes a knot in time. The essence of the Weave is synchronizing (i) Cross timers, (ii) Blue-special depletion, and (iii) Seed rooting, so that a Blue capture yields a \emph{manufactured} five-turn Reforge into a prepared ZoC funnel.
 
 \begin{table}[h]
 \centering
@@ -2338,7 +2338,7 @@ Health of your corridors and retreats. &
 Low: reopen a file.\newline High: prosecute. \\
 \hline
 \textbf{Sanctum} &
-Parity reserve---how many "breaths" before you must commit. &
+Parity reserve---how many ``breaths'' before you must commit. &
 {+ bank waiting moves; prepare equivalences.\newline
 -- burn tempo; let them fix move parity.} &
 Zero: zugzwang risk---trade or break symmetry. \\
@@ -2355,8 +2355,8 @@ Zero: zugzwang risk---trade or break symmetry. \\
 
 \subsubsection*{Ykrul (Control) vs.\ Vilikari (Tempo)}
 
-\noindent\textbf{Players.} \textit{A (Ykrul)} "Silent Strangulation" vs.\ \textit{B (Vilikari)} "Hour-Hustle."\\
-\textbf{Clock legend:} \CC{...} Central Four timer/exclusion;\; \SC{D}/\SC{H} Blue specials spent (per life);\; \RoC{} Blue just Seeded (Rooted 1 turn);\; \RC{} Reforge countdown active;\; \CapC{a--b} on-board Greens (A--B).
+\noindent\textbf{Players.} \textit{A (Ykrul)} ``Silent Strangulation'' vs.\ \textit{B (Vilikari)} ``Hour-Hustle.''\\
+\textbf{Clock legend:} \CC{\dots} Central Four timer/exclusion;\; \SC{D}/\SC{H} Blue specials spent (per life);\; \RoC{} Blue just Seeded (Rooted 1 turn);\; \RC{} Reforge countdown active;\; \CapC{a--b} on-board Greens (A--B).
 
 \medskip
 \noindent\textbf{Premises:} Second player gets an opening double-move; Twin Apex Seed fires only when Blue \emph{ends} its move on a Sanctum; Seed delay (no Seed on Blue's \emph{first} departure); Rooted stops \emph{Blue only}; each Blue has at most \textbf{one Displacement} and \textbf{one Hop} per life.
@@ -2382,7 +2382,7 @@ Zero: zugzwang risk---trade or break symmetry. \\
 
 \item \textbf{B:} Blue to right Sanctum $\to$ \textbf{Seed} to left Sanctum. \RoC\; \think{Rooted for one ply.}
 
-\item \textbf{A:} Declines recapture; Orange \Hm[L]{2} to \emph{cover} the opposite Sanctum lane. \think{Don"t cash now---close futures.}
+\item \textbf{A:} Declines recapture; Orange \Hm[L]{2} to \emph{cover} the opposite Sanctum lane. \think{Don``t cash now---close futures.}
 
 \item \textbf{B:} (Blue rooted) \emph{Green} \On[R]{3} to a center junction (lane post). \think{Hold while \RoC{} burns.}
 
@@ -2406,7 +2406,7 @@ Zero: zugzwang risk---trade or break symmetry. \\
 
 \item \textbf{B:} Blue \Hm[R]{1} to contact; holds \textbf{both} specials. \think{Probe the center exchange.}
 
-\item \textbf{A:} Blue slides onto the central "poison" square, adjacent to B's Blue; A has H used, D kept. \think{Invite the trade on our terms.}
+\item \textbf{A:} Blue slides onto the central ''poison`` square, adjacent to B's Blue; A has H used, D kept. \think{Invite the trade on our terms.}
 
 \item \textbf{B:} \textbf{Displacement-captures} A's adjacent Blue. [S:D]\; \textbf{RC 1/5 starts for A}. \think{Now race the banner.}
 
@@ -2439,20 +2439,20 @@ Zero: zugzwang risk---trade or break symmetry. \\
 \end{multicols}
 x
 \paragraph{Why the Weave Works.}
-A never "cashes" early value. Instead, A (i) denies future Seeds, (ii) engineers \CapC{} superiority, (iii) spends \SC{} only to prune runners, and (iv) offers a \emph{poison Blue-capture} that converts immediately into a lost \RC{} race. B's tempo raids are excellent, but once \CapC{} reaches \texttt{2--0} and the penultimate banner squares are ZoC end-squares, every path is a step short.
+A never ''cashes`` early value. Instead, A (i) denies future Seeds, (ii) engineers \CapC{} superiority, (iii) spends \SC{} only to prune runners, and (iv) offers a \emph{poison Blue-capture} that converts immediately into a lost \RC{} race. B's tempo raids are excellent, but once \CapC{} reaches \texttt{2--0} and the penultimate banner squares are ZoC end-squares, every path is a step short.
 
 \begin{coachnotes}{Coach's Notes --- Both Schools}
-  \CNRow{Seed discipline}{\textbf{Seed only when SSI $\ge 2$} (their Blue distant \& specials spent or screened). If SSI < 2, you"re donating tempo.}
-  \CNRow{"Free" Blue test}{\textbf{Never take a "free" Blue} unless the five-turn banner graph is solved; if you cannot plant in $\le 4$ under ZoC, the capture is a noose.}
-  \CNRow{Blue specials}{Track cuts: \textbf{H}op/\textbf{D}isplacement. \textbf{1 cut left} = threaten; \textbf{0 cuts} = clamp \& Seed. Don"t spend both cuts before your safe Seed.}
+  \CNRow{Seed discipline}{\textbf{Seed only when SSI $\ge 2$} (their Blue distant \& specials spent or screened). If SSI < 2, you''re donating tempo.}
+  \CNRow{``Free'' Blue test}{\textbf{Never take a ``free'' Blue} unless the five-turn banner graph is solved; if you cannot plant in $\le 4$ under ZoC, the capture is a noose.}
+  \CNRow{Blue specials}{Track cuts: \textbf{H}op/\textbf{D}isplacement. \textbf{1 cut left} = threaten; \textbf{0 cuts} = clamp \& Seed. Don``t spend both cuts before your safe Seed.}
   \CNRow{Cross math}{Plan exit \emph{before} entry. Enter only if you can leave cleanly next turn or force value. \CC{in 1/3} means two of \emph{your} turns remain; \CC{ex 1/2} bars you for two of \emph{your} turns.}
   \CNRow{Ring over Cross}{\textbf{Non-Blues stay out of the Cross.} Use Reds/Oranges to ring and funnel; Blue touches center briefly as a lever, not a home.}
   \CNRow{Rooted punish}{When \RoC{} shows, \textbf{post lids} (penultimate squares near Sanctums) and print lanes. Force them to defend while Blue is immobile for a breath.}
   \CNRow{Penultimate squares}{End the race here. If you control the squares one step before either Sanctum, \textbf{runners die on time}. Prefer a sturdy post over a flashy capture.}
-  \CNRow{Reforge denial}{After a Blue falls, \RC{} ticks on the \emph{captor"s} turns. Deny with: (i) penultimate lids, (ii) reroute taxes (burn a ply inside ZoC), (iii) trading sprinters for time.}
-  \CNRow{Poison capture}{If offered their Blue, ask: "Do I have a planted line in $\le 4$ under ZoC?" If not, \textbf{decline} or take only with an immediate lid net in place.}
+  \CNRow{Reforge denial}{After a Blue falls, \RC{} ticks on the \emph{captor''s} turns. Deny with: (i) penultimate lids, (ii) reroute taxes (burn a ply inside ZoC), (iii) trading sprinters for time.}
+  \CNRow{Poison capture}{If offered their Blue, ask: ``Do I have a planted line in $\le 4$ under ZoC?'' If not, \textbf{decline} or take only with an immediate lid net in place.}
   \CNRow{Green usage}{Green runs lanes, not fights. \textbf{Screen your Green} with Reds; avoid exposing it to Blue specials. Use Seed to \textbf{split attention}, then walk the quieter lane.}
-  \CNRow{Mirror rule}{If you"re worse on cuts or timers, \textbf{mirror anchors then improve one file}. Don"t race a faster clock; make them waste a breath first.}
+  \CNRow{Mirror rule}{If you``re worse on cuts or timers, \textbf{mirror anchors then improve one file}. Don''t race a faster clock; make them waste a breath first.}
   \CNRow{Tempo trades}{Trade only when it \textbf{buys time}: a capture that opens their lane is bad; a trade that seals a penultimate square is good.}
 \end{coachnotes}
 
@@ -2465,15 +2465,15 @@ A never "cashes" early value. Instead, A (i) denies future Seeds, (ii) engineers
 % --- Lore intro for Speed/Lightning variants ---
 % --- Lore intro for Speed/Lightning variants ---
 \begin{quote}\small\itshape
-They say Speed Canray wasn"t born in a Silkstrand salon, but in steppe camps after sundown. 
-Ykrul youths... wrists braided in wagers... cut the timers  to the length of a watch-smoke, 
+They say Speed Canray wasn``t born in a Silkstrand salon, but in steppe camps after sundown. 
+Ykrul youths\dots wrists braided in wagers\dots cut the timers  to the length of a watch-smoke, 
 flipped the board between patrols, and bet on who could plant first without getting their Blue butchered. 
 We Black Banners picked it up because it drills what keeps you breathing: first read, clean exit, honest count. 
 These days the river houses dress it up with swap rules (\textbf{the PIE rule}) and wax tablets to keep score, but the soul's the same. 
-I"ve seen small fortunes won on a three-breath sprint and grudges born that outlasted empires. 
-If you"re asking whether a takeback after the timer press is wise... keep your teeth.
+I''ve seen small fortunes won on a three-breath sprint and grudges born that outlasted empires. 
+If you``re asking whether a takeback after the timer press is wise\dots keep your teeth.
 
-\hfill---\textit{Captain Lathan "No-Colors" Bloodgoode, \emph{Crimson Quittance}}
+\hfill---\textit{Captain Lathan ''No-Colors`` Bloodgoode, \emph{Crimson Quittance}}
 \end{quote}
 
 \bigskip
@@ -2533,7 +2533,7 @@ Organizers: keep the skew fun (not lopsided) with soft knobs:
 \begin{itemize}\itemsep0.2em
   \item \textbf{Clock:} baseline \textbf{3+2}. For Lightning, \textbf{2+0} (expect stronger Tempo tilt).
   \item \textbf{Pie rule:} \emph{Recommended}. Apply after P2's double to damp opening spikes.
-  \item \textbf{Opening pack (optional):} Publish 2--3 "book" starts per school so Control/Parity lines aren"t cold on move~1.
+  \item \textbf{Opening pack (optional):} Publish 2--3 ''book`` starts per school so Control/Parity lines aren''t cold on move~1.
   \item \textbf{Buyback:} Keep \emph{Crown Buyback OFF} for Speed to avoid grind loops.
 \end{itemize}
 Players: embrace the tilt---Tempo presses, Control proves. Treat XS/SSI as hard gates: enter CF only at \(\mathrm{XS}\ge2\); seed at \(\mathrm{SSI}\ge1\) (prefer 2).
@@ -2553,7 +2553,7 @@ Provenance: Single vellum leaf, torn from a sewn journal; margins scored with ru
 
 % --- The testimony itself ---
 \begin{quote}\small
-\textit{223 A.R.} Thirty-two days after the third defiling\footnote{Translator's note: "defiling" is the Legate's term. This was the third of four sackings of the capital during the imperial wars with the Ykrul.} of our great city. The \textbf{Ykrul} general, one \textbf{Taraksa Ghez}, who has declared herself ``Magistrate of Ecktoria,'' has announced the ``orderly withdrawal'' of our ``orcish'' overlords\footnote{Translator's note: ``Orc'' is a Vhasian exonym and slur for the Ykrul, likely from Vhasian \emph{orca} (``monster''). The term appears here via imperial borrowing; its use is the Legate"s, not the translator"s. It is retained for historical accuracy.}. I suspect she has word of our legions mustering on the marches, ready to liberate Ecktoria. Yet she occupies herself with a peculiar business: the \emph{reclamation} of their holy game. I have heard the savages" claim upon the Imperial Game since boyhood and dismissed it as feverish. Now, within a moonrise, she has gathered those who might \emph{pass} as ``masters.''
+\textit{223 A.R.} Thirty-two days after the third defiling\footnote{Translator's note: ``defiling'' is the Legate's term. This was the third of four sackings of the capital during the imperial wars with the Ykrul.} of our great city. The \textbf{Ykrul} general, one \textbf{Taraksa Ghez}, who has declared herself ``Magistrate of Ecktoria,'' has announced the ``orderly withdrawal'' of our ``orcish'' overlords\footnote{Translator's note: ``Orc'' is a Vhasian exonym and slur for the Ykrul, likely from Vhasian \emph{orca} (``monster''). The term appears here via imperial borrowing; its use is the Legate``s, not the translator''s. It is retained for historical accuracy.}. I suspect she has word of our legions mustering on the marches, ready to liberate Ecktoria. Yet she occupies herself with a peculiar business: the \emph{reclamation} of their holy game. I have heard the savages`` claim upon the Imperial Game since boyhood and dismissed it as feverish. Now, within a moonrise, she has gathered those who might \emph{pass} as ``masters.''
 
 Among \emph{us}: a pampered \textbf{Vhasian}, a scruffy \textbf{Vilikari} trader, a verminous [\emph{sic}] bravo out of \emph{Silkstrand}\footnote{Translator's note: Silkstrand was still \c{C}eyonne at this time.}, and a preening Viterran ambassador. Among \emph{them}: to my surprise, a stout ``\textbf{Aeler}'' merchant-captain, \emph{beard bound with copper assay-rings}, with his curious little ``\textbf{Aelinnel}'' aide \,\dots\ apparently even a man from the gnomish gemcutters' guild was \emph{corralled} with us \,\dots\ and, most striking, a Lethai surgeon: a creature of beauty and menace who would give no reason for coming beyond demonstrating his ``mastery of lesser mortal occupations'' (so my translators swear; they look as bewildered as I). I believe \textbf{Taraksa}'s knife at his throat showed him he is as mortal as I.
 

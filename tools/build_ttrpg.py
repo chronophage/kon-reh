@@ -269,8 +269,17 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
     if author:
         cmd.extend(["--author", author])
 
-    ret, _, _ = run_cmd(cmd, cwd=full_path, capture=True, silent=True)
+    # Capture output to display on failure
+    ret, stdout, stderr = run_cmd(cmd, cwd=full_path, capture=True, silent=not debug)
     if ret != 0:
+        if debug:
+            print(f"❌ Compilation failed for {name}")
+            print(f"   stdout: {stdout}")
+            print(f"   stderr: {stderr}")
+        else:
+            print(f"❌ Compilation failed for {name}")
+            if stderr.strip():
+                print(f"   Error: {stderr.strip()}")
         return (name, False, section, None, None)
 
     # Check if PDF was created
