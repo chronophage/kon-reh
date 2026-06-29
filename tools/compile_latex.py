@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 compile_latex.py – CI‑safe LaTeX builder (Python port of original bash script).
 Ignores LaTeX exit codes; only fails if PDF is missing.
 """
@@ -164,9 +164,10 @@ def has_titlepage(content: str) -> bool:
             return True
     return False
 
-def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str) -> bool:
+def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str,
+                       subtitle: str = "", quote: str = "", quote_author: str = "") -> bool:
     """
-    Read git_root/titlepage_template.tex, replace <<TITLE>> and <<AUTHOR>>,
+    Read git_root/titlepage_template.tex, replace placeholders,
     write to out_dir/titlepage.tex.
     Returns True if generation succeeded, False if template missing.
     """
@@ -177,6 +178,9 @@ def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str) -
         template = template_path.read_text(encoding='utf-8')
         content = template.replace("<<TITLE>>", title)
         content = content.replace("<<AUTHOR>>", author)
+        content = content.replace("<<SUBTITLE>>", subtitle)
+        content = content.replace("<<QUOTE>>", quote)
+        content = content.replace("<<QUOTEAUTHOR>>", quote_author)
         out_path = out_dir / "titlepage.tex"
         out_path.write_text(content, encoding='utf-8')
         return True
@@ -203,10 +207,12 @@ def generate_copyright(git_root: Path, out_dir: Path, title: str, author: str, c
     except Exception:
         return False
 
-def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, author: str, debug: bool = False) -> bool:
+def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, author: str,
+                                subtitle: str = "", quote: str = "", quote_author: str = "",
+                                debug: bool = False) -> bool:
     """
     If the .tex file doesn't have a title page, generate titlepage.tex and insert
-    \input{titlepage} after \begin{document}.
+    \\input{titlepage} after \\begin{document}.
     Returns True if modified, False if already has a title page or error.
     """
     content = texfile.read_text(encoding='utf-8', errors='ignore')
@@ -215,13 +221,11 @@ def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, autho
             print(f"✅ {texfile.name} already has a title page.")
         return False
 
-    # Generate the titlepage.tex file
-    if not generate_titlepage(git_root, texfile.parent, title, author):
+    if not generate_titlepage(git_root, texfile.parent, title, author, subtitle, quote, quote_author):
         if debug:
             print(f"⚠️ Could not generate titlepage.tex for {texfile.name}")
         return False
 
-    # Insert \input{titlepage} after \begin{document}
     lines = content.splitlines(keepends=True)
     insert_idx = -1
     for i, line in enumerate(lines):
@@ -234,7 +238,6 @@ def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, autho
             print(f"⚠️ No \\begin{document} found in {texfile.name}")
         return False
 
-    # Check if \input{titlepage} already exists (shouldn't, but just in case)
     if re.search(r'\\input\{titlepage\}', content):
         return False
 
@@ -268,6 +271,9 @@ def main():
                         help="Do not insert title page if missing")
     parser.add_argument("--title", help="Document title (overrides \\title in .tex)")
     parser.add_argument("--author", help="Document author (overrides \\author in .tex)")
+    parser.add_argument("--subtitle", help="Subtitle for the title page")
+    parser.add_argument("--quote", help="Flavor quote for the title page")
+    parser.add_argument("--quote-author", help="Author of the flavor quote")
     parser.add_argument("positional", nargs="?", help="Input .tex file (positional)")
     args = parser.parse_args()
 
@@ -279,7 +285,6 @@ def main():
         sys.exit("Error: specify the .tex file only once — via -f <file.tex> OR as the only argument.")
 
     texfile = Path(texfile_str)
-    # Normalize extension
     if not texfile.suffix:
         texfile = texfile.with_suffix(".tex")
         print(f"No extension detected, assuming '{texfile.name}'")
@@ -290,7 +295,7 @@ def main():
 
     # Settings
     debug = args.d
-    clean = args.c and not args.x   # -x overrides -c
+    clean = args.c and not args.x
     do_index = not args.i
     open_pdf = args.o
     do_biber = not args.b
@@ -300,15 +305,12 @@ def main():
     use_cc_copyright = args.cc
     no_titlepage = args.no_titlepage
 
-    # Determine git root, current path, branch
     git_root = get_git_root(Path.cwd())
     file_path = texfile.parent.resolve()
     branch = get_branch(file_path)
 
-    # Engine detection
     latex_cmd = detect_engine(texfile)
 
-    # Debug mode
     if debug:
         print(f"Parameters:")
         print(f"  Debug: {debug}")
@@ -324,6 +326,9 @@ def main():
         print(f"  No Titlepage: {no_titlepage}")
         print(f"  Title (CLI): {args.title if args.title else '<none>'}")
         print(f"  Author (CLI): {args.author if args.author else '<none>'}")
+        print(f"  Subtitle: {args.subtitle if args.subtitle else '<none>'}")
+        print(f"  Quote: {args.quote if args.quote else '<none>'}")
+        print(f"  Quote Author: {args.quote_author if args.quote_author else '<none>'}")
         resp = input(f"Run {latex_cmd} once interactively? [y/N] ")
         if resp.lower() == "y":
             sp.run([latex_cmd, str(texfile)], cwd=file_path)
@@ -332,39 +337,30 @@ def main():
         print("Exiting debug.")
         sys.exit(0)
 
-    # Not in CI: git add --all . after 5s delay
     if not ci_mode:
         print("git add --all . in 5s for safety, ^C to abort.")
         time.sleep(5)
         run_cmd(["git", "add", "--all"], cwd=git_root, check=False, silent=True)
 
-    # ------------------------------------------------------------
-    # Determine document title and author
-    # ------------------------------------------------------------
     doc_title = get_document_title(texfile, args.title)
     doc_author = get_document_author(texfile, args.author)
+    subtitle = args.subtitle or ""
+    quote = args.quote or ""
+    quote_author = args.quote_author or ""
 
-    # ------------------------------------------------------------
-    # Generate titlepage.tex before compilation (if missing)
-    # ------------------------------------------------------------
     if not no_titlepage:
-        inserted = insert_titlepage_if_missing(texfile, git_root, doc_title, doc_author, debug)
+        inserted = insert_titlepage_if_missing(texfile, git_root, doc_title, doc_author,
+                                               subtitle, quote, quote_author, debug)
         if inserted:
             print(f"✅ Inserted title page into {texfile.name}")
         elif debug:
             print(f"ℹ️  No title page needed for {texfile.name}")
 
-    # ------------------------------------------------------------
-    # Generate copyright.tex before compilation
-    # ------------------------------------------------------------
     if generate_copyright(git_root, file_path, doc_title, doc_author, use_cc_copyright):
         print(f"✅ Generated copyright.tex from {'CC-BY' if use_cc_copyright else 'All Rights Reserved'} template.")
     else:
         print("ℹ️  No copyright template found; skipping copyright injection.")
 
-    # ------------------------------------------------------------
-    # Compilation steps – ignore exit codes, only check file existence
-    # ------------------------------------------------------------
     print(f"Initial compile of {texfile.name} using {latex_cmd}...")
     run_cmd([latex_cmd, "-interaction=nonstopmode", str(texfile)],
             cwd=file_path, check=False, silent=True)
@@ -373,18 +369,15 @@ def main():
     if not final_pdf.is_file():
         sys.exit("PDF file was not generated")
 
-    # Bibliography (biber)
     bcf_file = file_path / f"{texfile.stem}.bcf"
     if bcf_file.is_file() and do_biber:
         if sys.platform == "darwin":
-            # macOS PAR workaround
             try:
                 sp.run(["find", "/var/folders", "-name", "par-*", "-type", "d",
                         "-exec", "rm", "-rf", "{}", "+"],
                        stdout=sp.DEVNULL, stderr=sp.DEVNULL)
             except Exception:
                 pass
-        # Check for PAR::Repository issue
         ret, _, _ = run_cmd(["biber", "--version"], capture=True, silent=True)
         if "PAR" in str(ret):
             perl_cmd = "perl -e 'use Config; print \"$Config{installprivlib}/unicore\\n\"'"
@@ -396,20 +389,17 @@ def main():
         print(f"Running biber {texfile.stem}")
         run_cmd(["biber", texfile.stem], cwd=file_path, check=False, silent=True)
 
-    # Index (makeindex)
     idx_file = file_path / f"{texfile.stem}.idx"
     if idx_file.is_file() and do_index:
         print(f"Running makeindex {texfile.stem}")
         run_cmd(["makeindex", texfile.stem], cwd=file_path, check=False, silent=True)
 
-    # Two more LaTeX passes
     for _ in range(2):
         run_cmd([latex_cmd, "-interaction=nonstopmode", str(texfile)],
                 cwd=file_path, check=False, silent=True)
 
     print(f"✅ Compilation complete: {final_pdf.name}")
 
-    # Optional compression
     if quality:
         if shutil.which("gs"):
             print(f"Compressing PDF with quality: {quality}")
@@ -428,8 +418,14 @@ def main():
         else:
             print("⚠️  Ghostscript (gs) not found; skipping compression.")
 
-    # Rename final PDF if requested
-    if pdfname and pdfname != final_pdf.name:
+    # ----- FIX: ensure pdfname ends with .pdf -----
+    if pdfname:
+        if not pdfname.endswith('.pdf'):
+            pdfname = pdfname + '.pdf'
+    else:
+        pdfname = final_pdf.name
+
+    if pdfname != final_pdf.name:
         new_name = file_path / pdfname
         print(f"Renaming {final_pdf.name} → {pdfname}")
         final_pdf.rename(new_name)
@@ -437,7 +433,6 @@ def main():
     else:
         pdfname = final_pdf.name
 
-    # Determine destination directory
     build_root = git_root / "build"
     branch_map = {
         "resources":    build_root / "resources",
@@ -457,7 +452,6 @@ def main():
     print(f"Moving {pdfname} → {dest_path}")
     shutil.move(str(final_pdf), str(dest_path))
 
-    # Not in CI: git add dest and optionally open PDF
     if not ci_mode:
         run_cmd(["git", "add", str(dest_path)], cwd=git_root, check=False, silent=True)
         if open_pdf:
@@ -471,7 +465,6 @@ def main():
             else:
                 print("⚠️  No known opener found (open/xdg-open/cygstart).")
 
-    # Clean auxiliary files (unless CI and clean requested)
     if clean and not ci_mode:
         print("Cleaning auxiliary files...")
         aux_extensions = [".aux", ".log", ".lof", ".lot", ".toc", ".fls",

@@ -260,21 +260,25 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
 
     # Step 4: Compile the LaTeX document
     cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
-    #if debug:
-    #    cmd.append("-d")
+
     if cc_copyright:
         cmd.append("--cc")
     if title:
         cmd.extend(["--title", title])
     if author:
         cmd.extend(["--author", author])
+    # NEW: pass subtitle, quote, quote_author
+    if doc.get("subtitle"):
+        cmd.extend(["--subtitle", doc["subtitle"]])
+    if doc.get("quote"):
+        cmd.extend(["--quote", doc["quote"]])
+    if doc.get("quote_author"):
+        cmd.extend(["--quote-author", doc["quote_author"]])
 
-    # Capture output to display on failure
     ret, stdout, stderr = run_cmd(cmd, cwd=full_path, capture=True, silent=not debug)
     if ret != 0:
         print(f"❌ {name}: LaTeX compilation failed")
         if stderr.strip():
-            # Show first 200 characters of error for brevity
             error_lines = stderr.strip().split('\n')
             if error_lines:
                 print(f"   Error: {error_lines[0][:200]}")
@@ -295,7 +299,6 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
             print(f"  ⚠️ HTML generation failed for {name}")
 
         if html_success:
-            # Determine HTML output path
             if html_section:
                 html_dir = git_root / "build" / "html" / out_name
                 output_html_path = html_dir / f"{out_name}.html"
@@ -310,7 +313,7 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
 # ------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(description="Build Fate's Edge documents")
-    parser.add_argument("--debug", action="store_true", help="Pass -d to compile_latex.py")
+    parser.add_argument("--debug", action="store_true", help="Enable verbose output (no -d passed to compile_latex.py)")
     parser.add_argument("-j", "--jobs", type=int, default=0,
                         help="Number of parallel builds (default: 0, -j 0 for auto)")
     parser.add_argument("-b", "--build", type=str, default="kcraetd",
@@ -508,7 +511,6 @@ def main():
                 if html_path and html_path.exists():
                     built_htmls.append(html_path)
                     if html_section:
-                        # Find all section files
                         html_dir = html_path.parent
                         for f in html_dir.glob(f"{html_path.stem}*.html"):
                             if f != html_path:
