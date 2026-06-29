@@ -55,6 +55,8 @@ def fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug=False):
             print(f"❌ fix_markup.py failed on {tex_file_path.name}")
             if stderr:
                 print(f"   Error: {stderr}")
+        else:
+            print(f"❌ fix_markup.py failed on {tex_file_path.name}")
         return False
 
     if debug:
@@ -79,6 +81,8 @@ def add_copyright_in_tex_file(tex_file_path, add_copyright_py, debug=False):
             print(f"❌ add_copyright_include.py failed on {tex_file_path.name}")
             if stderr:
                 print(f"   Error: {stderr}")
+        else:
+            print(f"❌ add_copyright_include.py failed on {tex_file_path.name}")
         return False
 
     if debug:
@@ -233,24 +237,20 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
 
     # Step 1: Run fix_markup.py if not skipped
     if not skip_fix:
-        if debug:
-            print(f"  🔧 Running fix_markup on {name}: {tex_file}")
         fix_success = fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug)
         if not fix_success:
+            print(f"❌ {name}: fix_markup.py failed")
             return (name, False, section, None, None)
 
     # Step 2: Run add_copyright_include.py if not skipped
     if not skip_copyright:
-        if debug:
-            print(f"  📄 Running add_copyright on {name}: {tex_file}")
         copyright_success = add_copyright_in_tex_file(tex_file_path, add_copyright_py, debug)
         if not copyright_success:
+            print(f"❌ {name}: add_copyright_include.py failed")
             return (name, False, section, None, None)
 
     # Step 3: Apply print standards if requested (before compile, so it affects the PDF)
     if print_ready:
-        if debug:
-            print(f"  🖨️ Applying print standards to {name}")
         print_success = apply_print_standards(
             tex_file_path, print_standards_py, debug,
             print_format, print_bleed, print_safezone
@@ -260,8 +260,8 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
 
     # Step 4: Compile the LaTeX document
     cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
-    if debug:
-        cmd.append("-d")
+    #if debug:
+    #    cmd.append("-d")
     if cc_copyright:
         cmd.append("--cc")
     if title:
@@ -272,30 +272,28 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
     # Capture output to display on failure
     ret, stdout, stderr = run_cmd(cmd, cwd=full_path, capture=True, silent=not debug)
     if ret != 0:
-        if debug:
-            print(f"❌ Compilation failed for {name}")
-            print(f"   stdout: {stdout}")
-            print(f"   stderr: {stderr}")
-        else:
-            print(f"❌ Compilation failed for {name}")
-            if stderr.strip():
-                print(f"   Error: {stderr.strip()}")
+        print(f"❌ {name}: LaTeX compilation failed")
+        if stderr.strip():
+            # Show first 200 characters of error for brevity
+            error_lines = stderr.strip().split('\n')
+            if error_lines:
+                print(f"   Error: {error_lines[0][:200]}")
         return (name, False, section, None, None)
 
     # Check if PDF was created
     if not output_pdf_path.exists():
-        if debug:
-            print(f"  ⚠️ PDF not found at {output_pdf_path}")
+        print(f"❌ {name}: PDF not found at expected location")
         return (name, False, section, None, None)
 
     # Step 5: Generate HTML if requested
     if html:
-        if debug:
-            print(f"  🌐 Generating HTML for {name}")
         html_success = generate_html(
             tex_file_path, html_py, debug, title, author,
             html_toc, html_dark, html_search, html_mathjax, html_section
         )
+        if not html_success and debug:
+            print(f"  ⚠️ HTML generation failed for {name}")
+
         if html_success:
             # Determine HTML output path
             if html_section:
@@ -303,8 +301,6 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
                 output_html_path = html_dir / f"{out_name}.html"
             else:
                 output_html_path = git_root / "build" / "html" / f"{out_name}.html"
-        elif debug:
-            print(f"  ⚠️ HTML generation failed for {name}")
 
     return (name, True, section, output_pdf_path, output_html_path)
 
@@ -355,7 +351,6 @@ def main():
     debug = args.debug
     jobs = args.jobs
     if jobs == 0:
-        import os
         jobs = os.cpu_count() or 4
 
     skip_fix = args.skip_fix
