@@ -1,0 +1,223 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{tikz}
+
+% Page geometry
+\geometry{
+  a4paper,
+  margin=0.5in,
+  top=0.5in,
+  bottom=0.5in
+}
+
+% Colors
+\definecolor{gold}{RGB}{201, 169, 76}
+\definecolor{openbg}{RGB}{26, 58, 26}
+\definecolor{closedbg}{RGB}{58, 26, 26}
+\definecolor{freebg}{RGB}{26, 42, 58}
+\definecolor{textlight}{RGB}{224, 224, 224}
+\definecolor{textmuted}{RGB}{170, 170, 170}
+\definecolor{borderopen}{RGB}{76, 175, 80}
+\definecolor{borderclosed}{RGB}{231, 76, 60}
+\definecolor{borderfree}{RGB}{52, 152, 219}
+
+% Page style
+\pagestyle{empty}
+
+% Custom box
+\newenvironment{cardbox}[2]{
+  \begin{minipage}[t]{0.9\linewidth}
+  \noindent
+  \textcolor{#2}{\rule{4pt}{\dimexpr\height+4pt\relax}}%
+  \hspace{6pt}%
+  \textbf{\textcolor{gold}{#1}}\par
+  \vspace{2pt}
+}{
+  \end{minipage}
+}
+
+% Card layout with bleed
+\newenvironment{card}{
+  \begin{minipage}[t]{0.45\linewidth}
+}{
+  \end{minipage}
+}
+
+\begin{document}
+
+% ===== FRONT SIDE =====
+\begin{center}
+  \vspace*{0.2in}
+
+  \begin{minipage}{0.95\linewidth}
+    \centering
+    \fboxsep=12pt
+    \fboxrule=1pt
+    \fcolorbox{gold}{darkbg}{
+      \begin{minipage}{0.98\linewidth}
+        \centering
+        \vspace{0.2in}
+
+        {\Huge\bfseries\color{gold} Fate's Edge}\\[0.1in]
+        {\Large Creator Quick Reference}\\[0.05in]
+        {\small \textcolor{textmuted}{Print this card. Keep it handy.}}
+
+        \vspace{0.15in}
+        \rule{0.8\linewidth}{0.4pt}
+        \vspace{0.15in}
+
+        \begin{minipage}{0.95\linewidth}
+
+          % --- Open Section ---
+          \begin{cardbox}{WHAT'S OPEN (SRD)}{borderopen}
+            \small
+            \begin{itemize}[leftmargin=*, itemsep=1pt, label=\textcolor{borderopen}{\checkmark}]
+              \item Core dice mechanics
+              \item Position / Effect / DV
+              \item Boons \& Story Beats
+              \item TAGS magic system (core)
+              \item Character creation framework
+              \item NPC templates
+            \end{itemize}
+            \vspace{2pt}
+            \textit{\textcolor{textmuted}{License: CC BY-NC-SA 4.0}}
+            \begin{itemize}[leftmargin=*, itemsep=1pt, label=\textcolor{textmuted}{•}]
+              \item Credit required
+              \item Non-commercial only
+              \item Share alike
+            \end{itemize}
+          \end{cardbox}
+
+          \vspace{0.1in}
+
+          % --- Closed Section ---
+          \begin{cardbox}{WHAT'S CLOSED (Extended)}{borderclosed}
+            \small
+            \begin{itemize}[leftmargin=*, itemsep=1pt, label=\textcolor{borderclosed}{\texttimes}]
+              \item Amaranthine setting \& lore
+              \item Named NPCs \& Patrons
+              \item Published adventures
+              \item Proprietary magic expansions
+              \item Artwork \& design elements
+            \end{itemize}
+            \vspace{2pt}
+            \textit{\textcolor{textmuted}{Status: All Rights Reserved}}
+            \begin{itemize}[leftmargin=*, itemsep=1pt, label=\textcolor{textmuted}{•}]
+              \item Commercial use requires permission
+            \end{itemize}
+          \end{cardbox}
+
+          \vspace{0.1in}
+
+          % --- Community Section ---
+          \begin{cardbox}{COMMUNITY CONTENT (Free)}{borderfree}
+            \small
+            \begin{itemize}[leftmargin=*, itemsep=1pt, label=\textcolor{borderfree}{\textbullet}]
+              \item Adventures set in the Amaranthine
+              \item Fan art, fiction, actual play
+              \item House rules and hacks
+              \item Character concepts and expansions
+            \end{itemize}
+            \vspace{2pt}
+            \textit{\textcolor{textmuted}{No permission needed. Credit appreciated.}}
+          \end{cardbox}
+
+        \end{minipage}
+
+        \vspace{0.15in}
+        \rule{0.6\linewidth}{0.4pt}
+        \vspace{0.1in}
+
+        {\small \textit{\textcolor{textmuted}{``The coin that never spends is the one you don't remember taking.''}}}
+
+        \vspace{0.1in}
+      \end{minipage}
+    }
+  \end{minipage}
+\end{center}
+
+\newpage
+
+% ===== BACK SIDE =====
+\begin{center}
+  \vspace*{0.2in}
+
+  \begin{minipage}{0.95\linewidth}
+    \centering
+    \fboxsep=12pt
+    \fboxrule=1pt
+    \fcolorbox{gold}{darkbg}{
+      \begin{minipage}{0.98\linewidth}
+        \centering
+        \vspace{0.2in}
+
+        {\Huge\bfseries\color{gold} Fate's Edge}\\[0.1in]
+        {\Large Creator Quick Reference (continued)}
+
+        \vspace{0.15in}
+        \rule{0.8\linewidth}{0.4pt}
+        \vspace{0.15in}
+
+        \begin{minipage}{0.95\linewidth}
+
+          % --- Permission Table ---
+          \begin{minipage}{0.95\linewidth}
+            \centering
+            \small
+            \textbf{\color{gold}DO YOU NEED PERMISSION?}\\[0.1in]
+
+            \begin{tabular}{>{\raggedright\arraybackslash}p{0.6\linewidth}>{\raggedright\arraybackslash}p{0.3\linewidth}}
+              \hline
+              \textbf{What You Want to Do} & \textbf{Permission?} \\
+              \hline
+              Use SRD mechanics in free product & \textcolor{borderopen}{NO} \\
+              Use SRD mechanics in paid product & \textcolor{borderopen}{NO} (credit \& share alike) \\
+              Create free content in Amaranthine & \textcolor{borderfree}{NO} (credit appreciated) \\
+              Sell content in Amaranthine & \textcolor{borderclosed}{YES} (email) \\
+              Use named characters commercially & \textcolor{borderclosed}{YES} (email) \\
+              Use Fate's Edge logo commercially & \textcolor{borderclosed}{YES} (trademark license) \\
+              Run an actual play & \textcolor{borderfree}{NO} (love it!) \\
+              \hline
+            \end{tabular}
+          \end{minipage}
+
+          \vspace{0.15in}
+          \rule{0.8\linewidth}{0.4pt}
+          \vspace{0.1in}
+
+          % --- Contact ---
+          \begin{minipage}{0.95\linewidth}
+            \centering
+            \textbf{\color{gold}CONTACT}\\[0.05in]
+            \textcolor{textlight}{For licensing inquiries:}\\
+            \textcolor{gold}{\textbf{[PUBLISHER\_EMAIL]}}\\[0.05in]
+            \small \textcolor{textmuted}{
+              Include: project description, what you want to use,\\
+              distribution plans, and a sample (if available).
+            }\\[0.05in]
+            \textcolor{textmuted}{Response time: 2–4 weeks}
+          \end{minipage}
+
+          \vspace{0.15in}
+          \rule{0.6\linewidth}{0.4pt}
+          \vspace{0.1in}
+
+          {\small \textit{\textcolor{textmuted}{``The road is long. Walk it with people you trust.''}}}
+
+          \vspace{0.1in}
+        \end{minipage}
+
+        \vspace{0.1in}
+      \end{minipage}
+    }
+  \end{minipage}
+\end{center}
+
+\end{document}
