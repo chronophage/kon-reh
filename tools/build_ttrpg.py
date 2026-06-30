@@ -287,9 +287,8 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
         if ret != 0:
             print(f"❌ {name}: LaTeX compilation failed")
             if stderr.strip():
-                error_lines = stderr.strip().split('\n')
-                if error_lines:
-                    print(f"   Error: {error_lines[0][:200]}")
+                print("   Full error output:")
+                print(stderr)   # print everything
             return (name, False, section, None, None)
 
         # Check if PDF was created

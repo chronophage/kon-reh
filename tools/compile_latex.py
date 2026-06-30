@@ -124,11 +124,16 @@ def extract_author_from_tex(texfile: Path) -> Optional[str]:
         return None
 
 def create_include_dirs(main_tex: Path, output_dir: Path) -> None:
+    r"""
+    Create directories in output_dir for \include{} and \input{} paths.
+    (Raw string to avoid invalid escape sequence warnings.)
+    """
     try:
         content = main_tex.read_text(encoding='utf-8', errors='ignore')
     except Exception as e:
         print(f"⚠️ Could not read {main_tex}: {e}")
         return
+
     includes = re.findall(r'\\(?:include|input)\{([^}]+)\}', content)
     created = set()
     for inc in includes:
@@ -163,9 +168,15 @@ def has_titlepage(content: str) -> bool:
     return False
 
 def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str,
-                       subtitle: str = "", quote: str = "", quote_author: str = "") -> bool:
+                       subtitle: str = "", quote: str = "", quote_author: str = "",
+                       debug: bool = False) -> bool:
+    """
+    Generate titlepage.tex from template. The extra 'debug' parameter is accepted but ignored.
+    """
     template_path = git_root / "titlepage_template.tex"
     if not template_path.is_file():
+        if debug:
+            print(f"⚠️ Titlepage template not found: {template_path}")
         return False
     try:
         template = template_path.read_text(encoding='utf-8')
@@ -176,8 +187,12 @@ def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str,
         content = content.replace("<<QUOTEAUTHOR>>", quote_author)
         out_path = out_dir / "titlepage.tex"
         out_path.write_text(content, encoding='utf-8')
+        if debug:
+            print(f"✅ Generated titlepage.tex in {out_dir}")
         return True
-    except Exception:
+    except Exception as e:
+        if debug:
+            print(f"❌ Failed to generate titlepage: {e}")
         return False
 
 def generate_copyright(git_root: Path, out_dir: Path, title: str, author: str, cc: bool = False) -> bool:
@@ -202,7 +217,7 @@ def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, autho
     if has_titlepage(content):
         return False
 
-    if not generate_titlepage(git_root, texfile.parent, title, author, subtitle, quote, quote_author):
+    if not generate_titlepage(git_root, texfile.parent, title, author, subtitle, quote, quote_author, debug):
         if debug:
             print(f"⚠️ Could not generate titlepage.tex for {texfile.name}")
         return False
@@ -228,6 +243,22 @@ def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, autho
         print(f"✅ Inserted title page into {texfile.name}")
     return True
 
+def copy_needed_files(texfile: Path, output_dir: Path, git_root: Path) -> None:
+    """Copy auxiliary files that may be needed for compilation."""
+    common_files = ['copyright.tex', 'titlepage.tex']
+    for filename in common_files:
+        src = texfile.parent / filename
+        if src.exists():
+            dst = output_dir / filename
+            shutil.copy2(str(src), str(dst))
+            print(f"📄 Copied {filename} to output directory")
+
+    for ext in ['.sty', '.cls']:
+        for f in texfile.parent.glob(f'*{ext}'):
+            dst = output_dir / f.name
+            shutil.copy2(str(f), str(dst))
+            print(f"📄 Copied {f.name} to output directory")
+
 def show_latex_error(log_file: Path) -> None:
     if not log_file.exists():
         print("  No log file found.")
@@ -236,6 +267,7 @@ def show_latex_error(log_file: Path) -> None:
         content = log_file.read_text(encoding='utf-8', errors='ignore')
         lines = content.splitlines()
         error_lines = []
+        in_error = False
         for i, line in enumerate(lines):
             if line.startswith('! '):
                 error_lines.append(line)
@@ -255,14 +287,9 @@ def show_latex_error(log_file: Path) -> None:
         print("  Could not read log file.")
 
 # ------------------------------------------------------------
-#  Atomic copy with unique naming (no locking needed)
+#  Atomic copy (thread‑safe, no fcntl)
 # ------------------------------------------------------------
 def atomic_copy(src: Path, dst: Path, overwrite: bool = False) -> Path:
-    """
-    Copy src to dst atomically using a temporary file and rename.
-    If dst exists and overwrite is False, generate a unique name.
-    Returns the final destination path.
-    """
     if not overwrite and dst.exists():
         stem = dst.stem
         suffix = dst.suffix
@@ -270,10 +297,8 @@ def atomic_copy(src: Path, dst: Path, overwrite: bool = False) -> Path:
         dst = dst.with_name(f"{stem}_{rand_suffix}{suffix}")
         print(f"⚠️ Destination exists, using {dst.name}")
 
-    # Write to a temporary file in the same directory
     tmp = dst.with_name(dst.name + '.tmp')
     shutil.copy2(src, tmp)
-    # Atomic rename (works on Unix; on Windows, rename is atomic for same volume)
     tmp.rename(dst)
     return dst
 
@@ -355,6 +380,7 @@ def main():
         out_tex = out_dir / texfile.name
         shutil.copy2(texfile, out_tex)
 
+        # Generate titlepage and copyright in the output directory
         doc_title = get_document_title(texfile, args.title)
         doc_author = get_document_author(texfile, args.author)
         subtitle = args.subtitle or ""
@@ -362,18 +388,32 @@ def main():
         quote_author = args.quote_author or ""
 
         if not no_titlepage:
-            inserted = insert_titlepage_if_missing(out_tex, git_root, doc_title, doc_author,
-                                                   subtitle, quote, quote_author, debug)
-            if inserted:
-                print(f"✅ Inserted title page into {out_tex.name}")
+            if generate_titlepage(git_root, out_dir, doc_title, doc_author,
+                                  subtitle, quote, quote_author, debug):
+                print(f"✅ Generated titlepage.tex in {out_dir}")
+            else:
+                if debug:
+                    print(f"⚠️ Could not generate titlepage.tex for {texfile.name}")
 
         if generate_copyright(git_root, out_dir, doc_title, doc_author, use_cc_copyright):
             print(f"✅ Generated copyright.tex in {out_dir}")
         else:
             print("ℹ️  No copyright template found; skipping.")
 
+        # Insert \input{titlepage} if needed
+        if not no_titlepage:
+            inserted = insert_titlepage_if_missing(out_tex, git_root, doc_title, doc_author,
+                                                   subtitle, quote, quote_author, debug)
+            if inserted:
+                print(f"✅ Inserted title page into {out_tex.name}")
+
+        # Copy other needed files (.sty, .cls, etc.)
+        copy_needed_files(texfile, out_dir, git_root)
+
+        # Create directory structure for includes
         create_include_dirs(texfile, out_dir)
 
+        # Set up environment
         build_env = os.environ.copy()
         build_env['TEXINPUTS'] = str(out_dir) + ':' + build_env.get('TEXINPUTS', '')
 
@@ -431,7 +471,7 @@ def main():
                 print(f"📦 Using compressed PDF")
                 pdf_in_out = compressed
 
-        # --- Copy to original directory (atomic with unique name if conflict) ---
+        # --- Atomic copy to original directory ---
         final_pdf = texfile.parent / pdf_in_out.name
         final_pdf = atomic_copy(pdf_in_out, final_pdf, overwrite=False)
         print(f"✅ Copied PDF to {final_pdf}")
@@ -442,11 +482,7 @@ def main():
                 pdfname += '.pdf'
             if pdfname != final_pdf.name:
                 new_name = texfile.parent / pdfname
-                # atomic rename (move) – if new_name exists, atomic_copy would rename again,
-                # but we just want to rename, so we use rename directly (it will overwrite if exists)
-                # But to be safe, we can use atomic_copy with overwrite=True
                 if new_name.exists():
-                    # Overwrite with unique name? We'll use atomic_copy with overwrite=True to replace
                     final_pdf = atomic_copy(final_pdf, new_name, overwrite=True)
                 else:
                     final_pdf.rename(new_name)
@@ -471,7 +507,6 @@ def main():
         dest_dir.mkdir(parents=True, exist_ok=True)
         dest_path = dest_dir / final_pdf.name
 
-        # Atomic copy to build directory
         dest_path = atomic_copy(final_pdf, dest_path, overwrite=False)
         print(f"📦 Copied {final_pdf.name} → {dest_path}")
 
