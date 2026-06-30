@@ -215,6 +215,9 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
     Compile a single document.
     Returns: (name, success, section, output_pdf_path, output_html_path)
     """
+    import tempfile
+    import shutil
+
     name = doc["name"]
     section = doc.get("section", "other")
     rel_path = Path(doc["path"])
@@ -235,79 +238,86 @@ def compile_one(doc, tools_py, fix_markup_py, add_copyright_py,
     output_pdf_path = build_dir / f"{out_name}.pdf"
     output_html_path = None
 
-    # Step 1: Run fix_markup.py if not skipped
-    if not skip_fix:
-        fix_success = fix_markup_in_tex_file(tex_file_path, fix_markup_py, debug)
-        if not fix_success:
-            print(f"❌ {name}: fix_markup.py failed")
+    # --- NEW: Work on a temporary copy of the .tex file ---
+    temp_dir = tempfile.mkdtemp(prefix="latex_prep_")
+    temp_tex = Path(temp_dir) / tex_file
+    shutil.copy2(tex_file_path, temp_tex)
+
+    try:
+        # Step 1: Run fix_markup.py if not skipped
+        if not skip_fix:
+            fix_success = fix_markup_in_tex_file(temp_tex, fix_markup_py, debug)
+            if not fix_success:
+                print(f"❌ {name}: fix_markup.py failed")
+                return (name, False, section, None, None)
+
+        # Step 2: Run add_copyright_include.py if not skipped
+        if not skip_copyright:
+            copyright_success = add_copyright_in_tex_file(temp_tex, add_copyright_py, debug)
+            if not copyright_success:
+                print(f"❌ {name}: add_copyright_include.py failed")
+                return (name, False, section, None, None)
+
+        # Step 3: Apply print standards if requested
+        if print_ready:
+            print_success = apply_print_standards(
+                temp_tex, print_standards_py, debug,
+                print_format, print_bleed, print_safezone
+            )
+            if not print_success and debug:
+                print(f"  ⚠️ Print standards failed for {name}, continuing with standard build")
+
+        # Step 4: Compile the LaTeX document using the temporary file
+        cmd = [str(tools_py), "-x", "-f", str(temp_tex), "-n", out_name]
+
+        if cc_copyright:
+            cmd.append("--cc")
+        if title:
+            cmd.extend(["--title", title])
+        if author:
+            cmd.extend(["--author", author])
+        if doc.get("subtitle"):
+            cmd.extend(["--subtitle", doc["subtitle"]])
+        if doc.get("quote"):
+            cmd.extend(["--quote", doc["quote"]])
+        if doc.get("quote_author"):
+            cmd.extend(["--quote-author", doc["quote_author"]])
+
+        ret, stdout, stderr = run_cmd(cmd, cwd=full_path, capture=True, silent=not debug)
+        if ret != 0:
+            print(f"❌ {name}: LaTeX compilation failed")
+            if stderr.strip():
+                error_lines = stderr.strip().split('\n')
+                if error_lines:
+                    print(f"   Error: {error_lines[0][:200]}")
             return (name, False, section, None, None)
 
-    # Step 2: Run add_copyright_include.py if not skipped
-    if not skip_copyright:
-        copyright_success = add_copyright_in_tex_file(tex_file_path, add_copyright_py, debug)
-        if not copyright_success:
-            print(f"❌ {name}: add_copyright_include.py failed")
+        # Check if PDF was created
+        if not output_pdf_path.exists():
+            print(f"❌ {name}: PDF not found at expected location")
             return (name, False, section, None, None)
 
-    # Step 3: Apply print standards if requested (before compile, so it affects the PDF)
-    if print_ready:
-        print_success = apply_print_standards(
-            tex_file_path, print_standards_py, debug,
-            print_format, print_bleed, print_safezone
-        )
-        if not print_success and debug:
-            print(f"  ⚠️ Print standards failed for {name}, continuing with standard build")
+        # Step 5: Generate HTML if requested
+        if html:
+            html_success = generate_html(
+                temp_tex, html_py, debug, title, author,
+                html_toc, html_dark, html_search, html_mathjax, html_section
+            )
+            if not html_success and debug:
+                print(f"  ⚠️ HTML generation failed for {name}")
 
-    # Step 4: Compile the LaTeX document
-    cmd = [str(tools_py), "-x", "-f", tex_file, "-n", out_name]
+            if html_success:
+                if html_section:
+                    html_dir = git_root / "build" / "html" / out_name
+                    output_html_path = html_dir / f"{out_name}.html"
+                else:
+                    output_html_path = git_root / "build" / "html" / f"{out_name}.html"
 
-    if cc_copyright:
-        cmd.append("--cc")
-    if title:
-        cmd.extend(["--title", title])
-    if author:
-        cmd.extend(["--author", author])
-    # NEW: pass subtitle, quote, quote_author
-    if doc.get("subtitle"):
-        cmd.extend(["--subtitle", doc["subtitle"]])
-    if doc.get("quote"):
-        cmd.extend(["--quote", doc["quote"]])
-    if doc.get("quote_author"):
-        cmd.extend(["--quote-author", doc["quote_author"]])
+        return (name, True, section, output_pdf_path, output_html_path)
 
-    ret, stdout, stderr = run_cmd(cmd, cwd=full_path, capture=True, silent=not debug)
-    if ret != 0:
-        print(f"❌ {name}: LaTeX compilation failed")
-        if stderr.strip():
-            error_lines = stderr.strip().split('\n')
-            if error_lines:
-                print(f"   Error: {error_lines[0][:200]}")
-        return (name, False, section, None, None)
-
-    # Check if PDF was created
-    if not output_pdf_path.exists():
-        print(f"❌ {name}: PDF not found at expected location")
-        return (name, False, section, None, None)
-
-    # Step 5: Generate HTML if requested
-    if html:
-        html_success = generate_html(
-            tex_file_path, html_py, debug, title, author,
-            html_toc, html_dark, html_search, html_mathjax, html_section
-        )
-        if not html_success and debug:
-            print(f"  ⚠️ HTML generation failed for {name}")
-
-        if html_success:
-            if html_section:
-                html_dir = git_root / "build" / "html" / out_name
-                output_html_path = html_dir / f"{out_name}.html"
-            else:
-                output_html_path = git_root / "build" / "html" / f"{out_name}.html"
-
-    return (name, True, section, output_pdf_path, output_html_path)
-
-
+    finally:
+        # Clean up the temporary directory
+        shutil.rmtree(temp_dir, ignore_errors=True)
 # ------------------------------------------------------------
 #  Main
 # ------------------------------------------------------------

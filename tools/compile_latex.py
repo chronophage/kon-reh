@@ -1,39 +1,40 @@
 #!/usr/bin/env python3
-r"""
-compile_latex.py – CI‑safe LaTeX builder (Python port of original bash script).
-Ignores LaTeX exit codes; only fails if PDF is missing.
+"""
+compile_latex.py – CI‑safe LaTeX builder using isolated output directory.
+Keeps the .tex file in place; writes aux files and PDF to a temporary directory.
 """
 
 import os
 import sys
-import time
 import shutil
+import tempfile
 import argparse
 import subprocess as sp
 from pathlib import Path
 from typing import Optional, Tuple, List
 import re
+import random
+import string
 
 # ------------------------------------------------------------
 #  Helper functions
 # ------------------------------------------------------------
 def run_cmd(cmd: List[str], cwd: Optional[Path] = None, check: bool = False,
-            capture: bool = False, silent: bool = True) -> Tuple[int, str, str]:
-    """Run a command, optionally capturing output and suppressing stdout/stderr."""
-    stdout = stderr = None
+            capture: bool = False, silent: bool = True, env: Optional[dict] = None) -> Tuple[int, str, str]:
+    if env is None:
+        env = os.environ.copy()
     if capture:
-        result = sp.run(cmd, cwd=cwd, capture_output=True, text=True)
+        result = sp.run(cmd, cwd=cwd, capture_output=True, text=True, env=env)
         return result.returncode, result.stdout, result.stderr
     if silent:
-        result = sp.run(cmd, cwd=cwd, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+        result = sp.run(cmd, cwd=cwd, stdout=sp.DEVNULL, stderr=sp.DEVNULL, env=env)
     else:
-        result = sp.run(cmd, cwd=cwd)
+        result = sp.run(cmd, cwd=cwd, env=env)
     if check and result.returncode != 0:
         sys.exit(f"Command failed: {' '.join(cmd)}")
     return result.returncode, "", ""
 
 def file_contains_pattern(file_path: Path, pattern: str) -> bool:
-    """Return True if the file contains the given regex pattern."""
     try:
         content = file_path.read_text(encoding='utf-8', errors='ignore')
         return bool(re.search(pattern, content))
@@ -41,21 +42,11 @@ def file_contains_pattern(file_path: Path, pattern: str) -> bool:
         return False
 
 def detect_engine(texfile: Path) -> str:
-    """Determine LaTeX engine to use."""
-    # Check for LATEX_ENGINE environment variable and set default if not present
-    if os.environ.get("LATEX_ENGINE"):
-        engine = os.environ["LATEX_ENGINE"]
-        if shutil.which(engine):
-            print(f"Using LaTeX engine from LATEX_ENGINE: {engine}")
-            return engine
-        else:
-            print(f"⚠️ LATEX_ENGINE='{engine}' not found; falling back to auto-detection.")
-    else:
-        # Set LATEX_ENGINE to lualatex if not already set
-        os.environ["LATEX_ENGINE"] = "lualatex"
-        print(f"LATEX_ENGINE not set, defaulting to: lualatex")
+    env_engine = os.environ.get("LATEX_ENGINE")
+    if env_engine and shutil.which(env_engine):
+        print(f"Using LaTeX engine from LATEX_ENGINE: {env_engine}")
+        return env_engine
 
-    # Check for TeXShop directive
     if file_contains_pattern(texfile, r'%!TEX TS-program *= *lualatex'):
         engine = "lualatex"
     elif file_contains_pattern(texfile, r'%!TEX TS-program *= *xelatex'):
@@ -63,7 +54,6 @@ def detect_engine(texfile: Path) -> str:
     elif file_contains_pattern(texfile, r'%!TEX TS-program *= *pdflatex'):
         engine = "pdflatex"
     else:
-        # Heuristic: fontspec/polyglossia/unicode-math → lualatex
         if (file_contains_pattern(texfile, r'\\usepackage\{fontspec\}') or
             file_contains_pattern(texfile, r'\\usepackage\{polyglossia\}') or
             file_contains_pattern(texfile, r'\\usepackage\{unicode-math\}') or
@@ -73,19 +63,16 @@ def detect_engine(texfile: Path) -> str:
         else:
             engine = "pdflatex"
 
-    # Fallback chain
     for candidate in (engine, "xelatex", "lualatex", "pdflatex"):
         if shutil.which(candidate):
             engine = candidate
             break
     else:
-        sys.exit("❌ No LaTeX engine found (checked: lualatex, xelatex, pdflatex).")
-
+        sys.exit("❌ No LaTeX engine found.")
     print(f"Using LaTeX engine: {engine}")
     return engine
 
 def get_git_root(start_path: Path) -> Path:
-    """Return the root of the git repository, or current directory if not in a repo."""
     try:
         ret, out, _ = run_cmd(["git", "rev-parse", "--show-toplevel"],
                               cwd=start_path, capture=True, silent=True)
@@ -110,18 +97,17 @@ def get_branch(file_path: Path) -> str:
             return "resources"
         if "/worldbook" in path_str:
             return "worldbook"
-        if "/travel" in path_str:          
-            return "travel"   
-        if "/design" in path_str:          
-            return "design"               
+        if "/travel" in path_str:
+            return "travel"
+        if "/design" in path_str:
+            return "design"
         return "ttrpg"
     return "./"
 
 # ------------------------------------------------------------
-#  Copyright and title page injection helpers
+#  Title page / copyright helpers
 # ------------------------------------------------------------
 def extract_title_from_tex(texfile: Path) -> Optional[str]:
-    """Parse a .tex file for \\title{...}."""
     try:
         content = texfile.read_text(encoding='utf-8', errors='ignore')
         match = re.search(r'\\title\s*\{([^}]*)\}', content)
@@ -130,7 +116,6 @@ def extract_title_from_tex(texfile: Path) -> Optional[str]:
         return None
 
 def extract_author_from_tex(texfile: Path) -> Optional[str]:
-    """Parse a .tex file for \\author{...}."""
     try:
         content = texfile.read_text(encoding='utf-8', errors='ignore')
         match = re.search(r'\\author\s*\{([^}]*)\}', content)
@@ -138,22 +123,35 @@ def extract_author_from_tex(texfile: Path) -> Optional[str]:
     except Exception:
         return None
 
+def create_include_dirs(main_tex: Path, output_dir: Path) -> None:
+    try:
+        content = main_tex.read_text(encoding='utf-8', errors='ignore')
+    except Exception as e:
+        print(f"⚠️ Could not read {main_tex}: {e}")
+        return
+    includes = re.findall(r'\\(?:include|input)\{([^}]+)\}', content)
+    created = set()
+    for inc in includes:
+        dir_path = os.path.dirname(inc)
+        if dir_path and dir_path not in created:
+            target = output_dir / dir_path
+            target.mkdir(parents=True, exist_ok=True)
+            created.add(dir_path)
+            print(f"📁 Created directory: {target}")
+
 def get_document_title(texfile: Path, cli_title: Optional[str]) -> str:
-    """Return the document title from CLI or from .tex file, fallback to 'Untitled'."""
     if cli_title:
         return cli_title
     parsed = extract_title_from_tex(texfile)
     return parsed if parsed else "Untitled"
 
 def get_document_author(texfile: Path, cli_author: Optional[str]) -> str:
-    """Return the document author from CLI or from .tex file, fallback to 'Nicholas A. Gasper'."""
     if cli_author:
         return cli_author
     parsed = extract_author_from_tex(texfile)
     return parsed if parsed else "Nicholas A. Gasper"
 
 def has_titlepage(content: str) -> bool:
-    """Check if the document already has a title page."""
     patterns = [
         r'\\begin\{titlepage\}',
         r'\\maketitle',
@@ -166,11 +164,6 @@ def has_titlepage(content: str) -> bool:
 
 def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str,
                        subtitle: str = "", quote: str = "", quote_author: str = "") -> bool:
-    """
-    Read git_root/titlepage_template.tex, replace placeholders,
-    write to out_dir/titlepage.tex.
-    Returns True if generation succeeded, False if template missing.
-    """
     template_path = git_root / "titlepage_template.tex"
     if not template_path.is_file():
         return False
@@ -188,11 +181,6 @@ def generate_titlepage(git_root: Path, out_dir: Path, title: str, author: str,
         return False
 
 def generate_copyright(git_root: Path, out_dir: Path, title: str, author: str, cc: bool = False) -> bool:
-    """
-    Read git_root/copyright_template.tex or git_root/cc_copyright_template.tex,
-    replace <<TITLE>> and <<AUTHOR>>, write to out_dir/copyright.tex.
-    Returns True if generation succeeded, False if template missing.
-    """
     template_name = "cc_copyright_template.tex" if cc else "copyright_template.tex"
     template_path = git_root / template_name
     if not template_path.is_file():
@@ -210,15 +198,8 @@ def generate_copyright(git_root: Path, out_dir: Path, title: str, author: str, c
 def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, author: str,
                                 subtitle: str = "", quote: str = "", quote_author: str = "",
                                 debug: bool = False) -> bool:
-    """
-    If the .tex file doesn't have a title page, generate titlepage.tex and insert
-    \\input{titlepage} after \\begin{document}.
-    Returns True if modified, False if already has a title page or error.
-    """
     content = texfile.read_text(encoding='utf-8', errors='ignore')
     if has_titlepage(content):
-        if debug:
-            print(f"✅ {texfile.name} already has a title page.")
         return False
 
     if not generate_titlepage(git_root, texfile.parent, title, author, subtitle, quote, quote_author):
@@ -247,12 +228,60 @@ def insert_titlepage_if_missing(texfile: Path, git_root: Path, title: str, autho
         print(f"✅ Inserted title page into {texfile.name}")
     return True
 
+def show_latex_error(log_file: Path) -> None:
+    if not log_file.exists():
+        print("  No log file found.")
+        return
+    try:
+        content = log_file.read_text(encoding='utf-8', errors='ignore')
+        lines = content.splitlines()
+        error_lines = []
+        for i, line in enumerate(lines):
+            if line.startswith('! '):
+                error_lines.append(line)
+                for j in range(i+1, min(i+6, len(lines))):
+                    if lines[j].strip():
+                        error_lines.append('  ' + lines[j])
+                break
+        if error_lines:
+            print("❌ LaTeX Error:")
+            for line in error_lines:
+                print(f"  {line}")
+        else:
+            print("📄 Last 30 lines of log:")
+            for line in lines[-30:]:
+                print(f"  {line}")
+    except Exception:
+        print("  Could not read log file.")
+
+# ------------------------------------------------------------
+#  Atomic copy with unique naming (no locking needed)
+# ------------------------------------------------------------
+def atomic_copy(src: Path, dst: Path, overwrite: bool = False) -> Path:
+    """
+    Copy src to dst atomically using a temporary file and rename.
+    If dst exists and overwrite is False, generate a unique name.
+    Returns the final destination path.
+    """
+    if not overwrite and dst.exists():
+        stem = dst.stem
+        suffix = dst.suffix
+        rand_suffix = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
+        dst = dst.with_name(f"{stem}_{rand_suffix}{suffix}")
+        print(f"⚠️ Destination exists, using {dst.name}")
+
+    # Write to a temporary file in the same directory
+    tmp = dst.with_name(dst.name + '.tmp')
+    shutil.copy2(src, tmp)
+    # Atomic rename (works on Unix; on Windows, rename is atomic for same volume)
+    tmp.rename(dst)
+    return dst
+
 # ------------------------------------------------------------
 #  Main
 # ------------------------------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="CI-safe LaTeX builder",
-                                     add_help=False)
+    parser = argparse.ArgumentParser(description="CI-safe LaTeX builder with isolated output dir")
     parser.add_argument("-d", action="store_true", help="Debug mode")
     parser.add_argument("-c", action="store_true", default=True,
                         help="Clean auxiliary files (default)")
@@ -264,36 +293,35 @@ def main():
                         help="Do NOT run bibliography")
     parser.add_argument("-n", dest="pdfname", help="Output PDF name")
     parser.add_argument("-f", dest="texfile", help="Input .tex file")
-    parser.add_argument("-q", dest="quality", help="Ghostscript quality (screen/ebook/printer/prepress)")
+    parser.add_argument("-q", dest="quality", help="Ghostscript quality")
     parser.add_argument("--cc", action="store_true",
-                        help="Use CC-BY copyright template instead of All Rights Reserved")
+                        help="Use CC-BY copyright template")
     parser.add_argument("--no-titlepage", action="store_true",
                         help="Do not insert title page if missing")
-    parser.add_argument("--title", help="Document title (overrides \\title in .tex)")
-    parser.add_argument("--author", help="Document author (overrides \\author in .tex)")
-    parser.add_argument("--subtitle", help="Subtitle for the title page")
-    parser.add_argument("--quote", help="Flavor quote for the title page")
-    parser.add_argument("--quote-author", help="Author of the flavor quote")
-    parser.add_argument("positional", nargs="?", help="Input .tex file (positional)")
+    parser.add_argument("--title", help="Document title")
+    parser.add_argument("--author", help="Document author")
+    parser.add_argument("--subtitle", help="Subtitle")
+    parser.add_argument("--quote", help="Quote")
+    parser.add_argument("--quote-author", help="Quote author")
+    parser.add_argument("--keep-temp", action="store_true",
+                        help="Keep temporary files (for debugging)")
+    parser.add_argument("positional", nargs="?", help="Input .tex file")
     args = parser.parse_args()
 
-    # Determine TEXFILE
     texfile_str = args.texfile or args.positional
     if not texfile_str:
-        sys.exit("Error: No .tex file specified. Use -f <file.tex> or pass it as the only argument.")
+        sys.exit("Error: No .tex file specified.")
     if args.texfile and args.positional:
-        sys.exit("Error: specify the .tex file only once — via -f <file.tex> OR as the only argument.")
+        sys.exit("Error: specify the .tex file only once.")
 
     texfile = Path(texfile_str)
     if not texfile.suffix:
         texfile = texfile.with_suffix(".tex")
-        print(f"No extension detected, assuming '{texfile.name}'")
     if texfile.suffix != ".tex":
         sys.exit(f"❌ Error: {texfile.name} does not appear to be a .tex file.")
     if not texfile.is_file():
         sys.exit(f"❌ Error: Specified file not found: {texfile}")
 
-    # Settings
     debug = args.d
     clean = args.c and not args.x
     do_index = not args.i
@@ -306,178 +334,170 @@ def main():
     no_titlepage = args.no_titlepage
 
     git_root = get_git_root(Path.cwd())
-    file_path = texfile.parent.resolve()
-    branch = get_branch(file_path)
-
+    branch = get_branch(texfile)
     latex_cmd = detect_engine(texfile)
 
     if debug:
-        print(f"Parameters:")
-        print(f"  Debug: {debug}")
-        print(f"  Clean: {clean}")
-        print(f"  TEXFILE: {texfile}")
-        print(f"  BASENAME: {texfile.stem}")
-        print(f"  Branch: {branch}")
-        print(f"  Quality: {quality if quality else '<none>'}")
-        print(f"  PDFNAME: {pdfname if pdfname else '<none>'}")
-        print(f"  CI_MODE: {ci_mode}")
-        print(f"  Engine: {latex_cmd}")
-        print(f"  CC Copyright: {use_cc_copyright}")
-        print(f"  No Titlepage: {no_titlepage}")
-        print(f"  Title (CLI): {args.title if args.title else '<none>'}")
-        print(f"  Author (CLI): {args.author if args.author else '<none>'}")
-        print(f"  Subtitle: {args.subtitle if args.subtitle else '<none>'}")
-        print(f"  Quote: {args.quote if args.quote else '<none>'}")
-        print(f"  Quote Author: {args.quote_author if args.quote_author else '<none>'}")
-        resp = input(f"Run {latex_cmd} once interactively? [y/N] ")
+        print(f"Debug: texfile={texfile}, branch={branch}, engine={latex_cmd}")
+        print(f"  Title: {args.title}, Author: {args.author}")
+        resp = input("Run LaTeX interactively? [y/N] ")
         if resp.lower() == "y":
-            sp.run([latex_cmd, str(texfile)], cwd=file_path)
-        print("git clean would remove:")
-        sp.run(["git", "clean", "-x", "-n"], cwd=git_root)
-        print("Exiting debug.")
+            sp.run([latex_cmd, str(texfile)], cwd=texfile.parent)
         sys.exit(0)
 
-    if not ci_mode:
-        print("git add --all . in 5s for safety, ^C to abort.")
-        time.sleep(5)
-        run_cmd(["git", "add", "--all"], cwd=git_root, check=False, silent=True)
+    # Create temporary output directory
+    temp_dir_obj = tempfile.TemporaryDirectory(prefix="latex_out_")
+    out_dir = Path(temp_dir_obj.name)
+    print(f"Output directory: {out_dir}")
 
-    doc_title = get_document_title(texfile, args.title)
-    doc_author = get_document_author(texfile, args.author)
-    subtitle = args.subtitle or ""
-    quote = args.quote or ""
-    quote_author = args.quote_author or ""
+    try:
+        # Copy the original .tex file to the output directory
+        out_tex = out_dir / texfile.name
+        shutil.copy2(texfile, out_tex)
 
-    if not no_titlepage:
-        inserted = insert_titlepage_if_missing(texfile, git_root, doc_title, doc_author,
-                                               subtitle, quote, quote_author, debug)
-        if inserted:
-            print(f"✅ Inserted title page into {texfile.name}")
-        elif debug:
-            print(f"ℹ️  No title page needed for {texfile.name}")
+        doc_title = get_document_title(texfile, args.title)
+        doc_author = get_document_author(texfile, args.author)
+        subtitle = args.subtitle or ""
+        quote = args.quote or ""
+        quote_author = args.quote_author or ""
 
-    if generate_copyright(git_root, file_path, doc_title, doc_author, use_cc_copyright):
-        print(f"✅ Generated copyright.tex from {'CC-BY' if use_cc_copyright else 'All Rights Reserved'} template.")
-    else:
-        print("ℹ️  No copyright template found; skipping copyright injection.")
+        if not no_titlepage:
+            inserted = insert_titlepage_if_missing(out_tex, git_root, doc_title, doc_author,
+                                                   subtitle, quote, quote_author, debug)
+            if inserted:
+                print(f"✅ Inserted title page into {out_tex.name}")
 
-    print(f"Initial compile of {texfile.name} using {latex_cmd}...")
-    run_cmd([latex_cmd, "-interaction=nonstopmode", str(texfile)],
-            cwd=file_path, check=False, silent=True)
+        if generate_copyright(git_root, out_dir, doc_title, doc_author, use_cc_copyright):
+            print(f"✅ Generated copyright.tex in {out_dir}")
+        else:
+            print("ℹ️  No copyright template found; skipping.")
 
-    final_pdf = file_path / f"{texfile.stem}.pdf"
-    if not final_pdf.is_file():
-        sys.exit("PDF file was not generated")
+        create_include_dirs(texfile, out_dir)
 
-    bcf_file = file_path / f"{texfile.stem}.bcf"
-    if bcf_file.is_file() and do_biber:
-        if sys.platform == "darwin":
-            try:
-                sp.run(["find", "/var/folders", "-name", "par-*", "-type", "d",
-                        "-exec", "rm", "-rf", "{}", "+"],
-                       stdout=sp.DEVNULL, stderr=sp.DEVNULL)
-            except Exception:
-                pass
-        ret, _, _ = run_cmd(["biber", "--version"], capture=True, silent=True)
-        if "PAR" in str(ret):
-            perl_cmd = "perl -e 'use Config; print \"$Config{installprivlib}/unicore\\n\"'"
-            try:
-                unicore_path = sp.check_output(perl_cmd, shell=True, text=True).strip()
-                os.environ["PERL_UNICODE_DATA"] = unicore_path
-            except Exception:
-                pass
-        print(f"Running biber {texfile.stem}")
-        run_cmd(["biber", texfile.stem], cwd=file_path, check=False, silent=True)
+        build_env = os.environ.copy()
+        build_env['TEXINPUTS'] = str(out_dir) + ':' + build_env.get('TEXINPUTS', '')
 
-    idx_file = file_path / f"{texfile.stem}.idx"
-    if idx_file.is_file() and do_index:
-        print(f"Running makeindex {texfile.stem}")
-        run_cmd(["makeindex", texfile.stem], cwd=file_path, check=False, silent=True)
+        # First LaTeX run
+        print(f"Compiling {texfile.name} with {latex_cmd}...")
+        cmd = [latex_cmd, "-interaction=nonstopmode",
+               f"-output-directory={out_dir}",
+               str(out_tex)]
+        ret, stdout, stderr = run_cmd(cmd, cwd=texfile.parent, capture=True, silent=False, env=build_env)
 
-    for _ in range(2):
-        run_cmd([latex_cmd, "-interaction=nonstopmode", str(texfile)],
-                cwd=file_path, check=False, silent=True)
+        pdf_in_out = out_dir / f"{texfile.stem}.pdf"
+        if not pdf_in_out.is_file():
+            print(f"❌ PDF not generated.")
+            log_file = out_dir / f"{texfile.stem}.log"
+            show_latex_error(log_file)
+            sys.exit("PDF file was not generated")
 
-    print(f"✅ Compilation complete: {final_pdf.name}")
+        # Biber
+        bcf_file = out_dir / f"{texfile.stem}.bcf"
+        if bcf_file.is_file() and do_biber:
+            print(f"Running biber {texfile.stem}")
+            run_cmd(["biber", "--output-directory", str(out_dir), texfile.stem],
+                    cwd=texfile.parent, check=False, silent=False, env=build_env)
 
-    if quality:
-        if shutil.which("gs"):
-            print(f"Compressing PDF with quality: {quality}")
-            compressed = file_path / f"{texfile.stem}_resized.pdf"
+        # Makeindex
+        idx_file = out_dir / f"{texfile.stem}.idx"
+        if idx_file.is_file() and do_index:
+            print(f"Running makeindex {texfile.stem}")
+            run_cmd(["makeindex", "-o", str(out_dir / f"{texfile.stem}.ind"),
+                     str(idx_file)], cwd=out_dir, check=False, silent=True, env=build_env)
+
+        # Two more LaTeX runs
+        for run_num in range(2):
+            print(f"Compiling {texfile.name} (pass {run_num + 2})...")
+            run_cmd([latex_cmd, "-interaction=nonstopmode",
+                     f"-output-directory={out_dir}",
+                     str(out_tex)],
+                    cwd=texfile.parent, check=False, silent=True, env=build_env)
+
+        if not pdf_in_out.is_file():
+            sys.exit("PDF missing after final compilations")
+
+        print(f"✅ Compilation complete: {pdf_in_out.name}")
+
+        # Optional compression
+        if quality and shutil.which("gs"):
+            compressed = out_dir / f"{texfile.stem}_resized.pdf"
             gs_cmd = [
                 "gs", "-sDEVICE=pdfwrite", "-dCompatibilityLevel=1.4",
                 f"-dPDFSETTINGS=/{quality}", "-dNOPAUSE", "-dQUIET", "-dBATCH",
-                f"-sOutputFile={compressed}", str(final_pdf)
+                f"-sOutputFile={compressed}", str(pdf_in_out)
             ]
-            ret, _, _ = run_cmd(gs_cmd, cwd=file_path, capture=True, silent=True)
+            ret, _, _ = run_cmd(gs_cmd, cwd=out_dir, capture=True, silent=True)
             if ret == 0 and compressed.is_file():
-                print(f"📦 Using compressed PDF: {compressed.name}")
-                final_pdf = compressed
-            else:
-                print("⚠️  Compression failed; using uncompressed PDF.")
+                print(f"📦 Using compressed PDF")
+                pdf_in_out = compressed
+
+        # --- Copy to original directory (atomic with unique name if conflict) ---
+        final_pdf = texfile.parent / pdf_in_out.name
+        final_pdf = atomic_copy(pdf_in_out, final_pdf, overwrite=False)
+        print(f"✅ Copied PDF to {final_pdf}")
+
+        # Rename if needed
+        if pdfname:
+            if not pdfname.endswith('.pdf'):
+                pdfname += '.pdf'
+            if pdfname != final_pdf.name:
+                new_name = texfile.parent / pdfname
+                # atomic rename (move) – if new_name exists, atomic_copy would rename again,
+                # but we just want to rename, so we use rename directly (it will overwrite if exists)
+                # But to be safe, we can use atomic_copy with overwrite=True
+                if new_name.exists():
+                    # Overwrite with unique name? We'll use atomic_copy with overwrite=True to replace
+                    final_pdf = atomic_copy(final_pdf, new_name, overwrite=True)
+                else:
+                    final_pdf.rename(new_name)
+                    final_pdf = new_name
+                print(f"📝 Renamed to {final_pdf}")
+
+        # Copy to build/ based on branch
+        build_root = git_root / "build"
+        branch_map = {
+            "resources":    build_root / "resources",
+            "splatbooks":   build_root / "splatbooks",
+            "expansions":   build_root / "expansions",
+            "adventures":   build_root / "adventures",
+            "worldbook":    build_root / "worldbook",
+            "travel":       build_root / "travel",
+            "design":       build_root / "design",
+            "ttrpg":        build_root,
+            "konreh":       build_root / "konreh",
+            "./":           build_root,
+        }
+        dest_dir = branch_map.get(branch, git_root / branch / "build")
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest_path = dest_dir / final_pdf.name
+
+        # Atomic copy to build directory
+        dest_path = atomic_copy(final_pdf, dest_path, overwrite=False)
+        print(f"📦 Copied {final_pdf.name} → {dest_path}")
+
+        if not ci_mode:
+            run_cmd(["git", "add", str(dest_path)], cwd=git_root, check=False, silent=True)
+            if open_pdf:
+                print(f"Opening {dest_path} ...")
+                if sys.platform == "darwin":
+                    sp.run(["open", str(dest_path)], check=False)
+                elif sys.platform.startswith("linux"):
+                    sp.run(["xdg-open", str(dest_path)], check=False)
+                elif sys.platform == "win32":
+                    sp.run(["cygstart", str(dest_path)], check=False)
+
+    finally:
+        if not args.keep_temp:
+            try:
+                temp_dir_obj.cleanup()
+                print(f"🧹 Cleaned up temporary directory")
+            except Exception as e:
+                print(f"⚠️ Could not clean up: {e}")
         else:
-            print("⚠️  Ghostscript (gs) not found; skipping compression.")
+            print(f"📁 Keeping temporary directory: {out_dir}")
 
-    # ----- FIX: ensure pdfname ends with .pdf -----
-    if pdfname:
-        if not pdfname.endswith('.pdf'):
-            pdfname = pdfname + '.pdf'
-    else:
-        pdfname = final_pdf.name
-
-    if pdfname != final_pdf.name:
-        new_name = file_path / pdfname
-        print(f"Renaming {final_pdf.name} → {pdfname}")
-        final_pdf.rename(new_name)
-        final_pdf = new_name
-    else:
-        pdfname = final_pdf.name
-
-    build_root = git_root / "build"
-    branch_map = {
-        "resources":    build_root / "resources",
-        "splatbooks":   build_root / "splatbooks",
-        "expansions":   build_root / "expansions",
-        "adventures":   build_root / "adventures",
-        "worldbook":    build_root / "worldbook",
-        "travel":       build_root / "travel",
-        "design":       build_root / "design",
-        "ttrpg":        build_root,
-        "konreh":       build_root / "konreh",
-        "./":           build_root,
-    }
-    dest_dir = branch_map.get(branch, git_root / branch / "build")
-    dest_dir.mkdir(parents=True, exist_ok=True)
-    dest_path = dest_dir / pdfname
-    print(f"Moving {pdfname} → {dest_path}")
-    shutil.move(str(final_pdf), str(dest_path))
-
-    if not ci_mode:
-        run_cmd(["git", "add", str(dest_path)], cwd=git_root, check=False, silent=True)
-        if open_pdf:
-            print(f"Opening {dest_path} ...")
-            if sys.platform == "darwin":
-                sp.run(["open", str(dest_path)], check=False)
-            elif sys.platform.startswith("linux"):
-                sp.run(["xdg-open", str(dest_path)], check=False, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
-            elif sys.platform == "win32":
-                sp.run(["cygstart", str(dest_path)], check=False)
-            else:
-                print("⚠️  No known opener found (open/xdg-open/cygstart).")
-
-    if clean and not ci_mode:
-        print("Cleaning auxiliary files...")
-        aux_extensions = [".aux", ".log", ".lof", ".lot", ".toc", ".fls",
-                          ".fdb_latexmk", ".out", ".bcf", ".run.xml", ".blg",
-                          ".bbl", ".idx", ".ilg", ".ind", ".loa", ".nav", ".snm"]
-        stem = texfile.stem
-        for ext in aux_extensions:
-            aux_file = file_path / f"{stem}{ext}"
-            if aux_file.is_file():
-                aux_file.unlink()
-
+    print(f"✅ Build successful: {dest_path}")
     sys.exit(0)
-
 
 if __name__ == "__main__":
     main()
