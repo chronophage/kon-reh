@@ -94,42 +94,15 @@
     #1
 }
 
-% ----- JavaScript for Auto-Calculation -----
-\begin{Form}[action={%
-    function calcResources() {
-        var spirit = parseInt(this.getField('spirit').value) || 0;
-        var presence = parseInt(this.getField('presence').value) || 0;
-        var body = parseInt(this.getField('body').value) || 0;
-        
-        this.getField('oblig_cap').value = spirit + presence;
-        this.getField('fatigue_max').value = body;
-        
-        // Calculate Obligation overflow warning
-        var oblig = parseInt(this.getField('oblig_current').value) || 0;
-        var cap = spirit + presence;
-        if (oblig > cap) {
-            this.getField('oblig_warning').value = '⚠ OVER CAPACITY!';
-            this.getField('oblig_warning').textColor = color.red;
-        } else {
-            this.getField('oblig_warning').value = '';
-        }
-    }
-    
-    function resetAll() {
-        this.resetForm();
-        this.getField('oblig_warning').value = '';
-    }
-    
-    this.calcResources = calcResources;
-    this.resetAll = resetAll;
-}]}
-
 % ============================================================
 % BEGIN DOCUMENT
 % ============================================================
 \begin{document}
-\input{titlepage}
-\input{copyright}
+
+% --- COMMENTED OUT external titlepage/copyright ---
+% \input{titlepage}
+% \input{copyright}
+% (they are not needed for this standalone tracker)
 
 % ----- HEADER -----
 \begin{minipage}[t]{0.45\linewidth}
@@ -144,6 +117,8 @@
 \hrule
 
 \vspace{0.2cm}
+
+\begin{Form}
 
 % ----- LEFT COLUMN -----
 \begin{minipage}[t]{0.48\linewidth}
