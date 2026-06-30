@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 compile_latex.py – CI‑safe LaTeX builder using isolated output directory.
-Copies the entire source tree to a temporary directory, so all \input{} and
-\include{} files are found. PDF is copied back atomically.
+Copies the entire source tree to a temporary directory, so all \\input{} and
+\\include{} files are found. PDF is copied back atomically.
 """
 
 import os
@@ -240,7 +241,7 @@ def insert_titlepage_if_missing(
     debug: bool = False,
 ) -> bool:
     """If the source does not already have a title page, generate one and
-    insert `\input{titlepage}` after `\begin{document}`."""
+    insert \\input{titlepage}` after \\begin{document}."""
     content = texfile.read_text(encoding="utf-8", errors="ignore")
     if has_titlepage(content):
         return False
@@ -390,8 +391,7 @@ def main():
     # ------------------------------------------------------------
     #  Create a temporary working directory
     # ------------------------------------------------------------
-    temp_dir_obj = tempfile.TemporaryDirectory(prefix="latex_out_")
-    out_dir = Path(temp_dir_obj.name)
+    out_dir = Path(tempfile.mkdtemp(prefix="latex_out_"))
     print(f"Output directory: {out_dir}")
 
     try:
@@ -617,12 +617,12 @@ def main():
     finally:
         if not args.keep_temp:
             try:
-                temp_dir_obj.cleanup()
-                print("🧹 Cleaned up temporary directory")
+                shutil.rmtree(out_dir)
+                print(f"🧹 Cleaned up temporary directory")
             except Exception as e:
-                print(f"⚠️  Could not clean up temporary directory: {e}")
+                print(f"⚠️ Could not clean up: {e}")
         else:
-            print(f"📁  Keeping temporary directory at {out_dir}")
+            print(f"📁 Keeping temporary directory: {out_dir}")
 
     print(f"✅ Build successful: {dest_path}")
     sys.exit(0)
