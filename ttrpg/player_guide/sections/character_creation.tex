@@ -1,6 +1,3 @@
-% ============================================================
-% Chapter 2: Character Creation Summary
-% ============================================================
 \chapter{Character Creation Summary}
 \label{ch:character-creation}
 
@@ -46,36 +43,37 @@ Fate's Edge is modular by design. You can play with just the core resolution loo
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[
-    node distance=1.8cm,
-    box/.style={rectangle, draw, minimum width=2.8cm, minimum height=0.7cm, align=center, rounded corners, fill=blue!10, font=\small},
-    decision/.style={diamond, draw, minimum width=2.2cm, minimum height=0.9cm, align=center, fill=yellow!20, font=\small},
+    node distance=1.5cm,
+    box/.style={rectangle, draw, minimum width=3cm, minimum height=0.8cm, align=center, rounded corners, fill=blue!10},
+    decision/.style={diamond, draw, minimum width=2.5cm, minimum height=1cm, align=center, fill=yellow!20},
     arrow/.style={thick, ->, >=stealth}
 ]
 \node[box] (start) {Start here: \\ What do you want?};
 \node[decision, below of=start, yshift=-0.5cm] (core) {Just play with \\ core resolution?};
-\node[box, below left of=core, xshift=-2.5cm] (simple) {Core Loop Only \\ Attributes + Skills \\ No Talents, no assets};
-\node[decision, below right of=core, xshift=2.5cm] (talent) {Want a \\ signature edge?};
-\node[box, below left of=talent, xshift=-1.8cm] (minor) {Take 1--2 \\ Minor Talents};
-\node[decision, below right of=talent, xshift=1.8cm] (magic) {Want magic?};
-\node[box, below left of=magic, xshift=-1.8cm] (patron) {Choose a Patron \\ + one magic path};
-\node[decision, below right of=magic, xshift=1.8cm] (influence) {Want off-screen \\ influence?};
-\node[box, below left of=influence, xshift=-1.8cm] (asset) {Acquire an \\ Asset or Follower};
-\node[decision, below right of=influence, xshift=1.8cm] (trust) {Want to build \\ a shared legacy?};
-\node[box, below left of=trust, xshift=-1.8cm] (trustbox) {Form a Trust \\ with your party};
-\node[box, below right of=trust, xshift=1.8cm] (master) {Mix and match \\ all layers!};
+\node[box, below left of=core, xshift=-2cm] (simple) {Core Loop Only \\ Attributes + Skills \\ No Talents, no assets};
+\node[decision, below right of=core, xshift=2cm] (talent) {Want a \\ signature edge?};
+\node[box, below left of=talent, xshift=-1.5cm] (minor) {Take 1--2 \\ Minor Talents};
+\node[decision, below right of=talent, xshift=1.5cm] (magic) {Want magic?};
+\node[box, below left of=magic, xshift=-1.5cm] (patron) {Choose a Patron \\ + one magic path};
+\node[decision, below right of=magic, xshift=1.5cm] (influence) {Want off-screen \\ influence?};
+\node[box, below left of=influence, xshift=-1.5cm] (asset) {Acquire an \\ Asset or Follower};
+\node[decision, below right of=influence, xshift=1.5cm] (trust) {Want to build \\ a shared legacy?};
+\node[box, below left of=trust, xshift=-1.5cm] (trustbox) {Form a Trust \\ with your party};
+\node[box, below right of=trust, xshift=1.5cm] (master) {Mix and match \\ all layers!};
 %
 \draw[arrow] (start) -- (core);
-\draw[arrow] (core) -- node[above left, font=\small] {Yes} (simple);
-\draw[arrow] (core) -- node[above right, font=\small] {No} (talent);
-\draw[arrow] (talent) -- node[above left, font=\small] {No} (minor);
-\draw[arrow] (talent) -- node[above right, font=\small] {Yes} (magic);
-\draw[arrow] (magic) -- node[above left, font=\small] {No} (patron);
-\draw[arrow] (magic) -- node[above right, font=\small] {Yes} (influence);
-\draw[arrow] (influence) -- node[above left, font=\small] {No} (asset);
-\draw[arrow] (influence) -- node[above right, font=\small] {Yes} (trust);
-\draw[arrow] (trust) -- node[above left, font=\small] {No} (trustbox);
-\draw[arrow] (trust) -- node[above right, font=\small] {Yes} (master);
+\draw[arrow] (core) -- node[above left] {Yes} (simple);
+\draw[arrow] (core) -- node[above right] {No} (talent);
+\draw[arrow] (talent) -- node[above left] {No} (minor);
+\draw[arrow] (talent) -- node[above right] {Yes} (magic);
+\draw[arrow] (magic) -- node[above left] {No} (patron);
+\draw[arrow] (magic) -- node[above right] {Yes} (influence);
+\draw[arrow] (influence) -- node[above left] {No} (asset);
+\draw[arrow] (influence) -- node[above right] {Yes} (trust);
+\draw[arrow] (trust) -- node[above left] {No} (trustbox);
+\draw[arrow] (trust) -- node[above right] {Yes} (master);
 %
+% Optional connections for chaining
 \draw[arrow] (minor.south) -- ++(0,-0.5) -| (magic.west);
 \draw[arrow] (patron.south) -- ++(0,-0.5) -| (influence.west);
 \draw[arrow] (asset.south) -- ++(0,-0.5) -| (trust.west);
@@ -138,55 +136,31 @@ Also choose your character's \textbf{ancestry} (see \ref{sec:peoples-mechanics})
 \section{Step 2 -- Attributes}
 You have four \textbf{Attributes} (1--5). Spend XP to raise them from a base of 1 each.
 
-\paragraph{Cost:} Each step costs \textbf{new rating \(\times\) 3 XP}. This is incremental:
-\begin{itemize}
-  \item 1 $\to$ 2 costs 6 XP (2 $\times$ 3)
-  \item 2 $\to$ 3 costs 9 XP (3 $\times$ 3)
-  \item 3 $\to$ 4 costs 12 XP (4 $\times$ 3)
-  \item 4 $\to$ 5 costs 15 XP (5 $\times$ 3)
-\end{itemize}
-So raising an Attribute from 1 to 3 costs 6 + 9 = \textbf{15 XP total}.
+\paragraph{Cost:} \textbf{new rating \(\times\) 3 XP} per step.
 
 \paragraph{Recommended starting ranges:}
 \begin{itemize}
-  \item Primary attribute (the one you use most): \textbf{3} (costs 15 XP total: 1$\to$2 = 6, 2$\to$3 = 9)
-  \item Secondary attributes: \textbf{2} each (costs 6 XP each: 1$\to$2 = 6)
+  \item Primary attribute (the one you use most): \textbf{3} (cost 9 XP)
+  \item Secondary attributes: \textbf{2} each (cost 6 XP)
 \end{itemize}
 
-\paragraph{Example:} Body 3 (1$\to$2 = 6, 2$\to$3 = 9 $\rightarrow$ total 15 XP), Wits 2 (1$\to$2 = 6 XP) $\rightarrow$ 21 XP spent. Spirit and Presence remain at 1.
+\paragraph{Example:} Body 3 (1\(\rightarrow\)2 = 6, 2\(\rightarrow\)3 = 9 \(\rightarrow\) total 15 XP), Wits 2 (6 XP), Spirit 1, Presence 1 \(\rightarrow\) 21 XP spent.
 
 For detailed descriptions see \ref{sec:core-attributes}.
 
 \section{Step 3 -- Skills}
 Choose \textbf{Skills} (0--5) that match your concept. \textbf{Key skills} (used often) should be 2--3; others 0--1.
 
-\paragraph{Cost:} Each step costs \textbf{new level \(\times\) 2 XP}. This is incremental:
-\begin{itemize}
-  \item 0 $\to$ 1 costs 2 XP (1 $\times$ 2)
-  \item 1 $\to$ 2 costs 4 XP (2 $\times$ 2)
-  \item 2 $\to$ 3 costs 6 XP (3 $\times$ 2)
-  \item 3 $\to$ 4 costs 8 XP (4 $\times$ 2)
-  \item 4 $\to$ 5 costs 10 XP (5 $\times$ 2)
-\end{itemize}
-So raising a Skill from 0 to 2 costs 2 + 4 = \textbf{6 XP total}.
+\paragraph{Cost:} \textbf{new level \(\times\) 2 XP} per step.
 
 \paragraph{Recommended starting total:} Spend \textbf{8--12 XP} on skills.
 
-\paragraph{Example:} Melee 2 (0$\to$1 = 2, 1$\to$2 = 4 $\rightarrow$ total 6 XP), Athletics 1 (0$\to$1 = 2 XP), Endurance 1 (0$\to$1 = 2 XP) $\rightarrow$ total 10 XP.
+\paragraph{Example:} Melee 2 (0\(\rightarrow\)1=2, 1\(\rightarrow\)2=4 =6 XP), Athletics 1 (2 XP), Endurance 1 (2 XP) \(\rightarrow\) total 10 XP.
 
 See \ref{sec:skills} for the full skill list.
 
 \section{Step 4 -- Talents}
-
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=You Don't Need Talents to Be Effective,breakable]
-A character with \textbf{just Attributes and Skills} is a complete, viable character---\textit{especially at Tier I}.
-
-Talents are \textbf{optional extras}. They give you a signature edge, but they are not required to contribute meaningfully to the party. A Body 3 + Melee 2 warrior with no Talents is still rolling 5 dice in combat. A Spirit 3 + Lore 2 scholar with no Talents is still rolling 5 dice to recall ancient secrets.
-
-\textbf{Start simple.} Take 0--2 Talents. Add more as you grow. The system is designed so that Attributes and Skills do the heavy lifting.
-\end{tcolorbox}
-
-Talents are special abilities. Start with \textbf{0--3 talents}. Many concepts work well with two minor talents (2--3 XP each) or one major talent (4--6 XP). Some concepts work perfectly with \textbf{zero} Talents---your Attributes and Skills are enough.
+Talents are special abilities. Start with \textbf{1--3 talents}. Many concepts work well with two minor talents (2--3 XP each) or one major talent (4--6 XP).
 
 \paragraph{Magic access talents (if you want magic):}
 \begin{itemize}
@@ -198,18 +172,11 @@ Talents are special abilities. Start with \textbf{0--3 talents}. Many concepts w
 \end{itemize}
 
 \paragraph{Non-magic talents (examples):}
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-\textbf{Talent} & \textbf{Cost} & \textbf{Effect} \\
-\midrule
-\textit{None} & \textit{0 XP} & \textit{A valid, complete character. Attributes + Skills do the work.} \\
-Keen Senses & 2 XP & +1 die to perception checks. \\
-Defensive Survival & 3 XP & +1 die to melee defense, convert Harm to Fatigue. \\
-Weapon Mastery & 5 XP & +2 dice with a chosen weapon. \\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{itemize}
+  \item \textbf{Keen Senses (2 XP)} -- +1 die to perception
+  \item \textbf{Defensive Survival (3 XP)} -- +1 die to melee defense, convert Harm to Fatigue
+  \item \textbf{Weapon Mastery (5 XP)} -- +2 dice with a chosen weapon
+\end{itemize}
 
 See \ref{ch:talents} for the full list.
 
@@ -272,117 +239,14 @@ For special gear (heavy armor, heavy weapons, magical items), spend XP or acquir
 \end{itemize}
 Spend all XP; you cannot bank starting XP.
 
-\section{Build Examples}
-
-Here are three legal starting builds at 32 XP and 36 XP. The 36 XP builds assume you took one Bond (or Complication) for +2 XP---you may need to adjust based on your table's choices.
-
-\subsection{Build 1: The Duelist (32 XP)}
-
+\paragraph{Example build (36XP):}
 \begin{itemize}
-  \item \textbf{Attributes:} Body 3 (15 XP), Wits 2 (6 XP) $\rightarrow$ 21 XP
-  \item \textbf{Skills:} Melee 2 (6 XP), Athletics 1 (2 XP), Endurance 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Talents:} Keen Senses (2 XP) $\rightarrow$ 2 XP
-  \item \textbf{Total:} 21 + 10 + 2 = \textbf{33 XP} (slightly over — drop Athletics to 0 and take 1 Bond for +2 XP)
+  \item Body 3 (15 XP), Wits 2 (6 XP) \(\rightarrow\) 21 XP
+  \item Melee 2 (6 XP), Athletics 1 (2 XP), Endurance 1 (2 XP) \(\rightarrow\) 10 XP
+  \item Talent: Keen Senses (2 XP) \(\rightarrow\) 33 XP
+  \item Bond with another PC \(\rightarrow\) +2 XP (now 35 -- adjust by lowering one skill)
 \end{itemize}
-
-\textbf{Adjusted (32 XP):} Body 3 (15), Wits 2 (6), Melee 2 (6), Endurance 1 (2), Keen Senses (2) = \textbf{31 XP} (bank 1 XP)
-
-\textbf{Adjusted (36 XP with Bond):} Body 3 (15), Wits 2 (6), Melee 2 (6), Athletics 1 (2), Endurance 1 (2), Keen Senses (2) = \textbf{33 XP} + 1 Bond (+2) = \textbf{35 XP} (bank 1 XP)
-
-\textbf{Dice pool:} Body 3 + Melee 2 = 5 dice. Keen Senses adds +1 die to perception.
-
-\subsection{Build 2: The Scholar (32 XP)}
-
-\begin{itemize}
-  \item \textbf{Attributes:} Wits 3 (15 XP), Spirit 2 (6 XP) $\rightarrow$ 21 XP
-  \item \textbf{Skills:} Lore 2 (6 XP), Investigation 1 (2 XP), Insight 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Talents:} None $\rightarrow$ 0 XP
-  \item \textbf{Total:} 21 + 10 = \textbf{31 XP} (bank 1 XP)
-\end{itemize}
-
-\textbf{36 XP with Bond:} Add Sway 1 (2 XP) and take 1 Bond (+2 XP). Total: 31 + 2 + 2 = \textbf{35 XP} (bank 1 XP)
-
-\textbf{Dice pool:} Wits 3 + Lore 2 = 5 dice. No Talents needed---the character is defined by knowledge.
-
-\subsection{Build 3: The Scout (32 XP)}
-
-\begin{itemize}
-  \item \textbf{Attributes:} Wits 3 (15 XP), Body 2 (6 XP) $\rightarrow$ 21 XP
-  \item \textbf{Skills:} Stealth 2 (6 XP), Survival 2 (6 XP) $\rightarrow$ 12 XP
-  \item \textbf{Total:} 21 + 12 = \textbf{33 XP} (slightly over — drop Survival to 1)
-\end{itemize}
-
-\textbf{Adjusted (32 XP):} Wits 3 (15), Body 2 (6), Stealth 2 (6), Survival 1 (2) = \textbf{29 XP} (bank 3 XP, or add a 2 XP Talent)
-
-\textbf{36 XP with Bond:} Add Keen Senses (2 XP), take 1 Bond (+2 XP). Total: 29 + 2 + 2 = \textbf{33 XP} (bank 3 XP, or add a second Bond)
-
-\textbf{Dice pool:} Wits 3 + Stealth 2 = 5 dice. Survival 1 adds basic wilderness competence.
-
-\subsection{Build 4: The Healer (32 XP)}
-
-\begin{itemize}
-  \item \textbf{Attributes:} Spirit 3 (15 XP), Wits 2 (6 XP) $\rightarrow$ 21 XP
-  \item \textbf{Skills:} Medicine 2 (6 XP), Insight 1 (2 XP), Lore 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Total:} 21 + 10 = \textbf{31 XP} (bank 1 XP)
-\end{itemize}
-
-\textbf{36 XP with Bond:} Add Survival 1 (2 XP), take 1 Bond (+2 XP). Total: 31 + 2 + 2 = \textbf{35 XP} (bank 1 XP)
-
-\textbf{Dice pool:} Spirit 3 + Medicine 2 = 5 dice. No Talents needed to be an effective healer.
-
-\subsection{Build 5: The Commander (32 XP)}
-
-\begin{itemize}
-  \item \textbf{Attributes:} Presence 3 (15 XP), Wits 2 (6 XP) $\rightarrow$ 21 XP
-  \item \textbf{Skills:} Command 2 (6 XP), Tactics 1 (2 XP), Sway 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Total:} 21 + 10 = \textbf{31 XP} (bank 1 XP)
-\end{itemize}
-
-\textbf{36 XP with Bond:} Add Command Presence (4 XP), take 1 Bond (+2 XP). Total: 31 + 4 + 2 = \textbf{37 XP} (adjust: drop Sway to 0, add 1 Bond = 31 + 4 + 2 = 37, then drop one skill point)
-
-\textbf{Adjusted (32 XP with Bond):} Presence 3 (15), Wits 2 (6), Command 2 (6), Tactics 1 (2), Sway 1 (2) = 31 XP, take 1 Bond (+2) = 33 XP (bank 1 XP, add Command Presence later)
-
-\textbf{Dice pool:} Presence 3 + Command 2 = 5 dice.
-
-\subsection{Build 6: The Streetwise Rogue (32 XP)}
-
-\begin{itemize}
-  \item \textbf{Attributes:} Wits 3 (15 XP), Body 2 (6 XP) $\rightarrow$ 21 XP
-  \item \textbf{Skills:} Stealth 2 (6 XP), Subterfuge 2 (6 XP) $\rightarrow$ 12 XP
-  \item \textbf{Total:} 21 + 12 = \textbf{33 XP} (slightly over — drop Subterfuge to 1)
-\end{itemize}
-
-\textbf{Adjusted (32 XP):} Wits 3 (15), Body 2 (6), Stealth 2 (6), Subterfuge 1 (2) = \textbf{29 XP} (bank 3 XP)
-
-\textbf{36 XP with Bond:} Add Streetwise 1 (2 XP), take 1 Bond (+2 XP). Total: 29 + 2 + 2 = \textbf{33 XP} (bank 3 XP, or add a second Bond)
-
-\textbf{Dice pool:} Wits 3 + Stealth 2 = 5 dice. Subterfuge 1 covers basic deception.
-
-\section{Starting Gear Options}
-
-\subsection*{Weapons and Armor}
-
-\begin{center}
-\footnotesize
-\begin{tabular}{lll}
-\toprule
-\textbf{Item} & \textbf{XP Cost} & \textbf{Notes} \\
-\midrule
-Light weapon (dagger, shortsword) & Free (or 4 XP for special) & Harm 1, +2d Close, +1d Near \\
-Medium weapon (longsword, spear) & Free (or 8 XP for special) & Harm 2, +1d Close, +2d Near \\
-Heavy weapon (greatsword, halberd) & 12 XP & Harm 3, -1d Close, +3d Near \\
-Light armor & 4 XP & Harm 1 → Fatigue 1 \\
-Medium armor & 8 XP & Harm 2 → Fatigue 1 \\
-Heavy armor & 12 XP & Harm 3 → Fatigue 2 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Most starting characters take a free Light or Medium weapon and Light armor. Heavy weapons and armor are significant investments.
-
-\begin{tcolorbox}[colback=green!5!white,colframe=green!70!black,title=The Gray Wanderer's Advice,breakable]
-``A warrior with Body 3 and Melee 2 rolls 5 dice. No Talents required. A scholar with Wits 3 and Lore 2 rolls 5 dice. No Talents required. The dice do the work. Talents are flavor---they add a signature move, but they don't define your competence. If you want a simple character, skip Talents entirely. You will still be effective. You will still be a hero.''
-\end{tcolorbox}
+(Adjust to your table's needs.)
 
 \section{Next Steps}
 \begin{itemize}
@@ -393,11 +257,38 @@ Most starting characters take a free Light or Medium weapon and Light armor. Hea
 \end{itemize}
 
 \begin{tcolorbox}[colback=green!5!white,colframe=green!70!black,title=The Gray Wanderer's Advice,breakable]
-``Do not try to build a `perfect' character. Build one who owes a debt, carries a scar, and has a name that someone will remember. The numbers will follow the story -- not the other way around.
-
-And remember: a character with \textbf{no Talents} is still a complete character. Attributes and Skills are all you need. Talents are for flavor, not viability. If you want to keep it simple, skip them. You will still roll plenty of dice.''
+``Do not try to build a `perfect' character. Build one who owes a debt, carries a scar, and has a name that someone will remember. The numbers will follow the story -- not the other way around.''
 \end{tcolorbox}
 
+\begin{tikzpicture}[node distance=1.5cm]
+
+  \node (start) [startstop] {Start with a\\concept (1 sentence)};
+  \node (attr) [process, below of=start] {Spend XP on Attributes\\ (Body, Wits, Spirit, Presence)};
+  \node (skills) [process, below of=attr] {Spend XP on Skills\\ (pick 2-3 key skills)};
+  \node (talents) [process, below of=skills] {Spend XP on Talents\\ (1-3, minor/magic access)};
+  \node (patron) [decision, below of=talents, yshift=-0.5cm] {Magic via\\Patron?};
+  \node (noPatron) [process, below left of=patron, xshift=-2cm] {Free Caster / Psion\\ (no Patron)};
+  \node (yesPatron) [process, below right of=patron, xshift=2cm] {Choose a Patron\\ (e.g. Traveler)};
+  \node (assets) [process, below of=yesPatron] {Assets / Followers\\ (optional)};
+  \node (bonds) [process, below of=assets] {Bonds and Complications\\ (up to +4 XP)};
+  \node (gear) [process, below of=bonds] {Gear and final touches};
+  \node (end) [startstop, below of=gear] {Ready to play!};
+  
+  \draw [arrow] (start) -- (attr);
+  \draw [arrow] (attr) -- (skills);
+  \draw [arrow] (skills) -- (talents);
+  \draw [arrow] (talents) -- (patron);
+  \draw [arrow] (patron) -- node[anchor=east] {no} (noPatron);
+  \draw [arrow] (patron) -- node[anchor=west] {yes} (yesPatron);
+  \draw [arrow] (noPatron) |- (bonds);
+  \draw [arrow] (yesPatron) -- (assets);
+  \draw [arrow] (assets) -- (bonds);
+  \draw [arrow] (bonds) -- (gear);
+  \draw [arrow] (gear) -- (end);
+  
+\end{tikzpicture}
+
+\floatbarrier
 \newpage
 \section{Party Composition Guide}
 
@@ -408,10 +299,6 @@ This guide helps you think about what roles your party might cover, how differen
 \end{tcolorbox}
 
 \subsection{The Five Roles}
-
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Attributes and Skills Are Enough,breakable]
-Each role below is defined by its \textbf{Primary Attribute} and \textbf{Key Skills}. These are the foundation. Talents add specialization, but the core of any role is Attribute + Skill. A Tank needs Body and Melee; a Support needs Spirit and Medicine. Talents are extras---not requirements.
-\end{tcolorbox}
 
 Fate's Edge characters are defined by \textit{approach}, not by class. The same mechanics can support different playstyles. Think of these roles as \textbf{what you do at the table}, not as \textbf{what your character is}.
 
@@ -437,17 +324,24 @@ You stand between danger and the people you protect. You do not need to deal the
 \begin{itemize}
   \item High Body (4+ for Fatigue track and defense)
   \item Heavy Armor (converts Harm to Fatigue)
-  \item Defensive talents (Defensive Survival, Shield Bearer) --- optional
+  \item Iron Resilience (more Harm boxes)
+  \item Defensive talents (Defensive Survival, Shield Bearer)
 \end{itemize}
 
-\textbf{Build Example (36 XP with Bond):}
+\textbf{Build Examples:}
 \begin{itemize}
-  \item Body 3 (15 XP), Spirit 2 (6 XP) $\rightarrow$ 21 XP
-  \item Melee 2 (6 XP), Athletics 1 (2 XP), Endurance 1 (2 XP) $\rightarrow$ 10 XP
-  \item Defensive Survival (3 XP) $\rightarrow$ 3 XP
-  \item 1 Bond (+2 XP) $\rightarrow$ 36 XP
+  \item \textbf{Juggernaut:} Body 4, Heavy Armor, Weapon Mastery, Iron Resilience
+  \item \textbf{Shield Guardian:} Body 3, Shield, Defensive Survival, Conditioning
+  \item \textbf{Rune-Plate Warrior:} Body 3, Heavy Armor, Runekeeper (Oath of Flame \& Light)
 \end{itemize}
-\textbf{Dice pool:} Body 3 + Melee 2 = 5 dice.
+
+\textbf{Tactical Advice:}
+\begin{itemize}
+  \item Use the Defend action when outnumbered---it improves Position by one step.
+  \item Spend Boons on re-rolling failed defense rolls, not offense.
+  \item Take small hits to clear Fatigue (the roller-coaster effect is your friend).
+  \item Position yourself between enemies and your squishier allies.
+\end{itemize}
 
 \subsubsection{Striker --- The Blade}
 
@@ -456,18 +350,25 @@ You eliminate threats. Whether through precision or overwhelming force, your job
 \textbf{Key Mechanics:}
 \begin{itemize}
   \item High Body (melee) or Wits (ranged)
-  \item Weapon Mastery (optional -- adds +2 dice)
+  \item Weapon Mastery (or equivalent damage talent)
+  \item Damage-focused talents (Backstab, Deathblow, Flurry Strike)
+  \item Position management (you want Dominant)
 \end{itemize}
 
-\textbf{Build Example (36 XP with Bond):}
+\textbf{Build Examples:}
 \begin{itemize}
-  \item Body 3 (15 XP), Wits 2 (6 XP) $\rightarrow$ 21 XP
-  \item Melee 2 (6 XP), Athletics 1 (2 XP), Stealth 1 (2 XP) $\rightarrow$ 10 XP
-  \item Weapon Mastery (5 XP) $\rightarrow$ 5 XP
-  \item 1 Bond (+2 XP) $\rightarrow$ 36 XP (21 + 10 + 5 + 2 = 38 -- adjust: drop Stealth to 0, add Bond = 21 + 8 + 5 + 2 = 36)
+  \item \textbf{Assassin:} Wits 4, Backstab, Shadow Dance, Deathblow
+  \item \textbf{Berserker:} Body 4, Battle Rage, Flurry Strike, Weapon Mastery
+  \item \textbf{Ranged Hunter:} Wits 3, Ranged 3, Called Shot, Eagle Eye
 \end{itemize}
-\textbf{Adjusted:} Body 3 (15), Wits 2 (6), Melee 2 (6), Athletics 1 (2), Weapon Mastery (5), 1 Bond (+2) = \textbf{36 XP}
-\textbf{Dice pool:} Body 3 + Melee 2 + Weapon Mastery 2 = 7 dice with chosen weapon.
+
+\textbf{Tactical Advice:}
+\begin{itemize}
+  \item Aim for Dominant Position before striking---it gives you re-rolls and boosts damage.
+  \item Use the environment for flanking and high ground.
+  \item Spend Boons on re-rolling missed attacks, not defense.
+  \item Know your exit---if you go down, the party loses its hammer.
+\end{itemize}
 
 \subsubsection{Controller --- The Weaver}
 
@@ -476,16 +377,25 @@ You shape the battlefield. Fear, conditions, and positioning are your weapons.
 \textbf{Key Mechanics:}
 \begin{itemize}
   \item High Spirit (willpower) or Presence (intimidation)
-  \item Social skills (Sway, Command) are the foundation
+  \item Fear-stacking abilities (Feasting on Fear, Battlefield Terror)
+  \item Condition-imposing talents (Open Palm Closed Cord, Snaring Filament)
+  \item Social control (Command Presence, Silver Tongue)
 \end{itemize}
 
-\textbf{Build Example (32 XP):}
+\textbf{Build Examples:}
 \begin{itemize}
-  \item Presence 3 (15 XP), Spirit 2 (6 XP) $\rightarrow$ 21 XP
-  \item Sway 2 (6 XP), Command 1 (2 XP), Insight 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Total:} 21 + 10 = \textbf{31 XP} (bank 1 XP)
+  \item \textbf{Riven-Fist Monk:} Body 4, Unarmed Combatant, Feasting on Fear, Battle Rage
+  \item \textbf{Silk-Spinner (Inaea):} Presence 3, Hearth-Thread Knot, Spinner's Debt
+  \item \textbf{Witch-Hunter:} Spirit 3, Inquisitor Prime Rites, Lantern Test
 \end{itemize}
-\textbf{Dice pool:} Presence 3 + Sway 2 = 5 dice.
+
+\textbf{Tactical Advice:}
+\begin{itemize}
+  \item Stack fear conditions---Frightened (-1 die) becomes Terrified (-2 dice).
+  \item Use intimidation as a free action to maintain pressure.
+  \item Spend Boons on improving Position before social or control rolls.
+  \item Accept Story Beats as fuel---you generate them anyway.
+\end{itemize}
 
 \subsubsection{Support --- The Mender}
 
@@ -494,16 +404,25 @@ You keep the party on their feet. Healing, condition removal, and burden transfe
 \textbf{Key Mechanics:}
 \begin{itemize}
   \item High Spirit (willpower) or Wits (medicine)
-  \item Medicine skill is the foundation
+  \item Healing talents (Field Dressing, Triage, Knot of Mercy)
+  \item Condition transfer (Rite of Absolution by Ash, Burdened Heart)
+  \item Resource management (Obligation, Corruption)
 \end{itemize}
 
-\textbf{Build Example (32 XP):}
+\textbf{Build Examples:}
 \begin{itemize}
-  \item Spirit 3 (15 XP), Wits 2 (6 XP) $\rightarrow$ 21 XP
-  \item Medicine 2 (6 XP), Insight 1 (2 XP), Lore 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Total:} 21 + 10 = \textbf{31 XP} (bank 1 XP)
+  \item \textbf{Sister of the Unbroken Cord:} Spirit 4, Gray Thread, Cord of Flesh, Open Palm Closed Cord
+  \item \textbf{Oath of Flame \& Light Runekeeper:} Spirit 3, Lay on Hands, Cleansing Light
+  \item \textbf{Hedge-Witch:} Wits 3, Hedge Gifts (Steady Hand, Knot of Favor)
 \end{itemize}
-\textbf{Dice pool:} Spirit 3 + Medicine 2 = 5 dice.
+
+\textbf{Tactical Advice:}
+\begin{itemize}
+  \item HEAL clears Fatigue quickly and safely---use it often.
+  \item Healing Harm requires risk---save it for when someone is at Harm 2+.
+  \item Use condition transfer to take burdens from allies and give them to enemies.
+  \item Your Bonds are your fuel---transfer Boons to the Striker who needs them.
+\end{itemize}
 
 \subsubsection{Utility --- The Eyes and Ears}
 
@@ -512,16 +431,25 @@ You solve problems that cannot be solved with steel. Information, negotiation, a
 \textbf{Key Mechanics:}
 \begin{itemize}
   \item High Wits (perception) or Spirit (intuition)
-  \item Knowledge skills (Lore, Investigation) are the foundation
+  \item Knowledge skills (Lore, Investigation, Arcana)
+  \item Spirit communication (Pact-Whisperer, Ancestral Consultation)
+  \item Social skills (Sway, Insight, Deception)
 \end{itemize}
 
-\textbf{Build Example (32 XP):}
+\textbf{Build Examples:}
 \begin{itemize}
-  \item Wits 3 (15 XP), Spirit 2 (6 XP) $\rightarrow$ 21 XP
-  \item Lore 2 (6 XP), Investigation 1 (2 XP), Insight 1 (2 XP) $\rightarrow$ 10 XP
-  \item \textbf{Total:} 21 + 10 = \textbf{31 XP} (bank 1 XP)
+  \item \textbf{Channeler:} Spirit 4, Pact-Whisperer, Ancestral Consultation, Spirit Link
+  \item \textbf{Scholar:} Wits 3, Lore 3, Investigation 2, Occult Knowledge
+  \item \textbf{Spellcraft-Only Caster:} Wits 3, Spellcraft, Controlled Burn
 \end{itemize}
-\textbf{Dice pool:} Wits 3 + Lore 2 = 5 dice.
+
+\textbf{Tactical Advice:}
+\begin{itemize}
+  \item Ask questions---your GM will reward curiosity.
+  \item Use Ritual to consult spirits, ancestors, or the land itself.
+  \item Spend Boons on improving Position before information-gathering rolls.
+  \item Remember that flavor is free---describe how you learn things.
+\end{itemize}
 
 \subsection{Filling Gaps with Followers}
 
@@ -556,6 +484,53 @@ Not every party has a player who wants to play every role. That is where \textbf
 \end{tabular}
 \end{center}
 
+\subsubsection{Follower Examples by Role}
+
+\paragraph{Tank --- The Bodyguard}
+
+A Follower with Heavy Armor and a shield. They are not as durable as a PC Juggernaut (fewer Harm boxes, no Iron Resilience), but they can hold a choke point or absorb one or two hits.
+
+\begin{itemize}
+  \item \textbf{Cap 2:} A veteran guard with a dented breastplate and a shield. Harm 3, Fatigue Body 2. Can Defend as a reaction.
+  \item \textbf{Cap 3:} A retired legionary with a tower shield. Harm 4, Fatigue Body 3. Can Intercept---spend 1 Boon to take Harm meant for a PC.
+\end{itemize}
+
+\paragraph{Striker --- The Mercenary}
+
+A Follower with a blade and a willingness to use it. They are not as lethal as a PC Assassin, but they can deal consistent damage to mooks.
+
+\begin{itemize}
+  \item \textbf{Cap 2:} A sellsword with a longsword. Harm 3, Melee 2. Can Flank---if an ally is engaged with an enemy, the mercenary gains +1 die to attack.
+  \item \textbf{Cap 3:} A veteran duelist. Harm 4, Melee 3. Can Riposte---on a successful defense, make a free attack at -1 die.
+\end{itemize}
+
+\paragraph{Controller --- The Interrogator or Witch}
+
+A Follower who can impose conditions, manage fear, or manipulate social situations. They are subtle, not flashy.
+
+\begin{itemize}
+  \item \textbf{Cap 2:} A prison torturer or inquisitor's apprentice. Harm 2, Sway 2. Can Intimidate---once per scene, force a Resolve test (DV 3) or the target gains Frightened.
+  \item \textbf{Cap 3:} A hedge-witch who deals in curses and bargains. Harm 3, Lore 2. Can Promise Timer---once per scene, mark a Promise Timer [4] on a target. If the target breaks a promise, they take Harm 1 (Stress).
+\end{itemize}
+
+\paragraph{Support --- The Healer}
+
+A Follower who can stabilize wounds, clear Fatigue, and remove Conditions. They are the party's safety net.
+
+\begin{itemize}
+  \item \textbf{Cap 2:} A field medic with bandages and herbs. Harm 2, Medicine 2. Can Stabilize---once per scene, prevent a dying character from worsening to Harm 3.
+  \item \textbf{Cap 3:} A Temple healer with a small blessing. Harm 3, Medicine 3, can use HEAL as a cantrip (DV 2, removes 1 Fatigue).
+\end{itemize}
+
+\paragraph{Utility --- The Scholar or Guide}
+
+A Follower who knows things the party does not. They translate, navigate, and research.
+
+\begin{itemize}
+  \item \textbf{Cap 2:} A local guide who knows every path and every bribe. Harm 2, Survival 2, Navigation 2. Can Find Shortcut---once per leg, reduce travel time by 1 segment.
+  \item \textbf{Cap 3:} A scholar who has read the forbidden texts. Harm 2, Lore 3, Investigation 2. Can Recall---once per session, answer one question about history, customs, or lore.
+\end{itemize}
+
 \subsubsection{Follower Costs and Upkeep}
 
 Followers are acquired by spending XP: Cap\(^2\) XP (Cap 1 = 1 XP, Cap 2 = 4 XP, Cap 3 = 9 XP). They require upkeep:
@@ -567,9 +542,25 @@ Followers are acquired by spending XP: Cap\(^2\) XP (Cap 1 = 1 XP, Cap 2 = 4 XP,
 
 \textbf{Neglect Consequences:}
 \begin{itemize}
-  \item Loyalty worsens: Faithful $\rightarrow$ Strained $\rightarrow$ Broken.
+  \item Loyalty worsens: Faithful \(\rightarrow\) Strained \(\rightarrow\) Broken.
   \item A Strained Follower assists at -1 die; a Broken Follower leaves or becomes hostile.
   \item If a Follower is neglected for two consecutive downtimes, they leave permanently (or worse---they join a rival).
+\end{itemize}
+
+\subsubsection{Follower Management: Strategic Considerations}
+
+\textbf{When to Invest in a Follower:}
+\begin{itemize}
+  \item \textbf{The party has a clear gap.} No one wants to play a healer? Hire one.
+  \item \textbf{The campaign is long-term.} A Follower's Loyalty can grow, and a Cap 3+ Follower can become a successor (see Legacy Engine).
+  \item \textbf{The party needs temporary help.} Hire a Cap 1--2 Follower for a single mission, then release them.
+\end{itemize}
+
+\textbf{When to Pass on a Follower:}
+\begin{itemize}
+  \item \textbf{The party is small.} Followers take spotlight time and resources.
+  \item \textbf{The campaign is short.} Followers are not worth the XP investment for a one-shot.
+  \item \textbf{The GM runs a high-lethality game.} Followers can die, and their deaths have narrative weight.
 \end{itemize}
 
 \begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!75!black,title=Player Tip: The Follower as Successor,breakable]
@@ -578,7 +569,7 @@ A Cap 3+ Follower can become your successor when your character retires or falls
 
 \subsection{Party Composition at a Glance}
 
-Use this table to see if your party has gaps. One character can cover multiple roles. Followers can fill the gaps marked with (F).
+Use this table to see if your party has gaps. One character can cover multiple roles (e.g., a Riven-Fist Monk is both Controller and Striker). Followers can fill the gaps marked with (F).
 
 \begin{center}
 \begin{tabular}{p{4cm}|p{6cm}}
@@ -588,48 +579,77 @@ Use this table to see if your party has gaps. One character can cover multiple r
 \textbf{2 players} & 1 Tank/Striker + 1 Support/Controller (F for missing roles) \\
 \textbf{3 players} & Tank + Striker + Support (or Controller); F for the missing role \\
 \textbf{4 players} & Tank + Striker + Controller + Support (Utility often folds into Support or Controller) \\
-\textbf{5+ players} & All roles covered; consider secondary roles \\
+\textbf{5+ players} & All roles covered; consider secondary roles (a second Striker, a second Controller) \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \subsection{Sample Party Compositions}
 
-\subsubsection{The Balanced Party (4 Players, 32 XP each)}
+\subsubsection{The Balanced Party (4 Players)}
 
 \begin{itemize}
-  \item \textbf{Tank:} Body 3, Melee 2 (5 dice). Heavy Armor.
-  \item \textbf{Striker:} Body 3, Melee 2 (5 dice). Medium weapon.
-  \item \textbf{Support:} Spirit 3, Medicine 2 (5 dice). HEAL cantrip.
-  \item \textbf{Utility:} Wits 3, Lore 2 (5 dice). Investigation.
+  \item \textbf{Juggernaut (Tank):} Body 4, Heavy Armor, Iron Resilience
+  \item \textbf{Riven-Fist Monk (Controller/Striker):} Body 4, Feasting on Fear, Battle Rage
+  \item \textbf{Sister of the Unbroken Cord (Support):} Spirit 4, Gray Thread, Cord of Flesh
+  \item \textbf{Channeler (Utility):} Spirit 4, Pact-Whisperer, Ancestral Consultation
 \end{itemize}
 
-\textbf{Note:} This party has \textbf{zero Talents} and is still fully effective. Total XP per character: \textbf{30-31 XP}, leaving room for one or two skills or a minor Talent.
+\textbf{Strengths:} Durable, high damage, good control, excellent information-gathering. Weak on ranged damage.
 
-\subsubsection{The Aggressive Party (3 Players + Follower)}
+\subsubsection{The Aggressive Party (3 Players)}
 
 \begin{itemize}
-  \item \textbf{Striker/Tank:} Body 3, Melee 2 (5 dice). Medium armor.
-  \item \textbf{Striker:} Wits 3, Stealth 2 (5 dice). Light weapons.
-  \item \textbf{Utility/Support:} Spirit 3, Arcana 2 (5 dice). Spellcraft.
-  \item \textbf{Follower: Healer (Cap 2, 4 XP)} --- keeps the party alive.
+  \item \textbf{Assassin (Striker):} Wits 4, Backstab, Shadow Dance, Deathblow
+  \item \textbf{Berserker (Striker/Tank):} Body 4, Battle Rage, Flurry Strike
+  \item \textbf{Spellcraft-Only Caster (Utility/Support):} Wits 3, Spellcraft, HEAL
+  \item \textbf{Follower: Healer (Cap 2)} --- keeps the party alive between fights
 \end{itemize}
 
-\subsubsection{The Social Party (3 Players + Follower)}
+\textbf{Strengths:} High damage, fast combat resolution. Weak on sustained fights and social encounters.
+
+\subsubsection{The Social Party (3 Players)}
 
 \begin{itemize}
-  \item \textbf{Controller:} Presence 3, Sway 2 (5 dice).
-  \item \textbf{Utility:} Wits 3, Subterfuge 2 (5 dice).
-  \item \textbf{Support/Utility:} Spirit 3, Lore 2 (5 dice).
-  \item \textbf{Follower: Bodyguard (Cap 2, 4 XP)} --- protects the diplomats.
+  \item \textbf{Silk-Spinner (Controller):} Presence 3, Hearth-Thread Knot, Spinner's Debt
+  \item \textbf{Bard/Diplomat (Utility):} Presence 3, Silver Tongue, Command Presence
+  \item \textbf{Witness Runekeeper (Support/Utility):} Spirit 3, Rite of the Lingering Trace
+  \item \textbf{Follower: Bodyguard (Cap 2)} --- keeps the diplomats alive if negotiations turn violent
+\end{itemize}
+
+\textbf{Strengths:} Excellent negotiation, information-gathering, and social control. Weak on combat---but the Bodyguard helps.
+
+\subsubsection{The Follower-Focused Party (3 Players + 2 Followers)}
+
+\begin{itemize}
+  \item \textbf{Juggernaut (Tank):} Body 4, Heavy Armor, Iron Resilience
+  \item \textbf{Riven-Fist Monk (Controller/Striker):} Body 4, Feasting on Fear, Battle Rage
+  \item \textbf{Channeler (Utility):} Spirit 4, Pact-Whisperer, Ancestral Consultation
+  \item \textbf{Follower: Healer (Cap 2)} --- keeps the party alive
+  \item \textbf{Follower: Scout (Cap 2)} --- gathers information, navigates, spots dangers
+\end{itemize}
+
+\textbf{Strengths:} The Juggernaut and Monk handle combat; the Channeler handles spirits; the Followers handle healing and scouting. The party has no PC Support, but they do not need one---the Follower covers it.
+
+\subsection{Party Composition Checklist}
+
+Before your first session, ask:
+
+\begin{itemize}
+  \item \textbf{Who takes hits?} At least one character (or Follower) should be durable enough to stand on the front line.
+  \item \textbf{Who deals damage?} At least one character (or Follower) should be able to eliminate threats efficiently.
+  \item \textbf{Who heals and removes conditions?} Fatigue and Harm will accumulate---someone (character or Follower) needs to manage them.
+  \item \textbf{Who gathers information?} Puzzles, mysteries, and spirit negotiations require a character (or Follower) with Investigation, Lore, or spirit communication.
+  \item \textbf{Who controls the battlefield?} Fear, conditions, and positioning are powerful tools---someone (character or Follower) should specialize in them.
+  \item \textbf{Are there Followers to fill gaps?} If no player character covers a role, consider hiring a Follower to cover it.
 \end{itemize}
 
 \subsection{Final Advice from the Gray Wanderer}
 
 \begin{quote}
-\textit{``Do not obsess over party composition. The game is flexible. A party of four duelists is viable---they will simply solve problems with steel rather than words. A party of four scholars is viable---they will negotiate, research, and find the path that avoids combat altogether. The question is not whether your party is 'balanced.' The question is whether your party is prepared for the kind of problems your GM will present. Talk to your GM. Ask what kind of campaign they are running. Then build accordingly. And if you are missing a role, hire a Follower. They are not as strong as a PC, but they are better than nothing---and they can become something more.}
+\textit{``Do not obsess over party composition. The game is flexible. A party of four duelists is viable---they will simply solve problems with steel rather than words. A party of four scholars is viable---they will negotiate, research, and find the path that avoids combat altogether. The question is not whether your party is 'balanced.' The question is whether your party is prepared for the kind of problems your GM will present. Talk to your GM. Ask what kind of campaign they are running. Then build accordingly. And if you are missing a role, hire a Follower. They are not as strong as a PC, but they are better than nothing---and they can become something more.}}
 
-\textit{``A Follower is not a servant. A Follower is a relationship. Treat them well, and they will save your life. Treat them poorly, and they will remember. The road is long. Walk it with people you trust---or at least pay on time.''}
+\textit{``A Follower is not a servant. A Follower is a relationship. Treat them well, and they will save your life. Treat them poorly, and they will remember. The road is long. Walk it with people you trust---or at least pay on time.``}
 \end{quote}
 
 \subsection{Covering Gaps with Followers (Quick Reference)}
