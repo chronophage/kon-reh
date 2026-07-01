@@ -5,7 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{microtype}
-\usepackage{emptypage}  % remove page numbers from blank pages
+\usepackage{emptypage}
 \usepackage{setspace}
 
 % ===== Page geometry =====
@@ -78,12 +78,11 @@
 \definecolor{parchment}{RGB}{253,245,220}
 \definecolor{bronze}{RGB}{205,127,50}
 
-% ===== tcolorbox setups (all breakable) =====
+% ===== tcolorbox setups =====
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable, skins}
 \tcbset{breakable=true}
 
-% ----- Effect Sidebar (main) -----
 \newtcolorbox{effectbox}{
     colback=blue!5,
     colframe=blue!75!black,
@@ -104,7 +103,6 @@
     after skip=10pt,
 }
 
-% ----- Lighter Tip Box (for minor advice) -----
 \newtcolorbox{tipbox}{
     colback=gray!5,
     colframe=gray!50,
@@ -118,7 +116,6 @@
     after skip=8pt,
 }
 
-% ----- Standard infobox (optional) -----
 \newtcolorbox{infobox}[1]{%
   colback=gray5,
   colframe=gray75,
@@ -127,7 +124,6 @@
   arc=0pt
 }
 
-% ----- Player-managed resources box (philosophy) -----
 \newtcolorbox{playermanaged}[1][]{%
     enhanced,
     breakable,
@@ -143,7 +139,6 @@
     #1
 }
 
-% ----- General purpose fate box (philosophical asides) -----
 \newtcolorbox{fatebox}[2][]{%
     enhanced,
     breakable,
@@ -156,13 +151,11 @@
     #1
 }
 
-% Optional icons; comment out if fontawesome5 not available
 \usepackage{fontawesome5}
 
 % ===== Document structure =====
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{3}
-
 
 \begin{document}
 \input{copyright}
@@ -170,76 +163,67 @@
 \tableofcontents
 \cleardoublepage
 
-% Optional lists (uncomment if needed)
-% \listoffigures
-% \listoftables
-% \cleardoublepage
-
 \mainmatter
 
 % ============================================================
-% PART I -- FOUNDATIONS
+% PART I -- GETTING STARTED
 % ============================================================
-\part{Foundations}
-\input{sections/intro}                 % Chapter 1: Welcome & Philosophy
+\part{Getting Started}
+\input{sections/quickstart}          % Chapter 1: Quick Start (NEW)
 \clearpage
-\input{sections/core_mechanics}        % Chapter 2: Core Mechanics
+\input{sections/character_creation}  % Chapter 2: Character Creation
 \clearpage
-\input{sections/character_creation}    % Chapter 3: Character Creation
-\clearpage
-\input{sections/archetypes}
-\clearpage
-\input{sections/items}                 % Chapter 4: Gear & Magic Items
+\input{sections/core_mechanics}      % Chapter 3: Core Mechanics
 \clearpage
 
 % ============================================================
-% PART II -- MAGIC & HEALING
+% PART II -- MAGIC AND HEALING
 % ============================================================
 \part{Magic and Healing}
-\input{sections/magic}                 % Chapter 5: Magic Systems
+\input{sections/magic}               % Chapter 4: Magic Systems
 \clearpage
-\input{sections/healing}               % Chapter 6: Healing
+\input{sections/healing}             % Chapter 5: Healing
 \clearpage
 
 % ============================================================
-% PART III -- ADVANCEMENT & ABILITIES
+% PART III -- ADVANCEMENT AND ABILITIES
 % ============================================================
 \part{Advancement and Abilities}
-\input{sections/advancement}           % Chapter 7: Advancement & XP
+\input{sections/talents}             % Chapter 6: Talents (moved up)
 \clearpage
-\input{sections/xp_paths}              % Chapter 8: Experience Paths
+\input{sections/advancement}         % Chapter 7: Advancement & XP
 \clearpage
-\input{sections/talents}               % Chapter 9: Talents
+\input{sections/xp_paths}            % Chapter 8: Experience Paths
 \clearpage
-\input{sections/first-magic-char}      % Chapter 10: Your First Magical Character
+\input{sections/first-magic-char}    % Chapter 9: Your First Magical Character
 \clearpage
-\input{sections/assets_follower}       % Chapter 11: Assets and Followers
+\input{sections/assets_follower}     % Chapter 10: Assets and Followers
 \clearpage
-\input{sections/downtime}              % Chapter 12: Downtime
-\clearpage
-
-% ============================================================
-% PART IV -- WORLD & LEGACY
-% ============================================================
-\part{World and Legacy}
-\input{sections/world_and_cultures}    % Chapter 13: World Regions and Cultures
-\clearpage
-\input{sections/world_powers}          % Chapter 14: World Powers and Influence (Patrons)
-\clearpage
-\input{sections/world_interactions}     % Chapter 15: World Interaction (Player-facing)
-\clearpage
-\input{sections/currency-free-economy} % Chapter 16: Currency-Free Economy
-\clearpage
-\input{sections/backgrounds}           % Chapter 17: Character Backgrounds
-\clearpage
-\input{sections/legacy}                % Chapter 18: The Legacy Engine
+\input{sections/downtime}            % Chapter 11: Downtime
 \clearpage
 
 % ============================================================
-% PART V -- ENHANCED PLAY & APPENDICES
+% PART IV -- THE WORLD
+% ============================================================
+\part{The World}
+\input{sections/world_and_cultures}  % Chapter 12: World Regions and Cultures
+\clearpage
+\input{sections/world_powers}        % Chapter 13: World Powers and Influence (Patrons)
+\clearpage
+\input{sections/world_interactions}  % Chapter 14: World Interaction
+\clearpage
+\input{sections/currency-free-economy} % Chapter 15: Currency-Free Economy
+\clearpage
+\input{sections/backgrounds}         % Chapter 16: Character Backgrounds
+\clearpage
+\input{sections/legacy}              % Chapter 17: The Legacy Engine
+\clearpage
+
+% ============================================================
+% PART V -- ENHANCED PLAY AND REFERENCE
 % ============================================================
 \part{Enhanced Play and Reference}
-\input{sections/enhanced_play}         % Chapter 19: Enhanced Player Play
+\input{sections/enhanced_play}       % Chapter 18: Enhanced Player Play
 \clearpage
 
 % Optional character sheet (if file exists)
@@ -252,7 +236,7 @@
 % APPENDICES
 % ============================================================
 \appendix
-\input{sections/appendix}              % Appendix: Quick Reference and Tables
+\input{sections/appendix}            % Appendix: Quick Reference and Tables
 \clearpage
 
 % ============================================================
